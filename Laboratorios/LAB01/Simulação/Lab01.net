@@ -1,5 +1,5 @@
-* D:\Usuário\Documents\GitHub\EEL7303\Laboratorios\LAB01\Simulação\Lab01.asc
-V1 Vi 0 SINE(0 1 1K) AC 1
+* C:\Users\Gustavo\Documents\UFSC\7ª Fase\Circuitos Eletrônicos Analógicos\LAB01\Simulação\Lab01.asc
+V1 Vi 0 SINE(0 0.05 1K) AC 0
 Rg N002 Vi 50
 R1_1 Vin N001 5.1k
 R1_2 0 Vin 5.1k
@@ -8,18 +8,20 @@ R3_1 0 Ve 2631
 Q1 Vo1 Vin Ve 0 BC547B
 V2 N001 0 12
 C1 Vin N002 100µ
-C2 N003 Vo1 100µ
-Q2 Vo N003 N004 0 BC547B
-R1_3 N003 N001 5.1k
-R2_2 Vo N001 1.5k
-R1_4 0 N003 5.1k
-R3_2 0 N004 2631
-C3 N004 0 220µ
+C2 Vi2 Vo1 100µ
+Q2 vo Vi2 N003 0 BC547B
+R1_3 Vi2 N001 5.1k
+R2_2 vo N001 1.5k
+R1_4 0 Vi2 5.1k
+R3_2 0 N003 2631
+C3 N003 0 220µ
 .model NPN NPN
 .model PNP PNP
-.lib D:\Usuário\Documents\LTspiceXVII\lib\cmp\standard.bjt
+.lib C:\Users\Gustavo\Documents\LTspiceXVII\lib\cmp\standard.bjt
 ;.op
-.ac dec 100 1 100MEG
-;tran 0 5ms 0 1u
+;ac dec 100 1 100MEG
+.tran 0 5ms 0 1u
+* Universidade Federal de Santa Catarina - UFSC\nEngenharia Eletrônica - EEL7303 - Circuitos Eletrônicos Analógicos\nExp01 - Amplificador De Dois Estágios em Médias Frequências\nGustavo Simas e André Mattos
+.four 1k V(vo)
 .backanno
 .end
