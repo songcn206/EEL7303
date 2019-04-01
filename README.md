@@ -1,5 +1,7 @@
 # EEL7303 - Circuitos Eletrônicos Analógicos
 
+> "A resposta certa, não importa nada: o essencial é que as perguntas estejam certas." - **Mário Quintana**
+
 ## ***Repositório da Disciplina INE5411 - Organização de Computadores I***
 
 **Curso**: Engenharia Eletrônica - Universidade Federal de Santa Catarina (UFSC), Florianópolis, SC, Brasil
