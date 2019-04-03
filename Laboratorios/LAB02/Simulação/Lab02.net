@@ -1,0 +1,25 @@
+* D:\Usuário\Documents\GitHub\EEL7303\Laboratorios\LAB02\Simulação\Lab02.asc
+Q1 Vb1 Vb1 0 0 CA3046
+R1 Vo Vb1 6.1k
+R2 Vo V- 61k
+R3 V- Vb2 6.1k
+D1 0 Vb1 1N4148
+Q2 Vb2 Vb2 0 0 CA3046
+XU1 N001 V- Vcc -Vcc Vo LM741/NS
+V1 Vcc 0 12
+V2 0 -Vcc 12
+V3 N001 Vb1 2.3m
+.model D D
+.lib D:\Usuário\Documents\LTspiceXVII\lib\cmp\standard.dio
+.model NPN NPN
+.model PNP PNP
+.lib D:\Usuário\Documents\LTspiceXVII\lib\cmp\standard.bjt
+.include D:\Usuário\Documents\GitHub\EEL7303\Laboratorios\LAB02\Modelos\LM741.MOD
+.op
+.step TEMP 15 110 5
+;.tran 0 5ms 0 1u
+;.four 1k V(output)
+* Universidade Federal de Santa Catarina - UFSC\nEngenharia Eletrônica - EEL7303 - Circuitos Eletrônicos Analógicos\nExp02 - CIRCUITO PARA REFERÊNCIA DE TENSÃO - BANDGAP\nGustavo Simas e André Mattos
+.lib D:\Usuário\Documents\LTspiceXVII\lib\CA3046.lib
+.backanno
+.end
