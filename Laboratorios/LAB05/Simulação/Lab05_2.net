@@ -1,0 +1,25 @@
+* C:\Users\Gustavo\Documents\GitHub\EEL7303\Laboratorios\LAB05\Simulação\Lab05_2.asc
+V1 N004 0 0
+V2 vs N004 SINE(0 0.5 400) AC 0.5 0
+Q1 +vcc vin N001 0 TIP31C
+R1 N001 vo 1
+R2 vo N003 1
+Q2 N003 vin -vcc 0 TIP32
+V3 0 -vcc 12
+V4 +vcc 0 12
+R3 vo 0 8
+R4 N002 vs 50
+XU1 N002 vo +vcc -vcc vin LM741/NS
+.model NPN NPN
+.model PNP PNP
+.lib C:\Users\Gustavo\Documents\LTspiceXVII\lib\cmp\standard.bjt
+.include C:\Users\Gustavo\Documents\GitHub\EEL7303\Laboratorios\LAB05\Modelos\TIP31C.SP3
+* Universidade Federal de Santa Catarina - UFSC\nEngenharia Eletrônica - EEL7303 - Circuitos Eletrônicos Analógicos\nExp05 - AMPLIFICADOR DE POTENCIA\nGustavo Simas e André Mattos
+.include C:\Users\Gustavo\Documents\GitHub\EEL7303\Laboratorios\LAB05\Modelos\LM741.MOD
+.include C:\Users\Gustavo\Documents\GitHub\EEL7303\Laboratorios\LAB05\Modelos\TIP32.SP3
+.tran 0 5ms 0 1u
+.op
+;.four 1k V(output)
+;ac dec 101 10 100MEG
+.backanno
+.end
