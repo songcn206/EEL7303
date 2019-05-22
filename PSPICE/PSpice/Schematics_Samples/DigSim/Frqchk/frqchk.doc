@@ -1,0 +1,140 @@
+  Simulate an All-Digital Frequency-Comparator Circuit Using PSpice/PLogic
+
+
+
+This article illustrates how a hierarchical all-digital design with two
+implementation views, can be defined in Schematics, and subsequently
+simulated in PSpice/PLogic.  This discussion is relevant to version 5.2 and
+later of the Design Center.  The example circuit is a basic frequency-compar-
+ator (see Figure 1).  All parts used in the schematic are provided in the
+standard Symbol and Model Libraries.  One implementation is chosen for PSpice/
+PLogic simulation to demonstrate the circuit's behavior.
+
+The frequency-comparator circuit accepts two reference frequency inputs, and
+a test frequency input which is compared to the references. After initial-
+ization and start-up, the circuit produces fast, slow, OK, and error indica-
+tions. Operation is continuous as long as both of the reference signals are
+applied.
+
+Initialization is accomplished by applying a low pulse to the INIT input,
+having a minimum width of 40 nsec.  At least 40 nsec after the negative-going
+edge of the INIT input, circuit operation commences upon applying a negative-
+going edge to the RUN input.
+
+Outputs of the circuit-SLOW, FAST, OK, and ERROR-are pulses indicating the
+result of comparing the test frequency signal, FTEST, to the low and high
+frequency reference signals, REFL and REFH, respectively.   The ERROR pulse
+is generated if more than 7 complete periods of the REFL signal are observed
+with no activity on the FTEST input during that time.
+
+Implementation
+
+The frequency-comparator circuit is designed in Schematics using hierarchical
+blocks (logic shown on these facing pages) for the initializer (INIT block),
+cycle-detectors (PICD blocks), state-decoder (SDL block), and error-detector
+(EDL block).  The design has two alternative implementations:  a gate-level
+implementation using off-the-shelf 74xx parts (see Figure 5), and a function-
+ally equivalent implementation using a mixture of 74xx parts and a commonly
+available Programmable Array Logic (PAL) device, PAL20RP4B (see Figure 6).
+Both implementations use the digital stimulus include file "frqchk.stm",
+providing definitions for the INIT, RUN, MODE, REFH, REFL, FTEST and SYSCLK
+input signals (see Figure 9 on page 5).
+
+The design alternatives are implemented as two views of the SDL block, with
+the DEFAULT view being the gate-level implementation, and the PAL-IMPL view
+being the PAL implementation.  For the PAL-IMPL view, the data required to
+program the PAL20RP4B device is supplied in a JEDEC file, "frqchk.jed,"
+generated using OrCAD/PLD (see Figure 8 on page 5). 
+
+
+Operation
+
+The three frequency inputs-REFL, REFH, FTEST-each drive a separate instance
+of a cycle-detector circuit (PICD blocks).  Each cycle-detector is made up
+of two pairs of D-type flip-flops and a few basic gates.  
+After having been "reset" and "enabled," the cycle-detectors output a HI
+level as soon as two similar edges (e.g., falling) have been applied.  This
+indicates that one complete period of the input signal has been observed.  
+
+The circuit implements a simple finite-state machine (see Figure 7) that
+recognizes the order in which the individual frequency inputs make complete
+cycles.  For example, suppose that the REFH signal period is observed first
+(generating N1), followed by the REFL signal period (generating N2), then
+the FTEST period (generating N0). This indicates that the FTEST frequency is
+too low and that the SLOW output should be pulsed.   But if the FTEST period
+is observed before the REFL cycle, an OK pulse is produced.   The state
+machine "current state" simply represents the order of activity that has been
+observed since the last "initialization" or "reset," which occurs every time
+any kind of output pulse is generated.
+
+The cycle-detectors monitor the input activity and produce the "next state"
+value (N3, N2, N1, N0), which is fed to the state-decoder (SDL block).  At a
+rate determined by the system clock, SYSCLK, this "next state" becomes the
+"current state"; the 74154 4/16 decoders in the gate-level view of the state-
+decoder, continually provide unary logic indications of the next/current
+"transitions" (since "next state" values are not synchronized to SYSCLK).
+The random combinational logic in this same view recognizes the specific
+transitions that comprise the conditions of interest, i.e., FAST, SLOW, and
+OK, as per the state-transition diagram.  (In the PAL view, the PAL20RP4B
+device replaces all of the decoding logic as well as the 4-bit register
+representing the "current state" value.   The alternative implementations are
+functionally identical.)  Note that the output indicators are not "static"
+state assignments; they are derived from selected state transitions.  Thus,
+S14 -> S15 recognizes a SLOW condition, while S10 -> S15 signifies an OK
+condition.
+
+The error-detector logic (EDL block) waits for the TIMEOUT signal output by
+the timeout-generator.  The timeout-generator is simply a counter whose Q3
+output indicates that the 8th rising edge of the low frequency reference,
+REFL, has occurred.  If none of the normal output indicators (SLOW, FAST, or
+OK) have occurred before TIMEOUT, the ERROR output is asserted.  The error
+detector also asserts its DONE output whenever any of FAST, SLOW, OK, or
+ERROR have occurred.
+
+The initialization/reset logic (INIT block) performs two functions.  One
+distributes the effects of the INIT and RUN inputs, as defined in the
+stimulus include file, "frqchk.stm" (see Figure 9).  The other uses the DONE
+signal from the error-detector to generate a RESET pulse; this has the same
+effect as the external RUN pulse-to restore the state machine to its starting
+state (0) as well as reset the cycle-detectors, timeout generator, and flip-
+flops in the error-detector.  Normal operation then resumes.
+
+
+PSpice/PLogic Simulation-PAL View
+
+To simulate the PAL implementation of the frequency-comparator circuit, these
+steps must be followed:
+
+(1)	The transient analysis must be enabled under the Analysis/Setup
+        command.  The transient analysis is defined with:  Print Step = 1us,
+        Final Time = 1ms.
+
+(2)	All flip-flops must be initialized in the 0 state (rather than the
+        default X state).  This is set with the DIGINITSTATE option under
+        the Analysis/Setup/Options command.  This allows the simulator to
+        properly initialize the circuit by forcing the reset logic to a
+        deterministic state (non X; the hardware implementation would
+        eventually sync itself to the input stimuli and operate correctly).
+
+(3)	In the top-level schematic, the SDL block is the only block with more
+        than one view.  Without further setup, Schematics will generate the
+        PSpice/PLogic netlist using the DEFAULT gate-level view for SDL.  
+	To use the PAL view instead, the PAL-IMPL view name must be specified
+        in the View field of the Translators dialog (under the
+        Configure/Translators command).  After running 	the simulation by
+        selecting Analysis/Simulate, the state-machine operation is viewed
+        in Probe by placing markers on the appropriate wires and buses
+        (using the Markers/Mark Voltage/Level command), or by typing the sig-
+        nal names in the Probe dialog under the Trace/Add command as follows:
+
+		SYSCLK, REFH, REFL, FTEST
+		FAST, SLOW, OK, ERROR
+		{N3, N2, N1, N0};NEXT
+		{C3, C2, C1, C0};CURRENT
+
+	Figure 10 demonstrates correct response of the circuit to the digital
+        stimulus at FTEST. If you are currently running version 5.3 of the
+        Design Center-System 3 (under Microsoft Windows or Sun OpenWindows),
+        and would like a copy of the schematic files for the frequency-
+        comparator circuit, please contact OrCAD PSpice Technical Support.
+

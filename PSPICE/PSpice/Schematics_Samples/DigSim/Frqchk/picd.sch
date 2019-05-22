@@ -1,0 +1,274 @@
+*version 6.2 78537978
+u 691
+U? 23
+IN? 3
+? 8
+@libraries
+@analysis
+.TRAN 1 0 0 0
++0 1US
++1 1MS
+@targets
+@attributes
+@translators
+a 0 u 13 0 0 0 hln 100 PSPICE=DEFAULT
+a 0 u 13 0 0 0 hln 100 PCBOARDS=PCB
+a 0 u 13 0 0 0 hln 100 CADSTAR=PCB
+a 0 u 13 0 0 0 hln 100 EDIF=PCB
+a 0 u 13 0 0 0 hln 100 ORCAD=PCB
+a 0 u 13 0 0 0 hln 100 PADS=PCB
+a 0 u 13 0 0 0 hln 100 PCAD=PCB
+a 0 u 13 0 0 0 hln 100 PROTEL=PCB
+a 0 u 13 0 0 0 hln 100 TANGO=PCB
+a 0 u 13 0 0 0 hln 100 SCICARDS=PCB
+a 0 u 13 0 0 0 hln 100 POLARIS=PCB
+@index
+pageloc 1 0 3889 
+@status
+n 0 93:00:26:22:18:58;728086738 e 
+s 8033 93:00:26:22:19:16;728086756 e 
+c 95:07:25:07:37:35;809336255
+*page 1 0 970 720 iA
+@ports
+port 93 hi 80 10 h
+port 533 INTERFACE 70 140 h
+a 1 x 3 0 19 8 hcn 100 LABEL=2
+port 534 INTERFACE 520 170 h
+a 1 x 3 0 19 8 hcn 100 LABEL=3
+port 551 INTERFACE 70 180 h
+a 1 x 3 0 19 8 hcn 100 LABEL=1
+port 567 INTERFACE 70 160 h
+a 1 x 3 0 19 8 hcn 100 LABEL=4
+@parts
+part 5 7432 450 120 h
+a 0 s 11 0 40 50 hln 100 PART=7432
+a 0 a 0 0 0 0 hln 100 PKGREF=U5
+a 0 ap 9 0 40 0 hln 100 REFDES=U5
+part 75 7404 170 150 h
+a 0 s 11 0 12 2 hln 100 PART=7404
+a 0 a 0 0 0 0 hln 100 PKGREF=U6
+a 0 ap 9 0 40 10 hln 100 REFDES=U6
+part 553 7400 90 140 h
+a 0 s 11 0 6 0 hln 100 PART=7400
+a 0 a 0 0 0 0 hln 100 PKGREF=U22
+a 0 ap 9 0 40 0 hln 100 REFDES=U22
+part 1 7474 120 50 h
+a 0 s 11 0 40 80 hln 100 PART=7474
+a 0 a 0 0 0 0 hln 100 PKGREF=U1
+a 0 ap 9 0 40 8 hln 100 REFDES=U1
+part 2 7474 200 50 h
+a 0 s 11 0 40 80 hln 100 PART=7474
+a 0 a 0 0 0 0 hln 100 PKGREF=U2
+a 0 ap 9 0 40 8 hln 100 REFDES=U2
+part 3 7474 300 50 h
+a 0 s 11 0 40 80 hln 100 PART=7474
+a 0 a 0 0 0 0 hln 100 PKGREF=U3
+a 0 ap 9 0 40 8 hln 100 REFDES=U3
+part 4 7474 380 50 h
+a 0 s 11 0 40 80 hln 100 PART=7474
+a 0 a 0 0 0 0 hln 100 PKGREF=U4
+a 0 ap 9 0 40 8 hln 100 REFDES=U4
+part 690 readme 160 250 h
+a 0 u 3 0 22 34 hln 100 filename=picd.rdm
+a 0 sp 0 0 17 20 hln 200 PART=readme
+a 0 a 0 0 0 0 hln 100 PKGREF=
+@conn
+w 598
+s 410 10 410 20 597
+s 330 10 410 10 599
+s 330 20 330 10 601
+s 230 20 230 10 605
+s 150 10 230 10 607
+s 150 20 150 10 609
+s 80 10 120 10 617
+s 120 10 150 10 620
+s 120 10 120 50 615
+s 230 10 290 10 618
+s 290 10 330 10 623
+s 290 10 290 50 621
+s 290 50 300 50 624
+w 627
+s 180 50 200 50 626
+w 629
+s 360 50 380 50 628
+w 631
+s 260 50 280 50 630
+s 280 50 280 140 632
+s 280 140 450 140 634
+w 637
+s 160 120 200 120 636
+s 160 150 160 120 638
+s 160 150 170 150 640
+s 120 120 160 120 642
+s 120 120 120 70 644
+s 200 120 200 70 646
+w 649
+s 300 150 380 150 648
+s 300 70 300 150 650
+s 380 70 380 150 652
+s 220 150 300 150 654
+w 657
+s 440 50 450 50 656
+s 450 50 450 120 658
+w 661
+a 0 s 0 0 165 178 hln 100 LABEL=RESET
+s 70 180 260 180 688
+a 0 s 3 0 61 176 hln 100 LABEL=RESET
+s 230 110 230 100 668
+s 150 110 230 110 670
+s 150 110 150 100 674
+s 330 110 330 100 664
+s 330 110 410 110 666
+s 410 110 410 100 672
+s 230 110 260 110 676
+s 260 110 330 110 680
+s 260 180 260 110 678
+w 682
+s 520 130 520 170 681
+w 685
+a 0 s 0 0 80 138 hln 100 LABEL=ENABLE
+s 70 140 90 140 684
+a 0 s 3 0 60 136 hln 100 LABEL=ENABLE
+w 687
+a 0 s 0 0 80 158 hln 100 LABEL=CLOCK
+s 70 160 90 160 686
+a 0 s 3 0 60 156 hln 100 LABEL=CLOCK
+@junction
+j 80 10
++ s 93
++ w 598
+j 230 10
++ w 598
++ w 598
+j 150 10
++ w 598
++ w 598
+j 120 10
++ w 598
++ w 598
+j 330 10
++ w 598
++ w 598
+j 290 10
++ w 598
++ w 598
+j 450 140
++ p 5 B
++ w 631
+j 160 150
++ p 553 Y
++ w 637
+j 170 150
++ p 75 A
++ w 637
+j 160 120
++ w 637
++ w 637
+j 220 150
++ p 75 Y
++ w 649
+j 300 150
++ w 649
++ w 649
+j 450 120
++ p 5 A
++ w 657
+j 230 110
++ w 661
++ w 661
+j 330 110
++ w 661
++ w 661
+j 260 110
++ w 661
++ w 661
+j 520 130
++ p 5 Y
++ w 682
+j 520 170
++ s 534
++ w 682
+j 90 140
++ p 553 A
++ w 685
+j 70 140
++ s 533
++ w 685
+j 90 160
++ p 553 B
++ w 687
+j 70 160
++ s 567
++ w 687
+j 70 180
++ s 551
++ w 661
+j 120 50
++ p 1 D
++ w 598
+j 150 20
++ p 1 \PRE\
++ w 598
+j 180 50
++ p 1 Q
++ w 627
+j 120 70
++ p 1 CLK
++ w 637
+j 150 100
++ p 1 \CLR\
++ w 661
+j 230 20
++ p 2 \PRE\
++ w 598
+j 200 50
++ p 2 D
++ w 627
+j 260 50
++ p 2 Q
++ w 631
+j 200 70
++ p 2 CLK
++ w 637
+j 230 100
++ p 2 \CLR\
++ w 661
+j 300 50
++ p 3 D
++ w 598
+j 330 20
++ p 3 \PRE\
++ w 598
+j 360 50
++ p 3 Q
++ w 629
+j 300 70
++ p 3 CLK
++ w 649
+j 330 100
++ p 3 \CLR\
++ w 661
+j 410 20
++ p 4 \PRE\
++ w 598
+j 380 50
++ p 4 D
++ w 629
+j 380 70
++ p 4 CLK
++ w 649
+j 440 50
++ p 4 Q
++ w 657
+j 410 100
++ p 4 \CLR\
++ w 661
+@attributes
+a 0 s 0 0 0 0 hln 100 PAGETITLE=
+a 0 s 0 0 0 0 hln 100 PAGENO=1
+a 0 s 0 0 0 0 hln 100 PAGESIZE=A
+a 0 s 0 0 0 0 hln 100 PAGECOUNT=1
+@text
+s 5 250 220 hln 100 PHASE-INDEPENDENT CYCLE DETECTOR
+s 5 150 220 hln 200 PICD.SCH
+s 5 470 190 hln 100 CYCLE-OK

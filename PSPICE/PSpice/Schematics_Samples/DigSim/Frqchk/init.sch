@@ -1,0 +1,280 @@
+*version 6.2 375832976
+u 740
+U? 9
+@libraries
+@analysis
+@targets
+@attributes
+@translators
+a 0 u 13 0 0 0 hln 100 PSPICE=PSPICE
+a 0 u 13 0 0 0 hln 100 PCBOARDS=PCB
+a 0 u 13 0 0 0 hln 100 CADSTAR=PCB
+a 0 u 13 0 0 0 hln 100 EDIF=PCB
+a 0 u 13 0 0 0 hln 100 ORCAD=PCB
+a 0 u 13 0 0 0 hln 100 PADS=PCB
+a 0 u 13 0 0 0 hln 100 PCAD=PCB
+a 0 u 13 0 0 0 hln 100 PROTEL=PCB
+a 0 u 13 0 0 0 hln 100 TANGO=PCB
+a 0 u 13 0 0 0 hln 100 SCICARDS=PCB
+a 0 u 13 0 0 0 hln 100 POLARIS=PCB
+@index
+pageloc 1 0 4683 
+@status
+a 0 93:01:18:17:31:13;730056673 e 
+c 95:07:25:07:44:07;809336647
+*page 1 0 970 720 iA
+@ports
+port 727 hi 230 230 h
+port 728 interface 100 270 h
+a 1 x 3 0 17 8 hcn 100 LABEL=4
+port 729 INTERFACE 440 190 u
+a 1 x 3 0 19 6 hcn 100 LABEL=8
+port 730 INTERFACE 440 140 u
+a 1 x 3 0 19 6 hcn 100 LABEL=7
+port 731 interface 440 110 u
+a 1 x 3 0 21 6 hcn 100 LABEL=6
+port 732 interface 440 80 u
+a 1 x 3 0 21 6 hcn 100 LABEL=5
+port 733 INTERFACE 100 200 h
+a 14 x 3 0 17 8 hcn 100 LABEL=3
+port 734 INTERFACE 100 110 h
+a 14 x 3 0 17 8 hcn 100 LABEL=2
+port 735 INTERFACE 100 70 h
+a 14 x 3 0 17 8 hcn 100 LABEL=1
+port 736 OFFPAGE 170 150 h
+a 1 x 3 0 23 8 hcn 100 LABEL=RESET
+port 737 OFFPAGE 340 250 u
+a 1 x 3 0 23 8 hcn 100 LABEL=RESET
+@parts
+part 719 7404 120 70 h
+a 0 s 11 0 40 40 hln 100 PART=7404
+a 0 a 0 0 0 0 hln 100 PKGREF=U1
+a 0 ap 9 0 40 10 hln 100 REFDES=U1
+part 720 7408 200 180 h
+a 0 s 11 0 54 42 hln 100 PART=7408
+a 0 a 0 0 0 0 hln 100 PKGREF=U2
+a 0 ap 9 0 40 0 hln 100 REFDES=U2
+part 721 7404 280 110 h
+a 0 s 11 0 26 38 hln 100 PART=7404
+a 0 a 0 0 0 0 hln 100 PKGREF=U3
+a 0 ap 9 0 40 10 hln 100 REFDES=U3
+part 722 7400 200 70 h
+a 0 s 11 0 8 -4 hln 100 PART=7400
+a 0 a 0 0 0 0 hln 100 PKGREF=U4
+a 0 ap 9 0 40 0 hln 100 REFDES=U4
+part 723 7408 200 130 h
+a 0 s 11 0 52 44 hln 100 PART=7408
+a 0 a 0 0 0 0 hln 100 PKGREF=U5
+a 0 ap 9 0 40 0 hln 100 REFDES=U5
+part 724 74109 240 260 h
+a 0 s 11 0 52 24 hln 100 PART=74109
+a 0 a 0 0 0 0 hln 100 PKGREF=U6
+a 1 ap 9 0 40 8 hln 100 REFDES=U6
+part 725 7486 140 270 h
+a 0 s 11 0 40 50 hln 100 PART=7486
+a 0 a 0 0 0 0 hln 100 PKGREF=U7
+a 0 ap 9 0 40 0 hln 100 REFDES=U7
+a 0 sp 0 0 40 50 hln 100 MODEL=7486
+part 726 7404 380 290 h
+a 0 s 11 0 28 40 hln 100 PART=7404
+a 0 a 0 0 0 0 hln 100 PKGREF=U8
+a 1 ap 9 0 28 6 hln 100 REFDES=U8
+part 739 readme 460 240 h
+a 0 u 3 0 22 34 hln 100 filename=init.rdm
+a 0 sp 0 0 17 20 hln 200 PART=readme
+a 0 a 0 0 0 0 hln 100 PKGREF=
+@conn
+w 608
+a 0 s 3 0 59 100 hln 100 LABEL=RUN
+s 100 110 190 110 607
+a 0 s 3 0 59 100 hln 100 LABEL=RUN
+s 200 90 190 90 613
+s 190 90 190 110 616
+s 190 130 200 130 610
+s 190 110 190 130 619
+s 190 110 280 110 622
+w 626
+a 0 s 3 0 56 58 hln 100 LABEL=SYSCLK
+s 100 70 120 70 625
+a 0 s 3 0 56 58 hln 100 LABEL=SYSCLK
+w 629
+s 170 70 200 70 628
+w 632
+s 190 150 190 180 631
+s 190 180 200 180 634
+s 190 150 200 150 637
+s 170 150 190 150 640
+w 644
+a 0 s 3 0 57 190 hln 100 LABEL=INIT
+s 110 200 200 200 657
+a 0 s 3 0 57 190 hln 100 LABEL=INIT
+s 100 200 110 200 646
+s 270 330 270 350 649
+s 270 350 110 350 652
+s 110 350 110 200 655
+w 660
+a 0 s 3 0 457 132 hln 100 LABEL=CLEAR
+s 270 140 440 140 659
+a 0 s 3 0 457 132 hln 100 LABEL=CLEAR
+w 663
+a 0 s 3 0 461 180 hln 100 LABEL=INIT2
+s 270 190 440 190 662
+a 0 s 3 0 461 180 hln 100 LABEL=INIT2
+w 666
+a 0 s 3 0 459 102 hln 100 LABEL=RUNL
+s 330 110 440 110 665
+a 0 s 3 0 459 102 hln 100 LABEL=RUNL
+w 669
+s 230 340 300 340 668
+s 230 300 230 340 671
+s 240 300 230 300 674
+s 300 340 300 290 677
+s 300 290 340 290 683
+s 340 290 380 290 688
+s 340 250 340 290 686
+w 691
+s 210 280 240 280 690
+w 694
+s 140 290 130 290 693
+s 130 290 130 360 696
+s 430 290 430 360 699
+s 130 360 430 360 702
+w 706
+s 230 230 270 230 705
+s 230 230 230 260 708
+s 230 260 240 260 711
+w 715
+a 0 s 3 0 54 262 hln 100 LABEL=DONE
+s 100 270 140 270 714
+a 0 s 3 0 54 262 hln 100 LABEL=DONE
+w 718
+a 0 s 3 0 455 70 hln 100 LABEL=CYCLE
+s 270 80 440 80 717
+a 0 s 3 0 455 70 hln 100 LABEL=CYCLE
+@junction
+j 190 110
++ w 608
++ w 608
+j 190 150
++ w 632
++ w 632
+j 110 200
++ w 644
++ w 644
+j 340 290
++ w 669
++ w 669
+j 120 70
++ p 719 A
++ w 626
+j 170 70
++ p 719 Y
++ w 629
+j 200 180
++ p 720 A
++ w 632
+j 200 200
++ p 720 B
++ w 644
+j 270 190
++ p 720 Y
++ w 663
+j 280 110
++ p 721 A
++ w 608
+j 330 110
++ p 721 Y
++ w 666
+j 200 90
++ p 722 B
++ w 608
+j 200 70
++ p 722 A
++ w 629
+j 270 80
++ p 722 Y
++ w 718
+j 200 130
++ p 723 A
++ w 608
+j 200 150
++ p 723 B
++ w 632
+j 270 140
++ p 723 Y
++ w 660
+j 270 330
++ p 724 \CLR\
++ w 644
+j 240 300
++ p 724 \K\
++ w 669
+j 300 290
++ p 724 \Q\
++ w 669
+j 240 280
++ p 724 CLK
++ w 691
+j 240 260
++ p 724 J
++ w 706
+j 270 230
++ p 724 \PRE\
++ w 706
+j 210 280
++ p 725 Y
++ w 691
+j 140 290
++ p 725 B
++ w 694
+j 140 270
++ p 725 A
++ w 715
+j 380 290
++ p 726 A
++ w 669
+j 430 290
++ p 726 Y
++ w 694
+j 230 230
++ s 727
++ w 706
+j 100 270
++ s 728
++ w 715
+j 440 190
++ s 729
++ w 663
+j 440 140
++ s 730
++ w 660
+j 440 110
++ s 731
++ w 666
+j 440 80
++ s 732
++ w 718
+j 100 200
++ s 733
++ w 644
+j 100 110
++ s 734
++ w 608
+j 100 70
++ s 735
++ w 626
+j 170 150
++ s 736
++ w 632
+j 340 250
++ s 737
++ w 669
+@attributes
+a 0 s 0 0 0 0 hln 100 PAGETITLE=
+a 0 s 0 0 0 0 hln 100 PAGENO=1
+a 0 s 0 0 0 0 hln 100 PAGESIZE=A
+a 0 s 0 0 0 0 hln 100 PAGECOUNT=1
+@text
+s 5 380 40 hln 100 Initialization/Reset Logic
+s 5 50 40 hln 100 Frequency of "SYSCLK" must be >= that of REFH
+s 5 380 20 hln 200 INIT.SCH

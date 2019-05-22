@@ -1,0 +1,76 @@
+*-------------------------------------------------------------------------
+* SDLXLE - State Decode Logic, "LOGIC-EXPRESSION" DECODER Model
+* Created from random logic in SDLX
+*
+.SUBCKT DECODER 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18
++       OPTIONAL: DPWR = $G_DPWR   DGND = $G_DGND
++       PARAMS:   MNTYMXDLY = 0    IO_LEVEL = 0
+
+UDECODERLOG LOGICEXP(14,4) DPWR DGND
++ 5 6 7 8 9 10 11 12 13 14 15 16 17 18
++ 1L 2L 3L 4L 
++ D0_GATE IO_STD IO_LEVEL = {IO_LEVEL}
++
++ LOGIC:
+*
+* INTERMEDIATE TERMS
+*
++ G3  = { ~ ( 11 & 13 ) }
++ G5  = { ~ ( 14 & 10 & 15 ) }
++ G2  = { G3 & G5 }
++ G6  = { ~ ( 15 & 18 ) }
++ G8  = { ( 7 & 8 ) }
++ G9  = { ~( 16 | 12 ) }
++ G10 = { 16 | 9 }
++ G11 = { ( 13 | 17 ) }
++ G12 = { ( 13 | 18 ) }
++ G17 = { ( G6 & 6 ) }
+*
+* OUTPUT ASSIGNMENT
+*
++ 1L = { ~ ( G10 & G11 & G12 ) }
++ 2L = { ( G2 | G9 ) }
++ 3L = { ~ ( G8 | 16 ) }
++ 4L = { ( 5 | G17 ) }
+
+UDECODEDLY PINDLY(4,0,5) DPWR DGND
++ 1L 2L 3L 4L
++  7  8 11 13 15
++  1  2  3  4
++ IO_STD
++ MNTYMXDLY = {MNTYMXDLY}   IO_LEVEL = {IO_LEVEL}
++
++ PINDLY:
++   1 = {
++      CASE(
++        CHANGED(13,0) & TRN_LH, DELAY(-1,46NS,-1),
++        CHANGED(13,0) & TRN_HL, DELAY(-1,40NS,-1),
++        DELAY(-1,43NS,-1)         ;DEFAULT
++        )
++      }
++   2 = {
++      CASE(
++        (CHANGED(13,0) | CHANGED(11,0)) & TRN_LH, DELAY(-1,61NS,-1),
++        (CHANGED(13,0) | CHANGED(11,0)) & TRN_HL, DELAY(-1,51NS,-1),
++        CHANGED(15,0), DELAY(-1,57NS,-1),
++        DELAY(-1,56NS,-1)         ;DEFAULT
++        )
++      }
++   3 = {
++      CASE(
++        (CHANGED(7,0) | CHANGED(8,0)) & TRN_LH, DELAY(-1,46NS,-1),
++        (CHANGED(7,0) | CHANGED(8,0)) & TRN_HL, DELAY(-1,50NS,-1),
++        DELAY(-1,48NS,-1)         ;DEFAULT
++        )
++      }
++   4 = {
++      CASE(
++        TRN_LH, DELAY(-1,46NS,-1),
++        TRN_HL, DELAY(-1,50NS,-1),
++        DELAY(-1,48NS,-1)         ;DEFAULT
++        )
++      }
+
+.ENDS
+
+

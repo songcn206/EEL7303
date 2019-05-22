@@ -1,0 +1,70 @@
+Digital Frequency-Comparator
+Tutorial Circuit (FRQCHKX)
+
+FRQCHKX is an all-digital frequency-comparator circuit which accepts
+two reference frequency inputs, and a test frequency input which is
+compared to the references.  After initialization and start-up, the
+circuit produces fast, slow, OK, and error indications.  These outputs
+have markers on them and will automatically be displayed when Probe is 
+invoked.
+
+FRQCHKX is designed using hierarchical blocks for
+the initializer (INIT block), cycle-detectors (PICD blocks),
+state-decoder (SDL block), and error-detector (EDL block).  Most
+parts are from the standard Symbol and Model libraries.  Custom
+components and a stimulus file are also configured into the schematic
+(see the Analysis/Library and Include Files dialog).
+
+This circuit can be run using OrCAD PSpice AD Basics, 
+PSpice A/D, or PSpice Evaluation (student) versions. 
+
+Symbol libraries required;
+	7400.slb
+	port.slb
+	frqchkx.slb
+
+model libraries required;
+	7400.lib
+	frqchkx.lib         
+
+
+The following is a list of the relevant files:
+
+frqchkx.sch	top-level schematic for the frequency checker
+init.sch	schematic view of the INIT block
+picd.sch	schematic view of the PICD blocks
+edlx.sch	schematic view of the EDL block
+sdlxle.sch	logic expression schematic view of the SDL block (default)
+sdlx.sch	gate-level schematic view of the SDL block
+sdlpx.sch	PAL implementation schematic view of the SDL block
+frqchkx.slb	custom component symbols
+frqchkx.lib	custom component models
+frqchk.stm	stimulus spec, description of basic operating requirements
+
+The operational behavior of this circuit is described, for the most
+part, in the April 1993 newsletter article "Simulate an All-Digital
+Frequency-Comparator Circuit Using PSpice" which is included in the
+Application Notes Manual.  However, an additional view has been added
+to this example for the SDL block, and is used as the default.  This
+view, SDLXLE, uses a logic expression model to represent the random
+gate logic.  It also utilizes the DECODER subcircuit contained in
+"frqchkx.lib."
+
+To view an SDL block representation other than the default:
+
+1.	Select the SDL block on the schematic.
+2.	Select Navigate/Push and double-click on the SDL view of choice.
+
+To simulate and analyze the circuit with a view of the SDL block other
+than the default, you must configure the translator as follows:
+
+1.	Select Options/Translators.
+2.	Click on the PSpice entry in the Translators list
+        box (if it is not already highlighted)
+3.	Clear the View field and enter the name of the SDL block of
+        choice, e.g., SDLX (gate-level view); click APPLY followed by OK.
+
+You are now ready to run the simulator.
+
+This example circuit is not designed to go to layout.  No package definitions
+have been created for the custom symbols used in this design.

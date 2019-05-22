@@ -1,0 +1,274 @@
+;   $Workfile:   s2cfpmap.txt  $
+;   $Revision:   1.3  $
+;   $Author:   llam  $
+;   $Date:   03 Dec 1998 08:45:56  $
+;
+
+
+; This is the MicroSim to OrCAD translator footprint and attribute mapping file
+;
+; File Format of s2cfpmap.txt
+; 	Fields are separated by a space or tab. 
+;
+; For Footprint records:
+;	There are four fields on the line:
+; 	The first two fields on the line must be the command field which is "footprint rename".
+; 	The third field is the footprint's original name.
+; 	And the fourth field (the rest of the line) is the footprint's new name.
+;
+; For Attribute records (anything in square brackets is optional):
+;	attribute RENAME [(<rule>)] oldSchName=newCapName
+;	attribute DELETE [(<rule>)] oldSchName
+;	
+;	where <rule> is optional and the format of rule is:
+;		<rule> ::= [<exclude list>] [<include list>]
+;		<exclude list> ::= EXCLUDE [LIBRARY <name list>] [PART <name list>]
+;		<include list> ::= INCLUDE [LIBRARY <name list>] [PART <name list>]
+;		<name list> ::= name [<more names>]
+;		<more names> ::= , name <name list>
+;
+;	- A rule has to have either an include or an exclude list or both
+;	- For an attribute rule to match, a part has to be in both the library and the part list
+;	- If a library list is not specified, then all libraries will match
+;	- If a part list is not specified, then all parts in the library will match
+;	- The exclude portion of the rule is evaluated before the include portion
+;	- Records are evaluated in the order they appear in this file
+
+; attribute rules
+;
+;attribute delete (include library ana_swit,maxim,elantec,burr_brn) value
+attribute rename (exclude part bsv81/plp,lm759ch,max402cpa,max403cpa include library phil_fet,opamp) value=AREA
+;attribute delete (include library phil_fet,opamp part bsv81/plp,lm759ch,max402cpa,max403cpa) value
+;attribute rename (include library ana_swit,maxim,elantec,burr_brn,phil_fet,opamp,mcpwrsys,zetex,siemens,phil_rf,phil_bjt,epwrbjt,ediode,ebipolar,jpwrbjt,jjfet,jfet,diode,jdiode) value=AREA 
+attribute rename (include library ana_swit,maxim,elantec,burr_brn,phil_fet) value=AREA
+attribute rename (include library opamp,mcpwrsys,zetex,siemens,phil_rf,phil_bjt,epwrbjt) value=AREA
+attribute rename (include library ediode,ebipolar,jpwrbjt,jjfet,jfet,diode,jdiode) value=AREA
+
+; footprint rules
+;
+footprint rename DIP14/300-thru-socket DIP.100/14/W.300/L.700
+footprint rename DIP16/300-thru-socket DIP.100/16/W.300/L.800
+footprint rename DIP18/300-thru-socket DIP.100/18/W.300/L.900
+footprint rename DIP20/300-thru-socket DIP.100/20/W.300/L1.000
+footprint rename DIP24/300-thru-socket DIP.100/24/W.300/L1.200
+footprint rename DIP24/600-thru-socket DIP.100/24/W.600/L1.200
+footprint rename DIP28/300-thru-socket DIP.100/28/W.300/L1.400
+footprint rename DIP28/600-thru-socket DIP.100/28/W.600/L1.400
+footprint rename DIP32/600-thru-socket DIP.100/32/W.600/L1.600
+footprint rename DIP8/300-thru-socket DIP.100/8/W.300/L.400
+footprint rename SIMM40/50 SIMM.050/VS_LP/TM/40
+footprint rename SIMM64/50 SIMM.050/VS_LP/TM/64
+footprint rename SIMM68/50 SIMM.050/VS_LP/TM/68
+footprint rename SIMM72/50 SIMM.050/VS_LP/TM/72
+footprint rename SIMM80/50 SIMM.050/VS_LP/TM/80
+footprint rename MLATCH-SIMM72/50 SIMM.050/VS_LP/TM/72
+footprint rename MLATCH-SIMM80/50 SIMM.050/VS_LP/TM/80
+footprint rename SIMMII40/50 SIMM.050/RS_LP/TM/40
+footprint rename SIMMII68/50 SIMM.050/RS_LP/TM/68
+footprint rename SIMMII72/50 SIMM.050/RS_LP/TM/72
+footprint rename SIMMII80/50 SIMM.050/RS_LP/TM/80
+footprint rename SIMMII84/50 SIMM.050/RS_LP/TM/84
+footprint rename SIMM72/50/350 SIMM.050/VS_LP/TM/72
+footprint rename CDIP14 DIP.100/14/W.300/L.800
+footprint rename CDIP16 DIP.100/16/W.300/L.800
+footprint rename CDIP18 DIP.100/18/W.300/L.900
+footprint rename CDIP20 DIP.100/20/W.300/L1.000
+footprint rename CDIP22 DIP.100/22/W.300/L1.100
+footprint rename CDIP24 DIP.100/24/W.300/L1.200
+footprint rename CDIP24X DIP.100/24/W.600/L1.250
+footprint rename CDIP28 DIP.100/28/W.300/L1.450
+footprint rename CDIP28X DIP.100/28/W.600/L1.450
+footprint rename CDIP32 DIP.100/32/W.300/L1.625
+footprint rename CDIP32X DIP.100/32/W.600/L1.650
+footprint rename CDIP36X DIP.100/36/W.600/L1.850
+footprint rename CDIP8 DIP.100/8/W.300/L.425
+footprint rename C1310 SM/C_0504
+footprint rename HDR1X3 SIP/TM/L.300/3
+footprint rename HDR1X4 SIP/TM/L.400/4
+footprint rename HDR2 SIP/TM/L.200/2
+footprint rename CQFP100 QUAD.050/100/WG1.485
+footprint rename CQFP132 QUAD.025/132/WG1.085
+footprint rename CQFP44 QUAD.050/44/WG.785
+footprint rename CQFP52 QUAD.050/52/WG.885
+footprint rename CQFP68 QUAD.050/68/WG1.085
+footprint rename CQFP84 QUAD.050/84/WG1.285
+footprint rename DIP14 DIP.100/14/W.300/L.800
+footprint rename DIP16 DIP.100/16/W.300/L.900
+footprint rename DIP18 DIP.100/18/W.300/L.950
+footprint rename DIP20 DIP.100/20/W.300/L1.050
+footprint rename DIP22 DIP.100/22/W.300/L1.150
+footprint rename DIP24 DIP.100/24/W.300/L1.250
+footprint rename DIP24L DIP.100/24/W.400/L1.250
+footprint rename DIP24X DIP.100/24/W.600/L1.250
+footprint rename DIP28 DIP.100/28/W.300/L1.425
+footprint rename DIP28X DIP.100/28/W.600/L1.450
+footprint rename DIP32 DIP.100/32/W.300/L1.625
+footprint rename DIP32X DIP.100/32/W.600/L1.700
+footprint rename DIP36XX DIP.100/36/W.900/L1.800
+footprint rename DIP40X DIP.100/40/W.600/L2.100
+footprint rename DIP48X DIP.100/48/W.600/L2.500
+footprint rename DIP8 DIP.100/8/W.300/L.450
+footprint rename 2-5F1B TO226AB
+footprint rename 2-5F1C TO226AA
+footprint rename 2-5F1D TO226AA
+footprint rename 2-5J1A TO226AB
+footprint rename 2-5J1B TO226AB
+footprint rename M-230 TO226AA
+footprint rename PA33 TO226AA
+footprint rename CLCC28 CLCC28
+footprint rename CLCC44 CLCC44
+footprint rename CLCC68 CLCC68
+footprint rename H08C TO80
+footprint rename SC71 SIP/TM/L.300/3
+footprint rename SC-71 SIP/TM/L.300/3
+footprint rename SOW-28/MO-059AC SOG.050/28/WG.480/L.700
+footprint rename TOP3 TO218AA
+footprint rename PQFP100 QUAD.025/100/WG.885
+footprint rename PQFP100/MO-069AD QUADB.025/100/WG.880
+footprint rename PQFP132 QUAD.025/132/WG1.085
+footprint rename PQFP132/MO-069AE QUADB.025/132/WG1.080
+footprint rename PQFP164 QUAD.025/164/WG1.285
+footprint rename PQFP196 QUAD.025/196/WG1.485
+footprint rename PQFP68 QUAD.025/68/WG.685
+footprint rename PQFP84 QUAD.025/84/WG.785
+footprint rename P1G VRES36
+footprint rename SO14 SOG.050/14/WG.244/L.325
+footprint rename SO14W SOG.050/14/WG.420/L.350
+footprint rename SO16 SOG.050/16/WG.244/L.400
+footprint rename SO16W SOG.050/16/WG.420/L.400
+footprint rename SO24W SOG.050/24/WG.420/L.600
+footprint rename SO24W/MS-013AD SOG.050/24/WG.425/L.650
+footprint rename SO24X SOG.050/24/WG.480/L.600
+footprint rename SO28W SOG.050/28/WG.420/L.700
+footprint rename SO28X SOG.050/28/WG.480/L.700
+footprint rename SO32W SOG.050/32/WG.420/L.800
+footprint rename SO8 SOG.050/8/WG.244/L.200
+footprint rename SO8W SOG.050/8/WG.420/L.200
+footprint rename SOIC-R24 SOG.050/24/WG.480/L.600
+footprint rename SOIC-R28 SOG.050/28/WG.480/L.725
+footprint rename SOIC-RN20 SOG.050/20/WG.420/L.500
+footprint rename SOJ14/300 SOJ.050/14/WB.300/L.375
+footprint rename SOJ14/350 SOJ.050/14/WB.350/L.350
+footprint rename SOJ14/400 SOJ.050/14/WB.400/L.375
+footprint rename SOJ14/450 SOJ.050/14/WB.450/L.350
+footprint rename SOJ16/300 SOJ.050/16/WB.300/L.425
+footprint rename SOJ16/350 SOJ.050/16/WB.350/L.425
+footprint rename SOJ16/400 SOJ.050/16/WB.400/L.400
+footprint rename SOJ16/450 SOJ.050/16/WB.450/L.400
+footprint rename SOJ18/300 SOJ.050/18/WB.300/L.450
+footprint rename SOJ18/350 SOJ.050/18/WB.350/L.450
+footprint rename SOJ18/400 SOJ.050/18/WB.400/L.450
+footprint rename SOJ18/450 SOJ.050/18/WB.450/L.450
+footprint rename SOJ20/26/300/MO-105AA SOJ.050/26-6/WB.300/L.700
+footprint rename SOJ20/300 SOJ.050/20/WB.300/L.550
+footprint rename SOJ20/350 SOJ.050/20/WB.350/L.500
+footprint rename SOJ20/400 SOJ.050/20/WB.400/L.550
+footprint rename SOJ20/450 SOJ.050/20/WB.450/L.550
+footprint rename SOJ22/300 SOJ.050/22/WB.300/L.550
+footprint rename SOJ22/350 SOJ.050/22/WB.350/L.550
+footprint rename SOJ22/400 SOJ.050/22/WB.400/L.550
+footprint rename SOJ22/450 SOJ.050/22/WB.450/L.550
+footprint rename SOJ24/300 SOJ.050/24/WB.300/L.600
+footprint rename SOJ24/350 SOJ.050/24/WB.350/L.600
+footprint rename SOJ24/400 SOJ.050/24/WB.400/L.625
+footprint rename SOJ24/450 SOJ.050/24/WB.450/L.600
+footprint rename SOJ26/300 SOJ.050/26/WB.300/L.650
+footprint rename SOJ26/350 SOJ.050/26/WB.350/L.650
+footprint rename SOJ26/400 SOJ.050/26/WB.400/L.650
+footprint rename SOJ26/450 SOJ.050/26/WB.450/L.650
+footprint rename SOJ28/300 SOJ.050/28/WB.300/L.700
+footprint rename SOJ28/330/MO-121AB SOJ.050/28/WB.330/L.700
+footprint rename SOJ28/350 SOJ.050/28/WB.350/L.700
+footprint rename SOJ28/400 SOJ.050/28/WB.400/L.700
+footprint rename SOJ28/450 SOJ.050/28/WB.450/L.700
+footprint rename SOJ32/300/MO-077AC SOJ.050/32/WB.300/L.800
+footprint rename SOJ32/400/MO-061AB SOJ.050/32/WB.400/L.800
+footprint rename SOJ34/400/MO-061AF SOJ.050/34/WB.400/L.850
+footprint rename SOJ36/400/MO-061AC SOJ.050/36/WB.400/L.900
+footprint rename SOJ40/400/MO-061AD SOJ.050/40/WB.400/L1.000
+footprint rename SOJ42/400/MO-061AG SOJ.050/42/WB.400/L1.050
+footprint rename SOJ44/400/MO-061AE SOJ.050/44/WB.400/L1.100
+footprint rename SOP8 SOG.050/8/WG.244/L.200
+footprint rename SSO28/MO-118AC SOG.025/28/WG.420/L.375
+footprint rename SSO48/MO-118AA SOG.025/48/WG.420/L.600
+footprint rename SSO56/MO-118AB SOG.025/56/WG.420/L.700
+footprint rename HP_TO-46 TO46
+footprint rename TO-100 TO100
+footprint rename TO-101 TO101
+footprint rename TO-105 TO12
+footprint rename TO-12 TO33
+footprint rename TO-126 TO225AA
+footprint rename TO-18 TO18
+footprint rename TO-205AA TO205AA
+footprint rename TO-205AB TO205AB
+footprint rename TO-205AC TO205AC
+footprint rename TO-205AD TO205AD
+footprint rename TO-205AE TO205AE
+footprint rename TO-205AF TO205AF
+footprint rename TO-205AG TO205AG
+footprint rename TO-206AA TO206AA
+footprint rename TO-206AB TO206AB
+footprint rename TO-206AC TO206AC
+footprint rename TO-206AD TO206AD
+footprint rename TO-206AE TO206AE
+footprint rename TO-206AF TO206AF
+footprint rename TO-206AG TO206AG
+footprint rename TO-218AA TO218AA
+footprint rename TO-218AC TO218AC
+footprint rename TO-220 TO220AB
+footprint rename TO-220AB TO220AB
+footprint rename TO-220Ac TO220AC
+footprint rename TO-225AA TO225AA
+footprint rename TO-225AB TO225AB
+footprint rename TO-226 TO226AA
+footprint rename TO-226AA TO226AA
+footprint rename TO-226AB TO226AB
+footprint rename TO-226AC TO226AC
+footprint rename TO-226BA TO226AA
+footprint rename TO-236 TO236AA/SOT23
+footprint rename TO-236AA TO236AA/SOT23
+footprint rename TO-236AB TO236AB/SOT23
+footprint rename TO-237 TO237AA
+footprint rename TO-237AA TO237AA
+footprint rename TO-247AB TO218AA
+footprint rename TO-247AC TO218AA
+footprint rename TO-247AD TO218AA
+footprint rename TO-247AE TO218AA
+footprint rename TO-252AA TO252AA/DPAK
+footprint rename TO-252AB TO252AB/DPAK
+footprint rename TO-253AA TO253AA/SOT143
+footprint rename TO-254 TO254AA
+footprint rename TO-254AA TO254AA
+footprint rename TO-257AA TO257AA
+footprint rename TO-262AA TO262AA
+footprint rename TO-263AB TO263AB
+footprint rename TO-264AA TO264AA
+footprint rename TO-3-8 TO3-8
+footprint rename TO-33 TO33
+footprint rename TO-37 TO37
+footprint rename TO-39 TO39
+footprint rename TO-46 TO46
+footprint rename TO-5 TO5
+footprint rename TO-52 TO52
+footprint rename TO-66 TO66
+footprint rename TO-74 TO74/R125
+footprint rename TO-75 TO75
+footprint rename TO-76 TO76
+footprint rename TO-77 TO77
+footprint rename TO-78 TO78
+footprint rename TO-79 TO79
+footprint rename TO-80 TO80
+footprint rename TO-92 TO92
+footprint rename TO-92-18A TO92
+footprint rename TO-92-18B TO92
+footprint rename TO-92-2 TO92/2
+footprint rename TO-92-5A TO92/R100
+footprint rename TO-92-5B TO92/R100
+footprint rename TO-96 TO96
+footprint rename TO-97 TO97
+footprint rename TO-98 TO237AA
+footprint rename TO-99 TO99
+footprint rename TO-220AA TO220AA
+footprint rename TSOP28/MS-025BA SOG.050/28/WG.420/L.725
+footprint rename TSOP28A/MS-024AA SOG.050/28/WG.500/L.750
+footprint rename TSOP32/MS-024BA SOG.050/32/WG.480/L.850

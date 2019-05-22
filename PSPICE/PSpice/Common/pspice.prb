@@ -1,0 +1,425 @@
+[MACROS]
+pi=3.14159265
+
+[GOAL FUNCTIONS]
+**************************************
+*** Goal functions for general use ***
+**************************************
+
+Max(1) = y1
+*
+*#Desc#* Find the maximum value of the trace.
+*
+*#Arg1#* Name of trace to search
+*
+   {
+      1|Search forward max !1;
+   }
+
+MAXr(1,begin_x,end_x)=y1
+*
+*#Desc#* Find the maximum value of the trace within the specified X range.
+*
+*#Arg1#* Name of trace to search
+*#Arg2#* X range begin value
+*#Arg3#* X range end value
+*
+   {
+      1| search forward (begin_x,end_x) max !1 ;
+   }
+
+Min(1) = y1
+*
+*#Desc#* Find the minimum value of the trace.
+*
+*#Arg1#* Name of trace to search
+*
+   {
+      1| search forward min !1;
+   }
+
+MINr(1,begin_x,end_x)=y1
+*
+*#Desc#* Find the minimum value of the trace within the specified X range.
+*
+*#Arg1#* Name of trace to search
+*#Arg2#* X range begin value
+*#Arg3#* X range end value
+*
+   {
+      1| search forward (begin_x,end_x) min !1 ;
+   }
+
+XatNthY(1,Y_value,n_occur)=x1
+*
+*#Desc#* Find the value of X corresponding to the nth occurrence of the
+*#Desc#* given Y_value, for the specified trace.
+*
+*#Arg1#* Name of trace to search
+*#Arg2#* Y value
+*#Arg3#* nth occurance
+*
+   {
+      1| search forward for n_occur:level (Y_value) !1 ;
+   }
+
+XatNthYn(1,Y_value,n_occur)=x1
+*
+*#Desc#* Find the value of X corresponding to the nth negative slope
+*#Desc#* crossing of the given Y_value, for the specified trace.
+*
+*#Arg1#* Name of trace to search
+*#Arg2#* Y value
+*#Arg3#* nth occurance
+*
+   {
+      1| search forward for n_occur:level (Y_value,negative) !1 ;
+   }
+
+XatNthYp(1,Y_value,n_occur)=x1
+*
+*#Desc#* Find the value of X corresponding to the nth positive slope
+*#Desc#* crossing of the given Y_value, for the specified trace.
+*
+*#Arg1#* Name of trace to search
+*#Arg2#* Y value
+*#Arg3#* nth occurance
+*
+   {
+      1| search forward for n_occur:level (Y_value,positive) !1 ;
+   }
+
+XatNthYpct(1,Y_pct,n_occur)=x1
+*
+*#Desc#* Find the value of X corresponding to the nth occurrence of
+*#Desc#* the trace crossing the given percentage of its full Y-axis
+*#Desc#* range; i.e. nth occurrence of Y=Ymin+(Ymax-Ymin)*Y_pct/100
+*
+*#Arg1#* Name of trace to search
+*#Arg2#* Y percentage
+*#Arg3#* nth occurance
+*
+   {
+      1| search forward for n_occur:level (Y_pct%) !1 ;
+   }
+
+YatX(1,X_value)=y1
+*
+*#Desc#* Find the value of the trace at the given X_value.
+*
+*#Arg1#* Name of trace to search
+*#Arg2#* X value to get Y value at
+*
+* Usage: 
+*	YatX(<trace name>,<X_value>)
+*
+   {
+      1| search forward Xvalue (X_value) !1 ;
+   }
+
+YatXpct(1,X_pct)=y1
+*
+*#Desc#* Find the value of the trace at the given percentage of the
+*#Desc#* X axis range.
+*
+*#Arg1#* Name of trace to search
+*#Arg2#* X percentage to get Y value at
+*
+* Usage: 
+*	YatXpct(<trace name>,<X_pct>)
+*
+   {
+      1| search forward Xvalue (X_pct%) !1 ;
+   }
+
+
+**************************************
+*** Goal Functions for AC Analyses ***
+**************************************
+
+Bandwidth(1,db_level) = x2-x1
+*
+*#Desc#* Find the difference between the X values where the trace
+*#Desc#* first crosses its maximum value minus db_level (Ymax-db_level)
+*#Desc#* with a positive slope, and then with a negative slope.  
+*#Desc#* (i.e. Find the <db_level> bandwidth of a signal.)
+*
+*#Arg1#* Name of trace to search
+*#Arg2#* db level down for bandwidth calc
+*
+*#ForceDBArg1#*
+*
+   {
+      1|Search forward level(max-db_level,p) !1
+        Search forward level(max-db_level,n) !2; 
+   }
+
+LPBW(1,db_level) = x1
+*
+*#Desc#* LowPass Cutoff.  
+*#Desc#* Find the X value at which the trace first crosses its maximum
+*#Desc#* value minus db_level with a negative slope.
+*
+*#Arg1#* Name of trace to search
+*#Arg2#* db level down for measurement
+*
+*#ForceDBArg1#*
+*
+   {
+      1|Search forward level(max-db_level,n) !1;
+   }
+
+BPBW(1,db_level) = x2-x1
+*
+*#Desc#* BandPass BandWidth.  Same as Bandwidth.  
+*#Desc#* Find the difference between the X values where the trace
+*#Desc#* first crosses its maximum value minus db_level (Ymax-db_level)
+*#Desc#* with a positive slope, and then with a negative slope.  
+*#Desc#* (i.e. Find the <db_level> bandwidth of a signal.)
+*
+*#Arg1#* Name of trace to search
+*#Arg2#* db level down for bandwidth calc
+*
+*#ForceDBArg1#*
+*
+   {
+      1|Search forward level(max-db_level,p) !1
+        Search forward level(max-db_level,n) !2; 
+   }
+ 
+HPBW(1,db_level) = x1
+*
+*#Desc#* HighPass Cutoff.  
+*#Desc#* Find the X value at which the trace first crosses its maximum
+*#Desc#* value minus db_level with a positive slope.
+*
+*#Arg1#* Name of trace to search
+*#Arg2#* db level down for measurement
+*
+*#ForceDBArg1#*
+*
+   {
+      1|Search forward level(max-db_level,p) !1;
+   }
+
+CenterFreq(1, db_level) = (x1+x2)/2
+*
+*#Desc#* Find the midpoint between the X values where the trace first
+*#Desc#* crosses its maximum value minus db_level (Ymax-db_level) with
+*#Desc#* a positive slope, and then with a negative slope.  
+*#Desc#* (i.e. Find the <db_level> center frequency of a signal.)
+*
+*#Arg1#* Name of trace to search
+*#Arg2#* db level down for measurement
+*
+*#ForceDBArg1#*
+*
+   {
+      1|Search forward level(max-db_level,p) !1
+        Search forward level(max-db_level,n) !2; 
+   }
+
+GainMargin(1,2) = 0-y2
+*
+*#Desc#* Find the value of the dB magnitude (second) trace at the same
+*#Desc#* X value where the phase (first) trace crosses -180.
+*
+*#Arg1#* phase trace
+*#Arg2#* magnitude trace in dB
+*
+* Usage:
+*	GainMargin(<phase trace>, <dB magnitude trace>)
+*
+   {
+* Search for where the phase is -180 degrees
+      1|Search forward level (-180) !1;
+* Find the magnitude where the phase is -180 degrees
+      2|Search forward xval (x1) !2;
+   }
+
+PhaseMargin(1,2) = y2+180
+*
+*#Desc#* Find the value of the phase (second) trace at the same X value
+*#Desc#* where the dB magnitude (first) trace crosses 0.
+*
+*#Arg1#* magnitude trace in dB
+*#Arg2#* phase trace
+*
+* Usage:
+*	PhaseMargin(<dB magnitude trace>, <phase trace>)
+*
+   {
+* Search for where the magnitude is 0 dB
+      1|Search forward level (0) !1;
+* Find the phase where the magnitude is 0 dB
+      2|Search forward xval (x1) !2;
+   }
+
+*********************************************
+*** Goal Functions for Transient Analyses ***
+*********************************************
+
+Risetime(1) = x2-x1
+*
+*#Desc#* Find the difference between the X values where the trace first
+*#Desc#* crosses 10% and then 90% of its maximum value with a positive
+*#Desc#* slope.
+*#Desc#* (i.e. Find the risetime of a step response curve with no
+*#Desc#* overshoot. If the signal has overshoot, use GenRise().)
+*
+*#Arg1#* Name of trace to search
+*
+* Usage:
+*	Risetime(<trace name>)
+*
+   {
+      1|Search forward level(10%, p) !1
+        Search forward level(90%, p) !2;
+   }
+
+GenRise(1)=x4-x3
+*#Desc#* Find the first and final Y values of the trace.  Then find the
+*#Desc#* difference between the X values of the points where the trace
+*#Desc#* first crosses 10% then 90% of the range between its
+*#Desc#* starting and final values with a positive slope.  
+*#Desc#* (Find the risetime of a step response curve.)
+*
+*#Arg1#* Name of trace to search
+*
+* Usage:
+*	GenRise(<trace name>)
+*
+   {
+      1|Search forward x value (0%) !1
+	Search forward x value (100%) !2
+	Search forward /Begin/ level (y1+0.1*(y2-y1),p) !3
+	Search forward level (y1+0.9*(y2-y1),p) !4;
+   }
+
+Falltime(1) = x2-x1
+*#Desc#* Find the difference between the X values where the trace first
+*#Desc#* crosses 90% and then 10% of its maximum value with a negative
+*#Desc#* slope.  
+*#Desc#* (i.e. Find the falltime of a signal with no overshoot.  
+*#Desc#* If the signal has overshoot, use GenFall)
+*
+* Usage:
+*	Risetime(<trace name>)
+*
+   {
+      1|Search forward level(90%, n) !1
+        Search forward level(10%, n) !2;
+   }
+
+GenFall(1)=x4-x3
+*#Desc#* Find the first and final Y values of the trace.  Then find the
+*#Desc#* difference between the X values of the points where the trace
+*#Desc#* first crosses 10% then 90% of the range between its starting and
+*#Desc#* final values with a negative slope.  
+*#Desc#* (i.e. Find the falltime of a negative going step response curve.)
+*
+*#Arg1#* Name of trace to search
+*
+* Usage:
+*	GenFall(<trace name>)
+*
+   {
+      1|Search forward x value (0%) !1
+	Search forward x value (100%) !2
+	Search forward /Begin/ level (y1+0.1*(y2-y1),n) !3
+	Search forward level (y1+0.9*(y2-y1),n) !4;
+   }
+
+Overshoot(1) = (y1-y2)/y2*100
+*#Desc#* Find the difference between the maximum and final Y values of
+*#Desc#* the trace.  
+*#Desc#* (i.e. Find the overshoot of a step response curve.)
+*
+*#Arg1#* Name of trace to search
+*
+* Usage:
+*	Overshoot(<trace name>)
+*
+   {
+      1|Search forward max !1
+        Search forward xval(100%) !2;
+   }
+
+Peak(1, n_occur) = y1
+*#Desc#* Find the value of the trace at its nth peak.  
+*#Desc#* (A peak is only recognized if 3 data points before it, and 3
+*#Desc#* data points after it have smaller Y values.)
+*
+*#Arg1#* Name of trace to search
+*#Arg2#* Number of peak to find
+*
+* Usage:
+*	Peak(<trace name>, <n_occur>)
+*
+   {
+      1|Search forward #3# n_occur:peak !1;
+   }
+
+Period(1) = x2-x1
+*#Desc#* Find the difference between the first and second X values at
+*#Desc#* which the trace crosses the midpoint of its Y range with a
+*#Desc#* positive slope.  
+*#Desc#* (i.e. Find the period of a time domain signal.)
+*
+*#Arg1#* Name of trace to search
+*
+* Usage:
+*	Period(<trace name>)
+*
+   {
+      1|Search forward level (50%, p) !1
+        Search forward level (50%, p) !2;
+   }
+
+Pulsewidth(1) = x2-x1
+*#Desc#* Find the difference between the X values where the trace first
+*#Desc#* crosses the midpoint of its Y range with a positive, then with a
+*#Desc#* negative slope.  
+*#Desc#* (i.e. Find the width of the first pulse.)
+*
+*#Arg1#* Name of trace to search
+*
+   {
+      1|Search forward level (50%, p) !1
+        Search forward level (50%, n) !2;
+   }
+
+SWINGr(1,begin_x,end_x)=y2-y1
+*#Desc#* Find the difference between the maximum and minimum values of
+*#Desc#* the trace within the specified range.
+*
+*#Arg1#* Name of trace to search
+*#Arg2#* Beginning of X range
+*#Arg3#* End of X range
+*
+* Usage: 
+*	SWINGr(<trace name>,<X_range_begin_value>,<X_range_end_value>)
+*
+   {
+      1| search forward (begin_x,end_x) min !1
+         search forward (begin_x,end_x) max !2 ;
+   }
+
+TPmW2(1, Period) = (y1-y2)*1000/(x1-x2)
+*#Desc#* Total Power dissipation in mW during the final 'Period' of time.
+*#Desc#* Find the difference between the final Y value of the trace and
+*#Desc#* the Y value one period before that.  
+*#Desc#* (Can be used to calculate total power dissipation in mW, if the
+*#Desc#* first trace is the integral of V(load)*I(load).)
+*
+*#Arg1#* s(load_voltage * load_current)
+*#Arg2#* Period
+*
+* Usage: 
+*	TPmW2(s(<load_voltage>*<load_current>), <period>)
+*
+   {
+      1|Search forward xvalue(100%) !1
+        Search backward /x1/ xvalue(.-Period) !2;
+   }
+

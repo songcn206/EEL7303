@@ -1,0 +1,26 @@
+* Version 1.1
+@status
+@specs
+est 0 0
+spec "Id1" 1 1
+sim "diodex-diodex-dc.sim" 1 0 "i(d1)" ""
+isint 1
+isconstr 0
+int 2 1ma 5ua
+ext "" "" "" 1%
+spec "Pc" 1 1
+sim "diodex-diodex-dc.sim" 1 0 "i(r1)*v(r1:1,r1:2)" ""
+isint 1
+isconstr 1
+int 3 4mW 400uW
+ext "" "" "" 1%
+@params
+param r1 1
+val 5k 5k 100 10k 10%
+@controls
+delta 1%
+threshold 0
+cutback 0.25
+maxiters 20
+opt 0
+auto 1

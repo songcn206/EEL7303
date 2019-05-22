@@ -1,0 +1,83 @@
+* Stimulus for Digital Example FRQCHK.DSN
+*
+* Begin operation by pulling the INIT input "LOW" for a minimum of
+* 40ns.  This will reset the internal state machine.   At a minimum of 1us
+* after power-up, the reference frequencies (REFL, REFH) and the test
+* frequency (FTEST) may be applied.   The MODE input selects the
+* relationship to be tested:
+*
+* MODE=0 : f(REFL) < f(FTEST) < f(REFH)
+* MODE=1 : f(REFL) <= f(FTEST) <= f(REFH)
+*
+* When you want to begin the comparison operation, bring the RUN input
+* "LOW".   The circuit will monitor the inputs continuously, and set the
+* output indications appropriately:
+*
+*         MODE = 0                        MODE = 1
+*         ----------------                -------------------
+*  SLOW=1  f(FTEST) < f(REFL)             f(FTEST) <= f(REFL)
+*  OK=1    f(REFL) < f(FTEST) < f(REFH)   f(REFL) <= f(FTEST) <= f(REFH)
+*  FAST=1  f(REFH) < f(FTEST)             f(REFH) <= f(FTEST)
+*
+* The ERROR output indication is set (1) whenever 8 cycles of REFL have
+* been counted (after having asserted RUN), without having recognized
+* one of the above conditions (SLOW, OK, or FAST).  This differentiates
+* the case of FTEST being completely inactive vs. simply SLOW.
+* 
+
+uh1 stim (3,111) $g_dpwr $g_dgnd
++ INIT RUN MODE
++ IO_STM IO_LEVEL=0
++    0s         110
++ 2055ns        010
++ 2095ns        100
++ 2255ns        110
+
+uh2 stim (1,1)  $g_dpwr $g_dgnd
++ REFL
++ IO_STM IO_LEVEL=0
++ 0s   0
++ +5us 1
++ REPEAT FOREVER
++ +10us 0
++ +10us 1
++ ENDREPEAT
+
+uh3 stim (1,1)  $g_dpwr $g_dgnd
++ REFH
++ IO_STM IO_LEVEL=0
++ 0s   0
++ +3us 1
++ REPEAT FOREVER
++ +5us 0
++ +5us 1
++ ENDREPEAT
+
+uh4 stim (1,1)  $g_dpwr $g_dgnd
++ FTEST
++ IO_STM IO_LEVEL=0
++ 0s   0
++ REPEAT FOR 5 TIMES
++ +20us 1
++ +20us 0
++ ENDREPEAT
++ +0s 1
++ REPEAT FOR 20 TIMES
++ +3us 0
++ +3us 1
++ ENDREPEAT
++ +0s  1
++ REPEAT FOR 10 TIMES
++ +6us 0
++ +6us 1
++ ENDREPEAT
+
+uh5 stim (1,1)  $g_dpwr $g_dgnd
++ SYSCLK
++ IO_STM IO_LEVEL=0
++ 0s   0
++ +2us 0
++ REPEAT FOREVER
++ +800ns 1
++ +800ns 0
++ ENDREPEAT

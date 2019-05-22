@@ -1,0 +1,83 @@
+*version 8.0 4147733883
+@index
+symloc R 0 252
+symloc C 252 414
+symloc L 666 147
+symloc C_var 813 94
+symloc R_var 907 58
+*package R
+@types 1
+g 1
+@pinout
+t RC05,RC06,RC07,RC08,RC12,RC20,RC22,RC32,RC42
+g 1
+p 1 1
+p 2 2
+t R1005,R1608,R2012,R3216,R3225,R5025,R6332
+g 1
+p 1 1
+p 2 2
+t RL05,RL07,RL32,RL42
+g 1
+p 1 1
+p 2 2
+t RN50,RN55,RN60,RN65,RN70,RN75,RN80,RWP20
+g 1
+p 1 1
+p 2 2
+*package C
+@types 1
+g 1
+@pinout
+t CK05,CK06,CK12,CK60
+g 1
+p 1 1
+p 2 2
+t C1005,C1310,C1608,C2012,C3216,C3225,C4532,C4564
+g 1
+p 1 1
+p 2 2
+t TC3216,TC3528,TC6032,TC7343
+g 1
+p 1 1
+p 2 2
+t CSR13A,CSR13B,CSR13C,CSR13D
+g 1
+p 1 1
+p 2 2
+t 511D/AA,511D/BB,511D/CC,511D/DG,511D/EK,511D/FR
+g 1
+p 1 1
+p 2 2
+t 199D/A/A1,199D/B/A2,199D/C/A1,199D/D/A1,199D/F/E3,199D/E/E2
+g 1
+p 1 1
+p 2 2
+t 516D/JL,516D/MM,516D/PS
+g 1
+p 1 1
+p 2 2
+*package L
+@types 1
+g 1
+@pinout
+t L2012C,L3216C,L4516C,L2825W/W,L3225W/W,L4532W/W,L5038W/W,L3225/3230M,L4035M,L4532M,L5650M,L8530M
+g 1
+p 1 1
+p 2 2
+*package C_var
+@types 1
+g 1
+@pinout
+t GKGA,GKGB,GKGC,GKGD,GKP,GKGA-07,GKGB-07
+g 1
+p 1 1
+p 2 2
+*package R_var
+@types 1
+g 1
+@pinout
+t P1G
+g 1
+p 2 2
+p 1 1
