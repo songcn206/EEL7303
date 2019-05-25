@@ -1,0 +1,126 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM fixed_font
+FIXED
+PORT 70 10
+HEADER "Set Advanced Measurement Parameters"
+
+POPUP <GlitchTypePop>"placeholder""0".
+#POPUP <crossVoltageTypePop>"placeholder""0".
+
+TILE
+
+GROUP "Glitch Control"
+GLOC 1 0
+GSIZE 69 9 
+ENDGROUP
+
+#TEXT "Glitch Type:"
+#TLOC 3 2
+#ENDTEXT
+
+#FIELD  glitchType
+#FLOC 25 2
+#ENUMSET 11
+#POP "GlitchTypePop"
+#ENDFIELD
+
+TEXT "Glitch Tolerance:"
+TLOC 3 2
+ENDTEXT
+
+FIELD glitchTolerance
+FLOC 26 2
+STRFILLIN 9 15
+ENDFIELD
+
+TEXT "%"
+TLOC 37 2
+ENDFIELD
+
+TEXT "Note: Tolerance is related with each"
+TLOC 3 4
+ENDTEXT
+
+TEXT "IOCell. If the actual glitch is "
+TLOC 3 5
+ENDTEXT
+
+TEXT "wider than Tolerance, it will be"
+TLOC 3 6
+ENDTEXT
+
+TEXT "reported as a glitch violation"
+TLOC 3 7
+ENDTEXT
+
+FIELD glitchWaveform
+THUMBNAIL glitchImage.bmp
+FLOC 40 2 
+FSIZE  28 6 
+ENDFIELD
+
+#GROUP "Weak Driving Control"
+#GLOC 1 10
+#GSIZE 69 9
+#ENDGROUP
+
+#TEXT "Crossing Voltage Type:"
+#TLOC 3 12 
+#ENDTEXT
+
+#FIELD  crossVoltageType
+#FLOC 25 12
+#ENUMSET 11
+#POP "crossVoltageTypePop"
+ENDFIELD
+
+#TEXT "Crossing Tolerance:"
+#TLOC 3 12
+#ENDTEXT
+
+#FIELD crossTolerance
+#FLOC 25 12
+#STRFILLIN 12 15
+#ENDFIELD
+
+#FIELD weakdriver
+#THUMBNAIL weakdriver1.bmp
+#FLOC 40 12
+#FSIZE  28 6
+#ENDFIELD
+
+#TEXT "Note: If the actual crossing is"
+#TLOC 3 14
+#ENDTEXT
+
+#TEXT "greater than Tolerance, it is "
+#TLOC 3 15
+#ENDTEXT
+
+#TEXT "counted as a new cycle, otherwise"
+#TLOC 3 16
+#ENDTEXT
+
+#TEXT "it will be ignored."
+#TLOC 3 17
+#ENDTEXT
+
+
+FIELD Ok
+FLOC 2 10
+MENUBUTTON "OK" 10 3
+ENDFIELD
+
+FIELD Cancel
+FLOC 20 10
+MENUBUTTON "Cancel" 10 3
+ENDFIELD
+
+FIELD help
+FLOC 48 10
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

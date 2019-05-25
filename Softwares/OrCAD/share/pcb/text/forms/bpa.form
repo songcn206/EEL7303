@@ -1,0 +1,99 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 29 12
+
+HEADER "Add Bond Finger"
+
+POPUP <sort_radial> "Clockwise" "Clockwise", "Counter-Clockwise" "Counter Clockwise".
+POPUP <sort_horizontal> "Left to Right" "Left to Right", "Right to Left" "Right to Left", "No Horz Sort" "No Horz Sort".
+POPUP <sort_vertical> "Top to Bottom" "Top to Bottom", "Bottom to Top" "Bottom to Top", "No Vert Sort" "No Vert Sort".
+
+TILE
+
+FIELD unassign
+FLOC 1 3
+CHECKLIST "Remove existing finger labels"
+ENDFIELD
+
+FIELD reassign
+FLOC 1 5
+CHECKLIST "Allow bond finger reassignment"
+ENDFIELD
+
+FIELD single_label_merged
+FLOC 1 7
+CHECKLIST "Single label for merged fingers"
+ENDFIELD
+
+TEXT "Beginning Ref #"
+TLOC 1 11
+ENDTEXT
+
+FIELD begin_ref
+FLOC 15 11
+STRFILLIN 8 8
+ENDFIELD
+
+TEXT "Increment by:"
+TLOC 1 13
+ENDTEXT
+
+FIELD increment
+FLOC 15 13
+ENUMSET 19
+INTFILLIN 8 8 
+ENDFIELD
+
+TEXT "Sorting:"
+TLOC 1 17
+ENDTEXT
+
+FIELD sort_pad_rad
+FLOC 3 19
+CHECKLIST "Sort radially" "sort_item"
+ENDFIELD
+
+TEXT "Direction:"
+TLOC 3 21
+ENDTEXT
+
+FIELD sort_rad
+FLOC 12 21
+ENUMSET 13
+POP "sort_radial"
+ENDFIELD
+
+FIELD sort_pad_loc
+FLOC 3 23
+CHECKLIST "Sort by finger location" "sort_item"
+ENDFIELD
+
+FIELD sort_pin_loc
+FLOC 3 25
+CHECKLIST "Sort by die pin location" "sort_item"
+ENDFIELD
+
+TEXT "Horizontal:"
+TLOC 3 27
+ENDTEXT
+
+FIELD sort_horz
+FLOC 12 27
+ENUMSET 13
+POP "sort_horizontal"
+ENDFIELD
+
+TEXT "Vertical:"
+TLOC 3 29
+ENDTEXT
+ 
+FIELD sort_vert
+FLOC 12 29
+ENUMSET 13
+POP "sort_vertical"
+ENDFIELD
+
+
+ENDTILE
+ENDFORM

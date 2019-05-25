@@ -1,0 +1,503 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+VARIABLE
+PORT 63 34
+HEADER "Physical (Lines/Vias) Rule Set Values"
+
+    #ifdef APD || ALLEGRO_MCM || SIP
+POPUP <SUBCLASSP>"All Conductor""-1","All Bonding Wire""-3".
+    #else
+POPUP <SUBCLASSP>"All Etch""-1","All Multi/Micro Wire""-2","All Bonding Wire""-3".
+    #endif
+
+POPUP <CONSTRAINTNAMEP>"Default""1".
+
+POPUP <ALLOWEDP>"Not Allowed""FALSE","Allowed""TRUE".
+
+POPUP <TJUNCP>"Not Allowed""NOT_ALLOWED","Anywhere""ANYWHERE","Pins Only""PINS_ONLY","Pins Vias Only""PINS_VIAS_ONLY".
+
+POPUP <DIRCONP>"All Allowed""ALL_ALLOWED","Via/Pin Allowed""VIAS_PINS_ONLY","Via/Via Allowed""VIAS_VIAS_ONLY","Not Allowed""NOT_ALLOWED".
+
+MESSAGE NO_NAME_DEF 3 "Constraint name not specified."
+MESSAGE NOT_CREATED 3 "Constraint not created."
+MESSAGE EXISTS 3 "Constraint exists, not created."
+MESSAGE NOT_COPIED 3 "Constraint not copied."
+MESSAGE NOT_NOTEXISTS 3 "Old constraint does not exist."
+MESSAGE NOT_DELETED 3 "Constraint not deleted."
+MESSAGE DONE 1 "Done."
+MESSAGE NOTYPESUBC 2 "No subclasses of this type are available."
+MESSAGE DPF_WARNING 1 "Changes will NOT be seen by exported partitions."
+MESSAGE READ_ONLY_DPF 1 "Not editable within design partition."
+
+TILE TOP
+TPANEL 0
+TEXT "Constraint Set Name:"
+TLOC 4 0
+ENDTEXT
+
+FIELD constraint_set_name
+FLOC 25 0
+ENUMSET 24
+POP "CONSTRAINTNAMEP"
+ENDFIELD
+
+ENDTILE
+
+TILE SUBCLASS
+TPANEL 0
+
+TEXT "Subclass:"
+TLOC 15 0
+ENDTEXT
+
+FIELD subclass
+FLOC 25 0
+ENUMSET 24
+POP "SUBCLASSP"
+ENDFIELD
+
+ENDTILE
+
+TILE ADD_DELETE
+TPANEL 0
+
+FIELD add
+FLOC 1 1
+MENUBUTTON "Add" 10 3
+ENDFIELD
+
+FIELD copy
+FLOC 12 1
+MENUBUTTON "Copy" 10 3
+ENDFIELD
+
+FIELD delete
+FLOC 23 1
+MENUBUTTON "Delete" 10 3
+ENDFIELD
+
+FIELD constraint_name
+FLOC 34 1
+STRFILLIN 24 32
+ENDFIELD
+
+ENDTILE
+
+TILE NET_DATA_PHYS_TOP
+TPANEL 1
+
+TEXT "Physical property"
+OPTIONS bold
+TLOC 1 0
+ENDTEXT
+
+TEXT "Value"
+OPTIONS bold
+TLOC 25 0
+ENDTEXT
+
+ENDTILE
+
+TILE NET_DATA_LINE_WIDTH
+TPANEL 1
+
+TEXT "Min line width:"
+TLOC 1 1
+ENDTEXT
+
+FIELD min_line_width
+FLOC 25 1
+STRFILLIN 15 24
+ENDFIELD
+
+TEXT "Max line width:"
+TLOC 1 3
+ENDTEXT
+
+FIELD max_line_width
+FLOC 25 3
+STRFILLIN 15 24
+ENDFIELD
+
+TEXT "Min neck width:"
+TLOC 1 5
+ENDTEXT
+
+FIELD min_neck_width
+FLOC 25 5
+STRFILLIN 15 24
+ENDFIELD
+
+TEXT "Max neck length:"
+TLOC 1 7
+ENDTEXT
+
+FIELD max_neck_length
+FLOC 25 7
+STRFILLIN 15 24
+ENDFIELD
+
+ENDTILE
+
+TILE NET_DATA_HEAVY
+TPANEL 1
+
+GROUP ""
+GLOC 1 -1
+GSIZE 61 7
+ENDTEXT
+
+TEXT "Does not support constraint areas."
+TLOC 44 1
+OPTIONS center
+FSIZE 16 4
+ENDTEXT
+
+TEXT "DiffPair primary gap:"
+TLOC 2 1
+ENDTEXT
+
+FIELD diffpair_primary_gap
+FLOC 25 1
+STRFILLIN 15 24
+ENDFIELD
+
+TEXT "DiffPair neck gap:"
+TLOC 2 3
+ENDTEXT
+
+FIELD diffpair_neck_gap
+FLOC 25 3
+STRFILLIN 15 24
+ENDFIELD
+
+
+    #ifdef APD || ALLEGRO_MCM || SIP
+TEXT "Allow on con. subclass:"
+    #else
+TEXT "Allow on etch subclass:"
+    #endif
+TLOC 1 7
+ENDTEXT
+
+FIELD allow_on_subc
+FLOC 25 7
+ENUMSET 12
+POP "ALLOWEDP"
+ENDFIELD
+
+TEXT "'T' junctions:"
+TLOC 1 9
+ENDTEXT
+
+FIELD t_junction
+FLOC 25 9
+ENUMSET 15
+POP "TJUNCP"
+ENDFIELD
+
+TEXT "Min BBvia stagger:"
+TLOC 1 11
+ENDTEXT
+
+FIELD min_bbvia_stagger
+FLOC 25 11
+STRFILLIN 15 24
+ENDFIELD
+
+TEXT "Max BBvia stagger:"
+TLOC 1 13
+ENDTEXT
+
+FIELD max_bbvia_stagger
+FLOC 25 13
+STRFILLIN 15 24
+ENDFIELD
+
+ENDTILE
+
+TILE DIR_CON
+TPANEL 1
+
+TEXT "Pad/pad direct connect:"
+TLOC 1 1
+ENDTEXT
+
+FIELD direct_connect
+FLOC 25 1
+ENUMSET 15
+POP "DIRCONP"
+ENDFIELD
+
+ENDTILE
+
+TILE VIA_LIST
+
+FIELD available_vias
+FLOC 4 5
+LIST "" 25 6
+OPTIONS sort
+ENDFIELD
+
+FIELD current_via_list
+FLOC 34 5
+LIST "" 25 5
+#ifndef CNS_NOVIASORT
+OPTIONS sort
+#endif
+ENDFIELD
+
+FIELD display_derived
+FLOC 2 15
+CHECKLIST "Include derived padstacks"
+ENDFIELD
+
+TEXT 
+TLOC 34, 14 
+INFO via_not_found 24 
+ENDTEXT 
+
+TEXT "Name:"
+TLOC 2 18
+ENDTEXT
+
+FIELD via_name
+FLOC 7 18
+STRFILLIN 24 255
+ENDFIELD 
+
+FIELD via_browse
+FLOC 33 18
+MENUBUTTON "..." 3 3
+ENDFIELD 
+ 
+FIELD add_via
+FLOC 12 21
+MENUBUTTON "Add" 9 3
+ENDFIELD 
+ 
+FIELD delete_via
+FLOC 24 21
+MENUBUTTON "Delete" 9 3
+ENDFIELD
+
+FIELD purge_via_list
+FLOC 37 21
+MENUBUTTON "Purge all via lists" 9 3
+ENDFIELD 
+
+TPANEL 1
+
+GROUP "Via list property"
+GLOC 1 0
+GSIZE 60 24
+ENDTEXT
+
+GROUP "Available database padstacks"
+GLOC 2 2
+GSIZE 29 15
+ENDGROUP
+
+GROUP "Current via list"
+GLOC 32 2
+GSIZE 28 15
+ENDGROUP
+
+ENDTILE
+
+TILE WARN
+TPANEL 2
+TEXT "** Constraint set values not the same for all subclasses."
+TLOC 0 0
+ENDTEXT
+
+ENDTILE
+
+TILE StdTile
+TPANEL 2
+FIELD done
+FLOC 1 0
+MENUBUTTON "Done" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 11 0
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD reset
+FLOC 22 0
+MENUBUTTON "Reset" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 51 0
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+ENDTILE
+
+TILE NET_DATA_WIRE
+TPANEL 1
+TEXT "Physical property"
+OPTIONS bold
+TLOC 1 0
+ENDTEXT
+
+TEXT "Values"
+OPTIONS bold
+TLOC 25 0
+ENDTEXT
+
+TEXT "Wire diameter:"
+TLOC 1 3
+ENDTEXT
+
+TEXT "Max wires crossing:"
+TLOC 1 5
+ENDTEXT
+
+TEXT "Min dist crossings:"
+TLOC 1 7
+ENDTEXT
+ 
+TEXT "Min segment length:"
+TLOC 1 10
+ENDTEXT
+ 
+TEXT "Min lgt sngl seg wire:"
+TLOC 1 12
+ENDTEXT
+ 
+TEXT "Min lgt endwire 45/90:"
+TLOC 1 14
+ENDTEXT
+ 
+TEXT "Min lgt endwire 135:"
+TLOC 1 16
+ENDTEXT
+ 
+TEXT "Min lgt endroute 45/90:"
+TLOC 1 18
+ENDTEXT
+ 
+TEXT "Min lgt endroute 135:"
+TLOC 1 20
+ENDTEXT
+
+TEXT "Max turn angle:"
+TLOC 1 22
+ENDTEXT  
+ 
+TEXT "Segment orientation"
+TLOC 1 24
+ENDTEXT
+
+TEXT "degree increments"
+TLOC 44 24
+ENDTEXT
+
+FIELD wire_diameter
+FLOC 25 3
+STRFILLIN 15 24
+ENDFIELD
+
+FIELD max_total
+FLOC 25 5
+STRFILLIN 15 24
+ENDFIELD
+
+FIELD adjacent_dist
+FLOC 25 7
+STRFILLIN 15 24
+ENDFIELD
+
+FIELD min_aseg
+FLOC 25 10
+STRFILLIN 15 24
+ENDFIELD
+ 
+FIELD min_sseg
+FLOC 25 12
+STRFILLIN 15 24
+ENDFIELD
+ 
+FIELD min_we45
+FLOC 25 14
+STRFILLIN 15 24
+ENDFIELD
+ 
+FIELD min_we135
+FLOC 25 16
+STRFILLIN 15 24
+ENDFIELD
+ 
+FIELD min_re45
+FLOC 25 18
+STRFILLIN 15 24
+ENDFIELD
+ 
+FIELD min_re135
+FLOC 25 20
+STRFILLIN 15 24
+ENDFIELD
+
+FIELD max_turn
+FLOC 25 22
+STRFILLIN 15 24
+ENDFIELD
+ 
+FIELD anginc
+FLOC 25 24
+STRFILLIN 15 24
+ENDFIELD
+
+ENDTILE
+
+TILE NET_DATA_BOND
+TPANEL 1
+TEXT "Physical property"
+OPTIONS bold
+TLOC 1 0
+ENDTEXT
+
+TEXT "Values"
+OPTIONS bold
+TLOC 25 0
+ENDTEXT
+
+TEXT "Min wire length:"
+TLOC 1 3
+ENDTEXT
+
+TEXT "Max wire length:"
+TLOC 1 5
+ENDTEXT
+
+TEXT "Min wire width:"
+TLOC 1 7
+ENDTEXT
+
+TEXT
+TLOC 1 24
+INFO dummy 3
+ENDTEXT
+
+FIELD min_bond_length
+FLOC 25 3
+STRFILLIN 15 24
+ENDFIELD
+
+FIELD max_bond_length
+FLOC 25 5
+STRFILLIN 15 24
+ENDFIELD
+
+FIELD min_bond_width
+FLOC 25 7
+STRFILLIN 15 24
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

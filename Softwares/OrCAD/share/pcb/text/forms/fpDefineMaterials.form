@@ -1,0 +1,115 @@
+# %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+# Form File: fpDefineMaterials.form
+#
+# This form is used by the Define Materials command.
+#
+# %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 121 40
+HEADER "Materials Editor"
+
+TILE
+
+# -------------------------------
+# --  Standard Dialog Buttons  --
+# -------------------------------
+
+FIELD Done
+FLOC 2 39
+MENUBUTTON "Done" 10 3
+ENDFIELD
+
+FIELD Apply
+FLOC 16 39
+MENUBUTTON "Apply" 10 3
+ENDFIELD
+
+FIELD Cancel
+FLOC 30 39
+MENUBUTTON "Cancel" 10 3
+ENDFIELD
+
+FIELD help
+FLOC 108 39
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+# ************************************************************
+# ***           M A T E R I A L S   E D I T O R            ***
+# ************************************************************
+POPUP <GridPopup> """".
+POPUP <SortByPopup> """".
+POPUP <FreqDepFilesPopup> """".
+
+# -------------------------------------------------------
+# --  Group the materials file name and Reload button  --
+# -------------------------------------------------------
+GROUP "Materials File" FilePathGroup
+GLOC 1 0
+GSIZE 117 5
+ENDGROUP
+
+# -------------------------------------
+# --  Field for Materials File Name  --
+# -------------------------------------
+TEXT "* No file loaded yet *" MaterialsFilePath
+TLOC 2 2
+FSIZE 117 2
+OPTIONS BOLD
+TGROUP FilePathGroup
+ENDTEXT
+
+# -------------------------------
+# --  Reload Materials Button  --
+# -------------------------------
+FIELD ReloadMaterals
+FLOC 101 2
+MENUBUTTON "Reload Materials" 15 3
+TGROUP gSOURCE
+ENDFIELD
+
+# -----------------------------
+# --  Materials Editor Grid  --
+# -----------------------------
+GRID MaterialsGrid
+FLOC 1  6
+FSIZE 117 28
+OPTIONS HLINES VLINES 
+POP "GridPopup"
+GHEAD TOP
+HEADSIZE 2
+OPTIONS 3D MULTI
+POP "SortByPopup"
+ENDGHEAD
+ENDGRID
+
+# -----------------------------------------
+# --  Group the controls under the grid  --
+# -----------------------------------------
+GROUP "" MaterialsCountGroup
+GLOC 1 33
+GSIZE 117 5
+ENDGROUP
+
+# -------------------------------------
+# --  Field for Materials counter    --
+# -------------------------------------
+TEXT "No Materials Present" MaterialsCount
+TLOC 48 35
+OPTIONS BORDER CENTER BOLD
+TGROUP MaterialsCountGroup
+ENDTEXT
+
+# ***************************************************************
+# ***     E N D   O F    M A T E R I A L S    E D I T O R     ***
+# ***************************************************************
+
+FLEXMODE EdgeGravity
+FLEX MaterialsGrid   0 0 1 1
+FLEX FilePathGroup   0 0 1 0 
+
+ENDTILE
+ENDFORM

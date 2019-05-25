@@ -1,0 +1,536 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM AUTOGREYTEXT
+FIXED
+PORT 80 34
+HEADER "Power Integrity Setup Wizard"
+
+POPUP <pglobal>"Enable Cell""enableCell","Disable Cell""disableCell","Set Enum""setEnum","Unset Enum""unsetEnum".
+POPUP <ptop>"Top""Top","Of""Of","Header""Header","Popup""Popup".
+POPUP <pside>"Side""1","Of""2","Header""3","Popup""4".
+POPUP <dcnet_enum>" "" ".
+
+POPUP <PQ_DECAP_SU_POP>"""".
+POPUP <PQ_DECAP_PP_POP>"""".
+POPUP <PQ_DECAP_LS_POP>"All""All".
+POPUP <PQ_DECAP_TREE_POP>"none""none".
+
+TILE
+
+TABSET "tab_selector"
+FLOC 1 -2 
+TSSIZE 80 34
+
+################################## Introduction ########################################
+TAB "Introduction" 
+
+FIELD pq_decap_intro_bitmap
+THUMBNAIL pqswintro.bmp
+FLOC 1 2
+FSIZE 35 26
+ENDFIELD
+
+TEXT "Setup Wizard"
+TLOC 36 3
+OPTIONS BOLD
+ENDTEXT
+
+TEXT
+TLOC 36 5
+INFO pq_decap_intro_info 23
+FSIZE 40 40 
+ENDTEXT
+
+ENDTAB
+
+################################## Board Outline ########################################
+TAB "Board Outline" 
+
+GROUP "Create simple board outline"
+FLOC 3 1
+FSIZE 34 12
+ENDGROUP
+
+TEXT "Height:"
+TLOC 5 4
+TGROUP ""
+ENDTEXT
+
+FIELD pq_decap_bo_height
+FLOC 12 4
+STRFILLIN 21 256
+FGROUP ""
+ENDFIELD
+
+TEXT "Width:"
+TLOC 5 6
+TGROUP ""
+ENDTEXT
+
+FIELD pq_decap_bo_width
+FLOC 12 6
+STRFILLIN 21 256
+FGROUP ""
+ENDFIELD
+
+FIELD pq_decap_bo_generate
+FLOC 10 9
+MENUBUTTON "Create Board Outline" 20 3
+ENDFIELD
+
+FIELD pq_decap_bo_create_edit
+FLOC 50 22
+MENUBUTTON "Edit Outline" 18 3
+ENDFIELD
+
+FIELD pq_decap_bo_import
+FLOC 50 24
+MENUBUTTON "Import Outline" 18 3
+ENDFIELD
+
+FIELD pq_decap_bo_bitmap
+THUMBNAIL 
+FLOC 44 1
+#FSIZE 40 22
+FSIZE 40 21
+ENDFIELD
+
+TEXT
+TLOC 3 14
+INFO pq_decap_bo_info 23
+FSIZE 36 36 
+ENDTEXT
+
+ENDTAB
+
+################################## Stack-up ########################################
+TAB "Stack-up"
+
+GRID pq_decap_su_grid
+
+FLOC 2 1
+FSIZE 55 22
+OPTIONS HLINES VLINES USERSIZE
+
+GHEAD TOP 
+HEADSIZE 3
+OPTIONS 3D MULTI
+ENDGHEAD
+
+GHEAD SIDE 
+HEADSIZE 3
+OPTIONS 3D NUMBER
+ENDGHEAD
+
+ENDGRID
+
+FIELD pq_decap_su_bitmap
+THUMBNAIL 
+FLOC 61 1
+FSIZE 20 20
+ENDFIELD
+
+FIELD pq_decap_su_stackup_mode
+FLOC 61 22
+CHECKLIST "Physical view"
+ENDFIELD
+
+FIELD pq_decap_su_stackup 
+FLOC 60 27
+MENUBUTTON "Edit stack-up" 17 3
+ENDFIELD
+
+FIELD pq_decap_su_import_stackup 
+FLOC 60 29
+MENUBUTTON "Import stack-up" 17 3
+ENDFIELD
+
+TEXT
+TLOC 3 24
+INFO pq_decap_su_info 23
+FSIZE 56 12 
+ENDTEXT
+
+ENDTAB
+
+############################ Plane Voltage Net Setup ####################################
+TAB "DC Net - Plane Association"
+
+
+GROUP "DC Net - plane association"
+FLOC 2 1
+FSIZE 56 18
+ENDGROUP
+
+GRID pq_decap_dc_grid
+
+FLOC 3 4
+FSIZE 54 15
+OPTIONS HLINES VLINES USERSIZE 
+POP "pglobal"
+
+GHEAD TOP 
+#HEADSIZE 2
+HEADSIZE 3
+#OPTIONS 3D
+OPTIONS 3D MULTI
+POP "ptop"
+ENDGHEAD
+
+ENDGRID
+
+FIELD pq_decap_dc_bitmap
+THUMBNAIL 
+FLOC 61 1
+FSIZE 20 20
+ENDFIELD
+
+FIELD pq_decap_dc_stackup_mode
+FLOC 61 22
+CHECKLIST "Physical view"
+ENDFIELD
+
+FIELD pq_decap_dc_dc_nets 
+FLOC 61 25
+MENUBUTTON "DC nets" 15 3
+ENDFIELD
+
+FIELD pq_decap_dc_edit_shape 
+FLOC 61 27
+MENUBUTTON "Edit shape" 15 3
+ENDFIELD
+
+FIELD pq_decap_dc_edit_nets
+FLOC 61 29
+MENUBUTTON "Edit nets" 15 3
+ENDFIELD
+
+TEXT
+TLOC 2 21
+INFO pq_decap_dc_info 23
+FSIZE 56 12
+ENDTEXT
+
+ENDTAB
+
+############################ Power Pair Setup ####################################
+TAB "Power Pair Setup"
+
+GRID pq_decap_pp_grid
+
+FLOC 1 12
+FSIZE 56 12
+OPTIONS HLINES VLINES USERSIZE 
+
+GHEAD TOP 
+HEADSIZE 2
+OPTIONS 3D
+ENDGHEAD
+
+ENDGRID
+
+GROUP "Planes"
+FLOC 1 1
+FSIZE 56 8
+ENDGROUP
+
+TEXT "Plane 1:"
+TLOC 2 3 
+TGROUP "Planes"
+ENDTEXT
+
+FIELD pq_decap_pp_plane1
+FLOC 9 3
+STRFILLIN 42 200
+POP "PQ_DECAP_PP_POP"
+FGROUP "Planes"
+ENDFIELD
+
+TEXT "Plane 2:"
+TLOC 2 5
+TGROUP "Planes"
+ENDTEXT
+
+FIELD pq_decap_pp_plane2
+FLOC 9 5
+STRFILLIN 42 200
+POP "PQ_DECAP_PP_POP"
+FGROUP "Planes"
+ENDFIELD
+
+TEXT "Inter pair capacitance:"
+TLOC 2 7
+TGROUP "Planes"
+ENDTEXT
+
+TEXT
+TLOC 19 7
+INFO pq_decap_pp_capacitance 7
+TGROUP "Planes"
+ENDTEXT
+
+TEXT
+TLOC 1 10
+INFO pq_decap_pp_pairs_info 20
+TGROUP ""
+ENDTEXT
+
+FIELD pq_decap_pp_add
+FLOC 10 24
+MENUBUTTON "Add" 10 3
+ENDFIELD
+
+FIELD pq_decap_pp_modify
+FLOC 22 24
+MENUBUTTON "Modify" 10 3
+ENDFIELD
+
+FIELD pq_decap_pp_delete
+FLOC 34 24
+MENUBUTTON "Delete" 10 3
+ENDFIELD
+
+FIELD pq_decap_pp_bitmap
+THUMBNAIL 
+FLOC 61 1
+FSIZE 20 20
+ENDFIELD
+
+FIELD pq_decap_pp_stackup_mode
+FLOC 61 22
+CHECKLIST "Physical view"
+ENDFIELD
+
+TEXT
+TLOC 1 27
+INFO pq_decap_pp_info 23
+FSIZE 60 5
+ENDTEXT
+
+ENDTAB
+
+############################### Design Device Selection Setup  #######################################
+TAB "Design Device Setup"
+
+TEXT "Filter:"
+TLOC 1 1
+ENDTEXT
+
+FIELD pq_decap_dd_filter
+FLOC 6 1
+STRFILLIN 28 48
+ENDFIELD
+
+FIELD pq_decap_dd_applyFilter
+FLOC 36 1
+MENUBUTTON "Apply" 8 3
+ENDFIELD
+
+GRID pq_decap_dd_grid
+
+FLOC 1 4
+FSIZE 54 29
+OPTIONS HLINES VLINES USERSIZE 
+
+GHEAD TOP 
+HEADSIZE 3
+OPTIONS 3D MULTI
+ENDGHEAD
+
+ENDGRID
+
+FIELD pq_decap_dd_displayAll
+FLOC 56 16
+MENUBUTTON "Display All" 20 3
+ENDFIELD
+
+FIELD pq_decap_dd_displaySelected
+FLOC 56 19
+MENUBUTTON "Display Selected" 20 3
+ENDFIELD
+
+FIELD pq_decap_dd_selectAll
+FLOC 56 22
+MENUBUTTON "Select All in Display" 20 3
+ENDFIELD
+
+FIELD pq_decap_dd_unSelectAll
+FLOC 56 25
+MENUBUTTON "UnSelect All in Display" 20 3
+ENDFIELD
+
+###FIELD pq_decap_dd_twoPin
+###FLOC 56 28
+###CHECKLIST "Show 2-Pin Devices Only"
+###ENDFIELD
+
+FIELD pq_decap_dd_pwrGnd
+FLOC 56 30
+CHECKLIST "Show Pwr/Gnd Devices Only"
+ENDFIELD
+
+TEXT
+TLOC 56 1
+INFO pq_decap_dd_info 24
+FSIZE 24 13
+ENDTEXT
+
+ENDTAB
+
+############################### Library Format #######################################
+TAB "Library Format"
+TEXT "Please select the library format for decoupling capacitors which will be added to the design."
+TLOC 1 1
+ENDTEXT
+
+TEXT "The default choice below is based on the branding of your design at the time of Logic Import."
+TLOC 1 3
+ENDTEXT
+
+TEXT "Your choice can be influenced by several factors including your desire to back annotate"
+TLOC 1 6
+ENDTEXT
+
+TEXT "capacitor additions to your schematic and whether the appropriate information is included"
+TLOC 1 8
+ENDTEXT
+
+TEXT "in your Project Library. "
+TLOC 1 10
+ENDTEXT
+
+TEXT "Please refer to the documentation for more details."
+TLOC 1 13
+ENDTEXT
+
+FIELD pq_decap_allegro_flag
+FLOC 3 28
+CHECKLIST "Project Library" "ProjectLibrary"
+ENDFIELD
+
+FIELD pq_decap_ls_flag
+FLOC 30 28
+CHECKLIST "DCL Library" "DCLLibrary"
+ENDFIELD
+
+ENDTAB
+
+############################### Library Setup #######################################
+TAB "Library Setup"
+
+TEXT "Power plane pair:"
+TLOC 1 1
+ENDTEXT
+
+FIELD pq_decap_ls_power_pair
+FLOC 15 1
+ENUMSET 46
+POP "PQ_DECAP_LS_POP"
+ENDFIELD
+
+FIELD pq_decap_ls_bitmap
+THUMBNAIL
+FLOC 45 4
+FSIZE 33 15
+ENDFIELD
+
+TEXT 
+FLOC 45 19
+INFO pq_decap_ls_low_freq 7
+ENDTEXT 
+
+TEXT 
+FLOC 70 19
+OPTIONS RIGHT
+INFO pq_decap_ls_high_freq 7
+ENDTEXT 
+
+FIELD pq_decap_ls_tree
+FLOC 1 4
+TREEVIEW 42 8
+POP "PQ_DECAP_TREE_POP"
+ENDFIELD
+
+#FIELD pq_decap_ls_library
+#FLOC 1 29
+#MENUBUTTON "Library Files..." 15 3
+#ENDFIELD
+
+FIELD pq_decap_allegro_library
+FLOC 20 29
+MENUBUTTON "Component Browser" 15 3
+ENDFIELD
+
+TEXT "Add more capacitors to the tree browser"  
+FLOC 45 29
+INFO pq_decap_ls_info1 35
+ENDTEXT 
+
+TEXT "by clicking the Component Browser Button"
+FLOC 45 30
+INFO pq_decap_ls_info2 35
+ENDTEXT 
+
+#FIELD pq_decap_ls_model
+#FLOC 13 29 
+#MENUBUTTON "Model..." 10 3
+#ENDFIELD
+
+TEXT "Capacitance:"
+TLOC 1 20
+TGROUP ""
+ENDTEXT
+
+TEXT
+TLOC 15 20
+INFO pq_decap_ls_cap 15
+TGROUP ""
+ENDTEXT
+
+TEXT "ESR:"
+TLOC 1 22
+TGROUP ""
+ENDTEXT
+
+TEXT
+TLOC 15 22
+INFO pq_decap_ls_esr 15
+TGROUP ""
+ENDTEXT
+
+TEXT "Nom. inductance:"
+TLOC 1 24
+INFO pq_decap_ls_ind_info 15
+TGROUP ""
+ENDTEXT
+
+TEXT
+TLOC 15 24
+INFO pq_decap_ls_ind 15
+TGROUP ""
+ENDTEXT
+
+TEXT "Frequency:"
+TLOC 1 26
+INFO pq_decap_ls_freq_info 15
+TGROUP ""
+ENDTEXT
+
+TEXT
+TLOC 15 26
+INFO pq_decap_ls_freq 15
+TGROUP ""
+ENDTEXT
+
+TEXT
+TLOC 45 21
+INFO pq_decap_ls_info 23
+FSIZE 40 8
+ENDTEXT
+
+ENDTAB
+
+ENDTABSET
+
+ENDTILE
+
+ENDFORM

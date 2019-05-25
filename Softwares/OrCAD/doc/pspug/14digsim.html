@@ -1,0 +1,3336 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN" "http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+<html xmlns="http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>PSpice User Guide -- Digital simulation</title>
+<META NAME="Approver" CONTENT="Technical Publications">
+<META NAME="Author" CONTENT="Technical Publications">
+<META NAME="CreateDate" CONTENT="2012-08-31">
+<META NAME="CreateTime" CONTENT="1346413404">
+<META NAME="DataType" CONTENT="Manuals">
+<META NAME="Description" CONTENT="User guide for PSpice and AMS Simulator.">
+<META NAME="DocTitle" CONTENT="PSpice User Guide">
+<META NAME="DocType" CONTENT="User Guide">
+<META NAME="EdmsRelease" CONTENT="EDMS Windows-P015">
+<META NAME="FileTitle" CONTENT="Digital simulation">
+<META NAME="FileType" CONTENT="Chapter">
+<META NAME="Keyword" CONTENT="pspug">
+<META NAME="Language" CONTENT="English">
+<META NAME="ModifiedDate" CONTENT="2012-08-31">
+<META NAME="ModifiedTime" CONTENT="1346413404">
+<META NAME="NextFile" CONTENT="15mix-ad.html">
+<META NAME="PageCount" CONTENT="36">
+<META NAME="Platform" CONTENT="ALL">
+<META NAME="PrevFile" CONTENT="13monte.html">
+<META NAME="Product" CONTENT="Allegro AMS Simulator, PSpice">
+<META NAME="ProductFamily" CONTENT="PCB Design, PCB Design">
+<META NAME="ProductVersion" CONTENT="16.6">
+<META NAME="RightsManagement" CONTENT="Copyright 2012 Cadence Design Systems Inc.">
+<META NAME="Title" CONTENT="PSpice User Guide -- Digital simulation">
+<META NAME="TopicTags" CONTENT="FALSE">
+<META NAME="Version" CONTENT="16.6">
+  </head>
+  <body style="margin-left: 5%;">
+    <a name="pagetop"></a>
+    <a name="firstpage"></a>
+    <!-- Begin Buttons -->
+    <table width="650" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td height="36" width="650" colspan="10">
+          <img src="../support/header_doc.gif" width="650" height="34">
+        </td>
+      </tr>
+      <tr>
+        <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                </td>
+<td height="20" width="73">
+<a href="pspugTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<a href="pspugIX.html"><img src="../support/nav2_index.gif" border="0"></a>
+</td>
+        <td>
+          <a href="13monte.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+        </td>
+        <td>
+          <a href="15mix-ad.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+        </td>
+        <td height="20">
+          <a>
+<a href="pspug.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+          </a>
+        </td>
+        <td height="20" width="61">
+          <img src="../support/nav2_black.gif">
+        </td>
+        <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+        </td>
+        <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+        </td>
+        <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+        </td>
+      </tr>
+    </table>
+    <!-- End Buttons -->
+    <p>
+    <hr>
+    <p>
+      <h3>
+        <center>
+          <font >
+            <div>PSpice&#174; User Guide</div>
+            <font >
+              <div>
+            </font>
+          </font>
+        </center>
+      </h3>
+      <br>
+    </p>
+    <div>
+      <h1>14<a name="1056259">&nbsp;</a></h1>
+      <h1><a name="1056266">Digital simulatio</a>n</h1>
+      <h2><a name="1048364">Chapter overview</a></h2>
+      <p><a name="1050017">This chapter describes how to set up a digital simulation analysis and </a>includes the following sections:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1048401" title="Digital simulation" name="1050021"><font color="Blue"><u>What is digital simulation?</u></font></a><a href="#1048401" title="Digital simulation"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1048408" title="Digital simulation" name="1050025"><font color="Blue"><u>Steps for simulating digital circuits</u></font></a><a href="#1048408" title="Digital simulation"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1048418" title="Digital simulation" name="1048378"><font color="Blue"><u>Concepts you need to understand</u></font></a><a href="#1048418" title="Digital simulation"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1048474" title="Digital simulation" name="1048382"><font color="Blue"><u>Defining a digital stimulus</u></font></a><a href="#1048474" title="Digital simulation"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1048990" title="Digital simulation" name="1048386"><font color="Blue"><u>Defining simulation time</u></font></a><a href="#1048990" title="Digital simulation"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1049000" title="Digital simulation" name="1048390"><font color="Blue"><u>Adjusting simulation parameters</u></font></a><a href="#1049000" title="Digital simulation"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1049067" title="Digital simulation" name="1048394"><font color="Blue"><u>Starting the simulation</u></font></a><a href="#1049067" title="Digital simulation"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1049073" title="Digital simulation" name="1048398"><font color="Blue"><u>Analyzing results</u></font></a><a href="#1049073" title="Digital simulation"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1048399">This entire chapter describes features that are not included in </a>PSpice.</p>
+      <h2><a name="1048401">What is digital simulation?</a></h2>
+      <p><a name="1048402">Digital simulation is the analysis of logic and timing behavior of digital </a>devices over time. PSpice&nbsp;A&#47;D simulates this behavior during transient analysis. When computing the bias point, PSpice considers the digital devices in addition to any analog devices in the circuit.</p>
+      <p><a name="1048403">PSpice</a>&nbsp;A&#47;D performs detailed timing analysis subject to the constraints specified for the devices. For example, flip&#45;flops perform setup checks on the incoming clock and data signals. PSpice&nbsp;A&#47;D reports any timing violations or hazards as messages written to the simulation output file and the waveform data file. See <a href="#1049218" title="Digital simulation"><font color="Blue"><u>Tracking timing violations and hazards</u></font></a><a href="#1049218" title="Digital simulation"></a> for information about persistent hazards, and for descriptions of the warning messages.</p>
+      <h2><a name="1048408">Steps for simulating digital circuits</a></h2>
+      <p><a name="1048409">There are six steps in the development and simulation of digital </a>circuits:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048410">Drawing the design.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048411">For more information on drawing designs see your </a><font color="#000000"><em>OrCAD </em></font><font color="#000000"><em>Capture User's Guide</em></font>. Steps 2 through 6 of this process are covered in this chapter.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048412">Defining the stimuli.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048413">Setting the simulation time.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048414">Adjusting the simulation parameters.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048415">Starting the simulation.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	6.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048416">Analyzing the results.</a></td>
+          </tr>
+        </table>
+      </div>
+      <h2><a name="1048418">Concepts you need to understand</a></h2>
+      <h3><a name="1048419">States</a></h3>
+      <p><a name="1050069">When the circuit is in operation, digital nodes take on values or output </a>states shown in Table <a href="#1052069" title="Digital simulation"><font color="#0000ff"><u>14&#45;1</u></font></a>. Each digital state has a <font color="#000000"><em>strength</em></font> component as well. Strengths are described in the next section.</p>
+      <p align="left"><a name="1050102">&nbsp;</a>&nbsp;</p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="396">
+        <caption>
+          <p align="left"><font color="#000000"><strong>Table 14&#45;1&nbsp; </strong></font><strong><a name="1052069">Digital states</a></strong></p>
+        </caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="82">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1050075">This </a>state...</strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="314">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1050077">Means this...</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1050079">0</a></p>
+          </td>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1050081">Low, false, no, off</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1050083">1</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1050085">High, true, yes, on</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1050087">R</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1050089">Rising (changes from 0 to 1 sometime </a>during the R interval)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1050091">F</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1050093">Falling (changes from 1 to 0 sometime </a>during the F interval)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1050095">X</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1050097">Unknown: may be high, low, intermediate, </a>or unstable</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" valign="top">
+            <p><a name="1050099">Z</a></p>
+          </td>
+          <td cellpadding="4" border="1" valign="top">
+            <p><a name="1050101">High impedance: may be high, low, </a>intermediate, or unstable</p>
+          </td>
+        </tr>
+      </table>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1050103">States do not necessarily correspond to a specific, or even </a>stable, voltage. A logical 1 level means only that the voltage is somewhere within the <font color="#000000"><em>high</em></font> range for the particular device family. The rising and falling levels only indicate that the voltage crosses the 0-1 threshold at some time during the R or F interval, not that the voltage change follows a particular slope.</p>
+      <h3><a name="1048456">Strengths</a></h3>
+      <p><a name="1048457">When a digital node is driven by more than one device, PSpice</a>&nbsp;A&#47;D determines the correct level of the node. Each output has a strength value, and PSpice&nbsp;A&#47;D compares the strengths of the outputs driving the node. The <font color="#000000"><em>strongest</em></font> driver determines the resulting level of the node. If outputs of the same strength but different levels drive a node, the node's level becomes X.</p>
+      <p><a name="1048458">PSpice</a>&nbsp;A&#47;D supports 64 strengths. The lowest (weakest) strength is called Z. The highest (strongest) strength is called the <font color="#000000"><em>forcing</em></font> strength. The Z strength (called high impedance) is typically output by disabled tristate gates or open&#45;collector output devices. PSpice&nbsp;A&#47;D reports any nodes of Z strength (at any level) as Z, and reports all other nodes by the designations shown in <a href="#1052069" title="Digital simulation"><font color="Blue"><u>Digital states</u></font></a><a href="#1052069" title="Digital simulation"></a>.</p>
+      <p><a name="1048468">For additional information on this topic see </a><a href="07digmod.html#1049151" title="Digital device modeling"><font color="Blue"><u>Defining Output Strengths</u></font></a><a href="07digmod.html#1049151" title="Digital device modeling"></a> of <a href="07digmod.html#1055359" title="Digital device modeling"><font color="#0000ff"><u>Chapter&nbsp;7, "Digital device modeling."</u></font></a></p>
+      <h2><a name="1048474">Defining a digital stimulus</a></h2>
+      <p><a name="1048475">A digital stimulus defines input to the digital portions of your circuit, </a>playing a role similar to that played by the independent voltage and current sources for the analog portion of your circuit. </p>
+      <p><a name="1048476">The following table summarizes the digital stimuli provided in the part </a>libraries.</p>
+      <p align="left"><a name="1048558">&nbsp;</a></p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="432">
+        <caption>
+          <p align="left"><font color="#000000"><strong>Table 14&#45;2&nbsp; </strong></font><strong><a name="1052082">&nbsp;</a></strong></p>
+        </caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="145">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048479">If you want to </a>specify the <br>input signal by...</strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="120">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048481">Then use this </a><br>part...</strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="167">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048483">For this type of </a>digital input...</strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048485">Using the Stimulus </a>Editor</p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048488">DIGSTIMn</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048490">signal or bus stimulus</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1048492">Defining part </a>properties</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048495">DIGCLOCK</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048497">clock signal</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048499">&nbsp;</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048501">STIM1</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048503">one&#45;bit stimulus</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048505">&nbsp;</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048507">STIM4</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048509">four&#45;bit stimulus</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048511">&nbsp;</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048513">STIM8</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048515">eight&#45;bit stimulus</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1048517">&nbsp;</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1048519">STIM16</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1048521">sixteen&#45;bit stimulus</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1048523">&nbsp;</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1048525">FILESTIM1</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1048527">one&#45;bit file&#45;based </a>stimulus</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1048529">&nbsp;</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1048531">FILESTIM2</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1048533">two&#45;bit file&#45;based </a>stimulus</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1048535">&nbsp;</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1048537">FILESTIM4</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1048539">four&#45;bit file&#45;based </a>stimulus</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1048541">&nbsp;</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1048543">FILESTIM8</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1048545">eight&#45;bit file&#45;based </a>stimulus</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1048547">&nbsp;</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1048549">FILESTIM16</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1048551">sixteen&#45;bit file&#45;based </a>stimulus</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1048553">&nbsp;</a></p>
+          </td>
+          <td cellpadding="4" border="2" valign="top">
+            <p><a name="1048555">FILESTIM32</a></p>
+          </td>
+          <td cellpadding="4" border="2" valign="top">
+            <p><a name="1048557">thirty&#45;two&#45;bit </a>file&#45;based stimulus</p>
+          </td>
+        </tr>
+      </table>
+      <h3><a name="1048560">Using the DIGSTIMn part</a></h3>
+      <p><a name="1048561">Use the DIGSTIMn stimulus parts to define a stimulus for a net or bus </a>using the Stimulus Editor.</p>
+      <h4><em><a name="1048563">To use the DIGSTIMn part</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048564">From Capture's Place menu, choose Part.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048565">Place and connect the DIGSTIM1 stimulus part from </a>SOURCSTM.OLB to a wire or bus in your design.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048566">Click the stimulus instance to select it.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048567">From the Edit menu, choose PSpice Stimulus.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048568">This starts the Stimulus Editor. The New Stimulus dialog box </a>appears prompting you to define a new stimulus.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048569">Enter DIGSTIM1 in the Name text box.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	6.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048570">In the Digital frame, select Signal.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	7.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048571">Click OK.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	8.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048574">Define stimulus transitions; see </a><a href="#1048578" title="Digital simulation"><font color="#0000ff"><u>Defining input signals using the Stimulus Editor</u></font></a> below.</td>
+          </tr>
+        </table>
+      </div>
+      <h3><a name="1048578">Defining input signals using the Stimulus Editor</a></h3>
+      <h4><a name="1048582">Defining signal transitions</a></h4>
+      <p><a name="1048583">You can do any of the following when defining digital signal </a>transitions:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048584">Add a transition</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048585">Move a transition</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048586">Edit a transition</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048587">Delete a transition</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1048588">These operations cannot be applied to a stimulus defined as </a>a clock signal.</p>
+      <h4><em><a name="1048589">To add a transition</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048590">From the Plot menu, choose Axis Settings.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048591">Enter values in the Displayed Range for Time text boxes and the </a>Timing Resolution text box as required for adding transitions. </td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048592">For example, if you wish to add transitions every 1ms, set the </a>Timing Resolution to 1ms.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048594">Select the digital stimulus you want to edit.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1053382">When you select a transition to edit, a red handle appears.</a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048596">From the Stimulus Editor's Edit menu, choose Add.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048598">Click the waveform at the time where the transition is required. </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	6.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048604">Repeat step </a><a href="#1048596" title="Digital simulation"><font color="#0000ff"><u>4</u></font></a> to add additional transitions.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	7.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048605">When you finish, right&#45;click to exit the edit mode.</a></td>
+          </tr>
+        </table>
+      </div>
+      <h4><em><a name="1048606">To move a transition</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048607">Click the transition you want to move.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048608">If needed, use </a><font color="#000000"><em>Shift</em></font>+click to select additional transitions on the same signal or different signals.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048609">Reposition the transition (or transitions) by dragging.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1048610">If you press </a><font color="#000000"><em>Shift</em></font> while dragging, then all selected transitions move by the same amount.</p>
+      <h4><em><a name="1048611">To edit a transition</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048612">Do one of the following:</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.872">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.128319999999995">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048613">Select the transition you want to edit and from the Edit </a>menu, choose Attributes.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.872">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.128319999999995">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048614">Double&#45;click the transition you want to edit.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048615">In the Edit Digital Transition dialog box, edit the timing and value </a>of the transition.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048616">Click OK.</a></td>
+          </tr>
+        </table>
+      </div>
+      <h4><em><a name="1048617">To delete a transition</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048618">Click the transition you want to delete.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048619">If needed, press </a><font color="#000000"><em>Shift</em></font>+click to select additional transitions on the same signal or different signals.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048620">From the Edit menu, choose Delete.</a></td>
+          </tr>
+        </table>
+      </div>
+      <h4><a name="1048622">Defining clock transitions</a></h4>
+      <h4><em><a name="1048623">To create a clock stimulus</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048624">In the Stimulus Editor, select the stimulus that you want to use </a>as a clock.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048625">From the Stimulus menu, choose Change Type.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048626">Under Type, choose Clock.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048627">Click OK.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048628">Enter values for the clock signal attributes as described below.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p align="left"><a name="1048654">&nbsp;</a></p>
+<ul>      <table summary="" border="1" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" width="28%">
+        <caption>
+          <blockquote align="left"><font color="#000000"><strong>Table 14&#45;3&nbsp; </strong></font><strong><a name="1052310">&nbsp;</a></strong></blockquote>
+        </caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="124">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048635">For this </a>attribute...</strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="222">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048637">Enter this...</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048639">Frequency</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048641">clock rate</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048643">Duty Cycle</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048645">percent of high versus low in </a>decimal or integer units</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048647">Initial Value</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048649">starting value: 0 or 1</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048651">Time Delay</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048653">time after simulation begins </a>when the clock stimulus takes effect</p>
+          </td>
+        </tr>
+      </table></ul>
+      <blockquote><a name="1048655">Example: To create a clock signal with a clock rate of 20 MHz, </a>50% duty cycle, a starting value of 1, and time delay of 5&nbsp;nsec, set the signal properties as follows:</blockquote>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048656">Frequency</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 20Meg</font></blockquote>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048657">Duty Cycle</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 0.50 (or 50)</font></blockquote>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048658">Initial Value</a>&nbsp;&nbsp;&nbsp;= 1</font></blockquote>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048659">Time Delay</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 5ns</font></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	6.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048660">From the File menu, choose Save.</a></td>
+          </tr>
+        </table>
+      </div>
+      <h4><em><a name="1048665">To change clock attributes</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048666">In the Stimulus Editor, do one of the following:</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.872">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.128319999999995">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048667">Double&#45;click the clock name to the left of the axis.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.872">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.128319999999995">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048668">Click the clock name and from the Edit menu, choose </a>attributes.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048669">Modify the clock attributes as needed.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048670">Click OK.</a></td>
+          </tr>
+        </table>
+      </div>
+      <h4><a name="1048673">Defining bus transitions</a></h4>
+      <p><a name="1048674">There are three steps for creating a bus:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048675">Creating the digital bus stimulus.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048676">Introducing transitions.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048677">Optionally defining the radix for bus values.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1048678">These steps are described in detail in the following procedures.</a></p>
+      <h4><em><a name="1048679">To create a digital bus stimulus</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048680">From the Stimulus menu, choose New.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048681">In the Name text box, enter Bus.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048682">In the Digital frame, select Bus.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048683">If needed, change the bus width from its default value of 8 bits. </a>To do this, in the Width text box, type a different integer.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048684">Click OK.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1048685">During any interval, the bits on the bus lines represent a value from </a>zero through (2<font color="#000000"><sup>n</sup></font> &#45; 1), where <font color="#000000"><em>n</em></font> is the number of bus lines. To set bus values, introduce transitions using either of the two methods described below.</p>
+      <h4><em><a name="1048686">To introduce transitions (method one)</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048687">From the Plot menu, choose Axis Settings.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048688">Enter values in the Displayed Range for Time text boxes and the </a>Timing Resolution text box as required for adding transitions.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048689">For example, if you wish to add transitions every 1 ms, set the </a>Timing Resolution to 1ms.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048690">From the Stimulus Editor's Edit menu, choose Add.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048692">In the digital value field on the toolbar (just right of the Add </a>button), type a bus value in any of the following ways:</td>
+          </tr>
+        </table>
+      </div>
+      <p align="left"><a name="1052455"><img src="images/14digsim.20.1.1.png" width="163" height="43" alt=""></a></p>
+      <p align="left"><a name="1050327">&nbsp;</a></p>
+<ul>      <table summary="" border="1" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" width="28%">
+        <caption>
+          <blockquote align="left"><font color="#000000"><strong>Table 14&#45;4&nbsp; </strong></font><strong><a name="1052522">&nbsp;</a></strong></blockquote>
+        </caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="141">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1050779">To get this </a>effect...</strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="255">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1050781">Type this...</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1050783">A literal value</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1050785">&#60;</a><font color="#000000"><em>unsigned_number</em></font>&#62;[;<font color="#000000"><em>radix</em></font>]</p>
+            <p><a name="1050786">Example: </a><font size="2" face="'Courier New'" color="#000000">12</font></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050788">An increment</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050790">+&#60;</a><font color="#000000"><em>unsigned_number</em></font>&#62;[;<font color="#000000"><em>radix</em></font>]</p>
+            <p><a name="1050791">Example: </a><font size="2" face="'Courier New'" color="#000000">+12;H</font></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1050793">A decrement</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1050795">&#45;&#60;</a><font color="#000000"><em>unsigned_number</em></font>&#62;[;<font color="#000000"><em>radix</em></font>]</p>
+            <p><a name="1050796">Example: </a><font size="2" face="'Courier New'" color="#000000">&#45;12;O</font></p>
+          </td>
+        </tr>
+      </table></ul>
+      <blockquote><a name="1048717">If you do not enter a radix value, the Stimulus Editor appends the </a>default bus radix. To find out about valid radix values, see page&nbsp;<a href="#1049175" title="Digital simulation"><font color="#0000ff"><u>14&#45;11</u></font></a>.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048722">Click the waveform where you want the transition added.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	6.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048729">Repeat steps </a><a href="#1048692" title="Digital simulation"><font color="#0000ff"><u>4</u></font></a> and <a href="#1048722" title="Digital simulation"><font color="#0000ff"><u>5</u></font></a> as needed.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	7.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048730">When you finish, right&#45;click to exit the editing mode.</a></td>
+          </tr>
+        </table>
+      </div>
+      <h4><em><a name="1048731">To introduce transitions (method two)</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048732">From the Plot menu, choose Axis Settings.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048733">Enter values in the Displayed Range for Time text boxes and the </a>Timing Resolution text box as required for adding transitions.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048734">For example, if you wish to add transitions every 1 ms, set the </a>Timing Resolution to 1ms.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048735">From the Stimulus Editor's Edit menu, choose Add.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048736">Place the tip of the pencil&#45;shaped pointer on the waveform, and </a>click to create transitions as shown here:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1052545"><img src="images/14digsim.20.1.2.png" width="388" height="59" alt=""></a></blockquote>
+      <blockquote><a name="1048740">Here are some other things that you can do:</a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.872">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.128319999999995">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048741">Move a transition left or right by clicking and dragging.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.872">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.128319999999995">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048742">Delete a transition by selecting it and then, from the Edit </a>menu, choosing Delete (or by pressing <font color="#000000"><em>Del</em></font>).</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.872">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.128319999999995">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048743">Select more than one transition by holding down </a><font color="#000000"><em>Shift </em></font>while clicking.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048744">When you finish creating transitions, right&#45;click. </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	6.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048746">Click the transition at the start (far left) of the interval. A small </a>diamond appears over the transition.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	7.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048747">From the Edit menu, choose Attributes to display the Edit Digital </a>Transition dialog box.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	8.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048748">In the Transition Type frame, choose Set Value, Increment, or </a>Decrement.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	9.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048749">Do one of the following to specify the bus value: </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.872">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.128319999999995">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048750">In the Value text box, type a value.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.872">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.128319999999995">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048751">Select one of these defaults from the list: 0, All bits 1, X </a>(Unknown), or Z (High impedance).</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	10.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048753">Click OK.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	11.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048760">Repeat steps </a><a href="#1048746" title="Digital simulation"><font color="#0000ff"><u>6</u></font></a> through <a href="#1048753" title="Digital simulation"><font color="#0000ff"><u>10</u></font></a> for each transition.</td>
+          </tr>
+        </table>
+      </div>
+      <h4><em><a name="1048762">To set the default bus radix</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048763">From the Tools menu, choose Options.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048764">In the Bus Display Defaults frame, from the Radix list, select the </a>radix you want as default.</td>
+          </tr>
+        </table>
+      </div>
+      <p align="left"><a name="1048786">&nbsp;</a></p>
+<ul>      <table summary="" border="1" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" width="28%">
+        <caption>
+          <blockquote align="left"><font color="#000000"><strong>Table 14&#45;5&nbsp; </strong></font><strong><a name="1052554">&nbsp;</a></strong></blockquote>
+        </caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="120">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048767">Select this </a>radix...</strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="228">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048769">To show values in this </a>notation...</strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048771">Binary</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048773">base 2</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048775">Octal</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048777">base 8</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048779">Decimal</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048781">base 10</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048783">Hexadecimal</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048785">base 16</a></p>
+          </td>
+        </tr>
+      </table></ul>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048787">Click OK.</a></td>
+          </tr>
+        </table>
+      </div>
+      <h4><a name="1048790">Adding loops</a></h4>
+      <p><a name="1048802">Suppose you have a stimulus that looks like this:</a></p>
+      <p align="left"><a name="1050807"><img src="images/14digsim.20.1.3.png" width="563" height="76" alt=""></a></p>
+      <p><a name="1048803">and you want to create a stimulus that consists of three consecutive </a>occurrences of the sequence that starts at A and ends at B:</p>
+      <p align="left"><a name="1051031"><img src="images/14digsim.20.1.4.png" width="563" height="53" alt=""></a></p>
+      <p><a name="1048808">You can do this by using a standard text editor to edit a stimulus </a>library file. Within this file is a sequence of transitions that produces the original waveform. With a text editor you can modify the stimulus definition so it repeats itself.</p>
+      <h4><em><a name="1048809">To add a loop</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048810">In the Stimulus Editor, save and close the stimulus file.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048811">In a standard text editor (such as Notepad), open the stimulus </a>file.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048814">Find the set of consecutive lines comprising the sequence that </a>you want to repeat. </td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048815">Each relevant line begins with the time of the transition and ends </a>with a value or change in value. </blockquote>
+      <blockquote><a name="1048816">To find out more about the syntax of the stimulus commands </a>used in the stimulus file, refer to the online <font color="#000000"><em>PSpice Reference </em></font><font color="#000000"><em>Guide</em></font>.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048817">Before these lines, insert a line that uses this syntax:</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048818">+</a>&nbsp;Repeat for <font color="#000000"><em>n_times</em></font></font></blockquote>
+      <blockquote><a name="1048819">where </a><font color="#000000"><em>n_times</em></font> is one of the following:</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.872">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.128319999999995">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048820">A positive integer representing the number of repetitions.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.872">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.128319999999995">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048821">The keyword FOREVER, which means repeat this </a>sequence for an unlimited number of times (like a clock signal).</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048822">Below these lines, insert a line that uses this syntax:</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048823">+</a>&nbsp;Endrepeat</font></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	6.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048824">From the File menu, choose Save.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1050122">Given the example shown on page</a>&nbsp;<a href="#1048790" title="Digital simulation"><font color="#0000ff"><u>3</u></font></a>, if you wanted to repeat the sequence shown from point A to point B three times, then you would modify the stimulus file as shown here (added lines are in bold):</p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1050123"><font color="#000000"><strong>+ Repeat for 3</strong></font></a><font color="#000000"><strong><br></strong></font>+ +0s 000000000<br>+ 250us INCR BY 000000001<br>+ 500us 000000010<br>+ 750us INCR BY 000000001<br>+ 1ms 000000000<br><font color="#000000"><strong>+ Endrepeat</strong></font></font></blockquote>
+      <h3><a name="1048832">Using the DIGCLOCK part</a></h3>
+      <p><a name="1048833">The DIGCLOCK part allows you to define a clock signal by using the </a>part's properties. </p>
+      <p><a name="1048834">For information on how to define a clock signal using the Stimulus </a>Editor with the DIGSTIMn part, see <a href="#1048582" title="Digital simulation"><font color="Blue"><u>Defining signal transitions</u></font></a><a href="#1048582" title="Digital simulation"></a>.</p>
+      <h4><em><a name="1048838">To define a clock signal using DIGCLOCK</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048839">From Capture's Place menu, choose Part.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048840">Place and connect a DIGCLOCK part.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048841">Double&#45;click the part instance.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048842">Define the properties as described below.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p align="left"><a name="1048873">&nbsp;</a></p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="432">
+        <caption>
+          <p align="left"><font color="#000000"><strong>Table 14&#45;6&nbsp; </strong></font><strong><a name="1052577">&nbsp;</a></strong></p>
+        </caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="153">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048845">For this property...</a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="279">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048847">Specify this...</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048850">DELAY</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048852">Time before the first transition of the </a>clock</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048855">ONTIME</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048857">Time in high state for each period</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048860">OFFTIME</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048862">Time in low state for each period</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048865">STARTVAL</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048867">Low state of clock (default:0)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048870">OPPVAL</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048872">High state of clock (default: 1)</a></p>
+          </td>
+        </tr>
+      </table>
+      <h3><a name="1048875">Using STIM1, STIM4, STIM8 and STIM16 parts</a></h3>
+      <p><a name="1048876">The STIM</a><font color="#000000"><em>n </em></font>parts<font color="#000000"><em> </em></font>have a single pin for connection. STIM1 is used for driving a single net. STIM4, STIM8 and STIM16<font color="#000000"><em> </em></font>drive buses that are 4, 8 and 16 bits wide, respectively. The properties for all of these parts are the same as those shown in Table <a href="#1052583" title="Digital simulation"><font color="#0000ff"><u>14&#45;7</u></font></a> below.</p>
+      <p align="left"><a name="1048925">&nbsp;</a></p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="432">
+        <caption>
+          <p align="left"><font color="#000000"><strong>Table 14&#45;7&nbsp; </strong></font><strong><a name="1052583">&nbsp;</a></strong></p>
+        </caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="124">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048882">Property</a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="308">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048884">Description</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048887">WIDTH</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048889">Number of output signals (nodes).</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048892">FORMAT</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048894">Sequence of digits defining the number of </a>signals corresponding to a digit in any &#60;<font color="#000000"><em>value</em></font>&#62; term appearing in a COMMAND<font color="#000000"><em>n</em></font> property definition. Each digit must be either 1, 3, or 4 (binary, octal, hexadecimal, respectively); the sum of all digits in FORMAT must equal WIDTH.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048897">IO_MODEL</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048899">I&#47;O model describing the stimulus' driving </a>characteristics.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048902">IO_LEVEL</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048904">Interface subcircuit selection from one of </a>the four analog&#47; digital subcircuits provided with the part's I&#47;O model.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048907">DIG_PWR</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048909">Digital power pin used by the interface </a>subcircuit.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048912">DIG_GND</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048914">Digital ground pin used by the interface </a>subcircuit.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048917">TIMESTEP</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048919">Number of seconds per clock cycle or </a>step.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048921">COMMAND1&#45;</a><br>COMMAND16</p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048924">Stimulus transition specification </a>statements including time&#47; value pairs, labels, and conditional constructs.</p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1048926">When placed, you must connect each part to the wire or bus of the </a>corresponding radix. Generally, you only need to modify the FORMAT, TIMESTEP, and COMMAND<font color="#000000"><em>n</em></font> properties.</p>
+      <p><a name="1048927">Typically, each COMMAND</a><font color="#000000"><em>n</em></font> property contains only one command line. It is possible to enter more than one command line per property by placing \n+ between command lines in a given definition. (The <font color="#000000"><em>n</em></font> must be lower case and no spaces between characters; spaces may precede or follow the entire key sequence.) Refer to the online <font color="#000000"><em>PSpice Reference Guide</em></font> for information about command line syntax.</p>
+      <h3><a name="1048929">Using the FILESTIM</a>n parts</h3>
+      <p><a name="1048930">The FILESTIM</a><font color="#000000"><em>n</em></font> parts have a single pin for connection to the rest of the circuit. FILESTIM1 is used for driving a single net. FILESTIM2, FILESTIM4, FILESTIM8, FILESTIM16 and FILESTIM32 drive buses that are 2, 4, 8, 16 and 32 bits wide, respectively. You must define the digital stimulus specification in an external file. Using this technique, stimulus definitions can be created from scratch or extracted with little modification from another simulation's output file. Refer to the online <font color="#000000"><em>PSpice Reference Guide</em></font> for more information about creating digital stimulus specifications and files.</p>
+      <p><a name="1048934">Table </a><a href="#1052600" title="Digital simulation"><font color="#0000ff"><u>14&#45;8</u></font></a> lists the properties of the FILESTIM<font color="#000000"><em>n</em></font> parts. The IO_MODEL, IO_LEVEL, and PSPICEDEFAULTNET properties describing this part's I&#47;O characteristics are provided with default values that rarely need modification. However, you must define the FILENAME property with the name of the external file containing the digital stimulus specification.</p>
+      <p><a name="1048935">The SIGNAME property specifies the name of the signal inside the </a>stimulus file which becomes the output from the FILESTIM<font color="#000000"><em>n</em></font> part. If left undefined, the name of the connected net (generally a labeled wire) determines which signal is used.</p>
+      <p align="left"><a name="1048961">&nbsp;</a></p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="432">
+        <caption>
+          <p align="left"><font color="#000000"><strong>Table 14&#45;8&nbsp; </strong></font><strong><a name="1052600">FILESTIM</a><font color="#000000"><em>n</em></font> part properties</strong></p>
+        </caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="178">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048938">Property</a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="254">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048940">Description</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048942">FILENAME</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048944">Name of file containing the </a>stimulus specification. </p>
+            <p><font color="#000000"><strong>Note: </strong></font><a name="1053235">If you do not specify the path </a>to the stimulus file, you must place the file in the folder for the simulation profile for which you are configuring the stimulus.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048946">SIGNAME</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048948">Name of output signal</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048950">IO_MODEL</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048952">I&#47;O model describing the stimulus' </a>driving characteristics</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048954">IO_LEVEL</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048956">Interface subcircuit selection from </a>one of the four AtoD or DtoA subcircuits provided with the part's I&#47;O model</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048958">PSPICEDEFAULTNET</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048960">Hidden digital power and ground </a>pins used by the interface subcircuit. Name of the default net to use.</p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1048962">For example, a FILESTIM</a><font color="#000000"><em>n</em></font> part can be used to reset a counter, which could appear as shown in Figure <font color="#0000ff"><u>14&#45;1</u></font> below.</p>
+      <p align="left"><a name="1051144"><img src="images/14digsim.20.1.5.png" width="388" height="245" alt=""></a></p>
+      <p><a name="1048978">In this case, the FILESTIM1 part instance, U2, generates a reset </a>signal to the CLR pin of the 74393 counter.</p>
+      <h4><em><a name="1048979">To set up the U2 stimulus</a></em></h4>
+      <p><a name="1048980">The following steps set up the U2 stimulus so that the 74393 counter </a>is cleared after 40 nsec have elapsed in a transient analysis.</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048981">Create a stimulus file named </a><font size="2" face="'Courier New'" color="#000000">RESET.STM</font> that contains the following lines:</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048982">Reset</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br>0ns&nbsp;&nbsp;1<br>40ns 0</font></blockquote>
+      <blockquote><a name="1048983">The header line contains the names of all signals described in </a>the file. In this case, there is only one: Reset.</blockquote>
+      <blockquote><a name="1048984">The remaining lines are the state transitions output for the </a>signals named in the header. In this case, the Reset signal remains at state 1 until 40nsec have elapsed, at which time it drops to state 0.</blockquote>
+      <blockquote><font color="#000000"><strong>Note: </strong></font><a name="1048986">A blank line is required between the signal name list and </a>the first transition.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048987">Place the </a><font size="2" face="'Courier New'" color="#000000">RESET.STM</font> file in the folder for the simulation profile for which you are configuring the stimulus.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1053258">Associate this file with the digital stimulus instance, U2, by </a>setting U2's FILENAME property to <font size="2" face="'Courier New'" color="#000000">RESET.STM</font>.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048988">Define the signal named Reset in </a><font size="2" face="'Courier New'" color="#000000">RESET.STM</font> as the output of U2 by setting U2's SIGNAME property to Reset. Since the labeled wire connecting U2 with the 74393 counter is also named Reset, it is also acceptable to leave SIGNAME undefined.</td>
+          </tr>
+        </table>
+      </div>
+      <h2><a name="1048990">Defining simulation time</a></h2>
+      <h4><em><a name="1048991">To set up the transient analysis</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048993">From Capture's PSpice menu, choose New Simulation Profile. </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048994">Enter a name for the new simulation profile.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048995">Click OK.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048996">In the Analysis Type list box on the Analysis tab, select Time </a>Domain (Transient).</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048997">In the Run to Time text box, type the duration of the transient </a>analysis.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	6.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048998">Click OK.</a></td>
+          </tr>
+        </table>
+      </div>
+      <h2><a name="1049000">Adjusting simulation parameters</a></h2>
+      <p><a name="1049001">Use the Options tab of the Simulation Settings dialog box to adjust </a>the simulation behavior of your circuit's digital devices.</p>
+      <p align="left"><a name="1049005"><img src="images/14digsim.20.1.6.png" width="555" height="420" alt=""></a></p>
+      <h4><em><a name="1049006">To access the digital settings in the Options tab</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1049007">From Capture's PSpice menu, choose Edit Simulation Profile.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1049008">Click the Options tab.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1049009">In the Category list box, select Gate&#45;level simulation.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1049010">Each of the dialog box settings is described in the following </a>sections. For additional options, see <a href="#1049464" title="Digital simulation"><font color="Blue"><u>Output control options</u></font></a><a href="#1049464" title="Digital simulation"></a>.</blockquote>
+      <h3><a name="1049016">Selecting propagation delays</a></h3>
+      <p><a name="1049017">All digital devices--including primitives and library models--perform </a>simulations using either minimum, typical, maximum or worst&#45;case (min&#47;max) timing characteristics. You can set the delay circuit&#45;wide or on individual device instances.</p>
+      <h4><a name="1049019">Circuit&#45;wide propagation delays</a></h4>
+      <p><a name="1049020">You can set these to minimum, typical, maximum or variable within </a>the min&#47;max range for digital worst&#45;case timing simulation on the Options tab of the Simulation Settings dialog box.</p>
+      <h4><em><a name="1049021">To specify the delay level circuit&#45;wide</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1049022">From Capture's PSpice menu, choose Edit Simulation Profile.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1049023">Click the Options tab.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1049024">In the Category list box, select Gate&#45;level simulation.</a></td>
+          </tr>
+        </table>
+      </div>
+      <h4><a name="1049025">Part instance propagation delays</a></h4>
+      <p><a name="1049026">You can set the propagation delay mode on an individual device, </a>thereby overriding the circuit&#45;wide delay mode.</p>
+      <h4><em><a name="1049027">To override the circuit&#45;wide default on an individual part</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1049028">Set the part's MNTYMXDLY property from 1 to 4 where</a></td>
+          </tr>
+        </table>
+      </div>
+      <p align="left"><a name="1049054">&nbsp;</a></p>
+<ul>      <table summary="" cellpadding="16" cellspacing="0" bgcolor="#FFFFFF" width="250">
+        <caption>
+        <tr>
+          <td cellpadding="16" valign="top" width="29">
+            <p><a name="1049031">1</a></p>
+          </td>
+          <td cellpadding="16" valign="top" width="29">
+            <p><a name="1049033">=</a></p>
+          </td>
+          <td cellpadding="16" valign="top" width="192">
+            <p><a name="1049035">minimum</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="16" valign="top">
+            <p><a name="1049037">2</a></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1049039">=</a></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1049041">typical</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="16" valign="top">
+            <p><a name="1049043">3</a></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1049045">=</a></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1049047">maximum</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="16" valign="top">
+            <p><a name="1049049">4</a></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1049051">=</a></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1049053">worst&#45;case (min&#47;max)</a></p>
+          </td>
+        </tr>
+      </table></ul>
+      <blockquote><a name="1049055">By default, MNTYMXDLY is set to 0, which tells PSpice</a>&nbsp;A&#47;D to use the circuit&#45;wide value defined in the Options tab.</blockquote>
+      <h3><a name="1049056">Initializing flip&#45;flops</a></h3>
+      <h4><em><a name="1049058">To initialize all flip&#45;flops and latches</a></em></h4>
+      <p><a name="1049059">Select one of the three Flip&#45;flop Initialization choices on the Options </a>tab:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.872">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.128319999999995">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049060">If set to X, all flip&#45;flops and latches produce an X (unknown </a>state) until explicitly set or cleared, or until a known state is clocked in.</td>
+          </tr>
+        </table>
+      </div>
+<blockquote><blockquote>      <p><font color="#000000"><strong>Note: </strong></font><font color="#000000"><a name="1049062">The X initialization is the </a><font color="#000000"><em>safest</em></font> setting, since many devices do not power up to a known state. However, the 0 and 1 settings are useful in situations where the initial state of the flip&#45;flop is unimportant to the function of the circuit, such as a toggle flip&#45;flop in a frequency divider.</font></blockquote></blockquote></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.872">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.128319999999995">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049063">If set to 0, all such devices are cleared.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.872">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.128319999999995">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049064">If set to 1, all such devices are preset.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1049065">Refer to the online </a><font color="#000000"><em>PSpice Reference Guide</em></font> for more information about flip&#45;flops and latches.</p>
+      <h2><a name="1049067">Starting the simulation</a></h2>
+      <h4><em><a name="1049068">To start the simulation</a></em></h4>
+      <p><a name="1049069">From the PSpice menu, choose Run.</a></p>
+      <p><a name="1049070">After PSpice</a>&nbsp;A&#47;D completes the simulation, the graphical waveform analyzer starts automatically.</p>
+      <h2><a name="1049073">Analyzing results</a></h2>
+      <p><a name="1049075">PSpice</a>&nbsp;A&#47;D includes a graphical waveform analyzer for simulation results. In effect, the waveform viewer in PSpice&nbsp;A&#47;D is a software oscilloscope. Running PSpice&nbsp;A&#47;D corresponds to building or changing a breadboard, and the waveform viewer corresponds to looking at the breadboard with an oscilloscope. You can observe and interactively manipulate the waveform data produced by circuit simulation. For a full discussion of how the waveform viewer is used to analyze results, see <a href="17wave.html#1055161" title="Analyzing waveforms"><font color="#0000ff"><u>Chapter&nbsp;17, "Analyzing waveforms."</u></font></a></p>
+      <p><a name="1049079">For mixed analog&#47;digital simulations, the waveform analyzer can </a>display analog and digital waveforms simultaneously with a common time base.</p>
+      <p><a name="1049080">PSpice</a>&nbsp;A&#47;D generates two forms of output: the simulation output file and the waveform data file. The calculations and results reported in the simulation output file are like an audit trail of the simulation. However, the graphical analysis of information stored in the data file is a more informative and flexible method for evaluating simulation results.</p>
+      <h4><em><a name="1049082">To display waveforms </a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1049083">From the Trace menu, choose Add Trace.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1049087"></a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1049088">Select traces for display:</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.872">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.128319999999995">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049089">In the Simulation Output Variables list, click any waveforms </a>you want to display. Each appears in the Trace Expressions box at the bottom.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.872">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.128319999999995">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049090">Construct expressions by selecting operators, functions </a>and&#47;or macros from the Functions or Macros list, and output variables in the Simulation Output Variables list.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.872">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.128319999999995">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049091">You can also type trace expressions directly into the Trace </a>Expression text box. A typical set of entries might be:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote>
+<blockquote>        <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049092">IN1 IN2 Q1 Q2</a></font></blockquote>
+      </blockquote>
+<blockquote><blockquote>      <p><font color="#000000"><strong>Note: </strong></font><font color="#000000"><a name="1049094">Use spaces or commas to separate the output </a>variables you place in the Trace Expressions list.</font></blockquote></blockquote></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1049095">Click OK.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1049096">Waveforms for the selected output variables appear.</a></p>
+      <p><a name="1049100">For detailed information on how to add digital traces, see</a> <a href="17wave.html#1050672" title="Analyzing waveforms"><font color="Blue"><u>Digital trace expressions</u></font></a><a href="17wave.html#1050672" title="Analyzing waveforms"></a>.</p>
+      <h3><a name="1049102">Adding digital signals to a plot</a></h3>
+      <p><a name="1049103">When defining digital trace expressions, you can include any </a>combination of digital signals, buses, signal constants, bus constants, digital operators, macros and the Time sweep variable.</p>
+      <p><a name="1049104">The following rules apply:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049105">An arithmetic or logical operation between two bus operands </a>results in a bus value that is wide enough to contain the result.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049106">An arithmetic or logical operation between a bus operand and a </a>signal operand results in a bus value.</td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1049107">The syntax for expressing a digital output variable or expression is:</a></p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049108"><font color="#000000"><em>digital_output_variable</em></font></a>[;<font color="#000000"><em>display_name</em></font>]</font></blockquote>
+      <p><a name="1049109">or</a></p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049110"><font color="#000000"><em>digital_expression</em></font></a>[;<font color="#000000"><em>display_name</em></font>]</font></blockquote>
+      <p align="left"><a name="1049128">&nbsp;</a></p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="392">
+        <caption>
+          <p align="left"><font color="#000000"><strong>Table 14&#45;9&nbsp; </strong></font><strong><a name="1052621">&nbsp;</a></strong></p>
+        </caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="168">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1049113">This placeholder...</a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="223">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1049115">Means this...</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1049117"><font color="#000000"><em>digital_output_</em></font></a><font color="#000000"><em><br></em></font><font color="#000000"><em>variable</em></font></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1049119">output variable from the </a>Simulation Output Variable list (Digital check box selected)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049121"><font color="#000000"><em>digital_expression</em></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049123">expression using digital output </a>variables and operators</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1049125"><font color="#000000"><em>display_name</em></font></a><font color="#000000"><em><br></em></font>(optional)</p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1049127">text string (name) to label the </a>signal on the plot, instead of using the default output variable notation</p>
+          </td>
+        </tr>
+      </table>
+      <h4><em><a name="1049130">To add a digital trace expression</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1049131">In the Add Traces dialog box, make sure you select the Digital </a>check box.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1049132">Do one of the following:</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.872">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.128319999999995">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049133">In the Simulation Output Variables list, click the signal you </a>want to display.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.872">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.128319999999995">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049134">In the Trace Expression text box, create a digital expression </a>by either typing the expression, or by selecting digital output variables from the Simulation Output Variables list and digital operators from the Digital Operators and Functions list.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1049135">If you want to label a signal with a name that is different from the </a>output variable:</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	a.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1049136">Click in the Trace Expression text box after the last </a>character in the signal name.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	b.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1049137">Type ;</a><font color="#000000"><em>display_name</em></font> where <font color="#000000"><em>display_name</em></font> is the name of the label.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1049138">Example:</a><font size="2" face="'Courier New'" color="#000000"> U2:Y;OUT1</font><font size="2" face="'Courier New'" color="#000000"><br></font>where U2:Y is the output variable. On the plot, the signal is labeled OUT1.</blockquote>
+      <h3><a name="1049141">Adding buses to a waveform plot</a></h3>
+      <p><a name="1049142">You can evaluate and display a set of up to 32 signals as a bus </a><font color="#000000"><em>even </em></font><font color="#000000"><em>if the selected signals were not originally a bus</em></font>. This is done by following the same procedure already given for adding digital signals to the plot. However, when adding a bus, be sure to enclose the list of signals in braces: { }.</p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049143">{ Q3 Q2 Q1 Q2 }</a></font></blockquote>
+      <p><a name="1049144">The complete syntax is as follows:</a></p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049145">{</a><font color="#000000"><em>signal_list</em></font>}[;[<font color="#000000"><em>display_name</em></font>][;<font color="#000000"><em>radix</em></font>]]</font></blockquote>
+      <p><a name="1049146">or</a></p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049147">{</a><font color="#000000"><em>bus_prefix</em></font>[<font color="#000000"><em>msb</em></font>:<font color="#000000"><em>lsb</em></font>]}[;[<font color="#000000"><em>display_name</em></font>][;<font color="#000000"><em>radix</em></font>]]</font></blockquote>
+      <p align="left"><a name="1049170">&nbsp;</a></p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="432">
+        <caption>
+          <p align="left"><font color="#000000"><strong>Table 14&#45;10&nbsp; </strong></font><strong><a name="1052701">&nbsp;</a></strong></p>
+        </caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="168">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1049150">This placeholder...</a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="264">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1049152">Means this...</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1049154"><font color="#000000"><em>signal_list</em></font></a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1049156">comma&#45; or space&#45;separated list of </a>up to 32 digital node names, in sequence from high order to low order</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049158"><font color="#000000"><em>bus_prefix[msb:lsb]</em></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049160">alternate way to express up to 32 </a>signals in the bus</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049162"><font color="#000000"><em>display_name</em></font></a> (optional)</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049164">text string (name) to label the bus on </a>the plot, instead of using the default output variable notation</p>
+            <p><font color="#000000"><strong>Note: </strong></font><a name="1049165">To change the radix without </a>changing the display name, be sure to include two consecutive semicolons.<br>Example: <font size="2" face="'Courier New'" color="#000000">{A3,A2,A1,A0};;radix</font></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1049167"><font color="#000000"><em>radix</em></font></a><font color="#000000"><em><br></em></font>(optional)</p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1049169">numbering system in which to </a>display bus values </p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1049171">Valid entries for </a><font color="#000000"><em>radix</em></font> are shown in the following table.</p>
+      <p align="left"><a name="1049194">&nbsp;</a></p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="372">
+        <caption>
+          <p align="left"><font color="#000000"><strong>Table 14&#45;11&nbsp; </strong></font><strong><a name="1052707">&nbsp;</a></strong></p>
+        </caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="228">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1049175">For this numbering system...</a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="144">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1049177">Use this </a>notation...</strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1049179">Binary (base 2)</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1049181">B</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049183">Decimal (base 10)</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049185">D</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049187">Hexadecimal (base 16)</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049189">H or X</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1049191">Octal (base 8)</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1049193">O (the letter)</a></p>
+          </td>
+        </tr>
+      </table>
+      <h4><em><a name="1049195">To add a bus expression</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1049196">In the Add Traces dialog box, in the Functions and Macros list, </a>choose Digital Operators and Constants.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1049197">Click the </a><font size="2" face="'Courier New'" color="#000000">{ }</font> entry.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1049198">In the Simulation Output Variables list, select the signals in </a>high&#45;order to low&#45;order sequence.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1049199">If you want to label the bus with a name that is different from the </a>default:</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	a.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1049200">Click in the Trace Expression text box after the last </a>character in the bus name.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	b.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1049201">Type ;</a><font color="#000000"><em>display_name</em></font> where <font color="#000000"><em>display_name</em></font> is the name of the label.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1049202">If you want to set the radix to something different from the </a>default:</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	a.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1049203">Click in the Trace Expression text box after the last </a>character in the expression.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	b.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1049207">Type one of the following where </a><font color="#000000"><em>radix</em></font> is a value from  Table <a href="#1052707" title="Digital simulation"><font color="#0000ff"><u>14&#45;11</u></font></a>:</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="69">
+              <div>&nbsp;</div>
+            </td>
+            <td width="31.872000000000003">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bss_bullet_sub_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049208">If you specified a </a><font color="#000000"><em>display_name</em></font>, then type <font color="#000000"><em>;radix</em></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="69">
+              <div>&nbsp;</div>
+            </td>
+            <td width="31.872000000000003">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bss_bullet_sub_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049209">If you did not specify a </a><font color="#000000"><em>display_name</em></font>, then type <font color="#000000"><em>;;radix</em></font> (two semicolons preceding the radix value).</td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1049211">Examples:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049212"><font size="2" face="'Courier New'" color="#000000">{Q2,Q1,Q0};A;O</font></a> specifies a 3&#45;bit bus whose most significant bit is Q2. PSpice labels the plot A, and values appear in octal notation.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049213"><font size="2" face="'Courier New'" color="#000000">{a3,a2,a1,a0};;d</font></a> specifies a 4&#45;bit bus. On the plot, values appear in decimal notation. Since no display name is specified, PSpice uses the signal list as a label.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049214"><font size="2" face="'Courier New'" color="#000000">{a[3:0]}</font></a> is equivalent to <font size="2" face="'Courier New'" color="#000000">{a3,a2,a1,a0}</font></td>
+          </tr>
+        </table>
+      </div>
+      <h3><a name="1049218">Tracking timing violations and hazards</a></h3>
+      <p><a name="1049220">When there are problems with your design, such as setup&#47;hold </a>violations, pulse&#45;width violations, or worst&#45;case timing hazards, PSpice&nbsp;A&#47;D saves messages to the simulation output file or data file. You can select messages and have the associated waveforms and detailed message text automatically appear. The messaging feature is discussed further in <a href="17wave.html#1049832" title="Analyzing waveforms"><font color="Blue"><u>Tracking digital simulation messages</u></font></a><a href="17wave.html#1049832" title="Analyzing waveforms"></a>  of <a href="17wave.html#1055161" title="Analyzing waveforms"><font color="#0000ff"><u>Chapter&nbsp;17, "Analyzing waveforms."</u></font></a></p>
+      <p><a name="1049230">PSpice</a>&nbsp;A&#47;D can also detect persistent hazards that may have a potential effect on a primary circuit output or on the internal state of the design.</p>
+      <h4><a name="1049234">Persistent hazards </a></h4>
+      <p><a name="1049235">Digital problems are usually either timing violations or timing hazards. </a>Timing violations include SETUP, HOLD and minimum pulse WIDTH violations of component specifications. This type of violation may produce a change in the state behavior of the design, and potentially in the answer. However, the effects of many of these errors are short&#45;lived and do not influence the final circuit results.</p>
+      <p><a name="1049236">For example, consider an asynchronous data change on the input to </a>flip&#45;flop FF1 in Figure <font color="#0000ff"><u>14&#45;2</u></font> below. The data change is too close to the clock edge e1, resulting in a SETUP violation. In a hardware implementation, the output of FF1 may or may not change. However, some designs are not sensitive to this individual missed data because the next clock edge (e2 in this example) latches the data. The designer must judge the significance of timing errors, accounting for the overall behavior of the design.</p>
+      <p align="left"><a name="1049299"><img src="images/14digsim.20.1.8.png" width="388" height="213" alt=""></a></p>
+      <p><a name="1049300">Timing hazards are most easily identified by simulating a design in </a>worst&#45;case timing mode, usually close to its critical timing limits. Under such conditions, PSpice&nbsp;A&#47;D reports conditions such as AMBIGUITY CONVERGENCE hazards. Again, these may or may not pose a problem to the operation of the design. </p>
+      <p><a name="1049301">However, there are identifiable cases that cause major problems. An </a>example of a major problem is shown in Figure&nbsp;<font color="#0000ff"><u>14&#45;3</u></font> below. Due to the simultaneous arrival of two timing ambiguities (having unrelated origins, therefore nothing in common) at the inputs to gate G1, PSpice&nbsp;A&#47;D reports the occurrence as an AMBIGUITY CONVERGENCE hazard. This means that the output of G1 may glitch.</p>
+      <p align="left"><a name="1049324"><img src="images/14digsim.20.1.9.png" width="388" height="203" alt=""></a></p>
+      <p><a name="1049325">Note that the output fans out to two devices, G2 and L1. The effects </a>of a glitch on G1 in this case do not reach the circuit output P1, because that path is not sensitized (since the other input to G2 is held LO and thus blocks the symptom). However, because G1's output is also used to clock latch L1, the effects of a glitch could result in visibly incorrect behavior on output P2. This is an example of a persistent hazard.</p>
+      <p><a name="1049326">A persistent hazard is a timing violation or hazard that has a potential </a>effect on a primary (external) circuit output or on the internal state (stored state or memory elements) of the design. For the design to be considered reliable, you must correct such timing hazards.</p>
+      <p><a name="1049327">PSpice</a>&nbsp;A&#47;D fully distinguishes between state uncertainty and time uncertainty. When a hazard occurs, PSpice&nbsp;A&#47;D propagates hazard origin information along with the machine state through all digital devices. When a hazard propagates to a state&#45;storage device primitive (JKFF, DFF, SRFF, DLTCH, RAM), PSpice&nbsp;A&#47;D reports a PERSISTENT HAZARD.</p>
+      <h4><a name="1049331">Simulation condition messages</a></h4>
+      <p><a name="1049333">PSpice</a>&nbsp;A&#47;D produces warning messages in various situations, such as those that originate from the digital CONSTRAINT devices monitoring timing relationships of digital nodes. These messages are directed to the simulation output file and&#47;or to the waveform data file. Options are available for controlling where and how many of these messages are generated, as summarized later in this section.</p>
+      <p><a name="1049337">Table </a><a href="#1051486" title="Digital simulation"><font color="#0000ff"><u>14&#45;12</u></font></a> below summarizes the simulation message types, with a brief description of their meaning. Currently, the messages supported are specific to digital device timing violations and hazards.</p>
+      <p align="left"><a name="1051642">&nbsp;</a></p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="648">
+        <caption>
+          <p align="left"><font color="#000000"><strong>Table 14&#45;12&nbsp; </strong></font><strong><a name="1051486">Simulation condition messages--timing violations</a></strong></p>
+        </caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="132">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1051492">Message type</a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="124">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1051494">Severity level</a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="392">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1051496">Meaning</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1051498">SETUP</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1051500">WARNING</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1051502">Minimum time required for a data signal to be stable </a><font color="#000000"><em>prior</em></font> to the assertion of a clock was not met.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1051504">HOLD</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1051506">WARNING</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1051508">Minimum time required for a data signal to be stable </a><font color="#000000"><em>after</em></font> the assertion of a clock was not met.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1051510">RELEASE</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1051512">WARNING</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1051514">Minimum time required for a signal that has gone </a>inactive (usually a control such as CLEAR) to remain inactive before the asserting clock edge was not met.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1051516">WIDTH</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1051518">WARNING</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1051520">Minimum pulse width specification for a signal was not </a>satisfied; that is, a pulse that was too narrow was observed on the node.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1051522">FREQUENCY</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1051524">WARNING</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1051526">Minimum or maximum frequency specification for a </a>signal was not satisfied. Minimum frequency violations indicate that the period of the measured signal is too long, while maximum frequency violations describe signals changing too rapidly.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1051528">GENERAL</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1051530">INFO</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1051532">Boolean expression described within the GENERAL </a>constraint checker was evaluated and produced a <font color="#000000"><em>true</em></font> result.</p>
+          </td>
+        </tr>
+      </table>
+      <p align="left"><a name="1051700">&nbsp;</a></p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="648">
+        <caption>
+          <p align="left"><font color="#000000"><strong>Table 14&#45;13&nbsp; </strong></font><strong><a name="1051725">Simulation condition messages--hazards</a></strong></p>
+        </caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="144">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1051731">Message type</a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="120">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1051733">Severity level</a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="384">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1051735">Meaning</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1051737">AMBIGUITY</a><br>CONVERGENCE</p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1051739">WARNING</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1051741">Convergence of conflicting rising and falling states </a>(timing ambiguities) arrived at the inputs of a primitive and produced a pulse (glitch) on the output. See <a href="16digwct.html#1048362" title="Digital worst-case timing analysis"><font color="#0000ff"><u>Chapter&nbsp;16, "Digital worst&#45;case timing analysis"</u></font></a> for more information.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1051743">CUMULATIVE</a><br>AMBIGUITY</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1051745">WARNING</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1051747">Signal ambiguities are additive, increased by </a>propagation through each level of logic in the circuit. The ambiguities associated with both edges of a pulse increased to the point where they overlapped, which PSpice reports as a cumulative ambiguity hazard. See <a href="16digwct.html#1048362" title="Digital worst-case timing analysis"><font color="#0000ff"><u>Chapter&nbsp;16, "Digital worst&#45;case timing analysis"</u></font></a> for more information.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1051749">SUPPRESSED </a>GLITCH</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1051751">WARNING</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1051753">Pulse applied to the input of a primitive that is shorter </a>than the active propagation delay was ignored by PSpice&nbsp;A&#47;D; significance depends on the nature of the circuit. There might be a problem either with the stimulus, or with the path delay configuration of the circuit. See <a href="16digwct.html#1048362" title="Digital worst-case timing analysis"><font color="#0000ff"><u>Chapter&nbsp;16, "Digital worst&#45;case timing analysis"</u></font></a> for more information.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1051755">NET&#45;STATE </a>CONFLICT</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1051757">WARNING</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1051759">Two or more outputs attempted to drive a net to </a>different states, which PSpice&nbsp;A&#47;D reports as an X (unknown) state. This usually results from improper selection of a bus driver's enable inputs.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1051761">ZERO&#45;DELAY&#45; </a><br>OSCILLATION</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1051763">FATAL</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1051765">Output of a primitive changed more than 50 times </a>within a single digital time step. PSpice&nbsp;A&#47;D aborted the run.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1051767">DIGITAL INPUT</a><br>VOLTAGE</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1051769">SERIOUS</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1051771">Voltage on a digital pin was out of range, which </a>means PSpice&nbsp;A&#47;D used the state with a voltage range closest to the input voltage and continued the simulation.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1051773">PERSISTENT </a>HAZARD</p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1051775">SERIOUS</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1051777">Effects of any of the aforementioned logic hazards </a>were able to propagate to either an external port or to any storage device in the circuit. See <a href="#1049234" title="Digital simulation"><font color="Blue"><u>Persistent hazards</u></font></a><a href="#1049234" title="Digital simulation"></a> for more information.</p>
+          </td>
+        </tr>
+      </table>
+      <h4><a name="1049464">Output control options</a></h4>
+      <p><a name="1049465">Four control options are available for managing the generation of </a>simulation condition messages. These are described in Table <a href="#1051944" title="Digital simulation"><font color="#0000ff"><u>14&#45;14</u></font></a>. </p>
+      <p><a name="1049469">To access these commands, select the Options tab in the Simulation </a>Settings dialog box. You can set NOOUTMSG and NOPRBMSG by selecting the Output file Category. You can set DIGERRDEFAULT and DIGERRLIMIT by selecting the Gate&#45;level simulation Category and clicking Advanced Options.</p>
+      <p align="left"><a name="1051941">&nbsp;</a></p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="432">
+        <caption>
+          <p align="left"><font color="#000000"><strong>Table 14&#45;14&nbsp; </strong></font><strong><a name="1051944">Simulation message output control options</a>&nbsp;</strong></p>
+        </caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="180">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1051948">This option...</a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="252">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1051950">Means this...</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1051952">NOOUTMSG</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1051954">Suppresses the recording of </a>simulation condition messages in the simulation output file.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1051956">NOPRBMSG</a>	</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1051958">Suppresses the recording of </a>simulation condition messages in the waveform data file.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1051960">DIGERRDEFAULT=&#60;</a><font color="#000000"><em>n</em></font>&#62;</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1051962">Establishes a default limit, </a><font color="#000000"><em>n</em></font>, to the number of condition messages that may be generated by any digital device that has a constraint checker primitive without a local default. If global or local defaults are unspecified, there is no limit.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1051964">DIGERRLIMIT=&#60;</a><font color="#000000"><em>n</em></font>&#62;</p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1051966">Establishes an upper limit, </a><font color="#000000"><em>n</em></font>, for the total number of condition messages that may be generated by any digital device. If this limit is exceeded, PSpice&nbsp;A&#47;D aborts the run. By default, the total number of messages is 20.</p>
+          </td>
+        </tr>
+      </table>
+      <h4><a name="1049505">Severity levels</a></h4>
+      <p><a name="1049506">PSpice assigns one of four severity levels to the messages:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049507">FATAL</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049508">SERIOUS</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049509">WARNING</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049510">INFO (informational)</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1049511">FATAL conditions cause PSpice</a>&nbsp;A&#47;D to cancel the simulation. Under all other severity levels, PSpice&nbsp;A&#47;D continues to run. The severity levels are used to filter the classes of messages that are displayed when loading a data file.</p>
+    </div>
+    <br>
+    <a href="#pagetop">Return to top of page</a>
+    <hr>
+    <hr align="left">
+    <div style="text-align: left;">
+      <!-- Begin Buttons -->
+      <table width="650" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                    </td>
+<td height="20" width="73">
+<a href="pspugTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<a href="pspugIX.html"><img src="../support/nav2_index.gif" border="0"></a>
+</td>
+          <td>
+            <a href="13monte.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+          </td>
+          <td>
+            <a href="15mix-ad.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+          </td>
+          <td>
+            <a>
+<a href="pspug.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+            </a>
+          </td>
+          <td height="20" width="61">
+            <img src="../support/nav2_black.gif">
+          </td>
+          <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+          </td>
+          <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+          </td>
+          <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+          </td>
+        </tr>
+      </table>
+      <!-- End Buttons -->
+    </div>
+    <br>
+    <font size="-1" >
+For support, see <a href="http://support.cadence.com" target="_blank">Cadence Online Support</a> service.</font>
+    <br>
+    <br>
+    <font size="-1" >
+      <i>Copyright &#169; 2011, <a href="http://www.cadence.com">Cadence Design Systems, Inc.</a></i>
+    </font>
+    <br>
+    <font size="-1" >
+All rights reserved.</font>
+    <br>
+    <br>
+  </body>
+</html>

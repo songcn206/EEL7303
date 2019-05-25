@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://diff3rptViewer/skin/default/skin.css" type="text/css"?>
+
+<!-- window size is enough to open full screen -->
+<window id="mainFrame" width="800" height="600"  sizemode="maximized" title="... Report loading ..." xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" onload="diff3rptViewer.Initialize();" onclose="diff3rptViewer.OnClose();">
+
+    <tooltip id="diff3report-tooltip-in-report" onpopupshowing="return diff3rptViewer.OnShowTooltip(document.tooltipNode);"/>
+
+    <script type="application/javascript" src="chrome://jslib/content/jslib.js"/>
+    <script type="application/javascript" src="chrome://jslib/content/io/file.js"/>
+    <script type="application/javascript" src="chrome://jslib/content/io/fileUtils.js"/>
+    <script type="application/javascript" src="chrome://diff3rptViewer/content/main.js"/>
+
+    <commandset>
+        <command id="goBack-cmd" oncommand="document.getElementById('diff3report-html-browser').goBack();" disabled="true"/>
+        <command id="goFwd-cmd" oncommand="document.getElementById('diff3report-html-browser').goForward();" disabled="true"/>
+        <command id="save-cmd" oncommand="diff3rptViewer.OnSave();"/>
+        <command id="print-cmd" oncommand="diff3rptViewer.OnPrint();"/>
+        <command id="select-all-cmd" oncommand="diff3rptViewer.OnSelectAll();"/>
+        <command id="copy-cmd" oncommand="diff3rptViewer.OnCopy();"/>
+    </commandset>
+    <popupset>
+        <menupopup id="clipmenu">
+            <menuitem label="Copy        [Ctrl+C]" command="copy-cmd"/>
+            <menuitem label="Select all  [Ctrl+A]" command="select-all-cmd"/>
+        </menupopup>
+    </popupset>
+    <keyset id="keyset">
+        <key id="back-key" keycode="VK_LEFT" modifiers="alt" command="goBack-cmd"/>
+        <key id="fwd-key" keycode="VK_RIGHT" modifiers="alt" command="goFwd-cmd"/>
+        <key id="save-key" key="S" modifiers="control" command="save-cmd"/>
+        <key id="print-key" key="P" modifiers="control" command="print-cmd"/>
+        <key id="copy-key" key="C" modifiers="control" command="copy-cmd"/>
+        <key id="select-all-key" key="A" modifiers="control" command="select-all-cmd"/>
+    </keyset>
+
+    <toolbar id="toolbar">
+        <toolbarbutton id="back-btn" command="goBack-cmd" tooltiptext="Previous selection [Alt + Left]"/>
+        <toolbarbutton id="fwd-btn" command="goFwd-cmd" tooltiptext="Next selection [Alt + Right]"/>
+        <toolbarbutton id="save-btn" command="save-cmd" tooltiptext="Export report to HTML [Ctrl + S]"/>
+        <toolbarbutton id="print-btn" command="print-cmd" tooltiptext="Print preview [Ctrl + P]"/>
+        <toolbarbutton id="close-btn" oncommand="window.close();" tooltiptext="Close window"/>
+    </toolbar>
+
+    <browser type="content-primary" id="diff3report-html-browser" tooltip="diff3report-tooltip-in-report" flex="1" contextmenu="clipmenu"/>
+        
+</window>

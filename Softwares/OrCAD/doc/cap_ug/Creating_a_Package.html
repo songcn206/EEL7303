@@ -1,0 +1,481 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>
+      Creating a Package
+    </title>
+    <meta name="Approver" content="Technical Publications" />
+    <meta name="Author" content="Technical Publications" />
+    <meta name="CreateDate" content="2012-10-10" />
+    <meta name="CreateTime" content="1349876200" />
+    <meta name="DataType" content="Manuals" />
+    <meta name="Description" content="UG" />
+    <meta name="DocTitle" content="OrCAD Capture User Guide" />
+    <meta name="DocType" content="User Guide" />
+    <meta name="FileTitle" content="Creating a Package" />
+    <meta name="Keywords" content="" />
+    <meta name="FileType" content="Chapter" />
+    <meta name="Keyword" content="cap_ug" />
+    <meta name="Language" content="English" />
+    <meta name="ModifiedDate" content="2012-10-10" />
+    <meta name="ModifiedTime" content="1349876200" />
+    <meta name="NextFile"
+    content="Editing%252C%2BDeleting%252C%2Band%2BViewing%2Ba%2BPackage.html" />
+    <meta name="Group" content="" />
+    <meta name="Platform" content="All," />
+    <meta name="PrevFile" content="Part%2BPackages.html" />
+    <meta name="Product"
+    content="Allegro Design Entry CIS,OrCAD Capture," />
+    <meta name="ProductFamily"
+    content="Silicon-Package-Board Co-Design,Silicon-Package-Board Co-Design," />
+    <meta name="ProductVersion" content="16.6" />
+    <meta name="RightsManagement"
+    content="Copyright 2011-2012 Cadence Design Systems Inc." />
+    <meta name="Title"
+    content="OrCAD Capture User Guide -- Creating a Package" />
+    <meta name="Version" content="16.6" />
+    <meta name="Renderer" content="WIKI" />
+    <meta name="SpaceKey" content="capug166" />
+    <link href="styles/site.css" rel="stylesheet"
+    type="text/css" />
+    <meta content="text/html; charset=UTF-8"
+    http-equiv="Content-Type" />
+  </head>
+  <body style="margin-left: 5%;background-color: #FFFFFF;">
+    <a xmlns:html="http://www.w3.org/1999/xhtml" id="pagetop"
+    name="pagetop"></a> <a
+    xmlns:html="http://www.w3.org/1999/xhtml" id="firstpage"
+    name="firstpage"></a> <!-- Begin Buttons -->
+     
+    <table xmlns:html="http://www.w3.org/1999/xhtml" border="0"
+    cellpadding="0" cellspacing="0" width="650">
+      <tbody>
+        <tr>
+          <td colspan="10" height="36" width="650">
+            <img height="34" src="../support/header_doc.gif"
+            width="650" />
+          </td>
+        </tr>
+        <tr>
+          <td height="20" width="59">
+            <a href="javascript:openLibrary()"><img
+            alt="View Library" border="0" height="20"
+            src="../support/nav2_library.gif" width="59" /></a>
+          </td>
+          <td height="20" width="73">
+            <a href="cap_ugTOC.html"><img alt="Table of Contents"
+            border="0" src="../support/nav2_toc.gif" /></a>
+          </td>
+          <td height="20" width="46">
+            <img alt="Index" border="0"
+            src="../support/nav2_index_b.gif" />
+          </td>
+          <td>
+            <a href="Part_Packages.html"><img alt="Previous"
+            border="0" src="../support/nav2_previous.gif" /></a>
+          </td>
+          <td>
+            <a
+            href="Editing__Deleting__and_Viewing_a_Package.html"><img
+             alt="Next" border="0"
+            src="../support/nav_next.gif" /></a>
+          </td>
+          <td height="20">
+            <a href="cap_ug.pdf"><img alt="Open PDF to print book"
+            border="0" height="20" src="../support/nav2_print.gif"
+            width="114" /></a>
+          </td>
+          <td height="20" width="61">
+            <img src="../support/nav2_black.gif" />
+          </td>
+          <td height="20" width="76">
+            <a href="/feedback.htm"><img alt="Email Comments"
+            border="0" height="20"
+            src="../support/nav2_feedback.gif" width="76" /></a>
+          </td>
+          <td height="20" width="43">
+            <a href="../cdsuser/help.html"><img
+            alt="Help Using Documentation" border="0" height="20"
+            src="../support/nav2_help.gif" width="43" /></a>
+          </td>
+          <td height="20" width="37">
+            <a href="/exitsearch.htm"><img
+            alt="Shut Down Cadence Documentation Server" border="0"
+            height="20" src="../support/nav2_exit.gif"
+            width="37" /></a>
+          </td>
+        </tr>
+      </tbody>
+    </table><!-- End Buttons -->
+    <hr xmlns:html="http://www.w3.org/1999/xhtml" />
+    <div id="main-header">
+      <a xmlns="" id="CreatingaPackage"
+      name="CreatingaPackage"></a> 
+      <h1 xmlns="" style=" margin: 4px 0 4px;">
+        <span>Creating a Package</span>
+      </h1>
+    </div>
+    <div class="wiki-content group" id="main-content">
+      <h4 id="CreatingaPackage-Creatingapackage">
+        Creating a package
+      </h4>
+      <p>
+        A part or hierarchical block may have an underlying
+        hierarchical description, such as an attached schematic
+        folder. If it does, it&#39;s called a non-primitive. A part
+        or hierarchical block that has no underlying hierarchical
+        description is called a primitive. In Capture, this
+        characteristic is defined in a property, called Primitive,
+        on every part instance. You can change the Primitive
+        property as often as you like during the design process.
+        When a part or hierarchical block is marked as primitive,
+        all of Capture&#39;s tools treat it as such. You cannot
+        descend into a part or hierarchical block that is marked as
+        primitive, even if it has an attached schematic
+        folder.<br />
+        <br />
+         For example, you might create a part and attach a
+        schematic folder that describes its gates and wiring, and
+        then attach schematic folders to some of those parts to
+        describe their transistors. Before you create a netlist for
+        simulation, you should specify those parts as
+        non-primitive, so Create Netlist can descend far enough to
+        find the transistor-level descriptions. Before you create a
+        netlist for board layout, you should specify the parts as
+        primitive, so Create Netlist stops at the gate-level
+        descriptions. Bill of Materials and Cross Reference work
+        similarly.
+      </p>
+      <p>
+        For part instances that have their Primitive property set
+        to Default, you can configure Capture to treat them as
+        either primitive or non-primitive on a design-wide basis,
+        using the Design Template and Design Properties commands on
+        the Options menu. This is useful when you are describing
+        and simulating your design at varying levels of abstraction
+        (as in a top-down design).
+      </p>
+      <p>
+        If you attach a schematic folder to a homogeneous part, it
+        is attached to each part in the package, not the package
+        itself. You cannot attach a schematic folder to a
+        heterogeneous part.
+      </p>
+      <p>
+        When you attach a schematic folder to a part or
+        hierarchical block, you can specify a full path and file
+        name in the Library text box. So, although you can specify
+        a library that has not been saved, you should not try to
+        descend into the attached schematic folder until the
+        library that contains the schematic folder has been saved.
+      </p>
+      <p>
+        If you do not specify a full path and file name in the
+        Library text box, Capture expects to find the attached
+        schematic folder in the same design as the part of
+        hierarchical block to which it is attached. If the
+        specified schematic folder does not exist in either the
+        design or library, Capture creates the schematic folder
+        when you descend the hierarchy on the part or hierarchical
+        block.<br class="atl-forced-newline" />
+         For compatibility with future versions of Windows, Capture
+        preserves the case of the path and filename as you specify
+        them in the Library text box.
+      </p>
+      <p>
+        <strong><em>Using the package view</em></strong>
+      </p>
+      <p>
+        In this view, you can add and edit package properties,
+        though parts are not available for editing. Use this view
+        if you want to add properties that are the same for all
+        parts in the package.<br />
+         All packages include the following properties:
+      </p>
+      <ul>
+        <li>
+          Name
+        </li>
+        <li>
+          Alphabetic or numeric part numbering
+        </li>
+        <li>
+          Homogeneous or heterogeneous type
+        </li>
+        <li>
+          Number of parts per package
+        </li>
+        <li>
+          Part reference prefix
+        </li>
+        <li>
+          Printed Circuit Board footprint
+        </li>
+        <li>
+          Aliases
+        </li>
+      </ul>
+      <p>
+        <strong><em>Forcing multiple parts into a single
+        package</em></strong>
+      </p>
+      <p>
+        For PCB (Printed Circuit Board) designs, if you need to
+        make sure that two or more parts in your design are in the
+        same package, you use the Update Part Reference tool.
+        First, choose a property that all the parts share and
+        verify that the parts all have the same value for that
+        property, then use the Update Part Reference tool.<br />
+        <br />
+         For example, you might have several NANDs in a schematic
+        folder and four that are in close proximity in the final
+        product. For each of the four NANDs, create a user-defined
+        property named <code>COMPGROUP</code> and set the
+        property&#39;s value to <code>1</code>. In the
+        <code>Combined Property String</code> text box in the
+        <em>Update Part Reference</em> dialog box, enter
+        {<code>COMPGROUP</code>}.
+      </p>
+      <p>
+        <strong><em>To specify ignored package pins</em></strong>
+      </p>
+      <p>
+        The <code>IGNORE</code> property, available for package
+        pins, provides a method for you to specify that certain
+        pins on a part are ignored when the part is placed on a
+        schematic page. Pins that have the
+        <code>IGNORE</code>&#160;property assigned to them do not
+        appear on the schematic page. These pins will also not be
+        included on the part footprint for any downstream PCB
+        layout tools. Also, note that ignored pins will not be
+        included in any back annotation from a layout tool.
+      </p>
+      <ol>
+        <li>
+          In the Part Editor, Choose&#160;<em>View</em> -
+          <em>Package</em>.
+        </li>
+        <li>
+          Choose <em>Edit</em> - <em>Properties</em>.<br />
+           The <em>Package Properties</em> dialog box appears.
+        </li>
+        <li>
+          Select the pins you wish to ignore, and select the
+          <code>IGNORE</code> <span>&#160;</span>property for those
+          pins.
+        </li>
+        <li>
+          Click <em>OK</em>.
+        </li>
+      </ol>
+      <p>
+        <strong><em>To force multiple parts into a single
+        package</em></strong>
+      </p>
+      <ol>
+        <li>
+          Choose one property that the parts share and assign the
+          same value to that property for each part. You may want
+          to add a user-defined property to each part.
+        </li>
+        <li>
+          In the project manager, select schematic folders or
+          schematic pages if you want to process only a portion of
+          the design. If you want to process the entire design,
+          leave the schematic folders or schematic pages
+          unselected.
+        </li>
+        <li>
+          Choose
+          <em>Tools</em>&#160;-&#160;<em>Annotate</em>.<br />
+           The <em>Annotate</em> dialog box appears.
+        </li>
+        <li>
+          In the Combined Property String text box, enter the
+          property name. The name must be enclosed in
+          braces:&#160;&quot;{&quot; and &quot;}&quot;.
+        </li>
+        <li>
+          Verify that the remaining dialog box options are set the
+          way you want them. For example, specify, among other
+          things, whether you are unconditionally updating all
+          references or only those that are set to the unassigned
+          (?) reference.
+        </li>
+        <li>
+          Click OK.
+        </li>
+      </ol>
+      <p>
+        <strong><em>Shortcut</em></strong>
+      </p>
+      <p>
+        Toolbar: <img class="confluence-embedded-image"
+        data-image-src="attachments/7998638/8194320.gif"
+        height="30" src="attachments/7998638/8194320.gif"
+        title="annotate.gif" width="33" />
+      </p>
+      <p>
+        <strong><em>To create a multiple-part package</em></strong>
+      </p>
+      <ol>
+        <li>
+          Open the library that will hold the part.
+        </li>
+        <li>
+          Choose <em>Design</em>&#160;-&#160;<em>New
+          Part</em>.<br />
+           The <em>New Part Properties</em> dialog box appears.
+        </li>
+        <li>
+          Enter the number of parts in the package (up to 128), and
+          specify whether they are all the same (homogeneous) or
+          different (heterogeneous).
+        </li>
+        <li>
+          Fill in the other fields in the dialog box and click
+          <em>OK</em>.<br />
+           The part editor opens with an empty part outline.
+        </li>
+        <li>
+          Use the graphics tools to define the part body.
+        </li>
+        <li>
+          Use the <em>Place Pin</em> dialog box to add pins to the
+          part.<br />
+           You can share pins such as power and ground pins for
+          each part in the package as described in Creating a
+          shared pin.
+        </li>
+        <li>
+          If you are creating a heterogeneous package, choose
+          <em>View - Next Part</em>, then repeat steps 4 and 5 for
+          each part.<br />
+           OR<br />
+           If you are creating a homogeneous package,
+          choose<em>&#160;View - Next Part</em>, then assign pin
+          numbers for each part.
+        </li>
+        <li>
+          Choose <em>File</em>&#160;- <em>Save</em>.<br />
+           If you are creating the part in a new library that has
+          not yet been saved, the <em>Save As</em> dialog box
+          appears, giving you the opportunity to name the library
+          file.
+        </li>
+      </ol>
+      <div class="panelMacro">
+        <table class="noteMacro">
+          <colgroup>
+            <col width="24" />
+            <col />
+          </colgroup>
+          <tr>
+            <td valign="top">
+              <img align="absmiddle" alt="" border="0" height="16"
+              src="images/icons/emoticons/warning.png"
+              width="16" />
+            </td>
+            <td>
+              <ul>
+                <li>
+                  If you edit a library provided by OrCAD, it is
+                  important that you assign a new library name so
+                  that your changes are not overwritten when you
+                  upgrade or update your software.
+                </li>
+                <li>
+                  After a part is created, you can add to or
+                  decrease the number of parts in the homogeneous
+                  package, even if the part starts out as a package
+                  of one. However, you can neither increase nor
+                  decrease the number of parts in a heterogeneous
+                  package.
+                </li>
+              </ul>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <hr xmlns:html="http://www.w3.org/1999/xhtml" />
+    <hr xmlns:html="http://www.w3.org/1999/xhtml" align="left" />
+    <div xmlns:html="http://www.w3.org/1999/xhtml"
+    style="text-align: left;">
+      <!-- Begin Buttons -->
+      <table border="0" cellpadding="0" cellspacing="0"
+      width="650">
+        <tbody>
+          <tr>
+            <td colspan="10" height="36" width="650">
+              <img height="34" src="../support/header_doc.gif"
+              width="650" />
+            </td>
+          </tr>
+          <tr>
+            <td height="20" width="59">
+              <a href="javascript:openLibrary()"><img
+              alt="View Library" border="0" height="20"
+              src="../support/nav2_library.gif" width="59" /></a>
+            </td>
+            <td height="20" width="73">
+              <a href="cap_ugTOC.html"><img alt="Table of Contents"
+              border="0" src="../support/nav2_toc.gif" /></a>
+            </td>
+            <td height="20" width="46">
+              <img alt="Index" border="0"
+              src="../support/nav2_index_b.gif" />
+            </td>
+            <td>
+              <a href="Part_Packages.html"><img alt="Previous"
+              border="0" src="../support/nav2_previous.gif" /></a>
+            </td>
+            <td>
+              <a
+              href="Editing__Deleting__and_Viewing_a_Package.html"><img
+               alt="Next" border="0"
+              src="../support/nav_next.gif" /></a>
+            </td>
+            <td height="20">
+              <a href="cap_ug.pdf"><img
+              alt="Open PDF to print book" border="0" height="20"
+              src="../support/nav2_print.gif" width="114" /></a>
+            </td>
+            <td height="20" width="61">
+              <img src="../support/nav2_black.gif" />
+            </td>
+            <td height="20" width="76">
+              <a href="/feedback.htm"><img alt="Email Comments"
+              border="0" height="20"
+              src="../support/nav2_feedback.gif" width="76" /></a>
+            </td>
+            <td height="20" width="43">
+              <a href="../cdsuser/help.html"><img
+              alt="Help Using Documentation" border="0" height="20"
+              src="../support/nav2_help.gif" width="43" /></a>
+            </td>
+            <td height="20" width="37">
+              <a href="/exitsearch.htm"><img
+              alt="Shut Down Cadence Documentation Server"
+              border="0" height="20" src="../support/nav2_exit.gif"
+              width="37" /></a>
+            </td>
+          </tr>
+        </tbody>
+      </table><!-- End Buttons -->
+    </div><br xmlns:html="http://www.w3.org/1999/xhtml" />
+     <font xmlns:html="http://www.w3.org/1999/xhtml" size="-1">For
+    support, see <a href="http://support.cadence.com"
+    target="_blank">Cadence Online Support</a> service.</font> <br
+    xmlns:html="http://www.w3.org/1999/xhtml" />
+     <br xmlns:html="http://www.w3.org/1999/xhtml" />
+     <font xmlns:html="http://www.w3.org/1999/xhtml"
+    size="-1"><i>Copyright &#169; 2012, <a
+    href="http://www.cadence.com">Cadence Design Systems,
+    Inc.</a></i></font> <br
+    xmlns:html="http://www.w3.org/1999/xhtml" />
+     <font xmlns:html="http://www.w3.org/1999/xhtml" size="-1">All
+    rights reserved.</font> <br
+    xmlns:html="http://www.w3.org/1999/xhtml" />
+     <br xmlns:html="http://www.w3.org/1999/xhtml" />
+  </body>
+</html>

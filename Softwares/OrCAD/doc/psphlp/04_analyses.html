@@ -1,0 +1,1955 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN" "http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+<html xmlns="http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>PSpice Help -- Performing Circuit Analysis</title>
+<META NAME="Approver" CONTENT="Technical Publications">
+<META NAME="Author" CONTENT="Technical Publications">
+<META NAME="CreateDate" CONTENT="2012-09-04">
+<META NAME="CreateTime" CONTENT="1346762598">
+<META NAME="DataType" CONTENT="Manuals">
+<META NAME="Description" CONTENT="PSpice A/D simulates analog-only and mixed circuits. The analog and digital algorithms are built into the same program to enable circuit simulation with tightly-coupled feedback loops between analog and digital sections without performance degradation.">
+<META NAME="DocTitle" CONTENT="PSpice Help">
+<META NAME="DocType" CONTENT="Reference">
+<META NAME="EdmsRelease" CONTENT="EDMS Windows-P015">
+<META NAME="FileTitle" CONTENT="Performing Circuit Analysis">
+<META NAME="FileType" CONTENT="Chapter">
+<META NAME="Keyword" CONTENT="psphlp">
+<META NAME="Language" CONTENT="English">
+<META NAME="ModifiedDate" CONTENT="2012-09-04">
+<META NAME="ModifiedTime" CONTENT="1346762598">
+<META NAME="NextFile" CONTENT="traces.html">
+<META NAME="PageCount" CONTENT="20">
+<META NAME="Platform" CONTENT="ALL">
+<META NAME="PrevFile" CONTENT="03_preparing.html">
+<META NAME="Product" CONTENT="Allegro AMS Simulator, PSpice">
+<META NAME="ProductFamily" CONTENT="PCB Design, PCB Design">
+<META NAME="ProductVersion" CONTENT="16.6">
+<META NAME="RightsManagement" CONTENT="Copyright 19912012 Cadence Design Systems Inc.">
+<META NAME="Title" CONTENT="PSpice Help -- Performing Circuit Analysis">
+<META NAME="TopicTags" CONTENT="TRUE">
+<META NAME="Version" CONTENT="16.6">
+  </head>
+  <body style="margin-left: 5%;">
+    <a name="pagetop"></a>
+    <a name="firstpage"></a>
+    <!-- Begin Buttons -->
+    <table width="650" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td height="36" width="650" colspan="10">
+          <img src="../support/header_doc.gif" width="650" height="34">
+        </td>
+      </tr>
+      <tr>
+        <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                </td>
+<td height="20" width="73">
+<a href="psphlpTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<img src="../support/nav2_index_b.gif" border="0">
+</td>
+        <td>
+          <a href="03_preparing.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+        </td>
+        <td>
+          <a href="traces.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+        </td>
+        <td height="20">
+          <a>
+<a href="psphlp.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+          </a>
+        </td>
+        <td height="20" width="61">
+          <img src="../support/nav2_black.gif">
+        </td>
+        <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+        </td>
+        <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+        </td>
+        <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+        </td>
+      </tr>
+    </table>
+    <!-- End Buttons -->
+    <p>
+    <hr>
+    <p>
+      <h3>
+        <center>
+          <font >
+            <div>PSpice Help </div>
+            <font >
+              <div>
+            </font>
+          </font>
+        </center>
+      </h3>
+      <br>
+    </p>
+    <div>
+      <h1><a name="1048869">Performing Circuit Analysis</a></h1>
+      <!-- [TOPIC_START_OPEN]type=cmdref
+[TOPIC_START_ATTR]text=Analyzing waveforms with PSpice A&#47;D
+[TOPIC_START_ATTR]description=
+[TOPIC_START_ATTR]keyword=
+[TOPIC_START_CLOSE] -->
+      <h3><a name="1047770">Analyzing waveforms with PSpice </a></h3>
+      <p><a name="1046164">PSpice offers integrated waveform analysis functionality for viewing simulation results. Use </a>waveform analysis for circuit performance analysis and data comparison from multiple files.</p>
+      <h4><a name="1046165">What is waveform analysis? </a></h4>
+      <p><a name="1046166">After completing the simulation, PSpice plots the waveform results so you can visualize the </a>circuit's behavior and determine the validity of your design.</p>
+      <p><a name="1046167">Waveform analysis not only displays simple voltages and currents, but also complex </a>arithmetic expressions involving voltages and currents and the Fourier Transform of these expressions. You can also use waveform analysis for Performance Analysis; see <a href="05_goal.html#1057511" title="Using performance analysis and measurements"><font color="#0000ff"><u>Using Performance Analysis</u></font></a> for more information.</p>
+      <p><a name="1046168">When a mixed analog&#47;digital simulation runs successfully, PSpice displays analog and digital </a>waveforms simultaneously with a common time base. You can add text labels and other annotation symbols to plots for clarification.</p>
+      <p><a name="1046169">Taken together, simulation and waveform analysis is an iterative process. After analyzing </a>simulation results, you can refine your design and simulation settings and then perform a new simulation and waveform analysis.</p>
+      <p><a name="1046170">PSpice saves two kinds of waveform data file formats: ASCII and binary.</a></p>
+      <h4><a name="1046171">Performing post&#45;simulation analysis of the results</a></h4>
+      <p><a name="1046172">This means you can plot additional information derived from the waveforms. What you can </a>plot depends on the type of analyses you run. Bode plots, phase margin, derivatives for small&#45;signal characteristics, waveform families, and histograms are only a few of the possibilities. You can also plot other waveform characteristics such as rise time versus temperature, or percent overshoot versus component value. </p>
+      <h4><a name="1046173">Pinpointing design errors in digital circuits</a></h4>
+      <p><a name="1046174">When PSpice detects setup and hold violations, race conditions, or timing hazards, a detailed </a>message appears along with corresponding waveforms. PSpice also helps you locate the problem in your design.</p>
+<!-- [TOPIC_END] -->
+      <!-- [TOPIC_START_OPEN]type=cmdref
+[TOPIC_START_ATTR]text=What are the features of PSpice A&#47;D simulation profiles?
+[TOPIC_START_ATTR]description=
+[TOPIC_START_ATTR]keyword=
+[TOPIC_START_CLOSE] -->
+      <h3><a name="1046177">What are the features of PSpice simulation profiles?</a></h3>
+      <p><a name="1046178">PSpice has the following features in simulation profiles:</a></p>
+      <h4><a name="1046179">Increased reusability of simulation profiles</a></h4>
+      <p><a name="1046180">Previous versions of PSpice allowed you to import settings only from a simulation profile that </a>exists in the same project. You can now create a new simulation profile by importing settings from a simulation profile that exists in another project also. This increases the reusability of simulation profiles. For more information, see <a href="#create_new_sim" title="Performing Circuit Analysis"><font color="#0000ff"><u>Creating a new simulation profile</u></font></a>.</p>
+      <h4><a name="1046181">Support for profile level configuration</a></h4>
+      <p><a name="1046182">Previous versions of PSpice allowed you to configure model libraries, stimulus files and </a>include files only at the global level (applicable to all designs) or at the design level (applicable only to the design). You can now configure model libraries, stimulus files and include files at the simulation profile level also. </p>
+      <p><a name="1046183">The ability to configure model libraries, stimulus files and include files at the profile level has </a>the following benefits:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046184">You can simulate the same circuit with different model libraries for each type of analysis </a>and compare results. For example, you may want a part to be modeled using the DECODER model in the FRQCHK.LIB model library for AC analysis and using the DECODER model in the FRQCHK_1.lib model library for transient analysis. You can create two simulation profiles&#45;one for AC and one for transient analysis, configure the FRQCHK.LIB model library at the profile level in the simulation profile for AC analysis, and configure the FRQCHK_1.LIB model library at the profile level in the simulation profile for transient analysis. Previous versions of PSpice required you to configure the model libraries at the design level and change the search order of the model libraries in a simulation profile before running the simulation, if you wanted to simulate the same circuit with different model libraries for each type of analysis.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046185">You can simulate the same circuit with different stimuli to test different characteristics like </a>small signal response and large signal response, for each type of analysis. For example, you may want to simulate a circuit using the RF_AMP.STL stimulus file for AC analysis and the RF_AMP1.STL stimulus file for transient analysis. You can create two simulation profiles&#45;one for AC and one for transient analysis, configure the RF_AMP.STL stimulus file at the profile level in the simulation profile for AC analysis, and configure the RF_AMP1.STL stimulus file at the profile level in the simulation profile for transient analysis. Previous versions of PSpice required you to configure the stimulus files at the design level and change the search order of the stimulus files in a simulation profile before running the simulation, if you wanted to simulate the same circuit with different stimuli for each type of analysis.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046186">You can simulate the same circuit using different include files for each type of analysis. </a>For example, you may want to simulate a circuit using the RF_AMP.INC include file for AC analysis and the RF_AMP1.INC include file for transient analysis. You can create two simulation profiles&#45;one for AC and one for transient analysis, configure the RF_AMP.INC include file at the profile level in the simulation profile for AC analysis, and configure the RF_AMP1.INC include file at the profile level in the simulation profile for transient analysis. Previous versions of PSpice required you to configure the include files at the design level and change the search order of the include files in a simulation profile before running the simulation, if you wanted to simulate the same circuit with different include files for each type of analysis.</td>
+          </tr>
+        </table>
+      </div>
+<!-- [TOPIC_END] -->
+      <!-- [TOPIC_START_OPEN]type=cmdref
+[TOPIC_START_ATTR]text=Creating a new simulation profile
+[TOPIC_START_ATTR]description=
+[TOPIC_START_ATTR]keyword=
+[TOPIC_START_CLOSE] -->
+      <h3><a name="create_new_sim"></a><a name="1046191">Creating a new simulation profile</a></h3>
+      <p><a name="1046192">A simulation profile (*.SIM) saves your simulation settings for an analysis type so you can </a>reuse them easily.</p>
+      <p><a name="1046193">You can create a new simulation profile from scratch or import the settings from an existing </a>simulation profile. Importing settings from existing simulation profiles allows you to reuse the settings from other simulation profiles.</p>
+      <p><a name="1046194">You can use PSpice, to create a new simulation profile by importing settings from a simulation </a>profile that exists in the same project or in another project. Previous versions of PSpice allowed you to import settings only from a simulation profile that exists in the same project. </p>
+      <p><a name="1046196">To create a new simulation profile</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	1.	</nobr>
+              </div>
+            </td>
+            <td><a name="1046197">From the File menu in PSpice, point to New and choose Simulation Profile to display the </a>New Simulation dialog box.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	2.	</nobr>
+              </div>
+            </td>
+            <td><a name="1046198">In the Profile Name text box, type a name for the profile (such as the name of the analysis </a>type for the new profile).</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	3.	</nobr>
+              </div>
+            </td>
+            <td><a name="1046199">In the Inherit From an Existing Profile text box, enter the name of another profile to import </a>its settings into the new profile. You must enter an existing profile name in this text box or click browse to select an existing profile.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	4.	</nobr>
+              </div>
+            </td>
+            <td><a name="1046200">Click Create to create the profile and display the Simulation Settings dialog box. </a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1046202">See the following topics for information on the settings in the tabs in the Simulation Settings </a>dialog box:</p>
+      <p><a name="1046203">&nbsp;</a></p>
+      <table summary="" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF" width="648">
+        <caption>
+        <tr>
+          <td cellpadding="4" border="0" valign="top" >
+            <p><a name="1046654"><font color="#000000">General tab</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top" >
+            <p><a href="#general_sim" title="Performing Circuit Analysis" name="1046656"><font color="#0000ff"><u>General simulation settings for simulation profiles</u></font></a> </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1046658"><font color="#000000">Analysis</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a href="#analysis_sim_prof" title="Performing Circuit Analysis" name="1046660"><font color="#0000ff"><u>Analysis settings for simulation profiles</u></font></a> </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1046662"><font color="#000000">Configuration Files</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a href="#library_settings" title="Performing Circuit Analysis" name="1046664"><font color="#0000ff"><u>Library settings for simulation profiles</u></font></a></p>
+            <p><a href="#1046371" title="Performing Circuit Analysis" name="1046677"><font color="#0000ff"><u>Stimulus settings for simulation profiles</u></font></a> </p>
+            <p><a href="#include_files" title="Performing Circuit Analysis" name="1046678"><font color="#0000ff"><u>Include files settings for simulation profiles</u></font></a> </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1046666"><font color="#000000">Options tab</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a href="#options_sim" title="Performing Circuit Analysis" name="1046668"><font color="#0000ff"><u>Options for simulation profiles</u></font></a> </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1046670"><font color="#000000">Data Collection tab</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a href="#data_coll" title="Performing Circuit Analysis" name="1046672"><font color="#0000ff"><u>Data collection options for simulation profiles</u></font></a> </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1046674"><font color="#000000">Probe window</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a href="#1046422" title="Performing Circuit Analysis" name="1046676"><font color="#0000ff"><u>Probe windows settings for simulation profiles</u></font></a> </p>
+          </td>
+        </tr>
+      </table>
+<!-- [TOPIC_END] -->
+      <!-- [TOPIC_START_OPEN]type=cmdref
+[TOPIC_START_ATTR]text=Using a simulation profile
+[TOPIC_START_ATTR]description=
+[TOPIC_START_ATTR]keyword=
+[TOPIC_START_CLOSE] -->
+      <h3><a name="1046227">Using a simulation profile</a></h3>
+      <p><a name="1046228">You can simulate the circuit using any of the simulation profiles you have created in the </a>project. To use a simulation profile, open it in PSpice or make it active in the design entry program such as Capture or Design Entry HDL.</p>
+      <p><a name="1046229">To open a simulation profile in PSpice </a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	1.	</nobr>
+              </div>
+            </td>
+            <td><a name="1046230">From the File menu, choose Open Simulation.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	2.	</nobr>
+              </div>
+            </td>
+            <td><a name="1046231">Select the &#60;profile_name&#62;.SIM file and click Open.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1046233">To make a simulation profile active in Capture</a></p>
+      <p><a name="1046234">Do one of the following:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046235">From the PSpice toolbar in Capture, select the simulation profile you want to use. See </a>PSpice toolbar in Capture for more information.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046703">Select the simulation profile in the Capture Project Manager, and choose Make Active </a>from the PSpice menu in Capture. </td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1046704">The <img src="images/04_analyses.6.1.1.png" width="25" height="21" alt=""> icon indicates an active simulation profile. </a></p>
+      <p><a name="1046705">Each simulation profile is associated with a schematic. When you select a simulation profile </a>in Capture, the folder for the associated schematic becomes the root schematic folder. When you run PSpice, only the pages in the root schematic folder are netlisted. If the schematic pages in the root schematic folder refer to pages in another schematic folder (as in the case of hierarchical designs), the pages in that schematic folder also get netlisted.</p>
+<!-- [TOPIC_END] -->
+      <!-- [TOPIC_START_OPEN]type=cmdref
+[TOPIC_START_ATTR]text=Editing a simulation profile
+[TOPIC_START_ATTR]description=
+[TOPIC_START_ATTR]keyword=
+[TOPIC_START_CLOSE] -->
+      <h3><a name="1046241">Editing a simulation profile</a></h3>
+      <p><a name="1046242">You can edit an existing simulation profile to change the simulation settings. You can edit the </a>current simulation profile in PSpice. In the design entry program, you can edit the current simulation profile or select the simulation profile you want to edit. </p>
+      <h4><a name="1046243">To edit a simulation profile in PSpice </a></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	1.	</nobr>
+              </div>
+            </td>
+            <td><a name="1046244">From the Simulation menu, choose Edit Profile to display the Simulation Settings dialog </a>box.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	2.	</nobr>
+              </div>
+            </td>
+            <td><a name="1046245">Make the required changes in the Simulation Settings dialog box.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	3.	</nobr>
+              </div>
+            </td>
+            <td><a name="1046246">Click OK to save the changes.</a></td>
+          </tr>
+        </table>
+      </div>
+      <h4><a name="1046248">To edit the current simulation profile in design entry program</a></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	1.	</nobr>
+              </div>
+            </td>
+            <td><a name="1046249">From the PSpice menu, choose Edit Simulation Profile to display the Simulation Settings </a>dialog box.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	2.	</nobr>
+              </div>
+            </td>
+            <td><a name="1046250">Make the required changes in the Simulation Settings dialog box.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	3.	</nobr>
+              </div>
+            </td>
+            <td><a name="1046251">Click OK to save the changes.</a></td>
+          </tr>
+        </table>
+      </div>
+      <h4><a name="1046253">To select a simulation profile you want to edit in design entry program</a></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	1.	</nobr>
+              </div>
+            </td>
+            <td><a name="1046254">From the PSpice toolbar in the design entry program, select the simulation profile you </a>want to edit. </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	2.	</nobr>
+              </div>
+            </td>
+            <td><a name="1046255">From the PSpice menu in the design entry program, choose Edit Simulation Profile to </a>display the Simulation Settings dialog box.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	3.	</nobr>
+              </div>
+            </td>
+            <td><a name="1046256">Make the required changes in the Simulation Settings dialog box.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	4.	</nobr>
+              </div>
+            </td>
+            <td><a name="1046257">Click OK to save the changes.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1046817">See the following topics for information on editing the settings in the tabs in the Simulation </a>Settings dialog box:</p>
+      <p><a name="1047662">&nbsp;</a></p>
+      <table summary="" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF" width="648">
+        <caption>
+        <tr>
+          <td cellpadding="4" border="0" valign="top" >
+            <p><a name="1047666"><font color="#000000">General tab</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top" >
+            <p><a href="#general_sim" title="Performing Circuit Analysis" name="1047671"><font color="#0000ff"><u>General simulation settings for simulation profiles</u></font></a> </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047673"><font color="#000000">Analysis</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a href="#analysis_sim_prof" title="Performing Circuit Analysis" name="1047678"><font color="#0000ff"><u>Analysis settings for simulation profiles</u></font></a> </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047680"><font color="#000000">Configuration Files</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a href="#library_settings" title="Performing Circuit Analysis" name="1047685"><font color="#0000ff"><u>Library settings for simulation profiles</u></font></a></p>
+            <p><a href="#1046371" title="Performing Circuit Analysis" name="1047689"><font color="#0000ff"><u>Stimulus settings for simulation profiles</u></font></a> </p>
+            <p><a href="#include_files" title="Performing Circuit Analysis" name="1047693"><font color="#0000ff"><u>Include files settings for simulation profiles</u></font></a> </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047695"><font color="#000000">Options tab</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a href="#options_sim" title="Performing Circuit Analysis" name="1047700"><font color="#0000ff"><u>Options for simulation profiles</u></font></a> </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047702"><font color="#000000">Data Collection tab</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a href="#data_coll" title="Performing Circuit Analysis" name="1047707"><font color="#0000ff"><u>Data collection options for simulation profiles</u></font></a> </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047709"><font color="#000000">Probe window</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a href="#1046422" title="Performing Circuit Analysis" name="1047714"><font color="#0000ff"><u>Probe windows settings for simulation profiles</u></font></a> </p>
+          </td>
+        </tr>
+      </table>
+<!-- [TOPIC_END] -->
+      <!-- [TOPIC_START_OPEN]type=cmdref
+[TOPIC_START_ATTR]text=Deleting a simulation profile
+[TOPIC_START_ATTR]description=
+[TOPIC_START_ATTR]keyword=
+[TOPIC_START_CLOSE] -->
+      <h3><a name="1046283">Deleting a simulation profile</a></h3>
+      <p><a name="1046284">You can delete a simulation profile only from the Capture Project Manager. </a></p>
+      <h4><a name="1046285">To delete a simulation profile</a></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	1.	</nobr>
+              </div>
+            </td>
+            <td><a name="1046286">Select the simulation profile in the Capture Project Manager and press Delete</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><font color="#000000"><strong>Note: </strong></font><a name="1046287">When you delete a simulation profile, the profile is deleted from the project but the </a>files related to the simulation profile are not deleted from the project directory. You can manually delete the files from the project directory. For example, if you delete a simulation profile named TRAN, you must delete the TRAN folder located at <font size="2" face="'Courier New'" color="#000000">&#60;project_directory&#62;\&#60;design_name&#62;&#45;</font><font size="2" face="'Courier New'" color="#000000">PSpiceFiles\&#60;root_schematic_name&#62;\</font>.</blockquote>
+      <blockquote><font color="#000000"><strong>Note: </strong></font><a name="1046288">If you delete a simulation profile but do not delete the files related to that profile, </a>and later create a profile with the same name for the schematic, Capture displays an error message that a profile with the same name exists. You can overwrite the old profile or create another profile with a different name.</blockquote>
+      <p><a name="1046289">&nbsp;</a></p>
+<!-- [TOPIC_END] -->
+      <!-- [TOPIC_START_OPEN]type=cmdref
+[TOPIC_START_ATTR]text=Viewing the simulation queue
+[TOPIC_START_ATTR]description=
+[TOPIC_START_ATTR]keyword=
+[TOPIC_START_CLOSE] -->
+      <h3><a name="1046291">Viewing the simulation queue</a></h3>
+      <p><a name="1046292">Use the Simulation Queue dialog box to set the order of a batch simulation and to view the </a>progress of a batch simulation. </p>
+      <h4><a name="1046293">To set up a batch simulation </a></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	1.	</nobr>
+              </div>
+            </td>
+            <td><a name="1046294">From the File menu, choose Open Simulation.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	2.	</nobr>
+              </div>
+            </td>
+            <td><a name="1046295">Select multiple .SIM or .CIR files by doing one of the following:</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046296">Press CTRL while selecting to select individual files.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046297">Press SHIFT while selecting to select a range of files.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1046298">If the files you want to select are located in different directories, click Add in the </a>Simulation Queue dialog box to find them in the various directories. The Simulation Queue dialog box will appear after you click Open (see below).</p>
+      <h4><a name="1046299">To set the batch simulation order</a></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	1.	</nobr>
+              </div>
+            </td>
+            <td><a name="1046300">After selecting the files for a batch simulation, click Open.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1046301">The Simulation Queue dialog box appears. The file at the top of the Pending Simulations </a>list is set to be simulated first.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	2.	</nobr>
+              </div>
+            </td>
+            <td><a name="1046302">To change the order, do one of the following:</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046303">Select a filename in the list and click either <img src="images/up_arrow_button.gif" width="21" height="19" alt=""> or <img src="images/down_arrow_button.gif" width="21" height="19" alt=""> to move it up or down. </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046304">Click the Reset button to reset the order. </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046305">Click Add to add more files to the simulation.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	3.	</nobr>
+              </div>
+            </td>
+            <td><a name="1046306">Click the Settings button to display the Simulation Settings dialog box, where you can </a>view or change the simulation profile settings.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	4.	</nobr>
+              </div>
+            </td>
+            <td><a name="1046307">Click the Start button to start the simulations.</a></td>
+          </tr>
+        </table>
+      </div>
+<!-- [TOPIC_END] -->
+      <!-- [TOPIC_START_OPEN]type=cmdref
+[TOPIC_START_ATTR]text=General simulation settings for simulation profiles
+[TOPIC_START_ATTR]description=
+[TOPIC_START_ATTR]keyword=
+[TOPIC_START_CLOSE] -->
+      <h3><a name="general_sim"></a><a name="1046309">General simulation settings for simulation profiles</a></h3>
+      <p><a name="1046310">Use the General tab of the Simulation Settings dialog box to specify the simulation input and </a>output files and save a description of the simulation profile.</p>
+      <h4><a name="1046311">Profile name</a></h4>
+      <p><a name="1046312">The Profile name text box displays the name of the current profile. You can change the name </a>here.</p>
+      <h4><a name="1046313">Input settings</a></h4>
+      <p><a name="1046314">Choose Schematic to have the simulation input come from a Capture design (*.DSN file), or </a>choose Circuit File (*.CIR) to have the simulation input come from a circuit file. For either input type, enter the name of the file in the text box. </p>
+      <p><a name="1046315">For a design&#45;based simulation, also select the name of the top&#45;level schematic page. Use the </a>Analysis tab of this dialog box to enter simulation settings.</p>
+      <p><a name="1046316">For a circuit&#45;file&#45;based design, the Analysis tab settings are unavailable. You can change the </a>simulation settings by editing the commands in the .CIR file. See the online PSpice Reference Guide for more information about circuit file commands.</p>
+      <h4><a name="1046317">Output settings</a></h4>
+      <p><a name="1046318">In the Output Filename text box, enter a file name (*.OUT) for the simulation output to be </a>saved to.</p>
+      <p><a name="1046319">In the Waveform Data Filename text box, enter a filename (*.DAT) for the simulation waveform </a>data to be saved to. </p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1046321">Use this text box to describe the design or simulation profile.</a></p>
+<!-- [TOPIC_END] -->
+      <!-- [TOPIC_START_OPEN]type=cmdref
+[TOPIC_START_ATTR]text=Analysis settings for simulation profiles
+[TOPIC_START_ATTR]description=
+[TOPIC_START_ATTR]keyword=
+[TOPIC_START_CLOSE] -->
+      <h3><a name="analysis_sim_prof"></a><a name="1046323">Analysis settings for simulation profiles</a></h3>
+      <p><a name="1046324">Use the Analysis tab of the Simulation Settings dialog box to define the basic analysis type </a>and set up additional advanced analyses and simulation options.</p>
+      <h4><a name="1046325">Analysis types</a></h4>
+      <p><a name="1046326">From the Analysis Type list, select the basic analysis type you want to use. See Setting up </a>analyses for more information about these.</p>
+      <h4><a name="1046327">Analysis options</a></h4>
+      <p><a name="1046328">Under Options, select an advanced analysis you want to use. See Setting up analyses for </a>more information about these.</p>
+      <h4><a name="1047747">Enable PSpice AA support for legacy</a></h4>
+      <p><a name="1047748">Select the </a><font color="#000000"><em>Enable PSpice AA support for legacy</em></font> option to ensure that the legacy PSpice models are simulated in PSpice Advanced Analysis.</p>
+<!-- [TOPIC_END] -->
+      <!-- [TOPIC_START_OPEN]type=cmdref
+[TOPIC_START_ATTR]text=Include files settings for simulation profiles
+[TOPIC_START_ATTR]description=
+[TOPIC_START_ATTR]keyword=
+[TOPIC_START_CLOSE] -->
+      <h3><a name="include_files"></a><a name="1046330">Include files settings for simulation profiles</a></h3>
+      <p><a name="1046331">Use the Configuration Files tab of the Simulation Settings dialog box to configure and edit </a>include files for simulation.</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	1.	</nobr>
+              </div>
+            </td>
+            <td><a name="1046332">Click </a><font color="#000000"><em>Include in the Category field in the Configuration Files</em></font> tab, then configure or edit the include files.</td>
+          </tr>
+        </table>
+      </div>
+      <table summary="" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF" width="648">
+        <caption>
+        <tr>
+          <td cellpadding="4" border="0" valign="top" >
+            <p><a name="1047008"><font color="#000000">Click this button&#8230;</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top" >
+            <p><a name="1047010">To do this&#8230;</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047012"><font color="#000000">Browse </font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047014">Browse directories for files to include--the selected file name </a>appears in the Filename text box</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047016"><font color="#000000">Add as Global </font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047018">Add the file listed in the Filename text box to be used for all </a>designs </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047020"><font color="#000000">Add to Design </font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047022">Add the file listed in the Filename text box to be used for the </a>current design only</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047024"><font color="#000000">Add to Profile</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047026">Add the file listed in the Filename text box to be used for the </a>current profile only</p>
+            <p><a name="1047043">A file added at the design level cannot be added at the profile </a>level also.</p>
+            <p><a name="1047052">Note: Profile specific configuration is available only if the project </a>was created using Capture from release 10.0 and beyond. This feature is also available for the project created using older versions of Capture but converted to the Capture 10.0 format.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047060"><font color="#000000">Edit</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047062">Open the selected file for editing in PSpice.</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047080">Change</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047082">Change the selected file with the file specified in the Filename </a>text box.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047076">&nbsp;</a></p>
+            <p><a name="1047095"><font color="#000000"><img src="images/04_analyses.6.1.4.png" width="25" height="21" alt=""></font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047078">Remove the selected file from the Variant Files list--this does </a>not delete the file from your computer</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047072">&nbsp;</a></p>
+            <p><a name="1047119"><font color="#000000"><img src="images/04_analyses.6.1.5.png" width="25" height="21" alt=""> and <img src="images/04_analyses.6.1.6.png" width="25" height="21" alt=""></font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047074">Move the selected file up or down in the Variant Files list.</a></p>
+          </td>
+        </tr>
+      </table>
+<!-- [TOPIC_END] -->
+      <!-- [TOPIC_START_OPEN]type=cmdref
+[TOPIC_START_ATTR]text=Library settings for simulation profiles
+[TOPIC_START_ATTR]description=
+[TOPIC_START_ATTR]keyword=
+[TOPIC_START_CLOSE] -->
+      <h3><a name="library_settings"></a><a name="1046346">Library settings for simulation profiles</a></h3>
+      <p><a name="1046347">Use the Configuration Files tab of the Simulation Settings dialog box configure global, design </a>and profile level model libraries. </p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	1.	</nobr>
+              </div>
+            </td>
+            <td><a name="1046348">Click Library in the Category field in the Configuration Files tab, and then configure the </a>model libraries.</td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1047150">&nbsp;</a></p>
+      <table summary="" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF" width="648">
+        <caption>
+        <tr>
+          <td cellpadding="4" border="0" valign="top" >
+            <p><a name="1047215"><font color="#000000">Click this button&#8230;</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top" >
+            <p><a name="1047217">To do this&#8230;</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047219"><font color="#000000">Browse </font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047221">Browse directories for libraries to make available to the </a>profile--the selected file name appears in the Filename text box</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047223"><font color="#000000">Add as Global </font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047225">Add the file listed in the Filename text box to be available to all </a>designs </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047227"><font color="#000000">Add to Design </font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047229">Add the file listed in the Filename text box to be available to the </a>current design only Note: When you edit a model from Capture and save the changes, Model Editor automatically configures the model library at the design level.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047231"><font color="#000000">Add to Profile</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047233">Add the file listed in the Filename text box to be available to the </a>current profile only A file added at the design level cannot be added at the profile level also. </p>
+            <p><font color="#000000"><strong>Note: </strong></font><a name="1047274">Profile specific configuration is available only if the project </a>was created using Capture from release 10.0 and beyond. This feature is also available for the project created using older versions of Capture but converted to the Capture 10.0 format. </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047235"><font color="#000000">Edit</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047237">Open the selected file for editing in Model Editor</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047239"><font color="#000000">Change</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047241">Change the selected file with the file specified in the Filename </a>text box</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047243">&nbsp;</a></p>
+            <p><a name="1047252"><font color="#000000"><img src="images/04_analyses.6.1.7.png" width="25" height="21" alt=""></font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047245">Remove the selected file from the Variant Files list--this does </a>not delete the file from your computer</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047247">&nbsp;</a></p>
+            <p><a name="1047260">&nbsp;</a></p>
+            <p><a name="1047267"><font color="#000000"><img src="images/04_analyses.6.1.8.png" width="25" height="21" alt=""> and <img src="images/04_analyses.6.1.9.png" width="25" height="21" alt=""></font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047249">Move the selected file up or down in the Variant Files list. </a></p>
+            <p><a name="1047279">PSpice locates models by searching the model libraries in the </a>order in which they are listed in the Variant Files list. PSpice locates models by first searching the model libraries configured at the profile level, then the model libraries configured at the design level and finally the model libraries configured at the global level. </p>
+            <p><font color="#000000"><strong>Note: </strong></font><a name="1047280">You can change the search order only within the files </a>configured at the same level. For example, you can change the search order only within the files configured at the profile level.</p>
+          </td>
+        </tr>
+      </table>
+      <h4><a name="1046363">Library search path</a></h4>
+      <p><a name="1046364">The Library Path text box displays the path that PSpice uses to search for models configured </a>at the global level. You can edit or replace this path by typing a path in this text box, following these rules:</p>
+      <p><a name="1046365">Use a semicolon (;) to separate two path names.</a></p>
+      <p><a name="1046366">Do not follow the last path name with a semicolon.</a></p>
+      <h4><em><a name="1046367">Example:</a></em></h4>
+      <p><a name="1046368">To search first </a><font color="#000000"><em>C:\OrCAD\Orcad_16.5\PSpice \Library</em></font>, then <font color="#000000"><em>C:\MYLIBS</em></font>, type the following: </p>
+      <p><a name="1046369"><font size="2" face="'Courier New'" color="#000000">&#34;C:\OrCAD\Orcad_16.5\PSpice \Library&#34;;&#34;c:\mylibs&#34;</font></a> </p>
+<!-- [TOPIC_END] -->
+      <!-- [TOPIC_START_OPEN]type=cmdref
+[TOPIC_START_ATTR]text=Stimulus settings for simulation profiles
+[TOPIC_START_ATTR]description=
+[TOPIC_START_ATTR]keyword=
+[TOPIC_START_CLOSE] -->
+      <h3><a name="1046371">Stimulus settings for simulation profiles</a></h3>
+      <p><a name="1046372">Use the Configuration Files tab of the Simulation Settings dialog box to configure global, </a>design and profile level stimulus files.</p>
+      <p><a name="1046373">Click Stimulus in the Category field in the Configuration Files tab, and then configure the </a>stimulus files.</p>
+      <table summary="" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF" width="648">
+        <caption>
+        <tr>
+          <td cellpadding="4" border="0" valign="top" >
+            <p><a name="1047307"><font color="#000000">Click this button&#8230;</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top" >
+            <p><a name="1047309">To do this&#8230;</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047311"><font color="#000000">Browse </font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047313">Browse directories for libraries to make available to the profile&#45;</a>the selected file name appears in the Filename text box</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047315"><font color="#000000">Add as Global </font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047317">Add the file listed in the Filename text box to be available to all </a>designs </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047319"><font color="#000000">Add to Design </font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047321">Add the file listed in the Filename text box to be available to the </a>current design only</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047323"><font color="#000000">Add to Profile</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047325">Add the file listed in the Filename text box to be available to the </a>current profile only.</p>
+            <p><a name="1047342">A file added at the design level cannot be added at the profile </a>level also. </p>
+            <p><font color="#000000"><strong>Note: </strong></font><a name="1047343">When you edit a stimulus from Capture and save the </a>changes, Stimulus Editor automatically configures the stimulus file at the profile level. </p>
+            <p><font color="#000000"><strong>Note: </strong></font><a name="1047348">Profile specific configuration is available only if the project </a>was created using Capture from release 10.0 and beyond. This feature is also available for the project created using older versions of Capture but converted to the Capture 10.0 format. </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047327"><font color="#000000">Edit</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047329">Open the selected file for editing in Stimulus Editor</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047331"><font color="#000000">Change</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047333">Change the selected file with the file specified in the Filename </a>text box</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047335">&nbsp;</a></p>
+            <p><a name="1047355"><font color="#000000"><img src="images/04_analyses.6.1.10.png" width="25" height="21" alt=""></font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047337">Remove the selected file from the Variant Files list--this does </a>not delete the file from your computer</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047339">&nbsp;</a></p>
+            <p><a name="1047379"><font color="#000000"><img src="images/04_analyses.6.1.11.png" width="25" height="21" alt=""> and <img src="images/04_analyses.6.1.12.png" width="25" height="21" alt=""></font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047341">Move the selected file up or down in the Variant Files list. </a></p>
+            <p><a name="1047388">PSpice locates the stimuli by searching the stimulus files in the </a>order in which they are listed in the Variant Files list. PSpice locates the stimuli by first searching the stimulus files configured at the profile level, then the stimulus files configured at the design level and finally the stimulus files configured at the global level. </p>
+            <p><font color="#000000"><strong>Note: </strong></font><a name="1047389">You can change the search order only within the files </a>configured at the same level. For example, you can change the search order only within the files configured at the profile level.</p>
+          </td>
+        </tr>
+      </table>
+<!-- [TOPIC_END] -->
+      <!-- [TOPIC_START_OPEN]type=cmdref
+[TOPIC_START_ATTR]text=Options for simulation profiles
+[TOPIC_START_ATTR]description=
+[TOPIC_START_ATTR]keyword=
+[TOPIC_START_CLOSE] -->
+      <h3><a name="options_sim"></a><a name="1046390">Options for simulation profiles</a></h3>
+      <p><a name="1046391">Use the Options tab of the Simulation Settings dialog box to fine&#45;tune how PSpice performs </a>calculations for analog and gate&#45;level digital simulation, as well as what information to save to the simulation output file (*.OUT).</p>
+      <h4><a name="1046392">Option categories</a></h4>
+      <p><a name="1046393">From the Category list, select Analog Simulation, Gate&#45;level Simulation, or Output file to </a>display the settings for each option category. Click the Reset button to reset all the options to their default values.</p>
+      <h4><a name="1046394">Analog simulation options</a></h4>
+      <p><a name="1046395">Use the Analog Simulation settings to fine&#45;tune analog simulation accuracy, set iteration </a>limits, set operating temperature, and specify MOSFET parameters.</p>
+      <p><a name="1046396">The option names shown to the right of each text box correspond to the option names used </a>in the PSpice .OPTIONS command. For more information about this command, refer to the online PSpice Reference Guide.</p>
+      <table summary="" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF" width="648">
+        <caption>
+        <tr>
+          <td cellpadding="4" border="0" valign="top" >
+            <p><a name="1047417"><font color="#000000">Click this button&#8230;</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top" >
+            <p><a name="1047419">To do this&#8230;</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1051747"><font color="#000000">AutoConverge</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1051749">Suggest relaxed limits for various options that PSpice can </a>modify during a simulation to achieve convergence.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047421"><font color="#000000">MOSFET options </font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047423">Enter values for the default drain area, default source area, </a>default length, and default width.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047425"><font color="#000000">Advanced options</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047427">Enter values for the total transient iteration limit, relative </a>magnitude for matrix pivot, and absolute magnitude for matrix pivot.</p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1053074">The following tables defines all the options in the tab for the Analog Simulation category:</a></p>
+      <p><a name="1051752">&nbsp;</a></p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="649">
+        <caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="145">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1051764">Flag option</a>&nbsp;</strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="503">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1051770">Meaning</a>&nbsp;</strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1051778">ADVCONV</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1051780">Enables all convergence algorithms, such as Pseudo Tran, </a>STEPGMIN, and step sources. ON by default.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1051788">DMFACTOR</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1051790">Se</a>ts the relative factor for minimum delta. The value specifies the relative value by which the minimum time step size is changed. The value should be less than or equal to 1 and a factor of <font size="2" face="'Courier New'" color="#000000">10</font>, such as <font size="2" face="'Courier New'" color="#000000">.1</font>, <font size="2" face="'Courier New'" color="#000000">.001</font>, or <font size="2" face="'Courier New'" color="#000000">.0001</font>. </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1051804">GMINSRC </a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1051806">Enables step GMIN inside source&#45;stepping</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1051834">NOGMINI</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1051836">Specifies not to add GMIN across current sources.</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1051896">PSEUDOTRAN</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1051898">Uses Pseudo&#45;Transient Method.</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1051901">STEPGMIN</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1051903">Enables GMIN stepping. This causes a GMIN stepping algorithm to be </a>applied to circuits that fail to converge. GMIN stepping is applied first, and if that fails, the simulator falls back to supply stepping.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1051905">BRKDEPSRC</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1051907">Sets automatic break&#45;points for behavioral sources</a></p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1053067">&nbsp;</a></p>
+      <p><a name="1051940">&nbsp;</a></p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="651">
+        <caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="137">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1051950">Options </a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="334">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1051952">Description</a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="85">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1051954">Units</a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="94">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1051956">Default</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1051963"><font size="2" face="'Courier New'" color="#000000">ABSTOL</font></a><sup><a name="wwfootnote_inline_17" href="#17">1</a></sup></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1051965">best accuracy of currents</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1051967">amp</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1051969">1.0 pA</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1051972"><font size="2" face="'Courier New'" color="#000000">CHGTOL</font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1051974">best accuracy of charges</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1051976">coulomb</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1051978">0.01 pC</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052150"><font size="2" face="'Courier New'" color="#000000">GMIN</font></a><a href="#1051963" title="Performing Circuit Analysis"><font color="#000000"><sup>1</sup></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052153">minimum conductance used for any branch</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052155">ohm</a><font color="#000000"><sup>&#45;1</sup></font></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052157">1.0E&#45;12</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052160"><font size="2" face="'Courier New'" color="#000000">GMINSTEPS</font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052162">the GMIN stepping size in integer (any </a>positive value). Set to 0 for engine default.</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052164">&nbsp;</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052166">Same as </a><font size="2" face="'Courier New'" color="#000000">ITL1</font></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052169"><font size="2" face="'Courier New'" color="#000000">ITL1</font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052171">DC and bias point blind repeating limit (the </a>first evaluation of the operating point of the system)</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052173">&nbsp;</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052175">150.0</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052178"><font size="2" face="'Courier New'" color="#000000">ITL2</font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052180">DC and bias point educated guess repeating </a>limit (DC transfer curve iteration limit) </p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052182">&nbsp;</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052184">20</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052190"><font size="2" face="'Courier New'" color="#000000">ITL4</font></a><a href="#1051963" title="Performing Circuit Analysis"><font color="#000000"><sup>1</sup></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052192">the limit at any repeating point in transient </a>analysis</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052194">&nbsp;</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052196">10</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052202"><font size="2" face="'Courier New'" color="#000000">ITL5<sup><a name="wwfootnote_inline_18" href="#18">2</a></sup></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052204">total repeating limit for all points for transient </a>analysis<br>(ITL5=0 means ITL5=infinity)</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052206">&nbsp;</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052211">0.0</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052214"><font size="2" face="'Courier New'" color="#000000">ITL6</font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052216">the number of steps of the source stepping </a>algorithm. Can have any positive integer value. Set to 0 for engine default.</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052218">&nbsp;</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052220">Same as </a><font size="2" face="'Courier New'" color="#000000">ITL1</font></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052223">LIMIT</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052225">the absolute voltage limit. The default, 0, </a>specifies that there is no limit on data values. You can modify it to a large value, such as 1e12, to eliminate overflow errors, especially when using exponential sources.</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052227">&nbsp;</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052229">0</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052247"><font size="2" face="'Courier New'" color="#000000">method</font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052249">integration method </a><br>(values can be either TRAPEZOIDAL or GEAR)</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052251">&nbsp;</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052253">&nbsp;</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052256"><font size="2" face="'Courier New'" color="#000000">NUMDGT</font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052258">number of digits output in print tables </a><br>(maximum of 8 useful digits)</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052260">&nbsp;</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052262">4.0</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052268"><font size="2" face="'Courier New'" color="#000000">PIVREL</font></a><a href="#1052202" title="Performing Circuit Analysis"><font color="#000000"><sup>2</sup></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052271">relative magnitude required for pivot in matrix </a>solution</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052273">&nbsp;</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052275">1.0E&#45;3</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052281"><font size="2" face="'Courier New'" color="#000000">PIVTOL</font></a><a href="#1052202" title="Performing Circuit Analysis"><font color="#000000"><sup>2</sup></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052283">absolute magnitude required for pivot in matrix </a>solution</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052285">&nbsp;</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052287">1.0E&#45;13</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052290"><font size="2" face="'Courier New'" color="#000000">PTRANSTEP</font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052292">number of steps for a pseudo transient </a>analysis to find the operating point. Can be any positive integer value. Set to 0 for engine default.</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052294">&nbsp;</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052296">Same as </a><font size="2" face="'Courier New'" color="#000000">ITL1</font></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052302"><font size="2" face="'Courier New'" color="#000000">RELTOL</font></a><a href="#1051963" title="Performing Circuit Analysis"><font color="#000000"><sup>1</sup></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052305">relative accuracy of V and I</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052307">&nbsp;</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052309">0.001</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052315"><font size="2" face="'Courier New'" color="#000000">SOLVER</font></a><a href="#1052202" title="Performing Circuit Analysis"><font color="#000000"><sup>2</sup></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052318">performance package solution algorithm</a></p>
+            <p><a name="1052319">(Solver = 0 selects the original solution </a>algorithm;</p>
+            <p><a name="1052320">Solver = 1 selects the advanced solution </a>algorithm)</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052322">&nbsp;</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052324">1</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052336">THREADS</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052338">maximum number of threads. Set to 0 for </a>engine default. <font size="2" face="'Courier New'" color="#000000">THREADS=1</font> implies single&#45;thread.</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052340">&nbsp;</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052342">Number of </a>cores&#47;2</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052345"><font size="2" face="'Courier New'" color="#000000">TRTOL</font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052347">tolerance for integration error calculated using </a>transient analysis. It is a relative tolerance where a higher TRTOL value results in bigger time steps and reduced accuracy. The TRTOL value should NOT be greater than 1&#47;RELTOL.</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052349">&nbsp;</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052351">7</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052357"><font size="2" face="'Courier New'" color="#000000">VNTOL</font></a><a href="#1051963" title="Performing Circuit Analysis"><font color="#000000"><sup>1</sup></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052359">best accuracy of voltages</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052361">volt</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052363">1.0 uV</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1052365"><font size="2" face="'Courier New'" color="#000000">WCDEVIATION</font></a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1052367">worst case deviation. It can have double </a>values between 0 and 1. </p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1052369">&nbsp;</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1052371">Same as </a><font size="2" face="'Courier New'" color="#000000">RELTOL</font></p>
+          </td>
+        </tr>
+      </table>
+       
+      <table width="100%" border="0" cellpadding="3" cellspacing="0" summary="">
+        <tr valign="baseline">
+          <td>
+            <p>
+              <font size="-1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a name="17" href="#wwfootnote_inline_17">1</a>
+              </font>
+            </p>
+          </td>
+          <td>
+            <p>
+              <font color="#000000"><a name="1051962">These options can have an expression that uses the SCHEDULE function, which is a function of </a>time.</font>
+            </p>
+          </td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellpadding="3" cellspacing="0" summary="">
+        <tr valign="baseline">
+          <td>
+            <p>
+              <font size="-1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a name="18" href="#wwfootnote_inline_18">2</a>
+              </font>
+            </p>
+          </td>
+          <td>
+            <p>
+              <font color="#000000"><a name="1053146">PSpice now contains two solution algorithms for simulation. Solver 1 increases simulation speed </a>over Solver 0, particularly for larger circuits with substantial runtimes. Solver 1 has slightly better convergence characteristics than Solver 0. Having both algorithms available improves convergence, since there are two different algorithms that can perform the simulation.</font>
+            </p>
+          </td>
+        </tr>
+      </table>
+      <h4><a name="1046400">Gate&#45;level simulation options</a></h4>
+      <p><a name="1046401">Use the Gate&#45;level Simulation settings to set timing, I&#47;O levels for interfaces, drive strength, </a>and error message limits.</p>
+      <table summary="" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF" width="648">
+        <caption>
+        <tr>
+          <td cellpadding="4" border="0" valign="top" >
+            <p><a name="1047430"><font color="#000000">Click this button&#8230;</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top" >
+            <p><a name="1047432">To do this&#8230;</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047434"><font color="#000000">Advanced options</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047436">Enter values for the minimum output drive resistance, maximum </a>output drive resistance, overdrive ratio, default delay calculation, and error message limits.</p>
+            <p><a name="1047439">The option names shown to the right of each text box </a>correspond to the option names used in the PSpice .OPTIONS command. For more information about this command, refer to the online PSpice Reference Guide.</p>
+          </td>
+        </tr>
+      </table>
+      <h4><a name="1046405">Output file options</a></h4>
+      <p><a name="1046406">Use the Output File settings to select the types of information PSpice saves to the simulation </a>output file.</p>
+      <p><a name="1046407">The option names shown to the right of each text box correspond to the option names used </a>in the PSpice .OPTIONS command. For more information about this command, refer to the online PSpice Reference Guide.</p>
+      <p><a name="1053108">The following tables defines all the options in the tab for the Output file category:</a></p>
+      <p><a name="1052413">&nbsp;</a></p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="649">
+        <caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="145">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1052426">Flag option</a>&nbsp;</strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="503">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1052431">Meaning</a>&nbsp;</strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1052434">ACCT</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1052436">Summary and accounting information is printed at the end of all the </a>analyses (refer to your <font color="#000000"><em>PSpice User's Guide</em></font> for further information on ACCT).</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052454">EXPAND</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052456">Lists devices created by subcircuit expansion and lists contents of the </a>bias point file.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052470">LIBRARY</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052472">Lists lines used from library files.</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052475">LIST</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052477">Lists a summary of the circuit elements (devices).</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052480">NOBIAS</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052482">Suppresses the printing of the bias point node voltages.</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052485">NODE</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052487">Lists a summary of the connections (node table).</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1052490">NOECHO</a></p>
+          </td>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1052492">Suppresses a listing of the input file(s).</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052510">NOMOD</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052512">Suppresses listing of model parameters and temperature updated </a>values.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052520">NOOUTMSG</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052522">Suppresses simulation error messages in output file.</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052526">NOPAGE</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1052528">Suppresses paging and the banner for each major section of output.</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1053129">OPTS</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1053131">Lists values for all options.</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1053124">NUMDG</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1053126">Number of digits in printed values. This is 4 by default.</a></p>
+          </td>
+        </tr>
+      </table>
+<!-- [TOPIC_END] -->
+      <!-- [TOPIC_START_OPEN]type=cmdref
+[TOPIC_START_ATTR]text=Data collection options for simulation profiles
+[TOPIC_START_ATTR]description=
+[TOPIC_START_ATTR]keyword=
+[TOPIC_START_CLOSE] -->
+      <h3><a name="data_coll"></a><a name="1046409">Data collection options for simulation profiles</a></h3>
+      <p><a name="1046410">Use the Data Collection tab of the Simulation Settings dialog box to restrict the captured </a>simulation data. This is especially useful for large circuit designs that produce more data than you need for waveform analysis.</p>
+      <p><a name="1051643">You can also set the probe data accuracy from this tab. By default, probe data has 64&#45;bit </a>accuracy but you can choose a lower 32&#45;bit accuracy. </p>
+      <p><a name="1047472"><img src="images/datacollect.gif" width="527" height="399" alt=""></a></p>
+      <p><a name="1047469">You can choose to apply the options in the table below to apply to Voltages, Currents, Power, </a>Digital or Noise data. For more information on setting these options, click Setting data collection options.</p>
+      <h4><a name="1046413">Data Collection Options</a></h4>
+      <table summary="" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF" width="648">
+        <caption>
+        <tr>
+          <td cellpadding="4" border="0" valign="top" >
+            <p><a name="1047490"><font color="#000000">Option</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top" >
+            <p><a name="1047492">Description</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047494"><font color="#000000">All</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047496">All data will be collected and stored. (This is the default setting.)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047498"><font color="#000000">All but Internal </font></a><font color="#000000">Subcircuits</font></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047500">All data will be collected and stored except for internal </a>subcircuits of hierarchical designs (top level data only).</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047502"><font color="#000000">At Markers Only</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047504">Data will only be collected and stored where markers are </a>placed.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047506"><font color="#000000">None</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047508">No data will be collected.</a></p>
+          </td>
+        </tr>
+      </table>
+      <h4><a name="1051621">Waveform data file format option</a></h4>
+      <p><a name="1051622">Select the </a><font color="#000000"><em>Save data in the CSDF format (.CSD)</em></font> check box to save the waveform data file in the ASCII Common Simulation Data Format instead of in the default binary format.</p>
+      <h4><a name="1051653">Probe Data accuracy options</a></h4>
+      <p><a name="1051660">By default, the probe data has 64&#45;bit accuracy. You can set the accuracy by selecting a </a>different radio button for <font color="#000000"><em>Probe Data</em></font>. A 64&#45;bit accuracy setting ensures that the output does not have ramps. For example, when a small amplitude voltage is superimposed on a large amplitude voltage, the resolution might be lost, resulting in ramps.</p>
+<!-- [TOPIC_END] -->
+      <!-- [TOPIC_START_OPEN]type=cmdref
+[TOPIC_START_ATTR]text=Probe windows settings for simulation profiles
+[TOPIC_START_ATTR]description=
+[TOPIC_START_ATTR]keyword=
+[TOPIC_START_CLOSE] -->
+      <h3><a name="probe_window_sett"></a><a name="probe_windows_settings"></a><a name="1046422">Probe windows settings for simulation profiles</a></h3>
+      <p><a name="1046423">Use the Probe Windows tab of the Simulation Settings dialog box to set up how Probe </a>windows are displayed for a simulation profile. </p>
+      <p><a name="1046424">For more Probe window options, see Setting Probe window options.</a></p>
+      <h4><a name="1046425">Probe window display options</a></h4>
+      <table summary="" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF" width="648">
+        <caption>
+        <tr>
+          <td cellpadding="4" border="0" valign="top" >
+            <p><a name="1047562">Use this option&#8230;</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top" >
+            <p><a name="1047564">To do this&#8230;</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047566">Display Probe window </a>when profile is opened</p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047568">Display the Probe windows that were displayed the last time the </a>profile was opened.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047570">Display Probe window: </a></p>
+            <div>
+              <table border="0" cellspacing="0" cellpadding="3" summary="">
+                <tr valign="baseline">
+                  <td >
+                    <div>
+                      <nobr>
+                        <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                      </nobr>
+                    </div>
+                  </td>
+                  <td><a name="1047577">during simulation </a></td>
+                </tr>
+              </table>
+            </div>
+            <div>
+              <table border="0" cellspacing="0" cellpadding="3" summary="">
+                <tr valign="baseline">
+                  <td width="31.999679999999998">
+                    <div>
+                      <nobr>
+                        <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                      </nobr>
+                    </div>
+                  </td>
+                  <td><a name="1047578">after simulation has </a>completed.</td>
+                </tr>
+              </table>
+            </div>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047572">Display the Probe windows when: </a></p>
+            <div>
+              <table border="0" cellspacing="0" cellpadding="3" summary="">
+                <tr valign="baseline">
+                  <td width="31.999679999999998">
+                    <div>
+                      <nobr>
+                        <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                      </nobr>
+                    </div>
+                  </td>
+                  <td><a name="1047585">the simulation is running, and update the waveforms as the </a>simulation progresses. </td>
+                </tr>
+              </table>
+            </div>
+            <div>
+              <table border="0" cellspacing="0" cellpadding="3" summary="">
+                <tr valign="baseline">
+                  <td width="31.999679999999998">
+                    <div>
+                      <nobr>
+                        <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                      </nobr>
+                    </div>
+                  </td>
+                  <td><a name="1047586">the simulation is finished.</a></td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047574">Show </a></p>
+            <div>
+              <table border="0" cellspacing="0" cellpadding="3" summary="">
+                <tr valign="baseline">
+                  <td width="31.999679999999998">
+                    <div>
+                      <nobr>
+                        <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                      </nobr>
+                    </div>
+                  </td>
+                  <td><a name="1047590">All markers on open </a>schematics </td>
+                </tr>
+              </table>
+            </div>
+            <div>
+              <table border="0" cellspacing="0" cellpadding="3" summary="">
+                <tr valign="baseline">
+                  <td width="31.999679999999998">
+                    <div>
+                      <nobr>
+                        <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                      </nobr>
+                    </div>
+                  </td>
+                  <td><a name="1047591">Last plot</a></td>
+                </tr>
+              </table>
+            </div>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1047576">Show the traces: </a></p>
+            <div>
+              <table border="0" cellspacing="0" cellpadding="3" summary="">
+                <tr valign="baseline">
+                  <td width="31.999679999999998">
+                    <div>
+                      <nobr>
+                        <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                      </nobr>
+                    </div>
+                  </td>
+                  <td><a name="1047595">For all the markers that are placed on currently open </a>designs in the design entry program. </td>
+                </tr>
+              </table>
+            </div>
+            <div>
+              <table border="0" cellspacing="0" cellpadding="3" summary="">
+                <tr valign="baseline">
+                  <td width="31.999679999999998">
+                    <div>
+                      <nobr>
+                        <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                      </nobr>
+                    </div>
+                  </td>
+                  <td><a name="1047596">That were used the last time the profile was opened.</a></td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1045204">&nbsp;</a></p>
+      <p><a name="1047917">&nbsp;</a></p>
+      <p><a name="1048993">&nbsp;</a></p>
+      <p><a name="1049585">&nbsp;</a></p>
+<!-- [TOPIC_END] -->
+      <p><a name="1050257">&nbsp;</a></p>
+    </div>
+    <br>
+    <a href="#pagetop">Return to top of page</a>
+    <hr>
+    <hr align="left">
+    <div style="text-align: left;">
+      <!-- Begin Buttons -->
+      <table width="650" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                    </td>
+<td height="20" width="73">
+<a href="psphlpTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<img src="../support/nav2_index_b.gif" border="0">
+</td>
+          <td>
+            <a href="03_preparing.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+          </td>
+          <td>
+            <a href="traces.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+          </td>
+          <td>
+            <a>
+<a href="psphlp.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+            </a>
+          </td>
+          <td height="20" width="61">
+            <img src="../support/nav2_black.gif">
+          </td>
+          <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+          </td>
+          <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+          </td>
+          <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+          </td>
+        </tr>
+      </table>
+      <!-- End Buttons -->
+    </div>
+    <br>
+    <font size="-1" >
+For support, see <a href="http://support.cadence.com" target="_blank">Cadence Online Support</a> service.</font>
+    <br>
+    <br>
+    <font size="-1" >
+      <i>Copyright &#169; 2011, <a href="http://www.cadence.com">Cadence Design Systems, Inc.</a></i>
+    </font>
+    <br>
+    <font size="-1" >
+All rights reserved.</font>
+    <br>
+    <br>
+  </body>
+</html>

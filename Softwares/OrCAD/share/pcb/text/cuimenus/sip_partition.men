@@ -1,0 +1,530 @@
+// $Header: /vobs/psd_backend_data/data/men/sip_partition.men /main/33 2011-01-14T11:22:31-05 PCS $
+//------------------------------------------------------------------------
+//
+//  Cadence Design Systems
+//
+// (C) COPYRIGHT, Cadence Design Systems, Inc. 1997-2004
+// All Rights Reserved
+// Licensed Materials - Property of Cadence Design Systems
+//
+// No part of this file may be reproduced, stored in a retrieval system,
+// or transmitted in any form or by any means --- electronic, mechanical,
+// photocopying, recording, or otherwise --- without prior written permission
+// of Cadence Design Systems, Inc.
+//
+// WARRANTY:
+// Use all material in this file at your own risk.  Cadence Design Systems
+// makes no claims about any material contained in this file.
+//
+//------------------------------------------------------------------------
+
+// Loadable Menu File
+// *******************  SIP Digital Partition - SIP **********************
+//
+// Currently active tools:
+//   SiP Digital Architect GXL -- SCM + Allegro tool
+//                                This file w/ _SIP_ARCHITECT.
+//   SiP Digital SI XL -- Allegro tool
+//                        This file w/ _SIP_ENGINEER.
+//   SiP Digital Layout GXL -- Allegro tool
+//                             This file w/ _SIP_LAYOUT.
+//   SiP Layout XL -- Allegro tool, this file w/ _SIP_LAYOUT_XL
+
+// ENVIRONMENT VARIABLES USED:
+//  _SIP_LAYOUT
+//  _SIP_ARCHITECT
+//  _SIP_ENGINEER
+//  _SIP_LAYOUT_XL
+//  _sip_chip_integration
+//  __unix
+
+sip_layout_partition MENU DISCARDABLE
+BEGIN
+
+// FILE MENU
+POPUP "&File"
+BEGIN
+    MENUITEM "&Open...",                    "open"
+    MENUITEM SEPARATOR
+    MENUITEM "&Save",                       "save"
+    MENUITEM "Save &As...",                 "save_as"
+    MENUITEM SEPARATOR
+POPUP "&Import"
+BEGIN
+    MENUITEM "&Sub-Drawing...",             "clppaste"
+    MENUITEM "Param&eters...",              "param in"
+END
+POPUP "&Export"
+BEGIN
+#ifndef _SIP_LIBRARIAN
+    MENUITEM "&Netlist with Properties...", "netout"
+    MENUITEM SEPARATOR
+    MENUITEM "&Router...",                  "specctra_out"
+    MENUITEM SEPARATOR
+#endif
+#ifdef _SIP_LAYOUT_XL
+    MENUITEM "PDF...",                      "pdf out"
+#endif
+    MENUITEM "&Sub-Drawing",                "clpCopy"
+    MENUITEM "&Techfile...",                "techfile out"
+    MENUITEM "Param&eters...",              "param out"
+    MENUITEM "Li&braries...",               "dlib"
+END
+    MENUITEM SEPARATOR
+    MENUITEM "&Viewlog...",                 "viewlog -last"
+    MENUITEM "&File Viewer...",             "viewlog -browse"
+    MENUITEM "Plot Set&up...",              "plot setup"
+#ifndef __unix
+    MENUITEM "Plot Previe&w...",            "plot preview"
+#endif
+MENUITEM "&Plot...",                        "plot"
+MENUITEM "Capture &Canvas Image...",        "capture image"
+MENUITEM SEPARATOR
+MENUITEM "P&roperties...",                  "file_property"
+MENUITEM "C&hange Editor...",               "toolswap"
+MENUITEM "S&cript...",                      "script"
+MENUITEM SEPARATOR
+POPUP "Recent &Designs"
+BEGIN
+    MENUITEM "Recent File List",            "|mru"
+END
+MENUITEM SEPARATOR
+MENUITEM "E&xit",                           "exit"
+END
+// END of FILE MENU
+
+// EDIT MENU.
+POPUP "&Edit"
+BEGIN
+    MENUITEM "&Undo",                       "undo"
+    MENUITEM "&Redo",                       "redo"
+    MENUITEM SEPARATOR
+    MENUITEM "&Move",                       "move"
+    MENUITEM "&Copy",                       "copy"
+    MENUITEM "M&irror",                     "mirror"
+    MENUITEM "&Spin",                       "spin"
+    MENUITEM "C&hange",                     "change"
+    MENUITEM "&Delete",                     "delete"
+    MENUITEM SEPARATOR
+    MENUITEM "&Z-Copy",                     "zcopy shape"
+    MENUITEM SEPARATOR
+    MENUITEM "&Vertex",                     "vertex"
+    MENUITEM "Delete Verte&x",              "delete vertex"
+    MENUITEM "Cline Change &Width...",      "cline change width"
+    MENUITEM "&Text",                       "text edit"
+    MENUITEM SEPARATOR
+    MENUITEM "&Groups",                     "groupedit"
+    MENUITEM "P&roperties",                 "property edit"
+    MENUITEM "&Net Properties...",          "net_properties"
+#ifndef _SIP_ENGINEER
+    MENUITEM SEPARATOR
+    MENUITEM "Die &Stack...",               "diestack editor"
+#endif
+END
+// END of EDIT MENU
+
+// VIEW Menu
+POPUP "&View"
+BEGIN
+    MENUITEM "&Zoom By Points",             "zoom points"
+    MENUITEM "Zoom &Fit",                   "zoom fit"
+    MENUITEM "Zoom &In",                    "zoom in"
+    MENUITEM "Zoom &Out",                   "zoom out"
+    MENUITEM "Zoom &World",                 "zoom world"
+    MENUITEM "Zoo&m Center",                "zoom center"
+    MENUITEM "Zoom Pre&vious",              "zoom previous"
+    MENUITEM SEPARATOR
+    MENUITEM "Color View &Save",            "colorview create"
+    MENUITEM "Color View Restore &Last",    "colorview restore"
+    MENUITEM SEPARATOR
+    MENUITEM "&3D Model...",                "view 3d"
+    MENUITEM SEPARATOR
+    MENUITEM "&Redraw",                     "redraw"
+   POPUP "Wi&ndows"
+   BEGIN
+      MENUITEM "Command",          "showhide text"
+      MENUITEM "World View",       "showhide view"
+      MENUITEM "Options",          "showhide options"
+      MENUITEM "Find",             "showhide find"
+      MENUITEM "Visibility",       "showhide vis"
+      MENUITEM "Show All",         "show allpanes"
+   END
+   MENUITEM "&Customize Toolbar...",             "display toolbar param"
+   MENUITEM "Reset UI to Cadence Default...", "reset dockwindows"
+END
+// END of VIEW MENU
+
+// ADD MENU
+POPUP "&Add"
+BEGIN
+    MENUITEM "&Line",                       "add line"
+    MENUITEM "&Arc with Radius",            "add rarc"
+    MENUITEM "&3pt Arc",                    "add arc"
+    MENUITEM "&Circle",                     "add circle"
+#ifndef _SIP_ENGINEER
+#ifndef _SIP_ARCHITECT
+    MENUITEM "&Rectangle",                  "add rect"
+    MENUITEM "&Frectangle",                 "add frect"
+#endif
+#endif
+    MENUITEM "&Text",                       "add text"
+END
+// END of ADD MENU
+
+// DISPLAY MENU
+POPUP "&Display"
+BEGIN
+    MENUITEM "&Color/Visibility...",        "color192"
+    MENUITEM "&Layer Priority...",          "layer priority"
+    MENUITEM SEPARATOR
+    MENUITEM "S&tatus",                     "status"
+    MENUITEM "&Element",                    "show element"
+    MENUITEM "&Measure",                    "show measure"
+    MENUITEM "Constra&int",                 "cns show"
+    MENUITEM "P&arasitic",                  "show parasitic"
+    MENUITEM "Segments Over &Voids",        "highlight sov"
+    MENUITEM "P&roperty...",                "show property"
+    MENUITEM SEPARATOR
+    MENUITEM "&Assign Color",               "assign color"
+    MENUITEM "&Highlight",                  "hilight"
+    MENUITEM "&Dehighlight",                "dehilight"
+    MENUITEM "Advanced Highlight...",       "advanced highlight"
+    MENUITEM SEPARATOR
+    MENUITEM "Rats by &Layer...",           "rats layer"
+    POPUP "&Show Rat Lines"
+    BEGIN
+        MENUITEM "&All",                    "rats all"
+        MENUITEM "&Components",             "rats component"
+        MENUITEM "&Net",                    "rats net"
+        MENUITEM "&Of Selection",           "rats show"
+        MENUITEM "&Outside Partition",      "rats outside partition"
+    END
+#ifdef _ALLEGRO_GRE_VIEW
+    MENUITEM "Show All Bundles",            "bundle show_all"
+    MENUITEM "Show All Router Plan",        "rplan show_all"
+#endif
+    POPUP "&Blank Rat Lines"
+    BEGIN
+        MENUITEM "&All",                    "unrats all"
+        MENUITEM "&Components",             "unrats component"
+        MENUITEM "&Nets",                   "unrats net"
+        MENUITEM "&Outside Partition",      "unrats outside partition"
+    END
+#ifdef _ALLEGRO_GRE_VIEW
+    MENUITEM "Blank All Bundles",           "bundle blank_all"
+    MENUITEM "Blank All Router Plan",       "rplan blank_all"
+#endif
+END
+// END of DISPLAY MENU
+
+// SETUP (DRAWING) MENU
+POPUP "Set&up"
+BEGIN
+    MENUITEM "Desi&gn Parameters...",       "prmed"
+    MENUITEM "&Grids...",                   "define grid"
+    MENUITEM "&Cross-section...",           "xsection"
+    MENUITEM "&Embedded Layer Setup...",    "define embedded layer"
+    MENUITEM "&Materials...",               "define materials"
+    POPUP "Applica&tion Mode"
+    BEGIN
+      MENUITEM "General Edit",              "generaledit"
+      MENUITEM "Etch Edit",                 "etchedit"
+      MENUITEM "None",                      "noappmode"
+    END    
+    MENUITEM SEPARATOR
+    MENUITEM "Enable On-Line D&RC",         "cns onlinedrc"
+    POPUP "Co&nstraints"
+    BEGIN
+       MENUITEM "&Modes...",                "cns cmmodes"
+       MENUITEM "&Electrical...",           "cmgr_elec"
+       MENUITEM "&Physical...",             "cmgr_phys"
+       MENUITEM "&Spacing...",              "cmgr_spac"
+       MENUITEM "Sa&me Net Spacing...",       "cmgr_snspac"
+       MENUITEM "&Physical Net Overrides...", "property edit -net_data"
+       MENUITEM "&Spacing Net Overrides...",  "property edit -net_space"
+#ifndef _SIP_ENGINEER
+	   MENUITEM "&Assembly...",             "cmgr_adrc"
+       MENUITEM "D&FA Constraint Spreadsheet...", "dfa_spreadsheet"
+#endif
+       MENUITEM "&Constraint Manager...",           "cmgr"
+    END
+    MENUITEM SEPARATOR
+    MENUITEM "Define &Lists...",            "define list"
+#ifndef _SIP_ENGINEER
+    MENUITEM SEPARATOR
+    POPUP "&Areas"
+    BEGIN
+        MENUITEM "Component &Keepout",           "keepout component"
+        MENUITEM "Component &Height",            "component_height"
+        MENUITEM SEPARATOR
+        MENUITEM "Ro&ute Keepout",          "keepout router"
+        MENUITEM "&Wire Keepout",           "keepout wire"
+        MENUITEM "&Via Keepout",            "keepout via"
+        MENUITEM "&Shape Keepout",	    "keepout shape"
+        MENUITEM SEPARATOR
+        MENUITEM "Pro&be Keepout",          "keepout probe"
+        MENUITEM "&Gloss Keepout",          "keepout gloss"
+    END
+#endif
+    MENUITEM SEPARATOR
+    MENUITEM "Datatip Customization...",    "custom datatips"
+    MENUITEM "&User Preferences...",        "enved"
+END
+// END of SETUP MENU
+
+// SHAPES MENU
+#ifndef _SIP_ENGINEER
+#ifndef _SIP_ARCHITECT
+POPUP "&Shape"
+BEGIN
+    MENUITEM "&Polygon",                    "shape add"
+    MENUITEM "&Rectangular",                "shape add rect"
+    MENUITEM "&Circular",                   "shape add circle"
+    MENUITEM SEPARATOR
+    MENUITEM "&Select Shape or Void",       "shape select"
+    MENUITEM SEPARATOR
+    POPUP "Manual &Void"
+    BEGIN
+        MENUITEM "&Polygon",                "shape void polygon"
+        MENUITEM "&Rectangular",            "shape void rectangle"
+        MENUITEM "&Circular",               "shape void circle"
+        MENUITEM "&Delete",                 "shape void delete"
+        MENUITEM "&Element",                "shape void element"
+        MENUITEM "&Move",                   "shape void move"
+        MENUITEM "&Copy",                   "shape void copy"
+    END
+    MENUITEM SEPARATOR
+    MENUITEM "Edit &Boundary",              "shape edit boundary"
+    MENUITEM "&Delete Islands",             "island_delete"
+    MENUITEM SEPARATOR
+    MENUITEM "Change Shape T&ype",          "shape change type"
+    MENUITEM "&Merge Shapes",               "shape merge shapes"
+    MENUITEM "Chec&k",                      "shape check"
+    MENUITEM SEPARATOR
+    MENUITEM "C&ompose Shape",              "compose shape"
+    MENUITEM "D&ecompose Shape",            "decompose shape"
+    MENUITEM SEPARATOR
+    MENUITEM "&Global Dynamic Params...",   "shape global param"
+END
+#endif
+#endif
+// END of SHAPES MENU
+
+// LOGIC MENU
+#ifndef _SIP_ENGINEER
+POPUP "&Logic"
+BEGIN
+    MENUITEM "Deri&ve Assignment",          "derive assignment"
+    MENUITEM SEPARATOR
+    MENUITEM "Net &Schedule",               "net schedule"
+END
+#endif
+// END of LOGIC MENU
+
+// PLACE MENU
+POPUP "&Place"
+BEGIN
+    MENUITEM "&Manually...",                "place manual"
+    MENUITEM SEPARATOR
+#ifdef _SIP_LAYOUT || _SIP_LAYOUT_XL
+    POPUP "S&wap"
+    BEGIN
+        MENUITEM "&Pins",                   "swap pins"
+        MENUITEM "&Functions",              "swap functions"
+        MENUITEM "&Components",             "swap components"
+    END
+#endif
+#ifndef _SIP_LAYOUT || _SIP_LAYOUT_XL
+    MENUITEM "S&wap Pins",                  "swap pins"
+#endif
+#ifndef _SIP_ENGINEER
+    MENUITEM SEPARATOR
+    POPUP "&Design Partition"
+    BEGIN
+        MENUITEM "&Partitions",       "partition"
+        MENUITEM "&Workflow Manager",  "workflow"
+        MENUITEM "&Soft Net Assignment", "soft net"
+    END
+#endif    
+END
+// END of PLACE MENU
+
+// ROUTE MENU
+POPUP "&Route"
+BEGIN
+    MENUITEM "&Connect",                    "add connect"
+    MENUITEM "&Slide",                      "slide"
+    MENUITEM SEPARATOR
+    POPUP "&Via Structure"
+    BEGIN
+        MENUITEM "&Add...",                 "add via structure"
+        MENUITEM "&Delete...",              "delete_via_structure"
+#ifdef VIA_STRUCT_DISBAND_BETA
+        MENUITEM "&Disband",                "disband via structure"
+#endif
+    END
+    MENUITEM "Offset &Via Generator...",    "offset via gen"
+    MENUITEM SEPARATOR
+#ifdef _SIP_LAYOUT || _SIP_LAYOUT_XL
+    MENUITEM "Flip Chip Die Escape Generator",     "die escape gen"
+    MENUITEM "Wire Bond Via Estimation",     "wire bond via estimation"
+    MENUITEM "Wire Bond Die Escape Generator",     "wire bond escape"
+    MENUITEM SEPARATOR
+#endif
+    MENUITEM "Cust&om Smooth",              "custom smooth"
+    MENUITEM "Delay Tune",                  "delay tune"
+    MENUITEM "P&hase Tune",		    "phase_tune"
+    MENUITEM SEPARATOR
+    POPUP "Router"
+    BEGIN
+        MENUITEM "&Route Radial",               "radial router"
+        MENUITEM "&Fanout By Pick",             "fanout_by_pick"
+        MENUITEM "Route By &Pick",              "route_by_pick"
+        MENUITEM "&Elongation By Pick",         "elong_by_pick"
+        MENUITEM SEPARATOR
+        MENUITEM "Route &Automatic...",         "auto_route"
+        MENUITEM "Router &Checks",              "specctra checks"
+        MENUITEM "&Interactive Editor...",      "specctra"
+        MENUITEM SEPARATOR
+        MENUITEM "&Miter By Pick",              "miter_by_pick"
+        MENUITEM "&UnMiter By Pick",            "unmiter_by_pick"
+    END
+    POPUP "Resize/Respace"
+    BEGIN
+        MENUITEM "Spread C&lines",              "spread clines"
+        MENUITEM "Via-Via Line &Fattening...",  "line fattening"
+    END
+END
+// END of ROUTE MENU
+
+// ANALYZE MENU
+POPUP "A&nalyze"
+BEGIN
+    MENUITEM "&Xtalk Table...",                 "signal xtalktable"
+END
+// END of ANALYZE MENU
+
+// MANUFACTURING MENU
+#ifdef _SIP_LAYOUT || _SIP_LAYOUT_XL
+POPUP "&Manufacture"
+BEGIN
+    MENUITEM "&Plating Bar Check...",           "pbar check"
+    MENUITEM "Etch Bac&k...",                   "etchback"
+    MENUITEM SEPARATOR
+    MENUITEM "Assembly Rules &Checker...",      "assemrules standard"
+    MENUITEM SEPARATOR
+    POPUP "&Dimension/Draft"
+    BEGIN
+        MENUITEM "&LineFont",               "linefont"
+        MENUITEM SEPARATOR
+        MENUITEM "Crea&te Detail",          "create detail"
+    END
+    MENUITEM SEPARATOR
+    MENUITEM "T&hieving...",                "thieving"
+    MENUITEM "Shape &Degassing...",         "degas"
+    MENUITEM SEPARATOR
+    POPUP "D&ocumentation"
+    BEGIN
+        MENUITEM "&Bond Finger Text",           "bpa"
+        MENUITEM "Display &Pin Text",       "dpn"
+    END
+END
+#endif
+// END of MANUFACTURING MENU
+
+// REPORTS MENU
+POPUP "&Reports"
+BEGIN
+    MENUITEM "&Reports...",                 "reports"
+    POPUP "Quick Reports"
+    BEGIN
+        MENUITEM "Reports...",              "reports"
+    END
+END
+// END of REPORTS MENU
+
+// TOOLS MENU
+POPUP "&Tools"
+BEGIN
+#ifndef _SIP_ENGINEER
+    MENUITEM "Create &Module...",           "create module"
+#endif
+#ifndef _SIP_ENGINEER
+    POPUP "&Padstack"
+    BEGIN
+        MENUITEM "Modify &Design Padstack...",  "padeditdb"
+    END
+#endif
+    MENUITEM "C&ompose Line",               "compose line"
+    MENUITEM SEPARATOR
+    MENUITEM "&Technology File Compare...", "techfile compare"
+    MENUITEM SEPARATOR
+    MENUITEM "Database &Check...",          "dbdoctor"
+    MENUITEM "&Update DRC",                 "drc update"
+    MENUITEM "&Window DRC",                 "drc window"
+    MENUITEM SEPARATOR
+    POPUP "Uti&lities"
+    BEGIN
+        MENUITEM "&File Manager...", 	        "filemgr"
+        MENUITEM SEPARATOR
+        MENUITEM "&Env Variables...", 	        "set"
+        MENUITEM "&Aliases/Function Keys...",   "alias"
+        MENUITEM "&Keyboard Commands", 	        "helpcmd"
+        MENUITEM SEPARATOR
+        MENUITEM "&Licenses Used...", 	        "license_use"
+        MENUITEM "&Stroke Editor...",           "stroke editor"
+    END
+END
+// END of TOOLS MENU
+
+// RF MODULE MENU
+#ifdef _sip_chip_integration
+POPUP "&RF Module"
+BEGIN
+    MENUITEM "&Edit RF Components",              "rfedit"
+    MENUITEM "&Place RF Shape",                  "rfplace"
+    MENUITEM "&Re-Place Pcells",                 "rfreplace_ripup"
+    MENUITEM "&Graphic Edit",                    "graphic edit"
+    MENUITEM "&Export chips && connectivity",     "export chips"
+    POPUP "RF R&oute"
+    BEGIN
+	MENUITEM "&Create Route",                 "rfsip route"
+	MENUITEM "Create &Lumped Models",         "rfsip route lumped model"
+    END
+    POPUP "&Solver"
+    BEGIN
+        MENUITEM "&Create Groups",                "rfsip solver create groups"
+        MENUITEM "&Run Solver",                   "rfsip solver run"
+    END
+    MENUITEM SEPARATOR
+    MENUITEM "&Add Ruler",                       "add ruler"
+    MENUITEM "&Delete All Rulers",               "delete all rulers"    
+END
+#endif
+// END of RF MODULE MENU
+
+
+// HELP MENU
+POPUP "&Help"
+BEGIN
+#ifdef _SIP_ENGINEER
+    MENUITEM "&Documentation",              "cdsdoc sipsq HSmast"
+#endif    
+#ifndef _SIP_ENGINEER
+    MENUITEM "&Documentation",              "cdsdoc sip siplaunch"
+#endif
+    MENUITEM "&Message Detail",             "smi_message_detail"
+    POPUP "&Web Resources"
+    BEGIN
+        MENUITEM "&Community",		"http http://www.cadence.com/community"
+        MENUITEM "&Online Support",             "http http://support.cadence.com"
+        MENUITEM "&Web Collaboration",      "http http://collaboration.cadence.com"
+        MENUITEM "&Education Services",     "http http://www.cadence.com/education"
+    END
+    MENUITEM SEPARATOR
+    MENUITEM "&About...",                   "about"
+END
+// END of HELP MENU
+
+END
+

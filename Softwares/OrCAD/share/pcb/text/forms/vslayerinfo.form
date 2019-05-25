@@ -1,0 +1,64 @@
+FILE_TYPEt=FORM_DEFN VERSION=2
+FORM
+FIXED
+#VARIABLE
+PORT 50 44
+HEADER "Via structure Text in layer alignment"
+
+POPUP <HEADER_POPUP>"""".
+
+TILE
+
+TEXT "The current design has more layers than the via structure source design. Set top/bottom layer as your preference in layer alignment. Note the alignment is based on the via structure source design not the source via structure. The green color marks the via structure start layer. Cancel will stop the importing."
+TLOC 3 1
+FSIZE 46 8
+ENDTEXT
+
+GRID grid
+FLOC 3 8
+FSIZE 40 14
+OPTIONS HLINES VLINES USERSIZE 
+
+GHEAD TOP 
+HEADSIZE 2
+OPTIONS 3D 
+POP "HEADER_POPUP"
+ENDGHEAD
+
+GHEAD SIDE
+OPTIONS 3D NUMBER 
+HEADSIZE 4
+ENDGHEAD
+
+ENDGRID
+
+FIELD align_to_top
+FLOC 2 24
+CHECKLIST "Align to top layer" "select"
+ENDFIELD
+
+FIELD align_to_bottom
+FLOC 2 26
+CHECKLIST "Align to bottom layer" "select"
+ENDFIELD
+
+FIELD ok
+FLOC 3 28
+MENUBUTTON "OK" 10 3
+ENDFIELD
+
+FIELD cancel
+FLOC 20 28
+MENUBUTTON "Cancel" 10 3
+ENDFIELD
+
+FIELD help
+FLOC 37 28
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM
+
+

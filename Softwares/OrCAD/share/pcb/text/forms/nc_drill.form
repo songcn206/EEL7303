@@ -1,0 +1,133 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 69 5
+HEADER "NC Drill"
+
+POPUP <tape_units_pop>"Feet""1","Meters""2".
+
+MESSAGE negscale 0 "Negative scale factors are not allowed."
+MESSAGE nerror 0 "A problem occurred - please check the logfile (using Viewlog)."
+MESSAGE ndone 0 "NC Drill complete."
+MESSAGE ndemo 0 "Cannot Run in Demo Mode."
+
+TILE
+
+TEXT "Root file name:"
+TLOC 2 2
+ENDTEXT
+
+FIELD tape_name
+FLOC 16 2
+STRFILLIN 20 1024
+ENDFIELD
+
+FIELD browse
+FLOC 40 2
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+TEXT "Scale factor:"
+TLOC 2 4
+ENDTEXT
+
+FIELD scale
+FLOC 16 4
+REALFILLIN 8 8
+DECIMAL 4
+ENDFIELD
+
+TEXT "Tool sequence:"
+TLOC 2 6 
+ENDTEXT
+
+FIELD increasing_order
+FLOC 16 6 
+CHECKLIST "Increasing" "order_group"
+ENDFIELD
+
+FIELD decreasing_order
+FLOC 31 6 
+CHECKLIST "Decreasing" "order_group"
+ENDFIELD
+
+FIELD auto_tool_select
+FLOC 2 9 
+CHECKLIST "Auto tool select"
+ENDFIELD
+
+FIELD separate_tapes
+FLOC 2 11
+CHECKLIST "Separate files for plated/non-plated holes"
+ENDFIELD
+
+FIELD repeat_codes
+FLOC 2 13
+CHECKLIST "Repeat codes"
+ENDFIELD
+
+FIELD optimize
+FLOC 2 15
+CHECKLIST "Optimize drill head travel"
+ENDFIELD
+
+GROUP "Drilling:"
+GLOC 1 17
+GSIZE 45 9 
+ENDGROUP
+
+FIELD layer_pair_drilling
+FLOC 2 20
+CHECKLIST "Layer pair" "drilling_group"
+ENDFIELD
+
+FIELD by_layer_drilling
+FLOC 16 20
+CHECKLIST "By layer"   "drilling_group"
+ENDFIELD
+
+#ifdef _backdrill_ok
+FIELD backdrill_drilling
+FLOC 2 23 
+CHECKLIST "Include backdrill"
+ENDFIELD
+#endif
+
+#FIELD dielectric_drilling
+#FLOC 2 26
+#CHECKLIST "Dielectric" "drilling_group"
+#ENDFIELD
+
+FIELD execute    
+FLOC 50 2
+MENUBUTTON "Drill" 16 3
+ENDFIELD
+
+FIELD parameters
+FLOC 50 5
+MENUBUTTON "NC Parameters..." 16 3
+ENDFIELD
+
+FIELD close   
+FLOC 50 8
+MENUBUTTON "Close" 16 3
+ENDFIELD
+
+FIELD cancel
+FLOC 50 11
+MENUBUTTON "Cancel" 16 3
+ENDFIELD
+
+FIELD viewlog
+FLOC 50 14
+MENUBUTTON "View Log" 16 3
+ENDFIELD
+
+FIELD help
+FLOC 50 17
+MENUBUTTON "Help" 16 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

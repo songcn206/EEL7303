@@ -1,0 +1,20 @@
+#------------------------------------------------------------------------------
+#			Allegro Undo Variables
+#------------------------------------------------------------------------------
+#
+# See User.prf for complete descriptions of fields in this file.
+
+PARENT:PARENT_L=ui/undo
+
+SUMMARY:HELP=Settings for undo/redo command history.
+
+undo_depth:TYPE=LONG:MIN=0:MAX=50:DEFAULT=10:EFF_ONNEXTCMD:\
+HELP=Sets maximum depth for Undo history. More undo history takes more \
+memory. Default is 10 commands. Range is 0 to 50 commands. The actual \
+number of commands in the undo buffer is dynamically determined based \
+upon this value and the undo memory consumed to undo each command, \
+the total of which must not exceed max_undo_memory.
+
+max_undo_memory:TYPE=LONG:MIN=0:MAX=100:DEFAULT=8:EFF_ONNEXTCMD:\
+HELP=Sets maximum memory (in MB) for storing undo history. \
+Default is 8 MegaBytes. Range is 0 to 100.

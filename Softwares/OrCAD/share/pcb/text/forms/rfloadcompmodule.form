@@ -1,0 +1,91 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 27 20
+HEADER "Load RF Module"
+
+POPUP <rotate>"0""0.000","45""45.000","90""90.000".
+POPUP <logicmethods>"No Logic""0","From Module Definition""2".
+
+TILE
+TEXT "Module file:"
+TLOC 1 1
+ENDTEXT
+
+FIELD OpenModule
+FLOC 10 1
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+TEXT
+TLOC 1 3
+INFO modulefile 24
+ENDTEXT
+
+TEXT "Number of tiles:"
+TLOC 1 6
+ENDTEXT
+
+FIELD numtiles
+FLOC 13 6
+LONGFILLIN 6 6
+MIN 1
+ENDFIELD
+
+TEXT "Horizontal tile spacing:"
+TLOC 1 9
+ENDTEXT
+
+FIELD xoffset
+FLOC 1 11
+REALFILLIN 10 20
+ENDFIELD
+
+TEXT "Vertical tile spacing:"
+TLOC 1 13
+ENDTEXT
+
+FIELD yoffset
+FLOC 1 15
+REALFILLIN 10 20
+ENDFIELD
+
+TEXT "Logic method:"
+TLOC 1 18
+ENDTEXT
+
+FIELD logicmethod
+FLOC 1 20
+ENUMSET 22
+POP "logicmethods"
+ENDFIELD
+
+TEXT "Rotation lock:"
+TLOC 1 23
+ENDTEXT
+
+FIELD angle
+FLOC 14 23
+REALFILLIN 5 5
+POP "rotate"
+DECIMAL 3
+ENDFIELD
+
+FIELD disbandgroups
+FLOC 1 26
+CHECKLIST "Disband groups"
+ENDFIELD
+
+FIELD keeplocation
+FLOC 1 28
+CHECKLIST "Place at original position"
+ENDFIELD
+
+FIELD originalnets
+FLOC 1 30
+CHECKLIST "Restore original net names"
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

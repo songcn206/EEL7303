@@ -1,0 +1,39 @@
+# This file allows the registration of help documents for new user commands
+# or to override the default Cadence help for existing commands.
+#
+# Cadence will sometimes use this mechanism for documenting functionality developed
+# outside the regular release process.
+#
+# Format:
+#    <cmd name>  file= <name of file>
+#      variable expansion is supported in the file name portion
+#          CADENCE entries should use
+#		file= $allegro_install_dir/help/<filename>
+#
+#   If you wish to associate help with a form help button use the format:
+#	form.<formname>
+#		do NOT use the .form file extension
+#
+#   Supported help file extensions: 
+#	txt, pdf, html  - Windows and UNIX
+#	Windows supports other extenions (e.g. doc) based upon the programs 
+#		that are installed on a user's machine.
+#
+# Example (override add line) with file located in PCB's CDS_SITE
+#    add line   file= $ALLEGRO_SITE/help/README.txt
+# add help for status form
+#    form.status file= $TELENV
+#
+# If a customer needs to add their own entries add a file with this name at:
+#     customer site level: <cds_site>/pcb/help/help_config.txt
+#     per user:	           <pcbenv>/help_config.txt
+#
+# Default Allegro cds_site is <cdsroot>/share/local/pcb
+#
+# You can also add entries dynamically via Skill, see axlUIWHelpRegister.
+#
+# Add entries after this line.
+aicc  file= $allegro_install_dir/help/AiCC.pdf
+resize_respace_dp  file= $allegro_install_dir/help/Help_Resize_Respace_Diff_Pairs.pdf
+snake  file= $allegro_install_dir/help/Help_Snake.pdf
+

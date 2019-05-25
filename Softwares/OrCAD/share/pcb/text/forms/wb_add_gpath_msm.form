@@ -1,0 +1,102 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 29 40
+HEADER "Add Guide"
+
+POPUP <side_popup> """".
+
+TILE
+
+TEXT "Die Side:"
+TLOC 1 1
+ENDTEXT
+FIELD dieSide
+FLOC 11 1
+ENUMSET 14
+POP "side_popup"
+ENDFIELD
+
+GROUP "Path characteristics"
+GLOC 1 3
+GSIZE 28 14
+INFO path_char 8 8
+ENDGROUP
+
+TEXT "Distance:"
+TLOC 2 5
+ENDTEXT
+FIELD distance
+FLOC 11 5
+STRFILLIN 15 20
+ENDFIELD
+
+FIELD refDieEdge
+FLOC 3 7
+CHECKLIST "from edge of die" "distance_from"
+ENDFIELD
+FIELD refDiePads
+FLOC 3 9
+CHECKLIST "from nearest die pad" "distance_from"
+ENDFIELD
+
+FIELD dieGroup
+FLOC 2 12
+CHECKLIST "Add to die group" 
+ENDFIELD
+
+FIELD checkRadius
+FLOC 2 14
+CHECKLIST "Radius:" 
+ENDFIELD
+FIELD radius
+FLOC 11 14
+STRFILLIN 15 20
+ENDFIELD
+
+GROUP "Path vertices defined by"
+GLOC 1 17
+GSIZE 28 16
+INFO path_ends 8 8
+ENDGROUP
+
+FIELD refAngle
+FLOC 2 19
+CHECKLIST "angle" "end_distance"
+ENDFIELD
+FIELD refOffset
+FLOC 2 21
+CHECKLIST " +/- offset" "end_distance"
+ENDFIELD
+
+FIELD edgeAngle
+FLOC 16 19
+INTSLIDEBAR 3 3
+MIN 0
+MAX 135
+ENDFIELD
+
+FIELD edgeOffset
+FLOC 16 21
+STRFILLIN 8 12
+ENDFIELD
+
+FIELD addGuideBMP
+THUMBNAIL "wbAddGuidePath.bmp"
+FLOC 2 24
+FSIZE 26 7
+ENDFIELD
+
+FIELD createPath
+FLOC 2 34
+MENUBUTTON "Create guide path(s)" 27 3
+ENDFIELD
+
+FIELD finishAdding
+FLOC 2 37
+MENUBUTTON "Done adding guides" 27 3
+ENDFIELD
+
+ENDTILE
+ENDFORM
+

@@ -1,0 +1,507 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM 
+FIXED
+PORT 71 40
+
+HEADER "Automatic Router"
+
+POPUP <PASS_INSERT>"Insert""insert","Delete""delete".
+
+#ifdef APD || SIP
+POPUP <PASS_TYPE>"Fanout""fanout","Seed Vias""seedvia","Bus""bus","Route""route","Clean""clean","Critic""critic","Filter""filter".
+#else
+POPUP <PASS_TYPE>"Fanout""fanout","Seed Vias""seedvia","Bus""bus","Route""route","Clean""clean","Testpoint""testpoint","Critic""critic","Filter""filter".
+#endif
+
+POPUP <LAYER_DIRECTION>"Horizontal""horizontal","Vertical""vertical","Orthogonal""orthogonal","Diagonal positive""positive_diagonal","Diagonal negative""negative_diagonal","Diagonal""diagonal".
+
+POPUP <SELECT_OBJECT_TYPES>"Components""Comp","Nets""Net".
+
+POPUP <SELECT_FILTER_TYPES>"Name""name","# Pins >=""min_pin_count".
+
+ACTIVEFIELD "execute"
+
+TILE
+
+TABSET "tabSelector"
+FLOC 1 1
+TSSIZE 58 42
+
+TAB "Router Setup"
+
+GROUP "Strategy"
+GLOC 1 0
+GSIZE 56 6
+ENDGROUP
+
+FIELD setup_stategyRoute
+FLOC 2 2
+CHECKLIST "Specify routing passes" "setup_stategy"
+ENDFIELD
+FIELD setup_stategySmart
+FLOC 28 2
+CHECKLIST "Use smart router" "setup_stategy"
+ENDFIELD
+FIELD setup_stategyDofile
+FLOC 2 4
+CHECKLIST "Do file:" "setup_stategy"
+ENDFIELD
+FIELD setup_stategyDofileName
+FLOC 12 4
+STRFILLIN 39 1023
+ENDFIELD
+FIELD setup_stategyDofileBrowse
+FLOC 53 4
+MENUBUTTON "..." 3 2
+ENDFIELD
+
+GROUP "Options"
+GLOC 1 6
+GSIZE 56 8
+ENDGROUP
+
+FIELD setup_routeDiagonal
+FLOC 20 10
+CHECKLIST "Enable diagonal routing"
+ENDFIELD
+
+FIELD setup_limitVias
+FLOC 2 8
+CHECKLIST "Limit via creation"
+ENDFIELD
+
+FIELD setup_limitWrapArounds
+FLOC 2 10
+CHECKLIST "Limit wraparounds"
+ENDFIELD
+
+FIELD setup_turboStagger
+FLOC 20 8
+CHECKLIST "Turbo Stagger"
+ENDFIELD
+
+#ifdef APD || SIP
+FIELD setup_customSmoothEnable
+FLOC 36 8
+CHECKLIST "Post-route smooth"
+ENDFIELD
+
+FIELD setup_customSmoothParams
+FLOC 53 8
+MENUBUTTON "..." 3 2
+ENDFIELD
+#endif
+
+FIELD setup_protectWires
+FLOC 2 12
+CHECKLIST "Protect existing routes"
+ENDFIELD
+
+GROUP "Wire grid"
+GLOC 1 14
+GSIZE 56 6
+ENDGROUP
+
+TEXT "X grid:"
+TLOC 2 16
+ENDTEXT
+
+FIELD setup_wireGridX
+FLOC 11 16
+REALFILLIN 8 8
+ENDFIELD
+
+TEXT "Y grid:"
+TLOC 26 16
+ENDTEXT
+
+FIELD setup_wireGridY
+FLOC 35 16
+REALFILLIN 8 8
+ENDFIELD
+
+TEXT "X offset:"
+TLOC 2 18
+ENDTEXT
+
+FIELD setup_wireGridOffsetX
+FLOC 11 18
+REALFILLIN 8 8
+ENDFIELD
+
+TEXT "Y offset:"
+TLOC 26 18
+ENDTEXT
+
+FIELD setup_wireGridOffsetY
+FLOC 35 18
+REALFILLIN 8 8
+ENDFIELD
+
+GROUP "Via grid"
+GLOC 1 20
+GSIZE 56 6
+ENDGROUP
+
+TEXT "X grid:"
+TLOC 2 22
+ENDTEXT
+
+FIELD setup_viaGridX
+FLOC 11 22
+REALFILLIN 8 8
+ENDFIELD
+
+TEXT "Y grid:"
+TLOC 26 22
+ENDTEXT
+
+FIELD setup_viaGridY
+FLOC 35 22
+REALFILLIN 8 8
+ENDFIELD
+
+TEXT "X offset:"
+TLOC 2 24
+ENDTEXT
+
+FIELD setup_viaGridOffsetX
+FLOC 11 24
+REALFILLIN 8 8
+ENDFIELD
+
+TEXT "Y offset:"
+TLOC 26 24
+ENDTEXT
+
+FIELD setup_viaGridOffsetY
+FLOC 35 24
+REALFILLIN 8 8
+ENDFIELD
+
+GRID "setup_routingLayers"
+FSIZE 56 14
+FLOC 1 27
+OPTIONS HLINES VLINES
+
+GHEAD TOP
+HEADSIZE 2
+OPTIONS 3D
+ENDGHEAD
+ 
+ENDGRID
+
+
+
+ENDTAB
+
+
+TAB "Routing Passes"
+
+GROUP "Preroute and route"
+GLOC 1 1
+GSIZE 56 18
+ENDGROUP
+
+GRID "route_passList"
+FLOC 2 3
+FSIZE 43 16
+OPTIONS HLINES VLINES
+
+GHEAD TOP
+HEADSIZE 2
+OPTIONS 3D
+ENDGHEAD
+ 
+GHEAD SIDE
+OPTIONS 3D NUMBER
+HEADSIZE 3
+POP "PASS_INSERT"
+ENDGHEAD
+
+ENDGRID
+
+FIELD route_params
+FLOC 47 8
+MENUBUTTON "Params..." 9 3
+ENDFIELD
+
+FIELD route_clear
+FLOC 47 11
+MENUBUTTON "Clear" 9 3
+ENDFIELD
+
+GROUP "Post Route"
+GLOC 1 19
+GSIZE 56 14
+ENDGROUP
+
+FIELD route_postCriticEnable
+FLOC 2 21
+CHECKLIST "Critic"
+ENDFIELD
+
+FIELD route_postFilterEnable
+FLOC 2 23
+CHECKLIST "Filter routing passes:"
+ENDFIELD
+
+FIELD route_postFilterPasses
+FLOC 28 23
+INTFILLIN  3 3
+MIN -1
+ENDFIELD
+
+FIELD route_postCenterEnable
+FLOC 2 25
+CHECKLIST "Center wires"
+ENDFIELD
+
+FIELD route_postSpreadEnable
+FLOC 2 27
+CHECKLIST "Spread wires"
+ENDFIELD
+
+FIELD route_postSpreadParams
+FLOC 19 27
+MENUBUTTON "Params..." 8 2
+ENDFIELD
+
+FIELD route_postMiterEnable
+FLOC 2 29
+CHECKLIST "Miter corners"
+ENDFIELD
+
+FIELD route_postMiterParams
+FLOC 19 29
+MENUBUTTON "Params..." 8 2
+ENDFIELD
+
+FIELD route_postDeleteConflictsEnable
+FLOC 2 31
+CHECKLIST "Delete conflicts"
+ENDFIELD
+
+
+ENDTAB
+
+
+TAB "Smart Router"
+
+GROUP "Grid"
+GLOC 1 1
+GSIZE 56 6
+ENDGROUP
+
+FIELD smart_minViaGridEnable
+FLOC 2 3
+CHECKLIST "Minimum via grid:"
+ENDFIELD
+FIELD smart_minViaGrid
+FLOC 24 3
+REALFILLIN  8 8
+ENDFIELD
+
+
+FIELD smart_minWireGridEnable
+FLOC 2 5
+CHECKLIST "Minimum wire grid:"
+ENDFIELD
+FIELD smart_minWireGrid
+FLOC 24 5
+REALFILLIN  8 8
+ENDFIELD
+
+GROUP "Fanout"
+GLOC 1 7
+GSIZE 56 8
+ENDGROUP
+
+FIELD smart_fanout
+FLOC 2 9
+CHECKLIST "Fanout if appropriate"
+ENDFIELD
+
+FIELD smart_fanoutViaSharing
+FLOC 4 11
+CHECKLIST "Via sharing"
+ENDFIELD
+
+FIELD smart_fanoutPinSharing
+FLOC 4 13
+CHECKLIST "Pin sharing"
+ENDFIELD
+
+#ifdef APD || SIP
+FIELD smart_miterEnable
+FLOC 1 16
+CHECKLIST "Miter after route"
+ENDFIELD
+#else
+GROUP "Generate Testpoints"
+GLOC 1 15
+GSIZE 56 7
+ENDGROUP
+
+FIELD smart_testpointOff
+FLOC 2 17
+CHECKLIST "Off" "smart_testpointSide"
+ENDFIELD
+
+FIELD smart_testpointFront
+FLOC 12 17
+CHECKLIST "Top" "smart_testpointSide"
+ENDFIELD
+
+FIELD smart_testpointBack
+FLOC 22 17
+CHECKLIST "Bottom" "smart_testpointSide"
+ENDFIELD
+
+FIELD smart_testpointBoth
+FLOC 32 17
+CHECKLIST "Both" "smart_testpointSide"
+ENDFIELD
+
+FIELD smart_testpointGridEnable
+FLOC 4 19
+CHECKLIST "Use grid:"
+ENDFIELD
+FIELD smart_testpointGrid
+FLOC 17 19
+REALFILLIN  8 8
+ENDFIELD
+
+FIELD smart_miterEnable
+FLOC 1 23
+CHECKLIST "Miter after route"
+ENDFIELD
+#endif
+
+ENDTAB
+
+#ifdef VSE_AUTOROUTE
+TAB "Selections"
+
+TEXT "Objects to route:"
+TLOC 1 1
+ENDTEXT
+
+FIELD select_modeAll
+FLOC 2 3
+CHECKLIST "Entire design" "select_mode"
+ENDFIELD
+
+FIELD select_modeSelected
+FLOC 19 3
+CHECKLIST "All selected" "select_mode"
+ENDFIELD
+
+FIELD select_modeNonselected
+FLOC 36 3
+CHECKLIST "All but selected" "select_mode"
+ENDFIELD
+
+GROUP "Available objects"
+GLOC 1 5
+GSIZE 27 26
+ENDGROUP
+
+TEXT "Object type:"
+TLOC 2 7
+ENDTEXT
+FIELD select_objectType
+FLOC  14 7
+ENUMSET 11
+POP "SELECT_OBJECT_TYPES"
+ENDFIELD
+
+TEXT "Filter:"
+TLOC 3 9
+ENDTEXT
+FIELD select_filter
+FLOC 14 9
+STRFILLIN 12 32
+ENDFIELD
+
+FIELD select_srcList
+FLOC 3 11
+LIST "" 24 9
+OPTIONS SORT
+ENDFIELD
+
+FIELD select_all
+FLOC 3 28
+MENUBUTTON "Select all in list" 24 3
+ENDFIELD
+ 
+GROUP "Selected Objects"
+GLOC 29 5
+GSIZE 28 26
+ENDGROUP
+
+FIELD select_objList
+FLOC 30 7
+LIST "" 26 10
+OPTIONS SORT
+ENDFIELD
+
+{
+GRID "select_objList"
+FSIZE 29 21
+FLOC 30 7
+ENDGRID
+}
+
+FIELD select_deselectAll
+FLOC 30 28
+MENUBUTTON "Deselect all" 26 3
+ENDFIELD
+
+ENDTAB
+#endif
+
+ENDTABSET
+
+FIELD close
+FLOC 60 3
+MENUBUTTON "Close" 11 3
+ENDFIELD
+
+#ifdef VSE_AUTOROUTE
+FIELD execute
+FLOC 60 6
+MENUBUTTON "Route" 11 4
+ENDFIELD
+
+FIELD undo
+FLOC 60 10
+MENUBUTTON "Undo" 11 3
+ENDFIELD
+
+FIELD results
+FLOC 60 13
+MENUBUTTON "Results" 11 3
+ENDFIELD
+#endif
+
+#ifdef VSE_AUTOROUTE_STANDALONE
+
+FIELD router_checks
+FLOC 60 18
+MENUBUTTON "Run checks" 11 3
+ENDFIELD
+
+FIELD script
+FLOC 60 21
+MENUBUTTON "Script..." 11 3
+ENDFIELD
+#endif
+
+FIELD help
+FLOC 60 24
+MENUBUTTON "Help" 11 3
+ENDFIELD
+
+ENDTILE
+ENDFORM

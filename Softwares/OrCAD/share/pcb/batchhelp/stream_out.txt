@@ -1,0 +1,64 @@
+
+Command line arguments for stream_out. 
+        Utility to export physical data from Allegro to GDSII (Stream) Format.
+
+stream_out [-udon [f|r|s] p2RCt] <-c filename.cnv> <brd>
+
+    OPTIONAL ARGUMENTS
+        [-u]  Output units.  The Allegro unit of measure.
+              Valid args: MILS, INCHES, CM, MM, MICRONS
+              default: Allegro database units.
+
+        [-d]  Accuracy specified in database units per user unit
+              Valid args:  integer powers of 10 (10, 100, 1000, ...) 
+              default: Allegro database accuracy. 
+
+        [-o]  Output file.  Name of the resultant stream file.
+              Default: <design_name>.sf
+
+        [-n]  Top structure name.  Name of the top GDSII Structure.
+              NOTE: The name is limited to 32 characters. 
+              Default: STR_1
+
+        [-f | -r | -s]
+              Path endpoint style.  (f)lush, (r)ound, or (s)quare.
+              Default: -r
+
+        [-p]  Flat geometry.  When present, stream data is written flat,
+              i.e. without hierarchy.
+              Default:  off. (Program outputs hierarchical data).
+
+        [-2]  Dracula Format.  Output a GDSII file compatible with the 
+              Dracula program.
+
+        [-R]  Rectangle format.  When present, all rectangles are exported
+              as GDSII Boundaries.  When not present, unfilled rectangles
+              are exported as GDSII Paths; filled rectangles are exported
+              as GDSII Boundaries. 
+              Default:  off. 
+
+        [-C]  Cline as boundary.  When present, all clines are exported
+              as GDSII Boundaries.  When not present, clines are exported
+              as GDSII Paths.
+              Default:  off. 
+
+        [-t]  Text height as magnification.  When present the text height
+              is written into the magnification field in user units.
+       
+        [-a]  The number of segments per circle to be used when converting
+              arcs to segments.
+              Valid args: 3 ... 360
+              default: 32
+              NOTE:  Users should be aware that specifying a high value will
+              increase the size of the output file and may produce very 
+              small segments.  Only the default value is recommended for 
+              manufacturing.  Cadence does not support importing files
+              that were produced with a non-standard number of segments
+              per circle. 
+
+    REQUIRED ARGUMENTS
+        [-c]  Conversion file. ASCII text file specifying the mapping
+              of stream layers to Allegro subclasses.
+
+        <brd>  Name of the design file.
+

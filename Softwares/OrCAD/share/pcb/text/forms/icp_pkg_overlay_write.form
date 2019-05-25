@@ -1,0 +1,127 @@
+FILE_TYPEt=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 56 34
+HEADER "Write Package Overlay for IC"
+
+TILE
+
+POPUP <diePop> "" "".
+POPUP <areaPop> "Die Outline" "DIE", "Package Outline" "PACKAGE", "Window" "WINDOW".
+
+TEXT "Die instance for package overlay generation:"
+TLOC 1 1
+ENDTEXT
+FIELD die_comp
+FLOC 3 3
+ENUMSET 49
+POP "diePop"
+ENDFIELD
+
+TEXT "File name:"
+TLOC 1 5
+ENDTEXT
+FIELD xml_file
+FLOC 3 7
+STRFILLIN 46 1024
+ENDFIELD
+FIELD xml_browse
+FLOC 51 7
+MENUBUTTON "..." 4 3
+ENDFIELD
+
+TEXT "Display area:"
+TLOC 1 10
+ENDTEXT
+FIELD display_area
+FLOC 16 10
+ENUMSET 36
+POP "areaPop"
+ENDFIELD
+
+TEXT "Offset from edge:"
+TLOC 3 12
+ENDTEXT
+FIELD display_offset
+FLOC 16 12
+STRFILLIN 37 1024
+ENDFIELD
+
+TEXT "Routing layers:"
+TLOC 1 15
+ENDTEXT
+GRID layer_grid
+FLOC 16 15
+FSIZE  38 5
+OPTIONS VLINES HLINES USERSIZE
+ENDGRID
+
+FIELD bga_balls
+FLOC 1 21
+CHECKLIST "Package balls"
+ENDFIELD
+
+FIELD package_die_pads
+FLOC 30 21
+CHECKLIST "Flip-chip package pads"
+ENDFIELD
+
+FIELD bond_fingers
+FLOC 1 23
+CHECKLIST "Bond fingers"
+ENDFIELD
+
+FIELD bond_wires
+FLOC 30 23
+CHECKLIST "Bond wires"
+ENDFIELD
+
+FIELD clines
+FLOC 1 25
+CHECKLIST "Routing clines"
+ENDFIELD
+
+FIELD via_pads
+FLOC 30 25
+CHECKLIST "Via pads"
+ENDFIELD
+
+FIELD rat_lines
+FLOC 1 27
+CHECKLIST "Ratsnests (flight lines)"
+ENDFIELD
+
+FIELD symbols
+FLOC 1 29
+CHECKLIST "Symbol outlines"
+ENDFIELD
+
+FIELD shapes
+FLOC 30 27
+CHECKLIST "Shapes"
+ENDFIELD
+
+FIELD shape_voids
+FLOC 32 29
+CHECKLIST "Include voids"
+ENDFIELD
+
+FIELD write
+FLOC 1 33
+MENUBUTTON "Write" 9 3
+ENDFIELD
+
+FIELD close
+FLOC 13 33
+MENUBUTTON "Close" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 46 33
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM
+

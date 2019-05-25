@@ -1,0 +1,157 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 50 13
+HEADER "Default Values Form"
+
+    #ifdef APD || ALLEGRO_MCM || SIP
+POPUP <SUBCLASSP>"All Conductor""-1".
+    #else
+POPUP <SUBCLASSP>"All Etch""-1".
+    #endif
+POPUP <ALLOWEDP>"Not Allowed""FALSE","Allowed""TRUE".
+POPUP <SAMENETP>"On""TRUE","Off""FALSE".
+
+MESSAGE DPF_WARNING 1 "Changes will NOT be seen by exported partitions."
+MESSAGE READ_ONLY_DPF 1 "Not editable within design partition."
+
+TILE 
+#TILE SUBCLASS
+#TPANEL 0
+
+TEXT "Subclass:"
+TLOC 1 1
+ENDTEXT
+ 
+FIELD subclass
+FLOC 22 1
+ENUMSET 24
+POP "SUBCLASSP"
+ENDFIELD
+
+TEXT "Line to line:"
+TLOC 1 4
+ENDTEXT
+
+TEXT "Line to pad:"
+TLOC 1 6
+ENDTEXT
+
+TEXT "Pad to pad:"
+TLOC 1 8
+ENDTEXT
+
+TEXT "Line width:"
+TLOC 1 10
+ENDTEXT
+ 
+FIELD line_to_line
+FLOC 22 4
+STRFILLIN 15 15
+ENDFIELD
+
+FIELD line_to_pad
+FLOC 22 6
+STRFILLIN 15 15
+ENDFIELD
+
+FIELD pad_to_pad
+FLOC 22 8
+STRFILLIN 15 15
+ENDFIELD
+
+FIELD line_width 
+FLOC 22 10 
+STRFILLIN 15 15   
+ENDFIELD
+  
+    #ifdef APD || ALLEGRO_MCM || SIP
+TEXT "Conductor on subclass:"
+    #else
+TEXT "Etch on subclass:"
+    #endif
+TLOC 1 13
+ENDTEXT
+
+FIELD etch_on_subc 
+FLOC 22 13 
+ENUMSET 12
+POP "ALLOWEDP"
+ENDFIELD 
+  
+TEXT "Same net DRC:"
+TLOC 1 15
+ENDTEXT
+
+FIELD same_net_drc
+FLOC 22 15
+ENUMSET 12
+POP "SAMENETP"
+ENDFIELD
+
+FIELD done
+FLOC 1 18
+MENUBUTTON "Done" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 11 18
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD reset
+FLOC 22 18
+MENUBUTTON "Reset" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 38 18
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+ENDTILE
+
+#ifdef CONFUSING
+TILE GLOBALS
+TPANEL 1
+TEXT "Add via list:"
+TLOC 1 1 
+ENDTEXT  
+TPANEL 1
+TEXT "(From Master dialog use Physical Set Values for complete list)"
+TLOC 3 3 
+ENDTEXT  
+
+FIELD default_via 
+FLOC 22 1 
+STRFILLIN 15 15 
+ENDFIELD
+
+ENDTILE
+
+TILE StdTile
+TPANEL 2
+FIELD done
+FLOC 1 0
+MENUBUTTON "Done" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 11 0
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD reset
+FLOC 22 0
+MENUBUTTON "Reset" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 38 0
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+ENDTILE
+#endif
+
+ENDFORM

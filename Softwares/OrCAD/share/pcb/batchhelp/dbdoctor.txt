@@ -1,0 +1,80 @@
+
+Command line arguments for dbdoctor
+	Database maintenance utility.  Uprevs, checks, and in some
+	instances will repair allegro databases.  This command is
+	also used to manage the lock state of the database.
+
+dbdoctor [<args>] [<input brd>]
+
+    GENERIC
+	[<input board>]
+	      Wildcards can be used for input boards.
+
+    GENERIC ARGUMENTS
+	[-check_only]
+	      Checks database but does not attempt to fix it
+	[-drc]
+	      Checks and repairs database, updates all DRC's,
+	      including BATCH only.
+	[-drc_only] 
+	      updates all DRC's, including BATCH only.
+	[-no_dbcheck] 
+	      Disables checking and fixing the database. Superseeds -drc_only
+	      flag but can also be used with the shape update, purge and regenerate
+	      xnet options.
+	[-shapes] 
+	      Checks and repairs database with additional shape checks.
+	[-no_backup] 
+	      Do not copy the input board to <input brd>.orig.
+	[-outfile <output brd>]
+	      Output database, when this option is used will also set
+	      the -no_backup option.  Only available with a single
+	      <input brd>.
+	[-purge_vialist]
+	      Purge vias from constraint vialist that are not found.
+	      This is the same functionality found with the Purge Vialist
+	      button in the physical constraint form
+	[-purge_padstacks]
+	      Purge unused padstacks from the database. Same functionality
+	      found Purge->All padstacks in the padeditldb Allegro command.
+	      When both purge_vialist and purge_padstacks are give the
+	      purge_vialist is done first. These cleanup passes are
+	      done after the database check but before DRC checking.
+	[-regenerate_xnets]
+              Recreates all Xnets and diff pairs.
+	[-no_dyn_shape_update]
+              Disables dynamic shape updating. This will NOT update out-of-date
+	      dynamic shapes, it prevents dynamic shapes from updating due to
+	      other database fixes.
+	[-shape_update]
+              Update just dynamic shapes that are out-of-date
+	[-force_shape_update]
+              Forces all dynamic shapes to be updated
+	      
+
+    DATABASE LOCKING
+	[-islocked] 
+	      Prints lock status of the database.
+	[-lock] 
+	      Locks the database.  If database is already locked
+	      must unlock first.
+	[-unlock] 
+	      Unlocks the database, if database is unlocked nothing is
+	      done.  If database has a lock with a password, then the
+	      password option is required.
+	[-exports] 
+	      Optionally provides export status, the only
+	      valid data is "ENABLED" or DISABLED".  Exports can
+	      only be applied when locking the database.
+	[-password] 
+	      Optionally sets a password.  Password string is
+	      required.  Password must be 20 characters or less,
+	      the first character cannot be a "-", and cannot
+	      contain a "\", or a space.  Password can only be
+	      applied when locking the database.
+	[-lockComment] 
+	      Optionally sets a comment.  When passing a comment
+	      string with spaces, the comment should be quoted.
+	      The maximum number of characters are 1024.  Comments
+	      can only be applied when locking the database.
+

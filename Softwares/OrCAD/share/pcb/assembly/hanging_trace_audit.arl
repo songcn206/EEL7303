@@ -1,0 +1,21 @@
+ include "dfa_constraints.par" 
+
+ use dfa;                       
+
+ RuleDefine 
+
+      Rule hanging_trace_audit 
+  /*   The Parameters are 
+         */ 
+		polygon_plane_outline := getPlaneOutline(design1) AND
+		net_segment1 := getClineSegsInArea(polygon_plane_outline) AND
+       net_failed := foreach(net_segment1,isNull(getNetOfSeg(net_segment1))) 
+
+		Message(ERROR,net_failed,"Clines not on the net\n",
+					"\nSegment : ?net_failed ",
+					"\n");
+
+ 
+      EndRule 
+
+ EndRuleDefine

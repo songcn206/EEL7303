@@ -1,0 +1,75 @@
+# CNS LayerSet Selection
+
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM autogreytext unixhgt
+FIXED
+PORT 61 20
+HEADER "Select Layer Sets"
+
+MESSAGE assignSelect 2 "Must first select Layer Set from available list"
+MESSAGE deassignSelect 2 "Must first select Layer Set from assign list"
+
+TILE
+
+FIELD auto_assign
+FLOC 24 2
+CHECKLIST "Auto move"
+ENDFIELD
+
+TEXT "Available Layer Sets"
+OPTIONS underline
+FLOC 6 2
+ENDTEXT
+
+FIELD all_layersets_list
+FLOC 3 4
+LIST "" 23 7
+ENDFIELD
+
+FIELD assign_layersets_arrow
+FLOC 30 8
+MENUBUTTON ">" 2 3
+ENDFIELD
+
+FIELD deassign_layersets_arrow
+FLOC 30 10
+MENUBUTTON "<" 2 3
+ENDFIELD
+
+TEXT "Assigned Layer Sets"
+OPTIONS underline
+FLOC 41 2
+ENDTEXT
+
+FIELD assign_layersets_list
+FLOC 36 4
+LIST "" 23 7
+ENDFIELD
+
+
+FIELD define_layersets
+FLOC 3 18
+MENUBUTTON "Define LayerSets..." 9 3
+ENDFIELD
+
+#----------------------------------------------------------
+# BUTTONS
+
+FIELD done
+FLOC 3 21
+MENUBUTTON "OK" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 13 21
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 23 21
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+
+ENDTILE
+ENDFORM

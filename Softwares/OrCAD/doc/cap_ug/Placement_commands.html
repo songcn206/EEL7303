@@ -1,0 +1,2186 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>
+      Placement commands
+    </title>
+    <meta name="Approver" content="Technical Publications" />
+    <meta name="Author" content="Technical Publications" />
+    <meta name="CreateDate" content="2012-10-10" />
+    <meta name="CreateTime" content="1349876205" />
+    <meta name="DataType" content="Manuals" />
+    <meta name="Description" content="UG" />
+    <meta name="DocTitle" content="OrCAD Capture User Guide" />
+    <meta name="DocType" content="User Guide" />
+    <meta name="FileTitle" content="Placement commands" />
+    <meta name="Keywords" content="" />
+    <meta name="FileType" content="Chapter" />
+    <meta name="Keyword" content="cap_ug" />
+    <meta name="Language" content="English" />
+    <meta name="ModifiedDate" content="2012-10-10" />
+    <meta name="ModifiedTime" content="1349876205" />
+    <meta name="NextFile" content="Property%2Bcommands.html" />
+    <meta name="Group" content="" />
+    <meta name="Platform" content="All," />
+    <meta name="PrevFile"
+    content="Macro%2BEditing%2BCommands.html" />
+    <meta name="Product"
+    content="Allegro Design Entry CIS,OrCAD Capture," />
+    <meta name="ProductFamily"
+    content="Silicon-Package-Board Co-Design,Silicon-Package-Board Co-Design," />
+    <meta name="ProductVersion" content="16.6" />
+    <meta name="RightsManagement"
+    content="Copyright 2011-2012 Cadence Design Systems Inc." />
+    <meta name="Title"
+    content="OrCAD Capture User Guide -- Placement commands" />
+    <meta name="Version" content="16.6" />
+    <meta name="Renderer" content="WIKI" />
+    <meta name="SpaceKey" content="capug166" />
+    <link href="styles/site.css" rel="stylesheet"
+    type="text/css" />
+    <meta content="text/html; charset=UTF-8"
+    http-equiv="Content-Type" />
+  </head>
+  <body style="margin-left: 5%;background-color: #FFFFFF;">
+    <a xmlns:html="http://www.w3.org/1999/xhtml" id="pagetop"
+    name="pagetop"></a> <a
+    xmlns:html="http://www.w3.org/1999/xhtml" id="firstpage"
+    name="firstpage"></a> <!-- Begin Buttons -->
+     
+    <table xmlns:html="http://www.w3.org/1999/xhtml" border="0"
+    cellpadding="0" cellspacing="0" width="650">
+      <tbody>
+        <tr>
+          <td colspan="10" height="36" width="650">
+            <img height="34" src="../support/header_doc.gif"
+            width="650" />
+          </td>
+        </tr>
+        <tr>
+          <td height="20" width="59">
+            <a href="javascript:openLibrary()"><img
+            alt="View Library" border="0" height="20"
+            src="../support/nav2_library.gif" width="59" /></a>
+          </td>
+          <td height="20" width="73">
+            <a href="cap_ugTOC.html"><img alt="Table of Contents"
+            border="0" src="../support/nav2_toc.gif" /></a>
+          </td>
+          <td height="20" width="46">
+            <img alt="Index" border="0"
+            src="../support/nav2_index_b.gif" />
+          </td>
+          <td>
+            <a href="Macro_Editing_Commands.html"><img
+            alt="Previous" border="0"
+            src="../support/nav2_previous.gif" /></a>
+          </td>
+          <td>
+            <a href="Property_commands.html"><img alt="Next"
+            border="0" src="../support/nav_next.gif" /></a>
+          </td>
+          <td height="20">
+            <a href="cap_ug.pdf"><img alt="Open PDF to print book"
+            border="0" height="20" src="../support/nav2_print.gif"
+            width="114" /></a>
+          </td>
+          <td height="20" width="61">
+            <img src="../support/nav2_black.gif" />
+          </td>
+          <td height="20" width="76">
+            <a href="/feedback.htm"><img alt="Email Comments"
+            border="0" height="20"
+            src="../support/nav2_feedback.gif" width="76" /></a>
+          </td>
+          <td height="20" width="43">
+            <a href="../cdsuser/help.html"><img
+            alt="Help Using Documentation" border="0" height="20"
+            src="../support/nav2_help.gif" width="43" /></a>
+          </td>
+          <td height="20" width="37">
+            <a href="/exitsearch.htm"><img
+            alt="Shut Down Cadence Documentation Server" border="0"
+            height="20" src="../support/nav2_exit.gif"
+            width="37" /></a>
+          </td>
+        </tr>
+      </tbody>
+    </table><!-- End Buttons -->
+    <hr xmlns:html="http://www.w3.org/1999/xhtml" />
+    <div id="main-header">
+      <a xmlns="" id="Placementcommands"
+      name="Placementcommands"></a> 
+      <h1 xmlns="" style=" margin: 4px 0 4px;">
+        <span>Placement commands</span>
+      </h1>
+    </div>
+    <div class="wiki-content group" id="main-content">
+      <p>
+        Use the macro placement commands to place objects in the
+        schematic page editor. Some of the placement commands can
+        be declared as WithDialog. For example, PlaceBlock can be
+        used as PlaceBlockWithDialog. Macro commands using
+        WithDialog prompt you to provide information, like the name
+        of a hierarchical block, when executed.
+      </p>
+      <p>
+        In the following macro command descriptions, <span
+        style="color: rgb(255,0,0);"><strong>Red</strong></span>
+        indicates a decimal number value. <span
+        style="color: rgb(0,0,255);"><strong>Blue</strong></span>
+        indicates a Boolean value where zero means FALSE and
+        non-zero numbers mean TRUE. <span
+        style="color: rgb(255,0,255);"><strong>Magenta</strong></span>
+        indicates any character string. Command description
+        variables enclosed in brackets
+        (&quot;<strong>[</strong>&quot; and
+        &quot;<strong>]</strong>&quot;) are not used when the
+        command is declared as WithDialog.
+      </p>
+      <div class="panelMacro">
+        <table class="noteMacro">
+          <colgroup>
+            <col width="24" />
+            <col />
+          </colgroup>
+          <tr>
+            <td valign="top">
+              <img align="absmiddle" alt="" border="0" height="16"
+              src="images/icons/emoticons/warning.png"
+              width="16" />
+            </td>
+            <td>
+              <p>
+                Macro commands are reserved words, and should not
+                be used for macro function or procedure names.
+              </p>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <p class="confluence-link">
+        The macro placement commands are:
+      </p>
+      <div>
+        <ul>
+          <li>
+            <a href="#Placementcommands-1722756PlaceArc%A0"><span
+            class="confluence-anchor-link"
+            id="Placementcommands-1722756">PlaceArc&#160;</span></a>
+          </li>
+          <li>
+            <a href="#Placementcommands-1722765PlaceBlock%A0"><span
+            class="confluence-anchor-link"
+            id="Placementcommands-1722765">PlaceBlock&#160;</span></a>
+          </li>
+          <li>
+            <a
+            href="#Placementcommands-1722774PlaceBookmark%A0"><span
+            class="confluence-anchor-link"
+            id="Placementcommands-1722774">PlaceBookmark&#160;</span></a>
+          </li>
+          <li>
+            <a href="#Placementcommands-1722783PlaceBus%A0"><span
+            class="confluence-anchor-link"
+            id="Placementcommands-1722783">PlaceBus&#160;</span></a>
+          </li>
+          <li>
+            <a
+            href="#Placementcommands-1722792PlaceBusEntry%A0"><span
+            class="confluence-anchor-link"
+            id="Placementcommands-1722792">PlaceBusEntry&#160;</span></a>
+          </li>
+          <li>
+            <a
+            href="#Placementcommands-1722801PlaceEllipse%A0"><span
+            class="confluence-anchor-link"
+            id="Placementcommands-1722801">PlaceEllipse&#160;</span></a>
+          </li>
+          <li>
+            <a href="#Placementcommands-1722810PlaceGround"><span
+            class="confluence-anchor-link"
+            id="Placementcommands-1722810">PlaceGround</span></a>
+          </li>
+          <li>
+            <a
+            href="#Placementcommands-1722819PlaceJunction%A0"><span
+            class="confluence-anchor-link"
+            id="Placementcommands-1722819">PlaceJunction&#160;</span></a>
+          </li>
+          <li>
+            <a href="#Placementcommands-1722828PlaceLine%A0"><span
+            class="confluence-anchor-link"
+            id="Placementcommands-1722828">PlaceLine&#160;</span></a>
+          </li>
+          <li>
+            <a href="#Placementcommands-1722837PlaceNetAlias"><span
+            class="confluence-anchor-link"
+            id="Placementcommands-1722837">PlaceNetAlias</span></a>
+          </li>
+          <li>
+            <a
+            href="#Placementcommands-1722846PlaceNextPolygonPoint%A0"><span
+             class="confluence-anchor-link"
+            id="Placementcommands-1722846">PlaceNextPolygonPoint&#160;</span></a>
+          </li>
+          <li>
+            <a
+            href="#Placementcommands-1722855PlaceNextPolylinePoint%A0"><span
+             class="confluence-anchor-link"
+            id="Placementcommands-1722855">PlaceNextPolylinePoint&#160;</span></a>
+          </li>
+          <li>
+            <a
+            href="#Placementcommands-1722864PlaceNoConnect%A0"><span
+             class="confluence-anchor-link"
+            id="Placementcommands-1722864">PlaceNoConnect&#160;</span></a>
+          </li>
+          <li>
+            <a
+            href="#Placementcommands-1746403PlaceOffPage%A0"><span
+            class="confluence-anchor-link"
+            id="Placementcommands-1746403">PlaceOffPage&#160;</span></a>
+          </li>
+          <li>
+            <a href="#Placementcommands-1746418PlacePart%A0"><span
+            class="confluence-anchor-link"
+            id="Placementcommands-1746418">PlacePart&#160;</span></a>
+          </li>
+          <li>
+            <a
+            href="#Placementcommands-1722891PlacePicture%A0"><span
+            class="confluence-anchor-link"
+            id="Placementcommands-1722891">PlacePicture&#160;</span></a>
+          </li>
+          <li>
+            <a href="#Placementcommands-1722900PlacePin%A0"><span
+            class="confluence-anchor-link"
+            id="Placementcommands-1722900">PlacePin&#160;</span></a>
+          </li>
+          <li>
+            <a
+            href="#Placementcommands-1722909PlacePolygon%A0"><span
+            class="confluence-anchor-link"
+            id="Placementcommands-1722909">PlacePolygon&#160;</span></a>
+          </li>
+          <li>
+            <a
+            href="#Placementcommands-1722918PlacePolyline%A0"><span
+            class="confluence-anchor-link"
+            id="Placementcommands-1722918">PlacePolyline&#160;</span></a>
+          </li>
+          <li>
+            <a href="#Placementcommands-1722927PlacePort%A0"><span
+            class="confluence-anchor-link"
+            id="Placementcommands-1722927">PlacePort&#160;</span></a>
+          </li>
+          <li>
+            <a href="#Placementcommands-1722936PlacePower%A0"><span
+            class="confluence-anchor-link"
+            id="Placementcommands-1722936">PlacePower&#160;</span></a>
+          </li>
+          <li>
+            <a
+            href="#Placementcommands-1722945PlaceRectangle%A0"><span
+             class="confluence-anchor-link"
+            id="Placementcommands-1722945">PlaceRectangle&#160;</span></a>
+          </li>
+          <li>
+            <a href="#Placementcommands-1722954PlaceText%A0"><span
+            class="confluence-anchor-link"
+            id="Placementcommands-1722954">PlaceText&#160;</span></a>
+          </li>
+          <li>
+            <a
+            href="#Placementcommands-1941929PlaceTitleblock%A0"><span
+             class="confluence-anchor-link"
+            id="Placementcommands-1941929">PlaceTitleblock&#160;</span></a>
+          </li>
+          <li>
+            <a href="#Placementcommands-1941943PlaceWire%A0"><span
+            class="confluence-anchor-link"
+            id="Placementcommands-1941943">PlaceWire&#160;</span></a>
+          </li>
+        </ul>
+      </div><br />
+      <br />
+       
+      <h4 id="Placementcommands-1722756PlaceArc&#160;">
+        <span class="confluence-anchor-link"
+        id="Placementcommands-1722756"></span> PlaceArc&#160;
+      </h4>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>Function:</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <strong>PlaceArc <span
+                  style="color: rgb(255,0,0);"><em>X1</em></span> ,
+                  <span
+                  style="color: rgb(255,0,0);"><em>Y1</em></span> ,
+                  <span
+                  style="color: rgb(255,0,0);"><em>X2</em></span> ,
+                  <span
+                  style="color: rgb(255,0,0);"><em>Y2</em></span> ,
+                  <span
+                  style="color: rgb(255,0,0);"><em>X3</em></span> ,
+                  <span
+                  style="color: rgb(255,0,0);"><em>Y3</em></span> ,
+                  <span
+                  style="color: rgb(255,0,0);"><em>X4</em></span> ,
+                  <span
+                  style="color: rgb(255,0,0);"><em>Y4</em></span></strong>
+                </p>
+                <p>
+                  Use this command to place an arc specified by the
+                  rectangle with the coordinates CurrentLocation +
+                  (<em><span
+                  style="color: rgb(255,0,0);"><strong>X1</strong></span></em>
+                  , <span
+                  style="color: rgb(255,0,0);"><em><strong>Y1</strong></em></span>
+                  ) and the CurrentLocation + (<span
+                  style="color: rgb(255,0,0);"><em><strong>X2</strong></em></span>
+                  , <span
+                  style="color: rgb(255,0,0);"><em><strong>Y2</strong></em></span>
+                  ). The starting point of the arc is specified by
+                  the coordinate (<em><span
+                  style="color: rgb(255,0,0);"><strong>X3</strong></span></em>
+                  , <em><span
+                  style="color: rgb(255,0,0);"><strong>Y3</strong></span></em>
+                  ), and is terminated at the coordinate specified
+                  by (<span
+                  style="color: rgb(255,0,0);"><strong>X4</strong></span>
+                  , <span
+                  style="color: rgb(255,0,0);"><strong>Y4</strong></span>
+                  ). The current location is changed to the upper
+                  left corner of the arc&#39;s defining rectangle
+                  or the coordinate (<span
+                  style="color: rgb(255,0,0);"><strong>X4</strong></span>
+                  , <span
+                  style="color: rgb(255,0,0);"><strong>Y4</strong></span>
+                  ). The arc becomes the only object selected.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>Example:</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <div class="preformatted panel"
+                style="border-width: 1px;">
+                  <div class="preformattedContent panelContent">
+<pre>
+PlaceArc -0.01, -1.12, 2.03, 0.92, 1.91, -0.60, 0.00, 0.00
+</pre>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h4 id="Placementcommands-1722765PlaceBlock&#160;">
+        <span class="confluence-anchor-link"
+        id="Placementcommands-1722765"></span> PlaceBlock&#160;
+      </h4>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>Function:</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <strong>PlaceBlock</strong> <span
+                  style="color: rgb(255,0,0);"><em>X1</em></span> ,
+                  <span
+                  style="color: rgb(255,0,0);"><em>Y1</em></span> ,
+                  <span
+                  style="color: rgb(255,0,0);"><em>X2</em></span> ,
+                  <span
+                  style="color: rgb(255,0,0);"><em>Y2</em></span>
+                  <em>, [ &quot;<span
+                  style="color: rgb(255,0,255);">libname</span>&quot;,
+                  &quot;</em> <span
+                  style="color: rgb(255,0,255);"><em>schematicname</em></span>
+                  &quot;, &quot;<span
+                  style="color: rgb(255,0,255);"><em>blockname</em></span>
+                  &quot;,<br />
+                   &quot;<span
+                  style="color: rgb(255,0,255);"><em>primitiveflag</em></span>
+                  &quot;]
+                </p>
+                <p>
+                  <br class="atl-forced-newline" />
+                   Use this command to place a hierarchical block
+                  defined by CurrentLocation + (<span
+                  style="color: rgb(255,0,0);"><strong>X1</strong>,
+                  <strong>Y1</strong></span> ) and CurrentLocation
+                  + (<span
+                  style="color: rgb(255,0,0);"><strong>X2</strong>,
+                  <strong>Y2</strong></span> ). The hierarchical
+                  block&#39;s name and reference are specified by
+                  <em><span
+                  style="color: rgb(255,0,255);"><strong>blockname</strong></span>
+                  .</em> The current location is changed to the
+                  upper left corner of the hierarchical block, and
+                  the hierarchical block becomes the only selected
+                  object. If <em><span
+                  style="color: rgb(255,0,255);"><strong>blockname</strong></span></em>
+                  is not specified, Capture will assign it a unique
+                  internal name. If&#160;<em><span
+                  style="color: rgb(255,0,255);"><strong>blockname</strong></span></em>
+                  is specified, but not unique, the command will
+                  fail and no objects will be selected. If the
+                  hierarchical block has an attached schematic
+                  folder, it is specified by <em><span
+                  style="color: rgb(255,0,255);"><strong>schematicname</strong></span></em>
+                  . The path and library name containing the
+                  schematic folder are specified by <span
+                  style="color: rgb(255,0,255);"><em><strong>libname</strong></em></span>
+                  . The hierarchical block&#39;s primitivity is
+                  specified by <em><span
+                  style="color: rgb(255,0,255);"><strong>primitiveflag</strong></span></em>
+                  , which is set to YES, NO, or DEFAULT.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>Example:</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <div class="preformatted panel"
+                style="border-width: 1px;">
+                  <div class="preformattedContent panelContent">
+<pre>
+PlaceBlock -0.10, -0.60, 0.40, -0.30, &quot;C:\PROGRAM FILES\
+ORCAD\CAPTURE\Design\Fulladd\Fulladd.OLB&quot;, &quot;HALFADD&quot;, 
+&quot;Halfadd_A&quot;, &quot;DEFAULT&quot;
+
+PlaceBlockWithDialog 0.30, -0.30, 0.80, 0.00
+</pre>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h4 id="Placementcommands-1722774PlaceBookmark&#160;">
+        <span class="confluence-anchor-link"
+        id="Placementcommands-1722774"></span> PlaceBookmark&#160;
+      </h4>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>Function:</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <strong>PlaceBookmark <span
+                  style="color: rgb(255,0,0);"><em>X</em></span> ,
+                  <em><span
+                  style="color: rgb(255,0,0);">Y</span></em> ,
+                  [&quot;<em><span
+                  style="color: rgb(255,0,255);">name</span></em>
+                  &quot;]</strong>
+                </p>
+                <p>
+                  Use this command to place a bookmark at the
+                  current location added to the<br />
+                   offset (<strong><strong><span
+                  style="color: rgb(255,0,0);"><em>X</em></span> ,
+                  <em><span
+                  style="color: rgb(255,0,0);">Y</span></em></strong></strong>
+                  ). The bookmark name is specified by
+                  <strong><em><span
+                  style="color: rgb(255,0,255);">name</span></em></strong>
+                  . The current location<br />
+                   is changed to its current value added to the
+                  offset (<strong><strong><span
+                  style="color: rgb(255,0,0);"><em>X</em></span> ,
+                  <em><span
+                  style="color: rgb(255,0,0);">Y</span></em></strong></strong>
+                  ), and the bookmark<br />
+                   becomes the only selected object.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>Example:</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <div class="preformatted panel"
+                style="border-width: 1px;">
+                  <div class="preformattedContent panelContent">
+<pre>
+PlaceBookMark 0.20, 0.00, &quot;C:\PROGRAM FILES\ORCAD\CAPTURE\
+DESIGN1.DSN&quot;, &quot;B&quot;
+
+PlaceBookMarkWithDialog -1.80, 0.50
+</pre>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h4 id="Placementcommands-1722783PlaceBus&#160;">
+        <span class="confluence-anchor-link"
+        id="Placementcommands-1722783"></span> PlaceBus&#160;
+      </h4>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>Function:</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <strong>PlaceBus</strong> <span
+                  style="color: rgb(255,0,0);"><em>X1</em></span> ,
+                  <span
+                  style="color: rgb(255,0,0);"><em>Y1</em></span> ,
+                  <span
+                  style="color: rgb(255,0,0);"><em>X2</em></span> ,
+                  <span
+                  style="color: rgb(255,0,0);"><em>Y2</em></span>
+                </p>
+                <p>
+                  Use this command to place the first segment of a
+                  bus with the starting point at CurrentLocation +
+                  (<strong><strong><strong><span
+                  style="color: rgb(255,0,0);"><em>X1</em></span> ,
+                  <span
+                  style="color: rgb(255,0,0);"><em>Y1</em></span></strong></strong></strong>
+                  ), and the endpoint at CurrentLocation +
+                  (<strong><strong><strong><span
+                  style="color: rgb(255,0,0);"><em>X2</em></span> ,
+                  <span
+                  style="color: rgb(255,0,0);"><em>Y2</em></span></strong></strong></strong>
+                  ). CurrentLocation is set to CurrentLocation +
+                  (<strong><strong><strong><strong><span
+                  style="color: rgb(255,0,0);"><em>X2</em></span> ,
+                  <span
+                  style="color: rgb(255,0,0);"><em>Y2</em></span></strong></strong></strong></strong>
+                  ). The bus becomes the only selected object.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>Example:</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <div class="preformatted panel"
+                style="border-width: 1px;">
+                  <div class="preformattedContent panelContent">
+<pre>
+PlaceBus -1.40, 1.00, 0.10, 1.00
+</pre>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h4 id="Placementcommands-1722792PlaceBusEntry&#160;">
+        <span class="confluence-anchor-link"
+        id="Placementcommands-1722792"></span> PlaceBusEntry&#160;
+      </h4>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>Function:</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <strong>PlaceBusEntry <span
+                  style="color: rgb(255,0,0);"><em>X</em></span> ,
+                  <span
+                  style="color: rgb(255,0,0);"><em>Y</em></span> ,
+                  <em><span
+                  style="color: rgb(0,0,255);">rotate</span></em></strong>
+                </p>
+                <p>
+                  Use this command to place a bus entry at
+                  CurrentLocation + (<strong><span
+                  style="color: rgb(255,0,0);"><em>X</em></span> ,
+                  <span
+                  style="color: rgb(255,0,0);"><em>Y</em></span></strong>
+                  ). If <span
+                  style="color: rgb(0,0,255);"><strong>rotate</strong></span>
+                  is FALSE, the bus entry appears as a forward
+                  slash (/). If <span
+                  style="color: rgb(0,0,255);"><strong>rotate</strong></span>
+                  is TRUE, then the bus entry appears as a backward
+                  slash (\). CurrentLocation is set to
+                  CurrentLocation + (<strong><strong><span
+                  style="color: rgb(255,0,0);"><em>X</em></span> ,
+                  <span
+                  style="color: rgb(255,0,0);"><em>Y</em></span></strong></strong>
+                  ). The bus entry becomes the only selected
+                  object.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>Example:</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <div class="preformatted panel"
+                style="border-width: 1px;">
+                  <div class="preformattedContent panelContent">
+<pre>
+PlaceBusEntry -3.00, -1.00, FALSE
+</pre>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h4 id="Placementcommands-1722801PlaceEllipse&#160;">
+        <span class="confluence-anchor-link"
+        id="Placementcommands-1722801"></span> PlaceEllipse&#160;
+      </h4>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>Function:</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <strong>PlaceEllipse <em><span
+                  style="color: rgb(255,0,0);">X1</span></em> ,
+                  <span
+                  style="color: rgb(255,0,0);"><em>Y1</em></span> ,
+                  <span
+                  style="color: rgb(255,0,0);"><em>X2</em></span> ,
+                  <span
+                  style="color: rgb(255,0,0);"><em>Y2</em></span></strong>
+                </p>
+                <p>
+                  Use this command to place an ellipse specified by
+                  the points CurrentLocation +
+                  (<strong><strong><em><span
+                  style="color: rgb(255,0,0);">X1</span></em> ,
+                  <span
+                  style="color: rgb(255,0,0);"><em>Y1</em></span></strong></strong>
+                  ), and CurrentLocation + (<strong><strong><span
+                  style="color: rgb(255,0,0);"><em>X2</em></span> ,
+                  <span
+                  style="color: rgb(255,0,0);"><em>Y2</em></span></strong></strong>
+                  ). CurrentLocation is changed to CurrentLocation
+                  + (<strong><strong><span
+                  style="color: rgb(255,0,0);"><em>X2</em></span> ,
+                  <span
+                  style="color: rgb(255,0,0);"><em>Y2</em></span></strong></strong>
+                  ), and the ellipse becomes the only selected
+                  object.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>Example:</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <div class="preformatted panel"
+                style="border-width: 1px;">
+                  <div class="preformattedContent panelContent">
+<pre>
+PlaceEllipse 0.00, 0.00, 1.20, 1.30
+</pre>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h4 id="Placementcommands-1722810PlaceGround">
+        <span class="confluence-anchor-link"
+        id="Placementcommands-1722810"></span> PlaceGround
+      </h4>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>Function:</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <strong>PlaceGround <em><span
+                  style="color: rgb(255,0,0);">X</span></em> ,
+                  <em><span style="color: rgb(255,0,0);">Y</span>,
+                  [&quot;<span
+                  style="color: rgb(255,0,255);">libname</span>&quot;,
+                  &quot;<span
+                  style="color: rgb(255,0,255);">symbolname</span>&quot;,
+                  &quot;<span
+                  style="color: rgb(255,0,255);">name</span>&quot;]</em></strong>
+                </p>
+                <p>
+                  Use this command to place an instance of a ground
+                  symbol at CurrentLocation +
+                  (<strong><strong><em><span
+                  style="color: rgb(255,0,0);">X</span></em> ,
+                  <em><span
+                  style="color: rgb(255,0,0);">Y</span></em></strong></strong>
+                  ). The ground symbol is specified by
+                  <strong><em><span
+                  style="color: rgb(255,0,255);">symbolname</span></em></strong>
+                  , and is given the name <em><span
+                  style="color: rgb(255,0,255);"><strong>name</strong></span></em>
+                  . The library containing the ground symbol is
+                  specified by <span
+                  style="color: rgb(255,0,255);"><strong>libname</strong></span>
+                  . CurrentLocation is set to CurrentLocation +
+                  (<span
+                  style="color: rgb(255,0,0);"><strong>X</strong>
+                  <span style="color: rgb(0,0,0);">,</span>
+                  <strong>Y</strong></span> ), and the ground
+                  symbol becomes the only selected object. If there
+                  is no symbol called <em><span
+                  style="color: rgb(255,0,255);"><strong>symbolname</strong></span></em>
+                  in a library named <span
+                  style="color: rgb(255,0,255);"><em><strong>libname</strong></em></span>
+                  , then the command fails and no objects are
+                  selected.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>Example:</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <div class="preformatted panel"
+                style="border-width: 1px;">
+                  <div class="preformattedContent panelContent">
+<pre>
+PlaceGround 0.30, 0.40, &quot;C:\PROGRAM FILES\ORCAD\CAPTURE\
+LIBRARY\CAPSYM.OLB&quot;, &quot;GND FIELD SIGNAL&quot;, &quot;GND&quot;
+
+PlaceGroundWithDialog -1.90, -0.30
+</pre>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h4 id="Placementcommands-1722819PlaceJunction&#160;">
+        <span class="confluence-anchor-link"
+        id="Placementcommands-1722819"></span> PlaceJunction&#160;
+      </h4>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>Function:</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <strong>PlaceJunction</strong> <strong><em><span
+                  style="color: rgb(255,0,0);">X</span></em> ,
+                  <em><span
+                  style="color: rgb(255,0,0);">Y</span></em></strong>
+                </p>
+                <p>
+                  Use this command to place a junction specified by
+                  the points CurrentLocation + (<strong><em><span
+                  style="color: rgb(255,0,0);">X</span></em> ,
+                  <em><span
+                  style="color: rgb(255,0,0);">Y</span></em></strong>
+                  ). If a junction already exists at this location,
+                  then it is removed.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>Example:</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <div class="preformatted panel"
+                style="border-width: 1px;">
+                  <div class="preformattedContent panelContent">
+<pre>
+PlaceJunction -0.10, -1.30
+</pre>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h4 id="Placementcommands-1722828PlaceLine&#160;">
+        <span class="confluence-anchor-link"
+        id="Placementcommands-1722828"></span> PlaceLine&#160;
+      </h4>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>Function:</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <strong>PlaceLine</strong> <span
+                  style="color: rgb(255,0,0);"><em>X1</em></span> ,
+                  <span
+                  style="color: rgb(255,0,0);"><em>Y1</em></span> ,
+                  <strong><span
+                  style="color: rgb(255,0,0);"><em>X2</em></span> ,
+                  <span
+                  style="color: rgb(255,0,0);"><em>Y2</em></span></strong>
+                </p>
+                <p>
+                  Use this command to place a line specified by the
+                  points CurrentLocation + (<strong><strong><span
+                  style="color: rgb(255,0,0);"><em>X1</em></span> ,
+                  <span
+                  style="color: rgb(255,0,0);"><em>Y1</em></span></strong></strong>
+                  ), and CurrentLocation + (<strong><strong><span
+                  style="color: rgb(255,0,0);"><em>X2</em></span> ,
+                  <span
+                  style="color: rgb(255,0,0);"><em>Y2</em></span></strong></strong>
+                  ). CurrentLocation is changed to CurrentLocation
+                  + (<strong><strong><span
+                  style="color: rgb(255,0,0);"><em>X2</em></span> ,
+                  <span
+                  style="color: rgb(255,0,0);"><em>Y2</em></span></strong></strong>
+                  ). The line becomes the only selected object.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>Example:</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <div class="preformatted panel"
+                style="border-width: 1px;">
+                  <div class="preformattedContent panelContent">
+<pre>
+PlaceLine -0.10, 0.40, 1.20, 0.40
+</pre>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h4 id="Placementcommands-1722837PlaceNetAlias">
+        <span class="confluence-anchor-link"
+        id="Placementcommands-1722837"></span> PlaceNetAlias
+      </h4>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>Function:</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <strong>PlaceNetAlias</strong> <em><span
+                  style="color: rgb(255,0,0);">X</span></em> ,
+                  <em><span
+                  style="color: rgb(255,0,0);">Y</span></em> ,
+                  [&quot;<span
+                  style="color: rgb(255,0,255);">alias</span>&quot;]
+                </p>
+                <p>
+                  Use this command to place a net alias at
+                  CurrentLocation + (<strong><em><span
+                  style="color: rgb(255,0,0);">X</span></em> ,
+                  <em><span
+                  style="color: rgb(255,0,0);">Y</span></em></strong>
+                  ). The name of the net alias is specified by
+                  <span
+                  style="color: rgb(255,0,255);"><strong>alias</strong></span>
+                  . CurrentLocation is set to<br />
+                   CurrentLocation + (<strong><strong><em><span
+                  style="color: rgb(255,0,0);">X</span></em> ,
+                  <em><span
+                  style="color: rgb(255,0,0);">Y</span></em></strong></strong>
+                  ). The net alias becomes the only object
+                  selected. If CurrentLocation + (<strong><em><span
+                  style="color: rgb(255,0,0);">X</span></em> ,
+                  <em><span
+                  style="color: rgb(255,0,0);">Y</span></em></strong>
+                  ) is not a wire or bus, the command fails. If
+                  CurrentLocation + (<strong><em><span
+                  style="color: rgb(255,0,0);">X</span></em> ,
+                  <em><span
+                  style="color: rgb(255,0,0);">Y</span></em></strong>
+                  ) is on a bus, but <span
+                  style="color: rgb(255,0,255);"><strong>alias</strong></span>
+                  is not a valid bus name, the command fails. No
+                  objects are selected if the command fails.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>Example:</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <div class="preformatted panel"
+                style="border-width: 1px;">
+                  <div class="preformattedContent panelContent">
+<pre>
+PlaceNetAlias -3.00, -1.30, &quot;A[1..5]&quot;
+
+PlaceNetAliasWithDialog 2.00, 1.00
+</pre>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h4
+      id="Placementcommands-1722846PlaceNextPolygonPoint&#160;">
+        <span class="confluence-anchor-link"
+        id="Placementcommands-1722846"></span>
+        PlaceNextPolygonPoint&#160;
+      </h4>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>Function:</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <strong>PlaceNextPolygonPoint</strong> <em><span
+                  style="color: rgb(255,0,0);">X</span></em> ,
+                  <em><span
+                  style="color: rgb(255,0,0);">Y</span></em>
+                </p>
+                <p>
+                  Use this command to add a point to the currently
+                  selected polygon. The point is specified by
+                  CurrentLocation + (<strong><strong><em><span
+                  style="color: rgb(255,0,0);">X</span></em> ,
+                  <em><span
+                  style="color: rgb(255,0,0);">Y</span></em></strong></strong>
+                  ). CurrentLocation is then changed to
+                  CurrentLocation + (<strong><strong><em><span
+                  style="color: rgb(255,0,0);">X</span></em> ,
+                  <em><span
+                  style="color: rgb(255,0,0);">Y</span></em></strong></strong>
+                  ), and the polygon becomes the only selected
+                  object. If a polygon is not selected, the command
+                  fails and no objects are selected.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>Example:</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <div class="preformatted panel"
+                style="border-width: 1px;">
+                  <div class="preformattedContent panelContent">
+<pre>
+PlaceNextPolygonPoint 1.30, 3.20
+</pre>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h4
+      id="Placementcommands-1722855PlaceNextPolylinePoint&#160;">
+        <span class="confluence-anchor-link"
+        id="Placementcommands-1722855"></span>
+        PlaceNextPolylinePoint&#160;
+      </h4>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>Function:</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <strong>PlaceNextPolylinePoint</strong> <em><span
+                  style="color: rgb(255,0,0);">X</span></em> ,
+                  <em><span
+                  style="color: rgb(255,0,0);">Y</span></em><br />
+                </p>
+                <p>
+                  Use this command to add a point to the currently
+                  selected polyline. The point is specified by
+                  CurrentLocation + (<strong><strong><em><span
+                  style="color: rgb(255,0,0);">X</span></em> ,
+                  <em><span
+                  style="color: rgb(255,0,0);">Y</span></em></strong></strong>
+                  ). CurrentLocation is then changed to
+                  CurrentLocation + (<strong><strong><em><span
+                  style="color: rgb(255,0,0);">X</span></em> ,
+                  <em><span
+                  style="color: rgb(255,0,0);">Y</span></em></strong></strong>
+                  ), and the polyline becomes the only selected
+                  object. If a polyline is not selected, the
+                  command fails and no objects are selected.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>Example:</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <div class="preformatted panel"
+                style="border-width: 1px;">
+                  <div class="preformattedContent panelContent">
+<pre>
+PlaceNextPolylinePoint 1.30, 3.20
+</pre>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h4 id="Placementcommands-1722864PlaceNoConnect&#160;">
+        <span class="confluence-anchor-link"
+        id="Placementcommands-1722864"></span> PlaceNoConnect&#160;
+      </h4>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>Function:</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <strong>PlaceNoConnect</strong> <strong><em><span
+                  style="color: rgb(255,0,0);">X</span></em> ,
+                  <em><span
+                  style="color: rgb(255,0,0);">Y</span></em></strong>
+                </p>
+                <p>
+                  Use this command to place a no connect symbol at
+                  CurrentLocation + (<strong><em><span
+                  style="color: rgb(255,0,0);">X</span></em> ,
+                  <em><span
+                  style="color: rgb(255,0,0);">Y</span></em></strong>
+                  ). CurrentLocation is then changed to
+                  CurrentLocation + (<strong><em><span
+                  style="color: rgb(255,0,0);">X</span></em> ,
+                  <em><span
+                  style="color: rgb(255,0,0);">Y</span></em></strong>
+                  ). Nothing remains selected. If CurrentLocation +
+                  (<strong><strong><em><span
+                  style="color: rgb(255,0,0);">X</span></em> ,
+                  <em><span
+                  style="color: rgb(255,0,0);">Y</span></em></strong></strong>
+                  ) is not located at the end of a pin, the command
+                  fails.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>Example:</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <div class="preformatted panel"
+                style="border-width: 1px;">
+                  <div class="preformattedContent panelContent">
+<pre>
+PlaceNoConnect 3.40, 5.20
+</pre>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h4 id="Placementcommands-1746403PlaceOffPage&#160;">
+        <span class="confluence-anchor-link"
+        id="Placementcommands-1746403"></span> PlaceOffPage&#160;
+      </h4>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>Function:</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <strong>PlaceOffPage</strong> <em><span
+                  style="color: rgb(255,0,0);">X</span></em> ,
+                  <em><span
+                  style="color: rgb(255,0,0);">Y</span></em> ,
+                  [&quot;<span
+                  style="color: rgb(255,0,255);"><em>libname</em></span>
+                  &quot;, &quot;<span
+                  style="color: rgb(255,0,255);"><em>symbolname</em></span>
+                  &quot;, &quot;<span
+                  style="color: rgb(255,0,255);"><em>name</em></span>
+                  &quot;]
+                </p>
+                <p>
+                  Use this command to place an instance of an
+                  off-page connector at CurrentLocation +
+                  (<strong><strong><em><span
+                  style="color: rgb(255,0,0);">X</span></em> ,
+                  <em><span
+                  style="color: rgb(255,0,0);">Y</span></em></strong></strong>
+                  ). The off-page connector is specified by
+                  <em><span
+                  style="color: rgb(255,0,255);"><strong>symbolname</strong></span>
+                  ,</em> and is given the name <span
+                  style="color: rgb(255,0,255);"><strong>name</strong></span>
+                  . The library containing the off-page connector
+                  is specified by <span
+                  style="color: rgb(255,0,255);"><strong>libname</strong></span>
+                  . The current location is set to CurrentLocation
+                  + (<strong><strong><em><span
+                  style="color: rgb(255,0,0);">X</span></em> ,
+                  <em><span
+                  style="color: rgb(255,0,0);">Y</span></em></strong></strong>
+                  ), and the off-page connector becomes the only
+                  selected object. If there is no off-page
+                  connector called <span
+                  style="color: rgb(255,0,255);"><strong>symbolname</strong></span>
+                  in a library named <span
+                  style="color: rgb(255,0,255);"><strong>libname</strong>,
+                  <span style="color: rgb(0,0,0);">then the command
+                  fails and no objects are selected.</span></span>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>Example:</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <div class="preformatted panel"
+                style="border-width: 1px;">
+                  <div class="preformattedContent panelContent">
+<pre>
+PlaceOffPage 2.00, 1.20, &quot;C:\PROGRAM FILES\ORCAD\CAPTURE\
+LIBRARY&quot;, &quot;OFFPAGELEFT-L&quot;, &quot;Carry&quot;
+
+PlaceOffPageWithDialog -0.50, 0.00
+</pre>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h4 id="Placementcommands-1746418PlacePart&#160;">
+        <span class="confluence-anchor-link"
+        id="Placementcommands-1746418"></span> PlacePart&#160;
+      </h4>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>Function:</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <strong>PlacePart</strong> <em><span
+                  style="color: rgb(255,0,0);">X</span></em> ,
+                  <em><span
+                  style="color: rgb(255,0,0);">Y</span></em> ,
+                  [&quot;<em><span
+                  style="color: rgb(255,0,255);">libname</span></em>
+                  &quot;, &quot;<span
+                  style="color: rgb(255,0,255);"><em>pkgname</em></span>
+                  &quot;, &quot;<span
+                  style="color: rgb(255,0,255);"><em>devicedesignator</em></span>
+                  &quot;, <em><span
+                  style="color: rgb(0,0,255);">convert</span></em>
+                  ]
+                </p>
+                <p>
+                  Use this command to place a part instance at
+                  CurrentLocation (<strong><em><span
+                  style="color: rgb(255,0,0);">X</span></em> ,
+                  <em><span
+                  style="color: rgb(255,0,0);">Y</span></em></strong>
+                  ). The part is specified by
+                  <strong>pkgname</strong>, and the reference is
+                  specified by <strong>devicedesignator</strong>.
+                  The library containing the part is specified by
+                  <strong>libname</strong>. If
+                  <strong>convert</strong> is TRUE, then Capture
+                  uses the part&#39;s convert view rather than the
+                  normal view. After the part is placed, it becomes
+                  the only selected item. CurrentLocation is
+                  changed to CurrentLocation +
+                  (<strong><strong><em><span
+                  style="color: rgb(255,0,0);">X</span></em> ,
+                  <em><span
+                  style="color: rgb(255,0,0);">Y</span></em></strong></strong>
+                  ).
+                </p>
+                <p>
+                  This command can fail for the following reasons:
+                </p>
+                <ul>
+                  <li>
+                    There is no library with the name <em><span
+                    style="color: rgb(255,0,255);"><strong>libname</strong></span>
+                    .</em>
+                  </li>
+                  <li>
+                    There is no package in the specified library
+                    with the name <em><span
+                    style="color: rgb(255,0,255);"><strong>pkgname</strong>.</span></em>
+                  </li>
+                  <li>
+                    There is no device with the specified <em><span
+                    style="color: rgb(255,0,255);"><strong>devicedesignator</strong></span></em>
+                    in the package.
+                  </li>
+                  <li>
+                    The <em><span
+                    style="color: rgb(0,0,255);"><strong>convert</strong></span></em>
+                    parameter has been set to TRUE, but there is no
+                    convert for the specified device.
+                  </li>
+                </ul>
+                <p>
+                  <br class="atl-forced-newline" />
+                   If the command fails, CurrentLocation changes to
+                  CurrentLocation + (<strong>X</strong>,
+                  <strong>Y</strong>).
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>Example:</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <div class="preformatted panel"
+                style="border-width: 1px;">
+                  <div class="preformattedContent panelContent">
+<pre>
+PlacePart 1.60, 0.00, &quot;C:\PROGRAM FILES\ORCAD\CAPTURE\
+DESIGN\FULLADD\FULLADD.OLB&quot;, &quot;74LS08&quot;, &quot;A&quot;, FALSE
+
+PlacePartWithDialog -1.90, -0.90
+</pre>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h4 id="Placementcommands-1722891PlacePicture&#160;">
+        <span class="confluence-anchor-link"
+        id="Placementcommands-1722891"></span> PlacePicture&#160;
+      </h4>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>Function:</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <strong>PlacePicture <em><span
+                  style="color: rgb(255,0,0);">X</span></em> ,
+                  <span
+                  style="color: rgb(255,0,0);"><em>Y</em></span> ,
+                  &quot;<em><span
+                  style="color: rgb(255,0,255);">filename</span></em>
+                  &quot;</strong>
+                </p>
+                <p>
+                  Use this command to place a picture or graphic.
+                  The picture&#39;s filename and path are specified
+                  by <span
+                  style="color: rgb(255,0,255);"><strong>filename</strong></span>
+                  , and the picture&#39;s location is specified by
+                  the current location added to the offset (<span
+                  style="color: rgb(255,0,0);"><strong>X</strong></span>
+                  , <span
+                  style="color: rgb(255,0,0);"><strong>Y</strong></span>
+                  ). The current location is changed to the
+                  picture&#39;s location, and the picture becomes
+                  the only selected object. If the specified
+                  picture file cannot be opened, the command fails
+                  and no objects are selected.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>Example:</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <div class="preformatted panel"
+                style="border-width: 1px;">
+                  <div class="preformattedContent panelContent">
+<pre>
+PlacePicture 1.50, 0.10, &quot;C:\Pictures\Logo.bmp&quot;
+</pre>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h4 id="Placementcommands-1722900PlacePin&#160;">
+        <span class="confluence-anchor-link"
+        id="Placementcommands-1722900"></span> PlacePin&#160;
+      </h4>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>Function:</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <strong>PlacePin <em><span
+                  style="color: rgb(255,0,0);">X</span></em> ,
+                  <span
+                  style="color: rgb(255,0,0);"><em>Y</em></span> ,
+                  [&quot;<span
+                  style="color: rgb(255,0,255);"><em>name</em></span>
+                  &quot;, &quot;<span
+                  style="color: rgb(255,0,255);"><em>pintype</em></span>
+                  &quot;, &quot;<span
+                  style="color: rgb(0,0,255);"><em>isbus</em></span>
+                  &quot;]</strong>
+                </p>
+                <p>
+                  Use this command to place a hierarchical pin on
+                  the selected hierarchical block at
+                  CurrentLocation + (<span
+                  style="color: rgb(255,0,0);"><strong>X</strong></span>
+                  , <span
+                  style="color: rgb(255,0,0);"><strong>Y</strong></span>
+                  ). The hierarchical pin name is specified by
+                  <em><span
+                  style="color: rgb(255,0,255);"><strong>name</strong></span></em>
+                  , and the pin type is specified by <em><span
+                  style="color: rgb(255,0,255);"><strong>pintype</strong>
+                  <span style="color: rgb(0,0,0);">.
+                  If</span></span> <span
+                  style="color: rgb(0,0,255);"><strong>isbus</strong></span></em>
+                  is FALSE, a scalar pin is created, otherwise a
+                  bus pin is created. CurrentLocation is changed to
+                  CurrentLocation + (<span
+                  style="color: rgb(255,0,0);"><strong>X</strong></span>
+                  , <span
+                  style="color: rgb(255,0,0);"><strong>Y</strong></span>
+                  ), and the hierarchical pin is the only selected
+                  object. The following situations will cause the
+                  command to fail:
+                </p>
+                <ul>
+                  <li>
+                    CurrentLocation + (<span
+                    style="color: rgb(255,0,0);"><strong>X</strong></span>
+                    , <span
+                    style="color: rgb(255,0,0);"><strong>Y</strong></span>
+                    ) does not lie on the boundary of a
+                    hierarchical block.
+                  </li>
+                  <li>
+                    If is <em><span
+                    style="color: rgb(0,0,255);"><strong>isbus</strong></span></em>
+                    TRUE and name is not a valid bus name.
+                  </li>
+                  <li>
+                    If is <span
+                    style="color: rgb(0,0,255);"><strong>isbus</strong></span>
+                    FALSE and name is a valid bus name.
+                  </li>
+                  <li>
+                    If the command fails, the current location is
+                    unaffected, and no objects are selected.
+                  </li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>Example:</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <div class="preformatted panel"
+                style="border-width: 1px;">
+                  <div class="preformattedContent panelContent">
+<pre>
+PlacePin 3.20, 1.20, &quot;A[0..2]&quot;, &quot;output&quot;, TRUE
+
+PlacePinWithDialog 3.10, 2.20
+</pre>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h4 id="Placementcommands-1722909PlacePolygon&#160;">
+        <span class="confluence-anchor-link"
+        id="Placementcommands-1722909"></span> PlacePolygon&#160;
+      </h4>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>Function:</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <strong>PlacePolygon <span
+                  style="color: rgb(255,0,0);">X1</span>, <em><span
+                  style="color: rgb(255,0,0);">Y1</span></em> ,
+                  <span
+                  style="color: rgb(255,0,0);"><em>X2</em></span> ,
+                  <span
+                  style="color: rgb(255,0,0);"><em>Y2</em></span></strong>
+                </p>
+                <p>
+                  Use this command to place the first segment of a
+                  polygon. The starting point is defined by
+                  CurrentLocation + (<strong><strong><span
+                  style="color: rgb(255,0,0);">X1</span>, <em><span
+                  style="color: rgb(255,0,0);">Y</span></em></strong>
+                  <span
+                  style="color: rgb(255,0,0);">1</span></strong> ).
+                  The endpoint is defined by CurrentLocation +
+                  (<strong><strong><span
+                  style="color: rgb(255,0,0);">X2</span>, <em><span
+                  style="color: rgb(255,0,0);">Y</span></em></strong>
+                  <span
+                  style="color: rgb(255,0,0);">2</span></strong> ).
+                  CurrentLocation is changed to
+                  <code>CurrentLocation +
+                  (<strong><strong><strong><span
+                  style="color: rgb(255,0,0);">X2</span>, <em><span
+                  style="color: rgb(255,0,0);">Y</span></em></strong>
+                  <span
+                  style="color: rgb(255,0,0);">2</span></strong></strong>
+                  )</code>, and the polygon becomes the only
+                  selected object.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>Example:</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <div class="preformatted panel"
+                style="border-width: 1px;">
+                  <div class="preformattedContent panelContent">
+<pre>
+PlacePolygon 1.30, 1.30, 3.20, 2.40
+</pre>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h4 id="Placementcommands-1722918PlacePolyline&#160;">
+        <span class="confluence-anchor-link"
+        id="Placementcommands-1722918"></span> PlacePolyline&#160;
+      </h4>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>Function:</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <strong>PlacePolyline <span
+                  style="color: rgb(255,0,0);"><em>X1</em></span> ,
+                  <span
+                  style="color: rgb(255,0,0);"><em>Y1</em></span> ,
+                  <span
+                  style="color: rgb(255,0,0);"><em>X2</em></span> ,
+                  <span
+                  style="color: rgb(255,0,0);"><em>Y2</em></span></strong>
+                </p>
+                <p>
+                  Use this command to place the first segment of a
+                  polyline. The starting point is defined by
+                  CurrentLocation + <em>(<span
+                  style="color: rgb(255,0,0);"><strong>X1</strong></span>
+                  ,</em> <span
+                  style="color: rgb(255,0,0);"><strong>Y1</strong></span>
+                  ). The endpoint is defined by CurrentLocation +
+                  (<span
+                  style="color: rgb(255,0,0);"><strong>X2</strong></span>
+                  , <span
+                  style="color: rgb(255,0,0);"><strong>Y2</strong></span>
+                  ). CurrentLocation is changed to CurrentLocation
+                  + (<span
+                  style="color: rgb(255,0,0);"><strong>X2</strong></span>
+                  , <span
+                  style="color: rgb(255,0,0);"><strong>Y2</strong></span>
+                  ), and the polygon becomes the only selected
+                  object.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>Example:</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <div class="preformatted panel"
+                style="border-width: 1px;">
+                  <div class="preformattedContent panelContent">
+<pre>
+PlacePolyline 1.30, 1.30, 3.20, 2.40
+</pre>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h4 id="Placementcommands-1722927PlacePort&#160;">
+        <span class="confluence-anchor-link"
+        id="Placementcommands-1722927"></span> PlacePort&#160;
+      </h4>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>Function:</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <strong>PlacePort <em><span
+                  style="color: rgb(255,0,0);">X</span></em> ,
+                  <em><span
+                  style="color: rgb(255,0,0);">Y</span></em> ,
+                  [&quot;<span
+                  style="color: rgb(255,0,255);">l<em>ibname</em></span>
+                  <em>&quot;, &quot;<span
+                  style="color: rgb(255,0,255);">symbolname</span>&quot;,
+                  &quot;</em> <span
+                  style="color: rgb(255,0,255);">name</span>&quot;]</strong>
+                </p>
+                <p>
+                  Use this command to place an instance of a
+                  hierarchical port at CurrentLocation +
+                  (<strong>X</strong>, <strong>Y</strong>). The
+                  hierarchical port is specified by <strong><span
+                  style="color: rgb(255,0,255);">symbolname</span>,</strong>
+                  and is given the name <em><span
+                  style="color: rgb(255,0,255);"><strong>name</strong></span></em>
+                  . The library containing the hierarchical port is
+                  specified by <span
+                  style="color: rgb(255,0,255);"><em><strong>libname</strong></em></span>
+                  . CurrentLocation is set to CurrentLocation +
+                  (<strong><strong><span
+                  style="color: rgb(255,0,0);">X</span>, <span
+                  style="color: rgb(255,0,0);">Y</span></strong></strong>
+                  ), and the hierarchical port becomes the only
+                  selected object. If there is no hierarchical port
+                  called&#160;<strong><em><span
+                  style="color: rgb(255,0,255);">symbolname</span></em></strong>
+                  in a library named <span
+                  style="color: rgb(255,0,255);"><em><strong>libname</strong></em></span>
+                  , then the command fails and no objects are
+                  selected.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>Example:</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <div class="preformatted panel"
+                style="border-width: 1px;">
+                  <div class="preformattedContent panelContent">
+<pre>
+PlacePort 0.00, 0.20, &quot;C:\PROGRAM FILES\ORCAD\CAPTURE\
+LIBRARY\CAPSYM.OLB&quot;, &quot;PORTBOTH-L&quot;, &quot;High&quot;
+
+PlacePortWithDialog -1.50, -1.40
+</pre>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h4 id="Placementcommands-1722936PlacePower&#160;">
+        <span class="confluence-anchor-link"
+        id="Placementcommands-1722936"></span> PlacePower&#160;
+      </h4>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>Function:</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <strong>PlacePower</strong>
+                  <strong><strong><em><span
+                  style="color: rgb(255,0,0);">X</span></em> ,
+                  <em><span
+                  style="color: rgb(255,0,0);">Y</span></em></strong>
+                  , [&quot;<span
+                  style="color: rgb(255,0,255);"><em><strong>libname</strong></em></span>
+                  &quot;, &quot;<span
+                  style="color: rgb(255,0,255);"><em>symbolname</em></span>
+                  &quot;, &quot;<span
+                  style="color: rgb(255,0,255);"><em>name</em></span>
+                  &quot;]</strong>
+                </p>
+                <p>
+                  Use this command to place an instance of a power
+                  symbol at CurrentLocation + (<strong><em><span
+                  style="color: rgb(255,0,0);">X</span></em> ,
+                  <em><span
+                  style="color: rgb(255,0,0);">Y</span></em></strong>
+                  ). The power symbol is specified by <strong><span
+                  style="color: rgb(255,0,255);"><em>symbolname</em></span></strong>
+                  , and is given the name <strong><span
+                  style="color: rgb(255,0,255);"><em>name</em></span></strong>
+                  . The library containing the power symbol is
+                  specified by <strong><span
+                  style="color: rgb(255,0,255);"><em><strong>libname</strong></em></span></strong>
+                  . CurrentLocation is set to CurrentLocation +
+                  (<strong><em><span
+                  style="color: rgb(255,0,0);">X</span></em> ,
+                  <em><span
+                  style="color: rgb(255,0,0);">Y</span></em></strong>
+                  ), and the power symbol becomes the only selected
+                  object. If there is no symbol called
+                  <strong><span
+                  style="color: rgb(255,0,255);"><em>symbolname</em></span></strong>
+                  in a library named <strong><span
+                  style="color: rgb(255,0,255);"><em><strong>libname</strong></em></span></strong>
+                  , then the command fails and no objects are
+                  selected.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>Example:</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <div class="preformatted panel"
+                style="border-width: 1px;">
+                  <div class="preformattedContent panelContent">
+<pre>
+PlacePower 0.00, 1.20, &quot;C:\PROGRAM FILES\ORCAD\CAPTURE\
+LIBRARY\CAPSYM.OLB&quot;, &quot;VCC_ARROW&quot;, &quot;VCC_ARROW&quot;
+
+PlacePowerWithDialog 0.60, 0.00
+</pre>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h4 id="Placementcommands-1722945PlaceRectangle&#160;">
+        <span class="confluence-anchor-link"
+        id="Placementcommands-1722945"></span> PlaceRectangle&#160;
+      </h4>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>Function:</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <strong>PlaceRectangle</strong>
+                  <strong><strong><span
+                  style="color: rgb(255,0,0);"><em>X1</em></span> ,
+                  <span
+                  style="color: rgb(255,0,0);"><em>Y1</em></span></strong>
+                  , <strong><strong><span
+                  style="color: rgb(255,0,0);"><em>X2</em></span> ,
+                  <span
+                  style="color: rgb(255,0,0);"><em>Y2</em></span></strong></strong></strong>
+                </p>
+                <p>
+                  Use this command to place a rectangle specified
+                  by the points CurrentLocation + (<strong><span
+                  style="color: rgb(255,0,0);"><em>X1</em></span> ,
+                  <span
+                  style="color: rgb(255,0,0);"><em>Y1</em></span></strong>
+                  ), and CurrentLocation + (<strong><strong><span
+                  style="color: rgb(255,0,0);"><em>X2</em></span> ,
+                  <span
+                  style="color: rgb(255,0,0);"><em>Y2</em></span></strong></strong>
+                  ). The current location is changed to
+                  CurrentLocation + (<strong><strong><span
+                  style="color: rgb(255,0,0);"><em>X2</em></span> ,
+                  <span
+                  style="color: rgb(255,0,0);"><em>Y2</em></span></strong></strong>
+                  ), and the rectangle becomes the only selected
+                  object.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>Example:</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+<pre>
+PlaceRectangle 1.30, 4.20, 5.40, 2.20
+</pre>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h4 id="Placementcommands-1722954PlaceText&#160;">
+        <span class="confluence-anchor-link"
+        id="Placementcommands-1722954"></span> PlaceText&#160;
+      </h4>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>Function:</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <strong>PlaceText</strong> <strong><strong><span
+                  style="color: rgb(255,0,0);"><em>X1</em></span> ,
+                  <span
+                  style="color: rgb(255,0,0);"><em>Y1</em></span></strong>
+                  ,</strong> <strong><strong><span
+                  style="color: rgb(255,0,0);"><em>X2</em></span> ,
+                  <span
+                  style="color: rgb(255,0,0);"><em>Y2</em></span></strong>
+                  , [&quot;<span
+                  style="color: rgb(255,0,255);"><em>text</em></span>
+                  &quot;]</strong><br class="atl-forced-newline" />
+                   Use this command to place comment text in the
+                  rectangle defined by CurrentLocation +
+                  (<strong><span
+                  style="color: rgb(255,0,0);"><em>X1</em></span> ,
+                  <span
+                  style="color: rgb(255,0,0);"><em>Y1</em></span></strong>
+                  ), and CurrentLocation + (<strong><span
+                  style="color: rgb(255,0,0);"><em>X2</em></span> ,
+                  <span
+                  style="color: rgb(255,0,0);"><em>Y2</em></span></strong>
+                  ). The string of text is specified by <span
+                  style="color: rgb(255,0,255);"><strong>text</strong></span>
+                  . CurrentLocation is changed to CurrentLocation +
+                  (<strong><span
+                  style="color: rgb(255,0,0);"><em>X2</em></span> ,
+                  <span
+                  style="color: rgb(255,0,0);"><em>Y2</em></span></strong>
+                  ), and the text becomes the only selected object.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>Example:</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <div class="preformatted panel"
+                style="border-width: 1px;">
+                  <div class="preformattedContent panelContent">
+<pre>
+PlaceText -2.10, 0.30, -1.35, 0.42, &quot;|+ 200k 300K 200uf&quot;
+
+PlaceTextWithDialog -0.05, 0.68, 0.15, 0.80
+</pre>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h4 id="Placementcommands-1941929PlaceTitleblock&#160;">
+        <span class="confluence-anchor-link"
+        id="Placementcommands-1941929"></span>
+        PlaceTitleblock&#160;
+      </h4>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>Function:</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <strong>PlaceTitleblock</strong>
+                  <strong><strong><em><span
+                  style="color: rgb(255,0,0);">X</span></em> ,
+                  <em><span
+                  style="color: rgb(255,0,0);">Y</span></em></strong>
+                  , [&quot;<strong><span
+                  style="color: rgb(255,0,255);"><em><strong>libname</strong></em></span></strong>
+                  &quot;, &quot;<span
+                  style="color: rgb(255,0,255);">titleblockname</span>&quot;,
+                  &quot;<span
+                  style="color: rgb(255,0,255);">name</span>&quot;]</strong>
+                </p>
+                <p>
+                  Use this command to place a title block symbol at
+                  CurrentLocation + (<strong><em><span
+                  style="color: rgb(255,0,0);">X</span></em> ,
+                  <em><span
+                  style="color: rgb(255,0,0);">Y</span></em></strong>
+                  ). The title block is specified by <span
+                  style="color: rgb(255,0,255);"><strong>titleblockname</strong></span>
+                  , in a library specified by <strong><span
+                  style="color: rgb(255,0,255);"><em><strong>libname</strong></em></span></strong>
+                  . The title block&#39;s name is specified by
+                  <span
+                  style="color: rgb(255,0,255);"><strong>name</strong>.
+                  <span style="color: rgb(0,0,0);">CurrentLocation
+                  is changed to CurrentLocation + (</span></span>
+                  <strong><em><span
+                  style="color: rgb(255,0,0);">X</span></em> ,
+                  <em><span
+                  style="color: rgb(255,0,0);">Y</span></em></strong>
+                  ), and the title block becomes the only selected
+                  object. If the specified title block doesn&#39;t
+                  exist in the specified library, the command
+                  fails. If the command fails, no objects are
+                  selected.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>Example:</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <div class="preformatted panel"
+                style="border-width: 1px;">
+                  <div class="preformattedContent panelContent">
+<pre>
+PlaceTitleblock 3.40, 5.20, &quot;C:\PROGRAM FILES\ORCAD\
+CAPTURE\LIBRARY\CAPSYM.OLB&quot;, &quot;TitleBlock0&quot;, &quot;TitleBlock0&quot;
+
+PlaceTitleBlockWithDialog -1.80, 0.50
+</pre>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h4 id="Placementcommands-1941943PlaceWire&#160;">
+        <span class="confluence-anchor-link"
+        id="Placementcommands-1941943"></span> PlaceWire&#160;
+      </h4>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>Function:</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <strong>PlaceWire <span
+                  style="color: rgb(255,0,0);"><em>X1</em></span> ,
+                  <span
+                  style="color: rgb(255,0,0);"><em>Y1</em></span> ,
+                  <span
+                  style="color: rgb(255,0,0);"><em>X2</em></span> ,
+                  <span
+                  style="color: rgb(255,0,0);"><em>Y2</em></span></strong>
+                </p>
+                <p>
+                  Use this command to place the first segment of a
+                  wire with starting point at CurrentLocation +
+                  (<span
+                  style="color: rgb(255,0,0);"><em><strong>X1</strong></em></span>
+                  , <span
+                  style="color: rgb(255,0,0);"><em><strong>Y1</strong></em></span>
+                  ), and an endpoint at CurrentLocation +
+                  (<strong><span
+                  style="color: rgb(255,0,0);"><em>X2</em></span> ,
+                  <span
+                  style="color: rgb(255,0,0);"><em>Y2</em></span></strong>
+                  ). CurrentLocation is set to CurrentLocation +
+                  (<strong><span
+                  style="color: rgb(255,0,0);"><em>X2</em></span> ,
+                  <span
+                  style="color: rgb(255,0,0);"><em>Y2</em></span></strong>
+                  ). The wire segment becomes the only selected
+                  object.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>Example:</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <div class="preformatted panel"
+                style="border-width: 1px;">
+                  <div class="preformattedContent panelContent">
+<pre>
+PlaceWire -1.00, -1.00, 2.00, 2.30
+</pre>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <hr xmlns:html="http://www.w3.org/1999/xhtml" />
+    <hr xmlns:html="http://www.w3.org/1999/xhtml" align="left" />
+    <div xmlns:html="http://www.w3.org/1999/xhtml"
+    style="text-align: left;">
+      <!-- Begin Buttons -->
+      <table border="0" cellpadding="0" cellspacing="0"
+      width="650">
+        <tbody>
+          <tr>
+            <td colspan="10" height="36" width="650">
+              <img height="34" src="../support/header_doc.gif"
+              width="650" />
+            </td>
+          </tr>
+          <tr>
+            <td height="20" width="59">
+              <a href="javascript:openLibrary()"><img
+              alt="View Library" border="0" height="20"
+              src="../support/nav2_library.gif" width="59" /></a>
+            </td>
+            <td height="20" width="73">
+              <a href="cap_ugTOC.html"><img alt="Table of Contents"
+              border="0" src="../support/nav2_toc.gif" /></a>
+            </td>
+            <td height="20" width="46">
+              <img alt="Index" border="0"
+              src="../support/nav2_index_b.gif" />
+            </td>
+            <td>
+              <a href="Macro_Editing_Commands.html"><img
+              alt="Previous" border="0"
+              src="../support/nav2_previous.gif" /></a>
+            </td>
+            <td>
+              <a href="Property_commands.html"><img alt="Next"
+              border="0" src="../support/nav_next.gif" /></a>
+            </td>
+            <td height="20">
+              <a href="cap_ug.pdf"><img
+              alt="Open PDF to print book" border="0" height="20"
+              src="../support/nav2_print.gif" width="114" /></a>
+            </td>
+            <td height="20" width="61">
+              <img src="../support/nav2_black.gif" />
+            </td>
+            <td height="20" width="76">
+              <a href="/feedback.htm"><img alt="Email Comments"
+              border="0" height="20"
+              src="../support/nav2_feedback.gif" width="76" /></a>
+            </td>
+            <td height="20" width="43">
+              <a href="../cdsuser/help.html"><img
+              alt="Help Using Documentation" border="0" height="20"
+              src="../support/nav2_help.gif" width="43" /></a>
+            </td>
+            <td height="20" width="37">
+              <a href="/exitsearch.htm"><img
+              alt="Shut Down Cadence Documentation Server"
+              border="0" height="20" src="../support/nav2_exit.gif"
+              width="37" /></a>
+            </td>
+          </tr>
+        </tbody>
+      </table><!-- End Buttons -->
+    </div><br xmlns:html="http://www.w3.org/1999/xhtml" />
+     <font xmlns:html="http://www.w3.org/1999/xhtml" size="-1">For
+    support, see <a href="http://support.cadence.com"
+    target="_blank">Cadence Online Support</a> service.</font> <br
+    xmlns:html="http://www.w3.org/1999/xhtml" />
+     <br xmlns:html="http://www.w3.org/1999/xhtml" />
+     <font xmlns:html="http://www.w3.org/1999/xhtml"
+    size="-1"><i>Copyright &#169; 2012, <a
+    href="http://www.cadence.com">Cadence Design Systems,
+    Inc.</a></i></font> <br
+    xmlns:html="http://www.w3.org/1999/xhtml" />
+     <font xmlns:html="http://www.w3.org/1999/xhtml" size="-1">All
+    rights reserved.</font> <br
+    xmlns:html="http://www.w3.org/1999/xhtml" />
+     <br xmlns:html="http://www.w3.org/1999/xhtml" />
+  </body>
+</html>

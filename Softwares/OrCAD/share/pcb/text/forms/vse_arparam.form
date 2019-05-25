@@ -1,0 +1,751 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM {fixed_font}
+FIXED
+PORT 64 16
+HEADER "SPECCTRA Automatic Router Parameters"
+
+POPUP <corner_type>"90""_SmoothCorner90","45""_SmoothCorner45","Any Angle""_SmoothCornerAnyAngle","Arc""_SmoothCornerArc".
+POPUP <pad_entry>"Rectanglar""_SmoothPadEntryRect","All""_SmoothPadEntryAll","None""_SmoothPadEntryNone".
+
+ACTIVEFIELD "close"
+
+TILE
+
+TABSET "tabSelector"
+FLOC 1 1
+TSSIZE 52 51
+
+TAB "Fanout"
+
+TEXT "Direction:"
+TLOC 1 0
+ENDTEXT
+FIELD fanout_directionIn
+FLOC 11 0
+CHECKLIST "In" "fanout_direction"
+ENDFIELD
+FIELD fanout_directionOut
+FLOC 17 0
+CHECKLIST "Out" "fanout_direction"
+ENDFIELD
+FIELD fanout_directionIn_out
+FLOC 24 0
+CHECKLIST "Either" "fanout_direction"
+ENDFIELD
+
+TEXT "Via Location:"
+TLOC 1 2
+ENDTEXT
+FIELD fanout_locationInside
+FLOC 14 2
+CHECKLIST "Inside" "fanout_location"
+ENDFIELD
+FIELD fanout_locationOutside
+FLOC 25 2
+CHECKLIST "Outside" "fanout_location"
+ENDFIELD
+FIELD fanout_locationAnywhere
+FLOC 36 2
+CHECKLIST "Anywhere" "fanout_location"
+ENDFIELD
+
+FIELD fanout_maxlengthEnable
+FLOC 1 4
+CHECKLIST "Maximum Fanout Length:"
+ENDFIELD
+FIELD fanout_maxlength
+FLOC 22 4
+REALFILLIN 4 8
+ENDFIELD
+
+FIELD fanout_radialWires
+FLOC 31 4
+CHECKLIST "Enable Radial Wires"
+ENDFIELD
+
+GROUP "Fanout Grid"
+GLOC 1 6
+GSIZE 25 12
+
+FIELD fanout_gridTypeViagrid
+FLOC 2 8
+CHECKLIST "Current Via Grid" "fanout_gridType"
+ENDFIELD
+FIELD fanout_gridType1wire
+FLOC 2 10
+CHECKLIST "1 Wire Between Vias" "fanout_gridType"
+ENDFIELD
+FIELD fanout_gridType2wire
+FLOC 2 12
+CHECKLIST "2 Wire Between Vias" "fanout_gridType"
+ENDFIELD
+FIELD fanout_gridTypeSpecified
+FLOC 2 14
+CHECKLIST "Specified Grid:" "fanout_gridType"
+ENDFIELD
+FIELD fanout_gridValue
+FLOC 15 14
+REALFILLIN 6 8
+ENDFIELD
+ENDGROUP
+
+GROUP "Blind/Buried Via Depth"
+GLOC 26 6
+GSIZE 25 12
+
+FIELD fanout_BBViasTo
+FLOC 27 8
+CHECKLIST "Fanout Blind/Buried Vias To:"
+ENDFIELD
+
+FIELD fanout_BBViaLayerTop
+FLOC 29 10
+CHECKLIST "Top" "fanout_BBViaLayer"
+ENDFIELD
+FIELD fanout_BBViaLayerBottom
+FLOC 29 12
+CHECKLIST "Bottom" "fanout_BBViaLayer"
+ENDFIELD
+FIELD fanout_BBViaLayerOpp
+FLOC 29 14
+CHECKLIST "Opposite Side" "fanout_BBViaLayer"
+ENDFIELD
+
+TEXT "Max Signal Layer Span:"
+FLOC 27 16
+ENDTEXT
+FIELD fanout_BBViaLayerValue
+FLOC 44 16
+INTFILLIN 2 6
+ENDFIELD
+
+ENDGROUP
+
+GROUP "Pin Types"
+GLOC 1 18
+GSIZE 50 12
+ENDGROUP
+FIELD fanout_pinTypeAll
+FLOC 2 20
+CHECKLIST "All" "fanout_pinType"
+ENDFIELD
+FIELD fanout_pinTypeSpecified
+FLOC 2 22
+CHECKLIST "Specified:" "fanout_pinType"
+ENDFIELD
+FIELD fanout_pinPowerNets
+FLOC 5 24
+CHECKLIST "Power Nets"
+ENDFIELD
+FIELD fanout_pinSignalNets
+FLOC 5 26
+CHECKLIST "Signal Nets"
+ENDFIELD
+FIELD fanout_pin1pinNets
+FLOC 20 24
+CHECKLIST "Single Pin Nets"
+ENDFIELD
+FIELD fanout_pinUnusedPins
+FLOC 20 26
+CHECKLIST "Unused Pins:"
+ENDFIELD
+FIELD fanout_pinUnusedAll
+FLOC 23 28
+CHECKLIST "All" "fanout_pinUnused"
+ENDFIELD
+FIELD fanout_pinUnusedNothru
+FLOC 30 28
+CHECKLIST "Exclude Thru-Pins" "fanout_pinUnused"
+ENDFIELD
+
+GROUP "Sharing"
+GLOC 1 30
+GSIZE 50 16
+ENDGROUP
+
+FIELD fanout_shareDistanceEnable
+FLOC 2 32
+CHECKLIST "Share Within Distance:"
+ENDFIELD
+FIELD fanout_shareDistance
+FLOC 28 32
+REALFILLIN 8 8
+ENDFIELD
+
+FIELD  fanout_sharePins
+FLOC 2 34
+CHECKLIST "Share Pins"
+ENDFIELD
+FIELD fanout_sharePinsCountEnable
+FLOC 5 36
+CHECKLIST "Max Share Count:"
+ENDFIELD
+FIELD fanout_sharePinsCount
+FLOC 28 36
+INTFILLIN 8 8
+ENDFIELD
+
+FIELD  fanout_shareSmd
+FLOC 2 38
+CHECKLIST "Share SMD's on Way to Via"
+ENDFIELD
+FIELD fanout_shareSmdCountEnable
+FLOC 5 40
+CHECKLIST "Max Share Count:"
+ENDFIELD
+FIELD fanout_shareSmdCount
+FLOC 28 40
+INTFILLIN 8 8
+ENDFIELD
+
+FIELD  fanout_shareVias
+FLOC 2 42
+CHECKLIST "Share Vias"
+ENDFIELD
+FIELD fanout_shareViasCountEnable
+FLOC 5 44
+CHECKLIST "Max Share Count:"
+ENDFIELD
+FIELD fanout_shareViasCount
+FLOC 28 44
+INTFILLIN 8 8
+ENDFIELD
+
+ENDTAB
+
+TAB "Bus Routing"
+FIELD bus_directionDiagonal
+FLOC 2 2
+CHECKLIST "Diagonal Routing" "bus_direction"
+ENDFIELD
+FIELD bus_directionOrthogonal
+FLOC 2 4
+CHECKLIST "Orthogonal Routing" "bus_direction"
+ENDFIELD
+
+#ifdef BUS_PROTECT_DISABLED
+FIELD bus_protect
+FLOC 2 8
+CHECKLIST "Protect Bus Routing When Done"
+ENDFIELD
+#endif
+ENDTAB
+
+TAB "Seed Vias"
+TEXT "Break-up Connections Longer Than:"
+TLOC 2 1
+ENDTEXT
+FIELD seedvia_breakLength
+FLOC 35 1
+REALFILLIN 8 8
+ENDFIELD
+
+FIELD seedvia_underSmd
+FLOC 2 4
+CHECKLIST "Place Vias Under SMD Components"
+ENDFIELD
+ENDTAB
+
+
+#ifdef APD || SIP
+
+TAB "Custom Smooth"
+
+TEXT "Corner Type:"
+TLOC 1 2
+ENDTEXT
+
+FIELD custsmooth_cornerType
+FLOC 30 2
+ENUMSET 10
+POP "corner_type"
+ENDFIELD
+
+TEXT "Restrict Seg Entry for Pads of Type:"
+TLOC 1 4
+ENDTEXT
+
+FIELD custsmooth_PadEntry
+FLOC 30 4
+ENUMSET 10
+POP "pad_entry"
+ENDFIELD
+
+TEXT "Minimum Pad Entry Length:"
+TLOC 1 6
+ENDTEXT
+
+FIELD custsmooth_minPadEntryLength
+FLOC 30 6
+REALFILLIN 9 15
+ENDFIELD
+
+TEXT "Max Iterations:"
+TLOC 1 8
+ENDTEXT
+
+FIELD custsmooth_maxIterations
+FLOC 30 8
+INTFILLIN 3 3
+ENDFIELD
+
+ENDTAB
+
+#else
+
+TAB "Testpoint"
+GROUP "Testpoint Side"
+GLOC 1 0
+GSIZE 50 4
+ENDGROUP
+FIELD testpoint_sideFront
+FLOC 2 2
+CHECKLIST "Top" "testpoint_side"
+ENDFIELD
+FIELD testpoint_sideBack
+FLOC 15 2
+CHECKLIST "Bottom" "testpoint_side"
+ENDFIELD
+FIELD testpoint_sideBoth
+FLOC 28 2
+CHECKLIST "Both" "testpoint_side"
+ENDFIELD
+
+GROUP "Testpoint Position"
+GLOC 1 4
+GSIZE 50 14
+ENDGROUP
+
+FIELD testpoint_center2CenterSpaceEnable
+FLOC 2 6
+CHECKLIST "Center To Center Spacing:"
+ENDFIELD
+FIELD testpoint_center2CenterSpace
+FLOC 34 6
+REALFILLIN 8 8
+ENDFIELD
+
+FIELD testpoint_center2CompSpaceEnable
+FLOC 2 8
+CHECKLIST "Center To Component Spacing:"
+ENDFIELD
+FIELD testpoint_center2CompSpace
+FLOC 34 8
+REALFILLIN 8 8
+ENDFIELD
+
+FIELD testpoint_comp2EdgeClearanceEnable
+FLOC 2 10
+CHECKLIST "Component Outline Clearance:"
+ENDFIELD
+FIELD testpoint_comp2EdgeClearance
+FLOC 34 10
+REALFILLIN 8 8
+ENDFIELD
+
+FIELD testpoint_gridXEnable
+FLOC 2 12
+CHECKLIST "Testpoint X Grid:"
+ENDFIELD
+FIELD testpoint_gridX
+FLOC 34 12
+REALFILLIN 8 8
+ENDFIELD
+
+FIELD testpoint_gridYEnable
+FLOC 2 14
+CHECKLIST "Testpoint Y Grid:"
+ENDFIELD
+FIELD testpoint_gridY
+FLOC 34 14
+REALFILLIN 8 8
+ENDFIELD
+
+FIELD testpoint_maxLengthEnable
+FLOC 2 16
+CHECKLIST "Maximum Length:"
+ENDFIELD
+FIELD testpoint_maxLength
+FLOC 34 16
+REALFILLIN 8 8
+ENDFIELD
+
+GROUP "Pin Use"
+GLOC 1 18
+GSIZE 50 15
+ENDGROUP
+FIELD testpoint_pinuseEnable
+FLOC 2 20
+CHECKLIST "Allow Pin Use"
+ENDFIELD
+
+FIELD testpoint_pinuseByCompEnable
+FLOC 4 22
+CHECKLIST "By Component"
+ENDFIELD
+
+TEXT "Filter:"
+TLOC 4 24
+ENDTEXT
+FIELD testpoint_componentFilter
+FLOC 11 24
+STRFILLIN 11 32
+ENDFIELD
+
+FIELD testpoint_componentList
+FLOC 4 26
+LIST "" 20 4
+OPTIONS SORT
+ENDFIELD
+
+TEXT "Selected Components"
+TLOC 30 20
+ENDTEXT
+FIELD testpoint_selectedComponentList
+FLOC 30 22
+LIST "" 20 6
+OPTIONS SORT
+ENDFIELD
+
+FIELD testpoint_selectAllComponents
+FLOC 25 26
+MENUBUTTON "=>" 2 2
+ENDFIELD
+
+FIELD testpoint_deselectAllComponents
+FLOC 25 28
+MENUBUTTON "<=" 2 2
+ENDFIELD
+
+GROUP "Via Padstacks"
+GLOC 1 33
+GSIZE 50 13
+ENDGROUP
+FIELD testpoint_viaEnable
+FLOC 2 35
+CHECKLIST "Specify Testpoint Vias"
+ENDFIELD
+
+TEXT "Filter:"
+TLOC 4 37
+ENDTEXT
+FIELD testpoint_viaFilter
+FLOC 11 37
+STRFILLIN 11 32
+ENDFIELD
+
+FIELD testpoint_viaList
+FLOC 4 39
+LIST "" 20 4
+OPTIONS SORT
+ENDFIELD
+
+TEXT "Selected Padstacks"
+TLOC 30 35
+ENDTEXT
+FIELD testpoint_selectedViaList
+FLOC 30 37
+LIST "" 20 5
+OPTIONS SORT
+ENDFIELD
+
+FIELD testpoint_selectAllVias
+FLOC 25 39
+MENUBUTTON "=>" 2 2
+ENDFIELD
+
+FIELD testpoint_deselectAllVias
+FLOC 25 41
+MENUBUTTON "<=" 2 2
+ENDFIELD
+
+ENDTAB
+#endif
+
+TAB "Spread Wires"
+TEXT "Type:"
+TLOC 4 0
+ENDTEXT
+TEXT "Extra Clearance Values:"
+TLOC 21 0
+ENDTEXT
+TEXT "Starting"
+TLOC 20 2
+ENDTEXT
+TEXT "Ending"
+TLOC 32 2
+ENDTEXT
+
+FIELD spread_clearanceTypeGeneral
+FLOC 1 4
+CHECKLIST "General" "spread_clearanceType"
+ENDFIELD
+FIELD spread_generalStartval
+FLOC 20 4
+REALFILLIN 8 8
+DECIMAL 2
+ENDFIELD
+FIELD spread_generalEndval
+FLOC 32 4
+REALFILLIN 8 8
+ENDFIELD
+
+FIELD spread_clearanceTypeSpecific
+FLOC 1 7
+CHECKLIST "Specified" "spread_clearanceType"
+ENDFIELD
+
+FIELD spread_wire2WireEnable
+FLOC 4 9
+CHECKLIST "Wire to Wire"
+ENDFIELD
+FIELD spread_wire2WireStartval
+FLOC 20 9
+REALFILLIN 8 8
+DECIMAL 1
+ENDFIELD
+FIELD spread_wire2WireEndval
+FLOC 32 9
+REALFILLIN 8 8
+ENDFIELD
+
+FIELD spread_wire2SmdEnable
+FLOC 4 11
+CHECKLIST "Wire to SMD"
+ENDFIELD
+FIELD spread_wire2SmdStartval
+FLOC 20 11
+REALFILLIN 8 8
+DECIMAL 1
+ENDFIELD
+FIELD spread_wire2SmdEndval
+FLOC 32 11
+REALFILLIN 8 8
+ENDFIELD
+
+FIELD spread_wire2PinEnable
+FLOC 4 13
+CHECKLIST "Wire to Pin"
+ENDFIELD
+FIELD spread_wire2PinStartval
+FLOC 20 13
+REALFILLIN 8 8
+DECIMAL 1
+ENDFIELD
+FIELD spread_wire2PinEndval
+FLOC 32 13
+REALFILLIN 8 8
+ENDFIELD
+
+ENDTAB
+
+TAB "Miter Corners"
+
+TEXT "Miter Passes:"
+TLOC 2 1
+ENDTEXT
+
+FIELD miter_passes
+FLOC 15 1
+INTFILLIN  3 3
+MIN -1
+ENDFIELD
+
+GROUP "Options"
+GLOC 1 3
+GSIZE 50 10
+
+FIELD miter_pinViaEnable
+FLOC 2 5
+CHECKLIST "Miter Pin and Via Exits"
+ENDFIELD
+
+FIELD miter_slantEnable
+FLOC 2 7
+CHECKLIST "Slant Wrong-way Segments"
+ENDFIELD
+
+FIELD miter_tjunctionEnable
+FLOC 2 9
+CHECKLIST "Miter T Junctions"
+ENDFIELD
+
+FIELD miter_bendEnable
+CHECKLIST "Miter at Bends"
+FLOC 2 11
+ENDFIELD
+
+ENDGROUP
+ENDTAB
+
+TAB "Elongate"
+
+GROUP "Elongation Patterns"
+GLOC 1 0
+GSIZE 50 34
+
+FIELD elong_meanderEnable
+FLOC 2 3
+CHECKLIST "Meander"
+ENDFIELD
+
+FIELD elong_meanderBmp
+THUMBNAIL ElongMeander.bmp
+FLOC 12 3
+FSIZE 5 2
+ENDFIELD
+
+FIELD elong_tromboneEnable
+FLOC 2 6
+CHECKLIST "Trombone"
+ENDFIELD
+
+FIELD elong_tromboneBmp
+THUMBNAIL ElongTrombone.bmp
+FLOC 12 6
+FSIZE 5 2
+ENDFIELD
+
+FIELD elong_tromboneMinGapEnable
+FLOC 5 9
+CHECKLIST "Minimum Gap:"
+ENDFIELD
+
+FIELD elong_tromboneMinGap
+FLOC 25 9
+REALFILLIN 8 8
+ENDFIELD
+
+FIELD elong_tromboneMaxRunEnable
+FLOC 5 11
+CHECKLIST "Maximum Run Length:"
+ENDFIELD
+
+FIELD elong_tromboneMaxRun
+FLOC 25 11
+REALFILLIN 8 8
+ENDFIELD
+
+FIELD elong_accordionEnable
+FLOC 2 14
+CHECKLIST "Accordion"
+ENDFIELD
+
+FIELD elong_accordionBmp
+THUMBNAIL ElongAccordion.bmp
+FLOC 12 14
+FSIZE 5 2
+ENDFIELD
+
+FIELD elong_accordionMinGapEnable
+FLOC 5 17
+CHECKLIST "Minimum Gap:"
+ENDFIELD
+
+FIELD elong_accordionMinGap
+FLOC 25 17
+REALFILLIN 8 8
+ENDFIELD
+
+FIELD elong_accordionMinAmpEnable
+FLOC 5 19
+CHECKLIST "Minimum Amplitude:"
+ENDFIELD
+
+FIELD elong_accordionMinAmp
+FLOC 25 19
+REALFILLIN 8 8
+ENDFIELD
+
+FIELD elong_accordionMaxAmpEnable
+FLOC 5 21
+CHECKLIST "Maximum Amplitude:"
+ENDFIELD
+
+FIELD elong_accordionMaxAmp
+FLOC 25 21
+REALFILLIN 8 8
+ENDFIELD
+
+FIELD elong_sawtoothEnable
+FLOC 2 24
+CHECKLIST "Sawtooth"
+ENDFIELD
+
+FIELD elong_sawtoothBmp
+THUMBNAIL ElongSawtooth.bmp
+FLOC 12 24
+FSIZE 5 2
+ENDFIELD
+
+FIELD elong_sawtoothMinGapEnable
+FLOC 5 27
+CHECKLIST "Minimum Gap:"
+ENDFIELD
+
+FIELD elong_sawtoothMinGap
+FLOC 25 27
+REALFILLIN 8 8
+ENDFIELD
+
+FIELD elong_sawtoothMinAmpEnable
+FLOC 5 29
+CHECKLIST "Minimum Amplitude:"
+ENDFIELD
+
+FIELD elong_sawtoothMinAmp
+FLOC 25 29
+REALFILLIN 8 8
+ENDFIELD
+
+FIELD elong_sawtoothMaxAmpEnable
+FLOC 5 31
+CHECKLIST "Maximum Amplitude:"
+ENDFIELD
+
+FIELD elong_sawtoothMaxAmp
+FLOC 25 31
+REALFILLIN 8 8
+ENDFIELD
+
+ENDGROUP
+
+GROUP "Options"
+GLOC 1 34
+GSIZE 50 8
+
+FIELD elong_patternStackingEnable
+FLOC 2 37
+CHECKLIST "Pattern Stacking"
+ENDFIELD
+
+FIELD elong_miterEnable
+FLOC 2 39
+CHECKLIST "Miter Corners"
+ENDFIELD
+
+ENDGROUP
+
+ENDTAB
+
+ENDTABSET
+
+
+FIELD done
+FLOC 54 2
+MENUBUTTON "OK" 10 3
+ENDFIELD
+
+FIELD cancel
+FLOC 54 5
+MENUBUTTON "Cancel" 10 3
+ENDFIELD
+
+FIELD help
+FLOC 54 8
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

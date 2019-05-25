@@ -1,0 +1,83 @@
+####################################################################################
+#       Cadence Design Systems                                                     #
+#                                                                                  #
+# (C) COPYRIGHT, Cadence Design Systems, Inc. 2010                                 #
+# All Rights Reserved                                                              #
+# Licensed Materials - Property of Cadence Design Systems                          #
+#                                                                                  #
+# No part of this file may be reproduced, stored in a retrieval system,            #
+# or transmitted in any form or by any means --- electronic, mechanical,           #
+# photocopying, recording, or otherwise --- without prior written permission       #
+# of Cadence Design Systems, Inc.                                                  #
+#                                                                                  #
+# WARRANTY:                                                                        #
+# Use all material in this file at your own risk.  Cadence Design Systems          #
+# makes no claims about any material contained in this file.                       #
+####################################################################################
+FILE_TYPE=FORM_DEFN VERSION=2
+
+    FORM
+    FIXED
+    PORT 83 60
+    HEADER "Signal Model Histogram"
+
+    ACTIVEFIELD Refresh
+    DEFAULT Exit
+
+    TILE
+    
+    GROUP "Model" "ModelGroup"
+        GLOC 1 0
+        GSIZE 82 21
+    ENDGROUP
+    
+    POPUP <DeviceModelGridPopup>"Sort Ascending""Sort Ascending","Sort Descending""Sort Descending".
+    GRID DeviceModelGrid
+    FLOC 2 2
+    FSIZE 80 18
+    OPTIONS HLINES VLINES USERSIZE
+    
+    GHEAD TOP
+        HEADSIZE 2
+        OPTIONS 3D
+        POP "DeviceModelGridPopup"
+    ENDGHEAD
+    GHEAD SIDE
+        HEADSIZE 0
+    ENDGHEAD
+    ENDGRID
+    
+    GROUP "log-ESR VS log-Freq" "HistogramBitmapGroup"
+        GLOC 1 21
+        GSIZE 82 21
+    ENDGROUP
+    
+    FIELD DeviceModelHistogramBitmap
+    THUMBNAIL
+    FLOC 2 23
+    FSIZE 80 17
+    TGROUP "Log-ESR VS Log-Freq"
+    ENDFIELD
+    
+    TEXT
+    FLOC 2 40
+    INFO Histogram_Low_Freq  7
+    ENDTEXT 
+    
+    TEXT 
+    FLOC 74 40
+    INFO Histogram_High_Frwq  7
+    ENDTEXT 
+    
+    FIELD Exit
+        FLOC 1 43
+        MENUBUTTON "Close" 10 3
+    ENDFIELD
+
+    FIELD Help
+        FLOC 73 43
+        MENUBUTTON "Help" 10 3
+    ENDFIELD
+
+    ENDTILE
+ENDFORM

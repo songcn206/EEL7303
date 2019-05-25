@@ -1,0 +1,356 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 48 6
+HEADER "Place Die"
+
+POPUP <ROTATION_POPUP> "" "".
+POPUP <SUBCLASS_POPUP> "" "".
+POPUP <PADPOPUP>"""".
+POPUP <JEDECWIDTHPOPUP>"""".
+POPUP <JEDECHEIGHTPOPUP>"""".
+POPUP <JEDECHORPITCHPOPUP>"""".
+POPUP <JEDECVERPITCHPOPUP>"""".
+POPUP <JEDECROWSPOPUP>"""".
+POPUP <JEDECCOLUMNSPOPUP>"""".
+POPUP <PINNUMPOPUP>"""".
+POPUP <PADPOPUP>"""".
+POPUP <LAYERPOPUP>"""".
+POPUP <PINSTARTPOPUP>"""".
+POPUP <TEXTBLOCKPOPUP>"""".
+
+
+TILE
+
+TABSET "tab"
+OPTIONS tabSetDispatch
+FLOC 1 1
+FSIZE 60 24
+
+# ************  Tab 1. **************************
+#           Die Options
+# ************  Tab 1. **************************
+
+TAB "General"
+GROUP "Die Logic"
+GLOC 2 1
+GSIZE 44 7
+ENDGROUP
+
+TEXT "Symbol Name:"
+TLOC 5 3
+ENDTEXT
+
+FIELD symname
+FLOC 22 3
+STRFILLIN 21 128
+ENDFIELD
+
+TEXT "Ref Des:"
+TLOC 5 5
+ENDTEXT
+
+FIELD refdes
+FLOC 22 5
+STRFILLIN 21 128
+ENDFIELD
+
+GROUP "Die Attachment"
+GLOC 2 8
+GSIZE 44 12
+ENDGROUP
+
+FIELD wirebond
+FLOC 5 10
+CHECKLIST "Wire bond" "IC type"
+ENDFIELD
+
+FIELD flipchip
+FLOC 5 12
+CHECKLIST "Flip chip" "IC type"
+ENDFIELD
+
+#ifdef APD_DIRECT_DIE_ATTACH_ENABLED && APD
+FIELD d2d_parent
+FLOC 22 10
+CHECKLIST "Direct attach parent" "IC type"
+ENDFIELD
+
+FIELD d2d_child
+FLOC 22 12
+CHECKLIST "Direct attach child" "IC type"
+ENDFIELD
+#endif
+
+
+FIELD chipup
+FLOC 5 15
+CHECKLIST "Chip up" "Chip Orientation"
+ENDFIELD
+
+FIELD chipdown
+FLOC 5 17
+CHECKLIST "Chip down" "Chip Orientation"
+ENDFIELD
+
+FIELD chiptype_graphic
+THUMBNAIL dgflipchipcd.bmp
+#ifdef APD_DIRECT_DIE_ATTACH_ENABLED && APD
+FLOC 24 15
+#else
+FLOC 24 13
+#endif
+FSIZE 13 5
+ENDFIELD
+
+ENDTAB
+
+# ************  Tab 2. **************************
+#           Die Placement Options
+# ************  Tab 2. **************************
+
+TAB "Die Placement"
+
+
+TEXT "Pin Layer:"
+TLOC 5 3
+ENDTEXT
+
+FIELD subclass
+FLOC 22 3
+ENUMSET 20
+OPTIONS prettyprint ownerdrawn
+POP "SUBCLASS_POPUP"
+ENDFIELD
+
+TEXT "Origin X:"
+TLOC 5 6
+ENDTEXT
+
+FIELD origin_x
+FLOC 22 6
+STRFILLIN 21 128
+ENDFIELD
+
+TEXT "Origin Y:"
+TLOC 5 9
+ENDTEXT
+
+FIELD origin_y
+FLOC 22 9
+STRFILLIN 21 128
+ENDFIELD
+
+TEXT "Rotation:"
+TLOC 5 12
+ENDTEXT
+
+FIELD rotation
+FLOC 22 12
+ENUMSET 20
+POP "ROTATION_POPUP"
+ENDFIELD
+ENDTAB
+
+TAB "Shrink/Scribe"
+FIELD optical_shrink
+FLOC 5 3
+CHECKLIST "Apply IC fabrication optical shrink by:"
+ENDFIELD
+
+FIELD shrinkage_value
+FLOC 36 3
+REALFILLIN 6 16
+DECIMAL 2
+REALMIN 0.0
+REALMAX 100.0
+ENDFIELD
+TEXT "%"
+TLOC 44 3
+ENDTEXT
+
+FIELD scribe_lines
+FLOC 5 6
+CHECKLIST "Add scribe width"
+ENDFIELD
+
+FIELD north_scribe
+FLOC 13 9
+STRFILLIN 10 64
+ENDFIELD
+TEXT "North:"
+TLOC 8 9
+ENDTEXT
+
+FIELD south_scribe
+FLOC 32 9
+STRFILLIN 10 64
+ENDFIELD
+TEXT "South:"
+TLOC 27 9
+ENDTEXT
+
+FIELD east_scribe
+FLOC 13 12
+STRFILLIN 10 64
+ENDFIELD
+TEXT "East:"
+TLOC 8 12
+ENDTEXT
+
+FIELD west_scribe
+FLOC 32 12
+STRFILLIN 10 64
+ENDFIELD
+TEXT "West:"
+TLOC 27 12
+ENDTEXT
+
+#ifdef APD_DIRECT_DIE_ATTACH_ENABLED && APD
+#FIELD import_routing
+#FLOC 5 21
+#CHECKLIST "Import direct attach routing"
+#ENDFIELD
+#endif
+
+ENDTAB 
+
+TAB "Padstack"
+
+
+FIELD padstack_graphic
+THUMBNAIL padstack.bmp
+FLOC 40 4
+FSIZE 6 6
+ENDFIELD
+
+
+FIELD pad_create
+FLOC 1 3
+CHECKLIST "Create New Padstacks Based on Source Geometry" "pad_method"
+ENDFIELD
+
+TEXT "Padstack Name:"
+TLOC 4 6
+ENDTEXT
+
+FIELD padstack_name
+FLOC 18 6
+STRFILLIN 19 128
+ENDFIELD
+
+
+FIELD pad_load_database
+FLOC 1 10
+CHECKLIST "Available padstack" "pad_method"
+GSIZE 20 1
+ENDFIELD
+
+FIELD pad_database
+FLOC 18 10
+ENUMSET 18
+POP "PADPOPUP"
+ENDFIELD
+
+
+FIELD pad_load_disk
+FLOC 1 14
+CHECKLIST "Load from disk" "pad_method"
+ENDFIELD
+
+FIELD pad_file_name
+FLOC 18 14
+STRFILLIN 19 255
+ENDFIELD
+
+FIELD pad_file_browse
+FLOC  39 14
+MENUBUTTON "Browse" 2 3
+ENDFIELD
+
+ENDTAB
+
+ TAB "Pin Number"
+#FIELD pin_number_graphic
+#THUMBNAIL bgnmhrltvrtopleft.bmp
+#FLOC 15 0
+#FSIZE 22 14
+#ENDFIELD
+
+#GROUP "Pin Numbering"
+#GLOC 2 1
+#GSIZE 41 17
+#ENDGROUP
+
+ TEXT "Ordering:"
+ TLOC 8 4
+ ENDTEXT
+
+ FIELD pin_label_scheme
+ FLOC 16 4
+ ENUMSET 20
+ POP "PINNUMPOPUP"
+ ENDFIELD
+
+ TEXT "Start at:"
+ TLOC 8 6
+ ENDTEXT
+
+ FIELD pin_label_start
+ FLOC 16 6
+ ENUMSET 20
+ POP "PINSTARTPOPUP"
+ ENDFIELD
+
+ FIELD pin_letter_first
+ FLOC 8 9
+ CHECKLIST "Label with letters before numbers"
+ ENDFIELD
+
+ FIELD pin_jedec
+ FLOC 8 11
+ CHECKLIST "JEDEC standard."
+ ENDFIELD
+
+ FIELD pin_alpha_pad
+ FLOC 8 13 
+ CHECKLIST "Pad letter with A's."
+ ENDFIELD
+
+ FIELD pin_number_pad
+ FLOC 8 15
+ CHECKLIST "Pad number with zeros."
+ ENDFIELD
+ 
+ FIELD pin_staggered
+ FLOC 8 17
+ CHECKLIST "Staggered pin configuration."
+ ENDFIELD
+
+ ENDTAB
+ENDTABSET
+
+
+FIELD done
+FLOC 3 26
+MENUBUTTON "Ok" 10 3
+ENDFIELD
+
+FIELD cancel
+FLOC 14 26
+MENUBUTTON "Cancel" 10 3
+ENDFIELD
+
+FIELD place
+FLOC 25 26
+MENUBUTTON "Place" 10 3
+ENDFIELD
+
+FIELD help
+FLOC 36 26
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+ENDTILE
+ENDFORM
+

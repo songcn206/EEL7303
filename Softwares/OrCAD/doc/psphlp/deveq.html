@@ -1,0 +1,733 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN" "http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+<html xmlns="http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>PSpice Help -- Introduction to device equations</title>
+<META NAME="Approver" CONTENT="Technical Publications">
+<META NAME="Author" CONTENT="Technical Publications">
+<META NAME="CreateDate" CONTENT="2012-09-04">
+<META NAME="CreateTime" CONTENT="1346762599">
+<META NAME="DataType" CONTENT="Manuals">
+<META NAME="Description" CONTENT="PSpice A/D simulates analog-only and mixed circuits. The analog and digital algorithms are built into the same program to enable circuit simulation with tightly-coupled feedback loops between analog and digital sections without performance degradation.">
+<META NAME="DocTitle" CONTENT="PSpice Help">
+<META NAME="DocType" CONTENT="Reference">
+<META NAME="EdmsRelease" CONTENT="EDMS Windows-P015">
+<META NAME="FileTitle" CONTENT="Introduction to device equations">
+<META NAME="FileType" CONTENT="Chapter">
+<META NAME="Keyword" CONTENT="psphlp">
+<META NAME="Language" CONTENT="English">
+<META NAME="ModifiedDate" CONTENT="2012-09-04">
+<META NAME="ModifiedTime" CONTENT="1346762599">
+<META NAME="NextFile" CONTENT="popups.html">
+<META NAME="PageCount" CONTENT="12">
+<META NAME="Platform" CONTENT="ALL">
+<META NAME="PrevFile" CONTENT="definitions.html">
+<META NAME="Product" CONTENT="Allegro AMS Simulator, PSpice">
+<META NAME="ProductFamily" CONTENT="PCB Design, PCB Design">
+<META NAME="ProductVersion" CONTENT="16.6">
+<META NAME="RightsManagement" CONTENT="Copyright 19912012 Cadence Design Systems Inc.">
+<META NAME="Title" CONTENT="PSpice Help -- Introduction to device equations">
+<META NAME="TopicTags" CONTENT="FALSE">
+<META NAME="Version" CONTENT="16.6">
+  </head>
+  <body style="margin-left: 5%;">
+    <a name="pagetop"></a>
+    <a name="firstpage"></a>
+    <!-- Begin Buttons -->
+    <table width="650" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td height="36" width="650" colspan="10">
+          <img src="../support/header_doc.gif" width="650" height="34">
+        </td>
+      </tr>
+      <tr>
+        <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                </td>
+<td height="20" width="73">
+<a href="psphlpTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<img src="../support/nav2_index_b.gif" border="0">
+</td>
+        <td>
+          <a href="definitions.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+        </td>
+        <td>
+          <a href="popups.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+        </td>
+        <td height="20">
+          <a>
+<a href="psphlp.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+          </a>
+        </td>
+        <td height="20" width="61">
+          <img src="../support/nav2_black.gif">
+        </td>
+        <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+        </td>
+        <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+        </td>
+        <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+        </td>
+      </tr>
+    </table>
+    <!-- End Buttons -->
+    <p>
+    <hr>
+    <p>
+      <h3>
+        <center>
+          <font >
+            <div>PSpice Help </div>
+            <font >
+              <div>
+            </font>
+          </font>
+        </center>
+      </h3>
+      <br>
+    </p>
+    <div>
+      <h3><a name="1046168">Introduction to device equations</a></h3>
+      <p><a name="1046169">The purpose of the Device Equations option is to change the built&#45;in model equations for one </a>or more of the semiconductor devices (GaAsFET, Diode, Junction FET, MOSFET, Bipolar transistor, and IGBT). This means you can extend PSpice to support user&#45;defined or proprietary native device models. </p>
+      <p><a name="1046170">This option is not an addition to PSpice : it is a different packaging of the program that </a>includes the source code for the device model subroutines. You need a Device Equations license to modify and extend PSpice code, but you do not need a Device Equations license to use the modified code. </p>
+      <p><a name="1046171">There are several kinds of changes that can be made using the Device Equations option. </a>These include, in ascending order of complexity:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046172">Changing a parameter name </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046173">Giving a parameter an alias </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046174">Adding a parameter </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046175">Changing the device equations </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046176">Adding a new device </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046177">Specifying new internal device structure </a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1046178">You need a supported C++ compiler to compile Device Equations extensions; for Windows </a>95&#47;98 and NT, you need Microsoft Visual C++ 6.0 or later. </p>
+      <p><a name="1046179">Device Equations extensions are implemented using a dynamic&#45;link library, which means you </a>can share your models with other users by distributing just a DLL. </p>
+      <p><a name="1046180">If you want to run PSpice on Windows 95 or NT with a Device Equations DLL developed by </a>someone else, then you do not need a compiler or a Device Equations license. Just copy the DLL into the directory with your PSpice program file. For more information, see Simulating with the device equations option&#60;link&#62;.</p>
+      <h3><a name="1046183">Making device model changes</a></h3>
+      <p><a name="1046184">To get started, look at the files M.H and MOS.CPP, which implement the MOSFET equations. </a>The other devices have similar structures.</p>
+      <p><a name="1046185">M.H contains two important class definitions: </a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046186">the class for the MOS transistor (class M_Device) </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046187">the class for the MOS model (class M_Model) </a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1046188">During read&#45;in, the simulator creates an instance of the transistor class for every MOSFET in </a>the circuit and an instance of the model class for every .MODEL statement of type NMOS or PMOS. The transistor instance is set up using information particular to that transistor, such as the nodes to which it is connected, its length and width, and the locations of its entries in the circuit's conductance matrix. All parameters of the model object are set up using the values from the .MODEL statement, if one exists; otherwise, the default values are used.</p>
+      <p><a name="1046189">The transistor object corresponds to the LOC, LOCV, and LX tables in U.C. Berkeley SPICE2. </a>The model object corresponds to the LOC and LOCM tables in SPICE. </p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1046190">Do not change the transistor object (class M_Device), except when changing the </a>internal device topology. It is included only to allow compiling of MOS.CPP.</p>
+      <p><a name="1046191">The simulator needs to associate each entry in the model class with a model parameter name </a>(and default value) in the .MODEL statement. You can accomplish this by using the ASSOCIATE macro. Just below the device class in M.H there is a list of all the parameters, each in an ASSOCIATE macro. The occurrence of ASSOCIATE binds together the class entry, the parameter name, and the default value. The read&#45;in section of the simulator uses this information to parse the .MODEL statement.</p>
+      <p><a name="1046193">For more details on how to change parameters, click the following:</a></p>
+      <p><a name="1046194">Changing a parameter name  </a></p>
+      <p><a name="1046195">Giving a parameter an alias  </a></p>
+      <p><a name="1046196">Adding a parameter  </a></p>
+      <h3><a name="1046199">Changing a parameter name</a></h3>
+      <p><a name="1046200">This is the easiest change. Find the parameter in the list of ASSOCIATE macros. Change the </a>parameter's name (last item on the line) and&#47;or the default value (middle item). The names and defaults of the model parameters that are supplied can be changed, as well as those parameters that are added.</p>
+      <p><a name="1046201">When the simulator runs, it prints the parameter values for each .MODEL statement unless </a>the NOMOD option is used in the .OPTIONS statement. Normally only parameters which have not been defaulted are listed. A parameter can be forced to be listed, whether or not it has been defaulted, by preceding its name using an asterisk (*). For example, VTO is listed that way in M.H.</p>
+      <h3><a name="1046204">Giving a parameter an alias</a></h3>
+      <p><a name="1046205">Sometimes a parameter requires an alternate name (an alias). Several bipolar model </a>parameters, such as ISE, already have alternate names. The alias for ISE is C2. Look in Q.H at the occurrences of the parameters ISE and C2 in the ASSOCIATE macros for an example of how this is accomplished. There is only one entry in the model class (Q_ise) for the parameter, but there are two ASSOCIATE entries. This means that either name (ISE or C2) on the .MODEL statement can put a number into the class entry Q_ise.</p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1046206">When model parameters are listed, the first name found in the ASSOCIATE list </a>(searching downward) is the name which is echoed on the output. </p>
+      <p><a name="1046207">Insert the new name first if it is the name to be printed.</a></p>
+      <h3><a name="1046210">Adding a parameter</a></h3>
+      <p><a name="1046211">Adding a parameter is probably the most common case. The parameter must be added to </a>both the model class (e.g., class M_Model) and the corresponding ASSOCIATE list. It is recommended to follow the PSpice naming convention (e.g., M_wd and M_vto), but it is not required.</p>
+      <p><a name="1046212">Model parameters are set forth as pairs of elements instead of simple floating point values. </a>This is to provide the use of expressions for model parameters. Because of this, when adding a parameter (for example, M_new), the following line is required:</p>
+      <blockquote><a name="1046213"><font size="2" face="'Courier New'" color="#000000">MXPR( M_new, Mx_new );</font></a></blockquote>
+      <blockquote><a name="1046214">instead of</a></blockquote>
+      <blockquote><a name="1046215"><font size="2" face="'Courier New'" color="#000000">float M_new;</font></a></blockquote>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1046216">Do not modify the value of the Mx_new class element. </a></p>
+      <p><a name="1046217">The read&#45;in mechanism can handle expressions for user&#45;added parameters. By the time the </a>model code is called, the expressions have been evaluated and their value placed in the appropriate fields. See the include file m.h for further examples and comments.</p>
+      <p><a name="1046218">When the simulator is doing a read&#45;in, model parameters are listed for each .MODEL </a>statement (unless NOMOD has been specified on the .OPTIONS statement). Normally, only those parameters that have not been defaulted are listed. A parameter can be forced to be listed, even if it has been defaulted, by preceding its name using an asterisk (*) in the ASSOCIATE macro. For instance, VTO in M.H is listed in that manner.</p>
+      <p><a name="1046219">The default value, OMITTED, is used by the simulator to force the calculation of a </a>parameter's value during read&#45;in. For instance, VTO is calculated from other values if it is not given a value. These calculations are built into the read&#45;in and are fixed. Cadence recommends that parameters that you add be given a normal default value and not be computed by using OMITTED.</p>
+      <p><a name="1046220">Once the parameter has been added, the model class becomes one parameter longer, and </a>the read&#45;in section of PSpice places a value in its entry. The parameter can now be used in the device code (e.g., MOS.CPP).</p>
+      <h3><a name="1046223">Changing the device equations</a></h3>
+      <p><a name="1046224">The device equations are in the file that has the same name as the type of device </a>(DIODE.CPP, BJT.CPP, JFET.CPP, MOS.CPP, GASFET.CPP). The files D.CPP, Q.CPP, J.CPP, M.CPP, and B.CPP contain auxiliary functions that implement the AC equations, matrix setup, temperature updating, etc.The code in these subroutines use the model parameters and the device's terminal voltages to calculate the branch currents and conductances, and, during transient analysis, the terminal charges and branch capacitances. These equations are neither simple nor easy. A good understanding of U.C. Berkeley's SPICE2G is recommended before making such a change. Two useful references are:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	1.	</nobr>
+              </div>
+            </td>
+            <td><a name="1046225">Nagel, L.W., "SPICE2: A Computer Program to Simulate Semiconductor Circuits", </a>Memorandum No. M520, May 1975.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	2.	</nobr>
+              </div>
+            </td>
+            <td><a name="1046226">Cohen, Ellis, "Program Reference for SPICE2", Memorandum No. M592, June 1976.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1046227">which are available from:</a></blockquote>
+      <blockquote><a name="1046228">Software Distribution Office</a></blockquote>
+      <blockquote><a name="1046229">EECS&#47;ERL Industrial Liaison Program</a></blockquote>
+      <blockquote><a name="1046230">205 Cory Hall #1770</a></blockquote>
+      <blockquote><a name="1046231">University of California</a></blockquote>
+      <blockquote><a name="1046232">Berkeley, CA 94720&#45;1770</a></blockquote>
+      <blockquote><a name="1046233">(510) 643&#45;6687</a></blockquote>
+      <p><a name="1046235">For more details about device source files, see Functional subsections of the device source </a>file.</p>
+      <h3><a name="1046238">Functional subsections of the device source file</a></h3>
+      <p><a name="1046239">The code in each of the device source files is arranged into separate functional subsections. </a>Each subsection occurs at least once, but can occur several times for devices that have more than one level. The subsections required are outlined below.</p>
+      <p><a name="1046240">&nbsp;</a></p>
+      <table summary="" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF" width="648">
+        <caption>
+        <tr>
+          <td cellpadding="4" border="0" valign="top" >
+            <p><a name="1046541"><font color="#000000">Subsection</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top" >
+            <p><a name="1046543">Description</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1046545"><font color="#000000">Initialization</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1046547">This consists of locating and binding the device instance and its </a>model, initializing any local variables, and obtaining appropriate values for the device branch voltages. The branch voltages (e.g., vds, vgs) are set differently depending upon whether there are user&#45;specified initial conditions (using IC= or .IC), and on whether the present Newton Raphson cycle has finished or not.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1046549"><font color="#000000">Computing new </font></a><font color="#000000">nonlinear branch </font><font color="#000000">voltage:</font></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1046551">This is needed to monitor progress towards a Newton Raphson </a>solution.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1046553"><font color="#000000">Test if the </font></a><font color="#000000">solution has </font><font color="#000000">changed:</font></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1046555">If there is not significant change bypass the rest of the </a>computation. Otherwise, continue.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1046557"><font color="#000000">Limit any nonlinear </font></a><font color="#000000">branch voltages:</font></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1046559">This code uses the macro PNJLIM() to insure that the branch </a>voltages are in the appropriate operating region.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1046561"><font color="#000000">Compute currents </font></a><font color="#000000">and conductances:</font></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1046563">This is the meat of the Device Equations code, and involves </a>obtaining all the branch currents (e.g., ibs, ibd) as well as all the derivatives to be used in the conductance matrix.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1046565"><font color="#000000">Charge </font></a><font color="#000000">calculations:</font></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1046567">Internal charges are calculated and updated.</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1046569"><font color="#000000">Check convergence: </font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1046571">Check to see if the nonlinear device branches now have values </a>that are within a small tolerance range of those obtained in the last repeat cycle, and set a return flag to signal whether the device converged.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1046573"><font color="#000000">Load the current </font></a><font color="#000000">vector and </font><font color="#000000">conductance matrix:</font></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1046575">The macro Y_MATRIX () is used to obtain handles to the proper </a>matrix elements, and the elements are assigned their values based on the present evaluation of the device equations and derivatives.</p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1046250">&nbsp;</a></p>
+      <p><a name="1046251">SPICE2G is written in FORTRAN, whereas PSpice is in C&#47;C++. For the device subroutines, </a>as much correspondence as possible has been maintained between the two. Because of FORTRAN, SPICE kept integer and real numbers in different tables: NODPLC (indexed by LOC) and VALUE (indexed by LOCV or LOCM). In PSpice , these have been combined into one object (e.g., class M_Device).</p>
+      <p><a name="1046252">The state vector information is constructed somewhat differently, though the overall pattern </a>is similar. In SPICE the state vector information is kept in a set of vectors in VALUE. There is one vector for each time point "remembered" (from 4 to 7, depending on the order of the integration method). Each device's LOC table contains an offset, LX, to its portion of the information in each state vector. In PSpice the number of state vectors is fixed, and each device's state information is kept in its own device object (e.g., class M_Device). </p>
+      <p><a name="1046253">For example, for MOSFETs the state vectors are an array, struct msv_def m_sv[MSTVCT] in </a>class M_Device. MSTVCT is the number of state vectors and is defined in TRAN.H to be equal to 4. The definition of msv_def (also in M.H) lists the various currents, conductances, charges, and capacitances that are in the state vector. Finally, M.H contains a set of #defines, which allows accessing of the entries to the state vectors by name. It is these (uppercase) names which are then used in MOS.CPP. This may seem like a roundabout way of constructing the state vector information, but the actual usage (in MOS.CPP) is quite straightforward and is similar to that in SPICE.</p>
+      <h3><a name="1046256">Adding a new device</a></h3>
+      <p><a name="1046257">The Device Equations option does not allow the addition of an entirely new device. However, </a>in many cases the same thing can be achieved by making use of an existing device.</p>
+      <p><a name="1046258">Suppose, for example, that a lightning arrester device is to be added. The lightning arrester </a>has two terminals, therefore it can be built into the diode equations, because the diode also has two terminals. This means that in the circuit (.CIR) file the lightning arresters would use the letter D to start and would refer to a .MODEL statement of the type D.</p>
+      <p><a name="1046259">At first glance it appears that this would preclude using diodes in circuits, since they have </a>been replaced by lightning arresters. This problem is avoided by keeping all the diode model parameters, adding the lightning arrester parameters, adding a LEVEL parameter, and giving the LEVEL parameter a default of 1. In the diode subroutine (in DIODE.CPP), a large if test would select all the old diode code if LEVEL=1 and all the new lightning arrester code otherwise. The new LEVEL parameter would switch between diode and lightning arrester.</p>
+      <p><a name="1046260">This approach can be extended to as many devices as wanted. This could be:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046261">LEVEL=1 as a diode</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046262">LEVEL=2 as a lightning arrester</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046263">LEVEL=3 as a gas discharge tube</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1046264">And so on. The restriction is that all of the devices added to the diode must have two </a>terminals. If the device to be added has three terminals, it must be built into a three terminal device, such as the JFET. The highest number of terminals that can be modeled is four, using the MOSFET. There is not a good way to add devices, such as pentodes, that have five or more terminals.</p>
+      <h3><a name="1046267">Specifying new internal device structure</a></h3>
+      <p><a name="1046268">You may want to change the topology of a device in order to accommodate a more elaborate </a>set of parasitic resistances and&#47;or capacitances. To do this requires that positions in the conductance matrix be assigned to include the terms that the additional equations generate. This requires five steps:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	1.	</nobr>
+              </div>
+            </td>
+            <td><a name="1046269">Ensuring that all of the new internal nodes and matrix conductance terms are added to </a>the device class in the device header file</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	2.	</nobr>
+              </div>
+            </td>
+            <td><a name="1046270">Allocating the new matrix elements</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	3.	</nobr>
+              </div>
+            </td>
+            <td><a name="1046271">Providing handles to access the new matrix elements and to bind the nodes to the </a>branches</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	4.	</nobr>
+              </div>
+            </td>
+            <td><a name="1046272">Including logic, if needed, to support device model parameter checking and updating</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	5.	</nobr>
+              </div>
+            </td>
+            <td><a name="1046273">Adding the new device equations to the device code</a></td>
+          </tr>
+        </table>
+      </div>
+      <h4><a name="1046275">Example</a></h4>
+      <p><a name="1046276">This process can be illustrated by looking at the PSpice JFET and GaAsFET devices, as </a>shown in the procedure below. The topologies of these two devices are nearly identical, except that the GaAsFET has an additional internal capacitance, CDS, between the source and drain, and an additional internal resistance, RG, at the gate. This gives the GaAsFET topology one additional node where RG joins the rest of the structure and two additional internal branches.</p>
+      <p><a name="1046611"><img src="images/fet.gif" width="457" height="304" alt=""></a></p>
+      <h4><a name="1046278">Procedure</a></h4>
+      <h4><em><a name="1046279">Step one: editing the device header file</a></em></h4>
+      <p><a name="1046280">These differences are reflected in the device class definitions in J.H and B.H. Each of the </a>device nodes is given a name and declared to be of type CKT_IDX. </p>
+      <p><a name="1046281">The JFET device class, J_Device, lists the two internal nodes j_d and j_s, while the GaAsFET </a>device class, B_Device, has three internal nodes b_d, b_s, and a new one, b_g. The two additional branches in the GaAsFET require three new matrix conductance terms. </p>
+      <p><a name="1046282">The conductance terms are declared type MTX_IDX and are listed immediately following the </a>internal nodes. </p>
+      <p><a name="1046283">The JFET has a term j_GG, which appears on the matrix diagonal for the external gate node. </a></p>
+      <p><a name="1046284">The GaAsFET has an additional gate node which requires one additional matrix diagonal </a>conductance term, b_gg, along with two off&#45;diagonal conductance terms, b_Gg and b_gG. These are used by the source code in GASFET.CPP to designate where the conductance terms associated with RG go when the matrix is loaded. CDS doesn't need any additional nodes or matrix terms because the items required are already in place to accommodate the parallel current source, id.</p>
+      <p><a name="1046285">With the nodes and conductance terms taken care of in the device header file, the first step </a>is completed. </p>
+      <h4><em><a name="1046286">Step two: setting up memory allocation for the new matrix elements</a></em></h4>
+      <p><a name="1046287">You can set up memory allocation to properly incorporate the new equations into the </a>conductance matrix by modifying J.CPP. In this file is the function J_Device::MatPtr(), while B.CPP contains B_Device::MatPtr(). These functions call the function Reserve() once for each conductance matrix term that was declared in the header file. For instance, when b_gg, b_Gg, and b_gG are added for the GaAsFET, these require corresponding code in B_Device::MatPtr() as follows:</p>
+      <p><a name="1046288">flag &amp;= Reserve (ng,ng);</a></p>
+      <p><a name="1046289">flag &amp;= Reserve (nG,ng);</a></p>
+      <p><a name="1046290">flag &amp;= Reserve (ng,nG);</a></p>
+      <p><a name="1046291">The arguments ng and nG are local variables that serve as aliases for the respective device </a>nodes, b_g and b_G, and are assigned at the beginning of B_Device::MatPtr() as follows:</p>
+      <p><a name="1046292">ng = bloc &#45;&#62; b_g;</a></p>
+      <p><a name="1046293">nG = bloc &#45;&#62; b_G;</a></p>
+      <h4><em><a name="1046294">Step three: binding the nodes and branches</a></em></h4>
+      <p><a name="1046295">The mechanics of step three, binding the nodes and branches, are very similar to the </a>mechanics of step two. The functions of interest are J_Device::MatLoc() and B_Device::MatLoc(), and they now call Indxcl() instead of Reserve(). The GaAsFET again has three more lines of code:</p>
+      <p><a name="1046296">flag &amp;= Indxcl (&amp;(bloc&#45;&#62;b_gg),ng,ng);</a></p>
+      <p><a name="1046297">flag &amp;= Indxcl (&amp;(bloc&#45;&#62;b_Gg),nG,ng);</a></p>
+      <p><a name="1046298">flag &amp;= Indxcl (&amp;(bloc&#45;&#62;b_gG),ng,nG);</a></p>
+      <h4><em><a name="1046299">Step four: handling model parameters</a></em></h4>
+      <p><a name="1046300">Step four, handling model parameters, is basically the same as it would be for a case not </a>involving topology changes, with one significant exception: this requires handling the case where the parasitics associated with an internal node can be zero. In this case the node must be generated conditionally. An instance of this is the GaAsFET internal resistance RG. If RG is zero, the parasitic resistance between the internal node b_g and the external node b_G can be removed from the circuit. This is accomplished in the function B_Device::AddInternalNodes() in B.CPP, using the following line of code:</p>
+      <p><a name="1046301">INTERNAL_NODE(P&#45;&#62;B_rg,b_g,b_G);</a></p>
+      <p><a name="1046302">INTERNAL_NODE() is a macro that performs the required logic, depending on whether the </a>model parameter B_rg is zero or not. The other two calls to this macro in B_Device::AddInternalNodes() correspond to the RD and RS resistances that also exist for the JFET.</p>
+      <h4><em><a name="1046303">Step five: implementing the new device equations</a></em></h4>
+      <p><a name="1046304">The final step does not involve any further topological considerations and is carried out just </a>as it would be if the device internal topology weren't being changed.</p>
+      <h3><a name="1046307">Recompiling and linking the device equations option</a></h3>
+      <p><a name="1046308">The source files needed to create the Device Equations DLL can be copied from the CD to </a>any directory you choose, though it is recommended that you create a new empty directory. The MSVC++ project files, DEVEQ.DSP and DEVEQ.MAK, are included to compile and link the DLL.</p>
+      <p><a name="1046309">For information on obtaining the Microsoft compiler, contact Microsoft Corporation directly.</a></p>
+      <h4><a name="1046310">To create a new deveq.dll:</a></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	1.	</nobr>
+              </div>
+            </td>
+            <td><a name="1046311">Load DEVEQ.DSP into the Visual C++ development environment. </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	2.	</nobr>
+              </div>
+            </td>
+            <td><a name="1046312">From the Build menu, select Build Deveq.dll. </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	3.	</nobr>
+              </div>
+            </td>
+            <td><a name="1046313">The project supports debug and release versions of the build target.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	4.	</nobr>
+              </div>
+            </td>
+            <td><a name="1046314">After DEVEQ.DLL is built, copy it to the directory that contains PSpice .EXE.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1046316">For details on how to personalize your DEVEQ.DLL file, click Personalizing your DLL.</a></p>
+      <h3><a name="1046318">Personalizing your DLL</a></h3>
+      <p><a name="1046319">The function DLLMain() in DEVEQDLL.CPP contains the following line of code:</a></p>
+      <p><a name="1046320">DEVEQVERSIONINFO("Device Equations",VERSIONNUM);</a></p>
+      <p><a name="1046321">To personalize your DLL, change the first argument to a string which identifies you as the </a>author of the DLL, as in:</p>
+      <p><a name="1046322">DEVEQVERSIONINFO("(c)Copyright 1998\nMyCorp\n123 MyAddress\nMyCity, ST 12345" </a>,"9.0.1");</p>
+      <p><a name="1046323">You can leave the VERSIONNUM argument alone, in which case it will match the version </a>number of your PSpice release, or you can substitute your own version numbers. It is useful to be able to relate the DLL to the PSpice release it was built from, so you should use VERSIONNUM unless there is a compelling need to change it.</p>
+      <h3><a name="1046326">Simulating with the device equations option</a></h3>
+      <p><a name="1046327">After you obtain a working Device Equations DLL, place it in the directory that contains </a>PSpice .EXE. </p>
+      <p><a name="1046328">PSpice will locate and load DEVEQ.DLL when you start the program, provided the .INI file </a>entry is specified correctly. For instructions on modifying the .INI file, click Selecting which models to use from a Device Equations DLL .</p>
+      <p><a name="1046329">The code in the DLL will be substituted for the device model code that ships with the plain </a>version of PSpice . The presence of the DLL is also noted in the Devices tab of the PSpice Simulation Status Window and in the .OUT file. </p>
+      <p><a name="1046330">If PSpice doesn't find the DLL, it runs as the normally configured PSpice .</a></p>
+      <h3><a name="1046333">Selecting which models to use from a Device Equations DLL</a></h3>
+      <p><a name="1046334">You can tell PSpice which device models to use from a custom DLL by adding an entry to the </a>pspice.ini configuration file; for any device type you do not specify, PSpice uses the normally configured PSpice models.</p>
+      <p><a name="1046335">To specify which models to use from a custom DLL:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	1.	</nobr>
+              </div>
+            </td>
+            <td><a name="1046336">In a standard text editor (such as Notepad), open pspice.ini, located in your Windows </a>directory.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	2.	</nobr>
+              </div>
+            </td>
+            <td><a name="1046337">Find the [PSpice ] section and add this line to the section:</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1046338"><font size="2" face="'Courier New'" color="#000000">USE_DEVEQ_MODELS=&#34;&#60;device letters&#62;&#34;</font></a></blockquote>
+      <blockquote><a name="1046339">where &#60;device letters&#62; is any or all of the following:</a></blockquote>
+      <blockquote><a name="1046340">&nbsp;</a></blockquote>
+      <table summary="" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF" width="466">
+        <caption>
+        <tr>
+          <td cellpadding="4" border="0" valign="top" >
+            <p><a name="1046710"><font color="#000000">For this device </font></a><font color="#000000">type...</font></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top" >
+            <p><a name="1046712">Use this device letter...</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1046714"><font color="#000000">GaAsFET</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1046716">B</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1046718"><font color="#000000">Diode</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1046720">D</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1046722"><font color="#000000">Junction FET</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1046724">J</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1046726"><font color="#000000">MOSFET</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1046728">M</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1046730"><font color="#000000">Bipolar transistor</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1046732">Q</a></p>
+          </td>
+        </tr>
+      </table>
+      <blockquote><a name="1046347">&nbsp;</a></blockquote>
+      <blockquote><a name="1046348">For example, to use all of the possible device models from your custom DLL, type the </a>following:</blockquote>
+      <blockquote><a name="1046349"><font size="2" face="'Courier New'" color="#000000">USE_DEVEQ_MODELS=&#34;BDJMQ&#34;</font></a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	3.	</nobr>
+              </div>
+            </td>
+            <td><a name="1046350">Save pspice.ini.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	4.	</nobr>
+              </div>
+            </td>
+            <td><a name="1046351">Start PSpice and run a simulation.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1045204">&nbsp;</a></p>
+    </div>
+    <br>
+    <a href="#pagetop">Return to top of page</a>
+    <hr>
+    <hr align="left">
+    <div style="text-align: left;">
+      <!-- Begin Buttons -->
+      <table width="650" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                    </td>
+<td height="20" width="73">
+<a href="psphlpTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<img src="../support/nav2_index_b.gif" border="0">
+</td>
+          <td>
+            <a href="definitions.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+          </td>
+          <td>
+            <a href="popups.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+          </td>
+          <td>
+            <a>
+<a href="psphlp.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+            </a>
+          </td>
+          <td height="20" width="61">
+            <img src="../support/nav2_black.gif">
+          </td>
+          <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+          </td>
+          <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+          </td>
+          <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+          </td>
+        </tr>
+      </table>
+      <!-- End Buttons -->
+    </div>
+    <br>
+    <font size="-1" >
+For support, see <a href="http://support.cadence.com" target="_blank">Cadence Online Support</a> service.</font>
+    <br>
+    <br>
+    <font size="-1" >
+      <i>Copyright &#169; 2011, <a href="http://www.cadence.com">Cadence Design Systems, Inc.</a></i>
+    </font>
+    <br>
+    <font size="-1" >
+All rights reserved.</font>
+    <br>
+    <br>
+  </body>
+</html>

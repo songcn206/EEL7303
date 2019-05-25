@@ -1,0 +1,68 @@
+#  $Header: /vobs/psd_backend_data/data/prefs/control_panel.prf /main/11 19-Oct-07.17:15:57 amiles $
+#------------------------------------------------------------------------------
+#			Allegro Control Panel Variables
+#------------------------------------------------------------------------------
+#
+# See User.prf for complete descriptions of fields in this file.
+
+PARENT:PARENT_L=ui/control_panel
+
+SUMMARY:HELP=Settings effecting control panel operations. This includes \
+find filter, options, visibility and worldview.
+
+control_auto_raise:TYPE=ENUM:POPUP=options,find,visibility:DEFAULT=options:\
+EFF_ONNEXTCMD:\
+PARENT_L=obsolete:\
+HELP=Sets the default tab in control panel. If a command had changed the \
+tab, upon termination of a command, system reverts control panel to the \
+default tab. If not set, tab is not changed at end of command.
+
+find_nongui_reject:TYPE=ENUM:POPUP=Always,1,2,3,4,5:DEFAULT=on:EFF_ONNEXTCMD:\
+HELP=When you reject after a pick and there are more than two \
+elements in the reject buffer, a form is shown with an list of elements. \
+Use this variable to change the threshold where this reject list \
+appears. An integer value causes the reject list to not appear if \
+the number of elements is less than or equal to the value. A value \
+of "Always" disables the reject list form. When the Reject popup \
+does not show the form, it automatically selects the next item in the \
+reject buffer.
+
+find_reject_graphics:TYPE=ENUM:POPUP=Off,Blink,Highlight:DEFAULT=Blink: \
+EFF_ONNEXTCMD:HELP=When the reject list is active, the element that is \
+selected in the list can have its graphics altered to help identify it. The \
+find_reject_graphics option allows you to change the behavior so the element \
+is either blinked (off then on), highlighted or unchanged. The default is \
+blink. Note that there could be performance issues with highlighting of some \
+elements.
+
+color_nofilmrecord:TYPE=CHECK:EFF_ONNEXTCMD:\
+HELP=By default view scheme control in the visibility tab contains both \
+artwork films and external user defined view scheme files. This option \
+disables the display of artwork films in this control.
+
+color_lastgroup:TYPE=CHECK:EFF_ONNEXTCMD:\
+HELP=By default, the Color and Visibility dialog uses the current \
+active class in the options panel to determine the initial display panel. \
+This option causes it to use retain the last displayed in the dialog.
+
+color_nosort:TYPE=CHECK:EFF_ONNEXTCMD:\
+HELP=By default, the Color and Visibility dialog sorts subclasses for \
+most classes in the tree control. This option disables the sorting.
+
+wv_voltage_nets:TYPE=CHECK:EFF_IMMEDIATE:\
+HELP=If set, displays all highlighted VOLTAGE net elements in the world view \
+(pre-14.0 mode). By default, only displays pins of nets with the NO_RAT or \
+VOLTAGE property. Default mode may improve interactive performance on boards \
+with large number clines on highlighted voltage nets.
+
+addpin_default_space:TYPE=STRING:EFF_ONRESTART:\
+HELP=Provides a seed value for spacing fields used by the add pin command \
+in the options panel. \
+Value can be a number; units will default to current symbol units. Value can \
+also include a length unit (e.g. MIL, MICRON, etc.) where the value will \
+be converted to the current symbol units. 
+
+vis_activelayer:TYPE=CHECK:EFF_ONNEXTCMD:\
+HELP=By default the Visibility Panel will not change the active layer. \
+With this option, checking the 'All' cell of a row in the Visibility Panel \
+will set that row's Etch/Conductor to be the active layer.

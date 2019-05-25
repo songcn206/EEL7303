@@ -1,0 +1,49 @@
+
+Command line arguments for netin
+	Inputs third party netlists (Telesis) to a design database
+	or does a syntax check on the netlist and device files.
+
+	If importing logic indicates problems with device file
+	problems then run netin in syntax check mode for more
+	detailed data on the errors.
+
+Import Logic:
+  netin [-aA|-bB|-cC|-dD|-eE|-g|-s|-v|-x|-y <number>|z] <netlist> 
+		[input_drawing] [output_drawing]
+
+Synax Check Mode:
+  netin <netlist>
+
+Arguments and Switches:
+    -a or -A Creates an A size drawing.
+    -b or -B Creates a B size drawing.
+    -c or -C Creates a C size drawing.
+    -d or -D Creates a D size drawing.
+    -e or -E Creates an E size drawing.
+    -g	 Run gate assign
+    -i   Obsolete
+    -s   Supersedes all logical data with the new netlist.
+    -v   Prevents creation of device log files.
+    -x   Corresponds to the Allow Etch Removal During ECO field on the
+         Netlist-In form. Use the x switch to rip up etch during an ECO.
+    -y <number> Corresponds to the Placed Changed Components in Design radio 
+	buttons on the Netlist-In form. 
+		-y 1 = Always
+		-y 2 = If/Same
+		-y 3 = Never
+    -z   Ignore FIXED property when updating design.
+
+    <netlist> Is the name of the input file.
+
+    <input_drawing> Optional drawing name into which the netlist data is
+	to be loaded. You do not need to type in the .brd file extension. 
+	This field is optional, if no argument is specified, netin assumes
+	you only want a syntax check the netlist.
+
+    <output_drawing> Optional output drawing. If not specified input drawing
+	is overwritten.
+
+Note: If neither the input nor the output drawing is specified, netin runs in 
+   a syntaxcheckonly mode. This is a fast method for checking for syntax errors 
+   in the netlist file and device files.
+

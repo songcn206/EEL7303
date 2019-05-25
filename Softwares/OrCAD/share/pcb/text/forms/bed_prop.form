@@ -1,0 +1,802 @@
+# $Header: /vobs/psd_backend_data/data/forms-core/bed_prop.form /main/26 09-Feb-12.12:33:14 abhay $
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM  {fixed_font}
+FIXED
+PORT 59 1
+HEADER "Edit Bundle Property"
+
+MESSAGE b_name 3 "Can not change bundle name to '%s': %s"
+MESSAGE cpt_start 1 "Select an overridden field (in blue) to restore global value."
+MESSAGE cpt_start_m 1 "Select a field to set to use global value."
+MESSAGE cpt_cancel 1 "Override mode canceled."
+MESSAGE cpt_pick 1 "Override cleared."
+MESSAGE onelyr_start 1 "Select a subclass in the Enable column. All others will be cleared."
+MESSAGE onelyr_cancel 1 "One layer mode canceled."
+MESSAGE onelyr_pick 1 "One layer selected."
+
+
+{Non-committed IFP functionality removed for Beta
+POPUP <elong_corner>"90""0","45""1","FullArc""3".
+ Replace with version that doesn't have FullArc}
+POPUP <elong_corner>"90""0","45""1".
+POPUP <elong_corner_size_vals>"1x width""0".
+POPUP <elong_gap_vals>"3x width""0".
+POPUP <elong_min_amplitude_vals>"3x width""0".
+POPUP <elong_max_amplitude_vals>"3x width""0".
+POPUP <space_bundle_min_pop>"0""1".
+POPUP <space_bundle_max_pop>"0""1".
+POPUP <space_other_min_pop>"0""1".
+POPUP <space_other_max_pop>"0""1".
+POPUP <boolean>"Yes""1","No""0".
+POPUP <adt_pattern>"Accordion""2","Trombone""1".
+
+ACTIVEFIELD "done"
+
+TILE
+
+TABSET "tabSelector"
+FLOC 1 1
+TSSIZE 59 38
+
+TAB "General"
+
+TEXT
+TLOC 1 1
+INFO bundle_name_label 20
+OPTIONS prettyprint
+ENDTEXT
+
+FIELD bundle_name_value
+FLOC 21 1
+STRFILLIN 30 255
+OPTIONS prettyprint
+ENDFIELD
+
+TEXT "Bundle ownership:"
+TLOC 1 4
+ENDTEXT
+
+FIELD system_bundle
+FLOC 22 4
+CHECKLIST "System" "bundle_ownership"
+ENDFIELD
+
+FIELD user_bundle
+FLOC 32 4
+CHECKLIST "User" "bundle_ownership"
+ENDFIELD
+
+TEXT "Interface Ratbundle"
+TLOC 22 4
+INFO ibd_bundle_owner 70
+OPTIONS prettyprint
+ENDTEXT
+
+TEXT "Flow's x/y Guidance:"
+TLOC 1 6
+ENDTEXT
+
+FIELD system_xy_flow
+FLOC 22 6
+CHECKLIST "Off" "xy_guidance"
+ENDFIELD
+
+FIELD user_xy_flow
+FLOC 32 6
+CHECKLIST "Guide Router" "xy_guidance"
+ENDFIELD
+
+GROUP "Display Controls" display_controls
+GLOC 1 8
+GSIZE 56 11
+ENDGROUP
+
+TEXT "Bundle:" bundle_label
+TLOC 2 10
+ENDTEXT
+
+FIELD bundle_invis
+FLOC 22 10
+CHECKLIST "Off" "bundle_visibility"
+ENDFIELD
+
+FIELD bundle_vis
+FLOC 32 10
+CHECKLIST "On" "bundle_visibility"
+ENDFIELD
+
+TEXT "Expanded Rakes:" exp_rakes_label
+TLOC 4 12
+ENDTEXT
+
+FIELD exp_rakes_invis
+FLOC 22 12
+CHECKLIST "Off" "exp_rakes_visibility"
+ENDFIELD
+
+FIELD exp_rakes_vis
+FLOC 32 12
+CHECKLIST "On" "exp_rakes_visibility"
+ENDFIELD
+
+TEXT "Plan:" plan_label
+TLOC 2 14
+ENDTEXT
+
+FIELD plan_d_invis
+FLOC 22 14
+CHECKLIST "Off" "plan_d_visibility"
+ENDFIELD
+
+FIELD plan_d_vis
+FLOC 32 14
+CHECKLIST "On" "plan_d_visibility"
+ENDFIELD
+
+TEXT "Ratsnests:" rats_label
+TLOC 2 16
+ENDTEXT
+
+FIELD rats_invis
+FLOC 22 16
+CHECKLIST "Off" "rats_visibility"
+ENDFIELD
+
+FIELD rats_vis
+FLOC 32 16
+CHECKLIST "On" "rats_visibility"
+ENDFIELD
+
+ENDTAB
+#ifdef _ALLEGRO_PCB_GXL || _ALLEGRO_GRE_ALL || _ALLEGRO_GRE_PLAN || _ALLEGRO_OPTION_HIGHSPEED
+TAB "Routing Controls"
+GROUP "Spacing" spacing_controls
+GLOC 1 24
+GSIZE 56 8
+ENDGROUP
+
+TEXT "Within Bundle:" space_bundle_label
+TLOC 2 27
+ENDTEXT
+
+FIELD space_bundle_off
+FLOC 18 27
+CHECKLIST "Default" "space_bundle"
+ENDFIELD
+
+FIELD space_bundle_on
+FLOC 18 29
+CHECKLIST "Min DRC" "space_bundle"
+ENDFIELD
+
+{ use these field name when the time comes although the location would move
+
+TEXT "Perform Diff Pair Static Phase Adjustment:" static_phase_label
+TLOC 2 29
+ENDTEXT
+
+FIELD static_phase_on
+FLOC 35 29
+CHECKLIST "Yes" "static_phase_checklist"
+ENDFIELD
+
+FIELD static_phase_off
+FLOC 44 29
+CHECKLIST "No" "static_phase_checklist"
+ENDFIELD
+}
+
+{Non-committed IFP functionality removed for Beta
+FIELD space_bundle_on
+FLOC 18 25
+CHECKLIST "Min DRC plus" "space_bundle"
+ENDFIELD
+
+TEXT "Min" min_label
+TLOC 37 23
+ENDTEXT
+
+TEXT "Max" max_label
+TLOC 48 23
+ENDTEXT
+
+FIELD space_bundle_min
+FLOC 33 25
+#REALFILLIN 7 10
+#REALMIN 0.0
+STRFILLIN 7 10
+POP space_bundle_min_pop
+ENDFIELD
+
+FIELD space_bundle_max
+FLOC 45 25
+#REALFILLIN 7 10
+#REALMIN 0.0
+STRFILLIN 7 10
+POP space_bundle_max_pop
+ENDFIELD
+
+TEXT "Bundle to Others:" space_other_label
+TLOC 2 27
+ENDTEXT
+
+FIELD space_other_off
+FLOC 18 27
+CHECKLIST "Default" "space_other"
+ENDFIELD
+
+FIELD space_other_on
+FLOC 18 29
+CHECKLIST "Min DRC plus" "space_other"
+ENDFIELD
+
+FIELD space_other_min
+FLOC 33 29
+#REALFILLIN 7 10
+#REALMIN 0.0
+STRFILLIN 7 10
+POP space_other_min_pop
+ENDFIELD
+
+FIELD space_other_max
+FLOC 45 29
+#REALFILLIN 7 10
+#REALMIN 0.0
+STRFILLIN 7 10
+POP space_other_max_pop
+ENDFIELD
+}
+
+GROUP "Elongation Control" bndl_elongation_control
+GLOC 1 1
+GSIZE 56 21
+ENDGROUP
+
+
+# Form code set the way it should be, but we actually are using the
+# allow_under_comp flags field in the ratbundle_parms_elong_type
+TEXT "Allow in constraint area:" bndl_elong_cns_area_label
+TLOC 2 3
+ENDTEXT
+
+FIELD bndl_elong_cns_area_ok
+FLOC 33 3
+ENUMSET 8
+POP boolean
+ENDFIELD
+
+
+TEXT "Tuning Pattern:" bndl_elong_pattern_label
+TLOC 2 5
+ENDTEXT
+
+FIELD bndl_tuning_pattern
+FLOC 33 5
+ENUMSET 8
+POP adt_pattern
+ENDFIELD
+
+
+FIELD bndl_elong_pattern_thumb
+THUMBNAIL dtun_acc.bmp
+FLOC 45 5
+FSIZE 4 2
+ENDFIELD
+
+
+GROUP "Accordion" bndl_accordion_control
+GLOC 2 7
+GSIZE 24 14
+ENDFIELD
+
+TEXT "Gap:" bndl_ac_gap_label
+TLOC 3 9
+ENDTEXT
+
+FIELD bndl_ac_elong_gap
+FLOC 15 9
+STRFILLIN 5 20
+POP elong_gap_vals
+ENDFIELD
+
+TEXT "Min Amplitude:" bndl_ac_min_amp_label
+TLOC 3 11
+ENDTEXT
+
+FIELD bndl_ac_elong_min_amplitude
+FLOC 15 11
+STRFILLIN 5 20
+POP elong_min_amplitude_vals
+ENDFIELD
+
+TEXT "Max Amplitude:" bndl_ac_max_amp_label
+TLOC 3 13
+ENDTEXT
+
+FIELD bndl_ac_elong_max_amplitude
+FLOC 15 13
+STRFILLIN 5 20
+POP elong_max_amplitude_vals
+ENDFIELD
+
+TEXT "Corner Type:" bndl_ac_corner_type_label
+TLOC 3 15
+ENDTEXT
+
+FIELD bndl_ac_elong_corner_type
+FLOC 15 15
+ENUMSET 7
+POP "elong_corner"
+ENDFIELD
+
+TEXT "Miter Size:" bndl_ac_corner_size_label
+TLOC 3 17
+ENDTEXT
+
+FIELD bndl_ac_elong_corner_size
+FLOC 15 17 
+STRFILLIN 5 20
+POP elong_corner_size_vals
+ENDFIELD
+
+
+
+GROUP "Trombone" bndl_trombone_control
+GLOC 27 7
+GSIZE 24 14
+ENDFIELD
+
+
+
+TEXT "Gap:" bndl_tr_gap_label
+TLOC 28 9
+ENDTEXT
+
+FIELD bndl_tr_elong_gap
+FLOC 40 9
+STRFILLIN 5 20
+POP elong_gap_vals
+ENDFIELD
+
+TEXT "Min Amplitude:" bndl_tr_min_amp_label
+TLOC 28 11
+ENDTEXT
+
+FIELD bndl_tr_elong_min_amplitude
+FLOC 40 11
+STRFILLIN 5 20
+POP elong_min_amplitude_vals
+ENDFIELD
+
+TEXT "Max Levels:" bndl_tr_max_levels_label
+TLOC 28 13
+ENDTEXT
+
+FIELD bndl_tr_elong_max_levels
+FLOC 40 13
+INTSLIDEBAR 5 3
+MIN 1
+MAX 9999
+ENDFIELD
+
+TEXT "Corner Type:" bndl_tr_corner_type_label
+TLOC 28 15
+ENDTEXT
+
+FIELD bndl_tr_elong_corner_type
+FLOC 40 15
+ENUMSET 7
+POP "elong_corner"
+ENDFIELD
+
+TEXT "Miter Size:" bndl_tr_corner_size_label
+TLOC 28 17
+ENDTEXT
+
+FIELD bndl_tr_elong_corner_size
+FLOC 40 17 
+STRFILLIN 5 20
+POP elong_corner_size_vals
+ENDFIELD
+
+
+{
+FIELD elong_cns_area_ok
+FLOC 35 15
+CHECKLIST "Yes" "elong_cns_area"
+ENDFIELD
+
+FIELD elong_cns_area_not_ok
+FLOC 44 15
+CHECKLIST "No" "elong_cns_area"
+ENDFIELD
+}
+
+{
+GROUP "Pattern" pattern
+GLOC 3 3
+GSIZE 20 11
+ENDGROUP
+
+FIELD elong_trombone_thumb
+THUMBNAIL dtun_trom.bmp
+FLOC 5 5
+FSIZE 3 2
+ENDFIELD
+
+FIELD elong_trombone
+FLOC 9 5
+CHECKLIST "Trombone" "elong_pattern"
+ENDFIELD
+
+FIELD elong_accordion_thumb
+THUMBNAIL dtun_acc.bmp
+FLOC 5 7
+FSIZE 3 2
+ENDFIELD
+
+FIELD elong_accordion
+FLOC 9 7
+CHECKLIST "Accordion" "elong_pattern"
+ENDFIELD
+
+FIELD elong_sawtooth_thumb
+THUMBNAIL dtun_saw.bmp
+FLOC 5 9
+FSIZE 3 2
+ENDFIELD
+
+FIELD elong_sawtooth
+FLOC 9 9
+CHECKLIST "Sawtooth" "elong_pattern"
+ENDFIELD
+}
+
+{ Meader pattern disabled for 16.0 due to lack of router support
+FIELD elong_meander_thumb
+THUMBNAIL
+FLOC 5 11
+FSIZE 3 2
+ENDFIELD
+
+FIELD elong_meander
+FLOC 9 11
+CHECKLIST "Meander" "elong_pattern"
+ENDFIELD
+}
+
+{
+TEXT "Gap:" gap_label
+TLOC 25 4
+ENDTEXT
+
+FIELD elong_gap
+FLOC 38 4
+#REALFILLIN 7 7
+STRFILLIN 7 20
+POP elong_gap_vals
+#DECIMAL 0
+ENDFIELD
+
+
+TEXT "Min Amplitude:" min_amp_label
+TLOC 25 6
+ENDTEXT
+
+FIELD elong_min_amplitude
+FLOC 38 6
+#REALFILLIN 7 7
+STRFILLIN 7 20
+POP elong_min_amplitude_vals
+#DECIMAL 0
+ENDFIELD
+
+TEXT "Max Amplitude:" max_amp_label
+TLOC 25 8
+ENDTEXT
+
+FIELD elong_max_amplitude
+FLOC 38 8
+#REALFILLIN 7 7
+STRFILLIN 7 20
+POP elong_max_amplitude_vals
+#DECIMAL 0
+ENDFIELD
+
+TEXT "Corner Type:" corner_type_label
+TLOC 25 10
+ENDTEXT
+
+FIELD elong_corner_type
+FLOC 38 10
+ENUMSET 9
+POP "elong_corner"
+ENDFIELD
+
+TEXT "Corner Size:" corner_size_label
+TLOC 25 12
+ENDTEXT
+
+FIELD elong_corner_size
+FLOC 38 12
+#REALFILLIN 7 7
+STRFILLIN 7 20
+POP elong_corner_size_vals
+#DECIMAL 0
+ENDFIELD
+
+}
+
+{
+TEXT "Disable compression during Plan Accurate:" elong_pack_label
+TLOC 3 17
+ENDTEXT
+
+FIELD elong_no_pack
+FLOC 35 17
+CHECKLIST "Yes" "elong_pack_checklist"
+ENDFIELD
+
+FIELD elong_pack
+FLOC 44 17
+CHECKLIST "No" "elong_pack_checklist"
+ENDFIELD
+}
+
+{ Elongation location disabled for 16.0 due to lack of router support
+TEXT "Location:" elong_location_label
+TLOC 3 15
+ENDTEXT
+
+FIELD elong_source
+FLOC 15 15
+CHECKLIST "Source" "elong_location"
+ENDFIELD
+
+FIELD elong_middle
+FLOC 24 15
+CHECKLIST "Middle" "elong_location"
+ENDFIELD
+
+FIELD elong_load
+FLOC 33 15
+CHECKLIST "Load" "elong_location"
+ENDFIELD
+
+FIELD elong_anywhere
+FLOC 41 15
+CHECKLIST "Anywhere" "elong_location"
+ENDFIELD
+
+#elong_under_comp field stolen to use for elong_in_cns_area
+TEXT "Allow under components:" elong_comp_label
+TLOC 3 17
+ENDTEXT
+
+FIELD elong_comp_ok
+FLOC 24 17
+CHECKLIST "Yes" "elong_under_comp"
+ENDFIELD
+
+FIELD elong_comp_not_ok
+FLOC 33 17
+CHECKLIST "No" "elong_under_comp"
+ENDFIELD
+}
+
+
+FIELD route_clear_override
+FLOC 43 33
+MENUBUTTON "Clear Override" 9 3
+ENDFIELD
+
+ENDTAB
+#endif {_ALLEGRO_PCB_GXL || _ALLEGRO_GRE_ALL || _ALLEGRO_GRE_PLAN}
+
+{ Optimize controls disabled for 16.0 due to lack of router support
+TAB "Optimize Controls"
+
+GROUP "Optimization to Perform"
+GLOC 1 1
+GSIZE 56 16
+ENDGROUP
+
+TEXT "Physical:"
+TLOC 2 4
+ENDTEXT
+
+FIELD pad_entry
+FLOC 4 6
+CHECKLIST "Pad Entry"
+ENDFIELD
+
+FIELD extra_clearance
+FLOC 4 8
+CHECKLIST "Extra Physical Clearance"
+ENDFIELD
+
+TEXT "Electrical:"
+TLOC 2 10
+ENDTEXT
+
+FIELD center_timing
+FLOC 4 12
+CHECKLIST "Center Timing"
+ENDFIELD
+
+FIELD reduce_crosstalk
+FLOC 4 14
+CHECKLIST "Reduce Crosstalk"
+ENDFIELD
+
+FIELD optimize_clear_override
+FLOC 43 18
+MENUBUTTON "Clear Override" 9 3
+ENDFIELD
+
+ENDTAB
+}
+
+TAB "Bundle Layer" "Layer"
+
+#ifdef _ALLEGRO_PCB_GXL || _ALLEGRO_GRE_ALL || _ALLEGRO_GRE_PLAN
+GROUP "Layer Transitions" layer_transition_controls
+GLOC 1 1
+GSIZE 56 8
+ENDGROUP
+
+TEXT "Max Transitions:" max_trans_label
+TLOC 2 4
+ENDTEXT
+
+FIELD max_trans_nolimit
+FLOC 16 4
+CHECKLIST "Unlimited" "max_trans"
+ENDFIELD
+
+FIELD max_trans_limit
+FLOC 27 4
+CHECKLIST "Limited to" "max_trans"
+ENDFIELD
+
+FIELD max_trans_value
+FLOC 39 4
+INTFILLIN 5 8
+MIN 0
+ENDFIELD
+
+TEXT "Layer Matching:" layer_match_label
+TLOC 2 6
+ENDTEXT
+
+FIELD layer_match_off
+FLOC 16 6
+CHECKLIST "Off" "layer_matching"
+ENDFIELD
+
+FIELD layer_match_on
+FLOC 27 6
+CHECKLIST "Route on same layer" "layer_matching"
+ENDFIELD
+#endif {_ALLEGRO_PCB_GXL || _ALLEGRO_GRE_ALL || _ALLEGRO_GRE_PLAN}
+
+GRID layer_usage_grid
+#ifdef _ALLEGRO_PCB_GXL || _ALLEGRO_GRE_ALL || _ALLEGRO_GRE_PLAN
+FLOC 2 10
+#else
+FLOC 2 2
+#endif
+FSIZE 54 22
+OPTIONS HLINES VLINES USERSIZE
+#OPTIONS HLINES VLINES
+
+GHEAD TOP
+HEADSIZE 2
+OPTIONS 3D MULTI
+ENDGHEAD
+
+ENDGRID
+
+FIELD one_layer_on
+FLOC 3 33
+MENUBUTTON "One Layer On" 9 3
+ENDFIELD
+
+FIELD layer_clear_override
+FLOC 43 33
+MENUBUTTON "Clear Override" 9 3
+ENDFIELD
+
+ENDTAB
+
+#ifdef __bed_prop_form_include_flow_line
+
+TAB "Flow Line" "flow_line"
+
+FIELD line_usage_defaults
+FLOC 16 1
+MENUBUTTON "Remove Flow Line Layer Usage" 30 3
+ENDFIELD
+
+GRID line_usage_grid
+FLOC 2 3
+FSIZE 54 22
+OPTIONS HLINES VLINES USERSIZE
+#OPTIONS HLINES VLINES
+
+GHEAD TOP
+HEADSIZE 2
+OPTIONS 3D MULTI
+ENDGHEAD
+
+ENDGRID
+
+FIELD one_line_on
+FLOC 3 26
+MENUBUTTON "One Layer On" 9 3
+ENDFIELD
+
+ENDTAB
+#endif
+
+ENDTABSET
+
+FIELD done
+FLOC 2 40
+MENUBUTTON "Done" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 12 40
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD apply
+FLOC 22 40
+MENUBUTTON "Apply" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 50 40
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+ENDTILE
+
+FLEXMODE StandButtons
+
+FLEX tabSelector	0 0 1 1
+
+FLEX bundle_name_value  0 0 1 0
+
+FLEX elong_meander	0 0 0 0
+FLEX elong_trombone	0 0 0 0
+FLEX elong_accordion	0 0 0 0
+FLEX elong_sawtooth	0 0 0 0
+FLEX elong_zipper	0 0 0 0
+FLEX route_clear_override 0 0 0 0
+
+FLEX optimize_clear_override 0 0 0 0
+
+#FLEX "General"	0 0 0 0
+#FLEX "Display Controls"	0 0 0 0
+#FLEX bundle_invis	0 0 0 0
+#FLEX bundle_vis		0 0 0 0
+
+FLEX max_trans_limit	0 0 0 0
+FLEX max_trans_nolimit	0 0 0 0
+FLEX max_trans_value	0 0 0 0
+FLEX layer_match_off	0 0 0 0
+FLEX layer_match_on	0 0 0 0
+FLEX layer_usage_grid	0 0 1 1
+FLEX layer_clear_override 1 1 0 0
+
+FLEX line_usage_defaults 0 0 0 0 
+FLEX line_usage_grid	0 0 1 1
+
+FLEX help	1 1 0 0
+FLEX done	0 1 0 0
+FLEX cancel	0 1 0 0
+FLEX apply	0 1 0 0
+
+ENDFORM

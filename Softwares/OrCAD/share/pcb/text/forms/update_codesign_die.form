@@ -1,0 +1,84 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 42 22
+HEADER "Update Co-Design Die Definition"
+
+POPUP <INSTLIST> "" "".
+
+TILE
+
+TEXT "Select the die instance to read changes from. Net assignments and pin uses will be updated to the co-design die definition."
+TLOC 2 1
+FSIZE 34 8
+ENDTEXT
+
+TEXT "Die instance reference designator:"
+TLOC 2 6
+ENDTEXT
+
+FIELD refdes
+FLOC 4 8
+ENUMSET 35
+POP "INSTLIST"
+ENDFIELD
+
+#ifdef APD_DIRECT_DIE_ATTACH_ENABLED && APD
+FIELD assignments
+FLOC 4 10
+CHECKLIST "Update net assignments and pin use"
+ENDFIELD
+
+FIELD d2d_routing
+FLOC 4 12
+CHECKLIST "Update direct attach die routing"
+ENDFIELD
+#endif
+
+TEXT "Die definition:"
+#ifdef APD_DIRECT_DIE_ATTACH_ENABLED && APD
+TLOC 2 14
+#else
+TLOC 2 10 
+#endif
+ENDTEXT
+
+TEXT ""
+#ifdef APD_DIRECT_DIE_ATTACH_ENABLED && APD
+TLOC 4 16
+#else
+TLOC 4 12
+#endif
+INFO def_name 35 128
+ENDFIELD
+
+FIELD ok
+#ifdef APD_DIRECT_DIE_ATTACH_ENABLED && APD
+FLOC 2 19
+#else
+FLOC 2 15
+#endif
+MENUBUTTON "OK" 9 3
+ENDFIELD
+
+FIELD cancel
+#ifdef APD_DIRECT_DIE_ATTACH_ENABLED && APD
+FLOC 12 19
+#else
+FLOC 12 15
+#endif
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD help
+#ifdef APD_DIRECT_DIE_ATTACH_ENABLED && APD
+FLOC 32 19
+#else
+FLOC 32 15
+#endif
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

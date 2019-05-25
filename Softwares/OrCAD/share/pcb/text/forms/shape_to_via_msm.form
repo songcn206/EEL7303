@@ -1,0 +1,65 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 52 6
+HEADER "Shape to via"
+
+POPUP <padstackPopup>"""".
+POPUP <layerPopup>"""".
+
+TILE
+
+FIELD convert_shapes
+FLOC 1 2
+CHECKLIST "Convert matching shapes"
+ENDFIELD
+
+FIELD convert_lines
+FLOC 1 4
+CHECKLIST "Convert matching lines"
+ENDFIELD
+
+FIELD convert_clines
+FLOC 1 6
+CHECKLIST "Convert matching clines"
+ENDFIELD
+
+TEXT "Diameter:"
+TLOC 1 9
+ENDTEXT
+FIELD search_diameter
+FLOC 10 9
+STRFILLIN 16 1024
+ENDFIELD
+
+TEXT "Layer:"
+TLOC 1 11
+ENDTEXT
+FIELD search_layer
+FLOC 10 11
+ENUMSET 16
+POP "layerPopup"
+ENDFIELD
+
+TEXT "Via padstack:"
+TLOC 1 14
+ENDTEXT
+FIELD via_padstack
+FLOC 3 16
+ENUMSET 16
+POP "padstackPopup"
+ENDFIELD
+
+FIELD via_bond_finger
+FLOC 1 18
+CHECKLIST "Create bond finger"
+ENDFIELD
+
+FIELD replace
+FLOC 1 21
+MENUBUTTON "Replace items" 10 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

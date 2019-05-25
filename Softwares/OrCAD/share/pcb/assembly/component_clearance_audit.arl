@@ -1,0 +1,423 @@
+
+/**********************************************************************
+
+To Dos:
+
+1.   Need to take care of tool overhang when calculating component bounding boxes if the placement is
+   automatic 
+
+2. Fix writing DRC Markers
+
+****************************************************************/
+include "dfa_constraints.par"
+
+use DFA;
+
+
+
+
+RuleDefine
+
+
+/***********************************************************************
+ This defines the allowable spacing between two components.
+***********************************************************************/
+
+Rule component_clearance_audit
+
+component1 and
+/*Initialisation of the categories and names */
+category := concat(SELECT_BY1) and
+names := concat(VALUE1) and
+first_edges := concat(EDGE1) and
+second_category := concat(SELECT_BY2) and
+second_names := concat(VALUE2) and
+second_edges := concat(EDGE2) and
+allowed_unit := concat(UNITS) and
+allowed_dist := concat(SPACING) and
+allowed_layers := concat(LAYER) and
+constraint_list := concat(CONSTRAINTS) and
+subclass_list := concat(SUBCLASS) and
+
+/* This  will be used to get only the components within a distance */
+max_allowed_dist := max(allowed_dist) and
+
+/* Get all the matching first categories for the current component. "matches" 
+will contain the indexes for the matching categories, that is, the serial number
+of the constraint.*/
+
+foreach(category,
+              append(done,category) and
+              curr_ind := count(done) and
+              curr_name := nth(names,curr_ind) and
+              matchCompCategory(component1,category,curr_name) and
+              append(matches,count(done))
+            ) and
+
+/* Get all components in the precints of the current component */
+
+component2 := getCompInArea(component1,convertUserToDBUnits(max_allowed_dist,nth(allowed_unit,count(done))),"ALL") and 
+
+/* All that I can check in this section is that the distance between specified edges is valid */
+/* Need to do further processing to take care of the implicit hierarchy later */
+
+/* Get all the nearby components that match any of the second categories corresponding to the indices present in "matches". */
+
+second_index := foreach(matches,
+                        /* The following line is needed because of bug in ARC */
+                        matchCompCategory(component1,nth(category,matches),nth(names,matches)) and
+	                other_comp_filter := nth(second_names,matches) and
+	                second_filter := nth(second_category,matches) and
+	                component3 := matchCompCategory(component2,second_filter,other_comp_filter) and
+
+/* Get only those nearby components that are too close as far as the matching constraint under consideration is concerned. */
+
+                        component4 := foreach(component3,
+                                               my_dist := getDistance(component1,component3,
+                                                                       nth(first_edges,matches),
+                                                                       nth(second_edges,matches),
+                                                                       nth(subclass_list,matches)) and 
+                                              
+                                               my_dist >= 0 and
+                                               convertDbToUserUnits(my_dist,nth(allowed_unit,matches)) <= nth(allowed_dist,matches)
+                                             ) and 
+                        append(component_m,component4) 
+                      ) and
+
+/* Hence, "second_index" will contain indices for only those second categs for which there is a close by component for some 
+   constraint.*/
+
+/* Remove duplicates. */
+component_match := unique(component_m) and
+
+
+/* For exapmle say the categs are (RefDes U* RefDes U*) for one constraint and (Comp DIPSOC14 Comp DIPSOC14) for another constraint with spacing
+   100 and 200 and edges (Bottom Top) and (Top Bottom) respectively. Also, say U4,U5,R6 are nearby with spacing 99, 150 and 20 from U3 respectively. 
+   Also, let U3/4/5 are DIPSOC14 type comps.
+   Then if U3 is component1. "matches" will have (1,2). 
+   For first iteration on "matches":
+   component3 will be (U4,U5)
+   component4 will be (U4)                   -- as distance between U3 bottom and U4 top is 99.
+   component_m will be (U4)
+   AND
+   For second  iteration on "matches":
+   component3 will be (U4,U5)
+   component4 will be (U4,U5)                -- as distance between U3 top and bottoms of U4, U5 are respectively 99 and 150 which is < 200.
+   component_m will be (U4, U4, U5)
+
+   And finally second_index will be (1,2)
+   And component_match will be (U4 U5).
+   Note we have already considered the "edge" aspect of the matching hierarchy in our last check above.
+*/
+
+/* To take care of the multiplicity of Edges Since it can have only four edges, maintain a list of edges already
+   processed for the component under consideration */
+/* The following section finds out which component matches what category ,considering both the first and second
+   components as well as the edge filters associated with them */
+
+/* Get the first constraint for which there is a violation. */
+/* Here in our example, the viol_index will be 1 for 1st iteration on component_match as U4 violates both constraints. */
+
+component_viol := foreach(component_match,
+                               viol_index := findfirst(second_index,
+                                                     val_cat := nth(second_category,second_index) and
+                                                     val_val := nth(second_names,second_index) and
+                                                     matchCompCategory(component_match,val_cat,val_val) and
+                                                     convertDbToUserUnits(getDistance(component1,component_match,
+                                                                 nth(first_edges,second_index),
+                                                                 nth(second_edges,second_index),
+                                                                 nth(subclass_list,second_index)),nth(allowed_unit,second_index)) 
+                                                     <= nth(allowed_dist,second_index)
+                                                    )  and
+
+/* Get the "edge" for the second category of the violating constraint. Here for first iteration it will be "Top" */
+
+                              curr_edges := nth(second_edges,viol_index) and
+
+/* Get the actual edges from the group representations */
+
+                              edges := getEdge(curr_edges) and
+                              append(vindex,viol_index) and
+
+/* Find the first matching second category for component_match that lists more edges than the one that is covered by the current violating
+   constraint. For first iteration over component_match  "rem_edge" will be "Bottom" and "viol_index1" will be 2. Also num_two will be 1. */
+
+                              if(count(edges) < 4,
+                                num_two := count(viol_index1 := findfirst(second_index,
+                                                     val_cat1 := nth(second_category,second_index) and
+                                                     val_val1 := nth(second_names,second_index) and
+                                                     matchCompCategory(component_match,val_cat1,val_val1) and
+                                                     convertDbToUserUnits(getDistance(component1,component_match,
+                                                                 nth(first_edges,second_index),
+                                                                 nth(second_edges,second_index),
+                                                                 nth(subclass_list,second_index)),nth(allowed_unit,second_index))
+                                                     <=nth(allowed_dist,second_index) and
+                                                     rem_edge := getOtherEdge(curr_edges,
+                                                                              nth(second_edges,second_index)) and
+                                                     append(val_left,rem_edge) 
+                                                     )) and
+                                  if(num_two > 0, 
+                                     append(vindex1,viol_index1) and
+                                     append(component_sec ,component_match) and
+
+/* curre_edges2 will contain the second category edges specified by the first violating constraint and the next constraint that covers more
+   edges than before. Here it will be ("Top" "Bottom") for first iteration on component_match.*/
+
+                                     curr_edges2 := curr_edges +" " + nth(second_edges,viol_index1) and
+
+/* As before we try to find a violating constraint that covers more edges than before */
+/* Hence, it appears that we go on looking into matching constraints till we cover all four edges or we run out of violating matching constraints for the
+   second component. vindex, vindex1, vindex3, and vindex4 will contain the indices of the matching constraints for each step of the "coverage" of edges.
+   For components whose all edges are not covered the corr indices will be -1.*/
+
+
+                                     if(count(rem_edge) + count(edges) < 4,
+                                         num_three := count(viol_index3 := findfirst(second_index,
+                                         val_cat3 := nth(second_category,second_index) and
+                                         val_val3 := nth(second_names,second_index) and
+                                         matchCompCategory(component_match,val_cat3,val_val3) and
+                                         convertDbToUserUnits(getDistance(component1,component_match,
+                                                     nth(first_edges,second_index),   
+                                                     nth(second_edges,second_index),
+                                                     nth(subclass_list,second_index)),nth(allowed_unit,second_index))
+                                         <= nth(allowed_dist,second_index) and
+                                         rem_edge3 := getOtherEdge(curr_edges2,nth(second_edges,second_index)) and
+                                         append(val_left3,rem_edge3)
+                                         )) and
+                                         if(num_three >0,
+                                            append(vindex3,viol_index3) and
+                                            append(component_thir,component_match) and
+                                            curr_edges3 := curr_edges2 + " " +  nth(second_edges,viol_index3) and
+                                            if(count(rem_edge3) + count(rem_edge) + count(edges) < 4,
+                                               num_four := count(viol_index4 := findfirst(second_index,
+                                               val_cat4 := nth(second_category,second_index) and
+                                               val_val4 := nth(second_names,second_index) and
+                                               matchCompCategory(component_match,val_cat4,val_val4) and
+                                               convertDbToUserUnits(getDistance(component1,component_match,
+                                                           nth(first_edges,second_index),   
+                                                           nth(second_edges,second_index),
+                                                           nth(subclass_list,second_index)),nth(allowed_unit,second_index))
+                                               <= nth(allowed_dist,second_index) and
+                                               rem_edge4 := getOtherEdge(curr_edges3,nth(second_edges,second_index)) and
+                                               append(val_left4,rem_edge4))) and
+                                               if(num_four >0,
+                                                  append(vindex4,viol_index4) and
+                                                  append(component_four,component_match),
+                                                   // In IFNUMFOUR 
+                                                  // Add appropriate values if condition is invalid 
+                                                  append(vindex4,-1) and
+                                                  append(component_four,component1)
+                                                 ) ,
+                                               // In COUNTEDGE 
+                                               append(vindex4,-1) and
+                                               append(val_left4,"None") and
+                                               append(component_four,component1)
+                                              ),
+                                            // In IFNUM3 
+                                            append(vindex3,-1) and 
+                                            append(component_thir,component1) and
+                                            append(vindex4,-1) and
+                                            append(val_left4,"None") and
+                                            append(component_four,component1)
+                                          ),
+                                     // In COUNTEDGE 
+                                     append(vindex3,-1) and
+                                     append(val_left3,"None") and
+                                     append(component_thir,component1) and
+                                     append(vindex4,-1) and
+                                     append(val_left4,"None") and
+                                     append(component_four,component1)
+                                     ),
+                                     // In IFNUM2 
+                                     append(vindex1,-1) and
+                                     append(component_sec,component_match) and
+                                     append(vindex3,-1) and
+                                     append(component_thir,component1) and
+                                     append(vindex4,-1) and  
+                                     append(val_left4,"None") and    
+                                     append(val_left3,"None") and
+                                     append(component_four,component1)
+                                    ),
+                                  append(val_left,"None") and
+                                  append(vindex1,-1) and
+                                  append(component_sec,component1) and
+                                  append(vindex3,-1) and  
+                                  append(component_thir,component1) and   
+                                  append(vindex4,-1) and    
+                                  append(val_left4,"None") and        
+                                  append(val_left3,"None") and
+                                  append(component_four,component1) 
+                              ) 
+                        ) and
+
+/* Here component_viol contains (U4 U5)  for our example. */
+
+// Now find if the matching components actually violate the distances prescribed 
+
+err_one := count(foreach(component_viol,
+        append(component_done,component_viol) and
+        vindex_c:= nth(vindex,count(component_done)) and
+        constraint_name1 := nth(constraint_list,vindex_c) and
+        checkRedundant(component1,component_viol,constraint_name1) and
+        layer := expandLayers(nth(allowed_layers,vindex_c)) and
+        // See that component spacings are for the current layers 
+        if((nth(allowed_layers,vindex_c) =="BOTH"),
+           getLayer(component_viol) == getLayer(component1),  /* This is where we check that the components are on the same layer. */
+           getLayer(component_viol) == layer and
+           getLayer(component1) == layer
+        ) and 
+        first_edge := nth(first_edges,vindex_c) and
+        second_edge := nth(second_edges,vindex_c) and
+        sub_class := nth(subclass_list,vindex_c) and
+        // First check if the component is somewhere within the prescribed distance 
+        // This check is necessary because the max distance can be any number and we 
+        //   are only interested in things nearby                                     
+        convertDbToUserUnits(getDistance(component1,
+               component_viol,"Any","Any",sub_class),nth(allowed_unit,vindex_c)) <= nth(allowed_dist,vindex_c) and
+        dist := convertDbToUserUnits(getDistance(component1,
+               component_viol,first_edge,second_edge,sub_class),nth(allowed_unit,vindex_c)) and
+        // Has to be >= so that overlapping comps give err 
+        dist >= 0 and
+        dist < nth(allowed_dist,vindex_c) and
+	viol_cat := nth(second_category,vindex_c) and
+	viol_val := nth(second_names,vindex_c) and
+        viol_dist := nth(allowed_dist,vindex_c) and
+
+/* Here is where we report the violation for each component wrt the first matching constraint. */
+
+        my_viol := "\nClearance between components "+ name(component1) + " and " + name(component_viol)
+                     +  " : " + toString(dist) + "\nMinimum clearance required : " + toString(viol_dist)
+                     + "\nCategories used are category1: " + nth(category,vindex_c) +
+                     + "  " + nth(names,vindex_c) + " category 2: " +
+                       viol_cat + "   " + viol_val + "\nConstraint name : " + constraint_name1 +  "\n" and
+        append(viol,my_viol) and
+        append(component_f,component_viol) and
+        val_error_string1 := "DFA / Spacing violation between " + name(component1) + " and " +
+                             name(component_viol) + ". Allowed spacing : " + toString(viol_dist) and
+        WriteDRCMarker(component1,component_viol, val_error_string1, dist) 
+        )) and
+
+err_two := count(foreach(vindex1,
+        append(idone,vindex1) and
+        vindex1 /= -1 and
+        first_edge1 := nth(first_edges,vindex1) and
+        second_edge1 := nth(second_edges,vindex1) and
+        sub_class1 := nth(subclass_list,vindex1) and
+        component_cons := nth(component_sec,count(idone)) and
+        constraint_name2 := nth(constraint_list,vindex1) and
+        checkRedundant(component1,component_cons,constraint_name2) and
+        layer1 := expandLayers(nth(allowed_layers,vindex1)) and
+        // See that component spacings are for the current layers 
+        if((nth(allowed_layers,vindex1) =="BOTH"),
+           getLayer(component_cons) == getLayer(component1), 
+           getLayer(component_cons) == layer1 and
+           getLayer(component1) == layer1
+        ) and  
+        convertDbToUserUnits(getDistance(component1,
+               component_cons,"Any","Any",sub_class1),nth(allowed_unit,vindex1)) <= nth(allowed_dist,vindex1) and
+        dist1 := convertDbToUserUnits(getDistance(component1,
+               component_cons,first_edge1,second_edge1,sub_class1),nth(allowed_unit,vindex1)) and
+        dist1 >=0 and
+        dist1 < nth(allowed_dist,vindex1) and
+        viol_cat1 := nth(second_category,vindex1) and
+        viol_val1 := nth(second_names,vindex1) and
+        viol_dist1 := nth(allowed_dist,vindex1) and
+        my_viol1 := "\nClearance between components "+ name(component1) + " and " + name(component_cons) 
+                     +  " : " + toString(dist1) + "\nMinimum clearance required : " + toString(viol_dist1)
+                     + "\nCategories used are category1: " + nth(category,vindex1) +
+                     + "  " + nth(names,vindex1) + " category 2: " +
+                       viol_cat1 + "   " + viol_val1 + "\nConstraint name : " + constraint_name2 +  "\n" and 
+        append(viol_1,my_viol1) and
+        append(component_more,nth(component_sec,count(idone))) and
+        val_error_string2 := "DFA / Spacing violation between " + name(component1) + " and " +
+                             name(component_cons) + ". Allowed spacing : " + toString(viol_dist1) and
+        WriteDRCMarker(component1,component_sec, val_error_string2, dist1)
+       )) and
+
+err_three := count(foreach(vindex3,
+        append(idone3,vindex3) and
+        vindex3 /= -1 and
+        first_edge3 := nth(first_edges,vindex3) and
+        second_edge3 := nth(second_edges,vindex3) and
+        sub_class3 := nth(subclass_list,vindex3) and 
+        component_cons3 := nth(component_thir,count(idone3)) and
+        constraint_name3 := nth(constraint_list,vindex3) and
+        checkRedundant(component1,component_cons3,constraint_name3) and
+        layer3 := expandLayers(nth(allowed_layers,vindex3)) and  
+        // See that component spacings are for the current layers  
+        if((nth(allowed_layers,vindex3) =="BOTH"), 
+           getLayer(component_cons3) == getLayer(component1),  
+           getLayer(component_cons3) == layer3 and 
+           getLayer(component1) == layer3 
+        ) and  
+        convertDbToUserUnits(getDistance(component1,
+                component_cons3,"Any","Any",sub_class3),nth(allowed_unit,vindex3))<= nth(allowed_dist,vindex3) and
+        dist3 := convertDbToUserUnits(getDistance(component1,
+                component_cons3,first_edge3,second_edge3,sub_class3),nth(allowed_unit,vindex3)) and
+        dist3 >= 0 and
+        dist3 < nth(allowed_dist,vindex3) and
+        viol_cat3 := nth(second_category,vindex3) and
+        viol_val3 := nth(second_names,vindex3) and
+        viol_dist3 := nth(allowed_dist,vindex3) and
+        my_viol3 := "\nClearance between components "+ name(component1) + " and " + name(component_cons3) 
+                     +  " : " + toString(dist3) + "\nMinimum clearance required : " + toString(viol_dist3)
+                     + "\nCategories used are category1: " + nth(category,vindex3) +
+                     + "  " + nth(names,vindex3) + " category 2: " +
+                       viol_cat3 + "   " + viol_val3 + "\nConstraint name : " + constraint_name3 +  "\n" and 
+        append(viol_3,my_viol3) and
+        append(component_more3,nth(component_thir,count(idone3))) and
+        val_error_string3 := "DFA / Spacing violation between " + name(component1) + " and " +
+                             name(component_cons3) + ". Allowed spacing : " + toString(viol_dist3) and
+        WriteDRCMarker(component1,component_cons3, val_error_string3, dist3)
+       )) and 
+
+err_four := count(foreach(vindex4,
+        constraint_name4 := nth(constraint_list,vindex4) and
+        checkRedundant(component1,component_thir,constraint_name4) and
+        append(idone4,vindex4) and
+        vindex4 /= -1 and
+        first_edge4 := nth(first_edges,vindex4) and
+        second_edge4 := nth(second_edges,vindex4) and
+        sub_class4 := nth(subclass_list,vindex4) and
+        component_cons4 := nth(component_four,count(idone4)) and
+        layer4 := expandLayers(nth(allowed_layers,vindex4)) and 
+        // See that component spacings are for the current layers   
+        if((nth(allowed_layers,vindex4) =="BOTH"),
+           getLayer(component_cons4) == getLayer(component1),
+           getLayer(component_cons4) == layer4 and  
+           getLayer(component1) == layer4 
+        ) and 
+        convertDbToUserUnits(getDistance(component1,
+                component_cons4,"Any","Any",sub_class4),nth(allowed_unit,vindex4)) <= nth(allowed_dist,vindex4) and
+        dist4 := convertDbToUserUnits(getDistance(component1,
+                component_cons4,first_edge4,second_edge4,sub_class4),nth(allowed_unit,vindex4)) and
+        dist4 >=0 and
+        dist4 < nth(allowed_dist,vindex4) and
+        viol_cat4 := nth(second_category,vindex4) and
+        viol_val4 := nth(second_names,vindex4) and
+        viol_dist4 := nth(allowed_dist,vindex4) and
+        my_viol4 := "\nClearance between components "+ name(component1) + " and " + name(component_cons4)
+                     +  " : " + toString(dist4) + "\nMinimum clearance required : " + toString(viol_dist4)
+                     + "\nCategories used are category1: " + nth(category,vindex4) +
+                     + "  " + nth(names,vindex4) + " category 2: " +
+                       viol_cat4 + "   " + viol_val4 + "\nConstraint name : " + constraint_name4 +  "\n" and
+        append(viol_4,my_viol4) and
+        append(component_more4,nth(component_four,count(idone4))) and
+        val_error_string4 := "DFA / Spacing violation between " + name(component1) + " and " +
+                             name(component_cons4) + ". Allowed spacing : " + toString(viol_dist4) and
+        WriteDRCMarker(component1,component_thir, val_error_string4 , dist4)
+       )) and
+
+        
+       
+err_one + err_two + err_three +err_four > 0 
+
+
+Message(ERROR, component1,
+        "component clearance less than specified", 
+        "\n?viol ?viol_1 ?viol_3 ?viol_4"); 
+
+EndRule
+
+EndRuleDefine
+ /* Filename /hm/bobita/dfa/component_clearance_audit.arl*/

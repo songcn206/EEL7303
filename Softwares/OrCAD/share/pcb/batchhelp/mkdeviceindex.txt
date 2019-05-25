@@ -1,0 +1,23 @@
+
+Usage: mkdeviceindex [-d] [-o ndxfile] dmlfile | dir | - [...]
+   
+   Indexes models found in the SigNoise libraries listed on the
+   command line. The resulting index is more quickly loaded by SigNoise.
+   
+   Only models that pass a syntax check are indexed. If the -d option
+   is given, IBIS device models will be indexed only if they pass
+   the syntax check, and all of the IOCell and Package models that
+   they depend on also pass the check
+   
+   The output file defaults to device.ndx, but a different name can
+   be specified with the -o option. The .ndx extension is added if not
+   supplied. If the output file already exists, new entries are appended.
+   
+   Remaining command line arguments are one of:
+   - SigNoise library files, usually with a .dml extension.
+   - Directories, which are recursively searched for .dml files.
+   - The special name - which causes the standard-input to be read for
+     a list of libraries.
+
+   Example: mkdeviceindex -d -o mydmls *.dml dmldir
+

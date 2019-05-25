@@ -1,0 +1,135 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 29 12
+
+HEADER "Layer Chart"
+
+POPUP <class_popup>     "Manufacturing" "MANUFACTURING".
+POPUP <subclass_popup>  "Layer Chart" "LAYER_CHART".
+POPUP <textblock_popup> "20um x 50um" "1".
+POPUP <textjust_popup>  "Left" "LEFT", "Center" "CENTER", "Right" "RIGHT".
+POPUP <textside_popup>  "Left" "LEFT", "Center" "CENTER", "Right" "RIGHT".
+
+TILE
+
+GROUP " Chart Location "
+GLOC 1 1
+GSIZE 29 7
+ENDGROUP
+
+TEXT "Class:"
+TLOC 3 3
+ENDTEXT
+FIELD ldclass
+FLOC 12 3
+ENUMSET 15
+POP "class_popup"
+ENDFIELD
+
+TEXT "Subclass:"
+TLOC 3 5
+ENDTEXT
+FIELD ldsclass
+FLOC 12 5
+ENUMSET 15
+POP "subclass_popup"
+ENDFIELD
+
+GROUP " Text Parameters "
+GLOC 1 9
+GSIZE 29 11
+ENDGROUP
+
+TEXT "Size:"
+TLOC 3 11
+ENDTEXT
+FIELD text_block
+FLOC 12 11
+ENUMSET 15
+POP "textblock_popup"
+ENDFIELD
+
+TEXT "Side:"
+TLOC 3 13
+ENDTEXT
+FIELD text_side
+FLOC 12 13
+ENUMSET 15
+POP "textside_popup"
+ENDFIELD
+
+TEXT "Justify:"
+TLOC 3 15
+ENDTEXT
+FIELD text_just
+FLOC 12 15
+ENUMSET 15
+POP "textjust_popup"
+ENDFIELD
+
+TEXT "Offset:"
+TLOC 3 17
+ENDTEXT
+FIELD text_offset
+FLOC 12 17
+STRFILLIN 15 128
+ENDFIELD
+
+GROUP " Layer Text Labels "
+GLOC 1 20
+GSIZE 29 9
+ENDGROUP
+
+FIELD layer_name
+FLOC 3 22
+CHECKLIST "Name"
+ENDFIELD
+
+FIELD layer_number
+FLOC 3 24
+CHECKLIST "Number"
+ENDFIELD
+
+FIELD layer_type
+FLOC 3 26
+CHECKLIST "Type"
+ENDFIELD
+
+FIELD layer_refdes
+FLOC 17 23
+CHECKLIST "Refdes"
+ENDFIELD
+
+FIELD layer_dietype
+FLOC 17 25
+CHECKLIST "Symbol Type"
+ENDFIELD
+
+GROUP " Options "
+GLOC 1 29
+GSIZE 29 9
+ENDGROUP
+
+FIELD include_substrate
+FLOC 3 31
+CHECKLIST "Substrate layers"
+ENDFIELD
+
+FIELD include_diel
+FLOC 5 33
+CHECKLIST "Named dielectrics"
+ENDFIELD
+
+FIELD include_stacks
+FLOC 3 35
+CHECKLIST "Die stacks"
+ENDFIELD
+
+FIELD select_location
+FLOC 1 39
+MENUBUTTON "Select Chart Location" 30 3
+ENDFIELD
+
+ENDTILE
+ENDFORM

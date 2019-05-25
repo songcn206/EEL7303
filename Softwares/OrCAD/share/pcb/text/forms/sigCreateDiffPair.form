@@ -1,0 +1,93 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 56 35
+HEADER "Create a Model Defined Diff Pair"
+
+POPUP <DesignNamesPopup>"placeholder""0".
+
+TILE
+
+TABSET "Create a Model Defined Diff Pair"
+FLOC 0 0
+TSSIZE 60 35
+
+TAB DiffPairXnets
+
+TEXT "Select the member Xnets for the diff pair to be created.
+TLOC 8 2
+ENDTEXT
+
+TEXT
+TLOC 1 6
+INFO DesignNameText 10
+ENDTEXT
+
+FIELD DesignName
+FLOC 20 6
+ENUMSET 27
+POP DesignNamesPopup
+ENDFIELD
+
+TEXT "Non-Inverting Net/Xnet:"
+TLOC 1 9
+ENDTEXT
+
+FIELD NonInvertingXnet
+FLOC 20 9
+STRFILLIN 28 255
+ENDFIELD
+
+FIELD NonInvertingXnetBrowser
+FLOC 50 9
+MENUBUTTON "..." 6 3
+ENDFIELD
+
+TEXT "Inverting Net/Xnet:"
+TLOC 1 12
+ENDTEXT
+
+FIELD InvertingXnet
+FLOC 20 12
+STRFILLIN 28 255
+ENDFIELD
+
+FIELD InvertingXnetBrowser
+FLOC 50 12
+MENUBUTTON "..." 6 3
+ENDFIELD
+
+ENDTAB
+
+TAB DiffPairPins
+
+TEXT "Assign Models to the Diff Pair Mate Pins"
+TLOC 12 2
+ENDTEXT
+
+GRID DiffPairPinsGrid
+FLOC 3 6
+FSIZE 50 20
+OPTIONS HLINES VLINES
+GHEAD TOP
+HEADSIZE 3
+OPTIONS 3D MULTI
+ENDGHEAD
+ENDGRID
+
+TEXT "Pins shown in red have an assigned diff pair model."
+TLOC 9 26
+ENDTEXT
+
+FIELD AssignModelToPins
+FLOC 13 30
+MENUBUTTON "Assign Diff Pair Model To Selected Pins" 20 3
+ENDFIELD
+
+ENDTAB
+
+ENDTABSET
+
+ENDTILE
+
+ENDFORM

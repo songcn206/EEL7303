@@ -1,0 +1,138 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 61 20
+HEADER "Compare Layer Differences"
+
+POPUP <MASTER_CLASS>        """".
+POPUP <MASTER_SUBCLASS>     """".
+POPUP <COMPARE_CLASS>       """".
+POPUP <COMPARE_SUBCLASS>    """".
+POPUP <COMPARE_DB>          """".
+
+TILE
+
+TEXT "Compare Database:"
+TLOC 1 1
+ENDTEXT
+FIELD compare_db
+FLOC 16 1
+ENUMSET 41
+POP "COMPARE_DB"
+ENDFIELD
+
+FIELD zoom_compare
+FLOC 16 3
+CHECKLIST "Zoom in compare design"
+ENDFIELD
+
+FIELD browse_compare
+FLOC 38 3
+MENUBUTTON "Open Compare Database" 21 3
+ENDFIELD
+
+TEXT "Local Class/Subclass:"
+TLOC 1 6
+ENDTEXT
+FIELD master_class
+FLOC 3 8
+ENUMSET 21
+POP "MASTER_CLASS"
+ENDFIELD
+FIELD master_subclass
+FLOC 3 10
+ENUMSET 21
+POP "MASTER_SUBCLASS"
+ENDFIELD
+
+TEXT "Compared Class/Subclass:"
+TLOC 32 6
+ENDTEXT
+FIELD compare_class
+FLOC 34 8
+ENUMSET 21
+POP "COMPARE_CLASS"
+ENDFIELD
+FIELD compare_subclass
+FLOC 34 10
+ENUMSET 21
+POP "COMPARE_SUBCLASS"
+ENDFIELD
+ 
+TEXT "5 Differences:"
+TLOC 1 12
+INFO diff_count
+ENDTEXT
+FIELD diff_list
+FLOC 3 14
+LIST "" 56 6
+ENDFIELD
+
+FIELD diff_prev
+FLOC 3 25
+MENUBUTTON "Previous difference" 26 3
+ENDFIELD
+FIELD diff_next
+FLOC 32 25
+MENUBUTTON "Next difference" 26 3
+ENDFIELD
+
+GROUP "Selected difference information:"
+GLOC 1 27
+GSIZE 59 14
+ENDGROUP
+TEXT "Diff Type:"
+TLOC 3 29
+ENDTEXT
+TEXT "Unknown"
+TLOC 20 29
+INFO diff_info_type 30 30
+ENDTEXT
+TEXT "Size:"
+TLOC 3 31
+ENDTEXT
+TEXT "500um x 500um"
+TLOC 20 31
+INFO diff_info_size 30 30
+ENDTEXT
+TEXT "Area:"
+TLOC 3 33
+ENDTEXT
+TEXT "50 square microns"
+TLOC 20 33
+INFO diff_info_area 30 30
+ENDTEXT
+
+FIELD diff_layers_only
+FLOC 3 35
+CHECKLIST "Show selected difference layers only"
+ENDFIELD
+
+FIELD restore_visibility
+FLOC 34 35
+CHECKLIST "Restore original visibility on exit"
+ENDFIELD
+
+FIELD diff_remove
+FLOC 3 38
+MENUBUTTON "Acknowledge Difference and Remove" 55 3
+ENDFIELD
+
+FIELD done
+FLOC 1 42
+MENUBUTTON "OK" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 11 42
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 50 42
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

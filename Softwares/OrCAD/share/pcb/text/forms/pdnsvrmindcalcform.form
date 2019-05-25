@@ -1,0 +1,96 @@
+####################################################################################
+#       Cadence Design Systems                                                     #
+#                                                                                  #
+# (C) COPYRIGHT, Cadence Design Systems, Inc. 2010                                 #
+# All Rights Reserved                                                              #
+# Licensed Materials - Property of Cadence Design Systems                          #
+#                                                                                  #
+# No part of this file may be reproduced, stored in a retrieval system,            #
+# or transmitted in any form or by any means --- electronic, mechanical,           #
+# photocopying, recording, or otherwise --- without prior written permission       #
+# of Cadence Design Systems, Inc.                                                  #
+#                                                                                  #
+# WARRANTY:                                                                        #
+# Use all material in this file at your own risk.  Cadence Design Systems          #
+# makes no claims about any material contained in this file.                       #
+####################################################################################
+FILE_TYPE=FORM_DEFN VERSION=2
+    FORM
+    FIXED
+    PORT 40 18
+    HEADER "VRM Input Inductance Calculation"
+
+    ACTIVEFIELD Voltage
+    DEFAULT Done
+
+    TILE
+
+    FIELD Done
+        FLOC 2 17
+        MENUBUTTON "Done" 10 3
+    ENDFIELD
+
+    FIELD Cancel
+        FLOC 14 17
+        MENUBUTTON "Cancel" 10 3
+    ENDFIELD
+
+    FIELD Help
+        FLOC 29 17
+        MENUBUTTON "Help" 10 3
+    ENDFIELD
+
+    TEXT "Input Inductance = V * Rip * T / I"
+        TLOC 1 1
+    ENDTEXT
+
+    TEXT "Voltage [V]:"
+        TLOC 1 4
+    ENDTEXT
+
+    FIELD Voltage
+        FLOC 20 4
+        STRFILLIN 18 32
+    ENDFIELD
+
+    POPUP <VoltageRippleList>"1%""1%","2%""2%","3%""3%","4%""4%","5%""5%".
+    TEXT "Ripple tolerance [Rip]:"
+        TLOC 1 6
+    ENDTEXT
+
+    FIELD Ripple
+        FLOC 20 6
+        STRFILLIN 15 24
+        POP "VoltageRippleList"
+    ENDFIELD
+
+    TEXT "Ramp time [T]:"
+        TLOC 1 8
+    ENDTEXT
+
+    FIELD RampTime
+        FLOC 20 8
+        STRFILLIN 18 32
+    ENDFIELD
+
+    TEXT "Ramp current [I]:"
+        TLOC 1 10
+    ENDTEXT
+
+    FIELD RampCurrent
+        FLOC 20 10
+        STRFILLIN 18 32
+    ENDFIELD
+
+    TEXT "Input inductance:"
+        TLOC 1 13
+    ENDTEXT
+
+    TEXT
+        TLOC 20 13
+        INFO InputInductance 24
+    ENDTEXT
+
+    ENDTILE
+ENDFORM
+

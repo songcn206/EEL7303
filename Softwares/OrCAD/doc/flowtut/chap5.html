@@ -1,0 +1,2422 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN" "http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+<html xmlns="http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>OrCAD Flow Tutorial -- Board design using OrCAD PCB Editor</title>
+<META NAME="Approver" CONTENT="Technical Publications">
+<META NAME="Author" CONTENT="Technical Publications">
+<META NAME="CreateDate" CONTENT="2012-10-10">
+<META NAME="CreateTime" CONTENT="1349868243">
+<META NAME="DataType" CONTENT="Manuals">
+<META NAME="Description" CONTENT="This tutorial uses the Full adder design to take you through the PCB design cycle.  This tutorial illustrates how to use OrCAD tools for the complete PCB design cycle.">
+<META NAME="DocTitle" CONTENT="OrCAD Flow Tutorial">
+<META NAME="DocType" CONTENT="Getting Started">
+<META NAME="EdmsRelease" CONTENT="EDMS Windows-P015">
+<META NAME="FileTitle" CONTENT="Board design using OrCAD PCB Editor">
+<META NAME="FileType" CONTENT="Chapter">
+<META NAME="Keyword" CONTENT="flowtut">
+<META NAME="Language" CONTENT="English">
+<META NAME="ModifiedDate" CONTENT="2012-10-10">
+<META NAME="ModifiedTime" CONTENT="1349868243">
+<META NAME="NextFile" CONTENT="glossary.html">
+<META NAME="PageCount" CONTENT="40">
+<META NAME="Platform" CONTENT="ALL">
+<META NAME="PrevFile" CONTENT="chap3.html">
+<META NAME="Product" CONTENT="Allegro AMS Simulator, Allegro Design Entry CIS, Orcad Capture, PSpice">
+<META NAME="ProductFamily" CONTENT="PCB Design, PCB Design, PCB Design, PCB Design">
+<META NAME="ProductVersion" CONTENT="16.6">
+<META NAME="RightsManagement" CONTENT="Copyright 19962012 Cadence Design Systems Inc.">
+<META NAME="Title" CONTENT="OrCAD Flow Tutorial -- Board design using OrCAD PCB Editor">
+<META NAME="TopicTags" CONTENT="FALSE">
+<META NAME="Version" CONTENT="16.6">
+  </head>
+  <body style="margin-left: 5%;">
+    <a name="pagetop"></a>
+    <a name="firstpage"></a>
+    <!-- Begin Buttons -->
+    <table width="650" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td height="36" width="650" colspan="10">
+          <img src="../support/header_doc.gif" width="650" height="34">
+        </td>
+      </tr>
+      <tr>
+        <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                </td>
+<td height="20" width="73">
+<a href="flowtutTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<a href="flowtutIX.html"><img src="../support/nav2_index.gif" border="0"></a>
+</td>
+        <td>
+          <a href="chap3.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+        </td>
+        <td>
+          <a href="glossary.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+        </td>
+        <td height="20">
+          <a>
+<a href="flowtut.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+          </a>
+        </td>
+        <td height="20" width="61">
+          <img src="../support/nav2_black.gif">
+        </td>
+        <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+        </td>
+        <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+        </td>
+        <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+        </td>
+      </tr>
+    </table>
+    <!-- End Buttons -->
+    <p>
+    <hr>
+    <p>
+      <h3>
+        <center>
+          <font >
+            <div>OrCAD&#174; Flow Tutorial</div>
+            <font >
+              <div>
+            </font>
+          </font>
+        </center>
+      </h3>
+      <br>
+    </p>
+    <div>
+      <h1>4<a name="1065318">&nbsp;</a></h1>
+      <h1><a name="1065319">Board design using OrCAD </a>PCB Editor</h1>
+      <p><a name="1065320">This chapter consists of the following sections:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1065358" title="Board design using OrCAD PCB Editor" name="1065324"><font color="#0000ff"><u>Overview</u></font></a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1065362" title="Board design using OrCAD PCB Editor" name="1065328"><font color="#0000ff"><u>Objective</u></font></a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1065379" title="Board design using OrCAD PCB Editor" name="1065332"><font color="#0000ff"><u>Preparations in Capture</u></font></a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1096213" title="Board design using OrCAD PCB Editor" name="1065336"><font color="#0000ff"><u>Creating a board</u></font></a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1065538" title="Board design using OrCAD PCB Editor" name="1065340"><font color="#0000ff"><u>Routing</u></font></a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1065599" title="Board design using OrCAD PCB Editor" name="1065344"><font color="#0000ff"><u>The autorouting process starts and the board is routed.Post&#45;processing</u></font></a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1071596" title="Board design using OrCAD PCB Editor" name="1065348"><font color="#0000ff"><u>Generating output</u></font></a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1065649" title="Board design using OrCAD PCB Editor" name="1085487"><font color="#0000ff"><u>Summary</u></font></a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1065652" title="Board design using OrCAD PCB Editor" name="1065352"><font color="#0000ff"><u>What's next</u></font></a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1065656" title="Board design using OrCAD PCB Editor" name="1065356"><font color="#0000ff"><u>Recommended reading</u></font></a></td>
+          </tr>
+        </table>
+      </div>
+      <h2><a name="1065358">Overview</a></h2>
+      <p><a name="1087551">The OrCAD PCB Editor (based on the Allegro&#174; PCB technology) </a>place&#45;and&#45;route tool offers PCB designers the power and flexibility to create and share PCB data and constraints across the design flow. It is a interactive environment for creating and editing complex, multilayer PCBs. The feature set provided by OrCAD PCB Editor addresses a wide range of today's design and manufacturability challenges.</p>
+      <h2><a name="1065362">Objective</a></h2>
+      <p><a name="1065363">In this chapter, you will use OrCAD PCB Editor to take the full</a>&nbsp;adder design created in Chapter 2, <a href="chap2.html#1055445" title="Creating a schematic design"><font color="#0000ff"><u>Creating a schematic design</u></font></a>, to a PCB board. This chapter details some of the common tasks involved in PCB Editor. In the process, you will also use cross&#45;probing between Capture and PCB Editor.</p>
+      <h4><a name="1065367">Tutorial design</a></h4>
+      <p><a name="1065368">To go through the steps detailed in this chapter, you should have the </a>full adder design ready. The full adder design used in this tutorial is a hierarchical design. It has two instances of the HALFADD hierarchical block.</p>
+      <p><a name="1065371">You can either use the design you created in Chapter 2, </a><a href="chap2.html#1055445" title="Creating a schematic design"><font color="#0000ff"><u>Creating a schematic design</u></font></a> or if you want to skip the design creation section, you can pick up the design files shipped with the tutorial.</p>
+      <h4><a name="1068300">Installing design example</a></h4>
+      <p><a name="1090825">The design files for the full adder design are available in the </a><font size="2" face="'Courier New'" color="#000000">flowtut.zip</font> file shipped along with the tutorial. The <font size="2" face="'Courier New'" color="#000000">flowtut.zip</font> is located at <font size="2" face="'Courier New'" color="#000000">&#60;</font><font size="2" face="'Courier New'" color="#000000"><em>install_dir</em></font><font size="2" face="'Courier New'" color="#000000">&#62;&#47;doc&#47;flowtut&#47;tutorial_example</font>.</p>
+      <p><a name="1090826">Unzip the </a><font size="2" face="'Courier New'" color="#000000">flowtut.zip</font> file and extract it to an empty directory, say <font size="2" face="'Courier New'" color="#000000">orcad_flow</font>. On extracting the <font size="2" face="'Courier New'" color="#000000">flowtut.zip</font> file, you will find two sub&#45;directories, <font size="2" face="'Courier New'" color="#000000">partial</font> and <font size="2" face="'Courier New'" color="#000000">complete</font>, created in the <font size="2" face="'Courier New'" color="#000000">orcad_flow </font>directory. </p>
+      <p><a name="1068779">The </a><font size="2" face="'Courier New'" color="#000000">partial</font> directory contains files generated at the end of <a href="chap2.html#1055445" title="Creating a schematic design"><font color="#0000ff"><u>Chapter&nbsp;2, "Creating a schematic design."</u></font></a> Use the files in this directory only if you want to skip the design creation steps covered in Chapter&nbsp;2 and directly move on to Chapter&nbsp;4.</p>
+      <p><a name="1071536">The </a><font size="2" face="'Courier New'" color="#000000">complete</font> directory contains all the files generated through all the chapters in this tutorial. You can use the files in the <font size="2" face="'Courier New'" color="#000000">complete</font> directory to verify your results.</p>
+      <h4><a name="1065375">Estimated completion time</a></h4>
+      <p><a name="1065376">30 minutes</a></p>
+      <h2><a name="1065379">Preparations in Capture</a></h2>
+      <p><a name="1065380">To be able to take a design created in Capture to PCB Editor, you </a>need to complete some tasks. Some of these tasks are performed in Capture while the rest are completed in the PCB Editor environment. </p>
+      <p><a name="1065381">The tasks that are to be completed in Capture are:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1065391" title="Board design using OrCAD PCB Editor" name="1065385"><font color="#0000ff"><u>Running DRC</u></font></a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1065398" title="Board design using OrCAD PCB Editor" name="1065389"><font color="#0000ff"><u>Creating PCB Editor netlist</u></font></a></td>
+          </tr>
+        </table>
+      </div>
+      <h3><a name="1065391">Running DRC</a></h3>
+      <p><a name="1065392">Before taking a design from a schematic editor to a board planner, it </a>is recommended to run design rules check (DRC). This step is performed in Capture. To view the procedure, see <a href="chap2.html#1070120" title="Creating a schematic design"><font color="Blue"><u>Design rules check</u></font></a><a href="chap2.html#1070120" title="Creating a schematic design"></a>.</p>
+      <h3><a name="1065398">Creating PCB Editor netlist</a></h3>
+      <p><a name="1065399">After running the Design Rule Checks, you create the PCB Editor </a>netlist in Capture.</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1065400">In the Project Manager window, select the design file, </a><font size="2" face="'Courier New'" color="#000000">fulladd.dsn</font>. </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1065401">From the </a><font color="#000000"><em>Tools</em></font> menu in Capture, select <font color="#000000"><em>Create Netlist</em></font>. The Create Netlist dialog box appears.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1073284"><img src="images/PCBEditorNetlistDlg.gif" width="505" height="547" alt=""></a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1065402">Select the </a><font color="#000000"><em>PCB Editor</em></font> tab (if not already selected).</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1073474">The </a><font color="#000000"><em>Create PCB Editor Netlist </em></font>check box is selected by default. Selecting this check box generates a netlist in PCB Editor format, which consists of the following three files: <font color="#000000"><em>PSTCHIP.DAT</em></font>, <font color="#000000"><em>PSTXNET.DAT</em></font>, and <font color="#000000"><em>PSTXPRT.DAT</em></font>.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.872">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.128319999999995">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1073485"><font color="#000000"><em>PSTCHIP.DAT:</em></font></a> This file contains a description for each different type of part used in the design.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.872">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.128319999999995">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1073511"><font color="#000000"><em>PSTXNET.DAT:</em></font></a> This connectivity file, also referred to as the flat list or expanded net list, contains each net, its properties, its attached nodes, and node properties.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.872">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.128319999999995">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1073518"><font color="#000000"><em>PSTXPRT.DAT:</em></font></a> This file, also referred to as the expanded parts list, contains a list of physical parts and lists each reference designator and the sections assigned to it, ordered by reference designator and section number.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><font color="#000000"><strong>Note: </strong></font><a name="1075989">Make sure that the correct configuration file (</a><font color="#000000"><em>allegro.cfg</em></font>) is specified in the Setup dialog box. To view the configuration file, click Setup. The configuration file path should be The <font color="#000000"><em>Netlist </em></font><font color="#000000"><em>Files Directory</em></font> text box contains the directory location where the PST*.DAT files will be saved. The default location is an <font color="#000000"><em>al</em></font><font color="#000000"><em>legro</em></font> subdirectory in your design directory.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1073459">Select the </a><font color="#000000"><em>View Output</em></font> check box to automatically open the three PST*.DAT netlist files in separate Capture windows for viewing and editing after netlisting is completed.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1076028">Select the </a><font color="#000000"><em>Create or Update PCB Editor Board (Netrev)</em></font> check box to create the PCB Editor board that corresponds to the netlist you are generating.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><font color="#000000"><strong>Note: </strong></font><a name="1078441">The </a><font color="#000000"><em>Output Board File</em></font> text box contains the board name, which in this case is <font color="#000000"><em>fulladd.brd</em></font> and the directory location where the board file will be created, which in this case is <font color="#000000"><em>\allegro</em></font>.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	6.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1078442">Select the </a><font color="#000000"><em>Open Board in OrCAD PCB Editor</em></font> option to open the Output Board File in OrCAD PCB Editor automatically after the netlisting is completed.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	7.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1065406">Click OK in the Create Netlist dialog box.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1073984">A message box appears asking you to save your design prior to </a>creating the netlist. Click OK.</blockquote>
+      <blockquote><a name="1086303">Capture generates the netlist files (</a><font color="#000000"><em>PSTCHIP.DAT</em></font>, <font color="#000000"><em>PSTXPRT.DAT</em></font>, and <font color="#000000"><em>PSTXNET.DAT</em></font>) and the board file (<font color="#000000"><em>fulladd.brd</em></font>) in the specified directory location, which in this case is <font color="#000000"><em>\complete\allegro</em></font>. Also, the netlist files are opened in separate Capture windows and they appear under the Outputs directory in the Project Manager window. See figure below.</blockquote>
+      <blockquote><a name="1078502"><img src="images/chap5.6.1.2.png" width="451" height="505" alt=""></a></blockquote>
+      <blockquote><a name="1075351">A board file, fulladd.brd, opens in OrCAD PCB Editor.</a></blockquote>
+      <blockquote><a name="1075359"><img src="images/chap5.6.1.3.png" width="678" height="705" alt=""></a></blockquote>
+      <p><a name="1065408">&nbsp;</a></p>
+      <h2><a name="1096213">Creating a board</a></h2>
+      <p><a name="1065409">Having created the PCB Editor netlist, the next step is to create a new </a>board in PCB Editor. The Capture netlister generates the board file and three PCB Editor&#45;compatible netlist files. See <a href="#1065398" title="Board design using OrCAD PCB Editor"><font color="Blue"><u>Creating PCB Editor netlist</u></font></a><a href="#1065398" title="Board design using OrCAD PCB Editor"></a> for more information.</p>
+      <h3><a name="1065482">Creating a board outline</a></h3>
+      <p><a name="1065483">The board outline defines the boundary of the board. To create a </a>board outline in PCB Editor:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1065484">From the </a><font color="#000000"><em>Add</em></font> menu, select <font color="#000000"><em>Line</em></font>. The Options panel changes as shown in figure below.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1083265"><img src="images/Addline.gif" width="282" height="421" alt=""></a></blockquote>
+      <blockquote><font color="#000000"><strong>Note: </strong></font><a name="1076856">Make sure the Options panel on the right hand side of the </a>PCB Editor window displays Active Class as <font color="#000000"><em>Board Geometry</em></font> and Subclass as <font color="#000000"><em>Outline</em></font>.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1065485">Specify the following settings in the Options window:</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	a.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1076930">Line lock: </a><font color="#000000"><em>Line</em></font>, <font color="#000000"><em>90</em></font></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	b.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1076941">Line width: </a><font color="#000000"><em>20.0</em></font></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	c.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1076942">Line font: </a><font color="#000000"><em>Solid</em></font></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><font color="#000000"><strong>Note: </strong></font><a name="1076926">The default user units in PCB Editor is </a><font color="#000000"><em>mils</em></font>. To view the user units, choose Design Parameters from the Setup menu. In the Design Parameter Editor dialog box, click the Design tab. The User Units is defined in the Size section.</blockquote>
+      <blockquote><font color="#000000"><strong>Note: </strong></font><a name="1076952">The default grid size spacing for X and Y coordinates in </a>PCB Editor is 25 mils each. To view the grid spacing, select Design Parameters from the Setup menu. The Design Parameter Editor dialog box appears. Click Setup Grids. </blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1076912">To insert the first corner of the board outline, place the cursor at </a>the coordinates: <font color="#000000"><em>1000, 3000</em></font> and click the left&#45;mouse button.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><font color="#000000"><strong>Note: </strong></font><a name="1076956">As you move the cursor in the design window the </a>coordinates will keep changing. You can view the coordinates at the bottom right hand corner of the PCB Editor window. </blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="13.333333333333332">
+              <div>&nbsp;</div>
+            </td>
+            <td width="133.33333333333331">
+              <div>
+                <nobr>
+                  <img src="images/tip.gif" alt="ParagraphBullet" border="0">
+                </nobr>
+              </div>
+            </td>
+            <td>
+              <font size="3"><a name="1096773">You can also use the </a><font size="2" face="'Courier New'" color="#000000">pick</font> command in PCB Editor console to specify the coordinates. For example, to specify the starting point, enter <font size="2" face="'Courier New'" color="#000000">pick 1000 3000</font>.</font>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1076996">Complete the remaining board outline using the following </a>coordinates:</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.872">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.128319999999995">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1077057"><font color="#000000"><em>3000, 3000</em></font></a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.872">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.128319999999995">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1077064"><font color="#000000"><em>3000, 5000</em></font></a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.872">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.128319999999995">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1077065"><font color="#000000"><em>1000, 5000</em></font></a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1077052">When you are at the last corner of the board outline, right&#45;click </a>and select Done. The board outline is created.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><font color="#000000"><strong>Note: </strong></font><a name="1078862">Make sure the board outline is a closed polygon. For this </a>tutorial, the closed polygon is square in shape.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="13.333333333333332">
+              <div>&nbsp;</div>
+            </td>
+            <td width="133.33333333333331">
+              <div>
+                <nobr>
+                  <img src="images/tip.gif" alt="ParagraphBullet" border="0">
+                </nobr>
+              </div>
+            </td>
+            <td>
+              <font size="3"><a name="1077377">To delete the outline:</a></font>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.872">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.128319999999995">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1077442">Select Delete from the Edit menu.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.872">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.128319999999995">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1077454">In the Options window, select </a><font color="#000000"><em>Cline</em></font> check box under the <font color="#000000"><em>Delete Net Option</em></font>s group.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.872">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.128319999999995">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1077467">Left&#45;click on the outline to select it.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.872">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.128319999999995">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1077472">Right&#45;click and select Done. The outline is completely </a>deleted.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	6.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1077070">Select </a><font color="#000000"><em>Zoom Fit</em></font> from the <font color="#000000"><em>View</em></font> menu to display your entire board outline in the design window as shown in figure below.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1077074"><img src="images/boardoutlinePCBEditor.gif" width="758" height="614" alt=""></a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="13.333333333333332">
+              <div>&nbsp;</div>
+            </td>
+            <td width="133.33333333333331">
+              <div>
+                <nobr>
+                  <img src="images/tip.gif" alt="ParagraphBullet" border="0">
+                </nobr>
+              </div>
+            </td>
+            <td>
+              <font size="3"><a name="1071080">Alternatively, you can use any of these methods to fit your </a>board outline in the design window:</font>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.872">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.128319999999995">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1077234">Type </a><font size="2" face="'Courier New'" color="#000000">zoom fit </font>at the command line prompt.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote>
+<blockquote>        <font color="#000000"><a name="1077345">&#45;or&#45;</a></font></blockquote>
+      </blockquote>
+      <blockquote>
+<blockquote>        <font color="#000000"><a name="1077344">Press  F9.</a></font></blockquote>
+      </blockquote>
+      <blockquote>
+<blockquote>        <font color="#000000"><a name="1077355">&#45;or&#45;</a></font></blockquote>
+      </blockquote>
+      <blockquote>
+<blockquote>        <font color="#000000"><a name="1077360">Click the <img src="images/ZoomFiticon.gif" width="35" height="26" alt=""> icon.</a></font></blockquote>
+      </blockquote>
+      <h3><a name="1065490">Adding mounting holes</a></h3>
+      <p><a name="1079028">After the board outline is created, let's now add mounting holes in the </a>board.</p>
+      <h4><em><a name="1079047">To add mounting holes in your board</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1079059">From the </a><font color="#000000"><em>Place</em></font> menu, select <font color="#000000"><em>Manually</em></font>. The Placement dialog box appears.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1079069">Select the </a><font color="#000000"><em>Advanced Settings</em></font> tab.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1079070">Select the </a><font color="#000000"><em>Library</em></font> check box under the <font color="#000000"><em>List construction</em></font> section (see figure below).</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1079071"><img src="images/chap5.6.1.7.png" width="460" height="479" alt=""></a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1079363">Click </a><font color="#000000"><em>OK</em></font> to close the Placement dialog box.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1079375">Select </a><font color="#000000"><em>Manually</em></font> from the <font color="#000000"><em>Place</em></font> menu again. </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	6.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1079380">In the Placement dialog box, select the </a><font color="#000000"><em>Mechanical symbols</em></font> option from the drop&#45;down menu.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	7.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1079394">Select the desired mechanical symbol. For this tutorial, the </a>mechanical symbol is <font color="#000000"><em>MTG125</em></font>. See figure below.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1079384"><img src="images/chap5.6.1.8.png" width="460" height="480" alt=""></a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	8.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1079413">Click Hide.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	9.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1079426">The Placement dialog box closes and the mechanical symbol, </a><font color="#000000"><em>MTG125</em></font> attaches to the cursor.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	10.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1079417">Move the mechanical symbol to the top&#45;left corner of the design </a>window and left&#45;click to release the symbol.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	11.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1079583">Right&#45;click and select </a><font color="#000000"><em>Done</em></font>. The mechanical symbol is placed.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	12.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1079589">Repeat steps 5 to 11 to place the mechanical symbols on the </a>remaining three corners of the design window. See figure below. A sample board outline file, <font size="2" face="'Courier New'" color="#000000">fulladd_outline.brd</font> is available at: <font color="#000000"><em>&#47;complete&#47;allegro</em></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1079691"><img src="images/mountingholes.gif" width="499" height="328" alt=""></a></blockquote>
+      <blockquote><font color="#000000"><strong>Note: </strong></font><a name="1095074">Alternatively, select </a><font color="#000000"><em>Copy</em></font> from the <font color="#000000"><em>Edit</em></font> menu and left&#45;click the mechanical symbol placed on the design window. The selected mechanical symbol attaches to the cursor. Move the symbol to the desired location in the design window and left&#45;click to release the symbol. Now, right&#45;click and select <font color="#000000"><em>Done</em></font>.</blockquote>
+      <h3><a name="1095077">Placing components</a></h3>
+      <p><a name="1065491">After you have created the board outline, you can start placing your </a>components in the board. OrCAD PCB Editor supports both manual placements and auto placements.</p>
+      <p><a name="1065493">In this section, we will use manual placements to create the PCB </a>board for the full adder design. There are different ways in which you can select a component for placement. In this tutorial you will learn to place components by refdes only.</p>
+      <h4><em><a name="1066037">Selecting components by refdes</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1065494">From the </a><font color="#000000"><em>Place</em></font> menu, select <font color="#000000"><em>Manually</em></font>. The Placement dialog box appears showing in a collapsing tree view all the components that you can place in your design. For example, for this tutorial the components are: <font color="#000000"><em>J1</em></font>, <font color="#000000"><em>Q1</em></font>, <font color="#000000"><em>R1</em></font>, <font color="#000000"><em>R2</em></font>, <font color="#000000"><em>U1</em></font>, <font color="#000000"><em>U2</em></font>, <font color="#000000"><em>U3</em></font>, and <font color="#000000"><em>U4</em></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><font color="#000000"><strong>Note: </strong></font><a name="1077893">Only unplaced components are displayed in the </a>Placement dialog box.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1066117">Select the </a><font color="#000000"><em>U1</em></font> component by clicking the check box next to the component name as shown in figure below.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1077884"><img src="images/chap5.6.1.10.png" width="429" height="488" alt=""></a></blockquote>
+      <blockquote><font color="#000000"><strong>Note: </strong></font><a name="1077625">You can also select all the components of a type by </a>clicking the check box next to the folder icon.</blockquote>
+      <blockquote><font color="#000000"><strong>Note: </strong></font><a name="1079849">The Quickview window displays the footprint shape for the </a>selected component in graphics and text mode.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1077899">Click Hide. The Placement dialog box closes and the component </a>name(s), in this case, <font color="#000000"><em>U1</em></font> that you have chosen attaches to the cursor.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1066154">Move the component to the desired location and right&#45;click and </a>select <font color="#000000"><em>Rotate</em></font> from the pop&#45;up menu.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><font color="#000000"><strong>Note: </strong></font><a name="1079872">Make sure that a rotation angle is defined in the Options </a>panel. For this tutorial, the rotation angle is <font color="#000000"><em>90</em></font>.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1079867">Rotate the component in anti&#45;clockwise direction and left&#45;click to </a>release the component.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	6.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1078263">Repeat steps 2 &#45; 5 until all the components available in the </a>Placement dialog box are placed in the design window as shown in figure below. A sample board file with placed components, <font size="2" face="'Courier New'" color="#000000">fulladd_placed.brd</font> is available at: <font color="#000000"><em>&#47;complete&#47;allegro</em></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1078264"><img src="images/placedbrd.gif" width="663" height="538" alt=""></a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	7.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1066237">Select </a><font color="#000000"><em>Refresh</em></font> from the <font color="#000000"><em>View</em></font> menu to refresh your screen.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="13.333333333333332">
+              <div>&nbsp;</div>
+            </td>
+            <td width="133.33333333333331">
+              <div>
+                <nobr>
+                  <img src="images/tip.gif" alt="ParagraphBullet" border="0">
+                </nobr>
+              </div>
+            </td>
+            <td>
+              <font size="3"><a name="1080021">To find a component in PCB Editor:</a></font>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.872">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.128319999999995">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1080036">In the </a><font color="#000000"><em>Find</em></font> panel of the PCB Editor window.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.872">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.128319999999995">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1080127">Select the </a><font color="#000000"><em>Comp (or Pin)</em></font> option from the <font color="#000000"><em>Find By Name</em></font> drop&#45;down list.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.872">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.128319999999995">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1080060">Click More. The Find by Name or Property dialog box </a>appears displaying all the available components.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.872">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.128319999999995">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1080065">Select a component that you want to find. The selected </a>component appears in the <font color="#000000"><em>Selected objects</em></font> grid.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.872">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.128319999999995">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1080116">Click OK. The component is highlighted in the design </a>window.</td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1083284">Similarly, you can find net(s) or symbol(s) in PCB Editor. To find a net, </a>select the <font color="#000000"><em>Net</em></font> option from the <font color="#000000"><em>Find By Name</em></font> drop&#45;down list.</p>
+      <h4><a name="1065526">Design rules check</a></h4>
+      <p><a name="1065536">PCB Editor allows you to run DRC online (</a><font color="#000000"><em>On</em></font>) or in batch mode (<font color="#000000"><em>Off</em></font>). The default is <font color="#000000"><em>On</em></font>. While placing the components, if there are any design rule violations, then error markers are displayed on the board. </p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1080261">To run DRC online, select </a><font color="#000000"><em>Enable On&#45;Line DRC </em></font> from the <font color="#000000"><em>Setup</em></font> menu. To verify the basic spacing and physical constraints for your board design, select <font color="#000000"><em>Setup - Constraints - Spacing</em></font>. A window appears showing the default settings. For this tutorial, we will accept the default values.</p>
+      <h2><a name="1065538">Routing</a></h2>
+      <p><a name="1065539">After completing the board placement, you can route the full</a>&nbsp;adder board to complete the electrical connections between components. OrCAD PCB Editor supports both manual routing and Autorouting. The general use model is to first route the critical nets manually, lock them and then autoroute the rest of the board.</p>
+      <h3><a name="1065540">Manual routing</a></h3>
+      <p><a name="1065541">The steps involved in the manual routing process are as follows:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1065542">Check the board outline, via definitions, routing and via grids</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1065544">Route power and ground</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1065545">Fan out surface mounted devices and verify connections to </a>power and ground</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1065546">Route the remaining signals using the manual routing tools</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1065547">Optimize routing using the manual routing commands</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1065548">Check for route spacing violations and check routing statistics</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1065549">To know more about each of these steps, see </a><a href="#1085473" title="Board design using OrCAD PCB Editor"><font color="#0000ff"><u>PCB Editor documentation</u></font></a>.</p>
+      <h4><em><a name="1070173">Manually routing VCC and GND nets</a></em></h4>
+      <p><a name="1083614">Before you start routing the VCC and GND nets, make sure that you </a>delete the <font color="#000000"><em>NO_RAT</em></font> property attached to these nets. To delete this property:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1087721">Select </a><font color="#000000"><em>Properties</em></font> from the <font color="#000000"><em>Edit</em></font> menu or press F12.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1087731">In the Find panel, select the </a><font color="#000000"><em>Net</em></font> option (if not already selected) from the <font color="#000000"><em>Find By Name</em></font> drop&#45;down list.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1087740">Enter VCC and click More. The Edit Property dialog box appears </a>displaying all the properties attached to the VCC net.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1087747">Select the </a><font color="#000000"><em>NO_RAT</em></font> property in the <font color="#000000"><em>Available Properties</em></font> list box. The property definition appears in the panel on the right&#45;hand side of the dialog box. See figure below. For information about PCB Editor properties, see <a href="#1085473" title="Board design using OrCAD PCB Editor"><font color="#0000ff"><u>PCB Editor documentation</u></font></a>.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1088513"><img src="images/EditProperty.gif" width="607" height="379" alt=""></a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1088399">Select the </a><font color="#000000"><em>Delete</em></font> check box adjacent to the No_Rat property name.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	6.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1088593">Make the </a><font color="#000000"><em>Value</em></font> drop&#45;down menu empty.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	7.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1088602">Click Apply.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	8.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1088603">Click OK to close the Edit Property dialog box.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1088706">You can use the Edit Property dialog box to add or delete </a>properties from a component or net.</p>
+      <p><a name="1087702">To manually route the VCC and GND nets:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1088604">Select the </a><font color="#000000"><em>Find</em></font> tab in the right hand side of the PCB Editor window. The Find panel is displayed.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1083615">Select the </a><font color="#000000"><em>Net</em></font> option from the <font color="#000000"><em>Find By Name</em></font> drop&#45;down list.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1083616">Click More. The Find by Name or Property dialog box appears </a>displaying all the available nets.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1083617">Select </a><font color="#000000"><em>VCC</em></font>. The VCC item appears in the <font color="#000000"><em>Selected objects</em></font> grid.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1083607">Click OK. All VCC nets are highlighted in the design window.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	6.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1083695">Select </a><font color="#000000"><em>Connect</em></font> from the <font color="#000000"><em>Route</em></font> menu.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><font color="#000000"><strong>Note: </strong></font><a name="1085687">Alternatively, you can press F6 or click the <img src="images/addconnect.gif" width="32" height="27" alt=""> icon.</a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	7.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1083704">Change </a><font color="#000000"><em>Line width</em></font> to <font color="#000000"><em>20.00</em></font> in the Options panel.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	8.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1083720">Now, click on the net to be routed.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	9.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1083731">Draw the net through the desired path.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	10.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1083734">When you have completed routing, right&#45;click on the net and </a>select Done. </td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1083670">Similarly, perform the above steps for manually routing the </a><font color="#000000"><em>GND</em></font> nets.</blockquote>
+      <h4><em><a name="1083674">Manually routing remaining nets</a></em></h4>
+      <p><a name="1083747">To manually route remaining nets:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1083725">Press F9 to fit your board in the design window.</a>  </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1083744">Place the cursor on the net to be routed and press F10 to zoom </a>in.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1083786">Select </a><font color="#000000"><em>Connect</em></font> from the <font color="#000000"><em>Route</em></font> menu or Press F6. The Options panel changes.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1084188">Click on the net to be routed. The Options panel changes as </a>shown in figure below.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1084242"><img src="images/chap5.6.1.14.png" width="412" height="282" alt=""></a></blockquote>
+      <blockquote><font color="#000000"><strong>Note: </strong></font><a name="1084189">Make sure the </a><font color="#000000"><em>Line lock</em></font> settings are <font color="#000000"><em>Line, 45</em></font>.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1084743">Draw the net through the desired path.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	6.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1083755">When you have completed routing, right&#45;click on the net and </a>select <font color="#000000"><em>Done</em></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1084753">To change layers while routing (adding Vias):</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1084759">Click on the net to be routed.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1084769">Right&#45;click on the net and select </a><font color="#000000"><em>Add Via. </em></font>A Via is added. The currently Active layer becomes the Alternate layer and the Alternate layer become the Active Layer and vice&#45;versa. For example, if you have a Top and a Bottom layer, where TOP is current Active Layer, then when you add Via, the Bottom layer will become the Active layer and the Top layer becomes the Alternate layer.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1084829">Draw the net through the desired path.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1086937">When you have completed routing, right&#45;click on the net and </a>select <font color="#000000"><em>Done</em></font>. </td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1086938">For this tutorial, the routed board will appear as shown in figure </a>below. A sample routed board,  <font size="2" face="'Courier New'" color="#000000">fulladd.brd</font> is available at: <font color="#000000"><em>&#47;complete&#47;allegro</em></font>.</p>
+      <p align="left"><a name="1086666"><img src="images/routedbrdPCBEditor.gif" width="601" height="521" alt=""></a></p>
+      <h3><a name="1086668">Autorouting using PCB Editor</a></h3>
+      <p><a name="1065561">OrCAD PCB Editor supports autorouting of board, components, and </a>DRC. </p>
+      <p><a name="1065562">Board autorouting implies that the nets on the complete board are </a>routed. Component routing routes only the nets attached to the selected component.</p>
+      <h4><em><a name="1096859">To autoroute a board</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1096860">Choose </a><font color="#000000"><em>Route</em></font> - <font color="#000000"><em>PCB Router</em></font> - <font color="#000000"><em>Route Automatic</em></font>. The Automatic Router dialog box appears.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1065565">Click </a><font color="#000000"><em>Route</em></font>. The board is routed.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1081645">For more information, see </a><a href="#1085473" title="Board design using OrCAD PCB Editor"><font color="#0000ff"><u>PCB Editor documentation</u></font></a>.</blockquote>
+      <h3><a name="1065567">Autorouting using OrCAD PCB Router</a></h3>
+      <p><a name="1065568">When you select the OrCAD PCB Router autorouter, the complete </a>board is routed. PCB Router uses shape&#45;based routing and is a faster routing tool. </p>
+      <p><a name="1071189">To use the PCB Router auto router:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1065569">From the </a><font color="#000000"><em>Start</em></font> menu, select OrCAD <font color="#000000"><em>PCB Router</em></font>. </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1084971">Specify the design file to be loaded.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1084986">The PCB Router ShapeBased Automation Software dialog box </a>appears displaying the design file. See figure below.</blockquote>
+      <blockquote><a name="1065573"><img src="images/specctra.gif" width="738" height="545" alt=""></a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1065574">Select </a><font color="#000000"><em>Route</em></font> from the <font color="#000000"><em>AutoRoute</em></font> menu. The AutoRoute dialog box appears.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1080615">Select the </a><font color="#000000"><em>Basic</em></font> option in the AutoRoute dialog box. For more information, see the <font color="#000000"><em>PCB Router documentation</em></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1065584">To start Autorouting, click OK.</a></td>
+          </tr>
+        </table>
+      </div>
+      <h2><a name="1065599">The autorouting process starts and the board is </a>routed.Post&#45;processing</h2>
+      <p><a name="1065600">This section introduces some of the tasks that are not a part of the </a>placement and routing process, but are related and can be performed using OrCAD PCB Editor. </p>
+      <p><a name="1065601">To know more about post&#45;processing, see the </a><a href="#1085473" title="Board design using OrCAD PCB Editor"><font color="#0000ff"><u>PCB Editor documentation</u></font></a>.</p>
+      <h3><a name="1065603">Renaming components manually</a></h3>
+      <p><a name="1065604">After you have completed the placement and routing of your PCB </a>board, you can rename the components manually on the PCB board in a specific order.</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1065605">From the </a><font color="#000000"><em>Edit menu</em></font>, select <font color="#000000"><em>Text</em></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1065607">Left&#45;click the reference designator you want to modify. The </a>selected reference designator appears in the command line.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1080408">Change the reference designator as desired in the command </a>line and press the Enter key.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1065611">PCB Editor renames the components. </a>The reference designators for the component on the board changes.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1080796">Save the board file and close PCB Editor.</a></td>
+          </tr>
+        </table>
+      </div>
+      <h3><a name="1081674">Automatic Renaming of components</a></h3>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1081676">Select </a><font color="#000000"><em>Logic</em></font> <font color="#000000"><em>- Auto Rename Refdes</em></font>. The Rename Refdes dialog box appears.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1086051">Select the </a><font color="#000000"><em>Use default grid</em></font> option button. This option uses the default grid, which constitutes an internal method of renaming components (see figure below).</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1086055"><img src="images/RenameRefdesDlg.gif" width="300" height="346" alt=""></a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1081677">Click More. The Rename Ref Des Set Up dialog box appears on </a>which you set all the reference designator parameters (see figure below). For more information, see the <a href="#1085473" title="Board design using OrCAD PCB Editor"><font color="#0000ff"><u>PCB Editor documentation</u></font></a>.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1081764"><img src="images/RenameRefdesSetupDlg.gif" width="650" height="511" alt=""></a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1081761">Accept the default settings (for this tutorial) and click Close in the </a>Rename Ref Des Set Up dialog box to close the dialog box and save the settings. </td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1082071">The Rename RefDes dialog box reappears.</a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1081981">Click Rename in the Rename RefDes dialog box. </a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1081679"><font color="#000000">PCB Editor automatically renames every component on your </font></a><font color="#000000">design in a single operation. The status of the renaming </font><font color="#000000">operation is displayed in the command line.</font></blockquote>
+      <h3><a name="1065613">Back annotation</a></h3>
+      <p><a name="1065614">While creating a PCB board, you might make some changes in the </a>PCB Editor board (.BRD) file. As a result, the board file and the design file in Capture may be out of sync. To ensure that both these file are in sync, you can backannotate the changes in the PCB board file to the Capture.</p>
+      <p><a name="1080840">When you backannotate, information, such as component location </a>and component names (changed due to renaming) gets added on to the schematic in Capture. </p>
+      <p><a name="1067819">To backannotate the changes to the schematic:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1067832">Open </a><font size="2" face="'Courier New'" color="#000000">FullAdd.opj</font> in Capture.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1067850">In the Project Manager window, select </a><font size="2" face="'Courier New'" color="#000000">fulladd.dsn</font>.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1067851">Choose </a><font color="#000000"><em>Tools</em></font> - <font color="#000000"><em>Back Annotate</em></font>. The Backannotate dialog box appears.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1081125"><img src="images/Backannotate.gif" width="505" height="508" alt=""></a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1067860">Select the </a><font color="#000000"><em>PCB Editor</em></font> tab, if not selected.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1081392">Select the </a><font color="#000000"><em>Generate Feedback Files</em></font> option button (if not already selected).</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><font color="#000000"><strong>Note: </strong></font><a name="1080874">Make sure that the correct configuration file (</a><font color="#000000"><em>allegro.cfg</em></font>) is specified in the Setup dialog box. To view the configuration file, click <font color="#000000"><em>Setup</em></font>. The configuration file path should be </blockquote>
+      <blockquote><font color="#000000"><strong>Note: </strong></font><a name="1067872">Make sure the </a><font color="#000000"><em>Netlist Directory</em></font> text box contains the directory location where the updated netlist files (PST*.DAT) will be saved. The default location is an <font color="#000000"><em>al</em></font><font color="#000000"><em>legro</em></font> subdirectory in your design directory.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	6.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1081074">Navigate to the directory location where the </a><font size="2" face="'Courier New'" color="#000000">.SWP</font> file needs to be saved. A <font size="2" face="'Courier New'" color="#000000">.SWP</font> file is generated by Capture after you make changes to your board file (.BRD). To know more about the <font size="2" face="'Courier New'" color="#000000">.SWP</font> file, see <font color="#000000"><em>OrCAD Capture User's Guide</em></font>. For this tutorial, the .SWP file name is <font color="#000000"><em>fulladd.swp</em></font> and the directory where the file will be saved is: <font color="#000000"><em>&#47;complete&#47;allegro</em></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	7.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1080898">Select the </a><font color="#000000"><em>Update Schematic</em></font> check box (if not already selected), if you want the Capture schematic design <font color="#000000"><em>(fulladd.dsn)</em></font> to be updated with back annotation information from the .SWP file.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	8.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1080929">Select the </a><font color="#000000"><em>View Output</em></font> <font color="#000000"><em>(.SWP) File</em></font> check box to automatically open the .SWP file in a separate Capture window for viewing and editing after the .SWP file is generated. This check box is not selected by default.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	9.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1068115">Click OK in the Backannotate dialog box. A message box </a>appears asking you to save your modified design prior to creating a new netlist file and a .SWP file (see figure below).</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1081470"><img src="images/warning.gif" width="203" height="119" alt=""></a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	10.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1081477">Click Yes in the message box.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1081493"><img src="images/backannotateprogress.gif" width="662" height="523" alt=""></a></blockquote>
+      <p><a name="1081585">Capture generates the netlist files (</a><font color="#000000"><em>PSTCHIP.DAT</em></font>, <font color="#000000"><em>PSTXPRT.DAT</em></font>, and <font color="#000000"><em>PSTXNET.DAT</em></font>) and creates the <font color="#000000"><em>fulladd.swp</em></font> file in the specified directory location, which in this case is <font color="#000000"><em>\complete\allegro</em></font>. The .SWP file is opened in a separate Capture window and also appears under the Outputs directory in the Project Manager window.</p>
+      <p><a name="1068144">The schematic is updated with the changes in the board file based on </a>the generated .SWP file.</p>
+      <p><a name="1069021">Similarly, if the board file is open in PCB Editor and you make </a>changes in the schematic design, you can ensure that these changes are forwarded to the board during netlist creation in Capture. </p>
+      <p><a name="1069093">To do this:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1069094">In the Project Manager window, select </a><font color="#000000"><em>fulladd.dsn</em></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1069160">From the </a><font color="#000000"><em>Tools</em></font> menu, choose <font color="#000000"><em>Create Netlist</em></font>. </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1069181">In the </a><font color="#000000"><em>PCB Editor</em></font> tab of the Create Netlist dialog box, specify the base board directory location. For this tutorial, the base board directory is <font color="#000000"><em>&#47;complete&#47;allegro&#47;fulladd.brd</em></font>. </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1082670">In the </a><font color="#000000"><em>Output Board File</em></font> text box specify the board name and the directory location where the updated board file will be created.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1082664">Click OK in the Create Netlist dialog box.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1082750">Capture generates the netlist files (PSTCHIP.DAT, </a>PSTXPRT.DAT, and PSTXNET.DAT) and the updated board file is created in the specified directory location. The changes in the schematic design will appear in the board file.</blockquote>
+      <h3><a name="1067265">Cross probing and cross highlighting between PCB </a>Editor and Capture</h3>
+      <p><a name="1067305">OrCAD PCB Editor is tightly integrated with OrCAD Capture. As a </a>result, you can use cross&#45;probing to verify information flow between the schematic design and the board design and conversely.</p>
+      <p><a name="1067334">Cross probing lets you select an object in the Capture schematic and </a>see the corresponding object in PCB Editor.</p>
+      <p><a name="1067431">To enable cross&#45;probing, you must enable intertool communication </a>between Capture and PCB Editor. To do this:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1067469">In the Project Manager window in Capture, select </a><font size="2" face="'Courier New'" color="#000000">fulladd.dsn</font>.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1067600">From the </a><font color="#000000"><em>Options</em></font> menu in Capture, choose <font color="#000000"><em>Preferences</em></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1067614">Click the </a><font color="#000000"><em>Miscellaneous</em></font> tab. </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1067625">Ensure that the </a><font color="#000000"><em>Enable Intertool Communication</em></font> check box is selected in the Intertool Communication section. </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1067657">Click OK.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1067662">Before you start cross probing, tile the Capture and PCB Editor </a>windows. Select a component in Capture. PCB Editor automatically displays the corresponding components.</p>
+      <p><a name="1067778">For example, if you select R1 in the </a><font size="2" face="'Courier New'" color="#000000">FULLADD.DSN</font> file, the corresponding resistor R1 will be displayed in PCB Editor as shown in the figure given below.</p>
+      <p align="left"><a name="1071594"><img src="images/chap5.6.1.22.png" width="675" height="362" alt=""></a></p>
+      <p><a name="1087263">Cross highlighting lets you select an object in PCB Editor and see the </a>corresponding object highlighted in Capture.</p>
+      <p><a name="1087259">In case of cross highlighting between PCB Editor and Capture, first </a>select <font color="#000000"><em>Highlight</em></font> from the <font color="#000000"><em>Display</em></font> menu, then select a component in PCB Editor the corresponding component is highlighted in Capture.</p>
+      <p><a name="1082203">For example, if you select R1 in the </a><font size="2" face="'Courier New'" color="#000000">FULLADD.BRD</font> file, the corresponding resistor R1 will be highlighted in Capture as shown in the figure given below.</p>
+      <p align="left"><a name="1083063"><img src="images/chap5.6.1.23.png" width="675" height="307" alt=""></a></p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1083115">If you want to turn off highlighting, select </a><font color="#000000"><em>Dehighlight</em></font> from the <font color="#000000"><em>Display</em></font> menu.</p>
+      <h2><a name="1071596">Generating output</a></h2>
+      <p><a name="1071597">The final task in creating a board design is to generate output files. </a>You can create Gerber files, drill files, DXF files, and printer&#47;plotter files.</p>
+      <p><a name="1070867">Before you generate reports and output files, you should take a </a>backup of your design and clean up the design. To clean up your design:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1070872">Select </a><font color="#000000"><em>Route </em></font><font color="#000000"><em>- </em></font><font color="#000000"><em>Gloss </em></font><font color="#000000"><em>- Execute</em></font>. The Glossing Controller dialog box appears.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1093428">Click Line Smoothing. The Line Smoothing dialog box appears.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1070886">Accept the default settings and click Gloss.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1070977">The design is cleaned up. You can now generate the desired output </a>files and reports.</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="13.333333333333332">
+              <div>&nbsp;</div>
+            </td>
+            <td width="133.33333333333331">
+              <div>
+                <nobr>
+                  <img src="images/important.gif" alt="ParagraphBullet" border="0">
+                </nobr>
+              </div>
+            </td>
+            <td>
+              <font size="3"><a name="1085237">Before creating a output file (artwork), make sure you run </a><font color="#000000"><em>Update DRC</em></font> from the <font color="#000000"><em>Tools</em></font> menu in PCB Editor.</font>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <h3><a name="1065621">Output files</a></h3>
+      <p><a name="1065622">Using OrCAD PCB Editor, you can generate various files that can </a>further be used with various third&#45;party tools, such as GerbTool, VisualCAD, AutoCAD, and so on. </p>
+      <p><a name="1065623">To generate these output files, complete the following steps:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1065624">From the </a><font color="#000000"><em>Manufacture</em></font> menu, select <font color="#000000"><em>Artwork</em></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1065625">The Artwork Control Form dialog box appears.</a></blockquote>
+      <blockquote><a name="1065629"><img src="images/ArtworkControlFrm.gif" width="512" height="546" alt=""></a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1065630">Select the </a><font color="#000000"><em>Gerber RS274X</em></font> option button under the <font color="#000000"><em>Device </em></font><font color="#000000"><em>type</em></font> section.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1065632">Accept the default settings and click OK to close the Artwork </a>Control Form dialog box.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1082311">Again select </a><font color="#000000"><em>Artwork</em></font> from the <font color="#000000"><em>Manufacture</em></font> menu.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1082333">In resultant dialog box, select the </a><font color="#000000"><em>Film Control</em></font> tab. The Film Control tabbed page appears.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	6.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1082343">Select the check boxes corresponding to the film layer(s) in the </a>Artwork Control Form dialog box. For this tutorial, both the <font color="#000000"><em>TOP</em></font> and <font color="#000000"><em>BOTTOM</em></font> layers are selected (see figure below).</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1065633"><img src="images/ArtworkControlFormfilmctrl.gif" width="512" height="546" alt=""></a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	7.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1065634">Click Create Artwork. A message box appears showing the </a>progress of the artwork creation. After the artwork is created the artwork files with a <font color="#000000"><em>.ART</em></font> extension are saved under <font color="#000000"><em>\complete\allegro</em></font> design directory (for this tutorial only).</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	8.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1085292">Click OK to close the Artwork Control Form dialog box.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1082817">You can view the artwork files that you created in PCB Editor.</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="13.333333333333332">
+              <div>&nbsp;</div>
+            </td>
+            <td width="133.33333333333331">
+              <div>
+                <nobr>
+                  <img src="images/important.gif" alt="ParagraphBullet" border="0">
+                </nobr>
+              </div>
+            </td>
+            <td>
+              <font size="3"><a name="1085349">Only Cadence&#174; artwork is supported.</a></font>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1085348">To view the artwork:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1082824">From the </a><font color="#000000"><em>File</em></font> menu, select <font color="#000000"><em>Import &#45; Artwork</em></font>. The Load Cadence Artwork dialog box appears.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1085340">Enter, or browse for, the name of the artwork file (</a><font color="#000000"><em>.ART</em></font>) that you want to load in the <font color="#000000"><em>Filename</em></font> text box. See figure below.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1086972">Select a subclass from the </a><font color="#000000"><em>Subclass</em></font> drop&#45;down menu. See figure below.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1087341"><img src="images/LoadCadenceArtworkDlg.gif" width="398" height="335" alt=""></a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1086973">Click Load File. A dynamic rectangle that represents the extents </a>of the Gerber data appears in the UI work area.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1085408">Left&#45;click on the dynamic rectangle to place the artwork on the </a>design window. The artwork is placed on the design window. A sample artwork file, <font size="2" face="'Courier New'" color="#000000">BOTTOM.art</font> is available at: <font color="#000000"><em>&#47;complete&#47;allegro</em></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1088999">A sample board file, </a><font size="2" face="'Courier New'" color="#000000">fulladd_artwork.brd</font> showing the artworks (<font size="2" face="'Courier New'" color="#000000">TOP.art</font> and <font size="2" face="'Courier New'" color="#000000">BOTTOM.art</font>) is available at: <font color="#000000"><em>&#47;complete&#47;allegro. </em></font>To toggle between the TOP and BOTTOM artworks placed on the <font size="2" face="'Courier New'" color="#000000">fulladd_artwork.brd</font>, select the <font color="#000000"><em>Visibility</em></font> tab (see figure below) and choose the artwork you want to view from the<font color="#000000"><em> Views</em></font> drop&#45;down list. The chosen artwork is displayed in the design window.</p>
+      <blockquote><a name="1089142"><img src="images/ArtworkVisibility.gif" width="256" height="259" alt=""></a></blockquote>
+      <h3><a name="1065643">Reports</a></h3>
+      <p><a name="1065644">You can create a variety of reports using OrCAD PCB Editor.</a></p>
+      <p><a name="1065645">To create reports, complete the following steps:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1065646">From the </a><font color="#000000"><em>Tools</em></font> menu, select <font color="#000000"><em>Quick Reports</em></font>. </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1085465">Select the reports you want generated.</a><br>For the full adder design, select the <font color="#000000"><em>Component Report</em></font> option.</td>
+          </tr>
+        </table>
+      </div>
+      <h2><a name="1065649">Summary</a></h2>
+      <p><a name="1065650">In this chapter, you were introduced to OrCAD PCB Editor, which is </a>a place&#45;and&#45;route tool provided by OrCAD. You completed the tasks required to take a design from OrCAD Capture, a schematic design tool, to a place and route tool. You were also introduced to OrCAD PCB Router, which is also a tool used to place&#45;and&#45;route the printed circuit boards.</p>
+      <h2><a name="1065652">What's next</a></h2>
+      <p>
+        <font size="3" face="Sans-Serif" color="#000000"><a name="1065653"><font color="#000000">This is the last chapter in the OrCAD Flow Tutorial. In the Glossary, </font></a><font color="#000000">you will find the definitions of various terms used in this tutorial.</font></font>
+      </p>
+      <h2><a name="1065656">Recommended reading</a></h2>
+      <p><a name="1065657">For more information about OrCAD PCB Editor, see PCB Editor </a>documentation listed below.</p>
+      <h4><em><a name="1085473">PCB Editor documentation</a></em></h4>
+      <p><a name="1085478">PCB Editor documentation includes:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1085503">Allegro&#174; PCB Editor User Guide</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1085482">Allegro PCB and Package Physical Layout Command Reference </a>Table of Contents</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1085483">Allegro Platform Properties Reference</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1095495">OrCAD PCB Router</a></p>
+    </div>
+    <br>
+    <a href="#pagetop">Return to top of page</a>
+    <hr>
+    <hr align="left">
+    <div style="text-align: left;">
+      <!-- Begin Buttons -->
+      <table width="650" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                    </td>
+<td height="20" width="73">
+<a href="flowtutTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<a href="flowtutIX.html"><img src="../support/nav2_index.gif" border="0"></a>
+</td>
+          <td>
+            <a href="chap3.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+          </td>
+          <td>
+            <a href="glossary.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+          </td>
+          <td>
+            <a>
+<a href="flowtut.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+            </a>
+          </td>
+          <td height="20" width="61">
+            <img src="../support/nav2_black.gif">
+          </td>
+          <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+          </td>
+          <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+          </td>
+          <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+          </td>
+        </tr>
+      </table>
+      <!-- End Buttons -->
+    </div>
+    <br>
+    <font size="-1" >
+For support, see <a href="http://support.cadence.com" target="_blank">Cadence Online Support</a> service.</font>
+    <br>
+    <br>
+    <font size="-1" >
+      <i>Copyright &#169; 2012, <a href="http://www.cadence.com">Cadence Design Systems, Inc.</a></i>
+    </font>
+    <br>
+    <font size="-1" >
+All rights reserved.</font>
+    <br>
+    <br>
+  </body>
+</html>

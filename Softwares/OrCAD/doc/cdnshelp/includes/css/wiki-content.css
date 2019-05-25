@@ -1,0 +1,460 @@
+/**
+ * These are the styles for all rendered wiki content.
+ * They are applicable in any situation where user content is viewable or editable.
+ *
+ * The rules have been organised by the core content type they pertain to:
+ * - Content scoping/contextual overrides
+ * - General style resets and margins
+ * - Headings
+ * - Preformatted Content
+ * - Links
+ * - Images
+ * - Tables
+ * - Lists
+ *
+ * After the core content type rules, you'll find the following:
+ * - Section layouts (i.e., section / column macros)
+ * - AUI overrides
+ */
+
+/**
+ * Content scoping / contextual overrides
+ */
+
+.wiki-content:after {
+    clear: both;
+    content: ".";
+    display: block;
+    font-size: 0;
+    height: 0;
+    visibility: hidden;
+}
+
+.wiki-content > *:first-child,
+.wiki-content td.confluenceTd > *:first-child,
+.wiki-content th.confluenceTh > *:first-child,
+.wiki-content li > *:first-child {
+    margin-top: 0;
+}
+
+.wiki-content > *:last-child,
+.wiki-content li > *:last-child {
+    margin-bottom: 0;
+}
+
+/**
+ * General content styles and margins
+ */
+
+.wiki-content,
+.wiki-content p,
+.wiki-content table,
+.wiki-content tr,
+.wiki-content td,
+.wiki-content th,
+.wiki-content ol,
+.wiki-content ul,
+.wiki-content li {
+    font-size: 10pt;
+    line-height: 13pt;
+}
+
+.wiki-content p,
+.wiki-content table {
+    padding: 0;
+}
+
+.wiki-content p,
+.wiki-content pre,
+.wiki-content ul,
+.wiki-content ol,
+.wiki-content dl,
+table.confluenceTable {
+    margin-bottom: 10px;
+}
+
+/**
+ * Headings
+ */
+
+.wiki-content h1,
+.wiki-content h2,
+.wiki-content h3,
+.wiki-content h4,
+.wiki-content h5,
+.wiki-content h6 {
+    font-weight: bold;
+    line-height: normal;
+    margin-top: 21px;
+    padding: 0;
+}
+
+.wiki-content h1 { font-size: 18pt; }
+.wiki-content h2 { font-size: 16pt; }
+.wiki-content h3 { font-size: 14pt; }
+.wiki-content h4 { font-size: 12pt; }
+.wiki-content h5 { font-size: 11pt; }
+.wiki-content h6 { font-size: 10pt; }
+
+
+/**
+ * Preformatted content
+ */
+
+.wiki-content pre {
+    overflow: visible; /* stops a scroll bar appearing in the editor, overrides the pre style inside master.css*/
+}
+
+.wiki-content .preformattedContent,
+.wiki-content .codeContent{
+    padding: 12px 10px;
+}
+
+.wiki-content .preformattedContent pre,
+.wiki-content .codeContent pre{
+    margin:0;
+    /** matches renderer-macros.css: .preformatted pre */
+    font-family:"Courier New",Courier,monospace;
+    line-height:1.3;
+}
+
+/**
+ * Links
+ */
+
+.wiki-content a,
+.wiki-content a:link,
+.wiki-content a:visited {
+    text-decoration: underline;
+}
+
+a.not-permitted {
+    text-decoration: underline;
+}
+
+/**
+ * Tables
+ * see /includes/css/tables.css
+ */
+
+.wiki-content table.confluenceTable {
+    border-collapse: collapse;
+}
+
+.wiki-content th.confluenceTh > *:last-child,
+.wiki-content td.confluenceTd > *:last-child {
+    margin-bottom: 0;
+}
+
+/**
+ * Images
+ */
+
+.wiki-content .image-left {
+    float: left;
+    margin: 0 10px 10px 0;
+}
+
+.wiki-content .image-center {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.wiki-content .image-right {
+    float: right;
+    margin: 0 0 10px 10px;
+}
+
+.wiki-content .confluence-embedded-image {
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+.wiki-content .confluence-content-image-border {
+    border: 1px solid black;
+}
+
+/*
+ * Before Confluence 4.0, emoticons were <img> tags with the CSS class 'emoticon'.
+ * In Confluence 4.0, emoticons are now <span>s with the same 'emoticon' class.
+ * Confluence 4.0 has the ability to render un-migrated wiki markup, meaning it's possible
+ * for both types of emoticons to exist.
+ * This selector is here in order to prevent conflicts with the different emoticons.
+ */
+.wiki-content img.emoticon {
+    background: none;
+    height: auto;
+    width: auto;
+    vertical-align: text-bottom;
+}
+
+/**
+ * Lists
+ */
+
+/* ensure confluence view content, editor content, and comment content share the same top level bullet style */
+.wiki-content ul,
+.wiki-content ol {
+    margin-left: 0;
+    padding-left: 3em;
+    list-style-position: outside;
+}
+
+.wiki-content ul,
+.wiki-content ol,
+.wiki-content dl {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+.wiki-content ul {
+    list-style-type: disc; /* make _all_ nested lists use the same bullet */
+}
+
+.wiki-content ol,
+.wiki-content ol ol ol ol,
+.wiki-content ol ol ol ol ol ol ol,
+.wiki-content ol ol ol ol ol ol ol ol ol ol {
+    list-style-type: decimal;
+}
+
+.wiki-content ol ol,
+.wiki-content ol ol ol ol ol,
+.wiki-content ol ol ol ol ol ol ol ol,
+.wiki-content ol ol ol ol ol ol ol ol ol ol ol {
+    list-style-type: lower-alpha;
+}
+
+.wiki-content ol ol ol,
+.wiki-content ol ol ol ol ol ol,
+.wiki-content ol ol ol ol ol ol ol ol ol,
+.wiki-content ol ol ol ol ol ol ol ol ol ol ol ol {
+    list-style-type: lower-roman;
+}
+
+.wiki-content li > ul,
+.wiki-content li > ol {
+    margin-bottom: 0;
+}
+
+/* When there is a pre in a list you don't want any vertical margin applied. */
+.wiki-content li > pre {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.wiki-content li {
+    margin: 0;
+    padding: 0;
+}
+
+/* Lists in tables */
+.wiki-content .confluenceTh > ol,
+.wiki-content .confluenceTd > ol {
+    padding-left: 1.7em;
+}
+
+.wiki-content .confluenceTh > ul,
+.wiki-content .confluenceTd > ul {
+    padding-left: 1em;
+}
+
+/**
+ * Section Layouts
+ * styles for table that replaces {section}
+ */
+
+table.layout {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table.layout td.layout-cell {
+    padding: 10px;
+    vertical-align: top;
+}
+
+table.layout, table.layout td.layout-cell {
+    border: 0;
+}
+
+table.bordered-layout {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table.bordered-layout td.layout-cell {
+    padding: 10px;
+    vertical-align: top;
+}
+
+table.bordered-layout, table.bordered-layout td.layout-cell {
+    border: 1px solid black;
+}
+
+/**
+ * Legacy editor styles
+ */
+.wiki-content-preview {
+    padding: 5px;
+    border-left: 1px solid;
+    border-right: 1px solid;
+}
+
+/**
+ * AUI Overrides
+ * see /includes/css/aui-overrides.css
+ */
+.wiki-content .header, .wiki-content .footer,
+.wiki-content .cell {
+    margin: 8px 0;
+    box-sizing: border-box;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    word-wrap: break-word;
+}
+
+.contentLayout .innerCell > *:first-child {
+    margin-top: 0;
+}
+
+.wiki-content .columnLayout {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+}
+
+.wiki-content .cell {
+    display: table-cell;
+    padding: 0 10px;
+}
+
+.view .wiki-content .cell:first-child,
+.content-preview .wiki-content .cell:first-child {
+    padding: 0;
+}
+
+.wiki-content .columnLayout .cell {
+    vertical-align: top;
+}
+
+.wiki-content .columnLayout .cell.aside {
+    width: 29.9%;
+}
+
+.wiki-content .columnLayout .cell.sidebars {
+    width: 19.9%;
+}
+
+/* CONFDEV-6137 Welcome to the world of browser hacks
+   We're targeting IE8 compatability mode which means IE7
+   hacks. This updates the page-layout to be floated rather
+   than table layout which is not supported in compat mode.
+   These styles are only applied to IE8 compat mode */
+.wiki-content .columnLayout,
+.wiki-content .cell,
+.wiki-content .header, 
+.wiki-content .footer {
+    *display: block;
+    *float: left;
+    *width: 100%;
+}
+
+
+/* CONFDEV-7754 - Workaround for some unwanted onDemand styling.
+   Remove once JSTDEV-1730 is fixed. See CONFDEV-7799.
+   Will have a side-effect of breaking any footers in themes that
+   do not use the default font-family or font-size.
+   #main selector is to prevent this rule applying within the RTE iframe.
+   */
+#main .wiki-content .footer p, #main .wiki-content .footer a {
+    font-family: Arial, Helvetica, FreeSans, sans-serif;
+    font-size: 10pt;
+}
+
+/* CONFDEV-7754 / CONFDEV-7799 / JSTDEV-1730 - As above.
+   #main selector is to prevent this rule applying within the RTE iframe.
+ */
+.fixedwidth #main .wiki-content .footer p, .fixedwidth #main .wiki-content .footer a {
+    font-size: 14px;
+}
+
+/* Necessary until both JSTDEV-1730 and CONFDEV-7799 are resolved.
+   May want to consider leaving this here anyway to prevent accidental overrides.
+*/
+#main .wiki-content .footer .heatmap .label {
+    font-size: inherit;
+}
+
+.wiki-content .columnLayout {
+    *clear: both;
+}
+
+.wiki-content .cell,
+.mceContentBody.wiki-content .cell,
+.twoColumns .cell,
+.threeColumns .cell,
+.twoColumns .large,
+.mceContentBody.wiki-content .header,
+.mceContentBody.wiki-content .footer,
+.threeColumns .large {
+    *border: 0;
+    *margin: 0;
+    *padding: 0;
+    *overflow: hidden;
+}
+
+.wiki-content .innerCell {
+    *border: 2px dashed #ccc;
+    *margin: 8px 4px;
+    *padding: 4px 8px;
+}
+
+/* CONFDEV-6745 fixing editor height when page layouts are involved */
+#page-diffs .columnLayout {
+    max-height: 200px;
+    overflow: auto;
+}
+
+.view-information #page-diffs .columnLayout {
+    max-height: none;
+}
+
+
+.wiki-content .innerCell {
+    outline: 0px;
+    overflow: auto;
+    overflow-y: hidden;
+}
+
+.twoColumns .cell {
+    *width: 49.9%;
+}
+
+.threeColumns .cell {
+    *width: 33.3%;
+}
+
+.twoColumns .large {
+    *width: 69.9%;
+}
+
+.threeColumns .large {
+    *width: 59.9%;
+}
+
+div.aside + div.large,
+div.large + div.aside,
+div.large + div.sidebars,
+.twoColumns div.cell + div.cell,
+.threeColumns div.cell + div.cell + div.cell {
+   *float: right;
+}
+
+/* CONF-23497 - Work around rendering issue in Webkit and IE9. Works fine for IE8 and Firefox. */
+li[style*='text-align: center'],
+li[style*='text-align: right'] {
+    list-style-position: inside;
+}

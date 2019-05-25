@@ -1,0 +1,62 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 29 40
+HEADER "Stubs"
+
+POPUP <stubViaPopup>"""".
+
+TILE
+
+GROUP "Routing Stubs"
+GLOC 1 1
+GSIZE 27 11
+INFO stubs_group 8 8
+ENDGROUP
+
+FIELD outer_stub
+FLOC 3 3
+CHECKLIST "Outer:"
+ENDFIELD
+FIELD outer_stub_len
+FLOC 10 3
+STRFILLIN 15 128
+ENDFIELD
+FIELD outer_stub_via
+FLOC 10 5
+ENUMSET 14
+POP "stubViaPopup"
+ENDFIELD
+
+FIELD inner_stub
+FLOC 3 7
+CHECKLIST "Inner:"
+ENDFIELD
+FIELD inner_stub_len
+FLOC 10 7
+STRFILLIN 15 128
+ENDFIELD
+FIELD inner_stub_via
+FLOC 10 9
+ENUMSET 14
+POP "stubViaPopup"
+ENDFIELD
+
+TEXT "Number of new DRCs based on current settings:"
+TLOC 1 13
+FSIZE 27 3
+ENDTEXT
+
+TEXT "0"
+TLOC 5 16
+INFO drc_count 10 20
+OPTIONS bold
+ENDTEXT
+
+FIELD update
+FLOC 1 19
+MENUBUTTON "Update routing stubs" 27 3
+ENDFIELD
+
+ENDTILE
+ENDFORM

@@ -1,0 +1,920 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 60 24
+HEADER ""
+
+POPUP <TerminalMappingPopup> """".
+POPUP <UnassignedIOTerminalsPopup> """".
+POPUP <ParasiticTerminalMappingPopup> """".
+
+TILE
+
+TABSET "HSpiceTranslationWizard"
+FLOC 0 0
+TSSIZE 60 28
+
+TAB Model_Name
+
+TEXT
+TLOC 1 1
+INFO ModelNameInfo1 55
+ENDTEXT
+
+TEXT "translated into a device model that the Cadence tools can understand. What"
+TLOC 1 3
+ENDTEXT
+
+TEXT "name would you like to give to this translated model?"
+TLOC 1 5
+ENDTEXT
+
+TEXT "Name of model to be created:"
+TLOC 1 10
+ENDTEXT
+
+FIELD New_Model_Name
+FLOC 23 10
+STRFILLIN 15 30
+ENDFIELD
+
+TEXT
+TLOC 1 17
+INFO IncludeModelInfo1 55
+ENDTEXT
+
+TEXT
+TLOC 1 19
+INFO IncludeModelInfo2 55
+ENDTEXT
+
+TEXT
+TLOC 1 21
+INFO IncludeModelInfo3 55
+ENDTEXT
+
+FIELD IncludeStatement
+FLOC 10 23
+CHECKLIST "Include Statement" EncryptedFile
+ENDFIELD
+
+FIELD CopyModel
+FLOC 34 23
+CHECKLIST "Copy Into Model" EncryptedFile
+ENDFIELD
+
+ENDTAB
+
+TAB Model_Type
+
+TEXT
+TLOC 1 1
+INFO ModelTypeInfo1 55
+ENDTEXT
+
+TEXT "   Black Box Model: The black box model simply makes all of the terminals of"
+TLOC 1 4
+ENDTEXT
+
+TEXT
+TLOC 1 6
+INFO ModelTypeInfo2 55
+ENDTEXT
+
+TEXT "   to connect up these terminals correctly."
+TLOC 1 8
+ENDTEXT
+
+TEXT "   IO Cell Model: A Cadence IO cell model has a very specific interface. The"
+TLOC 1 11
+ENDTEXT
+
+TEXT
+TLOC 1 13
+INFO ModelTypeInfo3 55
+ENDTEXT
+
+TEXT "   terminals of an IO cell model."
+TLOC 1 15
+ENDTEXT
+
+TEXT "How would you like to translate this model?"
+TLOC 1 18
+ENDTEXT
+
+FIELD Model_Type_BlackBox
+FLOC 1 21
+CHECKLIST "Translate as Black Box Model" Model_Type
+ENDFIELD
+
+FIELD Model_Type_IO_Cell
+FLOC 31 21
+CHECKLIST "Translate as IO Cell Model" Model_Type
+ENDFIELD
+
+ENDTAB
+
+TAB IO_Cell_Type
+
+TEXT "There are 6 types of IO cell models. Which do you want to create?"
+TLOC 1 1
+ENDTEXT
+
+FIELD IO_Cell_Type_Input
+FLOC 2 4
+CHECKLIST "Input" IO_Cell_Type
+TGROUP MacroModel
+ENDFIELD
+
+FIELD IO_Cell_Type_Output
+FLOC 2 6
+CHECKLIST "Output" IO_Cell_Type
+TGROUP MacroModel
+ENDFIELD
+
+FIELD IO_Cell_Type_IO
+FLOC 2 8
+CHECKLIST "IO" IO_Cell_Type
+TGROUP MacroModel
+ENDFIELD
+
+FIELD IO_Cell_Type_Diff_Input
+FLOC 2 10
+CHECKLIST "Differential Input" IO_Cell_Type
+TGROUP MacroModel
+ENDFIELD
+
+FIELD IO_Cell_Type_Diff_Output
+FLOC 2 12
+CHECKLIST "Differential Output" IO_Cell_Type
+TGROUP MacroModel
+ENDFIELD
+
+FIELD IO_Cell_Type_Diff_IO
+FLOC 2 14
+CHECKLIST "Differential IO" IO_Cell_Type
+TGROUP MacroModel
+ENDFIELD
+
+ENDTAB
+
+TAB Subcircuits
+
+TEXT
+TLOC 1 1
+INFO SubcircuitsInfo1 56
+ENDTEXT
+
+TEXT
+TLOC 1 3
+INFO SubcircuitsInfo2 56
+ENDTEXT
+
+TEXT
+TLOC 1 5
+INFO SubcircuitsInfo3 56
+ENDTEXT
+
+GRID SubcircuitsGrid
+FLOC 1 7
+FSIZE 58 16
+OPTIONS HLINES VLINES
+GHEAD TOP
+HEADSIZE 2
+OPTIONS 3D MULTI
+ENDGHEAD
+ENDGRID
+
+FIELD ViewModelSource1
+FLOC 20 24
+MENUBUTTON "View Model Source" 10 3
+ENDFIELD
+
+ENDTAB
+
+TAB Rename_Terminals
+
+TEXT
+TLOC 1 1
+INFO RenameTerminalsInfo1 55
+ENDTEXT
+
+TEXT
+TLOC 1 3
+INFO RenameTerminalsInfo2 55
+ENDTEXT
+
+TEXT
+TLOC 1 5
+INFO RenameTerminalsInfo3 55
+ENDTEXT
+
+GRID RenameTerminalsGrid
+FLOC 1 7
+FSIZE 58 16
+OPTIONS HLINES VLINES
+GHEAD TOP
+HEADSIZE 3
+OPTIONS 3D MULTI
+ENDGHEAD
+ENDGRID
+
+FIELD ViewModelSource2
+FLOC 20 24
+MENUBUTTON "View Model Source" 10 3
+ENDFIELD
+
+ENDTAB
+
+TAB Terminal_Mapping
+
+TEXT
+TLOC 1 1
+INFO TerminalMappingInfo1 55
+ENDTEXT
+
+TEXT
+TLOC 1 3
+INFO TerminalMappingInfo2 55
+ENDTEXT
+
+GRID TerminalMappingGrid
+FLOC 1 5
+FSIZE 58 18
+OPTIONS HLINES VLINES
+GHEAD TOP
+HEADSIZE 3
+OPTIONS 3D MULTI
+ENDGHEAD
+ENDGRID
+
+FIELD ViewModelSource3
+FLOC 20 24
+MENUBUTTON "View Model Source" 10 3
+ENDFIELD
+
+ENDTAB
+
+TAB Unassigned_IO_Terminals
+
+TEXT
+TLOC 1 1
+INFO UnassignedIOTerminalsInfo1 55
+ENDTEXT
+
+TEXT
+TLOC 1 3
+INFO UnassignedIOTerminalsInfo2 55
+ENDTEXT
+
+TEXT
+TLOC 1 5
+INFO UnassignedIOTerminalsInfo3 55
+ENDTEXT
+
+GRID UnassignedIOTerminalGrid
+FLOC 1 7
+FSIZE 58 16
+OPTIONS HLINES VLINES
+GHEAD TOP
+HEADSIZE 3
+OPTIONS 3D MULTI
+ENDGHEAD
+ENDGRID
+
+FIELD ViewModelSource4
+FLOC 20 24
+MENUBUTTON "View Model Source" 10 3
+ENDFIELD
+
+ENDTAB
+
+TAB Parameters
+
+TEXT
+TLOC 1 1
+INFO ParameterInfo1 55
+ENDTEXT
+
+TEXT
+TLOC 1 3
+INFO ParameterInfo2 55
+ENDTEXT
+
+GRID ParametersGrid
+FLOC 1 6
+FSIZE 58 16
+OPTIONS HLINES VLINES
+GHEAD TOP
+HEADSIZE 3
+OPTIONS 3D MULTI
+ENDGHEAD
+ENDGRID
+
+ENDTAB
+
+TAB Voltages
+
+TEXT "The DC voltage of this IO cell will be used to determine default values for"
+TLOC 1 1
+ENDTEXT
+
+TEXT "the clamp and reference voltages."
+TLOC 1 3
+ENDTEXT
+
+TEXT "IO Cell DC Voltage:"
+TLOC 1 5
+ENDTEXT
+
+FIELD DC_Voltage
+FLOC 20 5
+STRFILLIN 15 30
+ENDFIELD
+
+TEXT
+TLOC 1 9
+INFO StimulusVoltageInfo1 55
+ENDTEXT
+
+TEXT
+TLOC 1 11
+INFO StimulusVoltageInfo2 55
+ENDTEXT
+
+TEXT
+TLOC 1 13
+INFO StimulusData0Text 15
+ENDTEXT
+
+FIELD StimulusData0
+FLOC 20 13
+STRFILLIN 15 30
+ENDFIELD
+
+TEXT
+TLOC 1 15
+INFO StimulusData1Text 19
+ENDTEXT
+
+FIELD StimulusData1
+FLOC 20 15
+STRFILLIN 15 30
+ENDFIELD
+
+TEXT
+TLOC 1 19
+INFO EnableVoltageInfo 55
+ENDTEXT
+
+TEXT
+TLOC 1 21
+INFO EnableData0Text 17
+ENDTEXT
+
+FIELD EnableData0
+FLOC 20 21
+STRFILLIN 15 30
+ENDFIELD
+
+TEXT
+TLOC 1 23
+INFO EnableData1Text 17
+ENDTEXT
+
+FIELD EnableData1
+FLOC 20 23
+STRFILLIN 15 30
+ENDFIELD
+
+ENDTAB
+
+TAB Reference_Voltages
+
+TEXT "Specify the following reference voltages."
+TLOC 1 1
+ENDTEXT
+
+TEXT "min"
+TLOC 20 5
+ENDTEXT
+
+TEXT "typical"
+TLOC 33 5
+ENDTEXT
+
+TEXT "max"
+TLOC 47 5
+ENDTEXT
+
+TEXT "Power Clamp"
+TLOC 1 7
+ENDTEXT
+
+TEXT "Ground Clamp"
+TLOC 1 9
+ENDTEXT
+
+TEXT
+TLOC 1 12
+INFO PullUpText 15
+ENDTEXT
+
+TEXT
+TLOC 1 14
+INFO PullDownText 15
+ENDTEXT
+
+FIELD PowerClampMin
+FLOC 16 7
+STRFILLIN 10 15
+ENDFIELD
+
+FIELD PowerClampTypical
+FLOC 30 7
+STRFILLIN 10 15
+ENDFIELD
+
+FIELD PowerClampMax
+FLOC 44 7
+STRFILLIN 10 15
+ENDFIELD
+
+FIELD GroundClampMin
+FLOC 16 9
+STRFILLIN 10 15
+ENDFIELD
+
+FIELD GroundClampTypical
+FLOC 30 9
+STRFILLIN 10 15
+ENDFIELD
+
+FIELD GroundClampMax
+FLOC 44 9
+STRFILLIN 10 15
+ENDFIELD
+
+FIELD PullUpMin
+FLOC 16 12
+STRFILLIN 10 15
+ENDFIELD
+
+FIELD PullUpTypical
+FLOC 30 12
+STRFILLIN 10 15
+ENDFIELD
+
+FIELD PullUpMax
+FLOC 44 12
+STRFILLIN 10 15
+ENDFIELD
+
+FIELD PullDownMin
+FLOC 16 14
+STRFILLIN 10 15
+ENDFIELD
+
+FIELD PullDownTypical
+FLOC 30 14
+STRFILLIN 10 15
+ENDFIELD
+
+FIELD PullDownMax
+FLOC 44 14
+STRFILLIN 10 15
+ENDFIELD
+
+FIELD GetReferenceVoltageModel
+FLOC 16 18
+MENUBUTTON "Copy Values From Existing Model..." 18 3
+ENDFIELD
+
+ENDTAB
+
+TAB Ramp_Times
+
+TEXT "Specify the following output rise and fall times."
+TLOC 1 1
+ENDTEXT
+
+TEXT "min"
+TLOC 20 5
+ENDTEXT
+
+TEXT "typical"
+TLOC 33 5
+ENDTEXT
+
+TEXT "max"
+TLOC 47 5
+ENDTEXT
+
+TEXT "Rise Time"
+TLOC 1 7
+ENDTEXT
+
+TEXT "Fall Time"
+TLOC 1 9
+ENDTEXT
+
+FIELD RiseTimeMin
+FLOC 16 7
+STRFILLIN 10 15
+ENDFIELD
+
+FIELD RiseTimeTypical
+FLOC 30 7
+STRFILLIN 10 15
+ENDFIELD
+
+FIELD RiseTimeMax
+FLOC 44 7
+STRFILLIN 10 15
+ENDFIELD
+
+FIELD FallTimeMin
+FLOC 16 9
+STRFILLIN 10 15
+ENDFIELD
+
+FIELD FallTimeTypical
+FLOC 30 9
+STRFILLIN 10 15
+ENDFIELD
+
+FIELD FallTimeMax
+FLOC 44 9
+STRFILLIN 10 15
+ENDFIELD
+
+ENDTAB
+
+TAB Input_Logic_Thresholds
+
+TEXT "Specify the following input logic threshold voltages."
+TLOC 1 1
+ENDTEXT
+
+TEXT "min"
+TLOC 20 5
+ENDTEXT
+
+TEXT "typical"
+TLOC 33 5
+ENDTEXT
+
+TEXT "max"
+TLOC 47 5
+ENDTEXT
+
+TEXT "High Threshold"
+TLOC 1 7
+ENDTEXT
+
+TEXT "Low Thresholds"
+TLOC 1 9
+INFO InputLowText 10
+ENDTEXT
+
+FIELD InputHighMin
+FLOC 16 7
+STRFILLIN 10 15
+ENDFIELD
+
+FIELD InputHighTypical
+FLOC 30 7
+STRFILLIN 10 15
+ENDFIELD
+
+FIELD InputHighMax
+FLOC 44 7
+STRFILLIN 10 15
+ENDFIELD
+
+FIELD InputLowMin
+FLOC 16 9
+STRFILLIN 10 15
+ENDFIELD
+
+FIELD InputLowTypical
+FLOC 30 9
+STRFILLIN 10 15
+ENDFIELD
+
+FIELD InputLowMax
+FLOC 44 9
+STRFILLIN 10 15
+ENDFIELD
+
+FIELD GetThresholdVoltageModel
+FLOC 16 14
+MENUBUTTON "Copy Values From Existing Model..." 18 3
+ENDFIELD
+
+ENDTAB
+
+TAB "Define_Include_Files"
+
+TEXT "If you want any files included in the model being created, add them to the list"
+TLOC 1 1
+ENDTEXT
+
+TEXT "below. These files will be included at the end of the model, immediately before"
+TLOC 1 3
+ENDTEXT
+
+TEXT "the end of the subckt."
+TLOC 1 5
+ENDTEXT
+
+FIELD IncludeFiles
+FLOC 1 7
+LIST "" 39 7
+ENDFIELD
+
+FIELD AddIncludeFile
+FLOC 42 7
+MENUBUTTON "Add Include File..." 17 3
+ENDFIELD
+
+FIELD MoveIncludeFileUp
+FLOC 42 10
+MENUBUTTON "Move File Up" 17 3
+ENDFIELD
+
+FIELD MoveIncludeFileDown
+FLOC 42 13
+MENUBUTTON "Move File Down" 17 3
+ENDFIELD
+
+FIELD RemoveIncludeFile
+FLOC 42 16
+MENUBUTTON "Remove Include File" 17 3
+ENDFIELD
+
+GROUP "Simulation Directory"
+GLOC 1 20
+GSIZE 58 6
+ENDGROUP
+
+FIELD SimulationDirectory
+FLOC 2 23
+STRFILLIN 44 120
+ENDFIELD
+
+FIELD BrowseSimulationDirectory
+FLOC 50 23
+MENUBUTTON "..." 8 3
+ENDFIELD
+
+ENDTAB
+
+TAB "AddPackParasitics"
+
+TEXT "Do you want to include package parasitics in this model? "
+TLOC 1 1
+ENDTEXT
+
+FIELD AddPackParasiticsYes
+FLOC 10 6
+CHECKLIST "Yes" AddPackParasiticsAnswer
+ENDFIELD
+
+FIELD AddPackParasiticsNo
+FLOC 18 6
+CHECKLIST "No" AddPackParasiticsAnswer
+ENDFIELD
+
+ENDTAB
+
+TAB "ParasiticsSource"
+
+TEXT "How do you want to define the package parasitics?"
+TLOC 1 1
+ENDTEXT
+
+FIELD ParasiticsFromHSpiceSubckt
+FLOC 5 6
+CHECKLIST "From an HSpice subckt" ParasiticsFrom
+ENDFIELD
+
+FIELD ParasiticsFromSpectreSubckt
+FLOC 5 6
+CHECKLIST "From an Spectre subckt" ParasiticsFrom
+ENDFIELD
+
+FIELD ParasiticsFromRLCValues
+FLOC 5 8
+CHECKLIST "From specified RLC values" ParasiticsFrom
+ENDFIELD
+
+FIELD ParasiticsFromESpiceModel
+FLOC 5 10
+CHECKLIST "From an existing ESpice model" ParasiticsFrom
+ENDFIELD
+
+ENDTAB
+
+TAB "RLC_Parasitics"
+
+TEXT "Enter the R, L and C package parasitic values:"
+TLOC 1 1
+ENDTEXT
+
+TEXT "R:"
+TLOC 4 5
+ENDTEXT
+
+FIELD R_Parasitics
+FLOC  7 5
+STRFILLIN 10 15
+ENDFIELD
+
+TEXT "L:"
+TLOC 4 7
+ENDTEXT
+
+FIELD L_Parasitics
+FLOC  7 7
+STRFILLIN 10 15
+ENDFIELD
+
+TEXT "C:"
+TLOC 4 9
+ENDTEXT
+
+FIELD C_Parasitics
+FLOC  7 9
+STRFILLIN 10 15
+ENDFIELD
+
+ENDTAB
+
+TAB "ESpiceParasitics"
+
+TEXT
+TLOC 1 1
+INFO ESpiceParasiticsInfo1 55
+ENDTEXT
+
+TEXT
+TLOC 1 3
+INFO ESpiceParasiticsInfo2 55
+ENDTEXT
+
+TEXT
+TLOC 1 5
+INFO ESpiceParasiticsInfo3 55
+ENDTEXT
+
+TEXT "Selected ESpice Model:"
+TLOC 1 9
+ENDTEXT
+
+FIELD ESpiceModelName
+FLOC 19 9
+STRFILLIN 18 30
+ENDFIELD
+
+FIELD FindESpiceModel
+FLOC 40 9
+MENUBUTTON "Browse For Model..." 18 3
+ENDFIELD
+
+ENDTAB
+
+TAB "ParasiticMapping"
+
+TEXT
+TLOC 1 1
+INFO ParasiticMappingInfo1 55
+ENDTEXT
+
+TEXT "is to be connected to create the package parasitics."
+TLOC 1 3
+ENDTEXT
+
+GRID ParasiticMappingGrid
+FLOC 1 9
+FSIZE 58 13
+OPTIONS HLINES VLINES
+GHEAD TOP
+HEADSIZE 3
+OPTIONS 3D MULTI
+ENDGHEAD
+ENDGRID
+
+FIELD ViewModelSource6
+FLOC 20 24
+MENUBUTTON "View Model Source" 10 3
+ENDFIELD
+
+ENDTAB
+
+TAB "HSpiceParasitics"
+
+TEXT
+TLOC 1 1
+INFO HSpiceParasiticsInfo1 55
+ENDTEXT
+
+TEXT
+TLOC 1 3
+INFO HSpiceParasiticsInfo2 55
+ENDTEXT
+
+TEXT
+TLOC 1 5
+INFO HSpiceParasiticsInfo3 55
+ENDTEXT
+
+TEXT
+TLOC 1 9
+INFO HSpiceParasiticsInfo4 20
+ENDTEXT
+
+FIELD HSpiceParisiticsFileName
+FLOC 19 9
+STRFILLIN 18 30
+ENDFIELD
+
+FIELD FindHSpiceParisiticsFile
+FLOC 40 9
+MENUBUTTON "Select an HSpice File..." 18 3
+ENDFIELD
+
+FIELD FindSpectreParisiticsFile
+FLOC 40 9
+MENUBUTTON "Select a Spectre File..." 18 3
+ENDFIELD
+
+GRID HSpiceParisiticsSubcktsGrid
+FLOC 1 13
+FSIZE 58 11
+OPTIONS HLINES VLINES
+GHEAD TOP
+HEADSIZE 3
+OPTIONS 3D MULTI
+ENDGHEAD
+ENDGRID
+
+FIELD ViewModelSource5
+FLOC 20 24
+MENUBUTTON "View Model Source" 10 3
+ENDFIELD
+
+ENDTAB
+
+TAB "Summary"
+
+TEXT
+TLOC 1 3
+INFO SummaryInfo1 55
+ENDTEXT
+
+TEXT
+TLOC 1 5
+INFO SummaryInfo2 55
+ENDTEXT
+
+TEXT
+TLOC 1 7
+INFO SummaryInfo3 55
+ENDTEXT
+
+TEXT
+TLOC 1 9
+INFO SummaryInfo4 55
+ENDTEXT
+
+TEXT
+TLOC 1 11
+INFO SummaryInfo5 55
+ENDTEXT
+
+TEXT
+TLOC 1 15
+INFO SummaryInfo6 55
+ENDTEXT
+
+TEXT "created by this translation should be verified. The user is encouraged"
+TLOC 1 17
+ENDTEXT
+
+TEXT "to examine each DML model that was created."
+TLOC 1 19
+ENDTEXT
+
+FIELD ViewModelToBeCreated
+FLOC 20 24
+MENUBUTTON "View Model(s) To Be Created" 10 3
+ENDFIELD
+
+ENDTAB
+
+ENDTABSET
+
+ENDTILE
+
+ENDFORM

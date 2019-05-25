@@ -1,0 +1,81 @@
+
+Command line arguments for idx_out. 
+        Utility to export mechanical data from Allegro to IDX Format.
+
+idx_out <brd> [-obhlpuv] [-c <config>] [-i <baseline>] [-f <delta_config>]
+
+    OPTIONAL ARGUMENTS   
+    
+        [-o]  Output file base name.  Name of the resultant IDX files.
+              Default: <design_name>.idx 
+
+        [-b]  Board Version.
+              Valid Arguments:  user specified integer.
+              Default:  1         
+  
+        [-s]  System ID.
+              Valid Arguments:  user specified string.
+              Default: ""
+             
+        [-h]  Default height.  Applies this value to all package symbols 
+                  without a specified package height.
+              Valid Arguments:  a floating point value consistent with the
+                  original design units.
+              Default: drawing default height
+
+        [-c <config>] Filter Configuration File.  Name of the file to use to 
+              filter the specified parameters from the resultant IDX file.
+
+        [-l <cnv>] Layer Convertion File.  ASCII text file that specifies
+              the mapping of a customized layer to Allegro class/subclass.
+
+        [-u] Export traces as outlines.  
+             Default: Export traces as lines
+
+        [-p] Export compare file from current design.
+
+        [-i <baseline>] Baseline File.  Name of the file to use to 
+              create incremental IDX file.
+
+        [-f <delta_config>] Inceremetnal Data Configuration File. Name of 
+              the file to use to filter the specified objects from the 
+              resultant incremental IDX file.  
+
+        [-v] IDX version
+             Valid Arguments:  1.2 or 2.0
+             Default:  2.0
+
+       
+    REQUIRED ARGUMENTS
+
+        <brd>  Name of the design file.
+
+    EXAMPLES
+
+        1. Baseline File:
+           idx_out test.brd -o base -c idxFilterOut.config -h 150.00
+
+        2. Incremental Data File:
+           idx_out test.brd -o delta -c idxFilterOut.config -h 150.00 -i base
+
+           Note: The format of the filter file for baseline/incremental data is:
+                ( filter Route_Keepout_sym Route_Keepout_board Via_Keepout_sym
+                       Via_Keepout_board Plated_Holes NonPlated_Holes  
+                       Vias  Board_Outline Route_Outline Package_Keepout  
+                       Unplaced_Comp  Placed_Comp  )
+
+        3. Export IDX file in old format v1.2:
+           idx_out test.brd -o base -c idxFilterOut.config -v 1.2
+
+        4. Export customized layer such as external copper layers:
+           idx_out test.brd -o test_copper -l copper_l.cnv
+
+        5. Export compare fiel from current design:
+           idx_out test.brd -o test_compare -c idxFilterOut.config -h 150.00
+
+           
+
+
+		
+
+

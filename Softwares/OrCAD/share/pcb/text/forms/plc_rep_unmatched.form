@@ -1,0 +1,73 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM 
+FIXED
+PORT 75 30
+HEADER "Place Replicate Unmatched Component Interface"
+
+TILE
+
+TEXT "Seed circuit -> Match:"
+TLOC 2 1
+ENDTEXT
+
+TEXT "Similar components:  Refdes  (Device ; Value)"
+TLOC 39 1
+ENDTEXT
+
+#TEXT "Selection:"
+#TLOC 56 1
+#ENDTEXT
+
+FIELD seedlist
+FLOC 2 3
+LIST "" 35 12
+OPTIONS prettyprint
+ENDFIELD
+
+FIELD similarlist
+FLOC 39 3
+LIST "" 35 9
+OPTIONS alphanumsort prettyprint
+ENDFIELD
+
+FIELD unmatch
+FLOC 2 27
+MENUBUTTON "Unmatch" 10 3
+ENDFIELD
+
+GROUP "Match"
+FLOC 39 20
+FSIZE 20 6
+ENDGROUP
+
+FIELD filter_device
+FGROUP "Match"
+FLOC 40 22
+CHECKLIST "Device name"
+ENDFIELD
+
+FIELD filter_value
+FGROUP "Match"
+FLOC 42 24
+CHECKLIST "Value"
+ENDFIELD
+
+FIELD ok
+FLOC 2 30
+MENUBUTTON "OK" 10 3
+ENDFIELD
+
+FIELD cancel
+FLOC 14 30
+MENUBUTTON "Cancel" 10 3
+ENDFIELD
+
+FIELD help
+FLOC 26 30
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM
+

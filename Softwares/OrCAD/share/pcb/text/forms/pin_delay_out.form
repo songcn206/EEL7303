@@ -1,0 +1,87 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 48 18
+HEADER "Pin Delay Export"
+
+MESSAGE nidone 0 "Import completed."
+MESSAGE nxdone 0 "Export completed."
+MESSAGE nerror 0 "A problem occurred - please check the logfile (using Viewlog)."
+ACTIVEFIELD "cancel"
+TILE
+
+TEXT "Pin delay file:"
+TLOC 1 1
+ENDTEXT
+
+FIELD filename
+FLOC 12 1
+STRFILLIN 31 128
+ENDFIELD 
+
+FIELD browse
+FLOC 46 1
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+GROUP "Export format"
+GLOC   2 4
+GSIZE   18 6
+ENDGROUP
+
+FIELD excel
+FLOC 4 6
+CHECKLIST "Tab separated" "DFormat"
+ENDFIELD
+
+FIELD csv
+FLOC 4 8
+CHECKLIST "CSV(comma)" "DFormat"
+ENDFIELD
+
+FIELD header
+FLOC 23 6
+CHECKLIST "Include header"
+ENDFIELD
+
+FIELD units
+FLOC 23 8 
+CHECKLIST "Include units on each pin"
+ENDFIELD
+
+TEXT "Refdes name:"
+TLOC 2 12
+ENDTEXT
+
+TEXT
+TLOC 15 12
+INFO refdes 19
+ENDTEXT
+
+TEXT "Package name:" 
+TLOC 2 14
+ENDTEXT
+
+TEXT
+TLOC 15 14
+INFO package 19
+ENDTEXT
+
+FIELD execute
+FLOC 2 18
+MENUBUTTON "Export" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 20 18 
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 38 18
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

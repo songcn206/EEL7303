@@ -1,0 +1,42 @@
+# Allegro script : mgx_restore.scr
+#version 7.0
+
+set NOCONFIRM
+scriptmode +invisible
+
+setwindow pcb
+setwindow form.drawing
+FORM drawing done  
+setwindow pcb
+edit 
+fillin $MGX_NEWBRD
+menuload autoroute 
+
+echo Restore Grids and Preference Channels
+#
+# restore grid settings save by pre_rt.scr
+define grid 
+setwindow form.grid
+replay $MGX_OLDGRID.tmp
+setwindow form.grid
+FORM grid done  
+echo Grids restored
+
+#
+# restore router channel preferences save by pre_rt.scr
+setwindow pcb
+router param 
+setwindow form.rtp_main
+FORM rtp_main edit_subclasses  
+replay $MGX_OLDPCH.tmp
+setwindow form.rtp_subclass
+FORM rtp_subclass done  
+setwindow form.rtp_main
+FORM rtp_main done  
+echo Preference Channels restored
+
+setwindow pcb
+save 
+fillin $MGX_NEWBRD
+quit 
+fillin "yes"

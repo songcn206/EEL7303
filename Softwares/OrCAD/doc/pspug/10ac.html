@@ -1,0 +1,1244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN" "http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+<html xmlns="http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>PSpice User Guide -- AC analyses</title>
+<META NAME="Approver" CONTENT="Technical Publications">
+<META NAME="Author" CONTENT="Technical Publications">
+<META NAME="CreateDate" CONTENT="2012-08-31">
+<META NAME="CreateTime" CONTENT="1346413404">
+<META NAME="DataType" CONTENT="Manuals">
+<META NAME="Description" CONTENT="User guide for PSpice and AMS Simulator.">
+<META NAME="DocTitle" CONTENT="PSpice User Guide">
+<META NAME="DocType" CONTENT="User Guide">
+<META NAME="EdmsRelease" CONTENT="EDMS Windows-P015">
+<META NAME="FileTitle" CONTENT="AC analyses">
+<META NAME="FileType" CONTENT="Chapter">
+<META NAME="Keyword" CONTENT="pspug">
+<META NAME="Language" CONTENT="English">
+<META NAME="ModifiedDate" CONTENT="2012-08-31">
+<META NAME="ModifiedTime" CONTENT="1346413404">
+<META NAME="NextFile" CONTENT="12param.html">
+<META NAME="PageCount" CONTENT="22">
+<META NAME="Platform" CONTENT="ALL">
+<META NAME="PrevFile" CONTENT="09dc.html">
+<META NAME="Product" CONTENT="Allegro AMS Simulator, PSpice">
+<META NAME="ProductFamily" CONTENT="PCB Design, PCB Design">
+<META NAME="ProductVersion" CONTENT="16.6">
+<META NAME="RightsManagement" CONTENT="Copyright 2012 Cadence Design Systems Inc.">
+<META NAME="Title" CONTENT="PSpice User Guide -- AC analyses">
+<META NAME="TopicTags" CONTENT="FALSE">
+<META NAME="Version" CONTENT="16.6">
+  </head>
+  <body style="margin-left: 5%;">
+    <a name="pagetop"></a>
+    <a name="firstpage"></a>
+    <!-- Begin Buttons -->
+    <table width="650" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td height="36" width="650" colspan="10">
+          <img src="../support/header_doc.gif" width="650" height="34">
+        </td>
+      </tr>
+      <tr>
+        <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                </td>
+<td height="20" width="73">
+<a href="pspugTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<a href="pspugIX.html"><img src="../support/nav2_index.gif" border="0"></a>
+</td>
+        <td>
+          <a href="09dc.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+        </td>
+        <td>
+          <a href="12param.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+        </td>
+        <td height="20">
+          <a>
+<a href="pspug.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+          </a>
+        </td>
+        <td height="20" width="61">
+          <img src="../support/nav2_black.gif">
+        </td>
+        <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+        </td>
+        <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+        </td>
+        <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+        </td>
+      </tr>
+    </table>
+    <!-- End Buttons -->
+    <p>
+    <hr>
+    <p>
+      <h3>
+        <center>
+          <font >
+            <div>PSpice&#174; User Guide</div>
+            <font >
+              <div>
+            </font>
+          </font>
+        </center>
+      </h3>
+      <br>
+    </p>
+    <div>
+      <h1>10<a name="1053736">&nbsp;</a></h1>
+      <h1><a name="1053743">AC analyses</a></h1>
+      <h2><a name="1048367">Chapter overview</a></h2>
+      <p><a name="1048368">This chapter describes how to set up AC sweep and noise analyses.</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1048379" title="AC analyses" name="1048372"><font color="Blue"><u>AC sweep analysis</u></font></a><a href="#1048379" title="AC analyses"></a> describes how to set up an analysis to calculate the frequency response of your circuit. This section also discusses how to define an AC stimulus and how PSpice treats nonlinear devices in an AC sweep.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1048603" title="AC analyses" name="1048376"><font color="Blue"><u>Noise analysis</u></font></a><a href="#1048603" title="AC analyses"></a> describes how to set up an analysis to calculate device noise contributions and total input and output noise.</td>
+          </tr>
+        </table>
+      </div>
+      <h2><a name="1048379">AC sweep analysis</a></h2>
+      <h3><a name="1048382">Setting up and running an AC sweep</a></h3>
+      <p><a name="1048383">The following procedure describes the minimum setup requirements </a>for running an AC sweep analysis. For more detail on any step, go to the pages referenced in the sidebars.</p>
+      <h4><em><a name="1048384">To set up and run an AC sweep</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048385">Place and connect a voltage or current source with an AC input </a>signal.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048389">To find out how, see </a><a href="#1048412" title="AC analyses"><font color="Blue"><u>Setting up an AC stimulus</u></font></a><a href="#1048412" title="AC analyses"></a>.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048390">From the PSpice menu, select New Simulation Profile or Edit </a>Simulation Profile. (If this is a new simulation, enter the name of the profile and click OK.)</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048391">The Simulation Settings dialog box appears.</a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048392">Choose AC Sweep&#47;Noise in the Analysis type list box.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048393">Specify the required parameters for the AC sweep or noise </a>analysis you want to run.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048397">To find out how, see </a><a href="#1048504" title="AC analyses"><font color="Blue"><u>Setting up an AC analysis</u></font></a><a href="#1048504" title="AC analyses"></a>.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048398">Click OK to save the simulation profile.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	6.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048399">From the PSpice menu, select Run to start the simulation.</a></td>
+          </tr>
+        </table>
+      </div>
+      <h3><a name="1048401">What is AC sweep?</a></h3>
+      <p><a name="1048402">AC sweep is a frequency response analysis. PSpice calculates the </a>small&#45;signal response of the circuit to a combination of inputs by transforming it around the bias point and treating it as a linear circuit. Here are a few things to note:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048403">Nonlinear devices, such as voltage&#45; or current&#45;controlled </a>switches, are transformed to linear circuits about their bias point value before PSpice runs the linear (small&#45;signal) analysis. To find out more, see <a href="#1048564" title="AC analyses"><font color="Blue"><u>How PSpice treats nonlinear devices</u></font></a><a href="#1048564" title="AC analyses"></a>.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048407">Digital devices hold the states that PSpice</a>&nbsp;calculated when solving for the bias point.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048408">Because AC sweep analysis is a linear analysis, it only considers </a>the gain and phase response of the circuit; it does not limit voltages or currents.</td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1048409">The best way to use AC sweep analysis is to set the source </a>magnitude to one. This way, the measured output equals the gain, relative to the input source, at that output.</p>
+      <h3><a name="1048412">Setting up an AC stimulus</a></h3>
+      <p><a name="1048413">To run an AC sweep analysis, you need to place and connect one or </a>more independent sources and then set the AC magnitude and phase for each source.</p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1048414">Unlike DC sweep, the AC Sweep&#47;Noise dialog box does not </a>include an input source option. Instead, each independent source in your circuit contains its own AC specification for magnitude and phase.</p>
+      <h4><em><a name="1048415">To set up an AC stimulus</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048416">Place and connect one of these symbols in your schematic:</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1049298">&nbsp;</a></blockquote>
+<ul>      <table summary="" border="1" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" width="28%">
+        <caption>
+          <blockquote align="left"><font color="#000000"><strong>Table 10&#45;1&nbsp; </strong></font><strong><a name="1049534">&nbsp;</a></strong></blockquote>
+        </caption>
+        <tr>
+          <td colspan="2" bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="348">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1049281">For voltage input</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="1" bordercolor="#000000" valign="middle" width="72">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1049285">Use </a>this...</strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="1" bordercolor="#000000" valign="middle" width="276">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1049287">When you are running...</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1049290">VAC</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1049292">An AC sweep analysis only.</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1049295">VSRC</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1049297">Multiple analysis types including AC </a>sweep.</p>
+          </td>
+        </tr>
+      </table></ul>
+      <blockquote><a name="1049323">&nbsp;</a></blockquote>
+<ul>      <table summary="" border="1" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" width="28%">
+        <caption>
+          <blockquote align="left"><font color="#000000"><strong>Table 10&#45;2&nbsp; </strong></font><strong><a name="1049540">&nbsp;</a></strong></blockquote>
+        </caption>
+        <tr>
+          <td colspan="2" bgcolor="#E6E6E6" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="348">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1049306">For current input</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="72">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1049310">Use </a>this...</strong></font>
+            </p>
+          </td>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="276">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1049312">When you are running...</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049315">IAC</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049317">An AC sweep analysis only.</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1049320">ISRC</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1049322">Multiple analysis types including AC </a>sweep.</p>
+          </td>
+        </tr>
+      </table></ul>
+      <blockquote><a name="1049324">If you are planning to run a DC or transient analysis in addition </a>to an AC analysis, see <a href="03prepar.html#1049620" title="Preparing a design for simulation"><font color="Blue"><u>If you want to specify multiple stimulus types</u></font></a><a href="03prepar.html#1049620" title="Preparing a design for simulation"></a> for additional information and source symbols that you can use.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048461">Double&#45;click the symbol instance to display the Parts </a>spreadsheet.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048462">Click in the cell under the appropriate property column to edit its </a>value. Depending on the source symbol that you placed, define the AC specification as follows:</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048482">&nbsp;</a></blockquote>
+<ul>      <table summary="" border="1" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" width="28%">
+        <caption>
+          <blockquote align="left"><font color="#000000"><strong>Table 10&#45;3&nbsp; </strong></font><strong><a name="1049546">&nbsp;</a></strong></blockquote>
+        </caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="124">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048465">For VAC or IAC</a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="276">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048467">&nbsp;</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="1" bordercolor="#000000" valign="middle">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048469">Set this </a>property...</strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="1" bordercolor="#000000" valign="middle">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048471">To this value...</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048474">ACMAG</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048476">AC magnitude in volts (for VAC) or </a>amps (for IAC); units are optional.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048479">ACPHASE</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048481">Optional AC phase in degrees.</a></p>
+          </td>
+        </tr>
+      </table></ul>
+      <blockquote><a name="1049275">&nbsp;</a></blockquote>
+<ul>      <table summary="" border="1" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" width="28%">
+        <caption>
+          <blockquote align="left"><font color="#000000"><strong>Table 10&#45;4&nbsp; </strong></font><strong><a name="1049552">&nbsp;</a></strong></blockquote>
+        </caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="124">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048485">For VSRC or </a>ISRC</strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="276">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048487">&nbsp;</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="1" bordercolor="#000000" valign="middle">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048489">Set this </a>property...</strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="1" bordercolor="#000000" valign="middle">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048491">To this value...</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048494">AC</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048496"><font color="#000000"><em>Magnitude_value</em></font></a> [<font color="#000000"><em>phase_value</em></font>]<br>where <font color="#000000"><em>magnitude_value</em></font> is in volts or amps (units are optional) and the optional <font color="#000000"><em>phase_value</em></font> is in degrees.</p>
+          </td>
+        </tr>
+      </table></ul>
+      <blockquote><a name="1048500">If you are also planning to run a transient analysis, see </a><a href="03prepar.html#1049652" title="Preparing a design for simulation"><font color="Blue"><u>Using VSRC or ISRC parts</u></font></a><a href="03prepar.html#1049652" title="Preparing a design for simulation"></a> to find out how to specify the TRAN property.</blockquote>
+      <h3><a name="1048504">Setting up an AC analysis</a></h3>
+      <h4><em><a name="1048505">To set up the AC analysis</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048506">From the PSpice menu, choose New Simulation Profile or Edit </a>Simulation Settings. (If this is a new simulation, enter the name of the profile and click OK.)</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048507">The Simulation Settings dialog box appears.</a></blockquote>
+      <blockquote><a name="1048511"><img src="images/10ac.16.1.1.png" width="675" height="510" alt=""></a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048512">Choose AC Sweep&#47;Noise in the Analysis type list box. </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048513">Under Options, select General Settings if it is not already </a>enabled.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048514">Set the number of sweep points as follows:</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048532">&nbsp;</a></blockquote>
+<ul>      <table summary="" border="1" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" width="28%">
+        <caption>
+          <blockquote align="left"><font color="#000000"><strong>Table 10&#45;5&nbsp; </strong></font><strong><a name="1049558">&nbsp;</a></strong></blockquote>
+        </caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="172">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048517">To sweep frequency...</a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="224">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048519">Do this...</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048521">linearly</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048523">Under AC Sweep Type, click</a> Linear, and enter the total number of points in the sweep in the Total Points box.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048525">logarithmically by </a>decades</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048527">Under AC Sweep Type, click </a>Logarithmic, select Decade (default), and enter the total number of points per decade in the Total Points box.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048529">logarithmically by </a>octaves</p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048531">Under AC Sweep Type, click </a>Logarithmic, select Octave, and enter the total number of points per octave in the Total Points box.</p>
+          </td>
+        </tr>
+      </table></ul>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048533">In the Start Frequency and End Frequency text boxes, enter the </a>starting and ending frequencies, respectively, for the sweep.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	6.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048534">Click OK to save the simulation profile.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1048535">If you also want to run a noise analysis, then before clicking </a>OK, complete the Noise Analysis frame in this dialog box as described in <a href="#1048652" title="AC analyses"><font color="Blue"><u>Setting up a noise analysis</u></font></a><a href="#1048652" title="AC analyses"></a>.</p>
+      <h3><a name="1048540">AC sweep setup in example.opj</a></h3>
+      <p><a name="1048541">If you look at the example circuit, </a><font size="2" face="'Courier New'" color="#000000">EXAMPLE.OPJ</font>, provided with your installed programs, you'll find that its AC analysis is set up as shown in Figure <a href="#1048560" title="AC analyses"><font color="#0000ff"><u>10&#45;2</u></font></a>.</p>
+      <p align="left"><a name="1049644"><img src="images/10ac.16.1.2.png" width="675" height="445" alt=""></a></p>
+      <p><font color="#000000"><strong>Figure 10&#45;1&nbsp; </strong></font><strong><a name="1048549">Circuit diagram for EXAMPLE.OPJ.</a></strong></p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1048550">The source, V1, is a VSIN source that is normally used for </a>setting up sine wave signals for a transient analysis. It also has an AC property so that you can use it for an AC analysis. <br>To find out more about VSIN and other source symbols that you can use for AC analysis, see <a href="03prepar.html#1049625" title="Preparing a design for simulation"><font color="Blue"><u>Using time&#45;based stimulus parts with AC and DC properties</u></font></a><a href="03prepar.html#1049625" title="Preparing a design for simulation"></a>.</p>
+      <blockquote><a name="1048558"><img src="images/10ac.16.1.3.png" width="675" height="505" alt=""></a></blockquote>
+      <p><font color="#000000"><strong>Figure 10&#45;2&nbsp; </strong></font><strong><a name="1048560">AC analysis setup for EXAMPLE.OPJ.</a></strong></p>
+      <p><a name="1048561">Frequency is swept from 100 kHz to 10 GHz by decades, with 10 </a>points per decade. The V1 independent voltage source is the only input to an amplifier, so it is the only AC stimulus to this circuit. Magnitude equals 1 V and relative phase is left at zero degrees (the default). All other voltage sources have zero AC value.</p>
+      <h3><a name="1048564">How PSpice treats nonlinear devices</a></h3>
+      <p><a name="1048565">An AC Sweep analysis is a linear or small&#45;signal analysis. This </a>means that nonlinear devices must be linearized to run the analysis.</p>
+      <h4><a name="1048566">What's required to transform a device into a linear circuit</a></h4>
+      <p><a name="1048567">In order to transform a device (such as a transistor amplifier) into a </a>linear circuit, you must do the following:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048568">Compute the DC bias point for the circuit.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048569">Compute the complex impedance and&#47;or transconductance </a>values for each device at this bias point.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048570">Perform the linear circuit analysis at the frequencies of interest </a>by using simplifying approximations. </td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048571">Example: Replace a bipolar transistor in common&#45;emitter mode </a>with a constant transconductance (collector current proportional to base&#45;emitter voltage) and a number of constant impedances.</blockquote>
+      <h4><a name="1048572">What PSpice does</a></h4>
+      <p><a name="1048573">PSpice</a>&nbsp; automates this process for you. PSpice computes the partial derivatives for nonlinear devices at the bias point and uses these to perform small&#45;signal analysis.</p>
+      <h4><a name="1048574">Example: nonlinear behavioral modeling block</a></h4>
+      <p><a name="1048575">Suppose you have an analog behavioral modeling block that </a>multiplies V(1) by V(2). Multiplication is a nonlinear operation. To run an AC sweep analysis on this block, the block needs to be replaced with its linear equivalent. To determine the linear equivalent block, PSpice needs a known bias point.</p>
+      <h4><em><a name="1048576">Using a DC source</a></em></h4>
+      <p><a name="1048577">Consider the circuit shown below. </a></p>
+      <p align="left"><a name="1048581"><img src="images/10ac.16.1.4.png" width="675" height="438" alt=""></a></p>
+      <p><a name="1049689">At the DC bias point, PSpice calculates the partial derivatives which </a>determine the linear response of the multiplier as follows:</p>
+      <p align="left"><a name="1050445"><img src="images/10ac.16.1.5.png" width="265" height="32" alt=""></a></p>
+      <p align="left"><a name="1050567"><img src="images/10ac.16.1.6.png" width="192" height="18" alt=""></a></p>
+      <p><a name="1050404">For this circuit, this equation reduces to:</a></p>
+      <p align="left"><a name="1048595"><img src="images/10ac.16.1.7.png" width="261" height="17" alt=""></a></p>
+      <p><a name="1048596">This means that the multiplier acts as an amplifier of the AC input with </a>a gain that is set by the DC input.</p>
+      <h4><em><a name="1048597">Caution: multiplying AC sources</a></em></h4>
+      <p><a name="1048598">Suppose that you replace the 2 volt DC source in this example with </a>an AC source with amplitude 1 and no DC value (DC=0). When PSpice computes the bias point, there are no DC sources in the circuit, so all nodes are at 0 volts at the bias point. The linear equivalent of the multiplier block is a block with gain 0, which means that there is no output voltage at the fundamental frequency. This is exactly how a double&#45;balanced mixer behaves. In practice, this is a simple multiplier. </p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1048600">A double&#45;balanced mixer with inputs at the same frequency </a>would produce outputs at DC at twice the input frequency, but these terms cannot be seen with a linear, small&#45;signal analysis.</p>
+      <h2><a name="1048603">Noise analysis</a></h2>
+      <h3><a name="1048605">Setting up and running a noise analysis</a></h3>
+      <p><a name="1048606">The following procedure describes the minimum setup requirements </a>for running a noise analysis. For more detail on any step, go to the pages referenced in the sidebars.</p>
+      <h4><em><a name="1048607">To set up and run an AC sweep</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048608">Place and connect a voltage or current source with an AC input </a>signal.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048612">To find out how, see </a><a href="#1048412" title="AC analyses"><font color="Blue"><u>Setting up an AC stimulus</u></font></a><a href="#1048412" title="AC analyses"></a>.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048613">Set up the AC sweep simulation specifications.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048617">To find out how, see </a><a href="#1048504" title="AC analyses"><font color="Blue"><u>Setting up an AC analysis</u></font></a><a href="#1048504" title="AC analyses"></a>.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048618">Set up the noise simulation specifications and enable the </a>analysis in the AC Sweep&#47;Noise portion of the Simulation Settings dialog box.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048622">To find out how, see </a><a href="#1048652" title="AC analyses"><font color="Blue"><u>Setting up a noise analysis</u></font></a><a href="#1048652" title="AC analyses"></a>.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048623">Click OK to save the simulation profile.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048624">From the PSpice menu, choose Run to start the simulation.</a></td>
+          </tr>
+        </table>
+      </div>
+      <h3><a name="1048626">What is noise analysis?</a></h3>
+      <p><a name="1048627">When running a noise analysis, PSpice calculates and reports the </a>following for each frequency specified for the AC Sweep&#47;Noise analysis:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048629">Device noise, which is the noise contribution propagated to the </a>specified output net from every resistor and semiconductor device in the circuit; for semiconductor devices, the device noise is also broken down into constituent noise contributions where applicable</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048630">Example: Diodes have separate noise contributions from </a>thermal, shot, and flicker noise.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048632">Total output and equivalent input noise</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048646">&nbsp;</a></blockquote>
+<ul>      <table summary="" border="1" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" width="28%">
+        <caption>
+          <blockquote align="left"><font color="#000000"><strong>Table 10&#45;6&nbsp; </strong></font><strong><a name="1049718">&nbsp;</a></strong></blockquote>
+        </caption>
+        <tr>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="108">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048635">This value...</a></strong></font>
+            </p>
+          </td>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="292">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048637">Means this...</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048639">Output noise</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048641">RMS sum of all the device contributions </a>propagated to a specified output net</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048643">Input noise</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048645">equivalent noise that would be needed </a>at the input source to generate the calculated output noise in an ideal (noiseless) circuit</p>
+          </td>
+        </tr>
+      </table></ul>
+      <h4><a name="1048647">How PSpice calculates total output and input noise</a></h4>
+      <p><a name="1048648">To calculate total noise at an output net, PSpice computes the RMS </a>sum of the noise propagated to the net by all noise&#45;generating devices in the circuit.</p>
+      <p><a name="1048649">To calculate the equivalent input noise, PSpice then divides total </a>output noise by the gain from the input source to the output net. This results in the amount of noise which, if injected at the input source into a noiseless circuit, would produce the total noise originally calculated for the output net. </p>
+      <h3><a name="1048652">Setting up a noise analysis</a></h3>
+      <h4><em><a name="1048653">To set up the noise analysis</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048654">From the PSpice menu, choose New Simulation Profile or Edit </a>Simulation Profile. (If this is a new simulation, enter the name of the profile and click OK.)</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048655">The Simulation Settings dialog box appears.</a></blockquote>
+      <blockquote><a name="1048659"><img src="images/10ac.16.1.8.png" width="675" height="510" alt=""></a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048660">Choose AC Sweep&#47;Noise in the Analysis type list box. </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048661">Under Options, select General Settings if it is not already </a>enabled.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048665">Specify the AC sweep analysis parameters as described in </a><a href="#1048504" title="AC analyses"><font color="Blue"><u>Setting up an AC analysis</u></font></a><a href="#1048504" title="AC analyses"></a>.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048666">Enable the Noise Analysis check box.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	6.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048667">Enter the noise analysis parameters as follows:</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048692">&nbsp;</a></blockquote>
+<ul>      <table summary="" border="1" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" width="28%">
+        <caption>
+          <blockquote align="left"><font color="#000000"><strong>Table 10&#45;7&nbsp; </strong></font><strong><a name="1049728">&nbsp;</a></strong></blockquote>
+        </caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="115">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048670">In this text </a>box...</strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="285">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048672">Type this...</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048674">Output Voltage</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048676">A voltage output variable of the form </a><font size="2" face="'Courier New'" color="#000000">V</font>(<font color="#000000"><em>node</em></font>, [<font color="#000000"><em>node</em></font>]) where you want the total output noise calculated.</p>
+            <p><a name="1048677">To find out more about valid syntax, </a>see <a href="08start.html#1048600" title="08start.html"><font color="Blue"><u>Output variables</u></font></a><a href="08start.html#1048600" title="08start.html"></a>.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048682">I&#47;V Source</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048684">The name of an independent current or </a>voltage source where you want the equivalent input noise calculated.</p>
+            <p><font color="#000000"><strong>Note: </strong></font><a name="1048685">If the source is in a lower level of </a>a hierarchical schematic, separate the names of the hierarchical devices with periods (.). <br>Example: U1.V2</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048688">Interval</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048690">An integer </a><font color="#000000"><em>n</em></font> designating that at every <font color="#000000"><em>n</em></font><sup>th</sup> frequency, you want to see a table printed in the PSpice output file (<font size="2" face="'Courier New'" color="#000000">.OUT</font>) showing the individual contributions of all of the circuit's noise generators to the total noise.</p>
+            <p><font color="#000000"><strong>Note: </strong></font><a name="1048691">In the Probe window, you can </a>view the device noise contributions at every frequency specified in the AC sweep. The Interval parameter has no effect on what PSpice writes to the Probe data file.</p>
+          </td>
+        </tr>
+      </table></ul>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	7.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048693">Click OK to save the simulation profile.</a></td>
+          </tr>
+        </table>
+      </div>
+      <h3><a name="1048696">Analyzing Noise in the Probe window</a></h3>
+      <p><a name="1048697">You can use these output variable formats to view traces for device </a>noise contributions and total input or output noise at every frequency in the analysis.</p>
+      <p><a name="1048701">For a break down of noise output variables by supported device type, </a>see <a href="17wave.html#1050339" title="Analyzing waveforms"><font color="Blue"><u>Table&nbsp;17&#45;17</u></font></a><a href="17wave.html#1050339" title="Analyzing waveforms"></a>.</p>
+      <p align="left"><a name="1048793">&nbsp;</a></p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="647">
+        <caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="216">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048704">To view this...</a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="192">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048706">Use this output </a>variable...</strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="238">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048708">Which is represented by this </a>equation<sup><a name="wwfootnote_inline_36" href="#36">1</a></sup>...</strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td bgcolor="#E6E6E6" cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048714">F</a>licker noise for a device</p>
+          </td>
+          <td bgcolor="#E6E6E6" cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048716">NFID(</a><font color="#000000"><em>device_name</em></font>)<br>NFIB(<font color="#000000"><em>device_name</em></font>)</p>
+          </td>
+          <td bgcolor="#E6E6E6" cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048721">noise</a><font face="symbol" color="#000000"> ∝ </font><img src="images/10ac.16.1.9.png" width="36" height="45" alt=""></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048724">Shot noise for a device</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048726">NSID(</a><font color="#000000"><em>device_name</em></font>)<br>NSIB(<font color="#000000"><em>device_name</em></font>)<br>NSIC(<font color="#000000"><em>device_name</em></font>)</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048728">For diodes and BJTs:</a></p>
+            <p><a name="1048732">noise </a><font color="#0f2bff">∝ </font><img src="images/10ac.16.1.10.png" width="23" height="17" alt=""></p>
+            <p><a name="1048733">For GaAsFETs, JFETs, and </a>MOSFETs:</p>
+            <p><a name="1048737">noise</a><font face="symbol" color="#000000"> ∝ </font><img src="images/10ac.16.1.11.png" width="76" height="32" alt=""></p>
+          </td>
+        </tr>
+        <tr>
+          <td bgcolor="#E6E6E6" cellpadding="4" valign="top">
+            <p><a name="1048739">Thermal noise for the RB, </a>RC, RD, RE, RG, or RS constituent of a device, respectively</p>
+          </td>
+          <td bgcolor="#E6E6E6" cellpadding="4" valign="top">
+            <p><a name="1048742">NRB(</a><font color="#000000"><em>device_name</em></font>)<br>NRC(<font color="#000000"><em>device_name</em></font>)<br>NRD(<font color="#000000"><em>device_name</em></font>)<br>NRE(<font color="#000000"><em>device_name</em></font>)<br>NRG(<font color="#000000"><em>device_name</em></font>)<br>NRS(<font color="#000000"><em>device_name</em></font>)</p>
+          </td>
+          <td bgcolor="#E6E6E6" cellpadding="4" valign="top">
+            <p><a name="1048747">noise</a><font face="symbol" color="#000000"> ∝ </font><img src="images/10ac.16.1.12.png" width="27" height="32" alt=""></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048749">Thermal noise generated by </a>equivalent resistances in the output of a digital device</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048751">NRLO(</a><font color="#000000"><em>device_name</em></font>)<br>NRHI(<font color="#000000"><em>device_name</em></font>)</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048756">noise</a><font face="symbol" color="#000000"> ∝ </font><img src="images/10ac.16.1.13.png" width="27" height="32" alt=""></p>
+          </td>
+        </tr>
+        <tr>
+          <td bgcolor="#E6E6E6" cellpadding="4" valign="top">
+            <p><a name="1048758">Total noise for a device</a></p>
+          </td>
+          <td bgcolor="#E6E6E6" cellpadding="4" valign="top">
+            <p><a name="1048760">NTOT(</a><font color="#000000"><em>device_name</em></font>)</p>
+          </td>
+          <td bgcolor="#E6E6E6" cellpadding="4" valign="top">
+            <p><a name="1048762">Sum of all contributors in </a><font color="#000000"><em>device_name</em></font></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048764">Total output noise for the </a>circuit</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048766">NTOT(ONOISE)</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048771"><img src="images/10ac.16.1.14.png" width="118" height="41" alt=""></a></p>
+          </td>
+        </tr>
+        <tr>
+          <td bgcolor="#E6E6E6" cellpadding="4" valign="top">
+            <p><a name="1048773">RMS&#45;summed output noise </a>for the circuit</p>
+          </td>
+          <td bgcolor="#E6E6E6" cellpadding="4" valign="top">
+            <p><a name="1048776">V(ONOISE)</a></p>
+          </td>
+          <td bgcolor="#E6E6E6" cellpadding="4" valign="top">
+            <p><a name="1048778">RMS sum of all contributors</a></p>
+            <p><a name="1048782"><img src="images/10ac.16.1.15.png" width="119" height="20" alt=""></a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048784">Equivalent input noise for the </a>circuit</p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048787">V(INOISE)</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048792"><img src="images/10ac.16.1.16.png" width="74" height="32" alt=""></a></p>
+          </td>
+        </tr>
+      </table>
+       
+      <table width="100%" border="0" cellpadding="3" cellspacing="0" summary="">
+        <tr valign="baseline">
+          <td>
+            <p>
+              <font size="-1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a name="36" href="#wwfootnote_inline_36">1</a>
+              </font>
+            </p>
+          </td>
+          <td>
+            <p>
+              <font color="#000000"><a name="1048711">To find out more about the equations that describe noise behavior, refer to the appropriate device </a>type in the <font color="#000000"><em>Analog Devices</em></font> chapter in the online <font color="#000000"><em>PSpice Reference Guide</em></font>.</font>
+            </p>
+          </td>
+        </tr>
+      </table>
+      <h4><a name="1048795">About noise units</a></h4>
+      <p align="left"><a name="1048815">&nbsp;</a></p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="435">
+        <caption>
+          <p align="left"><font color="#000000"><strong>Table 10&#45;8&nbsp; </strong></font><strong><a name="1049736">&nbsp;</a></strong></p>
+        </caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="288">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048798">This type of noise output variable...</a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="146">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048800">Is reported in </a>these units...</strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048802">Device contribution of the form N</a><font color="#000000"><em>xxx</em></font></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048807"><img src="images/10ac.16.1.17.png" width="86" height="22" alt=""></a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048809">Total input or output noise of the form </a>V(ONOISE) or V(INOISE)</p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048814"><img src="images/10ac.16.1.18.png" width="90" height="20" alt=""></a></p>
+          </td>
+        </tr>
+      </table>
+      <h4><a name="1048816">Example</a></h4>
+      <p><a name="1048820">You can run a noise analysis on the circuit shown in </a><a href="#1048549" title="AC analyses"><font color="Blue"><u>Figure&nbsp;10&#45;1</u></font></a><a href="#1048549" title="AC analyses"></a>. </p>
+      <h4><em><a name="1048822">To run a noise analysis on the example:</a></em></h4>
+      <p><a name="1048823">In Capture, open the </a><font size="2" face="'Courier New'" color="#000000">EXAMPLE.OPJ</font> circuit provided in the \tools\pspice\capture_samples\anasim\example subdirectory. </p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048824">From the PSpice menu, choose New Simulation Profile or Edit </a>Simulation Profile. (If this is a new simulation, enter the name of the profile and click OK.)</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048825">The Simulation Settings dialog box appears.</a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048826">Choose AC Sweep&#47;Noise in the Analysis type list box.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048827">Under Options, select General Settings if it is not already </a>enabled.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048828">Enable the Noise Analysis check box.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048829">Enter the following parameters for the noise analysis:</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048847">&nbsp;</a></blockquote>
+<ul>      <table summary="" cellpadding="16" cellspacing="0" bgcolor="#FFFFFF" width="363">
+        <caption>
+        <tr>
+          <td cellpadding="16" valign="top" width="139">
+            <p><a name="1048832">Output Voltage</a></p>
+          </td>
+          <td cellpadding="16" valign="top" width="223">
+            <p><a name="1048834">V(OUT2)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="16" valign="top">
+            <p><a name="1048836">I&#47;V Source</a></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1048838">V1</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="16" valign="top">
+            <p><a name="1048840">Interval</a></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1048842">30</a></p>
+            <p><a name="1048843">For a description of the </a>Interval parameter, see <a href="#1048688" title="AC analyses"><font color="Blue"><u>Interval</u></font></a><a href="#1048688" title="AC analyses"></a>.</p>
+          </td>
+        </tr>
+      </table></ul>
+      <p><a name="1048848">These settings mean that PSpice will calculate noise contributions </a>and total output noise at net OUT2 and equivalent input noise from V1.</p>
+      <p><a name="1048849">Figure </a><font color="#0000ff"><u>10&#45;3</u></font> shows Probe traces for Q1's constituent noise sources as well as total noise for the circuit after simulating. Notice that the trace for RMSSUM (at the top of the plot), which is a macro for the trace expression</p>
+      <blockquote><a name="1048850">SQRT(NTOT(Q1) + NTOT(Q2) + NTOT(Q3) + ... ),</a></blockquote>
+      <p><a name="1048851">exactly matches the total output noise, V(ONOISE), calculated by </a>PSpice. </p>
+      <p><a name="1055073">To find out more about PSpice macros, refer to the online </a><font color="#000000"><em>PSpice </em></font><font color="#000000"><em>Help</em></font>.</p>
+      <p align="left"><a name="1055076"><img src="images/10ac.16.1.19.png" width="735" height="495" alt=""></a></p>
+      <p><a name="1055081"><img src="images/10ac.16.1.20.png" width="772" height="544" alt=""></a></p>
+      <p><font color="#000000"><strong>Figure 10&#45;3&nbsp; </strong></font><strong><a name="1055078">Device and total noise traces for EXAMPLE.OPJ.</a></strong></p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1048860">The source, V1, is a VSIN source that is normally used for </a>setting up sine wave signals for a transient analysis. It also has an AC property so that you can use it for an AC analysis. <br>To find out more about VSIN and other source symbols that you can use for AC analysis, see <a href="03prepar.html#1049625" title="Preparing a design for simulation"><font color="Blue"><u>Using time&#45;based stimulus parts with AC and DC properties</u></font></a><a href="03prepar.html#1049625" title="Preparing a design for simulation"></a>.</p>
+      <p><a name="1048865">Frequency is swept from 100 kHz to 10 GHz by decades, with 10 </a>points per decade. The V1 independent voltage source is the only input to an amplifier, so it is the only AC stimulus to this circuit. Magnitude equals 1 V and relative phase is left at zero degrees (the default). All other voltage sources have zero AC value.</p>
+    </div>
+    <br>
+    <a href="#pagetop">Return to top of page</a>
+    <hr>
+    <hr align="left">
+    <div style="text-align: left;">
+      <!-- Begin Buttons -->
+      <table width="650" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                    </td>
+<td height="20" width="73">
+<a href="pspugTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<a href="pspugIX.html"><img src="../support/nav2_index.gif" border="0"></a>
+</td>
+          <td>
+            <a href="09dc.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+          </td>
+          <td>
+            <a href="12param.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+          </td>
+          <td>
+            <a>
+<a href="pspug.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+            </a>
+          </td>
+          <td height="20" width="61">
+            <img src="../support/nav2_black.gif">
+          </td>
+          <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+          </td>
+          <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+          </td>
+          <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+          </td>
+        </tr>
+      </table>
+      <!-- End Buttons -->
+    </div>
+    <br>
+    <font size="-1" >
+For support, see <a href="http://support.cadence.com" target="_blank">Cadence Online Support</a> service.</font>
+    <br>
+    <br>
+    <font size="-1" >
+      <i>Copyright &#169; 2011, <a href="http://www.cadence.com">Cadence Design Systems, Inc.</a></i>
+    </font>
+    <br>
+    <font size="-1" >
+All rights reserved.</font>
+    <br>
+    <br>
+  </body>
+</html>

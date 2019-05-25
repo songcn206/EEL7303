@@ -1,0 +1,167 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 60 42
+HEADER "IPC2581 Export"
+
+POPUP <ATTRPOP> "Add Property""1".
+POPUP <unitList>"Millimeter""Millimeter","Micron""Micron","Inch""Inch".
+POPUP <revision>"IPC2581-A""1.02","IPC2581-1""1.01".
+#POPUP <funcModeList>"FULL""FULL","DESIGN""DESIGN","FABRICATION""FABRICATION","ASSEMBLY""ASSEMBLY","TEST""TEST".
+POPUP <funcModeList>"""".
+POPUP <levelList>"1""1","2""2","3""3".
+
+MESSAGE nerror 3 "A problem occurred, please check the logfile."
+MESSAGE nwarn  2 "IPC2581 file generated with warnings."
+MESSAGE ndone  0 "IPC2581 output completed."
+MESSAGE norec  2 "No function name selected."
+MESSAGE nofile 2 "No output file name entered."
+
+TILE 
+
+TABSET "tab_selector"
+FLOC 2 1
+TSSIZE 58 48
+
+#-----------------------
+TAB "IPC2581 Export"
+
+
+ACTIVEFIELD "fileName"
+TEXT "Output file name:"
+TLOC 2 1
+ENDTEXT
+
+FIELD fileName
+FLOC 14 1
+STRFILLIN 36 256
+ENDFIELD
+
+FIELD browse
+FLOC 53 1
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+TEXT "IPC2581 version:"
+TLOC 2 3
+ENDTEXT
+
+FIELD ipc2581_version
+FLOC 14 3
+ENUMSET 27
+POP "revision"
+ENDFIELD
+
+
+TEXT "Output units:"
+TLOC 2 5
+ENDTEXT
+
+FIELD unit
+FLOC 14 5
+STRFILLIN 12 12
+POP "unitList"
+ENDFIELD
+
+#-----------------------
+
+GROUP "File Segmentations and Function Apportionment" "grp_func"
+GLOC 1 8
+GSIZE 55 35
+ENDGROUP
+
+TEXT "Functional Mode:"
+TLOC 3 11
+ENDTEXT
+
+FIELD func_mode
+FLOC 15 11
+STRFILLIN 12 12
+POP "funcModeList"
+ENDFIELD
+
+
+TEXT "Level:"
+TLOC 33 11
+ENDTEXT
+
+FIELD level
+FLOC 38 11
+STRFILLIN 7 7
+POP "levelList"
+ENDFIELD
+
+
+FIELD ipc2581Tree
+FLOC 3 14
+TREEVIEW 51 13
+ENDFIELD
+
+FIELD ipc2581_mapping 
+FLOC 3 40
+MENUBUTTON "Layer Mapping Edit ..." 9 3
+ENDFIELD
+
+FIELD artwork
+FLOC 23 40
+MENUBUTTON "Film Creation ..." 9 3
+ENDFIELD
+
+#-- other options --
+
+FIELD text_vector
+FLOC 3 43
+CHECKLIST "Vector text"
+ENDFIELD
+
+FIELD zip_file
+FLOC 15 43
+CHECKLIST "Compress output file(.zip)"
+ENDFIELD
+
+ENDTAB
+
+#-----------------------
+TAB "Export Property"
+
+FIELD attrTree
+FLOC 2 2
+TREEVIEW 53 21
+POP "ATTRPOP"
+ENDFIELD
+
+GROUP "Available properties" "grp_attr"
+GLOC 1 0
+GSIZE 55 45
+ENDGROUP
+
+ENDTAB
+
+ENDTABSET
+
+#-----------------------
+
+FIELD export
+FLOC 3 50
+MENUBUTTON "Export" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 15 50
+MENUBUTTON "Close" 9 3
+ENDFIELD
+
+FIELD viewlog
+FLOC 27 50
+MENUBUTTON "Viewlog..." 9 3 
+ENDFIELD
+
+FIELD help
+FLOC 40 50
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+
+ENDTILE
+
+ENDFORM

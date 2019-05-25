@@ -1,0 +1,205 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+VARIABLE
+PORT 95 22
+HEADER "Layout Cross Section"
+
+
+POPUP <edit_pop>"Show""0","Insert""1","Delete""2".
+
+POPUP <etch_pop>"Copper""COPPER","Plated Copper Foil""PLATED_COPPER_FOIL".
+
+    #ifdef APD || ALLEGRO_MCM || SIP
+POPUP <layer_pop>"Conductor""CONDUCTOR","Crossover""CROSSOVER","Dielectric""DIELECTRIC",\
+"Plane""PLANE","Bonding Wire""BONDING_WIRE",\
+"Optical Wave Guide""OPTICAL_WAVE","Thermal Glue Coating""THERMAL_GLUE".
+    #else
+POPUP <layer_pop>"Conductor""CONDUCTOR","Crossover""CROSSOVER","Dielectric""DIELECTRIC",\
+"Plane""PLANE","Bonding Wire""BONDING_WIRE","Microwire""MICROWIRE","Multiwire""MULTIWIRE",\
+"Optical Wave Guide""OPTICAL_WAVE","Thermal Glue Coating""THERMAL_GLUE".
+    #endif
+
+POPUP <film_pop>"Positive""0","Negative""1".
+
+MESSAGE THICK_NOT_SUM 1 "PCB thickness does not equal sum of layers."
+MESSAGE THICKNESS_REMOVED 1 "BOARD_THICKNESS property removed."
+    #ifdef APD || ALLEGRO_MCM || SIP
+MESSAGE ADD_SUBC 1 "Use 'Conductor Subclass Name' to add/delete a conductor subclass." 
+    #else
+MESSAGE ADD_SUBC 1 "Use 'Etch Subclass Name' to add/delete an etch subclass." 
+    #endif
+MESSAGE READ_ONLY_MASTER 1 "Not editable with exported partitions."
+MESSAGE READ_ONLY_DPF 1 "Not editable within design partition."
+
+
+TILE HEADER_TILE
+TPANEL 0
+TEXT "Physical Thickness:"
+TLOC 1 0
+ENDTEXT
+
+TEXT "DRC as Photo"
+TLOC 78 1
+ENDTEXT
+
+TEXT "Edit"
+TLOC 1 3
+ENDTEXT
+
+TEXT "Material"
+TLOC 6 3
+ENDTEXT
+
+TEXT "Layer Type"
+TLOC 33 3
+ENDTEXT
+
+    #ifdef APD || ALLEGRO_MCM || SIP
+TEXT "Cond. Subclass Name"
+    #else
+TEXT "Etch Subclass Name"
+    #endif
+TLOC 56 3
+ENDTEXT
+
+TEXT "Film Type"
+TLOC 78 3
+ENDTEXT
+
+FIELD thickness
+FLOC 21 0
+STRFILLIN 18 18
+ENDFIELD
+
+FIELD sum_thickness
+FLOC 43 0
+MENUBUTTON "Sum" 5 2
+ENDFIELD
+
+ENDTILE
+
+TILE SECTION_TILE
+TPANEL 1
+FIELD edit
+FLOC 1 0
+MENUBUTTON "" 4 2
+POP "edit_pop"
+ENDFIELD
+
+FIELD etch_material
+FLOC 6 0
+STRFILLIN 19 19
+POP "etch_pop"
+ENDFIELD
+
+FIELD layer_type
+FLOC 33 0
+ENUMSET 21
+POP "layer_pop"
+ENDFIELD
+
+FIELD etch_subc_name
+FLOC 56 0
+STRFILLIN 18 18
+ENDFIELD
+
+FIELD film_type
+FLOC 78 0
+ENUMSET 10
+POP "film_pop"
+ENDFIELD
+
+ENDTILE
+
+TILE StdTile
+TPANEL 2
+FIELD done
+FLOC 1 1
+MENUBUTTON "Done" 9 3
+ENDFIELD
+{
+FIELD reset
+FLOC 11 1
+MENUBUTTON "Reset" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 21 1
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+}
+FIELD help
+FLOC 31 1
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+ENDTILE
+
+TILE TITLE_TILE
+TPANEL 2
+TEXT
+TLOC 1 0
+INFO title_name 128
+ENDTEXT
+
+ENDTILE
+
+TILE DIELECTRIC_TILE
+TPANEL 2
+TEXT "Dielectric Constant:"
+TLOC 1 0
+ENDTEXT
+
+TEXT "Thickness:"
+TLOC 1 2
+ENDTEXT
+
+TEXT "Electrical Conductivity:"
+TLOC 46 0
+ENDTEXT
+
+FIELD dielectric_const
+FLOC 22 0
+STRFILLIN 20 20
+ENDFIELD
+
+FIELD dielectric_thick
+FLOC 22 2
+STRFILLIN 20 20
+ENDFIELD
+
+FIELD dielectric_el_con
+FLOC 71 0
+STRFILLIN 20 20
+ENDFIELD
+
+ENDTILE
+
+TILE ETCH_TILE
+TPANEL 2
+TEXT "Thickness:"
+TLOC 1 2
+ENDTEXT
+
+TEXT "Electrical Conductivity:"
+TLOC 36 0
+ENDTEXT
+
+FIELD shield
+FLOC 1 0
+CHECKLIST "Shield"
+ENDFIELD
+
+FIELD etch_thickness
+FLOC 12 2
+STRFILLIN 20 20
+ENDFIELD
+
+FIELD etch_el_con
+FLOC 61 0
+STRFILLIN 20 20
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

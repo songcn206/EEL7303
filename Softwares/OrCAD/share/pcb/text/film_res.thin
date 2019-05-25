@@ -1,0 +1,78 @@
+ 
+{
+  This is an example of the "film_res.cmd" file for generating Thin Film
+  Resistors. Users may have to change the parameter values to suit their
+  application. Please refer to the Cadence "Thick/Thin Film Resistor
+  Synthesizer User Guide" for detail description of each parameter. 
+}
+ 
+technology thin
+
+root_drawing test             { name of the root_drawing             }
+use sample.wrk                { directory where the drawings are 	}
+
+units mil
+{ Dimensions }
+   grid 5
+  min_length 30                  { min for length = 30      		}
+  min_width  30                  { min for width = 30      		}
+  trimming laser 2 0.01 10 30    { layer=laser w=2 st=0.01 sp=10 min width=30% }
+  allegro_pad_subclass pastemask 5 { additional etch data on top of shaped pads }
+  allegro_pad_subclass soldermask -5
+ 
+{ -- end of dimensions }
+
+{ Resistor controls : 							}
+temp 50degrees                   { operate the device at 50 degree 	}
+
+{ RESISTOR ink description : FRONT of SUBSTRATE }
+resistor_base substrate          { }
+   resistor_pads top 15 5        { pads layer=top over=15 enc=5         }
+   allegro_route_keepout_subclass top 5    { route keepout on layer top }
+   allegro_route_keepout_subclass bonding 5
+				 { route keepout on layer bonding       }
+   { resistor command format :
+	resistor - keyword
+	|        subclass name
+	|        |      ohms/sq
+	|        |      |       power
+	|        |      |       |     current (mA)
+	|        |      |       |     |   Ptol (%)
+	|        |      |       |     |   |         
+	|        |      |       |     |   |                             }
+	resistor r2ko   2k      50mW  2.5 25                            
+   allegro_subclass r2ko         { allegro_subclass = layer             }
+{ end of RESISTOR ink description }
+
+
+{ =====================================================================   
+  =============== Additional commands =================================	}
+
+{ ADditional commands for controlling RESISTOR generation		}
+default_base substrate
+default_orientation VERT
+power_coef 1                     { power multiplied by 1 before computation }
+power_derating 0.625mW 125       { power derating starting at 125 degrees }
+power_units mm                   { power is in Watt per square mm 	}
+trim_check on
+
+
+{ OUTPUT CONTROL :                  					}
+max_errors 100                   { program stops if > 100 errors	}
+oversights off                   { display oversights        		}
+warnings on                      { display warnings          		}
+suppress 31 32
+
+resistor_loops loops.script      { name of Concept loops script 	}
+resistor_table restab
+
+
+{ Commands for controlling ALLEGRO :					}
+allegro_pad_shaped off           { only padstacks are used 		}
+{
+allegro_route_keepout_all 5      { if allowed, use ROUTE KEEPOUT ALL 	}
+}
+allegro_dummy_padstack 'pinres.pad'  { dummy padstack name 		}
+
+~
+

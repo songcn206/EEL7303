@@ -1,0 +1,233 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM 
+FIXED
+PORT 67 12
+HEADER "Import Logic"
+
+MESSAGE DIR_HDL 0 "Source must be a directory for Design Entry HDL"
+MESSAGE DIR_CAPTURE 0 "Source must be a directory for Capture"
+MESSAGE DIR_SCALD 0 "Source must be a directory for SCALD"
+MESSAGE READ_ONLY_MASTER 1 "Not editable with exported partitions."
+
+TILE
+
+TABSET "tab"
+FLOC 1 1
+TSSIZE 52 34
+
+TAB "Cadence" cadence
+
+TEXT "Branding:"
+TLOC 2 1
+ENDTEXT
+
+TEXT
+TLOC 10 1
+INFO current_state 44
+ENDTEXT
+
+GROUP "Import logic type"
+GLOC 2 3
+GSIZE 25 11
+ENDGROUP
+
+FIELD five_dot_x
+FLOC 4 5
+CHECKLIST "Design entry HDL" "netlist_group"
+ENDFIELD
+
+FIELD capture_netlist
+FLOC 4 7
+CHECKLIST "Design entry CIS (Capture)" "netlist_group"
+ENDFIELD
+
+FIELD netrev_netlist
+FLOC 4 9
+CHECKLIST "SCALD" "netlist_group"
+ENDFIELD
+
+GROUP "Place changed component"
+GLOC 28 3
+GSIZE 22 11
+ENDGROUP
+
+FIELD place_always
+FLOC 29 5
+CHECKLIST "Always" "pl"
+ENDFIELD
+
+FIELD place_never
+FLOC 29 7
+CHECKLIST "Never" "pl"
+ENDFIELD
+
+FIELD place_if_same
+FLOC 29 9
+CHECKLIST "If same symbol" "pl"
+ENDFIELD
+
+GROUP "HDL Constraint Manager Enabled Flow options"
+GLOC 2 14
+GSIZE 47 5
+ENDGROUP
+
+FIELD cmgr_diff3
+FLOC 4 16
+CHECKLIST "Import changes only" "cmgr"
+ENDFIELD
+
+FIELD cmgr_override
+FLOC 24 16
+CHECKLIST "Overwrite current constraints" "cmgr"
+ENDFIELD
+
+FIELD remove_etch
+FLOC 2 20
+CHECKLIST "Allow etch removal during ECO"
+ENDFIELD
+
+FIELD ignore_fixed
+FLOC 2 22
+CHECKLIST "Ignore FIXED property"
+ENDFIELD
+
+FIELD user_properties
+FLOC 2 24
+CHECKLIST "Create user-defined properties"
+ENDFIELD
+
+FIELD dump_pcbxml
+FLOC 2 26
+CHECKLIST "Create PCB XML from input data"
+ENDFIELD
+
+FIELD pcb_compare
+FLOC 30 26
+MENUBUTTON "Design Compare..." 17 3
+ENDFIELD
+
+    #ifdef specctraquest
+FIELD rename_refdes
+FLOC 2 28
+CHECKLIST "Rename existing refdes"
+ENDFIELD
+    #endif
+
+TEXT "Import directory:"
+TLOC 2 29
+ENDTEXT
+
+FIELD directory
+FLOC 14 29
+STRFILLIN 31 1024
+ENDFIELD
+
+FIELD browse
+FLOC 47 29
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+ENDTAB
+
+TAB "Other" other
+
+TEXT "Import netlist:"
+TLOC 2 3
+ENDTEXT
+
+FIELD filename
+FLOC 14 3
+STRFILLIN 31 1024
+ENDFIELD
+
+FIELD browse_filename
+FLOC 47 3
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+FIELD syntax_check_only
+FLOC 2 7
+CHECKLIST "Syntax check only"
+ENDFIELD
+
+FIELD supercede
+FLOC 2 9
+CHECKLIST "Supersede all logical data"
+ENDFIELD
+
+FIELD append_device_log
+FLOC 2 11
+CHECKLIST "Append device file log"
+ENDFIELD
+
+FIELD remove_etch_other
+FLOC 2 13
+CHECKLIST "Allow etch removal during ECO"
+ENDFIELD
+
+FIELD ignore_fixed_other
+FLOC 2 15
+CHECKLIST "Ignore FIXED property"
+ENDFIELD
+
+    #ifdef specctraquest
+FIELD rename_refdes_other
+FLOC 2 17
+CHECKLIST "Rename existing refdes"
+ENDFIELD
+    #endif
+
+GROUP "Place changed component"
+GLOC 28 6
+GSIZE 22 9
+ENDGROUP
+
+FIELD place_always_other
+FLOC 29 8
+CHECKLIST "Always" "p2"
+ENDFIELD
+
+FIELD place_never_other
+FLOC 29 10
+CHECKLIST "Never" "p2"
+ENDFIELD
+
+FIELD place_if_same_other
+FLOC 29 12
+CHECKLIST "If same symbol" "p2"
+ENDFIELD
+
+ENDTAB
+
+ENDTABSET
+
+FIELD import
+FLOC 55 3
+MENUBUTTON "Import" 11 5
+OPTIONS multiline
+ENDFIELD
+
+FIELD view_log
+FLOC 55 8
+MENUBUTTON "Viewlog..." 11 3
+ENDFIELD
+
+FIELD close
+FLOC 55 11
+MENUBUTTON "Close" 11 3
+ENDFIELD
+
+FIELD cancel
+FLOC 55 14
+MENUBUTTON "Cancel" 11 3
+ENDFIELD
+
+FIELD help
+FLOC 55 17
+MENUBUTTON "Help" 11 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM
+

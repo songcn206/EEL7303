@@ -1,0 +1,174 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 53 27
+HEADER  "IC Library Manager" 
+
+POPUP <LEFLIBPOPUP>"""".
+
+TILE
+
+GROUP "Library Based on:" library_source
+GLOC 2 0
+GSIZE 50 4
+
+FIELD die_abstract_lib
+FLOC 3 2
+CHECKLIST "Die Abstract" "radio"
+ENDFIELD
+
+FIELD lef_lib
+FLOC 25 2
+CHECKLIST "LEF Library" "radio"
+ENDFIELD
+
+ENDGROUP
+
+GROUP " File Name "
+INFO library_type_file 40
+GLOC 2 4
+GSIZE 50 7
+ENDGROUP
+
+TEXT "Current directory:"
+TLOC 4 6
+ENDTEXT
+
+TEXT ""
+TLOC 17 6
+INFO libFileDir 32
+ENDTEXT
+
+TEXT "File name:"
+TLOC 4 8
+ENDTEXT
+
+FIELD libFilePath
+FLOC 12 8
+STRFILLIN 25 45
+ENDFIELD
+
+FIELD llf_select
+FLOC  40 8
+MENUBUTTON "&Browse..." 10 3
+ENDFIELD
+
+    GROUP " Library settings "
+    GLOC 2 11
+    GSIZE 50 32
+    ENDGROUP
+
+    GROUP "Current library from Library Definition file"
+    GLOC 3 13
+    GSIZE 48 6
+    ENDGROUP
+
+    FIELD lef_library
+    FLOC 5 16
+    ENUMSET 17
+    POP "LEFLIBPOPUP"
+    ENDFIELD
+
+    FIELD add_lib
+    FLOC 28 16
+    MENUBUTTON "&Add..." 10 3
+    ENDFIELD
+
+    FIELD remove_lib
+    FLOC 40 16
+    MENUBUTTON "&Remove" 10 3
+    ENDFIELD
+
+    GROUP " LEF files "
+    GLOC 3 19
+    GSIZE 48 23
+    ENDGROUP
+
+    FIELD lefpath
+    FLOC 5 21
+    LIST "" 33 6
+    ENDFIELD
+
+    FIELD up_file
+    FLOC 40 21
+    MENUBUTTON "" 10 3
+    BITMAP arrow_up.bmp
+    ENDFIELD
+
+    FIELD down_file
+    FLOC 40 24
+    MENUBUTTON "" 10 3
+    BITMAP arrow_down.bmp
+    ENDFIELD
+
+    FIELD add_file
+    FLOC 40 27
+    MENUBUTTON "A&dd..." 10 3
+    ENDFIELD
+
+    FIELD remove_file
+    FLOC 40 30
+    MENUBUTTON "R&emove" 10 3
+    ENDFIELD
+
+    FIELD relativePathCheckBox
+    FLOC 5 31
+    CHECKLIST "Use LEF file path relative to LDF file"
+    ENDFIELD
+
+    GROUP " CML settings "
+    GLOC 4 33
+    GSIZE 46 8
+    ENDGROUP
+
+    TEXT "File name:"
+    TLOC 6 36
+    ENDTEXT
+
+    TEXT "dieU1.cml"
+    TLOC 15 36
+    INFO cmlFileName 21
+    ENDTEXT
+
+    FIELD cmlOptions
+    FLOC 38 35
+    MENUBUTTON "&Options..." 11 3
+    ENDFIELD
+
+    TEXT "Status:"
+    TLOC 6 38
+    ENDTEXT
+
+    TEXT ""
+    TLOC 15 38
+    INFO cmlFileStatus 23
+    ENDTEXT
+
+    FIELD create_cml
+    FLOC 38 38
+    MENUBUTTON "Auto create" 11 3
+    ENDFIELD
+
+    FIELD remove_cml
+    FLOC 38 38
+    MENUBUTTON "Remove" 11 3
+    ENDFIELD
+    
+    FIELD OK
+    FLOC 8 44
+    MENUBUTTON "&OK" 11 3
+    ENDFIELD
+ 
+#    FIELD Cancel
+#    FLOC 22 43
+#    MENUBUTTON "&Cancel" 11 3
+#    ENDFIELD
+
+    FIELD Help
+    FLOC 36 44
+    MENUBUTTON "&Help" 11 3
+    ENDFIELD
+
+ENDTILE
+
+ENDFORM

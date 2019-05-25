@@ -1,0 +1,106 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+
+FORM fixed_font
+	FIXED
+	PORT 30 35
+	HEADER "RFSiP Route"
+
+	POPUP <currentshape>"""".
+	POPUP <defaultshape>"""".
+	POPUP <defaultbend>"""".
+	POPUP <rotation>"0""0","90""90","180""180","270""270".
+	POPUP <nets>"""".
+	POPUP <gridAPDLayers>"""".
+	POPUP <gridConductingLayers>"""".
+
+	TILE
+
+		TEXT "Default Shape"
+			TLOC 1 1
+		ENDTEXT
+
+		FIELD current_shape
+			FLOC 16 1
+			ENUMSET 11
+			POP "currentshape"
+		ENDFIELD
+
+		TEXT "Default Bend"
+			TLOC 1 3
+		ENDTEXT
+
+		FIELD default_bend
+			FLOC 16 3
+			ENUMSET 11
+			POP "defaultbend"
+		ENDFIELD
+
+		GRID "current_shape_properties"
+			FLOC 1 6
+			FSIZE 28 11
+			OPTIONS HLINES VLINES USERSIZE
+			GHEAD TOP 
+				HEADSIZE 2
+				OPTIONS 3D MULTI
+			ENDGHEAD
+		ENDGRID
+
+		FIELD auto_snap_start_point
+			FLOC 1 18
+			CHECKLIST "Auto Snap Start Point"
+		ENDFIELD
+
+		TEXT "Line Width"
+			TLOC 1 20
+		ENDTEXT
+
+		FIELD line_width
+			FLOC 16 20
+			REALFILLIN 12 12
+			DECIMAL 2
+			REALMIN 0.0
+		ENDFIELD
+
+		TEXT "Bend Proximity"
+			TLOC 1 22
+		ENDTEXT
+
+		FIELD min_bend_distance
+			FLOC 16 22
+			REALFILLIN 12 12
+			DECIMAL 2
+			REALMIN 0.0
+		ENDFIELD
+
+		TEXT "Route Length"
+			TLOC 1 24
+		ENDTEXT
+
+		FIELD route_length
+			FLOC 16 24
+			REALFILLIN 12 12
+		ENDFIELD
+
+		TEXT "Route Net"
+			TLOC 1 26
+		ENDTEXT
+
+		FIELD route_net
+			FLOC 16 26
+			ENUMSET 11
+			POP "nets"
+		ENDFIELD
+
+		FIELD ok
+			FLOC 1 30
+			MENUBUTTON "OK" 8 3
+		ENDFIELD
+
+		FIELD cancel
+			FLOC 11 30
+			MENUBUTTON "Cancel" 8 3
+		ENDFIELD
+
+	ENDTILE
+
+ENDFORM

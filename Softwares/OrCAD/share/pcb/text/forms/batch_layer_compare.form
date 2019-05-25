@@ -1,0 +1,156 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 86 39
+
+HEADER "Batch Layer Compare"
+
+POPUP <op_color_popup>      "" "".
+POPUP <operation_popup>     "Logical AND" "AND", "Logical OR" "OR", "Logical XOR" "XOR", "Logical ANDNOT" "ANDNOT".
+POPUP <tree_action_popup>   "" "".
+
+TILE
+
+FIELD compare_db
+FLOC 1 1
+CHECKLIST "Comparison database:"
+ENDFIELD
+FIELD compare_db_name
+FLOC 20 1
+STRFILLIN 55 1024
+ENDFIELD
+FIELD compare_db_browse
+FLOC 80 1
+MENUBUTTON "..." 5 3
+ENDFIELD
+
+FIELD control_file
+FLOC 1 3
+CHECKLIST "Control file:"
+ENDFIELD
+FIELD control_file_name
+FLOC 20 3
+STRFILLIN 55 1024
+ENDFIELD
+FIELD control_file_browse
+FLOC 80 3
+MENUBUTTON "..." 5 3
+ENDFIELD
+
+FIELD detailed_differences
+FLOC 1 5
+CHECKLIST "Show detailed differences instead of location and size of differences"
+ENDFIELD
+
+FIELD comparison_tree
+FLOC 1 7
+TREEVIEW 84 12
+POP "tree_action_popup"
+ENDFIELD
+
+GROUP "Operation Colors"
+GLOC 1 32
+GSIZE 84 9
+INFO color_group
+ENDGROUP
+
+TEXT "AND:"
+TLOC 3 34
+INFO color_and_label
+ENDTEXT
+FIELD color_and
+FLOC 10 34
+ENUMSET 22
+OPTIONS prettyprint ownerdrawn
+POP "op_color_popup"
+ENDFIELD
+
+TEXT "OR:"
+TLOC 3 36
+INFO color_or_label
+ENDTEXT
+FIELD color_or
+FLOC 10 36
+ENUMSET 22
+OPTIONS prettyprint ownerdrawn
+POP "op_color_popup"
+ENDFIELD
+
+TEXT "XOR:"
+TLOC 3 38
+INFO color_xor_label
+ENDTEXT
+FIELD color_xor
+FLOC 10 38
+ENUMSET 22
+OPTIONS prettyprint ownerdrawn
+POP "op_color_popup"
+ENDFIELD
+
+TEXT "Master ANDNOT Compare:"
+TLOC 40 34
+INFO color_sandnotc_label
+ENDTEXT
+FIELD color_sandnotc
+FLOC 60 34
+ENUMSET 22
+OPTIONS prettyprint ownerdrawn
+POP "op_color_popup"
+ENDFIELD
+
+TEXT "Compare ANDNOT Master:"
+TLOC 40 36
+INFO color_candnots_label
+ENDTEXT
+FIELD color_candnots
+FLOC 60 36
+ENUMSET 22
+OPTIONS prettyprint ownerdrawn
+POP "op_color_popup"
+ENDFIELD
+
+TEXT "* NOTE: It is strongly advised that your designs are as clean as possible prior to running layer comparisons, to avoid incorrectly-flagged errors. Tools which can be used to clean the design include 'derive assignment', 'dbdoctor', and 'package integrity'."
+TLOC 3 42
+INFO text_note1
+OPTIONS bold
+FSIZE 90 5
+ENDTEXT
+
+FIELD compare
+FLOC 1 47
+MENUBUTTON "Compare" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 11 47
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 76 47
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+FLEXMODE edgegravity
+FLEX text_note1          0   1   0   0
+FLEX text_note2          0   1   0   0
+FLEX compare_db_name     0   0   1   0
+FLEX control_file_name   0   0   1   0
+FLEX compare_db_browse   1   0   0   0
+FLEX control_file_browse 1   0   0   0
+FLEX detailed_differences 1   0   0   0
+FLEX comparison_tree     0   0   1   1
+FLEX color_group         0   1   1   0
+FLEX color_and           0   1   0   0
+FLEX color_or            0   1   0   0
+FLEX color_xor           0   1   0   0
+FLEX color_sandnotc      0   1   0   0
+FLEX color_candnots      0   1   0   0
+FLEX color_and_label           0   1   0   0
+FLEX color_or_label            0   1   0   0
+FLEX color_xor_label           0   1   0   0
+FLEX color_sandnotc_label      0   1   0   0
+FLEX color_candnots_label      0   1   0   0
+
+ENDTILE
+ENDFORM

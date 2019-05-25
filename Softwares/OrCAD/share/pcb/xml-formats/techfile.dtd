@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE redsAttributes [
+
+<!ELEMENT redsAttributes ( allegroTechnologyFile  )>
+
+<!ELEMENT allegroTechnologyFile (name, technologyHeader, units, drawing, opFlags, dictionaryExtensions,crossSection, constraints)>
+
+<!ELEMENT technologyHeader ( objectKey, version, revisionNumber, contents, dictionaryExtensions)>
+
+<!ELEMENT contents  (value*)>
+
+<!ELEMENT drawing ( attribute* )> 
+
+<!ELEMENT opFlags ( attribute* )>
+
+<!ELEMENT dictionaryExtensions (attribute*)>
+
+<!ELEMENT constraints (value, (electricalCSetMatchGroup | electricalCSetPinPair | electricalCSet | physicalCSet | spacingCSetpinPair | netClass | netClassClass | region | regionClass | regionClassClass)* )>
+
+<!ELEMENT CrossSection ( Layer | system | design | designInst | partDefn | part | gateDefn | gate | pinDefn | pin | region | electricalNet | signal | pinPair | netClassClass | regionClass | regionClassClass | matchGroup | netClass | differentialPair | bus | ioTile | ioBus | ioDiffPair | ioDie | ioBus | ioDiffPair | group | electricalCSet | physicalCSet | spacingCSet | electricalCSetPinPair | electricalCSetMatchGroup | ioDriver )*>
+
+<!ELEMENT aliases 	( busRef | diffPairRef | electricalNetRef | electricalCSetRef | gateRef | matchGroupRef | netClassRef | netClassClassRef | partRef | physicalCSetRef | pinPairRef | regionRef | regionClassRef | regionClassClassRef | signalRef | spacingCSetRef )* > 
+
+<!ELEMENT attribute 	( name | value | aliases | Analysis | Name | DataType | Description | DisplayName | elatedAnalysis | Range | LegalExpression | MaxLength | Object | Objects | origin | Parent | RelatedProperties |  status | units | Version | Value )*>
+
+<!ELEMENT bus		(name, (attribute | units | Source | Status | origin | memberType | aliases | objectStatus | electricalCSetRef | physicalCSetRef |spacingCSetRef )* )>
+
+<!ELEMENT design		(name, (attribute | units | Source | Status | origin | designRef | objectStatus)* )>
+
+<!ELEMENT designInst	(name, (attribute | units | Source | Status | origin | objectStatus)* )>
+
+<!ELEMENT differentialPair (name, (attribute | units | Source | Status | origin | memberType | aliases | objectStatus | electricalCSetRef | physicalCSetRef | spacingCSetRef)* )>
+
+<!ELEMENT electricalNet	(name, (attribute | units | Source | Status | origin | aliases | objectStatus | electricalCSetRef | physicalCSetRef |spacingCSetRef | designSignalRef | instanceRef)* )>
+
+<!ELEMENT electricalCSet (name, (attribute | units | Source | Status | origin | instanceRef | aliases | objectStatus | pinPairRef | groupRef | topologyData )* )>
+
+<!ELEMENT electricalCSetPinPair (name, (attribute | units | Source | Status | origin)* )>
+
+<!ELEMENT electricalCSetMatchGroup (name, member, (attribute | units | Source | Status | origin | partRef | gateRef )* )>
+
+<!ELEMENT gateDefn	(name, (attribute | units | Source | Status | origin | aliases | objectStatus)* )>
+
+<!ELEMENT gate		(name, (attribute | units | Source | Status | origin | aliases | objectStatus)*)>
+
+<!ELEMENT group		(name, (attribute | units | Source | Status | origin | memberType | aliases | objectStatus | electricalCSetRef | physicalCSetRef |spacingCSetRef )* )>
+
+<!ELEMENT ioTile		(name, (attribute | units | Source | Status | origin | memberType | aliases | objectStatus | electricalCSetRef | physicalCSetRef |spacingCSetRef )* )>
+
+<!ELEMENT ioBus		(name, (attribute | units | Source | Status | origin | memberType | aliases | objectStatus | electricalCSetRef | physicalCSetRef |spacingCSetRef )* )>
+
+<!ELEMENT ioDiffPair	(name, (attribute | units | Source | Status | origin | memberType | aliases | objectStatus | electricalCSetRef | physicalCSetRef |spacingCSetRef )* )>
+
+<!ELEMENT ioDie		(name, (attribute | units | Source | Status | origin | memberType | aliases | objectStatus | electricalCSetRef | physicalCSetRef |spacingCSetRef )* )>
+
+<!ELEMENT ioDriver	(name, (attribute | units | Source | Status | origin | aliases)* )>
+
+<!ELEMENT Layer 		(name, (attribute | units | Source | Status | origin)* )>
+
+<!ELEMENT matchGroup	(name, (attribute | units | Source | Status | origin | memberType | aliases| objectStatus | electricalCSetRef | physicalCSetRef |spacingCSetRef )* )>
+
+<!ELEMENT netClass	(name, (attribute | units | Source | Status | origin | memberType |aliases | objectStatus | electricalCSetRef | physicalCSetRef |spacingCSetRef )* )>
+
+<!ELEMENT netClassClass	(name, (attribute | units | Source | Status | origin | electricalCSetRef | physicalCSetRef | spacingCSetRef )* )>
+
+<!ELEMENT  Object 	( busRef | designRef | diffPairRef | designInstRef | electricalCSetRef | electricalNetRef | gateRef | groupRef | matchGroupRef | netClassRef | netClassClassRef | physicalCSetRef | partRef | pinPairRef | regionRef | regionClass | regionClassClass | signalRef | spacingCSetRef | systemRef )* >
+
+<!ELEMENT partDefn	(name, (attribute | units | Source | Status | origin | partRef)* )>
+
+<!ELEMENT part		(name, (attribute | units | Source | Status | origin | aliases | objectStatus)* )>
+
+<!ELEMENT pinDefn		(name, (attribute | units | Source | Status | origin | aliases | objectStatus)* )>
+
+<!ELEMENT pin		(name, (attribute | units | Source | Status | origin | aliases | objectStatus)* )>
+
+<!ELEMENT pinPair		(name, (attribute | units | Source | Status | origin | instanceRef | pinRef | aliases| objectStatus )* )>
+
+<!ELEMENT physicalCSet	(name, (attribute | units | Source | Status | origin | aliases | objectStatus)* )>
+
+<!ELEMENT region		(name, (attribute | units | Source | Status | origin)* )>
+
+<!ELEMENT regionClass	(name, (attribute | units | Source | Status | origin | electricalCSetRef | physicalCSetRef | spacingCSetRef | regionRef)* )>
+
+<!ELEMENT regionClassClass (name, (attribute | units | Source | Status | origin | electricalCSetRef | physicalCSetRef |spacingCSetRef | regionRef)* )>
+
+<!ELEMENT signal		(name, (attribute | units | Source | Status | origin | electricalCSetRef | physicalCSetRef | spacingCSetRef | instanceRef | aliases| objectStatus )* )>
+
+<!ELEMENT spacingCSet	(name, (attribute | units | Source | Status | origin | aliases | objectStatus)* )>
+
+<!ELEMENT system		(name, (attribute | units | Source | Status | origin)* )> 
+
+
+<!ELEMENT block 			(#PCDATA)>
+<!ELEMENT name	 		(#PCDATA)>
+<!ELEMENT scaling 		(#PCDATA)>
+<!ELEMENT type 			(#PCDATA)>
+<!ELEMENT value 			(#PCDATA)>
+<!ELEMENT aliases 		(value)*>
+<!ELEMENT alternateName		(#PCDATA)>
+<!ELEMENT Analysis		(MeasureName | PredefinedProp | Status)*>
+<!ELEMENT busRef 			(#PCDATA | name | alternateName)*>
+<!ELEMENT DataType 		(value)>
+<!ELEMENT Description 		(#PCDATA)>
+<!ELEMENT designRef 		(#PCDATA | name | alternateName)*>           
+<!ELEMENT designInstRef 	(#PCDATA | name | alternateName)*> 
+<!ELEMENT designSignalRef 	(name, value)>
+<!ELEMENT diffPairRef 		(#PCDATA | name | alternateName)*> 
+<!ELEMENT DisplayName 		(#PCDATA)> 
+<!ELEMENT elatedAnalysis	(value)*>        
+<!ELEMENT electricalCSetRef 	(#PCDATA | name | alternateName)*>
+<!ELEMENT electricalNetRef 	(#PCDATA | name | alternateName)*>
+<!ELEMENT gateRef 		(#PCDATA | name | alternateName)*>
+<!ELEMENT groupRef 		(#PCDATA | name | alternateName)*>
+<!ELEMENT instanceRef 		(systemRef, pinPairRef)>
+<!ELEMENT LegalExpression 	(value)>
+<!ELEMENT logicalViewRevNum	(#PCDATA)>
+<!ELEMENT matchGroupRef 	(#PCDATA | name | alternateName)*>
+<!ELEMENT Max 			(value)>
+<!ELEMENT MaxLength 		(value)>
+<!ELEMENT MeasureName 		(value)>
+<!ELEMENT Min 			(value)>
+<!ELEMENT member 			(pinPairRef)>
+<!ELEMENT memberType 		(value)>
+<!ELEMENT netClassRef 		(#PCDATA | name | alternateName)*>
+<!ELEMENT netClassClassRef 	(#PCDATA | name | alternateName)*>
+<!ELEMENT NoInherit 		(name, value)*>
+<!ELEMENT NoPackage 		(value)*>
+<!ELEMENT objectFlag 		(#PCDATA)>
+<!ELEMENT objectKey 		(value)>
+<!ELEMENT Objects 		(ValidObjects | NoInherit | NoPackage)*>
+<!ELEMENT objectStatus 		(#PCDATA)>
+<!ELEMENT origin 			(#PCDATA)>
+<!ELEMENT otherViewRevNum	(#PCDATA)>
+<!ELEMENT Parent 			(ecsetMatchGroupRef | matchGroupRef )>
+<!ELEMENT physicalCSetRef 	(#PCDATA | name | alternateName)*>
+<!ELEMENT physicalViewRevNum	(#PCDATA)>
+<!ELEMENT partRef 		(#PCDATA | name | alternateName)*>
+<!ELEMENT pinRef			(#PCDATA | name | alternateName)*>
+<!ELEMENT pinPairRef 		(#PCDATA | name | alternateName)*>
+<!ELEMENT PredefinedProp	(value)>
+<!ELEMENT Range 			(Min , Max )>
+<!ELEMENT revisionNumber 	(logicalViewRevNum, physicalViewRevNum, otherViewRevNum)>
+<!ELEMENT regionRef 		(#PCDATA | name | alternateName)*>
+<!ELEMENT regionClass 		(#PCDATA | name | alternateName)*>
+<!ELEMENT regionClassClass 	(#PCDATA | name | alternateName)*>
+<!ELEMENT RelatedProperties 	(value)*>
+<!ELEMENT Scope 			(systemRef, designRef)>
+<!ELEMENT Source 			(Scope, Object)>
+<!ELEMENT signalRef 		(#PCDATA | name | alternateName)*>
+<!ELEMENT spacingCSetRef 	(#PCDATA | name | alternateName)*>
+<!ELEMENT systemRef 		(#PCDATA | name | alternateName)*>
+<!ELEMENT Status 			(#PCDATA | value)*>
+<!ELEMENT topologyData 		(name, block)>
+<!ELEMENT units			(type, name, scaling)>
+<!ELEMENT ValidObjects 		(value)*>
+<!ELEMENT Value			(DataType | ValueType |	Units | Range | Status )*>
+<!ELEMENT ValueType 		(#PCDATA)>
+<!ELEMENT version			(value)>
+  
+
+]>

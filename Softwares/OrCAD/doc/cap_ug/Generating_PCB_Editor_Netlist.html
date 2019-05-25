@@ -1,0 +1,653 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>
+      Generating PCB Editor Netlist
+    </title>
+    <meta name="Approver" content="Technical Publications" />
+    <meta name="Author" content="Technical Publications" />
+    <meta name="CreateDate" content="2012-10-10" />
+    <meta name="CreateTime" content="1349876210" />
+    <meta name="DataType" content="Manuals" />
+    <meta name="Description" content="UG" />
+    <meta name="DocTitle" content="OrCAD Capture User Guide" />
+    <meta name="DocType" content="User Guide" />
+    <meta name="FileTitle"
+    content="Generating PCB Editor Netlist" />
+    <meta name="Keywords" content="" />
+    <meta name="FileType" content="Chapter" />
+    <meta name="Keyword" content="cap_ug" />
+    <meta name="Language" content="English" />
+    <meta name="ModifiedDate" content="2012-10-10" />
+    <meta name="ModifiedTime" content="1349876210" />
+    <meta name="NextFile"
+    content="Cross%2BProbing%2Bfor%2BPCB%2BEditor.html" />
+    <meta name="Group" content="" />
+    <meta name="Platform" content="All," />
+    <meta name="PrevFile"
+    content="Property%2BFlow%2Bfrom%2BCapture%2Bto%2BPCB%2BEditor.html" />
+    <meta name="Product"
+    content="Allegro Design Entry CIS,OrCAD Capture," />
+    <meta name="ProductFamily"
+    content="Silicon-Package-Board Co-Design,Silicon-Package-Board Co-Design," />
+    <meta name="ProductVersion" content="16.6" />
+    <meta name="RightsManagement"
+    content="Copyright 2011-2012 Cadence Design Systems Inc." />
+    <meta name="Title"
+    content="OrCAD Capture User Guide -- Generating PCB Editor Netlist" />
+    <meta name="Version" content="16.6" />
+    <meta name="Renderer" content="WIKI" />
+    <meta name="SpaceKey" content="capug166" />
+    <link href="styles/site.css" rel="stylesheet"
+    type="text/css" />
+    <meta content="text/html; charset=UTF-8"
+    http-equiv="Content-Type" />
+  </head>
+  <body style="margin-left: 5%;background-color: #FFFFFF;">
+    <a xmlns:html="http://www.w3.org/1999/xhtml" id="pagetop"
+    name="pagetop"></a> <a
+    xmlns:html="http://www.w3.org/1999/xhtml" id="firstpage"
+    name="firstpage"></a> <!-- Begin Buttons -->
+     
+    <table xmlns:html="http://www.w3.org/1999/xhtml" border="0"
+    cellpadding="0" cellspacing="0" width="650">
+      <tbody>
+        <tr>
+          <td colspan="10" height="36" width="650">
+            <img height="34" src="../support/header_doc.gif"
+            width="650" />
+          </td>
+        </tr>
+        <tr>
+          <td height="20" width="59">
+            <a href="javascript:openLibrary()"><img
+            alt="View Library" border="0" height="20"
+            src="../support/nav2_library.gif" width="59" /></a>
+          </td>
+          <td height="20" width="73">
+            <a href="cap_ugTOC.html"><img alt="Table of Contents"
+            border="0" src="../support/nav2_toc.gif" /></a>
+          </td>
+          <td height="20" width="46">
+            <img alt="Index" border="0"
+            src="../support/nav2_index_b.gif" />
+          </td>
+          <td>
+            <a
+            href="Property_Flow_from_Capture_to_PCB_Editor.html"><img
+             alt="Previous" border="0"
+            src="../support/nav2_previous.gif" /></a>
+          </td>
+          <td>
+            <a href="Cross_Probing_for_PCB_Editor.html"><img
+            alt="Next" border="0"
+            src="../support/nav_next.gif" /></a>
+          </td>
+          <td height="20">
+            <a href="cap_ug.pdf"><img alt="Open PDF to print book"
+            border="0" height="20" src="../support/nav2_print.gif"
+            width="114" /></a>
+          </td>
+          <td height="20" width="61">
+            <img src="../support/nav2_black.gif" />
+          </td>
+          <td height="20" width="76">
+            <a href="/feedback.htm"><img alt="Email Comments"
+            border="0" height="20"
+            src="../support/nav2_feedback.gif" width="76" /></a>
+          </td>
+          <td height="20" width="43">
+            <a href="../cdsuser/help.html"><img
+            alt="Help Using Documentation" border="0" height="20"
+            src="../support/nav2_help.gif" width="43" /></a>
+          </td>
+          <td height="20" width="37">
+            <a href="/exitsearch.htm"><img
+            alt="Shut Down Cadence Documentation Server" border="0"
+            height="20" src="../support/nav2_exit.gif"
+            width="37" /></a>
+          </td>
+        </tr>
+      </tbody>
+    </table><!-- End Buttons -->
+    <hr xmlns:html="http://www.w3.org/1999/xhtml" />
+    <div id="main-header">
+      <a xmlns="" id="GeneratingPCBEditorNetlist"
+      name="GeneratingPCBEditorNetlist"></a> 
+      <h1 xmlns="" style=" margin: 4px 0 4px;">
+        <span>Generating PCB Editor Netlist</span>
+      </h1>
+    </div>
+    <div class="wiki-content group" id="main-content">
+      <p>
+        <span class="confluence-anchor-link">&#160;</span>The steps
+        to forward annotate information from Capture to PCB Editor
+        are as follows.
+      </p>
+      <ol>
+        <li>
+          In the Capture project manager, select the design for
+          which PCB Editor netlist is to be created.
+        </li>
+        <li>
+          From the <em>Tools</em> menu, choose the <em>Create
+          Netlist</em> command.
+        </li>
+        <li>
+          In the Create Netlist dialog box, select the PCB Editor
+          tab.
+        </li>
+        <li>
+          Ensure that the Create PCB Editor Netlist check box is
+          selected.
+        </li>
+        <li>
+          Select the Setup button.<br />
+           
+          <ol>
+            <li>
+              In the Setup dialog box, ensure that the correct
+              configuration file is specified in the Configuration
+              File text box.<br />
+               By default,
+              <em>&lt;install_hier&gt;/tools/capture/allegro.cfg</em>
+              file is used. However, if you want to use a custom
+              configuration file, specify its the path in the text
+              box.<br />
+              <br />
+            </li>
+            <li>
+              To ignore the electrical constraints during
+              netlisting, select the Ignore Electrical constraints
+              check box.<br />
+               Following constraints are ignored.<br />
+               
+              <div
+              class="fancybullets-902b9965-3369-4c58-9e04-a384d48cebd3">
+                <ul>
+                  <li>
+                    PROPAGATION_DELAY
+                  </li>
+                  <li>
+                    RATSNEST_SCHEDULE
+                  </li>
+                  <li>
+                    RELATIVE_PROPAGATION_DELAY
+                  </li>
+                  <li>
+                    DIFFERENTIAL_PAIR
+                  </li>
+                  <li>
+                    NET_SPACING_TYPE
+                  </li>
+                  <li>
+                    NET_PHYSICAL_TYPE
+                  </li>
+                  <li>
+                    ELECTRICAL_CONSTRAINT_SET
+                  </li>
+                  <li>
+                    RATSNEST_SCHEDULE
+                  </li>
+                  <li>
+                    VOLTAGE
+                  </li>
+                  <li>
+                    MIN_LINE_WIDTH
+                  </li>
+                  <li>
+                    MIN_NECK_WIDTH
+                  </li>
+                  <li>
+                    MATCHED_DELAY
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              To suppress the netlisting warnings during the
+              netlisting process, enter the warning (for example
+              ALG0051) you want to suppress in the Suppress
+              Warnings text box and click Add to add the warning to
+              list of warnings to be suppressed.
+            </li>
+            <li>
+              Specify the value of other fields as required as
+              click OK.
+            </li>
+          </ol>
+        </li>
+        <li>
+          In the Netlist Files directory, enter the folder name
+          where the generated netlist is to be saved.
+        </li>
+        <li>
+          Select the View Output check box to open the generated
+          netlist files in Capture GUI.
+        </li>
+        <li>
+          Click OK.
+        </li>
+      </ol>
+      <p>
+        The warnings and errors generated during the netlist
+        process are listed in the session log.
+      </p>
+      <div class="panelMacro">
+        <p>
+          &#160;
+        </p>
+        <div class="table-wrap">
+          <table class="confluenceTable">
+            <colgroup>
+              <col />
+              <col />
+            </colgroup>
+            <tbody>
+              <tr>
+                <td class="confluenceTd">
+                  <img
+                  class="confluence-embedded-image confluence-external-resource"
+                   data-image-src="http://sj-rdwiki:8081/images/icons/emoticons/check.png"
+                   height="16"
+                  src="http://sj-rdwiki:8081/images/icons/emoticons/check.png"
+                   width="16" />
+                </td>
+                <td class="confluenceTd">
+                  <p>
+                    An error will be generated during netlisting if
+                    a part has an invisible power pin and the
+                    device property for the part has Power Pins
+                    Visible checked.
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          &#160;
+        </p>
+      </div>
+      <p>
+        As shown in the following figure, Capture netlister
+        generates the three PCB Editor-compatible netlist
+        files.<span class="confluence-anchor-link">&#160;</span>
+      </p>
+      <p>
+        The netlist files generate are:
+      </p>
+      <ul>
+        <li>
+          <span style="color: rgb(51,51,51);"><a
+          class="external-link"
+          href="http://sj-rdwiki:8081/display/capug166/PSTCHIP.DAT"
+          rel="nofollow">PSTCHIP.DAT</a></span> This file contains
+          a description for each different type of part used in the
+          design. The netlister extracts this information from
+          properties on occurrences.<span
+          style="color: rgb(51,51,51);">&#160;</span>
+        </li>
+        <li>
+          <span style="color: rgb(51,51,51);">&#160;</span> <a
+          class="external-link"
+          href="http://sj-rdwiki:8081/display/capug166/PSTXNET.DAT"
+          rel="nofollow"><span
+          style="color: rgb(51,51,51);">PSTXNET.DAT</span></a> This
+          connectivity file, also referred to as the flat list or
+          expanded net list, contains each net, its properties, its
+          attached nodes, and node properties. The list is ordered
+          by physical net name.
+        </li>
+        <li>
+          <span style="color: rgb(51,51,51);"><a
+          class="external-link"
+          href="http://sj-rdwiki:8081/display/capug166/PSTXPRT.DAT"
+          rel="nofollow">PSTXPRT.DAT</a></span> This file, also
+          referred to as the expanded parts list, contains a list
+          of physical parts and lists each reference designator and
+          the sections assigned to it, ordered by reference
+          designator and section number<strong>.</strong>
+        </li>
+      </ul>
+      <div class="panelMacro">
+        <p>
+          &#160;
+        </p>
+        <div class="table-wrap">
+          <table class="confluenceTable">
+            <colgroup>
+              <col />
+              <col />
+            </colgroup>
+            <tbody>
+              <tr>
+                <td class="confluenceTd">
+                  <img
+                  class="confluence-embedded-image confluence-external-resource"
+                   data-image-src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                   height="16"
+                  src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                   width="16" />
+                </td>
+                <td class="confluenceTd">
+                  <p>
+                    For sample files and details on the file
+                    formats, click on the file links above.
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          &#160;
+        </p>
+      </div>
+      <h3
+      id="GeneratingPCBEditorNetlist-&#160;GeneratingInitialBoardFile">
+        <span
+        class="confluence-anchor-link">&#160;</span>Generating
+        Initial Board File
+      </h3>
+      <p>
+        <span class="confluence-anchor-link">&#160;</span>While
+        netlisting a Capture schematic, if required, you can also
+        generate initial board file by selecting the Netrev option
+        in the PCB Editor tab of the Create Netlist dialog
+        box.<br />
+         <span class="confluence-anchor-link">&#160;</span>In order
+        to generate PCB Editor board file, perform the steps listed
+        in the <a class="external-link"
+        href="http://sj-rdwiki:8081/display/capug166/Physical+Layout+in+PCB+Editor#PhysicalLayoutinPCBEditor-netlisting"
+         rel="nofollow">Generating PCB Editor Netlist</a> section
+        to launch the Create Netlist dialog box and specify
+        netlisting options.
+      </p>
+      <ol>
+        <li>
+          Select the <em>Create or Update PCB Editor Board
+          (Netrev)</em> check box.<br />
+           Different netrev options are enabled.
+        </li>
+        <li>
+          <p>
+            In the Input Board File text box, enter a name for an
+            existing layout file to be used as template for
+            generating the initial board file for the current
+            design.
+          </p>
+          <div class="panelMacro">
+            <p>
+              &#160;
+            </p>
+            <div class="table-wrap">
+              <table class="confluenceTable">
+                <colgroup>
+                  <col />
+                  <col />
+                </colgroup>
+                <tbody>
+                  <tr>
+                    <td class="confluenceTd">
+                      <img
+                      class="confluence-embedded-image confluence-external-resource"
+                       data-image-src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                       height="16"
+                      src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                       width="16" />
+                    </td>
+                    <td class="confluenceTd">
+                      <p>
+                        &#160;This field is optional if you are
+                        creating a new board.
+                      </p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </li>
+        <li>
+          <p>
+            In the Output Board File box, enter a name for the
+            output file to be generated.
+          </p>
+          <div class="panelMacro">
+            <p>
+              &#160;
+            </p>
+            <div class="table-wrap">
+              <table class="confluenceTable">
+                <colgroup>
+                  <col />
+                  <col />
+                </colgroup>
+                <tbody>
+                  <tr>
+                    <td class="confluenceTd">
+                      <img
+                      class="confluence-embedded-image confluence-external-resource"
+                       data-image-src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                       height="16"
+                      src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                       width="16" />
+                    </td>
+                    <td class="confluenceTd">
+                      <p>
+                        &#160;If you want to update an existing
+                        board, this field should have the same
+                        value as specified in the Input Board File
+                        text box.
+                      </p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </li>
+        <li>
+          Select the other options as required.
+        </li>
+        <li>
+          <p>
+            To open the output file immediately after the design is
+            netlisted, from the Board Launching Option, select an
+            appropriate layout application.
+          </p>
+          <div class="panelMacro">
+            <p>
+              &#160;
+            </p>
+            <div class="table-wrap">
+              <table class="confluenceTable">
+                <colgroup>
+                  <col />
+                  <col />
+                </colgroup>
+                <tbody>
+                  <tr>
+                    <td class="confluenceTd">
+                      <img
+                      class="confluence-embedded-image confluence-external-resource"
+                       data-image-src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                       height="16"
+                      src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                       width="16" />
+                    </td>
+                    <td class="confluenceTd">
+                      <p>
+                        The extension of the input and output board
+                        files specified in <span
+                        class="confluence-link">step&#160;2</span>
+                        and <span
+                        class="confluence-link">step&#160;3</span>,
+                        respectively, is related to the layout
+                        application selected.
+                      </p>
+                      <p>
+                        The supported options are:
+                      </p>
+                      <ul>
+                        <li>
+                          Open Board in Allegro PCB Editor -
+                          generates the physical layout file with
+                          .brd extension
+                        </li>
+                        <li>
+                          Open Board in APD (Allegro Package
+                          Designer) - generates the physical layout
+                          file with .mcm extension
+                        </li>
+                        <li>
+                          Open Board in Cadence SiP - generates the
+                          physical layout file with .sip extension
+                        </li>
+                        <li>
+                          Open Board in OrCAD PCB Editor- generates
+                          the physical layout file with .brd
+                          extension
+                        </li>
+                        <li>
+                          Do not open board file - generates the
+                          board file in the path specified in <span
+                          class="confluence-link">step&#160;3</span>,
+                          but does no application is launched
+                        </li>
+                      </ul>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </li>
+        <li>
+          Click OK to close the Create Netlist dialog box and
+          create the .brd file.
+        </li>
+      </ol>
+      <p>
+        On successful netlisting, blank board file is opened in PCB
+        Editor. You can now place the parts and route your
+        ratsnest.
+      </p>
+      <div class="panelMacro">
+        <p>
+          &#160;
+        </p>
+        <div class="table-wrap">
+          <table class="confluenceTable">
+            <colgroup>
+              <col />
+              <col />
+            </colgroup>
+            <tbody>
+              <tr>
+                <td class="confluenceTd">
+                  <img
+                  class="confluence-embedded-image confluence-external-resource"
+                   data-image-src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                   height="16"
+                  src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                   width="16" />
+                </td>
+                <td class="confluenceTd">
+                  <p>
+                    Yellow triangles in the ratsnest indicate
+                    unrouted, zero-length connections (connections
+                    that lead directly from a pad on the top layer
+                    to a pad on the bottom layer). These
+                    connections need to be routed using a via.
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <hr xmlns:html="http://www.w3.org/1999/xhtml" />
+    <hr xmlns:html="http://www.w3.org/1999/xhtml" align="left" />
+    <div xmlns:html="http://www.w3.org/1999/xhtml"
+    style="text-align: left;">
+      <!-- Begin Buttons -->
+      <table border="0" cellpadding="0" cellspacing="0"
+      width="650">
+        <tbody>
+          <tr>
+            <td colspan="10" height="36" width="650">
+              <img height="34" src="../support/header_doc.gif"
+              width="650" />
+            </td>
+          </tr>
+          <tr>
+            <td height="20" width="59">
+              <a href="javascript:openLibrary()"><img
+              alt="View Library" border="0" height="20"
+              src="../support/nav2_library.gif" width="59" /></a>
+            </td>
+            <td height="20" width="73">
+              <a href="cap_ugTOC.html"><img alt="Table of Contents"
+              border="0" src="../support/nav2_toc.gif" /></a>
+            </td>
+            <td height="20" width="46">
+              <img alt="Index" border="0"
+              src="../support/nav2_index_b.gif" />
+            </td>
+            <td>
+              <a
+              href="Property_Flow_from_Capture_to_PCB_Editor.html"><img
+               alt="Previous" border="0"
+              src="../support/nav2_previous.gif" /></a>
+            </td>
+            <td>
+              <a href="Cross_Probing_for_PCB_Editor.html"><img
+              alt="Next" border="0"
+              src="../support/nav_next.gif" /></a>
+            </td>
+            <td height="20">
+              <a href="cap_ug.pdf"><img
+              alt="Open PDF to print book" border="0" height="20"
+              src="../support/nav2_print.gif" width="114" /></a>
+            </td>
+            <td height="20" width="61">
+              <img src="../support/nav2_black.gif" />
+            </td>
+            <td height="20" width="76">
+              <a href="/feedback.htm"><img alt="Email Comments"
+              border="0" height="20"
+              src="../support/nav2_feedback.gif" width="76" /></a>
+            </td>
+            <td height="20" width="43">
+              <a href="../cdsuser/help.html"><img
+              alt="Help Using Documentation" border="0" height="20"
+              src="../support/nav2_help.gif" width="43" /></a>
+            </td>
+            <td height="20" width="37">
+              <a href="/exitsearch.htm"><img
+              alt="Shut Down Cadence Documentation Server"
+              border="0" height="20" src="../support/nav2_exit.gif"
+              width="37" /></a>
+            </td>
+          </tr>
+        </tbody>
+      </table><!-- End Buttons -->
+    </div><br xmlns:html="http://www.w3.org/1999/xhtml" />
+     <font xmlns:html="http://www.w3.org/1999/xhtml" size="-1">For
+    support, see <a href="http://support.cadence.com"
+    target="_blank">Cadence Online Support</a> service.</font> <br
+    xmlns:html="http://www.w3.org/1999/xhtml" />
+     <br xmlns:html="http://www.w3.org/1999/xhtml" />
+     <font xmlns:html="http://www.w3.org/1999/xhtml"
+    size="-1"><i>Copyright &#169; 2012, <a
+    href="http://www.cadence.com">Cadence Design Systems,
+    Inc.</a></i></font> <br
+    xmlns:html="http://www.w3.org/1999/xhtml" />
+     <font xmlns:html="http://www.w3.org/1999/xhtml" size="-1">All
+    rights reserved.</font> <br
+    xmlns:html="http://www.w3.org/1999/xhtml" />
+     <br xmlns:html="http://www.w3.org/1999/xhtml" />
+  </body>
+</html>

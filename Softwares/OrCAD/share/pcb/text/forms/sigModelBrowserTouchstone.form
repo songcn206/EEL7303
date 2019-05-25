@@ -1,0 +1,527 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM fixed_font
+FIXED
+PORT 65 22
+HEADER "SI Model Browser"
+
+POPUP <DmlLibraryFilterPopup> "placeholder""0".
+
+POPUP <DmlModelTypePopup>"placeholder""0".
+
+POPUP <AddDmlModelPopup>"placeholder""0".
+
+POPUP <ImlModelTypePopup>"placeholder""0".
+
+POPUP <ImlLibraryFilterPopup>"placeholder""0".
+
+POPUP <AddImlModelPopup>"placeholder""0".
+
+POPUP <ImlFieldSolverPopup>"placeholder""0".
+
+ACTIVEFIELD "Close"
+
+TILE
+
+TABSET "TABS"
+FLOC 1 1
+TSSIZE 65 45
+
+TAB "DML Models" DML_Models
+
+TEXT "Library Filter"
+TLOC 1 1
+ENDTEXT
+
+TEXT "Model Type Filter"
+TLOC 1 3
+ENDTEXT
+
+TEXT "Model Name Pattern"
+TLOC 1 5
+ENDTEXT
+
+TEXT "Model Name                     Model Type"
+TLOC 10 7
+ENDTEXT
+
+FIELD DmlLibraryFilter
+FLOC 22 1
+ENUMSET 39
+POP "DmlLibraryFilterPopup"
+ENDFIELD
+
+FIELD DmlModelTypeFilter
+FLOC 22 3
+ENUMSET 39
+POP "DmlModelTypePopup"
+ENDFIELD
+
+FIELD DmlModelNamePattern
+FLOC 22 5
+STRFILLIN 39 40
+ENDFIELD
+
+FIELD DmlModels
+FLOC 1 9
+LIST "" 62 13
+OPTIONS multiselect
+ENDFIELD
+
+TEXT "Library:"
+TLOC 1 34
+ENDTEXT
+
+TEXT
+TLOC 10 34
+INFO SelectedDmlLib 33
+ENDTEXT
+
+FIELD DmlLibraryMgmt
+FLOC 49 34
+MENUBUTTON "Library Mgmt" 14 3
+ENDFIELD
+
+TEXT "Working Library:"
+TLOC 1 36
+ENDTEXT
+
+TEXT
+TLOC 18 36
+INFO WorkingDmlLibrary 43
+ENDTEXT
+
+FIELD AddDmlModel
+FLOC 1 38
+MENUBUTTON "Add" 10 3
+POP "AddDmlModelPopup"
+ENDFIELD
+
+FIELD DeleteDmlModel
+FLOC 13 38
+MENUBUTTON "Delete" 10 3
+ENDFIELD
+
+FIELD EditDmlModel
+FLOC 25 38
+MENUBUTTON "Edit" 10 3
+ENDFIELD
+
+FIELD AssignDmlModel
+FLOC 37 38
+MENUBUTTON "Assign" 10 3
+ENDFIELD
+
+FIELD ModelEditDmlModel
+FLOC 49 38
+MENUBUTTON "Model Editor" 14 3
+ENDFIELD
+
+ENDTAB
+
+TAB "IBIS Models" IBIS_Models
+
+TEXT "File Name Filter"
+TLOC 1 1
+ENDTEXT
+
+FIELD IbisFileNameFilter
+FLOC 19 1
+STRFILLIN 42 50
+ENDFIELD
+
+TEXT "IBIS File Name                       Model Type"
+TLOC 7 4
+ENDTEXT
+
+#ifndef USE_IBIS_INDEX_FILES
+
+FIELD IbisModelTree
+FLOC 1 6
+TREEVIEW 62 14
+ENDFIELD
+
+TEXT
+TLOC 1 34
+INFO SelectedIbisFilePath 62
+ENDTEXT
+
+FIELD DeleteIbisModel
+FLOC 1 37
+MENUBUTTON "Delete Derived Models" 12 3
+ENDFIELD
+
+FIELD EditIbisModel
+FLOC 25 37
+MENUBUTTON "Model Editor" 14 3
+ENDFIELD
+
+FIELD TranslateIbisModel
+FLOC 40 37
+MENUBUTTON "Translate" 13 3
+ENDFIELD
+
+FIELD AssignIbisModel
+FLOC 54 37
+MENUBUTTON "Assign" 7 3
+ENDFIELD
+
+#else
+
+FIELD IbisModelTree
+FLOC 1 6
+TREEVIEW 62 13
+ENDFIELD
+
+TEXT
+TLOC 1 32
+INFO SelectedIbisFilePath 62
+ENDTEXT
+
+FIELD DeleteIbisModel
+FLOC 1 34
+MENUBUTTON "Delete Derived Models" 24 3
+ENDFIELD
+
+FIELD EditIbisModel
+FLOC 25 34
+MENUBUTTON "Model Editor" 18 3
+ENDFIELD
+
+FIELD TranslateIbisModel
+FLOC 43 34
+MENUBUTTON "Translate" 11 3
+ENDFIELD
+
+FIELD AssignIbisModel
+FLOC 55 34
+MENUBUTTON "Assign" 7 3
+ENDFIELD
+
+FIELD DefineIbisIndexFiles
+FLOC 1 37
+MENUBUTTON "Define Index Files" 24 3
+ENDFIELD
+
+FIELD ShowIbisModelInfo
+FLOC 25 37
+MENUBUTTON "Show Model Info" 18 3
+ENDFIELD
+
+#endif
+
+ENDTAB
+
+TAB "SPICE Models" SPICE_Models
+
+TEXT "File Name Filter"
+TLOC 1 1
+ENDTEXT
+
+FIELD SpiceFileNameFilter
+FLOC 19 1
+STRFILLIN 42 50
+ENDFIELD
+
+TEXT "SPICE File Name                      Model Type"
+TLOC 7 4
+ENDTEXT
+
+FIELD SpiceModelTree
+FLOC 1 6
+TREEVIEW 62 14
+ENDFIELD
+
+TEXT
+TLOC 1 34
+INFO SelectedSpiceFilePath 62
+ENDTEXT
+
+FIELD DeleteSpiceModel
+FLOC 1 37
+MENUBUTTON "Delete Derived Models" 12 3
+ENDFIELD
+
+FIELD EditSpiceModel
+FLOC 25 37
+MENUBUTTON "Model Editor" 14 3
+ENDFIELD
+
+FIELD TranslateSpiceModel
+FLOC 40 37
+MENUBUTTON "Translate" 13 3
+ENDFIELD
+
+FIELD AssignSpiceModel
+FLOC 54 37
+MENUBUTTON "Assign" 7 3
+ENDFIELD
+
+ENDTAB
+
+TAB "HSPICE Models" HSPICE_Models
+
+TEXT "File Name Filter"
+TLOC 1 1
+ENDTEXT
+
+FIELD HSpiceFileNameFilter
+FLOC 19 1
+STRFILLIN 42 50
+ENDFIELD
+
+TEXT "HSpice File Name                     Model Type"
+TLOC 7 4
+ENDTEXT
+
+FIELD HSpiceModelTree
+FLOC 1 6
+TREEVIEW 62 14
+ENDFIELD
+
+TEXT
+TLOC 1 34
+INFO SelectedHSpiceFilePath 62
+ENDTEXT
+
+FIELD DeleteHSpiceModel
+FLOC 1 37
+MENUBUTTON "Delete Derived Models" 12 3
+ENDFIELD
+
+FIELD EditHSpiceModel
+FLOC 25 37
+MENUBUTTON "Model Editor" 14 3
+ENDFIELD
+
+FIELD TranslateHSpiceModel
+FLOC 40 37
+MENUBUTTON "Translate" 13 3
+ENDFIELD
+
+FIELD AssignHSpiceModel
+FLOC 54 37
+MENUBUTTON "Assign" 7 3
+ENDFIELD
+
+ENDTAB
+
+TAB "SPECTRE Models" SPECTRE_Models
+
+TEXT "File Name Filter"
+TLOC 1 1
+ENDTEXT
+
+FIELD SpectreFileNameFilter
+FLOC 19 1
+STRFILLIN 42 50
+ENDFIELD
+
+TEXT "Spectre File Name                    Model Type"
+TLOC 7 4
+ENDTEXT
+
+FIELD SpectreModelTree
+FLOC 1 6
+TREEVIEW 62 14
+ENDFIELD
+
+TEXT
+TLOC 1 34
+INFO SelectedSpectreFilePath 62
+ENDTEXT
+
+FIELD DeleteSpectreModel
+FLOC 1 37
+MENUBUTTON "Delete Derived Models" 12 3
+ENDFIELD
+
+FIELD EditSpectreModel
+FLOC 25 37
+MENUBUTTON "Model Editor" 14 3
+ENDFIELD
+
+FIELD TranslateSpectreModel
+FLOC 40 37
+MENUBUTTON "Translate" 13 3
+ENDFIELD
+
+FIELD AssignSpectreModel
+FLOC 54 37
+MENUBUTTON "Assign" 7 3
+ENDFIELD
+
+ENDTAB
+
+TAB "Touchstone Models" TOUCHSTONE_Models
+
+TEXT "File Name Filter"
+TLOC 1 1
+ENDTEXT
+
+FIELD TouchstoneFileNameFilter
+FLOC 19 1
+STRFILLIN 42 50
+ENDFIELD
+
+TEXT "Touchstone File Name                 Model Type"
+TLOC 7 4
+ENDTEXT
+
+FIELD TouchstoneModelTree
+FLOC 1 6
+TREEVIEW 62 14
+ENDFIELD
+
+TEXT
+TLOC 1 34
+INFO SelectedTouchstoneFilePath 62
+ENDTEXT
+
+FIELD DeleteTouchstoneModel
+FLOC 1 37
+MENUBUTTON "Delete Derived Models" 12 3
+ENDFIELD
+
+FIELD EditTouchstoneModel
+FLOC 25 37
+MENUBUTTON "Model Editor" 14 3
+ENDFIELD
+
+FIELD TranslateTouchstoneModel
+FLOC 40 37
+MENUBUTTON "Translate" 13 3
+ENDFIELD
+
+FIELD AssignTouchstoneModel
+FLOC 54 37
+MENUBUTTON "Assign" 7 3
+ENDFIELD
+
+ENDTAB
+
+TAB "IML Models" IML_Models
+
+TEXT "Library Filter"
+TLOC 1 1
+ENDTEXT
+
+TEXT "Model Type Filter"
+TLOC 1 3
+ENDTEXT
+
+TEXT "Model Name Pattern"
+TLOC 1 5
+ENDTEXT
+
+TEXT "Model Field Solver"
+TLOC 1 7
+ENDTEXT
+
+TEXT "ModelName                      ModelType"
+TLOC 10 9
+ENDTEXT
+
+FIELD ImlLibraryFilter
+FLOC 22 1
+ENUMSET 39
+POP "ImlLibraryFilterPopup"
+ENDFIELD
+
+FIELD ImlModelTypeFilter
+FLOC 22 3
+ENUMSET 39
+POP "ImlModelTypePopup"
+ENDFIELD
+
+FIELD ImlModelNamePattern
+FLOC 22 5
+STRFILLIN 39 40
+ENDFIELD
+
+FIELD ImlModelFieldSolverFilter
+FLOC 22 7
+ENUMSET 39
+POP "ImlFieldSolverPopup"
+ENDFIELD
+
+FIELD ImlModels
+FLOC 1 11
+LIST "" 62 12
+OPTIONS multiselect
+ENDFIELD
+
+TEXT "Library:"
+TLOC 1 34
+ENDTEXT
+
+TEXT
+TLOC 10 34
+INFO SelectedImlLib 33
+ENDTEXT
+
+FIELD ImlLibraryMgmt
+FLOC 49 34
+MENUBUTTON "Library Mgmt" 14 3
+ENDFIELD
+
+TEXT "Working Library:"
+TLOC 1 36
+ENDTEXT
+
+TEXT
+TLOC 18 36
+INFO WorkingImlLibrary 43
+ENDTEXT
+
+FIELD AddImlModel
+FLOC 1 38
+MENUBUTTON "Add" 10 3
+POP "AddImlModelPopup"
+ENDFIELD
+
+FIELD DeleteImlModel
+FLOC 13 38
+MENUBUTTON "Delete" 10 3
+ENDFIELD
+
+FIELD EditImlModel
+FLOC 25 38
+MENUBUTTON "Edit" 10 3
+ENDFIELD
+
+FIELD AssignImlModel
+FLOC 37 38
+MENUBUTTON "Assign" 10 3
+ENDFIELD
+
+FIELD ModelEditImlModel
+FLOC 49 38
+MENUBUTTON "Model Editor" 14 3
+ENDFIELD
+
+ENDTAB
+ENDTABSET
+
+FIELD Close
+FLOC 3 47
+MENUBUTTON "Close" 12 3
+ENDFIELD
+
+FIELD SetSearchPath
+FLOC 17 47
+MENUBUTTON "Set Search Path" 14 3
+ENDFIELD
+
+FIELD Refresh
+FLOC 37 47
+MENUBUTTON "Refresh" 12 3
+ENDFIELD
+
+FIELD help
+FLOC 52 47
+MENUBUTTON "Help" 12 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

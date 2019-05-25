@@ -1,0 +1,823 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
+<!--# 	Cadence Design Systems
+#  (c) 2012 Cadence Design Systems, Inc. All rights reserved.
+#  This work may not be copied, modified, re-published, uploaded, 
+#  executed, or distributed in any way, in any medium, whether in 
+#  whole or in part, without prior written permission from Cadence 
+#  Design Systems, Inc.
+#  -->
+
+
+    
+        
+  
+  
+  
+  
+  <title>Three phase circuits</title>
+  <link rel="stylesheet" type="text/css" href="../../../../basescripts/css/sheet.css" />
+
+
+
+
+  
+  
+  <script type="text/javascript" src="../../../../basescripts/scripts/OpenOpj.js"></script>
+</head>
+
+
+<body style="width:99%;height:100%" class="content">
+
+
+
+
+<h1><a class="Mheading" id="Threephasecircuits">Three Phase Circuits</a></h1>
+
+
+                                           
+<p class="para">This section discusses the basics of 3-phase circuits
+and explains how to simulate simple 3-phase sources in OrCAD&reg;
+Capture-PSpice&reg;. <br />
+
+
+A 3-phase circuit&nbsp;carries three alternating currents (AC), which
+are of equal frequency but reach their maximum amplitudes at different
+times. An ideal, balanced 3-phase circuit carries ACs of equal
+amplitude&nbsp;displaced from each other by an angle of <span style="font-family: Courier New,Courier,monospace;">120&deg;</span> in
+time.&nbsp;</p>
+
+
+
+
+<center>
+<table>
+
+
+
+  <tbody>
+
+
+    <tr>
+
+
+      <td><img alt = "" src="Images/3phase_wave.png" class="tximage" /></td>
+
+
+      <td><img alt = "" src="Images/3phase_phasor.png" class="tximage" /></td>
+
+
+    </tr>
+
+
+
+    <tr>
+
+
+      <td><i><a name="Figure_1._Three_phase_waveform"></a>Figure  1.  Three phase waveform  </i></td>
+
+
+      <td class="caption"><i>Figure  2. positive sequence phasor and negative sequence phasor</i></td>
+
+
+    </tr>
+
+
+
+  
+  
+  </tbody>
+</table>
+
+
+</center>
+
+
+
+ <br />
+
+
+<p class = "para">The 3-phase system can be connected either in a star&nbsp;formation or in a
+delta&nbsp;formation. The remaining sections discuss these two connections.</p><br />
+
+
+<br />
+
+
+
+ 
+ 
+ 
+ 
+<table style="width: 100%;">
+
+
+  <tbody>
+
+
+    <tr>
+
+
+
+      <td style="width: 50%;">
+      
+      
+      <h1><a class="Mheading" id="A1">Star connection</a></h1>
+
+
+      </td>
+
+
+      <td style="width: 50%;" align="right"><span style="text-decoration: underline;cursor : pointer" onclick="OpenOpjSim('BasicElectronics','threephasecircuits','Designfiles','threephasecircuits','Starconnection','PAGE1','Tran')"><img alt="click to view circuit" src="../../../../hybrid/Images/cap_icon.png" style="margin-top: 20px;" /></span></td>
+
+
+    </tr>
+
+
+  
+  
+  </tbody>
+</table>
+
+
+
+<p class="para">In a balanced 3-phase system, the common reference
+point (N) for the three phase-voltages is called a neutral connection.
+The voltage sources can be defined either between the phases or between
+the phases and the reference point. The three sources <span style="font-family: Courier New,Courier,monospace;">V</span><sub style="font-family: Courier New,Courier,monospace;">AB</sub>, <span style="font-family: Courier New,Courier,monospace;">V</span><sub style="font-family: Courier New,Courier,monospace;">BC</sub>, and <span style="font-family: Courier New,Courier,monospace;">V</span><sub style="font-family: Courier New,Courier,monospace;">AC</sub> are between the phases and are termed line-to-line voltages or line voltages in short. The three sources V<sub>AN</sub>, V<sub>BN</sub>, and V<sub>CN</sub> are between the phases and the reference point and are termed line-to-neutral or phase voltages.</p>
+
+
+ 
+<center>
+<table>
+
+
+
+  <tbody>
+
+
+    <tr>
+
+
+      <td><img alt = "" src="Images/Y.png" class="tximage" /></td>
+
+
+      <td><img alt = "" src="Images/star_ckt.png" style ="cursor : pointer" onclick="OpenOpjSim('BasicElectronics','threephasecircuits','Designfiles','threephasecircuits','Starconnection','PAGE1','Tran')"/></td>
+
+
+    </tr>
+
+
+
+    <tr>
+
+
+      <td><i><a name="Figure_3._Star_circuit"></a>Figure  3.  Star circuit  </i></td>
+
+
+      <td class="caption"><i><a name="Figure_4._Star_connection_circuit_in"></a>Figure  4.  Star connection circuit in Capture</i></td>
+
+
+    </tr>
+
+
+
+  
+  
+  </tbody>
+</table>
+
+
+</center>
+
+
+
+
+
+<p class="para">The line-to-line voltages can be expressed in terms of
+the line-to-neutral voltages by applying Kirchoff's voltage
+law as follows:</p>
+
+
+ 
+<center>
+<table width="100%">
+
+
+
+  <tbody>
+
+
+    <tr>
+
+
+      <td style="width: 97%;">
+      
+      
+      <center><img alt = "" src="Images/star_eq1.png"  /></center>
+
+
+      </td>
+
+
+      <td style="width: 3%;"><a name="equation1"></a>(1)</td>
+
+
+    </tr>
+
+
+
+    <tr>
+
+
+      <td style="width: 97%;">
+      
+      
+      <center><img alt = "" src="Images/star_eq2.png"  /></center>
+
+
+      </td>
+
+
+      <td style="width: 3%;"><a name="equation2"></a>(2)</td>
+
+
+    </tr>
+
+
+
+    <tr>
+
+
+      <td style="width: 97%;">
+      
+      
+      <center><img alt = "" src="Images/star_eq3.png"  /></center>
+
+
+      </td>
+
+
+      <td style="width: 3%;"><a name="equation3"></a>(3)</td>
+
+
+    </tr>
+
+
+
+  
+  
+  </tbody>
+</table>
+
+
+</center>
+
+
+
+
+<p class="para">The load of a 3-phase circuit is said to be balanced
+if&nbsp;the load impedances in each of the three phases are the same in
+both
+magnitude and phase. <br />
+
+
+<br />
+
+
+For a balanced star-connected load, the neutral current is always zero.
+The line currents
+and phase currents are equal in magnitude, and the line currents are in
+phase with the corresponding
+phase currents. The line voltages, in magnitude, are square root of
+3 times the phase voltages and&nbsp;lead the corresponding phase
+voltages by <span style="font-family: Courier New,Courier,monospace;">30degrees</span> as represented in the following equations:</p>
+
+
+ 
+
+<center>
+<table width="100%">
+
+
+
+  <tbody>
+
+
+    <tr>
+
+
+      <td style="width: 97%;">
+      
+      
+      <center><img alt = "" src="Images/star_eq7.png"  /></center>
+
+
+      </td>
+
+
+      <td style="width: 3%;"><a name="equation4"></a>(4)</td>
+
+
+    </tr>
+
+
+
+    <tr>
+
+
+      <td style="width: 97%;">
+      
+      
+      <center><img alt = "" src="Images/star_eq8.png"  /></center>
+
+
+      </td>
+
+
+      <td style="width: 3%;"><a name="equation5"></a>(5)</td>
+
+
+    </tr>
+
+
+
+    <tr>
+
+
+      <td style="width: 97%;">
+      
+      
+      <center><img alt = "" src="Images/star_eq9.png"  /></center>
+
+
+      </td>
+
+
+      <td style="width: 3%;"><a name="equation6"></a>(6)</td>
+
+
+    </tr>
+
+
+
+  
+  
+  </tbody>
+</table>
+
+
+</center>
+
+
+
+
+<p class="para">In general, the equations can be stated as:</p>
+
+
+ 
+<center>
+<table width="100%">
+
+
+
+  <tbody>
+
+
+    <tr>
+
+
+      <td style="width: 97%;">
+      
+      
+      <center><img alt = "" id = "equation7" src="Images/star_eq10.png"  /></center>
+
+
+      </td>
+
+
+      <td style="width: 3%;">(7)</td>
+
+
+    </tr>
+
+
+
+    <tr>
+
+
+      <td style="width: 97%;">
+      
+      
+      <center><img alt = "" src="Images/star_eq11.png"  /></center>
+
+
+      </td>
+
+
+      <td style="width: 3%;"><a name="equation8"></a>(8)</td>
+
+
+    </tr>
+
+
+
+  
+  
+  </tbody>
+</table>
+
+
+</center>
+
+
+
+
+<p class="para">Simulating the above schematic circuit gives the following output: </p>
+
+
+ 
+<center>
+<p><img alt = "" src="Images/star_simout.png" class="simout" /></p>
+
+
+</center>
+
+
+
+<p class="imgcap"><i><a name="Figure_5._Resultant_waveform"></a>Figure  5. Resultant waveform</i></p>
+
+
+
+<p class="para">From the plot window it can be observed that <span style="font-family: Courier New,Courier,monospace;">V(A,B)</span>
+is equal to <span style="font-family: Courier New,Courier,monospace;">V(A,N)</span> multiplied by the square root of 3 with leading phase
+angle of <span style="font-family: Courier New,Courier,monospace;">30degrees</span>. This verifies <a href="#equation7"><span style="font-style: italic;">equation 
+(7)</span></a>.  </p>
+
+
+ 
+
+
+<table style="width: 100%;">
+
+
+  <tbody>
+
+
+    <tr>
+
+
+
+      <td style="width: 50%;">
+      
+      
+      <h1><a class="Mheading" id="A2">Delta     connection</a></h1>
+
+
+      </td>
+
+
+      <td style="width: 50%;" align="right"><span style="text-decoration: underline;cursor : pointer" onclick="OpenOpjSim('BasicElectronics','threephasecircuits','Designfiles','threephasecircuits','deltaconnection','PAGE1','Tran')"><img alt="click to view circuit" src="../../../../hybrid/Images/cap_icon.png" style="margin-top: 20px;" /></span></td>
+
+
+    </tr>
+
+
+  
+  
+  </tbody>
+</table>
+
+
+
+<p class="para">In the delta-connection there is&nbsp;no neutral forming a three-wire, three-phase system as follows:</p>
+
+
+ 
+<center>
+<table>
+
+
+
+  <tbody>
+
+
+    <tr>
+
+
+      <td><img alt = "" src="Images/delta.png" class="tximage" /></td>
+
+
+      <td><img alt = "" id = "Figure_7._Delta_connection_circuit" src="Images/delta_ckt.png" style="width: 400px; height: 300px;cursor : pointer" onclick="OpenOpjSim('BasicElectronics','threephasecircuits','Designfiles','threephasecircuits','deltaconnection','PAGE1','Tran')"/></td>
+
+
+    </tr>
+
+
+
+    <tr>
+
+
+      <td><i>Figure  6.  Delta connection circuit  </i></td>
+
+
+      <td class="caption"><i>Figure  7.  Delta connection circuit in capture</i></td>
+
+
+    </tr>
+
+
+
+  
+  
+  </tbody>
+</table>
+
+
+</center>
+
+
+
+
+
+<p class="para">Applying Kirchhoff&rsquo;s current law at each of the vertices of the delta-connected
+load gives:</p>
+
+
+ 
+<center>
+<table width="100%">
+
+
+
+  <tbody>
+
+
+    <tr>
+
+
+      <td style="width: 97%;">
+      
+      
+      <center><img alt = "" src="Images/delta_eq1.png"  /></center>
+
+
+      </td>
+
+
+      <td style="width: 3%;"><a name="equation9"></a>(9)</td>
+
+
+    </tr>
+
+
+
+    <tr>
+
+
+      <td style="width: 97%;">
+      
+      
+      <center><img alt = "" src="Images/delta_eq2.png"  /></center>
+
+
+      </td>
+
+
+      <td style="width: 3%;"><a name="equation10"></a>(10)</td>
+
+
+    </tr>
+
+
+
+    <tr>
+
+
+      <td style="width: 97%;">
+      
+      
+      <center><img alt = "" src="Images/delta_eq3.png"  /></center>
+
+
+      </td>
+
+
+      <td style="width: 3%;"><a name="equation11"></a>(11)</td>
+
+
+    </tr>
+
+
+
+  
+  
+  </tbody>
+</table>
+
+
+</center>
+
+
+
+
+<p class="para">In a balanced delta-connected load, the phase voltages and the line voltages are
+equal in magnitude and phase. The line currents, in magnitude, are
+square root of 3 times the phase currents, and the phase currents lead the
+corresponding line currents by <span style="font-family: Courier New,Courier,monospace;">30degrees</span>.</p>
+
+
+ 
+
+<center>
+<table width="100%">
+
+
+
+  <tbody>
+
+
+    <tr>
+
+
+      <td style="width: 97%;">
+      
+      
+      <center><img alt = "" src="Images/delta_eq4.png"  /></center>
+
+
+      </td>
+
+
+      <td style="width: 3%;"><a name="equation12"></a>(12)</td>
+
+
+    </tr>
+
+
+
+    <tr>
+
+
+      <td style="width: 97%;">
+      
+      
+      <center><img alt = "" src="Images/delta_eq5.png"  /></center>
+
+
+      </td>
+
+
+      <td style="width: 3%;"><a name="equation13"></a>(13)</td>
+
+
+    </tr>
+
+
+
+    <tr>
+
+
+      <td style="width: 97%;">
+      
+      
+      <center><img alt = "" src="Images/delta_eq6.png"  /></center>
+
+
+      </td>
+
+
+      <td style="width: 3%;"><a name="equation14"></a>(14)</td>
+
+
+    </tr>
+
+
+
+  
+  
+  </tbody>
+</table>
+
+
+</center>
+
+
+
+
+<p class="para">In general, the equations can be stated as:</p>
+
+
+ 
+<center>
+<table width="100%">
+
+
+
+  <tbody>
+
+
+    <tr>
+
+
+      <td style="width: 97%;">
+      
+      
+      <center><img alt = ""  id = "equation15" src="Images/delta_eq7.png"  /></center>
+
+
+      </td>
+
+
+      <td style="width: 3%;">(15)</td>
+
+
+    </tr>
+
+
+
+    <tr>
+
+
+      <td style="width: 97%;">
+      
+      
+      <center><img alt = "" src="Images/delta_eq8.png"  /></center>
+
+
+      </td>
+
+
+      <td style="width: 3%;"><a name="equation16"></a>(16)</td>
+
+
+    </tr>
+
+
+
+  
+  
+  </tbody>
+</table>
+
+
+</center>
+
+
+
+
+<p class="para">Simulating the schematic circuit in <a href="#Figure_7._Delta_connection_circuit"><span style="font-style: italic;">figure (7)</span></a> gives the following output: </p>
+
+
+ 
+<center>
+<p><img alt = "" src="Images/delta_simout.png" class="simout" /></p>
+
+
+</center>
+
+
+
+<p class="imgcap"><i><a name="Figure_8._Resultant_waveform"></a>Figure  8. Resultant waveform</i></p>
+
+
+
+<p class="para">From the plot window it can be observed that the line
+current <span style="font-family: Courier New,Courier,monospace;">-I(V4)</span> is equal to phase current <span style="font-family: Courier New,Courier,monospace;">-I(RA)</span>multiplied by the
+square root of <span style="font-family: Courier New,Courier,monospace;">3</span> with lagging phase angle of <span style="font-family: Courier New,Courier,monospace;">30degrees</span>. This verifies <a href="#equation15"><span style="font-style: italic;">equation
+(15)</span></a>.</p>
+
+
+ 
+
+<br />
+
+
+<br />
+
+
+
+<hr />
+<hr />
+
+
+
+    <br />
+
+
+
+    <font size="-1">
+      <i>Copyright &copy; 2012, <span style="color:blue;cursor:pointer" onclick="window.open('http://www.cadence.com')"><u>Cadence Design Systems, Inc.</u></span></i>
+    </font>
+    <br />
+
+
+
+    <font size="-1">
+All rights reserved.</font>
+
+
+</body>
+</html>

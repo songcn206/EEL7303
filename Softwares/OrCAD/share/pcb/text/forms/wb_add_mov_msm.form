@@ -1,0 +1,250 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 29 40
+HEADER "Group"
+
+POPUP <groupPopup>"""".
+POPUP <padPopup>"""".
+POPUP <patternPopup>"""".
+POPUP <bubblePopup>"""".
+POPUP <profilePopup>"""".
+POPUP <alignPopup>"""".
+POPUP <snapPopup>"""".
+POPUP <stubViaPopup>"""".
+
+TILE
+
+GROUP "Add wire bond"
+GLOC 1 1
+GSIZE 27 5
+INFO wirebond_label 8 8
+ENDGROUP
+
+FIELD addWire
+FLOC 2 3
+CHECKLIST "Wire"
+ENDFIELD
+
+FIELD addFinger
+FLOC 11 3
+CHECKLIST "Finger"
+ENDFIELD
+
+# The following fields are only present in "wire only" mode.
+
+GROUP "Destinations"
+GLOC 1 7
+GSIZE 27 9
+INFO dest_group_wireonly 8 8
+ENDGROUP
+
+FIELD dest_pins_wireonly
+FLOC 3 9
+CHECKLIST "Connect to die pads"
+ENDFIELD
+FIELD dest_side_wireonly
+FLOC 3 11
+CHECKLIST "Same side"
+ENDFIELD
+FIELD dest_path_wireonly
+FLOC 5 13
+CHECKLIST "Same guide path"
+ENDFIELD
+
+GROUP "Wire"
+GLOC 1 16
+GSIZE 27 7
+INFO wire_group_wireonly 8 8
+ENDGROUP
+
+FIELD allow_wired_wireonly
+FLOC 3 18
+CHECKLIST "Allow multiple wires to finger"
+ENDFIELD
+
+TEXT "Profile:"
+TLOC 3 20
+INFO profile_wireonly_label 8 8
+ENDTEXT
+FIELD profile_wireonly
+FLOC 10 20
+STRFILLIN 12 1023
+POP "profilePopup"
+ENDFIELD
+
+GROUP "Finger"
+GLOC 1 23
+GSIZE 27 5
+INFO finger_group_wireonly 8 8
+ENDGROUP
+
+FIELD adjust_finger
+FLOC 3 25
+CHECKLIST "Adjust finger rotation"
+ENDFIELD
+
+# The remaining fields are present in all BUT wire only mode. 
+
+TEXT "Settings:"
+TLOC 1 7
+INFO group_label 8 8
+ENDTEXT
+
+FIELD settings_group
+FLOC 10 7
+ENUMSET 14
+POP "groupPopup"
+ENDFIELD
+
+TEXT "Bubble:"
+TLOC 1 9
+INFO bubble_label 8 8
+ENDTEXT
+
+FIELD bubble
+FLOC 10 9
+ENUMSET 14
+POP "bubblePopup"
+ENDFIELD
+
+GROUP "Pattern"
+GLOC 1 12
+GSIZE 27 9
+INFO pattern_group 8 8
+ENDGROUP
+
+TEXT "Style:"
+TLOC 3 14
+INFO style_label 8 8
+ENDTEXT
+FIELD pattern
+FLOC 10 14
+ENUMSET 14
+POP "patternPopup"
+ENDFIELD
+
+TEXT "Length:"
+TLOC 3 16
+INFO length_label 8 8
+ENDTEXT
+FIELD ewLength
+FLOC 10 16
+STRFILLIN 14 20
+ENDFIELD
+
+FIELD autoBondToRings
+FLOC 3 18
+CHECKLIST "Bond voltage nets to rings"
+ENDFIELD
+
+GROUP "Wire"
+GLOC 1 21
+GSIZE 27 7
+INFO wire_group 8 8
+ENDGROUP
+
+FIELD allow_multi_wires
+FLOC 3 23
+CHECKLIST "Allow multiple wires to finger"
+ENDFIELD
+
+TEXT "Profile:"
+TLOC 3 25
+INFO profile_label 8 8
+ENDTEXT
+FIELD profile
+FLOC 10 25
+STRFILLIN 12 1023
+POP "profilePopup"
+ENDFIELD
+
+GROUP "Finger"
+GLOC 1 28
+GSIZE 27 11
+INFO finger_group 8 8
+ENDGROUP 
+
+TEXT "Pad:"
+TLOC 3 30
+INFO padName_label 8 8
+ENDTEXT
+FIELD padName
+FLOC 7 30
+ENUMSET 12
+POP "padPopup"
+ENDFIELD
+FIELD addPadstack
+FLOC 22 30
+MENUBUTTON "Add" 4 3
+ENDFIELD
+
+TEXT "Align:"
+TLOC 3 32
+INFO padAlign_label 8 8
+ENDTEXT
+FIELD padAlign
+FLOC 10 32
+ENUMSET 14
+POP "alignPopup"
+ENDFIELD
+TEXT "Angle:"
+INFO padAngle_label 8 8
+TLOC 3 34
+ENDTEXT
+FIELD padAngle
+FLOC 10 34
+STRFILLIN 15 128
+ENDFIELD
+
+TEXT "Snap:"
+TLOC 3 36
+INFO padSnap_label 8 8
+ENDTEXT
+FIELD padSnap
+FLOC 10 36
+ENUMSET 14
+POP "snapPopup"
+ENDFIELD
+
+GROUP "Routing Stubs"
+GLOC 1 39
+GSIZE 27 11
+INFO stubs_group 8 8
+ENDGROUP
+
+FIELD outer_stub
+FLOC 3 41
+CHECKLIST "Outer:"
+ENDFIELD
+FIELD outer_stub_len
+FLOC 10 41
+STRFILLIN 15 128
+ENDFIELD
+FIELD outer_stub_via
+FLOC 10 43
+ENUMSET 14
+POP "stubViaPopup"
+ENDFIELD
+
+FIELD inner_stub
+FLOC 3 45
+CHECKLIST "Inner:"
+ENDFIELD
+FIELD inner_stub_len
+FLOC 10 45
+STRFILLIN 15 128
+ENDFIELD
+FIELD inner_stub_via
+FLOC 10 47
+ENUMSET 14
+POP "stubViaPopup"
+ENDFIELD
+
+FIELD apply
+FLOC 2 40
+MENUBUTTON "Apply changes and exit" 25 3
+ENDFIELD
+
+ENDTILE
+ENDFORM

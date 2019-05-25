@@ -1,0 +1,470 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+VARIABLE
+PORT 52 14
+HEADER "Edit Properties"
+
+POPUP <SHOW>"Sort by Element""1","Sort by Prop""2","Inherited Properties""3","Turn off Show""4".
+
+POPUP <BOOLEAN_VALUES>"TRUE""T","""F".
+POPUP <ENUM_DIR_CON_VALUES>"dummy""0".
+POPUP <ENUM_TS_VALUES>"dummy""0".
+POPUP <ENUM_RAT_VALUES>"dummy""0".
+POPUP <ENUM_PINUSE_VALUES>"dummy""0".
+POPUP <ENUM_EDGESENS_VALUES>"dummy""0".
+POPUP <ENUM_FIRSTINC_VALUES>"dummy""0".
+POPUP <ENUM_NETSCHED_VALUES>"dummy""0".
+POPUP <ENUM_DIFF_RTMETHOD_VALUES>"dummy""0".
+POPUP <ENUM_DIFF_GATHER_VALUES>"dummy""0".
+POPUP <ENUM_DIFF_PHASE_VALUES>"dummy""0".
+POPUP <ENUM_DYN_THERMAL_VALUES>"dummy""0".
+POPUP <ENUM_DYN_CLEARANCE_VALUES>"dummy""0".
+POPUP <ENUM_BOOLEAN_PROP_VALUES>"dummy""0".
+POPUP <ENUM_CDS_XNET_NAME_VALUES>"dummy""0".
+POPUP <ENUM_ONOFF_PROP_VALUES>"dummy""0".
+POPUP <ENUM_EMBEDDED_PROP_VALUES>"dummy""0".
+
+MESSAGE invalprop 0 "Unknown property: '%s'."
+MESSAGE invalrange 0 "Value '%s' must be in the range %.*f-%.*f."
+MESSAGE invlowrange 0 "Value '%s' must be greater than %.*f."
+MESSAGE invhighrange 0 "Value '%s' must be less than %.*f."
+MESSAGE badvalue 0 "'%s' is an illegal value for property %s."
+MESSAGE badmksval 0 "'%s' couldn't be converted to the proper units for prop %s."
+MESSAGE badintvalue 0 "Illegal value '%s'; %s requires an integer value."
+MESSAGE badfloatvalue 0 "Illegal value '%s'; %s requires a floating point value."
+MESSAGE uniterr 0 "Illegal value '%s'; value may not contain a unit specifer."
+MESSAGE badunitspec 0 "Value '%s' contains a bad unit specifer; should be '%s'."
+MESSAGE parasemiexp 0 "Missing semicolon in '%s'; value pairs must be in the form n:m;"
+MESSAGE paracolonexp 0 "Missing colon in '%s'; value pairs must be in the form n:m;"
+MESSAGE paranovalue 0 "Missing value in '%s'; value pairs must be in the form n:m;"
+MESSAGE paratoomany 0 "Value '%s' may contain only 4 value pairs."
+MESSAGE badviachar 0 "Illegal character in '%s'; use only A-Z, a-z, 0-9, '-', '_'."
+MESSAGE badviadelim 0 "Illegal delimiter in '%s'; value must be in the form a,b."
+MESSAGE mispstkname 0 "Missing padstack name in value '%s'."
+MESSAGE boolvalue 0 "To ignore property, toggle value field to blank."
+MESSAGE popvalue 0 "Select popup in the value field, or leave blank to ignore."
+MESSAGE stringvalue 0 "Enter a string in the value field, or leave blank to ignore."
+MESSAGE numericvalue 0 "Enter a number in the value field, or leave blank to ignore."
+MESSAGE numrngvalue 0 "Enter a number in the range %.*f-%.*f %s, or leave blank to ignore."
+MESSAGE numgrevalue 0 "Enter a number greater than %.*f %s, or leave blank to ignore."
+MESSAGE numlesvalue 0 "Enter a number less than %.*f %s, or leave blank to ignore."
+MESSAGE badroomtype 0 "Value must be HARD, SOFT, INCLUSIVE, HARD_STRADDLE or INCLUSIVE_STRADDLE."
+MESSAGE syntax_err 0 "'%s'; %s"
+
+TILE standard_tile
+TPANEL 2
+FIELD reset
+FLOC 1 1
+MENUBUTTON "Reset" 9 3
+ENDFIELD
+
+FIELD apply
+FLOC 11 1
+MENUBUTTON "Apply" 9 3
+ENDFIELD
+
+FIELD show
+FLOC 21 1
+MENUBUTTON "Show" 9 3
+POP "SHOW"
+ENDFIELD
+
+ENDTILE
+
+TILE header_tile
+TPANEL 0
+TEXT "Delete"
+OPTIONS bold
+TLOC 1 1
+ENDTEXT
+
+TEXT "Property"
+OPTIONS bold
+TLOC 11 1
+ENDTEXT
+
+TEXT "Value"
+OPTIONS bold
+TLOC 35 1
+ENDTEXT
+
+ENDTILE
+
+TILE prop_value_tile
+TPANEL 1
+TEXT
+TLOC 6 0
+INFO ele_prop_name 25
+OPTIONS prettyprint
+ENDTEXT
+
+FIELD prop_state
+FLOC 2 0
+CHECKLIST ""
+ENDFIELD
+
+FIELD ele_prop_value
+FLOC 33 0
+STRFILLIN 16 512
+ENDFIELD
+
+ENDTILE
+
+TILE bool_prop_tile
+TPANEL 1
+TEXT
+TLOC 6 0
+INFO ele_prop_name 25
+OPTIONS prettyprint
+ENDTEXT
+
+FIELD prop_state
+FLOC 2 0
+CHECKLIST ""
+ENDFIELD
+
+FIELD bool_prop_value
+FLOC 33 0
+ENUMSET 5
+POP "BOOLEAN_VALUES"
+ENDFIELD
+
+ENDTILE
+
+TILE enum_dir_con_prop_tile
+TPANEL 1
+TEXT
+TLOC 6 0
+INFO ele_prop_name 25
+OPTIONS prettyprint
+ENDTEXT
+
+FIELD prop_state
+FLOC 2 0
+CHECKLIST ""
+ENDFIELD
+
+FIELD enum_dir_con_prop_value
+FLOC 33 0
+ENUMSET 12
+POP "ENUM_DIR_CON_VALUES"
+ENDFIELD
+
+ENDTILE
+
+TILE enum_ts_prop_tile
+TPANEL 1
+TEXT
+TLOC 6 0
+INFO ele_prop_name 25
+OPTIONS prettyprint
+ENDTEXT
+
+FIELD prop_state
+FLOC 2 0
+CHECKLIST ""
+ENDFIELD
+
+FIELD enum_ts_prop_value
+FLOC 33 0
+ENUMSET 18
+POP "ENUM_TS_VALUES"
+ENDFIELD
+
+ENDTILE
+
+TILE enum_edgesens_prop_tile
+TPANEL 1  
+TEXT   
+TLOC 6 0
+INFO ele_prop_name 25
+OPTIONS prettyprint
+ENDTEXT   
+ 
+FIELD prop_state
+FLOC 2 0
+CHECKLIST ""
+ENDFIELD
+ 
+FIELD enum_edgesens_prop_value
+FLOC 33 0
+ENUMSET 18
+POP "ENUM_EDGESENS_VALUES"
+ENDFIELD
+ 
+ENDTILE
+
+TILE enum_firstinc_prop_tile
+TPANEL 1  
+TEXT   
+TLOC 6 0
+INFO ele_prop_name 25
+OPTIONS prettyprint
+ENDTEXT   
+ 
+FIELD prop_state
+FLOC 2 0
+CHECKLIST ""
+ENDFIELD
+ 
+FIELD enum_firstinc_prop_value
+FLOC 33 0
+ENUMSET 18
+POP "ENUM_FIRSTINC_VALUES"
+ENDFIELD
+ 
+ENDTILE
+
+TILE enum_netsched_prop_tile
+TPANEL 1  
+TEXT     
+TLOC 6 0
+INFO ele_prop_name 25
+OPTIONS prettyprint
+ENDTEXT   
+
+FIELD prop_state
+FLOC 2 0  
+CHECKLIST ""
+ENDFIELD  
+
+FIELD enum_netsched_prop_value
+FLOC 33 0 
+ENUMSET 18
+POP "ENUM_NETSCHED_VALUES"
+ENDFIELD  
+
+ENDTILE
+
+TILE enum_rat_prop_tile
+TPANEL 1
+TEXT
+TLOC 6 0
+INFO ele_prop_name 25
+OPTIONS prettyprint
+ENDTEXT
+
+FIELD prop_state
+FLOC 2 0
+CHECKLIST ""
+ENDFIELD
+
+FIELD enum_rat_prop_value
+FLOC 33 0
+ENUMSET 18
+POP "ENUM_RAT_VALUES"
+ENDFIELD
+
+ENDTILE
+
+TILE enum_pinuse_prop_tile
+TPANEL 1
+TEXT
+TLOC 6 0
+INFO ele_prop_name 25
+OPTIONS prettyprint
+ENDTEXT
+
+FIELD prop_state
+FLOC 2 0
+CHECKLIST ""
+ENDFIELD
+
+FIELD enum_pinuse_prop_value
+FLOC 33 0
+ENUMSET 7
+POP "ENUM_PINUSE_VALUES"
+ENDFIELD
+
+ENDTILE
+
+TILE enum_diff_rtmethod_prop_tile
+TPANEL 1
+TEXT
+TLOC 6 0
+INFO ele_prop_name 25
+OPTIONS prettyprint
+ENDTEXT
+
+FIELD prop_state
+FLOC 2 0
+CHECKLIST ""
+ENDFIELD
+
+FIELD enum_diff_rtmethod_prop_value
+FLOC 33 0
+ENUMSET 12
+POP "ENUM_DIFF_RTMETHOD_VALUES"
+ENDFIELD
+
+ENDTILE
+
+TILE enum_diff_gather_prop_tile
+TPANEL 1
+TEXT
+TLOC 6 0
+INFO ele_prop_name 25
+OPTIONS prettyprint
+ENDTEXT
+
+FIELD prop_state
+FLOC 2 0
+CHECKLIST ""
+ENDFIELD
+
+FIELD enum_diff_gather_prop_value
+FLOC 33 0
+ENUMSET 12
+POP "ENUM_DIFF_GATHER_VALUES"
+ENDFIELD
+
+ENDTILE
+
+TILE enum_diff_phase_prop_tile
+TPANEL 1
+TEXT
+TLOC 6 0
+INFO ele_prop_name 25
+OPTIONS prettyprint
+ENDTEXT
+
+FIELD prop_state
+FLOC 2 0
+CHECKLIST ""
+ENDFIELD
+
+FIELD enum_diff_phase_prop_value
+FLOC 33 0
+ENUMSET 12
+POP "ENUM_DIFF_PHASE_VALUES"
+ENDFIELD
+
+ENDTILE
+
+TILE enum_dyn_thermal_prop_tile
+TPANEL 1
+TEXT
+TLOC 6 0
+INFO ele_prop_name 25
+OPTIONS prettyprint
+ENDTEXT
+ 
+FIELD prop_state
+FLOC 2 0
+CHECKLIST ""
+ENDFIELD
+ 
+FIELD enum_dyn_thermal_prop_value
+FLOC 33 0
+ENUMSET 12
+POP "ENUM_DYN_THERMAL_VALUES"
+ENDFIELD
+ 
+ENDTILE
+
+TILE enum_dyn_clearance_prop_tile
+TPANEL 1
+TEXT
+TLOC 6 0
+INFO ele_prop_name 25
+OPTIONS prettyprint
+ENDTEXT
+ 
+FIELD prop_state
+FLOC 2 0
+CHECKLIST ""
+ENDFIELD
+ 
+FIELD enum_dyn_clearance_prop_value
+FLOC 33 0
+ENUMSET 12
+POP "ENUM_DYN_CLEARANCE_VALUES"
+ENDFIELD
+ 
+ENDTILE
+
+TILE enum_boolean_prop_tile
+TPANEL 1
+TEXT
+TLOC 6 0
+INFO ele_prop_name 25
+OPTIONS prettyprint
+ENDTEXT
+
+FIELD prop_state
+FLOC 2 0
+CHECKLIST ""
+ENDFIELD
+
+FIELD enum_boolean_prop_value
+FLOC 33 0
+ENUMSET 12
+POP "ENUM_BOOLEAN_PROP_VALUES"
+ENDFIELD
+
+ENDTILE
+TILE enum_cds_xnet_name_prop_tile
+TPANEL 1
+TEXT
+TLOC 6 0
+INFO ele_prop_name 25
+OPTIONS prettyprint
+ENDTEXT
+
+FIELD prop_state
+FLOC 2 0
+CHECKLIST ""
+ENDFIELD
+
+FIELD enum_cds_xnet_name_prop_value
+FLOC 33 0
+ENUMSET 12
+POP "ENUM_CDS_XNET_NAME_VALUES"
+ENDFIELD
+
+ENDTILE
+
+TILE enum_onoff_prop_tile
+TPANEL 1
+TEXT
+TLOC 6 0
+INFO ele_prop_name 25
+OPTIONS prettyprint
+ENDTEXT
+
+FIELD prop_state
+FLOC 2 0
+CHECKLIST ""
+ENDFIELD
+
+FIELD enum_onoff_prop_value
+FLOC 33 0
+ENUMSET 12
+POP "ENUM_ONOFF_PROP_VALUES"
+ENDFIELD
+
+ENDTILE
+
+TILE enum_embedded_prop_tile
+TPANEL 1
+TEXT
+TLOC 6 0
+INFO ele_prop_name 25
+OPTIONS prettyprint
+ENDTEXT
+
+FIELD prop_state
+FLOC 2 0
+CHECKLIST ""
+ENDFIELD
+
+FIELD enum_embedded_prop_value
+FLOC 33 0
+ENUMSET 14
+POP "ENUM_EMBEDDED_PROP_VALUES"
+ENDFIELD
+
+ENDTILE
+
+ENDFORM
+

@@ -1,0 +1,763 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 60 29
+HEADER "SI Design Setup Wizard"
+
+POPUP <TreeExpandControlChoices> "Expand All""Expand All","Collapse All""Collapse All".
+TILE
+
+TABSET "SI Design Setup"
+FLOC 0 0
+TSSIZE 60 41
+
+TAB SetupSelection
+
+TEXT "Select the setup categories that you want to run."
+TLOC 1 1
+ENDTEXT
+
+FIELD SetupLibraries
+FLOC 4 5
+CHECKLIST "SI Libraries"
+ENDFIELD
+
+FIELD SetupPowerGround
+FLOC 4 7
+CHECKLIST "Power and Ground Nets"
+ENDFIELD
+
+FIELD SetupStackup
+FLOC 4 9
+CHECKLIST "Cross-Section"
+ENDFIELD
+
+FIELD SetupComponents
+FLOC 4 11
+CHECKLIST "Components"
+ENDFIELD
+
+FIELD SetupXnets
+FLOC 4 13
+CHECKLIST "Xnets"
+ENDFIELD
+
+FIELD SetupDiffPairs
+FLOC 4 15
+CHECKLIST "Diff Pairs"
+ENDFIELD
+
+FIELD SetupSISimulations
+FLOC 4 17
+CHECKLIST "SI Simulations"
+ENDFIELD
+
+FIELD AuditEachCategory
+FLOC 4 21
+CHECKLIST "Run Audit upon completion of each setup category"
+ENDFIELD
+
+FIELD AllSetupOn
+FLOC 28 9
+MENUBUTTON "Turn On All Setup Categories" 26 3
+ENDFIELD
+
+FIELD AllSetupOff
+FLOC 28 13
+MENUBUTTON "Turn Off All Setup Categories" 26 3
+ENDFIELD
+
+ENDTAB
+
+TAB XnetsSelection
+
+GROUP "Select Xnets and nets that are to be setup"
+GLOC 1 1
+GSIZE 50 34
+ENDGROUP
+
+FIELD ShowBuses
+FLOC 3 4
+CHECKLIST "Show Buses"
+ENDFIELD
+
+FIELD ShowDiffPairs
+FLOC 30 4
+CHECKLIST "Show Diff Pairs"
+ENDFIELD
+
+TEXT "Xnet Filter:"
+TLOC 3 6
+ENDTEXT
+
+FIELD XnetsFilter
+FLOC 12 6
+STRFILLIN 35 100
+ENDFIELD
+
+FIELD SelectedXnets
+FLOC 3 8
+TREEVIEW 46 10
+POP TreeExpandControlChoices
+ENDFIELD
+
+FIELD ImportSelectedXnets
+FLOC 3 29
+MENUBUTTON "Import Xnets/Nets to be Selected" 46 3
+ENDFIELD
+
+FIELD ExportSelectedXnets
+FLOC 3 32
+MENUBUTTON "Export Selected Xnets/Nets" 46 3
+ENDFIELD
+
+FIELD IncludeCoupledXnets
+FLOC 3 36
+CHECKLIST "Include Coupled Xnets"
+ENDFIELD
+
+FIELD ListCoupledXnets
+FLOC 30 36
+MENUBUTTON "List Coupled Xnets" 19 3
+ENDFIELD
+
+ENDTAB
+
+TAB LibrariesSetup1
+
+TEXT "Verify that the following list includes all of the directories that contain the dml,"
+TLOC 1 1
+ENDTEXT
+
+TEXT "iml, Ibis, Spice, HSpice and Spectre files that you expect to use. The order of"
+
+TLOC 1 3
+ENDTEXT
+
+TEXT "the directories defines the sequence in which they will be searched for a model."
+TLOC 1 5
+ENDTEXT
+
+GROUP "Directories To Be Searched for Model Files"
+GLOC 1 8
+GSIZE 58 25
+ENDGROUP
+
+FIELD SearchDirectories
+FLOC 2 11
+LIST "" 38 11
+ENDFIELD
+
+FIELD AddDirectory
+FLOC 41 11
+MENUBUTTON "Add Directory..." 17 3
+ENDFIELD
+
+FIELD MoveDirectoryToTop
+FLOC 41 14
+MENUBUTTON "Move To Top" 17 3
+ENDFIELD
+
+FIELD MoveDirectoryUp
+FLOC 41 17
+MENUBUTTON "Move Up" 17 3
+ENDFIELD
+
+FIELD MoveDirectoryDown
+FLOC 41 20
+MENUBUTTON "Move Down" 17 3
+ENDFIELD
+
+FIELD MoveDirectoryToBottom
+FLOC 41 23
+MENUBUTTON "Move To Bottom" 17 3
+ENDFIELD
+
+FIELD RemoveDirectory
+FLOC 41 26
+MENUBUTTON "Remove Directory" 17 3
+ENDFIELD
+
+FIELD ResetDirectories
+FLOC 41 29
+MENUBUTTON "Reset To Default" 17 3
+ENDFIELD
+
+ENDTAB
+
+TAB LibrariesSetup2
+
+TEXT "The following fields show the file extensions that will be used to find each type"
+TLOC 1 1
+ENDTEXT
+
+TEXT "of model file. Update any of these that are not correct or are incomplete. Multiple"
+TLOC 1 3
+ENDTEXT
+
+TEXT "file extensions can be defined for any type of file. They must be separated by"
+TLOC 1 5
+ENDTEXT
+
+TEXT "commas in the list."
+TLOC 1 7
+ENDTEXT
+
+GROUP "Model File Extensions"
+GLOC 1 10
+GSIZE 58 24
+ENDGROUP
+
+TEXT "Generic IBIS:"
+TLOC 2 13
+ENDTEXT
+
+FIELD IbisFileExtensionsString
+FLOC 13 13
+STRFILLIN 43 120
+ENDFIELD
+
+TEXT "IBIS EBD:"
+TLOC 2 15
+ENDTEXT
+
+FIELD EbdFileExtensionsString
+FLOC 13 15
+STRFILLIN 43 120
+ENDFIELD
+
+TEXT "IBIS ICM:"
+TLOC 2 17
+ENDTEXT
+
+FIELD IcmFileExtensionsString
+FLOC 13 17
+STRFILLIN 43 120
+ENDFIELD
+
+TEXT "IBIS Package:"
+TLOC 2 19
+ENDTEXT
+
+FIELD PkgFileExtensionsString
+FLOC 13 19
+STRFILLIN 43 120
+ENDFIELD
+
+TEXT "Generic Spice:"
+TLOC 2 21
+ENDTEXT
+
+FIELD SpiceFileExtensionsString
+FLOC 13 21
+STRFILLIN 43 120
+ENDFIELD
+
+TEXT "HSPICE Input:"
+TLOC 2 23
+ENDTEXT
+
+FIELD HSpiceFileExtensionsString
+FLOC 13 23
+STRFILLIN 43 120
+ENDFIELD
+
+TEXT "Spectre:"
+TLOC 2 25
+ENDTEXT
+
+FIELD SpectreFileExtensionsString
+FLOC 13 25
+STRFILLIN 43 120
+ENDFIELD
+
+TEXT "Touchstone:"
+TLOC 2 27
+ENDTEXT
+
+FIELD TouchstoneFileExtensionsString
+FLOC 13 27
+STRFILLIN 43 120
+ENDFIELD
+
+FIELD ResetExtensions
+FLOC 18 31
+MENUBUTTON "Reset All Extensions To Default" 17 3
+ENDFIELD
+
+ENDTAB
+
+TAB LibrariesSetup3
+
+TEXT "The following lists show the dml and iml libraries that were found in the model"
+TLOC 1 1
+ENDTEXT
+
+TEXT "library search directories. One dml library and one iml library must be"
+TLOC 1 3
+ENDTEXT
+
+TEXT "designated as the working libraries. These are the libraries in which all new models"
+TLOC 1 5
+ENDTEXT
+
+TEXT "will be saved. You may also indicate if any of the libraries are to be ignored."
+TLOC 1 7
+ENDTEXT
+
+GRID DmlLibs
+FLOC 2 11
+FSIZE 56 13
+OPTIONS HLINES VLINES USERSIZE
+GHEAD TOP
+HEADSIZE 3
+OPTIONS 3D MULTI
+ENDGHEAD
+ENDGRID
+
+GRID ImlLibs
+FLOC 2 26
+FSIZE 56 13
+OPTIONS HLINES VLINES USERSIZE
+GHEAD TOP
+HEADSIZE 3
+OPTIONS 3D MULTI
+ENDGHEAD
+ENDGRID
+
+ENDTAB
+
+TAB PowerGroundSetup
+
+GROUP "Power and Ground Nets"
+GLOC 1 1
+GSIZE 28 28
+ENDGROUP
+
+GRID VoltageNets
+FLOC 2 4
+FSIZE 26 19
+OPTIONS HLINES VLINES
+GHEAD TOP
+HEADSIZE 2
+OPTIONS 3D MULTI
+ENDGHEAD
+ENDGRID
+
+FIELD EditVoltageNet
+FLOC 2 23
+MENUBUTTON "Edit Selected Voltage Net" 26 3
+ENDFIELD
+
+FIELD DeleteVoltageNet
+FLOC 2 26
+MENUBUTTON "Delete Selected Voltage Net" 26 3
+ENDFIELD
+
+GROUP "Possible Power and Ground Nets"
+GLOC 31 1
+GSIZE 28 28
+ENDGROUP
+
+GRID LikelyVoltageNets
+FLOC 32 4
+FSIZE 26 19
+OPTIONS HLINES VLINES
+GHEAD TOP
+HEADSIZE 2
+OPTIONS 3D MULTI
+ENDGHEAD
+ENDGRID
+
+FIELD IdentifyVoltageNet
+FLOC 32 23
+MENUBUTTON "Assign Voltage To Selected Net" 26 3
+ENDFIELD
+
+FIELD ShowWhyVoltageNet
+FLOC 32 26
+MENUBUTTON "Show Why Possible Voltage Net" 26 3
+ENDFIELD
+
+FIELD EditVoltageOnAnyNet
+FLOC 15 31
+MENUBUTTON "Edit Voltage On Any Net In Design" 30 3
+ENDFIELD
+
+FIELD DefinePossibleVoltageFormats
+FLOC 15 34
+MENUBUTTON "Define Possible Voltage Net Rules" 30 3
+ENDFIELD
+
+ENDTAB
+
+TAB StackupSetup
+
+TEXT "You can update the cross-section of this design in any of the following ways:"
+TLOC 1 1
+ENDTEXT
+
+FIELD ManualStackupEdit
+FLOC 6 5
+MENUBUTTON "Manually Edit Existing Cross-Section..." 34 3
+ENDFIELD
+
+FIELD LoadStackupFromBrd
+FLOC 6 8
+MENUBUTTON "Load Cross-Section From Another Design..." 34 3
+ENDFIELD
+
+FIELD LoadStackupFromTechFile
+FLOC 6 11
+MENUBUTTON "Load Cross-Section From A Tech File..." 34 3
+ENDFIELD
+
+ENDTAB
+
+TAB ComponentSetup1
+
+TEXT "All component devices must be classified as one of the following types"
+TLOC 1 1
+ENDTEXT
+
+TEXT "IC: an active device"
+TLOC 3 3
+ENDTEXT
+
+TEXT "Discrete: a passive device"
+TLOC 22 3
+ENDTEXT
+
+TEXT "IO: a connector"
+TLOC 45 3
+ENDTEXT
+
+TEXT "Update the class of any component device in the following list"
+TLOC 1 5
+ENDTEXT
+
+GROUP "Component Device Classes"
+GLOC 1 7
+GSIZE 58 24
+ENDGROUP
+
+TEXT "Device Filter:"
+TLOC 2 9
+ENDTEXT
+
+FIELD ClassDeviceFilter
+FLOC 12 9 
+STRFILLIN 15 30
+ENDFIELD
+
+TEXT "Refdes Filter:"
+TLOC 31 9
+ENDTEXT
+
+FIELD ClassRefdesFilter
+FLOC 41 9
+STRFILLIN 15 30
+ENDFIELD
+
+FIELD ComponentClasses
+FLOC 2 11
+TREEVIEW 56 10
+ENDFIELD
+
+GROUP "Change Selected Component Devices To"
+GLOC 1 32
+GSIZE 58 6
+ENDGROUP
+
+FIELD ChangeToIC
+FLOC 3 35
+MENUBUTTON "IC" 15 3
+ENDFIELD
+
+FIELD ChangeToDiscrete
+FLOC 23 35
+MENUBUTTON "Discrete" 15 3
+ENDFIELD
+
+FIELD ChangeToIO
+FLOC 43 35
+MENUBUTTON "IO" 15 3
+ENDFIELD
+
+ENDTAB
+
+TAB ComponentSetup2
+
+TEXT "The following discrete components have no assigned value. You may fix"
+TLOC 1 1
+ENDTEXT
+
+TEXT "this by selecting a group of components and then specifying the value"
+TLOC 1 3
+ENDTEXT
+
+TEXT "that is to be assigned to them."
+TLOC 1 5
+ENDTEXT
+
+TEXT "Refdes Filter:"
+TLOC 2 8
+ENDTEXT
+
+FIELD NoValueRefdesFilter
+FLOC 12 8
+STRFILLIN 15 30
+ENDFIELD
+
+TEXT "Device Filter:"
+TLOC 31 8
+ENDTEXT
+
+FIELD NoValueDeviceFilter
+FLOC 41 8
+STRFILLIN 15 30
+ENDTEXT
+
+GRID NoValueComponents
+FLOC 2 11
+FSIZE 56 25
+OPTIONS HLINES VLINES MULTISELROW
+GHEAD TOP
+HEADSIZE 2
+OPTIONS 3D MULTI
+ENDGHEAD
+ENDGRID
+
+FIELD AssignComponentValues
+FLOC 11 37
+MENUBUTTON "Assign Value to Selected Components" 35 3
+ENDFIELD
+
+ENDTAB
+
+TAB ComponentSetup3
+
+TEXT "The following components are unplaced. Select a component to place it."
+TLOC 1 1
+ENDTEXT
+
+FIELD UnplacedComponents
+FLOC 14 6
+LIST "" 24 16
+ENDFIELD
+
+ENDTAB
+
+TAB ComponentSetup4
+
+TEXT "The following components have no assigned signal models.
+TLOC 7 1
+ENDTEXT
+
+GROUP "Select Devices and Components then Assign Model"
+GLOC 9 3
+GSIZE 39 35
+ENDGROUP
+
+FIELD DeviceRefdesFilter
+FLOC 12 6
+STRFILLIN 32 50
+ENDFIELD
+
+FIELD NoModelComponents
+FLOC 12 8
+TREEVIEW 34 10
+ENDFIELD
+
+FIELD CreateDiscreteModels
+FLOC 12 27
+MENUBUTTON "Create Default Models For All Discretes" 35 2
+ENDFIELD
+
+FIELD CreateDefaultModel
+FLOC 12 29
+MENUBUTTON "Create Default Model" 35 2
+ENDFIELD
+
+FIELD AssignExistingModel
+FLOC 12 31
+MENUBUTTON "Assign Existing Model" 35 2
+ENDFIELD
+
+FIELD CreateNewModel
+FLOC 12 33
+MENUBUTTON "Create New Model" 35 2
+ENDFIELD
+
+FIELD LoadModelAssignmentFile
+FLOC 12 35
+MENUBUTTON "Load Assignments From a File" 35 2
+ENDFIELD
+
+ENDTAB
+
+TAB XnetSetup
+
+TEXT "The following Xnets contain no driver pins. Select an Xnet to modify the"
+TLOC 1 1
+ENDTEXT
+
+TEXT "pin use of a pin in the Xnet"
+TLOC 1 3
+ENDTEXT
+
+FIELD XnetsWithoutDrivers
+FLOC 11 6
+LIST "" 36 16
+ENDFIELD
+
+ENDTAB
+
+TAB DiffPairSetup
+
+TEXT "Diff Pairs in Selected Nets/Xnets"
+TLOC 9 1
+OPTIONS BOLD
+ENDTEXT
+
+FIELD ShowUserDefinedDiffPairs
+FLOC 4 3
+CHECKLIST "Show User Defined Diff Pairs" DiffPairType
+ENDFIELD
+
+FIELD ShowModelDefinedDiffPairs
+FLOC 29 3
+CHECKLIST "Show Model Defined Diff Pairs" DiffPairType
+ENDFIELD
+
+GRID SelectedDiffPairs
+FLOC 2 6
+FSIZE 56 23
+OPTIONS HLINES VLINES USERSIZE
+GHEAD TOP
+HEADSIZE 2
+OPTIONS 3D MULTI
+ENDGHEAD
+ENDGRID
+
+FIELD CreateDefaultDiffPairs
+FLOC 2 29
+MENUBUTTON "Create Default Diff Pairs From Selected Nets/Xnets" 57 2
+ENDFIELD
+
+FIELD CreateDiffPairsFromUserRules
+FLOC 2 31
+MENUBUTTON "Create Diff Pairs From User Defined Rules" 57 2
+ENDFIELD
+
+FIELD DeleteDiffPair
+FLOC 2 33
+MENUBUTTON "Delete Selected Diff Pair" 57 2
+ENDFIELD
+
+FIELD CreateNewDiffPair
+FLOC 2 35
+MENUBUTTON "Create New Diff Pair" 57 2
+ENDFIELD
+
+FIELD ChangeToModelDefinedDiffPair
+FLOC 2 37
+MENUBUTTON "Change Selected Diff Pair to Model Defined" 57 2
+ENDFIELD
+
+FIELD EditModelDefinedDiffPair
+FLOC 2 37
+MENUBUTTON "Edit Model Defined Diff Pair" 57 2
+ENDFIELD
+
+ENDTAB
+
+TAB SISimulationSetup
+
+TEXT "Select the types of simulation that are to be performed.
+TLOC 1 1
+ENDTEXT
+
+FIELD ReflectionSimulation
+FLOC 4 4
+CHECKLIST "Reflection"
+ENDFIELD
+
+FIELD ComprehensiveSimulation
+FLOC 4 6
+CHECKLIST "Comprehensive"
+ENDFIELD
+
+FIELD SimulatedCrosstalkSimulation
+FLOC 4 8
+CHECKLIST "Simulated Crosstalk"
+ENDFIELD
+
+FIELD EstimatedCrosstalkSimulation
+FLOC 4 10
+CHECKLIST "Estimated Crosstalk"
+ENDFIELD
+
+FIELD SSNSimulation
+FLOC 4 12
+CHECKLIST "SSN"
+ENDFIELD
+
+FIELD EMISimulation
+FLOC 4 14
+CHECKLIST "EMI"
+ENDFIELD
+
+FIELD BusSimulation
+FLOC 4 16
+CHECKLIST "Bus Analysis"
+ENDFIELD
+
+FIELD SignalScreeningSimulation
+FLOC 4 18
+CHECKLIST "Signal Quality Screening"
+ENDFIELD
+
+TEXT "Select the simulator to be used."
+TLOC 1 22
+ENDTEXT
+
+FIELD Simulator_tlsim
+FLOC 4 25
+CHECKLIST "tlsim" simulator
+ENDFIELD
+
+FIELD Simulator_HSpice
+FLOC 4 27
+CHECKLIST "HSpice" simulator
+ENDFIELD
+
+FIELD Simulator_Spectre
+FLOC 4 29
+CHECKLIST "Spectre" simulator
+ENDFIELD
+
+ENDTAB
+
+TAB WizardComplete
+
+TEXT "SI Design Setup is complete. Running SI Design Audit before terminating this"
+TLOC 1 3
+ENDTEXT
+
+TEXT "command is recommended."
+TLOC 1 5
+ENDTEXT
+
+FIELD RunSIAudit
+FLOC 20 9
+MENUBUTTON "Run SI Design Audit" 16 3
+ENDFIELD
+
+ENDTAB
+
+ENDTABSET
+
+ENDTILE
+
+ENDFORM

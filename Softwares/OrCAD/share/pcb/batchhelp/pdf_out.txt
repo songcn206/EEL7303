@@ -1,0 +1,115 @@
+
+    Command line arguments for pdf_out. 
+        Utility to export Allegro data to PDF Format.
+
+    pdf_out <design_name> [-slBCrhpPtUnmiveSx] [-o output_name]
+         [-f <artfilm_name1>  -f <artfilm_name2> ...]
+         [-c <config_file_name>] [-u user_pass] [-w perm_pass]
+
+    -o  Output file name.  Default: <design_name>.pdf
+
+        If the global filename affixes are set the resultant output name 
+        would be:
+
+	    <prefix>_<output_file_name>_<suffix>.pdf
+
+    -c  Configuration file used to control paper size, margins, scale factor,
+        and export extra properties for Component and Net. 
+
+    -f  Art film name. Default is to export all films.
+       	
+    -u  User password to open the PDF file.
+
+    -w  Permmision password to open and edit PDF file
+
+    -s  Create separate PDF file for each art film, Default is to generate
+        one single PDF file for all the exported art films. 
+
+        The output file name for each film would be: 
+
+          <output_file_name>_<film_name>.pdf  
+
+        or 
+
+          <prefix>_<output_file_name>_<film_name>_<suffix>.pdf
+
+    -l  List artwork films in the board.
+
+    -p  Pad filled
+
+    -P  Create size optimized PDF file for printing, no design data exported   
+
+    -C  Display component by RefDes without package name
+
+    -B  Create PDF file in black and white. Default to use the design colors.
+
+    -r  Export board/symbol outlines, refdes as well if pins exported
+
+    -t  Trace filter
+
+    -h  Hole filter
+
+    -U  No shape fill
+
+    -x  Vector text and invisible text string for search.    
+
+    Meta Data Options: 
+
+        -n  Net Data Tree
+        -m  Component Data Tree
+        -T  TestPoint Tree and testPoint outline
+        -i  Pin   property
+        -v  Via   property
+        -e  Cline property
+        -S  Shape property
+       
+      
+    REQUIRED ARGUMENTS
+
+            <design_name>  Name of the design file.
+
+    Example 1: Create one PDF File to export all art films, and export board 
+               outline, symbol outline, refdes as well if symbol pins are 
+               exported
+           		 
+               pdf_out test.brd -o test -r 
+
+    Example 2: Create a PDF File with configuration file:
+
+               pdf_out test.brd -o test -c pdf_out_config.txt 
+
+         Note: The format of object property parameter is: 
+               Object_Type/Property_Name, one entry per line. 
+
+         For example:
+
+		Component/IDF_OWNER 
+		Net/DIFFP_PHASE_TOL_DYNAMIC
+		Net/MAX_VIA_COUNT 
+		page_setup/unit=Inch or page_setup/unit=Millimeter
+		page_setup/paper_size_width=8.500
+		page_setup/paper_size_height=11.000
+		page_setup/margin_left=0.500
+		page_setup/margin_right=0.500
+		page_setup/margin_top=0.500
+		page_setup/margin_bottom=0.500
+		page_setup/scale_factor=fit_page or page_setup/scale_factor=1.50
+		page_setup/header_footer_text_size_width=0.048
+		page_setup/header_footer_text_size_height=0.048
+		page_setup/orientation=landscape or page_setup/orientation=portrait    
+
+    Example 3: Create one PDF File to export two art films – TOP and BOTTOM:
+
+               pdf_out test.brd -o test -f TOP -f BOTTOM 
+
+    Example 4: Create separate PDF Files for each exported art film:
+
+               pdf_out test.brd -o test -f TOP -f BOTTOM -s
+
+    Example 5: Create PDF File to export the art films "TOP" and "BOTTOM", and
+              export meta data for component, net, pin, via, cline, shape:
+
+               pdf_out test.brd -o test -f TOP -f BOTTOM -m -n -i -v -e -S
+
+
+

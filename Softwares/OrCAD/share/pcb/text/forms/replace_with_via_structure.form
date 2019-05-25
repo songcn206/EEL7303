@@ -1,0 +1,47 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 39 6
+HEADER "Vias To Component"
+
+POPUP <PADSTACK_POPUP> "" "".
+POPUP <STRUCTURE_POPUP> "" "".
+
+TILE
+
+FIELD ignore_fixed
+FLOC 1 1
+CHECKLIST "Ignore fixed property"
+ENDFIELD
+
+FIELD replace_struct_with_via
+FLOC 1 3
+CHECKLIST "Replace via structure with via"
+ENDFIELD
+
+TEXT "Via Padstack:"
+TLOC 1 5
+ENDTEXT
+FIELD padstack
+FLOC 3 7
+ENUMSET 20
+POP "PADSTACK_POPUP"
+ENDFIELD
+
+TEXT "Via Structure:"
+TLOC 1 10
+ENDTEXT
+FIELD structure
+FLOC 3 12
+ENUMSET 20
+POP "STRUCTURE_POPUP"
+ENDFIELD
+
+FIELD execute
+FLOC 1 15
+MENUBUTTON "Batch replace all instances" 25 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

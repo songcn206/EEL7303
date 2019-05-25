@@ -1,0 +1,532 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM fixed_font
+FIXED
+PORT 140 60
+HEADER "Signal Bus Setup"
+
+POPUP <BusNamesPopup> "" "0".
+POPUP <BusCompsPopup> "" "0".
+POPUP <SwitchOnPopup> "Rising Edge" "Rising Edge","Falling Edge" "Falling Edge","Both Edges" "Both Edges".
+POPUP <ClockNamesPopup>"""0".
+POPUP <SelectedBufferModelPopup>"""0".
+POPUP <BufferModelPopup>"""0".
+POPUP <BufferModelFilterPopup>"""0".
+POPUP <ComponentModelFilterPopup>"""0".
+POPUP <ModelSelectorFilterPopup>"""0".
+
+POPUP <SortBy>"Sort By Column""0".
+POPUP <ShowCompsPopup> "Show Bus Components Assigned This Model""Show Bus Components Assigned This Model".
+
+POPUP <DriverParamFilterPopup>    ""        "0".
+POPUP <ReceiverParamFilterPopup>    ""        "0".
+POPUP <SelectedSetupReqPopup>    "0"        "DEFAULT".
+POPUP <SelectedHoldReqPopup>    "0"        "DEFAULT".
+POPUP <SelectedTvaPopup>    "0"        "DEFAULT".
+POPUP <SelectedTvbPopup>    "0"        "DEFAULT".
+
+
+ACTIVEFIELD "Ok"
+
+TILE
+GROUP "Select Bus to Setup"
+GLOC 1 0
+GSIZE 99 13
+ENDGROUP
+
+TEXT "Bus Name:"
+TLOC 3 2
+TGROUP "Select Bus to Setup"
+ENDTEXT
+
+FIELD BusName
+FLOC 24 2
+ENUMSET 44
+POP BusNamesPopup
+FGROUP "Select Bus to Setup"
+ENDFIELD
+
+FIELD CreateBus
+FLOC 72 2
+MENUBUTTON "Create Simulation Bus..."  27 3
+ENDFIELD
+
+TEXT "Bus Direction:"
+TLOC 3 4
+TGROUP "Select Bus to Setup"
+ENDTEXT
+
+FIELD UniDirectional
+FLOC 24 4
+CHECKLIST UniDirectional direction
+TGROUP "Select Bus to Setup"
+ENDFIELD
+
+FIELD BiDirectional
+FLOC 45 4
+CHECKLIST BiDirectional direction
+FGROUP "Select Bus to Setup"
+ENDFIELD
+
+TEXT "Controller Refdes:"
+TLOC 3 6
+TGROUP "Select Bus to Setup"
+ENDTEXT
+
+FIELD ControllerRefdes
+FLOC 24 6
+ENUMSET 44
+POP "BusCompsPopup"
+FGROUP "Select Bus to Setup"
+ENDFIELD
+
+TEXT "Switch On:"
+TLOC 3 8
+TGROUP "Select Bus to Setup"
+ENDTEXT
+
+FIELD SwitchOn
+FLOC 24 8
+ENUMSET 44
+POP "SwitchOnPopup"
+FGROUP "Select Bus to Setup"
+ENDFIELD
+
+TEXT "Derating Table File:"
+TLOC 3 10
+TGROUP "Select Bus to Setup"
+ENDTEXT
+
+FIELD DeratingFileName
+FLOC 24 10
+STRFILLIN 44 60
+ENDFIELD
+
+FIELD DeratingFileBrowser
+FLOC 72 10
+MENUBUTTON "..." 6 3
+ENDFIELD
+
+FIELD AssignStimulus
+FLOC 72 6
+MENUBUTTON "Assign Bus Stimulus..." 27 3
+ENDFIELD
+
+TABSET "TABS"
+FLOC 1 14
+TSSIZE 139 36
+
+TAB "Assign Bus Component Buffer Models"
+
+TEXT "Assign By:"
+TLOC 2 1
+ENDTEXT
+
+FIELD AssignByModelSelectors
+FLOC 22 1
+CHECKLIST "Model Selector" AssignModelBy
+ENDFIELD
+
+FIELD AssignByComponents
+FLOC 41 1
+CHECKLIST "Component" AssignModelBy
+ENDFIELD
+
+FIELD AssignByComponentPins
+FLOC 55 1
+CHECKLIST "Pins Without Model Selector" AssignModelBy
+ENDFIELD
+
+FIELD ComponentModelFilter
+FLOC 2 4
+STRFILLIN 21 50
+POP ComponentModelFilterPopup
+ENDFIELD
+
+FIELD ModelSelectorFilter
+FLOC 28 4
+STRFILLIN 22 50
+POP ModelSelectorFilterPopup
+ENDFIELD
+
+FIELD DriverFilter
+FLOC 55 4
+STRFILLIN 22 50
+POP BufferModelFilterPopup
+ENDFIELD
+
+FIELD ReceiverFilter
+FLOC 82 4
+STRFILLIN 21 50
+POP BufferModelFilterPopup
+ENDFIELD
+
+FIELD StandbyFilter
+FLOC 108 4
+STRFILLIN 22 50
+POP BufferModelFilterPopup
+ENDFIELD
+
+FIELD ComponentPinFilter
+FLOC 2 4
+STRFILLIN 31 50
+ENDFIELD
+
+FIELD ComponentPinDriverFilter
+FLOC 35 4
+STRFILLIN 32 50
+ENDFIELD
+
+FIELD ComponentPinReceiverFilter
+FLOC 69 4
+STRFILLIN 31 50
+ENDFIELD
+
+FIELD ComponentPinStandbyFilter
+FLOC 102 4
+STRFILLIN 31 50
+ENDFIELD
+
+GRID ModelSelectorGrid
+FLOC 2 6
+FSIZE 135 22
+OPTIONS HLINES VLINES USERSIZE
+GHEAD TOP
+HEADSIZE 2
+OPTIONS 3D MULTI
+POP SortBy
+ENDGHEAD
+ENDGRID
+
+TEXT "Buffer Model To Be Assigned:"
+TLOC 7 28
+ENDTEXT
+
+FIELD SelectedDriverModel
+FLOC 55 28
+ENUMSET 24
+POP SelectedBufferModelPopup
+ENDFIELD
+
+FIELD SelectedReceiverModel
+FLOC 82 28
+ENUMSET 23
+POP SelectedBufferModelPopup
+ENDFIELD
+
+FIELD SelectedStandbyModel
+FLOC 108 28
+ENUMSET 24
+POP SelectedBufferModelPopup
+ENDFIELD
+
+FIELD AssignAllDrivers
+FLOC 65 31
+MENUBUTTON "Assign" 10 3
+ENDFIELD
+
+FIELD AssignAllReceivers
+FLOC 91 31
+MENUBUTTON "Assign" 10 3
+ENDFIELD
+
+FIELD AssignAllStandbys
+FLOC 117 31
+MENUBUTTON "Assign" 10 3
+ENDFIELD
+
+FIELD SelectedPinDriverModel
+FLOC 35 28
+STRFILLIN 32 50
+ENDFIELD
+
+FIELD SelectedPinReceiverModel
+FLOC 69 28
+STRFILLIN 31 50
+ENDFIELD
+
+FIELD SelectedPinStandbyModel
+FLOC 102 28
+STRFILLIN 31 50
+ENDFIELD
+
+FIELD SelectAllPinDrivers
+FLOC 39 31
+MENUBUTTON "Select..." 11 3
+ENDFIELD
+
+FIELD AssignAllPinDrivers
+FLOC 52 31
+MENUBUTTON "Assign" 11 3
+ENDFIELD
+
+FIELD SelectAllPinReceivers
+FLOC 74 31
+MENUBUTTON "Select..." 11 3
+ENDFIELD
+
+FIELD AssignAllPinReceivers
+FLOC 87 31
+MENUBUTTON "Assign" 11 3
+ENDFIELD
+
+FIELD SelectAllPinStandbys
+FLOC 104 31
+MENUBUTTON "Select..." 11 3
+ENDFIELD
+
+FIELD AssignAllPinStandbys
+FLOC 119 31
+MENUBUTTON "Assign" 11 3
+ENDFIELD
+
+FIELD ExportModelSelectorData
+FLOC 2 31
+MENUBUTTON "Export..." 6 3
+ENDFIELD
+
+FIELD ImportModelSelectorData
+FLOC 15 31
+MENUBUTTON "Import..." 6 3
+ENDFIELD
+ENDTAB
+
+TAB "Select Clocks or Strobes"
+
+TEXT
+INFO PotentialClockXnetsText 21
+TLOC 23 1
+ENDTEXT
+
+TEXT
+TLOC 69 1
+INFO SelectedClockXnetsText 21
+ENDTEXT
+
+TEXT "List Filters:"
+TLOC 2 3
+ENDTEXT
+
+FIELD PotentialClockXnetsFilter
+FLOC 23 3
+STRFILLIN 35 40
+ENDFIELD
+
+FIELD SelectedClockXnetsFilter
+FLOC 69 3
+STRFILLIN 35 40
+ENDFIELD
+
+FIELD PotentialClockXnets
+FLOC 23 5
+LIST "" 36 14
+OPTIONS multiselect
+ENDFIELD
+
+FIELD SelectedClockXnets
+FLOC 69 5
+LIST "" 36 14
+OPTIONS multiselect
+ENDFIELD
+
+FIELD AllRightClocks
+FLOC 60 14
+MENUBUTTON All--> 9 3
+ENDFIELD
+
+FIELD AllLeftClocks
+FLOC 60 17
+MENUBUTTON <--All 9 3
+ENDFIELD
+
+ENDTAB
+
+TAB "Assign Bus Xnets to Clocks or Strobes"
+
+TEXT
+TLOC 2 2
+INFO ClockNameText 12
+ENDTEXT
+
+FIELD ClockName
+FLOC 22 2
+ENUMSET 34
+POP "ClockNamesPopup"
+ENDFIELD
+
+TEXT
+INFO UnassignedXnetsText 21
+TLOC 22 5
+ENDTEXT
+
+TEXT
+TLOC 69 5
+INFO AssignedXnetsText 21
+ENDTEXT
+
+TEXT
+INFO ListFiltersText 13
+TLOC 2 7
+ENDTEXT
+
+FIELD UnassignedXnetsFilter
+FLOC 23 7
+STRFILLIN 35 40
+ENDFIELD
+
+FIELD AssignedXnetsFilter
+FLOC 69 7
+STRFILLIN 35 40
+ENDFIELD
+
+FIELD UnassignedXnets
+FLOC 23 9
+LIST "" 36 12
+OPTIONS multiselect
+ENDFIELD
+
+FIELD AssignedXnets
+FLOC 69 9
+LIST "" 36 12
+OPTIONS multiselect
+ENDFIELD
+
+FIELD AllRightXnets
+FLOC 60 16
+MENUBUTTON All--> 9 3
+ENDFIELD
+
+FIELD AllLeftXnets
+FLOC 60 19
+MENUBUTTON <--All 9 3
+ENDFIELD
+
+FIELD ExportClockXnetData
+FLOC 2 28
+MENUBUTTON "Export..." 8 3
+ENDFIELD
+
+FIELD ImportClockXnetData
+FLOC 2 30
+MENUBUTTON "Import..." 8 3
+ENDFIELD
+
+ENDTAB
+
+TAB "Specify Component Parameters"
+
+GRID SetTvbTvaGrid
+FLOC 2 6
+FSIZE 60 22
+OPTIONS HLINES VLINES USERSIZE
+GHEAD TOP
+HEADSIZE 2
+OPTIONS 3D MULTI
+ENDGHEAD
+ENDGRID
+
+
+FIELD DriverParamFilter
+FLOC 2 4
+STRFILLIN 15 50
+POP DriverParamFilterPopup
+ENDFIELD
+
+FIELD SelectedTvb
+FLOC 23 28
+STRFILLIN 10 50
+POP SelectedTvbPopup
+ENDFIELD
+
+FIELD SelectedTva
+FLOC 43 28
+STRFILLIN 10 50
+POP SelectedTvaPopup
+ENDFIELD
+
+FIELD AssignAllTvb
+FLOC 23 31
+MENUBUTTON "Assign" 6 3
+ENDFIELD
+
+FIELD AssignAllTva
+FLOC 43 31
+MENUBUTTON "Assign" 6 3
+ENDFIELD
+
+GRID SetupHoldReqValGrid
+FLOC 72 6
+FSIZE 60 22
+OPTIONS HLINES VLINES USERSIZE
+GHEAD TOP
+HEADSIZE 2
+OPTIONS 3D MULTI
+ENDGHEAD
+ENDGRID
+
+
+FIELD ReceiverParamFilter
+FLOC 72 4
+STRFILLIN 15 50
+POP ReceiverParamFilterPopup
+ENDFIELD
+
+FIELD SelectedSetupReq
+FLOC 93 28
+STRFILLIN 10 50
+POP SelectedSetupReqPopup
+ENDFIELD
+
+FIELD SelectedHoldReq
+FLOC 113 28
+STRFILLIN 10 50
+POP SelectedHoldReqPopup
+ENDFIELD
+
+FIELD AssignAllSetupReq
+FLOC 93 31
+MENUBUTTON "Assign" 6 3
+ENDFIELD
+
+FIELD AssignAllHoldReq
+FLOC 113 31
+MENUBUTTON "Assign" 6 3
+ENDFIELD
+
+FIELD ExportComponentParam
+FLOC 2 29
+MENUBUTTON "Export..." 6 3
+ENDFIELD
+
+FIELD ImportComponentParam
+FLOC 2 31
+MENUBUTTON "Import..." 6 3
+ENDFIELD
+
+
+ENDTAB
+
+ENDTABSET
+
+FIELD OK
+FLOC 2 51
+MENUBUTTON "OK" 9 3
+ENDFIELD
+
+FIELD Apply
+FLOC 45 51
+MENUBUTTON "Apply" 9 3
+ENDFIELD
+
+FIELD Cancel
+FLOC 88 51
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 130 51
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

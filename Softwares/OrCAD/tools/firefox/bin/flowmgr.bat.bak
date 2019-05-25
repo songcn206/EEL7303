@@ -1,0 +1,95 @@
+@ECHO OFF
+
+SET FM_URL=-chrome chrome://flowmgr/content
+SET MPSSESSION=
+set PROFILENAME=ADWPROFILE_1
+
+
+:ARGLOOP
+REM if user passes in chrome address, use it, else use projmgr
+IF '%1' == '-chrome' (
+    SET FM_URL=
+	SHIFT
+	SHIFT
+	GOTO ARGLOOP
+)
+REM is user passes in mpssession, use it on cmd line
+IF '%1' == '-mpssession' (
+    SHIFT
+	REM set MPSSESSION= -mpssession %1
+	SHIFT
+	GOTO ARGLOOP
+)
+if '%1' == '-profile' (
+    SHIFT
+	REM set PROFILENAME=%1
+	SHIFT
+	GOTO ARGLOOP
+)
+
+IF '%1' == '' GOTO ARGDONE
+SHIFT
+GOTO ARGLOOP
+:ARGDONE
+
+
+
+
+REM path to flowmgr can be controlled by env var
+set ADW_FM_DIR=%WB_ROOT%\..\fet\projmgr\bin
+if defined ADW_FM_LOCAL_PATH set ADW_FM_DIR=%ADW_FM_LOCAL_PATH%\tools\fet\projmgr\bin
+
+
+IF DEFINED USERPROFILE (
+	set ADW_FIREFOX_PROFILE="%USERPROFILE%\.adw_firefox_profile\%PROFILENAME%"
+	GOTO check_profile
+) ELSE (
+	IF DEFINED HOMEDRIVE (
+		IF DEFINED HOMEPATH (
+			set ADW_FIREFOX_PROFILE="%HOMEDRIVE%%HOMEPATH%\.adw_firefox_profile\%PROFILENAME%"
+			GOTO check_profile
+		)
+	)
+)
+
+:check_profile
+IF EXIST %ADW_FIREFOX_PROFILE% (
+	GOTO startup
+) ELSE (
+	GOTO create_profile
+)
+
+:create_profile
+ECHO Creating firefox profiles dir for the first time: %ADW_FIREFOX_PROFILE%
+mkdir %ADW_FIREFOX_PROFILE%
+IF %ERRORLEVEL% NEQ 0 (
+	GOTO error_creating_profile
+) ELSE (
+	copy "%ADW_FM_DIR%\compatibility.ini" %ADW_FIREFOX_PROFILE%
+	GOTO startup
+)
+
+:error_creating_profile
+ECHO Error creating the firefox profiles directory: %ADW_FIREFOX_PROFILE%
+GOTO end
+
+
+:startup
+
+set MOZ_NO_REMOTE=1
+
+REM set FLOWMGR_CMD=%ADW_FM_DIR%\firefox.exe -profile %ADW_FIREFOX_PROFILE% 
+REM set FLOWMGR_CMD=%ADW_FM_DIR%\firefox.exe -console -venkman
+set FLOWMGR_CMD=%ADW_FM_DIR%\firefox.exe -app  %ADW_FM_DIR%\..\flowmgr\application.ini
+REM set FLOWMGR_CMD=%ADW_FM_DIR%\firefox.exe -P Designer %FM_URL%
+REM set FLOWMGR_CMD=%FLOWMGR_CMD% %MPSSESSION% -P Librarian
+REM set FLOWMGR_CMD=%ADW_FM_DIR%\firefox.exe -P %PROFILENAME%
+REM set FLOWMGR_CMD=%FLOWMGR_CMD% %FM_URL%
+
+echo Launching %FLOWMGR_CMD% %*
+REM PAUSE
+@start %FLOWMGR_CMD% %*
+set MOZ_NO_REMOTE=0
+
+
+:end

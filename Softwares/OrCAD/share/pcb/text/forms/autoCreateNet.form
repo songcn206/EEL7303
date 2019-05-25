@@ -1,0 +1,73 @@
+FILE_TYPEt=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 48 5
+HEADER "Auto Create Net"
+
+TILE
+
+POPUP <PREFIX_POPUP>"Component Refdes""REFDES","No Prefix""NONE","User Defined""USER".
+POPUP <SUFFIX_POPUP>"Mixed-Case Pin Number""MIXED_CASE_NUMBER", "Mixed-Case Net Name""MIXED_CASE_NET","Pin Name""NAME", "Pin Number""NUMBER","Verilog Port Name""VERILOG".
+
+ACTIVEFIELD "as_prefix"
+
+TEXT "Net name prefix:"
+TLOC 1 1
+ENDTEXT
+FIELD prefix_type
+FLOC 15 1
+ENUMSET 20
+POP "PREFIX_POPUP"
+ENDFIELD 
+FIELD as_prefix
+FLOC 15 3
+STRFILLIN 20 255
+ENDFIELD
+
+TEXT "Net name suffix:"
+TLOC 1 5
+ENDTEXT
+FIELD suffix_type
+FLOC 15 5
+ENUMSET 20
+POP "SUFFIX_POPUP"
+ENDFIELD 
+FIELD suffix_default
+FLOC 15 7
+CHECKLIST "Use pin number if default value not available"
+ENDFIELD
+
+FIELD reassign
+FLOC 3 9
+CHECKLIST "Re-assign Pins allowed"
+ENDFIELD
+
+FIELD reassignConnections
+FLOC 3 11
+CHECKLIST "Propogate assignment to connected pins and shapes"
+ENDFIELD
+
+FIELD floatingFuncPinNets
+FLOC 3 13
+CHECKLIST "Create nets for floating function pins"
+ENDFIELD
+
+FIELD done
+FLOC 1 16
+MENUBUTTON "Ok" 9 3
+ENDFIELD
+
+FIELD Cancel
+FLOC 11 16
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 39 16
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM
+

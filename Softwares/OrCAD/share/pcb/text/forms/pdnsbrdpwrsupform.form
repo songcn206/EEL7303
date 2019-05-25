@@ -1,0 +1,194 @@
+####################################################################################
+#       Cadence Design Systems                                                     #
+#                                                                                  #
+# (C) COPYRIGHT, Cadence Design Systems, Inc. 2010                                 #
+# All Rights Reserved                                                              #
+# Licensed Materials - Property of Cadence Design Systems                          #
+#                                                                                  #
+# No part of this file may be reproduced, stored in a retrieval system,            #
+# or transmitted in any form or by any means --- electronic, mechanical,           #
+# photocopying, recording, or otherwise --- without prior written permission       #
+# of Cadence Design Systems, Inc.                                                  #
+#                                                                                  #
+# WARRANTY:                                                                        #
+# Use all material in this file at your own risk.  Cadence Design Systems          #
+# makes no claims about any material contained in this file.                       #
+####################################################################################
+FILE_TYPE=FORM_DEFN VERSION=2
+
+    FORM
+    FIXED
+    PORT 110 40
+    HEADER "External Power Supplier Management"
+
+    ACTIVEFIELD "Done"
+    DEFAULT Done
+
+    TILE
+
+    FIELD Done
+        FLOC 1 35
+        MENUBUTTON "OK" 10 3
+    ENDFIELD
+
+    FIELD Cancel
+        FLOC 12 35
+        MENUBUTTON "Cancel" 10 3
+    ENDFIELD
+
+    FIELD Apply
+        FLOC 78 35
+        MENUBUTTON "Apply" 10 3
+    ENDFIELD
+
+    FIELD Reset
+        FLOC 89 35
+        MENUBUTTON "Reset" 10 3
+    ENDFIELD
+
+    FIELD Help
+        FLOC 100 35
+        MENUBUTTON "Help" 10 3
+    ENDFIELD
+
+    GROUP "Power Supplier List:"
+        GLOC 1 0
+        GSIZE 23 34
+    ENDGROUP
+
+    FIELD PwrSupNameList
+        FLOC 2 2
+        LIST "" 21 15
+    ENDFIELD
+
+    FIELD PwrSupNameAdd
+        FLOC 2 31
+        MENUBUTTON "Add" 10 3
+    ENDFIELD
+
+    FIELD PwrSupNameRemove
+        FLOC 13 31
+        MENUBUTTON "Remove" 10 3
+    ENDFIELD
+
+    TEXT "Power Supplier Model:"
+        TLOC 25 1
+    ENDTEXT
+
+    POPUP <PwrSupModelPop>"""".
+    FIELD PwrSupModel
+        FLOC 42 1
+        ENUMSET 35
+        POP "PwrSupModelPop"
+    ENDTEXT
+
+    POPUP <PTMFPopup>"Load...""PTMFLoad","Edit...""PTMFEdit".
+    FIELD PwrSupModelPTMF
+      FLOC 80 1
+      MENUBUTTON "PTMF" 10 3
+      POP "PTMFPopup"
+    ENDFIELD
+
+    TABSET "one"
+    FLOC 25 3
+    TSSIZE 85 31
+
+    TAB "Supplier ==> Board"
+
+    POPUP <SupplierNetPopup>"""".
+    FIELD SupplierNet
+        TLOC 1 0
+        STRFILLIN 16 256
+        POP "SupplierNetPopup"
+    ENDTEXT
+
+    POPUP <SupplierCompPopup>"""".
+    FIELD SupplierComp
+        TLOC 22 0
+        STRFILLIN 11 256
+        POP "SupplierCompPopup"
+    ENDTEXT
+
+    POPUP <ConnectCompPopup>"""".
+    FIELD ConnectComp
+        TLOC 44 0
+        STRFILLIN 11 256
+        POP "ConnectCompPopup"
+    ENDTEXT
+
+    POPUP <ConnectNetPopup>"""".
+    FIELD ConnectNet
+        TLOC 60 0
+        STRFILLIN 15 256
+        POP "ConnectNetPopup"
+    ENDTEXT
+
+    POPUP <ConnGridPinPopup>"""".
+    POPUP <ConnGridHeadPopup>"""".
+    GRID ConnGrid
+    FLOC 1 2
+    FSIZE 82 26
+    OPTIONS HLINES VLINES USERSIZE
+
+    GHEAD TOP
+        HEADSIZE 2
+        OPTIONS 3D
+        POP "ConnGridHeadPopup"
+    ENDGHEAD
+    GHEAD SIDE
+        HEADSIZE 0
+    ENDGHEAD
+    ENDGRID
+
+    ENDTAB
+
+    TAB "VRM ==> Supplier"
+    POPUP <VRMGridModelPopup>"""".
+    POPUP <VRMGridCompPopup>"""".
+    POPUP <VRMGridPowerPopup>"""".
+    POPUP <VRMGridGroundPopup>"""".
+    POPUP <VRMGridHeadPopup>"""".
+    GRID VRMGrid
+    FLOC 1 0
+    FSIZE 82 26
+    OPTIONS HLINES VLINES USERSIZE
+
+    GHEAD TOP
+        HEADSIZE 2
+        OPTIONS 3D
+        POP "VRMGridHeadPopup"
+    ENDGHEAD
+    GHEAD SIDE
+        HEADSIZE 0
+    ENDGHEAD
+    ENDGRID
+
+    FIELD VRMAdd
+        FLOC 1 26
+        MENUBUTTON "Add" 10 3
+    ENDFIELD
+
+    FIELD VRMDel
+        FLOC 12 26
+        MENUBUTTON "Delete" 10 3
+    ENDFIELD
+
+    FIELD VRMDeleteAll
+        FLOC 23 26
+        MENUBUTTON "Delete All" 10 3
+    ENDFIELD
+
+    FIELD VRMEdit
+        FLOC 62 26
+        MENUBUTTON "Edit" 10 3
+    ENDFIELD
+
+    FIELD VRMTextEdit
+        FLOC 73 26
+        MENUBUTTON "TextEdit" 10 3
+    ENDFIELD
+    ENDTAB
+    ENDTABSET
+    ENDTILE
+ENDFORM
+

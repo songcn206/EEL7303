@@ -1,0 +1,1418 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN" "http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+<html xmlns="http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>OrCAD Flow Tutorial -- chap3.html</title>
+<META NAME="Approver" CONTENT="Technical Publications">
+<META NAME="Author" CONTENT="Technical Publications">
+<META NAME="CreateDate" CONTENT="2012-10-10">
+<META NAME="CreateTime" CONTENT="1349868243">
+<META NAME="DataType" CONTENT="Manuals">
+<META NAME="Description" CONTENT="This tutorial uses the Full adder design to take you through the PCB design cycle.  This tutorial illustrates how to use OrCAD tools for the complete PCB design cycle.">
+<META NAME="DocTitle" CONTENT="OrCAD Flow Tutorial">
+<META NAME="DocType" CONTENT="Getting Started">
+<META NAME="EdmsRelease" CONTENT="EDMS Windows-P015">
+<META NAME="FileTitle" CONTENT="chap3.html">
+<META NAME="FileType" CONTENT="Chapter">
+<META NAME="Keyword" CONTENT="flowtut">
+<META NAME="Language" CONTENT="English">
+<META NAME="ModifiedDate" CONTENT="2012-10-10">
+<META NAME="ModifiedTime" CONTENT="1349868243">
+<META NAME="NextFile" CONTENT="chap5.html">
+<META NAME="PageCount" CONTENT="26">
+<META NAME="Platform" CONTENT="ALL">
+<META NAME="PrevFile" CONTENT="chap2.html">
+<META NAME="Product" CONTENT="Allegro AMS Simulator, Allegro Design Entry CIS, Orcad Capture, PSpice">
+<META NAME="ProductFamily" CONTENT="PCB Design, PCB Design, PCB Design, PCB Design">
+<META NAME="ProductVersion" CONTENT="16.6">
+<META NAME="RightsManagement" CONTENT="Copyright 19962012 Cadence Design Systems Inc.">
+<META NAME="Title" CONTENT="OrCAD Flow Tutorial -- chap3.html">
+<META NAME="TopicTags" CONTENT="FALSE">
+<META NAME="Version" CONTENT="16.6">
+  </head>
+  <body style="margin-left: 5%;">
+    <a name="pagetop"></a>
+    <a name="firstpage"></a>
+    <!-- Begin Buttons -->
+    <table width="650" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td height="36" width="650" colspan="10">
+          <img src="../support/header_doc.gif" width="650" height="34">
+        </td>
+      </tr>
+      <tr>
+        <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                </td>
+<td height="20" width="73">
+<a href="flowtutTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<a href="flowtutIX.html"><img src="../support/nav2_index.gif" border="0"></a>
+</td>
+        <td>
+          <a href="chap2.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+        </td>
+        <td>
+          <a href="chap5.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+        </td>
+        <td height="20">
+          <a>
+<a href="flowtut.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+          </a>
+        </td>
+        <td height="20" width="61">
+          <img src="../support/nav2_black.gif">
+        </td>
+        <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+        </td>
+        <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+        </td>
+        <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+        </td>
+      </tr>
+    </table>
+    <!-- End Buttons -->
+    <p>
+    <hr>
+    <p>
+      <h3>
+        <center>
+          <font >
+            <div>OrCAD&#174; Flow Tutorial</div>
+            <font >
+              <div>
+            </font>
+          </font>
+        </center>
+      </h3>
+      <br>
+    </p>
+    <div>
+      <h1>3<a name="1073145">                   </a></h1>
+      <h1><a name="1073146">Simulating a design</a></h1>
+      <p><a name="1055446">This chapter consists of the following sections:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1055453" title="chap3.html" name="1055447"><font color="#0000ff"><u>Objective</u></font></a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1057438" title="chap3.html" name="1057874"><font color="#0000ff"><u>Simulation using PSpice</u></font></a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1061904" title="chap3.html" name="1070317"><font color="#0000ff"><u>Simulating the full adder design</u></font></a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1067826" title="chap3.html" name="1070379"><font color="#0000ff"><u>Performing parametric analysis</u></font></a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1067391" title="chap3.html" name="1070318"><font color="#0000ff"><u>Summary</u></font></a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1065397" title="chap3.html" name="1070322"><font color="#0000ff"><u>What's next</u></font></a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1065400" title="chap3.html" name="1055725"><font color="#0000ff"><u>Recommended reading</u></font></a></td>
+          </tr>
+        </table>
+      </div>
+      <h2><a name="1055453">Objective</a></h2>
+      <p><a name="1056814">PSpice is a simulator provided by OrCAD and can be used to </a>simulate both analog and digital circuits. PSpice simulator is closely integrated with OrCAD Capture to provide you with a rapid design&#45;and&#45;simulate iterative cycle. Using PSpice, you can explore various design configurations before committing to a specific implementation.</p>
+      <p><a name="1056861">In this chapter, you will use PSpice to simulate the full adder design </a>that you created in Chapter 2, <a href="chap2.html#1055445" title="Creating a schematic design"><font color="#0000ff"><u>Creating a schematic design</u></font></a> using OrCAD Capture. In this chapter, you will also learn about the various types of analysis that can be performed using PSpice.</p>
+      <h2><a name="1057438">Simulation using PSpice</a></h2>
+      <p><a name="1057458">PSpice models the behavior of a circuit containing any mix of analog </a>and digital devices.</p>
+      <p align="left"><a name="1059744"><img src="images/workflow1.gif" width="797" height="495" alt=""></a></p>
+      <p><a name="1057503">To simulate a design, PSpice needs to know about:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1057553">the circuit topology</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1057557">the analysis type</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1057558">the simulation models that correspond to the parts in your circuit</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1057564">the stimulus definitions to test with</a></td>
+          </tr>
+        </table>
+      </div>
+      <h3><a name="1058024">Files generated by PSpice</a></h3>
+      <p><a name="1057618">After reading various data files and any other required inputs, PSpice </a>starts the simulation. As the simulation progresses, PSpice saves the simulation results in two files, the Waveform data file and the PSpice output file.</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1057640"><strong>Waveform data file</strong></a>: The data file contains simulation results that can be displayed graphically. PSpice reads this file and displays waveforms reflecting circuit response at nets, pins, and parts that you marked in your schematic (cross&#45;probing).</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1057663"><strong>PSpice output file</strong></a>: This is a user&#45;configurable file. Depending on the options specified by the user, this file may or may not contain any information. To configure the output file, you can use the Options tab in the Simulations Settings dialog box, as shown in the figure below.</td>
+          </tr>
+        </table>
+      </div>
+      <p align="left"><a name="1064886"><img src="images/PSpiceOutput.gif" width="527" height="396" alt=""></a></p>
+      <p><a name="1059627">For detailed description of the </a><font size="2" face="'Courier New'" color="#000000">.OPTION</font> command, see <font color="#000000"><em>PSpice </em></font><font color="#000000"><em>Reference Guide</em></font>.</p>
+      <p><a name="1064952">For more information on Files needed and generated by PSpice refer </a>to <font color="#000000"><em>PSpice User's Guide, Chapter 1, Things You Need to Know.</em></font></p>
+      <h3><a name="1057705">Analysis types</a></h3>
+      <p><a name="1058228">You can perform the following types of circuit analysis using PSpice:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1058194">DC Analysis</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1058214">AC Analysis</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1061495">Transient Analysis</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1058260">Advanced Analysis</a></td>
+          </tr>
+        </table>
+      </div>
+      <h4><a name="1058264">DC analysis</a></h4>
+      <p><a name="1058846">DC Analysis includes the following:</a></p>
+      <h4><em><a name="1058268">DC Sweep analysis</a></em></h4>
+      <p><a name="1058276">The DC sweep analysis causes a DC sweep to be performed on the </a>circuit that allows you to sweep a source (voltage or current), a global parameter, a model parameter, or the temperature through a range of values. The bias point of the circuit is calculated for each value of the sweep.</p>
+      <p><a name="1058306">To run a DC sweep or small&#45;signal DC transfer analysis, you need to </a>place and connect one or more independent sources and then set the DC voltage or current level for each source.</p>
+      <h4><em><a name="1058461">Bias Point analysis</a></em></h4>
+      <p><a name="1058509">The bias point is calculated for any analysis whether or not the Bias </a>Point analysis is enabled in the Simulation Settings dialog box.</p>
+      <h4><em><a name="1058800">DC Sensitivity analysis</a></em></h4>
+      <p><a name="1058699">DC sensitivity analysis calculates and reports the sensitivity of one </a>node voltage to each device parameter for the following device types:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1058702">resistors</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1058703">independent voltage and current sources</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1058704">voltage and current&#45;controlled switches</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1058705">diodes</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1058750">bipolar transistors</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1059655">For more information on each type of DC analysis, refer to </a><font color="#000000"><em>PSpice </em></font><font color="#000000"><em>User's Guide, Chapter 9, DC Analyses</em></font>.</p>
+      <h4><a name="1058813">AC analysis</a></h4>
+      <p><a name="1058835">AC analysis includes the following:</a></p>
+      <h4><em><a name="1058855">AC Sweep analysis</a></em></h4>
+      <p><a name="1058885">AC sweep is a frequency response analysis. PSpice calculates the </a>small&#45;signal response of the circuit to a combination of inputs by transforming it around the bias point and treating it as a linear circuit.</p>
+      <h4><em><a name="1058933">Noise analysis</a></em></h4>
+      <p><a name="1058939">When running a noise analysis, PSpice calculates and reports the </a>following for each frequency specified for the AC Sweep&#47;Noise analysis:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1058942">Device noise is the noise contribution propagated to the </a>specified output net from every resistor and semiconductor device in the circuit. For semiconductor devices, the device noise is also broken down into constituent noise contributions where applicable.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1058937">Total output and equivalent input noise</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1059665">For more information on each type of AC analysis, refer to </a>PSpice User's Guide, Chapter 10, AC Analyses</p>
+      <h4><a name="1062059">Transient analysis</a></h4>
+      <p><a name="1062067">A transient analysis calculates the behavior of the circuit over time.</a></p>
+      <p><a name="1062064">For more information on transient analysis, refer to </a><font color="#000000"><em>Chapter</em></font><font color="#000000"><em>&nbsp;</em></font><font color="#000000"><em>12, </em></font><font color="#000000"><em>Transient Analysis</em></font> in the <font color="#000000"><em>PSpice User's Guide</em></font>.</p>
+      <p><a name="1071399">Besides the analysis types discussed above, you can use PSpice to </a>perform some more analyses that help you evaluate and enhance the performance of your circuit. These analyses cannot be performed independently, but you can configure the simulation profile to run these analyses along with Transient, AC, or DC analysis. These are:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1059191" title="chap3.html" name="1065934"><font color="#0000ff"><u>Parametric analysis</u></font></a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1059281" title="chap3.html" name="1070874"><font color="#0000ff"><u>Temperature analysis</u></font></a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1059368" title="chap3.html" name="1065948"><font color="#0000ff"><u>Monte Carlo analysis</u></font></a></td>
+          </tr>
+        </table>
+      </div>
+      <h4><em><a name="1059191">Parametric analysis</a></em></h4>
+      <p><a name="1059231">Parametric analysis performs multiple iterations of a specified </a>standard analysis while varying a global parameter, model parameter, component value, or operational temperature. The effect is the same as running the circuit several times, once for each value of the swept variable.</p>
+      <h4><em><a name="1059281">Temperature analysis</a></em></h4>
+      <p><a name="1059307">For a temperature analysis, PSpice reruns standard analyses set in </a>the Simulation Settings dialog box at different temperatures.</p>
+      <p><a name="1059320">You can specify zero or more temperatures. If no temperature is </a>specified, the circuit is run at 27&#176;C. If more than one temperature is listed, the simulation runs once for each temperature in the list.</p>
+      <p><a name="1059675">For more information on parametric and temperature analysis, see </a><font color="#000000"><em>Chapter 11, Parametric and temperature analysis</em></font> of <font color="#000000"><em>PSpice </em></font><font color="#000000"><em>User's Guide</em></font>.</p>
+      <h4><em><a name="1059368">Monte Carlo analysis</a></em></h4>
+      <p><a name="1059497">The Monte Carlo analysis calculates the circuit response to changes </a>in part values by varying all of the model parameters for which a tolerance is specified. This provides statistical data on the impact of variance of a device parameter.</p>
+      <h4><em><a name="1059369">Worst Case analysis</a></em></h4>
+      <p><a name="1059555">Worst&#45;case analysis is used to find the worst probable output of a </a>circuit or system given the restricted variance of its parameters. For instance, if the values of R1, R2, and R3 can vary by +&#45;5%, then the worst&#45;case analysis attempts to find the combination of possible resistor values that result in the worst simulated output.</p>
+      <p><a name="1059693">For more information on Statistical analysis, </a>refer to <em>PSpice User's </em><em>Guide, Chapter 13, Monte Carlo and Sensitivity&#47;Worst case Analysis</em>.</p>
+      <h3><a name="1064389">Overview of the full adder design</a></h3>
+      <p><a name="1063236">In this chapter, we will simulate the full adder design using PSpice. </a>The full adder design is a complex hierarchical design that has two hierarchical blocks referring to the same half adder design.</p>
+      <p><a name="1063229">To go through the steps detailed in this chapter, you should have the </a>full adder design ready. You can either create the full&nbsp;adder design or use the one provided to you along with the tutorial. </p>
+      <p><a name="1072964">For more information on creating the full adder design, see </a><a href="chap2.html#1055445" title="Creating a schematic design"><font color="#0000ff"><u>Chapter&nbsp;2, "Creating a schematic design,"</u></font></a>. </p>
+      <p><a name="1076663">To copy the design files </a>provided with the tutorial, unzip the <font color="#000000"><em>flowtut.zip</em></font> file shipped along with the tutorial. This file is located at &#60;<font size="2" face="'Courier New'" color="#000000"><em>install_dir</em></font>&#62;&#47;<font size="2" face="'Courier New'" color="#000000">doc&#47;flowtut&#47;tutorial_example</font>. The <font color="#000000"><em>partial</em></font> directory contains files generated at the end of <a href="chap2.html#1055445" title="Creating a schematic design"><font color="#0000ff"><u>Chapter&nbsp;2, "Creating a schematic design."</u></font></a> Use the files in this directory only if you want to skip the design creation steps covered in Chapter&nbsp;2 and directly move on to Chapter&nbsp;3.</p>
+      <p align="left"><a name="1063290"><img src="images/fulladdwithtran.gif" width="628" height="337" alt=""></a></p>
+      <h2><a name="1061904">Simulating the full adder design</a></h2>
+      <p><a name="1062693">To provide PSpice with information about the type of simulation you </a>wish to perform and the resources to be used in your simulation, you must create a simulation profile before you can start a PSpice simulation. A simulation profile saves your simulation settings for an analysis type so that you can reuse them easily.</p>
+      <p><a name="1062694">In this section, we will use the TRAN.sim profile to perform transient </a>analysis on the full adder circuit.</p>
+      <p><a name="1066081">For more information on creating the TRAN.sim profile, see </a><a href="chap2.html#1068206" title="Creating a schematic design"><font color="Blue"><u>Getting your design ready for simulation</u></font></a><a href="chap2.html#1068206" title="Creating a schematic design"></a>.</p>
+      <h3><a name="1074261">Editing a simulation profile</a></h3>
+      <p><a name="1074262">After you have created a simulation profile, you can still make </a>modifications to it. We will edit the TRAN.sim profile to configure a stimulus file for providing inputs to X, Y and Carry. </p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1080557">In the Project Manager window, right&#45;click on FULLADD&#45;TRAN </a>simulation profile. </td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><font color="#000000"><strong>Note: </strong></font><a name="1080558">Expand </a><font color="#000000"><em>Simulation Profiles</em></font> under <font color="#000000"><em>PSpice Resources</em></font> in the Project Manager to view the FULLADD&#45;TRAN node.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1074264">From the pop&#45;up menu select Edit Simulation Settings. </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1074265">In the Simulation Setting dialog box, select the Configuration </a>Files tab.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1074266">From the Category list box, select Stimulus.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1074267">In the Filename text box, specify the location of the stimulus file. </a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><font color="#000000"><strong>Note: </strong></font><a name="1077376">To use the stimulus file provided with the sample file, </a>extract the sample files from <font size="2" face="'Courier New'" color="#000000">flowtut.zip</font> and specify the location of <font size="2" face="'Courier New'" color="#000000">FullAdd&#45;PSpiceFiles</font><font size="2" face="'Courier New'" color="#000000">\input.stl</font>. </blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	6.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1074269">Select the Add to Design button. </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	7.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1074270">Click OK to save the settings.</a></td>
+          </tr>
+        </table>
+      </div>
+      <h3><a name="1074243">Running PS</a>pice</h3>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1066085">To simulate the design, choose </a><font color="#000000"><em>Run</em></font> from the <font color="#000000"><em>PSpice</em></font> menu in OrCAD Capture.</td>
+          </tr>
+        </table>
+      </div>
+      <p align="left"><a name="1062970"><img src="images/run.gif" width="484" height="274" alt=""></a></p>
+      <p><a name="1066127">The PSpice Netlist Generation progress box appears indicating that </a>the PSpice netlist is being generated. </p>
+      <p><a name="1076801">During netlisting, a warning stating that the PSpiceTemplate property </a>is not found on instance J1 is generated. You can ignore this property because component J1 is required for board layout and is not required for simulation purposes.</p>
+      <p><a name="1076798">After the netlist generation is complete, the design is simulated and </a>PSpice is started. The Output window in PSpice indicates that the simulation is complete.</p>
+      <p align="left"><a name="1066375"><img src="images/chap3.5.1.5.png" width="488" height="418" alt=""></a></p>
+      <p><a name="1066444">Though the simulation is complete, the Probe window does not yet </a>display any waveform that might help you analyze the circuit behavior and determine the validity of your design. </p>
+      <h3><a name="1066462">Viewing Output Waveforms</a></h3>
+      <p><a name="1071722">After simulating a design using PSpice, you can plot the output </a>waveforms in the Probe window. This will help you visualize the circuit behavior and determine the validity of your design. You can analyze the output waveforms and evaluate your circuit for performance analysis and data comparison from multiple files.</p>
+      <p><a name="1071723">Using the Probe window, you can:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1071724">view simulation results in multiple Probe windows</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1071725">compare simulation results from multiple circuit designs in a </a>single Probe window</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1071726">display simple voltages, currents, and noise data</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1071727">display complex arithmetic expressions that use the basic </a>measurements</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1071728">display Fourier transforms of voltages and currents, or of </a>arithmetic expressions involving voltages and currents</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1071729">for mixed analog&#47;digital simulations, display analog and digital </a>waveforms simultaneously with a common time base</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1071730">add text labels and other annotation symbols for clarification</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1066506">For PSpice to display output waveforms in the Probe window, you </a>need to perform at least one of the following steps.</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1066637" title="chap3.html" name="1066758"><font color="#0000ff"><u>Place markers</u></font></a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1067032" title="chap3.html" name="1066768"><font color="#0000ff"><u>Add Plot Window template</u></font></a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1066667" title="chap3.html" name="1066775"><font color="#0000ff"><u>Add complex traces</u></font></a></td>
+          </tr>
+        </table>
+      </div>
+      <h4><a name="1066637">Place markers</a></h4>
+      <p><a name="1066638">You place markers in your circuit design in Capture to indicate the </a>points where you want to see simulation waveforms displayed in PSpice.</p>
+      <p><a name="1066639">You can place markers:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1066640">before simulation to limit results written to the waveform data file, </a>and automatically display those traces in the active Probe window.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1066641">during or after simulation, to automatically display traces in the </a>active Probe window.</td>
+          </tr>
+        </table>
+      </div>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1066642"> You can control the trace display for any of parameter by using </a>the Data Collection tab. For example, if the None option is selected, PSpice will not display any waveform at the point where a marker is placed.</p>
+      <p align="left"><a name="1066646"><img src="images/datacollection.gif" width="520" height="391" alt=""></a></p>
+      <p><a name="1081157">To add markers, from the </a><font color="#000000"><em>PSpice</em></font> menu in Capture, choose <font color="#000000"><em>Markers</em></font>.</p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1081158"> To view the markers in the simulation results, the schematic </a>must be open.</p>
+      <p align="left"><a name="1081162"><img src="images/marker1.gif" width="621" height="334" alt=""></a></p>
+      <p><a name="1066652">You can also use the buttons provided on the Standard toolbar to add </a>markers.</p>
+      <p align="left"><a name="1066657"><img src="images/marker2.gif" width="613" height="69" alt=""></a></p>
+      <p><a name="1066985">We will now modify the full adder design in Capture by adding Voltage </a>markers to view the output waveforms in the Probe window.</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1066995">From the </a><font color="#000000"><em>PSpice</em></font> menu in Capture, choose <font color="#000000"><em>Markers</em></font> and then select <font color="#000000"><em>Voltage Level</em></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><font color="#000000"><strong>Note: </strong></font><a name="1067005">Alternatively, you can click on the Voltage&#47;Level Marker </a>button on the toolbar.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1067019">Place the marker between transistor Q1 and resistor R2, as </a>shown in the figure given below.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1067037"><img src="images/marker0.gif" width="354" height="292" alt=""></a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1067173">To view the output waveform at the marker location, double&#45;click </a>the marker. </td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1067191">The output waveform appears in the Probe window in PSpice. </a>See <font color="Blue"><u>Figure&nbsp;3&#45;1</u></font>.</blockquote>
+      <blockquote><a name="1067030"><img src="images/chap3.5.1.10.png" width="674" height="365" alt=""></a></blockquote>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1067248">If you add markers before simulating the design, the output </a>waveforms are displayed automatically in the Probe window after the simulation is complete. </p>
+      <h4><a name="1067032">Add Plot Window template</a></h4>
+      <p><a name="1066660">In addition to markers, you can place Plot Window Template markers </a>in Capture. A Plot Window Template marker will restore the associated template when you run the simulation in PSpice.</p>
+      <p><a name="1066661">The analysis type defined in the profile will determine the type of </a>template that will be loaded.</p>
+      <p><a name="1066662">To place a plot window template marker, select </a><font color="#000000"><em>Markers</em></font> from the <font color="#000000"><em>PSpice</em></font> menu, and then select <font color="#000000"><em>Plot Window Templates</em></font>.</p>
+      <p align="left"><a name="1066666"><img src="images/plotwindow.gif" width="298" height="301" alt=""></a></p>
+      <h4><a name="1066667">Add complex traces</a></h4>
+      <p><a name="1066668">By default, the waveforms that PSpice displays are the simple </a>voltages, currents, and noise data from your circuit. Using the <font color="#000000"><em>Trace</em></font> menu in PSpice, you can add traces that are complex arithmetic expressions that use the basic measurements, such as Fourier transforms of voltages and currents and arithmetic expressions involving voltages and currents.</p>
+      <p align="left"><a name="1067742"><img src="images/addtrace.gif" width="636" height="442" alt=""></a></p>
+      <h4><a name="1066837">Configuring the Probe window</a></h4>
+      <p><a name="1066838">Using the </a><font color="#000000"><em>Plot</em></font> menu in PSpice, you can control the settings for the X&#45; and Y&#45;axis in the Probe windows. Using the <font color="#000000"><em>Plot</em></font> menu, you can also customize the grid settings in the Probe window and add text labels and other annotation symbols to your traces. You can also configure the way you want to view the waveforms by defining display settings on the Probe Window tab in the Simulation Settings dialog box.</p>
+      <p align="left"><a name="1069981"><img src="images/probewindow.gif" width="528" height="396" alt=""></a></p>
+      <h2><a name="1067826">Performing parametric analysis</a></h2>
+      <p><a name="1067863">In this section, you will perform the Parametric Sweep analysis on the </a>full adder design. You will evaluate the influence of varying base resistance on the switching characteristics of the transistor.</p>
+      <p><a name="1067976">To do this, you need to perform the following steps:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1081049">Modify the full adder circuit by changing the value of resistor R1 </a>to a variable {RES}. For more information, see <a href="#1070892" title="chap3.html"><font color="#0000ff"><u>Changing the value of R1 to the expression {RES}</u></font></a>.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1081050">Place a PARAM part to declare values of the parameter {RES}</a>. For more information, see <a href="#1068341" title="chap3.html"><font color="#0000ff"><u>Adding a PARAM part to the FULLADD design</u></font></a>.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1067949">Create a new simulation profile or modify the existing profile to </a>set up the parametric analysis.</td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1068104">In this example, there will be multiple simulation runs, one for each </a>value of resistor R1. After the analysis is complete, you can analyze output waveforms for the analysis runs using PSpice&nbsp;A&#47;D.</p>
+      <h3><a name="1068135">Adding a variable circuit parameter</a></h3>
+      <h4><a name="1070892">Changing the value of R1 to the expression {RES}</a></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1068163">Open the full adder design, </a><font size="2" face="'Courier New'" color="#000000">FullAdd.opj</font>, in OrCAD Capture.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1068206">To display the Property Editor window for R1, double&#45;click </a>resistor R1.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1068229">In the Value text box, replace the original value of 1K with {RES}.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1068250">Click OK to save the modifications.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1068286">Curly braces indicate that the variable or the expression within </a>the braces will evaluate to a numerical value.</p>
+      <h4><a name="1068341">Adding a PARAM part to the FULLADD design</a></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1068426">From the </a><font color="#000000"><em>Place</em></font> menu in Capture, choose <font color="#000000"><em>Part</em></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1068427">Using the Place Part dialog box, add SPECIAL.OLB to the </a>FULLADD project.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><font color="#000000"><strong>Note: </strong></font><a name="1080623">SPECIAL.OLB is in the directory </a><font color="#000000"><em>&#60;</em></font><font color="#000000"><em>install_dir&#62;&#47;tools&#47;capture&#47;library.</em></font></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1068459">In the Libraries list box, select </a><font size="2" face="'Courier New'" color="#000000">SPECIAL.OLB</font>.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1068502">From the Part List list box, select </a>PARAM and click OK.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1071240">Place an instance of the PARAM part on the schematic page.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	6.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1071320">Double&#45;click the PARAM part to display the Property Editor and </a>click New Row.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1071321">The Add New Row dialog box appears.</a></blockquote>
+      <blockquote><font color="#000000"><strong>Note: </strong></font><a name="1073947">In the Property Editor window, you can also display </a>properties names as column headings. In such cases, to add a new property, click the New Column button. The Add New Column dialog box will appear. </blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	7.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1071322">In the Name text box, enter </a><font size="2" face="'Courier New'" color="#000000">RES</font>, without curly braces.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	8.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1071331">Specify the value as 10K and click OK.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1071356">This creates a new property for the PARAM part, as shown by </a>the new column labeled RES in the Property Editor window.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	9.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1071357"><font color="#000000">Select the new cell RES and click Display.</font></a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	10.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1071358">In the Display Format frame, select </a><font color="#000000"><em>Name and Value</em></font> and click OK.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	11.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1068681">Click Apply to update all the changes to the PARAM part.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	12.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1068663"><font color="#000000">Close the Property Editor window.</font></a></td>
+          </tr>
+        </table>
+      </div>
+      <p align="left"><a name="1069432"><img src="images/chap3.5.1.14.png" width="672" height="339" alt=""></a></p>
+      <p><a name="1071371">You can view the changes on the schematic page.</a></p>
+      <blockquote><font color="#000000"><strong>Note: </strong></font><a name="1071285">For more information about using the Property Editor, see </a>the OrCAD Capture User's Guide.</blockquote>
+      <h3><a name="1070055">Adding a Plot Window Template marker</a></h3>
+      <p><a name="1070056">In this section, we will add a Plot Window Template marker to the </a>circuit and observe the change in the output for different values of R1. </p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1068912">Remove the voltage marker added to the schematic design in </a>the <a href="#1066637" title="chap3.html"><font color="#0000ff"><u>Place markers</u></font></a> section.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1070099">From the </a><font color="#000000"><em>PSpice</em></font> menu in Capture, choose <font color="#000000"><em>Markers</em></font> and then select <font color="#000000"><em>Plot Window Template</em></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1070120">Select the </a><font color="#000000"><em>Risetime of Step response</em></font> template marker from the Plot Window Templates dialog box and click Place.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1070133">Place the marker between transistor Q1 and resistor R2, as </a>shown in the figure given below.</td>
+          </tr>
+        </table>
+      </div>
+      <p align="left"><a name="1070146"><img src="images/chap3.5.1.15.png" width="450" height="221" alt=""></a></p>
+      <h3><a name="1069059">Setting up parametric analysis</a></h3>
+      <p><a name="1069085">In this section, we will use the FULLADD&#45;SWEEP simulation profile </a>to set up the parametric analysis. This simulation profile has been created by inheriting the settings from the FULLADD&#45;TRANS profile. See <a href="chap2.html#1063514" title="Creating a schematic design"><font color="Blue"><u>Creating a simulation profile from an existing profile</u></font></a><a href="chap2.html#1063514" title="Creating a schematic design"></a>.</p>
+      <p><a name="1069135">The simulation profile created in the </a><a href="chap2.html#1063514" title="Creating a schematic design"><font color="#0000ff"><u>Creating a simulation profile from an existing profile</u></font></a> section, does not cover the settings for the parametric analysis. Therefore, we need to modify the FULLADD&#45;SWEEP simulation profile. To do this, you first make SWEEP the active simulation profile in Capture and then open the profile for modifications.</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1069166">In Capture, select FULLADD&#45;SWEEP from the Active Profile </a>drop&#45;down list box.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1069267">From the </a><font color="#000000"><em>PSpice</em></font> menu, choose <font color="#000000"><em>Edit Simulation Profile</em></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1069292">The Analysis tab of the Simulation Settings dialog box appears.</a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1069222">Select the Parametric sweep check box in the Options list box.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1069167">Select the </a><font color="#000000"><em>Global parameter</em></font> option button under the Sweep variable. This sets the value to the sweep value and all expressions are re&#45;evaluated.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1069168">Type </a><font size="2" face="'Courier New'" color="#000000">RES</font> in the Parameter name text box.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	6.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1069169">Type </a><font size="2" face="'Courier New'" color="#000000">25K</font>, <font size="2" face="'Courier New'" color="#000000">50K</font>, and <font size="2" face="'Courier New'" color="#000000">5K</font> in the Start value, End value, and Increment text boxes, respectively.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	7.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1069170">Click OK.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p align="left"><a name="1069174"><img src="images/parametricsettings1.gif" width="529" height="397" alt=""></a></p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1069332">Instead of creating a new profile in OrCAD Capture, you can </a>create a new simulation profile in PSpice also by inheriting settings from an existing profile. The new profile will work with your circuit design and can also be modified within PSpice. To modify a simulation profile in Capture, you use the Edit Simulation Profile command from the PSpice menu. In PSpice, use the Edit Profile command from the Simulation menu.</p>
+      <h3><a name="1069540">Running the simulation</a></h3>
+      <p><a name="1070905">To run the Parametric analysis, choose </a><font color="#000000"><em>Run</em></font> from the <font color="#000000"><em>Simulation</em></font> drop&#45;down menu.</p>
+      <p><a name="1071414">When the simulation is complete, the Simulation complete message </a>appears in the output window, and the Available Sections dialog box appears as shown in the figure below. </p>
+      <p align="left"><a name="1071466"><img src="images/sectionsdbx.gif" width="546" height="282" alt=""></a></p>
+      <p><a name="1071802">This dialog box appears for all multi&#45;run analyses. </a></p>
+      <p><a name="1071852">Select the runs for which you want to display the data and click OK. </a>The simulation results are shown in <font color="Blue"><u>Figure&nbsp;3&#45;2</u></font>.</p>
+      <p align="left"><a name="1070996"><img src="images/chap3.5.1.18.png" width="673" height="343" alt=""></a></p>
+      <p><a name="1071517">To read more about Parametric Analysis, see the </a><font color="#000000"><em>Parametric </em></font><font color="#000000"><em>analysis</em></font> section in <font color="#000000"><em>Chapter</em></font><font color="#000000"><em>&nbsp;</em></font><font color="#000000"><em>11, Parametric and temperature </em></font><font color="#000000"><em>analysis</em></font> of the <font color="#000000"><em>PSpice User's Guide</em></font>.</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="13.333333333333332">
+              <div>&nbsp;</div>
+            </td>
+            <td width="133.33333333333331">
+              <div>
+                <nobr>
+                  <img src="images/tip.gif" alt="ParagraphBullet" border="0">
+                </nobr>
+              </div>
+            </td>
+            <td>
+              <font size="3"><a name="1072081">You can use the Performance Analysis Wizard to create a </a>Performance Analysis trace for evaluating the performance of your circuit. To know more about the Performance Analysis wizard, see <font color="#000000"><em>Chapter</em></font><font color="#000000"><em>&nbsp;</em></font><font color="#000000"><em>11, Parametric and </em></font><font color="#000000"><em>temperature analysis</em></font> of the <font color="#000000"><em>PSpice User's Guide</em></font>.</font>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <h3><a name="1070437">Exporting output waveforms</a></h3>
+      <p><a name="1070457">You can export the output waveforms in the following formats:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1070605"><font size="2" face="'Courier New'" color="#000000">.dat</font></a> file</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1070636"><font size="2" face="'Courier New'" color="#000000">.stl</font></a> file</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1070647"><font size="2" face="'Courier New'" color="#000000">.txt</font></a> file</td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1070658">To export the output waveform:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/arrwrite.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1073486">From the </a><font color="#000000"><em>File</em></font> menu in PSpice, select <font color="#000000"><em>Export</em></font> and then select the desired format.</td>
+          </tr>
+        </table>
+      </div>
+      <p align="left"><a name="1070464"><img src="images/export.gif" width="493" height="326" alt=""></a></p>
+      <h2><a name="1067391">Summary</a></h2>
+      <p><a name="1067414">This chapter covered the steps for simulating the full adder design </a>using OrCAD PSpice. In this chapter, you were introduced to various tasks involved in the simulation process, such as placing markers and templates, modifying a simulation profile, and analyzing simulation results.</p>
+      <h2><a name="1065397">What's next</a></h2>
+      <p><a name="1065398">In the next chapter, </a><font color="#000000"><em>Board design using OrCAD PCB Editor</em></font>, you will use OrCAD PCB Editor to create a PCB board for the full adder design. </p>
+      <h2><a name="1065400">Recommended reading</a></h2>
+      <p><a name="1055687">For more information about PSpice, see </a><font color="#000000"><em>PSpice User's Guide</em></font> and PSpice online help. </p>
+    </div>
+    <br>
+    <a href="#pagetop">Return to top of page</a>
+    <hr>
+    <hr align="left">
+    <div style="text-align: left;">
+      <!-- Begin Buttons -->
+      <table width="650" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                    </td>
+<td height="20" width="73">
+<a href="flowtutTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<a href="flowtutIX.html"><img src="../support/nav2_index.gif" border="0"></a>
+</td>
+          <td>
+            <a href="chap2.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+          </td>
+          <td>
+            <a href="chap5.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+          </td>
+          <td>
+            <a>
+<a href="flowtut.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+            </a>
+          </td>
+          <td height="20" width="61">
+            <img src="../support/nav2_black.gif">
+          </td>
+          <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+          </td>
+          <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+          </td>
+          <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+          </td>
+        </tr>
+      </table>
+      <!-- End Buttons -->
+    </div>
+    <br>
+    <font size="-1" >
+For support, see <a href="http://support.cadence.com" target="_blank">Cadence Online Support</a> service.</font>
+    <br>
+    <br>
+    <font size="-1" >
+      <i>Copyright &#169; 2012, <a href="http://www.cadence.com">Cadence Design Systems, Inc.</a></i>
+    </font>
+    <br>
+    <font size="-1" >
+All rights reserved.</font>
+    <br>
+    <br>
+  </body>
+</html>

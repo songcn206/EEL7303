@@ -1,0 +1,223 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 49 18
+    #ifdef APD || SIP
+HEADER "Drawing Size"
+    #else
+HEADER "Drawing Parameters"
+    #endif
+
+POPUP <UNITS_POP>"Mils""1","Inch""2","Microns""5","Millimeter""3",\
+"Centimeter""4".
+
+POPUP <SIZE_POPE>"Other""5".
+
+    #ifdef APD || SIP
+POPUP <PTYPE>"Part""1","Mechanical""2","Format""3","Shape""4","Flash""7".
+    #else
+POPUP <PTYPE>"Package""1","Mechanical""2","Format""3","Shape""4","Flash""7".
+    #endif
+
+MESSAGE START 1 "No changes made until 'OK'."
+MESSAGE W_ZERO 1 "Drawing width is zero."
+MESSAGE H_ZERO 1 "Drawing height is zero."
+MESSAGE ZERO_DIM 1 "Zero diminsion not supported."
+MESSAGE W_2_LARGE 1 "Drawing width is too large for this accuracy."
+MESSAGE H_2_LARGE 1 "Drawing height is too large for this accuracy."
+MESSAGE W_2_SMALL 1 "Drawing width is too small."
+MESSAGE H_2_SMALL 1 "Drawing height is too small."
+MESSAGE VALUE_2_LARGE 1 "Value(s) would be too large to process."
+MESSAGE REDUCE_LX 1 "Can't reduce lower X extent."
+MESSAGE REDUCE_LY 1 "Can't reduce lower Y extent."
+MESSAGE REDUCE_UX 1 "Can't reduce upper X extent."
+MESSAGE REDUCE_UY 1 "Can't reduce upper Y extent."
+MESSAGE NOT_DURING_INTER 1 "Not editable while in interactive command."
+MESSAGE PROCESS_OR_CLEAR 1 "Please process current changes or clear the form."
+MESSAGE DRC_PROBLEM 1 "Problem running batch drc."
+MESSAGE CHG_ORIGIN 1 "Change origin error."
+MESSAGE CHG_SIZE 1 "Change drawing size error."
+MESSAGE AFFECTS_DB 3 "Change may cause round-off; run dbcheck."
+MESSAGE LIMIT_B 1 "Exceeds minimum allowed %s coordinate."
+MESSAGE LIMIT_T 1 "Exceeds maximum allowed %s coordinate."
+MESSAGE WORK 1 "Working..."
+MESSAGE SYM_TYPE 1 "Set symbol type then press 'OK'."
+MESSAGE NOT_ACTIVE_SHAPE 1 "Not editable while a SHAPE is active."
+MESSAGE READ_ONLY_MASTER 1 "Not editable with exported partitions."
+MESSAGE READ_ONLY_DPF 1 "Not editable within design partition."
+MESSAGE ORIGNMOVE 1 "Design Origin moved."
+
+TILE
+TEXT "Project:"
+TLOC 2 1
+ENDTEXT
+
+TEXT
+TLOC 11 1
+INFO project 34
+ENDTEXT
+
+TEXT "Drawing:"
+TLOC 2 3
+ENDTEXT
+
+TEXT
+TLOC 11 3
+INFO drawing 34
+ENDTEXT
+
+TEXT "Type:"
+TLOC 2 5
+ENDTEXT
+
+TEXT
+TLOC 26 5
+INFO symbol 6
+ENDTEXT
+
+TEXT "User Units:"
+TLOC 2 9
+ENDTEXT
+
+TEXT "Size:"
+TLOC 2 11
+ENDTEXT
+
+TEXT "Accuracy:"
+TLOC 2 13
+ENDTEXT
+
+TEXT "(decimal places)"
+TLOC 24 13
+ENDTEXT
+
+TEXT "Left X:"
+TLOC 3 19
+TGROUP "DRAWING EXTENTS"
+ENDTEXT
+
+TEXT "Lower Y:"
+TLOC 24 19
+TGROUP "DRAWING EXTENTS"
+ENDTEXT
+
+TEXT "Width:"
+TLOC 3 21
+TGROUP "DRAWING EXTENTS"
+ENDTEXT
+
+TEXT "Height:"
+TLOC 24 21
+TGROUP "DRAWING EXTENTS"
+ENDTEXT
+
+TEXT "X:"
+TLOC 9 28
+TGROUP "MOVE ORIGIN"
+ENDTEXT
+
+TEXT "Y:"
+TLOC 25 28
+TGROUP "MOVE ORIGIN"
+ENDTEXT
+
+FIELD type
+FLOC 11 5
+ENUMSET 12
+POP "PTYPE"
+ENDFIELD
+
+FIELD units
+FLOC 14 9
+ENUMSET 12
+POP "UNITS_POP"
+ENDFIELD
+
+FIELD size
+FLOC 14 11
+ENUMSET 6
+POP "SIZE_POPE"
+ENDFIELD
+
+FIELD accuracy
+FLOC 14 13
+INTSLIDEBAR 2 2
+MIN 0
+MAX 5
+ENDFIELD
+
+FIELD x
+FLOC 11 19
+FGROUP "DRAWING EXTENTS"
+REALFILLIN 10 10
+DECIMAL 0
+ENDFIELD
+
+FIELD y
+FLOC 33 19
+FGROUP "DRAWING EXTENTS"
+REALFILLIN 10 10
+DECIMAL 0
+ENDFIELD
+
+FIELD width
+FLOC 11 21
+FGROUP "DRAWING EXTENTS"
+REALFILLIN 10 10
+DECIMAL 0
+ENDFIELD
+
+FIELD height
+FLOC 33 21
+FGROUP "DRAWING EXTENTS"
+REALFILLIN 10 10
+DECIMAL 0
+ENDFIELD
+
+FIELD move_x
+FLOC 12 28
+FGROUP "MOVE ORIGIN"
+REALFILLIN 10 10
+DECIMAL 0
+ENDFIELD
+
+FIELD move_y
+FLOC 28 28
+FGROUP "MOVE ORIGIN"
+REALFILLIN 10 10
+DECIMAL 0
+ENDFIELD
+
+FIELD done
+FLOC 2 32
+MENUBUTTON "Done" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 12 32
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD reset
+FLOC 23 32
+MENUBUTTON "Reset" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 38 32
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+GROUP "DRAWING EXTENTS"
+GLOC 2 16
+GSIZE 45 8
+ENDGROUP
+
+GROUP "MOVE ORIGIN"
+GLOC 8 25
+GSIZE 34 6
+ENDGROUP
+
+ENDTILE
+
+ENDFORM

@@ -1,0 +1,82 @@
+################################################################################
+# $Header: /vobs/psd_backend_data/data/signal/custom_rep.dat,v 1.3 1997/11/06 15:58:33 spb Prealpha $
+#
+# This file specifies the format of custom signoise reports.  A report is
+# defined by all keywords found until the "END" keyword is encountered.
+# Any keywords after an "END" are considered the beinning of another report.
+# Anything after a "#" character is a comment.  All whitespace is ignored.
+################################################################################
+
+################################################################################
+### An Exmaple Custom Report : CustomRpt
+################################################################################
+
+NAME    "CustomRpt"
+VERSION 1.0
+TITLE   "Custom Report Sorted By Worst Noise Margin"
+
+HEADER
+
+FOREACH FTSMode
+  TABLE
+  TABLE_TITLE
+    PRINT "Simulation Results Table, Delays ("
+    PRINT DlyUnits
+    PRINT "), Distortion and Crosstalk ("
+    PRINT NoiseVUnits
+    PRINT "), ("
+    PRINT FTSMode
+    PRINT " FTSMode)"
+    PRINT "  Preferred Measurement Location: "
+    PRINT MeasLoc
+  TABLE_TITLE_END
+  INVISIBLE_COLUMNS MinNM
+  SORT    MinNM
+  COLUMNS XNet Drvr Rcvr NMHigh NMLow OShootHigh OShootLow HSOddXtalk MinNM
+  ROWS    Rcvr
+  TABEND
+  PRINTLN ""
+LOOPEND
+
+FOREACH FTSMode
+  TABLE
+  TABLE_TITLE
+    PRINT "Setup Data Table ("
+    PRINT FTSMode
+    PRINT " FTSMode)"
+    PRINT "  Preferred Measurement Location: "
+    PRINT MeasLoc
+  TABLE_TITLE_END
+  SHOW_TABLE_UNITS
+  COLUMNS Pin Net Device IOModel
+  ROWS    Pin
+  TABEND
+  PRINTLN ""
+LOOPEND
+
+PRINTLN "*********************************************************************"
+PRINTLN "Simulation Preferences"
+PRINTLN "---------------------------------------------------------------------"
+PRINTLN "  Variable                   Value"
+PRINTLN "  ------------------------   ---------------"
+PRINT   "  Pulse Clock Frequency      "
+PRINTLN ClockFrequency
+PRINT   "  Pulse Duty Cycle           "
+PRINTLN ClockDutyCycle
+PRINT   "  Pulse Step Offset          "
+PRINTLN Offset
+PRINT   "  Pulse Cycle Count          "
+PRINTLN CycleCount
+PRINTLN ""
+PRINTLN ""
+
+
+PRINTLN "*********************************************************************"
+PRINTLN "Number of Simulations Performed"
+PRINTLN "---------------------------------------------------------------------"
+PRINT   "  Total Simulations:         "
+PRINTLN TotalSimCount
+PRINTLN "---------------------------------------------------------------------"
+PRINTLN ""
+
+END

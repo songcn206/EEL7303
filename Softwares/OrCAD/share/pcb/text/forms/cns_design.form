@@ -1,0 +1,374 @@
+# $Header: /vobs/psd_backend_data/data/cuiforms/cns_design.form /main/8 20-Nov-02.15:54:51 fxf $ 
+# CNS DESIGN FORM
+# 	see gdoc cnsDesignDoc for how to add new constraints to this form
+
+
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 41 14
+HEADER "Design Constraints"
+
+MESSAGE drcstart 1 "DRC update, please wait..."
+MESSAGE drcdone 0 "DRC done."
+MESSAGE nodrcrun 2 "DRC Update can not be run while command active."
+MESSAGE badnum 3 "%s, is not a valid format, syntax is: num [units]"
+MESSAGE less0 3 "%s cannot be negative."
+MESSAGE DPF_WARNING 1 "Changes will NOT be seen by exported partitions."
+MESSAGE READ_ONLY_DPF 1 "Values not editable within design partition."
+
+TILE
+
+TEXT "On"
+OPTIONS underline
+FLOC 28 2
+ENDTEXT
+
+TEXT "Off"
+OPTIONS underline
+FLOC 32 2
+ENDTEXT
+
+TEXT "Batch"
+OPTIONS underline
+FLOC 35 2
+ENDTEXT
+
+TEXT "All:" modemsg
+FLOC 2 4
+FSIZE 38 2
+ENDTEXT
+
+FIELD on
+FLOC 28 4
+MENUBUTTON "" 1 2
+ENDFIELD
+FIELD off
+FLOC 32 4
+MENUBUTTON "" 1 2
+ENDFIELD
+FIELD batch
+FLOC 36 4
+MENUBUTTON "" 1 2
+ENDFIELD
+
+#----------------------------------------------------------
+# PACKAGE 2 PACKAGE 
+#ifdef APD || ALLEGRO_MCM || SIP
+TEXT "Component to component:"
+#else
+TEXT "Package to package:"
+#endif
+FLOC 2 6
+ENDTEXT
+
+FIELD Package_to_Package_Spacing.on
+FLOC 28 6
+CHECKLIST "" "1"
+ENDFIELD
+FIELD Package_to_Package_Spacing.off
+FLOC 32 6
+CHECKLIST "" "1"
+ENDFIELD
+FIELD Package_to_Package_Spacing.batch
+FLOC 36 6
+CHECKLIST "" "1"
+ENDFIELD
+
+#----------------------------------------------------------
+# PACKAGE KEEPIN 
+#ifdef APD || ALLEGRO_MCM || SIP
+TEXT "Component to comp keepin:"
+#else
+TEXT "Package to place keepin:"
+#endif
+FLOC 2 8
+ENDTEXT
+
+FIELD Package_to_Place_Keepin_Spacing.on
+FLOC 28 8
+CHECKLIST "" "2"
+ENDFIELD
+FIELD Package_to_Place_Keepin_Spacing.off
+FLOC 32 8
+CHECKLIST "" "2"
+ENDFIELD
+FIELD Package_to_Place_Keepin_Spacing.batch
+FLOC 36 8
+CHECKLIST "" "2"
+ENDFIELD
+
+#----------------------------------------------------------
+# PACKAGE KEEPOUT 
+#ifdef APD || ALLEGRO_MCM || SIP
+TEXT "Component to comp keepout:"
+#else
+TEXT "Package to place keepout:"
+#endif
+FLOC 2 10
+ENDTEXT
+
+FIELD Package_to_Place_Keepout_Spacing.on
+FLOC 28 10
+CHECKLIST "" "3"
+ENDFIELD
+FIELD Package_to_Place_Keepout_Spacing.off
+FLOC 32 10
+CHECKLIST "" "3"
+ENDFIELD
+FIELD Package_to_Place_Keepout_Spacing.batch
+FLOC 36 10
+CHECKLIST "" "3"
+ENDFIELD
+
+#----------------------------------------------------------
+# ROOMS
+#ifdef APD || ALLEGRO_MCM || SIP
+TEXT "Component to room:"
+#else
+TEXT "Package to room:"
+#endif
+FLOC 2 12
+ENDTEXT
+
+FIELD Package_to_Room_Spacing.on
+FLOC 28 12
+CHECKLIST "" "4"
+ENDFIELD
+FIELD Package_to_Room_Spacing.off
+FLOC 32 12
+CHECKLIST "" "4"
+ENDFIELD
+FIELD Package_to_Room_Spacing.batch
+FLOC 36 12
+CHECKLIST "" "4"
+ENDFIELD
+
+#----------------------------------------------------------
+# NEGATIVE PLANES
+TEXT "Negative plane islands:"
+FLOC 2 14
+ENDTEXT
+
+FIELD Negative_Plane_Islands.on
+FLOC 28 14
+CHECKLIST "" "5"
+ENDFIELD
+FIELD Negative_Plane_Islands.off
+FLOC 32 14
+CHECKLIST "" "5"
+ENDFIELD
+FIELD Negative_Plane_Islands.batch
+FLOC 36 14
+CHECKLIST "" "5"
+ENDFIELD
+TEXT "Oversize:"
+FLOC 8 16
+ENDTEXT
+FIELD Negative_Plane_Islands.value
+FLOC 17 16
+STRFILLIN 9 14
+ENDFIELD
+
+#----------------------------------------------------------
+# SOLDERMASK ALIGN
+TEXT "Soldermask alignment:"
+FLOC 2 18
+ENDTEXT
+
+FIELD Pad_Soldermask_Alignment.on
+FLOC 28 18
+CHECKLIST "" "6"
+ENDFIELD
+FIELD Pad_Soldermask_Alignment.off
+FLOC 32 18
+CHECKLIST "" "6"
+ENDFIELD
+FIELD Pad_Soldermask_Alignment.batch
+FLOC 36 18
+CHECKLIST "" "6"
+ENDFIELD
+TEXT "Tolerance:"
+FLOC 8 20
+ENDTEXT
+FIELD Pad_Soldermask_Alignment.value
+FLOC 17 20
+STRFILLIN 9 14
+ENDFIELD
+
+#----------------------------------------------------------
+# SOLDERMASK 2 SOLDERMASK
+TEXT "Soldermask to soldermask:"
+FLOC 2 22
+ENDTEXT
+
+FIELD Pad_Soldermask_to_Pad_Soldermask_Spacing.on
+FLOC 28 22
+CHECKLIST "" "7"
+ENDFIELD
+FIELD Pad_Soldermask_to_Pad_Soldermask_Spacing.off
+FLOC 32 22
+CHECKLIST "" "7"
+ENDFIELD
+FIELD Pad_Soldermask_to_Pad_Soldermask_Spacing.batch
+FLOC 36 22
+CHECKLIST "" "7"
+ENDFIELD
+TEXT "Spacing:"
+FLOC 8 24
+ENDTEXT
+FIELD Pad_Soldermask_to_Pad_Soldermask_Spacing.value
+FLOC 17 24
+STRFILLIN 9 14
+ENDFIELD
+
+#----------------------------------------------------------
+# SOLDERMASK 2 SHAPE
+TEXT "Soldermask to pad and cline:"
+FLOC 2 26
+ENDTEXT
+
+FIELD Soldermask_to_Pad_and_Cline_Spacing.on
+FLOC 28 26
+CHECKLIST "" "8"
+ENDFIELD
+FIELD Soldermask_to_Pad_and_Cline_Spacing.off
+FLOC 32 26
+CHECKLIST "" "8"
+ENDFIELD
+FIELD Soldermask_to_Pad_and_Cline_Spacing.batch
+FLOC 36 26
+CHECKLIST "" "8"
+ENDFIELD
+TEXT "Spacing:"
+FLOC 8 28
+ENDTEXT
+FIELD Soldermask_to_Pad_and_Cline_Spacing.value
+FLOC 17 28
+STRFILLIN 9 14
+ENDFIELD
+
+#----------------------------------------------------------
+# SOLDERMASK 2 SHAPE
+TEXT "Soldermask to shape:"
+FLOC 2 30
+ENDTEXT
+
+FIELD Soldermask_to_Shape_Spacing.on
+FLOC 28 30
+CHECKLIST "" "9"
+ENDFIELD
+FIELD Soldermask_to_Shape_Spacing.off
+FLOC 32 30
+CHECKLIST "" "9"
+ENDFIELD
+FIELD Soldermask_to_Shape_Spacing.batch
+FLOC 36 30
+CHECKLIST "" "9"
+ENDFIELD
+TEXT "Spacing:"
+FLOC 8 32
+ENDTEXT
+FIELD Soldermask_to_Shape_Spacing.value
+FLOC 17 32
+STRFILLIN 9 14
+ENDFIELD
+
+
+#----------------------------------------------------------
+# TESTPOINT PAD 2 COMPONENT
+TEXT "Testpoint pad to component:" Testpoint_Pad_to_Component_Spacing.textm
+FLOC 2 34
+ENDTEXT
+
+FIELD Testpoint_Pad_to_Component_Spacing.on
+FLOC 28 34
+CHECKLIST "" "10"
+ENDFIELD
+FIELD Testpoint_Pad_to_Component_Spacing.off
+FLOC 32 34
+CHECKLIST "" "10"
+ENDFIELD
+FIELD Testpoint_Pad_to_Component_Spacing.batch
+FLOC 36 34
+CHECKLIST "" "10"
+ENDFIELD
+TEXT "Spacing:" Testpoint_Pad_to_Component_Spacing.textv
+FLOC 8 36
+ENDTEXT
+FIELD Testpoint_Pad_to_Component_Spacing.value
+FLOC 17 36
+STRFILLIN 9 14
+ENDFIELD
+
+#----------------------------------------------------------
+# TESTPOINT LOCATION 2 COMPONENT
+TEXT "Testpoint location to component:" Testpoint_Location_to_Component_Spacing.textm
+FLOC 2 38
+ENDTEXT
+
+FIELD Testpoint_Location_to_Component_Spacing.on
+FLOC 28 38
+CHECKLIST "" "11"
+ENDFIELD
+FIELD Testpoint_Location_to_Component_Spacing.off
+FLOC 32 38
+CHECKLIST "" "11"
+ENDFIELD
+FIELD Testpoint_Location_to_Component_Spacing.batch
+FLOC 36 38
+CHECKLIST "" "11"
+ENDFIELD
+TEXT "Spacing:" Testpoint_Location_to_Component_Spacing.textv
+FLOC 8 40
+ENDTEXT
+FIELD Testpoint_Location_to_Component_Spacing.value
+FLOC 17 40
+STRFILLIN 9 14
+ENDFIELD
+
+#----------------------------------------------------------
+# TESTPOINT UNDER COMPONENT
+TEXT "Testpoint under component" Testpoint_under_Component.textm
+FLOC 2 42
+ENDTEXT
+
+FIELD Testpoint_under_Component.on
+FLOC 28 42
+CHECKLIST "" "12"
+ENDFIELD
+FIELD Testpoint_under_Component.off
+FLOC 32 42
+CHECKLIST "" "12"
+ENDFIELD
+FIELD Testpoint_under_Component.batch
+FLOC 36 42
+CHECKLIST "" "12"
+ENDFIELD
+
+#----------------------------------------------------------
+
+FIELD done
+FLOC 2 45
+MENUBUTTON "OK" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 12 45
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD apply
+FLOC 22 45
+MENUBUTTON "Apply" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 32 45
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+
+
+ENDTILE
+ENDFORM

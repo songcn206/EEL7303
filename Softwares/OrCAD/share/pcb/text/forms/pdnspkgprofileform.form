@@ -1,0 +1,245 @@
+####################################################################################
+#       Cadence Design Systems                                                     #
+#                                                                                  #
+# (C) COPYRIGHT, Cadence Design Systems, Inc. 2010                                 #
+# All Rights Reserved                                                              #
+# Licensed Materials - Property of Cadence Design Systems                          #
+#                                                                                  #
+# No part of this file may be reproduced, stored in a retrieval system,            #
+# or transmitted in any form or by any means --- electronic, mechanical,           #
+# photocopying, recording, or otherwise --- without prior written permission       #
+# of Cadence Design Systems, Inc.                                                  #
+#                                                                                  #
+# WARRANTY:                                                                        #
+# Use all material in this file at your own risk.  Cadence Design Systems          #
+# makes no claims about any material contained in this file.                       #
+####################################################################################
+FILE_TYPE=FORM_DEFN VERSION=2
+
+    FORM
+    FIXED
+    PORT 112 60
+    HEADER "PDN Package Profile Editor"
+
+    ACTIVEFIELD "Done"
+    DEFAULT Done
+
+    TILE
+
+    FIELD Done
+        FLOC 2 44
+        MENUBUTTON "OK" 10 3
+    ENDFIELD
+
+    FIELD Cancel
+        FLOC 13 44
+        MENUBUTTON "Cancel" 10 3
+    ENDFIELD
+
+    FIELD Apply
+        FLOC 79 44
+        MENUBUTTON "Apply" 10 3
+    ENDFIELD
+
+    FIELD Reset
+        FLOC 90 44
+        MENUBUTTON "Reset" 10 3
+    ENDFIELD
+
+    FIELD Help
+        FLOC 101 44
+        MENUBUTTON "Help" 10 3
+    ENDFIELD
+
+    GROUP "Model"
+        GLOC 1 0
+        GSIZE 111 11
+    ENDGROUP
+
+    TEXT "Comp Name:"
+        TLOC 2 2
+    ENDTEXT
+
+    TEXT
+        TLOC 14 2
+        INFO CompName 23
+    ENDTEXT    
+
+    TEXT "Class:"
+        TLOC 40 2
+    ENDTEXT
+
+    TEXT
+        TLOC 45 2
+        INFO CompClass 10
+    ENDTEXT    
+
+    TEXT "Device Name:"
+        TLOC 2 5
+    ENDTEXT
+
+    TEXT
+        TLOC 14 5
+        INFO DeviceName 23
+    ENDTEXT    
+
+    TEXT "Package Model:"
+        TLOC 2 8
+    ENDTEXT
+
+    POPUP <PackageModelPop>"""".
+    FIELD PackageModel
+        FLOC 14 8
+        ENUMSET 23
+        POP "PackageModelPop"
+    ENDFIELD
+
+    POPUP <PackagePTMFPop>"Load...""PTMFLoad","Edit...""PTMFEdit".
+    FIELD PackageModelPTMF
+      FLOC 40 8
+      MENUBUTTON "PTMF" 10 3
+      POP "PackagePTMFPop"
+    ENDFIELD
+
+    TEXT "Die Name:" "DieNameTitle"
+        TLOC 65 2
+    ENDTEXT
+
+    POPUP <DieNameList>"""".
+    FIELD DieName
+        TLOC 77 2
+        ENUMSET 20
+        POP "DieNameList"
+    ENDTEXT
+
+    FIELD DieNameAdd
+        FLOC 100 2
+        MENUBUTTON "Add" 5 3
+    ENDFIELD
+
+    FIELD DieNameDel
+        FLOC 106 2
+        MENUBUTTON "Del" 5 3
+    ENDFIELD
+
+    TEXT "Die Model:" "DieModelTitle"
+        TLOC 65 5
+    ENDTEXT
+
+    POPUP <DieModelPop>"""".
+    FIELD DieModel
+        FLOC 77 5
+        ENUMSET 20
+        POP "DieModelPop"
+    ENDFIELD
+
+    POPUP <DiePTMFPop>"Load...""PTMFLoad","Edit...""PTMFEdit".
+    FIELD DieModelPTMF
+      FLOC 100 5
+      MENUBUTTON "PTMF" 10 3
+      POP "DiePTMFPop"
+    ENDFIELD
+
+    TEXT "Die Load:" "DieLoadTitle"
+        TLOC 65 8
+    ENDTEXT
+
+    POPUP <DieLoadPop>"""".
+    FIELD DieLoad
+        FLOC 77 8
+        ENUMSET 20
+        POP "DieLoadPop"
+    ENDFIELD
+    
+    FIELD DieLoadView
+        FLOC 100 8
+        MENUBUTTON "View..." 10 3
+    ENDFIELD
+
+    GROUP "Connection Panel:"
+        GLOC 1 11
+        GSIZE 111 32
+    ENDGROUP
+    
+    FIELD ConnPanelList
+        TLOC 2 13
+        LIST "" 20 6
+    ENDTEXT
+    
+    FIELD IncludePackagePort
+        FLOC 2 38
+        CHECKLIST "Include Package Pin"
+    ENDFIELD
+
+    FIELD IncludeDiePort
+        FLOC 2 40
+        CHECKLIST "Include Die Pin"
+    ENDFIELD
+    
+    POPUP <SupplierNetPopup>"""".
+    FIELD SupplierNet
+        TLOC 22 13
+        STRFILLIN 18 256
+        POP "SupplierNetPopup"
+    ENDTEXT
+
+    POPUP <SupplierCompPopup>"""".
+    FIELD SupplierComp
+        TLOC 45 13
+        STRFILLIN 13 256
+        POP "SupplierCompPopup"
+    ENDTEXT
+
+    POPUP <ConnectCompPopup>"""".
+    FIELD ConnectComp
+        TLOC 68 13
+        STRFILLIN 13 256
+        POP "ConnectCompPopup"
+    ENDTEXT
+
+    POPUP <ConnectNetPopup>"""".
+    FIELD ConnectNet
+        TLOC 86 13
+        STRFILLIN 18 256
+        POP "ConnectNetPopup"
+    ENDTEXT
+        
+    FIELD SinkCurrentAdd
+        FLOC 23 13
+        MENUBUTTON "Add" 10 3
+    ENDFIELD
+
+    FIELD SinkCurrentDel
+        FLOC 34 13
+        MENUBUTTON "Delete" 10 3
+    ENDFIELD
+
+    FIELD SinkCurrentDelAll
+        FLOC 45 13
+        MENUBUTTON "Delete All" 10 3
+    ENDFIELD        
+        
+    POPUP <ConnGridPinPopup>"""".    
+    POPUP <ConnGridHeadPopup>"""".
+    POPUP <SinkGridCurrentPopup>"""".
+    POPUP <SinkGridCompPopup>"""".
+    POPUP <SinkGridPowerPopup>"""".
+    POPUP <SinkGridGroundPopup>"""".
+    GRID ConnGrid
+    FLOC 22 15
+    FSIZE 89 27
+    OPTIONS HLINES VLINES USERSIZE
+    
+    GHEAD TOP
+        HEADSIZE 2
+        OPTIONS 3D
+        POP "ConnGridHeadPopup"
+    ENDGHEAD
+    GHEAD SIDE
+        HEADSIZE 0
+    ENDGHEAD
+    ENDGRID
+
+    ENDTILE
+ENDFORM
+

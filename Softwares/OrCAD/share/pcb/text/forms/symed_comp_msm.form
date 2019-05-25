@@ -1,0 +1,121 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 39 6
+HEADER "Component Settings"
+
+POPUP <COMPCLASS_POPUP> "Die/Interposer" "IC", "Discrete" "DISCRETE", "Package" "IO", "Plating Bar" "PLATING_BAR".
+POPUP <PADLAYER_POPUP> "TOP_COND" "TOP_COND".
+
+TILE
+
+#####################################
+# Configuration modes (add pin only)
+#####################################
+
+TEXT "Ref des:"
+TLOC 1 1
+ENDTEXT
+FIELD ref_des
+FLOC 12 1
+STRFILLIN 16 1024
+ENDFIELD
+
+TEXT "Symbol name:"
+TLOC 1 3
+ENDTEXT
+FIELD symbol_name
+FLOC 12 3
+STRFILLIN 16 1024
+ENDFIELD
+
+TEXT "Comp type:"
+TLOC 1 5
+ENDTEXT
+FIELD comp_type
+FLOC 12 5
+ENUMSET 15
+POP "COMPCLASS_POPUP"
+ENDFIELD
+
+TEXT "Upper right:"
+TLOC 1 8
+ENDTEXT
+TEXT "X:"
+TLOC 3 10
+ENDTEXT
+FIELD max_x
+FLOC 12 10
+STRFILLIN 16 256
+ENDFIELD
+TEXT "Y:"
+TLOC 3 12
+ENDTEXT
+FIELD max_y
+FLOC 12 12
+STRFILLIN 16 256
+ENDFIELD
+
+TEXT "Lower left:"
+TLOC 1 14
+ENDTEXT
+TEXT "X:"
+TLOC 3 16
+ENDTEXT
+FIELD min_x
+FLOC 12 16
+STRFILLIN 16 256
+ENDFIELD
+TEXT "Y:"
+TLOC 3 18
+ENDTEXT
+FIELD min_y
+FLOC 12 18
+STRFILLIN 16 256
+ENDFIELD
+
+TEXT "Pad layer:"
+TLOC 1 21
+INFO pad_layer_label 20
+ENDTEXT
+FIELD pad_layer
+FLOC 12 21
+ENUMSET 15
+POP "PADLAYER_POPUP"
+ENDFIELD
+
+TEXT "Chip attachment:"
+TLOC 1 24
+INFO attach_label 20
+ENDTEXT
+FIELD wire_bond
+FLOC 3 26
+CHECKLIST "Wire Bond" "attachment"
+ENDFIELD
+FIELD flip_chip
+FLOC 15 26
+CHECKLIST "Flip-Chip" "attachment"
+ENDFIELD
+
+TEXT "Orientation:"
+TLOC 1 28
+INFO orient_label 20
+ENDTEXT
+FIELD chip_up
+FLOC 3 30
+CHECKLIST "Chip up" "orientation"
+ENDFIELD
+FIELD chip_down
+FLOC 15 30
+CHECKLIST "Chip down" "orientation"
+ENDFIELD
+
+FIELD comp_apply
+FLOC 1 33
+MENUBUTTON "Create Component" 28 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM
+

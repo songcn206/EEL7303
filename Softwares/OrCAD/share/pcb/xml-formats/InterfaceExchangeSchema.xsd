@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Created with Liquid XML Studio 1.0.8.0 (http://www.liquid-technologies.com) -->
+<xs:schema xmlns:spbhgs="http://www.cadence.com/spb/hgs" elementFormDefault="qualified" targetNamespace="http://www.cadence.com/spb/hgs" version="0.1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="RangeType">
+    <xs:annotation>
+      <xs:documentation>
+	  	RangeType represents a sequence of msb and lsb bits. 
+	  	Both these bits are required, even if they are the same.
+	  </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="lsb" type="xs:nonNegativeInteger" use="optional" />
+    <xs:attribute name="msb" type="xs:nonNegativeInteger" use="optional" />
+  </xs:complexType>
+  <xs:complexType name="PortType">
+    <xs:annotation>
+      <xs:documentation>
+	  	PortType represents a logical port. 
+		The port type is a enumerated set of values. 
+		NumPhysPins captures the intent of implementing a logical port through n-physical pins.
+	  </xs:documentation>
+    </xs:annotation>
+    <xs:all>
+      <xs:element name="Name" type="xs:string" />
+      <xs:element name="InstancePortName" type="xs:string" />
+      <xs:element name="Type">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="input" />
+            <xs:enumeration value="output" />
+            <xs:enumeration value="inout" />
+            <xs:enumeration value="power" />
+            <xs:enumeration value="ground" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="NumPhysPins" type="xs:nonNegativeInteger" />
+      <xs:element minOccurs="0" name="Range" type="spbhgs:RangeType" />
+    </xs:all>
+    <xs:attribute name="id" type="xs:ID" use="required" />
+  </xs:complexType>
+  <xs:complexType name="PortsType">
+    <xs:annotation>
+      <xs:documentation>
+			The PortsType servers as a container for all ports, to make the document be more readable.
+		</xs:documentation>
+    </xs:annotation>
+    <xs:sequence minOccurs="0" maxOccurs="unbounded">
+      <xs:element name="Port" type="spbhgs:PortType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PortRefType">
+    <xs:annotation>
+      <xs:documentation>
+	  	PortRefType refers to a port, either entirely, or a sub-range through the Range element.
+	  </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Range" type="spbhgs:RangeType" />
+    </xs:sequence>
+    <xs:attribute name="ref" type="xs:IDREF" />
+  </xs:complexType>
+  <xs:complexType name="PortRefsType">
+    <xs:annotation>
+      <xs:documentation>
+		PortRefsType serves as a container of all port references.
+	</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PortRef" type="spbhgs:PortRefType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DifferentialPortType">
+    <xs:annotation>
+      <xs:documentation>
+	  	DifferentialPortType represents a differential port, with PostivePort and NegativePort port reference elements. Both these port specifications are required.
+	  </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Name" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="PositivePort" type="spbhgs:PortRefType" />
+      <xs:element minOccurs="1" maxOccurs="1" name="NegativePort" type="spbhgs:PortRefType" />
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:ID" />
+  </xs:complexType>
+  <xs:complexType name="DifferentialPortsType">
+    <xs:annotation>
+      <xs:documentation>
+		DifferentialPortsType serves as a container for all differential ports.
+	</xs:documentation>
+    </xs:annotation>
+    <xs:sequence minOccurs="0" maxOccurs="unbounded">
+      <xs:element name="DifferentialPort" type="spbhgs:DifferentialPortType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DifferentialPortRefType">
+    <xs:annotation>
+      <xs:documentation>This represents a differential port type reference.</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="ref" type="xs:IDREF" />
+  </xs:complexType>
+  <xs:complexType name="DifferentialPortRefsType">
+    <xs:annotation>
+      <xs:documentation>
+  DifferentialPortRefsType serves as a container for differential port references.
+  </xs:documentation>
+    </xs:annotation>
+    <xs:sequence minOccurs="0" maxOccurs="unbounded">
+      <xs:element name="DifferentialPortRef" type="spbhgs:DifferentialPortRefType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PortGroupType">
+    <xs:annotation>
+      <xs:documentation>PortGroups are generic collections of Port references and DifferenrialPort references. In addition, PortGroups can also contain further PortGroup objects or PortGroup references, thus allowing for a hierarchical representation structure.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Name" type="xs:string" />
+      <xs:element minOccurs="0" name="Type">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="bus" />
+            <xs:enumeration value="voltageDefn" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="Voltage" type="xs:string" />
+      <xs:element minOccurs="0" name="NumPowerPins" type="xs:nonNegativeInteger" />
+      <xs:element minOccurs="0" name="NumGroundPins" type="xs:nonNegativeInteger" />
+      <xs:element minOccurs="0" name="PortRefs" type="spbhgs:PortRefsType" />
+      <xs:element minOccurs="0" name="DifferentialPortRefs" type="spbhgs:DifferentialPortRefsType" />
+      <xs:element minOccurs="0" name="PortGroups" type="spbhgs:PortGroupsType" />
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:ID" use="required" />
+  </xs:complexType>
+  <xs:complexType name="PortGroupsType">
+    <xs:sequence minOccurs="0" maxOccurs="unbounded">
+      <xs:element name="PortGroup" type="spbhgs:PortGroupType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PortGroupRefType">
+    <xs:annotation>
+      <xs:documentation>PortGroupRefType is a reference to a PortGroup.</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="ref" type="xs:IDREF" />
+  </xs:complexType>
+  <xs:complexType name="PortGroupRefsType">
+    <xs:sequence minOccurs="0" maxOccurs="unbounded">
+      <xs:element name="PortGroupRef" type="spbhgs:PortGroupRefType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BusInterfaceType">
+    <xs:annotation>
+      <xs:documentation>BusInterface objects represent an interface instance. They contain references to Ports, DifferentialPorts and PortGroups. In addition, BusInterface objects can contain PortGroup objects instead of just referring them, allowing for scoping. Unlike PortGroup objects, BusInterface objects cannot contain other BusInterface objects.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Name" type="xs:string" />
+      <xs:element name="Definition" type="xs:string" />
+      <xs:element minOccurs="0" name="PortRefs" type="spbhgs:PortRefsType" />
+      <xs:element minOccurs="0" name="DifferentialPortRefs" type="spbhgs:DifferentialPortRefsType" />
+      <xs:element minOccurs="0" name="PortGroupRefs" type="spbhgs:PortGroupRefsType" />
+      <xs:choice minOccurs="0">
+        <xs:element name="PortGroups" type="spbhgs:PortGroupsType" />
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:ID" />
+  </xs:complexType>
+  <xs:complexType name="BusInterfaceRefType">
+    <xs:attribute name="ref" type="xs:IDREF" />
+  </xs:complexType>
+  <xs:complexType name="BusInterfacesType">
+    <xs:sequence minOccurs="0" maxOccurs="unbounded">
+      <xs:element name="BusInterface" type="spbhgs:BusInterfaceType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CompInstType">
+    <xs:annotation>
+      <xs:documentation>CompDef represents a logical component definition. Component definition objects contain Ports, DifferentialPorts, PortGroups and BusInterfaces applied on the component.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Refdes" type="xs:string" />
+      <xs:element name="CellName" type="xs:string" />
+      <xs:sequence minOccurs="0" maxOccurs="1">
+        <xs:element name="Ports" type="spbhgs:PortsType" />
+      </xs:sequence>
+      <xs:sequence minOccurs="0">
+        <xs:element name="DifferentialPorts" type="spbhgs:DifferentialPortsType" />
+      </xs:sequence>
+      <xs:sequence minOccurs="0">
+        <xs:element name="BusInterfaces" type="spbhgs:BusInterfacesType" />
+      </xs:sequence>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:ID" />
+  </xs:complexType>
+  <xs:complexType name="CompInstsType">
+    <xs:sequence minOccurs="0" maxOccurs="unbounded">
+      <xs:element name="CompInst" type="spbhgs:CompInstType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PinType">
+    <xs:annotation>
+      <xs:documentation>Pin objects represent a physical pin on a footprint. </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Name" type="xs:string" />
+      <xs:element minOccurs="0" name="Location" type="xs:string" />
+      <xs:element minOccurs="0" name="Padstack" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:ID" />
+  </xs:complexType>
+  <xs:complexType name="PinsType">
+    <xs:sequence minOccurs="0" maxOccurs="unbounded">
+      <xs:element name="Pin" type="spbhgs:PinType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PinRefType">
+    <xs:annotation>
+      <xs:documentation>This is a reference to a Pin object.</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="ref" type="xs:IDREF" />
+  </xs:complexType>
+  <xs:complexType name="PinGroupType">
+    <xs:annotation>
+      <xs:documentation>PinGroup objects represent a generic grouping of Pin object references.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence maxOccurs="unbounded">
+      <xs:element name="PinRef" type="spbhgs:PinRefType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FootprintType">
+    <xs:annotation>
+      <xs:documentation>PartDef represents a physical footprint. It contains all the Pin objects on the footprint, and optionally has any groupings applied on the pin.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Name" type="xs:string" />
+      <xs:element minOccurs="0" name="Width" type="xs:string" />
+      <xs:element minOccurs="0" name="Length" type="xs:string" />
+      <xs:element minOccurs="0" name="Thickness" type="xs:string" />
+      <xs:element minOccurs="0" name="Origin" type="xs:string" />
+      <xs:element minOccurs="0" name="Rotation" type="xs:string" />
+      <xs:sequence minOccurs="0">
+        <xs:element name="Pins" type="spbhgs:PinsType" />
+      </xs:sequence>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:ID" />
+  </xs:complexType>
+  <xs:complexType name="FootprintsType">
+    <xs:sequence minOccurs="0" maxOccurs="unbounded">
+      <xs:element name="Footprint" type="spbhgs:FootprintType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PortMapType">
+    <xs:annotation>
+      <xs:documentation>A PortMap represents a Hard assignment. It is a mapping from a Port to either a Pin or a group of Pins (PinGroup). </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="PortRefNoRange" type="spbhgs:PortRefType" />
+      <xs:choice>
+        <xs:element name="PinRef" type="spbhgs:PinRefType" />
+        <xs:element name="PinGroup" type="spbhgs:PinGroupType" />
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PortMapsType">
+    <xs:sequence minOccurs="0" maxOccurs="unbounded">
+      <xs:element name="PortMap" type="spbhgs:PortMapType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GroupMapType">
+    <xs:annotation>
+      <xs:documentation>PortGroupMap represents a global assignment. It associates a PortGroup to a PinGroup which can be either referenced or contained.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:choice>
+        <xs:element name="PortGroupRef" type="spbhgs:PortGroupRefType" />
+        <xs:element name="BusInterfaceRef" type="spbhgs:BusInterfaceRefType" />
+      </xs:choice>
+      <xs:element name="PinGroup" type="spbhgs:PinGroupType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GroupMapsType">
+    <xs:sequence minOccurs="0" maxOccurs="unbounded">
+      <xs:element name="GroupMap" type="spbhgs:GroupMapType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CompInstRefType">
+    <xs:annotation>
+      <xs:documentation>This is a reference to a Component Definition.</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="ref" type="xs:IDREF" />
+  </xs:complexType>
+  <xs:complexType name="FootprintDefRefType">
+    <xs:attribute name="ref" type="xs:IDREF" />
+  </xs:complexType>
+  <xs:complexType name="PartMapType">
+    <xs:annotation>
+      <xs:documentation>A PartMap associates a CompDef or an InstanceDef to a PartDef. In addition, it has information about Hard Assignments (PortMap) or Global Assignments (PortGroupMap) done to this association.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="CompInstRef" type="spbhgs:CompInstRefType" />
+      <xs:element name="PartDefRef" type="spbhgs:FootprintDefRefType" />
+      <xs:sequence minOccurs="0">
+        <xs:element name="PortMaps" type="spbhgs:PortMapsType" />
+      </xs:sequence>
+      <xs:sequence minOccurs="0">
+        <xs:element name="GroupMaps" type="spbhgs:GroupMapsType" />
+      </xs:sequence>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PartMapsType">
+    <xs:sequence minOccurs="0" maxOccurs="unbounded">
+      <xs:element name="PartMap" type="spbhgs:PartMapType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InterfaceExchangeSchema">
+    <xs:annotation>
+      <xs:documentation>This is the root element of the Schema. It contains multiple CompDef, InstanceDef, PartDef and PartMap sections.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:sequence>
+          <xs:element name="LastUpdatedBy" type="xs:string" />
+          <xs:element name="LastUpdatedAt" type="xs:date" />
+          <xs:element name="DesignName" type="xs:string" />
+        </xs:sequence>
+        <xs:element minOccurs="0" name="CompInsts" type="spbhgs:CompInstsType" />
+        <xs:element minOccurs="0" name="Footprints" type="spbhgs:FootprintsType" />
+        <xs:element minOccurs="0" name="PartMaps" type="spbhgs:PartMapsType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

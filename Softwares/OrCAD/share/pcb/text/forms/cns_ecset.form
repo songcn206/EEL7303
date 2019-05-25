@@ -1,0 +1,823 @@
+# CNS ELECTRICAL CSET FORM
+#       see gdoc cnsEcsetDoc for how to add new constraints to this form
+
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM autogreytext unixhgt
+FIXED
+PORT 61 14
+HEADER "Electrical Constraints"
+
+#POPUP <pop_rtmethod>"Edge to edge""EDGE_TO_EDGE","Tandem""TANDEM","<clear>""<clear>".
+
+POPUP <gl>"Include""INCLUDE","Ignore""IGNORE","<clear>""<clear>".
+POPUP <pc>"Dynamic""DYNAMIC","Static""STATIC","<clear>""<clear>".
+POPUP <pop_schedule>"Do not verify""DO_NOT_VERIFY","Verify""VERIFY","<clear>""<clear>".
+POPUP <pop_rats_schedule> "Min spanning tree""MIN_TREE", \
+			"Daisy chain""MIN_DAISY_CHAIN", \
+		"Source load daisy chain""SOURCE_LOAD_DAISY_CHAIN", \
+			"Star""STAR", \
+			"Far-end cluster""FAR_END_CLUSTER", \
+			"Template""TEMPLATE", \
+			"<clear>""<clear>".
+
+MESSAGE selectEcset 2 "Must first select a Cset."
+MESSAGE noDelete 3 "Cset cannot be deleted."
+MESSAGE exists 3 "Cset by that name already exists, %s"
+MESSAGE assignSelect 2 "Must first select net from available list"
+MESSAGE deassignSelect 2 "Must first select net from assign list"
+MESSAGE noNet 3 "Net %s not in present"
+MESSAGE drcstart 1 "DRC update, please wait..."
+MESSAGE drcdone 0 "DRC done."
+MESSAGE badpvf 3 "Incorrect syntax, use units of distance/time"
+MESSAGE DPF_WARNING 1 "Changes will NOT be seen by exported partitions."
+MESSAGE READ_ONLY_DPF 1 "Not editable within design partition."
+
+TILE
+
+GROUP "Electrical Csets" vgec
+FLOC 3 0
+FSIZE 56 14
+ENDGROUP
+
+FIELD ecset_list
+FLOC 4 2
+LIST "" 41 4
+OPTIONS sort
+ENDFIELD
+
+FIELD copy_for_new
+FLOC 28 10
+CHECKLIST "Copy selected cset to new cset"
+ENDFIELD
+
+FIELD new
+FLOC 47 3
+MENUBUTTON "New..." 7 3
+ENDFIELD
+
+#FIELD copy
+#FLOC 47 5
+#MENUBUTTON "Copy..." 7 3
+#ENDFIELD
+
+FIELD delete
+FLOC 47 7
+MENUBUTTON "Delete" 7 3
+ENDFIELD
+
+
+TEXT "Cset name:"
+OPTIONS BOLD
+FLOC 4 12
+ENDTEXT
+
+TEXT ""
+FLOC 14 12
+INFO ecset_name 22
+ENDFIELD
+
+TEXT ""
+FLOC 40 12
+INFO ecset_locked 12
+ENDFIELD
+
+#----------------------------------------------------------
+#----------------------------------------------------------
+
+TABSET "tab" 
+OPTIONS tabsetDispatch
+FLOC 2 15
+FSIZE 58 32
+
+#----------------------------------------------------------
+#----------------------------------------------------------
+TAB "Modes"
+
+TEXT "On"
+OPTIONS underline
+FLOC 33 1
+ENDTEXT
+
+TEXT "Off"
+OPTIONS underline
+FLOC 37 1
+ENDTEXT
+
+TEXT "Batch"
+OPTIONS underline
+FLOC 40 1
+ENDTEXT
+
+TEXT "All:"
+FLOC 7 3
+ENDTEXT
+
+FIELD on
+FLOC 33 3
+MENUBUTTON "" 1 2
+ENDFIELD
+FIELD off
+FLOC 37 3
+MENUBUTTON "" 1 2
+ENDFIELD
+FIELD batch
+FLOC 41 3
+MENUBUTTON "" 1 2
+ENDFIELD
+
+
+#----------------------------------------------------------
+TEXT "Stub length/Net schedule:"
+FLOC 7 5
+ENDTEXT
+
+FIELD Maximum_Stub_Length.on
+FLOC 33 5
+CHECKLIST "" "1"
+ENDFIELD
+FIELD Maximum_Stub_Length.off
+FLOC 37 5
+CHECKLIST "" "1"
+ENDFIELD
+FIELD Maximum_Stub_Length.batch
+FLOC 41 5
+CHECKLIST "" "1"
+ENDFIELD
+
+
+
+#----------------------------------------------------------
+TEXT "Max via count:"
+FLOC 7 7
+ENDTEXT
+
+FIELD Maximum_Via_Count.on
+FLOC 33 7
+CHECKLIST "" "2"
+ENDFIELD
+FIELD Maximum_Via_Count.off
+FLOC 37 7
+CHECKLIST "" "2"
+ENDFIELD
+FIELD Maximum_Via_Count.batch
+FLOC 41 7
+CHECKLIST "" "2"
+ENDFIELD
+
+#----------------------------------------------------------
+TEXT "Max exposed length:"
+FLOC 7 9
+ENDTEXT
+
+FIELD Maximum_Exposed_Length.on
+FLOC 33 9
+CHECKLIST "" "3"
+ENDFIELD
+FIELD Maximum_Exposed_Length.off
+FLOC 37 9
+CHECKLIST "" "3"
+ENDFIELD
+FIELD Maximum_Exposed_Length.batch
+FLOC 41 9
+CHECKLIST "" "3"
+ENDFIELD
+
+#----------------------------------------------------------
+TEXT "Propagation delay:"
+FLOC 7 11
+ENDTEXT
+
+FIELD Propagation_Delay.on
+FLOC 33 11
+CHECKLIST "" "4"
+ENDFIELD
+FIELD Propagation_Delay.off
+FLOC 37 11
+CHECKLIST "" "4"
+ENDFIELD
+FIELD Propagation_Delay.batch
+FLOC 41 11
+CHECKLIST "" "4"
+ENDFIELD
+
+#----------------------------------------------------------
+TEXT "Relative propagation delay:"
+FLOC 7 13
+ENDTEXT
+
+FIELD Relative_Propagation_Delay.on
+FLOC 33 13
+CHECKLIST "" "5"
+ENDFIELD
+FIELD Relative_Propagation_Delay.off
+FLOC 37 13
+CHECKLIST "" "5"
+ENDFIELD
+FIELD Relative_Propagation_Delay.batch
+FLOC 41 13
+CHECKLIST "" "5"
+ENDFIELD
+
+#----------------------------------------------------------
+TEXT "Max parallel:"
+FLOC 7 15
+ENDTEXT
+
+FIELD Parallelism.on
+FLOC 33 15
+CHECKLIST "" "6"
+ENDFIELD
+FIELD Parallelism.off
+FLOC 37 15
+CHECKLIST "" "6"
+ENDFIELD
+FIELD Parallelism.batch
+FLOC 41 15
+CHECKLIST "" "6"
+ENDFIELD
+
+#----------------------------------------------------------
+TEXT "Impedance:" 
+FLOC 7 17
+ENDTEXT
+
+FIELD Impedance.on
+FLOC 33 17
+CHECKLIST "" "7"
+ENDFIELD
+FIELD Impedance.off
+FLOC 37 17
+CHECKLIST "" "7"
+ENDFIELD
+FIELD Impedance.batch
+FLOC 41 17
+CHECKLIST "" "7"
+ENDFIELD
+
+#----------------------------------------------------------
+TEXT "Total etch length:"
+FLOC 7 19
+ENDTEXT
+
+FIELD Total_Etch_Length.on
+FLOC 33 19
+CHECKLIST "" "10"
+ENDFIELD
+FIELD Total_Etch_Length.off
+FLOC 37 19
+CHECKLIST "" "10"
+ENDFIELD
+FIELD Total_Etch_Length.batch
+FLOC 41 19
+CHECKLIST "" "10"
+ENDFIELD
+
+#----------------------------------------------------------
+TEXT "All Differential pair checks:"
+FLOC 7 21
+ENDTEXT
+
+FIELD Differential_Pair_Primary_Gap.on
+FLOC 33 21
+CHECKLIST "" "11"
+ENDFIELD
+FIELD Differential_Pair_Primary_Gap.off
+FLOC 37 21
+CHECKLIST "" "11"
+ENDFIELD
+FIELD Differential_Pair_Primary_Gap.batch
+FLOC 41 21
+CHECKLIST "" "11"
+ENDFIELD
+
+#----------------------------------------------------------
+# Not in Allegro_designer
+TEXT "Max xtalk:" Maximum_Crosstalk.textm
+FLOC 7 23
+ENDTEXT
+
+FIELD Maximum_Crosstalk.on
+FLOC 33 23
+CHECKLIST "" "8"
+ENDFIELD
+FIELD Maximum_Crosstalk.off
+FLOC 37 23
+CHECKLIST "" "8"
+ENDFIELD
+FIELD Maximum_Crosstalk.batch
+FLOC 41 23
+CHECKLIST "" "8"
+ENDFIELD
+
+#----------------------------------------------------------
+# Not in Allegro_designer
+TEXT "Max peak xtalk:" Maximum_Peak_Crosstalk.textm
+FLOC 7 25
+ENDTEXT
+
+FIELD Maximum_Peak_Crosstalk.on
+FLOC 33 25
+CHECKLIST "" "9"
+ENDFIELD
+FIELD Maximum_Peak_Crosstalk.off
+FLOC 37 25
+CHECKLIST "" "9"
+ENDFIELD
+FIELD Maximum_Peak_Crosstalk.batch
+FLOC 41 25
+CHECKLIST "" "9"
+ENDFIELD
+
+#----------------------------------------------------------
+TEXT "LayerSets:" LayerSet_group.textm
+FLOC 7 27
+ENDTEXT
+
+FIELD LayerSet_group.on
+FLOC 33 27
+CHECKLIST "" "12"
+ENDFIELD
+FIELD LayerSet_group.off
+FLOC 37 27
+CHECKLIST "" "12"
+ENDFIELD
+FIELD LayerSet_group.batch
+FLOC 41 27
+CHECKLIST "" "12"
+ENDFIELD
+
+ENDTAB
+
+#----------------------------------------------------------
+#----------------------------------------------------------
+TAB "Net Values"
+
+#----------------------------------------------------------
+TEXT "Stub length:"
+FLOC 2 2
+ENDTEXT
+
+FIELD Maximum_Stub_Length.value
+FLOC 18 2
+STRFILLIN 33 1023
+ENDFIELD
+
+#----------------------------------------------------------
+TEXT "Net schedule:"
+FLOC 2 4
+ENDTEXT
+
+FIELD Ratsnest_Schedule_Type.value
+FLOC 18 4
+ENUMSET 18
+POP "pop_rats_schedule"
+ENDFIELD
+
+FIELD Net_Schedule_Topology.value
+FLOC 40 4
+ENUMSET 10
+POP "pop_schedule"
+ENDFIELD
+
+#----------------------------------------------------------
+TEXT "Max via count:"
+FLOC 2 6
+ENDTEXT
+
+FIELD Maximum_Via_Count.value
+FLOC 18 6
+INTSLIDEBAR 4 4
+MIN 0
+MAX 9999
+ENDFIELD
+
+FIELD Maximum_Via_Count.more
+FLOC 29 6
+MENUBUTTON "Clear" 6 3
+ENDFIELD
+
+#----------------------------------------------------------
+TEXT "Max exposed length:"
+FLOC 2 8
+ENDTEXT
+
+FIELD Maximum_Exposed_Length.value
+FLOC 18 8
+STRFILLIN 33 1023
+ENDFIELD
+
+#----------------------------------------------------------
+TEXT "Propagation delay:"
+FLOC 2 10
+ENDTEXT
+
+FIELD Propagation_Delay.value
+FLOC 18 10
+STRFILLIN 33 1023
+ENDFIELD
+
+#----------------------------------------------------------
+TEXT "Relative prop delay:"
+FLOC 2 12
+ENDTEXT
+
+FIELD Relative_Propagation_Delay.value
+FLOC 18 12
+STRFILLIN 33 1023
+ENDFIELD
+
+#----------------------------------------------------------
+TEXT "Max parallel:"
+FLOC 2 14
+ENDTEXT
+
+FIELD Parallelism.value
+FLOC 18 14
+STRFILLIN 33 1023
+ENDFIELD
+
+FIELD Parallelism.more
+FLOC 53 14
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+#----------------------------------------------------------
+TEXT "Impedance:" 
+FLOC 2 16
+ENDTEXT
+
+FIELD Impedance.value
+FLOC 18 16
+STRFILLIN 33 1023
+ENDFIELD
+
+#----------------------------------------------------------
+TEXT "Total etch length:"
+FLOC 2 18
+ENDTEXT
+
+FIELD Total_Etch_Length.value
+FLOC 18 18
+STRFILLIN 33 1023
+ENDFIELD
+
+#----------------------------------------------------------
+# Not in Allegro_designer
+TEXT "Max xtalk:" Maximum_Crosstalk.textv
+FLOC 2 20
+ENDTEXT
+
+FIELD Maximum_Crosstalk.value
+FLOC 18 20
+STRFILLIN 33 1023
+ENDFIELD
+
+#----------------------------------------------------------
+# Not in Allegro_designer
+TEXT "Max peak xtalk:" Maximum_Peak_Crosstalk.textv
+FLOC 2 22
+ENDTEXT
+
+FIELD Maximum_Peak_Crosstalk.value
+FLOC 18 22
+STRFILLIN 33 1023
+ENDFIELD
+
+#----------------------------------------------------------
+TEXT "LayerSets:" LayerSet_group.textv
+FLOC 2 24
+ENDTEXT
+
+FIELD LayerSet_group.value
+FLOC 18 24
+STRFILLIN 33 1023
+ENDFIELD
+
+FIELD LayerSet_group.more
+FLOC 53 24
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+ENDTAB
+
+#----------------------------------------------------------
+#----------------------------------------------------------
+TAB "DiffPair Values"
+
+#----------------------------------------------------------
+
+#ifdef NOTUSED
+TEXT "Routing method:"
+FLOC 2 2
+ENDTEXT
+
+FIELD Differential_Pair_Route_Method.value
+FLOC 24 2
+ENUMSET 15
+POP "pop_rtmethod"
+ENDFIELD
+#endif
+
+TEXT "Impedance to line width:"
+FLOC 4 2
+ENDTEXT
+
+FIELD Calculator.more
+FLOC 24 2
+MENUBUTTON "Calculator..." 10 3
+ENDFIELD
+
+TEXT "Primary gap:"
+FLOC 4 4
+ENDTEXT
+
+FIELD Differential_Pair_Primary_Gap.value
+FLOC 24 4
+STRFILLIN 26 1023
+ENDFIELD
+
+TEXT "Primary line width:"
+FLOC 4 6
+ENDTEXT
+
+FIELD Minimum_Line_Width.value
+FLOC 24 6
+STRFILLIN 26 1023
+ENDFIELD
+
+TEXT "Neck gap:"
+FLOC 4 8
+ENDTEXT
+
+FIELD Differential_Pair_Neck_Gap.value
+FLOC 24 8
+STRFILLIN 26 1023
+ENDFIELD
+
+TEXT "Neck width:"
+FLOC 4 10
+ENDTEXT
+
+FIELD Minimum_Neck_Width.value
+FLOC 24 10
+STRFILLIN 26 1023
+ENDFIELD
+
+TEXT "Coupled tolerance (+):"
+FLOC 4 12
+ENDTEXT
+
+FIELD Differential_Pair_Coupled_Tolerance_Plus.value
+FLOC 24 12
+STRFILLIN 26 1023
+ENDFIELD
+
+TEXT "Coupled tolerance (-):"
+FLOC 4 14
+ENDTEXT
+
+FIELD Differential_Pair_Coupled_Tolerance_Minus.value
+FLOC 24 14
+STRFILLIN 26 1023
+ENDFIELD
+
+TEXT "Minimum line spacing:"
+FLOC 4 16
+ENDTEXT
+
+FIELD Differential_Pair_Minimum_Spacing.value
+FLOC 24 16
+STRFILLIN 26 1023
+ENDFIELD
+
+#----------------------------------------------------------
+TEXT "Gather control:"
+FLOC 4 18
+ENDTEXT
+
+FIELD Differential_Pair_Gather_Control.value
+FLOC 24 18
+ENUMSET 10
+POP "gl"
+ENDFIELD
+
+#----------------------------------------------------------
+TEXT "Max uncoupled length:"
+FLOC 4 20
+ENDTEXT
+
+FIELD Differential_Pair_Max_Uncoupled_Length.value
+FLOC 24 20
+STRFILLIN 26 1023
+ENDFIELD
+
+#----------------------------------------------------------
+# Not in Allegro_Designer
+#ifdef DEMO_DYNAMIC_PHASE
+TEXT "Phase control:" Differential_Pair_Phase_Control.textv
+FLOC 4 22
+ENDTEXT
+
+FIELD Differential_Pair_Phase_Control.value
+FLOC 24 22
+ENUMSET 10
+POP "pc"
+ENDFIELD
+#endif
+
+#----------------------------------------------------------
+TEXT "Phase tolerance:" 
+FLOC 4 24
+ENDTEXT
+
+FIELD Differential_Pair_Phase_Tolerance.value
+FLOC 24 24
+STRFILLIN 26 1023
+ENDFIELD
+
+ENDTAB
+
+#----------------------------------------------------------
+#----------------------------------------------------------
+
+TAB "Assign"
+
+FIELD auto_assign
+FLOC 23 1
+CHECKLIST "Auto move"
+ENDFIELD
+
+TEXT "Available objects"
+OPTIONS underline
+FLOC 6 1
+ENDTEXT
+
+FIELD net_filter
+FLOC 3 4
+STRFILLIN 18 31
+ENDFIELD
+
+FIELD all_nets_list
+FLOC 3 7
+LIST "" 23 8
+OPTIONS sort
+ENDFIELD
+
+FIELD assign_nets_arrow
+FLOC 27 11
+MENUBUTTON ">" 2 3
+ENDFIELD
+
+FIELD deassign_nets_arrow
+FLOC 27 13
+MENUBUTTON "<" 2 3
+ENDFIELD
+
+TEXT "Assigned objects"
+OPTIONS underline
+FLOC 36 1
+ENDTEXT
+
+FIELD assign_nets_list
+FLOC 31 4
+LIST "" 23 10
+OPTIONS sort
+ENDFIELD
+
+TEXT "Current object assignment:"
+FLOC 3 23
+ENDTEXT
+
+TEXT ""
+FLOC 24 23
+INFO net_assignement 31
+ENDFIELD
+
+FIELD filter_voltage
+FLOC 3 25
+CHECKLIST "Filter voltage nets"
+ENDFIELD
+
+
+ENDTAB
+
+#----------------------------------------------------------
+#----------------------------------------------------------
+#ifndef _ALLERGO_DESIGNER
+
+TAB "Options"
+
+GROUP "Drc Unrouted" 
+FLOC 2 1
+FSIZE 52 7
+ENDGROUP
+
+FIELD DRC_UNROUTED_MINPROP.options
+FLOC 3 3
+CHECKLIST "DRC propagation delay"
+ENDFIELD
+
+FIELD DRC_UNROUTED_RELPROP.options
+FLOC 3 5
+CHECKLIST "DRC relative propagation delay"
+ENDFIELD
+
+GROUP "Pin Delay" 
+FLOC 2 8
+FSIZE 52 7
+ENDGROUP
+
+FIELD PIN_DELAY_ENABLED.options
+FLOC 3 10
+CHECKLIST "Include in all Propagation Delays and DiffPair Phase checks"
+ENDFIELD
+
+TEXT "Propagation Velocity factor:"
+FLOC 6 12
+ENDFIELD
+
+FIELD PIN_DELAY_PVF.options
+FLOC 35 12
+STRFILLIN 12 31
+ENDFIELD
+
+GROUP "Z Axis Delay" 
+FLOC 2 15
+FSIZE 52 7
+ENDGROUP
+
+FIELD VIA_Z_ENABLED.options
+FLOC 3 17
+CHECKLIST "Include in all Propagation Delays and DiffPair Phase checks"
+ENDFIELD
+
+TEXT "Propagation velocity factor:"
+FLOC 6 19
+ENDFIELD
+
+FIELD VIA_Z_PVF.options
+FLOC 35 19
+STRFILLIN 12 31
+ENDFIELD
+
+GROUP "Same Net Xtalk and Parallelism Checks"
+FLOC 2 22
+FSIZE 52 5
+ENDGROUP
+
+FIELD SAME_NET_XTALK_ENABLED.options
+FLOC 3 24
+CHECKLIST "Perform Xtalk and Parallelism checks within the same net"
+ENDFIELD
+
+ENDTAB
+
+#endif
+
+#----------------------------------------------------------
+ENDTABSET
+
+
+#----------------------------------------------------------
+# BUTTONS
+
+FIELD done
+FLOC 2 48
+MENUBUTTON "OK" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 12 48
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD apply
+FLOC 22 48
+MENUBUTTON "Apply" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 32 48
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+#ifdef NOO
+FLEXMODE StandButtons
+FLEX tab 0 0 1 1
+FLEX on 0 0 0 0
+FLEX off 0 0 0 0
+FLEX batch 0 0 0 0
+FLEX gec 0 0 1 1
+FLEX ecset_list 0 0 1 1
+FLEX Impedance.value 0 1 1 0
+FLEX Maximum_Exposed_Length.value 0 1 1 0
+FLEX Propagation_Delay.value 0 1 1 0
+FLEX Relative_Propagation_Delay.value 0 1 1 0
+FLEX Parallelism.value 0 1 1 0
+FLEX Impedance.value 0 1 1 0
+FLEX Maximum_Crosstalk.value 0 1 1 0
+FLEX Maximum_Peak_Crosstalk.value 0 1 1 0
+#endif
+
+ENDTILE
+ENDFORM

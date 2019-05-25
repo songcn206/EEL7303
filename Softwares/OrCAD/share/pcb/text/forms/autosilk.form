@@ -1,0 +1,267 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 70 19
+HEADER "Auto Silkscreen"
+
+POPUP <ATS_POP>"Any""2","Silk""1","None""0".
+
+
+TILE
+    #ifdef APD || ALLEGRO_MCM || SIP
+TEXT "Substrate geometry:"
+    #else
+TEXT "Board geometry:"
+    #endif
+TLOC 2 11
+ENDTEXT
+
+TEXT "Rotation:"
+TLOC 37 11
+ENDTEXT
+
+TEXT "Component value:"
+TLOC 2 13
+ENDTEXT
+
+TEXT "Device type:"
+TLOC 2 15
+ENDTEXT
+
+    #ifdef APD || ALLEGRO_MCM || SIP
+TEXT "Component geometry:"
+    #else
+TEXT "Package geometry:"
+    #endif
+TLOC 2 17
+ENDTEXT
+
+TEXT "Reference designator:"
+TLOC 2 19
+ENDTEXT
+
+TEXT "Tolerance:"
+TLOC 2 21
+ENDTEXT
+
+TEXT "Maximum displacement:"
+TLOC 34 21
+ENDTEXT
+
+TEXT "Displacement increment:"
+TLOC 34 23
+ENDTEXT
+
+TEXT "User part number:"
+TLOC 2 23
+ENDTEXT
+
+TEXT "Minimum line length:"
+TLOC 2 27
+ENDTEXT
+
+TEXT "Element to pad clearance:"
+TLOC 2 29
+ENDTEXT
+
+    #ifdef APD || ALLEGRO_MCM || SIP
+FIELD top_layer
+FLOC 2 4
+CHECKLIST "Surface" "ATS_LYRGRP"
+ENDFIELD
+
+FIELD bottom_layer
+FLOC 14 4
+CHECKLIST "Base" "ATS_LYRGRP"
+ENDFIELD
+
+FIELD both_layers
+FLOC 23 4
+CHECKLIST "Both" "ATS_LYRGRP"
+ENDFIELD
+    #else
+FIELD top_layer
+FLOC 2 4
+CHECKLIST "Top" "ATS_LYRGRP"
+ENDFIELD
+
+FIELD bottom_layer
+FLOC 10 4
+CHECKLIST "Bottom" "ATS_LYRGRP"
+ENDFIELD
+
+FIELD both_layers
+FLOC 21 4
+CHECKLIST "Both" "ATS_LYRGRP"
+ENDFIELD
+    #endif
+
+FIELD line_elements
+FLOC 34 4
+CHECKLIST "Lines" "ATS_ELEMGRP"
+ENDFIELD
+
+FIELD text_elements
+FLOC 44 4
+CHECKLIST "Text" "ATS_ELEMGRP"
+ENDFIELD
+
+FIELD both_elements
+FLOC 54 4
+CHECKLIST "Both" "ATS_ELEMGRP"
+ENDFIELD
+
+FIELD geometry
+FLOC 24 11
+ENUMSET 5
+POP "ATS_POP"
+ENDFIELD
+
+FIELD text_0
+FLOC 47 11
+CHECKLIST "0"
+ENDFIELD
+
+FIELD text_180
+FLOC 54 11
+CHECKLIST "180"
+ENDFIELD
+
+FIELD component_value
+FLOC 24 13
+ENUMSET 5
+POP "ATS_POP"
+ENDFIELD
+
+FIELD text_90
+FLOC 47 13
+CHECKLIST "90"
+ENDFIELD
+
+FIELD text_270
+FLOC 54 13
+CHECKLIST "270"
+ENDFIELD
+
+FIELD device_type
+FLOC 24 15
+ENUMSET 5
+POP "ATS_POP"
+ENDFIELD
+
+FIELD text_under_comp
+FLOC 34 15
+CHECKLIST "Allow under components"
+ENDFIELD
+
+FIELD lock_autosilk_text
+FLOC 34 17
+CHECKLIST "Lock autosilk text for incremental updates"
+ENDFIELD
+
+FIELD text_vector_checking
+FLOC 34 19
+CHECKLIST "Detailed text checking"
+ENDFIELD
+
+FIELD package_geometry
+FLOC 24 17
+ENUMSET 5
+POP "ATS_POP"
+ENDFIELD
+
+FIELD refdes
+FLOC 24 19
+ENUMSET 5
+POP "ATS_POP"
+ENDFIELD
+
+FIELD tolerance
+FLOC 24 21
+ENUMSET 5
+POP "ATS_POP"
+ENDFIELD
+
+FIELD max_text_disp
+FLOC 53 21
+STRFILLIN 10 10
+ENDFIELD
+
+FIELD text_disp_incr
+FLOC 53 23
+STRFILLIN 10 10
+ENDFIELD
+
+FIELD user_part
+FLOC 24 23
+ENUMSET 5
+POP "ATS_POP"
+ENDFIELD
+
+FIELD min_linelength
+FLOC 24 27
+STRFILLIN 10 10
+ENDFIELD
+
+FIELD clearance
+FLOC 24 29
+STRFILLIN 10 10
+ENDFIELD
+
+FIELD clear_solder_pad
+FLOC 40 29
+CHECKLIST "Clear solder mask pad"
+ENDFIELD
+
+#ifdef central_param_form
+FIELD param_done
+FLOC 1 32
+MENUBUTTON "Close" 9 3
+ENDFIELD
+
+#else
+FIELD done
+FLOC 1 32
+MENUBUTTON "Silkscreen" 9 3
+ENDFIELD
+
+FIELD close
+FLOC 14 32
+MENUBUTTON "Close" 9 3
+ENDFIELD
+
+FIELD audit
+FLOC 24 32
+MENUBUTTON "Audit" 9 3
+ENDFIELD
+
+#endif
+
+FIELD help
+FLOC 55 32
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+GROUP "Layer:"
+GLOC 1 1
+GSIZE 31 6
+ENDGROUP
+
+GROUP "Elements:"
+GLOC 33 1
+GSIZE 36 6
+ENDGROUP
+
+GROUP "Classes and subclasses:"
+GLOC 1 8
+GSIZE 31 18
+ENDGROUP
+
+GROUP "Text:"
+GLOC 33 8
+GSIZE 36 18
+ENDGROUP
+
+ENDTILE
+
+ENDFORM

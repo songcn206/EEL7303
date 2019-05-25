@@ -1,0 +1,1133 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
+<!--# 	Cadence Design Systems
+#  (c) 2012 Cadence Design Systems, Inc. All rights reserved.
+#  This work may not be copied, modified, re-published, uploaded, 
+#  executed, or distributed in any way, in any medium, whether in 
+#  whole or in part, without prior written permission from Cadence 
+#  Design Systems, Inc.
+#  -->
+
+	
+  
+  
+  <title>Theorems</title>
+  <link rel="stylesheet" type="text/css" href="../../../../basescripts/css/sheet.css" />
+
+
+  
+  <script type="text/javascript" src="../../../../basescripts/scripts/OpenOpj.js"></script>
+  
+  <script type="text/javascript">
+
+
+ </script>
+</head>
+
+
+<body style="width:99%;height:100%" class="content">
+
+
+<h1><a class="Mheading" id="theorems">Electrical Theorems</a></h1>
+
+                                           
+<p class="para">This section covers basic electrical theorems and how to simulate circuits describing these theorems in OrCAD Capture-PSpice. </p>
+
+
+
+<br />
+
+<br />
+
+
+
+
+
+<table style="width: 100%;">
+
+  <tbody>
+
+    <tr>
+
+
+      <td style="width: 50%;">
+      
+      <h1 class=""><a class="Mheading" id="A1">Ohm&rsquo;s Law</a></h1>
+
+      </td>
+<td style="width: 50%;" align="right"><span style="text-decoration: underline;cursor : pointer" onclick="OpenOpjSim('BasicElectronics','Theorems','Designfiles','Theorems1','Ohms_Law','PAGE1','DC')"><img alt="click to view circuit" src="../../../../hybrid/Images/cap_icon.png" style="margin-top: 20px;" /></span></td>
+     
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+
+<p class="para"><br />
+
+Ohm's Law deals with the relationship between voltage and current in an
+ideal conductor.&nbsp;The law states that the amount of current,&nbsp;<span style="font-weight: bold;"> </span><span style="font-style: italic; font-weight: bold;">I</span>,&nbsp; in <span style="font-weight: bold;">amperes,</span>&nbsp;flowing through a resistance, <span style="font-weight: bold; font-style: italic;">R</span><span style="font-weight: bold;">,</span> of a conductor in <span style="font-weight: bold;">ohms</span> , between two points is directly proportional to the potential difference across the conductor, <span style="font-weight: bold; font-style: italic;">V</span>, in <span style="font-weight: bold;">volts</span> and inversely proportional to its resistance.&nbsp; This relationship is represented by the following equation:<br />
+
+<br />
+
+</p>
+
+
+
+<center>
+<table width="100%">
+
+
+  <tbody>
+
+    <tr>
+
+      <td style="width: 97%;">
+      
+      <center><img src="Images/vi.png" alt="" /></center>
+
+      </td>
+
+      <td style="width: 3%;">(1)</td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+</center>
+
+
+
+<p class="para"><br />
+
+</p>
+
+
+<center><br />
+
+</center>
+
+
+<center>
+<table>
+
+
+  <tbody>
+
+    <tr>
+
+      <td><img src="Images/ohms_ckt.png" alt="" class="tximage" style = "cursor :pointer" onclick="OpenOpjSim('BasicElectronics','Theorems','Designfiles','Theorems1','Ohms_Law','PAGE1','DC')"/></td>
+
+    </tr>
+
+
+    <tr>
+
+      <td><i>Figure 1: Circuit for Ohms Law</i></td>
+
+    </tr>
+
+
+  
+  </tbody>
+</table>
+
+</center>
+
+<br />
+
+
+
+<div class="para"><br />
+
+<h2>Performing a DC Sweep Analysis on a Circuit&nbsp;</h2>
+
+To obtain a relationship curve between V and I&nbsp;by simulating
+the&nbsp;circuit shown in Figure 1, perform the following steps:
+
+<ol>
+
+  <li>Create a simulation profile by specifying&nbsp; <span style="font-style: italic;">DC Sweep</span> as the&nbsp;<span style="font-style: italic;">Analysis Type</span>. &nbsp;<span style="color: rgb(255, 0, 0);"></span></li>
+
+
+  <li>Select&nbsp;Voltage Source as <span style="font-style: italic;">Sweep Variable </span>and specify the name as <span style="font-style: italic;">V1</span>.</li>
+
+
+  <li>Specify the following values:
+
+  
+  <ol>
+
+    <li>Sweep type as&nbsp;<span style="font-style: italic;">Linear</span></li>
+
+    <li>Start Value as&nbsp; <span style="font-style: italic;">0</span>&nbsp;</li>
+
+    <li>End Value <span style="font-style: italic;">25</span></li>
+
+    <li><span style="font-style: italic;"></span>Increment as <span style="font-style: italic;">1</span></li>
+
+  
+  </ol>
+</li>
+
+  <li>Click&nbsp;<span style="font-style: italic;">OK</span> and Simulate the circuit in PSpice.</li>
+
+
+  <li>Place Current marker as shown in the waveform. <span style="color: rgb(255, 0, 0);"></span></li>
+
+</ol>
+
+</div>
+
+<br />
+
+<br />
+
+
+
+<center>
+<p><img src="Images/ohms_sim_out.png" class="simout" alt="" /></p>
+
+</center>
+
+
+<p style="text-align: center;" class="imgcap"><i>Figure 2:&nbsp;  Resultant waveform</i></p>
+
+
+
+
+
+
+
+
+<table style="width: 100%;">
+
+  <tbody>
+
+    <tr>
+
+
+      <td style="width: 50%;">
+      
+      <h1><a class="Mheading" id="A2">Kirchoff&rsquo;s Voltage Law</a></h1>
+
+      </td>
+
+      <td style="width: 50%;" align="right"><span style="text-decoration: underline;cursor : pointer" onclick="OpenOpjSim('BasicElectronics','Theorems','Designfiles','Theorems1','KVL','PAGE1','Tran')"><img alt="click to view circuit" src="../../../../hybrid/Images/cap_icon.png" style="margin-top: 20px;" /></span></td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+
+<p class="para">In a closed loop network, the voltage drop within the
+same loop is&nbsp;equal to the sum of all the voltage drops. Since
+the&nbsp;start and end points are identical, there is no potential
+difference between them. Therefore, voltage&nbsp; is&nbsp;equal to <span style="font-style: italic;">zero</span>.<br />
+</p>
+
+
+
+<center>
+<table width="100%">
+
+
+  <tbody>
+
+    <tr>
+
+      <td style="width: 97%;">
+      
+      <center><img src="Images/kvl_0.png" alt="" /></center>
+
+      </td>
+
+      <td style="width: 3%;">(2)</td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+</center>
+
+
+
+<center>
+<table>
+
+
+  <tbody>
+
+    <tr>
+
+      <td><img src="Images/kvl_ckt.png" alt="" class="tximage" style = "cursor : pointer" onclick="OpenOpjSim('BasicElectronics','Theorems','Designfiles','Theorems1','KVL','PAGE1','Tran')"/></td>
+
+    </tr>
+
+
+    <tr align="center">
+
+      <td><i class="imgcap">Figure 3: KVL circuit </i></td>
+
+    </tr>
+
+
+  
+  </tbody>
+</table>
+
+</center>
+
+
+<p class="para">As per Kirchoff&rsquo;s law, the voltage drop in a closed loop is zero. This can be verified by placing the <span style="font-style: italic;">Differential Voltage</span>
+marker (meant for plotting voltage drop across a device) in the
+direction of voltage drop and performing a transient analysis. This
+simulation would present waveforms as shown in Figure 4:&nbsp;&nbsp;<span style="color: rgb(255, 0, 0);"></span></p>
+
+<br />
+
+<br />
+
+
+<center><img src="Images/kvl_sim_out.png" class="simout" alt="" /></center>
+
+
+<p style="text-align: center;" class="imgcap"><i>Figure 4: Resultant waveform </i></p>
+
+<br />
+
+
+<center> <img src="Images/cursor_kvl.png" alt="" /></center>
+
+
+<p style="text-align: center;" class="imgcap"><i>Figure 5: Output in the cursor window</i></p>
+
+<br />
+
+
+<p class="para">Values at any point on the curve can be found by selecting the toggle cursor <img alt = "" src="Images/cursor_tog.png" style="margin-top: 20px;" height="30" width="30" />
+from the toolbar. A vertical red line as shown in Figure 4 appears and
+a window&nbsp;pops up at the bottom of the screen, listing the voltages
+in different rows. Each row has a different color code indicating the
+color of the waveform at the cursor point. When&nbsp;all the values of
+voltage are algebraically added up,(-25+8+6+6+5)V, the net voltage drop
+equals zero.<span style="color: rgb(255, 0, 0);"></span> </p>
+
+<br />
+
+<br />
+
+
+
+
+
+
+
+<table style="width: 100%;">
+
+  <tbody>
+
+    <tr>
+
+
+      <td style="width: 50%;">
+      
+      <h1><a class="Mheading" id="A3">Kirchoff&rsquo;s Current Law</a></h1>
+
+      </td>
+
+      <td style="width: 50%;" align="right"><span style="text-decoration: underline;cursor : pointer" onclick="OpenOpjSim('BasicElectronics','Theorems','Designfiles','Theorems1','KCL','PAGE1','Tran')"><img alt="click to view circuit" src="../../../../hybrid/Images/cap_icon.png" style="margin-top: 20px;" /></span></td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+
+<p class="para">At any node or junction in an electrical circuit, the sum of the charge flowing <span style="font-weight: bold;">into</span> that node is equal to the sum of the charge flowing <span style="font-weight: bold;">out</span> of that node.</p>
+
+<p class="para">This law is&nbsp; based on a simple fact that charge can neither be created nor destroyed.</p>
+
+<p class="para"></p>
+
+<center>
+<table width="100%">
+
+
+  <tbody>
+
+    <tr>
+
+      <td style="width: 97%;">
+      
+      <center><img src="Images/kcl_0.png" alt="" /></center>
+
+      </td>
+
+      <td style="width: 3%;">(3)</td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+</center>
+
+
+
+
+<center>
+<table>
+
+
+  <tbody>
+
+    <tr>
+
+      <td><img src="Images/kcl_ckt.png" class="tximage" alt="" style = "cursor : pointer" onclick="OpenOpjSim('BasicElectronics','Theorems','Designfiles','Theorems1','KCL','PAGE1','Tran')"/></td>
+
+    </tr>
+
+
+    <tr align="center">
+
+      <td><i class="imgcap">Figure 6:  KCL circuit </i></td>
+
+    </tr>
+
+
+  
+  </tbody>
+</table>
+
+</center>
+
+
+<p class="para"></p>
+
+<p class="para">This law can be verified&nbsp;around the node named
+&lsquo;A&rsquo; by capturing the schematic in Figure 6, and placing
+current markers as shown in Figure 7.</p>
+
+<p style="text-align: center;"><img src="Images/kcl_sim_out.png" class="simout" alt="" /><br />
+
+   </p>
+
+
+<p style="text-align: center;" class="imgcap"><i>Figure 7: Resultant waveform with output in the cursor window</i></p>
+
+<p style="text-align: center;" class="imgcap"><i></i></p>
+
+
+<center><img src="Images/cursor_kcl.png" alt="" /></center>
+
+
+<p style="text-align: center;" class="imgcap"><i>Figure 8: Output in the Cursor window</i></p>
+
+
+<p class="para"><br />
+
+</p>
+
+<br />
+
+<br />
+
+
+
+
+
+
+
+
+<table style="width: 100%;">
+
+  <tbody>
+
+    <tr>
+
+
+      <td style="width: 50%;">
+      
+      <h1><a class="Mheading" id="A4">Thevenin's Theorem</a></h1>
+
+      </td>
+
+      <td style="width: 50%;" align="right"><span style="text-decoration: underline;cursor : pointer" onclick="OpenOpjSim('BasicElectronics','Theorems','Designfiles','Theorems1','Thevenin','PAGE1','Tran')"><img alt="click to view circuit" src="../../../../hybrid/Images/cap_icon.png" style="margin-top: 20px;" /></span></td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br />
+
+<!--span style="font-size: 12pt; font-family: &quot;Times New Roman& quot; ,&quot; serif&quot;;"--><p class = "para">Any
+two-terminal linear network composed of voltage sources, current
+sources, and resistors, can be replaced by an equivalent two-terminal
+network consisting of an independent voltage source, Vthevenin (<b style="">Vth)</b> in series with a single resistor<b>,
+</b>Rthevenin (<b style="">Rth</b>). The value of <b style="">Vth</b> is the open circuit voltage at the
+terminals, and the value of <b>Rth</b> is <b>Vth</b> divided by the current
+with the voltage being short circuited.<br /></p>
+
+<!--em style="color: rgb(0, 0, 64); font-family: arial,helvetica,sans-serif; font-size: 12px; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 16px; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(250, 250, 250);"></em><span style="color: rgb(0, 0, 64); font-family: arial,helvetica,sans-serif; font-size: 12px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 16px; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(250, 250, 250); display: inline ! important; float: none;"></span>
+<p class="MsoNormal" style=""><span style="font-size: 12pt; font-family: &quot;Times New Roman&quot;,&quot;serif&quot;;"><o:p></o:p></span></p-->
+
+
+<p class="para"></p>
+
+
+<center>
+<table>
+
+
+  <tbody>
+
+    <tr>
+
+      <td><img src="Images/thevnin_ckt.png" class="tximage" alt="" style = "cursor :pointer" onclick="OpenOpjSim('BasicElectronics','Theorems','Designfiles','Theorems1','Thevenin','PAGE1','Tran')"/></td>
+
+    </tr>
+
+
+    <tr align="center">
+
+      <td><i class="imgcap">Figure 9: Original circuit </i></td>
+
+    </tr>
+
+
+  
+  </tbody>
+</table>
+
+</center>
+
+
+<p class="para">Let&rsquo;s find the Thevenin Equivalent of the circuit
+shown in Figure 9 across 3 Ohm resistance, nodes named A and B.
+Simulate the current across the 3 Ohm resistance which is equal to <span style="font-weight: bold;">800mA. </span>This result is used in the Thevenin equivalent circuit: </p>
+
+<br />
+
+<br />
+
+
+<center>
+<table>
+
+  <tbody>
+
+    <tr>
+
+      <td><img src="Images/Rthevnin.png" class="tximage" alt="" style = "cursor :pointer" onclick="OpenOpjSim('BasicElectronics','Theorems','Designfiles','Theorems1','Thevenin','PAGE1','Tran')"/></td>
+
+      <td><img src="Images/Vthevnin.png" class="tximage" alt="" style = "cursor :pointer" onclick="OpenOpjSim('BasicElectronics','Theorems','Designfiles','Theorems1','Thevenin','PAGE1','Tran')"/></td>
+
+    </tr>
+
+
+    <tr>
+
+      <td style="text-align: center;">
+      
+      <p class="imgcap"><i>Figure 10: Rth</i></p>
+
+ </td>
+
+      <td style="text-align: center;">
+      
+      <p class="imgcap"><i>Figure 11: Vth</i></p>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+</center>
+
+<br />
+
+
+<p class="para">To find the Thevenin Equivalent circuit, find out the Rth and Vth of the original circuit: </p>
+
+<ul class="para">
+
+
+  <li><span style="font-weight: bold;">Rth</span> - Refer to Figure 10
+to determine the Thevenin resistance. All the current sources are
+treated as open circuits and all voltage sources as&nbsp;short circuit.
+Equivalent resistance across AB can be determined in two ways,
+either&nbsp;theoretically or by attaching a voltage source of any value
+across AB and then finding current by placing a current marker as shown
+and then simulating the circuit and finding out resistance using <span style="font-weight: bold;">V=IR</span>. In this case, resistance comes out to be <span style="font-weight: bold;">2 ohm</span>.</li>
+
+
+  <li><span style="font-weight: bold;">Vth</span> - Refer to Figure 11.
+Place a voltage marker in the original circuit and remove 3 ohm
+resistance, as shown and then simulate the circuit. In this case, Vth
+comes out to be <span style="font-weight: bold;">4V</span>.</li>
+
+</ul>
+
+
+<p class="para">Figure 12 depicts the Thevenin Equivalent circuit: </p>
+
+
+<center>
+<p><img src="Images/EQthevnin.png" class="tximage" alt="" style = "cursor :pointer" onclick="OpenOpjSim('BasicElectronics','Theorems','Designfiles','Theorems1','Thevenin','PAGE1','Tran')"/></p>
+
+</center>
+
+
+<p style="text-align: center;" class="imgcap"><i>Figure 12: Thevnin equivalent circuit</i></p>
+
+<br />
+
+
+<center>
+<p><img src="Images/thevnin_sim_out.png" class="simout" alt="" /></p>
+
+</center>
+
+
+<p style="text-align: center;" class="imgcap"><i>Figure 13: Resultant waveform</i></p>
+
+
+<p class="para">You can verify the result by placing a current marker
+at node of 3 ohm resistance and then performing transient analysis
+simulation on the circuit. The value&nbsp;comes out to be 800mA as was
+found in original circuit.</p>
+
+<p class="para"></p>
+
+
+
+
+
+
+
+
+
+<table style="width: 100%;">
+
+  <tbody>
+
+    <tr>
+
+
+      <td style="width: 50%;">
+      
+      <h1><a class="Mheading" id="A5">Norton's Theorem</a></h1>
+
+      </td>
+
+      <td style="width: 50%;" align="right"><span style="text-decoration: underline;cursor : pointer" onclick="OpenOpjSim('BasicElectronics','Theorems','Designfiles','Theorems2','Norton','PAGE1','Tran')"><img alt="click to view circuit" src="../../../../hybrid/Images/cap_icon.png" style="margin-top: 20px;" /></span></td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<span style="font-family: arial,helvetica,sans-serif;"><span style="font-style: italic;"></span></span><br />
+<p class = "para">A linear network consisting of several independent or dependent energy
+sources and resistances is electrically equivalent to a single constant
+current source in parallel with a single resistor. The value of
+resistance is the same as that in the Thevenin Equivalent and the
+charge can be determined by dividing the open circuit voltage by
+resistance.</p>
+
+<p class="para"><span style="font-family: arial,helvetica,sans-serif;"><span style="font-style: italic;">&nbsp;</span></span><em style="color: rgb(0, 0, 64); font-family: arial,helvetica,sans-serif; font-size: 12px; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 16px; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(250, 250, 250);"></em><span style="color: rgb(0, 0, 64); font-family: arial,helvetica,sans-serif; font-size: 12px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 16px; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(250, 250, 250); display: inline ! important; float: none;"></span></p>
+
+<span style="color: rgb(0, 0, 64); font-family: arial,helvetica,sans-serif; font-size: 12px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 16px; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(250, 250, 250); display: inline ! important; float: none;"><br />
+
+</span>
+<center>
+<table>
+
+
+  <tbody>
+
+    <tr>
+
+      <td><img src="Images/norton_orig.png" class="tximage" alt="" style = "cursor : pointer" onclick="OpenOpjSim('BasicElectronics','Theorems','Designfiles','Theorems2','Norton','PAGE1','Tran')"/></td>
+
+    </tr>
+
+
+    <tr align="center">
+
+      <td><i class="imgcap">Figure 14: Original circuit </i></td>
+
+    </tr>
+
+
+  
+  </tbody>
+</table>
+
+</center>
+
+
+<p class="para">Let&rsquo;s find Norton's equivalent of above circuit across 4 ohm resistance <span style="font-weight: bold;">R4</span>, which is connected across nodes A and B. From the simulation, you can see that current through this resistance is <span style="font-weight: bold;">2.5A</span>. Let's verify this result in Norton's equivalent circuit: </p>
+
+<br />
+
+<br />
+
+
+<center>
+<table>
+
+  <tbody>
+
+    <tr>
+
+      <td><img src="Images/Rnorton.png" class="tximage" alt="" style = "cursor : pointer" onclick="OpenOpjSim('BasicElectronics','Theorems','Designfiles','Theorems2','Norton','PAGE1','Tran')"/></td>
+
+      <td><img src="Images/Inorton.png" class="tximage" alt="" style = "cursor : pointer" onclick="OpenOpjSim('BasicElectronics','Theorems','Designfiles','Theorems2','Norton','PAGE1','Tran')"/></td>
+
+    </tr>
+
+
+    <tr>
+
+      <td>
+      
+      <p style="text-align: center;" class="imgcap"><i>Figure 15: RNorton</i></p>
+
+ </td>
+
+      <td style="text-align: center;">
+      
+      <p class="imgcap"><i>Figure 16: INorton</i></p>
+
+      </td>
+
+    </tr>
+
+    
+  </tbody>
+</table>
+
+</center>
+
+<br />
+
+
+<p class="para">To find the <span style="font-style: italic;">Norton Equivalent</span> circuit, find out the&nbsp;Norton resistance (<span style="font-weight: bold;">Rn)</span> and Norton current (<span style="font-weight: bold;">In</span>) of the original circuit: </p>
+
+<ul class="para">
+
+
+  <li><span style="font-weight: bold;">Rn</span> - Refer to
+Figure&nbsp;15.&nbsp; All the current sources are treated as open
+circuits and all voltage sources as short circuit. If &nbsp;it is
+applied on the original circuit shown in Figure 14,&nbsp; it would
+result in a circuit as shown in Figure 15. The equivalent resistance
+across AB can be determined using the following two ways:
+
+  
+  <ul>
+
+    <li>Calculate it theoretically</li>
+
+    <li>Attach a voltage source of any value across AB and obtain the
+current through this source from the simulation results. In this case,
+the calculated resistance value is 4 ohm.</li>
+
+  
+  </ul> </li>
+
+
+  <li><span style="font-weight: bold;">In</span> - Refer to the circuit
+shown in Figure 16. The Norton current (In) can be determined by
+shorting 4 ohm resistance and measuring the current flowing through it.
+The measured current is 5Amp. </li>
+
+</ul>
+
+
+<p class="para">Based on above findings, the Norton equivalent circuit would be as shown in Figure 17: </p>
+
+
+<center>
+<p><img src="Images/EQnorton.png" class="tximage" alt="" style = "cursor : pointer" onclick="OpenOpjSim('BasicElectronics','Theorems','Designfiles','Theorems2','Norton','PAGE1','Tran')"/></p>
+
+</center>
+
+
+<p style="text-align: center;" class="imgcap"><i>Figure 17: Norton equivalent circuit</i></p>
+
+<p class = "para">You can verify the result by placing a current marker across 4 ohm
+resistance and then performing the transient analysis simulation on the
+circuit. The measured current would be 2.5A, as was found in original
+circuit, thus verifying the Norton theorem.&nbsp;</p>
+<center>
+<p><img src="Images/norton_sim_out.png" class="simout" alt="" /></p>
+
+</center>
+
+
+<p style="text-align: center;" class="imgcap"><i>Figure 18: Resultant waveform</i></p>
+
+
+<p class="para"><br />
+
+</p>
+
+
+
+
+
+
+
+
+<table style="width: 100%;">
+
+  <tbody>
+
+    <tr>
+
+
+      <td style="width: 50%;">
+      
+      <h1><a class="Mheading" id="A6">Superposition Theorem</a></h1>
+
+      </td>
+
+      <td style="width: 50%;" align="right"><span style="text-decoration: underline;cursor : pointer" onclick="OpenOpjSim('BasicElectronics','Theorems','Designfiles','Theorems2','Superposition','PAGE1','Tran')"><img alt="click to view circuit" src="../../../../hybrid/Images/cap_icon.png" style="margin-top: 20px;" /></span></td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+
+<p class="para">The total charge in any part of a linear network
+consisting of several independent or dependent energy sources and
+resistances is electrically equivalent to
+the&nbsp;sum of the charge produced by each source separately. The
+resulting circuit is made by using one source at a time with all the
+other
+current sources being open circuited and the voltage sources
+being short circuited.</p>
+
+<p class="para"></p>
+
+<center>
+<table>
+
+  <tbody>
+
+    <tr>
+
+      <td><img src="Images/superposi_orig.png" class="tximage" alt="" style = "cursor :pointer" onclick="OpenOpjSim('BasicElectronics','Theorems','Designfiles','Theorems2','Superposition','PAGE1','Tran')"/></td>
+
+    </tr>
+
+
+    <tr align="center">
+
+      <td><i class="imgcap">Figure 19: original circuit </i></td>
+
+    </tr>
+
+
+  
+  </tbody>
+</table>
+
+</center>
+
+
+<p class="para">Let's evaluate current across 2 ohm resistance i.e. nodes A and B using the Superposition theorem.   </p>
+
+<br />
+
+<br />
+
+
+<center>
+<table>
+
+  <tbody>
+
+    <tr>
+
+      <td><img src="Images/superposi_1.png" class="tximage" alt="" style = "cursor :pointer" onclick="OpenOpjSim('BasicElectronics','Theorems','Designfiles','Theorems2','Superposition','PAGE1','Tran')"/></td>
+
+      <td><img src="Images/superposi_2.png" class="tximage" alt="" style = "cursor :pointer" onclick="OpenOpjSim('BasicElectronics','Theorems','Designfiles','Theorems2','Superposition','PAGE1','Tran')"/></td>
+
+    </tr>
+
+
+    <tr>
+
+      <td>
+      
+      <p style="text-align: center;" class="imgcap"><i>Figure 20. Circuit with current source</i></p>
+
+ </td>
+
+      <td style="text-align: center;">
+      
+      <p class="imgcap"><i>Figure 21. Circuit with voltage source</i></p>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+</center>
+
+<br />
+
+
+<p class="para">Apply the Superposition theorem on the above circuit. This is done in two steps for the above circuit:</p>
+
+<ul class="para">
+
+
+  <li>Refer&nbsp;to Figure 20. &nbsp;First, determine the current through AB by short circuiting the voltage source, considering <span style="font-weight: bold;">I2</span>
+as the only source in the circuit. By placing a current marker, as
+shown in the figure and then simulating the circuit, you can determine
+the current through resistance resulting from the&nbsp;current source, <span style="font-weight: bold;">I2</span>. The value of current is 0.333mA.</li>
+
+
+  <li>Refer to Figure 21. To determine the current resulting from the voltage source <span style="font-weight: bold;">V2</span>, you need to remove current source from circuit by opening it. The resultant circuit is shown in Figure 21.</li>
+
+</ul>
+
+
+
+<center>
+<p><img src="Images/superposi_sim_out.png" class="simout" alt="" /></p>
+
+</center>
+
+
+<p style="text-align: center;" class="imgcap"><i>Figure 22: Resultant Waveform</i></p>
+
+
+<p class="para">To determine the resultant current, add current from
+both of these circuits. The resultant value is&nbsp; 0A,
+(-333mA+333mA). This value is the same as the current through the 2 ohm
+resistance in the original circuit, thus verifying the superposition
+theorem.</p>
+
+
+
+
+
+
+
+
+
+
+
+<table style="width: 100%;">
+
+  <tbody>
+
+    <tr>
+
+
+      <td style="width: 50%;">
+      
+      <h1><a class="Mheading" id="A7">Millman's Theorem</a></h1>
+
+      </td>
+
+      <td style="width: 50%;" align="right"><span style="text-decoration: underline;cursor : pointer" onclick="OpenOpjSim('BasicElectronics','Theorems','Designfiles','Theorems2','Millman','PAGE1','Tran')"><img alt="click to view circuit" src="../../../../hybrid/Images/cap_icon.png" style="margin-top: 20px;" /></span></td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+
+<p class="para">When a number of voltage sources (V1,V2,V3----Vn)
+are&nbsp;in parallel with internal resistances (R1,R2,R3-----Rn)
+respectively, the arrangement can be replaced by a single voltage
+source <span style="font-weight: bold;">V</span> in series with an equivalent series resistance <span style="font-weight: bold;">R,</span> as shown in the following equation :</p>
+
+
+<center>
+<table width="100%">
+
+
+  <tbody>
+
+    <tr>
+
+      <td style="width: 97%;">
+      
+      <center><img src="Images/mill_1.png" alt="" /></center>
+
+      </td>
+
+      <td style="width: 3%;">(4)</td>
+
+    </tr>
+
+
+    <tr>
+
+      <td colspan="2">
+      
+      <p class="para">where :</p>
+
+      
+      <center><img src="Images/mill_3.png" alt="" /><br />
+
+      <img src="Images/mill_2.png" alt="" /></center>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+</center>
+
+
+<br />
+
+
+<center>
+<table>
+
+
+  <tbody>
+
+    <tr>
+
+      <td><img src="Images/millmans_orig.png" class="tximage" alt="" style = "cursor : pointer" onclick="OpenOpjSim('BasicElectronics','Theorems','Designfiles','Theorems2','Millman','PAGE1','Tran')"/></td>
+
+    </tr>
+
+
+    <tr align="center">
+
+      <td><i class="imgcap">Figure 23: Original circuit </i></td>
+
+    </tr>
+
+
+  
+  </tbody>
+</table>
+
+</center>
+
+
+<p class="para">The current flowing across 8 ohm resistance can be
+computed through Millman's theorem. Simulate the circuit shown in
+Figure 23 and measure the current flowing through 8 ohm resistance, by
+placing a current marker as shown. Measured current would be 593mA </p>
+
+<br />
+
+<br />
+
+
+<p class="para">On applying Millman's theorem on the above circuit, it would appear as:</p>
+
+<br />
+
+
+<center>
+<p><img src="Images/EQmillmans.png" class="tximage" alt="" style = "cursor : pointer" onclick="OpenOpjSim('BasicElectronics','Theorems','Designfiles','Theorems2','Millman','PAGE1','Tran')"/></p>
+
+</center>
+
+
+<p style="text-align: center;" class="imgcap"><i>Figure 24: Millmans equivalent circuit</i></p>
+
+<br />
+
+
+
+
+
+<center>
+<p><img src="Images/millmans_sim_out.png" class="simout" alt="" /></p>
+
+</center>
+
+
+<p style="text-align: center;" class="imgcap"><i>Figure 25: Resultant waveform</i></p>
+
+
+<p class="para">To verify the result, place a current marker at R5 and simulate the circuit as shown. The measured current is <span style="font-style: italic;">593mA</span>. This value is the same as seen in the original circuit, thus verifying the Millman's theorem.</p>
+
+
+<br />
+
+<br />
+
+
+<hr />
+<hr />
+
+
+
+    <br />
+
+
+    <font size="-1">
+      <i>Copyright &copy; 2012, <span style="color:blue;cursor:pointer" onclick="window.open('http://www.cadence.com')"><u>Cadence Design Systems, Inc.</u></span></i>
+    </font>
+    <br />
+
+
+    <font size="-1">
+All rights reserved.</font>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

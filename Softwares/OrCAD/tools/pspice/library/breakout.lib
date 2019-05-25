@@ -1,0 +1,419 @@
+*   Library of default models for use with Schematics "breakout" symbols
+*
+*  Copyright Cadence Design Systems, Inc. 2002 All Rights Reserved.
+*
+*
+* $Revision:   1.2  $
+* $Author:   HIRASUNA  $
+* $Date:   11 May 2000 13:26:32  $
+* Added new models for power_Dbreak, power_Mbreakn : CCMPR00440762
+*---------------------------------------------------------------
+*
+*$
+.model Bbreak GASFET
+*$
+.model Cbreak CAP C=1
+*$
+.model Dbreak D Is=1e-14 Cjo=.1pF Rs=.1
+*$
+.model power_Dbreak D Is=1E-12 Cjo=.5pF Rs=.1 N=1 TT=0.1n
+*$
+.subckt Dbreak3 1 2 3
+D1 1 3 Dbreak
+D2 2 3 Dbreak
+.ends
+*$
+.model Jbreakn NJF
+*$
+.model Jbreakp PJF
+*$
+.model Kbreak CORE AREA=.650 PATH=8.0 MS=1.2896E6 A=2.7128E3 C=.25001 
+*$
+.model Lbreak IND  L=1
+*$
+.model Mbreakn NMOS
+*$
+.model power_Mbreakn NMOS W=1 L=1u LEVEL=3 CBD=1E-9 RDS=1E+06 TT=1n VTO=3.0
++  RD=0.1 RS=10E-3 RG=0.5 CGSO=1E-9 CGDO=100E-12 
+*$
+.model Mbreakp PMOS
+*$
+.model MbreaknD NMOS VTO=-4.0
+*$
+.model MbreakpD PMOS VTO=4.0
+*$
+.model Qbreakn NPN
+*$
+.model Qbreakp PNP
+*$
+.model Qbreakl LPNP
+*$
+* connections:      Collector
+*                   |  Base
+*                   |  |  Emitter
+*                   |  |  |
+.SUBCKT QDarBreakN  1  2  3
+*
+Q1 1 2 4 Q1model
+Q2 1 4 3 Q2model 2.893
+D1 3 1 Dmodel
+R1 2 4 8.000E3
+R2 4 3 120
+.MODEL Dmodel D
++ IS=10.00E-15 RS=1.000E-3 N=1 XTI=3
++  CJO=10.00E-21 VJ=1 M=.5 FC=.5
+.MODEL Q1model NPN
++  IS=98.70E-15 BF=267 NF=1 VAF=100
++  IKF=.3468 ISE=2.100E-12 NE=1.428 BR=.7915
++  NR=1 VAR=100 IKR=1.714 ISC=1.630E-12
++  NC=1.878 RB=1.224 NK=.5
++  RE=0 RC=.1245 EG=1.110
++  CJE=10.00E-12 VJE=.75 MJE=.33 TF=1.000E-9
++  XTF=1 VTF=10 ITF=10.00E-3 CJC=10.00E-12
++  VJC=.75 MJC=.33 XCJC=.9 FC=.5
++  TR=1.000E-9
+.MODEL Q2model NPN
++  IS=98.70E-15 BF=267 NF=1 VAF=100
++  IKF=.3468 ISE=2.100E-12 NE=1.428 BR=.7915
++  NR=1 VAR=100 IKR=1.714 ISC=1.630E-12
++  NC=1.878 RB=1.224 NK=.5
++  RE=0 RC=.1245 EG=1.110
++  CJE=10.00E-12 VJE=.75 MJE=.33 TF=1.000E-9
++  XTF=1 VTF=10 ITF=10.00E-3 CJC=0
++  VJC=.75 MJC=.33 XCJC=.9 FC=.5
++  TR=1.000E-9
+.ENDS
+*$
+* connections:      Collector
+*                   |  Base
+*                   |  |  Emitter
+*                   |  |  |
+.SUBCKT QDarBreakP  1  2  3
+*
+Q1 1 2 4 Q1model
+Q2 1 4 3 Q2model 2.893
+D1 1 3 Dmodel
+R1 2 4 8.000E3
+R2 4 3 120
+.MODEL Dmodel D
++ IS=10.00E-15 RS=1.000E-3 N=1 XTI=3
++  CJO=10.00E-21 VJ=1 M=.5 FC=.5
+.MODEL Q1model PNP
++  IS=98.70E-15 BF=267 NF=1 VAF=100
++  IKF=.3468 ISE=2.100E-12 NE=1.428 BR=.7915
++  NR=1 VAR=100 IKR=1.714 ISC=1.630E-12
++  NC=1.878 RB=1.224 NK=.5
++  RE=0 RC=.1245 EG=1.110
++  CJE=10.00E-12 VJE=.75 MJE=.33 TF=1.000E-9
++  XTF=1 VTF=10 ITF=10.00E-3 CJC=10.00E-12
++  VJC=.75 MJC=.33 XCJC=.9 FC=.5
++  TR=1.000E-9
+.MODEL Q2model PNP
++  IS=98.70E-15 BF=267 NF=1 VAF=100
++  IKF=.3468 ISE=2.100E-12 NE=1.428 BR=.7915
++  NR=1 VAR=100 IKR=1.714 ISC=1.630E-12
++  NC=1.878 RB=1.224 NK=.5
++  RE=0 RC=.1245 EG=1.110
++  CJE=10.00E-12 VJE=.75 MJE=.33 TF=1.000E-9
++  XTF=1 VTF=10 ITF=10.00E-3 CJC=0
++  VJC=.75 MJC=.33 XCJC=.9 FC=.5
++  TR=1.000E-9
+.ENDS
+*$
+.model Rbreak RES R=1
+*$
+.model Sbreak VSWITCH Roff=1e6 Ron=1.0 Voff=0.0 Von=1.0
+*$
+.model Wbreak ISWITCH  Ioff=0.0 Ion=1e-3 Roff=1e6 Ron=1.0
+*$
+
+* Nonlinear Center-tapped Transformer Models
+*$
+
+* Nonlinear Transformer with Center-tapped Primary and Secondary
+.subckt XFRM_NONLIN/CT-PRI/SEC 1 2 3 4 5 6 Params: 
++ Lp1_turns=100 
++ Lp2_turns=100 
++ Ls1_turns=100 
++ Ls2_turns=100 
++ Coupling=.99 
++ Rp_value=.25 
++ Rs_value=.25
+
+Lp1 7 2 {Lp1_turns}
+Lp2 2 8 {Lp2_turns}
+Ls1 9 5 {Ls1_turns}
+Ls2 5 10 {Ls2_turns}
+Rp1 1 7 {Rp_value/2}
+Rp2 8 3 {Rp_value/2}
+Rs1 9 4 {Rs_value/2}	
+Rs2 10 6 {Rs_value/2}
+K1 Lp1 Lp2 Ls1 Ls2 {coupling} TN33_20_11_2P90 
+.ends
+
+*$
+
+* Nonlinear Transformer with Center-tapped Primary
+.subckt XFRM_NONLIN/CT-PRI 1 2 3 4 6 Params: 
++ Lp1_turns=100 
++ Lp2_turns=100 
++ Ls_turns=200
++ Coupling=.99 
++ Rp_value=.25 
++ Rs_value=.25
+
+Lp1 7 2 {Lp1_turns}
+Lp2 2 8 {Lp2_turns}
+Ls1 9 5 {Ls_turns/2}
+Ls2 5 10 {Ls_turns/2}
+Rp1 1 7 {Rp_value/2}
+Rp2 8 3 {Rp_value/2}
+Rs1 9 4 {Rs_value/2}	
+Rs2 10 6 {Rs_value/2}
+K1 Lp1 Lp2 Ls1 Ls2 {coupling} TN33_20_11_2P90 
+.ends
+
+*$
+
+* Nonlinear Transformer with Center-tapped Secondary
+.subckt XFRM_NONLIN/CT-SEC 1 3 4 5 6 Params: 
++ Lp_turns=200 
++ Ls1_turns=100 
++ Ls2_turns=100 
++ Coupling=.99 
++ Rp_value=.25 
++ Rs_value=.25
+
+Lp1 7 2 {Lp_turns/2}
+Lp2 2 8 {Lp_turns/2}
+Ls1 9 5 {Ls1_turns}
+Ls2 5 10 {Ls2_turns}
+Rp1 1 7 {Rp_value/2}
+Rp2 8 3 {Rp_value/2}
+Rs1 9 4 {Rs_value/2}	
+Rs2 10 6 {Rs_value/2}
+K1 Lp1 Lp2 Ls1 Ls2 {coupling} TN33_20_11_2P90 
+.ends
+
+*$
+
+* end of Nonlinear center-tapped transformer models
+
+.model Zbreakn NIGBT
+*$
+.subckt ADC8Break IN REF GND CNVRT STAT OVR
++                 DB7 DB6 DB5 DB4 DB3 DB2 DB1 DB0
++                 OPTIONAL: DPWR=$G_DPWR DGND=$G_DGND
++                 PARAMS: MNTYMXDLY=0 IO_LEVEL=0
+
+U1 ADC(8)  DPWR DGND IN REF GND CNVRT STAT OVR 
++          DB7 DB6 DB5 DB4 DB3 DB2 DB1 DB0
++          ADC8TIM IO_STD
++          MNTYMXDLY={MNTYMXDLY} IO_LEVEL={IO_LEVEL}
+
+.MODEL  ADC8TIM UADC 
+
+.ENDS
+*$
+.subckt ADC10Break IN REF GND CNVRT STAT OVR
++                  DB9 DB8 DB7 DB6 DB5 DB4 DB3 DB2 DB1 DB0
++                  OPTIONAL: DPWR=$G_DPWR DGND=$G_DGND
++                  PARAMS: MNTYMXDLY=0 IO_LEVEL=0
+
+U1 ADC(10) DPWR DGND IN REF GND CNVRT STAT OVR 
++          DB9 DB8 DB7 DB6 DB5 DB4 DB3 DB2 DB1 DB0
++          ADC10_TIMING IO_STD
++          MNTYMXDLY={MNTYMXDLY} IO_LEVEL={IO_LEVEL}
+
+.MODEL  ADC10_TIMING UADC 
+
+.ENDS
+*$
+.subckt ADC12Break IN REF GND CNVRT STAT OVR
++                  DB11 DB10 DB9 DB8 DB7 DB6 DB5 DB4 DB3 DB2 DB1 DB0
++                  OPTIONAL: DPWR=$G_DPWR DGND=$G_DGND
++                  PARAMS: MNTYMXDLY=0 IO_LEVEL=0
+
+U1 ADC(12) DPWR DGND IN REF GND CNVRT STAT OVR 
++          DB11 DB10 DB9 DB8 DB7 DB6 DB5 DB4 DB3 DB2 DB1 DB0
++          ADC12_TIMING IO_STD
++          MNTYMXDLY={MNTYMXDLY} IO_LEVEL={IO_LEVEL}
+
+.MODEL  ADC12_TIMING UADC 
+
+.ENDS
+*$
+.subckt DAC8Break OUT REF GND
++                 DB7 DB6 DB5 DB4 DB3 DB2 DB1 DB0
++                 OPTIONAL: DPWR=$G_DPWR DGND=$G_DGND
++                 PARAMS: MNTYMXDLY=0 IO_LEVEL=0
+
+U1 DAC(8) DPWR DGND OUT REF GND
++         DB7 DB6 DB5 DB4 DB3 DB2 DB1 DB0
++         DAC8_TIMING IO_STD
++         MNTYMXDLY={MNTYMXDLY} IO_LEVEL={IO_LEVEL}
+
+.MODEL DAC8_TIMING UDAC
+
+.ENDS
+*$
+.subckt DAC10Break OUT REF GND
++                  DB9 DB8 DB7 DB6 DB5 DB4 DB3 DB2 DB1 DB0
++                  OPTIONAL: DPWR=$G_DPWR DGND=$G_DGND
++                  PARAMS: MNTYMXDLY=0 IO_LEVEL=0
+
+U1 DAC(10) DPWR DGND OUT REF GND
++          DB9 DB8 DB7 DB6 DB5 DB4 DB3 DB2 DB1 DB0
++          DAC10_TIMING IO_STD
++          MNTYMXDLY={MNTYMXDLY} IO_LEVEL={IO_LEVEL}
+
+.MODEL DAC10_TIMING UDAC
+
+.ENDS
+*$
+.subckt DAC12Break OUT REF GND 
++                  DB11 DB10 DB9 DB8 DB7 DB6 DB5 DB4 DB3 DB2 DB1 DB0
++                  OPTIONAL: DPWR=$G_DPWR DGND=$G_DGND
++                  PARAMS: MNTYMXDLY=0 IO_LEVEL=0
+
+U1 DAC(12) DPWR DGND OUT REF GND
++          DB11 DB10 DB9 DB8 DB7 DB6 DB5 DB4 DB3 DB2 DB1 DB0
++          DAC12_TIMING IO_STD
++          MNTYMXDLY={MNTYMXDLY} IO_LEVEL={IO_LEVEL}
+
+.MODEL DAC12_TIMING UDAC
+
+.ENDS
+*$
+.SUBCKT ROM32Kx8Break A14 A13 A12 A11 A10 A9 A8 A7 A6 A5 A4 A3 A2 A1 A0
++                     OEbar O7 O6 O5 O4 O3 O2 O1 O0 
++                     OPTIONAL: DPWR=$G_DPWR DGND=$G_DGND
++                     PARAMS: MNTYMXDLY=0 IO_LEVEL=0
+
+U1 ROM(15,8) DPWR DGND OE
++            A14 A13 A12 A11 A10 A9 A8 A7 A6 A5 A4 A3 A2 A1 A0
++            O7 O6 O5 O4 O3 O2 O1 O0
++            ROM_TIMING
++            IO_STD   
++            MNTYMXDLY={MNTYMXDLY} IO_LEVEL={IO_LEVEL}
+*+            DATA=
+*+            FILE=
+
+U2 INV DPWR DGND OEbar OE
++            INV_TIMING IO_STD
+
+.MODEL ROM_TIMING UROM
+.MODEL INV_TIMING UGATE
+
+.ENDS
+*$
+.SUBCKT RAM8Kx8Break RE WE
++                    A12 A11 A10 A9 A8 A7 A6 A5 A4 A3 A2 A1 A0
++                    W7 W6 W5 W4 W3W W2 W1 W0
++                    R7 R6 R5 R4 R3 R2 R1 R0
++                    OPTIONAL: DPWR=$G_DPWR DGND=$G_DGND
++                    PARAMS: MNTYMXDLY=0 IO_LEVEL=0
+
+
+U1 RAM(13,8) DPWR DGND RE WE 
++            A12 A11 A10 A9 A8 A7 A6 A5 A4 A3 A2 A1 A0
++            W7 W6 W5 W4 W3W W2 W1 W0
++            R7 R6 R5 R4 R3 R2 R1 R0
++            RAM8Kx8_TIMING IO_STD
++            MNTYMXDLY={MNTYMXDLY} IO_LEVEL={IO_LEVEL}
+*+            DATA=
+*+            FILE=
+
+.MODEL 	RAM8Kx8_TIMING URAM
+
+.ENDS
+*$
+.SUBCKT RAM8Kx1Break RE WE
++                    A15 A14 A13 A12 A11 A10 A9 A8 A7 A6 A5 A4 A3 A2 A1 A0
++                    D_IN D_OUT
++                    OPTIONAL: DPWR=$G_DPWR DGND=$G_DGND
++                    PARAMS: MNTYMXDLY=0 IO_LEVEL=0
+
+
+U1 RAM(16,1) DPWR DGND RE WE 
++            A15 A14 A13 A12 A11 A10 A9 A8 A7 A6 A5 A4 A3 A2 A1 A0
++            D_IN D_OUT
++            RAM8Kx1_TIMING IO_STD
++            MNTYMXDLY={MNTYMXDLY} IO_LEVEL={IO_LEVEL}
+*+            DATA=
+*+            FILE=
+
+.MODEL 	RAM8Kx1_TIMING URAM
+
+.ENDS
+*$
+
+.SUBCKT POT 1 T 2 PARAMS: VALUE=1K SET=0.5
+RT 1 T {VALUE*(1-SET)+.001}
+RB T 2 {VALUE*SET+.001}
+.ENDS
+*$
+* TOM 3 break Out Model
+.Subckt Bbreak_TOM3 DRAIN GATE SOURCE 
+C1 n5  n3  1.0e-12
+R1 n1  n5  1.0e7
+E1 n4  n2  VALUE={ 0.033*ABS(V(n5,n3))}
+B1 n1  n2 n3 DLM 3
+RD DRAIN  n1  230 
+RS SOURCE n3  12
+RG GATE   n4  250
+D1 n4 n1  Dg 3
+D2 n4 n3  Dg 3
+.model dg d (Is=15.0e-15 n=1.25 XTI=2.50 Eg=.9)
+.Model DLM Gasfet (Level=6)
+.ends Bbreak_TOM3
+*$
+
+*simple switched GTO Model 
+*$
+.subckt gto a k g params:  onresistance    =1ohm
++ oninductance     =1nh
++ fwdrop           =1v
++vbo              =50v
++gonvolatge       =4.5v
+S1 a n2 nctrl 0 switch1
+.model switch1 VSWITCH [ron=5m roff=10e+8 von=10v voff =0.0] 
+ron     n2  n3 {onresistance}
+lon     n3  n4 {oninductance} 
+vf_drp  n4 k   {fwdrop}
+Ed1 nctrl 0 VALUE {IF(((V(g,k) > {gonvolatge}  & V(a,k) > 0.0) | (V(a,k) >= {vbo} )),10.0,0.0)}
+*Ed1 nctrl 0 VALUE {IF(((V(g,k) > {gonvolatge} ) | (V(a,k) >= {vbo} )),10.0,0.0)}
+.ends
+*$
+
+*$
+* PSpice Model Editor - Version 
+*DEVICE TYPE: SCMITT
+*DEVICE NAME:SCHMITT
+*PORT_ORDER:	"IN1" "IN2"	"OUT"
+*$
+.SUBCKT schmit i1 i2 STURR
++ params:
++ vt1=2V
++ vh1=1V
++ trise=100p
++
+X_S1    i1 i2 SIG STURR SCHEMATIC2_S1 PARAMS:
++ vt1={vt1}
++ vh1={vh1}
+I_I2         i2 SIG 2m
+R_R3		 i2 SIG 1k
+R_R1         STURR i2 1k  
+C_C1         STURR i2 {trise/10000}
+.ENDS schmit
+*$
+*DEVICE TYPE: xxx
+.subckt SCHEMATIC2_S1 1 2 3 4  
++params:
++ vt1=2
++ vh1=1
+S_S1         3 4 1 2 _S1
+RS_S1         1 2 1G
+.MODEL         _S1 VSWITCH Roff=1e9 Ron=1m VH={vh1} VT={vt1} TD=0
+.ends SCHEMATIC2_S1
+*$

@@ -1,0 +1,353 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+VARIABLE
+PORT 48 28
+    #ifdef APD || ALLEGRO_MCM || SIP
+HEADER "Spacing Rule Set    Conductor Spacing    DRC Modes"
+    #else
+HEADER "Spacing Rule Set    Etch Spacing    DRC Modes"
+    #endif
+
+
+POPUP <CONSTRAINTLISTP>"Global""11","Thru Pin""1","Smd Pin""2","Test Pin""3",\
+"Thru Via""5","B/B Via""6","Test Via""7","Bond Finger""8","Line""9",\
+"Shape""10".
+
+MESSAGE NOTYPESUBC 2 "No subclasses of this type are available."
+
+TILE ELEMENTS_TILE
+TEXT
+TLOC 1 0
+INFO global_info 60
+ENDTEXT
+
+FIELD elements_list
+FLOC 1 2
+ENUMSET 10
+POP "CONSTRAINTLISTP"
+ENDFIELD
+
+TPANEL 1
+TEXT "On"
+OPTIONS underline
+FLOC 25 2
+ENDTEXT
+
+TEXT "Off"
+OPTIONS underline
+FLOC 29 2
+ENDTEXT
+
+FIELD on
+FLOC 25 4
+MENUBUTTON "" 1 2
+ENDFIELD
+FIELD off
+FLOC 29 4
+MENUBUTTON "" 1 2
+ENDFIELD
+
+ENDTILE
+
+TILE GLOBALS
+TPANEL 1
+TEXT "Pin To Pin:"
+TLOC 5 0
+ENDTEXT
+
+TEXT "Line To Pin:"
+TLOC 5 2
+ENDTEXT
+
+TEXT "Line To Line:"
+TLOC 5 4
+ENDTEXT
+
+TEXT "Via To Pin:"
+TLOC 5 6
+ENDTEXT
+
+TEXT "Via To Via:"
+TLOC 5 8
+ENDTEXT
+
+TEXT "Via To Line:"
+TLOC 5 10
+ENDTEXT
+
+TEXT "Shape To Pin:"
+TLOC 5 12
+ENDTEXT
+
+TEXT "Shape To Via:"
+TLOC 5 14
+ENDTEXT
+
+TEXT "Shape To Line:"
+TLOC 5 16
+ENDTEXT
+
+TEXT "Shape To Shape:"
+TLOC 5 18
+ENDTEXT
+
+FIELD pin_to_pin_on
+FLOC 25 0
+CHECKLIST "" "1"
+ENDFIELD
+FIELD pin_to_pin_off
+FLOC 29 0
+CHECKLIST "" "1"
+ENDFIELD
+
+FIELD line_to_pin_on
+FLOC 25 2
+CHECKLIST "" "2"
+ENDFIELD
+FIELD line_to_pin_off
+FLOC 29 2
+CHECKLIST "" "2"
+ENDFIELD
+
+FIELD line_to_line_on
+FLOC 25 4
+CHECKLIST "" "3"
+ENDFIELD
+FIELD line_to_line_off
+FLOC 29 4
+CHECKLIST "" "3"
+ENDFIELD
+
+FIELD via_to_pin_on
+FLOC 25 6
+CHECKLIST "" "4"
+ENDFIELD
+FIELD via_to_pin_off
+FLOC 29 6
+CHECKLIST "" "4"
+ENDFIELD
+
+FIELD via_to_via_on
+FLOC 25 8
+CHECKLIST "" "5"
+ENDFIELD
+FIELD via_to_via_off
+FLOC 29 8
+CHECKLIST "" "5"
+ENDFIELD
+
+FIELD via_to_line_on
+FLOC 25 10
+CHECKLIST "" "6"
+ENDFIELD
+FIELD via_to_line_off
+FLOC 29 10
+CHECKLIST "" "6"
+ENDFIELD
+
+FIELD shape_to_pin_on
+FLOC 25 12
+CHECKLIST "" "7"
+ENDFIELD
+FIELD shape_to_pin_off
+FLOC 29 12
+CHECKLIST "" "7"
+ENDFIELD
+
+FIELD shape_to_via_on
+FLOC 25 14
+CHECKLIST "" "8"
+ENDFIELD
+FIELD shape_to_via_off
+FLOC 29 14
+CHECKLIST "" "8"
+ENDFIELD
+
+FIELD shape_to_line_on
+FLOC 25 16
+CHECKLIST "" "9"
+ENDFIELD
+FIELD shape_to_line_off
+FLOC 29 16
+CHECKLIST "" "9"
+ENDFIELD
+
+FIELD shape_to_shape_on
+FLOC 25 18
+CHECKLIST "" "10"
+ENDFIELD
+FIELD shape_to_shape_off
+FLOC 29 18
+CHECKLIST "" "10"
+ENDFIELD
+
+ENDTILE
+
+TILE _TO_TILE
+TPANEL 1
+TEXT "to Thru Pin:"
+TLOC 5 0
+ENDTEXT
+
+TEXT "to SMD Pin:"
+TLOC 5 2
+ENDTEXT
+
+TEXT "to Test Pin:"
+TLOC 5 4
+ENDTEXT
+
+TEXT "to Thru Via:"
+TLOC 5 6
+ENDTEXT
+
+TEXT "to Test Via:"
+TLOC 5 8
+ENDTEXT
+
+TEXT "to B/B Via:"
+TLOC 5 10
+ENDTEXT
+
+TEXT "to Bond Finger:"
+TLOC 5 12
+ENDTEXT
+
+TEXT "to Line:"
+TLOC 5 14
+ENDTEXT
+
+TEXT "to Shape:"
+TLOC 5 16
+ENDTEXT
+
+FIELD _to_thru_pin_on
+FLOC 25 0
+CHECKLIST "" "11"
+ENDFIELD
+FIELD _to_thru_pin_off
+FLOC 29 0
+CHECKLIST "" "11"
+ENDFIELD
+
+FIELD _to_smd_pin_on
+FLOC 25 2
+CHECKLIST "" "12"
+ENDFIELD
+FIELD _to_smd_pin_off
+FLOC 29 2
+CHECKLIST "" "12"
+ENDFIELD
+
+FIELD _to_test_pin_on
+FLOC 25 4
+CHECKLIST "" "13"
+ENDFIELD
+FIELD _to_test_pin_off
+FLOC 29 4
+CHECKLIST "" "13"
+ENDFIELD
+
+FIELD _to_thru_via_on
+FLOC 25 6
+CHECKLIST "" "14"
+ENDFIELD
+FIELD _to_thru_via_off
+FLOC 29 6
+CHECKLIST "" "14"
+ENDFIELD
+
+FIELD _to_test_via_on
+FLOC 25 8
+CHECKLIST "" "15"
+ENDFIELD
+FIELD _to_test_via_off
+FLOC 29 8
+CHECKLIST "" "15"
+ENDFIELD
+
+FIELD _to_bb_via_on
+FLOC 25 10
+CHECKLIST "" "16"
+ENDFIELD
+FIELD _to_bb_via_off
+FLOC 29 10
+CHECKLIST "" "16"
+ENDFIELD
+
+FIELD _to_bondpad_on
+FLOC 25 12
+CHECKLIST "" "17"
+ENDFIELD
+FIELD _to_bondpad_off
+FLOC 29 12
+CHECKLIST "" "17"
+ENDFIELD
+
+FIELD _to_line_on
+FLOC 25 14
+CHECKLIST "" "18"
+ENDFIELD
+FIELD _to_line_off
+FLOC 29 14
+CHECKLIST "" "18"
+ENDFIELD
+
+FIELD _to_shape_on
+FLOC 25 16
+CHECKLIST "" "19"
+ENDFIELD
+FIELD _to_shape_off
+FLOC 29 16
+CHECKLIST "" "19"
+ENDFIELD
+
+ENDTILE
+
+TILE StdTile
+TPANEL 2
+FIELD done
+FLOC 1 1
+MENUBUTTON "Done" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 11 1
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD reset
+FLOC 22 1
+MENUBUTTON "Reset" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 39 1
+MENUBUTTON "Help" 9 3
+ENDFIELD
+ 
+
+ENDTILE
+
+TILE NON_PAIRED_DRC
+TPANEL 1
+TEXT "Non Paired"
+TLOC 1 1
+ENDTEXT
+
+TEXT "Min BB Via Gap:"
+TLOC 1 3
+ENDTEXT
+
+FIELD max_bb_via_gap_on
+FLOC 25 3
+CHECKLIST "" "20"
+ENDFIELD
+FIELD max_bb_via_gap_off
+FLOC 29 3
+CHECKLIST "" "20"
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

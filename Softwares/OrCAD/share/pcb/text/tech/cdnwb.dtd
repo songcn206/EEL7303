@@ -1,0 +1,134 @@
+<!--======================================================-->
+<!--====                                              ====-->
+<!--====  Cadence PSB Extensible Markup Language DTD  ====-->
+<!--====           Prototype Version 2.0              ====-->
+<!--====               (cdnwb.dtd)                    ====-->
+<!--====                                              ====-->
+<!--======================================================-->
+<!--====                                              ====-->
+<!--====                Wirebond                      ====-->
+<!--==== Defines:                                     ====-->
+<!--====     Cadence IC Package Wirebond groups.      ====-->
+<!--====     Cadence 3D Wire Profile specifications.  ====-->
+<!--====                                              ====-->
+<!--======================================================-->
+
+<!ELEMENT die               (die_name, die_height, die_width, wb_group*, finger_def*, finger*, path*, ring*, wire*)>
+
+<!ELEMENT wb_group          (group_name, pattern, padstack, wire_profile, 
+                             wire_layer?, wire_diameter, equal_wire_length?, 
+                             finger_def*, finger*, path*, ring*)>
+<!ELEMENT finger_def        (pad_name, shape, height, width, depth?)>
+<!ELEMENT finger            (label?, loc_x, loc_y, angle, pattern?, alignment?, snap?, equal_wire_length?, pad_name?, merge_group?)>
+<!ELEMENT path              (path*, arc*, line*)*>
+<!ELEMENT ring              (net, depth?, boundary, void*)>
+<!ELEMENT boundary          (boundary*, arc*, line*)*>
+<!ELEMENT void              (void*, arc*, line*)*>
+<!ELEMENT arc               (x1, y1, x2, y2, cx, cy, rad, dir)>
+<!ELEMENT line              (x1, y1, x2, y2)>
+<!ELEMENT wire              (profile, diameter, wire_start, wire_end)>
+
+<!ELEMENT wire_start        (loc_x, loc_y)>
+<!ELEMENT wire_end        (loc_x, loc_y)>
+
+<!ELEMENT wb_info                 (unit?, wire_layer_profile_set*, wire_profile_set*)>
+<!ELEMENT wire_layer_profile_set  (wire_layer_profile_def*)>
+<!ELEMENT wire_layer_profile_def  (profile_name, layer_name)>
+<!ELEMENT wire_profile_set    (profile_set_tech_file?, wire_profile_vendor?, wire_profile_def*)>
+<!ELEMENT wire_profile_vendor (profile_vendor_name, profile_vendor_logo_file?)>
+<!ELEMENT wire_profile_def    (profile_name, profile_from_vendor?, profile_direction, profile_diameter?, profile_material?, profile_color?, profile_visibility?, profile_point+, lead_offset_set*)>
+<!ELEMENT profile_point       (horizontal_type, horizontal_value?, horizontal_max?, horizontal_min?, horizontal_step?, horizontal_rotation?, vertical_type?, vertical_value?, vertical_max?, vertical_min?, vertical_step?)>
+<!ELEMENT lead_offset_set     (leadframe_package_type, offset_distance*)>
+
+<!ELEMENT pad_data          (shape, height, width, layer_name?)>
+<!ELEMENT finger_settings   (pad_name?, alignment?, angle?, snap?, pad_data?)>
+<!ELEMENT wire_settings     (profile?, allow_multi?)>
+<!ELEMENT pattern_settings  (style?, equal_wire_length?, bond_rings?)>
+<!ELEMENT stub_settings     (inner_stub?, outer_stub?)>
+<!ELEMENT outer_stub        (length?, via_pad?)>
+<!ELEMENT inner_stub        (length?, via_pad?)>
+
+<!ELEMENT settings_group  (group_name, bubble?, pattern_settings?, wire_settings?, finger_settings?, stub_settings?)>
+<!ELEMENT wb_settings_group_set (group_set_tech_file?, settings_group*)>
+
+<!ELEMENT die_name          (#PCDATA)>
+<!ELEMENT die_height        (#PCDATA)>
+<!ELEMENT die_width         (#PCDATA)>
+
+<!ELEMENT group_name        (#PCDATA)>
+<!ELEMENT pattern           (#PCDATA)>
+<!ELEMENT padstack          (#PCDATA)>
+<!ELEMENT wire_profile      (#PCDATA)>
+<!ELEMENT wire_layer        (#PCDATA)>
+<!ELEMENT wire_diameter     (#PCDATA)>
+<!ELEMENT equal_wire_length (#PCDATA)>
+
+<!ELEMENT pad_name          (#PCDATA)>
+<!ELEMENT shape             (#PCDATA)>
+<!ELEMENT height            (#PCDATA)>
+<!ELEMENT width             (#PCDATA)>
+<!ELEMENT depth             (#PCDATA)>
+<!ELEMENT merge_group       (#PCDATA)>
+
+<!ELEMENT unit                     (#PCDATA)>
+<!ELEMENT layer_name               (#PCDATA)>
+<!ELEMENT profile_set_tech_file    (#PCDATA)>
+<!ELEMENT profile_vendor_name      (#PCDATA)>
+<!ELEMENT profile_vendor_logo_file (#PCDATA)>
+
+<!ELEMENT profile_from_vendor   (#PCDATA)>
+<!ELEMENT profile_direction     (#PCDATA)>
+<!ELEMENT profile_diameter      (#PCDATA)>
+<!ELEMENT profile_material      (#PCDATA)>
+<!ELEMENT profile_color         (#PCDATA)>
+<!ELEMENT profile_visibility    (#PCDATA)>
+<!ELEMENT profile_name          (#PCDATA)>
+<!ELEMENT leadframe_package_type (#PCDATA)>
+<!ELEMENT offset_distance        (#PCDATA)>
+<!ELEMENT lead_tip_offset       (#PCDATA)>
+<!ELEMENT horizontal_type       (#PCDATA)>
+<!ELEMENT horizontal_value      (#PCDATA)>
+<!ELEMENT horizontal_min        (#PCDATA)>
+<!ELEMENT horizontal_max        (#PCDATA)>
+<!ELEMENT horizontal_step       (#PCDATA)>
+<!ELEMENT horizontal_rotation   (#PCDATA)>
+<!ELEMENT vertical_type         (#PCDATA)>
+<!ELEMENT vertical_value        (#PCDATA)>
+<!ELEMENT vertical_min          (#PCDATA)>
+<!ELEMENT vertical_max          (#PCDATA)>
+<!ELEMENT vertical_step         (#PCDATA)>
+
+<!ELEMENT label             (#PCDATA)>
+<!ELEMENT loc_x             (#PCDATA)>
+<!ELEMENT loc_y             (#PCDATA)>
+<!ELEMENT angle             (#PCDATA)>
+<!ELEMENT alignment         (#PCDATA)>
+<!ELEMENT snap              (#PCDATA)>
+
+<!ELEMENT x1                (#PCDATA)>
+<!ELEMENT y1                (#PCDATA)>
+<!ELEMENT x2                (#PCDATA)>
+<!ELEMENT y2                (#PCDATA)>
+<!ELEMENT cx                (#PCDATA)>
+<!ELEMENT cy                (#PCDATA)>
+<!ELEMENT rad               (#PCDATA)>
+<!ELEMENT dir               (#PCDATA)>
+
+<!ELEMENT profile           (#PCDATA)>
+<!ELEMENT diameter          (#PCDATA)>
+
+<!ELEMENT net               (#PCDATA)>
+
+<!ELEMENT style             (#PCDATA)>
+<!ELEMENT bond_rings        (#PCDATA)>
+<!ELEMENT length            (#PCDATA)>
+<!ELEMENT via_pad           (#PCDATA)>
+<!ELEMENT bubble            (#PCDATA)>
+<!ELEMENT allow_multi       (#PCDATA)>
+<!ELEMENT group_set_tech_file (#PCDATA)>
+
+<!--======================================================-->
+<!--====                                              ====-->
+<!--====               END OF ELEMENTS                ====-->
+<!--====                                              ====-->
+<!--======================================================-->

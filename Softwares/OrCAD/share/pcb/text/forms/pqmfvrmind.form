@@ -1,0 +1,84 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM fixed_font
+FIXED
+PORT 46 18
+HEADER "VRM Input Inductance Calculation"
+
+POPUP <ruleTypePop>"""".
+
+POPUP <PRINTP>"to File""0","to Printer""1","to Script""2".
+
+ACTIVEFIELD "rampTime"
+
+MESSAGE badentry 0 "%s"
+
+TILE
+
+TEXT "Input Inductance = V * Rip * T / I"
+  TLOC 1 1
+ENDTEXT
+
+TEXT "Voltage [V]:"
+  TLOC 1 4
+ENDTEXT  
+
+FIELD voltage
+  FLOC 26 4
+  STRFILLIN 18 32
+ENDFIELD 
+ 
+TEXT "Ripple tolerance [Rip]:"
+  TLOC 1 6
+ENDTEXT  
+
+FIELD ripple
+  FLOC 26 6
+  STRFILLIN 18 24
+ENDFIELD 
+
+TEXT "Ramp time [T]:"
+  TLOC 1 8
+ENDTEXT  
+
+FIELD rampTime
+  FLOC 26 8
+  STRFILLIN 18 32
+ENDFIELD 
+
+TEXT "Ramp current [I]:"
+  TLOC 1 10
+ENDTEXT  
+
+FIELD rampCurrent
+  FLOC 26 10
+  STRFILLIN 18 32
+ENDFIELD 
+
+TEXT "Input inductance:"
+  TLOC 1 13
+ENDTEXT  
+
+TEXT
+  TLOC 26 13
+  INFO inputInductance 24
+ENDTEXT
+
+FIELD done
+  FLOC 2 17
+  MENUBUTTON "Done" 10 3
+ENDFIELD
+
+FIELD cancel
+  FLOC 18 17
+  MENUBUTTON "Cancel" 10 3
+ENDFIELD
+
+FIELD help
+  FLOC 34 17
+  MENUBUTTON "Help" 10 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM
+

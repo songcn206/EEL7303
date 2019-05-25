@@ -1,0 +1,126 @@
+####################################################################################
+#       Cadence Design Systems                                                     #
+#                                                                                  #
+# (C) COPYRIGHT, Cadence Design Systems, Inc. 2010                                 #
+# All Rights Reserved                                                              #
+# Licensed Materials - Property of Cadence Design Systems                          #
+#                                                                                  #
+# No part of this file may be reproduced, stored in a retrieval system,            #
+# or transmitted in any form or by any means --- electronic, mechanical,           #
+# photocopying, recording, or otherwise --- without prior written permission       #
+# of Cadence Design Systems, Inc.                                                  #
+#                                                                                  #
+# WARRANTY:                                                                        #
+# Use all material in this file at your own risk.  Cadence Design Systems          #
+# makes no claims about any material contained in this file.                       #
+####################################################################################
+FILE_TYPE=FORM_DEFN VERSION=2
+
+    FORM
+    FIXED
+    PORT 109 30
+    HEADER "Padstack Plating Parameters"
+
+    ACTIVEFIELD DrillGrid
+    DEFAULT Done
+
+    TILE
+
+    FIELD Done
+        FLOC 1 28
+        MENUBUTTON "OK" 10 3
+    ENDFIELD
+
+    FIELD Cancel
+        FLOC 12 28
+        MENUBUTTON "Cancel" 10 3
+    ENDFIELD
+
+    FIELD Apply
+        FLOC 77 28
+        MENUBUTTON "Apply" 10 3
+    ENDFIELD
+
+    FIELD Reset
+        FLOC 88 28
+        MENUBUTTON "Reset" 10 3
+    ENDFIELD
+
+    FIELD Help
+        FLOC 99 28
+        MENUBUTTON "Help" 10 3
+    ENDFIELD
+
+    GROUP "Drill plating information" "DrillGroup"
+        GLOC 1 0
+        GSIZE 108 27
+    ENDGROUP
+
+    FIELD pq_decap_intro_bitmap
+        THUMBNAIL pqIRDropDrill.bmp
+        FLOC 2 2
+        FSIZE 15 20
+    ENDFIELD
+
+    TEXT "Units:  Mil"
+        TLOC 99 2
+    ENDTEXT
+
+    TEXT "Padstack:"
+        TLOC 17 2
+    ENDTEXT
+
+    POPUP <PadstackNamePop>"""".
+    FIELD PadstackName
+        FLOC 27 2
+        STRFILLIN 17 64
+        POP "PadstackNamePop"
+    ENDFIELD
+
+    POPUP <CurrentThreshPopup>"Reset""Reset".
+    POPUP <DrillGridHeadPopup>"""".
+    GRID DrillGrid
+    FLOC 17 4
+    FSIZE 91 20
+    OPTIONS HLINES VLINES USERSIZE
+
+    GHEAD TOP
+        HEADSIZE 2
+        OPTIONS 3D
+        POP "DrillGridHeadPopup"
+    ENDGHEAD
+    GHEAD SIDE
+        HEADSIZE 0
+    ENDGHEAD
+    ENDGRID
+
+    TEXT "Plating Thickness:"
+        TLOC 17 24
+    ENDTEXT
+
+    POPUP <PlateThicknessPopup>"Reset""Reset".
+    FIELD PlateThickness
+        FLOC 31 24
+        STRFILLIN 15 64
+        POP "PlateThicknessPopup"
+    ENDFIELD
+
+    TEXT "Material:"
+        TLOC 53 24
+    ENDTEXT
+
+    POPUP <PlateMaterialPopup>"""".
+    FIELD PlateMaterial
+        FLOC 60 24
+        ENUMSET 17
+        POP "PlateMaterialPopup"
+    ENDFIELD
+
+    FLEXMODE EdgeGravity
+    FLEX pq_decap_intro_bitmap 0 0 0 1
+    FLEX DrillGroup    0 0 1 1
+    FLEX PadstackName  0 0 1 0
+    FLEX DrillGrid     0 0 1 1
+
+    ENDTILE
+ENDFORM

@@ -1,0 +1,816 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>
+      VHDL netlist format
+    </title>
+    <meta name="Approver" content="Technical Publications" />
+    <meta name="Author" content="Technical Publications" />
+    <meta name="CreateDate" content="2012-10-10" />
+    <meta name="CreateTime" content="1349876215" />
+    <meta name="DataType" content="Manuals" />
+    <meta name="Description" content="UG" />
+    <meta name="DocTitle" content="OrCAD Capture User Guide" />
+    <meta name="DocType" content="User Guide" />
+    <meta name="FileTitle" content="VHDL netlist format" />
+    <meta name="Keywords" content="" />
+    <meta name="FileType" content="Chapter" />
+    <meta name="Keyword" content="cap_ug" />
+    <meta name="Language" content="English" />
+    <meta name="ModifiedDate" content="2012-10-10" />
+    <meta name="ModifiedTime" content="1349876215" />
+    <meta name="NextFile"
+    content="VST%2BModel%2Bnetlist%2Bformat.html" />
+    <meta name="Group" content="" />
+    <meta name="Platform" content="All," />
+    <meta name="PrevFile"
+    content="Verilog%2Bnetlist%2Bformat.html" />
+    <meta name="Product"
+    content="Allegro Design Entry CIS,OrCAD Capture," />
+    <meta name="ProductFamily"
+    content="Silicon-Package-Board Co-Design,Silicon-Package-Board Co-Design," />
+    <meta name="ProductVersion" content="16.6" />
+    <meta name="RightsManagement"
+    content="Copyright 2011-2012 Cadence Design Systems Inc." />
+    <meta name="Title"
+    content="OrCAD Capture User Guide -- VHDL netlist format" />
+    <meta name="Version" content="16.6" />
+    <meta name="Renderer" content="WIKI" />
+    <meta name="SpaceKey" content="capug166" />
+    <link href="styles/site.css" rel="stylesheet"
+    type="text/css" />
+    <meta content="text/html; charset=UTF-8"
+    http-equiv="Content-Type" />
+  </head>
+  <body style="margin-left: 5%;background-color: #FFFFFF;">
+    <a xmlns:html="http://www.w3.org/1999/xhtml" id="pagetop"
+    name="pagetop"></a> <a
+    xmlns:html="http://www.w3.org/1999/xhtml" id="firstpage"
+    name="firstpage"></a> <!-- Begin Buttons -->
+     
+    <table xmlns:html="http://www.w3.org/1999/xhtml" border="0"
+    cellpadding="0" cellspacing="0" width="650">
+      <tbody>
+        <tr>
+          <td colspan="10" height="36" width="650">
+            <img height="34" src="../support/header_doc.gif"
+            width="650" />
+          </td>
+        </tr>
+        <tr>
+          <td height="20" width="59">
+            <a href="javascript:openLibrary()"><img
+            alt="View Library" border="0" height="20"
+            src="../support/nav2_library.gif" width="59" /></a>
+          </td>
+          <td height="20" width="73">
+            <a href="cap_ugTOC.html"><img alt="Table of Contents"
+            border="0" src="../support/nav2_toc.gif" /></a>
+          </td>
+          <td height="20" width="46">
+            <img alt="Index" border="0"
+            src="../support/nav2_index_b.gif" />
+          </td>
+          <td>
+            <a href="Verilog_netlist_format.html"><img
+            alt="Previous" border="0"
+            src="../support/nav2_previous.gif" /></a>
+          </td>
+          <td>
+            <a href="VST_Model_netlist_format.html"><img alt="Next"
+            border="0" src="../support/nav_next.gif" /></a>
+          </td>
+          <td height="20">
+            <a href="cap_ug.pdf"><img alt="Open PDF to print book"
+            border="0" height="20" src="../support/nav2_print.gif"
+            width="114" /></a>
+          </td>
+          <td height="20" width="61">
+            <img src="../support/nav2_black.gif" />
+          </td>
+          <td height="20" width="76">
+            <a href="/feedback.htm"><img alt="Email Comments"
+            border="0" height="20"
+            src="../support/nav2_feedback.gif" width="76" /></a>
+          </td>
+          <td height="20" width="43">
+            <a href="../cdsuser/help.html"><img
+            alt="Help Using Documentation" border="0" height="20"
+            src="../support/nav2_help.gif" width="43" /></a>
+          </td>
+          <td height="20" width="37">
+            <a href="/exitsearch.htm"><img
+            alt="Shut Down Cadence Documentation Server" border="0"
+            height="20" src="../support/nav2_exit.gif"
+            width="37" /></a>
+          </td>
+        </tr>
+      </tbody>
+    </table><!-- End Buttons -->
+    <hr xmlns:html="http://www.w3.org/1999/xhtml" />
+    <div id="main-header">
+      <a xmlns="" id="VHDLnetlistformat"
+      name="VHDLnetlistformat"></a> 
+      <h1 xmlns="" style=" margin: 4px 0 4px;">
+        <span>VHDL netlist format</span>
+      </h1>
+    </div>
+    <div class="wiki-content group" id="main-content">
+      <p>
+        <span class="confluence-anchor-link"
+        id="VHDLnetlistformat-1156265"></span><br />
+         <span class="confluence-anchor-link"
+        id="VHDLnetlistformat-1128737"></span> VHDL netlists have
+        the following characteristics:
+      </p>
+      <ul>
+        <li>
+          <span class="confluence-anchor-link"
+          id="VHDLnetlistformat-1128738"></span> If the 1076-87
+          VHDL standard is selected, legal characters for node
+          names are limited to:<br />
+           <span class="confluence-anchor-link"
+          id="VHDLnetlistformat-1128739"></span> 0..9 A..Z a..z _
+          (underscore)<br />
+           <span class="confluence-anchor-link"
+          id="VHDLnetlistformat-1128740"></span> with the following
+          limitations: 
+          <ul>
+            <li>
+              <span class="confluence-anchor-link"
+              id="VHDLnetlistformat-1128741"></span> The first
+              character is limited to: A..Z a..z
+            </li>
+            <li>
+              <span class="confluence-anchor-link"
+              id="VHDLnetlistformat-1128742"></span> The last
+              character restricted from: _ (underscore)
+            </li>
+            <li>
+              <span class="confluence-anchor-link"
+              id="VHDLnetlistformat-1128743"></span> If the 1076-93
+              VHDL standard is selected, you can use special
+              characters, VHDL reserved words, and names that begin
+              with digits. To do so, delimit the name with
+              backslashes (\) and precede any special
+              characters&#8212;including &quot;internal&quot;
+              backslashes (not the delimiters)&#8212;with a
+              backslash. The following table contains some
+              examples.
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <p>
+        <span class="confluence-anchor-link"
+        id="VHDLnetlistformat-1128890"></span> &#160;
+      </p>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <span class="confluence-anchor-link"
+                  id="VHDLnetlistformat-1128948"></span>
+                  <strong>Object</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <span class="confluence-anchor-link"
+                  id="VHDLnetlistformat-1128950"></span>
+                  <strong>Name</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <span class="confluence-anchor-link"
+                  id="VHDLnetlistformat-1128952"></span>
+                  <strong>Problem</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <span class="confluence-anchor-link"
+                  id="VHDLnetlistformat-1128954"></span>
+                  <strong>Solution</strong>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <span class="confluence-anchor-link"
+                  id="VHDLnetlistformat-1128956"></span> Node
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <span class="confluence-anchor-link"
+                  id="VHDLnetlistformat-1128958"></span> signal
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <span class="confluence-anchor-link"
+                  id="VHDLnetlistformat-1128960"></span> Reserved
+                  Word
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <span class="confluence-anchor-link"
+                  id="VHDLnetlistformat-1128962"></span> \signal\
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <span class="confluence-anchor-link"
+                  id="VHDLnetlistformat-1128964"></span> Node
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <span class="confluence-anchor-link"
+                  id="VHDLnetlistformat-1128966"></span> SIGNAL
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <span class="confluence-anchor-link"
+                  id="VHDLnetlistformat-1128968"></span> Case
+                  sensitivity
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <span class="confluence-anchor-link"
+                  id="VHDLnetlistformat-1128970"></span> \SIGNAL\
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <span class="confluence-anchor-link"
+                  id="VHDLnetlistformat-1128972"></span> Pin
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <span class="confluence-anchor-link"
+                  id="VHDLnetlistformat-1128974"></span> Q\
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <span class="confluence-anchor-link"
+                  id="VHDLnetlistformat-1128976"></span> Overbar
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <span class="confluence-anchor-link"
+                  id="VHDLnetlistformat-1128978"></span> \Q\\\
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <span class="confluence-anchor-link"
+                  id="VHDLnetlistformat-1128980"></span> Pin
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <span class="confluence-anchor-link"
+                  id="VHDLnetlistformat-1128982"></span> R\E\S\E\T\
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <span class="confluence-anchor-link"
+                  id="VHDLnetlistformat-1128984"></span> Overbar
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <span class="confluence-anchor-link"
+                  id="VHDLnetlistformat-1128986"></span>
+                  \R\\E\\S\\E\\T\\\
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <span class="confluence-anchor-link"
+                  id="VHDLnetlistformat-1128988"></span> Pin
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <span class="confluence-anchor-link"
+                  id="VHDLnetlistformat-1128990"></span> 12-GND
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <span class="confluence-anchor-link"
+                  id="VHDLnetlistformat-1128992"></span> Leading
+                  digit, hyphen
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <span class="confluence-anchor-link"
+                  id="VHDLnetlistformat-1128994"></span> \12\-GND\
+                </p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        <span class="confluence-anchor-link"
+        id="VHDLnetlistformat-1128797"></span> For more
+        information, see the 1076-93 VHDL standard, as well as the
+        list of VHDL reserved words, and the VHDL netlist example.
+      </p>
+      <p>
+        Note: <span class="confluence-anchor-link"
+        id="VHDLnetlistformat-1163715"></span> Do not name the data
+        buses in your design in this format: <em>datain1
+        [11..0]</em>, <em>datain2 [11..0]</em>, and so on. Instead
+        use this format for naming the data buses: <em>dataina
+        [11..0]</em>, <em>datainb [11..0]</em>. Because the VHDL
+        netlister expands the data bits in the port map section and
+        writes it as <em>datain (111)</em>.
+      </p>
+      <h5
+      id="VHDLnetlistformat-1128801SchematicattributesinVHDLnetlists">
+        <span class="confluence-anchor-link"
+        id="VHDLnetlistformat-1128801"></span> <em>Schematic
+        attributes in VHDL netlists</em>
+      </h5>
+      <p>
+        <span class="confluence-anchor-link"
+        id="VHDLnetlistformat-1128802"></span> You can enter part
+        or net attributes on your schematic for inclusion in the
+        VHDL netlist in one of three ways:
+      </p>
+      <ul>
+        <li>
+          <span class="confluence-anchor-link"
+          id="VHDLnetlistformat-1128803"></span> You can enter
+          attributes (properties) with your own user-defined
+          types.<br />
+           <span class="confluence-anchor-link"
+          id="VHDLnetlistformat-1128804"></span> To do this, when
+          you assign a property to a part or net in the schematic,
+          you define it thusly:
+        </li>
+      </ul>
+      <div class="preformatted panel" style="border-width: 1px;">
+        <div class="preformattedContent panelContent">
+<pre>
+attribute name: name
+attribute value: vhdl_type is value
+</pre>
+        </div>
+      </div>
+      <p>
+        <span class="confluence-anchor-link"
+        id="VHDLnetlistformat-1128806"></span> So, for example, to
+        enter a property for the user-defined type part_version,
+        you assign the name and value as follows:
+      </p>
+      <div class="preformatted panel" style="border-width: 1px;">
+        <div class="preformattedContent panelContent">
+<pre>
+attribute name: my_part
+attribute value: part_version is XC1.2
+</pre>
+        </div>
+      </div>
+      <p>
+        <span class="confluence-anchor-link"
+        id="VHDLnetlistformat-1128808"></span> The resulting VHDL
+        netlist would include the attribute as follows:<br />
+         <span class="confluence-anchor-link"
+        id="VHDLnetlistformat-1128809"></span> ATTRIBUTE
+        my_part:part_version<br class="atl-forced-newline" />
+         ATTRIBUTE my_part of PA3 : signal is XC1.2
+      </p>
+      <p>
+        Note: <span class="confluence-anchor-link"
+        id="VHDLnetlistformat-1129070"></span> If you do not define
+        the property&#8217;s VHDL type in the value field, or if
+        the VHDL type is not defined in the ATTRIBUTE.VHX file,
+        Capture assigns the type &#8220;string&#8221; to that
+        property.
+      </p>
+      <ul>
+        <li>
+          <span class="confluence-anchor-link"
+          id="VHDLnetlistformat-1128819"></span> You can enter
+          attributes (properties) without a user-defined
+          type.<br />
+           <span class="confluence-anchor-link"
+          id="VHDLnetlistformat-1128820"></span> To do this, when
+          you assign a property to a part or net in the schematic,
+          you define it thusly:
+        </li>
+      </ul>
+      <div class="preformatted panel" style="border-width: 1px;">
+        <div class="preformattedContent panelContent">
+<pre>
+attribute name: name
+attribute value: value
+</pre>
+        </div>
+      </div>
+      <p>
+        <span class="confluence-anchor-link"
+        id="VHDLnetlistformat-1128822"></span> So, for example, to
+        enter a property without a user-defined type, you assign
+        the name and value as follows:
+      </p>
+      <div class="preformatted panel" style="border-width: 1px;">
+        <div class="preformattedContent panelContent">
+<pre>
+attribute name: blackbox
+attribute value: no_touch
+</pre>
+        </div>
+      </div>
+      <p>
+        <span class="confluence-anchor-link"
+        id="VHDLnetlistformat-1128824"></span> The resulting VHDL
+        netlist would include the attribute as follows:
+      </p>
+      <div class="preformatted panel" style="border-width: 1px;">
+        <div class="preformattedContent panelContent">
+<pre>
+ATTRIBUTE blackbox:string
+ATTRIBUTE no_touch of PA3 : signal is true
+</pre>
+        </div>
+      </div>
+      <ul>
+        <li>
+          <span class="confluence-anchor-link"
+          id="VHDLnetlistformat-1128826"></span> You can enter
+          attributes (properties) that are assigned types in the
+          ATTRIBUTE.VHX file by matching the attribute name with an
+          attribute type that is defined in that file.<br />
+           <span class="confluence-anchor-link"
+          id="VHDLnetlistformat-1128827"></span> To do this, when
+          you assign a property to a part or net in the schematic,
+          you do not explicitly assign it a type and you use a name
+          that is defined as a particular type in the
+          ATTRIBUTES.VHX file. Thus:
+        </li>
+      </ul>
+      <div class="preformatted panel" style="border-width: 1px;">
+        <div class="preformattedContent panelContent">
+<pre>
+attribute name: defined_name
+attribute value: value
+</pre>
+        </div>
+      </div>
+      <p>
+        <span class="confluence-anchor-link"
+        id="VHDLnetlistformat-1128829"></span> In this case,
+        Capture checks the contents of the ATTRIBUTE.VHX file,
+        locates the attribute name and associates the type with the
+        attribute name.<br />
+         <span class="confluence-anchor-link"
+        id="VHDLnetlistformat-1128830"></span> So, for example, to
+        enter a property and assign it a type as defined in the
+        ATTRIBUTE.VHX file, you assign the name and value as
+        follows:
+      </p>
+      <div class="preformatted panel" style="border-width: 1px;">
+        <div class="preformattedContent panelContent">
+<pre>
+attribute name: attribute_syn_preserve
+attribute value: false
+</pre>
+        </div>
+      </div>
+      <p>
+        <span class="confluence-anchor-link"
+        id="VHDLnetlistformat-1128832"></span> The property
+        attribute_syn_preserve is defined as type
+        &#8220;boolean&#8221; in the ATTRIBUTE.VHX file. Therefore,
+        the resulting VHDL netlist would include the attribute as
+        follows:
+      </p>
+      <div class="preformatted panel" style="border-width: 1px;">
+        <div class="preformattedContent panelContent">
+<pre>
+ATTRIBUTE attribute_syn_preserve:boolean
+ATTRIBUTE attribute_syn_preserve of PA3 : signal is false
+</pre>
+        </div>
+      </div>
+      <p>
+        Note: <span class="confluence-anchor-link"
+        id="VHDLnetlistformat-1129127"></span> The ATTRIBUTE.VHX
+        file is a text file that you can edit to define your own
+        attributes and associated types.
+      </p>
+      <h5 id="VHDLnetlistformat-1129137Example">
+        <span class="confluence-anchor-link"
+        id="VHDLnetlistformat-1129137"></span> <em>Example</em>
+      </h5>
+      <p>
+        <span class="confluence-anchor-link"
+        id="VHDLnetlistformat-1129143"></span> This netlist was
+        created with no options selected. VHDL netlists normally
+        have a .VHD file extension.
+      </p>
+      <div class="preformatted panel" style="border-width: 1px;">
+        <div class="preformattedContent panelContent">
+<pre>
+LIBRARY IEEE;
+USE IEEE.std_logic_1164.all;
+ENTITY EX6B IS PORT (
+X : IN std_logic;
+Y : IN std_logic;
+CARRY : OUT std_logic;
+SUM : OUT std_logic
+); END EX6B;
+ARCHITECTURE STRUCTURE OF EX6B IS
+-- COMPONENTS
+COMPONENT \74LS32\
+PORT (
+I0_A : IN std_logic;
+I1_A : IN std_logic;
+O_A : OUT std_logic;
+VCC : IN std_logic;
+GND : IN std_logic;
+I0_B : IN std_logic;
+I1_B : IN std_logic;
+O_B : OUT std_logic;
+I0_C : IN std_logic;
+I1_C : IN std_logic;
+O_C : OUT std_logic;
+I0_D : IN std_logic;
+I1_D : IN std_logic;
+O_D : OUT std_logic
+); END COMPONENT;
+COMPONENT \74LS08\
+PORT (
+I0_A : IN std_logic;
+I1_A : IN std_logic;
+O_A : OUT std_logic;
+VCC : IN std_logic;
+GND : IN std_logic;
+I0_B : IN std_logic;
+I1_B : IN std_logic;
+O_B : OUT std_logic;
+I0_C : IN std_logic;
+I1_C : IN std_logic;
+O_C : OUT std_logic;
+I0_D : IN std_logic;
+I1_D : IN std_logic;
+O_D : OUT std_logic
+); END COMPONENT;
+COMPONENT \74LS04\
+PORT (
+I_A : IN std_logic;
+O_A : OUT std_logic;
+VCC : IN std_logic;
+GND : IN std_logic;
+I_B : IN std_logic;
+O_B : OUT std_logic;
+I_C : IN std_logic;
+O_C : OUT std_logic;
+I_D : IN std_logic;
+O_D : OUT std_logic;
+I_E : IN std_logic;
+O_E : OUT std_logic;
+I_F : IN std_logic;
+O_F : OUT std_logic
+); END COMPONENT;
+-- SIGNALS
+SIGNAL X_BAR : std_logic;
+SIGNAL N00037 : std_logic;
+SIGNAL N00035 : std_logic;
+SIGNAL GND : std_logic;
+SIGNAL VCC : std_logic;
+SIGNAL N5056796111 : std_logic;
+-- GATE INSTANCES
+BEGIN
+U1 : \74LS32\ PORT MAP
+I0_A =&gt; &#39;Z&#39;,
+I1_A =&gt; &#39;Z&#39;,
+O_A =&gt; OPEN,
+VCC =&gt; OPEN,
+GND =&gt; OPEN,
+I0_B =&gt; N00035,
+I1_B =&gt; N00037,
+O_B =&gt; SUM,
+I0_C =&gt; &#39;Z&#39;,
+I1_C =&gt; &#39;Z&#39;,
+O_C =&gt; OPEN,
+I0_D =&gt; &#39;Z&#39;,
+I1_D =&gt; &#39;Z&#39;,
+O_D =&gt; OPEN
+);
+U2 : \74LS08\ PORT MAP(
+I0_A =&gt; X,
+I1_A =&gt; N5056796111,
+O_A =&gt; N00035,
+VCC =&gt; VCC,
+GND =&gt; GND,
+I0_B =&gt; Y,
+I1_B =&gt; X_BAR,
+O_B =&gt; N00037,
+I0_C =&gt; Y,
+I1_C =&gt; X,
+O_C =&gt; CARRY,
+I0_D =&gt; &#39;Z&#39;,
+I1_D =&gt; &#39;Z&#39;,
+O_D =&gt; OPEN
+);
+U3 : \74LS04\ PORT MAP(
+I_A =&gt; X,
+O_A =&gt; X_BAR,
+VCC =&gt; VCC,
+GND =&gt; GND,
+I_B =&gt; Y,
+O_B =&gt; N5056796111,
+I_C =&gt; &#39;Z&#39;,
+O_C =&gt; OPEN,
+I_D =&gt; &#39;Z&#39;,
+O_D =&gt; OPEN,
+I_E =&gt; &#39;Z&#39;,
+O_E =&gt; OPEN,
+I_F =&gt; &#39;Z&#39;,
+O_F =&gt; OPEN
+);
+END STRUCTURE;
+LIBRARY IEEE;
+USE IEEE.std_logic_1164.all;
+ENTITY FULLADD IS PORT (
+SUM : OUT std_logic;
+X : IN std_logic;
+Y : IN std_logic;
+CARRY_OUT : OUT std_logic;
+CARRY_IN : IN std_logic
+); END FULLADD;
+ARCHITECTURE STRUCTURE OF FULLADD IS
+-- COMPONENTS
+COMPONENT \74LS32\
+PORT (
+I0_A : IN std_logic;
+I1_A : IN std_logic;
+O_A : OUT std_logic;
+VCC : IN std_logic;
+GND : IN std_logic;
+I0_B : IN std_logic;
+I1_B : IN std_logic;
+O_B : OUT std_logic;
+I0_C : IN std_logic;
+I1_C : IN std_logic;
+O_C : OUT std_logic;
+I0_D : IN std_logic;
+I1_D : IN std_logic;
+O_D : OUT std_logic
+); END COMPONENT;
+COMPONENT EX6B PORT (
+X : IN std_logic;
+Y : IN std_logic;
+CARRY : OUT std_logic;
+SUM : OUT std_logic
+); END COMPONENT;
+-- SIGNALS
+SIGNAL N00015 : std_logic;
+SIGNAL N00013 : std_logic;
+SIGNAL N00025 : std_logic;
+SIGNAL VCC : std_logic;
+SIGNAL GND : std_logic;
+-- GATE INSTANCES
+BEGIN
+U1 : \74LS32\&amp;#9;PORT MAP
+I0_A =&gt; N00015,
+I1_A =&gt; N00025,
+O_A =&gt; CARRY_OUT,
+VCC =&gt; VCC,
+GND =&gt; GND,
+I0_B =&gt; &#39;Z&#39;,
+I1_B =&gt; &#39;Z&#39;,
+O_B =&gt; OPEN,
+I0_C =&gt; &#39;Z&#39;,
+I1_C =&gt; &#39;Z&#39;,
+O_C =&gt; OPEN,
+I0_D =&gt; &#39;Z&#39;,
+I1_D =&gt; &#39;Z&#39;,
+O_D =&gt; OPEN
+);
+halfadd_A : EX6B PORT MAP(
+X =&gt; CARRY_IN,
+Y =&gt; N00013,
+CARRY =&gt; N00015,
+SUM =&gt; SUM
+);
+halfadd_B : EX6B PORT MAP(
+X =&gt; X,
+Y =&gt; Y,
+CARRY =&gt; N00025,
+SUM =&gt; N00013
+);
+END STRUCTURE;
+</pre>
+        </div>
+      </div>
+    </div>
+    <hr xmlns:html="http://www.w3.org/1999/xhtml" />
+    <hr xmlns:html="http://www.w3.org/1999/xhtml" align="left" />
+    <div xmlns:html="http://www.w3.org/1999/xhtml"
+    style="text-align: left;">
+      <!-- Begin Buttons -->
+      <table border="0" cellpadding="0" cellspacing="0"
+      width="650">
+        <tbody>
+          <tr>
+            <td colspan="10" height="36" width="650">
+              <img height="34" src="../support/header_doc.gif"
+              width="650" />
+            </td>
+          </tr>
+          <tr>
+            <td height="20" width="59">
+              <a href="javascript:openLibrary()"><img
+              alt="View Library" border="0" height="20"
+              src="../support/nav2_library.gif" width="59" /></a>
+            </td>
+            <td height="20" width="73">
+              <a href="cap_ugTOC.html"><img alt="Table of Contents"
+              border="0" src="../support/nav2_toc.gif" /></a>
+            </td>
+            <td height="20" width="46">
+              <img alt="Index" border="0"
+              src="../support/nav2_index_b.gif" />
+            </td>
+            <td>
+              <a href="Verilog_netlist_format.html"><img
+              alt="Previous" border="0"
+              src="../support/nav2_previous.gif" /></a>
+            </td>
+            <td>
+              <a href="VST_Model_netlist_format.html"><img
+              alt="Next" border="0"
+              src="../support/nav_next.gif" /></a>
+            </td>
+            <td height="20">
+              <a href="cap_ug.pdf"><img
+              alt="Open PDF to print book" border="0" height="20"
+              src="../support/nav2_print.gif" width="114" /></a>
+            </td>
+            <td height="20" width="61">
+              <img src="../support/nav2_black.gif" />
+            </td>
+            <td height="20" width="76">
+              <a href="/feedback.htm"><img alt="Email Comments"
+              border="0" height="20"
+              src="../support/nav2_feedback.gif" width="76" /></a>
+            </td>
+            <td height="20" width="43">
+              <a href="../cdsuser/help.html"><img
+              alt="Help Using Documentation" border="0" height="20"
+              src="../support/nav2_help.gif" width="43" /></a>
+            </td>
+            <td height="20" width="37">
+              <a href="/exitsearch.htm"><img
+              alt="Shut Down Cadence Documentation Server"
+              border="0" height="20" src="../support/nav2_exit.gif"
+              width="37" /></a>
+            </td>
+          </tr>
+        </tbody>
+      </table><!-- End Buttons -->
+    </div><br xmlns:html="http://www.w3.org/1999/xhtml" />
+     <font xmlns:html="http://www.w3.org/1999/xhtml" size="-1">For
+    support, see <a href="http://support.cadence.com"
+    target="_blank">Cadence Online Support</a> service.</font> <br
+    xmlns:html="http://www.w3.org/1999/xhtml" />
+     <br xmlns:html="http://www.w3.org/1999/xhtml" />
+     <font xmlns:html="http://www.w3.org/1999/xhtml"
+    size="-1"><i>Copyright &#169; 2012, <a
+    href="http://www.cadence.com">Cadence Design Systems,
+    Inc.</a></i></font> <br
+    xmlns:html="http://www.w3.org/1999/xhtml" />
+     <font xmlns:html="http://www.w3.org/1999/xhtml" size="-1">All
+    rights reserved.</font> <br
+    xmlns:html="http://www.w3.org/1999/xhtml" />
+     <br xmlns:html="http://www.w3.org/1999/xhtml" />
+  </body>
+</html>

@@ -1,0 +1,27 @@
+ include "dfa_constraints.par" 
+
+ use DFA;                       
+
+ RuleDefine 
+
+      Rule orphan_via_audit 
+  /*   The Parameters are 
+         */ 
+via1 := isVia(hole1) and
+if(isNetConnected(via1) == "False", valErr1 := "\n Not on a Net " + name(via1)+ " ", valErr1 := "") and
+if(noOfCLines(via1) == 0 , valErr2 := "No Etch Connected to  "+ name(via1), valErr2 := "") and
+valErr := "Orphan Via - "+ name(via1)  and
+( valErr1 /= "" or
+valErr2 /= "" ) and 
+WriteDRCMarker(via1,valErr,name(via1))
+
+Message(ERROR,via1,"?valErr",
+					"\n ?valErr1",
+					" ?valErr2");
+
+
+
+ 
+      EndRule 
+
+ EndRuleDefine

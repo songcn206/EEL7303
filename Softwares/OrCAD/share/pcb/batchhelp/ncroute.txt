@@ -1,0 +1,28 @@
+
+NC Route Generator:
+	ncroute [<args>] [<design>]
+
+   Arguments
+	[-q]   - suppress verbose messages (this is the default)
+	[-v]   - enable verbose messages
+	[-o <route file>]   - Output route file name (default extension .rou). 
+			Default name is <design>.rou
+			If seperate route files are specified for unplated vs. plated then
+			two rou files are generated with "_plated"  appended to the route file 
+			name for the plated output.
+	[-n <alt_name>] - if present substitue alt_name for the design name in output files.
+			The default is the <design> name. This option is not typically 
+			used.
+
+   <design> - design file to generate nc route from
+
+   Other notes:
+	- Expects to find "nc_param.txt" file located based on NCDPATH. This controls
+	  additional ncroute settings. If not found uses Cadence defaults.
+	  Allegro NCRoute Dialog vs. nc_param.txt file contents:
+	     Seperate files for plated/non-plated routing: SEPARATE-ROUTING - YES/NO 
+	     Route feedrate:  FEEDRATE - <value> 
+	- Expects to find ncroutebits.txt if not found generates one called 
+	  ncroutebits_auto.txt
+	- Requires a BOARD GEOMETRY/NCROUTE_PATH layer in the design.
+

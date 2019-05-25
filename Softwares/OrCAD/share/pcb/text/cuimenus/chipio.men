@@ -1,0 +1,586 @@
+// $Header: /vobs/psd_backend_data/data/men/chipio.men /main/137 25-Feb-12.17:33:54 PCS $
+//------------------------------------------------------------------------
+//
+//    Cadence Design Systems
+//
+// (C) COPYRIGHT, Cadence Design Systems, Inc. 2001-2010
+// All Rights Reserved
+// Licensed Materials - Property of Cadence Design Systems
+//
+// No part of this file may be reproduced, stored in a retrieval system,
+// or transmitted in any form or by any means --- electronic, mechanical,
+// photocopying, recording, or otherwise --- without prior written permission
+// of Cadence Design Systems, Inc.
+//
+// WARRANTY:
+// Use all material in this file at your own risk.  Cadence Design Systems 
+// makes no claims about any material contained in this file.
+//
+//------------------------------------------------------------------------
+
+// Loadable Menu File
+// *******************  Cadence System Feasibility Planner - CIO  **********************
+
+chipio MENU DISCARDABLE
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New...",                     "new"
+        MENUITEM "&Open...",                    "open"
+        MENUITEM SEPARATOR
+        MENUITEM "&Save",                       "save"
+        MENUITEM "Save &As...",                 "save_as"
+        MENUITEM SEPARATOR
+        POPUP "&Import"
+        BEGIN
+            MENUITEM "&Netlist-In Wizard...",   "net list in"
+            MENUITEM "&Logic...",               "netin param"
+            MENUITEM SEPARATOR
+            MENUITEM "D&XF...",                 "dxf in"
+            MENUITEM "&Artwork...",             "load photoplot"
+            MENUITEM "Strea&m...",              "load stream"
+            MENUITEM SEPARATOR
+            MENUITEM "&Sub-Drawing...",         "clppaste"
+            MENUITEM "Tec&hfile...",            "techfile in"
+            MENUITEM "Param&eters...",          "param in"
+            MENUITEM "Placeme&nt...",           "plctxt in"
+            MENUITEM "Active &Times...",        "signal atimes"
+#ifdef ICP_SYM_SPREADSHEET_IMPORT_BETA
+            MENUITEM SEPARATOR
+            MENUITEM "Symbol Spreadsheet...",   "spreadsheet to symbol"
+#endif
+            MENUITEM SEPARATOR
+            MENUITEM "Pin dela&y...",           "pin_delay in"
+        END
+        POPUP "&Export"
+        BEGIN
+            MENUITEM "Update Reference Design...", "update sfp reference"
+            MENUITEM SEPARATOR
+            MENUITEM "B&GA Text-Out Wizard...", "bga text out"
+            MENUITEM "&Die Text-Out Wizard...", "die text out"
+            MENUITEM SEPARATOR
+            MENUITEM "Die Abstract File...",    "die abstract export"
+            MENUITEM "D&EF (Die Pins Only)...", "def out"
+            MENUITEM "OpenAccess (Die Pins Only)...", "oa out"
+            MENUITEM SEPARATOR
+            MENUITEM "&Logic...",               "feedback"
+            MENUITEM "&Netlist with Properties...", "netout"
+            MENUITEM SEPARATOR
+            MENUITEM "D&XF...",                 "dxf out"
+            MENUITEM SEPARATOR
+            MENUITEM "&Sub-Drawing",            "clpCopy"
+            MENUITEM "&Techfile...",            "techfile out"
+            MENUITEM "Param&eters...",          "param out"
+            MENUITEM "Li&braries...",           "dlib"
+            MENUITEM "&Placement...",           "plctxt out"
+            MENUITEM SEPARATOR
+            MENUITEM "Symbol Spreadsheet...",   "symbol to spreadsheet"
+            MENUITEM SEPARATOR
+            MENUITEM "Pin dela&y...",           "pin_delay out"
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "&Viewlog...",                 "viewlog -last"
+        MENUITEM "&File Viewer...",             "viewlog -browse"
+        MENUITEM "Plot Set&up...",              "plot setup"
+        MENUITEM "Plot Previe&w...",            "plot preview"
+        MENUITEM "&Plot...",                    "plot"
+        MENUITEM SEPARATOR
+        MENUITEM "P&roperties...",              "file_property"
+        MENUITEM "C&hange Editor...",           "toolswap"
+        MENUITEM "S&cript...",                  "script"
+        MENUITEM SEPARATOR
+        POPUP "Recent &Designs"
+        BEGIN
+            MENUITEM "Recent File List",        "|mru"
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       "exit"
+    END
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "&Undo",                       "undo"
+        MENUITEM "&Redo",                       "redo"
+        MENUITEM SEPARATOR
+        MENUITEM "&Move",                       "move"
+        MENUITEM "&Copy",                       "copy"
+        MENUITEM "M&irror",                     "mirror"
+        MENUITEM "&Spin",                       "spin"
+        MENUITEM "C&hange",                     "change"
+        MENUITEM "&Delete",                     "delete"
+        MENUITEM SEPARATOR
+        MENUITEM "&Z-Copy",                     "zcopy shape"
+        POPUP "Split &Plane"
+        BEGIN
+            MENUITEM "&Parameters...",          "split plane param"
+            MENUITEM "&Create",                 "split plane create"
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "&Vertex",                     "vertex"
+        MENUITEM "Delete Verte&x",              "delete vertex"
+        MENUITEM "Cline Change &Width...",      "cline change width"
+        MENUITEM "&Text",                       "text edit"
+        MENUITEM SEPARATOR
+        MENUITEM "&Groups",                     "groupedit"
+        MENUITEM "P&roperties",                 "property edit"
+        MENUITEM "&Net Properties...",          "net_properties"
+        MENUITEM SEPARATOR
+        MENUITEM "&LEF Pin Parameters...",      "lef pin param"
+        MENUITEM "Di&e Properties...",          "die properties"
+        MENUITEM "Die &Stack...",               "diestack editor"
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Zoom By Points",             "zoom points"
+        MENUITEM "Zoom &Fit",                   "zoom fit"
+        MENUITEM "Zoom &In",                    "zoom in"
+        MENUITEM "Zoom &Out",                   "zoom out"
+        MENUITEM "Zoom &World",                 "zoom world"
+        MENUITEM "Zoo&m Center",                "zoom center"
+        MENUITEM "Zoom Pre&vious",              "zoom previous"
+        MENUITEM SEPARATOR
+        MENUITEM "Color View &Save",            "colorview create"
+        MENUITEM "Color View Restore &Last",    "colorview restore"
+        MENUITEM SEPARATOR
+        MENUITEM "&Redraw",                     "redraw"
+        POPUP "Wi&ndows"
+        BEGIN
+            MENUITEM "Command",                 "showhide text"
+            MENUITEM "World View",              "showhide view"
+            MENUITEM "Options",                 "showhide options"
+            MENUITEM "Find",                    "showhide find"
+            MENUITEM "Visibility",              "showhide vis"
+            MENUITEM "Show All",                "show allpanes"
+        END
+        MENUITEM "&Customize Toolbar...",       "display toolbar param"
+        MENUITEM "Reset UI to Cadence Default...", "reset dockwindows"
+    END
+    POPUP "&Add"
+    BEGIN
+        MENUITEM "&Line",                       "add line"
+        MENUITEM "&Arc with Radius",            "add rarc"
+        MENUITEM "&3pt Arc",                    "add arc"
+        MENUITEM "&Circle",                     "add circle"
+        MENUITEM "&Rectangle",                  "add rect"
+        MENUITEM "&Frectangle",                 "add frect"
+        MENUITEM "&Text",                       "add text"
+        MENUITEM SEPARATOR
+        MENUITEM "I&nterposer...",              "add interposer"
+        MENUITEM "Spac&er...",                  "add spacer"
+        MENUITEM SEPARATOR
+        MENUITEM "Co-&Design Die...",           "add codesign die"
+        POPUP "&Standard Die"
+        BEGIN
+            MENUITEM "D&EF (Die Pins Only)...", "def in"
+            MENUITEM "&OpenAccess (Die Pins Only)...", "oa in"
+            MENUITEM "D&ie Text-In Wizard...",  "die text in"
+            MENUITEM "&Die Generator...",       "die generator"
+            MENUITEM "D.I.E. &Format...",       "die in"
+        END
+        MENUITEM SEPARATOR
+        POPUP "S&tandard Package"
+        BEGIN
+            MENUITEM "B&GA Text-In Wizard...",  "bga text in"
+            MENUITEM "&BGA Generator...",       "bga generator"
+        END
+    END
+    POPUP "&Display"
+    BEGIN
+        MENUITEM "&Color/Visibility...",        "color192"
+        MENUITEM "&Layer Priority...",          "layer priority"
+        MENUITEM SEPARATOR
+        MENUITEM "S&tatus",                     "status"
+        MENUITEM "&Element",                    "show element"
+        MENUITEM "&Measure",                    "show measure"
+        MENUITEM "Constra&int",                 "cns show"
+        MENUITEM "P&arasitic",                  "show parasitic"
+        MENUITEM "P&roperty...",                "show property"
+        MENUITEM SEPARATOR
+        MENUITEM "&Assign Color",               "assign color"
+        MENUITEM "&Highlight",                  "hilight"
+        MENUITEM "&Dehighlight",                "dehilight"
+        MENUITEM "Advanced Highlight...",       "advanced highlight"
+        MENUITEM SEPARATOR
+        POPUP "&Waive DRCs"
+        BEGIN
+            MENUITEM "&Waive",                  "waive drc"
+            MENUITEM "&Show",                   "show waived drcs"
+            MENUITEM "&Blank",                  "blank waived drcs"
+            MENUITEM "&Restore",                "restore waived drc"
+            MENUITEM "&Restore All",            "restore waived drcs"
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "Rats by &Layer...",           "rats layer"
+        POPUP "&Show Rat Lines"
+        BEGIN
+            MENUITEM "&All",                    "rats all"
+            MENUITEM "&Components",             "rats component"
+            MENUITEM "&Net",                    "rats net"
+            MENUITEM "&Of Selection",           "rats show"
+        END
+        POPUP "&Blank Rat Lines"
+        BEGIN
+            MENUITEM "&All",                    "unrats all"
+            MENUITEM "&Components",             "unrats component"
+            MENUITEM "&Nets",                   "unrats net"
+        END
+    END
+    POPUP "Set&up"
+    BEGIN
+        MENUITEM "Desi&gn Parameters...",       "prmed"
+        MENUITEM "C&hange Drawing Origin",      "chg origin"
+        MENUITEM "&Grids...",                   "define grid"
+        MENUITEM "&Subclasses...",              "define subclass"
+        MENUITEM "&Cross-section...",           "xsection"
+        MENUITEM "&Materials...",               "define materials"
+        POPUP "Applica&tion Mode"
+        BEGIN
+          MENUITEM "General Edit",              "generaledit"
+          MENUITEM "Placement Edit",            "placementedit"
+          MENUITEM "Symbol Edit",               "symboledit"
+          MENUITEM "Etch Edit",                 "etchedit"
+          MENUITEM "Wire Bond Edit",            "wbedit"
+          MENUITEM "Flow Planning",             "ifp"
+          MENUITEM "Signal Integrity",          "signalintegrity"
+          MENUITEM "None",                      "noappmode"
+        END
+        POPUP "Blind/Buried &Via Definitions"
+        BEGIN
+            MENUITEM "&Define B/B Via...",      "define bbvia"
+            MENUITEM "&Auto Define B/B Via...", "auto define bbvia"
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "Enable On-Line D&RC",         "cns onlinedrc"
+        POPUP "Co&nstraints"
+        BEGIN
+            MENUITEM "&Modes...",               "cns cmmodes"
+            MENUITEM "&Electrical...",          "cmgr_elec"
+            MENUITEM "&Physical...",            "cmgr_phys"
+            MENUITEM "&Spacing...",             "cmgr_spac"
+            MENUITEM "Sa&me Net Spacing...",    "cmgr_snspac"
+            MENUITEM "&Assembly...",            "cmgr_adrc"
+            MENUITEM "&Physical Net Overrides...",      "property edit -net_data"
+            MENUITEM "&Spacing Net Overrides...",       "property edit -net_space"
+            MENUITEM "D&FA Constraint Spreadsheet...",  "dfa_spreadsheet"
+            MENUITEM "&Constraint Manager...",  "cmgr"
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "&Property Definitions...",    "define property"
+        MENUITEM "Define &Lists...",            "define list"
+        MENUITEM "LE&F Libraries...",           "lef lib"
+        MENUITEM SEPARATOR
+        POPUP "&Areas"
+        BEGIN
+            MENUITEM "&Component Keepin",       "keepin component"
+            MENUITEM "Component &Keepout",      "keepout component"
+            MENUITEM "Component &Height",       "component_height"
+            MENUITEM SEPARATOR
+            MENUITEM "&Route Keepin",           "keepin router"
+            MENUITEM "Ro&ute Keepout",          "keepout router"
+            MENUITEM "&Wire Keepout",           "keepout wire"
+            MENUITEM "&Via Keepout",            "keepout via"
+            MENUITEM "&Shape Keepout",          "keepout shape"
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "SI &Design Setup...",         "signal setup"
+        MENUITEM "SI Design &Audit...",         "signal audit"
+        MENUITEM SEPARATOR
+        MENUITEM "Datatip Customization...",    "custom datatips"
+        MENUITEM "&User Preferences...",        "enved"
+    END
+    POPUP "&Shape"
+    BEGIN
+        MENUITEM "&Polygon",                    "shape add"
+        MENUITEM "&Rectangular",                "shape add rect"
+        MENUITEM "&Circular",                   "shape add circle"
+        MENUITEM SEPARATOR
+        MENUITEM "&Select Shape or Void",       "shape select"
+        MENUITEM SEPARATOR
+        POPUP "Manual &Void"
+        BEGIN
+            MENUITEM "&Polygon",                "shape void polygon"
+            MENUITEM "&Rectangular",            "shape void rectangle"
+            MENUITEM "&Circular",               "shape void circle"
+            MENUITEM "&Delete",                 "shape void delete"
+            MENUITEM "&Element",                "shape void element"
+            MENUITEM "&Move",                   "shape void move"
+            MENUITEM "&Copy",                   "shape void copy"
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "Edit &Boundary",              "shape edit boundary"
+        MENUITEM SEPARATOR
+        MENUITEM "Change Shape T&ype",          "shape change type"
+        MENUITEM "Chec&k",                      "shape check"
+        MENUITEM SEPARATOR
+        MENUITEM "C&ompose Shape",              "compose shape"
+        MENUITEM "D&ecompose Shape",            "decompose shape"
+        MENUITEM SEPARATOR
+        MENUITEM "&Global Dynamic Params...",   "shape global param"
+    END
+    POPUP "&Logic"
+    BEGIN
+        MENUITEM "Aut&o Create Net...",         "auto create net"
+        MENUITEM "&Create Net...",              "create net"
+        MENUITEM "&Auto Assign Net...",         "auto assign net"
+        MENUITEM "Assign &Net",                 "assign net"
+        MENUITEM "Deassi&gn Net",               "deassign net"
+        MENUITEM "Deri&ve Assignment",          "derive assignment"
+        MENUITEM SEPARATOR
+        MENUITEM "Aut&o Assign Pin Use...",     "auto assign pinuse"
+        MENUITEM SEPARATOR
+        MENUITEM "&Identify DC Nets...",        "identify nets"
+        MENUITEM SEPARATOR
+        MENUITEM "Net &Logic",                  "net logic"
+        MENUITEM "Net &Schedule",               "net schedule"
+        MENUITEM "Assign &Differential Pair...", "diff pairs"
+        MENUITEM SEPARATOR
+        MENUITEM "Assign &RefDes",              "assign refdes"
+        POPUP "Auto Rename Re&fdes"
+        BEGIN
+            MENUITEM "&Rename...",              "rename param"
+            MENUITEM "&Design",                 "rename area design"
+            MENUITEM "R&oom",                   "rename area room"
+            MENUITEM "&Window",                 "rename area window"
+            MENUITEM "&List",                   "rename area list"
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "&Edit Parts List...",         "edit parts"
+    END
+    POPUP "&Place"
+    BEGIN
+        MENUITEM "&Manually...",                "place manual"
+        MENUITEM SEPARATOR
+        POPUP "&Autoplace"
+        BEGIN
+            MENUITEM "&Insight...",             "place insight"
+            MENUITEM "&Parameters...",          "place param"
+            MENUITEM "&Top Grids",              "place set topgrid"
+            MENUITEM "&Bottom Grids",           "place set bottomgrid"
+            MENUITEM SEPARATOR
+            MENUITEM "&Design",                 "place area design"
+            MENUITEM "&Room",                   "place area room"
+            MENUITEM "&Window",                 "place area window"
+            MENUITEM "&List",                   "place area list"
+        END
+        MENUITEM "&Interactive",                "place interactive"
+        POPUP "S&wap"
+        BEGIN
+            MENUITEM "&Pins",                   "swap pins"
+            MENUITEM "&Functions",              "swap functions"
+            MENUITEM "&Components",             "swap components"
+        END
+        POPUP "A&utoswap"
+        BEGIN
+            MENUITEM "&Parameters...",          "swap param"
+            MENUITEM "&Design",                 "swap area design"
+            MENUITEM "&Room",                   "swap area room"
+            MENUITEM "&Window",                 "swap area window"
+            MENUITEM "&List",                   "swap area list"
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "Up&date Symbols...",          "refresh symbol"
+        POPUP "Rep&lace SI Temporary"
+        BEGIN
+            MENUITEM "&Devices",                "replace temp_devices"
+            MENUITEM "&Symbols",                "replace temp_symbols"
+        END
+    END
+
+#ifdef _ALLEGRO_GRE_ALL || _ALLEGRO_GRE_PLAN || _ALLEGRO_GRE_IFD
+    POPUP "FlowPla&n"
+    BEGIN
+        MENUITEM "Auto Bundle",                 "autobundle"
+        MENUITEM "&Create Bundle",              "bundle create"
+        MENUITEM "&Delete Bundle",              "bundle delete"
+        MENUITEM "&Edit Bundle",                "bundle edit"
+        MENUITEM "&Split Bundle",               "bundle split"
+        MENUITEM "Bundle &Properties",          "bundle properties"
+        MENUITEM SEPARATOR
+        MENUITEM "Insert Flow Via",             "flow via insert"
+        MENUITEM "Delete Flow Via",             "flow via delete"
+        MENUITEM "Move Flow Via",               "flow via move"
+        MENUITEM "Slide Flow",                  "flow slide"
+        MENUITEM "Edit Flow Vertex",            "flow vertex"
+        MENUITEM "Delete Flow Vertex",          "flow vertex delete"
+        MENUITEM "Move Flow",                   "flow move" 
+        MENUITEM "Copy Flow",                   "flow copy"
+        MENUITEM "Restore Default Flow",        "flow default"
+#ifdef _ALLEGRO_GRE_ALL || _ALLEGRO_GRE_PLAN
+        MENUITEM SEPARATOR
+        POPUP "Plan"
+        BEGIN
+            MENUITEM "Spatial",                 "rplan plan spatial"
+            MENUITEM "Topological",             "rplan plan topological"
+            MENUITEM "Accurate",                "rplan plan accurate"
+        END
+        MENUITEM "Optimize",                    "rplan optimize"
+        MENUITEM "Plan Status",                 "rplan status"
+        MENUITEM "Commit Plan",                 "rplan commit"
+        POPUP "Convert"
+        BEGIN
+            MENUITEM "to Topological",          "rplan convert topological"
+            MENUITEM "to Spatial",              "rplan convert spatial"
+        END
+        MENUITEM "Delete Plan",                 "rplan delete"
+#endif
+    END
+#endif
+
+    POPUP "&Route"
+    BEGIN
+        MENUITEM "&Connect",                    "add connect"
+        MENUITEM "&Slide",                      "slide"
+        MENUITEM SEPARATOR
+        MENUITEM "Power/Ground &Ring Generator...", "pring wizard"
+        POPUP "&Wire Bond"
+        BEGIN
+            MENUITEM "&Select",                 "wirebond select"
+            MENUITEM "A&dd",                    "wirebond add"
+            MENUITEM "&Edit",                   "wirebond edit"
+            MENUITEM "Add/Edit &Guide Paths",   "wirebond manage guide paths"
+            MENUITEM SEPARATOR
+            MENUITEM "Se&ttings...",            "wirebond settings"
+            MENUITEM SEPARATOR
+            MENUITEM "Add/Edit &Non-Standard",  "wirebond add nonstandard"
+            MENUITEM SEPARATOR
+            MENUITEM "&Bond Wire Text Import...", "bondwire text in"
+            MENUITEM "&Import...",              "wirebond import"
+            MENUITEM "E&xport...",              "wirebond export"
+        END
+        MENUITEM SEPARATOR
+        POPUP "&Via Structure"
+        BEGIN
+            MENUITEM "&Add...",                 "add via structure"
+            MENUITEM "&Delete...",              "delete_via_structure"
+            MENUITEM "&Replace",                "replace via structure"
+#ifdef VIA_STRUCT_REPLACE_VIA_BETA
+        MENUITEM "&Replace Via with Via Structure", "replace via with via structure"
+#endif
+            MENUITEM "Re&fresh ...",            "refresh via structure"
+#ifdef VIA_STRUCT_DISBAND_BETA
+            MENUITEM "&Disband",                "disband via structure"
+#endif
+            MENUITEM SEPARATOR
+            MENUITEM "Create Fanout",           "create fanout"
+            MENUITEM "Copy Fanout",             "copy fanout"
+            POPUP "&Convert Fanout"
+            BEGIN
+                MENUITEM "Mark",                "mark fanout"
+                MENUITEM "Unmark",              "unmark fanout"
+            END
+        END
+        MENUITEM "Offset &Via Generator...",    "offset via gen"
+        MENUITEM SEPARATOR
+        MENUITEM "Flip Chip Routing Layer Estimation",  "layer estimation"
+        MENUITEM "Flip Chip Die Escape Generator",      "die escape gen"
+        MENUITEM "Wire Bond Via Estimation",            "wire bond via estimation"
+        MENUITEM "Wire Bond Die Escape Generator",      "wire bond escape"
+        MENUITEM "BGA Escape Generator",                "bga escape gen"
+        MENUITEM SEPARATOR
+        MENUITEM "Routing &Layer Assign",       "assign route layer"
+        MENUITEM "&Plating Layer Assign",       "assign plating layer"
+        MENUITEM "&Define Net Priority",        "route priority"
+        MENUITEM "Cust&om Smooth",              "custom smooth"
+        MENUITEM SEPARATOR
+        POPUP "Router"
+        BEGIN
+            MENUITEM "&Route Radial",           "radial router"
+            MENUITEM "&Fanout By Pick",         "fanout_by_pick"
+            MENUITEM "Route By &Pick",          "route_by_pick"
+            MENUITEM "&Elongation By Pick",     "elong_by_pick"
+            MENUITEM SEPARATOR
+            MENUITEM "Route &Automatic...",     "auto_route"
+            MENUITEM "Router &Checks",          "specctra checks"
+            MENUITEM "&Interactive Editor...",  "specctra"
+            MENUITEM SEPARATOR
+            MENUITEM "&Miter By Pick",          "miter_by_pick"
+            MENUITEM "&UnMiter By Pick",        "unmiter_by_pick"
+        END
+    END
+    POPUP "A&nalyze"
+    BEGIN
+        MENUITEM "&Initialize...",                  "signal init"
+        MENUITEM "Model &Browser...",               "signal library"
+        MENUITEM "&Model Assignment...",            "signal model"
+        MENUITEM "Model &Dump/Refresh...",          "signal model refresh"
+        MENUITEM "&Preferences",                    "signal prefs"
+        MENUITEM "P&robe...",                       "signal probe"
+        MENUITEM "&Xtalk Table...",                 "signal xtalktable"
+        MENUITEM "EMI Rule &Checker",               "emcontrol"
+    END
+    POPUP "&Reports"
+    BEGIN
+        MENUITEM "&Net Delay Report...",            "net delay report"
+        MENUITEM "Conductor &Length Report...",     "cond length report"
+        MENUITEM "&Wire Bond Report...",            "wirebond reports"
+        MENUITEM "&Metal Usage Report...",          "metal usage report"
+        MENUITEM "&Reports...",                     "reports"
+        POPUP "Quick Reports"
+        BEGIN
+            MENUITEM "Reports...",                  "reports"
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "Component Com&pare...",           "compare comp"
+    END
+    POPUP "&Tools"
+    BEGIN
+        MENUITEM "Create &Module...",               "create module"
+        POPUP "&Padstack"
+        BEGIN
+            MENUITEM "Modify &Design Padstack...",  "padeditdb"
+            MENUITEM "Modify &Library Padstack...", "padeditlib"
+            MENUITEM "&Replace...",                 "replace padstack"
+            MENUITEM "&Group Edit...",              "multpadedit"
+            MENUITEM "Re&fresh...",                 "refresh padstack"
+        END
+        POPUP "P&ad"
+        BEGIN
+            MENUITEM "&Boundary",                   "editpad boundary"
+            MENUITEM "&Restore",                    "editpad restore"
+            MENUITEM "Restore &ALL",                "editpad restore all"
+        END
+        MENUITEM "&Derive Connectivity...",         "derive connectivity"
+        MENUITEM SEPARATOR
+        MENUITEM "Data&base Diary...",              "db diary"
+        MENUITEM SEPARATOR
+        MENUITEM "&Technology File Compare...",     "techfile compare"
+        MENUITEM SEPARATOR
+        MENUITEM "Database &Check...",              "dbdoctor"
+        MENUITEM "&Update DRC",                     "drc update"
+        MENUITEM "&Window DRC",                     "drc window"
+        MENUITEM SEPARATOR
+        POPUP "Uti&lities"
+        BEGIN
+            MENUITEM "&File Manager...",            "filemgr"
+            MENUITEM SEPARATOR
+            MENUITEM "&Env Variables...",           "set"
+            MENUITEM "&Aliases/Function Keys...",   "alias"
+            MENUITEM "&Keyboard Commands",          "helpcmd"
+            MENUITEM SEPARATOR
+            MENUITEM "&Licenses Used...",           "license_use"
+            MENUITEM "&Stroke Editor...",           "stroke editor"
+        END
+        MENUITEM SEPARATOR
+        POPUP "&Interface"
+        BEGIN
+            MENUITEM "&Create",             "aim_defn_edit"
+            MENUITEM "&Map",                "aim_defn_map"
+            MENUITEM "&Planner",            "interface planner"
+            MENUITEM "&Export",             "interface export"
+            MENUITEM "Imp&ort",             "interface import"
+        END
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&Documentation",              "cdsdoc sip siplaunch"
+        MENUITEM "&Message Detail",             "smi_message_detail"
+        POPUP "&Web Resources"
+        BEGIN
+            MENUITEM "&Community",              "http http://www.cadence.com/community"
+            MENUITEM "&Online Support",         "http http://support.cadence.com"
+            MENUITEM "&Web Collaboration",      "http http://collaboration.cadence.com"
+            MENUITEM "&Education Services",     "http http://www.cadence.com/education"
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "&About...",                   "about"
+    END
+END

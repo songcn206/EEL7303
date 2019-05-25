@@ -1,0 +1,202 @@
+("FILE_TYPE"	"PMAP File"
+    ("devices"
+        ("VSRC")
+        ("PDIODE"
+            ("info"
+                ("spice_dsg"	"X")
+                ("port_order"
+                    ("AN")
+                    ("CAT")
+                )
+            )
+            ("model_params"
+                ("level_0"
+                    ("IS"
+                        ("value"	"1.233E-6")
+                        ("postol"	"")
+                        ("negtol"	"")
+                        ("distrib"	"")
+                    )
+                    ("RS"
+                        ("value"	".033")
+                        ("postol"	"")
+                        ("negtol"	"")
+                        ("distrib"	"")
+                    )
+                    ("N"
+                        ("value"	"2.6142")
+                        ("postol"	"")
+                        ("negtol"	"")
+                        ("distrib"	"")
+                    )
+                    ("TT"
+                        ("value"	"1.5E-6")
+                        ("postol"	"")
+                        ("negtol"	"")
+                        ("distrib"	"")
+                    )
+                    ("CJO"
+                        ("value"	"100E-12")
+                        ("postol"	"")
+                        ("negtol"	"")
+                        ("distrib"	"")
+                    )
+                    ("VJ"
+                        ("value"	"0.7")
+                        ("postol"	"")
+                        ("negtol"	"")
+                        ("distrib"	"")
+                    )
+                    ("M"
+                        ("value"	"0.5")
+                    )
+                    ("EG"
+                        ("value"	"1.11")
+                    )
+                    ("XTI"
+                        ("value"	"3")
+                    )
+                    ("KF"
+                        ("value"	"0")
+                    )
+                    ("AF"
+                        ("value"	"1")
+                    )
+                    ("FC"
+                        ("value"	"0.5")
+                    )
+                    ("BV"
+                        ("value"	"320")
+                        ("postol"	"")
+                        ("negtol"	"")
+                        ("distrib"	"")
+                    )
+                    ("IBV"
+                        ("value"	"1")
+                        ("postol"	"")
+                        ("negtol"	"")
+                        ("distrib"	"")
+                    )
+                )
+            )
+            ("smoke"
+                ("max_ops_desc"
+                    ("IF"
+                        ("description"	"Max forward current")
+                        ("unit"	"A")
+                    )
+                    ("VR"
+                        ("description"	"Peak reverse voltage")
+                        ("unit"	"V")
+                    )
+                    ("PDM"
+                        ("description"	"Max pwr dissipation")
+                        ("unit"	"W")
+                    )
+                    ("TJ"
+                        ("description"	"Max junction temp")
+                        ("unit"	"C")
+                    )
+                    ("RJC"
+                        ("description"	"J-C thermal resist")
+                        ("unit"	"C/W")
+                    )
+                    ("RCA"
+                        ("description"	"C-A thermal resist")
+                        ("unit"	"C/W")
+                    )
+                )
+                ("pre_smoke"
+                    ("TERM_AN"	"-1")
+                    ("NODE_AN"	"AN")
+                    ("NODE_CAT"	"CAT")
+                    ("DERATE_TYPE"	"DIODE")
+                )
+                ("max_ops"
+                    ("RCA"	"RCA")
+                )
+                ("smoke_tests"
+                    ("IF"
+                        ("test"	"current_test")
+                        ("term"	"TERM_AN")
+                    )
+                    ("PDM"
+                        ("test"	"power_test")
+                    )
+                    ("TJ"
+                        ("test"	"temp_null_test")
+                    )
+                    ("VR"
+                        ("test"	"voltage_test")
+                        ("nodes"
+                            ("NODE_CAT")
+                            ("NODE_AN")
+                        )
+                    )
+                )
+                ("device_max_ops"
+                    ("IF"	"1.5")
+                    ("VR"	"200")
+                    ("PDM"	"4.24e+00")
+                    ("TJ"	"170")
+                    ("RJC"	"35")
+                    ("RCA"	"140")
+                )
+                ("device_pre_smoke"
+                    ("TERM_AN"	"AN")
+                    ("NODE_AN"	"AN")
+                    ("NODE_CAT"	"CAT")
+                    ("DERATE_TYPE"	"DIODE")
+                )
+            )
+        )
+        ("R")
+        ("PARAM")
+    )
+    ("instances"
+        ("V1"
+            ("device_name"	"VSRC")
+            ("pspice_path"	"V_V1")
+            ("level"	"0")
+            ("model_params"
+                ("DC"
+                    ("value"	"5v")
+                    ("pspice_param"	"DC")
+                )
+            )
+        )
+        ("D1"
+            ("device_name"	"PDIODE")
+            ("pspice_path"	"X_D1")
+            ("level"	"0")
+            ("model_params"
+                ("BV"
+                    ("value"	"{Zener_Voltage}")
+                    ("pspice_param"	"BV")
+                )
+            )
+        )
+        ("R1"
+            ("device_name"	"R")
+            ("pspice_path"	"R_R1")
+            ("level"	"0")
+            ("model_params"
+                ("VALUE"
+                    ("value"	"1k")
+                    ("pspice_param"	"VALUE")
+                )
+            )
+        )
+        ("PARAM"
+            ("device_name"	"PARAM")
+            ("pspice_path"	"")
+            ("level"	"0")
+            ("model_params"
+                ("Zener_Voltage"
+                    ("value"	"10")
+                    ("pspice_param"	"Zener_Voltage")
+                )
+            )
+        )
+    )
+)

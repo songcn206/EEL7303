@@ -1,0 +1,174 @@
+#// #######################################################################
+#//        Cadence Design Systems
+#// 
+#//  (C) COPYRIGHT, Cadence Design Systems, Inc. 1993-2007
+#//  All Rights Reserved
+#//  Licensed Materials - Property of Cadence Design Systems
+#// 
+#//  No part of this file may be reproduced, stored in a retrieval system,
+#//  or transmitted in any form or by any means --- electronic, mechanical,
+#//  photocopying, recording, or otherwise --- without prior written 
+#//  permission of Cadence Design Systems, Inc.
+#// 
+#//  WARRANTY:
+#//  Use all material in this file at your own risk. Cadence Design Systems
+#//  makes no claims about any material contained in this file.
+#// #######################################################################
+
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM 
+FIXED
+PORT 85 10
+HEADER "Plating Bar Check"
+
+POPUP <COLOR_LIST> """".
+
+TILE
+
+GROUP " Missing Connections "
+GLOC 1 0
+GSIZE 40 23
+ENDGROUP
+
+FIELD run_unplated
+FLOC 2 2
+CHECKLIST "Check for unplated nets"
+ENDFIELD
+
+TEXT "For multi-pin nets, check all:"
+TLOC 2 4
+ENDTEXT
+
+FIELD multipin_net_balls
+FLOC 4 6
+CHECKLIST "BGA balls"
+ENDFIELD
+
+FIELD multipin_net_bonds
+FLOC 4 8
+CHECKLIST "Bond fingers"
+ENDFIELD
+
+FIELD multipin_net_die_pads
+FLOC 18 6
+CHECKLIST "Flip-Chip pads"
+ENDFIELD
+
+FIELD multipin_net_discretes
+FLOC 18 8
+CHECKLIST "Discrete component pins"
+ENDFIELD
+
+FIELD indirect_connection
+FLOC 2 10
+CHECKLIST "Allow indirect connections though other components"
+ENDFIELD
+
+FIELD etchBackCheck
+FLOC 2 12
+CHECKLIST "Perform etch-back plating checks"
+ENDFIELD
+
+FIELD dummy_errors
+FLOC 2 14
+CHECKLIST "Report dummy net violations as errors"
+ENDFIELD
+
+FIELD highlight_nets
+FLOC 2 16
+CHECKLIST "Highlight unplated nets (Dehighlights plated nets)"
+ENDFIELD
+
+FIELD highlight_any_missing
+FLOC 4 18
+CHECKLIST "Highlight on any required connection(s) missing"
+ENDFIELD
+
+TEXT "Color:"
+TLOC 4 20
+ENDTEXT
+FIELD highlight_color
+FLOC 14 20
+ENUMSET 15
+OPTIONS prettyprint ownerdrawn
+POP "COLOR_LIST"
+ENDFIELD
+
+# Second Column
+
+GROUP " Spacing Violations "
+GLOC 44 0
+GSIZE 40 23
+ENDGROUP
+
+FIELD run_overlapping
+FLOC 46 2
+CHECKLIST "Check for plating trace spacing violations"
+ENDFIELD
+
+TEXT "Min separation:"
+TLOC 48 4
+ENDTEXT
+FIELD min_separation
+FLOC 61 4
+STRFILLIN  16 30
+ENDFIELD
+
+TEXT "Edge distance:"
+TLOC 48 6
+ENDTEXT
+FIELD spacing_dist
+FLOC 61 6
+STRFILLIN  16 30
+ENDFIELD
+
+TEXT "Min offset:"
+TLOC 48 9
+ENDTEXT
+FIELD min_offset
+FLOC 61 9
+STRFILLIN  16 30
+ENDFIELD
+
+TEXT "Min length:"
+TLOC 48 12
+ENDTEXT
+FIELD min_seg_length
+FLOC 61 12
+STRFILLIN  16 30
+ENDFIELD
+
+TEXT "Warning: This command creates DRCs."
+TLOC 2 24
+OPTIONS bold
+ENDTEXT
+
+TEXT "To remove the markers, fix the errors then invoke this command again or press the clear DRCs button."
+TLOC 2 26
+FSIZE 84 6
+ENDTEXT
+
+FIELD clear
+FLOC 2 29
+MENUBUTTON "Clear DRCs" 11 3
+ENDFIELD 
+
+FIELD done
+FLOC 14 29
+MENUBUTTON "OK" 11 3
+ENDFIELD 
+
+FIELD close
+FLOC 26 29
+MENUBUTTON "Close" 9 3
+ENDFIELD 
+
+FIELD help
+FLOC 75 29
+MENUBUTTON "Help" 9 3
+ENDFIELD 
+
+ENDTILE
+
+ENDFORM
+

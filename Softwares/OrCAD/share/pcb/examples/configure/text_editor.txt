@@ -1,0 +1,31 @@
+
+This describes how to change the default texteditor used by the Allegro
+back-end products.
+
+Certain Allegro features (e.g. SI) utilize a text editor. The Skill
+API supports the ability to launch an editor via axlUIEditFile.
+
+The editor invoked by Allegro uses the following OS level env variables
+(rank in order of precedence). One can be set in the Allegro env file but 
+these variables are UNIX standard env variables used by other applications.
+        1) WINDOW_EDITOR (UNIX/Linux only)
+        2) VISUAL
+        3) EDITOR
+
+If none is set the default editor is:
+        UNIX: vi
+        Windows: pe_wordpad (provided in the Cadence install hierarch)
+
+Set WINDOW_EDITOR if you have a GUI editor. Gvim and xemacs are examples of 
+GUI editors while vi, vim and emacs require a controlling terminal window.
+
+CAUTIONS:
+  1) On Windows, certain editors (e.g. winword) do not save files in
+     Ascii format. It is suggested that the editor you choose saves
+     a file, by default, as a ".txt" file.
+  2) On Windows, other editors (e.g notepad) cannot handle UNIX formatted
+     text files. If you operate heterogeneous environment do not use
+     these editors.
+  3) On Windows, some embeddded text editors (e.g. wordpad) may limit the 
+     size of the file you can edit.
+

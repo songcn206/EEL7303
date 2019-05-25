@@ -1,0 +1,1149 @@
+BFILE_TYPE=FORM_DEFN VERSION=2
+FORM 
+FIXED
+PORT 59 56
+HEADER "Analysis Preferences"
+
+POPUP <voltpop>"mV""mV","V""V".
+
+POPUP <resipop>"mOhm""mOhm","Ohm""Ohm".
+
+POPUP <capapop>"pF""pF","nF""nF","uF""uF".
+
+POPUP <indupop>"pH""pH","nH""nH","uH""uH".
+
+POPUP <timepop>"ns""ns","us""us","ms""ms","s""s".
+
+POPUP <distpop>"um""um","mm""mm","m""m".
+
+POPUP <thickpop>"mil""mil","um""um","mm""mm","cm""cm".
+
+POPUP <BuffDelayPOP>"From Library""From Library".
+
+POPUP <DlyThreshPOP>"Input Thresholds""Input Thresholds","Vmeas""Vmeas".
+
+POPUP <SelSimPOP>"Default""Default","Hspice""Hspice".
+
+POPUP <SelSolverPOP>"Default""Default".
+
+POPUP <SparamSimMethod>"Convolution""Convolution","Fast Convolution""Fast Convolution"
+
+POPUP <SparamDCExtrapolationMethod>"MagPhase""MagPhase","RealImag""RealImag","SmithChart""SmithChart","FirstPoint""FirstPoint"
+
+#POPUP <DrvrMeasLocPOP>"placeholder""0".
+POPUP <DrvrMeasLocPOP>"Model Defined""Model Defined","Pin""Pin","Die""Die".
+POPUP <RcvrMeasLocPOP>"Model Defined""Model Defined","Pin""Pin","Die""Die".
+#POPUP <RcvrMeasLocPOP>"placeholder""0".
+
+TILE
+
+TABSET "TABS"
+FLOC 1 1
+TSSIZE 58 55
+
+TAB "DevicesModels"
+
+TEXT "Pin Use:"
+TLOC 2 6
+TGROUP "Default IOCell Models"
+ENDTEXT
+
+TEXT "Default Model"
+TLOC 23 6
+TGROUP "Default IOCell Models"
+ENDTEXT
+
+TEXT "IN"
+TLOC 2 8
+TGROUP "Default IOCell Models"
+ENDTEXT
+
+TEXT "OUT"
+TLOC 2 10
+TGROUP "Default IOCell Models"
+ENDTEXT
+
+TEXT "BI"
+TLOC 2 12
+TGROUP "Default IOCell Models"
+ENDTEXT
+
+
+TEXT "TRI"
+TLOC 2 14
+TGROUP "Default IOCell Models"
+ENDTEXT
+
+TEXT "OCL"
+TLOC 2 16
+TGROUP "Default IOCell Models"
+ENDTEXT
+
+TEXT "OCA"
+TLOC 2 18
+TGROUP "Default IOCell Models"
+ENDTEXT
+
+TEXT "Buffer Delays"
+TLOC 2 28
+TGROUP "Buffer Delay Selection"
+ENDTEXT
+
+FIELD UseDefaultsForMissingComps
+FLOC 2 3
+CHECKLIST "Use Defaults For Missing Component Models"
+ENDFIELD
+
+FIELD DefaultINModel
+FLOC 12 8
+STRFILLIN 38 40
+FGROUP "Default IOCell Models"
+ENDFIELD
+
+FIELD DefaultOUTModel
+FLOC 12 10
+STRFILLIN 38 40
+FGROUP "Default IOCell Models"
+ENDFIELD
+
+FIELD DefaultBIModel
+FLOC 12 12
+STRFILLIN 38 40
+FGROUP "Default IOCell Models"
+ENDFIELD
+
+FIELD DefaultTRIModel
+FLOC 12 14
+STRFILLIN 38 40
+FGROUP "Default IOCell Models"
+ENDFIELD
+
+FIELD DefaultOCLModel
+FLOC 12 16
+STRFILLIN 38 40
+FGROUP "Default IOCell Models"
+ENDFIELD
+
+FIELD DefaultOCAModel
+FLOC 12 18
+STRFILLIN 38 40
+FGROUP "Default IOCell Models"
+ENDFIELD
+
+FIELD BrowseModels
+FLOC 19 22
+MENUBUTTON "Browse Models..." 22 3
+FGROUP "Default IOCell Models"
+ENDFIELD
+
+FIELD DefaultBufferDelay
+FLOC 19 28
+ENUMSET 19
+FGROUP "Buffer Delay Selection"
+POP "BuffDelayPOP"
+ENDFIELD
+
+GROUP "Default IOCell Models"
+GLOC 1 0
+GSIZE 54 26
+ENDGROUP
+
+GROUP "Buffer Delay Selection"
+GLOC 1 26
+GSIZE 54 5
+ENDGROUP
+
+ENDTAB
+
+TAB "InterconnectModels"
+
+TEXT "Percent Manhattan"
+TLOC 2 2
+TGROUP "Unrouted Interconnect Models"
+ENDTEXT
+
+TEXT "Default Impedance"
+TLOC 2 4
+TGROUP "Unrouted Interconnect Models"
+ENDTEXT
+
+TEXT "Default Prop Velocity"
+TLOC 2 6
+TGROUP "Unrouted Interconnect Models"
+ENDTEXT
+
+TEXT "Default Diff-Impedance"
+TLOC 2 8
+TGROUP "Unrouted Interconnect Models"
+ENDTEXT
+
+TEXT "Default Diff-Velocity"
+TLOC 2 10 
+TGROUP "Unrouted Interconnect Models"
+ENDTEXT
+
+TEXT "Default Cutoff Frequency"
+TLOC 2 15
+TGROUP "Routed Interconnect Models"
+ENDTEXT
+
+TEXT "Shape Mesh Size"
+TLOC 2 17
+TGROUP "Routed Interconnect Models"
+ENDFIELD
+
+TEXT "Diffpair/Via Coupling Window"
+TLOC 2 19
+TGROUP "Routed Interconnect Models"
+ENDTEXT
+
+TEXT "Geometry Window"
+TLOC 2 21
+TGROUP "Routed Interconnect Models"
+ENDTEXT
+
+TEXT "Min Coupled Length"
+TLOC 2 23
+TGROUP "Routed Interconnect Models"
+ENDTEXT
+
+TEXT "Min Neighbor Capacitance"
+TLOC 2 25 
+TGROUP "Routed Interconnect Models"
+ENDTEXT
+
+FIELD ABIMLEnabled
+FLOC 2 27 
+FGROUP "Routed Interconnect Models"
+#CHECKLIST "Enable Algorithm Based IML Library"
+CHECKLIST "Algorithm Model Generation"
+ENDFIELD
+
+FIELD CPWEnabled
+FLOC 2 29 
+FGROUP "Routed Interconnect Models"
+CHECKLIST "Enable CPW Extraction (Uses Ems2d FW)"
+ENDFIELD
+
+#FIELD Ems2dEnabled
+#FLOC 2 29 
+#FGROUP "Routed Interconnect Models"
+#CHECKLIST "Use 2D Fullwave Solver"
+#ENDFIELD
+
+#GROUP "Field Solver"
+#GLOC 2 31 
+#GSIZE 51 9
+
+TEXT "Trace Solver"
+TLOC 2 32
+TGROUP "Routed Interconnect Models"
+ENDTEXT
+
+FIELD SelectedSolver
+FLOC 15 32
+ENUMSET 10
+POP "SelSolverPOP"
+ENDFIELD
+
+#ifdef APD || ALLEGRO_MCM || SIP
+#  FIELD SelectedSolver_Paksi
+#  FLOC 26 33
+#  CHECKLIST "PakSiE" "SelectedSolver"
+#  FGROUP "Field Solver"
+#  ENDFIELD
+#endif
+
+FIELD FSPrefs
+FLOC 32 32
+MENUBUTTON "Solver Preferences..." 17 3
+FGROUP "Field Solver"
+ENDFIELD
+ENDGROUP
+
+TEXT "Via Solver"
+TLOC 2 35
+TGROUP "Routed Interconnect Models"
+ENDTEXT
+
+TEXT
+TLOC 15 35
+INFO ViaSolverText 10
+TGROUP "Routed Interconnect Models"
+ENDTEXT
+
+TEXT "Coupled Vias"
+TLOC 2 37
+TGROUP "Routed Interconnect Models"
+ENDTEXT
+
+TEXT
+TLOC 15 37
+INFO ViaCoupleText 15
+TGROUP "Routed Interconnect Models"
+ENDTEXT
+
+FIELD ViaModelOptions
+FLOC 32 36 
+FGROUP "Routed Interconnect Models"
+MENUBUTTON "Via Modeling Setup..." 17 3
+ENDFIELD
+
+FIELD PercentManhattan
+FLOC 30 2
+FGROUP "Unrouted Interconnect Models"
+STRFILLIN 20 20
+ENDFIELD
+
+FIELD DefaultImpedance
+FLOC 30 4
+FGROUP "Unrouted Interconnect Models"
+STRFILLIN 20 20
+ENDFIELD
+
+FIELD DefaultPropVelocity
+FLOC 30 6
+FGROUP "Unrouted Interconnect Models"
+STRFILLIN 20 20
+ENDFIELD
+
+FIELD DefaultDiffImp
+FLOC 30 8
+FGROUP "Unrouted Interconnect Models"
+STRFILLIN 20 20
+ENDFIELD
+
+FIELD DefaultDiffVel
+FLOC 30 10 
+FGROUP "Unrouted Interconnect Models"
+STRFILLIN 20 20
+ENDFIELD
+
+FIELD CutoffFrequency
+FLOC 30 15
+FGROUP "Routed Interconnect Models"
+STRFILLIN 20 20
+ENDFIELD
+
+FIELD ShapeMeshSize
+FLOC 30 17
+FGROUP "Routed Interconnect Models"
+STRFILLIN 20 20
+ENDFIELD
+
+FIELD DiffPairWindow
+FLOC 30 19
+FGROUP "Routed Interconnect Models"
+STRFILLIN 20 20
+ENDFIELD
+
+FIELD DiffPairTopSimp
+FLOC 3 44 
+FGROUP "Topology Extraction"
+CHECKLIST "Diffpair Topology Simplification"
+ENDFIELD
+
+FIELD DiffPairMode
+FLOC 3 42 
+FGROUP "Topology Extraction"
+CHECKLIST "Differential Extraction Mode"
+ENDFIELD
+
+FIELD GeometryWindow
+FLOC 30 21
+FGROUP "Routed Interconnect Models"
+STRFILLIN 20 20
+ENDFIELD
+
+FIELD MinCoupledLength
+FLOC 30 23
+FGROUP "Routed Interconnect Models"
+STRFILLIN 20 20
+ENDFIELD
+
+FIELD MinNeighborCapacitance
+FLOC 30 25 
+FGROUP "Routed Interconnect Models"
+STRFILLIN 20 20
+ENDFIELD
+
+FIELD PlaneModelling
+FLOC 3 48
+FGROUP "SSN"
+CHECKLIST "Plane Modelling"
+ENDFIELD
+
+    #ifdef APD || ALLEGRO_MCM || SIP
+#FIELD UsePaksiModel
+#FLOC 3 48
+#CHECKLIST "PakSi"
+#ENDFIELD
+
+#FIELD PaksiParameter
+#FLOC 25 48
+#MENUBUTTON "Parameters" 15 3
+#ENDFIELD
+    #endif
+GROUP "Unrouted Interconnect Models"
+GLOC 1 0
+GSIZE 53 13
+ENDGROUP
+
+GROUP "Routed Interconnect Models"
+GLOC 1 13
+GSIZE 53 27 
+ENDGROUP
+
+GROUP "Topology Extraction"
+GLOC 1 40 
+GSIZE 53 6 
+ENDGROUP
+
+GROUP "SSN"
+GLOC 1 46
+GSIZE 53 4
+ENDGROUP
+
+    #ifdef APD || ALLEGRO_MCM || SIP
+#GROUP "3-D Modeling"
+#GLOC 1 46
+#GSIZE 53 4
+#ENDGROUP
+    #endif 
+ENDTAB
+
+TAB "Simulation"
+
+GROUP "Standard Preferences"
+GLOC 1 0
+GSIZE 55 39
+ENDGROUP
+
+POPUP <ResTimePop>"none" "none"
+
+TEXT "Pulse cycle count"
+TLOC 2 3
+TGROUP "Standard Preferences"
+ENDTEXT
+
+TEXT "Pulse Clock Frequency"
+TLOC 2 5
+TGROUP "Standard Preferences"
+ENDTEXT
+
+TEXT "Pulse Duty Cycle"
+TLOC 2 7
+TGROUP "Standard Preferences"
+ENDTEXT
+
+TEXT "Pulse/Step Offset"
+TLOC 2 9
+TGROUP "Standard Preferences"
+ENDTEXT
+
+FIELD PulseCycleCount
+FLOC 30 3
+STRFILLIN 12 20
+FGROUP "Standard Preferences"
+ENDFIELD
+
+FIELD PulseClockFrequency
+FLOC 30 5
+STRFILLIN 12 20
+FGROUP "Standard Preferences"
+ENDFIELD
+
+FIELD PulseDutyCycle
+FLOC 30 7
+STRFILLIN 12 20
+FGROUP "Standard Preferences"
+ENDFIELD
+
+FIELD PulseStepOffset
+FLOC 30 9
+STRFILLIN 12 20
+FGROUP "Standard Preferences"
+ENDFIELD
+
+FIELD FixedDuration
+FLOC 2 11
+CHECKLIST "Fixed Duration"
+FGROUP "Standard Preferences"
+ENDFIELD
+
+FIELD FixedDurationTime
+FLOC 30 11
+STRFILLIN 12 20
+FGROUP "Standard Preferences"
+ENDFIELD
+
+TEXT "Waveform Resolution (Time)"
+TLOC 2 13
+TGROUP "Standard Preferences"
+ENDTEXT
+
+FIELD WaveResolutionTime
+FLOC 30 13
+STRFILLIN 15 20
+POP "ResTimePop"
+ENDFIELD
+
+TEXT "Measure Delays At"
+TLOC 2 15
+TGROUP "Standard Preferences"
+ENDTEXT
+
+FIELD DelayThresholds
+FLOC 30 15
+STRFILLIN 15 20
+POP "DlyThreshPOP"
+ENDFIELD
+
+TEXT "Driver Pin Measurement Location:"
+FLOC 2 17
+ENDTEXT
+
+FIELD PrefDrvrMeasLoc
+FLOC 30 17
+STRFILLIN 15 20
+POP "DrvrMeasLocPOP"
+ENDFIELD
+
+TEXT "Receiver Pin Measurement Location:"
+FLOC 2 19
+ENDTEXT
+
+FIELD PrefRcvrMeasLoc
+FLOC 30 19
+STRFILLIN 15 20
+POP "RcvrMeasLocPOP"
+ENDFIELD
+
+FIELD MeasAdvanced
+FLOC 10 22
+MENUBUTTON "Advanced Measurements Settings..." 36 3
+ENDFIELD
+
+FIELD SourceSample
+FLOC 2 24
+CHECKLIST "Report Source Sampling Data"
+FGROUP "Standard Preferences"
+ENDFIELD
+
+FIELD DiffNetSingleEndedRpt
+FLOC 2 26
+CHECKLIST "Report Single Ended Results for Diffpairs"
+FGROUP "Standard Preferences"
+ENDFIELD
+
+FIELD PreferPrimaryCompAggressor
+FLOC 2 28
+FGROUP "Simulation"
+CHECKLIST "Prefer fastest aggressor on victim component"
+ENDFIELD
+
+FIELD FTSDefs
+FLOC 10 31
+MENUBUTTON "Fast/Typical/Slow Definitions..." 36 3
+ENDFIELD
+
+TEXT  
+TLOC 2 34
+INFO SimulatorOption 10
+ENDTEXT
+
+FIELD SelectedSimulator
+FLOC 12 34
+STRFILLIN 8 10
+POP "SelSimPOP"
+ENDFIELD
+
+FIELD SimulatorAdvancedPrefs
+FLOC 26 34
+MENUBUTTON "Set Simulator Preferences.." 29 3
+ENDFIELD
+
+GROUP "Signal Quality Screening"
+GLOC 1 40
+GSIZE 55 5
+ENDGROUP
+
+FIELD ScreenBothDrvrsSNR
+FLOC 2 42 
+CHECKLIST "Screen both drivers of Diffpair"
+FGROUP "Signal Quality Screening"
+ENDFIELD
+
+ENDTAB
+
+TAB "S-Parameters"
+
+GROUP "Transient Simulation Preferences"
+  GLOC 1 0
+  GSIZE 55 18 
+ENDGROUP
+
+TEXT "Transient Simulation Method"
+  TLOC 3 3
+  TGROUP "Transient Simulation Preferences"
+ENDTEXT
+
+FIELD SparamSimMethod
+FLOC 30 3
+STRFILLIN 16 23
+POP "SparamSimMethod"
+TGROUP "Transient Simulation Preferences"
+ENDFIELD
+
+TEXT "DC Extrapolation Method"
+  TLOC 3 6
+  TGROUP "Transient Simulation Preferences"
+ENDTEXT
+
+FIELD SparamDCExtrapolationMethod
+FLOC 30 6
+STRFILLIN 16 20
+POP "SparamDCExtrapolationMethod"
+TGROUP "Transient Simulation Preferences"
+ENDFIELD
+
+TEXT "Fast Convolution Tolerance:"
+TLOC 3 9
+TGROUP "Transient Simulation Preferences"
+ENDTEXT
+
+FIELD FastConvTol
+FLOC 30 9
+STRFILLIN 13 20
+FGROUP "Transient Simulation Preferences"
+ENDFIELD
+
+FIELD EnforceSparamImpulseResponseCausality
+FLOC 3 12
+CHECKLIST "Enforce Impulse Response Causality"
+FGROUP "Transient Simulation Preferences"
+ENDFIELD
+
+FIELD EnforceSparamPassivity
+FLOC 3 15
+CHECKLIST "Enforce S-Parameters Passivity"
+FGROUP "Transient Simulation Preferences"
+ENDFIELD
+
+ENDTAB
+
+TAB "Units"
+
+TEXT "Design Voltage Units"
+TLOC 2 3
+TGROUP ""
+ENDTEXT
+
+TEXT "Noise Voltage Units"
+TLOC 2 5
+TGROUP ""
+ENDTEXT
+
+TEXT "Design Resistance Units"
+TLOC 2 7
+TGROUP ""
+ENDTEXT
+
+TEXT "Parasitic Resistance Units"
+TLOC 2 9
+TGROUP ""
+ENDTEXT
+
+TEXT "Design Capacitance Units"
+TLOC 2 11
+TGROUP ""
+ENDTEXT
+
+TEXT "Parasitic Capacitance Units"
+TLOC 2 13
+TGROUP ""
+ENDTEXT
+
+TEXT "Parasitic Inductance Units"
+TLOC 2 15
+TGROUP ""
+ENDTEXT
+
+TEXT "Delay Time Units"
+TLOC 2 17
+TGROUP ""
+ENDTEXT
+
+TEXT "Length Units"
+TLOC 2 19
+TGROUP ""
+ENDTEXT
+
+TEXT "Spacing Units"
+TLOC 2 21
+TGROUP ""
+ENDTEXT
+
+TEXT "Etch Thickness Units"
+TLOC 2 23
+TGROUP ""
+ENDTEXT
+
+FIELD DesignVoltageUnits
+FLOC 30 3
+ENUMSET 22
+POP "voltpop"
+FGROUP ""
+ENDFIELD
+
+FIELD NoiseVoltageUnits
+FLOC 30 5
+ENUMSET 22
+POP "voltpop"
+FGROUP ""
+ENDFIELD
+
+FIELD DesignResistanceUnits
+FLOC 30 7
+ENUMSET 22
+POP "resipop"
+FGROUP ""
+ENDFIELD
+
+FIELD ParasiticResistanceUnits
+FLOC 30 9
+ENUMSET 22
+POP "resipop"
+FGROUP ""
+ENDFIELD
+
+FIELD DesignCapacitanceUnits
+FLOC 30 11
+ENUMSET 22
+POP "capapop"
+FGROUP ""
+ENDFIELD
+
+FIELD ParasiticCapacitanceUnits
+FLOC 30 13
+ENUMSET 22
+POP "capapop"
+FGROUP ""
+ENDFIELD
+
+FIELD ParasiticInductanceUnits
+FLOC 30 15
+ENUMSET 22
+POP "indupop"
+FGROUP ""
+ENDFIELD
+
+FIELD DelayTimeUnits
+FLOC 30 17
+ENUMSET 22
+POP "timepop"
+FGROUP ""
+ENDFIELD
+
+FIELD LengthUnits
+FLOC 30 19
+ENUMSET 22
+POP "distpop"
+FGROUP ""
+ENDFIELD
+
+FIELD SpacingUnits
+FLOC 30 21
+ENUMSET 22
+POP "distpop"
+FGROUP ""
+ENDFIELD
+
+FIELD EtchThicknessUnits
+FLOC 30 23
+ENUMSET 22
+POP "thickpop"
+FGROUP ""
+ENDFIELD
+
+GROUP ""
+GLOC 1 0 
+GSIZE 54 29
+ENDGROUP
+
+ENDTAB
+
+TAB "EMI"
+
+   GROUP "Standard Preferences"
+      GLOC 1 0 
+      GSIZE 54 10
+   ENDGROUP
+
+   TEXT "EMI Regulation"
+      TLOC 2 2
+      TGROUP "Standard Preferences"
+   ENDTEXT
+
+   POPUP <emcrpop>"FCC Class A""FCC Class A",\
+                  "FCC Class B""FCC Class B",\
+                  "CISPR Class A""CISPR Class A",\
+                  "CISPR Class B""CISPR Class B",\
+                  "VCCI Class 1""VCCI Class 1",\
+                  "VCCI Class 2""VCCI Class 2".
+
+   FIELD EMIS_RegulationOptions
+      FLOC 30 2
+      STRFILLIN 16 20
+      POP "emcrpop"
+      FGROUP "Standard Preferences"
+   ENDFIELD
+
+   TEXT "Design Margin dB"
+      TLOC 2 4
+      TGROUP "Standard Preferences"
+   ENDTEXT
+
+   FIELD EMIS_DesignMargin
+      FLOC 30 4
+      STRFILLIN 16 20
+      FGROUP "Standard Preferences"
+   ENDFIELD
+
+   TEXT "Analysis Distance"
+      TLOC 2 6
+      TGROUP "Standard Preferences"
+   ENDTEXT
+
+   FIELD EMIS_AnalysisDistance
+      FLOC 30 6
+      STRFILLIN 16 20
+      FGROUP "Standard Preferences"
+   ENDFIELD
+
+   GROUP "Advanced Preferences"
+      GLOC 1 12 
+      GSIZE 54 11
+   ENDGROUP
+
+   TEXT "Current Settings..."
+      TLOC 2 14
+      TGROUP "Advanced Preferences"
+   ENDTEXT
+
+   TEXT "Emulate OATS                :"
+      TLOC 5 15
+      TGROUP "Advanced Preferences"
+   ENDTEXT
+
+   TEXT
+      TLOC 35 15
+      INFO EMIS_OATSStatus 4
+      TGROUP "Advanced Preferences"
+   ENDTEXT
+
+   TEXT "Compute Near Fields         :"
+      TLOC 5 16
+      TGROUP "Advanced Preferences"
+   ENDTEXT
+
+   TEXT
+      TLOC 35 16
+      INFO EMIS_ComputeNFStatus 4
+      TGROUP "Advanced Preferences"
+   ENDTEXT
+
+   TEXT "Compute Current Distribution:"
+      TLOC 5 17
+      TGROUP "Advanced Preferences"
+   ENDTEXT
+
+   TEXT
+      TLOC 35 17
+      INFO EMIS_ComputeCurDisStatus 4
+      TGROUP "Advanced Preferences"
+   ENDTEXT
+
+   FIELD EMIS_AdvPref
+      FLOC 2 19
+      MENUBUTTON "Set Advanced Preferences" 22 3
+      FGROUP "Advanced Preferences"
+   ENDFIELD
+
+ENDTAB
+
+TAB "Power Integrity (Legacy)"
+
+GROUP "Standard Preferences"
+  GLOC 1 0 
+  GSIZE 55 9
+ENDGROUP
+
+TEXT "MultiNode grid size:"
+  TLOC 2 2
+  TGROUP "Standard Preferences"
+ENDTEXT
+
+POPUP <multnodesize>"8x8""8".
+
+FIELD DeCap_MultiNodeGridSize
+  FLOC 18 2
+  STRFILLIN 4 12
+  POP "multnodesize"
+  FGROUP "Standard Preferences"
+ENDFIELD 
+
+TEXT "Adapt Level:"
+  TLOC 30 2
+  TGROUP "Standard Preferences"
+ENDTEXT
+
+POPUP <adaptivelevel>"Open""Open".
+FIELD DeCap_AdaptiveLevel
+  FLOC 40 2
+  STRFILLIN 11 12
+  POP "adaptivelevel"
+  FGROUP "Standard Preferences"
+ENDFIELD 
+
+TEXT "Min. plane/board area:"
+  TLOC 2 4
+  TGROUP "Standard Preferences"
+ENDTEXT
+
+POPUP <decapMSARList>"1.0%""1","5.0%""5","10.0%""10",\
+                     "25.0%""25","50.0%""50","75.0%""75","90.0%""90".
+
+FIELD DeCap_MinShapeAreaRatio
+  FLOC 18 4
+  STRFILLIN 4 12
+  POP "decapMSARList"
+  FGROUP "Standard Preferences"
+ENDFIELD 
+
+FIELD DeCap_IncludeConductorShapes
+  FLOC 2 6.5
+  CHECKLIST "Include planes on conductor layers"
+  FGROUP "Standard Preferences"
+ENDFIELD 
+
+GROUP "Analysis Frequency Range"
+  GLOC 1 22 
+  GSIZE 55 5
+ENDGROUP
+
+TEXT "Upper Limit:"
+  TLOC 2 24.5
+  TGROUP "Analysis Frequency Range"
+ENDTEXT
+
+FIELD DeCap_UpperAnalysisLimit
+  FLOC 11 24.5
+  STRFILLIN 14 12
+  FGROUP "Analysis Frequency Range"
+ENDFIELD 
+
+TEXT "Lower Limit:"
+  TLOC 30 24.5
+  TGROUP "Analysis Frequency Range"
+ENDTEXT
+
+FIELD DeCap_LowerAnalysisLimit
+  FLOC 39 24.5
+  STRFILLIN 15 12
+  FGROUP "Analysis Frequency Range"
+ENDFIELD 
+
+GROUP "Target Impedance Shape"
+  GLOC 1 32
+  GSIZE 55 5
+ENDGROUP
+
+TEXT "Corner Frequency:"
+  TLOC 2 34.5
+  TGROUP "Target Impedance Shape"
+ENDTEXT
+
+FIELD DeCap_TI_CornerFrequency
+  FLOC 15 34.5
+  STRFILLIN 10 12
+  FGROUP "Target Impedance Shape"
+ENDFIELD 
+
+TEXT "Slope (dB/Decade):"
+  TLOC 30 34.5
+  TGROUP "Target Impedance Shape"
+ENDTEXT
+
+FIELD DeCap_TI_Slope
+  FLOC 44 34.5
+  STRFILLIN 10 12
+  FGROUP "Target Impedance Shape"
+ENDFIELD 
+
+GROUP "Component Mounted Inductance"
+  GLOC 1 37
+  GSIZE 55 5
+ENDGROUP
+
+FIELD DeCap_LI_CalcOnPlace
+  FLOC 2 39.5
+  CHECKLIST "Calculate on Place"
+  FGROUP "Component Mounted Inductance"
+ENDFIELD 
+
+TEXT "Default Assignment:"
+  TLOC 30 39.5
+  TGROUP "Component Mounted Inductance"
+ENDTEXT
+
+FIELD DeCap_MountedInd_Default
+  FLOC 44 39.5
+  STRFILLIN 10 12
+  FGROUP "Component Mounted Inductance"
+ENDFIELD 
+
+GROUP "Simulator Preferences and Conditions"
+  GLOC 1 9
+  GSIZE 55 13
+ENDGROUP
+
+#TEXT "Simulator:"
+#  TLOC 2 32
+#  TGROUP "Standard Preferences"
+#ENDTEXT
+
+#POPUP <decapsims>"Spectre""Spectre".
+
+#FIELD DeCap_Simulator
+#  FLOC 28 32
+#  STRFILLIN 12 12
+#  POP "decapsims"
+#  FGROUP "Simulator Preferences and Conditions"
+#ENDFIELD
+
+
+
+TEXT "Temperature:"
+  TLOC 30 11
+  FGROUP "Simulator Preferences and Conditions"
+ENDTEXT
+
+FIELD DeCap_SimulationTemperature
+  FLOC 40 11
+  STRFILLIN 14 12
+  FGROUP "Simulator Preferences and Conditions"
+ENDFIELD
+
+TEXT "Voltage Supply:"
+  TLOC 2 11
+  FGROUP "Simulator"
+ENDTEXT
+
+FIELD DeCap_SimulationVoltage
+  FLOC 13 11
+  STRFILLIN 12 12
+  FGROUP "Simulator Preferences and Conditions"
+ENDFIELD
+
+
+
+FIELD DeCap_FrequencyDomain
+  FLOC 2 13
+  CHECKLIST "Frequency-Domain Impedance Display""Frequency-Domain Impedance Display"
+  FGROUP "Simulator Preferences and Conditions"
+ENDFIELD 
+
+FIELD DeCap_TimeDomain
+  FLOC 2 15
+  CHECKLIST "Time-Domain Voltage Ripple Display""Time-Domain Voltage Ripple Display"
+  FGROUP "Simulator Preferences and Conditions"
+ENDFIELD 
+
+FIELD DeCap_TrapizodialPulse
+  FLOC 6 19
+  CHECKLIST "Trapezoidal Noise Current Pulse""Trapezoidal Noise Current Pulse"
+  FGROUP "Simulator Preferences and Conditions"
+ENDFIELD 
+
+FIELD DeCap_GaussionPulse
+  FLOC 6 17
+  CHECKLIST "Gaussian Noise Current Pulse""Gaussian Noise Current Pulse"
+  FGROUP "Simulator Preferences and Conditions"
+ENDFIELD
+
+TEXT "Fastest Tr/Tf:" DeCap_TrapizodialPulseTimeText
+  TLOC 34 19
+  FGROUP "Simulator Preferences and Conditions"
+ENDTEXT
+
+FIELD DeCap_TrapizodialPulseTime
+  FLOC 46 19
+  STRFILLIN 8 12
+  FGROUP "Simulator Preferences and Conditions"
+ENDFIELD
+
+TEXT "Gaussian Width:" DeCap_GaussionPulseTimeText
+  TLOC 34 17
+  FGROUP "Simulator Preferences and Conditions"
+ENDTEXT
+
+FIELD DeCap_GaussionPulseTime
+  FLOC 46 17
+  STRFILLIN 8 12
+  FGROUP "Simulator Preferences and Conditions"
+ENDFIELD
+
+
+
+
+GROUP "Multiplane Connector"
+  GLOC 1 27
+  GSIZE 55 5
+ENDGROUP
+
+TEXT "Resistance:"
+  TLOC 2 29.5
+  FGROUP "Multiplane Connector"
+ENDTEXT
+
+FIELD DeCap_MultiPlaneConn_Res
+  FLOC 11 29.5
+  STRFILLIN 14 12
+  FGROUP "Multiplane Connector"
+ENDFIELD
+
+TEXT "Inductance:"
+  TLOC 30 29.5
+  FGROUP "Multiplane Connector"
+ENDTEXT
+
+FIELD DeCap_MultiPlaneConn_Ind
+  FLOC 39 29.5
+  STRFILLIN 15 12
+  FGROUP "Multiplane Connector"
+ENDFIELD
+
+ENDTAB
+
+ENDTABSET
+
+FIELD OK
+FLOC 2 57 
+MENUBUTTON "OK" 11 3
+ENDFIELD
+
+FIELD Cancel
+FLOC 16 57
+MENUBUTTON "Cancel" 11 3
+ENDFIELD
+
+
+FIELD help
+FLOC 48 57
+MENUBUTTON "Help" 11 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

@@ -1,0 +1,690 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN" "http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+<html xmlns="http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>PSpice Advanced Analysis User Guide -- The Special Library</title>
+<META NAME="Approver" CONTENT="Technical Publications">
+<META NAME="Author" CONTENT="Technical Publications">
+<META NAME="CreateDate" CONTENT="2012-09-11">
+<META NAME="CreateTime" CONTENT="1347371597">
+<META NAME="DataType" CONTENT="Manuals">
+<META NAME="Description" CONTENT="PSpice Advanced Analysis allows users to optimize design performance and also improve the design quality through sensitivity analysis, optimization, Monte Carlo and Smoke analysis.">
+<META NAME="DocTitle" CONTENT="PSpice Advanced Analysis User Guide">
+<META NAME="DocType" CONTENT="User Guide">
+<META NAME="EdmsRelease" CONTENT="EDMS Windows-P015">
+<META NAME="FileTitle" CONTENT="The Special Library">
+<META NAME="FileType" CONTENT="Chapter">
+<META NAME="Keyword" CONTENT="pspaugca">
+<META NAME="Language" CONTENT="English">
+<META NAME="ModifiedDate" CONTENT="2012-09-11">
+<META NAME="ModifiedTime" CONTENT="1347371597">
+<META NAME="NextFile" CONTENT="Glos.html">
+<META NAME="PageCount" CONTENT="10">
+<META NAME="Platform" CONTENT="ALL">
+<META NAME="PrevFile" CONTENT="prp.html">
+<META NAME="Product" CONTENT="Allegro AMS Simulator, PSpice">
+<META NAME="ProductFamily" CONTENT="PCB Design, PCB Design">
+<META NAME="ProductVersion" CONTENT="16.6">
+<META NAME="RightsManagement" CONTENT="Copyright 19912012 Cadence Design Systems Inc.">
+<META NAME="Title" CONTENT="PSpice Advanced Analysis User Guide -- The Special Library">
+<META NAME="TopicTags" CONTENT="FALSE">
+<META NAME="Version" CONTENT="16.6">
+  </head>
+  <body style="margin-left: 5%;">
+    <a name="pagetop"></a>
+    <a name="firstpage"></a>
+    <!-- Begin Buttons -->
+    <table width="650" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td height="36" width="650" colspan="10">
+          <img src="../support/header_doc.gif" width="650" height="34">
+        </td>
+      </tr>
+      <tr>
+        <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                </td>
+<td height="20" width="73">
+<a href="pspaugcaTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<a href="pspaugcaIX.html"><img src="../support/nav2_index.gif" border="0"></a>
+</td>
+        <td>
+          <a href="prp.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+        </td>
+        <td>
+          <a href="Glos.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+        </td>
+        <td height="20">
+          <a>
+<a href="pspaugca.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+          </a>
+        </td>
+        <td height="20" width="61">
+          <img src="../support/nav2_black.gif">
+        </td>
+        <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+        </td>
+        <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+        </td>
+        <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+        </td>
+      </tr>
+    </table>
+    <!-- End Buttons -->
+    <p>
+    <hr>
+    <p>
+      <h3>
+        <center>
+          <font >
+            <div>PSpice&#174; Advanced Analysis User Guide</div>
+            <font >
+              <div>
+            </font>
+          </font>
+        </center>
+      </h3>
+      <br>
+    </p>
+    <div>
+      <h1>B<a name="1032955">&nbsp;</a></h1>
+      <h1><a name="1035250">The Special Library</a></h1>
+      <p><a name="1035457">This chapter describes the various models in the special.olb library and their parameters, </a>such as vector symbols, printing and plotting symbols, the watch symbol, and nodeset symbols. </p>
+      <p><a name="1035469">&nbsp;</a></p>
+      <p><a name="1035470">&nbsp;</a></p>
+      <p><a name="1035471">&nbsp;</a></p>
+      <p><a name="1035472">&nbsp;</a></p>
+      <p><a name="1035473">&nbsp;</a></p>
+      <p><a name="1035474">&nbsp;</a></p>
+      <p><a name="1035475">&nbsp;</a></p>
+      <p><a name="1035476">&nbsp;</a></p>
+      <p><a name="1035477">&nbsp;</a></p>
+      <p><a name="1035478">&nbsp;</a></p>
+      <p><a name="1035479">&nbsp;</a></p>
+      <p><a name="1035480">&nbsp;</a></p>
+      <p><a name="1035481">&nbsp;</a></p>
+      <p><a name="1035482">&nbsp;</a></p>
+      <p><a name="1035483">&nbsp;</a></p>
+      <p><a name="1035484">&nbsp;</a></p>
+      <p><a name="1035485">&nbsp;</a></p>
+      <p><a name="1035486">&nbsp;</a></p>
+      <h2><a name="1035516">VECTOR1</a></h2>
+      <p><a name="1035517">&nbsp;</a></p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="535">
+        <caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="150">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1036478"><font color="#000000"><strong>Properties</strong></font></a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" valign="middle" width="384">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1036480">Description</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1036482">File</a></p>
+          </td>
+          <td cellpadding="4" border="2" valign="top">
+            <p><a name="1036484">If vector source is attached and no file name is </a>assigned to any of the vector, the results are placed in a file with the name representing the simulation type and extension .vec, such as tran.vec for a transient analysis. The file is saved in the &#60;Profile&#45;name&#62; folder.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1036486">Radix</a></p>
+          </td>
+          <td cellpadding="4" border="2" valign="top">
+            <p><a name="1036488">The radix represents the number of bits in a Bus. For </a>example, for a 16 bit Bus a source vector Vector16 is attached. </p>
+            <p><a name="1036489">The valid values for Radix are BINARY, HEX, and </a>OCT. For VECTOR1, by default, the radix is BINARY. For other vector symbols the default is HEX.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1036491">&nbsp;</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1036493">An output file example for BINARY will be:</a></p>
+            <p><a name="1036494">A0 A1 A2 A3 A4 A5 A6 A7 A8 A9 A10 A11 A12 A13 </a>A14 A15</p>
+            <p><a name="1036495">0s 00000000000000000</a></p>
+            <p><a name="1036496">56s 00000000000000001</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1036498">&nbsp;</a></p>
+          </td>
+          <td cellpadding="4" border="2" valign="top">
+            <p><a name="1036500">In HEX representation, four bits represent the values </a>from 0 to E.An output file example for HEX will be:</p>
+            <p><a name="1036501">HEX( A0 A1 A2 A3 ) HEX( A4 A5 A6A7)HEX( A8 A9 </a>A10 A11 ) HEX( A12 A13 A14 A15 ) </p>
+            <p><a name="1036502">0s 0000</a></p>
+            <p><a name="1036503">56s 0001</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1036505">&nbsp;</a></p>
+          </td>
+          <td cellpadding="4" border="2" valign="top">
+            <p><a name="1036507">In the OCT representation, three bits represent </a>values from 0 to 7. An output file example for OCT will be:</p>
+            <p><a name="1036508">OCT( A0 A1 A2  ) OCT(A3 A4 A5   ) OCT(A6 A7 A8 ) </a>OCT( A9A10 A11 ) </p>
+            <p><a name="1036509">0s 000</a></p>
+            <p><a name="1036510">56s 001</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1036512">Signames</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1036514">The output file is assigned the name of the net if a net </a>name is attached. If not attached to a net name, the output file contains the NODE number.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1036516">&nbsp;</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1036518">For example, if no net name is attached, the file will </a>be:</p>
+            <p><a name="1036519">N35080</a></p>
+            <p><a name="1036520">0s 0</a></p>
+            <p><a name="1036521">56s 1</a></p>
+            <p><a name="1036522">If the net name assigned is SS,</a></p>
+            <p><a name="1036523">SS</a></p>
+            <p><a name="1036524">0s 0</a></p>
+            <p><a name="1036525">56s 1</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1036527">POS</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1036529">An optional parameter that specifies the column </a>position in the file and can have any value from 1 to 255.</p>
+            <p><a name="1036530">By default, the column position is determined by the </a>order in which the .VECTOR command appears in the circuit file. However, users can use POS to position preferred vector source results to a specified column location in output vector file. For example, to to place the vector result in the second column, specify POS=2.</p>
+            <p><a name="1036531">&nbsp;</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1036533">BIT</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1036535">Defines the bit position within a single hexadecimal or </a>octal digit in the .vec file</p>
+            <p><a name="1036536">For example, if you specify BIT = 3, the following </a>output is obtained:</p>
+            <p><a name="1036537">OCT( A fill0_1 fill0_0 )</a></p>
+            <p><a name="1036538">0s              0</a></p>
+            <p><a name="1036539">100ns        4</a></p>
+            <p><a name="1036540">200ns        0</a></p>
+            <p><a name="1036541">300ns        4</a></p>
+            <p><a name="1036542">400ns        0</a></p>
+            <p><a name="1036543">500ns        4</a></p>
+            <p><a name="1036544">600ns        0</a></p>
+            <p><a name="1036545">700ns        4</a></p>
+            <p><a name="1036546">Vector1 : Wire</a></p>
+            <p><a name="1036547">Vector2 : Bus with width 2</a></p>
+            <p><a name="1036548">Vector4 : Bus with width 4</a></p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1036556">&nbsp;</a></p>
+      <h2><a name="1036557">VPRINT1</a></h2>
+      <p><a name="1036595">&nbsp;</a></p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="648">
+        <caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="182">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1036560">Properties</a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="466">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1036562">Function</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1036564">AC</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1036566">Plots the magnitude of the voltage against the frequency of the </a>node to which the symbol is attached if value is set to AC. VM (net name) is obtained in the .out file.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1036568">DB</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1036570">Plots in decibel the magnitude of the voltage to which the symbol </a>is attached if value is set to DB for AC analysis. VDB (net name) is obtained in the .out file.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1036572">DC</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1036574">Plots the DC transfer curves if value is set to DC. </a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1036576">IMAG</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1036578">Plots the imaginary part of the voltage of the node to which the </a>symbol is attached if value is set to IMAG for AC analysis. VI (net name) is obtained in the .out file.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1036580">REAL</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1036582">Plots the real value if value is set to REAL for AC analysis. VR </a>(net name) is obtained in the .out file. </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1036584">TRAN</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1036586">Plots the voltage and time in a tabular format in the .out file if </a>value is set to TRANS, for TRANSIENT type. </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1036588">MAG</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1036590">Plots the magnitude of the voltage of the node to which the </a>symbol is attached if value is set to MAG for AC analysis. VM (net name) is obtained in the .out file.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1036592">PHASE</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1036594">Plots the phase of the voltages if the value is set to PHASE for </a>AC analysis. VP (Net name ) is in the .out file.</p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1036076">&nbsp;</a></p>
+      <h2><a name="1036004">VPRINT2</a></h2>
+      <p><a name="1036005">&nbsp;</a></p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="648">
+        <caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="182">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1036011">Properties</a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="466">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1036013">Function</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1036015">AC</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1036017">Plots the magnitude of the differential voltages between nodes to </a>which the symbol is attached if value is set to AC. VM (net name) is obtained in the .out file.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1036019">DB</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1036021">Plots in decibel the magnitude of the voltage to which the symbol </a>is attached if value is set to DB for AC analysis. VDB (net name) is obtained in the .out file.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1036023">DC</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1036025">Plots the DC transfer curves if value is set to DC. </a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1036027">IMAG</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1036029">Plots the imaginary part of the differential voltages between the </a>nodes to which the symbol is attached if value is set to IMAG for AC analysis. VI (net name) is obtained in the .out file.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1036031">REAL</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1036033">Plots the real value or magnitude of the differential voltage </a>between the nodes to which the symbol is attached if value is set to REAL for AC analysis. VR (net name) is obtained in the .out file. </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1036035">TRAN</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1036037">Plots the differential voltage and time in a tabular format in the </a>.out file if value is set to TRANS, for TRANSIENT type. </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1036039">MAG</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1036041">Plots the magnitude of the differential voltage between the nodes </a>to which the symbol is attached if value is set to MAG for AC analysis. VM (net name) is obtained in the .out file.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1036043">PHASE</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1036045">Plots the phase of the differential voltages between the nodes to </a>which the symbol is attached if the value is set to PHASE for AC analysis. VP (Net name ) is in the .out file.</p>
+          </td>
+        </tr>
+      </table>
+      <h2><a name="1036079">IPRINT1</a></h2>
+      <p><a name="1036087">&nbsp;</a></p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="648">
+        <caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="182">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1036091">Properties</a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="466">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1036093">Function</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1036095">AC</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1036097">Plots the magnitude of the current in the branch for AC analysis. </a>IM (net name) is obtained in the .out file. </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1036099">DB</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1036101">Plots the magnitude of current in decibels in the branch to which </a>the symbol is attached. IDB (net name) is obtained in the .out file.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1036103">DC</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1036105">Plots the current and voltage in tabular format in the .out file. </a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1036107">IMAG</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1036109">Plots the imaginary part of the current in the branch. II (net name) </a>is obtained in the .out file.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1036111">REAL</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1036113">Plots the real part of the current in the branch. IR (net name) is </a>obtained in the .out file. </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1036115">TRAN</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1036117">Plots the current and time in the .out file. </a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1036119">MAG</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1036121">Plots the magnitude of current in the branch. IM (net name) is </a>obtained in the .out file.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1036123">PHASE</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1036125">Plots the phase of current in the branch.</a></p>
+          </td>
+        </tr>
+      </table>
+      <h2><a name="1036193">PRINT1</a></h2>
+      <p><a name="1036226">PRINT1 has the same properties as mentioned for VPRINT1 and an additional Analysis </a>property. </p>
+      <p><a name="1036227">The values for the Analysis property can be AC or DC, or you can leave it blank. The following </a>table describes the result of specifying these values.</p>
+      <p><a name="1036086">&nbsp;</a></p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="648">
+        <caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="182">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1036196">Values</a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="466">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1036198">Description</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1036200">AC</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1036214">Plots the magnitude of the voltage versus Frequency of the node </a>to which the symbol is attached.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1036204">DC</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1036247">Plots DC transfer curves.</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1036251">Blank</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1036258">Plots the voltage versus time at that nodes to which the symbol is </a>attached. By default it will plot the values for transient type in the out file.</p>
+          </td>
+        </tr>
+      </table>
+      <h2><a name="1036007">WATCH</a></h2>
+      <p><a name="1036313">Pauses the simulation for values between the higher and lower limits and plots the values for </a>voltages only. Following are the properties:</p>
+      <p><a name="1036290">&nbsp;</a></p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="648">
+        <caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="182">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1036293">Properties</a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="466">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1036295">Description</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1036297">ANALYSIS</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1036299">Set value to either AC or DC.</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1036301">HI</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1036303">Specify the higher limit. Generates error if value is not assigned.</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1036310">LO</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1036312">Specify the lower limit. </a></p>
+          </td>
+        </tr>
+      </table>
+      <h2><a name="1036287">IC1</a></h2>
+      <p><a name="1036318">You can use the property Value to specify the required initial condition for calculating bias </a>point for that node only. PSpice attaches a voltage source with a 0.0002 <img src="images/specialolb.15.1.1.png" width="15" height="19" alt="">series resistance to each net to which an IC symbol is connected.The voltages are clamped this way for the entire bias point calculation. The simulation starts from the set value of IC.</p>
+      <p><a name="1036343">IC1 does not work with AC or DC Analysis.</a></p>
+      <h2><a name="1036345">IC2</a></h2>
+      <p><a name="1036346">You can use the property Value to specify the required initial condition for calculating bias </a>point between two nets. The bias point is set with respect to the positive sign in the symbol and netlisted with the .IC extension.</p>
+      <p><a name="1036349">IC2 does not work with AC or DC analysis.</a></p>
+      <h2><a name="1036350">NODESET1</a></h2>
+      <p><a name="1036351">You can use the Value property to specify the required initial condition to calculate the bias </a>point. The model calculates the bias point by providing an initial guess for the node to which it is attached. It is effective for bias point and for the first step of the DC sweep. However, it has no effect during the rest of the DC sweep.</p>
+      <h2><a name="1036352">NODESET2</a></h2>
+      <p><a name="1036353">You can use the Value property to specify the required initial condition to calculate the bias </a>point. The model calculates the bias point by providing an initial guess between the nodes to which it is attached. </p>
+      <h2><a name="1036316">Additional Symbols</a></h2>
+      <p><a name="1036419">The following table describes some of the useful symbols.</a></p>
+      <p><a name="1036441">&nbsp;</a></p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="648">
+        <caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="182">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1036422">Symbol</a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="466">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1036424">Description</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1036426">CD4000_PWR</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1036428">CMOS power supply for CD 4000 series components. </a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1036430">DIGIFPWR</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1036432">TTL&#47;CMOS power supply for CMOS and TTL series.</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1036434">ECL_10K_PWR</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1036436">Digital ECL interface power supply. Can be used in place of </a>separate voltage sources for ECL simulation.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1036438">ECL_100K_PWR</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1036440">Digital ECL interface power supply. Can be used in place of </a>separate voltage sources for ECL simulation.</p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1036442">&nbsp;</a></p>
+      <p><a name="1035490">&nbsp;</a></p>
+    </div>
+    <br>
+    <a href="#pagetop">Return to top of page</a>
+    <hr>
+    <hr align="left">
+    <div style="text-align: left;">
+      <!-- Begin Buttons -->
+      <table width="650" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                    </td>
+<td height="20" width="73">
+<a href="pspaugcaTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<a href="pspaugcaIX.html"><img src="../support/nav2_index.gif" border="0"></a>
+</td>
+          <td>
+            <a href="prp.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+          </td>
+          <td>
+            <a href="Glos.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+          </td>
+          <td>
+            <a>
+<a href="pspaugca.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+            </a>
+          </td>
+          <td height="20" width="61">
+            <img src="../support/nav2_black.gif">
+          </td>
+          <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+          </td>
+          <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+          </td>
+          <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+          </td>
+        </tr>
+      </table>
+      <!-- End Buttons -->
+    </div>
+    <br>
+    <font size="-1" >
+For support, see <a href="http://support.cadence.com" target="_blank">Cadence Online Support</a> service.</font>
+    <br>
+    <br>
+    <font size="-1" >
+      <i>Copyright &#169; 2011, <a href="http://www.cadence.com">Cadence Design Systems, Inc.</a></i>
+    </font>
+    <br>
+    <font size="-1" >
+All rights reserved.</font>
+    <br>
+    <br>
+  </body>
+</html>

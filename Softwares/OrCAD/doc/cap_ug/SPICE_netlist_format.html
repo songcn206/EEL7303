@@ -1,0 +1,497 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>
+      SPICE netlist format
+    </title>
+    <meta name="Approver" content="Technical Publications" />
+    <meta name="Author" content="Technical Publications" />
+    <meta name="CreateDate" content="2012-10-10" />
+    <meta name="CreateTime" content="1349876209" />
+    <meta name="DataType" content="Manuals" />
+    <meta name="Description" content="UG" />
+    <meta name="DocTitle" content="OrCAD Capture User Guide" />
+    <meta name="DocType" content="User Guide" />
+    <meta name="FileTitle" content="SPICE netlist format" />
+    <meta name="Keywords" content="" />
+    <meta name="FileType" content="Chapter" />
+    <meta name="Keyword" content="cap_ug" />
+    <meta name="Language" content="English" />
+    <meta name="ModifiedDate" content="2012-10-10" />
+    <meta name="ModifiedTime" content="1349876209" />
+    <meta name="NextFile"
+    content="Physical%2BLayout%2Bin%2BPCB%2BEditor.html" />
+    <meta name="Group" content="" />
+    <meta name="Platform" content="All," />
+    <meta name="PrevFile"
+    content="Running%2BPSpice%2Bin%2BBatch%2BMode.html" />
+    <meta name="Product"
+    content="Allegro Design Entry CIS,OrCAD Capture," />
+    <meta name="ProductFamily"
+    content="Silicon-Package-Board Co-Design,Silicon-Package-Board Co-Design," />
+    <meta name="ProductVersion" content="16.6" />
+    <meta name="RightsManagement"
+    content="Copyright 2011-2012 Cadence Design Systems Inc." />
+    <meta name="Title"
+    content="OrCAD Capture User Guide -- SPICE netlist format" />
+    <meta name="Version" content="16.6" />
+    <meta name="Renderer" content="WIKI" />
+    <meta name="SpaceKey" content="capug166" />
+    <link href="styles/site.css" rel="stylesheet"
+    type="text/css" />
+    <meta content="text/html; charset=UTF-8"
+    http-equiv="Content-Type" />
+  </head>
+  <body style="margin-left: 5%;background-color: #FFFFFF;">
+    <a xmlns:html="http://www.w3.org/1999/xhtml" id="pagetop"
+    name="pagetop"></a> <a
+    xmlns:html="http://www.w3.org/1999/xhtml" id="firstpage"
+    name="firstpage"></a> <!-- Begin Buttons -->
+     
+    <table xmlns:html="http://www.w3.org/1999/xhtml" border="0"
+    cellpadding="0" cellspacing="0" width="650">
+      <tbody>
+        <tr>
+          <td colspan="10" height="36" width="650">
+            <img height="34" src="../support/header_doc.gif"
+            width="650" />
+          </td>
+        </tr>
+        <tr>
+          <td height="20" width="59">
+            <a href="javascript:openLibrary()"><img
+            alt="View Library" border="0" height="20"
+            src="../support/nav2_library.gif" width="59" /></a>
+          </td>
+          <td height="20" width="73">
+            <a href="cap_ugTOC.html"><img alt="Table of Contents"
+            border="0" src="../support/nav2_toc.gif" /></a>
+          </td>
+          <td height="20" width="46">
+            <img alt="Index" border="0"
+            src="../support/nav2_index_b.gif" />
+          </td>
+          <td>
+            <a href="Running_PSpice_in_Batch_Mode.html"><img
+            alt="Previous" border="0"
+            src="../support/nav2_previous.gif" /></a>
+          </td>
+          <td>
+            <a href="Physical_Layout_in_PCB_Editor.html"><img
+            alt="Next" border="0"
+            src="../support/nav_next.gif" /></a>
+          </td>
+          <td height="20">
+            <a href="cap_ug.pdf"><img alt="Open PDF to print book"
+            border="0" height="20" src="../support/nav2_print.gif"
+            width="114" /></a>
+          </td>
+          <td height="20" width="61">
+            <img src="../support/nav2_black.gif" />
+          </td>
+          <td height="20" width="76">
+            <a href="/feedback.htm"><img alt="Email Comments"
+            border="0" height="20"
+            src="../support/nav2_feedback.gif" width="76" /></a>
+          </td>
+          <td height="20" width="43">
+            <a href="../cdsuser/help.html"><img
+            alt="Help Using Documentation" border="0" height="20"
+            src="../support/nav2_help.gif" width="43" /></a>
+          </td>
+          <td height="20" width="37">
+            <a href="/exitsearch.htm"><img
+            alt="Shut Down Cadence Documentation Server" border="0"
+            height="20" src="../support/nav2_exit.gif"
+            width="37" /></a>
+          </td>
+        </tr>
+      </tbody>
+    </table><!-- End Buttons -->
+    <hr xmlns:html="http://www.w3.org/1999/xhtml" />
+    <div id="main-header">
+      <a xmlns="" id="SPICEnetlistformat"
+      name="SPICEnetlistformat"></a> 
+      <h1 xmlns="" style=" margin: 4px 0 4px;">
+        <span>SPICE netlist format</span>
+      </h1>
+    </div>
+    <div class="wiki-content group" id="main-content">
+      <p>
+        <span class="confluence-anchor-link"
+        id="SPICEnetlistformat-1156235"></span><br />
+         <span class="confluence-anchor-link"
+        id="SPICEnetlistformat-1127306"></span> Generic, flat SPICE
+        format netlists have the following characteristics:
+      </p>
+      <ul>
+        <li>
+          <span class="confluence-anchor-link"
+          id="SPICEnetlistformat-1127307"></span> Part names,
+          module names, reference strings, node names, and pin
+          numbers are not checked for length.
+        </li>
+        <li>
+          <span class="confluence-anchor-link"
+          id="SPICEnetlistformat-1127308"></span> Node numbers are
+          limited to five characters.
+        </li>
+        <li>
+          <span class="confluence-anchor-link"
+          id="SPICEnetlistformat-1127309"></span> If the Use net
+          names option is selected, legal characters for node names
+          are limited to:
+        </li>
+      </ul>
+      <div class="preformatted panel" style="border-width: 1px;">
+        <div class="preformattedContent panelContent">
+<pre>
+0..9 A..Z a..z $ _ (underscore)
+</pre>
+        </div>
+      </div>
+      <p>
+        <span class="confluence-anchor-link"
+        id="SPICEnetlistformat-1127311"></span> If you select this
+        option, Capture uses the node names you placed on the
+        schematic page (via aliases and hierarchical ports), where
+        available. Not all versions of SPICE support alphanumeric
+        node names. Check your SPICE manual for details. If your
+        version of SPICE does not allow alphanumeric node names,
+        you can still give them numeric names such as
+        &quot;17.&quot; These numeric names do not interfere with
+        the ones generated by Capture, since the node numbers it
+        generates begin at 10000 (except GND, which is always 0).
+      </p>
+      <ul>
+        <li>
+          <span class="confluence-anchor-link"
+          id="SPICEnetlistformat-1127315"></span> All ASCII
+          characters are legal except as noted for node
+          names.<br />
+           <span class="confluence-anchor-link"
+          id="SPICEnetlistformat-1127319"></span> For more
+          information on flat SPICE netlists, see the flat SPICE
+          netlist example.
+        </li>
+      </ul>
+      <p>
+        <span class="confluence-anchor-link"
+        id="SPICEnetlistformat-1127320"></span> <span
+        style="color: rgb(0,0,0);"><strong><em>The Spice
+        formats</em></strong></span>
+      </p>
+      <p>
+        <span class="confluence-anchor-link"
+        id="SPICEnetlistformat-1127321"></span> Capture provides
+        two SPICE netlist formats. The first format produces either
+        hierarchical or flat netlist output, depending on your
+        project structure and the active view. It is accessible
+        from the SPICE tab on the Create Netlist dialog box. The
+        second format produces only flat netlists, and is
+        accessible through the Other tab on the Create Netlist
+        dialog box.<br />
+         <span class="confluence-anchor-link"
+        id="SPICEnetlistformat-1127328"></span> Use the SPICE tab
+        if:
+      </p>
+      <ul>
+        <li>
+          <span class="confluence-anchor-link"
+          id="SPICEnetlistformat-1127329"></span> You want to
+          include net, part, and pin properties.
+        </li>
+        <li>
+          <span class="confluence-anchor-link"
+          id="SPICEnetlistformat-1127330"></span> You want a
+          hierarchical netlist.<br />
+           <span class="confluence-anchor-link"
+          id="SPICEnetlistformat-1127331"></span> Use the Other tab
+          if:
+        </li>
+        <li>
+          <span class="confluence-anchor-link"
+          id="SPICEnetlistformat-1127332"></span> You want a flat
+          netlist of a simple hierarchical design.
+        </li>
+      </ul>
+      <p>
+        <span class="confluence-anchor-link"
+        id="SPICEnetlistformat-1127333"></span> <span
+        style="color: rgb(0,0,0);"><strong><em>Hierarchical designs
+        in SPICE</em></strong></span>
+      </p>
+      <p>
+        <span class="confluence-anchor-link"
+        id="SPICEnetlistformat-1127334"></span> For hierarchical
+        designs, the SPICE format produces netlists with subcircuit
+        (.SUBCKT) definitions for schematic pages in the hierarchy.
+        These subcircuits are called by the X command (subcircuit
+        call). Since SPICE does not require subcircuits to be
+        defined before use, the hierarchy appears in normal form in
+        the netlist with the root page at the top of the file.
+      </p>
+      <p>
+        <span class="confluence-anchor-link"
+        id="SPICEnetlistformat-1127517"></span> According to the
+        PSPICE manual, the X subcircuit general form is:
+      </p>
+      <div class="preformatted panel" style="border-width: 1px;">
+        <div class="preformattedContent panelContent">
+<pre>
+X name [nodes] subcircuit-name
+</pre>
+        </div>
+      </div>
+      <p>
+        <span class="confluence-anchor-link"
+        id="SPICEnetlistformat-1163011"></span> where:<br
+        class="atl-forced-newline" />
+         name Specifies a unique name for the device<br
+        class="atl-forced-newline" />
+         nodes Specifies the list of nets that attach to the device
+        in the same order as the .SUBCKT definition used by the
+        device<br class="atl-forced-newline" />
+         subcircuit-name Specifies the name of a .SUBSCKT
+        definition that the X device uses<br
+        class="atl-forced-newline" />
+        <br class="atl-forced-newline" />
+         The following is an example of an X subcircuit call:
+      </p>
+<pre>
+XBUF 13 15 UNITAMP
+</pre>
+      <p>
+        For more information on hierarchical SPICE netlists, see
+        the hierarchical SPICE netlist example.
+      </p>
+      <p>
+        <span class="confluence-anchor-link"
+        id="SPICEnetlistformat-1127361"></span> <span
+        style="color: rgb(0,0,0);"><strong><em>SPICE netlist
+        constraints</em></strong></span>
+      </p>
+      <ul>
+        <li>
+          <span class="confluence-anchor-link"
+          id="SPICEnetlistformat-1127362"></span> Capture can
+          create netlists larger than what most PC-based SPICE
+          programs accept. Consult your SPICE manual for the
+          limits. If your PC meets SPICE&#39;s memory requirements,
+          you can generate the largest allowed netlist.
+        </li>
+        <li>
+          <span class="confluence-anchor-link"
+          id="SPICEnetlistformat-1127363"></span> The part value is
+          used to pass modeling information to the netlist. For
+          instance, resistor RS1 in the example flat schematic
+          folder has a value of 1K Ohms; in the example
+          hierarchical schematic folder R1 has a value of 6.8K
+          Ohms.
+        </li>
+        <li>
+          <span class="confluence-anchor-link"
+          id="SPICEnetlistformat-1127364"></span> Use the special
+          PSPICE.OLB or SPICE.OLB libraries supplied by OrCAD when
+          generating a SPICE netlist. These libraries already have
+          pin numbers on the parts and are compatible with most
+          versions of SPICE. The PSPICE.OLB contains many specific
+          part types, such as a 2N2222 NPN transistor, that are not
+          provided in the generic SPICE.OLB.
+        </li>
+        <li>
+          <span class="confluence-anchor-link"
+          id="SPICEnetlistformat-1127365"></span> All library part
+          pin names should be changed to reflect the model node
+          index. To find out the proper node ordering, see your
+          SPICE manual.
+        </li>
+      </ul>
+      <p>
+        <span class="confluence-anchor-link"
+        id="SPICEnetlistformat-1127366"></span> As an example of
+        what to change, the OrCAD-supplied NPN transistor has the
+        pin names defined as base, emitter, and collector in the
+        DEVICE.OLB library. For SPICE to understand the nodal
+        information, the pin names must be changed from base,
+        emitter, and collector to 2, 3, and 1 (as defined in the
+        SPICE manual). Therefore, the library source file for an
+        NPN transistor that is compatible with the SPICE pin
+        numbering convention is as follows:
+      </p>
+      <div class="preformatted panel" style="border-width: 1px;">
+        <div class="preformattedContent panelContent">
+<pre>
+ &#39;NPN&#39;
+ REFERENCE &#39;Q&#39;
+ {X Size =} 2 {Y Size =} 2 {Parts per Package =} 0
+ L1 SHORT IN &#39;2&#39;
+ B2 SHORT IN &#39;3&#39;
+ T2 SHORT IN &#39;1&#39;
+ { 0}..##.#
+ { 1} ## #
+   .
+   .
+   .
+</pre>
+        </div>
+      </div>
+      <p>
+        <span class="confluence-anchor-link"
+        id="SPICEnetlistformat-1127368"></span> <span
+        style="color: rgb(0,0,0);"><strong><em>SPICE map
+        files</em></strong></span>
+      </p>
+      <p>
+        <span class="confluence-anchor-link"
+        id="SPICEnetlistformat-1127369"></span> In addition to the
+        netlist file, Capture also creates a map file when you
+        select the SPICE format. The node numbers created by
+        Capture are placed in the .MAP file so you can
+        cross-reference the SPICE node numbers with the node names
+        that you specified on your schematic page. You must enter
+        the map filename in the Map File text box in the Create
+        Netlist dialog box.
+      </p>
+      <div class="panelMacro">
+        <table class="noteMacro">
+          <colgroup>
+            <col width="24" />
+            <col />
+          </colgroup>
+          <tr>
+            <td valign="top">
+              <img align="absmiddle" alt="" border="0" height="16"
+              src="images/icons/emoticons/warning.png"
+              width="16" />
+            </td>
+            <td>
+              <p>
+                If you select the Use net names option, the map
+                file may contain erroneous results.
+              </p>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <p>
+        <span class="confluence-anchor-link"
+        id="SPICEnetlistformat-1127599"></span> For more
+        information on SPICE map files, see the flat and
+        hierarchical map file examples.
+      </p>
+      <p>
+        <span class="confluence-anchor-link"
+        id="SPICEnetlistformat-1127386"></span> <span
+        style="color: rgb(0,0,0);"><strong><em>SPICE pipe
+        commands</em></strong></span>
+      </p>
+      <p>
+        <span class="confluence-anchor-link"
+        id="SPICEnetlistformat-1127387"></span> You can place lines
+        of text on your schematic page to be included in the SPICE
+        netlist. Select the Text command on the Place menu to place
+        the text on your schematic page.<br />
+         <span class="confluence-anchor-link"
+        id="SPICEnetlistformat-1127391"></span> Each line of text
+        must start with the pipe character (|). The first line must
+        be:
+      </p>
+      <div class="preformatted panel" style="border-width: 1px;">
+        <div class="preformattedContent panelContent">
+<pre>
+|SPICE
+</pre>
+        </div>
+      </div>
+      <p>
+        <span class="confluence-anchor-link"
+        id="SPICEnetlistformat-1127393"></span> This tells Capture
+        to extract the information in the following lines of text
+        when generating a SPICE netlist. The remaining lines can
+        contain any information you want to include in the netlist.
+        The lines following |SPICE are placed at the top of the
+        netlist.
+      </p>
+    </div>
+    <hr xmlns:html="http://www.w3.org/1999/xhtml" />
+    <hr xmlns:html="http://www.w3.org/1999/xhtml" align="left" />
+    <div xmlns:html="http://www.w3.org/1999/xhtml"
+    style="text-align: left;">
+      <!-- Begin Buttons -->
+      <table border="0" cellpadding="0" cellspacing="0"
+      width="650">
+        <tbody>
+          <tr>
+            <td colspan="10" height="36" width="650">
+              <img height="34" src="../support/header_doc.gif"
+              width="650" />
+            </td>
+          </tr>
+          <tr>
+            <td height="20" width="59">
+              <a href="javascript:openLibrary()"><img
+              alt="View Library" border="0" height="20"
+              src="../support/nav2_library.gif" width="59" /></a>
+            </td>
+            <td height="20" width="73">
+              <a href="cap_ugTOC.html"><img alt="Table of Contents"
+              border="0" src="../support/nav2_toc.gif" /></a>
+            </td>
+            <td height="20" width="46">
+              <img alt="Index" border="0"
+              src="../support/nav2_index_b.gif" />
+            </td>
+            <td>
+              <a href="Running_PSpice_in_Batch_Mode.html"><img
+              alt="Previous" border="0"
+              src="../support/nav2_previous.gif" /></a>
+            </td>
+            <td>
+              <a href="Physical_Layout_in_PCB_Editor.html"><img
+              alt="Next" border="0"
+              src="../support/nav_next.gif" /></a>
+            </td>
+            <td height="20">
+              <a href="cap_ug.pdf"><img
+              alt="Open PDF to print book" border="0" height="20"
+              src="../support/nav2_print.gif" width="114" /></a>
+            </td>
+            <td height="20" width="61">
+              <img src="../support/nav2_black.gif" />
+            </td>
+            <td height="20" width="76">
+              <a href="/feedback.htm"><img alt="Email Comments"
+              border="0" height="20"
+              src="../support/nav2_feedback.gif" width="76" /></a>
+            </td>
+            <td height="20" width="43">
+              <a href="../cdsuser/help.html"><img
+              alt="Help Using Documentation" border="0" height="20"
+              src="../support/nav2_help.gif" width="43" /></a>
+            </td>
+            <td height="20" width="37">
+              <a href="/exitsearch.htm"><img
+              alt="Shut Down Cadence Documentation Server"
+              border="0" height="20" src="../support/nav2_exit.gif"
+              width="37" /></a>
+            </td>
+          </tr>
+        </tbody>
+      </table><!-- End Buttons -->
+    </div><br xmlns:html="http://www.w3.org/1999/xhtml" />
+     <font xmlns:html="http://www.w3.org/1999/xhtml" size="-1">For
+    support, see <a href="http://support.cadence.com"
+    target="_blank">Cadence Online Support</a> service.</font> <br
+    xmlns:html="http://www.w3.org/1999/xhtml" />
+     <br xmlns:html="http://www.w3.org/1999/xhtml" />
+     <font xmlns:html="http://www.w3.org/1999/xhtml"
+    size="-1"><i>Copyright &#169; 2012, <a
+    href="http://www.cadence.com">Cadence Design Systems,
+    Inc.</a></i></font> <br
+    xmlns:html="http://www.w3.org/1999/xhtml" />
+     <font xmlns:html="http://www.w3.org/1999/xhtml" size="-1">All
+    rights reserved.</font> <br
+    xmlns:html="http://www.w3.org/1999/xhtml" />
+     <br xmlns:html="http://www.w3.org/1999/xhtml" />
+  </body>
+</html>

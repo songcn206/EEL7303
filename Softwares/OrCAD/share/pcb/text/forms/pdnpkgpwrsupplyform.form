@@ -1,0 +1,126 @@
+####################################################################################
+#       Cadence Design Systems                                                     #
+#                                                                                  #
+# (C) COPYRIGHT, Cadence Design Systems, Inc. 2008                                 #
+# All Rights Reserved                                                              #
+# Licensed Materials - Property of Cadence Design Systems                          #
+#                                                                                  #
+# No part of this file may be reproduced, stored in a retrieval system,            #
+# or transmitted in any form or by any means --- electronic, mechanical,           #
+# photocopying, recording, or otherwise --- without prior written permission       #
+# of Cadence Design Systems, Inc.                                                  #
+#                                                                                  #
+# WARRANTY:                                                                        #
+# Use all material in this file at your own risk.  Cadence Design Systems          #
+# makes no claims about any material contained in this file.                       #
+####################################################################################
+FILE_TYPE=FORM_DEFN VERSION=2
+
+    FORM
+    FIXED
+    PORT 47 50
+    HEADER "Power Supply Editor"
+
+    ACTIVEFIELD "Done"
+    DEFAULT Done
+
+    TILE
+
+    FIELD Done
+        FLOC 2 23
+        MENUBUTTON "OK" 10 3
+    ENDFIELD
+
+    FIELD Help
+        FLOC 35 23
+        MENUBUTTON "Help" 10 3
+    ENDFIELD
+
+    GROUP ""
+        GLOC 1 0
+        GSIZE 46 5
+    ENDGROUP
+
+    TEXT "Power Net:"
+        TLOC 2 2
+    ENDTEXT
+
+    POPUP <PowerNetList>"""".
+    #FIELD PowerNet
+    #    FLOC 12 2
+    #    ENUMSET 25
+    #    POP "PowerNetList"
+    #ENDFIELD
+    TEXT
+        TLOC 12 2
+        INFO PowerNet 25
+    ENDTEXT
+
+    TABSET "one"
+    FLOC 1 5
+    TSSIZE 46 17
+
+    TAB "VRM Model"
+
+    FIELD VRMNameList
+        FLOC 1 1
+        LIST "" 43 6
+    ENDFIELD
+
+    FIELD VRMAdd
+        FLOC 1 12
+        MENUBUTTON "Add" 10 3
+    ENDFIELD
+
+    FIELD VRMRemove
+        FLOC 12 12
+        MENUBUTTON "Remove" 10 3
+    ENDFIELD
+
+    FIELD VRMModelEdit
+      FLOC 23 12
+      MENUBUTTON "Edit" 10 3
+    ENDFIELD  
+
+    FIELD VRMTextEdit
+      FLOC 34 12
+      MENUBUTTON "Text Edit" 10 3
+    ENDFIELD
+    
+  
+
+    ENDTAB
+
+    TAB "Supply SubCkt"
+
+    FIELD SubCktNameList
+        FLOC 1 1
+        LIST "" 43 6
+    ENDFIELD
+
+    POPUP <SubCktBrowserList>"Model Browse""SubCktModelBrowser","External""SubCktExternalBrowser".
+    FIELD SubCktAdd
+        FLOC 1 12
+        MENUBUTTON "Add" 10 3
+        POP "SubCktBrowserList"
+    ENDFIELD
+
+    FIELD SubCktRemove
+        FLOC 12 12
+        MENUBUTTON "Remove" 10 3
+    ENDFIELD
+
+    FIELD SubCktModelEdit
+      FLOC 23 12
+      MENUBUTTON "Edit" 10 3
+    ENDFIELD
+
+    FIELD SubCktTextEdit
+      FLOC 34 12
+      MENUBUTTON "Text Edit" 10 3
+    ENDFIELD
+
+    ENDTAB
+    ENDTABSET
+    ENDTILE
+ENDFORM

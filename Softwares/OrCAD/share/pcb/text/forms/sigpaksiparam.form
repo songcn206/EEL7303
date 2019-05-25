@@ -1,0 +1,536 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 60 60 
+HEADER "3-D Modeling Parameters"
+
+POPUP <rl_mesh>"0""0".
+POPUP <cg_mesh>"0""0".
+POPUP <cg_planar_box>"0""0".
+POPUP <cg_z_box>"0""0".
+POPUP <wb_connect_option>"0""0".
+POPUP <wb_dir_option>"0""0".
+POPUP <mport_option>"0""0".
+POPUP <csource_option>"0""0".
+POPUP <subcircuit_nseg>"0""0".
+POPUP <freq_scale>"0""0".
+POPUP <random_walk_option>"0""0".
+POPUP <multithread_option>"0""0".
+POPUP <die_comp_bump>"0""0".
+
+TILE
+
+TABSET "TABS"
+FLOC 1 1
+TSSIZE 58 55
+
+TAB "General"
+
+TEXT "Solder Ball Location"
+TLOC 2 1
+ENDTEXT
+
+FIELD CavityUp 
+FLOC 36 1 
+CHECKLIST "Bottom" "cavity_mode" 
+ENDFIELD
+
+FIELD CavityDown
+FLOC 46 1
+CHECKLIST "Top" "cavity_mode"
+ENDFIELD
+
+FIELD CavityAuto
+FLOC 20 1
+CHECKLIST "Auto-detect" "cavity_mode"
+ENDFIELD
+
+TEXT "Design unit"
+TLOC 2 4 
+ENDTEXT
+
+TEXT "microns"
+TLOC 30 4 
+ENDTEXT
+
+TEXT "Frequency"
+TLOC 2 6 
+ENDTEXT
+
+FIELD PaksiFREQ 
+FLOC 30 6 
+STRFILLIN 20 20 
+ENDFIELD
+
+TEXT "Number of coupling nets"
+TLOC 2 8 
+ENDTEXT
+
+FIELD PaksiNCPL 
+FLOC 30 8 
+STRFILLIN 20 20 
+ENDFIELD
+
+TEXT "Minimum via diameter"
+TLOC 2 10 
+ENDTEXT
+
+FIELD PaksiMVD 
+FLOC 30 10 
+STRFILLIN 20 20 
+ENDFIELD
+
+TEXT "Ignore void diameter"
+TLOC 2 12 
+ENDTEXT
+
+FIELD PaksiIVD 
+FLOC 30 12 
+STRFILLIN 20 20 
+ENDFIELD
+
+GROUP "Mesh"
+GLOC 1 14
+GSIZE 55 11 
+ENDGROUP
+
+TEXT "RL mesh density"
+TLOC 2 16 
+TGROUP "Mesh"
+ENDTEXT
+
+FIELD PaksiMDRL 
+FLOC 30 16 
+ENUMSET 20
+FGROUP "Mesh"
+POP "rl_mesh"
+ENDFIELD
+
+TEXT "CG mesh density"
+TLOC 2 18 
+TGROUP "Mesh"
+ENDTEXT
+
+FIELD PaksiMDCG 
+FLOC 30 18 
+ENUMSET 20 
+FGROUP "Mesh"
+POP "cg_mesh"
+ENDFIELD
+
+TEXT "CG planar boundary box"
+TLOC 2 20 
+TGROUP "Mesh"
+ENDTEXT
+
+FIELD PaksiBSXY 
+FLOC 30 20 
+ENUMSET 20 
+FGROUP "Mesh"
+POP "cg_planar_box"
+ENDFIELD
+
+TEXT "CG z-directional boundary box"
+TLOC 2 22 
+TGROUP "Mesh"
+ENDTEXT
+
+FIELD PaksiBSZ 
+FLOC 30 22 
+ENUMSET 20 
+FGROUP "Mesh"
+POP "cg_z_box"
+ENDFIELD
+
+GROUP "Options"
+GLOC 1 25
+GSIZE 55 9 
+ENDGROUP
+
+TEXT "Enable Multiport"
+TLOC 2 27 
+TGROUP "Options"
+ENDTEXT
+
+FIELD PaksiMPRT 
+FLOC 30 27 
+ENUMSET 20 
+FGROUP "Options"
+POP "mport_option"
+ENDFIELD
+
+TEXT "Controlled sources in model"
+TLOC 2 29 
+TGROUP "Options"
+ENDTEXT
+
+FIELD PaksiCSRC 
+FLOC 30 29 
+ENUMSET 20 
+FGROUP "Options"
+POP "csource_option"
+ENDFIELD
+
+TEXT "Number of subcircuit segments"
+TLOC 2 31 
+TGROUP "Options"
+ENDTEXT
+
+FIELD PaksiNSEG 
+FLOC 30 31 
+ENUMSET 20 
+FGROUP "Options"
+POP "subcircuit_nseg"
+ENDFIELD
+
+GROUP "Frequency Sweep"
+GLOC 1 34
+GSIZE 55 11
+ENDGROUP
+
+TEXT "Start frequency"
+TLOC 2 36
+TGROUP "Frequency Sweep"
+ENDTEXT
+
+FIELD PaksiSFREQ
+FLOC 30 36
+FGROUP "Frequency Sweep"
+STRFILLIN 20 20
+ENDFIELD
+
+TEXT "Number of frequency points"
+TLOC 2 38
+TGROUP "Frequency Sweep"
+ENDTEXT
+
+FIELD PaksiNFREQ
+FLOC 30 38
+FGROUP "Frequency Sweep"
+STRFILLIN 20 20
+ENDFIELD
+
+TEXT "Frequency sweep scale"
+TLOC 2 40 
+TGROUP "Frequency Sweep"
+ENDTEXT
+
+FIELD PaksiFSCL 
+FLOC 30 40 
+FGROUP "Frequency Sweep"
+ENUMSET 20
+POP "freq_scale"
+ENDFIELD
+
+TEXT "Reference impedance"
+TLOC 2 42 
+TGROUP "Frequency Sweep"
+ENDTEXT
+
+FIELD PaksiIMPS 
+FLOC 30 42 
+FGROUP "Frequency Sweep"
+STRFILLIN 20 20
+ENDFIELD
+
+#ifdef UNIFIED_PAKSI
+TEXT "Random walk method"
+TLOC 2 47 
+ENDTEXT
+
+FIELD PaksiRW 
+FLOC 30 47 
+ENUMSET 20 
+POP "random_walk_option"
+ENDFIELD
+
+TEXT "Number of processors to use"
+TLOC 2 49 
+ENDTEXT
+
+FIELD PaksiMT 
+FLOC 30 49 
+ENUMSET 20 
+POP "multithread_option"
+ENDFIELD
+#endif
+
+ENDTAB
+
+TAB "Bump"
+
+FIELD SolderBumpPic
+THUMBNAIL paksisolderbump.bmp
+FLOC 5 2
+FSIZE 46 25
+ENDFIELD
+
+TEXT "Die Component"
+TLOC 6 30 
+ENDTEXT
+
+FIELD DieCompBump 
+FLOC 20 30 
+ENUMSET 20
+POP "die_comp_bump"
+ENDFIELD
+
+TEXT "Dmax"
+TLOC 6 32
+ENDTEXT
+
+FIELD BumpDmax
+FLOC 20 32
+STRFILLIN 20 20
+ENDFIELD
+
+TEXT "D1"
+TLOC 6 34
+ENDTEXT
+
+FIELD BumpD1
+FLOC 20 34
+STRFILLIN 20 20
+ENDFIELD
+
+TEXT "D2"
+TLOC 6 36
+ENDTEXT
+
+FIELD BumpD2
+FLOC 20 36
+STRFILLIN 20 20
+ENDFIELD
+
+TEXT "HT"
+TLOC 6 38
+ENDTEXT
+
+FIELD BumpHT
+FLOC 20 38
+STRFILLIN 20 20
+ENDFIELD
+
+TEXT "Conductivity"
+TLOC 6 40
+ENDTEXT
+
+FIELD BumpConductivity
+FLOC 20 40
+STRFILLIN 20 20
+ENDFIELD
+
+TEXT "Set Dmax to 0 if bumps are not to be modeled"
+TLOC 6 44
+ENDTEXT
+
+ENDTAB
+
+TAB "Ball..."
+
+FIELD SolderBallPic
+THUMBNAIL paksisolderball.bmp 
+FLOC 5 2
+FSIZE 46 28
+ENDFIELD
+
+TEXT "Dmax"
+TLOC 6 32 
+ENDTEXT
+
+FIELD BallDmax 
+FLOC 20 32 
+STRFILLIN 20 20
+ENDFIELD
+
+TEXT "D1"
+TLOC 6 34
+ENDTEXT
+
+FIELD BallD1
+FLOC 20 34
+STRFILLIN 20 20
+ENDFIELD
+
+TEXT "D2"
+TLOC 6 36
+ENDTEXT
+
+FIELD BallD2
+FLOC 20 36
+STRFILLIN 20 20
+ENDFIELD
+
+TEXT "HT"
+TLOC 6 38
+ENDTEXT
+
+FIELD BallHT
+FLOC 20 38
+STRFILLIN 20 20
+ENDFIELD
+
+TEXT "Conductivity"
+TLOC 6 40 
+ENDTEXT
+
+FIELD BallConductivity
+FLOC 20 40 
+STRFILLIN 20 20
+ENDFIELD
+
+TEXT "Set Dmax to 0 if balls are not to be modeled"
+TLOC 6 44
+ENDTEXT
+
+FIELD WBProfile
+FLOC 6 47 
+MENUBUTTON "WireBond Profile" 16 3 
+ENDFIELD
+
+ENDTAB
+
+TAB "External Ground"
+
+FIELD ExternalGroundPic
+THUMBNAIL paksiexternalgnd.bmp  
+FLOC 5 1
+FSIZE 46 29
+ENDFIELD
+
+FIELD PCBPlane
+FLOC 4 32
+CHECKLIST "Include PCB plane (Ground #1)" 
+ENDFIELD
+
+FIELD PCBPlaneGround
+FLOC 30 32
+CHECKLIST "Ground" "pcb_plane_mode"
+ENDFIELD
+
+FIELD PCBPlaneFloat
+FLOC 40 32
+CHECKLIST "Float" "pcb_plane_mode"
+ENDFIELD
+
+TEXT "h1"
+TLOC 8 34
+ENDTEXT
+
+FIELD PCBPlaneOffset 
+FLOC 25 34
+STRFILLIN 20 20
+ENDFIELD
+
+TEXT "Under fill dielectric constant"
+TLOC 4 36
+ENDTEXT
+
+FIELD UnderFillDielectric 
+FLOC 25 36
+STRFILLIN 20 20
+ENDFIELD
+
+TEXT "PCB dielectric constant"
+TLOC 4 38
+ENDTEXT
+
+FIELD PCBDielectric 
+FLOC 25 38
+STRFILLIN 20 20
+ENDFIELD
+
+FIELD TopPlane
+FLOC 4 42
+CHECKLIST "Include top plane (Ground #2)"
+ENDFIELD
+
+FIELD TopPlaneGround
+FLOC 30 42 
+CHECKLIST "Ground" "top_plane_mode"
+ENDFIELD
+
+FIELD TopPlaneFloat
+FLOC 40 42
+CHECKLIST "Float" "top_plane_mode"
+ENDFIELD
+
+TEXT "h2"
+TLOC 8 44
+ENDTEXT
+
+FIELD TopPlaneOffset
+FLOC 25 44
+STRFILLIN 20 20
+ENDFIELD
+
+TEXT "Top fill dielectric constant"
+TLOC 4 46
+ENDTEXT
+
+FIELD TopFillDielectric 
+FLOC 25 46
+STRFILLIN 20 20
+ENDFIELD
+
+ENDTAB
+
+TAB "SI Ignore Layers"
+
+TEXT "All Layers"
+TLOC 8 2 
+ENDTEXT
+
+FIELD AllLayers 
+FLOC 2 4 
+LIST "" 21 20
+ENDFIELD
+
+TEXT "SI Ignore Layers"
+TLOC 38 2 
+ENDTEXT
+
+FIELD IgnoreLayers
+FLOC 35 4 
+LIST "" 21 20
+ENDFIELD
+
+FIELD ResetAll
+FLOC 25 23 
+MENUBUTTON "<-- All" 9 3
+ENDFIELD
+
+TEXT
+FLOC 12 42
+INFO QtyAllLayers 8
+ENDFIELD
+
+TEXT
+FLOC 44 42
+INFO QtyIgnoreLayers 8
+ENDFIELD
+
+ENDTAB
+
+ENDTABSET
+
+FIELD OK
+FLOC 8 57
+MENUBUTTON "OK" 11 3
+ENDFIELD
+
+FIELD Cancel
+FLOC 24 57
+MENUBUTTON "Cancel" 11 3
+ENDFIELD
+
+
+FIELD help
+FLOC 42 57
+MENUBUTTON "Help" 11 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM
+

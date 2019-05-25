@@ -1,0 +1,807 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>
+      Properties on Power Pins
+    </title>
+    <meta name="Approver" content="Technical Publications" />
+    <meta name="Author" content="Technical Publications" />
+    <meta name="CreateDate" content="2012-10-10" />
+    <meta name="CreateTime" content="1349876209" />
+    <meta name="DataType" content="Manuals" />
+    <meta name="Description" content="UG" />
+    <meta name="DocTitle" content="OrCAD Capture User Guide" />
+    <meta name="DocType" content="User Guide" />
+    <meta name="FileTitle" content="Properties on Power Pins" />
+    <meta name="Keywords" content="" />
+    <meta name="FileType" content="Chapter" />
+    <meta name="Keyword" content="cap_ug" />
+    <meta name="Language" content="English" />
+    <meta name="ModifiedDate" content="2012-10-10" />
+    <meta name="ModifiedTime" content="1349876209" />
+    <meta name="NextFile"
+    content="Unconnected%2BPins%2Bin%2BCapture-PCB%2BEditor%2BFlow.html" />
+    <meta name="Group" content="" />
+    <meta name="Platform" content="All," />
+    <meta name="PrevFile"
+    content="Defining%2BProperties%2Bon%2BNets.html" />
+    <meta name="Product"
+    content="Allegro Design Entry CIS,OrCAD Capture," />
+    <meta name="ProductFamily"
+    content="Silicon-Package-Board Co-Design,Silicon-Package-Board Co-Design," />
+    <meta name="ProductVersion" content="16.6" />
+    <meta name="RightsManagement"
+    content="Copyright 2011-2012 Cadence Design Systems Inc." />
+    <meta name="Title"
+    content="OrCAD Capture User Guide -- Properties on Power Pins" />
+    <meta name="Version" content="16.6" />
+    <meta name="Renderer" content="WIKI" />
+    <meta name="SpaceKey" content="capug166" />
+    <link href="styles/site.css" rel="stylesheet"
+    type="text/css" />
+    <meta content="text/html; charset=UTF-8"
+    http-equiv="Content-Type" />
+  </head>
+  <body style="margin-left: 5%;background-color: #FFFFFF;">
+    <a xmlns:html="http://www.w3.org/1999/xhtml" id="pagetop"
+    name="pagetop"></a> <a
+    xmlns:html="http://www.w3.org/1999/xhtml" id="firstpage"
+    name="firstpage"></a> <!-- Begin Buttons -->
+     
+    <table xmlns:html="http://www.w3.org/1999/xhtml" border="0"
+    cellpadding="0" cellspacing="0" width="650">
+      <tbody>
+        <tr>
+          <td colspan="10" height="36" width="650">
+            <img height="34" src="../support/header_doc.gif"
+            width="650" />
+          </td>
+        </tr>
+        <tr>
+          <td height="20" width="59">
+            <a href="javascript:openLibrary()"><img
+            alt="View Library" border="0" height="20"
+            src="../support/nav2_library.gif" width="59" /></a>
+          </td>
+          <td height="20" width="73">
+            <a href="cap_ugTOC.html"><img alt="Table of Contents"
+            border="0" src="../support/nav2_toc.gif" /></a>
+          </td>
+          <td height="20" width="46">
+            <img alt="Index" border="0"
+            src="../support/nav2_index_b.gif" />
+          </td>
+          <td>
+            <a href="Defining_Properties_on_Nets.html"><img
+            alt="Previous" border="0"
+            src="../support/nav2_previous.gif" /></a>
+          </td>
+          <td>
+            <a
+            href="Unconnected_Pins_in_Capture-PCB_Editor_Flow.html"><img
+             alt="Next" border="0"
+            src="../support/nav_next.gif" /></a>
+          </td>
+          <td height="20">
+            <a href="cap_ug.pdf"><img alt="Open PDF to print book"
+            border="0" height="20" src="../support/nav2_print.gif"
+            width="114" /></a>
+          </td>
+          <td height="20" width="61">
+            <img src="../support/nav2_black.gif" />
+          </td>
+          <td height="20" width="76">
+            <a href="/feedback.htm"><img alt="Email Comments"
+            border="0" height="20"
+            src="../support/nav2_feedback.gif" width="76" /></a>
+          </td>
+          <td height="20" width="43">
+            <a href="../cdsuser/help.html"><img
+            alt="Help Using Documentation" border="0" height="20"
+            src="../support/nav2_help.gif" width="43" /></a>
+          </td>
+          <td height="20" width="37">
+            <a href="/exitsearch.htm"><img
+            alt="Shut Down Cadence Documentation Server" border="0"
+            height="20" src="../support/nav2_exit.gif"
+            width="37" /></a>
+          </td>
+        </tr>
+      </tbody>
+    </table><!-- End Buttons -->
+    <hr xmlns:html="http://www.w3.org/1999/xhtml" />
+    <div id="main-header">
+      <a xmlns="" id="PropertiesonPowerPins"
+      name="PropertiesonPowerPins"></a> 
+      <h1 xmlns="" style=" margin: 4px 0 4px;">
+        <span>Properties on Power Pins</span>
+      </h1>
+    </div>
+    <div class="wiki-content group" id="main-content">
+      <p>
+        While preparing your design for physical layout, it is
+        important that the power pins in your design are handled
+        properly, because depending on the part type, power pins
+        may be shared across a package.<br />
+         <span class="confluence-anchor-link">&#160;</span>This
+        section details properties related to POWER PINS that can
+        be used in the Capture &#8211; PCB Editor design flow to
+        ensure that the design is successfully netlisted.
+      </p>
+      <h3 id="PropertiesonPowerPins-&#160;POWER_PINSproperty">
+        <span
+        class="confluence-anchor-link">&#160;</span>POWER_PINS
+        property
+      </h3>
+      <p>
+        <span class="confluence-anchor-link">&#160;</span>Power
+        pins are usually defined when you generate a part using
+        Part Editor. For example, during part generation you can
+        define the pins 1, 3, and 7 as VCC pins; and 2, 4, 5, and 6
+        as GND. However, after you have instantiated a part in the
+        schematic, if required, you can use override the part-level
+        assignments by using the POWER_PINS property.
+      </p>
+      <h4
+      id="PropertiesonPowerPins-&#160;TousethePOWER_PINSproperty">
+        <span class="confluence-anchor-link">&#160;</span> <em>To
+        use the POWER_PINS property</em>
+      </h4>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>1.</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <span
+                  class="confluence-anchor-link">&#160;</span>Launch
+                  Property Editor on the selected part.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>2.</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <span
+                  class="confluence-anchor-link">&#160;</span>Click
+                  New Row.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>3.</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <span
+                  class="confluence-anchor-link">&#160;</span>In
+                  the Add New Row dialog, enter the property name
+                  as <em>POWER_PINS</em>.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>4.</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <span
+                  class="confluence-anchor-link">&#160;</span>In
+                  the Value text box, type the power pins
+                  assignments. The syntax to be followed is:
+                </p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        <span
+        class="confluence-anchor-link">&#160;</span>&lt;pin_type&gt;:&lt;comma
+        seperated list of pinnumbers&gt;; &lt;pin_type&gt;:&lt;list
+        of pinnumbers&gt;<br />
+         <span
+        class="confluence-anchor-link">&#160;</span>Example1:<br />
+         <span class="confluence-anchor-link">&#160;</span>To
+        assign the pins 4, 5, and 7 to the VCC net, the value
+        assigned to the POWER_PINS property should be
+        (VCC:4,5,7)<br />
+         <span
+        class="confluence-anchor-link">&#160;</span>Example2:<br />
+         <span class="confluence-anchor-link">&#160;</span>To
+        assign the pins 4, 5 and 7 to the VCC net, and the pins 16,
+        18, 21 to the GND net, the power pins assignment is defined
+        as (VCC:4,5,7;GND:16,18,21)
+      </p>
+      <div class="panelMacro">
+        <p>
+          &#160;
+        </p>
+        <div class="table-wrap">
+          <table class="confluenceTable">
+            <colgroup>
+              <col />
+              <col />
+            </colgroup>
+            <tbody>
+              <tr>
+                <td class="confluenceTd">
+                  <img
+                  class="confluence-embedded-image confluence-external-resource"
+                   data-image-src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                   height="16"
+                  src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                   width="16" />
+                </td>
+                <td class="confluenceTd">
+                  <p>
+                    Capture does not support duplicate name
+                    properties. So, in Example 2, you must define
+                    the VCC power pins assignment and the GND power
+                    pins in the same POWER_PINS property. To do
+                    this, use the semi-colon to differentiate
+                    between the assignments.
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          &#160;
+        </p>
+      </div>
+      <p>
+        <span class="confluence-anchor-link">&#160;</span>The power
+        pin assignments that you perform through the POWER_PINS
+        property are defined at the schematic level, and the
+        changes are not reflected on the part. As a result, on
+        opening the selected part in the Part Editor, the modified
+        pin assignments are not reflected. However, in the
+        Capture&#160;-&#160;PCB Editor flow, the POWER_PINS
+        property on the part takes precedence over the part
+        instance pin assignments.
+      </p>
+      <h3
+      id="PropertiesonPowerPins-&#160;AssigningPowerNetstoInvisiblePowerPins">
+        <span class="confluence-anchor-link">&#160;</span>Assigning
+        Power Nets to Invisible Power Pins
+      </h3>
+      <p>
+        It is a common practice to create parts with invisible
+        power pins. When these parts are instantiated in schematic,
+        Capture connects invisible power pins to a default power
+        net that shares a name with the pin. For example, if pin
+        number 14 and 28 are marked as VCC pins, these are by
+        default connected to the global VCC net in the design.
+      </p>
+      <p>
+        Capture provides you a mechanism to override this default
+        behavior and assign different values to different power
+        pins. You can achieve this using one of the following
+        methods.
+      </p>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <td class="confluenceTd">
+                <ul>
+                  <li>
+                    <a class="external-link"
+                    href="http://sj-rdwiki:8081/display/capug166/Physical+Layout+in+PCB+Editor#PhysicalLayoutinPCBEditor-1353247"
+                     rel="nofollow">Using Assign Power Pins
+                    command</a>
+                  </li>
+                </ul>
+              </td>
+              <td class="confluenceTd">
+                &#160;
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <ul>
+                  <li>
+                    <a class="external-link"
+                    href="http://sj-rdwiki:8081/display/capug166/Physical+Layout+in+PCB+Editor#PhysicalLayoutinPCBEditor-1353730"
+                     rel="nofollow">Using the POWER_GROUP
+                    property</a>
+                  </li>
+                </ul>
+              </td>
+              <td class="confluenceTd">
+                &#160;
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h4
+      id="PropertiesonPowerPins-&#160;UsingAssignPowerPinscommand">
+        <span class="confluence-anchor-link">&#160;</span>Using
+        Assign Power Pins command
+      </h4>
+      <p>
+        The Assign Power Pins command can be used on a component or
+        on a design to view the invisible power pins of a single
+        component or of all components in the designs.
+      </p>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>1.</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  Select the component instance or the root design.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>2.</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  From the Tools menu, choose <em>Assign Power
+                  Pins</em>.
+                </p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-left: 30.0px;">
+        The Assign Power Pins dialog displays.
+      </p>
+      <p style="margin-left: 30.0px;">
+        <img
+        class="confluence-embedded-image confluence-external-resource"
+         data-image-src="http://sj-rdwiki:8081/download/attachments/29854892/ua3122.png?version=1&amp;modificationDate=1346430334000"
+         src="http://sj-rdwiki:8081/download/attachments/29854892/ua3122.png?version=1&amp;modificationDate=1346430334000" /><br />
+        <br class="atl-forced-newline" />
+         The Power Names column lists the power net connected to
+        the power pin by default.
+      </p>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>3.</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  To connect the power pin to a different power
+                  net, click on the Power names grid.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>4.</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  From the drop-down list, select the power net to
+                  be associated with the power pin.
+                </p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-left: 30.0px;">
+        <img
+        class="confluence-embedded-image confluence-external-resource"
+         data-image-src="http://sj-rdwiki:8081/download/attachments/29854892/assign_pwr_net.png?version=1&amp;modificationDate=1346430384000"
+         src="http://sj-rdwiki:8081/download/attachments/29854892/assign_pwr_net.png?version=1&amp;modificationDate=1346430384000" />
+      </p>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>5.</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  Make changes for all the required power pins and
+                  click OK.
+                </p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-left: 30.0px;">
+        If you now save the design and launch Property Editor, the
+        new value is assigned to the POWER_GROUP property on the
+        component.
+      </p>
+      <p style="margin-left: 30.0px;">
+        <img
+        class="confluence-embedded-image confluence-external-resource"
+         data-image-src="http://sj-rdwiki:8081/download/attachments/29854892/ua3124.png?version=1&amp;modificationDate=1346430469000"
+         src="http://sj-rdwiki:8081/download/attachments/29854892/ua3124.png?version=1&amp;modificationDate=1346430469000" />
+      </p>
+      <h3
+      id="PropertiesonPowerPins-&#160;UsingthePOWER_GROUPproperty">
+        <span class="confluence-anchor-link">&#160;</span>Using the
+        POWER_GROUP property
+      </h3>
+      <p>
+        This section discusses how to use the POWER_GROUP property
+        to change the default power net associated with an
+        invisible power pin of a component. This is a component
+        definition property that circumvents the need to edit the
+        pin properties for each invisible power pin on a particular
+        component. Using this property, you can assign different
+        values for the power net used on a particular design,
+        instance or occurrence.<br />
+         POWER_GROUP can be assigned with a unique value for
+        multiple occurrences in the design. Multiple occurrences of
+        a part can have different values for the POWER_GROUP
+        property, allowing you to control power net connections at
+        the occurrence level.<br />
+         With the POWER_GROUP property added to parts with
+        invisible power pin(s), you can overwrite power pins with
+        the new power pin name at the instance level. If this
+        property is used, POWER_GROUP is added to your combined
+        property string so that you can annotate correctly.<br />
+         The POWER_PINS property determines the power net in your
+        design, to which invisible pins are connected. In order to
+        connect multiple (invisible) power pins to the same net,
+        you assign the POWER_GROUP property to each component that
+        includes these pins.
+      </p>
+      <h4
+      id="PropertiesonPowerPins-&#160;ToavoidusingvisiblepowerpinsintheCapture-PCBEditorflow">
+        <span class="confluence-anchor-link">&#160;</span> <em>To
+        avoid using visible power pins in the Capture-PCB Editor
+        flow</em>
+      </h4>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>1.</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  Create a part with invisible power pins.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>2.</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  Place the part in your design. By default,
+                  Capture connects any power pins on the part to
+                  the corresponding global nets. So, for example,
+                  if the part included (invisible) power pins VCC,
+                  VDD, GND, and AGND, each of these would be
+                  connected to a corresponding global net of the
+                  same name.
+                </p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>3.</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  In order to change the default power connections,
+                  select the part and add the POWER_GROUP property
+                  to reassign the connections for any of the power
+                  pins. So, for example, to change the connection
+                  for VDD to VCC, you would add the POWER_GROUP
+                  property as follows:
+                </p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-left: 30.0px;">
+        <code>POWER_GROUP VDD=VCC</code><br />
+         (To change the value of this property, open the Property
+        spreadsheet, then go to the Capture-PCB Editor Property
+        filter and enter &quot;VCC=VDD&quot; as the value of the
+        POWER_GROUP property).<br />
+         In this example, pins in the netlist that would have been
+        assigned to the VDD net are instead assigned to VCC and the
+        netlister correctly reflects this change into the netlist.
+      </p>
+      <p>
+        &#160;
+      </p>
+      <div class="panelMacro">
+        <p>
+          &#160;
+        </p>
+        <div class="table-wrap">
+          <table class="confluenceTable">
+            <colgroup>
+              <col />
+              <col />
+            </colgroup>
+            <tbody>
+              <tr>
+                <td class="confluenceTd">
+                  <img
+                  class="confluence-embedded-image confluence-external-resource"
+                   data-image-src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                   height="16"
+                  src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                   width="16" />
+                </td>
+                <td class="confluenceTd">
+                  <p>
+                    The POWER_GROUP property is handled at the
+                    individual net level. So, if you have a part
+                    that includes power pins VCC, VDD, VPP, AVCC,
+                    GND, AGND, you can reassign one, some, or all
+                    of these depending on your requirements. For
+                    example:<br />
+                     <code>POWER_GROUP : VCC=AVPP;
+                    GND=HGND</code><br />
+                     <code>POWER_GROUP : AGND=GND</code>
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          &#160;
+        </p>
+      </div>
+      <h4
+      id="PropertiesonPowerPins-&#160;Reassigningpowerpinconnections">
+        <span class="confluence-anchor-link">&#160;</span>
+        <em>Reassigning power pin connections</em>
+      </h4>
+      <p>
+        <span class="confluence-anchor-link">&#160;</span>When
+        reassigning nets, Capture uses precedence rules for the
+        POWER_GROUPS property in the same way they are used for
+        other component definition properties. Therefore, when a
+        higher level property value overrides property values at a
+        lower level, even if there are multiple occurrences at the
+        lower level, each of these occurrences is replaced by the
+        higher-level properties.<br />
+         <span class="confluence-anchor-link">&#160;</span>For
+        example, assume you have an instance with various power
+        signals VCC, VDD, VPP, and VSS. If you want all these
+        signals to be shorted to VCC, then assign the following
+        POWER_GROUP property in the Attribute form of the Property
+        Spreadsheet:<br />
+         <span
+        class="confluence-anchor-link">&#160;</span>POWER_GROUP =
+        VDD=VCC;VPP=VCC;VSS=VCC<br />
+         <span class="confluence-anchor-link">&#160;</span>This
+        results in the following assignments:
+      </p>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <th class="confluenceTh">
+                <span style="color: rgb(0,51,102);"><strong>On the
+                part</strong></span>
+              </th>
+              <th class="confluenceTh">
+                <span style="color: rgb(0,51,102);"><strong>On the
+                schematic instance</strong></span>
+              </th>
+              <th class="confluenceTh">
+                <span style="color: rgb(0,51,102);"><strong>In the
+                PSTCHIPS.DAT file</strong></span>
+              </th>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  Pin numbers 14,28 = VCC
+                </p>
+                <p>
+                  Pin numbers 13,12=VDD
+                </p>
+                <p>
+                  Pin numbers 10,11 =VPP
+                </p>
+                <p>
+                  Pin numbers 8,9=VSS
+                </p>
+                <p>
+                  Pin numbers 7,21 =GND
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  POWER_GROUP=
+                </p>
+                <p>
+                  VDD=VCC;
+                </p>
+                <p>
+                  VPP=VCC;
+                </p>
+                <p>
+                  VSS=VCC
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  POWER_PINS=&#39;(VCC:14,28,13,12,10,11,8,9)&#39;;
+                </p>
+                <p>
+                  POWER_PINS=&#39;(GND:7,21)&#39;
+                </p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="panelMacro">
+        <div class="table-wrap">
+          <table class="confluenceTable">
+            <colgroup>
+              <col />
+              <col />
+            </colgroup>
+            <tbody>
+              <tr>
+                <td class="confluenceTd">
+                  <img
+                  class="confluence-embedded-image confluence-external-resource"
+                   data-image-src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                   height="16"
+                  src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                   width="16" />
+                </td>
+                <td class="confluenceTd">
+                  <p>
+                    The POWER_PINS property is an PCB Editor
+                    property that defines the various power nets
+                    for layout purposes. The value of POWER_PINS is
+                    derived from the value of the POWER_GROUP
+                    property when you create an PCB Editor netlist
+                    for your design
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <hr xmlns:html="http://www.w3.org/1999/xhtml" />
+    <hr xmlns:html="http://www.w3.org/1999/xhtml" align="left" />
+    <div xmlns:html="http://www.w3.org/1999/xhtml"
+    style="text-align: left;">
+      <!-- Begin Buttons -->
+      <table border="0" cellpadding="0" cellspacing="0"
+      width="650">
+        <tbody>
+          <tr>
+            <td colspan="10" height="36" width="650">
+              <img height="34" src="../support/header_doc.gif"
+              width="650" />
+            </td>
+          </tr>
+          <tr>
+            <td height="20" width="59">
+              <a href="javascript:openLibrary()"><img
+              alt="View Library" border="0" height="20"
+              src="../support/nav2_library.gif" width="59" /></a>
+            </td>
+            <td height="20" width="73">
+              <a href="cap_ugTOC.html"><img alt="Table of Contents"
+              border="0" src="../support/nav2_toc.gif" /></a>
+            </td>
+            <td height="20" width="46">
+              <img alt="Index" border="0"
+              src="../support/nav2_index_b.gif" />
+            </td>
+            <td>
+              <a href="Defining_Properties_on_Nets.html"><img
+              alt="Previous" border="0"
+              src="../support/nav2_previous.gif" /></a>
+            </td>
+            <td>
+              <a
+              href="Unconnected_Pins_in_Capture-PCB_Editor_Flow.html"><img
+               alt="Next" border="0"
+              src="../support/nav_next.gif" /></a>
+            </td>
+            <td height="20">
+              <a href="cap_ug.pdf"><img
+              alt="Open PDF to print book" border="0" height="20"
+              src="../support/nav2_print.gif" width="114" /></a>
+            </td>
+            <td height="20" width="61">
+              <img src="../support/nav2_black.gif" />
+            </td>
+            <td height="20" width="76">
+              <a href="/feedback.htm"><img alt="Email Comments"
+              border="0" height="20"
+              src="../support/nav2_feedback.gif" width="76" /></a>
+            </td>
+            <td height="20" width="43">
+              <a href="../cdsuser/help.html"><img
+              alt="Help Using Documentation" border="0" height="20"
+              src="../support/nav2_help.gif" width="43" /></a>
+            </td>
+            <td height="20" width="37">
+              <a href="/exitsearch.htm"><img
+              alt="Shut Down Cadence Documentation Server"
+              border="0" height="20" src="../support/nav2_exit.gif"
+              width="37" /></a>
+            </td>
+          </tr>
+        </tbody>
+      </table><!-- End Buttons -->
+    </div><br xmlns:html="http://www.w3.org/1999/xhtml" />
+     <font xmlns:html="http://www.w3.org/1999/xhtml" size="-1">For
+    support, see <a href="http://support.cadence.com"
+    target="_blank">Cadence Online Support</a> service.</font> <br
+    xmlns:html="http://www.w3.org/1999/xhtml" />
+     <br xmlns:html="http://www.w3.org/1999/xhtml" />
+     <font xmlns:html="http://www.w3.org/1999/xhtml"
+    size="-1"><i>Copyright &#169; 2012, <a
+    href="http://www.cadence.com">Cadence Design Systems,
+    Inc.</a></i></font> <br
+    xmlns:html="http://www.w3.org/1999/xhtml" />
+     <font xmlns:html="http://www.w3.org/1999/xhtml" size="-1">All
+    rights reserved.</font> <br
+    xmlns:html="http://www.w3.org/1999/xhtml" />
+     <br xmlns:html="http://www.w3.org/1999/xhtml" />
+  </body>
+</html>

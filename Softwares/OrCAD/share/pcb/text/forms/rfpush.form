@@ -1,0 +1,69 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 27 25
+HEADER "Push Operation"
+
+POPUP <LAYERLIST> """".
+MESSAGE prompt 0 "Push Ref Layer to %s"
+
+TILE
+
+FIELD enabledrccheck
+FLOC 1 1
+CHECKLIST "Enable DRC check"
+ENDFIELD
+
+FIELD ignorefixed
+FLOC 1 3
+CHECKLIST "Ignore FIXED property"
+ENDFIELD
+
+TEXT "Start/Ref layer:"
+TLOC 1 6
+ENDTEXT
+
+TEXT "ETCH/TOP"
+TLOC 12 6
+INFO startlayer 12
+ENDTEXT
+
+TEXT "End layer:"
+TLOC 1 8
+ENDTEXT
+
+TEXT "ETCH/SIG1"
+TLOC 12 8
+INFO endlayer 12
+ENDTEXT
+
+FIELD Pushup
+FLOC 1 11
+MENUBUTTON "Push up" 10 3
+ENDFIELD
+
+FIELD Pushto
+FLOC 1 13
+MENUBUTTON "Push to" 10 3
+ENDFIELD
+
+FIELD Layer
+FLOC 12 13
+ENUMSET 12
+POP "LAYERLIST"
+ENDFIELD
+
+FIELD Pushdown
+FLOC 1 15
+MENUBUTTON "Push down" 10 3
+ENDFIELD
+
+FIELD includeAssembly
+FLOC 1 18
+CHECKLIST "Include clearance assembly"
+ENDFIELD
+
+ENDTILE
+
+ENDFORM
+

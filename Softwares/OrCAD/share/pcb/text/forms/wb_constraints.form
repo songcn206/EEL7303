@@ -1,0 +1,247 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+#ifndef WIREBOND_CNS_NODESCRIPTION
+PORT 84 35
+#else
+PORT 40 35
+#endif
+HEADER "Global Wire Bond Constraints"
+
+TILE
+
+TABSET "tab"
+OPTIONS tabsetDispatch
+FLOC 1 1
+TSSIZE 38 32
+
+TAB "Fingers" 
+
+GROUP "Bond Finger Constraints"
+GLOC 1 0
+GSIZE 35 29
+ENDGROUP
+
+TEXT "Finger to Finger:"
+TLOC 2 2
+ENDTEXT
+
+FIELD enable_padtopad
+FLOC 4 4
+CHECKLIST "General:"
+ENDFIELD
+FIELD padtopad
+FLOC 17 4
+STRFILLIN 15 40
+ENDFIELD
+
+TEXT "Specialization rules for same net and differential pair finger to finger spacing are available in the Constraint Manager tool."
+TLOC 4 6
+FSIZE 30 6
+ENDTEXT
+
+TEXT "Finger to:"
+TLOC 2 10
+ENDTEXT 
+
+FIELD enable_padtowire
+FLOC 4 12
+CHECKLIST "Wire:"
+ENDFIELD
+FIELD padtowire
+FLOC 17 12
+STRFILLIN 15 40
+ENDFIELD
+
+FIELD enable_padtoshape
+FLOC 4 14
+CHECKLIST "Shape:"
+ENDFIELD
+FIELD padtoshape
+FLOC 17 14
+STRFILLIN 15 40
+ENDFIELD
+
+FIELD enable_padtovia
+FLOC 4 16
+CHECKLIST "Via:"
+ENDFIELD
+FIELD padtovia
+FLOC 17 16
+STRFILLIN 15 40
+ENDFIELD
+
+FIELD enable_padtocline
+FLOC 4 18
+CHECKLIST "Route:"
+ENDFIELD
+FIELD padtocline
+FLOC 17 18
+STRFILLIN 15 40
+ENDFIELD
+
+FIELD enable_padtopin
+FLOC 4 20
+CHECKLIST "Pin:"
+ENDFIELD
+FIELD padtopin
+FLOC 17 20
+STRFILLIN 15 40
+ENDFIELD
+
+FIELD enable_padtocomp
+FLOC 4 22
+CHECKLIST "Component:"
+ENDFIELD
+FIELD padtocomp
+FLOC 17 22
+STRFILLIN 15 40
+ENDFIELD
+
+ENDTAB
+
+TAB "Wires"
+
+GROUP "Bond Wire Constraints"
+GLOC 1 0
+GSIZE 35 29
+ENDGROUP
+
+TEXT "Wire to wire:"
+TLOC 2 2
+ENDTEXT
+
+FIELD enable_wiretowire
+FLOC 4 4
+CHECKLIST "General:"
+ENDFIELD
+FIELD wiretowire
+FLOC 17 4
+STRFILLIN 15 40
+ENDFIELD
+
+TEXT "Cross length:"
+TLOC 6 6
+INFO enable_wiretowire_crossdistance 20
+ENDTEXT
+FIELD wiretowire_crossdistance
+FLOC 17 6
+STRFILLIN 15 40
+ENDFIELD
+
+TEXT "Wire end to:"
+TLOC 2 8
+ENDTEXT
+
+FIELD enable_wireendtoend
+FLOC 4 10
+CHECKLIST "Wire end:"
+ENDFIELD
+FIELD wireendtoend
+FLOC 17 10
+STRFILLIN 15 40
+ENDFIELD
+
+TEXT "Wire to:"
+TLOC 2 12
+ENDTEXT
+
+FIELD enable_wiretopin
+FLOC 4 14
+CHECKLIST "Pin:"
+ENDFIELD
+FIELD wiretopin
+FLOC 17 14
+STRFILLIN 15 40
+ENDFIELD
+
+TEXT "Wire physical properties:"
+TLOC 2 16
+ENDTEXT
+
+FIELD enable_wireminlength
+FLOC 4 18
+CHECKLIST "Min Length:"
+ENDFIELD
+FIELD wireminlength
+FLOC 17 18
+STRFILLIN 15 40
+ENDFIELD
+
+FIELD enable_wiremaxlength
+FLOC 4 20
+CHECKLIST "Max Length:"
+ENDFIELD
+FIELD wiremaxlength
+FLOC 17 20
+STRFILLIN 15 40
+ENDFIELD
+
+FIELD enable_wiremaxangle
+FLOC 4 22
+CHECKLIST "Max Angle:"
+ENDFIELD
+FIELD wiremaxangle
+FLOC 17 22
+STRFILLIN 15 40
+ENDFIELD
+
+FIELD enable_wirediameter
+FLOC 4 24
+CHECKLIST "Diameter:"
+ENDFIELD
+FIELD wirediameter
+FLOC 17 24
+STRFILLIN 15 40
+ENDFIELD
+
+ENDTAB
+ENDTABSET
+
+#ifndef WIREBOND_CNS_NODESCRIPTION
+GROUP "Description"
+GLOC 42 1
+GSIZE 41 32
+ENDGROUP
+
+FIELD description_pic
+THUMBNAIL "awbWireToWireSpacing.bmp"
+FLOC 43 3
+FSIZE 39 10
+ENDFIELD
+
+TEXT ""
+TLOC 44 14
+INFO description_name 75
+OPTIONS BOLD
+FSIZE 33 4
+ENDTEXT
+
+TEXT ""
+TLOC 44 17
+INFO description_text 256
+FSIZE 33 14
+ENDTEXT
+#endif
+
+FIELD done
+FLOC 1 34
+MENUBUTTON "OK" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 11 34
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD help
+#ifndef WIREBOND_CNS_NODESCRIPTION
+FLOC 74 34
+#else
+FLOC 30 34
+#endif
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+ENDTILE
+ENDFORM

@@ -1,0 +1,173 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM 
+FIXED
+PORT 33 9
+HEADER "Etch-Back"
+
+POPUP <linelock>"OFF""OFF","45""45","90""90".
+POPUP <condlyr>"""".
+POPUP <masklyr>"""".
+
+TILE
+
+TEXT "Conductor:"
+TLOC 2 0
+ENDTEXT
+FIELD conductorLyr
+FLOC 11 0
+ENUMSET 19
+POP "condlyr"
+ENDFIELD
+
+TEXT "Masks:"
+TLOC 2 2
+ENDTEXT
+FIELD maskLyr
+FLOC 11 2
+STRFILLIN 17 20
+POP "masklyr"
+ENDFIELD
+FIELD maskLyrAlt
+FLOC 11 2
+STRFILLIN 17 20
+ENDFIELD
+
+FIELD etchback_graphic
+THUMBNAIL etchback.bmp
+FLOC 1 4
+FSIZE 32 8
+ENDFIELD
+
+GROUP "Etch-back Mode"
+GLOC 1 12
+GSIZE 32 7
+ENDGROUP
+
+FIELD addShort
+FLOC 2 14
+FGROUP "Options"
+CHECKLIST "Add trace" "ebmGroup"
+ENDFIELD
+
+FIELD addMask
+FLOC 16 14
+FGROUP "Options"
+CHECKLIST "Add mask" "ebmGroup"
+ENDFIELD
+
+FIELD deleteEtchBack
+FLOC 2 16
+FGROUP "Options"
+CHECKLIST "Delete etch-back objects" "ebmGroup"
+ENDFIELD
+
+GROUP "Trace Parameters"
+GLOC 1 19
+GSIZE 32 13
+ENDGROUP
+
+TEXT "Line lock:"
+TLOC 2 21
+ENDTEXT
+FIELD lineLock
+FLOC 16 21
+ENUMSET 13
+POP "linelock"
+ENDFIELD
+
+TEXT "Line width:"
+TLOC 2 23
+ENDTEXT
+FIELD clineWidth
+FLOC 16 23
+STRFILLIN 14 32
+ENDFIELD
+
+FIELD anyAngleObjSnap
+FLOC 2 25
+CHECKLIST "Allow any-angle pin escape"
+ENDFIELD
+
+FIELD noVoid
+FLOC 2 27
+CHECKLIST "Do not void shapes around traces"
+ENDFIELD
+
+FIELD autoMask
+FLOC 2 29
+CHECKLIST "Auto create mask using settings below"
+ENDFIELD
+
+GROUP "Mask Parameters"
+GLOC 1 32
+GSIZE 32 17
+ENDGROUP
+
+TEXT "Line clearance:"
+TLOC 2 34
+ENDTEXT
+FIELD clineClear
+FLOC 16 34
+STRFILLIN 14 32
+ENDFIELD
+
+TEXT "Antenna length:"
+TLOC 2 36
+ENDTEXT
+FIELD maskClear
+FLOC 16 36
+STRFILLIN 14 32
+ENDFIELD
+
+TEXT "Min mask clearance:"
+TLOC 2 38
+ENDTEXT
+FIELD minMaskClear
+FLOC 16 38
+STRFILLIN 14 32
+ENDFIELD
+
+TEXT "Max mask width:"
+TLOC 2 40
+ENDTEXT
+FIELD maxWidth
+FLOC 16 40
+STRFILLIN 14 32
+ENDFIELD
+
+TEXT "Min mask width:"
+TLOC 2 42
+ENDTEXT
+FIELD minWidth
+FLOC 16 42
+STRFILLIN 14 32
+ENDFIELD
+
+FIELD maskPlating
+FLOC 2 44
+CHECKLIST "Allow masking of plating traces"
+ENDFIELD
+
+FIELD maskViolations
+FLOC 2 46
+MENUBUTTON "Check for mask violations" 30 3
+ENDFIELD
+
+FIELD done
+FLOC 1 50
+MENUBUTTON "Done" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 11 50
+MENUBUTTON "Cancel" 9 3	
+ENDFIELD
+
+FIELD help
+FLOC 24 50
+MENUBUTTON "Help" 9 3	
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

@@ -1,0 +1,568 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>
+      Netlisting a Design
+    </title>
+    <meta name="Approver" content="Technical Publications" />
+    <meta name="Author" content="Technical Publications" />
+    <meta name="CreateDate" content="2012-10-10" />
+    <meta name="CreateTime" content="1349876208" />
+    <meta name="DataType" content="Manuals" />
+    <meta name="Description" content="UG" />
+    <meta name="DocTitle" content="OrCAD Capture User Guide" />
+    <meta name="DocType" content="User Guide" />
+    <meta name="FileTitle" content="Netlisting a Design" />
+    <meta name="Keywords" content="" />
+    <meta name="FileType" content="Chapter" />
+    <meta name="Keyword" content="cap_ug" />
+    <meta name="Language" content="English" />
+    <meta name="ModifiedDate" content="2012-10-10" />
+    <meta name="ModifiedTime" content="1349876208" />
+    <meta name="NextFile" content="Creating%2Ba%2BNetlist.html" />
+    <meta name="Group" content="" />
+    <meta name="Platform" content="All," />
+    <meta name="PrevFile"
+    content="Scaling%2Ba%2BPrint%2Bor%2BPlot.html" />
+    <meta name="Product"
+    content="Allegro Design Entry CIS,OrCAD Capture," />
+    <meta name="ProductFamily"
+    content="Silicon-Package-Board Co-Design,Silicon-Package-Board Co-Design," />
+    <meta name="ProductVersion" content="16.6" />
+    <meta name="RightsManagement"
+    content="Copyright 2011-2012 Cadence Design Systems Inc." />
+    <meta name="Title"
+    content="OrCAD Capture User Guide -- Netlisting a Design" />
+    <meta name="Version" content="16.6" />
+    <meta name="Renderer" content="WIKI" />
+    <meta name="SpaceKey" content="capug166" />
+    <link href="styles/site.css" rel="stylesheet"
+    type="text/css" />
+    <meta content="text/html; charset=UTF-8"
+    http-equiv="Content-Type" />
+  </head>
+  <body style="margin-left: 5%;background-color: #FFFFFF;">
+    <a xmlns:html="http://www.w3.org/1999/xhtml" id="pagetop"
+    name="pagetop"></a> <a
+    xmlns:html="http://www.w3.org/1999/xhtml" id="firstpage"
+    name="firstpage"></a> <!-- Begin Buttons -->
+     
+    <table xmlns:html="http://www.w3.org/1999/xhtml" border="0"
+    cellpadding="0" cellspacing="0" width="650">
+      <tbody>
+        <tr>
+          <td colspan="10" height="36" width="650">
+            <img height="34" src="../support/header_doc.gif"
+            width="650" />
+          </td>
+        </tr>
+        <tr>
+          <td height="20" width="59">
+            <a href="javascript:openLibrary()"><img
+            alt="View Library" border="0" height="20"
+            src="../support/nav2_library.gif" width="59" /></a>
+          </td>
+          <td height="20" width="73">
+            <a href="cap_ugTOC.html"><img alt="Table of Contents"
+            border="0" src="../support/nav2_toc.gif" /></a>
+          </td>
+          <td height="20" width="46">
+            <img alt="Index" border="0"
+            src="../support/nav2_index_b.gif" />
+          </td>
+          <td>
+            <a href="Scaling_a_Print_or_Plot.html"><img
+            alt="Previous" border="0"
+            src="../support/nav2_previous.gif" /></a>
+          </td>
+          <td>
+            <a href="Creating_a_Netlist.html"><img alt="Next"
+            border="0" src="../support/nav_next.gif" /></a>
+          </td>
+          <td height="20">
+            <a href="cap_ug.pdf"><img alt="Open PDF to print book"
+            border="0" height="20" src="../support/nav2_print.gif"
+            width="114" /></a>
+          </td>
+          <td height="20" width="61">
+            <img src="../support/nav2_black.gif" />
+          </td>
+          <td height="20" width="76">
+            <a href="/feedback.htm"><img alt="Email Comments"
+            border="0" height="20"
+            src="../support/nav2_feedback.gif" width="76" /></a>
+          </td>
+          <td height="20" width="43">
+            <a href="../cdsuser/help.html"><img
+            alt="Help Using Documentation" border="0" height="20"
+            src="../support/nav2_help.gif" width="43" /></a>
+          </td>
+          <td height="20" width="37">
+            <a href="/exitsearch.htm"><img
+            alt="Shut Down Cadence Documentation Server" border="0"
+            height="20" src="../support/nav2_exit.gif"
+            width="37" /></a>
+          </td>
+        </tr>
+      </tbody>
+    </table><!-- End Buttons -->
+    <hr xmlns:html="http://www.w3.org/1999/xhtml" />
+    <div id="main-header">
+      <a xmlns="" id="NetlistingaDesign"
+      name="NetlistingaDesign"></a> 
+      <h1 xmlns="" style=" margin: 4px 0 4px;">
+        <span>Netlisting a Design</span>
+      </h1>
+    </div>
+    <div class="wiki-content group" id="main-content">
+      <p>
+        You netlist a design after you place parts, update part
+        references, and check for design rule violations.
+      </p>
+      <p>
+        You can choose from more than 30 industry-recognized
+        netlist formats. Your choice of netlist format is
+        determined by the application that you intend to use.<br />
+         The EDIF 2 0 0, VHDL, PSpice and Verilog netlist formats
+        generate true hierarchical netlists. When a design is
+        netlisted with one of these formats, the instance property
+        values on nets and parts are used. All other netlist
+        formats in Capture produce flat netlists, and use
+        occurrence property values.<br />
+         If you have translated a design with multiple schematic
+        folders, use Annotate (and check for duplicate references)
+        before netlisting.
+      </p>
+      <div class="panelMacro">
+        <table class="noteMacro">
+          <colgroup>
+            <col width="24" />
+            <col />
+          </colgroup>
+          <tr>
+            <td valign="top">
+              <img align="absmiddle" alt="" border="0" height="16"
+              src="images/icons/emoticons/warning.png"
+              width="16" />
+            </td>
+            <td>
+              <ul>
+                <li>
+                  Run Design Rules Check to verify your design
+                  before you generate a netlist. This allows for
+                  more efficient netlist creation, and you can
+                  concentrate on netlist-specific problems if they
+                  should occur during the Create Netlist process.
+                  Design Rules Check warns you if certain
+                  conditions exist in your design. The severity of
+                  the specific problem may prevent completion of
+                  the design. Other conditions are subject to your
+                  judgment, and may be of no consequence. If you
+                  are satisfied with the results of design tests
+                  such as Design Rules Check, then proceed with the
+                  creation of a netlist.
+                </li>
+                <li>
+                  Design Rules Check uses the decision matrix
+                  located in the ERC Matrix tab located in the
+                  Design Rules Check dialog box. It also uses a set
+                  of pre-determined rules, which are part of the
+                  executable code.
+                </li>
+                <li>
+                  Use Design Rules Check as a guide to verify the
+                  integrity of your design. It is only a guide. It
+                  is possible to generate a valid netlist even if
+                  Design Rules Check reports errors.
+                </li>
+                <li>
+                  The value, if any, you create for the PCB
+                  footprint depends on the particular netlist
+                  format you want to produce. Different
+                  applications require netlists with different
+                  types of PCB footprints. If you do not specify
+                  this property, the PCB footprint will be set to
+                  the part value.
+                </li>
+              </ul>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <h4 id="NetlistingaDesign-Netnameresolution">
+        Net name resolution
+      </h4>
+      <p>
+        When you are creating schematic pages, you can assign a
+        variety of aliases to signals that are ultimately
+        connected, but the netlist needs exactly one name for each
+        net.
+      </p>
+      <p>
+        If Create Netlist encounters multiple names for a single
+        net, higher priority aliases override lower-priority
+        aliases. Priority is determined by the source of the name,
+        ranked as follows:
+      </p>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  Lowest:
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  System-generated names<br
+                  class="atl-forced-newline" />
+                   Aliases<br class="atl-forced-newline" />
+                   Power object names<br
+                  class="atl-forced-newline" />
+                   Off-page connectors<br
+                  class="atl-forced-newline" />
+                   Hierarchical port names
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  Highest:
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  Named nets
+                </p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        Any remaining conflicts among netnames are resolved
+        according to the following rules:
+      </p>
+      <ul>
+        <li>
+          The net name closest to the &quot;root&quot; of the
+          project takes precedence over those further away.
+        </li>
+        <li>
+          If the net is a bus, the net alias assigned to the
+          greatest number of bus members has the highest priority.
+        </li>
+        <li>
+          Among net names of equal precedence, priority follows an
+          alphabetical order.<br />
+           As you can see, a net may change names several times as
+          Create Netlist works. For example, the net may start with
+          an alias of Battery on one page, be renamed ToBattery
+          from an off-page connector, change again to become DC as
+          a port is encountered, and finally change to
+          BatteryBackup when Create Netlist finds a named net
+          closer to the root schematic folder. Once the netlist is
+          created, you can select any piece of the net anywhere in
+          the design and see the net&#39;s name as it is recorded
+          in the netlist (BatteryBackup), not as it appears at that
+          particular location.
+        </li>
+      </ul>
+      <p>
+        <strong>PACK_SHORT Property</strong>
+      </p>
+      <p>
+        Capture includes a PACK_SHORT property that lets you map
+        one logical pin to two or more physical pins. Take the
+        example of an SMA connector. It has one signal pin and 4
+        shielding pins connected to Ground. The standard Capture
+        symbol has only one visible Ground pin. So what is required
+        is to short all the 4 GND pins in the Allegro netlist with
+        the net that is connected to the visible GND pin.<br />
+         To do this, you can either add the other three Ground pins
+        as NC or with a different net name depending on whether
+        they have been added as invisible or visible with zero stub
+        length.<br />
+         Alternatively, you can use the PACK_SHORT property in
+        Capture to hide the PACK_SHORT pins or make them visible
+        with zero length pin stub.<br />
+         Using this property, multiple groups of pins, each group
+        having two or more pins, can be shorted.
+      </p>
+      <div class="panelMacro">
+        <table class="noteMacro">
+          <colgroup>
+            <col width="24" />
+            <col />
+          </colgroup>
+          <tr>
+            <td valign="top">
+              <img align="absmiddle" alt="" border="0" height="16"
+              src="images/icons/emoticons/warning.png"
+              width="16" />
+            </td>
+            <td>
+              <p>
+                You cannot use the PACK_SHORT property to short
+                invisible pins. Only visible pins can be part of
+                the PACK_SHORT property.
+              </p>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <p>
+        Syntax:<br />
+         <code>PACK_SHORT=(&lt;group1&gt;)(&lt;group2&gt;)[&lt;group3&gt;]</code><br />
+         Where: &lt;group&gt; indicates (logicPin1, logicPin2 ...
+        [logicPinN])
+      </p>
+      <p>
+        <strong><em>Example</em></strong>
+      </p>
+      <p>
+        Consider the assignment, PACK_SHORT = (A1, B1, Y1) (A2, B2)
+        shorts together. The nets attached to logic pins A1, B1,
+        and Y1 are shorted with each other and the nets attached to
+        pins A2 and B2 are shorted with each other.<br />
+         The PACK_SHORT property is implemented so you can either
+        hide the pins to be shorted by checking the ignore checkbox
+        in <a class="message-url"
+        href="../cap_ref/dialog_box_descriptions_p.html#package_properties_dialog_box">Package
+        Properties dialog box</a> or you can make them zero length
+        pins and show them as unconnected as illustrated
+        below.<br />
+         <strong>Method 1:</strong><br />
+         <img class="confluence-embedded-image"
+        data-image-src="attachments/7998708/8194414.gif"
+        height="198" src="attachments/7998708/8194414.gif"
+        title="pack_short_method_1.gif" width="267" /><br />
+         The above part has O4, O5 and O6 added as PACK_SHORT pins
+        (IN1,O4,O5,O6) that will inherit the pin IN1 net set as
+        zero-length but their stub will still be visible. If you
+        instantiate this part and generate an Allegro netlist, IN1,
+        O4, O5 and O6 will inherit the same net.<br />
+         If IN1 is left unconnected, all PACK_SHORT pins will be
+        marked as NC.<br />
+         <strong>Method 2:</strong><br />
+         <img class="confluence-embedded-image"
+        data-image-src="attachments/7998708/8194415.gif"
+        height="154" src="attachments/7998708/8194415.gif"
+        title="pack_short_method_2.gif" width="226" /><br />
+         If you have chosen to hide the pins to be shorted by
+        checking the <em>Ignore</em> checkbox in Package
+        properties, and also defined those pins as part of the
+        PACK_SHORT property, the hidden pins will be written to the
+        netlist. Also, its net will be inherited from the master
+        pin that is visible on the symbol instance.
+      </p>
+      <p>
+        You can also use the PACK_SHORT property in conjunction
+        with the PSpiceOnly property to specify shorting for nets
+        attached to the instance. If a PACK_SHORT device is
+        connected with two different nets across the PACK_SHORT
+        pins, the net connected to the first pin defined in
+        PACK_SHORT property will be written to the netlist.
+      </p>
+      <h4 id="NetlistingaDesign-CreateNetlistdialogboxtabs">
+        Create Netlist dialog box tabs
+      </h4>
+      <p>
+        OrCAD provides a number of netlist format files. You choose
+        a netlist format in the Create Netlist dialog box.
+      </p>
+      <ul>
+        <li>
+          <a class="message-url"
+          href="../cap_ref/dialog_box_descriptions_c.html#Allegro_netlist_tab">PCB
+          Editor tab</a>
+        </li>
+        <li>
+          <p>
+            <a class="message-url"
+            href="../cap_ref/dialog_box_descriptions_c.html#EDIF_tab_create_netlist_dialog_box">EDIF
+            2 0 0 tab</a>
+          </p>
+        </li>
+        <li>
+          <p>
+            <a class="message-url"
+            href="../cap_ref/dialog_box_descriptions_c.html#INF_tab_create_netlist_dialog_box">INF
+            tab</a>
+          </p>
+        </li>
+        <li>
+          <p>
+            <a class="message-url"
+            href="../cap_ref/dialog_box_descriptions_c.html#layout_tab_create_netlist_dialog_box">Layout
+            tab</a>
+          </p>
+        </li>
+        <li>
+          <p>
+            <a class="message-url"
+            href="../cap_ref/dialog_box_descriptions_c.html#pspice_tab_create_netlist_dialog_box">PSpice
+            tab</a>
+          </p>
+        </li>
+        <li>
+          <p>
+            <a class="message-url"
+            href="../cap_ref/dialog_box_descriptions_c.html#spice_tab_create_netlist_dialog_box">SPICE
+            tab</a>
+          </p>
+        </li>
+        <li>
+          <p>
+            <a class="message-url"
+            href="../cap_ref/dialog_box_descriptions_c.html#verilog_tab_create_netlist_dialog_box">Verilog
+            tab</a>
+          </p>
+        </li>
+        <li>
+          <p>
+            <a class="message-url"
+            href="../cap_ref/dialog_box_descriptions_c.html#VHDL_tab_create_netlist_dialog_box">VHDL
+            tab</a>
+          </p>
+        </li>
+        <li>
+          <p>
+            <a class="message-url"
+            href="../cap_ref/dialog_box_descriptions_c.html#other_tab_create_netlist_dialog_box">Other
+            tab</a>
+          </p>
+        </li>
+      </ul>
+      <div class="panelMacro">
+        <table class="noteMacro">
+          <colgroup>
+            <col width="24" />
+            <col />
+          </colgroup>
+          <tr>
+            <td valign="top">
+              <img align="absmiddle" alt="" border="0" height="16"
+              src="images/icons/emoticons/warning.png"
+              width="16" />
+            </td>
+            <td>
+              <p>
+                The Capture netlist format files are not the same
+                as those shipped with SDT 386+. It is important
+                that you keep both versions of the netlist format
+                files installed if you plan on using both Capture
+                and SDT 386+. Capture netlist formats files are
+                supplied as .DLL files, while SDT netlist format
+                files are provided as .EXE files.
+              </p>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <p>
+        <strong><span style="color: rgb(0,0,0);">In this
+        section:</span></strong>
+      </p>
+      <ul>
+        <li>
+          <a href="Creating_a_Netlist.html">Creating a Netlist</a>
+        </li>
+        <li>
+          <a href="Creating_a_Flat_Netlist.html">Creating a Flat
+          Netlist</a>
+        </li>
+        <li>
+          <a href="Working_with_Hierarchical_Netlists.html">Working
+          with Hierarchical Netlists</a>
+        </li>
+        <li>
+          <a
+          href="Specifying_an_Alternate_Netlist_Template.html">Specifying
+          an Alternate Netlist Template</a>
+        </li>
+      </ul><br />
+      <br />
+    </div>
+    <hr xmlns:html="http://www.w3.org/1999/xhtml" />
+    <hr xmlns:html="http://www.w3.org/1999/xhtml" align="left" />
+    <div xmlns:html="http://www.w3.org/1999/xhtml"
+    style="text-align: left;">
+      <!-- Begin Buttons -->
+      <table border="0" cellpadding="0" cellspacing="0"
+      width="650">
+        <tbody>
+          <tr>
+            <td colspan="10" height="36" width="650">
+              <img height="34" src="../support/header_doc.gif"
+              width="650" />
+            </td>
+          </tr>
+          <tr>
+            <td height="20" width="59">
+              <a href="javascript:openLibrary()"><img
+              alt="View Library" border="0" height="20"
+              src="../support/nav2_library.gif" width="59" /></a>
+            </td>
+            <td height="20" width="73">
+              <a href="cap_ugTOC.html"><img alt="Table of Contents"
+              border="0" src="../support/nav2_toc.gif" /></a>
+            </td>
+            <td height="20" width="46">
+              <img alt="Index" border="0"
+              src="../support/nav2_index_b.gif" />
+            </td>
+            <td>
+              <a href="Scaling_a_Print_or_Plot.html"><img
+              alt="Previous" border="0"
+              src="../support/nav2_previous.gif" /></a>
+            </td>
+            <td>
+              <a href="Creating_a_Netlist.html"><img alt="Next"
+              border="0" src="../support/nav_next.gif" /></a>
+            </td>
+            <td height="20">
+              <a href="cap_ug.pdf"><img
+              alt="Open PDF to print book" border="0" height="20"
+              src="../support/nav2_print.gif" width="114" /></a>
+            </td>
+            <td height="20" width="61">
+              <img src="../support/nav2_black.gif" />
+            </td>
+            <td height="20" width="76">
+              <a href="/feedback.htm"><img alt="Email Comments"
+              border="0" height="20"
+              src="../support/nav2_feedback.gif" width="76" /></a>
+            </td>
+            <td height="20" width="43">
+              <a href="../cdsuser/help.html"><img
+              alt="Help Using Documentation" border="0" height="20"
+              src="../support/nav2_help.gif" width="43" /></a>
+            </td>
+            <td height="20" width="37">
+              <a href="/exitsearch.htm"><img
+              alt="Shut Down Cadence Documentation Server"
+              border="0" height="20" src="../support/nav2_exit.gif"
+              width="37" /></a>
+            </td>
+          </tr>
+        </tbody>
+      </table><!-- End Buttons -->
+    </div><br xmlns:html="http://www.w3.org/1999/xhtml" />
+     <font xmlns:html="http://www.w3.org/1999/xhtml" size="-1">For
+    support, see <a href="http://support.cadence.com"
+    target="_blank">Cadence Online Support</a> service.</font> <br
+    xmlns:html="http://www.w3.org/1999/xhtml" />
+     <br xmlns:html="http://www.w3.org/1999/xhtml" />
+     <font xmlns:html="http://www.w3.org/1999/xhtml"
+    size="-1"><i>Copyright &#169; 2012, <a
+    href="http://www.cadence.com">Cadence Design Systems,
+    Inc.</a></i></font> <br
+    xmlns:html="http://www.w3.org/1999/xhtml" />
+     <font xmlns:html="http://www.w3.org/1999/xhtml" size="-1">All
+    rights reserved.</font> <br
+    xmlns:html="http://www.w3.org/1999/xhtml" />
+     <br xmlns:html="http://www.w3.org/1999/xhtml" />
+  </body>
+</html>

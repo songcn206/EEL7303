@@ -1,0 +1,87 @@
+
+Command line arguments for a2dxf. 
+        Utility to export mechanical data from Allegro to DXF.
+
+a2dxf [-uabdfnmhspl] <cnv> <dxf> <brd>
+
+    OPTIONAL ARGUMENTS
+        [-u]  Output units. The Allegro unit of measure.
+              Valid args: MILS, INCHES, CM, MM, MICRONS
+              default: Allegro database units.
+
+        [-a]  Accuracy. Number of decimal places.
+              Valid args:  0 - 4 
+              default:  Allegro database accuracy.
+
+        [-b]  Block switch. If set, string that follows indicates
+                             what elements should be exported as blocks.
+              Valid args: S (symbols) and/or P (padstacks). 
+              Example: -b SP to export both symbols and padstacks as blocks.
+              default: off
+
+        [-d]  Drill info switch. Export Allegro NC_DRILL data.
+	      If any MANUFACTURING classe with a leading string of "NC"
+	      appears in the mapping file (cnv) then this option is automatically
+	      enabled.
+              default: off
+
+        [-n]  No multi-segment polyline switch. Export each segment of
+              a line or cline as a separate DXF POLYLINE. 
+              default: off 
+
+        [-m]  Monochrome switch. Make all DXF layers one color (white). 
+              default: off 
+
+        [-f]  Format. DXF format revision to write. 
+              Valid args: 12, 14
+              default: 12
+
+        [-h]  Default package height. Specifies the value to use
+              for package height when none is defined. The numerical
+              value must be consistent with the specified DXF units.
+              Valid args:  any decimal number greater than 0.
+              default: 0.0
+
+        [-l]  When writing a r14 file, specifies whether multi-segment
+              line objects should be generated as shapes instead of 
+              polyline objects. These shapes will then be filled or
+              hollow outlines depending on the -s flag presence
+              (see below). This may incur a small performance penalty
+              when viewing the resulting DXF file.
+              default: off
+              
+        [-s]  Draw solid-fill shape objects as filled.
+
+              If exporting a revision 12 format, the value must be 
+              specified in DXF units and represents the line width to 
+              use for fill. User is responsible for providin a value which
+              is usable for all objects in the design.
+              
+              If exporting revision 14, the value is ignore and the shape
+              will be filled using a DXF HATCH record.
+
+              Valid args: numeric value greater than 0.
+              default: off (unfilled).
+
+        [-p]  Draw pad shape objects as filled.
+
+              If exporting a revision 12 format, the value must be 
+              specified in DXF units and represents the line width to 
+              use for fill. User is responsible for providin a value which
+              is usable for all objects in the design.
+              
+              If exporting revision 14, the value is ignore and the pad
+              will be filled using a DXF HATCH record.
+
+              Valid args: numeric value greater than 0.
+              default: off (unfilled).
+              
+
+    REQUIRED ARGUMENTS
+        <cnv>  Layer conversion file. ASCII text file that specifies
+               the mapping of DXF layer to Allegro class/subclass.
+
+        <dxf>  Name of the DXF file.
+
+        <brd>  Name of the design file.
+

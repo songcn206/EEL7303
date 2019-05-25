@@ -1,0 +1,105 @@
+#VIEW 15
+# mechanical component information
+GEOMETRY
+
+CLASS = PACKAGE GEOMETRY
+SUBCLASS = 'PLACE_BOUND_TOP'
+SYM_TYPE = MECHANICAL
+	OR
+CLASS = PACKAGE GEOMETRY
+SUBCLASS = 'PLACE_BOUND_BOTTOM'
+SYM_TYPE = MECHANICAL
+
+  SYM_NAME
+  COMP_DEVICE_TYPE
+  REFDES
+  SUBCLASS
+  SYM_X
+  SYM_Y
+  SYM_ROTATE
+  SYM_MIRROR
+  RECORD_TAG
+  COMP_PART_NUMBER
+  GRAPHIC_DATA_NAME
+  GRAPHIC_DATA_1
+  GRAPHIC_DATA_2
+  GRAPHIC_DATA_3
+  GRAPHIC_DATA_4
+  GRAPHIC_DATA_5
+  GRAPHIC_DATA_6
+  GRAPHIC_DATA_7
+  GRAPHIC_DATA_8
+  GRAPHIC_DATA_9
+  GRAPHIC_DATA_10
+  PACKAGE_HEIGHT_MAX
+  PACKAGE_HEIGHT_MIN
+END
+
+
+# FIDUCIALS will be represented as SYMBOLs in Allegro. Each fiducial has a name
+# of the form FIDUCIALnnnC or FIDUCIALnnnD where nnn is the outer diameter as 
+# specified in record 2. The name extension of C or D indicates a circle or 
+# donut shape.
+
+# We want only the board-fiducials => RefDes should be non-existent.
+
+FULL_GEOMETRY
+     REFDES = ''
+     SYM_NAME != ''
+     PIN_NUMBER = ''
+     SUBCLASS
+     PAD_TYPE = "REGULAR"
+     SYM_NAME
+     PIN_X
+     PIN_Y
+     PAD_STACK_NAME
+     PAD_STACK_TYPE
+     START_LAYER_NAME
+     END_LAYER_NAME
+     GRAPHIC_DATA_NAME
+     GRAPHIC_DATA_NUMBER 
+     GRAPHIC_DATA_3
+     GRAPHIC_DATA_4
+END
+
+## Filled areas are represented as coper shapes on ETCH Layers.
+## These may be copper plans or Miscellaneous shapes. This view
+## is required to support Nortel's extension to IDF. 
+## Extract view for FILLED AREA and RESIST FREE section
+
+FULL_GEOMETRY
+        CLASS = "ETCH"
+        SUBCLASS ="TOP"
+	GRAPHIC_DATA_10 = "SHAPE"
+        OR
+        CLASS = "ETCH"
+	SUBCLASS = "BOTTOM"
+	GRAPHIC_DATA_10 = "SHAPE"
+	OR
+	CLASS = "BOARD GEOMETRY"
+	SUBCLASS = "SOLDERMASK_TOP"
+	GRAPHIC_DATA_10 = "SHAPE"
+	OR
+	CLASS = "BOARD GEOMETRY"
+	SUBCLASS = "SOLDERMASK_BOTTOM"
+	GRAPHIC_DATA_10 = "SHAPE"
+
+        CLASS
+        SUBCLASS
+	NET_NAME
+        GRAPHIC_DATA_NAME
+        GRAPHIC_DATA_NUMBER
+        RECORD_TAG
+        GRAPHIC_DATA_1
+        GRAPHIC_DATA_2
+        GRAPHIC_DATA_3
+        GRAPHIC_DATA_4
+        GRAPHIC_DATA_5
+        GRAPHIC_DATA_6
+        GRAPHIC_DATA_7
+        GRAPHIC_DATA_8
+        GRAPHIC_DATA_9
+        GRAPHIC_DATA_10
+END
+
+

@@ -1,0 +1,159 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 42 40
+HEADER "Die Properties"
+
+POPUP <layerPopup>"""".
+
+TILE
+
+TEXT "Ref des:"
+TLOC 1 1
+ENDTEXT
+TEXT ""
+TLOC 10 1
+INFO refdes 22 32
+ENDTEXT
+
+TEXT "Device:"
+TLOC 1 3
+ENDTEXT
+TEXT ""
+TLOC 10 3
+INFO device 22 32
+ENDTEXT
+
+TEXT ""
+TLOC 1 5
+INFO ldfpath_label 10 10
+ENDTEXT
+TEXT ""
+TLOC 10 5
+INFO ldfpath 1024 1024
+ENDTEXT
+
+TEXT ""
+TLOC 1 7
+INFO leflib_label 10 10
+ENDTEXT
+TEXT ""
+TLOC 10 7
+INFO leflib 1024 1024
+ENDTEXT
+
+FIELD setlib
+FLOC 3 9
+MENUBUTTON "Use current LEF library settings" 25 3
+ENDFIELD
+
+TEXT "Co-design database:"
+TLOC 1 12
+ENDTEXT
+TEXT ""
+TLOC 3 14
+INFO codesign1_label 6 6
+ENDTEXT
+TEXT ""
+TLOC 12 14
+INFO codesign1 22 32
+ENDTEXT
+
+GROUP "Die extents"
+GLOC 1 17
+GSIZE 26 13
+ENDGROUP
+
+TEXT "North scribe:"
+TLOC 3 19
+ENDTEXT
+FIELD northscribe
+FLOC 14 19
+STRFILLIN 10 20
+OPTIONS prettyprint ownerdrawn
+ENDFIELD
+
+TEXT "South scribe:"
+TLOC 3 21
+ENDTEXT
+FIELD southscribe
+FLOC 14 21
+STRFILLIN 10 32
+OPTIONS prettyprint ownerdrawn
+ENDFIELD
+
+TEXT "East scribe:"
+TLOC 3 23
+ENDTEXT
+FIELD eastscribe
+FLOC 14 23
+STRFILLIN 10 32
+OPTIONS prettyprint ownerdrawn
+ENDFIELD
+
+TEXT "West scribe:"
+TLOC 3 25
+ENDTEXT
+FIELD westscribe
+FLOC 14 25
+STRFILLIN 10 32
+OPTIONS prettyprint ownerdrawn
+ENDFIELD
+
+TEXT "Shrink:"
+TLOC 3 27
+ENDTEXT
+FIELD shrink
+FLOC 14 27
+STRFILLIN 10 32
+OPTIONS prettyprint ownerdrawn
+ENDFIELD
+
+GROUP "Attachment type"
+GLOC 1 30
+GSIZE 26 7
+ENDGROUP
+
+FIELD wirebond
+FLOC 3 32
+CHECKLIST "Wire bond" "attachment"
+ENDFIELD
+
+FIELD flipchip
+FLOC 3 34
+CHECKLIST "Flip chip" "attachment"
+ENDFIELD
+
+#ifdef APD_DIRECT_DIE_ATTACH_ENABLED && APD
+FIELD d2d_parent
+FLOC 14 32
+CHECKLIST "D2D Parent" "attachment"
+ENDFIELD
+
+FIELD d2d_child
+FLOC 14 34
+CHECKLIST "D2D Child" "attachment"
+ENDFIELD
+#endif
+
+TEXT "Layer:"
+TLOC 1 38
+ENDTEXT
+FIELD layer
+FLOC 8 38
+ENUMSET 16
+POP "layerPopup"
+ENDFIELD
+
+FIELD apply
+FLOC 1 41
+MENUBUTTON "Apply Changes" 25 3
+ENDFIELD
+
+FIELD reset
+FLOC 1 43
+MENUBUTTON "Reset Symbol Properties" 25 3
+ENDFIELD
+
+ENDTILE
+ENDFORM

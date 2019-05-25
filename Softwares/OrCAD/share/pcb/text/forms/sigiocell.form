@@ -1,0 +1,778 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM fixed_font
+FIXED
+PORT 72 26
+HEADER "IOCell Editor"
+
+POPUP <Technology_POP>"TTL""TTL","CMOS""CMOS","ECL""ECL".
+POPUP <ViewAllVI_POP>"dummy""dummy".
+POPUP <singleEndedEspicePOP>"""".
+POPUP <diffPairEspicePOP>"""".
+
+ACTIVEFIELD "Cancel"
+
+TILE
+TABSET "TABS"
+FLOC 1 1
+TSSIZE 70 30
+
+TAB "General"
+
+GROUP "General"
+GLOC 1 0
+GSIZE 67 27
+ENDGROUP
+
+TEXT "Name :"
+TLOC 3 2
+TGROUP "General"
+ENDTEXT
+
+TEXT
+TLOC 18 2
+INFO ModelName 20
+TGROUP "General"
+ENDTEXT
+
+TEXT "Technology :"
+TLOC 3 6
+TGROUP "General"
+ENDTEXT
+
+TEXT "Type :"
+TLOC 3 4
+TGROUP "General"
+ENDTEXT
+
+TEXT
+TLOC 18 4
+INFO ModelType 20
+TGROUP "General"
+ENDTEXT
+
+TEXT "Min"
+TLOC 31 11
+TGROUP "General"
+ENDTEXT
+
+TEXT "Typical"
+TLOC 43 11
+TGROUP "General"
+ENDTEXT
+
+TEXT "Max"
+TLOC 59 11
+TGROUP "General"
+ENDTEXT
+
+FIELD CheckUseC_CompOnly
+FLOC 3 9
+CHECKLIST " Use Die Cap.(C_Comp) Only"
+ENDFIELD
+
+TEXT "Die Capacitance (C_Comp)"
+TLOC 3 13
+TGROUP "General"
+ENDTEXT
+
+TEXT "Die Cap. PowerClamp"
+TLOC 3 15
+TGROUP "General"
+ENDTEXT
+
+TEXT "Die Cap. GroundClamp"
+TLOC 3 17
+TGROUP "General"
+ENDTEXT
+
+TEXT "Die Cap. Pullup "
+TLOC 3 19
+TGROUP "General"
+ENDTEXT
+
+TEXT "Die Cap. Pulldown "
+TLOC 3 21
+TGROUP "General"
+ENDTEXT
+
+TEXT "Reference Temperature"
+TLOC 3 24
+TGROUP "General"
+ENDTEXT
+
+FIELD Technology
+FLOC 17 6
+FGROUP "General"
+ENUMSET 18
+POP "Technology_POP"
+ENDFIELD
+
+TEXT "V/I Curves:"
+TLOC 48 2
+TGROUP "General"
+ENDTEXT
+
+FIELD PowerClampVI
+FLOC 47 4
+FGROUP "General"
+MENUBUTTON "PowerClamp " 13 3
+ENDFIELD
+
+FIELD GroundClampVI
+FLOC 47 6
+FGROUP "General"
+MENUBUTTON "GroundClamp" 13 3
+ENDFIELD
+
+FIELD DieCapacitanceMin
+FLOC 28 13
+FGROUP "General"
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD DieCapacitanceTyp
+FLOC 42 13
+FGROUP "General"
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD DieCapacitanceMax
+FLOC 56 13
+FGROUP "General"
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD DieCapacitancePowerClampMin
+FLOC 28 15
+FGROUP "General"
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD DieCapacitancePowerClampTyp
+FLOC 42 15
+FGROUP "General"
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD DieCapacitancePowerClampMax
+FLOC 56 15
+FGROUP "General"
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD DieCapacitanceGndClampMin
+FLOC 28 17
+FGROUP "General"
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD DieCapacitanceGndClampTyp
+FLOC 42 17
+FGROUP "General"
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD DieCapacitanceGndClampMax
+FLOC 56 17
+FGROUP "General"
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD DieCapacitancePullupMin
+FLOC 28 19
+FGROUP "General"
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD DieCapacitancePullupTyp
+FLOC 42 19
+FGROUP "General"
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD DieCapacitancePullupMax
+FLOC 56 19
+FGROUP "General"
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD DieCapacitancePulldownMin
+FLOC 28 21
+FGROUP "General"
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD DieCapacitancePulldownTyp
+FLOC 42 21
+FGROUP "General"
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD DieCapacitancePulldownMax
+FLOC 56 21
+FGROUP "General"
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD VIRefTempMin
+FLOC 28 24
+FGROUP "General"
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD VIRefTempTyp
+FLOC 42 24
+FGROUP "General"
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD VIRefTempMax
+FLOC 56 24
+FGROUP "General"
+STRFILLIN 8 20
+ENDFIELD
+
+ENDTAB
+
+TAB "Input Section"
+
+GROUP "Input"
+GLOC 1 0
+GSIZE 65 11
+ENDGROUP
+
+TEXT "Logic Thresholds:"
+TLOC 3 3
+TGROUP "Input"
+ENDTEXT
+
+TEXT "min"
+TLOC 25 3
+TGROUP "Input"
+ENDTEXT
+
+TEXT "typical"
+TLOC 36 3
+TGROUP "Input"
+ENDTEXT
+
+TEXT "max"
+TLOC 52 3
+TGROUP "Input"
+ENDTEXT
+
+{ /* Temp Coefficients are suppressed from GUI in 13.6 - Lalit */
+TEXT "Temp Coeff"
+TLOC 54 3
+TGROUP "Input"
+ENDTEXT
+}
+
+TEXT "High"
+TLOC 15 5
+TGROUP "Input"
+ENDTEXT
+
+TEXT "Low"
+TLOC 15 7
+TGROUP "Input"
+ENDTEXT
+
+FIELD InputHighThreshMin
+FLOC 21 5
+FGROUP "Input"
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD InputHighThreshTyp
+FLOC 35 5
+FGROUP "Input"
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD InputHighThreshMax
+FLOC 48 5
+FGROUP "Input"
+STRFILLIN 8 20
+ENDFIELD
+
+{ /* Temp Coefficients are suppressed from GUI in 13.6 - Lalit */
+FIELD InputHighTempco
+FLOC 54 5
+FGROUP "Input"
+STRFILLIN 8 20
+ENDFIELD
+}
+
+FIELD InputLowThreshMin
+FLOC 21 7
+FGROUP "Input"
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD InputLowThreshTyp
+FLOC 35 7
+FGROUP "Input"
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD InputLowThreshMax
+FLOC 48 7
+FGROUP "Input"
+STRFILLIN 8 20
+ENDFIELD
+
+{ /* Temp Coefficients are suppressed from GUI in 13.6 - Lalit */
+FIELD InputLowTempco
+FLOC 54 7
+FGROUP "Input"
+STRFILLIN 8 20
+ENDFIELD
+}
+
+ENDTAB
+
+{
+  *** Internal Terminators TAB removed per cpk request (10/7/97 mxl) ***
+
+TAB "Internal Terminators"
+
+GROUP "Terminators"
+GLOC 1 0
+GSIZE 32 13
+ENDGROUP
+
+TEXT "Power Resistor"
+TLOC 3 3
+TGROUP "Terminators"
+ENDTEXT
+
+TEXT "Ground Resistor"
+TLOC 3 5
+TGROUP "Terminators"
+ENDTEXT
+
+TEXT "AC Resistor"
+TLOC 3 7
+TGROUP "Terminators"
+ENDTEXT
+
+TEXT "AC Capacitor"
+TLOC 3 9
+TGROUP "Terminators"
+ENDTEXT
+
+FIELD PowerResTyp
+FLOC 21 3
+FGROUP "Terminators"
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD GroundResTyp
+FLOC 21 5
+FGROUP "Terminators"
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD AcResTyp
+FLOC 21 7
+FGROUP "Terminators"
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD AcCapTyp
+FLOC 21 9
+FGROUP "Terminators"
+STRFILLIN 8 20
+ENDFIELD
+
+ENDTAB
+}
+
+TAB "Output Section"
+
+GROUP "Output"
+GLOC 1 0
+GSIZE 67 20
+ENDGROUP
+
+TEXT "Ramp (20%/80%):"
+TLOC 3 2
+TGROUP "Output"
+ENDTEXT
+
+TEXT "min"
+TLOC 30 2
+TGROUP "Output"
+ENDTEXT
+
+TEXT "typical"
+TLOC 43 2
+TGROUP "Output"
+ENDTEXT
+
+TEXT "max"
+TLOC 58 2
+TGROUP "Output"
+ENDTEXT
+
+TEXT "Rise Slew    dV"
+TLOC 5 4
+TGROUP "Output"
+ENDTEXT
+
+TEXT "Fall Slew    dV"
+TLOC 5 8
+TGROUP "Output"
+ENDTEXT
+
+TEXT "dT"
+TLOC 18 6
+TGROUP "Output"
+ENDTEXT
+
+TEXT "dT"
+TLOC 18 10
+TGROUP "Output"
+ENDTEXT
+
+{ /* Output Logic Thresholds are suppressed from GUI in 13.6 */
+
+TEXT "Logic Thresholds:"
+TLOC 3 12
+TGROUP "Output"
+ENDTEXT
+
+TEXT "High"
+TLOC 16 14
+TGROUP "Output"
+ENDTEXT
+
+TEXT "Low"
+TLOC 17 16
+TGROUP "Output"
+ENDTEXT
+}
+
+TEXT "V/I Curves:"
+TLOC 10 14
+TGROUP "Output"
+ENDTEXT
+
+TEXT "V/T Curves:"
+TLOC 10 16
+TGROUP "Output"
+ENDTEXT
+
+FIELD RiseDVMin
+FLOC 27 4
+FGROUP "Output"
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD RiseDVTyp
+FLOC 41 4
+FGROUP "Output"
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD RiseDVMax
+FLOC 55 4
+FGROUP "Output"
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD RiseDTMin
+FLOC 27 6
+FGROUP "Output"
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD RiseDTTyp
+FLOC 41 6
+FGROUP "Output"
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD RiseDTMax
+FLOC 55 6
+FGROUP "Output"
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD FallDVMin
+FLOC 27 8
+FGROUP "Output"
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD FallDVTyp
+FLOC 41 8
+FGROUP "Output"
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD FallDVMax
+FLOC 55 8
+FGROUP "Output"
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD FallDTMin
+FLOC 27 10
+FGROUP "Output"
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD FallDTTyp
+FLOC 41 10
+FGROUP "Output"
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD FallDTMax
+FLOC 55 10
+FGROUP "Output"
+STRFILLIN 8 20
+ENDFIELD
+
+{
+FIELD OutputHighThreshMin
+FLOC 27 14
+FGROUP "Output"
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD OutputHighThreshTyp
+FLOC 41 14
+FGROUP "Output"
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD OutputHighThreshMax
+FLOC 55 14
+FGROUP "Output"
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD OutputLowThreshMin
+FLOC 27 16
+FGROUP "Output"
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD OutputLowThreshTyp
+FLOC 41 16
+FGROUP "Output"
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD OutputLowThreshMax
+FLOC 55 16
+FGROUP "Output"
+STRFILLIN 8 20
+ENDFIELD
+}
+
+FIELD PullUpVI
+FLOC 26 14
+FGROUP "Output"
+MENUBUTTON "PullUp" 13 3
+ENDFIELD
+
+FIELD RiseWave
+FLOC 26 16
+FGROUP "Output"
+MENUBUTTON "Rise Wave" 13 3
+ENDFIELD
+
+FIELD PullDownVI
+FLOC 39 14
+FGROUP "Output"
+MENUBUTTON "PullDown" 13 3
+ENDFIELD
+
+FIELD FallWave
+FLOC 39 16
+FGROUP "Output"
+MENUBUTTON "Fall Wave" 13 3
+ENDFIELD
+
+ENDTAB
+
+TAB "Delay Measurement"
+
+GROUP "Single Ended Test Fixture"
+GLOC 1 0
+GSIZE 67 17
+ENDGROUP
+
+TEXT "Resistor"
+TLOC 5 3
+TGROUP "Single Ended Test Fixture"
+ENDTEXT
+
+TEXT "Capacitor"
+TLOC 5 5
+TGROUP "Single Ended Test Fixture"
+ENDTEXT
+
+TEXT "Termination Voltage"
+TLOC 5 7
+TGROUP "Single Ended Test Fixture"
+ENDTEXT
+
+TEXT "min"
+TLOC 30 9
+TGROUP "Single Ended Test Fixture"
+ENDTEXT
+
+TEXT "typical"
+TLOC 43 9
+TGROUP "Single Ended Test Fixture"
+ENDTEXT
+
+TEXT "max"
+TLOC 58 9
+TGROUP "Single Ended Test Fixture"
+ENDTEXT
+
+TEXT "V Measure"
+TLOC 5 11
+TGROUP "Single Ended Test Fixture"
+ENDTEXT
+
+TEXT "ESpice Model"
+TLOC 5 14
+FGROUP "Single Ended Test Fixture"
+ENDTEXT
+
+FIELD FixtureR
+FLOC 27 3
+FGROUP "Single Ended Test Fixture"
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD FixtureC
+FLOC 27 5
+FGROUP "Single Ended Test Fixture"
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD FixtureV
+FLOC 27 7
+FGROUP "Single Ended Test Fixture"
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD SingleEndedTestRefVoltageMin
+FLOC 27 11
+FGROUP "Single Ended Test Fixture"
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD SingleEndedTestRefVoltageTyp
+FLOC 41 11
+FGROUP "Single Ended Test Fixture"
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD SingleEndedTestRefVoltageMax
+FLOC 55 11
+FGROUP "Single Ended Test Fixture"
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD SingleEndedESpiceModel
+FLOC 27 14
+STRFILLIN 32 256
+FGROUP "Single Ended Test Fixture"
+POP "singleEndedEspicePOP"
+ENDFIELD
+
+GROUP "Diff Pair Test Fixture"
+GLOC 1 17
+GSIZE 67 10
+ENDGROUP
+
+TEXT "ESpice Model"
+TLOC 5 20
+FGROUP "Diff Pair Test Fixture"
+ENDTEXT
+
+FIELD DiffPairESpiceModel
+FLOC 27 20
+STRFILLIN 32 256
+FGROUP "Diff Pair Test Fixture"
+POP "diffPairEspicePOP"
+ENDFIELD
+
+TEXT "min"
+TLOC 30 22
+TGROUP "Diff Pair Test Fixture"
+ENDTEXT
+
+TEXT "typical"
+TLOC 43 22
+TGROUP "Diff Pair Test Fixture"
+ENDTEXT
+
+TEXT "max"
+TLOC 58 22
+TGROUP "Diff Pair Test Fixture"
+ENDTEXT
+
+TEXT "Ref Voltage"
+TLOC 5 24
+TGROUP "Diff Pair Test Fixture"
+ENDTEXT
+
+FIELD DiffPairTestRefVoltageMin
+FLOC 27 24
+FGROUP "Diff Pair Test Fixture"
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD DiffPairTestRefVoltageTyp
+FLOC 41 24
+FGROUP "Diff Pair Test Fixture"
+STRFILLIN 8 20
+ENDFIELD
+
+FIELD DiffPairTestRefVoltageMax
+FLOC 55 24
+FGROUP "Diff Pair Test Fixture"
+STRFILLIN 8 20
+ENDFIELD
+
+ENDTAB
+
+ENDTABSET
+
+FIELD OK
+FLOC 1 32
+MENUBUTTON "OK" 10 3
+ENDFIELD
+
+FIELD Cancel
+FLOC 21 32
+MENUBUTTON "Cancel" 10 3
+ENDFIELD
+
+#ifdef SIGWAVE
+#else
+FIELD ViewAllVI
+FLOC 40 32
+MENUBUTTON "View VI" 12 3
+POP "ViewAllVI_POP"
+ENDFIELD
+#endif
+
+FIELD help
+FLOC 61 32
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

@@ -1,0 +1,144 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 50 20
+HEADER "RF IFF Export Options"
+
+POPUP <comptransfmodes>"Component""Component", "Shape""Shape", "Boundary""Boundary".
+POPUP <shapetransfmodes>"Shape""Shape", "Boundary""Boundary".
+POPUP <linetransfmodes>"Shape""Shape", "Line""Line".
+POPUP <viatransfmodes>"Component""Component", "Shape""Shape".
+POPUP <CompGridHeadPopup>"""".
+POPUP <ShapeGridHeadPopup>"""".
+POPUP <LineGridHeadPopup>"""".
+POPUP <ViaGridHeadPopup>"""".
+
+MESSAGE errormessage 2 "%s"
+
+TILE EXPOPTIONS
+
+TABSET "tab"
+OPTIONS tabsetDispatch
+FLOC 2 1
+FSIZE 48 18
+
+TAB "Components"
+GRID compexp_grid
+
+FLOC 2 1
+FSIZE 42 12
+OPTIONS HLINES VLINES USERSIZE 
+
+GHEAD TOP
+HEADSIZE 2
+OPTIONS 3D
+POP "CompGridHeadPopup"
+ENDGHEAD
+
+ENDGRID
+
+ENDTAB
+
+TAB "Shapes"
+GRID shapeexp_grid
+
+FLOC 2 1
+FSIZE 42 12
+OPTIONS HLINES VLINES USERSIZE 
+
+GHEAD TOP 
+HEADSIZE 2
+OPTIONS 3D
+POP "ShapeGridHeadPopup"
+ENDGHEAD
+
+ENDGRID
+
+ENDTAB
+
+TAB "Lines"
+GRID lineexp_grid
+
+FLOC 2 1
+FSIZE 42 12
+OPTIONS HLINES VLINES USERSIZE 
+
+GHEAD TOP 
+HEADSIZE 2
+OPTIONS 3D
+POP "LineGridHeadPopup"
+ENDGHEAD
+
+ENDGRID
+
+ENDTAB
+
+TAB "Vias"
+GRID viaexp_grid
+
+FLOC 2 1
+FSIZE 42 12
+OPTIONS HLINES VLINES USERSIZE 
+
+GHEAD TOP
+HEADSIZE 2
+OPTIONS 3D
+POP "ViaGridHeadPopup"
+ENDGHEAD
+
+ENDGRID
+
+ENDTAB
+
+ENDTABSET
+
+TEXT "Arc resolution:"
+TLOC 2 20
+ENDTEXT
+
+FIELD resolution
+FLOC 12 20
+REALFILLIN 10 10
+ENDFIELD
+
+TEXT "degree"
+TLOC 24 20
+ENDTEXT
+
+FIELD mute
+FLOC 24 22
+CHECKLIST "no prompt"
+ENDFIELD
+
+FIELD expstaticshape
+FLOC 2 22
+CHECKLIST "Export static shape"
+ENDFIELD
+
+TEXT "Via group name:"
+TLOC 2 24
+ENDTEXT
+
+FIELD viaGroupName
+FLOC 15 24
+STRFILLIN 10 10
+ENDFIELD
+
+FIELD done
+FLOC 2 27
+MENUBUTTON "Done" 7 3
+ENDFIELD 
+ 
+FIELD cancel
+FLOC 20 27
+MENUBUTTON "Cancel" 7 3
+ENDFIELD 
+
+FIELD help
+FLOC 38 27
+MENUBUTTON "Help" 7 3
+ENDFIELD 
+
+ENDTILE
+ENDFORM
+

@@ -1,0 +1,64 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM 
+VARIABLE
+PORT 66 14
+HEADER "FSP Load Database"
+
+MESSAGE database_same 1 "New database specified is already loaded."
+MESSAGE fsp_load_database_read_only 1 "Database specified is read only."
+MESSAGE fsp_load_database_not_found 1 "Database specified was not found."
+
+TILE LOAD_TILE
+TPANEL 1
+
+TEXT "FSP Database Path"
+TLOC 1 1
+ENDTEXT
+
+#GROUP "FSP Database Path"
+#GLOC 1 1
+#GSIZE 64 10
+#ENDGROUP
+
+TEXT "Current: "
+TLOC 2 4
+ENDTEXT
+
+TEXT "None                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            "
+TLOC 8 4
+INFO current_database_label
+ENDTEXT
+
+TEXT "New: "
+TLOC 2 7
+ENDTEXT
+
+FIELD new_database_str
+FLOC 8 7
+STRFILLIN 40 1024
+ENDFIELD
+
+FIELD browse
+FLOC 51 7
+MENUBUTTON "Browse..." 13 3
+ENDFIELD
+
+FIELD ok
+FLOC 16 12
+MENUBUTTON "OK" 10 3
+ENDFIELD
+
+FIELD cancel
+FLOC 28 12
+MENUBUTTON "Cancel" 10 3
+ENDFIELD
+
+FIELD help
+FLOC 40 12
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM
+

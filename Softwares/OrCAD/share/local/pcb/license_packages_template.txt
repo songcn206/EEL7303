@@ -1,0 +1,66 @@
+# VERSION=1.0
+#
+# This file allows the creation of User Defined Packages.
+# Allows a customer to create their own product sets. A User Defined product consists of a 
+# name, base product license and zero or more option licenses. The result is shown in the 
+# Allegro toolswap (File->Change Editor) dialog.
+#
+# File located by CDS_SITE method using the LOCALPATH env variable
+#	default path: 
+#		<HOME>/pcbenv
+#		<ALLEGRO_SITE>  -- default location <CDS_ROOT>/share/local/pcb
+#	
+# File name:
+#    license_packages_<exe>.txt
+#	    where exe is allegro, apd, or cdnsip
+#    Example for allero program, file name would be named license_packages_allegro.txt
+#
+# File syntax:
+#  [filter nocadence]
+#  package <name of package so show in Change Editor dialog>
+#	license <base product>
+#	version  <software version>
+#	option <license1>
+#	option <license2>
+#	[version <sofware_version>]
+#	[allegro_license_group <allegro_license_group>]
+#
+#  NOTES:
+#	#	- a comment (rest of line is ignored)
+#	filter  - if present inhibits the display of default Cadence products
+#		  (once per file).
+#	package - Required is the name shown to user. This starts a User Defined Package
+#		  definition. Multiple packages may appear in the file.
+#	license - Required, the license name for the base Allegro Product. This is
+#		  the license behind the products shown in the Changed Editor list picker.
+#	option - (optional) zero or more of these options can appear within the package
+#		 definition. The license is the option name. This is the license behind
+#		 the name of the Option checkboxes in the Changed Editor dialog.
+#	version - (optional) if present this package is displayed if the version 
+#		  of the tool matches the value given in this field.  
+#	allegro_license_group - (optional) if present the package is displayed if the 
+#		  value of the env variable allegro_license_group matches the value given
+#		  by this option. This allows a CAD admin to build User Defined Packages
+#		  based on user groups. If this option is employed then you need to
+#		  ensure your users have this env variable set correctly.
+#
+# The <base product> and <licenseN> can be obtained by clicking on the Help button 
+# in the Change Editor (toolswap) command.
+#	base product is the -product <name> licenses
+#	licenseN is the -option <name> licenses
+#
+# This file is read once per program run.
+#
+# if "filter nocadence" then no Cadence products are shown
+filter nocadence
+#
+# This creates a package with same capabilty as legacy Allegro PCB XL product
+package Acme PCB XL
+	license Allegro_performance
+	option Allegro_PCB_HighSpeed_Option 
+	option Allegro_PCB_Mini_Option
+# This creates a package with PCB Designer with high speed and team design options
+package Acme PCB Highspeed/Partition
+	license Allegro_performance
+	option Allegro_PCB_HighSpeed_Option 
+	option Allegro_PCB_Partitioning 

@@ -1,0 +1,71 @@
+#  $Header: /vobs/psd_backend_data/data/prefs/drawing.prf /main/7 21-Dec-06.13:40:41 mbeau $
+#---------------------------------------------------------------------
+#			New Design Control Variables
+#---------------------------------------------------------------------
+#
+# See User.prf for complete descriptions of fields in this file.
+
+SUMMARY:\
+PARENT_L=drawing/new_design:\
+HELP=Support base new drawing characteristics. The units and accuracy variables \
+are used if a template design is not utilized as a starting point (see \
+WIZARD_TEMPLATE_PATH variable). Cadence recommends the use of template designs. Store \
+these template designs via CDS_SITE (see documentation) so all your users have access.
+
+new_template_with_last_design:TYPE=CHECK:EFF_ONNEXTCMD:\
+PARENT_L=drawing/new_design:\
+HELP=This restores pre-16.6 behavioral for new designs. Before 16.6, new designs \
+took their base characteristics (units, accuracy, etc.) from the previous design. \
+If this variable is set, then only the first design opened when starting the tool \
+utilize variables on this page or a new template design.
+
+new_units:TYPE=ENUM:POPUP=mils,inches,millimeters,centimeters,microns:EFF_ONNEXTCMD:\
+PARENT_L=drawing/new_design:\
+HELP=Specifies units for new design if design specific variable (e.g. \
+allegro_new_units) is not specified.
+
+new_accuracy:TYPE=LONG:MIN=0:MAX=4:DEFAULT=1:EFF_ONNEXTCMD:\
+PARENT_L=drawing/new_design:\
+HELP=Specifies accuracy for new design if design specific variable (e.g. \
+allegro_new_accuracy) is not specified.
+
+allegro_new_units:TYPE=ENUM:POPUP=mils,inches,millimeters,centimeters,microns:EFF_ONNEXTCMD:\
+PARENT_L=drawing/new_design:\
+HELP=Specifies units for new board if design specific variable (e.g. \
+new_units) is not specified.
+
+allegro_new_accuracy:TYPE=LONG:MIN=0:MAX=4:DEFAULT=1:EFF_ONNEXTCMD:\
+PARENT_L=drawing/new_design:\
+HELP=Specifies accuracy for new board if design specific variable (e.g. \
+new_accuracy) is not specified.
+
+apd_new_units:TYPE=ENUM:POPUP=mils,inches,millimeters,centimeters,microns:EFF_ONNEXTCMD:\
+PARENT_L=drawing/new_design:\
+HELP=Specifies units for new mcm if design specific variable (e.g. \
+new_units) is not specified.
+
+apd_new_accuracy:TYPE=LONG:MIN=0:MAX=4:DEFAULT=1:EFF_ONNEXTCMD:\
+PARENT_L=drawing/new_design:\
+HELP=Specifies accuracy for new mcm if design specific variable (e.g. \
+new_accuracy) is not specified.
+
+cdnsip_new_units:TYPE=ENUM:POPUP=mils,inches,millimeters,centimeters,microns:EFF_ONNEXTCMD:\
+PARENT_L=drawing/new_design:\
+HELP=Specifies units for new SIP if design specific variable (e.g. \
+new_units) is not specified.
+
+cdnsip_new_accuracy:TYPE=LONG:MIN=0:MAX=4:DEFAULT=1:EFF_ONNEXTCMD:\
+PARENT_L=drawing/new_design:\
+HELP=Specifies accuracy for new SIP if design specific variable (e.g. \
+new_accuracy) is not specified.
+
+pad_designer_new_units:TYPE=ENUM:POPUP=mils,inches,millimeters,centimeters,microns:EFF_ONNEXTCMD:\
+PARENT_L=drawing/new_design:\
+HELP=Specifies units for a new padstack if design specific variable (e.g. \
+new_units) is not specified.
+
+pad_designer_new_accuracy:TYPE=LONG:MIN=0:MAX=4:DEFAULT=1:EFF_ONNEXTCMD:\
+PARENT_L=drawing/new_design:\
+HELP=Specifies accuracy for a new padstack if design specific variable (e.g. \
+new_accuracy) is not specified.
+

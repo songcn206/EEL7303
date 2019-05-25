@@ -1,0 +1,75 @@
+
+Command line arguments for Allegro database uprev program
+	Database upreving utility. Used to uprev one or multiple databases
+	in a batch environment. Typically used when migrating to a major
+	release and the need exists to uprev all symbol libraries.
+
+        Has two formats; single databases (format 1) and multiple databases with
+	traversing directories as needed (format 2). Format 2 replaces the
+	uprev_overwrite utility that performed this functionality in previous
+	releases. The -b option tells the program to use format 2 mode instead
+	of the default format 1.
+
+	This is a wrapper to the dbdoctor program that processes each database.
+
+FORMAT 1: Uprev one database. If output filename is provided then will result
+	the result of uprev into the it, leaving the input unchanged.
+
+    uprev [<args>] <input database> [<output filename>]
+
+    Example: uprev -d foo.brd out.brd
+	Uprev and do a batch drc on foo.brd and write result into out.brd
+
+    Example: uprev  foo.brd 
+	Uprev foo.brd, overwrite it with updated database
+
+
+FORMAT 2: Uprev multiple databases. You can provide both databases and
+	directories to the command. If a directory is encountered, uprev 
+	will recursively enter that directory and all its child directories 
+	until it encounters the nest directory depth limit or a read-only 
+	directory.  It will only process known Allegro database extensions 
+	and directories, all other names will be ignored.
+
+	If no names are provided will process all files in current working
+	directory and all sub-directories. Give "-n 1" if you only want
+	the current directory.  All databases will be uprev in place 
+	(overwritten).
+
+    uprev [<args>] [-n <directory depth>] <files or directories...>
+
+    Example: uprev -b 
+	Uprev all databases in current directory and any child directories
+	up to a depth of 3.
+
+    Example: uprev -b  *
+	Same as previous example
+
+    Example: uprev -b  *.pad
+	Uprev only padstacks found in current directory
+
+    Example: uprev -b  -d -n 1 symbols padstacks
+	Uprev and perform batch DRC on all databases found in "symbols" and
+	"padstacks" directories and any child directories. Do not descend
+	to any sub-directories.
+
+    GENERIC ARGUMENTS
+	[-drc]
+	      Updates all DRC's, including BATCH only.
+	[-D]
+	      Runs command in debug mode. Output what it is going to do.
+	[-b]
+	      Enable format 2 mode (default is format 1)
+
+    FORMAT 1 ARGUMENTs
+	<input board> 
+		name of database; must provide an extension
+	[<output filenae>]
+		optional filename
+
+    FORMAT 2 ARGUMENTs
+	[-n <nest directory depth>]
+		Maximum depth to descend into a directory tree
+        <files or directories...>
+		
+

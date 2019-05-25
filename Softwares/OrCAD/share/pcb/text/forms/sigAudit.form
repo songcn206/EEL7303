@@ -1,0 +1,195 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM fixed_font
+FIXED
+PORT 88 43
+HEADER "SI Design Audit"
+
+POPUP <StatusFilterChoices> "All""All","Unresolved""Unresolved","Resolved""Resolved","Ignored""Ignored".
+
+POPUP <TestFilterChoices> "All""All".
+
+POPUP <SortByChoices> "Status""Status","Test Type""Test Type".
+
+POPUP <StatusPopup> "Resolve""Resolve","Unresolved""Unresolved","Ignore""Ignore".
+
+POPUP <TreeExpandControlChoices> "Expand All""Expand All","Collapse All""Collapse All".
+
+TILE
+
+TABSET SI_Audit
+FLOC 0 0
+TSSIZE 90 42
+
+TAB SelectTestsToRun
+
+GROUP "Select the audit tests to be performed"
+GLOC 11 1
+GSIZE 65 37
+ENDGROUP
+
+FIELD SelectedTests
+FLOC 13 5
+TREEVIEW 60 16
+ENDFIELD
+
+ENDTAB
+
+TAB XnetSelection
+
+GROUP "Select Xnets and nets that are to be audited"
+GLOC 16 1
+GSIZE 50 35
+ENDGROUP
+
+FIELD ShowBuses
+FLOC 18 4
+CHECKLIST "Show Buses"
+ENDFIELD
+
+FIELD ShowDiffPairs
+FLOC 45 4
+CHECKLIST "Show Diff Pairs"
+ENDFIELD
+
+TEXT "Xnet Filter:"
+TLOC 18 6
+ENDTEXT
+
+FIELD XnetsFilter
+FLOC 31 6
+STRFILLIN 30 100
+ENDFIELD
+
+FIELD SelectedXnets
+FLOC 18 8
+TREEVIEW 45 11
+POP TreeExpandControlChoices
+ENDFIELD
+
+FIELD ImportSelectedXnets
+FLOC 18 30
+MENUBUTTON "Import Xnets/Nets to be Selected" 46 3
+ENDFIELD
+
+FIELD ExportSelectedXnets
+FLOC 18 33
+MENUBUTTON "Export Selected Xnets/Nets" 46 3
+ENDFIELD
+
+FIELD IncludeCoupledXnets
+FLOC 18 37
+CHECKLIST "Include Coupled Xnets"
+ENDFIELD
+
+FIELD ListCoupledXnets
+FLOC 44 37
+MENUBUTTON "List Coupled Xnets" 16 3
+ENDFIELD
+
+ENDTAB
+
+TAB AuditErrors
+
+GROUP "Audit Errors"
+GLOC 1 1
+GSIZE 86 38
+ENDGROUP
+
+TEXT "Status Filter:"
+TLOC 3 4
+ENDTEXT
+
+FIELD StatusFilter
+FLOC 18 4
+ENUMSET 9
+POP StatusFilterChoices
+ENDFIELD
+
+TEXT "Test Filter:"
+TLOC 33 4
+ENDTEXT
+
+FIELD TestFilter
+FLOC 46 4
+ENUMSET 11
+POP TestFilterChoices
+ENDFIELD
+
+TEXT "Sort By:"
+TLOC 63 4
+ENDTEXT
+
+FIELD SortBy
+FLOC 71 4
+ENUMSET 10
+POP SortByChoices
+ENDFIELD
+
+GRID "ErrorsGrid"
+FLOC 3 6
+FSIZE 81 26
+OPTIONS HLINES VLINES MULTISELROW
+POP StatusPopup
+GHEAD TOP
+HEADSIZE 2
+OPTIONS 3D MULTI
+ENDGHEAD
+ENDGRID
+
+GROUP "Resolve Errors"
+GLOC 3 31
+GSIZE 34 6
+ENDGROUP
+
+FIELD ResolveAllErrors
+FLOC 4 34
+MENUBUTTON "All" 10 3
+ENDFIELD
+
+FIELD ResolveSelectedErrors
+FLOC 15 34
+MENUBUTTON "Selected" 10 3
+ENDFIELD
+
+FIELD ManuallyResolveError
+FLOC 26 34
+MENUBUTTON "Manually" 10 3
+ENDFIELD
+
+GROUP "Ignore Errors"
+GLOC 39 31
+GSIZE 24 6
+ENDGROUP
+
+FIELD IgnoreAllErrors
+FLOC 40 34
+MENUBUTTON "All" 10 3
+ENDFIELD
+
+FIELD IgnoreSelectedErrors
+FLOC 51 34
+MENUBUTTON "Selected" 10 3
+ENDFIELD
+
+FIELD ShowResolution
+FLOC 66 32
+MENUBUTTON "Show Resolution" 18 2
+ENDFIELD
+
+FIELD ReportErrors
+FLOC 66 34
+MENUBUTTON "Report" 18 2
+ENDFIELD
+
+FIELD ImportReport
+FLOC 66 36
+MENUBUTTON "Import Report" 18 2
+ENDFIELD
+
+ENDTAB
+
+ENDTABSET
+
+ENDTILE
+
+ENDFORM

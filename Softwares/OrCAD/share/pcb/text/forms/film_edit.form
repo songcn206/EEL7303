@@ -1,0 +1,160 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 88 18
+HEADER "Film Record"
+
+POPUP <AWROTPOP> "0""0","90""2","180""4","270""6".
+
+MESSAGE NEG 2 "Full Contact Thermals on neg film only."
+MESSAGE ALREADY_EDITING 1 "Already editing film."
+MESSAGE NOSAVE 3 "Can't open file %s."
+
+ACTIVEFIELD "rotation"
+
+TILE
+TEXT "Film Name:"
+TLOC 2 1
+ENDTEXT
+
+TEXT
+TLOC 17 1
+INFO name 20
+ENDTEXT
+
+TEXT "Active Format:"
+TLOC 2 3
+ENDTEXT
+
+TEXT
+TLOC 17 3
+INFO edit_active_format 18
+ENDTEXT
+
+TEXT "Rotation:"
+TLOC 5 9
+TGROUP "Available Options"
+ENDTEXT
+
+TEXT "Offset X:"
+TLOC 5 11
+TGROUP "Available Options"
+ENDTEXT
+
+TEXT "Y:"
+TLOC 12 13
+TGROUP "Available Options"
+ENDTEXT
+
+TEXT "Plot mode:"
+TLOC 5 15
+TGROUP "Available Options"
+ENDTEXT
+
+TEXT "Undefine Line Width:"
+TLOC 5 19
+TGROUP "Available Options"
+ENDTEXT
+
+FIELD list
+FLOC 43 4
+FGROUP "Layers"
+LIST "" 41 13
+ENDFIELD
+
+FIELD save_as
+FLOC 69 29
+FGROUP "Layers"
+MENUBUTTON "Save As..." 12 3
+ENDFIELD
+
+FIELD rotation
+FLOC 16 9
+FGROUP "Available Options"
+ENUMSET 4
+POP "AWROTPOP"
+ENDFIELD
+
+FIELD x_offset
+FLOC 16 11
+FGROUP "Available Options"
+STRFILLIN 10 10
+ENDFIELD
+
+FIELD y_offset
+FLOC 16 13
+FGROUP "Available Options"
+STRFILLIN 10 10
+ENDFIELD
+
+FIELD positive
+FLOC 16 15
+FGROUP "Available Options"
+CHECKLIST "Positive" "AWMODEGROUP"
+ENDFIELD
+
+FIELD negative
+FLOC 16 17
+FGROUP "Available Options"
+CHECKLIST "Negative" "AWMODEGROUP"
+ENDFIELD
+
+FIELD undefined_line_width
+FLOC 26 19
+FGROUP "Available Options"
+STRFILLIN 8 10
+ENDFIELD
+
+FIELD mirror
+FLOC 3 21
+FGROUP "Available Options"
+CHECKLIST "Film Mirrored"
+ENDFIELD
+
+FIELD full_contact
+FLOC 3 23
+FGROUP "Available Options"
+CHECKLIST "Full Contact Thermal-Reliefs"
+ENDFIELD
+
+FIELD suppress_unconnect
+FLOC 3 25
+FGROUP "Available Options"
+CHECKLIST "Suppress Unconnected Pads"
+ENDFIELD
+
+FIELD draw_missing_apts
+FLOC 3 27
+FGROUP "Available Options"
+CHECKLIST "Draw Missing Pad Apertures"
+ENDFIELD
+
+FIELD use_aperture_rot
+FLOC 3 29
+FGROUP "Available Options"
+CHECKLIST "Use Aperture Rotation"
+ENDFIELD
+
+FIELD done
+FLOC 2 33
+MENUBUTTON "Done" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 76 33
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+GROUP "Layers"
+GLOC 41 1
+GSIZE 45 31
+ENDGROUP
+
+GROUP "Available Options"
+GLOC 2 6
+GSIZE 36 26
+ENDGROUP
+
+ENDTILE
+
+ENDFORM

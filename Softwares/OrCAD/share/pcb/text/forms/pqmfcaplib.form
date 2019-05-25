@@ -1,0 +1,152 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM AUTOGREYTEXT
+FIXED
+PORT 82 42
+HEADER "Power Integrity Setup Wizard - Library Setup"
+
+POPUP <PQ_DECAP_LS_POP>"All""All".
+POPUP <PQ_DECAP_TREE_POP>"none""none".
+
+TILE
+
+TEXT "Power plane pair:"
+TLOC 1 1
+ENDTEXT
+
+FIELD pq_decap_ls_power_pair
+FLOC 15 1
+ENUMSET 46
+POP "PQ_DECAP_LS_POP"
+ENDFIELD
+
+GROUP "DeCap Library Selections" pq_decap_ls_libgroup
+GLOC 1 3
+GSIZE 44 30
+ENDGROUP
+
+FIELD pq_decap_ls_tree
+FLOC 2 5
+TREEVIEW 42 14
+POP "PQ_DECAP_TREE_POP"
+FGROUP "DeCap Library Selections"
+ENDFIELD
+
+GROUP "Log-ESR VS Log-Freq" pq_decap_ls_ESRFreqGroup
+GLOC 46 3
+GSIZE 35 19
+ENDGROUP
+
+FIELD pq_decap_ls_bitmap
+THUMBNAIL
+FLOC 47 5
+FSIZE 33 15
+TGROUP "Log-ESR VS Log-Freq"
+ENDFIELD
+
+TEXT 
+FLOC 47 20
+INFO pq_decap_ls_low_freq 7
+TGROUP "Log-ESR VS Log-Freq"
+ENDTEXT 
+
+TEXT 
+FLOC 72 20
+OPTIONS RIGHT
+INFO pq_decap_ls_high_freq 7
+TGROUP "Log-ESR VS Log-Freq"
+ENDTEXT 
+
+GROUP "DeCap Selected" pq_decap_ls_selectedgroup
+GLOC 46 22
+GSIZE 35 11
+ENDGROUP
+
+TEXT "Effective Capacitance:"
+TLOC 47 24
+TGROUP "DeCap Selected"
+ENDTEXT
+
+TEXT
+TLOC 64 24
+INFO pq_decap_ls_cap 15
+TGROUP "DeCap Selected"
+ENDTEXT
+
+TEXT "Effective ESR:"
+TLOC 47 26
+TGROUP "DeCap Selected"
+ENDTEXT
+
+TEXT
+TLOC 64 26
+INFO pq_decap_ls_esr 15
+TGROUP "DeCap Selected"
+ENDTEXT
+
+TEXT "Nom. inductance:"
+TLOC 47 28
+INFO pq_decap_ls_ind_info 15
+TGROUP "DeCap Selected"
+ENDTEXT
+
+TEXT
+TLOC 64 28
+INFO pq_decap_ls_ind 15
+TGROUP "DeCap Selected"
+ENDTEXT
+
+TEXT "Frequency:"
+TLOC 47 30
+INFO pq_decap_ls_freq_info 15
+TGROUP "DeCap Selected"
+ENDTEXT
+
+TEXT
+TLOC 64 30
+INFO pq_decap_ls_freq 15
+TGROUP "DeCap Selected"
+ENDTEXT
+
+#TEXT
+#TLOC 47 23
+#INFO pq_decap_ls_info 23
+#FSIZE 40 10 
+#ENDTEXT
+
+#FIELD pq_decap_ls_library
+#FLOC 1 34
+#MENUBUTTON "Library Files..." 15 3
+#ENDFIELD
+
+FIELD pq_decap_allegro_library
+FLOC 20 34
+MENUBUTTON "Component Browser" 15 3
+ENDFIELD
+
+FIELD done
+FLOC 4 39
+MENUBUTTON "Done" 10 3
+ENDFIELD
+
+FIELD cancel
+FLOC 18 39
+MENUBUTTON "Cancel" 10 3
+ENDFIELD
+
+FIELD help
+FLOC 68 39
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+FLEXMODE EdgeGravity
+
+# Format FLEX fx fy fw fh          
+FLEX pq_decap_ls_power_pair    0 0 1 0
+FLEX pq_decap_ls_tree          0 0 1 1
+FLEX pq_decap_ls_libgroup      0 0 1 1
+FLEX pq_decap_ls_ESRFreqGroup  1 0 0 0
+FLEX pq_decap_ls_selectedgroup 1 0 0 0
+
+ENDTILE
+
+ENDFORM

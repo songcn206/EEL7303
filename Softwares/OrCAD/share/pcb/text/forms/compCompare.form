@@ -1,0 +1,369 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 70 19
+HEADER  "Component Compare" 
+
+POPUP <REFDESPOPUP14>"""".
+POPUP <FILETYPEPOPUP14>"" "".
+POPUP <SORTTYPEPOPUP14>"" "".
+
+TILE
+
+GROUP " Golden data "
+FLOC 2 1
+FSIZE 50 5
+
+FIELD golden_file
+FLOC 6 3
+CHECKLIST "External File" "golden"
+ENDFIELD
+
+FIELD golden_design
+FLOC 28 3
+CHECKLIST "Component" "golden"
+ENDFIELD
+
+ENDGROUP
+
+
+GROUP " Checks "
+FLOC 54 1
+FSIZE 16 28
+
+TEXT "Check by:"
+TLOC 55 3
+ENDTEXT
+
+FIELD sortType
+FLOC 55 5
+ENUMSET 11
+POP "SORTTYPEPOPUP14"
+ENDFIELD
+
+FIELD all
+FLOC 55 8
+CHECKLIST "All"
+ENDFIELD
+
+FIELD pin_location
+FLOC 55 10
+CHECKLIST "Pin location"
+ENDFIELD
+
+FIELD pin_name
+FLOC 55 12
+CHECKLIST "Pin Name"
+ENDFIELD
+
+FIELD pin_number
+FLOC 55 14
+CHECKLIST "Pin Number" 
+ENDFIELD
+
+FIELD pin_use
+FLOC 55 16
+CHECKLIST "Pin Use" 
+ENDFIELD
+
+FIELD pin_size
+FLOC 55 18
+CHECKLIST "Pin Size" 
+ENDFIELD
+
+FIELD pin_shape
+FLOC 55 20
+CHECKLIST "Pin Shape" 
+ENDFIELD
+
+FIELD pin_orientation
+FLOC 55 22
+CHECKLIST "Pin Orientation" 
+ENDFIELD
+
+FIELD net_assignment
+FLOC 55 24
+CHECKLIST "Net Assignment" 
+ENDFIELD
+
+FIELD cell_instance
+FLOC 55 26
+CHECKLIST "Cell Instance" 
+ENDFIELD
+
+ENDGROUP
+
+
+#ifdef ICP_COMPONENT_COMPARE_NO_OA_OPTION
+ 
+GROUP " External File "
+FLOC 2 6
+FSIZE 50 11
+
+TEXT "File Type:"
+TLOC 4 8
+ENDTEXT
+
+FIELD filetype
+FLOC 12 8
+ENUMSET 15
+POP "FILETYPEPOPUP14"
+ENDFIELD
+
+FIELD shrinkExists
+FLOC 32 8
+CHECKLIST "File has shrink applied" 
+ENDFIELD
+
+TEXT "File:"
+TLOC 4 11
+ENDTEXT
+
+FIELD filename
+FLOC 12 11
+STRFILLIN 23 255
+ENDFIELD
+
+FIELD browse
+FLOC 39 11
+MENUBUTTON "Browse..." 10 3
+ENDFIELD
+
+TEXT "LEF Library: "
+TLOC 4 14
+ENDTEXT
+
+TEXT ""
+TLOC 13 14
+INFO leflibrary 25
+ENDTEXT
+
+FIELD lefmanager
+FLOC 28 14
+MENUBUTTON "&Library Manager..." 21 3
+ENDFIELD
+
+ENDGROUP
+
+GROUP " Component "
+FLOC 2 17
+FSIZE 50 9
+
+TEXT "Reference Designator:"
+TLOC 4 19
+ENDTEXT
+
+FIELD refdes
+FLOC 22 19
+ENUMSET 21
+POP "REFDESPOPUP14"
+ENDFIELD
+
+TEXT "Component Definition: "
+TLOC 4 21
+ENDTEXT
+
+TEXT ""
+TLOC 20 21
+INFO compdef 19
+ENDTEXT
+
+TEXT "(Co-Design Die)"
+TLOC 40 21
+INFO codesignDisplay 25
+ENDTEXT
+
+TEXT "Symbol Definition: "
+TLOC 4 23
+ENDTEXT
+
+TEXT ""
+TLOC 20 23
+INFO symdef 15
+ENDTEXT
+
+FIELD cell_info
+FLOC 36 23
+CHECKLIST "Include Cell Info"
+ENDFIELD
+
+ENDGROUP
+
+FIELD write_report
+FLOC 15 27
+MENUBUTTON "&Report" 10 3
+ENDFIELD
+ 
+FIELD close
+FLOC 27 27
+MENUBUTTON "&Close" 10 3
+ENDFIELD
+
+FIELD Help
+FLOC 39 27
+MENUBUTTON "&Help" 10 3
+ENDFIELD
+
+
+#else
+
+POPUP <LIBRARYNAME_LIST> "" "".
+POPUP <CELLNAME_LIST> "" "".
+POPUP <VIEWNAME_LIST> "" "".
+ 
+
+GROUP " External File "
+FLOC 2 6
+FSIZE 50 24
+
+TEXT "File Type:"
+TLOC 4 8
+ENDTEXT
+
+FIELD filetype
+FLOC 12 8
+ENUMSET 15
+POP "FILETYPEPOPUP14"
+ENDFIELD
+
+FIELD shrinkExists
+FLOC 32 8
+CHECKLIST "File has shrink applied" 
+ENDFIELD
+
+TEXT "File:"
+TLOC 4 11
+ENDTEXT
+
+FIELD filename
+FLOC 12 11
+STRFILLIN 23 255
+ENDFIELD
+
+FIELD browse
+FLOC 40 11
+MENUBUTTON "Browse..." 10 3
+ENDFIELD
+
+TEXT "LEF Library: "
+TLOC 4 14
+ENDTEXT
+
+TEXT ""
+TLOC 14 14
+INFO leflibrary 25
+ENDTEXT
+
+FIELD lefmanager
+FLOC 29 14
+MENUBUTTON "&Library Manager..." 21 3
+ENDFIELD
+
+
+GROUP " OpenAccess "
+FLOC 4 17
+FSIZE 46 12
+
+
+TEXT "Library Name: "
+TLOC 6 19
+ENDTEXT
+
+FIELD libraryname_list
+FLOC 19 19
+STRFILLIN 24 256
+OPTIONS prettyprint ownerdrawn
+POP "LIBRARYNAME_LIST"
+ENDFIELD
+
+TEXT "Cell Name: "
+TLOC 6 22
+ENDTEXT
+
+FIELD cellname_list
+FLOC 19 22
+STRFILLIN 24 256
+OPTIONS prettyprint ownerdrawn
+POP "CELLNAME_LIST"
+ENDFIELD
+
+TEXT "View Name: "
+TLOC 6 25
+ENDTEXT
+
+FIELD viewname_list
+FLOC 19 25
+STRFILLIN 24 256
+OPTIONS prettyprint ownerdrawn
+POP "VIEWNAME_LIST"
+ENDFIELD
+
+ENDGROUP
+
+ENDGROUP
+
+GROUP " Component "
+FLOC 2 30
+FSIZE 50 9
+
+TEXT "Reference Designator:"
+TLOC 4 32
+ENDTEXT
+
+FIELD refdes
+FLOC 22 32
+ENUMSET 21
+POP "REFDESPOPUP14"
+ENDFIELD
+
+TEXT "Component Definition: "
+TLOC 4 34
+ENDTEXT
+
+TEXT ""
+TLOC 22 34
+INFO compdef 17
+ENDTEXT
+
+TEXT "(Co-Design Die)"
+TLOC 40 34
+INFO codesignDisplay 25
+ENDTEXT
+
+TEXT "Symbol Definition: "
+TLOC 4 36
+ENDTEXT
+
+TEXT ""
+TLOC 22 36
+INFO symdef 13
+ENDTEXT
+
+FIELD cell_info
+FLOC 36 36
+CHECKLIST "Include Cell Info"
+ENDFIELD
+
+ENDGROUP
+
+
+FIELD write_report
+FLOC 15 40
+MENUBUTTON "&Report" 10 3
+ENDFIELD
+ 
+FIELD close
+FLOC 27 40
+MENUBUTTON "&Close" 10 3
+ENDFIELD
+
+FIELD Help
+FLOC 39 40
+MENUBUTTON "&Help" 10 3
+ENDFIELD
+
+#endif
+
+ENDTILE
+
+ENDFORM

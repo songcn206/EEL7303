@@ -1,0 +1,82 @@
+#  $Header: /vobs/psd_backend_data/data/prefs/drawing.prf /main/7 21-Dec-06.13:40:41 mbeau $
+#---------------------------------------------------------------------
+#			User Interface Variables
+#---------------------------------------------------------------------
+#
+# See User.prf for complete descriptions of fields in this file.
+
+SUMMARY:HELP=Controls design access behavior typically at the global level.
+
+
+allegro_long_name_size:TYPE=LONG:MIN=32:MAX=255:EFF_IMMEDIATE:\
+HELP=Defines the maximum name length in the design. Examples of \
+long name types are (but not limited to); nets, padstacks, symbols, and \
+function pins. The minimum value is 32 and the maximum is 255. \
+IMPORTANT\: The variable is only used when creating a new drawing. Existing \
+designs have their name length managed in the Design Parameters, Design Tab.
+
+legacy_character_set:TYPE=CHECK:EFF_IMMEDIATE:\
+HELP=By default, Allegro does not allow a backslash (\\) in net names. This \
+variable sets pre-16.6 behavior which allows this character in net names.
+
+drawing_4mils:TYPE=CHECK:EFF_IMMEDIATE:\
+HELP=If set, allows a database in MILS to be set to an accuracy of 3 \
+or 4 decimal places. When unset (default), maximum accuracy in MILS is 2. \
+Using more then 2 decimal places of accuracy causes rounding issues when \
+fabbing drawing.
+
+drawing_no_4mils_msg:TYPE=CHECK:EFF_IMMEDIATE:\
+HELP=If set, does not display a warning message in the drawing parameter \
+form if accuracy is set to greater then 2 while using MILS.
+
+noconfirm_uprev:TYPE=CHECK:EFF_IMMEDIATE:\
+HELP=If set, does not display an uprev warning message on open drawing. \
+Default is to display warning dialog if opening a drawing will require \
+an uprev.
+
+noconfirm_savedb:TYPE=CHECK:EFF_IMMEDIATE:\
+HELP=If set, does not display warning message if save will overwrite \
+an existing database. The database will be overwritten.
+
+db_tier_nomsg:TYPE=CHECK:EFF_IMMEDIATE:\
+HELP=If you frequently use different product tiers during design, \
+you may wish to enable this option to inhibit the confirmer in open \
+drawing that warns about opening the design in a different product. \
+Even with this variable set, you will still see a warning in the \
+command area.
+
+no_symbol_onsave:TYPE=CHECK:EFF_IMMEDIATE:\
+HELP=By default, on saving a dra file, the symbol file will also \
+by created. With this variable set, the old behavior where the \
+user would need to use File->Create Symbol (create symbol) is restored.
+
+multiboard_always:TYPE=CHECK:EFF_ONNEXTCMD:\
+HELP=By default, Allegro will not automatically open a system design \
+link when a board is open while PCB SI will. This causes \
+Allegro to automatically open a design link if one is currently \
+associated with the design.
+
+padstack_nowarning_display:TYPE=CHECK:EFF_ONNEXTCMD:\
+PARENT_L=ui/pad_designer:\
+HELP=By default, the pad_designer displays a warning before file save.\
+This allows the disabling of the display. This variable is provided for \
+automation of padstack creation. You should not set this variable \
+on permanent basis.
+
+padstack_allow_null:TYPE=CHECK:EFF_ONNEXTCMD:\
+PARENT_L=ui/pad_designer:\
+HELP=By default, Allegro does not allow padstacks to be defined with \
+no etch (conductor) layers. This variable allows padstacks to be defined that \
+contain only mask layers (pre-16.01 behavior).
+
+padstack_hole_outside:TYPE=CHECK:EFF_ONNEXTCMD:\
+PARENT_L=ui/pad_designer:\
+HELP=Makes it an error for multi-drill padstacks to have their drill array \
+overlap the pad boundaries. By default, this is a warning. As an error, \
+you will not be able to save the padstack.
+
+padstack_nowarning_drill:TYPE=CHECK:EFF_ONNEXTCMD:\
+PARENT_L=ui/pad_designer:\
+HELP=In pad_designer suppresses warning when the drill hole is equal or larger \
+then the smallest pad size.\
+

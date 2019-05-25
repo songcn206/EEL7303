@@ -1,0 +1,170 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM 
+FIXED
+PORT 43 80
+HEADER "Shape Shorting Via Array"
+
+POPUP <VIAPADPOP> """".
+POPUP <STARTINGCORNER>"Upper Left""UpperLeft","Upper Right""UpperRight","Lower Left""LowerLeft","Lower Right""LowerRight","Custom""Custom".
+POPUP <ANGLEPOP>"0.0 degrees""0.0","22.5 degrees""22.5","-22.5 degrees""-22.5","45.0 degrees""45.0","-45.0 degrees""-45.0".
+
+TILE
+
+GROUP "Via Array Parameters"
+GLOC 1 0
+GSIZE 42 21
+ENDGROUP
+
+TEXT "Padstack:"
+TLOC 2 2
+ENDTEXT
+FIELD viaPad
+FLOC 15 2
+ENUMSET 24
+POP "VIAPADPOP"
+ENDFIELD
+
+TEXT "Spacing:" 
+TLOC 2 4
+ENDTEXT
+FIELD viaSpacing
+FLOC 15 4
+STRFILLIN 25 128
+ENDFIELD
+
+TEXT "Pitch:" 
+TLOC 2 6
+ENDTEXT
+FIELD viaPitch
+FLOC 15 6
+STRFILLIN 25 128
+ENDFIELD
+
+TEXT "Array Angle:" 
+TLOC 2 9
+ENDTEXT
+FIELD arrayAngle
+FLOC 15 9
+STRFILLIN 22 128
+POP "ANGLEPOP"
+ENDFIELD
+
+FIELD viaRotate
+FLOC 4 11
+CHECKLIST "Rotate vias at array angle"
+ENDFIELD
+
+TEXT "Starting Position:"
+TLOC 2 14
+ENDTEXT
+FIELD startingCorner
+FLOC 15 14
+ENUMSET 24
+POP "STARTINGCORNER"
+ENDFIELD
+
+TEXT "Offset" 
+TLOC 2 16
+ENDTEXT
+TEXT "X:"
+TLOC 12 16
+ENDTEXT
+FIELD offsetX
+FLOC 15 16
+STRFILLIN 10 128
+ENDFIELD
+TEXT "Y:"
+TLOC 28 16
+ENDTEXT
+FIELD offsetY
+FLOC 30 16
+STRFILLIN 10 128
+ENDFIELD
+
+TEXT "Custom Point" 
+TLOC 2 18
+ENDTEXT
+TEXT "X:"
+TLOC 12 18
+ENDTEXT
+FIELD customX
+FLOC 15 18
+STRFILLIN 10 128
+ENDFIELD
+TEXT "Y:"
+TLOC 28 18
+ENDTEXT
+FIELD customY
+FLOC 30 18
+STRFILLIN 10 128
+ENDFIELD
+
+
+GROUP "Via Spacing Constraints"
+GLOC 1 21
+GSIZE 42 11
+ENDGROUP
+
+FIELD useConstraints
+FLOC 2 23
+CHECKLIST "Use DRC constraint values"
+ENDFIELD
+
+TEXT "Via to Shape Boundary:" 
+TLOC 2 25
+ENDTEXT
+FIELD via2ShapeBound
+FLOC 25 25
+STRFILLIN 15 128
+ENDFIELD
+
+TEXT "Via to Conductor (Shape Layer):" 
+TLOC 2 27
+ENDTEXT
+FIELD via2SameCond
+FLOC 25 27
+STRFILLIN 15 128
+ENDFIELD
+
+TEXT "Via to Conductor (Internal Layer):" 
+TLOC 2 29
+ENDTEXT
+FIELD via2DiffCond
+FLOC 25 29
+STRFILLIN 15 128
+ENDFIELD
+
+FIELD seedFromShape
+FLOC 2 33
+CHECKLIST "Update form values from saved shape pair settings"
+ENDFIELD
+
+FIELD done
+FLOC 1 39
+MENUBUTTON "Done" 10 3
+ENDFIELD
+
+FIELD add_vias
+FLOC 1 36
+MENUBUTTON "Add Vias" 10 3
+ENDFIELD
+
+FIELD cancel
+FLOC 12 39
+MENUBUTTON "Cancel" 10 3	
+ENDFIELD
+
+FIELD remove_vias
+FLOC 12 36
+MENUBUTTON "Remove Vias" 10 3	
+ENDFIELD
+
+FIELD help
+FLOC 32 39
+MENUBUTTON "Help" 10 3	
+ENDFIELD
+
+ 
+ENDTILE
+
+ENDFORM

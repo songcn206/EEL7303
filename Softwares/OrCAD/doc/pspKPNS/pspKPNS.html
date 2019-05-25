@@ -1,0 +1,700 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN" "http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+<html xmlns="http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>PSpice Known Problems and Solutions -- PSpice Known Problems and Solutions</title>
+<META NAME="Approver" CONTENT="Technical Publications">
+<META NAME="Author" CONTENT="Technical Publications">
+<META NAME="CreateDate" CONTENT="2012-09-04">
+<META NAME="CreateTime" CONTENT="1346752412">
+<META NAME="DataType" CONTENT="KP&S">
+<META NAME="Description" CONTENT="Describes known problems in PSpice and their solutions.">
+<META NAME="DocTitle" CONTENT="PSpice Known Problems and Solutions">
+<META NAME="DocType" CONTENT="Known Problems and Solutions">
+<META NAME="EdmsRelease" CONTENT="EDMS Windows-P015">
+<META NAME="FileTitle" CONTENT="PSpice Known Problems and Solutions">
+<META NAME="FileType" CONTENT="Chapter">
+<META NAME="Keyword" CONTENT="pspKPNS">
+<META NAME="Language" CONTENT="English">
+<META NAME="ModifiedDate" CONTENT="2012-09-04">
+<META NAME="ModifiedTime" CONTENT="1346752412">
+<META NAME="NextFile" CONTENT="">
+<META NAME="PageCount" CONTENT="12">
+<META NAME="Platform" CONTENT="ALL">
+<META NAME="PrevFile" CONTENT="pspKPNSTOC.html">
+<META NAME="Product" CONTENT="Allegro AMS Simulator, PSpice">
+<META NAME="ProductFamily" CONTENT="PCB Design, PCB Design">
+<META NAME="ProductVersion" CONTENT="16.6">
+<META NAME="RightsManagement" CONTENT="Copyright 19912012 Cadence Design Systems Inc.">
+<META NAME="Title" CONTENT="PSpice Known Problems and Solutions -- PSpice Known Problems and Solutions">
+<META NAME="TopicTags" CONTENT="FALSE">
+<META NAME="Version" CONTENT="16.6">
+  </head>
+  <body style="margin-left: 5%;">
+    <a name="pagetop"></a>
+    <a name="firstpage"></a>
+    <!-- Begin Buttons -->
+    <table width="650" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td height="36" width="650" colspan="10">
+          <img src="../support/header_doc.gif" width="650" height="34">
+        </td>
+      </tr>
+      <tr>
+        <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                </td>
+<td height="20" width="73">
+<a href="pspKPNSTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<img src="../support/nav2_index_b.gif" border="0">
+</td>
+        <td>
+          <a href="pspKPNSTOC.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+        </td>
+        <td height="20">
+          <img src="../support/nav2_next_b.gif" alt="Previous">
+        </td>
+        <td height="20">
+          <a>
+<a href="pspKPNS.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+          </a>
+        </td>
+        <td height="20" width="59">
+          <img src="../support/nav_next_b.gif" alt="Next" border="0">
+        </td>
+        <td height="20" width="61">
+          <img src="../support/nav2_black.gif">
+        </td>
+        <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+        </td>
+        <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+        </td>
+        <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+        </td>
+      </tr>
+    </table>
+    <!-- End Buttons -->
+    <p>
+    <hr>
+    <p>
+      <h3>
+        <center>
+          <font >
+            <div>PSpice Known Problems and Solutions</div>
+            <font >
+              <div>
+            </font>
+          </font>
+        </center>
+      </h3>
+      <br>
+    </p>
+    <div>
+      <h1><a name="1010592">P</a>Spice Known Problems and Solutions</h1>
+      <p><a name="1011678">This Known Problems and Solutions document describes important Cadence Change </a>Requests (CCRs) for PSpice and AMS Simulator<sup><a name="wwfootnote_inline_41" href="#41">1</a></sup> and tells you how to solve or work around these problems. For information about CCRs that are fixed for this release, see PSpice Product Notes.</p>
+      <p><a name="1011680"><strong>Important:</strong></a> Only known problems and solutions available at release time are available in this document. </p>
+      <h2><a name="1010753">Known Problems and Solutions in PSpice</a></h2>
+      <p><a name="1019580">This section lists the known problems in PSpice and tells you how to solve or work around </a>these problems.</p>
+      <p>
+        <font size="4"><strong><a name="1019086">C</a>CR 19462: Cannot use relative tolerances on parameters used for DEV<br>in Monte Carlo analysis</strong></font>
+      </p>
+      <p><a name="1019087"><strong>Description: </strong></a>When running a Monte Carlo (.MC) analysis, a DEV tolerance that is a parameter (for example, DEV={ATOL}) will work only if it is an absolute tolerance.</p>
+      <p><a name="1019088"><strong>Solution: </strong></a>If using Capture, Concept HDL, or Schematics for design entry, you can create an expression for DEV that multiplies that value by the relative tolerance divided by 100. For example: given a relative tolerance RTOL%, if the property being toleranced is VALUE, set DEV={VALUE*RTOL&#47;100}.</p>
+      <p>
+        <font size="4"><strong><a name="1019111">CCR 22481: Part names with spaces in the name result in</a><br>"Error in Open Alias" when simulating</strong></font>
+      </p>
+      <p><a name="1019112"><strong>Description: </strong></a>If a part reference contains a SPACE (e.g., MY PART), then the simulation fails to run. The PSpice window shows the error: "Error in Open Alias."</p>
+      <p><a name="1019113"><strong>Solution: </strong></a>Use an UNDERSCORE (_) instead of a SPACE in the part reference.</p>
+      <p>
+        <font size="4"><strong><a name="1019068">CCR 32270: Model reads information from another model with the same </a>name and having the _&#60;integer&#62; suffix</strong></font>
+      </p>
+      <p><a name="1019069"><strong>Description:</strong></a> If there are two models, say <font size="2" face="'Courier New'">UA741</font> and <font size="2" face="'Courier New'">UA741_2</font>, the model <font size="2" face="'Courier New'">UA741</font> may read simulation and smoke information from the model <font size="2" face="'Courier New'">UA741_2</font>. This results in Model Editor displaying the wrong simulation and smoke information for the UA741 model and incorrect simulation results when you run the simulation in PSpice and Advanced Analysis.</p>
+      <p><a name="1019070"><strong>Solution:</strong></a> Ensure that:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1019071">You do not create a model with a </a><font size="2" face="'Courier New'">_&#60;integer&#62;</font> suffix to its name when another model with the same name exists. For example, if a model with the name <font size="2" face="'Courier New'">UA741</font> exists, do not create another model with the name <font size="2" face="'Courier New'">UA741_1</font>, <font size="2" face="'Courier New'">UA741_2</font>, and so on.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1019072">You do not create a model with the same name when another model with the same name </a>and having a <font size="2" face="'Courier New'">_&#60;integer&#62;</font> suffix exists. For example, do not create a model with the name UA741 when another model with the name <font size="2" face="'Courier New'">UA741_1</font>, <font size="2" face="'Courier New'">UA741_2</font>, and so on exists.</td>
+          </tr>
+        </table>
+      </div>
+      <p><strong>Note: </strong><a name="1019073">The </a><font size="2" face="'Courier New'">_&#60;integer&#62;</font> suffix is reserved for level support in OPAMP model creation.</p>
+      <p>
+        <font size="4"><strong><a name="1018065">CCR 152246: Error in displaying plot, if the simulation profile name </a>includes any special character.</strong></font>
+      </p>
+      <p><a name="1018072"><strong>Description</strong></a>: If the simulation profile name includes a special character, an error is encountered while displaying the plot. For example, if simulation profile name is trans`.sim and you are trying to plot measurement vs. measurement, the following error messages appears:</p>
+      <p><a name="1018073">"One or more required header items are missing from csdf file.</a><br>Error trying reading data file. <br>The data file is empty. <br>Analysis failed."</p>
+      <p><a name="1018100"><strong>Solution</strong></a>: Avoid using special characters in the simulation profile, design, and schematic names.</p>
+      <h2><a name="1017032">Known Problems and Solutions in Capture&#45;PSpice Flow</a></h2>
+      <p><a name="1018378">This section lists the important Cadence Change Requests (CCRs) in using Capture with </a>PSpice and tells you how to solve or work around these problems.</p>
+      <p>
+        <font size="4"><strong><a name="1018570">CCR 332772: Issue with Markers flow in Hierarchical designs in OrCAD </a>Capture</strong></font>
+      </p>
+      <p><a name="1018572"><strong>Description: </strong></a>When you have two or more current markers in a design and delete the markers from the Probe window, you can enable only one marker in OrCAD Capture.</p>
+      <p><a name="1018578"><strong>Solution:</strong></a></p>
+      <p><a name="1018580">To solve the issue, perform the following steps: </a></p>
+      <p><a name="1018582">1.   In CAPTURE, choose PSpice&#45;Markers&#45;List. De&#45;select and then select the markers to </a>enable all the markers.</p>
+      <p><a name="1018584">2.   Select any one of the markers and rotate it. Now you are able to select the other marker </a>as well.</p>
+      <p><a name="1018586">3.   Select markers on one of the descend down schematic page to enable markers on this </a>page, close down the other schematic, and reopen it. You are able to place all markers on it.</p>
+      <h2><a name="1018783">Known Problems and Solutions in Design Entry HDL&#45;</a>AMS Flow</h2>
+      <p><a name="1019143">This section lists the important Cadence Change Requests (CCRs) in using Design </a>Entry&nbsp;HDL with AMS and tells you how to solve or work around these problems.</p>
+      <p>
+        <font size="4"><strong><a name="1019250">CCR 892748: Simulation failure because sub&#45;parameters are not passed if </a><font size="2" face="'Courier New'">Verilog_Decs </font>is used</strong></font>
+      </p>
+      <p><a name="1019257"><strong>Description:</strong></a> If <font size="2" face="'Courier New'">Verilog_Decs</font> is used to pass parameters to lower&#45;level blocks in a hierarchical design, the parameters are not initialized in the subcircuit when you create a netlist. As a result, simulation fails.</p>
+      <p><a name="1019276"><strong>Solution:</strong></a> Use <font size="2" face="'Courier New'">VHDL_Decs</font> to pass parameters to lower&#45;level blocks.</p>
+      <p>
+        <font size="4"><strong><a name="1019146">C</a>CR 243620: Bias display settings from previous releases are not available in SPB&nbsp;15.5.1 release</strong></font>
+      </p>
+      <p><a name="1018790"><strong>Description:</strong></a> If you open a DEHDL design that was created in a previous release and saved with bias display options turned on, in the SPB 15.5.1 release, you will find that the bias display settings are either turned off or grayed. </p>
+      <p><a name="1018791"><strong>Solution:</strong></a> Reconfigure the bias display settings. From the <font color="#000000"><em>AMS Simulator</em></font> menu in Design Entry HDL, choose <em>Bias Display</em>. Select the appropriate submenu to configure the desired bias display settings. Save the updated design. Saving the design ensures that the bias display settings are saved in project file for future use.</p>
+      <p>
+        <font size="4"><strong><a name="1018798">CCR 270644: PSpice Name does not appear for listed parts in probe form</a></strong></font>
+      </p>
+      <p><a name="1018799"><strong>Description:</strong></a> If you attach AMS probe symbols to the <font size="2" face="'Courier New'">ground</font> symbol from <font size="2" face="'Courier New'">pspice_elem</font> library or the ground (<font size="2" face="'Courier New'">0</font>) symbol from the <font size="2" face="'Courier New'">Source</font> library, the PSpice names for the parts will not be visible in the View Probes dialog box. Only the Design Entry HDL names are displayed.</p>
+      <p><a name="1018800"><strong>Solution: </strong></a>None</p>
+      <p>
+        <font size="4"><strong><a name="1018804">C</a>CR 273518: AA Models to be supported for model association.</strong></font>
+      </p>
+      <p><a name="1018805"><strong>Description:</strong></a> In SPB&nbsp;15.51 release, you cannot use the Model Import Wizard, invoked using Associate Model command from the AMS Simulator menu, to associate parametrized PSpice models to a part in DEHDL. </p>
+      <p><a name="1018806"><strong>Solution: </strong></a>None</p>
+      <p>
+        <font size="4"><strong><a name="1018810">CCR 107997: Inconsistency between toolbar settings and the bias point </a>values displayed on the schematic</strong></font>
+      </p>
+      <p><a name="1018811"><strong>Description:</strong></a> At times when you open a previously saved design in Concept&nbsp;HDL, there might be an inconsistency in the bias point values displayed and the status of the toolbar buttons used to enable the display of bias point values. For example, it may so happen that the bias voltages are displayed even if the toolbar button for enabling the display of bias point voltages is not selected. Or the bias point values might not be displayed even if the toolbar buttons are selected. This happens because the displayed bias point values are saved as a part of the design where as the toolbar settings are global and do not change when you close a design and open another. </p>
+      <p><a name="1018812"><strong>Solution: </strong></a>First deselect all the tool button used for enabling the display of bias point values, and then select the required toolbar buttons again. </p>
+      <p>
+        <font size="4"><strong><a name="1018813">CCR 94690: Issue in the bias display with hierarchical designs.</a></strong></font>
+      </p>
+      <p><a name="1018814"><strong>Description: </strong></a>In hierarchical designs with reusable blocks, the bias point voltage does not display.</p>
+      <p><a name="1018815"><strong>Solution:</strong></a> To view the bias point voltages in a hierarchical design with reusable blocks, select the net for which you want to view the bias point voltage and display the Attributes dialog box. The bias point voltage will be displayed as the value of the $BIASVOLTAGE property in the Attributes dialog box.</p>
+      <p>
+        <font size="4"><strong><a name="1018820">CCR 13789: Default values and sign mismatch between Input and Output </a>load current values in PSpice library parts</strong></font>
+      </p>
+      <p><a name="1018821"><strong>Description:</strong></a> The chips.prt for all PSpice library parts have the following problem:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1018822">The INPUT_LOAD and OUTPUT_LOAD values have the same sign. </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1018823">Default values have been assigned for INPUT_LOAD and OUTPUT_LOAD. </a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1018824">This results in errors if, in a design, Electrical Rule Checks are run to check loading violations </a>for interface signals (which are digital in nature).</p>
+      <p><a name="1018825"><strong>Solution:</strong></a> Edit the chips.prt file for such parts as in the example given below:</p>
+      <blockquote>
+        <font size="2" face="&quot;Microsoft Sans Serif&quot;" color="#000000"><a name="1018826">pin</a></font>
+      </blockquote>
+      <blockquote>
+        <font size="2" face="&quot;Microsoft Sans Serif&quot;" color="#000000"><a name="1018827">    &#39;A&#39;:</a></font>
+      </blockquote>
+      <blockquote>
+        <font size="2" face="&quot;Microsoft Sans Serif&quot;" color="#000000"><a name="1018828">      INPUT_LOAD=&#39;(&#45;0.010000,0.010000)&#39;;</a></font>
+      </blockquote>
+      <blockquote>
+        <font size="2" face="&quot;Microsoft Sans Serif&quot;" color="#000000"><a name="1018829">      PIN_NUMBER=&#39;(1,3,5,9,11,13)&#39;;</a></font>
+      </blockquote>
+      <blockquote>
+        <font size="2" face="&quot;Microsoft Sans Serif&quot;" color="#000000"><a name="1018830">    &#39;&#45;Y&#39;:</a></font>
+      </blockquote>
+      <blockquote>
+        <font size="2" face="&quot;Microsoft Sans Serif&quot;" color="#000000"><a name="1018831">      OUTPUT_LOAD=&#39;(&#45;1.000000,1.000000)&#39;;</a></font>
+      </blockquote>
+      <blockquote>
+        <font size="2" face="&quot;Microsoft Sans Serif&quot;" color="#000000"><a name="1018832">      PIN_NUMBER=&#39;(2,4,6,8,10,12)&#39;;</a></font>
+      </blockquote>
+      <blockquote>
+        <font size="2" face="&quot;Microsoft Sans Serif&quot;" color="#000000"><a name="1018833">  end_pin;</a></font>
+      </blockquote>
+      <p><a name="1018834">In this example OUTPUT_LOAD value has to be changed to &#39;</a><font size="2" face="'Courier New'">(1.000000,&#45;1.000000)</font>&#39; to represent sink current as +ve and source current as -ve. </p>
+      <p><a name="1018835">Also note that default values have been assigned to INPUT_LOAD and OUTPUT_LOAD. </a>Refer to the data sheet for the part and assign correct values for INPUT_LOAD and OUTPUT_LOAD.</p>
+      <p>
+        <font size="4"><strong><a name="1018836">CCR 8522: K and ABM parts do not have REFDES property</a></strong></font>
+      </p>
+      <p><a name="1018837"><strong>Description:</strong></a> The K parts (for example, k502t300_3e2a) in the MAGNETIC part library and all parts in the ABM library do not have the REFDES property.</p>
+      <p><a name="1018838"><strong>Solution:</strong></a> Add the REFDES property to these parts as described in &#34;<em>Coupling of Inductors </em><em>using REFDES property</em>,&#34; in Chapter 5, Creating parts for models, of the <em>PSpice User&#39;s </em><em>Guide</em>. </p>
+      <p>
+        <font size="4"><strong><a name="1018841">CCR 8624: PSpice netlisting fails if @&#60;variable&#62; used in parameter values</a></strong></font>
+      </p>
+      <p><a name="1018842"><strong>Description:</strong></a> If a parameter value has a variable name starting with @, PSpice netlisting fails. For example if a resistor placed on a design has the value {@rval} or @rval, PSpice netlisting fails.</p>
+      <p><a name="1018843"><strong>Solution:</strong></a> Do not use a parameter value with the variable name starting with @.</p>
+      <p>
+        <font size="4"><strong><a name="1018844">CCR 13996: SUBPARAM part does not support passing parameters to </a>subcircuits</strong></font>
+      </p>
+      <p><a name="1018845"><strong>Description:</strong></a> The SUBPARAM part in the SPECIAL library does not support passing parameters to subcircuits.</p>
+      <p><a name="1018846"><strong>Solution:</strong></a> Use the VHDL_DECS part in the STANDARD library to pass parameters to subcircuits. For more information, see &#34;<em>Passing parameters to subcircuits</em>&#34; in Chapter 9, Setting up analyses and starting simulation, of the <em>PSpice User&#39;s Guide</em>.</p>
+      <p>
+        <font size="4"><strong><a name="1018847">CCR 8524: Concept HDL does not delete probes placed on a deleted node </a>or part</strong></font>
+      </p>
+      <p><a name="1018848"><strong>Description:</strong></a> In Concept HDL, place a probe on a node or part. Now delete the node or part. In the Probes dialog box you will see that the corresponding probe for the deleted node or part does not get deleted.</p>
+      <p><a name="1018849"><strong>Solution:</strong></a> Open the Probes dialog box and manually delete the probes.</p>
+      <p>
+        <font size="4"><strong><a name="1018850">CCR 13480: Unable to change name of simulation profile</a></strong></font>
+      </p>
+      <p><a name="1018851"><strong>Description:</strong></a> </p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr><strong>	1.	</strong></nobr>
+              </div>
+            </td>
+            <td><a name="1018852">From the PSpice menu in Concept HDL, choose Edit Simulation Profile.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr><strong>	2.	</strong></nobr>
+              </div>
+            </td>
+            <td><a name="1018853">Click on the General tab in the Simulation Settings dialog box.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr><strong>	3.	</strong></nobr>
+              </div>
+            </td>
+            <td><a name="1018854">Change the name of the simulation profile in the Profile name field, and click OK. </a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1018855">The name of the simulation profile does not change in the PSpice toolbar.</a></blockquote>
+      <p><a name="1018856"><strong>Solution:</strong></a> None</p>
+      <p>
+        <font size="4"><strong><a name="1018857">CCR 14022: PSpice does not display trace for a probe placed on a bus in </a>Concept HDL</strong></font>
+      </p>
+      <p><a name="1018858"><strong>Description:</strong></a> In Concept HDL, place a probe on a bus, say, DATA&#60;3..0&#62;. When you simulate the design, the trace for the probe placed on the bus is not displayed in PSpice Probe.</p>
+      <p><a name="1018859"><strong>Solution:</strong></a> Do the following:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr><strong>	1.	</strong></nobr>
+              </div>
+            </td>
+            <td><a name="1018860">From PSpice&#39;s Trace menu, choose Add Trace.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1018861">The Add Traces dialog box appears.</a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr><strong>	2.	</strong></nobr>
+              </div>
+            </td>
+            <td><a name="1018862">From the Functions and Macros list, select Digital Operators and Functions.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr><strong>	3.	</strong></nobr>
+              </div>
+            </td>
+            <td><a name="1018863">Click the { } entry.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr><strong>	4.	</strong></nobr>
+              </div>
+            </td>
+            <td><a name="1018864">In the Simulation Output Variables list, click the digital signals for the bus in the sequence </a>you want.</td>
+          </tr>
+        </table>
+      </div>
+      <p><strong>Note: </strong><a name="1018865">For a bus DATA&#60;3..0&#62;, the signals displayed in the Simulation Output Variables list will </a>be <font size="2" face="'Courier New'">DATA_OP_3_CP_</font>, <font size="2" face="'Courier New'">DATA_OP_2_CP_</font>, <font size="2" face="'Courier New'">DATA_OP_1_CP_</font>, and <font size="2" face="'Courier New'">DATA_OP_0_CP_</font>. </p>
+      <p>
+        <font size="4"><strong><a name="1018866">CCR 19131: Coax models in the TLINE library do not netlist from </a>Concept&nbsp;HDL</strong></font>
+      </p>
+      <p><a name="1018867"><strong>Description: </strong></a>An attempt to generate a Concept HDL netlist for a coax model in the TLINE library fails with "ERROR: Invalid device type specified in PSpiceTemplate." This happens because the first character in the PSpiceTemplate is not recognized by the Concept HDL&#45;PSpice netlister.</p>
+      <p><a name="1018868"><strong>Solution:</strong></a> There are two different models that can be selected by the coax symbols:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>	1.	</nobr>
+              </div>
+            </td>
+            <td><a name="1018869">A lossy tline .MODEL statement (T statement) that models frequency&#45;dependent loss.</a><br>Modify the PSpiceTemplate as:</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1018870">T&#94;@REFDES %A+ %A&#45; %B+ %B&#45;@MODEL ?LEN&#47;LEN=@LEN&#47;</a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>	2.	</nobr>
+              </div>
+            </td>
+            <td><a name="1018871">A .SUBCKT statement (X statement) that models fixed&#45;frequency loss.</a><br>Modify the PSpiceTemplate as:</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1018872">X&#94;@REFDES %A+ %A&#45; %B+ %B&#45; @MODEL ?FRQ&#47;PARAMS: FRQ=@FRQ&#47;</a><br>?LEN&#47;LEN=@LEN&#47;</blockquote>
+      <p>
+        <font size="4"><strong><a name="1018873">CCR 23415: Unable to view PSpice netlist from Concept HDL</a></strong></font>
+      </p>
+      <p><a name="1018874"><strong>Description: </strong></a>When you choose View Netlist from the PSpice menu in Concept HDL, the following error message is displayed and you are unable to view the PSpice netlist:</p>
+      <blockquote><a name="1018875">No error message for error code = 3</a></blockquote>
+      <p><a name="1018876"><strong>Solution:</strong></a> This error message appears because write.exe (the executable for WordPad) could not be located in the system path. Ensure that write.exe is in the system path.</p>
+      <p>
+        <font size="4"><strong><a name="1018877">CCR 32518: Smoke Analysis: Need to change device name in </a>&#60;design_name&#62;.prp file to match part name if you edit smoke information in parts with multiple implementation properties</strong></font>
+      </p>
+      <p><a name="1018878"><strong>Scenario1: Model with multiple implementation properties</strong></a></p>
+      <p><a name="1018879"><strong>Description:</strong></a> If you edit the model for a part (with multiple implementation properties) placed in your design and change its smoke parameters, you must change the device name in the <font size="2" face="'Courier New'">&#60;</font><em>design_name</em><font size="2" face="'Courier New'">&#62;.prp</font> file to match the name of the part.</p>
+      <p><a name="1018880">To change the device name in the </a><font size="2" face="'Courier New'">&#60;</font><em>design_name</em><font size="2" face="'Courier New'">&#62;.prp</font> file, do the following:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr><strong>	1.	</strong></nobr>
+              </div>
+            </td>
+            <td><a name="1018881">From the Text menu in Concept HDL, choose Attributes.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr><strong>	2.	</strong></nobr>
+              </div>
+            </td>
+            <td><a name="1018882">Click the part whose smoke information you edited.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1018883">The Attributes dialog box appears.</a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr><strong>	3.	</strong></nobr>
+              </div>
+            </td>
+            <td><a name="1018884">Note the value of the IMPLEMENTATION property.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr><strong>	4.	</strong></nobr>
+              </div>
+            </td>
+            <td><a name="1018885">Click OK to close the Attributes dialog box.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr><strong>	5.	</strong></nobr>
+              </div>
+            </td>
+            <td><a name="1018886">Open the </a><font size="2" face="'Courier New'">&#60;</font><em>design_name</em><font size="2" face="'Courier New'">&#62;.prp</font> file located in the project directory in a text editor. </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr><strong>	6.	</strong></nobr>
+              </div>
+            </td>
+            <td><a name="1018887">Use the Find command in the text editor to find the device name that is the same as the </a>value of the IMPLEMENTATION property on the part.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr><strong>	7.	</strong></nobr>
+              </div>
+            </td>
+            <td><a name="1018888">Change the device name to match the name of the part.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr><strong>	8.	</strong></nobr>
+              </div>
+            </td>
+            <td><a name="1018889">Save the changes in the text editor.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><strong>Note: </strong><a name="1018890">If the device name in the </a><font size="2" face="'Courier New'">&#60;</font><em>design_name</em><font size="2" face="'Courier New'">&#62;.prp</font> file is not the same as the name of the part, the modified smoke information will not be used for smoke analysis. Instead, the smoke information from the part library will be used for smoke analysis.</p>
+      <p><a name="1018891"><strong>Scenario2: Model with multiple level support</strong></a></p>
+      <p><a name="1018892"><strong>Description:</strong></a> If you edit the model for a part (with level support) placed in your design and change its smoke parameters, you must change the device name in the <font size="2" face="'Courier New'">&#60;</font><em>design_name</em><font size="2" face="'Courier New'">&#62;.prp</font> file to <font size="2" face="'Courier New'">awb&#60;</font><em>part_name</em><font size="2" face="'Courier New'">&#62;</font>.</p>
+      <p><a name="1018893">For example, suppose that you edited the smoke information in the </a><font size="2" face="'Courier New'">AD101A</font> part in the <font size="2" face="'Courier New'">OPA</font> library and that part has the LEVEL property set to 3. The device name in the <font size="2" face="'Courier New'">&#60;</font><em>design_name</em><font size="2" face="'Courier New'">&#62;.prp</font> file will be written as <font size="2" face="'Courier New'">AWBAD101A_3</font> (where 3 is the value of the LEVEL property on the part). You must change the device name in the <font size="2" face="'Courier New'">&#60;</font><em>design_name</em><font size="2" face="'Courier New'">&#62;.prp</font> file to <font size="2" face="'Courier New'">AWBAD101A</font>.</p>
+      <p><strong>Note: </strong><a name="1018894">If you do not change the device name in the </a><font size="2" face="'Courier New'">&#60;</font><em>design_name</em><font size="2" face="'Courier New'">&#62;.prp</font> file as described above, the modified smoke information will not be used for smoke analysis. Instead, the smoke information from the part library will be used for smoke analysis.</p>
+      <h2><a name="1018895">Obsolete vendor libraries</a></h2>
+      <p><a name="1018896"><strong>Description:</strong></a> The following vendor libraries are now obsolete and schematics symbols are no longer provided:</p>
+      <p align="left"><a name="1018914">&nbsp;</a></p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="517">
+        <caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="256">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1018899"><font color="#000000"><strong>This obsolete library...</strong></font></a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="261">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1018901">Is replaced by this library...</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <blockquote><a name="1018903">MOTORMOS</a></blockquote>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <blockquote><a name="1018905">ON_MOS</a></blockquote>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <blockquote><a name="1018907">MOTORAMP</a></blockquote>
+          </td>
+          <td cellpadding="4" valign="top">
+            <blockquote><a name="1018909">ON_AMP</a></blockquote>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <blockquote><a name="1018911">SIEMENS</a></blockquote>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <blockquote><a name="1018913">INFINEON and EPCOS</a></blockquote>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1018915">Model names are modified to reflect these new companies. For example:</a></p>
+      <blockquote><a name="1018916">MTP50N06E&#47;MT is now MTP50N06E&#47;ON</a></blockquote>
+      <p><a name="1018917"><strong>Solution: </strong></a>Use schematic symbols from the new libraries:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1018918">ON_MOS</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1018919">ON_AMP</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1018920">INFINEON</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1018921">EPCOS</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1018922">To accommodate symbols in the Design Cache of an existing Capture design, a version of </a>each model is included in the new model library files with the "old" suffix: &#47;MT or &#47;SIE. These obsolete models will be removed for the release following 9.2.3. We strongly recommend that you update existing designs to use equivalent parts from the new libraries.</p>
+      <p><a name="1018745">&nbsp;</a></p>
+      <hr>
+      <table width="100%" border="0" cellpadding="3" cellspacing="0" summary="">
+        <tr valign="baseline">
+          <td>
+            <p>
+              <font size="-1">
+                <a name="41" href="#wwfootnote_inline_41">1</a>
+              </font>
+            </p>
+          </td>
+          <td>
+            <p><a name="1018974">Depending on the license and installation, either PSpice or AMS Simulator is installed.</a></p>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <br>
+    <a href="#pagetop">Return to top of page</a>
+    <hr>
+    <hr align="left">
+    <div style="text-align: left;">
+      <!-- Begin Buttons -->
+      <table width="650" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                    </td>
+<td height="20" width="73">
+<a href="pspKPNSTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<img src="../support/nav2_index_b.gif" border="0">
+</td>
+          <td>
+            <a href="pspKPNSTOC.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+          </td>
+          <td height="20">
+            <img src="../support/nav2_next_b.gif" alt="Previous">
+          </td>
+          <td>
+            <a>
+<a href="pspKPNS.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+            </a>
+          </td>
+          <td height="20" width="59">
+            <img src="../support/nav_next_b.gif" alt="Next" border="0">
+          </td>
+          <td height="20" width="61">
+            <img src="../support/nav2_black.gif">
+          </td>
+          <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+          </td>
+          <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+          </td>
+          <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+          </td>
+        </tr>
+      </table>
+      <!-- End Buttons -->
+    </div>
+    <br>
+    <font size="-1" >
+For support, see <a href="http://support.cadence.com" target="_blank">Cadence Online Support</a> service.</font>
+    <br>
+    <br>
+    <font size="-1" >
+      <i>Copyright &#169; 2011, <a href="http://www.cadence.com">Cadence Design Systems, Inc.</a></i>
+    </font>
+    <br>
+    <font size="-1" >
+All rights reserved.</font>
+    <br>
+    <br>
+  </body>
+</html>

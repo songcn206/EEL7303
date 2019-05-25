@@ -1,0 +1,159 @@
+#  $Header: /vobs/psd_backend_data/data/prefs/misc.prf /main/57 21-Feb-12.12:19:42 fxf $
+#-------------------------------------------------------------------------------
+#			Allegro General Use Variables
+#-------------------------------------------------------------------------------
+#
+# See User.prf for complete descriptions of fields in this file.
+
+
+#SUMMARY:HELP=Miscellaneous Settings
+
+all_license_choices:TYPE=CHECK:EFF_RESTART:\
+PARENT_L=ui/license:\
+HELP=When set will show all products supported by a program in its Product \
+Choices dialog. By default, only the licenses you have in your license \
+file are shown. When set, this can improve tool startup performance but you \
+may see many more products in the choice dialog. Tip, you can also improve \
+performance by using the "-product <tool>" option when starting the program \
+(use "-product help" to see a complete list of choices).
+
+allegro_license_caching:TYPE=CHECK:EFF_RESTART:\
+PARENT_L=ui/license:\
+HELP=Enables license caching which improves tool startup performance. \
+If you frequently change license servers, do not use this option. \
+The license cache can be reset on the toolswap dialog by checking the \
+"Reset license cache" option. Default is license cache is on.
+
+license_nolegacy:TYPE=CHECK:EFF_ONNEXTCMD:\
+PARENT_L=ui/license:\
+HELP=When enabled filters any legacy product from the Change Editor \
+dialog. This intended for CAD administrators to set on a site wide basis. \
+Default is to show all products available from the license server. \
+This does not apply to pre-16.5 installations.
+
+allegro_abortmsg:TYPE=STRING:EFF_ONNEXTCMD:\
+PARENT_L=ui/general:\
+HELP=Provides an override for the message seen if Allegro aborts. \
+Default message suggests to download the latest ISR and contact customer \
+support which may not be appropriate for large installations. Large sites \
+will want to set this override message in the CDS_SITE env file.
+
+cdsdoc_shownav:TYPE=CHECK:EFF_ONNEXTCMD:\
+PARENT_L=ui/general:\
+HELP=Requests Cadence Help show its Document Browser along with the content. \
+Default is to not show the Document Browser.
+
+allegro_old_report:TYPE=CHECK:EFF_ONNEXTCMD:\
+PARENT_L=obsolete:\
+HELP=By default, we use html based reports.\
+When set, this uses pre-15.2, text based report files. This variable only \
+applies to the batch report interface. If you wish to access to old report \
+user interface form then use the \"old_reports\" command. Old reports \
+will be removed in a future release.
+
+addline_nomerge:TYPE=CHECK:EFF_ONNEXTCMD:\
+PARENT_L=interactive:\
+HELP=By default, Add line merges lines on same layer if their end-points \
+touch. This variable disables merging in add line.
+
+flip_retain_class_subclass:TYPE=CHECK:EFF_ONNEXTCMD:\
+PARENT_L=interactive:\
+HELP=By default, the flip command changes active class/subclass to the appropriate \
+ETCH/CONDUCTOR class. This option maitains the user's current active class/subclass.
+
+copy_no_autosnap:TYPE=CHECK:EFF_IMMEDIATE:\
+PARENT_L=interactive:\
+HELP=By default, the copy command will auto-snap clines and vias to aid connections. \
+This option restores the 14.2 model where picks were only snapped to the grid.
+
+ripup_delete_first_segment:TYPE=CHECK:EFF_ONNEXTCMD:\
+PARENT_L=interactive:\
+HELP=By default, when a symbol is deleted and etch ripup is ON, all etch \
+connected to the symbol's pins is deleted until the first non-cline/via etch \
+object is encountered. With this preference set, only the first etch segment \
+is deleted or segments are deleted until the remaining etch is outside a pin's \
+pad extents.
+
+ripup_retain_bondwire:TYPE=CHECK:EFF_ONNEXTCMD:\
+PARENT_L=interactive:\
+HELP=By default, when a symbol is deleted and etch ripup is ON, all etch \
+connected to the symbol's pins is deleted until the first non-cline/via etch \
+object is encountered. For wirebonded components, setting this preference \
+allows wirebonds and bondfingers to be retained while subsequent etch is \
+deleted. Combining this preference with DELETE_FIRST_SEGMENT will retain \
+bondwires while deleting the first segment beyond the bondfinger according to \
+that preference's rules.
+
+single_via_replace_default:TYPE=CHECK:EFF_ONNEXTCMD:\
+PARENT_L=interactive:\
+HELP=Select single via replace mode by default when running replace padstack.
+
+preserve_symbol_textblocks:TYPE=CHECK:EFF_ONNEXTCMD:\
+PARENT_L=placement/general:\
+HELP=Allegro 12.0 and beyond trys to match the symbol text block size to \
+a board text block size when placing components. If a match is not found \
+a new textblock is created until all text blocks are used. If preserving the \
+symbol block number is desired, use this variable when placing components.
+
+modules_no_5x_support:TYPE=CHECK:EFF_ONRESTART:\
+PARENT_L=placement/general:\
+HELP=By default, when Allegro is started with a project file (.cpm), \
+modules (.mdd) are located on disk first by searching the sub-project \
+physical design views under the active project hierarchy and then by \
+the MODULEPATH variable. This variable tells the system to search for \
+module files just by the MODULEPATH (pre-16.5 functionality).
+
+fst_ref_des:TYPE=LONG:MIN=10:EFF_ONNEXTCMD:\
+PARENT_L=manufacture/silkscreen:\
+HELP=<value for start ref des number> \
+If requiring autorename to start at a specific ref des number. Example\: \
+If auto-rename should start at ref des C1000, set the value to the first \
+ref des number desired, 1000 in this case.
+
+old_style_flash_symbols:TYPE=CHECK:EFF_ONNEXTCMD:\
+PARENT_L=display/visual:\
+HELP=When set, new boards created in Allegro uses old style flashes \
+for thermals rather than the new WYSIWYG thermal flash symbols.
+
+dcnets_delete_norat:TYPE=CHECK:EFF_IMMEDIATE:\
+PARENT_L=logic:\
+HELP=When set, the identify DC net command, deletes NO_RAT property \
+from those nets getting the Power and Ground Schedule. Meant to be a \
+migration aid for legacy boards converting from NO_RAT to this type \
+of scheduling.
+
+noswapripup:TYPE=CHECK:EFF_ONNEXTCMD:\
+PARENT_L=placement/general:\
+HELP=This controls the swap function. During pin and function swaps, etch \
+is not ripped up. This does not apply to component swaps. The default is \
+rip up etch.
+
+swapcomp_acrossmodules:TYPE=CHECK:EFF_ONNEXTCMD:\
+PARENT_L=placement/general:\
+HELP=By default swap components will display a confirmation message \
+when you swap across modules. Setting this variable will always allow \
+inter-module swapping (pre 15.0).
+
+xsection_modern:TYPE=CHECK:EFF_ONRESTART:\
+PARENT_L=obsolete:\
+HELP=In pre-16.0 Allegro PCB, uses the SI cross-section dialog.\
+You should be cautioned that it can be slow on large layer count \
+boards and it disables the old xsection icon. It is only supported \
+in Expert and Performance. In 16.0 this is the default, the old dialog \
+is no longer supported.
+
+icpkg_unplace_comps_on_delete:TYPE=CHECK:EFF_ONNEXTCMD:\
+PARENT_L=ic_packaging/die_symbols:\
+HELP=In versions of the Cadence IC Packaging tools prior to 15.5, deleting \
+the symbol instance of a die or package from the design would leave the \
+associated logical component unplaced in the design. In 15.5, this functionality \
+was modified to delete the logical component as well as the physical symbol. \
+Setting this variable will restore the original behavior.
+
+icp_disable_auto_symbol_lock:TYPE=CHECK:EFF_ONNEXTCMD:\
+PARENT_L=ic_packaging/die_symbols:\
+HELP=By default, the Cadence IC Packaging tools will maintain the locked \
+property on all die symbols in the design, to prevent a user from inadvertently \
+modifying them in an undesirable way. Set this variable to disable this automatic \
+locking mechanism.
+

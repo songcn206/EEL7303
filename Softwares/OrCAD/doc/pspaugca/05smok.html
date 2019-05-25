@@ -1,0 +1,4435 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN" "http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+<html xmlns="http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>PSpice Advanced Analysis User Guide -- Smoke</title>
+<META NAME="Approver" CONTENT="Technical Publications">
+<META NAME="Author" CONTENT="Technical Publications">
+<META NAME="CreateDate" CONTENT="2012-09-11">
+<META NAME="CreateTime" CONTENT="1347371596">
+<META NAME="DataType" CONTENT="Manuals">
+<META NAME="Description" CONTENT="PSpice Advanced Analysis allows users to optimize design performance and also improve the design quality through sensitivity analysis, optimization, Monte Carlo and Smoke analysis.">
+<META NAME="DocTitle" CONTENT="PSpice Advanced Analysis User Guide">
+<META NAME="DocType" CONTENT="User Guide">
+<META NAME="EdmsRelease" CONTENT="EDMS Windows-P015">
+<META NAME="FileTitle" CONTENT="Smoke">
+<META NAME="Keywords" CONTENT="">
+<META NAME="FileType" CONTENT="Chapter">
+<META NAME="Keyword" CONTENT="pspaugca">
+<META NAME="Language" CONTENT="English">
+<META NAME="ModifiedDate" CONTENT="2012-09-11">
+<META NAME="ModifiedTime" CONTENT="1347371596">
+<META NAME="NextFile" CONTENT="06mont.html">
+<META NAME="PageCount" CONTENT="46">
+<META NAME="Platform" CONTENT="ALL">
+<META NAME="PrevFile" CONTENT="04opti.html">
+<META NAME="Product" CONTENT="Allegro AMS Simulator, PSpice">
+<META NAME="ProductFamily" CONTENT="PCB Design, PCB Design">
+<META NAME="ProductVersion" CONTENT="16.6">
+<META NAME="Syntax" CONTENT="As an equation: MOC x derating factor = SOL. ">
+<META NAME="RightsManagement" CONTENT="Copyright 19912012 Cadence Design Systems Inc.">
+<META NAME="Title" CONTENT="PSpice Advanced Analysis User Guide -- Smoke">
+<META NAME="TopicTags" CONTENT="FALSE">
+<META NAME="Version" CONTENT="16.6">
+  </head>
+  <body style="margin-left: 5%;">
+    <a name="pagetop"></a>
+    <a name="firstpage"></a>
+    <!-- Begin Buttons -->
+    <table width="650" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td height="36" width="650" colspan="10">
+          <img src="../support/header_doc.gif" width="650" height="34">
+        </td>
+      </tr>
+      <tr>
+        <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                </td>
+<td height="20" width="73">
+<a href="pspaugcaTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<a href="pspaugcaIX.html"><img src="../support/nav2_index.gif" border="0"></a>
+</td>
+        <td>
+          <a href="04opti.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+        </td>
+        <td>
+          <a href="06mont.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+        </td>
+        <td height="20">
+          <a>
+<a href="pspaugca.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+          </a>
+        </td>
+        <td height="20" width="61">
+          <img src="../support/nav2_black.gif">
+        </td>
+        <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+        </td>
+        <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+        </td>
+        <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+        </td>
+      </tr>
+    </table>
+    <!-- End Buttons -->
+    <p>
+    <hr>
+    <p>
+      <h3>
+        <center>
+          <font >
+            <div>PSpice&#174; Advanced Analysis User Guide</div>
+            <font >
+              <div>
+            </font>
+          </font>
+        </center>
+      </h3>
+      <br>
+    </p>
+    <div>
+      <h1>5<a name="1112289">&nbsp;</a></h1>
+      <h1><a name="1112291">Smoke</a></h1>
+      <h2><a name="1112292">In this chapter</a></h2>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1112314" title="Smoke" name="1112296"><font color="#0000ff"><u>Smoke overview</u></font></a><a href="#1112314" title="Smoke"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1112354" title="Smoke" name="1112300"><font color="#0000ff"><u>Smoke strategy</u></font></a><a href="#1112354" title="Smoke"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1112387" title="Smoke" name="1112304"><font color="#0000ff"><u>Smoke procedure</u></font></a><a href="#1112387" title="Smoke"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1112622" title="Smoke" name="1112308"><font color="#0000ff"><u>Example</u></font></a><a href="#1112622" title="Smoke"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1112731" title="Smoke" name="1112312"><font color="#0000ff"><u>For power users</u></font></a><a href="#1112731" title="Smoke"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <h2><a name="1112314">Smoke overview</a></h2>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="48">
+              <div>
+                <nobr><font color="#3300ff"><strong>Note:	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1113095">Smoke analysis is available with the following products:</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="64.032">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bss_bullet_sub_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1113096">PSpice<sup><a name="wwfootnote_inline_224" href="#224">1</a></sup> Smoke Option</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="64.032">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bss_bullet_sub_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1113097">PSpice Advanced Analysis</a></td>
+          </tr>
+        </table>
+      </div>
+      <h4><em><a name="1049761">Long&#45;term circuit reliability</a></em></h4>
+      <p><a name="1053417">Smoke warns of component stress due to power dissipation, </a>increase in junction temperature, secondary breakdowns, or violations of voltage &#47; current limits. Over time, these stressed components could cause circuit failure.</p>
+      <p><a name="1053424">Smoke uses </a><a href="Glos.html#1093702" title="Glossary"><font color="#0000ff"><u>Maximum Operating Conditions (MOCs)</u></font></a>, supplied by vendors and <a href="Glos.html#1094101" title="Glossary"><font color="#0000ff"><u>derating factor</u></font></a><font color="#0000ff"><u>s</u></font> supplied by designers to calculate the <a href="Glos.html#1093388" title="Glossary"><font color="#0000ff"><u>Safe Operating Limits (SOLs)</u></font></a> of a component's parameters.</p>
+      <p><a name="1049779">Smoke then compares circuit simulation results to the </a>component's safe operating limits. If the circuit simulation exceeds the safe operating limits, Smoke identifies the problem parameters.</p>
+      <p><a name="1049780">Use Smoke for Displaying Average, RMS, or Peak values from </a>simulation results and comparing these values against corresponding safe operating limits</p>
+      <h4><em><a name="1049781">Safe operating limits</a></em></h4>
+      <p><a name="1049782">Smoke will help you determine:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049783">Breakdown voltage across device terminals</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049784">Maximum current limits </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049785">Power dissipation for each component</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049786">Secondary breakdown limits</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049787">Junction temperatures</a></td>
+          </tr>
+        </table>
+      </div>
+      <h2><a name="1112354">Smoke strategy</a></h2>
+      <p><a name="1049792">Smoke is useful as a final design check after running </a>Sensitivity, Optimizer, and Monte Carlo, or you can use it on its own for a quick power check on a new circuit.</p>
+      <h3><a name="1112360">Plan ahead</a></h3>
+      <p><a name="1049795">Smoke requires:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049797">Components that are Advanced Analysis&#45;ready</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1112369">See Chapter 2, </a><a href="02libr.html#1145265" title="Libraries"><font color="#0000ff"><u>Libraries</u></font></a>.</blockquote>
+      <blockquote><a name="1112373">See </a><a href="#1112733" title="Smoke"><font color="#0000ff"><u>Smoke parameters</u></font></a><a href="#1112733" title="Smoke"> </a> for lists of parameter names used in Advanced Analysis Smoke.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049806">A working circuit schematic and transient simulation</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049807">Derating factors </a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1049808">Smoke uses "no derating" as the default. </a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="48">
+              <div>
+                <nobr><font color="#3300ff"><strong>Note:	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1049809">See the online </a><font color="#000000"><em>Advanced Analysis library list</em></font> and the <font color="#000000"><em>PSpice library list</em></font> for components containing smoke parameter data.</td>
+          </tr>
+        </table>
+      </div>
+      <h3><a name="1112378">Workflow</a></h3>
+      <p><a name="1112384"><img src="images/smokeoverview.gif" width="663" height="376" alt=""></a></p>
+      <h2><a name="1112387">Smoke procedure</a></h2>
+      <h3><a name="1112389">Setting up the circuit in the schematic editor</a></h3>
+      <p><a name="setting up in schematic editor"></a><a name="1061433">Advanced Analysis requires:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1061434">A circuit schematic and working </a>PSpice simulation</td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1061630">Smoke analysis also requires:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1061631">Any components included in a Smoke analysis must have </a>smoke parameters specified. </td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1112414">For more information see </a>Chapter 2, <a href="02libr.html#1145265" title="Libraries"><font color="#0000ff"><u>Libraries</u></font></a>.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1051716">Time Domain (transient) analysis as a simulation</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1049841">Smoke does not work on other types of analyses, such as </a>DC Sweep or AC Sweep&#47;Noise analyses.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1049854">From your schematic editor, open your circuit.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>2	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1049855">Run</a> a PSpice simulation.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>3	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1049856">Check your key waveforms in </a>PSpice and make sure they are what you expect.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="48">
+              <div>
+                <nobr><font color="#3300ff"><strong>Note:	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1049857">For information on schematic design and simulation </a>setup, see your schematic editor and PSpice user guides.</td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1112453">See </a><a href="#1112733" title="Smoke"><font color="#0000ff"><u>Smoke parameters</u></font></a><a href="#1112733" title="Smoke"> </a>.</p>
+      <h3><a name="1112479">Running Smoke</a></h3>
+      <h4><a name="1112503">Starting a run</a></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/arrwrite.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1112515">In your schematic editor, from the </a><font color="#000000"><strong>PSpice</strong></font> menu, select <font color="#000000"><strong>Advanced Analysis</strong></font> &#47; <font color="#000000"><strong>Smoke</strong></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1049923">Smoke automatically runs on the active transient profile. </a></blockquote>
+      <blockquote><a name="1049924">Smoke calculates safe operating limits using component </a>parameter maximum operating conditions and derating factors.</blockquote>
+      <blockquote><a name="1049925">The output window displays status messages.</a></blockquote>
+      <h4><a name="1112521">Viewing Smoke results</a></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049938">To see </a><font color="#000000"><strong>Average</strong></font>, <font color="#000000"><strong>RMS</strong></font>, and <font color="#000000"><strong>Peak</strong></font> values, right click and from the pop&#45;up menu select the values you want to review.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1049939">Check the bar graph: </a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049940">Red bars show values that exceed safe operating </a>limits. </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049941">Yellow bars show values getting close to the safe </a>operating limits: between 90 and 100 percent of the safe operating limits.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049942">Green bars show values within safe operating limits: </a>less than 90 percent of the safe operating limits.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049943">Grey bars indicate the limit is not valid for the </a>parameter.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote>	<a name="1049964"><img src="images/05smok.8.1.2.png" width="450" height="188" alt=""></a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049965">To decipher the acronym for a parameter, right click and </a>from the pop&#45;up menu select <font color="#000000"><strong>Parameter Descriptions</strong></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049966">To view temperature parameters only, right click and from </a>the pop&#45;up menu select <font color="#000000"><strong>Temperature Only </strong></font><font color="#000000"><strong>Parameters</strong></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1049967">Only average and peak values are useful when viewing </a>temperature parameters.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049968">To change the sort order of a column, click on the column </a>header.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049969">To locate a problem component in your schematic, right </a>click on a component parameter and select <font color="#000000"><strong>Find in </strong></font><font color="#000000"><strong>Design</strong></font> from the pop&#45;up menu.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1049970">This returns you to the schematic editor with the </a>component selected.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1120391">To view components with similar set of reference </a>designators, right&#45;click in the smoke result spreadsheet and choose <font color="#000000"><em>Component Filter</em></font>. Specify the search criterion in the <font color="#000000"><em>Find what</em></font> box , such as <font size="2" face="'Courier New'" color="#000000">R*</font> to search for all components with reference designator starting with R..</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1120417"> Alternatively, you can choose </a><font color="#000000"><em>Analysis</em></font> &#45; <font color="#000000"><em>Smoke</em></font> &#45; <font color="#000000"><em>Component Filter</em></font>.</blockquote>
+      <h4><a name="1112537">Printing results</a></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/arrwrite.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1110786">Click <img src="images/printIcon.gif" width="22" height="25" alt="">.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1110787">Or:</a></blockquote>
+      <blockquote><a name="1110788">From the </a><font color="#000000"><strong>File</strong></font> menu, select <font color="#000000"><strong>Print</strong></font>.</blockquote>
+      <h3><a name="1112542">Configuring Smoke</a></h3>
+      <h4><a name="1112566">Changing components or parameters</a></h4>
+      <p><a name="1050018">Smoke results are read&#45;only. To modify the circuit:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050019">Make your changes in your schematic editor.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>2	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050020">Rerun the </a>PSpice simulation.</td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1112590">Follow the steps for </a><a href="#1112389" title="Smoke"><font color="#0000ff"><u>Setting up the circuit in the schematic editor</u></font></a><a href="#1112389" title="Smoke"> </a> and <a href="#1112479" title="Smoke"><font color="#0000ff"><u>Running Smoke</u></font></a><a href="#1112479" title="Smoke"> </a>.</p>
+      <h4><a name="1077514">Controlling smoke on individual design components</a></h4>
+      <p><a name="1077582">You can use the SMOKE_ON_OFF property to control </a>whether or not you want to run smoke analysis on individual devices or blocks in a schematic. </p>
+      <p><a name="1077593">If you attach the SMOKE_ON_OFF property to the device </a>instance for which you do not want to perform the smoke analysis, and set the value to OFF, the smoke analysis would not run for this device.</p>
+      <p><a name="1079419">This property can also be used on hierarchical blocks. The </a>value of the SMOKE_ON_OFF property attached to the parent block has a higher priority over the property value attached to the individual components.</p>
+      <h4><a name="1112602">Selecting other deratings</a></h4>
+      <p><a name="1050048">To select other deratings:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050049">Right click and from the pop&#45;up menu select </a><font color="#000000"><strong>Derating</strong></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>2	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050050">Select one of the three derating options on the pull&#45;right </a>menu:</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1050051">No Derating</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1050052">Standard Derating</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1050053">Custom Derating Files</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>3	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050057">Click<img src="images/runIcon.gif" width="22" height="22" alt="">on the top toolbar to run a new Smoke analysis </a>with the revised derating factors.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1050058">New results appear.</a></blockquote>
+      <p><a name="1112619">For information on creating a custom derating file, see our </a>technical note posted on our web site at: <a href="http://www.orcadpcb.com" target="external_window"><font color="#0000ff"><u>www.orcadpcb.com.</u></font></a></p>
+      <h2><a name="1112622">Example</a></h2>
+      <h3><a name="1112623">Overview</a></h3>
+      <p><a name="1110800">This example uses the tutorial version of RFAmp located at: </a></p>
+      <p><a name="1112630">&#60;target directory&#62;\PSpice\tutorial\capture\pspiceaa\rfamp</a></p>
+      <p><a name="1110803">The circuit is an RF amplifier with 50&#45;ohm source and load </a>impedances. It includes the circuit schematic, PSpice simulation profiles, and measurements.</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="48">
+              <div>
+                <nobr><font color="#3300ff"><strong>Note:	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1112636"> For a completed example see:</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1110807"><font size="2" face="'Courier New'" color="#000000"><em>&#60;target </em></font></a><font size="2" face="'Courier New'" color="#000000"><em>directory&#62;</em></font>\PSpice\Capture_Samples\AdvAnls\RFAmp directory.</p>
+      <h3><a name="1112645">Setting up the circuit in the schematic editor</a></h3>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1110838">In your schematic editor, browse to the RFAmp tutorials </a>directory.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1112650">&#60;target directory&#62; </a><br>\PSpice\tutorial\Capture\pspiceaa\rfamp</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>2	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1110841">Open the RFAmp project.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p>
+        <strong><a name="1050087">The RF amplifier circuit example</a></strong>
+      </p>
+      <p align="left"><a name="1112659"><img src="images/allRFschematic.gif" width="526" height="408" alt=""></a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>3	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050101">Select SCHEMATIC1&#45;Tran.</a></td>
+          </tr>
+        </table>
+      </div>
+      <h4><em><a name="1050102">The Transient simulation included in the RF Amp example</a></em></h4>
+      <p align="left"><a name="1050106"><img src="images/smktransimprofile.gif" width="527" height="396" alt=""></a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050110">Click <img src="images/runIcon.gif" width="22" height="22" alt=""> on the top toolbar to run the</a> PSpice simulation.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>2	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050111">Review the results.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote>	<a name="1050115"><img src="images/allrfamp_transwaveform.gif" width="834" height="224" alt=""></a></blockquote>
+      <blockquote><a name="1050116">The key waveforms in</a> PSpice are what we expected.</blockquote>
+      <h3><a name="1112684">Running Smoke</a></h3>
+      <h4><a name="1112685">Starting a run</a></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/arrwrite.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1112689">From the </a><font color="#000000"><strong>PSpice</strong></font> menu in your schematic editor, select <font color="#000000"><strong>Advanced Analysis</strong></font> &#47; <font color="#000000"><strong>Smoke</strong></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1050124">The Smoke tool opens and automatically runs on the </a>active transient profile.</blockquote>
+      <blockquote>	<a name="1050128"><img src="images/smk1stviewresults.gif" width="800" height="449" alt=""></a></blockquote>
+      <blockquote><a name="1050129">Smoke calculates safe operating limits using component </a>parameter maximum operating conditions and derating factors.</blockquote>
+      <blockquote><a name="1050130">The output window displays status messages.</a></blockquote>
+      <h4><a name="1112696">Viewing Smoke results</a></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050136">Right click and from the pop&#45;up menu select </a><font color="#000000"><strong>Average</strong></font>, <font color="#000000"><strong>RMS</strong></font>, and <font color="#000000"><strong>Peak Values</strong></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote>	<a name="1050145"><img src="images/05smok.8.1.10.png" width="399" height="268" alt=""></a></blockquote>
+      <blockquote><a name="1050146">In the %Max column, check the bar graphs. </a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1050149"> Red bars show values that exceed safe operating </a>limits. </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1050150">Yellow bars show values getting close to the safe </a>operating limits: between 90 and 100 percent of the safe operating limits.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1050151">Green bars show values well within the safe </a>operating limits: less than 90 percent of the safe operating limits.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1050152">Grey bars indicate that limits are not valid for the </a>parameters.</td>
+          </tr>
+        </table>
+      </div>
+      <p>
+<blockquote><blockquote>        <font color="#000000"><a name="1050173"><img src="images/05smok.8.1.11.png" width="450" height="187" alt=""></a></font></blockquote></blockquote>
+      </p>
+      <blockquote><a name="1050174">The value in the % Max column is calculated using the </a>following formula:</blockquote>
+      <p><font color="#3300ff"><strong>(5&#45;1) </strong></font><a name="1051834"> %Max=Actual operating Value&#47;Safe operating </a>limit *100</p>
+      <blockquote>
+<blockquote>        <font color="#000000"><a name="1050178">Where:</a></font></blockquote>
+      </blockquote>
+      <p>
+<blockquote><blockquote>        <font color="#000000"><a name="1051800">&nbsp;</a></font></blockquote></blockquote>
+      </p>
+<ul>      <table summary="" cellpadding="16" cellspacing="0" bgcolor="#FFFFFF" width="393">
+        <caption>
+        <tr>
+          <td cellpadding="16" valign="top" width="133">
+            <p><a name="1051789">Actual operating </a>value</p>
+          </td>
+          <td cellpadding="16" valign="top" width="260">
+            <div>
+              <table border="0" cellspacing="0" cellpadding="3" summary="">
+                <tr valign="baseline">
+                  <td width="31.999679999999998">
+                    <div>
+                      <nobr>
+                        <img src="images/b_bullet.gif" alt="*" border="0" width="8" height="8">
+                      </nobr>
+                    </div>
+                  </td>
+                  <td><a name="1051791">is displayed in the </a><font color="#000000"><em>Measured </em></font><font color="#000000"><em>Value</em></font> column.</td>
+                </tr>
+              </table></ul>
+            </div>
+            <div>
+              <table border="0" cellspacing="0" cellpadding="3" summary="">
+                <tr valign="baseline">
+                  <td width="31.999679999999998">
+                    <div>
+                      <nobr>
+                        <img src="images/b_bullet.gif" alt="*" border="0" width="8" height="8">
+                      </nobr>
+                    </div>
+                  </td>
+                  <td><a name="1051792">is calculated by the simulation </a>controller.</td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="16" valign="top">
+            <p><a name="1051794">Safe operating </a>limit</p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <div>
+              <table border="0" cellspacing="0" cellpadding="3" summary="">
+                <tr valign="baseline">
+                  <td width="31.999679999999998">
+                    <div>
+                      <nobr>
+                        <img src="images/b_bullet.gif" alt="*" border="0" width="8" height="8">
+                      </nobr>
+                    </div>
+                  </td>
+                  <td><a name="1051796">is displayed in the </a><font color="#000000"><em>Max </em></font><font color="#000000"><em>Derating</em></font> column.</td>
+                </tr>
+              </table>
+            </div>
+            <div>
+              <table border="0" cellspacing="0" cellpadding="3" summary="">
+                <tr valign="baseline">
+                  <td width="31.999679999999998">
+                    <div>
+                      <nobr>
+                        <img src="images/b_bullet.gif" alt="*" border="0" width="8" height="8">
+                      </nobr>
+                    </div>
+                  </td>
+                  <td><a name="1051797">is </a><font size="2" face="'Courier New'" color="#000000">MOC*derating_factor</font>.</td>
+                </tr>
+              </table>
+            </div>
+            <div>
+              <table border="0" cellspacing="0" cellpadding="3" summary="">
+                <tr valign="baseline">
+                  <td width="31.999679999999998">
+                    <div>
+                      <nobr>
+                        <img src="images/b_bullet.gif" alt="*" border="0" width="8" height="8">
+                      </nobr>
+                    </div>
+                  </td>
+                  <td><a name="1051798">MOC or the Maximum </a>Operating Condition is specified is the vendor supplied data sheet</td>
+                </tr>
+              </table>
+            </div>
+            <div>
+              <table border="0" cellspacing="0" cellpadding="3" summary="">
+                <tr valign="baseline">
+                  <td width="31.999679999999998">
+                    <div>
+                      <nobr>
+                        <img src="images/b_bullet.gif" alt="*" border="0" width="8" height="8">
+                      </nobr>
+                    </div>
+                  </td>
+                  <td><a name="1051799">derating factor, is specified by </a>the users in the <font color="#000000"><em>% Derating</em></font> column.</td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <blockquote><a name="1051801">The value calculated using the </a><a href="#1051834" title="Smoke"><font color="#0000ff"><u>Equation&nbsp;5&#45;1</u></font></a><a href="#1051834" title="Smoke"> </a> is rounded off to the nearest integer, larger than the calculated value, and then displayed in the %Max column.</blockquote>
+      <blockquote><a name="1050197">For example, if the calculated value of %Max is 57.06, the </a>value displayed in the %Max column will be 58.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>2	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050200">Right click on the table and select </a><font color="#000000"><strong>Temperature </strong></font><font color="#000000"><strong>Parameters Only</strong></font> from the pop&#45;up menu.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1050201">Only maximum resistor or capacitor temperature (TB) </a>and maximum junction temperature (TJ) parameters are displayed. When reviewing these results, only average and peak values are meaningful.</blockquote>
+      <p><a name="1050202">In this example, none of the parameters are stressed, as </a>indicated by the green bars.</p>
+      <p align="left"><a name="1050247"><img src="images/05smok.8.1.12.png" width="672" height="497" alt=""></a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="48">
+              <div>
+                <nobr><font color="#3300ff"><strong>Note:	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1119058">The Junction Temperature <img src="images/05smok.8.1.13.png" width="22" height="21" alt=""> is calculated as </a><img src="images/05smok.8.1.14.png" width="276" height="25" alt=""> where:</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="64.032">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bss_bullet_sub_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1119576"><font size="2" face="'Courier New'" color="#000000">PDM</font></a> is the maximum power dissipation taken from analysis result</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="64.032">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bss_bullet_sub_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1119583"><img src="images/05smok.8.1.15.png" width="61" height="25" alt=""> is the simulated temperature</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="64.032">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bss_bullet_sub_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1119589"><font size="2" face="'Courier New'" color="#000000">RCA</font></a> is case&#45;to&#45;ambient thermal resistance </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="64.032">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bss_bullet_sub_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1119592"><font size="2" face="'Courier New'" color="#000000">RJC</font></a> is the junction&#45;to&#45;case thermal resistance</td>
+          </tr>
+        </table>
+      </div>
+      <h4><a name="1112703">Printing results</a></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/arrwrite.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1110795">Click <img src="images/printIcon.gif" width="22" height="25" alt="">.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1110796">Or:</a></blockquote>
+      <blockquote><a name="1110797">From the </a><font color="#000000"><strong>File</strong></font> menu, select <font color="#000000"><strong>Print</strong></font>.</blockquote>
+      <h3><a name="1112708">Configuring Smoke</a></h3>
+      <h4><a name="1112710">Selecting another derating option</a></h4>
+      <p><a name="1050265">The default derating option uses 100% derating factors, also </a>called No Derating.</p>
+      <p><a name="1050266">We'll now run the circuit with standard derating and examine </a>the results.</p>
+      <h4><em><a name="1050268">Selecting standard derating</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050270">Right click and from the pop&#45;up menu select </a><font color="#000000"><strong>Derating</strong></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>2	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050272">Select </a><font color="#000000"><strong>Standard Derating</strong></font> from the pull&#45;right menu.</td>
+          </tr>
+        </table>
+      </div>
+      <p align="left"><a name="1050276"><img src="images/smkrmbderate.gif" width="421" height="262" alt=""></a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>3	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050280">Click <img src="images/runIcon.gif" width="22" height="22" alt=""> on the top toolbar to run a new Smoke </a>analysis.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1050281">New results appear. </a></blockquote>
+      <blockquote><a name="1050282">The red bar indicates that Q1's VCE parameter is </a>stressed.</blockquote>
+      <p align="left"><a name="1050303"><img src="images/05smok.8.1.19.png" width="672" height="402" alt=""></a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>4	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050304">Resolve the component stress:</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1050305">Right click on Q1 VCE and from the pop&#45;up menu </a>select <font color="#000000"><strong>Find in Design </strong></font>to go to the schematic and adjust circuit parameters.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1050306">Or:</a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1050307">  Right click and from the pop&#45;up menu select </a><font color="#000000"><strong>Deratings</strong></font> \ <font color="#000000"><strong>No Derating </strong></font>to change the derating option back to <font color="#000000"><strong>No Derating</strong></font>. </td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><font color="#000000"><strong>Note: </strong></font><a name="1120490">You might select a Q with higher VCE voltage if </a>parameters are fine.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>5	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050311">Click <img src="images/runIcon.gif" width="22" height="22" alt=""> on the top toolbar to rerun Smoke analysis </a>after making any adjustments.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>6	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050312">Check the results.</a></td>
+          </tr>
+        </table>
+      </div>
+      <h4><em><a name="1050313">Selecting custom derating</a></em></h4>
+      <p><a name="1112718">If you have your own custom derating factors, you can browse </a>to your own file and select it for use in Smoke. For information on creating a custom derating file, see <a href="#1112740" title="Smoke"><font color="#0000ff"><u>Adding Custom Derate file</u></font></a><a href="#1112740" title="Smoke"> </a><font color="#0000ff"><u>.</u></font></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050319">Once you have your custom derating file in place, right </a>click and from the pop&#45;up menu select <font color="#000000"><strong>Derating</strong></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>2	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050320">Select </a><font color="#000000"><strong>Custom Derating Files</strong></font> from the pull&#45;right menu.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote>	<a name="1050336"><img src="images/05smok.8.1.21.png" width="447" height="351" alt=""></a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>3	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050337">Click the browse icon. </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>4	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050338">Browse and select your file.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1050339">The file name is added to the list in the Custom Derating </a>Files text box and the drop&#45;down list.</blockquote>
+      <blockquote>	<a name="1050347"> <img src="images/05smok.8.1.22.png" width="450" height="295" alt=""></a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>5	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050348">Select the custom derating file from the drop&#45;down list.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>6	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050349">Click </a><font color="#000000"><strong>OK</strong></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>7	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050353">Click <img src="images/runIcon.gif" width="22" height="22" alt=""> on the top toolbar to run a new Smoke </a>analysis.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1050354">New results appear. </a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>8	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050355">Check the results.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1050356">To make changes, follow the steps for changing derating </a>options or schematic component values.</blockquote>
+      <blockquote><a name="1112726">See </a><a href="#1050268" title="Smoke"><font color="#0000ff"><u>Selecting standard derating</u></font></a><a href="#1050268" title="Smoke"> </a>.</blockquote>
+      <h2><a name="1112731">For power users</a></h2>
+      <h3><a name="1112733">Smoke parameters</a></h3>
+      <p><a name="1050370">The following tables summarize smoke parameter names you </a>will see in the Smoke results. The tables are sorted by user interface parameter names and include:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1050371">Passive component parameters</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1050372">Semiconductor component parameters</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1050373">OpAmp component parameters</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1050376">For passive components, three names are used in Smoke </a>analysis: symbol property names, symbol parameter names, and parameter names used in the Smoke user interface. This table is sorted in alphabetical order by parameter names that display in the Smoke user interface.</p>
+      <p align="left"><a name="1050564">&nbsp;</a></p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="646">
+        <caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="top" width="118">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1050380">Smoke User </a>Interface Parameter Name</strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="top" width="102">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1050382"><br></a><br>Passive</strong></font>
+            </p>
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1050383">Component</a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="top" width="121">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1050385"><br></a>Maximum Operating</strong></font>
+            </p>
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1050386">Condition</a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="top" width="100">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1050388"><br></a>Symbol Property</strong></font>
+            </p>
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1050389">Name</a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="top" width="98">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1050391">Symbol </a>Smoke Parameter</strong></font>
+            </p>
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1050392">Name</a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="top" width="105">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1050394">Variable </a>Table</strong></font>
+            </p>
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1050395">Default </a>Value</strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1050397">CI</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1050399">Capacitor</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1050401">Maximum </a>ripple* </p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1050403">CURRENT</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1050405">CIMAX</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1050407">1 A</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050409">CV</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050411">Capacitor</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050413">Voltage rating</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050415">VOLTAGE</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050417">CMAX</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050419">50 V</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1123553">CVN</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1123555">Capacitor</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1123557">Maximum </a>Reverse Voltage</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1123559">NEGATIVE_</a>VOLTAGE</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1123561">CVN</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1123563">10V</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050421">IV</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050423">Current </a>Supply</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050425">Max. voltage </a>current source can withstand</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050427">VOLTAGE</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050429">VMAX</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050431">12 V</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050433">LI</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050435">Inductor</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050437">Current rating</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050439">CURRENT</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050441">LMAX</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050443">5 A</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1120683">LIDC</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1120685">Inductor</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1120687">DC current </a>Value</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1120689">DC_CURRE</a>NT</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1120691">DC</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1120693">0.1A</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050445">LV</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050447">Inductor</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050449">Dielectric </a>strength</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050451">DIELECTRI</a>C</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050453">DSMAX</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050455">300 V</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050457">PDM</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050459">Resistor</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050461">Maximum </a>power dissipation of resistor</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050463">POWER</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050465">RMAX</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050467">0.25 W</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1123602">PDML**</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1123604">Capacitor</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1123606">Maximum </a>power loss due to series resistance</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1123608">POWER</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1123610">CPMAX</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1123612">0.1W</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1123766">&nbsp;</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1123768">Inductor </a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1123778">Maximum </a>power loss due to series resistance</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1123780">POWER</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1123782">LPMAX</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1123784">0.25W</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050469">RBA* </a>(=1&#47;SLOPE)</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050471">Resistor</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050473">Slope of power </a>dissipation vs. temperature</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050475">SLOPE</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050477">RSMAX</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050479">0.005W&#47;deg</a>C</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050481">RV</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050483">Resistor</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050485">Voltage Rating</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050487">VOLTAGE</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050489">RVMAX</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050491">&#45;&#45;</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050493">SLP*</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050495">Capacitor</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050497">Temperature </a>derating slope</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050499">SLOPE of </a>volt temperature curve</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050501">CSMAX</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050503">0.005 V&#47;degC</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050505">TBRK*</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050507">Capacitor</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050509">Breakpoint </a>temperature</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050511">KNEE</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050513">CBMAX</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050515">125 degC</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1123582">TJL</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1123584">Capacitor</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1123586">Rise in </a>temperature</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1123588">RTH</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1123590">THERMR</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1123592">1 degC</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050517">TMAX*</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050519">Capacitor</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050521">Maximum </a>temperature</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050523">MAX_TEMP</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050525">CTMAX</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050527">125 degC</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050529">TMAX, TB</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050531">Resistor</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050533">Maximum </a>temperature resistor can withstand</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050535">MAX_TEMP</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050537">RTMAX</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050539">200 degC</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050541">VI</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050543">Voltage </a>Supply</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050545">Max. current </a>voltage source can withstand</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050547">CURRENT</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050549">IMAX</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050551">1 A</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="6" cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1050553">*Parameters used internally and having no impact on the result values displayed in the </a>Smoke window</p>
+            <p><a name="1123785">** The PDML parameter is affected by the ESR value, which is available under the property </a>name ESR in Capacitor and DC_RESISTANCE in Inductors. The variable table default  value for ESR is 0.001 <img src="images/05smok.8.1.24.png" width="17" height="21" alt="">.</p>
+          </td>
+        </tr>
+      </table>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="48">
+              <div>
+                <nobr><font color="#3300ff"><strong>Note:	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050566">Ripple current referes to the AC portion of signals due </a>to  the small variations in DC signals usually in power supply applications. </td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1123764">&nbsp;</a></p>
+      <p><a name="1118821">The following table lists smoke parameter names for </a>semiconductor components. The table is sorted in alphabetical order according to parameter names that will display in the Smoke results. </p>
+      <p align="left"><a name="1050925">&nbsp;</a></p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="647">
+        <caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="top" width="171">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1050570">Smoke Parameter </a>Name and Symbol Property Name</strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="top" width="134">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1050572"><br></a>Semiconductor</strong></font>
+            </p>
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1050573">Component</a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="top" width="341">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1050575"><br></a><br>Maximum Operating Condition</strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1050577">IB</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1050579">BJT</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1050581">Maximum base current (A)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050583">IC</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050585">BJT</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050587">Maximum collector current (A)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050589">PDM</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050591">BJT</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050593">Maximum power dissipation (W)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050595">RCA</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050597">BJT</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050599">Thermal resistance, Case&#45;to&#45;Ambient </a>(degC&#47;W)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050601">RJC</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050603">BJT</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050605">Thermal resistance, Junction&#45;to&#45;Case </a>(degC&#47;W)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050607">SBINT</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050609">BJT</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050611">Secondary breakdown intercept (A)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050613">SBMIN</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050615">BJT</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050617">Derated percent at TJ (secondary breakdown)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050619">SBSLP</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050621">BJT</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050623">Secondary breakdown slope</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050625">SBTSLP</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050627">BJT</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050629">Temperature derating slope (secondary </a>breakdown)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050631">TJ</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050633">BJT</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050635">Maximum junction temperature (degC)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050637">VCB</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050639">BJT</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050641">Maximum collector&#45;base voltage (V)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050643">VCE</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050645">BJT</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050647">Maximum collector&#45;emitter voltage (V)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050649">VEB</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050651">BJT</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050653">Maximum emitter&#45;base voltage (V)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1121865">F1</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1121867">Bridge</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1121869">Maximum forward current of Diode1 (A)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1121871">IF2</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1121873">Bridge</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1121875">Maximum forward current of Diode2 (A)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1121877">IF3</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1121879">Bridge</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1121881">Maximum forward current of Diode3 (A)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1121883">IF4</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1121885">Bridge</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1121887">Maximum forward current of Diode4 (A)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1121889">PDM</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1121891">Bridge</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1121893">Maximum power dissipation (W)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1121895">RCA</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1121897">Bridge</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1121899">Thermal resistance, Case&#45;to&#45;Ambient </a>(degC&#47;W)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1121901">RJC</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1121903">Bridge</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1121905">Thermal resistance, Junction&#45;to&#45;Case </a>(degC&#47;W)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122174">TJ</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122176">Bridge</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122178">Maximum junction temperature (degC)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122180">VR1</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122182">Bridge</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122184">Peak reverse voltage of Diode1 (V)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122186">VR2</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122188">Bridge</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122190">Peak reverse voltage of Diode2 (V)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122192">VR3</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122194">Bridge</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122196">Peak reverse voltage of Diode3 (V)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122198">VR4</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122200">Bridge</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122202">Peak reverse voltage of Diode4 (V)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050655">IF</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050657">Diode</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050659">Maximum forward current (A)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050661">PDM</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050663">Diode</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050665">Maximum power dissipation (W)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050667">RCA</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050669">Diode</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050671">Thermal resistance, Case&#45;to&#45;Ambient </a>(degC&#47;W)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050673">RJC</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050675">Diode</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050677">Thermal resistance, Junction&#45;to&#45;Case </a>(degC&#47;W)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050679">TJ</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050681">Diode</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050683">Maximum junction temperature (degC)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050685">VR</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050687">Diode</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050689">Maximum reverse voltage (V)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122032">ID</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122034">Dual MOS</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122036">Maximum drain current (A)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122038">IG</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122040">Dual MOS</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122042">Maximum forward gate current (A)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122044">PDM</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122046">Dual MOS</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122048">Maximum power dissipation (W)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122050">RCA</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122052">Dual MOS</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122054">Thermal resistance, Case&#45;to&#45;Ambient </a>(degC&#47;W)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122056">RJC</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122058">Dual MOS</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122060">Thermal resistance, Junction&#45;to&#45;Case </a>(degC&#47;W)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122062">TJ</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122064">Dual MOS</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122066">Maximum junction temperature (degC)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122068">VDG</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122070">Dual MOS</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122072">Maximum drain&#45;gate voltage (V)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122074">VDS</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122076">Dual MOS</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122078">Maximum drain&#45;source voltage (V)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122080">VGSF</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122082">Dual MOS</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122084">Maximum forward gate&#45;source voltage (V)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122086">VGSR</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122088">Dual MOS</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122090">Maximum reverse gate&#45;source voltage (V)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050691">IC</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050693">IGBT</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050695">Maximum collector current (A)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050697">IG</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050699">IGBT</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050701">Maximum gate current (A)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050703">PDM</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050705">IGBT</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050707">Maximum Power dissipation (W)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050709">RCA</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050711">IGBT</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050713">Thermal resistance, Case&#45;to&#45;Ambient </a>(degC&#47;W)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050715">RJC</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050717">IGBT</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050719">Thermal resistance, Junction&#45;to&#45;Case </a>(degC&#47;W)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050721">TJ</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050723">IGBT</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050725">Maximum junction temperature (degC)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050727">VCE</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050729">IGBT</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050731">Maximum collector&#45;emitter (V)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050733">VCG</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050735">IGBT</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050737">Maximum collector&#45;gate voltage (V)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050739">VGEF</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050741">IGBT</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050743">Maximum forward gate&#45;emitter voltage (V)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050745">VGER</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050747">IGBT</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050749">Maximum reverse gate&#45;emitter (V)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050751">ID</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050753">JFET or MESFET</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050755">Maximum drain current (A)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050757">IG</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050759">JFET or MESFET</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050761">Maximum forward gate current (A)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050763">PDM</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050765">JFET or MESFET</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050767">Maximum power dissipation (W)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050769">RCA</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050771">JFET or MESFET</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050773">Thermal resistance, Case&#45;to&#45;Ambient </a>(degC&#47;W)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050775">RJC</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050777">JFET or MESFET</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050779">Thermal resistance, Junction&#45;to&#45;Case </a>(degC&#47;W)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050781">TJ</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050783">JFET or MESFET</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050785">Maximum junction temperature (degC)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050787">VDG</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050789">JFET or MESFET</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050791">Maximum drain&#45;gate voltage (V)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050793">VDS</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050795">JFET or MESFET</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050797">Maximum drain&#45;source voltage (V)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050799">VGS</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050801">JFET or MESFET</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050803">Maximum gate&#45;source voltage (V)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122138">IFD</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122140">LED</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122142">Maximum forward current (A)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122144">PDM</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122146">LED</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122148">Maximum power dissipation (W)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122150">RCA</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122152">LED</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122154">Thermal resistance, Case&#45;to&#45;Ambient </a>(degC&#47;W)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122156">RJC</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122158">LED</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122160">Thermal resistance, Junction&#45;to&#45;Case </a>(degC&#47;W)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122162">TJ</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122164">LED</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122166">Maximum junction temperature (degC)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122168">VD</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122170">LED</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122172">Maximum reverse voltage (V)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050805">ID</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050807">MOSFET or </a>Power MOSFET</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050809">Maximum drain current (A)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050811">IG</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050813">MOSFET or </a>Power MOSFET</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050815">Maximum forward gate current (A)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050817">PDM</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050819">MOSFET or </a>Power MOSFET</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050821">Maximum power dissipation (W)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1050823">RCA</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1050825">MOSFET or </a>Power MOSFET</p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1050827">Thermal resistance, Case&#45;to&#45;Ambient </a>(degC&#47;W)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050829">RJC</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050831">MOSFET or </a>Power MOSFET</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050833">Thermal resistance, Junction&#45;to&#45;Case </a>(degC&#47;W)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050835">TJ</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050837">MOSFET or </a>Power MOSFET</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050839">Maximum junction temperature (degC)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050841">VDG</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050843">MOSFET or </a>Power MOSFET</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050845">Maximum drain&#45;gate voltage (V)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050847">VDS</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050849">MOSFET or </a>Power MOSFET</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050851">Maximum drain&#45;source voltage (V)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050853">VGSF</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050855">MOSFET or </a>Power MOSFET</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050857">Maximum forward gate&#45;source voltage (V)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050859">VGSR</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050861">MOSFET or </a>Power MOSFET</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050863">Maximum reverse gate&#45;source voltage (V)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122204">IC</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122206">Optocoupler</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122208">Maximum collector current (A)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122210">IFD</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122212">Optocoupler</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122214">Maximum forward current (A)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122216">PDM</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122218">Optocoupler</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122220">Maximum power dissipation (W)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122222">VCEO</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122224">Optocoupler</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122226">Maximum collector&#45;emitter voltage (V)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122228">VD</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122230">Optocoupler</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122232">Maximum reverse voltage (V)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122234">VECO</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122236">Optocoupler</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122238">Maximum emitter&#45;collector voltage (V)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122244">PDSW</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122246">Switch</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122248">Rated Switch Power (W)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122250">SI</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122252">Switch</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122254">Rated Switch Current (A)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122256">SV</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122258">Switch</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122260">Rated Switch Contact Voltage (V)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050865">ITM</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050867">Varistor</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050869">Peak current (A)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122262">IGM</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122264">Thyristor</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122266">Maximum gate current (A)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122268">IT</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122270">Thyristor</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122272">Maximum anode current (A)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122274">RCA</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122276">Thyristor</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122278">Thermal resistance, Case&#45;to&#45;Ambient </a>(degC&#47;W)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122280">RJC</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122282">Thyristor</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122284">Thermal resistance, Junction&#45;to&#45;Case </a>(degC&#47;W)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122286">TJ</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122288">Thyristor</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122290">Maximum junction temperature (degC)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122292">VDRM</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122294">Thyristor</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122296">Maximum anode&#45;cathode voltage (V)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122298">VRRM</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122300">Thyristor</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122302">Maximum cathode&#45;anode voltage (V)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122392">Primary_Current</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122394">Transformer </a>(Single and Double)</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122396">Primary current (A)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122398">Isolation_Voltage</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122400">Transformer </a>Double</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122402">Isolation Voltage between Primary and </a>Secondary (V)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122404">Isolation_Voltage1</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122406">Transformer </a>Double</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122408">Isolation Voltage between Primary and </a>Secondary (V)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122410">Isolation_Voltage2</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122412">Transformer </a>Double</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122414">Isolation Voltage between Primary and </a>Secondary (V)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122416">Secondary_one_Curre</a>nt</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122418">Transformer </a>Double</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122420">First Secondary Current (A)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122422">Secondary_two_Curre</a>nt</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122424">Transformer </a>Double</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122426">Second Secondary Current (A)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122428">Secondary_Current</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122430">Transformer </a>Single</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1122432">Secondary Current (A)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050871">RCA</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050873">Varistor</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050875">Thermal resistance, Case&#45;to&#45;Ambient </a>(degC&#47;W)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050877">RJC</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050879">Varistor</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050881">Thermal resistance, Junction&#45;to&#45;Case </a>(degC&#47;W)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050883">TJ</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050885">Varistor</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050887">Maximum junction temperature (degC)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050889">IFS</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050891">Zener Diode</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050893">Maximum forward current (A)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050895">IRMX</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050897">Zener Diode</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050899">Maximum reverse current (A)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050901">PDM</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050903">Zener Diode</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050905">Maximum power dissipation (W)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050907">RCA</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050909">Zener Diode</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050911">Thermal resistance, Case&#45;to&#45;Ambient </a>(degC&#47;W)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050913">RJC</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050915">Zener Diode</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050917">Thermal resistance, Junction&#45;to&#45;Case </a>(degC&#47;W)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1050919">TJ</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1050921">Zener Diode</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1050923">Maximum junction temperature (degC)</a></p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1121169">The following table lists smoke parameter names for Op Amp </a>components. The table is sorted in alphabetical order according to parameter names that will display in the Smoke results.</p>
+      <p align="left"><a name="1050996">&nbsp;</a></p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="652">
+        <caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="top" width="174">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1050931">Smoke Parameter </a>Name</strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="top" width="131">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1050933">Op Amp </a>Component</strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="top" width="347">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1050935"><br></a>Maximum Operating Condition</strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1050937">IPLUS</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1050939">OpAmp</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1050941">Non&#45;inverting input current</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050943">IMINUS</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050945">OpAmp</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050947">Inverting input current</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050949">IOUT</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050951">OpAmp</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050953">Output current</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050955">VDIFF</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050957">OpAmp</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050959">Differential input voltage</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050961">VSMAX</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050963">OpAmp</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050965">Supply voltage</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050967">VSMIN</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050969">OpAmp</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050971">Minimum supply voltage</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050973">VPMAX</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050975">OpAmp</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050977">Maximum input voltage (non&#45;inverting)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050979">VPMIN</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050981">OpAmp</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050983">Minimum input voltage (non&#45;inverting)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050985">VMMAX</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050987">OpAmp</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050989">Maximum input voltage (inverting)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1050991">VMMIN</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1050993">OpAmp</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1050995">Minimum input voltage (inverting)</a></p>
+          </td>
+        </tr>
+      </table>
+      <h3><a name="1112740">Adding Custom Derate file</a></h3>
+      <h4><a name="1074917">Why use derating factors?</a></h4>
+      <p><a name="1114819">You might need to test components for certain parameters at </a>a lower value then specified by the manufacterer. This reduction or strict specification of value is acheieved by derating factor.  The ideal safe operating limits sppecified for parameters, such as power dissipation or temperature coefficients,  need to be changed to a lower value for real applications. In addition, the parameters of a component specified in manufactured datasheet cannot always be used as is because in working environment change in one parameter affects others. For example,  the manufacturer datasheet of resistors specifies the maximum tempearture and the maximum power dissipation. However, when the power dissipation of a resistor is increased, the device temperature also increases. As a result, the resistors capability to handle power is reduced with increasing temperature. </p>
+      <p><a name="1114820">Although for calculations an absolute value of the power is </a>used, while plotting the deration curve of a resistor, the rated power is specified per unit. This means that the maximum power dissipation (PDM) is always specified as an unit.</p>
+      <p><a name="1114822">For example, Figure 5&#45;2 shows the curve for a resistor with </a>power dissipation of 0.25W and maximum temperature (TMAX) of 150&#176;C.</p>
+      <p><a name="1114916"><img src="images/05smok.8.1.25.png" width="450" height="284" alt=""></a></p>
+      <p><a name="1074911">Notice that the maximum rated power dissipation is plotted as </a>percentage and not the absolute value.</p>
+      <p><a name="1115109">The following two examples show the values for the different </a>deration parameters for two different TKNEE values. The first  case has a normal slope whereas the last  example has a fast slope. For a slow slope the TKNEE value is much lower than the maximum value TMAX.  In contrast, in Case&#45;2, the slope angles over 10&#176;C, where the TKNEE value is 100&#176;C and TMAX is 110&#176;C.</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="48">
+              <div>
+                <nobr><font color="#3300ff"><strong>Note:	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1119825">The actual temperature is calculated as </a><img src="images/05smok.8.1.26.png" width="451" height="25" alt="">, where T<font color="#000000"><sub>amb</sub></font> is the ambient temperature and T<font color="#000000"><sub>max</sub></font> is the maximum temperature.  The TKNEE is calculated as <img src="images/05smok.8.1.27.png" width="338" height="21" alt="">, where RMAX is equivalent of PDM and RSMAX is equivalent of the slope.</td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1120510">You can calculate TKNEE using two methods:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1120708">By defining a parameter TKNEE on instance</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1120714">Using the existing slope of the deration curve</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="48">
+              <div>
+                <nobr><font color="#3300ff"><strong>Note:	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1120709">It is recommended that the TKNEE value should be </a>more than the simulation temperature. When TKNEE value is calculated within Smoke Analysis, a warning is generated if the TKNEE value is less than the simulation temperature. You can specify the TKNEE value on a part in the design to remove this warning.</td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1123504">To calculate temperature rise of a resistance use one of the </a>following methods in the order specified:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1120721">If both TRISE and TKNEE are defined:</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1120753"><img src="images/05smok.8.1.28.png" width="257" height="46" alt=""></a></blockquote>
+      <blockquote><a name="1122715">Where Tmax is the temperature rise at rated power. </a>Users can define Tmax.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1120762">If TKNEE is defined but TRISE is not defined:</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1120787"><img src="images/05smok.8.1.29.png" width="451" height="25" alt=""></a></blockquote>
+      <blockquote><a name="1122728">The deration slope is used to calculate the temperature </a>rise.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1120814">If both TRISE and TKNEE are not defined:</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1120819"><img src="images/05smok.8.1.30.png" width="451" height="25" alt=""></a></blockquote>
+      <blockquote><a name="1122745">It is assumed that device has maximum rated </a>temperature at rated power dissipation.</blockquote>
+      <h4><em><a name="1116436">Case 1: KNEE value of  0&#176;C </a></em></h4>
+      <p><a name="1116483"><font color="#0000ff"><u>Figure&nbsp;5&#45;8</u></font></a>  shows a circuit with specified parameters RMAX, RSMAX, and RTMAX. Using the following specified smoke limits, the calculated  KNEE is 0&#176;C:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1117485">RMAX: 1.0</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1117502">RSMAX: 0.005</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1117503">RTMAX: 200 </a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1116572"><img src="images/05smok.8.1.31.png" width="665" height="219" alt=""></a></p>
+      <p><a name="1116693">The calculated values for the specified parameters are:</a></p>
+      <p><a name="1116781">&nbsp;</a></p>
+      <table summary="" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF" width="387">
+        <caption>
+        <tr>
+          <td cellpadding="4" border="0" valign="top" >
+            <p><a name="1116904">Parameter</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top" >
+            <p><a name="1116906">Value</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1116908">% Derating of Power or </a>Derating Factor</p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1116910">36.5</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1116912">Max Derating of Power</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1116914">0.365</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1117239">Max Derating of </a>Temperature</p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1117241">200</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1117064">Measured Power Value </a>or Power Dissipation</p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1117066">500m</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1117099">Measured Temperature </a>Value or Actual Temperature</p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1117062">127&#176;C</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1117056">%Max of Power</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1117058">137.1</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1117052">%Max of Temperature</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1117054">64</a></p>
+          </td>
+        </tr>
+      </table>
+      <h4><em><a name="1118226">Case 2: KNEE value of  100&#176;C </a></em></h4>
+      <p><a name="1118605">Using the following specified smoke limits, the calculated  </a>KNEE is 100&#176;C:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1118105">RMAX: 0.25</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1118106">RSMAX: 0.02</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1118107">RTMAX: 150 </a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1118115">The calculated values for the specified parameters are:</a></p>
+      <p><a name="1118149">&nbsp;</a></p>
+      <table summary="" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF" width="598">
+        <caption>
+        <tr>
+          <td cellpadding="4" border="0" valign="top" >
+            <p><a name="1118118">Parameter</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top" >
+            <p><a name="1118120">Value for simulation at Tamb </a>of 27&#176;C</p>
+          </td>
+          <td cellpadding="4" border="0" valign="top" >
+            <p><a name="1123124">Value for simulation at Tamb </a>of 110&#176;C</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1118122">% Derating of Power or </a>Derating Factor</p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1118124">100%</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1123126">55%</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1118126">Max Derating of Power</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1118128">1</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1123128">550m</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1118130">Max Derating of </a>Temperature</p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1118132">150</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1123130">150</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1118134">Measured Power Value </a>or Power Dissipation</p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1118136">250m</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1123132">250m</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1118138">Measured Temperature </a>Value or Actual Temperature</p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1118140">39.5&#176;C</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1123134">122.5&#176;C</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1118142">%Max of Power</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1118144">25%</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1123136">46%</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1118146">%Max of Temperature</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1118148">25%</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1123138">82%</a></p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1114817"> If you want a margin of safety in your design, apply a derating </a>factor to your maximum operating conditions (MOCs). If a manufacturer lists 5W as the maximum operating condition for a resistor, you can insert a margin of safety in your design if you lower that value to 4.5W and run your simulation with 4.5W as the safe operating limit (SOL).</p>
+      <dl>
+        <font size="2" face="'Courier New'" color="#000000"><a name="1074912">As an equation: MOC x derating factor = SOL. </a></font>
+      </dl>
+      <p><a name="1074913">In the example </a><font size="2" face="'Courier New'" color="#000000">5W x 0.9 = 4.5W</font>, the derating factor is 0.9. Also, 4.5W is 90% of 5W, so the derating factor is 90%. A derating factor can be expressed as a percent or a decimal fraction, depending on how it&#39;s used in calculations. </p>
+      <h4><a name="1074907">What is a custom derate file?</a></h4>
+      <p><a name="1075030">A custom derating file is an ASCII text file with a </a><font size="2" face="'Courier New'" color="#000000">.drt</font> extension that contains smoke parameters and derating factors specific to your project. If the &#34;no derating&#34; and &#34;standard derating&#34; factors provided with Advanced Analysis do not have the values you need for your project, you can create a custom derating file and type in the specific derating factors that meet your design specifications.</p>
+      <p><a name="1075031">Figure 2 shows a portion of a custom derating file. The file lists </a>resistor smoke parameters and derating factors. In your custom derating file, enter the derating factors as decimal percents in double quotes. </p>
+      <p><a name="1075032">For the example below, if the resistor had a power dissipation </a>(PDM) maximum operating condition of 5W, the .9 derating factor tells Advanced Analysis to use 0.9 x 5 = 4.5W as this resistor&#39;s safe operating limit. </p>
+      <p align="left"><a name="1075044"><img src="images/05smok.8.1.32.png" width="452" height="222" alt=""></a></p>
+      <h4><a name="1112747">Creating a new custom derate file</a></h4>
+      <p><a name="1077806">Advanced Analysis</a>provides you the capability to create and edit derate files. You can perform this operation by using the Edit Derate File dialog box.</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="48">
+              <div>
+                <nobr><font color="#3300ff"><strong>Note:	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1120906">To open the Edit Derate File dialog box, right&#45;click in the </a>results pane of Smoke and choose <font color="#000000"><em>Derating</em></font> - <font color="#000000"><em>Custom Derating Files</em></font> and then click the <font color="#000000"><em>Create </em></font><font color="#000000"><em>Derate File</em></font> button.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1077828">Right&#45;click in the results pane and choose </a><font color="#000000"><em>Derating</em></font> - <font color="#000000"><em>Custom Derating Files </em></font>to open the Profile Settings dialog box. Alternatively, you can choose <font color="#000000"><em>Edit</em></font>  - <font color="#000000"><em>Profile </em></font><font color="#000000"><em>Settings</em></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>2	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1121005">To create a new derate file from scratch, click the </a><font color="#000000"><em>Create </em></font><font color="#000000"><em>Derate File</em></font> button in the Profile Settings dialog box..</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote>	<a name="1077960"><img src="images/05smok.8.1.33.png" width="387" height="53" alt=""></a></blockquote>
+      <blockquote><a name="1078145">The Edit Derate File dialog box appears.</a></blockquote>
+      <blockquote>	<a name="1077836"><img src="images/newderatefile1.gif" width="622" height="201" alt=""></a></blockquote>
+      <blockquote><a name="1079576">In the Edit Derate Type dialog box, type the derate type </a>and select the a device category. The derate type can be any user defined value. </blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>3	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1079591">To add a new derate type, click the </a><font color="#000000"><em>Click here to add a </em></font><font color="#000000"><em>device</em></font> row.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1079628">A blank row gets added in the Derate Types pane.</a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>4	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1079577">In the Derate Types text box, enter any name, such as  </a><font size="2" face="'Courier New'" color="#000000">myderatetype</font></td>
+          </tr>
+        </table>
+      </div>
+      <p align="left"><a name="1079582"><img src="images/05smok.8.1.35.png" width="677" height="110" alt=""></a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>5	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1079664">Click the Device Category grid. </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>6	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1079679">From the drop&#45;down list box select a device, such as  </a><font size="2" face="'Courier New'" color="#000000">RES</font>.</td>
+          </tr>
+        </table>
+      </div>
+      <p align="left"><a name="1079688"><img src="images/dropdown.gif" width="620" height="296" alt=""></a></p>
+      <blockquote><a name="1079729"><font size="2" face="'Courier New'" color="#000000">myderatetype</font></a> is the derate type for a resistor of type <font size="2" face="'Courier New'" color="#000000">RES</font>.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>7	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1077912">To specify the derate values for various resistor </a>parameters, click the <font color="#000000"><em>Click here to add derating factor</em></font> row in the Derating Factors window.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1079761">A blank row gets added.</a></blockquote>
+      <p align="left"><a name="1078245"><img src="images/derate_blank_row.gif" width="603" height="86" alt=""></a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>8	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1077919">Select the derate factor from the Factor drop down list.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p align="left"><a name="1078294"><img src="images/factordropdown.gif" width="619" height="187" alt=""></a></p>
+      <blockquote><a name="1078336">The corresponding default value for the derate factor is </a>automatically filled in. </blockquote>
+      <p align="left"><a name="1078369"><img src="images/05smok.8.1.39.png" width="674" height="106" alt=""></a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>9	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1078709">Modify the value of the derate factor as per the </a>requirement.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>10	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1078714">Similarly, specify additional derate types and their </a>corresponding categories, factors, and values. </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="48">
+              <div>
+                <nobr><font color="#3300ff"><strong>Note:	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1079779">Derate factors are populated based on the selected </a>device category</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>11	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1078746">Save the derate file.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="48">
+              <div>
+                <nobr><font color="#3300ff"><strong>Note:	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1121094">To use the custom derate type SCHEMATIC, in the </a>Property Editor, add a new property for the component with the name <font size="2" face="'Courier New'" color="#000000">DERATE_TYPE</font> and value same as the Derarte Type specified, such as <font color="#000000"><em>myderatetype</em></font>. Create netlist and select the corresponding derate file and run smoke.</td>
+          </tr>
+        </table>
+      </div>
+      <h4><em><a name="1077922">Modifying existing derate file</a></em></h4>
+      <p><a name="1078417">You can also use the Edit Derate File dialog box  to modify the </a>device type, device category, and the associated derating factor in an existing derate file.</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1078419">Type the full path or browse to select an exisiting derate </a>file.</td>
+          </tr>
+        </table>
+      </div>
+      <p align="left"><a name="1078044"><img src="images/derate_browse.gif" width="396" height="440" alt=""></a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>2	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1078080">Click the Edit Derate File button to display the Edit Derate </a>File dialog box.</td>
+          </tr>
+        </table>
+      </div>
+      <p align="left"><a name="1078438"><img src="images/buttons.gif" width="295" height="26" alt=""></a></p>
+      <p align="left"><a name="1078442"><img src="images/samplederate1.gif" width="621" height="252" alt=""></a></p>
+      <h4><a name="1078446">Adding the custom derating file to your design </a></h4>
+      <p><a name="1075061">To choose your custom derating file and apply the custom </a>derating factors: </p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1075062">Right&#45;click on the Smoke display.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1075063">From the pop&#45;up menu, select Derating &#62;  Custom </a>Derating Files.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1075064">The Advanced Analysis Smoke tab dialog appears. </a></blockquote>
+      <blockquote><a name="1075067"><img src="images/derate_edit.gif" width="397" height="301" alt=""></a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1075069">To add one or more files to the Custom Derating Files list </a>box, click the New(Insert) button.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1075070">Browse and select the custom derating file. </a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1075071">The custom derating filename gets added in the Custom </a>Derating Files list box.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1075072">In the Select derating type drop&#45;down list, select the </a>name of the derate file that you want to use during the smoke analysis.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>	6.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1075073">Click OK.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>	7.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1078797">Click the Run button (blue triangle).</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1075074">The Smoke data display title changes to &#34;</a><font size="2" face="'Courier New'" color="#000000"><em>Smoke &#45; </em></font><font size="2" face="'Courier New'" color="#000000"><em>&#60;profile name&#62; [custom derate file </em></font><font size="2" face="'Courier New'" color="#000000"><em>name]</em></font>.&#34;</blockquote>
+      <blockquote><a name="1078805">Smoke results appear after the analysis in complete. The </a>value of derate factors specified by you appear in the %Derating column. </blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="48">
+              <div>
+                <nobr><font color="#3300ff"><strong>Note:	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1079794">If the active derate file is different from the derate file </a>used for the smoke results displayed, an asterix (*) symbol will be displayed along with the derate file name.</td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1079802">Consider an example where sample.drt was used to acheive </a>the displayed smoke results.</p>
+      <p align="left"><a name="1079807"><img src="images/05smok.8.1.44.png" width="673" height="133" alt=""></a></p>
+      <p><a name="1079840">In this case, if you change the active derate file to test.drt or if </a>you edit the existing sample.drt, an asterix (*) symbol will be displayed along with the derate file name.</p>
+      <p align="left"><a name="1079856"><img src="images/05smok.8.1.45.png" width="678" height="137" alt=""></a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="13.333333333333332">
+              <div>&nbsp;</div>
+            </td>
+            <td width="133.33333333333331">
+              <div>
+                <nobr>
+                  <img src="images/caution.gif" alt="ParagraphBullet" border="0">
+                </nobr>
+              </div>
+            </td>
+            <td>
+              <strong><em><a name="1077248">When you select a new derate file to be used for </a>the smoke analysis, the contents of the %Derating column are updated with the new values only when you rerun the smoke analysis. Till you run the smoke analysis again, the values displayed in the %Derating column will be from the derate file used in the previous run.</em></strong>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <h4><a name="1075026">Reading values from the derate file</a></h4>
+      <p><a name="1077271">To be able to use the custom derate file, add the </a>DERATE_TYPE property on the design instance. The value assigned to the DERATE_TYPE property should match the Derate Type specified by you in the derate file. </p>
+      <p><a name="1077276">Consider a sample derate file, </a><font size="2" face="'Courier New'" color="#000000">sample.drt</font>. This derate file has two derate types for RES category, and one for capacitor. To use this derate file during the smoke analysis, load this file in Advanced Analysis. See <a href="#1078446" title="Smoke"><font color="#0000ff"><u>Adding the custom derating file to your design</u></font></a><a href="#1078446" title="Smoke"> </a>. </p>
+      <p><a name="1112762">Before you can use the derate file successfully, you need to </a>complete the following steps in Capture.</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1112764">Select the component and right&#45;click. </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>2	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1112765">From the pop&#45;up menu, select Edit properties.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>3	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1112766">In the Property Editor window, click the New Row button. </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>4	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1112767">In the Add New Row dialog box, specify the name of the </a>new property as DERATE_TYPE.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>5	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1112768">Specify the property value as </a><font size="2" face="'Courier New'" color="#000000">myderatetype3</font>, which is same as the derate type specified by you in the <font size="2" face="'Courier New'" color="#000000">sample.drt</font> file, and click OK.</td>
+          </tr>
+        </table>
+      </div>
+      <p align="left"><a name="1112778"><img src="images/05smok.8.1.46.png" width="448" height="561" alt=""></a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>6	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1112779">Regenerate the PSpice netlist. From the </a><font color="#000000"><strong>PSpice</strong></font> drop&#45;down menu select <font color="#000000"><strong>Create Netlist</strong></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>7	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1112780">Run the smoke analysis. From the </a><font color="#000000"><strong>PSpice</strong></font> drop&#45;down menu, select <font color="#000000"><strong>Advanced Analysis</strong></font> and then choose<font color="#000000"><strong> </strong></font><font color="#000000"><strong>Smoke</strong></font>. </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>8	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1112781">In Advanced Analysis, ensure that the </a><font size="2" face="'Courier New'" color="#000000">sample .drt</font> file is loaded and active. Then run the smoke analysis.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote>	<a name="1112785"><img src="images/deratefiledisplay.gif" width="466" height="44" alt=""></a></blockquote>
+      <blockquote><font color="#000000"><strong>Note: </strong></font><a name="1080180">To know more about loading a customized derate </a>file to your design, see <a href="#1078446" title="Smoke"><font color="#0000ff"><u>Adding the custom derating file to your design</u></font></a><a href="#1078446" title="Smoke"> </a>. </blockquote>
+      <p><a name="1080178">&nbsp;</a></p>
+      <h3><a name="1112803">Supported Device Categories</a></h3>
+      <p align="left"><a name="1079127">&nbsp;</a></p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="429">
+        <caption>
+          <p align="left">Table 5&#45;2&nbsp; <strong><a name="1112806">Supported derate type</a></strong></p>
+        </caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="top" width="194">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1112810">Device Category</a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="top" width="234">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1112812">Physical Device</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1112814">RES</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1112816">Resistor</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1112818">CAP</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1112820">Capacitor</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1112822">IND</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1112824">Inductor</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1112826">DIODE</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1112828">Diode</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1112830">NPN</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1112832">NPN Bipolar Junction Transistor</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1112834">PNP</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1112836">PNP Bipolar Junction Transistor</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1112838">JFET</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1112840">Junction FET </a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1112842">N&#45;CHANNEL</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1112844">N&#45;Channel JFET</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1112846">P&#45;CHANNEL</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1112848">P&#45;Channel JFET</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1112850">NMESFET</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1112852">N&#45;Channel MESFET</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1112854">PMESFET</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1112856">P&#45;Channel MESFET</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1112858">MOS</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1112860">MOSFET</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1112862">NMOS</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1112864">N&#45;Channel MOSFET</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1112866">PMOS</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1112868">P&#45;Channel MOSFET</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1112870">OPAMP</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1112872">Operational Amplifiers</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1112874">ZENER</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1112876">Zener Diode</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1112878">IGBT</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1112880">Ins Gate Bipolar Transistor</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1112882">VARISTOR</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1112884">Varistor</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1112886">OCNN</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1112888">Octo Coupler using PNP </a>transistor</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1112890">OCNPN</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1112892">Octo Coupler using NPN </a>transistor</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1112894">THYRISTOR</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1112896">Thyristor</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1112898">POS_REG</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1112900">Positive Voltage Regulator</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1112902">LED</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1112904">Light Emitting Diode</a></p>
+          </td>
+        </tr>
+      </table>
+      <h3><a name="1124027">Secondary Breakdown</a></h3>
+      <p><a name="1124028">The secondary breakdown value that Smoke uses in the safe </a>operating area calculation for bipolar junction transistor is derived from the following:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1124029">Maximum collector&#45;emitter voltage (VCE)</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1124030">Secondary breakdown slope (SBSLP)</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1124031">Secondary breakdown intercept (SBINT)</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1124032">The calculations are performed according to the equation</a></p>
+      <p><a name="1124033"><img src="images/05smok.8.1.48.png" width="257" height="25" alt=""></a></p>
+      <p><a name="1124034">Where,</a></p>
+      <p><a name="1124035">SBSLP is equal to <img src="images/05smok.8.1.49.png" width="147" height="25" alt=""></a></p>
+      <p><a name="1124036">SBINT is equal to the collector current (Ic) at Vce</a></p>
+      <h4><a name="1124037">Dependence of Secondary Breakdown on Case Temperature</a></h4>
+      <p><a name="1124038">If the necessary parameters are specified in the device model, </a>the secondary breakdown value calculated from the previous equation is derated according to case temperature.</p>
+      <p><a name="1124040">Manufacturers typically account for the dependence of </a>secondary breakdown on case temperature in one of the following ways:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1124041">Provide SBINT and SBSLP values that characterize </a>secondary breakdown at optimum case temperature (<img src="images/05smok.8.1.50.png" width="41" height="21" alt="">) and also provide a temperature derating curve that reflects how secondary breakdown limits decrease with increasing case temperature.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1124042">Provide SBINT and SBSLP values that characterize </a>secondary breakdown at a case temperature equal to the maximum junction temperature, describing the most conservative secondary breakdown effects.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1124043">Provide SBINT and SBSLP values that characterize </a>secondary breakdown at the optimum case temperature with no additional information about secondary breakdown at other case temperatures.</td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1124044">If temperature derating curves are available from </a>manufacturers (the first alternative above), then two additional maximum operating conditions, SBTSLP and SBMIN, are included for devices in the device directory.</p>
+      <p><a name="1124046">When SBTSLP and SBMIN are listed for a device, Smoke  </a>derives the temperature&#45;derated secondary breakdown by first calculating a preliminary secondary breakdown using SBINT and SBSLP and then derating that value based on the actual case temperature.</p>
+      <p><a name="1124048">The figure below shows the temperature&#45;derating curve </a>defined by SBTSLP, SBMIN, and TJ. </p>
+      <p>Figure 5&#45;10&nbsp; <strong><a name="1124049"><img src="images/tempderateSB.gif" width="818" height="558" alt="">Temperature Derating Curve for SB</a></strong></p>
+      <p><a name="1124053">When the case temperature is equal to the maximum junction </a>temperature (TJ), the safe operating limit for secondary breakdown is equal to SBMIN percent of the maximum secondary breakdown (SB) defined in the device model. At lower temperatures, the safe operating limit for secondary breakdown is equal to the maximum secondary breakdown value up to a breakpoint temperature and then decreases with increasing temperature until the case temperature reaches the maximum junction temperature (TJ). The slope at which the secondary breakdown limit decreases is -SBTSLP. The breakpoint temperature is defined by the values of SBMIN and SBTSLP.</p>
+      <p><a name="1124054">When temperature derating curves are not available from </a>manufacturers, SBTSLP and SBMIN are not included in the device library. In these cases, SBINT and SBSLP have values that characterize secondary breakdown at a case temperature equal to the maximum junction temperature, modeling the most conservative secondary breakdown limits. If you want to model the secondary breakdown limit at a temperature less than TJ, you can assign a derating factor greater than 1 to secondary breakdown (SB).</p>
+      <p><a name="1124055">For components in the device library, you can determine </a>whether or not secondary breakdown is derated for case temperature by checking the Diode Device Data Book. If SBTSLP, SBMIN, and TJ are listed, the temperature derating is calculated. If these values are not listed, then secondary breakdown is not derated for case temperature.</p>
+      <p><a name="1124056">As with any other maximum operating conditions, you can add </a>or change values for SBINT, SBSLP, SBTSLP, and SBMIN using Parameter Entry. You can assign a reliability derating to the maximum secondary breakdown value that Smoke  calculates by adding a derating factor for secondary breakdown (SB) to the derating file, or to TJ by changing its value in the derating file, or both.</p>
+      <p><a name="1124057">If you add reliability derating to SB or TJ, the temperature </a>derating curve is adjusted as shown in the figure below.</p>
+      <p><a name="1124058"><img src="images/reliabilityderatingcurve.gif" width="820" height="464" alt=""></a></p>
+      <p><a name="1124059">SBMIN is always defined as a percentage of the maximum </a>secondary breakdown (SB), not as a percentage of the reliability&#45;derated secondary breakdown.</p>
+      <hr>
+      <table width="100%" border="0" cellpadding="3" cellspacing="0" summary="">
+        <tr valign="baseline">
+          <td>
+            <p>
+              <font size="-1">
+                <a name="224" href="#wwfootnote_inline_224">1</a>
+              </font>
+            </p>
+          </td>
+          <td>
+            <p>
+              <font size="3" face="Sans-Serif" color="#000000"><a name="1123915"><font color="#000000">Depending on the license available, you will access either PSpice or</font></a></font>
+            </p>
+            <p><a name="1123906"><font color="#000000">AMS Simulator.</font></a></p>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <br>
+    <a href="#pagetop">Return to top of page</a>
+    <hr>
+    <hr align="left">
+    <div style="text-align: left;">
+      <!-- Begin Buttons -->
+      <table width="650" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                    </td>
+<td height="20" width="73">
+<a href="pspaugcaTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<a href="pspaugcaIX.html"><img src="../support/nav2_index.gif" border="0"></a>
+</td>
+          <td>
+            <a href="04opti.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+          </td>
+          <td>
+            <a href="06mont.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+          </td>
+          <td>
+            <a>
+<a href="pspaugca.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+            </a>
+          </td>
+          <td height="20" width="61">
+            <img src="../support/nav2_black.gif">
+          </td>
+          <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+          </td>
+          <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+          </td>
+          <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+          </td>
+        </tr>
+      </table>
+      <!-- End Buttons -->
+    </div>
+    <br>
+    <font size="-1" >
+For support, see <a href="http://support.cadence.com" target="_blank">Cadence Online Support</a> service.</font>
+    <br>
+    <br>
+    <font size="-1" >
+      <i>Copyright &#169; 2011, <a href="http://www.cadence.com">Cadence Design Systems, Inc.</a></i>
+    </font>
+    <br>
+    <font size="-1" >
+All rights reserved.</font>
+    <br>
+    <br>
+  </body>
+</html>

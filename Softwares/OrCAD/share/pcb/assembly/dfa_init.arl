@@ -1,0 +1,99 @@
+
+Environment DFA "___ERC_BHARAT"
+
+    Object design
+        Private
+            Predicate init()   is SKILL Function emiADesignInit;
+            Predicate access() is SKILL Function emiADesignAccess;
+            Predicate hilite(design) is Function emiAObjectHilite;
+            Predicate close() is Function envDesignExit;
+        EndPrivate
+
+    EndObject design
+    
+    Object component
+        Private
+            Predicate init()  is SKILL Function emiAComponentInit;
+            Predicate access() is SKILL Function emiAComponentAccess;
+            Predicate hilite(component) is Function emiAObjectHilite;
+            Predicate close() is Function envDesignExit;
+        EndPrivate
+        
+    EndObject component
+  
+    Object via
+      Private
+         Predicate  init() is SKILL Function emiAViaInit;
+         Predicate  access() is SKILL function emiAViaAccess;
+         Predicate hilite(via) is Function emiAObjectHilite;
+         Predicate  close() is function envDesignExit;
+      EndPrivate
+ 
+    EndObject via 
+
+    Object pin          
+      Private
+        Predicate  init() is SKILL Function emiAPinInit;
+        Predicate  access() is SKILL Function emiAPinAccess;
+        Predicate  close() is  Function envDesignExit;
+        Predicate  hilite(pin) is  Function emiAObjectHilite;
+      EndPrivate
+
+     EndObject pin
+   
+    Object hole          
+      Private
+        Predicate  init() is SKILL Function dfaAHoleInit;
+        Predicate  access() is SKILL Function dfaAHoleAccess;
+        Predicate  close() is  Function envDesignExit;
+        Predicate  hilite(hole) is  Function emiAObjectHilite;
+      EndPrivate
+
+     EndObject hole
+  
+    Object net
+      Private
+         Predicate  init() is SKILL Function emiANetInit;
+         Predicate  access() is SKILL function emiANetAccess;
+         Predicate  close() is function envDesignExit;
+         Predicate hilite(net) is Function emiAObjectHilite;
+      EndPrivate
+
+    EndObject net 
+
+
+    Object drc          
+      Private
+        Predicate  init() is SKILL Function dfaADRCInit;
+        Predicate  access() is SKILL Function dfaADRCAccess;
+        Predicate  close() is  Function envDesignExit;
+        Predicate  hilite(drc) is  Function emiAObjectHilite;
+      EndPrivate
+
+     EndObject drc
+   
+
+
+    MessageClass INFO
+        "INFO";
+    EndMessageClass
+ 
+    MessageClass OVERSIGHT
+        "OVERSIGHT";
+    EndMessageClass
+
+    MessageClass WARNING
+        "WARNING";
+    EndMessageClass
+
+    MessageClass ERROR
+        "ERROR";
+    EndMessageClass
+
+    MessageClass Fatal
+        Exit,
+        "*** FATAL *** ";
+    EndMessageClass Fatal
+
+
+EndEnvironment DFA

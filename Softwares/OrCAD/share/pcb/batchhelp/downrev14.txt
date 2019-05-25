@@ -1,0 +1,110 @@
+DISCLAIMER:
+
+THIS DOWNREV UTILITY IS INTENDED TO BE USED IN SITUATIONS WHERE A DESIGN 
+MUST BE DOWNREVVED TO 14.2 AND IS NOT INTENDED AS PART OF THE STANDARD 
+DESIGN PROCESS. IT IS IMPORTANT TO UNDERSTAND THAT CERTAIN DATA WILL BE 
+LOST IN THIS TRANSLATION. PLEASE READ THE LOG FILE FOR SPECIFIC INFORMATION. 
+
+THIS DOWNREV UTILITY IS DISTRIBUTED "AS IS" WITHOUT ANY OFFICIAL CADENCE 
+SUPPORT AND WITHOUT ANY WARRANTY, EXPRESS OR IMPLIED, AS TO PERFORMANCE, 
+MERCHANTABILITY, OR FITNESS FOR ANY PARTICULAR PURPOSE. THE ENTIRE RISK 
+AS TO THE RESULTS AND PERFORMANCE OF THE PRODUCT IS ASSUMED BY YOU.
+
+
+OVERVIEW:
+
+"downrev14" downrevs a 15.0 board to 14.2. If the design is from a later 15.x
+version, then perform the following command:
+
+File->Export->Save Design to 15.0
+
+Following this, run this 'downrev14' utility to take it down to 14.2.
+
+It will downrev a 15.0 board to 14.2 only if the board has no 15.0 specific 
+database elements. If downrev14 encounters 15.0 specific database elements, 
+it will print information about those element in the logfile. It is users 
+responsibility to fix those issues in 15.0 before attempting to downrev 
+to 14.2.
+
+
+SYNTAX FOR THE BATCH COMMAND:
+    downrev14 <15.0 board> -outfile <14.2 name>
+
+  . This works only on one board at a time
+  . This creates a log file - <15.0 board>.log
+
+Information about objects that need be fixed in 15.0 before the board can 
+be downreved to 14.2.
+
+LENGTHS
+-------
+  NAME		    14.2 MAX	  15.0 MAX
+  ----------------------------------------
+  group name	    31		  200
+  pad stack	    18		  255
+  net name	    31		  255
+  bus name          31            200
+
+  - if any name is found to be larger then the 14.2 MAX,
+    downrev14 will print out the information and the user
+    will have to change the name so it is 14.2 compatible
+    and run downrev14 again.  An exception will be a BUS_NAME,
+    it is deleted.
+
+SUBCLASSES
+----------
+  o subclass increase from 127 to 253.
+    if any objects on a subclass > 127 then downrev
+    fails, user has to remove objects on those
+    subclasses and then the subclasses.
+
+PROPERTIES
+----------
+  o Any Attribute/Property whose definition doesn't exist in 14.2 will 
+    be deleted.
+  o If # of chars in ATR_BUS_NAME is > 31 then it will be deleted.
+
+  
+PARAMETER RECORDS
+-----------------
+  o Any parameter record whose definition doesn't exists in 14.2 will 
+    be deleted.
+  o Any parameter record whose revision has changed from 14.2 to 15.0 
+    will also be deleted.
+    
+    Following parameter record will be downrevved.
+    - layer_parm_type
+
+    Following parameter records will be deleted.
+
+    o awb_parm_type
+    o ministat_parm_type
+    o probe_parm_type
+    o rt_gen_parm_type
+    o grid_parms_type
+    o rt_ins_parm_type
+
+DIFFPAIRS
+---------
+  o All diffpairs will be deleted from the board.
+
+
+PADSTACKS
+---------
+  o If we find any names that are longer then the 14.2 max, downrev14 will 
+    fail and inform the user that he has to change the names.
+
+
+BOUNDARY CLASS
+--------------
+  o If dynamic shapes are found in the board, attempt will be made to
+    delete all dynamic shape groups, but leave the underlying
+    etch shapes. If any object are still left on boundary class, 
+    downrev14 will fail and user will have to remove them.
+
+
+DRC
+---
+  o We will leave DRC's out of date.
+
+

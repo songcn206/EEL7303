@@ -1,0 +1,191 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 27 36
+HEADER "Via Array Boundary"
+
+POPUP <netslist>"""".
+POPUP <padstacklist>"""".
+POPUP <clinemode>"On single side of cline""1","On both sides of cline""2","On the center of cline""3".
+POPUP <avpthcpop>"Orthogonal""1","Diagonal""0","Full contact""2","8 way connect""3", "None""4".
+
+TILE
+
+GROUP "General options:"
+GLOC 1 0
+GSIZE 26 8
+ENDGROUP
+
+FIELD enabledrc
+FLOC 2 2
+CHECKLIST "Enable DRC check"
+ENDFIELD
+
+FIELD groupmode
+FLOC 2 4
+CHECKLIST "Enable grouping"
+ENDFIELD
+
+FIELD disablepreview
+FLOC 2 6
+CHECKLIST "Disable preview"
+ENDFIELD
+
+GROUP "Via net and padstack:"
+GLOC 1 8
+GSIZE 26 11
+ENDGROUP
+
+TEXT "Via net:"
+TLOC 2 10
+ENDTEXT
+
+FIELD availablenetslist
+FLOC 2 12
+STRFILLIN 16 36
+POP "netslist"
+ENDFIELD
+
+FIELD netbrowser
+FLOC 23 12
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+TEXT "Padstack:"
+TLOC 2 14
+ENDTEXT
+
+FIELD availablepadstackslist
+FLOC 2 16
+STRFILLIN 19 36
+POP "padstacklist"
+ENDFIELD
+
+GROUP "Global ring parameters:"
+GLOC 1 19
+GSIZE 26 15
+ENDGROUP
+
+FIELD staggeredring
+FLOC 2 21
+CHECKLIST "Staggered rings"
+ENDFIELD
+
+FIELD insiderings
+FLOC 2 23
+CHECKLIST "Inside shape/voids"
+ENDFIELD
+
+FIELD fillobject
+FLOC 2 25
+CHECKLIST "Fill shape/voids"
+ENDFIELD
+
+TEXT "Cline:"
+TLOC 2 27
+ENDTEXT
+
+FIELD clinemodes
+FLOC 6 27
+ENUMSET 17
+POP "clinemode"
+ENDFIELD
+
+TEXT "Number of rings:"
+TLOC 2 29
+ENDTEXT
+
+FIELD rings
+FLOC 16 29
+LONGFILLIN 8 8
+ENDFIELD
+
+TEXT "Ring-ring spacing:"
+TLOC 2 31
+ENDTEXT
+
+FIELD ringgap
+FLOC 16 31
+REALFILLIN 8 128
+ENDFIELD
+
+GROUP "Object-ring parameters"
+GLOC 1 34
+GSIZE 26 15
+ENDGROUP
+
+FIELD noncircular
+FLOC 2 36
+CHECKLIST "Non-circular object settings" "ObjectType"
+ENDFIELD
+
+FIELD circular
+FLOC 2 38
+CHECKLIST "Circular object settings" "ObjectType"
+ENDFIELD
+
+TEXT "Via-object offset:" voffsetinfo
+TLOC 3 40
+ENDTEXT
+
+FIELD voffset
+FLOC 16 40
+REALFILLIN 8 128
+ENDFIELD
+
+TEXT "Maximum via-via gap:" vvgapinfo
+TLOC 3 42
+ENDTEXT
+
+FIELD vvgap
+FLOC 18 42
+REALFILLIN 6 128
+ENDFIELD
+
+FIELD relradius
+FLOC 3 40
+CHECKLIST "Radius relative to boundary"
+ENDFIELD
+
+TEXT "Via array radius:" vradiusinfo
+TLOC 3 42
+ENDTEXT
+
+FIELD vradius
+FLOC 16 42
+REALFILLIN 8 128
+ENDFIELD
+
+TEXT "Via-via angle:" vangleinfo
+TLOC 3 44
+ENDTEXT
+
+FIELD vangle
+FLOC 16 44
+REALFILLIN 8 128
+ENDFIELD
+
+TEXT "Start angle:" startangleinfo
+TLOC 3 46
+ENDTEXT
+
+FIELD startangle
+FLOC 16 46
+REALFILLIN 8 128
+ENDFIELD
+
+GROUP "Thermal relief connects"
+GLOC 1 49
+GSIZE 26 5
+ENDGROUP
+
+FIELD thermconnects
+FLOC 2 51
+ENUMSET 16
+POP "avpthcpop"
+ENDFIELD
+
+ENDTILE
+
+ENDFORM
+

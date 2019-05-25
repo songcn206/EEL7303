@@ -1,0 +1,1154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN" "http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+<html xmlns="http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>PSpice User Guide -- Bias Point Display</title>
+<META NAME="Approver" CONTENT="Technical Publications">
+<META NAME="Author" CONTENT="Technical Publications">
+<META NAME="CreateDate" CONTENT="2012-08-31">
+<META NAME="CreateTime" CONTENT="1346413405">
+<META NAME="DataType" CONTENT="Manuals">
+<META NAME="Description" CONTENT="User guide for PSpice and AMS Simulator.">
+<META NAME="DocTitle" CONTENT="PSpice User Guide">
+<META NAME="DocType" CONTENT="User Guide">
+<META NAME="EdmsRelease" CONTENT="EDMS Windows-P015">
+<META NAME="FileTitle" CONTENT="Bias Point Display">
+<META NAME="FileType" CONTENT="Chapter">
+<META NAME="Keyword" CONTENT="pspug">
+<META NAME="Language" CONTENT="English">
+<META NAME="ModifiedDate" CONTENT="2012-08-31">
+<META NAME="ModifiedTime" CONTENT="1346413405">
+<META NAME="NextFile" CONTENT="A-init.html">
+<META NAME="PageCount" CONTENT="12">
+<META NAME="Platform" CONTENT="ALL">
+<META NAME="PrevFile" CONTENT="19output.html">
+<META NAME="Product" CONTENT="Allegro AMS Simulator, PSpice">
+<META NAME="ProductFamily" CONTENT="PCB Design, PCB Design">
+<META NAME="ProductVersion" CONTENT="16.6">
+<META NAME="RightsManagement" CONTENT="Copyright 2012 Cadence Design Systems Inc.">
+<META NAME="Title" CONTENT="PSpice User Guide -- Bias Point Display">
+<META NAME="TopicTags" CONTENT="FALSE">
+<META NAME="Version" CONTENT="16.6">
+  </head>
+  <body style="margin-left: 5%;">
+    <a name="pagetop"></a>
+    <a name="firstpage"></a>
+    <!-- Begin Buttons -->
+    <table width="650" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td height="36" width="650" colspan="10">
+          <img src="../support/header_doc.gif" width="650" height="34">
+        </td>
+      </tr>
+      <tr>
+        <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                </td>
+<td height="20" width="73">
+<a href="pspugTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<a href="pspugIX.html"><img src="../support/nav2_index.gif" border="0"></a>
+</td>
+        <td>
+          <a href="19output.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+        </td>
+        <td>
+          <a href="A-init.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+        </td>
+        <td height="20">
+          <a>
+<a href="pspug.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+          </a>
+        </td>
+        <td height="20" width="61">
+          <img src="../support/nav2_black.gif">
+        </td>
+        <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+        </td>
+        <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+        </td>
+        <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+        </td>
+      </tr>
+    </table>
+    <!-- End Buttons -->
+    <p>
+    <hr>
+    <p>
+      <h3>
+        <center>
+          <font >
+            <div>PSpice&#174; User Guide</div>
+            <font >
+              <div>
+            </font>
+          </font>
+        </center>
+      </h3>
+      <br>
+    </p>
+    <div>
+      <h1>20<a name="1035250">&nbsp;</a></h1>
+      <h1><a name="1044045">Bias Point Display</a></h1>
+      <h2><a name="1042213">Introduction</a></h2>
+      <p><a name="1042241">Bias conditions are used to set up the correct operation of a circuit. If the results of a </a>simulation are not what you expect to see, the bias conditions are the first parameters you should check.</p>
+      <p><a name="1042215">After simulating with PSpice, you can display bias point information on your schematic page </a>in Capture. Bias voltages are displayed next to their corresponding nets (nodes), bias currents are displayed next to their corresponding device pins and the bias powers are displayed next to their corresponding power sources. By seeing this data on your schematic, you can quickly focus in on potential problem areas of your design. PSpice calculates and saves the bias point current, voltages and powers for every simulation. Capture reads all of this information and can display currents on all pins that have models, voltages for every net in your circuit or powers for every power source in your circuit.</p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1042218">Bias point information is available for all analysis types except DC Sweep. The bias </a>point display feature does not work for DC Sweeps.</p>
+      <p><a name="1042223">You can choose to display bias point information in the following ways:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1042225">currents on all modeled pins throughout the design</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1042227">currents on only selected modeled pins</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1042229">voltages on all wires throughout the design</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1042231">voltages on only selected wires</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1043755">powers on all power sources throughout the design</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1043756">powers on only selected power sources</a></td>
+          </tr>
+        </table>
+      </div>
+      <p align="left"><a name="1042211"><img src="images/20bias_point_display.27.1.1.png" width="675" height="200" alt=""></a></p>
+      <p><a name="1042322">For currents on pins, a &#34;+&#34; value for the bias point means current is flowing into the pin, while </a>a &#34;&#45;&#34; value means current is flowing out of the pin. By default, only voltages are displayed. You can toggle the currents on or off by using the corresponding toolbar buttons or menu commands.</p>
+      <h3><a name="1042328">How bias information is stored and updated</a></h3>
+      <p><a name="1042329">Not all pins and nets will have bias information. Buses, for example, do not have bias </a>information, since they are not distinct wires. Bias point data and the locations of the displayed values are saved as part of the schematic page. Distinct bias point information is saved for each simulation profile. The data is updated whenever you open a schematic page, when you resimulate, when you activate a different simulation profile, or when you change the display characteristics of the labels (such as color, font or precision).</p>
+      <p><a name="1042331">For a schematic containing multiple pages, the bias information is stored with each page. If </a>you turn off bias point display on one page, this will not affect the display on other pages. If a page is reused (hierarchical subcircuits), the position of the bias point will be stored with the page and will be the same for all occurrences of that page, although the values will be different for each to accurately reflect the hierarchy of the circuit.</p>
+      <h3><a name="1042333">Bias point data for multiple analyses</a></h3>
+      <p><a name="1042334">If you have set up more than one analysis, you should keep in mind the following:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1042336">Capture will always display the bias information for the last analysis you ran. PSpice runs </a>analyses in this order: DC, AC, Transient. This means that if you perform a multi&#45;run analysis like Parametric, Monte Carlo, Sensitivity&#47;Worst&#45;case or Temperature, you will see bias values for the last run only.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1042338">A given voltage or current source can have a different DC value and initial transient value </a>at TIME=0. This means that the initial transient bias calculation can be different from the DC (small&#45;signal) bias point.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1042340">For a Transient analysis, only the initial transient bias values are shown.</a></td>
+          </tr>
+        </table>
+      </div>
+      <h2><a name="1042382">Displaying bias point values</a></h2>
+      <p><a name="1042396">You have the option of enabling the display of bias information for all nets, pins and power </a>sources in the circuit, or of enabling only selected nets, pins and power sources. You can also disable bias point display all together for situations such as large digital designs where the legibility of the schematic might be reduced.</p>
+      <h4><em><a name="1042398">To enable or disable the display of all bias information</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1042399">In Capture, from the PSpice menu, choose Bias Points. A submenu appears (see figure).</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1043705"><img src="images/bias_point_menu.GIF" width="406" height="408" alt=""></a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1042401">From the submenu, select Enable.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1042403">By clearing this option, you disable the bias display feature entirely. The presence of the </a>check mark indicates that this option is enabled. (The default setting is to have this option enabled.)</p>
+      <h4><em><a name="1042405">To enable or disable the display of all bias points</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1042406">In Capture, from the PSpice menu, choose Bias Points. A submenu appears.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1043802">From the submenu, select:</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1043808">Enable Bias Current Display or click the toolbar buttom (<img src="images/Enable_bias_curent_display.gif" width="24" height="29" alt="">).</a></blockquote>
+      <blockquote><a name="1043812">&#45;or&#45;</a></blockquote>
+      <blockquote><a name="1043816">Enable Bias Voltage Display or click the toolbar buttom (<img src="images/Enable_bias_voltage_display.gif" width="29" height="29" alt="">).</a></blockquote>
+      <blockquote><a name="1043842">&#45;or&#45;</a></blockquote>
+      <blockquote><a name="1043846">Enable Bias Power Display or click the toolbar buttom (<img src="images/Enable_bias_power_display.gif" width="31" height="29" alt="">).</a></blockquote>
+      <p><a name="1042481">By checking this option, you enable the corresponding bias display feature. The presence of </a>the check mark indicates that this option is enabled. (The default setting is to have this option disabled.)</p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1042484">Enabling bias display simply allows the feature to work, displaying whatever bias </a>values were previously selected and toggled on. To learn how to toggle on or off just one specific bias display, click Toggling a specific bias display.</p>
+      <h4><em><a name="1042549">To turn on or off the display of selected bias points</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1042550">In Capture, click on a pin, or hold the CTRL key and click on several pins to select them. </a>You can also click on a part to select all of the pins for that part.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1042552">From the PSpice menu, choose Bias Points. A submenu appears.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1042554">From the submenu, select Toggle Selected Bias Current.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1042556">&#45;or&#45;</a></blockquote>
+      <blockquote><a name="1042558">Click the toolbar button (<img src="images/Toggle_bias_current.gif" width="30" height="29" alt="">) after selecting the pins.</a></blockquote>
+      <p><a name="1042626">The presence of the check mark indicates that this option is turned on. (The default setting is </a>to have this option turned off.)</p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1042629">You can also turn off selected bias points by pressing the DELETE key. If you use the </a>DELETE key, the bias point labels will be restored to their default locations the next time you display them.</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="13.333333333333332">
+              <div>&nbsp;</div>
+            </td>
+            <td width="133.33333333333331">
+              <div>
+                <nobr>
+                  <img src="images/important.gif" alt="ParagraphBullet" border="0">
+                </nobr>
+              </div>
+            </td>
+            <td>
+              <font size="3"><a name="1042731">Since the current bias point of a capacitor equals zero, you will not see current bias </a>point displays for these devices. Similarly, for other two terminal devices such as resistors, the current bias point will only be displayed on the positive (+) pin, because the negative (&#45;) pin does not have a bias point value to display.</font>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <h4><em><a name="1042732">To turn on display of bias points after turning off selected bias point displays</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1042733">From the Edit menu, choose Select All.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1042724">Click the toolbar button three times: Once to toggle on the bias displays that were </a>previously turned off; once more to turn off all bias displays, and a third time to turn them all back on.</td>
+          </tr>
+        </table>
+      </div>
+      <h2><a name="1042691">Controlling the display of bias points</a></h2>
+      <p><a name="1042745">You can set the precision of the bias point value that is displayed, and you can change the </a>color or font of the label. You can also define whether bias point data should be printed with the schematic. These settings are all defined using the Bias Point Preferences dialog box (see figure below).</p>
+      <p align="left"><a name="1042763"><img src="images/bias_point_prefs.GIF" width="357" height="209" alt=""></a></p>
+      <p><a name="1042779">To set the precision of the bias point values:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1042780">In Capture, from the PSpice menu, choose Bias Points. A submenu appears.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1042782">From the submenu, select Preferences. The Bias Point Preferences dialog box appears.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1042784">In the Displayed Precision text box, enter the number of decimals you wish to display for </a>the bias point values.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1042786">Click OK.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1042788">This setting applies globally to all current, voltage and power bias points in your design. (The </a>default setting is 4.)</p>
+      <h4><em><a name="1042790">To set the color of the bias point values:</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1042791">In Capture, from the PSpice menu, choose Bias Points. A submenu appears.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1042793">From the submenu, select Preferences. The Bias Point Preferences dialog box appears.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1042795">Click in the Color box for current, voltage or power and select the color you wish to display </a>from the color palette.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1042797">Click OK.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1042799">These settings apply globally to all current and voltage bias points in your design.</a></p>
+      <h4><em><a name="1042801">To set the fonts for the bias point values:</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1042802">In Capture, from the PSpice menu, choose Bias Points. A submenu appears.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1042804">From the submenu, select Preferences. The Bias Point Preferences dialog box appears.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1042806">Click in the Font box for current, voltage or power and select the font type, style, and size </a>you wish to display from the font dialog box.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1042808">Click OK.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1042810">These settings apply globally to all current, voltage and power bias points in your design. (The </a>default setting is Arial 7.)</p>
+      <h4><em><a name="1042812">To print the bias point values:</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1042813">In Capture, from the PSpice menu, choose Bias Points. A submenu appears.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1042815">From the submenu, select Preferences. The Bias Point Preferences dialog box appears.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1042817">Click the Print check box for current, voltage or power. The bias point values will then </a>print with the schematic page.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1042819">Click OK.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1042821">These settings apply globally to all current, voltage and power bias points in your design. The </a>presence of the check mark indicates that this option is enabled. (The default setting is to have this option enabled.)</p>
+      <h2><a name="1042777">Moving bias points</a></h2>
+      <p><a name="1042921">Bias points have a default position near their corresponding wire or pin. You can select the </a>bias point labels and relocate them to make the schematic page more legible. A dashed leader line extends from the label to the wire or pin it is associated with to indicate where the label belongs.</p>
+      <h4><em><a name="1042923">To move a bias point label:</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1042924">Click on the label you wish to move to select it.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1042926">While holding down the left mouse button, drag the label to the new location.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1042928">Once you move a label, the new location will be saved with the schematic page so the bias </a>point will be displayed there again the next time you open that page.</p>
+      <h2><a name="1042979">Updating bias point values</a></h2>
+      <p><a name="1042983">The bias point values displayed in Capture reflect the data from the last simulation that was </a>performed in PSpice. In some cases, these may not be the most recent values, depending on when they were last updated. There are three ways to update the values.</p>
+      <h4><em><a name="1042985">To update the bias point values by resimulating:</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/arrwrite.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1042986">In Capture, from the PSpice menu, choose Run.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1043023">By re&#45;running the simulation in PSpice, you update the bias points to the correct values.</a></p>
+      <h4><em><a name="1043025">To update the bias point values by changing profiles:</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1042991">In Capture&#39;s Project Manager, under the File tab, double&#45;click on the Simulation Profiles </a>folder to see all the defined profiles for this project.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1042993">Right&#45;click on the profile you want to make active. A shortcut menu appears.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1042995">From the shortcut menu, select Make Active.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1042997">By opening a new simulation profile, you update the bias points to reflect the correct values </a>that were last calculated for that profile.</p>
+      <h4><em><a name="1042999">To update the bias point values by changing the display:</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1043000">In Capture, from the PSpice menu, choose Bias Points. A submenu appears.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1043002">From the submenu, select Preferences. The Bias Point Preferences dialog box appears.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1043004">Click OK without changing any settings.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1043006">By opening the Preferences dialog box, you force Capture to update the bias points with the </a>correct values.</p>
+      <h2><a name="1042961">Menu commands for bias point display</a></h2>
+      <p><a name="1043087">The following table explains the menu commands for bias point display. You can access these </a>commands by selecting Bias Points from the PSpice menu in Capture.</p>
+      <p><a name="1043089">To see a map of these commands as they appear under the PSpice menu in Capture, click </a>Bias Point menu.</p>
+      <p><a name="1043085">&nbsp;</a></p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="648">
+        <caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="216">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1043237"><font color="#000000"><strong>Menu command...</strong></font></a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="432">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1043239">Function...</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1043241">Enable</a></p>
+          </td>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1043243">Enables or disables the bias point display capability.</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1043245">Enable Bias Current Display</a></p>
+          </td>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1043247">Enables or disables the display of current bias points for all </a>modeled pins in the entire design.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1043249">Toggle Selected Bias Current</a></p>
+          </td>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1043251">Turns on or off the display of current bias points for selected </a>modeled pins.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1043253">Enable Bias Voltage Display</a></p>
+          </td>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1043255">Enables or disables the display of voltage bias points for all </a>wires in the entire design.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1043257">Toggle Selected Bias Voltage</a></p>
+          </td>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1043259">Turns on or off the display of voltage bias points for selected </a>wires.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1043900">Enable Bias Power Display</a></p>
+          </td>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1043902">Enables or disables the display of power bias points for all </a>wires in the entire design.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1043904">Toggle Selected Bias Power</a></p>
+          </td>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1043906">Turns on or off the display of power bias points for selected </a>wires.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1043261">Preferences</a></p>
+          </td>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1043263">Provides controls for displaying the precision, color, font and </a>printability of the bias point values.</p>
+          </td>
+        </tr>
+      </table>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="13.333333333333332">
+              <div>&nbsp;</div>
+            </td>
+            <td width="133.33333333333331">
+              <div>
+                <nobr>
+                  <img src="images/important.gif" alt="ParagraphBullet" border="0">
+                </nobr>
+              </div>
+            </td>
+            <td>
+              <font size="3"><a name="1043202">In order to access the PSpice menu in Capture, you must be working with a project </a>that can be simulated. You must create a project (not a design) and select the Analog or Mixed&#45;Signal Circuit Wizard option in order to be able to simulate the design with PSpice.</font>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <h2><a name="1043266">Toolbar controls for bias point display</a></h2>
+      <p><a name="1043283">The following table explains the control buttons in the Bias Point toolbar buttons on the Pspice </a>toolbar.</p>
+      <h4><em><a name="1043281">The Bias Point toolbar buttons on the Pspice toolbar in Capture</a></em></h4>
+      <p align="left"><a name="1043296"><img src="images/Pspice.gif" width="613" height="69" alt=""></a></p>
+      <p align="left"><a name="1043306">&nbsp;</a></p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="588">
+        <caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="122">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1043315">Toolbar Icon</a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="466">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1043317">Description</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1043364"><img src="images/Enable_bias_voltage_display.gif" width="29" height="29" alt=""></a></p>
+            <p><a name="1043368">Enable Bias </a>Voltage Display</p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1043372">Enables or disables the display of voltage bias points for all wires </a>in the entire design.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1043323"><img src="images/Toggle_bias_voltage.gif" width="32" height="29" alt=""></a></p>
+            <p><a name="1043389">Toggle Selected </a>Bias Voltage</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1043379">Turns on or off the display of voltage bias points for selected </a>wires.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1043327"><img src="images/Enable_bias_current_display.gif" width="24" height="29" alt=""></a></p>
+            <p><a name="1043451">Enable Bias </a>Current Display</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1043413">Enables or disables the display of current bias points for all </a>modeled pins in the entire design.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1043483"><img src="images/Toggle_bias_current.gif" width="30" height="29" alt=""></a></p>
+            <p><a name="1043484">Toggle Selected </a>Bias Current</p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1043423">Turns on or off the display of current bias points for selected </a>modeled pins.</p>
+          </td>
+        </tr>
+      </table>
+      <h2><a name="1043494">Toggling a specific current bias display</a></h2>
+      <h4><em><a name="1043517">To turn on the display of a specific current bias point:</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1043518">In Capture, from the Edit menu, choose Select All.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1043520">Click the Toggle Selected Bias Current button  in the Bias Point toolbar (<img src="images/Toggle_bias_current.gif" width="30" height="29" alt="">). This will </a>either turn off all current bias values for every pin on the schematic page, or they will all be turned on, depending on the previous state. Click the button again, if necessary, to turn everything off. If there is no change in the display either way, be sure that Enable Bias Current Display is checked.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1043522">Click the mouse on an empty area of the schematic page to deselect everything.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1043524">Click the specific pin you want to display the current on, in order to select it.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1043526">Click the Toggle Selected Bias Current button  in the Bias Point toolbar (<img src="images/Toggle_bias_current.gif" width="30" height="29" alt="">).</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1043528">You should now see only the current bias point value for the specific pin you are interested in. </a>All other current bias points on the schematic page should be turned off.</p>
+      <h2><a name="1043502">Toggling a specific voltage bias display</a></h2>
+      <p><a name="1043595">To turn on the display of a specific voltage bias point:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1043640">In Capture, from the Edit menu, choose Select All.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1043643">Click the Toggle Selected Bias Voltage button  in the Bias Point toolbar (<img src="images/Toggle_bias_voltage.gif" width="32" height="29" alt="">)</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1043644">This will either turn off all voltage bias values for every net on the schematic page, or they </a>will all be turned on, depending on the previous state. Click the button again, if necessary, to turn everything off. If there is no change in the display either way, be sure that Enable Bias Voltage Display is checked.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1043600">Click the mouse on an empty area of the schematic page to deselect everything.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1043602">Click the specific net you want to display the voltage on, in order to select it.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1043604">Click the Toggle Selected Bias Voltage button  in the Bias Point toolbar (<img src="images/Toggle_bias_voltage.gif" width="32" height="29" alt="">).</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1043606">You should now see only the voltage bias point value for the specific pin you are interested </a>in. All other voltage bias points on the schematic page should be turned off.</p>
+      <h2><a name="1043922">Toggling a specific power bias display</a></h2>
+      <p><a name="1043923">To turn on the display of a specific power bias point:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1043924">In Capture, from the Edit menu, choose Select All.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1043928">Click the Toggle Selected Bias Power button  in the Bias Point toolbar (<img src="images/Toggle_bias_power.gif" width="31" height="29" alt="">)</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1043929">This will either turn off all power bias values for every power source on the schematic </a>page, or they will all be turned on, depending on the previous state. Click the button again, if necessary, to turn everything off. If there is no change in the display either way, be sure that Enable Bias Power Display is checked.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1043930">Click the mouse on an empty area of the schematic page to deselect everything.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1043931">Click the specific power source you want to display the voltage on, in order to select it.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1043935">Click the Toggle Selected Bias Voltage button  in the Bias Point toolbar (<img src="images/Toggle_bias_power.gif" width="31" height="29" alt="">).</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1043936">You should now see only the voltage bias point value for the specific pin you are interested </a>in. All other voltage bias points on the schematic page should be turned off.</p>
+      <h2><a name="1043593">Differences between bias point display in Capture vs. </a>PSpice Schematics</h2>
+      <p><a name="1043677">Bias point display in OrCAD Capture works very much the same way as in MicroSim </a>Schematics Release 8. There are, however, a few differences that should be noted.</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1043679">The &#34;stale&#34; condition that was supported in Schematics is not supported in Capture. The </a>bias point values you see will always reflect the calculations from the last simulation run.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1043681">In Schematics, for a current bias point, the leader line on the bias point label indicated </a>the direction of the current flow. Current direction is not indicated in Capture.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1043683">In Schematics, two symbols were provided (VIEWPOINT &amp; IPROBE) that were formerly </a>used for bias point display. These symbols became redundant in Release 8 with the improved bias point display feature. These symbols are not available with Capture.</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <br>
+    <a href="#pagetop">Return to top of page</a>
+    <hr>
+    <hr align="left">
+    <div style="text-align: left;">
+      <!-- Begin Buttons -->
+      <table width="650" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                    </td>
+<td height="20" width="73">
+<a href="pspugTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<a href="pspugIX.html"><img src="../support/nav2_index.gif" border="0"></a>
+</td>
+          <td>
+            <a href="19output.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+          </td>
+          <td>
+            <a href="A-init.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+          </td>
+          <td>
+            <a>
+<a href="pspug.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+            </a>
+          </td>
+          <td height="20" width="61">
+            <img src="../support/nav2_black.gif">
+          </td>
+          <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+          </td>
+          <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+          </td>
+          <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+          </td>
+        </tr>
+      </table>
+      <!-- End Buttons -->
+    </div>
+    <br>
+    <font size="-1" >
+For support, see <a href="http://support.cadence.com" target="_blank">Cadence Online Support</a> service.</font>
+    <br>
+    <br>
+    <font size="-1" >
+      <i>Copyright &#169; 2011, <a href="http://www.cadence.com">Cadence Design Systems, Inc.</a></i>
+    </font>
+    <br>
+    <font size="-1" >
+All rights reserved.</font>
+    <br>
+    <br>
+  </body>
+</html>

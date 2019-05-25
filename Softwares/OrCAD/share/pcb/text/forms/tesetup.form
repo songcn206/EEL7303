@@ -1,0 +1,272 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM fixed_font
+FIXED
+PORT 83 34
+HEADER "Setup"
+
+POPUP <calcCondArea_popup>"PostRoute""1","PreRoute""2".
+
+POPUP <flx_popup>"Import""2".
+
+
+TILE
+TEXT "Ignore Symbols"
+TLOC 4 5
+TGROUP "Simulation Control"
+ENDTEXT
+
+TEXT "Power Level (%)"
+TLOC 4 8
+TGROUP "Simulation Control"
+ENDTEXT
+
+TEXT "Conductive Area (%)"
+TLOC 4 11
+TGROUP "Simulation Control"
+ENDTEXT
+
+TEXT "Detail Level"
+TLOC 4 14
+TGROUP "Simulation Control"
+ENDTEXT
+
+TEXT "External CFD File"
+TLOC 4 17
+TGROUP "Simulation Control"
+ENDTEXT
+
+TEXT "Thermal Vias"
+TLOC 4 20
+TGROUP "Simulation Control"
+ENDTEXT
+
+TEXT "Padstack Name(s)"
+TLOC 7 23
+TGROUP "Simulation Control"
+ENDTEXT
+
+TEXT "Material"
+TLOC 7 26
+TGROUP "Simulation Control"
+ENDTEXT
+
+TEXT "X0"
+TLOC 31 29
+ENDTEXT
+
+TEXT "Y0"
+TLOC 43 29
+ENDTEXT
+
+TEXT "X1"
+TLOC 56 29
+ENDTEXT
+
+TEXT "Y1"
+TLOC 69 29
+ENDTEXT
+
+TEXT "Simulated Area"
+TLOC 4 31
+TGROUP "Simulation Control"
+ENDTEXT
+
+TEXT "Working :"
+TLOC 2 40
+TGROUP "Library Files"
+ENDTEXT
+
+TEXT "Reference :"
+TLOC 2 42
+TGROUP "Library Files"
+ENDTEXT
+
+FIELD skipSymbol
+FLOC 27 5
+FGROUP "Simulation Control"
+STRFILLIN 30 255
+ENDFIELD
+
+FIELD powerLevel
+FLOC 27 8
+FGROUP "Simulation Control"
+STRFILLIN 15 20
+ENDFIELD
+
+FIELD condArea
+FLOC 27 11
+FGROUP "Simulation Control"
+STRFILLIN 15 20
+ENDFIELD
+
+FIELD calcCondArea
+FLOC 49 11
+FGROUP "Simulation Control"
+MENUBUTTON "Calculate Cond. Area" 24 3
+POP "calcCondArea_popup"
+ENDFIELD
+
+FIELD low
+FLOC 27 14
+FGROUP "Simulation Control"
+CHECKLIST "Low" "detailLevel"
+ENDFIELD
+
+FIELD medium
+FLOC 36 14
+FGROUP "Simulation Control"
+CHECKLIST "Medium" "detailLevel"
+ENDFIELD
+
+FIELD high
+FLOC 48 14
+FGROUP "Simulation Control"
+CHECKLIST "High" "detailLevel"
+ENDFIELD
+
+FIELD cfdFilename
+FLOC 27 17
+FGROUP "Simulation Control"
+STRFILLIN 15 99
+ENDFIELD
+
+FIELD flx
+FLOC 49 17
+FGROUP "Simulation Control"
+MENUBUTTON "Flomerics" 16 3
+POP "flx_popup"
+ENDFIELD
+
+FIELD viaName
+FLOC 27 23
+FGROUP "Simulation Control"
+STRFILLIN 30 255
+ENDFIELD
+
+FIELD viaMat
+FLOC 27 26
+FGROUP "Simulation Control"
+STRFILLIN 16 255
+ENDFIELD
+
+FIELD simX0
+FLOC 27 31
+FGROUP "Simulation Control"
+STRFILLIN 8 16
+ENDFIELD
+
+FIELD simY0
+FLOC 39 31
+FGROUP "Simulation Control"
+STRFILLIN 8 16
+ENDFIELD
+
+FIELD simX1
+FLOC 52 31
+FGROUP "Simulation Control"
+STRFILLIN 8 16
+ENDFIELD
+
+FIELD simY1
+FLOC 65 31
+FGROUP "Simulation Control"
+STRFILLIN 8 16
+ENDFIELD
+
+FIELD workLib
+FLOC 12 40
+FGROUP "Library Files"
+INFO_ONLY
+STRFILLIN 40 99
+ENDFIELD
+
+FIELD LibCreate
+FLOC 56 42
+MENUBUTTON "Create New Library" 22 3
+ENDFIELD
+
+FIELD LibAdd
+FLOC 56 45
+FGROUP "Library Files"
+MENUBUTTON "Add Existing Library" 22 3
+ENDFIELD
+
+FIELD LibRemove
+FLOC 56 48
+FGROUP "Library Files"
+MENUBUTTON "Remove Library" 22 3
+ENDFIELD
+
+FIELD LibUp
+FLOC 56 51
+FGROUP "Library Files"
+MENUBUTTON "Move Up" 22 3
+ENDFIELD
+
+FIELD LibDown
+FLOC 56 54
+FGROUP "Library Files"
+MENUBUTTON "Move Down" 22 3
+ENDFIELD
+
+FIELD LibSetWorking
+FLOC 56 57
+FGROUP "Library Files"
+MENUBUTTON "Set Working" 22 3
+ENDFIELD
+
+FIELD refLib
+FLOC 2 44
+FGROUP "Library Files"
+LIST "" 50 8
+ENDFIELD
+
+FIELD LibArc
+FLOC 2 60
+MENUBUTTON "Archive Libraries" 22 3
+ENDFIELD
+
+FIELD LibUnArc
+FLOC 28 60
+MENUBUTTON "Extract from Archive" 22 3
+ENDFIELD
+
+FIELD readDFIILib
+FLOC 56 60
+FGROUP "Library Files"
+MENUBUTTON "Read DFII Library" 22 3
+ENDFIELD
+
+FIELD done
+FLOC 2 64
+MENUBUTTON "OK" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 13 64
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD preference
+FLOC 24 64
+MENUBUTTON "Preference" 16 3
+ENDFIELD
+
+FIELD Help
+FLOC 67 64
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+GROUP "Simulation Control"
+GLOC 1 1
+GSIZE 78 34
+ENDGROUP
+
+GROUP "Library Files"
+GLOC 1 37
+GSIZE 79 26
+ENDGROUP
+
+ENDTILE
+
+ENDFORM

@@ -1,0 +1,33 @@
+    Usage:
+        dump_libraries -[pdamsflcx] <layout>
+
+    Options:
+        -p - dump all padstacks
+        -d - dump all device files        (run create_devices)
+        -a - dump all package symbols     (.dra only)
+        -m - dump all mechanical symbols  (.dra only)
+        -s - dump all shape/flash symbols (.dra only)
+        -f - dump all format symbols      (.dra only)
+        -l - dump all signoise device models
+        -c - create .psm, .bsm, fsm, and .ssm files when dumping symbols
+        -x - do not dump dependencies
+        <no options> - dump all elements  (equivalent to -pdamsflc)
+
+    Notes:
+     1) The dependencies of each dumped item will also be dumped.  For
+        example, when dumping padstacks, all shape symbols required by
+        the padstacks will also be created.
+
+     2) The -x option prevents dumping dependancies. By default padstacks
+        that a dra requires are dumped.
+
+     3) The -b option is used by APD to send information from the APD to
+        the dump_libraries program about the symbol to be dumped. The -b
+        option causes only one padstack and one particular symbol to be dumped
+.
+        The -b options have three values:
+            dump_libraries -b component_refdes -b symbol_name -b padstack_name
+	This option is quite different from normal behavior.
+
+
+

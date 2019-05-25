@@ -1,0 +1,169 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 48 6
+HEADER "Reports"
+
+
+#ifdef _ALLEGRO_STUDIO
+POPUP <rpt_list>\
+"Assigned Function""asn", \
+"Bill of Materials""bom",\
+"Component""cmp",\
+"Component Pin""cpn",\
+"Dangling Lines""DANGLE",\
+"Design Rules Check (DRC)""drc",\
+"Design Rules Check (waived)""waived_drc",\
+"Dynamic Shapes""shapes",\
+"Function""fcn",\
+"Function Pin""fpn",\
+"HDL Design Entry Feedback""vfb", \
+"Module""mod",\
+"Net List""net",\
+"Netin (back anno.)""ban",\
+"Netin (non-back)""nbn",\
+"Padstack Definition""pad",\
+"Padstack Usage""psu",\
+"Placed Component""pcp",\
+"Properties on Nets""npr",\
+"Spare Function""spf",\
+"Summary Drawing Report""sum",\
+"Symbol Library Path""slp",\
+"Symbol Pin""spn",\
+"Testprep""testprep",\
+"Unassigned Functions""uaf",\
+"Unconnected Pins""ucn",\
+"Unplaced Components""upc".
+#endif
+
+#ifdef _ALLEGRO_DESIGNER || _ALLEGRO_EXPERT || _ALLEGRO_PCB_GXL || APD || SIP 
+POPUP <rpt_list>\
+"Assigned Function""asn", \ 
+"Bill of Materials""bom",\
+"Component""cmp",\
+"Component Pin""cpn",\
+"Dangling Lines""DANGLE",\
+"Design Rules Check (DRC)""drc",\
+"Design Rules Check (waived)""waived_drc",\
+"Dynamic Shapes""shapes",\
+"ECL Actual/Schedule""ean",\
+"ECL Actual/Schedule (%)""eas",\
+"ECL (Long)""ecl",\
+"ECL (Short)""ecs",\
+"ECL Schedule""ecls",\
+"Film Area""film",\
+"Function""fcn",\
+"Function Pin""fpn",\
+"HDL Design Entry Feedback""vfb", \
+"Module""mod",\
+"Net List""net",\
+"Netin (back anno.)""ban",\
+"Netin (non-back)""nbn",\
+"Padstack Definition""pad",\
+"Padstack Usage""psu",\
+"Placed Component""pcp",\
+"Properties on Nets""npr",\
+"Spare Function""spf",\
+"Summary Drawing Report""sum",\
+"Symbol Library Path""slp",\
+"Symbol Pin""spn",\
+"Testprep""testprep",\
+"Unassigned Functions""uaf",\
+"Unconnected Pins""ucn",\
+"Unplaced Components""upc".
+#endif
+
+#ifdef SPECCTRAQUEST || SQPKG
+POPUP <rpt_list>\
+"Assigned Function""asn", \ 
+"Bill of Materials""bom",\
+"Component""cmp",\
+"Component Pin""cpn",\
+"Dangling Lines""DANGLE",\
+"Design Rules Check (DRC)""drc",\
+"Design Rules Check (waived)""waived_drc",\
+"Design Status""dstatus",\
+"Dynamic Shapes""shapes",\
+"ECL Actual/Schedule""ean",\
+"ECL Actual/Schedule (%)""eas",\
+"ECL (Long)""ecl",\
+"ECL (Short)""ecs",\
+"ECL Schedule""ecls",\
+"Film Area""film",\
+"Function""fcn",\
+"Function Pin""fpn",\
+"HDL Design Entry Feedback""vfb", \
+"Module""mod",\
+"Net List""net",\
+"Netin (back anno.)""ban",\
+"Netin (non-back)""nbn",\
+"Padstack Definition""pad",\
+"Padstack Usage""psu",\
+"Parallelism""parallel",\
+"Placed Component""pcp",\
+"Properties on Nets""npr",\
+"Spare Function""spf",\
+"Summary Drawing Report""sum",\
+"Symbol Library Path""slp",\
+"Symbol Pin""spn",\
+"Unassigned Functions""uaf",\
+"Unconnected Pins""ucn",\
+"Unplaced Components""upc".
+#endif
+
+MESSAGE nexec 0 "You must choose a report first."
+MESSAGE nerror 0 "A problem occurred - please check the logfile (using Viewlog)."
+MESSAGE ndone 0 "Report completed."
+MESSAGE ndemo 0 "Cannot run in demo mode."
+
+ACTIVEFIELD "cancel"
+TILE
+
+TEXT "Report:"
+TLOC 2 1
+ENDTEXT
+
+FIELD rpt
+FLOC 11 1
+ENUMSET 20 7
+POP "rpt_list"
+ENDFIELD
+
+TEXT "Output file: (optional)"
+TLOC 2 12
+GSIZE 10 4
+ENDTEXT
+
+FIELD filename
+FLOC 11 12
+STRFILLIN 24 256
+ENDFIELD
+
+FIELD append
+FLOC 12 15
+CHECKLIST "Append to file"
+ENDFIELD
+
+FIELD execute
+FLOC 38 1
+MENUBUTTON "Report" 9 4
+ENDFIELD
+
+FIELD cancel
+FLOC 38 5
+MENUBUTTON "Close" 9 3
+ENDFIELD
+
+FIELD view
+FLOC 38 8
+MENUBUTTON "View..." 9 3
+ENDFIELD
+
+FIELD help
+FLOC 38 11
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

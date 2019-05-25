@@ -1,0 +1,1366 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM 
+FIXED
+PORT 62 40
+HEADER "New Design Wizard"
+
+POPUP <UNITTYPES> "Mils" "mils", "Inches" "inches", "Microns" "microns", "Millimeters" "millimeters", "Centimeters" "centimeters"
+POPUP <bump_pitch_list> """"
+POPUP <chip_technology_list> """"
+POPUP <package_technology_list> """"
+
+TILE
+
+TABSET "DesignWizard"
+FLOC 1 -2
+TSSIZE 62 40
+
+#ifndef noshow_new_design_wiz_intro
+
+TAB "Overview" Begin
+
+FIELD wiz_logo_begin
+THUMBNAIL bgahat.bmp
+FLOC 1 1
+FSIZE 59 7
+ENDFIELD
+
+TEXT "This Wizard will help you to prototype a new die and package by prompting you to specify the required information."
+TLOC 6 9
+FSIZE 52 6
+ENDTEXT
+
+TEXT "It will help you to define:"
+TLOC 6 12
+ENDTEXT
+
+TEXT "-	Common parameters for die and package creation."   
+TLOC 6 14
+FSIZE 50 6
+ENDTEXT
+
+TEXT "-	Flip chip or Wire bond die specification."   
+TLOC 6 16
+FSIZE 50 6
+ENDTEXT
+
+TEXT "-	Package specification."
+TLOC 6 18
+FSIZE 30 6
+ENDTEXT
+
+TEXT "If you choose to reuse an existing die or package, this Wizard will also allow you to import existing data using an OpenAccess database, a DEF file or Die Text-In file."
+TLOC 6 20
+FSIZE 50 6
+ENDTEXT
+
+TEXT "This Wizard will then generate the specified die and package using your input data."
+TLOC 6 25
+FSIZE 52 4
+ENDTEXT
+
+TEXT "NOTE:  This Wizard does not support multi-die packages."
+TLOC 6 29
+FSIZE 52 8
+OPTIONS bold
+ENDTEXT
+
+FIELD show_dialog
+FLOC 6 35
+CHECKLIST "Show this window the next time you use Design Wizard"
+ENDFIELD
+
+ENDTAB
+
+#endif
+
+##############################
+
+TAB  "Drawing Template Browser"  Template
+
+FIELD wiz_logo_template
+THUMBNAIL bgahat.bmp
+FLOC 1 1
+FSIZE 59 7
+ENDFIELD
+
+TEXT "A template drawing allows you to use an existing drawing file as a template to create a new drawing. The new drawing parameters will be brought over from the template."
+TLOC  6 9
+FSIZE 50 6
+ENDTEXT
+
+#ifdef SIP
+TEXT "A valid template file must be a SiP layout (*.sip) and cannot contain any symbols or components."
+#else
+TEXT "A valid template file must be an APD layout (*.mcm) and cannot contain any symbols or components."
+#endif
+TLOC  6 14
+FSIZE 50 4
+ENDTEXT
+
+TEXT "Note: If a template is used, die type and orientation will be restricted to the configuration supported by the template drawing stackup."
+TLOC  6 18
+FSIZE 50 6
+OPTIONS bold
+ENDTEXT
+
+FIELD template_drawing_file
+FLOC 6 26
+CHECKLIST "Template Drawing"
+ENDFIELD
+
+FIELD browse_drawing_path
+FLOC 23 26
+STRFILLIN 21 255 
+ENDFIELD
+
+FIELD file_browse
+FLOC 46 26
+MENUBUTTON "Browse..." 3 3
+ENDFIELD
+
+ENDTAB
+
+##############################
+
+TAB "Drawing Parameters" Drawing_Parameters
+
+FIELD wiz_logo_draw
+THUMBNAIL bgahat.bmp
+FLOC 1 1
+FSIZE 59 7
+ENDFIELD
+
+TEXT "This dialog will help you to set up the new drawing file based on your inputs."
+TLOC 5 9
+ENDTEXT
+
+GROUP "Drawing Units"
+GLOC 6 11
+GSIZE 48 7
+ENDGROUP
+
+TEXT "Units"
+TLOC 12 13
+ENDTEXT
+
+FIELD drawing_units
+FLOC 22 13
+ENUMSET 12
+POP "UNITTYPES"
+ENDFIELD
+
+TEXT "Accuracy"
+TLOC 12 15
+ENDTEXT
+
+FIELD decimal
+TLOC 22 15
+INTSLIDEBAR 4 4
+MIN 0
+MAX 4
+ENDFIELD
+
+GROUP "Drawing Size"
+GLOC 6 19
+GSIZE 48 9
+ENDGROUP
+
+FIELD specify_design_size
+FLOC 10 21
+CHECKLIST "Specify exact design size"
+ENDFIELD
+
+TEXT "Width"
+TLOC 12 23
+ENDTEXT
+
+FIELD drawing_width
+FLOC 22 23
+STRFILLIN 24 24
+ENDFIELD
+
+TEXT "Height"
+TLOC 12 25
+ENDTEXT
+
+FIELD drawing_height
+FLOC 22 25
+STRFILLIN 24 24
+ENDFIELD
+
+GROUP "Origin Location"
+GLOC 6 29
+GSIZE 48 7
+ENDGROUP
+
+FIELD  origin_center
+FLOC 12 31
+CHECKLIST "Center" "origin"
+ENDFIELD
+
+FIELD  origin_lower_left
+FLOC 12 33
+CHECKLIST "Lower left corner of the drawing" "origin"
+ENDFIELD
+
+ENDTAB
+
+##############################
+
+TAB "Die Attachment and Orientation" Orientation
+
+FIELD wiz_logo_orientation
+THUMBNAIL bgahat.bmp
+FLOC 1 1
+FSIZE 59 7
+ENDFIELD
+
+FIELD chip_orientation
+THUMBNAIL chiptype.bmp
+FLOC 21 18
+FSIZE 38 15
+ENDFIELD
+
+TEXT "Please specify the die attachment and orientation for die and package generation.  If you select wire bond and click 'Next', this wizard will check the drawing for a bonding wire layer and create one if none is found."
+TLOC 4 9
+FSIZE 55 8
+ENDTEXT
+
+TEXT "Die Attachment"
+TLOC 32 14
+OPTIONS bold
+ENDTEXT
+
+FIELD flip_chip
+FLOC 24 16
+CHECKLIST "Flip chip" "chiptype"
+ENDFIELD
+
+FIELD wire_bond
+FLOC 46 16
+CHECKLIST "Wire bond" "chiptype"
+ENDFIELD
+
+TEXT "Die Orientation"
+TLOC 4 17
+FSIZE 15 4
+OPTIONS bold
+ENDTEXT
+
+FIELD mount_up
+FLOC 6 21
+CHECKLIST "Chip-Up" "mounttype"
+ENDFIELD
+
+FIELD mount_down
+FLOC 6 28
+CHECKLIST "Chip-Down" "mounttype"
+ENDFIELD
+
+GROUP "Generation Order"
+GLOC 1 32
+GSIZE 58 5
+ENDGROUP
+
+FIELD create_chip
+FLOC 6 34
+CHECKLIST "Die first then package" "mode"
+ENDFIELD
+
+FIELD create_pkg
+FLOC 31 34
+CHECKLIST "Package first then die" "mode"
+ENDFIELD
+
+ENDTAB
+
+##############################
+
+TAB "Die Creation" Def_Chip
+
+FIELD wiz_logo_defchip
+THUMBNAIL bgahat.bmp
+FLOC 1 1
+FSIZE 59 7
+ENDFIELD
+
+TEXT "This dialog gives you the option to either create a new die or reuse an existing one."
+TLOC 6 9
+FSIZE 50 4
+ENDTEXT
+
+TEXT "NOTE:  This Wizard does not support importing GDSII, DXF or DIE format files.  To import these, use the Import tools in the File menu."
+TLOC 6 12
+FSIZE 50 6
+OPTIONS bold
+ENDTEXT
+
+
+GROUP "Die Specification Method"
+GLOC 6 19
+#ifdef ICP_NDW_NO_OA_OPTION
+GSIZE 48 9
+#else
+GSIZE 48 11
+#endif
+ENDGROUP
+
+
+FIELD new_chip
+FLOC 14 21
+CHECKLIST "New Die" "chip"
+ENDFIELD
+
+FIELD lefdef_chip
+FLOC 14 23
+CHECKLIST "Import die from LEF/DEF" "chip"
+ENDFIELD
+
+#ifdef ICP_NDW_NO_OA_OPTION
+
+FIELD textIn_chip
+FLOC 14 25
+CHECKLIST "Import die from Die Text-In wizard" "chip"
+ENDFIELD
+
+#else
+
+FIELD open_access_chip
+FLOC 14 25
+CHECKLIST "Import die from OpenAccess" "chip"
+ENDFIELD
+
+FIELD textIn_chip
+FLOC 14 27
+CHECKLIST "Import die from Die Text-In wizard" "chip"
+ENDFIELD
+
+#endif
+
+
+
+
+ENDTAB
+
+##############################
+
+##############################
+
+TAB "Chip Creation After Def In" Add_Bump
+
+FIELD wiz_logo_defchip
+THUMBNAIL bgahat.bmp
+FLOC 1 1
+FSIZE 59 7
+ENDFIELD
+
+TEXT "This dialog gives you the option to either create a new chip or reuse an existing one."
+TLOC 6 9
+FSIZE 50 4
+ENDTEXT
+
+TEXT "NOTE:  This Wizard does not support importing GDSII, DXF or DIE format files.  To import these, use the Import tools in the File menu."
+TLOC 6 12
+FSIZE 50 6
+OPTIONS bold
+ENDTEXT
+
+GROUP "Chip Specification Method"
+GLOC 6 19
+GSIZE 48 9
+ENDGROUP
+
+FIELD no_bump_after_lefdef
+FLOC 14 21
+CHECKLIST "No bump" "chip"
+ENDFIELD
+
+FIELD new_chip_after_lefdef
+FLOC 14 23
+CHECKLIST "New chip" "chip"
+ENDFIELD
+
+FIELD textIn_chip_after_lefdef
+FLOC 14 25
+CHECKLIST "Import chip from Die Text-In wizard" "chip"
+ENDFIELD
+
+ENDTAB
+
+##############################
+
+TAB "I/O Signals and Power Distribution" IO_Pads
+
+FIELD wiz_logo_IOpads
+THUMBNAIL bgahat.bmp
+FLOC 1 1
+FSIZE 59 7
+ENDFIELD
+
+TEXT "Name of the new die:"
+TLOC 2 9
+ENDTEXT
+
+FIELD die_name
+FLOC 23 9
+STRFILLIN 20 31
+ENDFIELD
+
+TEXT "Estimated number of package routing layers: (Default is 1, with routing taking place on TOP_COND or BOT_COND)"
+TLOC 2 12
+FSIZE 47 4
+ENDTEXT
+
+FIELD num_rlayers
+FLOC 50 12
+INTSLIDEBAR 5 5
+#MIN 1
+#MAX 195
+ENDFIELD
+
+TEXT "Number of signal I/O pins:"
+TLOC  2 15
+ENDTEXT
+
+FIELD num_pads
+FLOC 23 15
+INTFILLIN 8 7
+ENDFIELD
+
+GROUP "Die Pin I/O Power Distribution Ratio"
+GLOC 2 17
+GSIZE 57 7
+ENDGROUP
+
+TEXT "Power"
+TLOC 12 19
+ENDTEXT
+ 
+FIELD num_power
+FLOC 12 21
+INTSLIDEBAR 5 5
+MIN 1
+MAX 1000
+ENDFIELD
+
+TEXT "vs."
+TLOC 22 21
+ENDTEXT
+
+TEXT "Ground"
+TLOC 25 19
+ENDTEXT
+
+FIELD num_ground
+FLOC 25 21
+INTSLIDEBAR 5 5
+MIN 1
+MAX 1000
+ENDFIELD
+
+TEXT "vs."
+TLOC 35 21
+ENDTEXT
+
+TEXT "I/O"
+TLOC 38 19
+ENDTEXT
+ 
+FIELD num_IO
+FLOC 38 21
+INTSLIDEBAR 5 5
+MIN 1
+MAX 1000
+ENDFIELD
+
+TEXT "The following are calculated based on the power distribution ratio above and the number of I/O signal pins:"
+TLOC 2 25
+FSIZE 54 4
+ENDTEXT
+
+TEXT "Number of power pins:"
+TLOC 6 28
+ENDTEXT
+
+TEXT 
+TLOC 35 28
+INFO num_Power_Layer 17
+OPTIONS bold
+ENDTEXT
+
+TEXT "Number of ground pins:"
+TLOC 6 30
+ENDTEXT
+
+TEXT 
+TLOC 35 30
+INFO num_Ground_Layer 17
+OPTIONS bold
+ENDTEXT
+
+TEXT "Total number of die pins required:"
+TLOC 6 32
+ENDTEXT
+
+TEXT 
+TLOC 35 32
+INFO num_Total_Layer 17
+OPTIONS bold
+ENDTEXT
+
+TEXT "(Note: Due to core logic size and die technology settings, the actual number of die pins created may be larger than the number shown above.)"
+TLOC 2 34
+FSIZE 55 4
+ENDTEXT
+
+ENDTAB
+
+##############################
+
+TAB "Core Area Parameters" General
+
+FIELD wiz_logo_general
+THUMBNAIL bgahat.bmp
+FLOC 1 1
+FSIZE 59 7
+ENDFIELD
+
+GROUP "Core Logic Size"
+GLOC 1 9
+GSIZE 58 13
+ENDGROUP
+
+TEXT "The core logic area influences the size of the die pin ring surrounding it.  You can manually alter the default size of the core logic area."
+TLOC  3 11
+FSIZE 55 4
+ENDTEXT
+
+TEXT "Height:"
+TLOC 3 15
+ENDTEXT
+
+FIELD core_logic_height
+FLOC 10 15
+STRFILLIN 26 20
+ENDFIELD
+
+TEXT "Width:"
+TLOC 3 17
+ENDTEXT
+
+FIELD core_logic_width
+FLOC 10 17
+STRFILLIN 26 20
+ENDFIELD
+
+TEXT "Area:"
+TLOC 3 19
+ENDTEXT
+
+FIELD core_logic_area
+FLOC 10 19
+STRFILLIN 26 26
+ENDFIELD
+
+FIELD cl_aspect_ratio
+FLOC 40 15
+CHECKLIST "Maintain aspect ratio"
+ENDFIELD
+
+TEXT "Height to width ratio:"
+TLOC 40 17
+ENDTEXT
+
+FIELD cl_aspect_height
+FLOC 40 19
+REALFILLIN 5 5
+ENDFIELD
+
+TEXT ":"
+TLOC 47 19
+ENDTEXT
+
+FIELD cl_aspect_width
+FLOC 48 19
+REALFILLIN 5 5
+ENDFIELD
+
+#GROUP "Options"
+#GLOC 1 22
+#GSIZE 58 15
+#ENDGROUP
+
+GROUP "Options"
+FLOC 1 22
+FSIZE 58 15
+INFO group
+ENDGROUP
+
+FIELD default_core_config
+FLOC 3 25
+CHECKLIST "" "core_options"
+ENDFIELD
+
+TEXT "Default core configuration"
+TLOC 6 25
+ENDTEXT
+
+FIELD overlap_core_flag
+FLOC 3 28
+CHECKLIST "" "core_options"
+ENDFIELD
+
+#TEXT "Allow perimeter pins to overlap the core logic area"
+#TLOC 6 28
+#FSIZE 18 4
+#ENDTEXT
+
+TEXT
+FLOC 6 28
+INFO overlap_core_text 2
+FSIZE 18 5
+ENDTEXT
+
+FIELD adj_gap
+FLOC 3 32
+CHECKLIST "" "core_options"
+ENDFIELD
+
+#TEXT "Allow no gap between core pins and perimeter pins"
+#TLOC 6 32
+#FSIZE 18 5
+#ENDTEXT
+
+TEXT
+FLOC 6 32
+INFO adj_gap_text 2
+FSIZE 18 5
+ENDTEXT
+
+FIELD core_option_pic
+THUMBNAIL ndw_default_config.bmp
+FLOC 25 24
+FSIZE 33 12
+ENDFIELD
+
+ENDTAB
+
+##############################
+
+TAB "Die Generation Options" Chip_Options
+
+FIELD wiz_logo_Options
+THUMBNAIL bgahat.bmp
+FLOC 1 1
+FSIZE 59 7
+ENDFIELD
+
+TEXT "In this dialog, you can define a die using the Die Generator."
+TLOC  6 10
+FSIZE 50 4
+ENDTEXT
+
+TEXT "The Die Generator will generate either a flip-chip or a wire bond die based on your selection from the previous windows."
+TLOC  6 12
+FSIZE 50 4
+ENDTEXT
+
+GROUP "Die Definition Method"
+GLOC 6 16
+GSIZE 47 5
+ENDGROUP
+
+FIELD dieGenerator
+FLOC 14 18
+CHECKLIST "Die Generation" "option"
+ENDFIELD
+
+ENDTAB
+
+##############################
+
+TAB "Create Flip-chip Using Die Generator" By_FlipChip
+
+FIELD wiz_logo_byFC
+THUMBNAIL bgahat.bmp
+FLOC 1 1
+FSIZE 59 7
+ENDFIELD
+
+FIELD bitmap_flipchip
+THUMBNAIL flipchip.bmp
+FLOC 34 10
+FSIZE 24 13
+ENDFIELD 
+
+TEXT "Die technology:"
+TLOC 2 9
+ENDTEXT
+
+FIELD tech_list 
+FLOC 2 11
+STRFILLIN 22 20
+POP "chip_technology_list"
+ENDFIELD
+
+TEXT "Die pin pitch:"
+TLOC 2 13 
+ENDTEXT
+
+FIELD pad_pitch
+FLOC 2 15
+STRFILLIN 22 20
+POP "bump_pitch_list"
+ENDFIELD
+
+TEXT "Die pin height:"
+TLOC 2 18
+ENDTEXT
+
+FIELD pad_height
+FLOC 13 18
+STRFILLIN 16 20
+ENDFIELD
+
+TEXT "Die pin width:"
+TLOC 2 20
+ENDTEXT
+
+FIELD pad_width
+FLOC 13 20
+STRFILLIN 16 20
+ENDFIELD
+
+TEXT "Distance from die's edge to pin's edge:"
+TLOC 2 23
+ENDTEXT
+
+FIELD edge_distance
+FLOC 36 23
+STRFILLIN 16 20
+ENDFIELD
+
+TEXT "You can substitute the estimated die size with your own data."
+TLOC  4 27
+ENDTEXT
+
+GROUP "Estimated Die Size"
+GLOC 2 25
+GSIZE 57 11
+ENDGROUP
+
+TEXT "Height:"
+TLOC 4 29
+ENDTEXT
+
+FIELD die_height
+FLOC 12 29
+STRFILLIN 24 24
+ENDFIELD
+
+TEXT "Width:"
+TLOC 4 31
+ENDTEXT
+
+FIELD die_width
+FLOC 12 31
+STRFILLIN 24 24
+ENDFIELD
+
+TEXT "Area:"
+TLOC 4 33
+ENDTEXT
+
+FIELD die_area
+FLOC 12 33
+STRFILLIN 24 24
+ENDFIELD
+
+FIELD aspect_ratio
+FLOC 40 29
+CHECKLIST "Maintain aspect ratio"
+ENDFIELD
+
+TEXT "Height to width ratio:"
+TLOC 40 31
+ENDTEXT
+
+FIELD aspect_height
+FLOC 40 33
+REALFILLIN 5 5
+ENDFIELD
+
+TEXT ":"
+TLOC 47 33
+ENDTEXT
+
+FIELD aspect_width
+FLOC 48 33
+REALFILLIN 5 5
+ENDFIELD
+
+TEXT "Requested die pins:"
+TLOC 4 36
+ENDTEXT
+
+TEXT 
+TLOC 20 36
+INFO num_designed_pads 7
+OPTIONS bold
+ENDTEXT
+
+TEXT "vs."
+TLOC 28 36
+ENDTEXT
+
+TEXT "Actual die pins:"
+TLOC 36 36
+ENDTEXT
+
+TEXT 
+TLOC 52 36
+INFO num_actual_pads 7
+OPTIONS bold
+ENDTEXT
+
+ENDTAB
+
+TAB "Wire Bond Die Specification" By_WireBond
+
+FIELD wiz_logo_byWB
+THUMBNAIL bgahat.bmp
+FLOC 1 1
+FSIZE 59 7
+ENDFIELD
+
+FIELD bitmap_wirebond
+THUMBNAIL Wirebond.bmp
+FLOC 34 10
+FSIZE 24 13
+ENDFIELD 
+
+POPUP <pad_pitch_list> """"
+POPUP <chip_tech_list> """"
+
+TEXT "Die technology:"
+TLOC 2 9
+ENDTEXT
+
+FIELD w_tech_list 
+FLOC 2 11
+STRFILLIN 22 20
+POP "chip_technology_list"
+ENDFIELD
+
+TEXT "Die pin pitch:"
+TLOC 2 13 
+ENDTEXT
+
+FIELD w_pad_pitch
+FLOC 2 15
+STRFILLIN 22 20
+POP "bump_pitch_list"
+ENDFIELD
+
+FIELD staggered_flag
+FLOC 2 17
+CHECKLIST "Staggered"
+ENDFIELD
+
+TEXT "Die pin height:"
+TLOC 2 19
+ENDTEXT
+
+FIELD w_pad_height
+FLOC 13 19
+STRFILLIN 16 20
+ENDFIELD
+
+TEXT "Die pin width:"
+TLOC 2 21
+ENDTEXT
+
+FIELD w_pad_width
+FLOC 13 21
+STRFILLIN 16 20
+ENDFIELD
+
+TEXT "Distance from die's edge to pin's edge:"
+TLOC 2 23
+ENDTEXT
+
+FIELD w_edge_distance
+FLOC 36 23
+STRFILLIN 16 20
+ENDFIELD
+
+TEXT "You can substitute the estimated die size with your own data."
+TLOC  4 26
+ENDTEXT
+
+GROUP "Estimated Die Size"
+GLOC 2 24
+GSIZE 57 11
+ENDGROUP
+
+TEXT "Height:"
+TLOC 4 28
+ENDTEXT
+
+FIELD w_die_height
+FLOC 12 28
+STRFILLIN 24 24
+ENDFIELD
+
+TEXT "Width:"
+TLOC 4 30
+ENDTEXT
+
+FIELD w_die_width
+FLOC 12 30
+STRFILLIN 24 24
+ENDFIELD
+
+TEXT "Area:"
+TLOC 4 32
+ENDTEXT
+
+FIELD w_die_area
+FLOC 12 32
+STRFILLIN 24 24
+ENDFIELD
+
+FIELD w_aspect_ratio
+FLOC 40 28
+CHECKLIST "Maintain aspect ratio"
+ENDFIELD
+
+TEXT "Height to width ratio:"
+TLOC 40 30
+ENDTEXT
+
+FIELD w_aspect_height
+FLOC 40 32
+REALFILLIN 5 5
+ENDFIELD
+
+TEXT ":"
+TLOC 47 32
+ENDTEXT
+
+
+FIELD w_aspect_width
+FLOC 48 32
+REALFILLIN 5 5
+ENDFIELD
+
+TEXT "Requested die pins:"
+TLOC 4 36
+ENDTEXT
+
+TEXT 
+TLOC 20 36
+INFO num_designed_wbpads 7
+OPTIONS bold
+ENDTEXT
+
+TEXT "vs."
+TLOC 28 36
+ENDTEXT
+
+TEXT "Actual die pins:"
+TLOC 36 36
+ENDTEXT
+
+TEXT 
+TLOC 52 36
+INFO num_actual_wbpads 7
+OPTIONS bold
+ENDTEXT
+
+##############################
+
+ENDTAB
+
+TAB "Package Creation" Package_Type
+
+FIELD wiz_logo_pkgtype
+THUMBNAIL bgahat.bmp
+FLOC 1 1
+FSIZE 59 7
+ENDFIELD
+
+POPUP  <package_list> """"
+
+GROUP "Package Specification Options"
+GLOC 10 12
+GSIZE 40 8
+ENDGROUP
+
+FIELD new_package
+FLOC 20 15
+CHECKLIST "New package" "package"
+ENDFIELD
+
+#FIELD existing_package
+#FLOC 20 17
+#CHECKLIST "Search for Package" "package"
+#ENDFIELD
+
+ENDTAB
+
+##############################
+
+TAB "Package Specification" Package_Data
+
+FIELD wiz_logo_pkgdata
+THUMBNAIL bgahat.bmp
+FLOC 1 1
+FSIZE 59 7
+ENDFIELD
+
+TEXT "Name of the new package:"
+TLOC 2 9
+ENDTEXT
+
+FIELD pkg_name
+FLOC 33 9
+STRFILLIN 23 31
+ENDFIELD
+
+TEXT "Minimum number of I/O signal balls:"
+TLOC 2 11
+ENDTEXT
+
+FIELD num_balls
+FLOC 33 11
+INTFILLIN 5 5
+ENDFIELD
+
+GROUP "Power Distribution Ratio"
+GLOC 2 13
+GSIZE 57 14
+ENDGROUP
+
+TEXT "Power"
+TLOC 11 15
+ENDTEXT
+ 
+FIELD bga_power
+FLOC 11 17
+INTSLIDEBAR 5 5
+MIN 1
+MAX 100
+ENDFIELD
+
+TEXT "vs."
+TLOC 21 17
+ENDTEXT
+
+TEXT "Ground"
+TLOC 24 15
+ENDTEXT
+
+FIELD bga_ground
+FLOC 24 17
+INTSLIDEBAR 5 5
+MIN 1
+MAX 100
+ENDFIELD
+
+TEXT "vs."
+TLOC 35 17
+ENDTEXT
+
+TEXT "I/O"
+TLOC 39 15
+ENDTEXT
+ 
+FIELD bga_IO
+FLOC 39 17
+INTSLIDEBAR 5 5
+MIN 1
+MAX 100
+ENDFIELD
+
+TEXT "Number of power balls:"
+TLOC 17 20
+ENDTEXT
+
+TEXT
+FLOC 40 20
+INFO power_balls 8 8
+OPTIONS bold
+ENDTEXT
+
+TEXT "Number of ground balls:"
+TLOC 17 22
+ENDTEXT
+
+TEXT 
+TLOC 40 22
+INFO ground_balls 8 8
+OPTIONS bold
+ENDTEXT
+
+TEXT "Total number of balls:"
+TLOC 17 24
+ENDTEXT
+
+TEXT 
+TLOC 40 24
+INFO io_balls 9 9
+OPTIONS bold
+ENDTEXT
+
+ENDTAB
+
+##############################
+
+TAB "Package Core Parameters" Package_Core
+
+FIELD wiz_logo_pkg_core
+THUMBNAIL bgahat.bmp
+FLOC 1 1
+FSIZE 59 7
+ENDFIELD
+
+TEXT "The core area is the area of the BGA overlapping the die."
+TLOC  3 9
+FSIZE 55 4
+ENDTEXT
+
+GROUP "Options"
+GLOC 1 11
+GSIZE 58 15
+ENDGROUP
+
+FIELD default_pkg_core_config
+FLOC 3 14
+CHECKLIST "" "pkg_core_options"
+ENDFIELD
+
+TEXT "Default core configuration"
+TLOC 6 14
+ENDTEXT
+
+FIELD pkg_full_matrix_extra
+FLOC 3 17
+CHECKLIST "" "pkg_core_options"
+ENDFIELD
+
+TEXT "Full matrix with core power/ground"
+TLOC 6 17
+FSIZE 18 4
+ENDTEXT
+
+FIELD pkg_full_matrix
+FLOC 3 21
+CHECKLIST "" "pkg_core_options"
+ENDFIELD
+
+TEXT "Full matrix with same I/O ratio core"
+TLOC 6 21
+FSIZE 18 5
+ENDTEXT
+
+FIELD pkg_core_option_pic
+THUMBNAIL ndw_pkg_default.bmp
+FLOC 25 13
+FSIZE 33 12
+ENDFIELD
+
+GROUP "Core Balls"
+GLOC 1 27
+GSIZE 58 7
+ENDGROUP
+
+TEXT "Minimum number of core power/ground balls:"
+TLOC 3 30
+ENDTEXT
+
+FIELD min_balls
+FLOC 40 30
+INTFILLIN 5 5
+ENDFIELD
+
+ENDTAB
+
+##############################
+
+TAB "Package Properties" Package_Props
+
+FIELD wiz_logo_pkg_props
+THUMBNAIL bgahat.bmp
+FLOC 1 1
+FSIZE 59 7
+ENDFIELD
+
+#FIELD use_jedec
+#FLOC 2 9
+#CHECKLIST "Use JEDEC standards"
+#ENDFIELD
+
+TEXT "Package technology type:"
+TLOC 2 12
+ENDTEXT
+
+FIELD pkg_list 
+FLOC 30 12
+STRFILLIN 16 20
+POP "package_technology_list"
+ENDFIELD
+
+TEXT "Ball pitch:"
+TLOC 2 14
+ENDTEXT
+
+FIELD ball_pitch
+FLOC 30 14
+STRFILLIN 19 20
+#STRFILLIN 16 16
+#POP "bump_pitch_list"
+ENDFIELD
+
+TEXT "Ball diameter:"
+TLOC 2 16
+ENDTEXT
+
+FIELD ball_diameter
+FLOC 30 16
+STRFILLIN 19 20
+ENDFIELD
+
+TEXT "Min. distance from die edge to innermost BGA peripheral balls:"
+TLOC 2 18
+FSIZE 27 4
+ENDTEXT
+
+FIELD gap_between_IC_and_BGA
+FLOC 30 18
+STRFILLIN 19 20
+ENDFIELD
+
+TEXT "Package outline to ball clearance:"
+TLOC 2 21
+ENDTEXT
+
+FIELD ball_distance
+FLOC 30 21
+STRFILLIN 19 20
+ENDFIELD
+
+TEXT "Tech file name:"
+TLOC 2 23
+ENDTEXT
+
+FIELD io_techfile
+FLOC 30 23
+STRFILLIN 19 32
+ENDTEXT
+
+GROUP "Estimated Package Size"
+GLOC 2 25
+GSIZE 57 10
+ENDGROUP
+
+TEXT "Height:"
+TLOC 16 28
+ENDTEXT
+
+TEXT 
+TLOC 27 28
+INFO pkg_height 20 20
+#OPTIONS border
+ENDTEXT
+
+TEXT "Width:"
+TLOC 16 30
+ENDTEXT
+
+TEXT 
+TLOC 27 30
+INFO pkg_width 20 20
+#OPTIONS border
+ENDTEXT
+
+TEXT "Area:"
+TLOC 16 32
+ENDTEXT
+
+TEXT 
+TLOC 27 32
+INFO pkg_area 20 20
+#OPTIONS border
+ENDTEXT
+
+TEXT "Requested balls:"
+TLOC 4 36
+ENDTEXT
+
+TEXT 
+TLOC 20 36
+INFO num_designed_bgapads 7
+OPTIONS bold
+ENDTEXT
+
+TEXT "vs."
+TLOC 28 36
+ENDTEXT
+
+TEXT "Actual balls:"
+TLOC 36 36
+ENDTEXT
+
+TEXT 
+TLOC 52 36
+INFO num_actual_bgapads 7
+OPTIONS bold
+ENDTEXT
+
+ENDTAB
+
+##############################
+
+TAB "Finish" End
+
+FIELD wiz_logo_end
+THUMBNAIL bgahat.bmp
+FLOC 1 1
+FSIZE 59 7
+ENDFIELD
+
+TEXT "Creation of die and package completed successfully.  Now, you can perform one of the following actions:"
+TLOC 7 12
+FSIZE 50 4
+ENDTEXT
+
+TEXT "To make changes to your new die/package, click on the <Back> button."
+TLOC 10 16
+FSIZE 48 6
+ENDTEXT
+
+TEXT "To accept the prototyped die and package, click on the <Finish> button to exit the Wizard with your new die/package instantiated into the design."
+TLOC 10 20
+FSIZE 48 6
+ENDTEXT
+
+TEXT "To discard the prototype packaged die, click the <Cancel> button to exit the Wizard."
+TLOC 10 26
+FSIZE 48 4
+ENDTEXT
+
+FIELD view_file
+FLOC 10 30
+MENUBUTTON "View Log File" 3 3
+ENDFIELD
+
+ENDTAB
+
+ENDTABSET
+
+ENDTILE
+
+ENDFORM
+

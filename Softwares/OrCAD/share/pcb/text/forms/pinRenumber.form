@@ -1,0 +1,147 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 58 27
+HEADER "Pin Renumbering Options"
+
+POPUP <NUMSCHEME_POP>"Numerical""1","Alphabetical""2","Alphanumerical""3".
+
+TILE
+    
+TEXT "Numbering Scheme:"
+TLOC 2 1
+ENDTEXT
+
+FIELD numbering_scheme
+FLOC 18 1
+ENUMSET 19
+POP "NUMSCHEME_POP"
+ENDFIELD
+
+TEXT "Letters to Omit"
+TLOC 2 3
+ENDTEXT
+
+FIELD letters_to_omit
+FLOC 18 3
+STRFILLIN 10 25
+ENDFIELD
+
+FIELD leading_zeroes
+FLOC 2 7
+CHECKLIST "Add Leading Zeroes to Numbers"
+ENDFIELD
+
+GROUP "Leading Zeroes"
+GLOC 1 5
+GSIZE 28 4
+ENDGROUP
+
+FIELD top_to_bottom
+FLOC 2 11
+CHECKLIST "Top to Bottom" "VER_DIRGRP"
+ENDFIELD
+
+FIELD bottom_to_top
+FLOC 15 11
+CHECKLIST "Bottom to Top" "VER_DIRGRP"
+ENDFIELD
+
+GROUP "Vertical Direction"
+GLOC 1 9
+GSIZE 28 4
+ENDGROUP
+
+FIELD left_to_right
+FLOC 2 15
+CHECKLIST "Left to Right" "HOR_DIRGRP"
+ENDFIELD
+
+FIELD right_to_left
+FLOC 15 15
+CHECKLIST "Right to Left" "HOR_DIRGRP"
+ENDFIELD
+
+GROUP "Horizontal Direction"
+GLOC 1 13
+GSIZE 28 4 
+ENDGROUP
+
+FIELD letters_row
+FLOC 2 19
+CHECKLIST "Row" "ASSIGN_LETGRP"
+ENDFIELD
+
+FIELD letters_column
+FLOC 15 19
+CHECKLIST "Column" "ASSIGN_LETGRP"
+ENDFIELD
+
+GROUP "Letter Assignment"
+GLOC 1 17
+GSIZE 28 4
+ENDGROUP
+
+FIELD left_top_start
+FLOC 2 23
+CHECKLIST "Left-Top" "START_POSGRP"
+ENDFIELD
+
+FIELD mid_top_start
+FLOC 15 23
+CHECKLIST "Middle-Top" "START_POSGRP"
+ENDFIELD
+
+GROUP "Starting Pin Position"
+GLOC 1 21
+GSIZE 28 4
+ENDGROUP
+
+FIELD sequence_horizontal
+FLOC 2 27
+CHECKLIST "Horizontal" "SEQ_DIRGRP"
+ENDFIELD
+
+FIELD sequence_vertical
+FLOC 15 27
+CHECKLIST "Vertical" "SEQ_DIRGRP"
+ENDFIELD
+
+GROUP "Directions for Letters or Numbers"
+GLOC 1 25
+GSIZE 28 4
+ENDGROUP
+
+FIELD pin_number_graphic
+THUMBNAIL 
+FLOC 31 9
+FSIZE 26 17
+ENDFIELD
+
+#ifdef central_param_form
+FIELD param_done
+FLOC 14 30
+MENUBUTTON "Close" 9 3
+ENDFIELD
+
+#else
+FIELD done
+FLOC 14 30
+MENUBUTTON "Done" 9 3
+ENDFIELD
+
+FIELD close
+FLOC 26 30
+MENUBUTTON "Close" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 38 30
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+#endif
+
+ENDTILE
+
+ENDFORM

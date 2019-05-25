@@ -1,0 +1,741 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN" "http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+<html xmlns="http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>OrCAD Capture Quick Reference -- Capture.ini Variables</title>
+<META NAME="Approver" CONTENT="Technical Publications">
+<META NAME="Author" CONTENT="Technical Publications">
+<META NAME="CreateDate" CONTENT="2012-09-11">
+<META NAME="CreateTime" CONTENT="1347365297">
+<META NAME="DataType" CONTENT="Manuals">
+<META NAME="Description" CONTENT="This guide describes the toolbar commands and shortcut keys in OrCAD Capture">
+<META NAME="DocTitle" CONTENT="OrCAD Capture Quick Reference">
+<META NAME="DocType" CONTENT="Reference">
+<META NAME="EdmsRelease" CONTENT="EDMS Windows-P015">
+<META NAME="FileTitle" CONTENT="Capture.ini Variables">
+<META NAME="FileType" CONTENT="Chapter">
+<META NAME="Keyword" CONTENT="capqrc">
+<META NAME="Language" CONTENT="English">
+<META NAME="ModifiedDate" CONTENT="2012-09-11">
+<META NAME="ModifiedTime" CONTENT="1347365297">
+<META NAME="NextFile" CONTENT="Capture_TB.html">
+<META NAME="PageCount" CONTENT="8">
+<META NAME="Platform" CONTENT="ALL">
+<META NAME="PrevFile" CONTENT="CommandLineArgs.html">
+<META NAME="Product" CONTENT="Orcad Capture">
+<META NAME="ProductFamily" CONTENT="PCB Design">
+<META NAME="ProductVersion" CONTENT="16.6">
+<META NAME="RightsManagement" CONTENT="Copyright 19962012 Cadence Design Systems Inc.">
+<META NAME="Title" CONTENT="OrCAD Capture Quick Reference -- Capture.ini Variables">
+<META NAME="TopicTags" CONTENT="FALSE">
+<META NAME="Version" CONTENT="16.6">
+  </head>
+  <body style="margin-left: 5%;">
+    <a name="pagetop"></a>
+    <a name="firstpage"></a>
+    <!-- Begin Buttons -->
+    <table width="650" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td height="36" width="650" colspan="10">
+          <img src="../support/header_doc.gif" width="650" height="34">
+        </td>
+      </tr>
+      <tr>
+        <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                </td>
+<td height="20" width="73">
+<a href="capqrcTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<img src="../support/nav2_index_b.gif" border="0">
+</td>
+        <td>
+          <a href="CommandLineArgs.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+        </td>
+        <td>
+          <a href="Capture_TB.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+        </td>
+        <td height="20">
+          <a>
+<a href="capqrc.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+          </a>
+        </td>
+        <td height="20" width="61">
+          <img src="../support/nav2_black.gif">
+        </td>
+        <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+        </td>
+        <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+        </td>
+        <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+        </td>
+      </tr>
+    </table>
+    <!-- End Buttons -->
+    <p>
+    <hr>
+    <p>
+      <h3>
+        <center>
+          <font >
+            <div>OrCAD&#174; Capture Quick Reference</div>
+            <font >
+              <div>
+            </font>
+          </font>
+        </center>
+      </h3>
+      <br>
+    </p>
+    <div>
+      <h1>3<a name="1039545">&nbsp;</a></h1>
+      <h1><a name="1039546">Capture.ini Variables</a></h1>
+      <p><a name="1039559">When Capture starts up, it uses a pre&#45;defined set of default values for the application settings. </a>These default values are defined in the <font size="2" face="'Courier New'" color="#000000">Capture.ini</font> file. This file is placed in the <font size="2" face="'Courier New'" color="#000000">HOME</font> directory (<font size="2" face="'Courier New'" color="#000000">%HOME%\cdssetup\OrCAD_Capture</font>) in your system. However, you can specify another location for this file by using the <font size="2" face="'Courier New'" color="#000000">&#45;i</font> switch when invoking Capture. See <a href="CommandLineArgs.html#1039546" title="Capture Command Line Arguments &amp; Switches"><font color="#0000ff"><u>Capture Command Line Arguments &amp; Switches</u></font></a> section of this guide for details.</p>
+      <p><a name="1039691">The </a><font size="2" face="'Courier New'" color="#000000">Capture.ini</font> file contains a large set of initialization variables used by Capture. This section defines a set of these variables that alter the Capture start&#45;up behavior.</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="13.333333333333332">
+              <div>&nbsp;</div>
+            </td>
+            <td width="133.33333333333331">
+              <div>
+                <nobr>
+                  <img src="images/important.gif" alt="ParagraphBullet" border="0">
+                </nobr>
+              </div>
+            </td>
+            <td>
+              <font size="3"><a name="1039877">The </a><font size="2" face="'Courier New'" color="#000000">Capture.ini</font> file is used by Capture during start&#45;up. Incorrect or corrupt information in this file can cause unexpected behavior in Capture. Before making any changes to this file, you are advised to first make a backup of your installed <font size="2" face="'Courier New'" color="#000000">Capture.ini</font>. Also, this chapter covers only a selected list of <font size="2" face="'Courier New'" color="#000000">ini</font> sections and only selected variables within these sections. It is advised that you work with only these variables.</font>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1040677">The </a><font size="2" face="'Courier New'" color="#000000">Capture.ini</font> file is a text&#45;based file. This implies that you can use any Text editor to open and edit this file.</p>
+      <p><a name="1040293">This chapter covers initialization variables in the following sections:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1039878" title="Capture.ini Variables" name="1040240"><font color="#0000ff"><u>SearchToolBarSetting</u></font></a><a href="#1039878" title="Capture.ini Variables"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1039830" title="Capture.ini Variables" name="1040247"><font color="#0000ff"><u>Docking</u></font></a><a href="#1039830" title="Capture.ini Variables"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1039903" title="Capture.ini Variables" name="1040254"><font color="#0000ff"><u>Print Settings</u></font></a><a href="#1039903" title="Capture.ini Variables"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1039921" title="Capture.ini Variables" name="1040261"><font color="#0000ff"><u>Preferences</u></font></a><a href="#1039921" title="Capture.ini Variables"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1040352" title="Capture.ini Variables" name="1040411"><font color="#0000ff"><u>Footprint Viewer Type</u></font></a><a href="#1040352" title="Capture.ini Variables"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#allegro_footprints_ini_vars" title="Capture.ini Variables" name="1040412"><font color="#0000ff"><u>Allegro Footprints</u></font></a><a href="#allegro_footprints_ini_vars" title="Capture.ini Variables"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1041164" title="Capture.ini Variables" name="1040633"><font color="#0000ff"><u>Part Management</u></font></a><a href="#1041164" title="Capture.ini Variables"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1039902" title="Capture.ini Variables" name="1040612"><font color="#0000ff"><u>Frame view options in CIS Explorer window</u></font></a><a href="#1039902" title="Capture.ini Variables"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1040581" title="Capture.ini Variables" name="1040514"><font color="#0000ff"><u>ConvertDialog</u></font></a><a href="#1040581" title="Capture.ini Variables"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <h3><a name="1039878">SearchToolBarSetting</a></h3>
+      <p><a name="1039879">This ini section includes the variables that control the selection of the Search toolbar options. </a>You can set a Search toolbar option as selected or un&#45;selected by settings the variable values in this section.</p>
+      <p><a name="1039827">Use </a><font size="2" face="'Courier New'" color="#000000">1</font> to set an option as selected.</p>
+      <p><a name="1039828">Use </a><font size="2" face="'Courier New'" color="#000000">0</font> (zero) to set an option as un&#45;selected.</p>
+      <h4><a name="1039829">Search Toolbar Options:</a></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1039855">Parts</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1039856">OffPage</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1039857">BookMark</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1039858">CommentText</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1039859">Nets</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1039860">FlatNets</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1039861">HierPorts</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1039862">DRC</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1039863">TitleBlock</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1039864">PowerSymbol</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1039865">HierPins</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1039866">PartsPins</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1039867">VariantParts</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1039868">MatchCase</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1039869">Highlight</a></td>
+          </tr>
+        </table>
+      </div>
+      <h3><a name="1039830">Docking</a></h3>
+      <p><a name="1039882">The variables in this section allow you to set the docked window status and visibility of </a>Capture CIS windows.</p>
+      <h4><a name="1039889">session_docked</a></h4>
+      <p><a name="1039890">Set the value to </a><font size="2" face="'Courier New'" color="#000000">1</font> to dock the session log window.</p>
+      <p><a name="1039891">Set the value to </a><font size="2" face="'Courier New'" color="#000000">0</font> (zero) to specify the session log as an MDI window.</p>
+      <h4><a name="1039885">session_show</a></h4>
+      <p><a name="1039900">Set the value to </a><font size="2" face="'Courier New'" color="#000000">1</font> to ensure the session log window is visible on start&#45;up.</p>
+      <p><a name="1039901">Set the value to </a><font size="2" face="'Courier New'" color="#000000">0</font> (zero) to ensure the session log window is hidden on start&#45;up. To display the session log if it is hidden, choose the Session Log option in the Capture CIS Window menu.</p>
+      <h3><a name="1039903">Print Settings</a></h3>
+      <p><a name="1039908">Use the variables in this section to define the print settings in Capture CIS.</a></p>
+      <h4><a name="1039909">InstanceMode</a></h4>
+      <p><a name="1039914">Set the value to </a><font size="2" face="'Courier New'" color="#000000">1</font> ensure that the default selected Print option in the Print dialog box is set to Inst. Mode (Instance Mode).</p>
+      <p><a name="1039938">Set the value to </a><font size="2" face="'Courier New'" color="#000000">0</font> (zero) to ensure that the default selected Print option in the Print dialog box is set to Occ. Mode (Occurrence Mode).</p>
+      <h3><a name="1039921">Preferences</a></h3>
+      <p><a name="1039952">The Preferences section in the ini contains variables that provide access to the settings in the </a>Capture CIS Preference dialog box.</p>
+      <h4><a name="1039968">DockingPlacePart</a></h4>
+      <p><a name="1040306">Set the value to </a><font size="2" face="'Courier New'" color="#000000">FALSE</font> to ensure that the Place Part user interface available in Capture CIS versions prior to version 16.2 displays.</p>
+      <p><a name="1040322">Set the value to </a><font size="2" face="'Courier New'" color="#000000">TRUE</font> to ensure that the Capture CIS 16.2 and later Place Part user interface displays.</p>
+      <h4><a name="1039989">SearchToolBar</a></h4>
+      <p><a name="1039990">Set the value to </a><font size="2" face="'Courier New'" color="#000000">FALSE</font> to ensure that the Find dialog box available in Capture CIS versions prior to version 16.2 displays.</p>
+      <p><a name="1040001">Set the value to </a><font size="2" face="'Courier New'" color="#000000">TRUE</font> to ensure that the Capture CIS 16.2 and later Search Toolbar displays.</p>
+      <h4><a name="1039987">EnableITC</a></h4>
+      <p><a name="1039976">Set the value to </a><font size="2" face="'Courier New'" color="#000000">TRUE</font> to Enable Intertool Communication in Capture CIS.</p>
+      <p><a name="1040014">Set the value to </a><font size="2" face="'Courier New'" color="#000000">FALSE</font> to disable Intertool Communication in Capture CIS.</p>
+      <h3><a name="1040352">Footprint Viewer Type</a></h3>
+      <p><a name="1040357">The variables in this section describe the type of footprints that will be displayed in the CIS </a>Explorer footprint window. The section is also linked to the Layout Footprints and the Allegro Footprints sections that are then used to define the directory location for the footprint (<font size="2" face="'Courier New'" color="#000000">psm</font>) files.</p>
+      <h4><a name="1040366">type</a></h4>
+      <p><a name="1040367">This variable defines the type of footprints to display.</a></p>
+      <p><a name="1040368">Set the value to </a><font size="2" face="'Courier New'" color="#000000">Allegro</font> to use Allegro files for footprints.</p>
+      <p><a name="1040369">Set the value to </a><font size="2" face="'Courier New'" color="#000000">Layout</font> to use Layout files for footprints.</p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1040389">Use the </a><font color="#000000"><strong>dir0</strong></font> variable in the <font color="#000000"><strong>Layout Footprints</strong></font> section to define the directory location containing the footprint files to use if the footprint type is defined as <font color="#000000"><strong>Layout</strong></font>. Or use the <font color="#000000"><strong>dir0</strong></font> variable in the <font color="#000000"><strong>Allegro Footprints</strong></font> section to define the directory location containing the footprint files to use if the footprint type is defined as <font color="#000000"><strong>Allegro</strong></font>.</p>
+      <h3><a name="allegro_footprints_ini_vars"></a><a name="1040419">Allegro Footprints</a></h3>
+      <p><a name="1040424">The variable (or variables) in this section define the directory location (or locations) for the </a><font size="2" face="'Courier New'" color="#000000">psm</font> and <font size="2" face="'Courier New'" color="#000000">pad</font> files used by the PCB Editor 3D Footprint Viewer to display a footprint. A <font size="2" face="'Courier New'" color="#000000">psm</font> file is used by the PCB Editor 3D Footprint Viewer to display the 3D footprint. A <font size="2" face="'Courier New'" color="#000000">pad</font> file is used by the Viewer to display the pin information in the viewer.</p>
+      <p><a name="1040862">You can define any number of paths that contain the </a><font size="2" face="'Courier New'" color="#000000">psm</font> and <font size="2" face="'Courier New'" color="#000000">pad</font> files. If you define multiple paths, Capture CIS will search the directories, for the footprint files, in the order in which they are defined in this section.</p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1040863">If the footprint information (corresponding </a><font size="2" face="'Courier New'" color="#000000">psm</font> file) is not found in any of the paths defined by the variables in this, Capture CIS will display an error message in the Session log window.</p>
+      <p><a name="1041159">Example:</a></p>
+      <p><a name="1041160"><font size="2" face="'Courier New'" color="#000000">[Allegro Footprints]</font></a></p>
+      <p><a name="1041161"><font size="2" face="'Courier New'" color="#000000">Dir1=D:\cadence163\share\pcb\pcb_lib\symbols</font></a></p>
+      <p><a name="1041162"><font size="2" face="'Courier New'" color="#000000">Dir2=D:\SPB162\tools\fsp\examples\libraries\footprints\allegro</font></a></p>
+      <h3><a name="1041164">Part Management</a></h3>
+      <p><a name="1041165">The variables in this section define paths to the database configuration file used in the </a>Capture CIS flow. The configuration file identifies the ODBC data source to use, Part properties that are transferred to your design and the relationship across the tables in your preferred parts database.</p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1040643">If this section is missing or the configuration file paths are incorrect, you will experience </a>errors in any CIS database operations.</p>
+      <h4><a name="1040644">Configuration File</a></h4>
+      <p><a name="1040645">Use this variable to define the path for the database configuration file if you are using the </a>Licensed version of Capture CIS.</p>
+      <p><a name="1040646">Example:</a></p>
+      <p><a name="1040726"><font size="2" face="'Courier New'" color="#000000">Configuration </font></a><font size="2" face="'Courier New'" color="#000000">File=D:\Cadence_10Nov\SPB_16.3\tools\Capture\Samples\BENCHACC.DBC</font></p>
+      <h4><a name="1040647">DemoConfiguration File</a></h4>
+      <p><a name="1040648">Use this variable to define the path for the database configuration file if you are using the Lite </a>version of Capture CIS.</p>
+      <p><a name="1040649">Example: </a><font size="2" face="'Courier New'" color="#000000">D:\Cadence_Demo\SPB_16.3\tools\Capture\Samples\DemoBENCHACC.DBC</font></p>
+      <h3><a name="1039902">Frame view options in CIS Explorer window</a></h3>
+      <p><a name="1040125">The following sections allow you to toggle the visibility of the corresponding frames in Local </a>Part Database and ICA tabs of the Capture CIS Explorer window.</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1040165">Visibility Frame</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote>
+<blockquote>        <font color="#000000"><a name="1040174">This section defines the variables of the visibility frame in CIS Explorer.</a></font></blockquote>
+      </blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1040170">Schematic Part Frame</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote>
+<blockquote>        <font color="#000000"><a name="1040181">This section defines the variables of the schematic part frame in CIS Explorer.</a></font></blockquote>
+      </blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1040188">FootPrint Frame</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote>
+<blockquote>        <font color="#000000"><a name="1040189">This section defines the variables of the footprint frame in CIS Explorer.</a></font></blockquote>
+      </blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1040193">Relational Table Frame</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote>
+<blockquote>        <font color="#000000"><a name="1040194">This section defines the variables of the relational table frame in CIS Explorer.</a></font></blockquote>
+      </blockquote>
+      <p><a name="1040186">Each of the above sections has two variables that define the frame visibility in the Local Part </a>Database and ICA tabs in the Capture CIS Explorer window. </p>
+      <h4><a name="1040130">Visible</a></h4>
+      <p><a name="1040131">Set the value to </a><font size="2" face="'Courier New'" color="#000000">1</font> to ensure the corresponding frame is visible in the Local Part Database tab.</p>
+      <p><a name="1040135">Set the value to </a><font size="2" face="'Courier New'" color="#000000">0</font> (zero) to ensure the corresponding frame is hidden in the Local Part Database tab.</p>
+      <h4><a name="1040138">Visible In ICA Mode</a></h4>
+      <p><a name="1040143">Set the value to </a><font size="2" face="'Courier New'" color="#000000">1</font> to ensure the corresponding frame is visible in the ICA tab.</p>
+      <p><a name="1040144">Set the value to </a><font size="2" face="'Courier New'" color="#000000">0</font> (zero) to ensure the corresponding frame is hidden in the ICA tab.</p>
+      <h3><a name="1040581">ConvertDialog</a></h3>
+      <p><a name="1040466">The variables in this section define the default behavior of the Save Converted Libraries and </a>Designs dialog box. This dialog box appears when you exit Capture if you have you included a configured library or a referenced design from a version of Capture prior to 16.3 in design that is based on a 16.3 or later version of Capture.</p>
+      <h4><a name="1040472">Choice</a></h4>
+      <p><a name="1040473">Set this variable to </a><font size="2" face="'Courier New'" color="#000000">Save All</font> to ensure that all displayed libraries or designs are saved to the upgraded version.</p>
+      <p><a name="1040482">Set this variable to </a><font size="2" face="'Courier New'" color="#000000">No All</font> to ensure that none of the displays libraries or designs are saved to the upgraded version.</p>
+      <h4><a name="1040485">Do Not Ask</a></h4>
+      <p><a name="1041038">Set this variable to </a><font size="2" face="'Courier New'" color="#000000">1</font> to ensure that the dialog box will not be displayed every time you close Capture in the upgrade library and design mode. Capture will use the option that is set for the Choice in this section.</p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1041039">This option applies to referred libraries only. These are libraries that are included in a </a>project through the Add Library command on the Place Part dialog. In addition, when you close an older version library directly opened in Capture or when you exit Capture after opening an older version library, the application always prompts you to upgrade the library.</p>
+      <p><a name="1040489">Set this variable to 0 to ensure that the dialog box will appear every time you close Capture </a>in the upgrade library and design mode.</p>
+    </div>
+    <br>
+    <a href="#pagetop">Return to top of page</a>
+    <hr>
+    <hr align="left">
+    <div style="text-align: left;">
+      <!-- Begin Buttons -->
+      <table width="650" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                    </td>
+<td height="20" width="73">
+<a href="capqrcTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<img src="../support/nav2_index_b.gif" border="0">
+</td>
+          <td>
+            <a href="CommandLineArgs.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+          </td>
+          <td>
+            <a href="Capture_TB.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+          </td>
+          <td>
+            <a>
+<a href="capqrc.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+            </a>
+          </td>
+          <td height="20" width="61">
+            <img src="../support/nav2_black.gif">
+          </td>
+          <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+          </td>
+          <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+          </td>
+          <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+          </td>
+        </tr>
+      </table>
+      <!-- End Buttons -->
+    </div>
+    <br>
+    <font size="-1" >
+For support, see <a href="http://support.cadence.com" target="_blank">Cadence Online Support</a> service.</font>
+    <br>
+    <br>
+    <font size="-1" >
+      <i>Copyright &#169; 2011, <a href="http://www.cadence.com">Cadence Design Systems, Inc.</a></i>
+    </font>
+    <br>
+    <font size="-1" >
+All rights reserved.</font>
+    <br>
+    <br>
+  </body>
+</html>

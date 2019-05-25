@@ -1,0 +1,123 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 42 40
+HEADER "Die Properties"
+
+POPUP <layerPopup>"""".
+
+TILE
+
+TEXT "Ref des:"
+TLOC 1 1
+ENDTEXT
+TEXT ""
+TLOC 10 1
+INFO refdes 22 32
+ENDTEXT
+
+TEXT "Device:"
+TLOC 1 3
+ENDTEXT
+TEXT ""
+TLOC 10 3
+INFO device 22 32
+ENDTEXT
+
+GROUP "Die extents"
+GLOC 1 5
+GSIZE 26 13
+ENDGROUP
+
+TEXT "North scribe:"
+TLOC 3 7
+ENDTEXT
+FIELD northscribe
+FLOC 14 7
+STRFILLIN 10 20
+OPTIONS prettyprint ownerdrawn
+ENDFIELD
+
+TEXT "South scribe:"
+TLOC 3 9
+ENDTEXT
+FIELD southscribe
+FLOC 14 9
+STRFILLIN 10 32
+OPTIONS prettyprint ownerdrawn
+ENDFIELD
+
+TEXT "East scribe:"
+TLOC 3 11
+ENDTEXT
+FIELD eastscribe
+FLOC 14 11
+STRFILLIN 10 32
+OPTIONS prettyprint ownerdrawn
+ENDFIELD
+
+TEXT "West scribe:"
+TLOC 3 13
+ENDTEXT
+FIELD westscribe
+FLOC 14 13
+STRFILLIN 10 32
+OPTIONS prettyprint ownerdrawn
+ENDFIELD
+
+TEXT "Shrink:"
+TLOC 3 15
+ENDTEXT
+FIELD shrink
+FLOC 14 15
+STRFILLIN 10 32
+OPTIONS prettyprint ownerdrawn
+ENDFIELD
+
+GROUP "Attachment type"
+GLOC 1 18
+GSIZE 26 7
+ENDGROUP
+
+FIELD wirebond
+FLOC 3 20
+CHECKLIST "Wire bond" "attachment"
+ENDFIELD
+
+FIELD flipchip
+FLOC 3 22
+CHECKLIST "Flip chip" "attachment"
+ENDFIELD
+
+#ifdef APD_DIRECT_DIE_ATTACH_ENABLED && APD
+FIELD d2d_parent
+FLOC 14 20
+CHECKLIST "D2D Parent" "attachment"
+ENDFIELD
+
+FIELD d2d_child
+FLOC 14 22
+CHECKLIST "D2D Child" "attachment"
+ENDFIELD
+#endif
+
+TEXT "Layer:"
+TLOC 1 26
+ENDTEXT
+FIELD layer
+FLOC 8 26
+ENUMSET 16
+POP "layerPopup"
+ENDFIELD
+
+FIELD apply
+FLOC 1 29
+MENUBUTTON "Apply Changes" 25 3
+ENDFIELD
+FIELD reset
+FLOC 1 31
+MENUBUTTON "Reset Symbol Properties" 25 3
+ENDFIELD
+
+ENDTILE
+ENDFORM

@@ -1,0 +1,1068 @@
+( template_definitions
+
+( "Isolvpcl" "GUID"
+    ( template_cells
+      ( "C1" "cap"
+        ( template_terms
+          ( "T1"  )
+          ( "T2"  )
+        )
+      )
+      ( "R1" "res"
+        ( template_terms
+          ( "T3"  )
+          ( "T4"  )
+        )
+      )
+    )
+
+    ( template_nets
+      ( "N1" auto_assign auto_connect )
+      ( "N2" "auto_net")
+      ( "N3" "auto_low")
+    )
+
+    ( template_instances
+      ( "I1" "C1"
+        ( template_pins
+          ( "M1" "T1" 
+            ( template_conn
+              ( -1 -1 "N1" -1 -1 )
+            )
+          )
+          ( "M2" "T2"
+            ( template_conn
+                ( -1 -1 "N2" -1 -1 )
+            )
+          )
+        )
+      )
+      ( "I2" "R1"
+        ( template_pins
+          ( "M3" "T3" 
+            ( template_conn
+              ( -1 -1 "N1" -1 -1 )
+            )
+          )
+          ( "M4" "T4"
+            ( template_conn
+              ( -1 -1 "N3" -1 -1 )
+            )
+          )
+        )
+      )
+    )
+)
+
+( "SeriesCapacitor" "GUID"
+    ( template_cells
+      ( "C1" "cap"
+        ( template_terms
+          ( "T1" auto_assign )
+          ( "T2" auto_assign )
+        )
+      )
+    )
+
+    ( template_nets
+      ( "N1" auto_assign auto_connect )
+      ( "N2" "auto_net")
+    )
+
+    ( template_instances
+      ( "I1" "C1"
+        ( template_pins
+          ( "M1" "T1" 
+            ( template_conn
+              ( -1 -1 "N1" -1 -1 )
+            )
+          )
+	      ( "M2" "T2"
+            ( template_conn
+              ( -1 -1 "N2" -1 -1 )
+            )
+          )
+        )
+      )
+    )
+)
+( "TheveninCapacitor" "GUID"
+    ( template_cells
+      ( "C1" "cap"
+        ( template_terms
+          ( "T1"  )
+          ( "T2"  )
+        )
+      )
+      ( "R1" "res"
+        ( template_terms
+          ( "T3"  )
+          ( "T4"  )
+        )
+      )
+    )
+  
+    ( template_nets
+      ( "N1" "auto_high")
+      ( "N2" "auto_net")
+      ( "N3" "auto_low")
+    )
+
+    ( template_instances
+      ( "I1" "C1"
+        ( template_pins
+          ( "M1" "T1" 
+            ( template_conn
+              ( -1 -1 "N1" -1 -1 )
+            )
+          )
+	      ( "M2" "T2"
+            ( template_conn
+              ( -1 -1 "N2" -1 -1 )
+            )
+          )
+        )
+      )
+      ( "I2" "R1"
+        ( template_pins
+          ( "M3" "T3" 
+            ( template_conn
+              ( -1 -1 "N2" -1 -1 )
+            )
+          )
+	      ( "M4" "T4"
+            ( template_conn
+              ( -1 -1 "N3" -1 -1 )
+            )
+          )
+        )
+      )
+    )
+  )
+
+  ( "Series" "GUID"
+    ( template_cells
+      ( "R1" "res"
+        ( template_terms
+          ( "T1" auto_assign )
+          ( "T2" auto_assign )
+        )
+      )
+    )
+
+    ( template_nets
+      ( "N1" auto_assign auto_connect )
+      ( "N2" "auto_net")
+    )
+
+    ( template_instances
+      ( "I1" "R1"
+        ( template_pins
+          ( "M1" "T1" 
+            ( template_conn
+              ( -1 -1 "N1" -1 -1 )
+            )
+          )
+	      ( "M2" "T2"
+            ( template_conn
+              ( -1 -1 "N2" -1 -1 )
+            )
+          )
+        )
+      )
+    )
+  )
+
+ 
+
+
+  ( "Shunt" "GUID"
+    ( template_cells
+      ( "R1" "res"
+        ( template_terms
+          ( "T1"  )
+          ( "T2"  )
+        )
+      )
+    )
+
+    ( template_nets
+      ( "N1" "auto_net")
+      ( "N2" "auto_low")
+    )
+
+    ( template_instances
+      ( "I1" "R1"
+        ( template_pins
+          ( "M1" "T1" 
+            ( template_conn
+              ( -1 -1 "N1" -1 -1 )
+            )
+          )
+	      ( "M2" "T2"
+            ( template_conn
+              ( -1 -1 "N2" -1 -1 )
+            )
+          )
+        )
+      )
+    )
+  )
+
+  ( "ShuntRC" "GUID"
+    ( template_cells
+      ( "R1" "res"
+        ( template_terms
+          ( "T1"  )
+          ( "T2"  )
+        )
+      )
+      ( "C1" "cap"
+        ( template_terms
+          ( "T3"  )
+          ( "T4"  )
+        )
+      )
+    )
+
+    ( template_nets
+      ( "N1"  "auto_net")
+      ( "N2"  auto_assign)
+      ( "N3"  "auto_low")
+    )
+
+    ( template_instances
+      ( "I1" "R1"
+        ( template_pins
+          ( "M1" "T1" 
+            ( template_conn
+              ( -1 -1 "N1" -1 -1 )
+            )
+          )
+	      ( "M2" "T2"
+            ( template_conn
+              ( -1 -1 "N2" -1 -1 )
+            )
+          )
+        )
+      )
+      ( "I2" "C1"
+        ( template_pins
+          ( "M3" "T3" 
+            ( template_conn
+              ( -1 -1 "N2" -1 -1 )
+            )
+          )
+	      ( "M4" "T4"
+            ( template_conn
+              ( -1 -1 "N3" -1 -1 )
+            )
+          )
+        )
+      )
+    )
+  )
+
+  ( "GNDClampDiode" "GUID"
+    ( template_cells
+      ( "D1" "diode" 
+        ( template_terms
+          ( "T1"  )
+          ( "T2"  )
+        )
+      )
+    )
+  
+    ( template_nets
+      ( "N1" "auto_net")
+      ( "N2" "auto_low")
+    )
+  
+    ( template_instances
+      ( "I1" "D1"
+        ( template_pins
+          ( "M1" "T1" 
+            ( template_conn
+              ( -1 -1 "N1" -1 -1 )
+            )
+          )
+	      ( "M2" "T2"
+            ( template_conn
+              ( -1 -1 "N2" -1 -1 )
+            )
+          )
+        )
+      )
+    )
+  )
+
+
+  ( "PowerClampDiode" "GUID"
+    ( template_cells
+      ( "D1" "diode" 
+        ( template_terms
+          ( "T1"  )
+          ( "T2"  )
+        )
+      )
+    )
+  
+    ( template_nets
+      ( "N1" "auto_high")
+      ( "N2" "auto_net")
+    )
+  
+    ( template_instances
+      ( "I1" "D1"
+        ( template_pins
+          ( "M1" "T1" 
+            ( template_conn
+              ( -1 -1 "N1" -1 -1 )
+            )
+          )
+	      ( "M2" "T2"
+            ( template_conn
+              ( -1 -1 "N2" -1 -1 )
+            )
+          )
+        )
+      )
+    )
+  )
+
+  ( "DualClampDiode" "GUID"
+    ( template_cells
+      ( "D1" "diode"
+        ( template_terms
+          ( "T1"  )
+          ( "T2"  )
+        )
+      )
+      ( "D2" "diode"
+        ( template_terms
+          ( "T3"  )
+          ( "T4"  )
+        )
+      )
+    )
+  
+    ( template_nets
+      ( "N1" "auto_high")
+      ( "N2" "auto_net")
+      ( "N3" "auto_low")
+    )
+
+    ( template_instances
+      ( "I1" "D1"
+        ( template_pins
+          ( "M1" "T1" 
+            ( template_conn
+              ( -1 -1 "N1" -1 -1 )
+            )
+          )
+	      ( "M2" "T2"
+            ( template_conn
+              ( -1 -1 "N2" -1 -1 )
+            )
+          )
+        )
+      )
+      ( "I2" "D2"
+        ( template_pins
+          ( "M3" "T3" 
+            ( template_conn
+              ( -1 -1 "N2" -1 -1 )
+            )
+          )
+	      ( "M4" "T4"
+            ( template_conn
+              ( -1 -1 "N3" -1 -1 )
+            )
+          )
+        )
+      )
+    )
+  )
+
+  ( "Thevenin" "GUID"
+    ( template_cells
+      ( "R1" "res"
+        ( template_terms
+          ( "T1"  )
+          ( "T2"  )
+        )
+      )
+      ( "R2" "res"
+        ( template_terms
+          ( "T3"  )
+          ( "T4"  )
+        )
+      )
+    )
+  
+    ( template_nets
+      ( "N1" "auto_high")
+      ( "N2" "auto_net")
+      ( "N3" "auto_low")
+    )
+
+    ( template_instances
+      ( "I1" "R1"
+        ( template_pins
+          ( "M1" "T1" 
+            ( template_conn
+              ( -1 -1 "N1" -1 -1 )
+            )
+          )
+	      ( "M2" "T2"
+            ( template_conn
+              ( -1 -1 "N2" -1 -1 )
+            )
+          )
+        )
+      )
+      ( "I2" "R2"
+        ( template_pins
+          ( "M3" "T3" 
+            ( template_conn
+              ( -1 -1 "N2" -1 -1 )
+            )
+          )
+	      ( "M4" "T4"
+            ( template_conn
+              ( -1 -1 "N3" -1 -1 )
+            )
+          )
+        )
+      )
+    )
+  )
+  ( "Pullup" "GUID"
+    ( template_cells
+      ( "R1" "res"
+        ( template_terms
+          ( "T1"  )
+          ( "T2"  )
+        )
+      )
+    )
+
+    ( template_nets
+      ( "N1" "auto_high")
+      ( "N2" "auto_net")
+    )
+
+    ( template_instances
+      ( "I1" "R1"
+        ( template_pins
+          ( "M1" "T1" 
+            ( template_conn
+              ( -1 -1 "N1" -1 -1 )
+            )
+          )
+	      ( "M2" "T2"
+            ( template_conn
+              ( -1 -1 "N2" -1 -1 )
+            )
+          )
+        )
+      )
+    )
+  )
+
+  ( "Pulldown" "GUID"
+    ( template_cells
+      ( "R1" "res"
+        ( template_terms
+          ( "T1"  )
+          ( "T2"  )
+        )
+      )
+    )
+
+    ( template_nets
+      ( "N1" "auto_net")
+      ( "N2" "auto_low")
+    )
+
+    ( template_instances
+      ( "I1" "R1"
+        ( template_pins
+          ( "M1" "T1" 
+            ( template_conn
+              ( -1 -1 "N1" -1 -1 )
+            )
+          )
+	      ( "M2" "T2"
+            ( template_conn
+              ( -1 -1 "N2" -1 -1 )
+            )
+          )
+        )
+      )
+    )
+  )
+
+ ( "Bypass" "GUID"
+    ( template_cells
+      ( "C1" "cap"
+        ( template_terms
+          ( "T1"  )
+          ( "T2"  )
+        )
+      )
+    )
+
+    ( template_nets
+      ( "N1" "auto_high")
+      ( "N2" "auto_low")
+    )
+
+    ( template_instances
+      ( "I1" "C1"
+        ( template_pins
+          ( "M1" "T1" 
+            ( template_conn
+              ( -1 -1 "N1" -1 -1 )
+            )
+          )
+	      ( "M2" "T2"
+            ( template_conn
+              ( -1 -1 "N2" -1 -1 )
+            )
+          )
+        )
+      )
+    )
+  )
+
+  ( "LVDS" "GUID"
+    ( template_cells
+      ( "R1" "res"
+        ( template_terms
+          ( "T1" auto_assign )
+          ( "T2" auto_assign )
+        )
+      )
+    )
+
+    ( template_nets
+      ( "N1" "auto_net" )
+      ( "N2" "auto_net" )
+    )
+
+    ( template_instances
+      ( "I1" "R1"
+        ( template_pins
+          ( "M1" "T1" 
+            ( template_conn
+              ( -1 -1 "N1" -1 -1 )
+            )
+          )
+	      ( "M2" "T2"
+            ( template_conn
+              ( -1 -1 "N2" -1 -1 )
+            )
+          )
+        )
+      )
+    )
+  )
+
+  ( "Parallel" "GUID"
+    ( template_cells
+      ( "R1" "res"
+        ( template_terms
+          ( "T1" auto_assign )
+          ( "T2" auto_assign )
+        )
+      )
+    )
+
+    ( template_nets
+      ( "N1" "auto_net" positive_leg)
+      ( "N2" "auto_net" negative_leg)
+      ( "N3" "auto_high" )
+    )
+
+    ( template_instances
+      ( "I1" "R1"
+        ( template_pins
+          ( "M1" "T1" 
+            ( template_conn
+              ( -1 -1 "N1" -1 -1 )
+            )
+          )
+	      ( "M2" "T2"
+            ( template_conn
+              ( -1 -1 "N3" -1 -1 )
+            )
+          )
+        )
+      )
+      ( "I2" "R1"
+        ( template_pins
+          ( "M3" "T1" 
+            ( template_conn
+              ( -1 -1 "N2" -1 -1 )
+            )
+          )
+	      ( "M4" "T2"
+            ( template_conn
+              ( -1 -1 "N3" -1 -1 )
+            )
+          )
+        )
+      )
+    )
+  )
+  ( "ACCT1" "GUID"
+    ( template_cells
+      ( "R1" "res"
+        ( template_terms
+          ( "T1" auto_assign )
+          ( "T2" auto_assign )
+        )
+      )
+      ( "R2" "res"
+        ( template_terms
+          ( "T3" auto_assign )
+          ( "T4" auto_assign )
+        )
+      )
+      ( "C1" "cap"
+        ( template_terms
+          ( "T5" auto_assign )
+          ( "T6" auto_assign )
+        )
+      )
+    )
+
+    ( template_nets
+      ( "N1" auto_assign auto_connect "N6" )
+      ( "N2" auto_assign auto_connect "N7" )
+      ( "N3" auto_assign "N6" )
+      ( "N4" auto_assign "N7" )
+      ( "N5" "auto_low" )
+      ( "N6" "auto_net" positive_leg )
+      ( "N7" "auto_net" negative_leg )
+    )
+
+    ( template_instances
+      ( "I1" "R1"
+        ( template_pins
+          ( "M1" "T1" 
+            ( template_conn
+              ( -1 -1 "N1" -1 -1 )
+            )
+          )
+	      ( "M2" "T2"
+            ( template_conn
+              ( -1 -1 "N3" -1 -1 )
+            )
+          )
+        )
+      )
+      ( "I2" "R1"
+        ( template_pins
+          ( "M3" "T1" 
+            ( template_conn
+              ( -1 -1 "N2" -1 -1 )
+            )
+          )
+	      ( "M4" "T2"
+            ( template_conn
+              ( -1 -1 "N4" -1 -1 )
+            )
+          )
+        )
+      )
+      ( "I3" "R2"
+        ( template_pins
+          ( "M5" "T3" 
+            ( template_conn
+              ( -1 -1 "N3" -1 -1 )
+            )
+          )
+	      ( "M6" "T4"
+            ( template_conn
+              ( -1 -1 "N5" -1 -1 )
+            )
+          )
+        )
+      )
+      ( "I4" "R2"
+        ( template_pins
+          ( "M7" "T3" 
+            ( template_conn
+              ( -1 -1 "N4" -1 -1 )
+            )
+          )
+	      ( "M8" "T4"
+            ( template_conn
+              ( -1 -1 "N5" -1 -1 )
+            )
+          )
+        )
+      )
+      ( "I5" "C1"
+        ( template_pins
+          ( "M9" "T5" 
+            ( template_conn
+              ( -1 -1 "N3" -1 -1 )
+            )
+          )
+	      ( "M10" "T6"
+            ( template_conn
+              ( -1 -1 "N6" -1 -1 )
+            )
+          )
+        )
+      )
+      ( "I6" "C1"
+        ( template_pins
+          ( "M11" "T5" 
+            ( template_conn
+              ( -1 -1 "N4" -1 -1 )
+            )
+          )
+	      ( "M12" "T6"
+            ( template_conn
+              ( -1 -1 "N7" -1 -1 )
+            )
+          )
+        )
+      )
+    )
+  )
+  ( "ACCT2" "GUID"
+    ( template_cells
+      ( "R1" "res"
+        ( template_terms
+          ( "T1" auto_assign )
+          ( "T2" auto_assign )
+        )
+      )
+      ( "C1" "cap"
+        ( template_terms
+          ( "T3" auto_assign )
+          ( "T4" auto_assign )
+        )
+      )
+    )
+
+    ( template_nets
+      ( "N1" auto_assign auto_connect "N4" )
+      ( "N2" auto_assign auto_connect "N5" )
+      ( "N3" "auto_low" )
+      ( "N4" "auto_net" positive_leg )
+      ( "N5" "auto_net" negative_leg )
+    )
+
+    ( template_instances
+      ( "I1" "R1"
+        ( template_pins
+          ( "M1" "T1" 
+            ( template_conn
+              ( -1 -1 "N1" -1 -1 )
+            )
+          )
+	      ( "M2" "T2"
+            ( template_conn
+              ( -1 -1 "N3" -1 -1 )
+            )
+          )
+        )
+      )
+      ( "I2" "R1"
+        ( template_pins
+          ( "M3" "T1" 
+            ( template_conn
+              ( -1 -1 "N2" -1 -1 )
+            )
+          )
+	      ( "M4" "T2"
+            ( template_conn
+              ( -1 -1 "N3" -1 -1 )
+            )
+          )
+        )
+      )
+      ( "I3" "C1"
+        ( template_pins
+          ( "M5" "T3" 
+            ( template_conn
+              ( -1 -1 "N1" -1 -1 )
+            )
+          )
+	      ( "M6" "T4"
+            ( template_conn
+              ( -1 -1 "N4" -1 -1 )
+            )
+          )
+        )
+      )
+      ( "I4" "C1"
+        ( template_pins
+          ( "M7" "T3" 
+            ( template_conn
+              ( -1 -1 "N2" -1 -1 )
+            )
+          )
+	      ( "M8" "T4"
+            ( template_conn
+              ( -1 -1 "N5" -1 -1 )
+            )
+          )
+        )
+      )
+    )
+  )
+  ( "DPSeriesCap" "GUID"
+    ( template_cells
+      ( "C1" "cap"
+        ( template_terms
+          ( "T1" auto_assign )
+          ( "T2" auto_assign )
+        )
+      )
+    )
+
+    ( template_nets
+      ( "N1" auto_assign auto_connect "N2" )
+      ( "N2" "auto_net" positive_leg )
+      ( "N3" auto_assign auto_connect "N4" )
+      ( "N4" "auto_net" negative_leg )
+    )
+
+    ( template_instances
+      ( "I1" "C1"
+        ( template_pins
+          ( "M1" "T1" 
+            ( template_conn
+              ( -1 -1 "N1" -1 -1 )
+            )
+          )
+	      ( "M2" "T2"
+            ( template_conn
+              ( -1 -1 "N2" -1 -1 )
+            )
+          )
+        )
+      )
+      ( "I2" "C1"
+        ( template_pins
+          ( "M3" "T1" 
+            ( template_conn
+              ( -1 -1 "N3" -1 -1 )
+            )
+          )
+	      ( "M4" "T2"
+            ( template_conn
+              ( -1 -1 "N4" -1 -1 )
+            )
+          )
+        )
+      )
+    )
+  )
+  ( "ACBias" "GUID"
+    ( template_cells
+      ( "R1" "res"
+        ( template_terms
+          ( "T1" auto_assign )
+          ( "T2" auto_assign )
+        )
+      )
+      ( "C1" "cap"
+        ( template_terms
+          ( "T3" auto_assign )
+          ( "T4" auto_assign )
+        )
+      )
+    )
+
+    ( template_nets
+      ( "N1" "auto_net" )
+      ( "N2" "auto_net" )
+      ( "N3" auto_assign "N1")
+      ( "N4" "auto_low" )
+    )
+
+    ( template_instances
+      ( "I1" "R1"
+        ( template_pins
+          ( "M1" "T1" 
+            ( template_conn
+              ( -1 -1 "N1" -1 -1 )
+            )
+          )
+	      ( "M2" "T2"
+            ( template_conn
+              ( -1 -1 "N3" -1 -1 )
+            )
+          )
+        )
+      )
+      ( "I2" "R1"
+        ( template_pins
+          ( "M3" "T1" 
+            ( template_conn
+              ( -1 -1 "N2" -1 -1 )
+            )
+          )
+	      ( "M4" "T2"
+            ( template_conn
+              ( -1 -1 "N3" -1 -1 )
+            )
+          )
+        )
+      )
+      ( "I3" "C1"
+        ( template_pins
+          ( "M5" "T3" 
+            ( template_conn
+              ( -1 -1 "N3" -1 -1 )
+            )
+          )
+	      ( "M6" "T4"
+            ( template_conn
+              ( -1 -1 "N4" -1 -1 )
+            )
+          )
+        )
+      )
+    )
+  )
+  ( "DPSeries" "GUID"
+    ( template_cells
+      ( "R1" "res"
+        ( template_terms
+          ( "T1" auto_assign )
+          ( "T2" auto_assign )
+        )
+      )
+    )
+
+    ( template_nets
+      ( "N1" auto_assign auto_connect "N2" )
+      ( "N2" "auto_net" positive_leg )
+      ( "N3" auto_assign auto_connect "N4" )
+      ( "N4" "auto_net" negative_leg )
+    )
+
+    ( template_instances
+      ( "I1" "R1"
+        ( template_pins
+          ( "M1" "T1" 
+            ( template_conn
+              ( -1 -1 "N1" -1 -1 )
+            )
+          )
+	      ( "M2" "T2"
+            ( template_conn
+              ( -1 -1 "N2" -1 -1 )
+            )
+          )
+        )
+      )
+      ( "I2" "R1"
+        ( template_pins
+          ( "M3" "T1" 
+            ( template_conn
+              ( -1 -1 "N3" -1 -1 )
+            )
+          )
+	      ( "M4" "T2"
+            ( template_conn
+              ( -1 -1 "N4" -1 -1 )
+            )
+          )
+        )
+      )
+    )
+  )
+  
+  ( "DPThevenin" "GUID"
+    ( template_cells
+      ( "R1" "res"
+        ( template_terms
+          ( "T1"  )
+          ( "T2"  )
+        )
+      )
+      ( "R2" "res"
+        ( template_terms
+          ( "T3"  )
+          ( "T4"  )
+        )
+      )
+    )
+  
+    ( template_nets
+      ( "N1" "auto_high")
+      ( "N2" "auto_net" positive_leg)
+      ( "N3" "auto_net" negative_leg)
+      ( "N4" "auto_low")
+    )
+
+    ( template_instances
+      ( "I1" "R1"
+        ( template_pins
+          ( "M1" "T1" 
+            ( template_conn
+              ( -1 -1 "N1" -1 -1 )
+            )
+          )
+	      ( "M2" "T2"
+            ( template_conn
+              ( -1 -1 "N2" -1 -1 )
+            )
+          )
+        )
+      )
+      ( "I2" "R2"
+        ( template_pins
+          ( "M3" "T3" 
+            ( template_conn
+              ( -1 -1 "N2" -1 -1 )
+            )
+          )
+	      ( "M4" "T4"
+            ( template_conn
+              ( -1 -1 "N4" -1 -1 )
+            )
+          )
+        )
+      )
+      ( "I3" "R1"
+        ( template_pins
+          ( "M5" "T1" 
+            ( template_conn
+              ( -1 -1 "N1" -1 -1 )
+            )
+          )
+	      ( "M6" "T2"
+            ( template_conn
+              ( -1 -1 "N3" -1 -1 )
+            )
+          )
+        )
+      )
+      ( "I4" "R2"
+        ( template_pins
+          ( "M7" "T3" 
+            ( template_conn
+              ( -1 -1 "N3" -1 -1 )
+            )
+          )
+	      ( "M8" "T4"
+            ( template_conn
+              ( -1 -1 "N4" -1 -1 )
+            )
+          )
+        )
+      )
+    )
+  )
+)

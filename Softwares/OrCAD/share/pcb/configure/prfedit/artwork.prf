@@ -1,0 +1,64 @@
+#  $Header: /vobs/psd_backend_data/data/prefs/artwork.prf /main/4 27-Jun-05.14:02:42 fxf $
+#-------------------------------------------------------------------------------
+#		Allegro Artwork and artwork user interface options
+#-------------------------------------------------------------------------------
+#
+# See User.prf for complete descriptions of fields in this file.
+
+
+PARENT:PARENT_L=manufacture/artwork
+
+SUMMARY:HELP=Allegro artwork and artwork user interface options
+
+arc_oldvectorize:TYPE=CHECK:EFF_ONNEXTCMD:\
+HELP=If set uses the old artwork vectorizing algorithm. Also enables \
+access to 'art_circvects' environment variable. New arc to vector \
+algorithm automatically accomodates the wide range of units and accuracy \
+now present in modern designs. Old vectorizing algorithm will be \
+removed in a future release.
+
+art_arc_centercheck:TYPE=CHECK:EFF_ONRESTART:\
+HELP=By default, GERBER 6X plots an arc even if its arc center is outside the \
+photoplot outline. Certain CAM stations may have trouble with this model. This variable \
+changes this condition to an error.
+
+art_circvects:TYPE=LONG:MIN=8:EFF_ONNEXTCMD:\
+HELP=Its value represents number of segments to vectorize a circle. \
+If set, it overrides default artwork arc vectorization.\
+By default, vectorization is based upon a combination of design units, \
+accuracy and arc radius. \
+If Vector artwork (Gerber 6x or 4x) this is used for all arcs. \
+Raster artwork vectorization only applies to shape/void edges. \
+If set, user supplied value is used if it would eesult in \
+more vectorization then the calculated value. \
+Starting in 15.7, this setting is not used unless arc_oldvectorize is also set.
+
+film_nosort:TYPE=CHECK:EFF_ONNEXTCMD:\
+HELP=Sets film param artwork display back to pre-14.2 unsorted order. \
+Default, is to sort them alphabetically. When this variable is set, \
+order may appear in stackup order if you create the stackup before \
+opening the film param dialog.
+
+artwork_no_unit_warn:TYPE=CHECK:EFF_ONNEXTCMD:\
+HELP=Disable popup warnings about artwork output rounding in the \
+artwork user interface. Warnings are still issued to photoplot.log.
+
+artwork_arc_round_error:TYPE=CHECK:EFF_ONNEXTCMD:\
+HELP=Treats artwork arc to convert to line accuracy warnings as errors. \
+By default, these are warnings.
+
+artwork_undefined_width_error:TYPE=CHECK:EFF_ONNEXTCMD:\
+HELP=In artwork, makes 0 line widths when the undefined line width setting is also \
+0 an error. This can be corrected by setting the "Undefined line width" to a value \
+for each film in the artwork dialog. By default, these are warnings.
+
+art_stripDirectoryName:TYPE=CHECK:EFF_ONNEXTCMD:\
+HELP=Normally artwork in the comment section of the film file includes \
+both the filename and directory name. This option strips the directory \
+name leaving just the design name.
+
+loadgerber_flash_size:TYPE=STRING:EFF_ONRESTART:\
+HELP=Size of flash triangle to be used when loading Gerber 4x or 6x and \
+the target option is selected. Default value is C-point size (80 mils). \
+Value can be a number; unit defaults to current design units. Value can \
+also include a standard length unit (e.g. MIL, MICRON, etc.).

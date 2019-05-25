@@ -1,0 +1,97 @@
+#  $Header: /vobs/psd_backend_data/data/prefs/file_management.prf /main/fxf080721.misc/1 21-Jul-08.15:14:38 fxf $
+#------------------------------------------------------------------------------
+#		Allegro file revisions Environment Variables
+#------------------------------------------------------------------------------
+#
+# See User.prf for complete descriptions of fields in this file.
+
+
+PARENT:PARENT_L=file_management/versioning
+
+SUMMARY:HELP=File Revision Control Settings
+
+ADS_AUTOSAVEREVS:TYPE=LONG:MIN=0:EFF_ONRESTART:\
+HELP=Enables file versioning for AUTOSAVE database files.  \
+Value <n> = number of versions you want maintained. Default is no versioning.
+
+ADS_BOARDREVS:TYPE=LONG:MIN=0:EFF_ONRESTART:\
+HELP=Enables file versioning for allegro layouts (.brd) and symbol (.*sm) \
+files. Value <n> = number of versions you want maintained. \
+Default is 1 version.
+
+ADS_LOGREVS:TYPE=LONG:MIN=0:EFF_ONRESTART:\
+HELP=Enables file versioning for Allegro log files. Value <n> = number of \
+versions you want maintained.
+
+ADS_TEXTREVS:TYPE=LONG:MIN=0:EFF_ONRESTART:\
+HELP=Enables file versioning of allegro files which are not .brd .*sm or \
+.log  Value <n> = number of versions you want maintained.
+
+TEMP:TYPE=STRING:EFF_ONRESTART:\
+PARENT_L=file_management/temp_files:\
+HELP=or TMP, <directory path with a large quantity of free disk space> \
+This variable causes allegro processes to use the specified directory \
+for temporary storage of data files. Most often, artwork requires \
+more temporary space than the /tmp directory contains.
+
+ADS_SDART:TYPE=STRING:EFF_IMMEDIATE:\
+PARENT_L=file_management/output_dir:\
+HELP=The subdirectory to which artwork (gerber) and drill files are written. \
+Default is the same directory as the design.
+
+EXT_ARTWORK:TYPE=STRING:EFF_ONRESTART:\
+HELP=File extension used for artwork (film) files. Default is .art. \
+Recommendation is to set this at the CDS_SITE level. \
+Use caution before changing the extension to ensure all your post-processing \
+tools can handle the new extension.
+
+EXT_DRILL:TYPE=STRING:EFF_ONRESTART:\
+HELP=File extension used for ncdrill files. Default is .drl. \
+Recommendation is to set this at the CDS_SITE level. \
+Use caution before changing the extension to ensure all your post-processing \
+tools can handle the new extension.
+
+ADS_SDLOG:TYPE=STRING:EFF_ONRESTART:\
+PARENT_L=file_management/output_dir:\
+HELP=The subdirectory to which log files should be written.
+
+ADS_SDPLOT:TYPE=STRING:EFF_IMMEDIATE:\
+PARENT_L=file_management/output_dir:\
+HELP=The subdirectory to which plot files should be written.
+
+ADS_SDREPORT:TYPE=STRING:EFF_IMMEDIATE:\
+PARENT_L=file_management/output_dir:\
+HELP=The subdirectory to which report files should be written.
+
+dump_library_directory:TYPE=STRING:EFF_ONNEXTCMD:\
+PARENT_L=file_management/output_dir:\
+HELP=Specifies the export directory that Export Libraries (dlib UI command) \
+uses as its directory. Default is the current directory. \
+Location may be a relative or absolute path. Command attempts \
+to create the rightmost directory component if it is not present.
+
+journal_prefix:TYPE=STRING:EFF_ONRESTART:\
+PARENT_L=file_management/journals:\
+HELP=Prefix appended to the program's journal file name. Three special \
+prefix keys are available; "user" substitutes user's login, "host" which \
+substitutes system name and "unique" which creates a unique filename based \
+upon host, user and process id. Prefix must be a legal file name \
+(no / or \:). \
+Example journal_prefix = user for login "me" would create an allegro \
+journal file of me_allegro.jrl
+
+journal_nobuffer:TYPE=CHECK:EFF_ONRESTART:\
+PARENT_L=file_management/journals:\
+HELP=By default, the journal file has buffered output to improve performance \
+when writing the file over a network. This option changes the \
+output to unbuffered. The advantage of unbuffered output is sometimes with \
+program crashes more lines are written to the journal file.
+
+allegro_nolocking:TYPE=CHECK:EFF_ONRESTART:\
+PARENT_L=file_management/locking:\
+HELP=By default, Allegro programs create a lockfile when a design is opened.\
+This allows other Allegro programs to sense that the design is in use. \
+This option disables advisory file locking (pre-16.4 behavior). \
+Users setting this option will not create file locks but still be notified \
+of locks set by other users.
+

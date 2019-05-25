@@ -1,0 +1,66 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 46 7
+HEADER "DBDoctor (Database health monitor)"
+DEFAULT execute
+
+MESSAGE external 0 "Deleted %d external DRCs."
+MESSAGE ndone 0 "Dbdoctor completed."
+MESSAGE nerror 0 "Dbdoctor failed."
+MESSAGE inprogress 0 "Dbdoctor in progress - please wait."
+
+TILE
+FIELD drc
+FLOC 1 	 3	 	  
+CHECKLIST "Update all DRC (including Batch)"
+ENDFIELD 
+
+FIELD shapes
+FLOC 1 	 6	 	  
+CHECKLIST "Check shape outlines"
+ENDFIELD
+
+FIELD xnets
+FLOC 1 	 9	 	  
+CHECKLIST "Regenerate Xnets"
+ENDFIELD
+
+FIELD perfChk
+FLOC 1 12
+MENUBUTTON "Performance advisor..." 22 3
+ENDFIELD
+
+FIELD external_drcs
+FLOC 1 15	 	  
+MENUBUTTON "Delete external DRCs" 22 3
+ENDFIELD
+
+FIELD cnspurge
+FLOC 1 18	 	  
+MENUBUTTON "Purge unused constraints" 22 3
+ENDFIELD
+
+
+FIELD execute
+FLOC 34 1
+MENUBUTTON "Check" 11 4
+ENDFIELD
+
+FIELD close
+FLOC 34 6
+MENUBUTTON "Close" 11 3
+ENDFIELD
+
+FIELD vlog
+FLOC 34 10
+MENUBUTTON "Viewlog..." 11 3
+ENDFIELD
+
+FIELD help
+FLOC 34 14
+MENUBUTTON "Help" 11 3
+ENDFIELD
+
+ENDTILE
+ENDFORM

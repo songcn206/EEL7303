@@ -1,0 +1,43 @@
+#  $Header: /vobs/psd_backend_data/data/prefs/skill.prf /main/4 2004-11-23T09:34:50-05 fxf $
+#------------------------------------------------------------------------------
+#			Allegro Skill Variables
+#------------------------------------------------------------------------------
+#
+# See User.prf for complete descriptions of fields in this file.
+SUMMARY:HELP=Skill options
+
+telskill:TYPE=CHECK:EFF_ONRESTART:\
+HELP=When developing Skill programs allows Skill information \
+to be entered in the xterm used to open Allegro (UNIX) or in an additional \
+command window (MS Windows). Do not run \
+Allegro with background with this variable set (UNIX).
+
+telskill_notty:TYPE=CHECK:EFF_ONRESTART:\
+HELP=UNIX/Linux only, if the telskill environment variable is set, \
+creates a separate TelSkill window \
+instead of using the xterm window used to start Allegro. Note if \
+Allegro cannot detect a tty (xterm) it automatically runs in this mode.
+
+telskill_nomsg:TYPE=CHECK:EFF_ONRESTART:\
+HELP=Normally if a TelSkill window is present, Allegro directs all program output \
+to the TelSkill window. This option causes the TelSkill window to only have Skill \
+output; other messages are shown in their intended message areas.  \
+This option does not apply if Skill out (on UNIX) is directed to the tty window.
+
+skill_height:TYPE=LONG:MIN=10:MAX=50:EFF_RESTART:\
+HELP=MS Windows only, controls the height of the telskill input window. \
+Value can be any number between 10 and 50. Default is 24.
+
+skill_width:TYPE=LONG:MIN=40:MAX=140:EFF_RESTART:\
+HELP=MS Windows only, controls the width of the telskill input window. \
+Value can be any number between 40 and 140. Default is 80.
+
+skill_linebuffer:TYPE=LONG:MIN=40:MAX=2500:EFF_RESTART:\
+HELP=MS Windows, controls the scrollbuffer of the telskill input window. \
+Value can be any number between 40 and 2500. Default is 250 lines.
+
+skill_old_ilinit:TYPE=CHECK:EFF_ONRESTART:\
+HELP=This restores the old mode of loading the first ilinit \
+file found. New mode is to load any ilinit file found in \
+<cdsroot>/share/pcb/etc/skill, $ALLEGRO_SITE/skill, $HOME/pcbenv or \
+starting directory.

@@ -1,0 +1,131 @@
+(
+  (module "DSSO" "DSSO"
+    (messages
+      (  "1000"
+         "WARNING"
+         (short
+			"%s"
+         )
+         (long
+         	"%s"
+         )
+      )
+      (  "1001"
+         "ERROR"
+         (short
+			"%s"
+         )
+         (long
+         	"%s"
+         )
+      )
+      (  "1100"
+         "WARNING"
+         (short
+			"Cannot assign model to discrete component %s because the value property does not exist on the component."
+         )
+         (long
+         	"A default model can not be assigned to the discrete component because the VALUE property "
+			"or the property defining the value that you specified in the Discrete Component Setup dialog box "
+			"does not exist on the discrete component. "
+			"Use another discrete component that has the VALUE property or the property defining the value "
+			"that you specified in the Discrete Component Setup dialog box."
+         )
+      )
+
+      (  "1101"
+         "WARNING"
+         (short
+			"Not able to add default model to discrete %s in the device file."
+         )
+         (long
+         	"Not able to add default model to the discrete component to the device file."
+			"Check if there is a working device library file specified in Signal Integrity Setup dialog box, "
+			"where the default models get written and it has write permission."
+			"Check if the discrete component's chips have a valid PHYS_DES_PREFIX that specifies a recognized discrete type."
+			"Check if the pin numbers of the discrete component are valid integers and the value of the discrete is also valid."
+			"Use another discrete component that has valid discrete type, pin numbers and value."
+         )
+      )
+
+      (  "1103"
+         "WARNING"
+         (short
+			"Cannot assign the model to discrete component %s because it is a multi-section part."
+			"Models can be assigned only to discretes that are single section parts."
+         )
+         (long
+         	"The model cannot be assigned to the discrete component because it is a multi-section part."
+			"Models can be assigned only to discretes that are single section parts."
+			"Use another discrete component that is a single section part."
+         )
+      )
+
+      (  "1104"
+         "WARNING"
+         (short
+         	"Cannot assign the model to discrete component %s as the component is not packaged properly."
+         )
+         (long
+         	"The model cannot be assigned to the discrete component as the component is not packaged properly."
+			"Use another discrete component."
+         )
+      )
+      
+      (  "1105"
+         "INFO"
+         (short
+         	"Model defined differential-pair %s has been renamed to %s."
+         )
+         (long
+         	"The model-defined differential pair has been renamed by the tool."
+         	"Model-defined differential pair names are automatically assigned by the tool."
+         )
+      )      
+      (  "1106"
+         "INFO"
+         (short
+         	"Library defined differential-pair %s has been renamed to %s."
+         )
+         (long
+         	"The library-defined differential pair has been renamed by the tool."
+         	"Library-defined differential pair names are automatically assigned by the tool."
+         )
+      )
+      (  "1107"
+         "WARNING"
+         (short
+         	"Cannot assign the model to discrete component %s because it does not have two pins per section."
+         	"Model assignment on discrete packs requires two pins per section."
+         )
+         (long
+         	"Cannot assign the model to discrete component %s because it does not have two pins per section."
+         	"Model assignment on discrete packs requires two pins per section."
+         )
+      )            
+    )
+  )
+  (module "DSMODEL" "DSMODEL"
+    (messages
+      (  "101"
+         "ERROR"
+         (short
+         	"No model selected"
+         )
+         (long
+         	"No model selected"
+         )
+      )
+
+	  (  "102"
+         "ERROR"
+         (short
+         	"This model is not valid for the selected %s."
+         )
+         (long
+         	"This model is not valid for the selected component."
+         )
+      )
+    )
+  )
+)

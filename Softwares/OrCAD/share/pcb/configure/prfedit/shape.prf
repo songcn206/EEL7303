@@ -1,0 +1,137 @@
+#  $Header: /vobs/psd_backend_data/data/prefs/shape.prf /main/25 2010-09-22T15:57:08-04 rez $
+#------------------------------------------------------------------------------
+#			Allegro Shape Variables
+#------------------------------------------------------------------------------
+#
+# See User.prf for complete descriptions of fields in this file.
+
+
+PARENT:PARENT_L=shapes/voiding
+
+SUMMARY:HELP=Dynamic and Static Shape Settings
+
+av_endcapstyle:TYPE=ENUM:EFF_ONNEXTCMD:POPUP=round,square,octagon:\
+HELP=Applies to static shape voiding. \
+This changes the geometry of voids created around cline \
+end points. Use to change void results when via/pin pad sizes \
+are less than or equal to the line thickness. The default, a blank \
+field, uses an octagon endcap. Setting this variable is not recommended
+
+dv_endcapstyle:TYPE=ENUM:EFF_ONNEXTCMD:POPUP=round,octagon:\
+HELP=Applies to dynamic shape voiding. \
+This changes the geometry of voids created around cline \
+end points. In normal situations this variable should NOT be used. \
+In may allow shape voiding where the default mode (circle) may show problems. \
+Ths variable is not recommended, you should first try oversizing the voids by \
+a small value to address voiding issues.
+
+av_inline:TYPE=LONG:EFF_ONNEXTCMD:MIN=1:\
+HELP=Only applies to static shapes. \
+Controls the distance between pins during autovoid processing to \
+determine if pins are voided as a group. The value <n> is a number \
+greater than zero. The default is 100. Works only for horizontally \
+& vertically aligned pins of same size. To take advantage of this, set \
+shape parameter to "inline voiding".
+
+av_thermal_extend:TYPE=LONG:EFF_ONNEXTCMD:\
+HELP=Only applies to static shapes. \
+Controls the thermal relief clines generated during autovoid processing. \
+By default, thermals connects from a pin to 5 mils inside \
+the shape. Use this to specify how far into the shape thermals should \
+extend. In cases where shape area between pins is less than 5 mils, \
+lowering the value to 2 or 3, creates more thermal connections.
+
+pad_drcplus:TYPE=LONG:EFF_ONNEXTCMD:\
+HELP=Only applies to static shapes. \
+Set this variable when autovoid generates DRC's for pin to shape spacing \
+problems. It can cause autovoid to increase the void size around pads. The \
+number represents an addition to the drc space set in shape parameters.
+
+no_shape_fill:TYPE=CHECK:EFF_ONREPAINT:\
+PARENT_L=display/shape_fill:\
+HELP=Disable filling shapes. If set shapes will drawn in skeletal mode. 
+
+no_shape_fill_dyn_ood:TYPE=CHECK:EFF_ONREPAINT:\
+PARENT_L=display/shape_fill:\
+HELP=Disable filling dynamic shapes that are out of date. This variable can \
+eliminate the need to move dynamic shapes off the design when setting their \
+fill mode to disable. 
+
+#old_shape_fill_style:TYPE=CHECK:EFF_ONREPAINT:\
+#PARENT_L=display/shape_fill:\
+#HELP=Fill shapes using old line fill style. If not set, shapes are by default \
+#filled with a fill pattern bitmap.
+
+#new_shape_fill_nt:TYPE=CHECK:EFF_ONREPAINT:\
+#PARENT_L=display/shape_fill:\
+#HELP=Fill shapes using stipple patterns on Windows. If not set, shapes are by default \
+#filled with a line fill style. Fill pattern bitmap may cause screen flickering in \
+#some cases. In most cases, setting display mode to 16 bit color instead of True color \
+#fixes the problem.
+
+no_etch_shape_display:TYPE=CHECK:EFF_ONREPAINT:\
+PARENT_L=display/shape_fill:\
+HELP=Disable display of etch shapes. If set, etch shapes will not drawn. 
+
+shape_drag_move:TYPE=CHECK:EFF_IMMEDIATE:\
+PARENT_L=shapes/general:\
+HELP=Enable moving a shape using left mouse drag when in shape edit command.
+
+shape_noclip_rki:TYPE=CHECK:EFF_IMMEDIATE:\
+PARENT_L=shapes/general:\
+HELP=By default, when adding an etch shape that crosses the \
+route keepin, it will be clipped to the route keepin. Shapes added outside \
+of the keepin are not clipped and will generate DRCs. \
+This variable restores pre-15.5 functionality where no clipping was done.
+
+shape_no_ripuptheraml:TYPE=CHECK:EFF_IMMEDIATE:\
+PARENT_L=shapes/general:\
+HELP=This changes the default response for the static shape thermal rip-up question \
+from Yes to No. This means that hitting the Enter key will not rip-up the thermals.
+
+highlight_shape_net:TYPE=CHECK:EFF_IMMEDIATE:\
+PARENT_L=display/highlight:\
+HELP=Highlight the net associated with a shape when shape is selected.
+
+shape_add_filltype:TYPE=ENUM:POPUP=dynamic,static,xhatch (static):EFF_ONRESTART:\
+PARENT_L=shapes/general:\
+HELP=Determines the initial shape type used for adding shapes on ETCH. \
+By default, this type is dynamic. Across use of adding shapes, we \
+remember that type used for the last add shape.
+
+highlight_shape_net:TYPE=CHECK:EFF_IMMEDIATE:\
+PARENT_L=display/highlight:\
+HELP=Highlight the net associated with a shape when shape is selected.
+
+shape_rki_autoclip:TYPE=CHECK:EFF_ONNEXTCMD:\
+PARENT_L=shapes/general:\
+HELP=If set, for dynamic shapes, Allegro will preserve the original dynamic \
+shape boundary and re-clip it to the route keepin during any dynamic shape \
+update. This allows automatic update of dynamic shapes to the route keepin. \
+By default, dynamic shape boundaries, when added, are clipped to the route keepin. \
+CAUTION\: using this variable may have performance implications.
+
+shape_local_temp:TYPE=CHECK:EFF_ONNEXTCMD:\
+PARENT_L=shapes/general:\
+HELP=In certain cases, if your design is located on a network file server setting \
+this variable may improve shape voiding performance. When this variable is set, \
+the standard OS TEMP or TMP variable is used as the location for these files. \
+The local temp directory should have enough space for 8 Megabyte of storage. \
+Default is to save this file to the current directory.
+
+shape_merge_props:TYPE=CHECK:EFF_ONNEXTCMD:\
+PARENT_L=shapes/general:\
+HELP=If set, for the shape merge command, also merges properties when \
+merging two shapes. If the two shapes have duplicated properties then \
+the property value on the first selected shape will be maintained. \
+The default behavior when shape \
+merging is to maintain the properties of the first selected shape.
+
+shape_arcmode_nonsticky:TYPE=CHECK:EFF_IMMEDIATE:\
+PARENT_L=shapes/general:\
+HELP=Controls the arc behavior of edit shape/void boundary commands. By \
+default, if an arc has been added, the segment type will remain at arc \
+until the user manually changes the value.  When this option is set, the \
+segment type will automatically be changed back to line after an arc has \
+been added.
+

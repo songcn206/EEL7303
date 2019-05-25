@@ -1,0 +1,59 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 39 6
+HEADER "Bond to Leads"
+
+POPUP <PROFILES_POPUP> "" "".
+
+TILE
+
+TEXT "Package Type:"
+TLOC 1 1
+ENDTEXT
+TEXT "Default"
+FLOC 12 1
+INFO package_type 30
+OPTIONS bold
+ENDFIELD
+
+TEXT "Profile:"
+TLOC 1 5
+ENDTEXT
+FIELD profile
+FLOC 9 5
+ENUMSET 20
+POP "PROFILES_POPUP"
+ENDFIELD
+
+TEXT "0 tack locations defined for profile"
+TLOC 9 7
+INFO leads_defined 30
+ENDTEXT
+
+FIELD generate_fingers
+FLOC 1 10
+CHECKLIST "Generate tack points on leads"
+ENDFIELD
+
+TEXT "Offsets:"
+TLOC 3 12
+ENDTEXT
+FIELD finger_offsets
+FLOC 9 12
+STRFILLIN 20 1024
+ENDFIELD
+
+FIELD delete_fingers
+FLOC 1 14
+CHECKLIST "Delete unused tack points after bonding"
+ENDFIELD
+
+FIELD create_wires
+FLOC 1 17
+MENUBUTTON "Generate Bond Wires" 20 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

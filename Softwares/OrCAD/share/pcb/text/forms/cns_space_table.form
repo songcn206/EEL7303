@@ -1,0 +1,108 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+VARIABLE
+PORT 91 24
+HEADER "Spacing Rule Assignment Table"
+
+POPUP <CONSTRAINTNAMEP>"Default""1".
+
+POPUP <SORTP>"By Net""0","By Area""1".
+
+MESSAGE DONE 1 "Done."
+MESSAGE DPF_WARNING 1 "Changes will NOT be seen by exported partitions."
+MESSAGE READ_ONLY_DPF 1 "Not editable within design partition."
+
+TILE LABEL
+TPANEL 0
+
+TEXT "Net Spacing Type Properties"
+TLOC 2 0
+OPTIONS bold
+ENDTEXT
+
+TEXT "Area Property"
+TLOC 40 0
+OPTIONS bold
+ENDTEXT
+
+TEXT "Net Spacing Constraint Set"
+TLOC 60 0
+OPTIONS bold
+ENDTEXT
+
+ENDTILE
+
+TILE PROPERTY
+TPANEL 1
+TEXT
+TLOC 0 0
+INFO net_space_1 20
+OPTIONS prettyprint
+ENDTEXT
+
+TEXT
+TLOC 20 0
+INFO net_space_2 20
+OPTIONS prettyprint
+ENDTEXT
+
+TEXT
+TLOC 40 0
+INFO area 20
+OPTIONS prettyprint
+ENDTEXT
+
+FIELD constraint
+FLOC 60 0
+ENUMSET 24
+POP "CONSTRAINTNAMEP"
+ENDFIELD
+
+ENDTILE
+
+TILE StdTile
+TPANEL 2
+FIELD done
+FLOC 1 0
+MENUBUTTON "Done" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 11 0
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD reset
+FLOC 22 0
+MENUBUTTON "Reset" 9 3
+ENDFIELD
+
+FIELD purge
+FLOC 38 0
+MENUBUTTON "Purge" 9 3
+ENDFIELD
+
+FIELD sort
+FLOC 48 0
+MENUBUTTON "Sort" 9 3
+POP "SORTP"
+ENDFIELD
+
+TEXT "Total:"
+TLOC 63 0
+INFO  20
+ENDTEXT
+
+TEXT 
+TLOC 68 0
+INFO total 5
+ENDTEXT
+
+FIELD help
+FLOC 80 0
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

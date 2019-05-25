@@ -1,0 +1,73 @@
+
+include "dfa_constraints.par"
+
+use DFA;
+
+RuleDefine
+
+
+/*****************************
+C:
+ This     defines the allowable orientations and mounting for each 
+ class of components.It also allows you to specify a 
+ a default rule for everything which is not covered
+ by a specific constraint
+*********************************************/
+
+Rule component_orientation_layer_audit
+
+component1 and
+category := concat(SELECT_BY1) and
+names := concat(VALUE1) and
+allowed_orients := concat(ORIENTATION) and
+allowed_layers := concat(LAYER) and
+
+findfirst(category,
+              append(done,category) and
+              curr_ind := count(done) and
+              curr_name := nth(names,curr_ind) and
+              matchCompCategory(component1,category,curr_name) 
+            ) and
+my_allowed_orient := nth(allowed_orients,count(done)) and
+curr_allowed_orient := getAllSubStrings(my_allowed_orient,{""," "},{" ",""}) and
+isNull(getCompOrient(component1) == toFloat(curr_allowed_orient))  and
+valErr := "DFA / Component has wrong orientation,allowed values: " + curr_allowed_orient and
+WriteDRCMarker(component1,valErr, getCompOrient(component1)) and
+valConstraint := nth(concat(CONSTRAINTS), count(done))
+
+Message(ERROR,component1,"Component has wrong orientation: \n",
+              "\nComponent           :?component1" ,
+              "Orientation         : ?getCompOrient(component1)",
+              "Allowed Orientation : ?my_allowed_orient",
+              "Constraint name     : ?valConstraint" );
+
+
+component1 and
+category := concat(SELECT_BY1) and
+names := concat(VALUE1) and
+allowed_layers := concat(LAYER) and
+findfirst(category,
+              append(done,category) and
+              curr_ind := count(done) and
+              curr_name := nth(names,curr_ind) and
+              matchCompCategory(component1,category,curr_name)
+            ) and
+my_allowed_layer := nth(allowed_layers,count(done)) and
+my_allowed_layer /= "Either" and
+getLayer(component1) /= my_allowed_layer and
+valErr := "DFA / Component mounted on disallowed layer ,allowed mounting layer(s) : " + my_allowed_layer and
+WriteDRCMarker(component1,valErr,getLayer(component1)) and
+valConstraint := nth(concat(CONSTRAINTS), count(done))
+ 
+Message(ERROR,component1,"Component mounted on the wrong layer: \n",
+              "\nComponent           : ?component1", 
+              "Layer               : ?getLayer(component1)", 
+              "Allowed Layer       : ?my_allowed_layer " ,
+              "Constraint name     : ?valConstraint" );
+
+
+
+
+EndRule
+
+EndRuleDefine

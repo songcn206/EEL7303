@@ -1,0 +1,51 @@
+# Allegro script - mgx_print.scr
+#version 7.0
+
+set NOCONFIRM
+scriptmode +invisible
+
+setwindow pcb
+setwindow form.drawing
+FORM drawing done  
+setwindow pcb
+edit 
+fillin $MGX_OLDBRD
+menuload autoroute 
+#
+# save current grid settings
+define grid 
+setwindow form.grid
+FORM grid print to Script
+fillin $MGX_OLDGRID
+FORM grid done  
+#
+# save current channel preference settings
+setwindow pcb
+router param 
+setwindow form.rtp_main
+FORM rtp_main edit_subclasses  
+FORM rtp_subclass print to Script
+fillin $MGX_OLDPCH
+#
+# now create new grid and preference channel
+echo Setting up new Grids and Preference Channels. Please wait...
+run $MGX_NEWP
+#
+# set to new channel setting
+setwindow form.rtp_subclass
+replay $MGX_NEWPCH
+FORM rtp_subclass done  
+echo New Preference Channels setup
+#
+# set to new grids
+setwindow pcb
+define grid 
+setwindow form.grid
+replay $MGX_NEWGRID
+FORM grid done  
+echo New Grids setup
+setwindow pcb
+save 
+fillin $MGX_NEWBRD
+quit 
+fillin "yes"

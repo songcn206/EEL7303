@@ -1,0 +1,1076 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN" "http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+<html xmlns="http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>PSpice User Guide -- DC analyses</title>
+<META NAME="Approver" CONTENT="Technical Publications">
+<META NAME="Author" CONTENT="Technical Publications">
+<META NAME="CreateDate" CONTENT="2012-08-31">
+<META NAME="CreateTime" CONTENT="1346413404">
+<META NAME="DataType" CONTENT="Manuals">
+<META NAME="Description" CONTENT="User guide for PSpice and AMS Simulator.">
+<META NAME="DocTitle" CONTENT="PSpice User Guide">
+<META NAME="DocType" CONTENT="User Guide">
+<META NAME="EdmsRelease" CONTENT="EDMS Windows-P015">
+<META NAME="FileTitle" CONTENT="DC analyses">
+<META NAME="FileType" CONTENT="Chapter">
+<META NAME="Keyword" CONTENT="pspug">
+<META NAME="Language" CONTENT="English">
+<META NAME="ModifiedDate" CONTENT="2012-08-31">
+<META NAME="ModifiedTime" CONTENT="1346413404">
+<META NAME="NextFile" CONTENT="10ac.html">
+<META NAME="PageCount" CONTENT="20">
+<META NAME="Platform" CONTENT="ALL">
+<META NAME="PrevFile" CONTENT="08start.html">
+<META NAME="Product" CONTENT="Allegro AMS Simulator, PSpice">
+<META NAME="ProductFamily" CONTENT="PCB Design, PCB Design">
+<META NAME="ProductVersion" CONTENT="16.6">
+<META NAME="RightsManagement" CONTENT="Copyright 2012 Cadence Design Systems Inc.">
+<META NAME="Title" CONTENT="PSpice User Guide -- DC analyses">
+<META NAME="TopicTags" CONTENT="FALSE">
+<META NAME="Version" CONTENT="16.6">
+  </head>
+  <body style="margin-left: 5%;">
+    <a name="pagetop"></a>
+    <a name="firstpage"></a>
+    <!-- Begin Buttons -->
+    <table width="650" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td height="36" width="650" colspan="10">
+          <img src="../support/header_doc.gif" width="650" height="34">
+        </td>
+      </tr>
+      <tr>
+        <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                </td>
+<td height="20" width="73">
+<a href="pspugTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<a href="pspugIX.html"><img src="../support/nav2_index.gif" border="0"></a>
+</td>
+        <td>
+          <a href="08start.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+        </td>
+        <td>
+          <a href="10ac.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+        </td>
+        <td height="20">
+          <a>
+<a href="pspug.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+          </a>
+        </td>
+        <td height="20" width="61">
+          <img src="../support/nav2_black.gif">
+        </td>
+        <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+        </td>
+        <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+        </td>
+        <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+        </td>
+      </tr>
+    </table>
+    <!-- End Buttons -->
+    <p>
+    <hr>
+    <p>
+      <h3>
+        <center>
+          <font >
+            <div>PSpice&#174; User Guide</div>
+            <font >
+              <div>
+            </font>
+          </font>
+        </center>
+      </h3>
+      <br>
+    </p>
+    <div>
+      <h1>9<a name="1051986">&nbsp;</a></h1>
+      <h1><a name="1051993">DC analyses</a></h1>
+      <h2><a name="1048364">Chapter overview</a></h2>
+      <p><a name="1048365">This chapter describes how to set up DC analyses and includes the </a>following sections:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1048384" title="DC analyses" name="1048369"><font color="Blue"><u>DC Sweep</u></font></a><a href="#1048384" title="DC analyses"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1048620" title="DC analyses" name="1048373"><font color="Blue"><u>Bias point</u></font></a><a href="#1048620" title="DC analyses"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1048651" title="DC analyses" name="1048377"><font color="Blue"><u>Small&#45;signal DC transfer</u></font></a><a href="#1048651" title="DC analyses"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1048680" title="DC analyses" name="1048381"><font color="Blue"><u>DC sensitivity</u></font></a><a href="#1048680" title="DC analyses"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <h2><a name="1048384">DC Sweep</a></h2>
+      <h3><a name="1048385">Minimum requirements to run a DC sweep analysis</a></h3>
+      <h4><em><a name="1048386">Minimum circuit design requirements</a></em></h4>
+      <p align="left"><a name="1048412">&nbsp;</a></p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="432">
+        <caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="168">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048389">Swept variable type</a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="263">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048391">Requirement</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048393">voltage source</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048395">voltage source with a DC </a>specification (VDC, for example)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048397">temperature</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048399">none</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048401">current source</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048403">current source with a DC </a>specification (IDC, for example)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048405">model parameter</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048407">PSpice</a>&nbsp;A&#47;D model (.MODEL)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048409">global parameter</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048411">global parameter defined with a </a>parameter block (.PARAM)</p>
+          </td>
+        </tr>
+      </table>
+      <h4><em><a name="1048413">Minimum program setup requirements</a></em></h4>
+      <p align="left"><a name="1048417"></a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048418">In the design entry tool<sup><a name="wwfootnote_inline_81" href="#81">1</a></sup>, select New Simulation Profile or Edit </a>Simulation Profile from the PSpice menu. (If this is a new simulation, enter the name of the profile and click OK.)</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048419">The Simulation Settings dialog box appears.</a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048420">Under Analysis type, select DC Sweep. </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048421">For the Primary Sweep option, enter the necessary parameter </a>values and select the appropriate check boxes to complete the analysis specifications.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048422">Click OK to save the simulation profile.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048423">Select Run under the PSpice menu to start the simulation.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1048424">Do not specify a DC sweep and a parametric analysis for the </a>same variable.</p>
+      <h3><a name="1048426">Overview of DC sweep</a></h3>
+      <p><a name="1048427">The DC sweep analysis causes a DC sweep to be performed on the </a>circuit. DC sweep allows you to sweep a source (voltage or current), a global parameter, a model parameter, or the temperature through a range of values. The bias point of the circuit is calculated for each value of the sweep. This is useful for finding the transfer function of an amplifier, the high and low thresholds of a logic gate, and so on.</p>
+      <p><a name="1048431">For the DC sweep analysis specified in Figure </a><a href="#1048443" title="DC analyses"><font color="#0000ff"><u>9&#45;1</u></font></a>, the voltage source V1 is swept from &#45;0.125 volts to 0.125 volts by steps of 0.005. This means that the output has <br>(0.125&nbsp;+&nbsp;0.125)&#47;0.005 +1 = 51 steps or simulation points.</p>
+      <p><a name="1048432">A source with a DC specification (such as VDC or IDC) must be used </a>if the swept variable is to be a voltage type or current source. To set the DC value, select Properties from the Edit menu, then click on the cell under the DC column and type in its value.</p>
+      <p><a name="1048433">The default DC value of V1 is overridden during the DC sweep </a>analysis and is made to be the swept value. All of the other sources retain their values.</p>
+      <p><a name="1048434">After running the analysis, the simulation output file (</a><font size="2" face="'Courier New'" color="#000000">EXAMPLE.OUT</font> for the <font size="2" face="'Courier New'" color="#000000">EXAMPLE.OPJ</font> circuit in Figure <a href="#1048443" title="DC analyses"><font color="#0000ff"><u>9&#45;1</u></font></a>) contains a table of voltages relating V1, node OUT1, and node OUT2.</p>
+      <p align="left"><a name="1048441"><img src="images/09dc.15.1.2.png" width="675" height="442" alt=""></a></p>
+      <p><font color="#000000"><strong>Figure 9&#45;1&nbsp; </strong></font><strong><a name="1048443">Example schematic EXAMPLE.OPJ.</a></strong></p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1048444">The example circuit EXAMPLE.OPJ is provided with the </a>program installation.</p>
+      <p><a name="1048445">To calculate the DC response of an analog circuit, PSpice removes </a>time from the circuit. This is done by treating all capacitors as open circuits, all inductors as shorts, and using only the DC values of voltage and current sources. A similar approach is used for digital devices: all propagation delays are set to zero, and all stimulus generators are set to their time&#45;zero values.</p>
+      <p><a name="1048446">In order to solve the circuit equations, PSpice uses an iterative </a>algorithm. For analog devices, the equations are continuous, and for digital devices, the equations are Boolean. If PSpice cannot get a self&#45;consistent result after a certain number of iterations, the analog&#47; digital devices are forced to the X value, and more iterations are done. Since X as input to a digital component gives X as output, the Boolean equations can always be solved this way.</p>
+      <p><a name="1048447">If a digital node cannot be driven by known values during the DC </a>iterations (for instance, the output of a flip&#45;flop with the clock line held low), then its DC state will be X. Depending on the circuit, some, none, or all of the digital nodes may have the state X when the bias point is calculated.</p>
+      <h3><a name="1048450">Setting up a DC stimulus</a></h3>
+      <p><a name="1048451">To run a DC sweep or small&#45;signal DC transfer analysis, you need to </a>place and connect one or more independent sources and then set the DC voltage or current level for each source.</p>
+      <h4><em><a name="1048452">To set up a DC stimulus</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048453">Place and connect one of these symbols in your schematic:</a></td>
+          </tr>
+        </table>
+      </div>
+      <p align="left"><a name="1048473">&nbsp;</a></p>
+<ul>      <table summary="" border="1" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" width="28%">
+        <caption>
+          <blockquote align="left"><font color="#000000"><strong>Table 9&#45;1&nbsp; </strong></font><strong><a name="1049194">&nbsp;</a></strong></blockquote>
+        </caption>
+        <tr>
+          <td colspan="2" bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="348">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048456">For voltage input</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="1" bordercolor="#000000" valign="middle" width="72">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048460">Use </a>this...</strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="1" bordercolor="#000000" valign="middle" width="276">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048462">When you are running...</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048465">VDC</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048467">A DC Sweep and&#47;or Bias Point </a>(transfer function) analysis only.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048470">VSRC</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048472">Multiple analysis types including DC </a>Sweep and&#47;or Bias Point (transfer function).</p>
+          </td>
+        </tr>
+      </table></ul>
+      <p align="left"><a name="1048493">&nbsp;</a></p>
+<ul>      <table summary="" border="1" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" width="28%">
+        <caption>
+          <blockquote align="left"><font color="#000000"><strong>Table 9&#45;2&nbsp; </strong></font><strong><a name="1049198">&nbsp;</a></strong></blockquote>
+        </caption>
+        <tr>
+          <td colspan="2" bgcolor="#E6E6E6" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="348">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048476">For current input</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="72">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048480">Use </a>this...</strong></font>
+            </p>
+          </td>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="276">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048482">When you are running...</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048485">IDC</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048487">A DC Sweep and&#47;or Bias Point </a>(transfer function) analysis only.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048490">ISRC</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048492">Multiple analysis types including DC </a>Sweep and&#47;or Bias Point (transfer function).</p>
+          </td>
+        </tr>
+      </table></ul>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048494">Double&#45;click the symbol instance to display the Parts </a>spreadsheet appears.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048495">Click in the cell under the DC column to edit its value.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048496">Define the DC specification as follows:</a></td>
+          </tr>
+        </table>
+      </div>
+      <p align="left"><a name="1048507">&nbsp;</a></p>
+<ul>      <table summary="" border="1" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" width="28%">
+        <caption>
+          <blockquote align="left"><font color="#000000"><strong>Table 9&#45;3&nbsp; </strong></font><strong><a name="1049202">&nbsp;</a></strong></blockquote>
+        </caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="108">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048499">Set this </a>attribute...</strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="240">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048501">To this value...</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048504">DC</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048506"><font color="#000000"><em>DC_level</em></font></a> <br>where <font color="#000000"><em>DC_level</em></font> is in volts or amps (units are optional).</p>
+          </td>
+        </tr>
+      </table></ul>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048508">Click OK twice to exit the dialog boxes.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1048509">If you are planning to run an AC or transient analysis in </a>addition to a DC analysis, see the following:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.872">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.128319999999995">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="03prepar.html#1049625" title="Preparing a design for simulation" name="1048513"><font color="Blue"><u>Using time&#45;based stimulus parts with AC and DC properties</u></font></a><a href="03prepar.html#1049625" title="Preparing a design for simulation"></a> for other source symbols that you can use.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.872">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.128319999999995">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="03prepar.html#1049652" title="Preparing a design for simulation" name="1048517"><font color="Blue"><u>Using VSRC or ISRC parts</u></font></a><a href="03prepar.html#1049652" title="Preparing a design for simulation"></a> to find out how to specify the TRAN attribute for a time&#45;based input signal when using VSRC or ISRC symbols.</td>
+          </tr>
+        </table>
+      </div>
+      <h3><a name="1048519">Nested DC sweeps</a></h3>
+      <p><a name="1048520">A second sweep variable can be selected after a primary sweep </a>value has been specified in the DC Sweep dialog box. When you specify a secondary sweep variable, it forms the outer loop for the analysis. That is, for every increment of the second sweep variable, the first sweep variable is stepped through its entire range of values.</p>
+      <p align="left"><a name="1048524"></a></p>
+      <h4><em><a name="1048525">To set up a nested sweep</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048526">Under Options, select the Secondary Sweep box for the DC </a>Sweep Analysis type.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048527">Enter the necessary parameter values and select the </a>appropriate check boxes to complete the analysis specifications.</td>
+          </tr>
+        </table>
+      </div>
+      <h3><a name="1048529">Curve families for DC sweeps</a></h3>
+      <p><a name="1048530">When a nested DC sweep is performed, the entire curve family is </a>displayed. That is, the nested DC sweep is treated as a single data section (or you can think of it as a single PSpice run).</p>
+      <p align="left"><a name="1048538"><img src="images/09dc.15.1.4.png" width="375" height="266" alt=""></a></p>
+      <p><a name="1048542">For the circuit shown in Figure </a><font color="#0000ff"><u>9&#45;2</u></font>, you can set up a DC sweep analysis with an outer sweep of the voltage source VG and an inner sweep of the voltage source VD as listed in Table <a href="#1049206" title="DC analyses"><font color="#0000ff"><u>9&#45;4</u></font></a>.</p>
+      <p align="left"><a name="1048589">&nbsp;</a></p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="351">
+        <caption>
+          <p align="left"><font color="#000000"><strong>Table 9&#45;4&nbsp; </strong></font><strong><a name="1049206">Curve family example setup</a></strong></p>
+        </caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" valign="middle" width="120">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048548">&nbsp;</a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" valign="middle" width="115">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048550">Primary </a>sweep</strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" valign="middle" width="115">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048552">Secondary </a>sweep</strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="2" valign="top">
+            <p><a name="1048554">Swept Var Type</a></p>
+          </td>
+          <td cellpadding="4" border="2" valign="top">
+            <p><a name="1048556">voltage source</a></p>
+          </td>
+          <td cellpadding="4" border="2" valign="top">
+            <p><a name="1048558">voltage source</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1048560">Sweep Type</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1048562">linear</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1048564">linear</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1048566">Name</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1048568">VD</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1048570">VG</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1048572">Start Value</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1048574">0</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1048576">0</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1048578">End Value</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1048580">5</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1048582">2</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="2" valign="top">
+            <p><a name="1048584">Increment</a></p>
+          </td>
+          <td cellpadding="4" border="2" valign="top">
+            <p><a name="1048586">0.1</a></p>
+          </td>
+          <td cellpadding="4" border="2" valign="top">
+            <p><a name="1048588">0.5</a></p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1048590">When the DC sweep analysis is run, add a current marker at the drain </a>pin of M1 and display the simulation results in PSpice. The result will look like Figure <font color="#0000ff"><u>9&#45;3</u></font>.</p>
+      <p align="left"><a name="1049297"><img src="images/09dc.15.1.5.png" width="600" height="453" alt=""></a></p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1049298">In Capture, from the PSpice menu, point to Markers, then </a>choose Mark Current Into Pin to add a current marker.</p>
+      <p><a name="1049299">To add a load line for a resistor, add a trace that computes the load </a>line from the sweep voltage. Assume that the X axis variable is the sweep voltage V_VD, which runs from 0 to 5 volts. The expression which will add a trace that is the load line for a 50 kohm resistor is:</p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048604">(5V&#45;V_VD)&#47;50K</a></font></blockquote>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1048605">V_VD is the hierarchical name for VD created by netlisting the </a>schematic.</p>
+      <p><a name="1048606">This can be useful for determining the bias point for each member of </a>a curve family as shown in Figure <font color="#0000ff"><u>9&#45;4</u></font>. </p>
+      <p align="left"><a name="1049342"><img src="images/09dc.15.1.6.png" width="675" height="517" alt=""></a></p>
+      <h2><a name="1048620">Bias point</a></h2>
+      <h3><a name="1048621">Minimum requirements to run a bias point analysis</a></h3>
+      <h4><em><a name="1048622">Minimum circuit design requirements</a></em></h4>
+      <p><a name="1048623">None.</a></p>
+      <h4><em><a name="1048625">Minimum program setup requirements</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048626">Under Analysis type in the Simulation Settings dialog box, select </a>Bias Point.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048627">For the General Settings option, enter the necessary parameter </a>values and select the appropriate check boxes to complete the analysis specifications.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048628">Click OK to save the simulation profile.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048629">In Capture, from the PSpice menu, select Run to start the </a>simulation.</td>
+          </tr>
+        </table>
+      </div>
+      <h3><a name="1048630">Overview of bias point</a></h3>
+      <p><a name="1048631">The bias point is calculated for any analysis whether or not the Bias </a>Point analysis is enabled in the Simulation Settings dialog box. However, additional information is reported when the Bias Point analysis is enabled. Also see <a href="A-init.html#1048380" title="Setting initial state"><font color="Blue"><u>Save and load bias point</u></font></a><a href="A-init.html#1048380" title="Setting initial state"></a>.</p>
+      <p><a name="1048635">When Bias Point analysis is not enabled, only analog node voltages </a>and digital node states are reported to the output file.</p>
+      <p><a name="1048636">When the Bias Point analysis is enabled, the following information is </a>reported to the output file:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048637">a list of all analog node voltages</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048638">a list of all digital node states</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048639">the currents of all voltage sources and their total power</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048640">a list of the small&#45;signal parameters for all devices</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1048641">If Bias Point is enabled, you can suppress the reporting of the bias </a>point analog and digital node values, as follows:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048642">Under the Options tab in the Simulation Settings dialog box, </a>select Output file in the Category box.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048644">Uncheck the box for Bias point node voltages (NOBIAS).</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048648"></a></blockquote>
+      <h2><a name="1048651">Small&#45;signal DC transfer</a></h2>
+      <h3><a name="1048652">Minimum requirements to run a small&#45;signal DC </a>transfer analysis</h3>
+      <h4><em><a name="1048653">Minimum circuit design requirements</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048654">The circuit should contain an input source, such as VSRC.</a></td>
+          </tr>
+        </table>
+      </div>
+      <h4><em><a name="1048655">Minimum program setup requirements</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048656">Under Analysis type in the Simulation Settings dialog box, select </a>Bias Point. </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048660">Specify the name of the input source desired. See </a><a href="08start.html#1048600" title="08start.html"><font color="Blue"><u>Output variables</u></font></a><a href="08start.html#1048600" title="08start.html"></a> for a description of output variable formats.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048661">Click OK to save the simulation profile.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048662">In Capture, from the PSpice menu, select Run to start the </a>simulation.</td>
+          </tr>
+        </table>
+      </div>
+      <h3><a name="1048663">Overview of small&#45;signal DC transfer</a></h3>
+      <p><a name="1048664">The small&#45;signal DC transfer analysis calculates the small&#45;signal </a>transfer function by transforming the circuit around the bias point and treating it as a linear circuit. The small&#45;signal gain, input resistance, and output resistance are calculated and reported.</p>
+      <p><a name="1048665">The digital devices themselves are not included in the small&#45;signal </a>analysis. A gate, for example, does not have a frequency response. Instead, all the digital devices hold the states that were calculated when solving for the bias point. However, for N and O devices in the analog&#47; digital interface subcircuits, the analog side has a well&#45;defined linear equivalent.</p>
+      <h4><em><a name="1048666">To calculate the small&#45;signal gain, input resistance, and output </a>resistance</em></h4>
+      <p align="left"><a name="1048670"></a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048671">In the Bias Point dialog box, select Calculate small&#45;signal DC </a>gain (.TF).</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048672">Specify the value for either an output voltage or the current </a>through a voltage source in the To Output variable box.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048673">For example, entering V(a,b) as the output variable specifies that </a>the output variable is the output voltage between two nets, a and b. Entering I(VDRIV) as the output variable specifies that the output variable is the current through a voltage source VDRIV.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048674">Specify the input source name in the Calculate small&#45;signal DC </a>gain (.TF) portion of the Bias Point dialog box.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048675">The gain from the input source to the output variable is </a>calculated along with the input and output resistances.</blockquote>
+      <blockquote><a name="1048676">For example, if you enter </a><font size="2" face="'Courier New'" color="#000000">V(OUT2)</font>as the output variable and <font size="2" face="'Courier New'" color="#000000">V1</font> as the input source, the input resistance for V1 is calculated, the output resistance for V(OUT2) is calculated, and the gain from V1 to V(OUT2) is calculated. All calculations are reported to the simulation output file.</blockquote>
+      <h2><a name="1048680">DC sensitivity</a></h2>
+      <h3><a name="1048681">Minimum requirements to run a DC sensitivity analysis</a></h3>
+      <h4><em><a name="1048682">Minimum circuit design requirements</a></em></h4>
+      <p><a name="1048683">None.</a></p>
+      <h4><em><a name="1048684">Minimum program setup requirements</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048685">In the Bias Point dialog box, select Perform Sensitivity analysis </a>(.SENS).</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048686">Enter the required value(s) in the Output variable(s) box.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048687">Click OK to save the simulation profile. (Be sure you give the new </a>profile an appropriate name under the General tab prior to saving.)</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048688">In Capture, from the PSpice menu, select Run to start the </a>simulation.</td>
+          </tr>
+        </table>
+      </div>
+      <h3><a name="1048689">Overview of DC sensitivity</a></h3>
+      <p><a name="1048690">DC sensitivity analysis calculates and reports the sensitivity of one </a>node voltage to each device parameter for the following device types:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048691">resistors</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048692">independent voltage and current sources</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048693">voltage and current&#45;controlled switches</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048694">diodes</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048695">bipolar transistors</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1048696">The sensitivity is calculated by linearizing all devices around the bias </a>point. Purely digital devices hold the states calculated when solving for the bias point as discussed in <a href="#1048651" title="DC analyses"><font color="Blue"><u>Small&#45;signal DC transfer</u></font></a><a href="#1048651" title="DC analyses"></a>.</p>
+      <hr>
+      <table width="100%" border="0" cellpadding="3" cellspacing="0" summary="">
+        <tr valign="baseline">
+          <td>
+            <p>
+              <font size="-1">
+                <a name="81" href="#wwfootnote_inline_81">1</a>
+              </font>
+            </p>
+          </td>
+          <td>
+            <p><a name="1052550">In this guide, design entry tool is used for both OrCAD Capture and Design </a>Entry HDL. Any differences between the two tools is mentioned if necessary. Depending on the license available, you will access either PSpice or AMS Simulator.</p>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <br>
+    <a href="#pagetop">Return to top of page</a>
+    <hr>
+    <hr align="left">
+    <div style="text-align: left;">
+      <!-- Begin Buttons -->
+      <table width="650" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                    </td>
+<td height="20" width="73">
+<a href="pspugTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<a href="pspugIX.html"><img src="../support/nav2_index.gif" border="0"></a>
+</td>
+          <td>
+            <a href="08start.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+          </td>
+          <td>
+            <a href="10ac.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+          </td>
+          <td>
+            <a>
+<a href="pspug.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+            </a>
+          </td>
+          <td height="20" width="61">
+            <img src="../support/nav2_black.gif">
+          </td>
+          <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+          </td>
+          <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+          </td>
+          <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+          </td>
+        </tr>
+      </table>
+      <!-- End Buttons -->
+    </div>
+    <br>
+    <font size="-1" >
+For support, see <a href="http://support.cadence.com" target="_blank">Cadence Online Support</a> service.</font>
+    <br>
+    <br>
+    <font size="-1" >
+      <i>Copyright &#169; 2011, <a href="http://www.cadence.com">Cadence Design Systems, Inc.</a></i>
+    </font>
+    <br>
+    <font size="-1" >
+All rights reserved.</font>
+    <br>
+    <br>
+  </body>
+</html>

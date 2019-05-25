@@ -1,0 +1,623 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM autogreytext
+FIXED
+PORT 90 90
+
+POPUP <IPEGEOPOP2>"Null""0","Circle""2","Square""5","Oblong""11",\
+"Rectangle""6","Octagon""3","Shape""22","Flash""23".
+POPUP <PGLOBAL> "Insert""1","Copy to all""2","Copy""3","Paste""4","Delete""5".
+POPUP <PSEUNITSPOP>"Mils""1","Inch""2","Millimeter""3","Centimeter""4",\
+"Micron""5".
+POPUP <IPEGEOPOP1>"Null""0","Circle""2","Square""5","Oblong""11",\
+"Rectangle""6","Octagon""3","Shape""22".
+POPUP <PENCPLATPOP>"Plated""1","Non-Plated""2","Optional""3".
+POPUP <PENCFIGPOP>"Null""0","Circle""2","Square""5","Hexagon X""15",\
+"Hexagon Y""16","Octagon""3","Cross""4","Diamond""7",\
+"Triangle""18","Oblong X""11","Oblong Y""12","Rectangle""6".
+POPUP <PENCHTYPPOP>"Circle Drill""0","Oval Slot""1","Rectangle Slot""2".
+POPUP <PENCNONSTAND>"""0","Laser""16","Plasma""32","Punch""64","Wet/dry Etching""80","Photo Imaging""112","Conductive Ink Formation""144","Other""128".
+
+MESSAGE REMAIN_FLASH 2 "Cannot change geometry when a flash name is specified."
+MESSAGE NO_NULL_PAD 3 "No pads defined."
+MESSAGE NO_SYM_ERR 3 "Could not update %s - shape symbol in current padstack not in design."
+MESSAGE UPDATE_ERR 3 "Could not update %s to design."
+MESSAGE UPDATE_ERR_DPF 3 "Update to design is not allowed within a design partition file."
+MESSAGE UPDATE_OK 1 "%s successfully updated to design."
+MESSAGE NEG_HOLE 3 "Hole size cannot be negative."
+MESSAGE NEG_CLEAR 3 "Multiple drill hole clearance cannot be negative."
+MESSAGE OPEN_FAILED 3 "Failed to open pad editing port."
+MESSAGE HOLE_SIZE_WARNING 2 "Hole size larger than smallest pad"
+MESSAGE TOO_MANY_HOLES 3 "Cannot have more than %d drill holes."
+MESSAGE OPEN_LOG_ERR 3 "Cannot open padstack error log"
+MESSAGE WORKING 1 "Working..."
+MESSAGE NULL_PAD_GEO 1 "Null Pad Geometry."
+MESSAGE CANT_WRITE 3 "Unable to write into the file. Pick Cancel to exit."
+MESSAGE NOT_WRITABLE 3 "File not writable. Pick Cancel to exit."
+MESSAGE CREATE_FAILED 3 "Failed to create filename. Pick Cancel to exit."
+MESSAGE SAVED_NAME 1 "Saved to file: %s."
+MESSAGE SAVE_ERROR 3 "Cannot save padstack or update design."
+MESSAGE ARCHIVE_FAILED 3 "Save padstack Failed."
+MESSAGE POS_NUM_ONLY 3 "Only positive numerical sizes allowed"
+MESSAGE PAD_EXISTS 3 "Pad %s already exists in database."
+MESSAGE BAD_NEW_NAME 3 "Bad name for new pad: %s"
+MESSAGE OPEN_NEW_PAD 1 "Creating new padstack %s"
+MESSAGE OPEN_OLD_PAD 1 "Opening existing padstack %s"
+MESSAGE CPT_OFF_ALL_PADS 2 "Pad stack origin outside all pads"
+MESSAGE CHECKOK 1 "Pad stack has no problems"
+MESSAGE NO_ADD 3 "Cannot add layer here."
+MESSAGE NO_ADD_DB 3 "Cannot add design layer here, use cross-section editor."
+MESSAGE ADD_ERR 3 "Could not add layer."
+MESSAGE ADDMAX_ERR 3 "Could not add layer, maximum reached."
+MESSAGE NO_PASTE 2 "No layer was selected to paste."
+MESSAGE PASTE_ERR 3 "Could not paste layer."
+MESSAGE NO_DEL 3 "Cannot delete this layer."
+MESSAGE NO_DEL_DB 3 "Cannot delete design layer here, use cross-section editor."
+MESSAGE DEL_ERR 3 "Could not delete layer."
+MESSAGE PSE_COPY_FROM 1 "Copying from: %s"
+MESSAGE PSE_PASTE_TO 1 "Pasting to: %s"
+MESSAGE PSE_TYPE_TO_BURIED_B 2 "'Begin' not BEGIN LAYER, changing to Blind/Buried"
+MESSAGE PSE_TYPE_TO_BURIED_E 2 "'End' not END LAYER, changing to Blind/Buried"
+MESSAGE PSE_TYPE_TO_THROUGH 2 "'Begin' and 'End' outermost, changing type to Through"
+MESSAGE NO_SHAPE 3 "No shape in symbol: %s."
+MESSAGE MULTIPLE_ELEMS 3 "Invalid shape symbol: %s, multiple elements."
+MESSAGE SHP_NOT_FOUND 3 "Shape symbol not found: %s."
+MESSAGE FSH_NOT_FOUND 3 "Flash symbol not found: %s."
+MESSAGE SHP_ACCESS_ERR 3 "Error accessing shape %s: %s."
+MESSAGE FOUND 1 "Found: %s"
+MESSAGE SHAPE_DIMS_FIXED 2 "Can't change dimensions of shape."
+MESSAGE SHAPE_OFFSET_FIXED 2 "Can't change offset of shape."
+
+TILE
+
+TABSET "tabSelector"
+FLOC 2 1
+TSSIZE 87 47
+
+TAB "Parameters"
+
+GROUP "Summary"
+GLOC 2 0
+GSIZE 16 14
+ENDGROUP
+
+TEXT "Type:"
+TLOC 4 3
+ENDTEXT
+
+TEXT
+TLOC 9 3
+INFO padstack_type_info 12
+ENDTEXT
+
+TEXT "Etch layers:"
+TLOC 4 7
+ENDTEXT
+
+TEXT
+TLOC 14 7
+INFO etch_layer_count 3
+ENDTEXT
+
+TEXT "Mask layers:"
+TLOC 4 9
+ENDTEXT
+
+TEXT
+TLOC 14 9
+INFO mask_layer_count 3
+ENDTEXT
+
+TEXT "Single Mode:"
+TLOC 4 11
+ENDTEXT
+
+TEXT
+TLOC 14 11
+INFO single_state 3
+ENDTEXT
+
+GROUP "Units"
+GLOC 19 0
+GSIZE 39 5 
+ENDGROUP
+
+#TEXT "Units:"
+#TLOC 22 2
+#ENDTEXT
+
+FIELD units
+FLOC 20 2
+ENUMSET 10
+POP "PSEUNITSPOP"
+ENDFIELD
+
+TEXT "Decimal places:"
+TLOC 38 2
+ENDTEXT
+
+FIELD decimal_places
+FLOC 50 2
+INTFILLIN 2 2
+MIN 0
+MAX 4
+ENDFIELD
+
+GROUP "Usage options"
+GLOC 19 5
+GSIZE 39 9 
+ENDGROUP
+
+FIELD micro_via
+FLOC 20 7 
+CHECKLIST "Microvia"
+ENDFIELD
+
+FIELD supress_internal
+FLOC 20 9
+CHECKLIST "Suppress unconnected int. pads; legacy artwork"
+ENDFIELD
+
+FIELD antipad_keepouts
+FLOC 20 11
+CHECKLIST "Mech pins use antipads as Route Keepout; ARK"
+ENDFIELD
+
+GROUP "Multiple drill"
+GLOC 59 0
+GSIZE 26 14
+ENDGROUP
+
+FIELD is_multi_drill
+FLOC 60 3
+CHECKLIST "Enabled"
+ENDFIELD
+
+FIELD is_staggered
+FLOC 71 3
+CHECKLIST "Staggered"
+ENDFIELD
+
+TEXT "Rows:"
+TLOC 60 6
+ENDTEXT
+
+FIELD multi_drill_rows
+FLOC 66 6
+INTFILLIN 2 2
+MIN 1
+MAX 10
+ENDFIELD
+
+TEXT "Columns:"
+TLOC 71 6
+ENDTEXT
+
+FIELD multi_drill_cols
+FLOC 79 6
+INTFILLIN 2 2
+MIN 1
+MAX 10
+ENDFIELD
+
+TEXT "Clearance X:"
+TLOC 60 9
+ENDTEXT
+
+FIELD multi_drill_clearance_x
+FLOC 71 9
+STRFILLIN 10 10
+ENDFIELD
+
+TEXT "Clearance Y:"
+TLOC 60 11 
+ENDTEXT
+
+FIELD multi_drill_clearance_y
+FLOC 71 11
+STRFILLIN 10 10
+ENDFIELD
+
+GROUP "Drill/Slot hole"
+GLOC 2 14
+GSIZE 37 19
+ENDGROUP
+
+TEXT "Hole type:"
+TLOC 4 16
+ENDTEXT
+
+FIELD hole_type
+FLOC 22 16
+ENUMSET 12
+POP "PENCHTYPPOP"
+ENDFIELD
+
+TEXT "Plating:"
+TLOC 4 18
+ENDTEXT
+
+FIELD plating
+FLOC 22 18
+ENUMSET 12
+POP "PENCPLATPOP"
+ENDFIELD
+
+TEXT
+TLOC 4 20
+INFO text_size_x 15
+ENDTEXT
+
+FIELD hole_size_x
+FLOC 22 20
+STRFILLIN 10 10
+ENDFIELD
+
+TEXT
+TLOC 4 22
+INFO text_size_y 15
+ENDTEXT
+
+FIELD hole_size_y
+FLOC 22 22
+STRFILLIN 10 10
+ENDFIELD
+
+TEXT "Tolerance:"
+TLOC 4 24
+ENDTEXT
+
+TEXT "+"
+TLOC 20 24
+ENDTEXT
+
+FIELD hole_pos_tolerance
+FLOC 22 24
+STRFILLIN 5 10
+ENDFIELD
+
+TEXT "-"
+TLOC 29 24
+ENDTEXT
+
+FIELD hole_neg_tolerance
+FLOC 31 24
+STRFILLIN 5 10
+ENDFIELD
+
+TEXT "Offset X:"
+TLOC 4 26
+ENDTEXT
+
+FIELD hole_x_offset
+FLOC 22 26
+STRFILLIN 10 10
+ENDFIELD
+
+TEXT "Offset Y:"
+TLOC 4 28
+ENDTEXT
+
+FIELD hole_y_offset
+FLOC 22 28
+STRFILLIN 10 10
+ENDFIELD
+
+TEXT "Non-standard drill:"
+TLOC 4 30
+ENDTEXT
+
+FIELD hole_non_standard_drill
+FLOC 22 30
+ENUMSET 12
+POP "PENCNONSTAND"
+ENDFIELD
+
+GROUP "Drill/Slot symbol"
+GLOC 2 33
+GSIZE 37 11
+ENDGROUP
+
+TEXT "Figure:"
+TLOC 4 35
+ENDTEXT
+
+FIELD drill_fig
+FLOC 22 35
+ENUMSET 12
+POP "PENCFIGPOP"
+ENDFIELD
+
+TEXT "Characters:"
+TLOC 4 37
+ENDTEXT
+
+FIELD characters
+FLOC 22 37
+STRFILLIN 4 3
+ENDFIELD
+
+TEXT "Width:"
+TLOC 4 39
+ENDTEXT
+
+FIELD drill_width
+FLOC 22 39
+STRFILLIN 10 10
+ENDFIELD
+
+TEXT "Height:"
+TLOC 4 41
+ENDTEXT
+
+FIELD drill_height
+FLOC 22 41
+STRFILLIN 10 10
+ENDFIELD
+
+GROUP "Top view"
+GLOC 43 14
+GSIZE 42 30
+ENDGROUP
+
+FIELD crossthumb
+THUMBNAIL
+FLOC 47 18
+FSIZE 35 24
+ENDFIELD
+
+ENDTAB
+
+TAB "Layers"
+
+GROUP "Padstack layers"
+GLOC 1 0
+GSIZE 61 22 
+ENDGROUP
+
+FIELD single
+FLOC 6 3
+CHECKLIST "Single layer mode"
+ENDFIELD
+
+GROUP "Views"
+GLOC 63 0
+GSIZE 21 22
+ENDGROUP
+
+FIELD stackbox
+FLOC 65 6
+CHECKLIST "XSection" "radio"
+ENDFIELD
+
+FIELD crossbox
+FLOC 75 6
+CHECKLIST "Top" "radio"
+ENDFIELD
+
+FIELD stackthumb
+THUMBNAIL
+FLOC 65 8
+FSIZE 17 11
+ENDFIELD
+
+TEXT "Type:"
+TLOC 65 3
+ENDTEXT
+
+TEXT
+TLOC 70 3
+INFO padstack_type_grid 12
+ENDTEXT
+
+GRID "grid"
+FLOC 2 6
+FSIZE 59 16
+OPTIONS HLINES VLINES USERSIZE 
+
+GHEAD TOP 
+HEADSIZE 2
+OPTIONS 3D 
+ENDGHEAD
+
+GHEAD SIDE
+OPTIONS 3D NUMBER 
+HEADSIZE 4
+POP "PGLOBAL"
+ENDGHEAD
+
+ENDGRID
+
+GROUP "Regular Pad"
+GLOC 9 23
+GSIZE 23 17
+ENDGROUP
+
+GROUP "Thermal Relief"
+GLOC 35 23
+GSIZE 23 17
+ENDGROUP
+
+GROUP "Anti Pad"
+GLOC 61 23
+GSIZE 23 17
+ENDGROUP
+
+TEXT "Geometry:"
+TLOC 1 25
+ENDTEXT
+
+TEXT "Shape:"
+TLOC 1 27
+ENDTEXT
+
+TEXT "Flash:"
+TLOC 1 29
+ENDTEXT
+
+TEXT "Width:"
+TLOC 1 31
+ENDTEXT
+
+TEXT "Height:"
+TLOC 1 33
+ENDTEXT
+
+TEXT "Offset X:"
+TLOC 1 35
+ENDTEXT
+
+TEXT "Offset Y:"
+TLOC 1 37
+ENDTEXT
+
+FIELD geometry
+FLOC 11 25
+ENUMSET 10
+POP "IPEGEOPOP1"
+ENDFIELD
+
+FIELD shapename
+FLOC 11 27
+STRFILLIN 13 256
+ENDFIELD
+
+FIELD shapebutton
+FLOC 26 27
+MENUBUTTON "..." 5 3
+ENDFIELD
+
+FIELD flash
+FLOC 11 29
+STRFILLIN 13 256
+ENDFIELD
+
+FIELD width
+FLOC 11 31
+STRFILLIN 8 10
+ENDFIELD
+
+FIELD height
+FLOC 11 33
+STRFILLIN 8 10
+ENDFIELD
+
+FIELD x_offset
+FLOC 11 35
+STRFILLIN 8 10
+ENDFIELD
+
+FIELD y_offset
+FLOC 11 37
+STRFILLIN 8 10
+ENDFIELD
+
+FIELD geometry_th
+FLOC 37 25
+ENUMSET 10
+POP "IPEGEOPOP2"
+ENDFIELD
+
+FIELD shapename_th
+FLOC 37 27
+STRFILLIN 13 256
+ENDFIELD
+
+FIELD shapebutton_th
+FLOC 52 27
+MENUBUTTON "..." 5 3
+ENDFIELD
+
+FIELD flash_th
+FLOC 37 29
+STRFILLIN 13 256
+ENDFIELD
+
+FIELD flashbutton_th
+FLOC 52 29
+MENUBUTTON "..." 5 3
+ENDFIELD
+
+FIELD width_th
+FLOC 37 31
+STRFILLIN 8 10
+ENDFIELD
+
+FIELD height_th
+FLOC 37 33
+STRFILLIN 8 10
+ENDFIELD
+
+FIELD x_offset_th
+FLOC 37 35
+STRFILLIN 8 10
+ENDFIELD
+
+FIELD y_offset_th
+FLOC 37 37
+STRFILLIN 8 10
+ENDFIELD
+
+FIELD geometry_ant
+FLOC 63 25
+ENUMSET 10
+POP "IPEGEOPOP1"
+ENDFIELD
+
+FIELD shapename_ant
+FLOC 63 27
+STRFILLIN 13 256
+ENDFIELD
+
+FIELD shapebutton_ant
+FLOC 78 27
+MENUBUTTON "..." 5 3
+ENDFIELD
+
+FIELD flash_ant
+FLOC 63 29
+STRFILLIN 13 256
+ENDFIELD
+
+FIELD width_ant
+FLOC 63 31
+STRFILLIN 8 10
+ENDFIELD
+
+FIELD height_ant
+FLOC 63 33
+STRFILLIN 8 10
+ENDFIELD
+
+FIELD x_offset_ant
+FLOC 63 35
+STRFILLIN 8 10
+ENDFIELD
+
+FIELD y_offset_ant
+FLOC 63 37
+STRFILLIN 8 10
+ENDFIELD
+
+TEXT "Current layer:"
+TLOC 28 41
+ENDTEXT
+
+TEXT
+TLOC 40 41
+INFO layer_name 25
+ENDTEXT
+
+ENDTAB
+
+ENDTABSET
+
+# this is a workaround to force form to be tall enough
+# required due to menu
+GROUP ""
+GLOC 0 48
+GSIZE 1 2
+ENDGROUP
+
+ENDTILE
+
+ENDFORM

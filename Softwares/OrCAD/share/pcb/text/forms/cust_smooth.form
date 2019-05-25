@@ -1,0 +1,54 @@
+# $Header: /net/wicked/pcs/data/cuiforms/cust_smooth.form,v 1.4 1902/01/11 16:35:42 fxf Exp $
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 30 12
+HEADER "Smooth Options"
+
+POPUP <corner_type>"90""_SmoothCorner90","45""_SmoothCorner45","Any Angle""_SmoothCornerAnyAngle","Arc""_SmoothCornerArc".
+POPUP <pad_entry>"Rectangular""_SmoothPadEntryRect","All""_SmoothPadEntryAll","None""_SmoothPadEntryNone".
+POPUP <sort_direction>"None""_SmoothSortNone","North""_SmoothSortN","Northeast""_SmoothSortNE","East""_SmoothSortE","Southeast""_SmoothSortSE","South""_SmoothSortS","Southwest""_SmoothSortSW","West""_SmoothSortW","Northwest""_SmoothSortNW".
+
+TILE
+
+TEXT "Corner type:"
+TLOC 1 2 
+ENDTEXT
+
+FIELD corner_type
+FLOC 14 2 
+ENUMSET 10
+POP "corner_type"
+ENDFIELD
+
+TEXT "Restrict seg entry for pads of type:"
+TLOC 1 6
+ENDTEXT
+
+FIELD pad_entry
+FLOC 14 8
+ENUMSET 10
+POP "pad_entry"
+ENDFIELD
+
+TEXT "Minimum pad entry length:"
+TLOC 1 10
+ENDTEXT
+
+FIELD min_pad_entry
+FLOC 14 12
+REALFILLIN 8 16
+ENDFIELD
+
+TEXT "Max iterations:"
+TLOC 1 16
+ENDTEXT
+
+FIELD max_iterations
+FLOC 14 16
+INTFILLIN 3 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

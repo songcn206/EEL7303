@@ -1,0 +1,763 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN" "http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+<html xmlns="http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>PSpice User Guide -- Parametric and temperature analysis</title>
+<META NAME="Approver" CONTENT="Technical Publications">
+<META NAME="Author" CONTENT="Technical Publications">
+<META NAME="CreateDate" CONTENT="2012-08-31">
+<META NAME="CreateTime" CONTENT="1346413404">
+<META NAME="DataType" CONTENT="Manuals">
+<META NAME="Description" CONTENT="User guide for PSpice and AMS Simulator.">
+<META NAME="DocTitle" CONTENT="PSpice User Guide">
+<META NAME="DocType" CONTENT="User Guide">
+<META NAME="EdmsRelease" CONTENT="EDMS Windows-P015">
+<META NAME="FileTitle" CONTENT="Parametric and temperature analysis">
+<META NAME="FileType" CONTENT="Chapter">
+<META NAME="Keyword" CONTENT="pspug">
+<META NAME="Language" CONTENT="English">
+<META NAME="ModifiedDate" CONTENT="2012-08-31">
+<META NAME="ModifiedTime" CONTENT="1346413404">
+<META NAME="NextFile" CONTENT="11tran.html">
+<META NAME="PageCount" CONTENT="16">
+<META NAME="Platform" CONTENT="ALL">
+<META NAME="PrevFile" CONTENT="10ac.html">
+<META NAME="Product" CONTENT="Allegro AMS Simulator, PSpice">
+<META NAME="ProductFamily" CONTENT="PCB Design, PCB Design">
+<META NAME="ProductVersion" CONTENT="16.6">
+<META NAME="RightsManagement" CONTENT="Copyright 2012 Cadence Design Systems Inc.">
+<META NAME="Title" CONTENT="PSpice User Guide -- Parametric and temperature analysis">
+<META NAME="TopicTags" CONTENT="FALSE">
+<META NAME="Version" CONTENT="16.6">
+  </head>
+  <body style="margin-left: 5%;">
+    <a name="pagetop"></a>
+    <a name="firstpage"></a>
+    <!-- Begin Buttons -->
+    <table width="650" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td height="36" width="650" colspan="10">
+          <img src="../support/header_doc.gif" width="650" height="34">
+        </td>
+      </tr>
+      <tr>
+        <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                </td>
+<td height="20" width="73">
+<a href="pspugTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<a href="pspugIX.html"><img src="../support/nav2_index.gif" border="0"></a>
+</td>
+        <td>
+          <a href="10ac.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+        </td>
+        <td>
+          <a href="11tran.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+        </td>
+        <td height="20">
+          <a>
+<a href="pspug.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+          </a>
+        </td>
+        <td height="20" width="61">
+          <img src="../support/nav2_black.gif">
+        </td>
+        <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+        </td>
+        <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+        </td>
+        <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+        </td>
+      </tr>
+    </table>
+    <!-- End Buttons -->
+    <p>
+    <hr>
+    <p>
+      <h3>
+        <center>
+          <font >
+            <div>PSpice&#174; User Guide</div>
+            <font >
+              <div>
+            </font>
+          </font>
+        </center>
+      </h3>
+      <br>
+    </p>
+    <div>
+      <h1>11<a name="1052024">&nbsp;</a></h1>
+      <h1><a name="1052031">Parametric and temperature </a>analysis</h1>
+      <h2><a name="1048364">Chapter overview</a></h2>
+      <p><a name="1048366">This chapter describes how to set up parametric and temperature </a>analyses. Parametric and temperature are both simple multi&#45;run analysis types.</p>
+      <p><a name="1048367">This chapter includes the following sections:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1048378" title="Parametric and temperature analysis" name="1048371"><font color="Blue"><u>Parametric analysis</u></font></a><a href="#1048378" title="Parametric and temperature analysis"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1048605" title="Parametric and temperature analysis" name="1048375"><font color="Blue"><u>Temperature analysis</u></font></a><a href="#1048605" title="Parametric and temperature analysis"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <h2><a name="1048378">Parametric analysis</a></h2>
+      <h3><a name="1048379">Minimum requirements to run a parametric analysis</a></h3>
+      <h4><em><a name="1048382">Minimum circuit design requirements</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048386">Set up the circuit according to the swept variable type as listed </a>in Table <a href="#1048822" title="Parametric and temperature analysis"><font color="#0000ff"><u>11&#45;1</u></font></a>.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048387">Set up a DC sweep, AC sweep, or transient analysis.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p align="left"><a name="1048414">&nbsp;</a></p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="432">
+        <caption>
+          <p align="left"><font color="#000000"><strong>Table 11&#45;1&nbsp; </strong></font><strong><a name="1048822">Parametric analysis circuit design requirements</a></strong></p>
+        </caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="168">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048391">Swept variable type</a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="264">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048393">Requirement</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048395">voltage source</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048397">voltage source with a DC </a>specification (VDC, for example)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048399">temperature</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048401">none</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048403">current source</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048405">current source with a DC </a>specification (IDC, for example)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048407">model parameter</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048409">PSpice</a>&nbsp;A&#47;D model</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048411">global parameter</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048413">global parameter defined with a </a>parameter block (PARAM)</p>
+          </td>
+        </tr>
+      </table>
+      <h4><em><a name="1048415">Minimum program setup requirements</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048417">In the Simulation Settings dialog box, from the Analysis type list </a>box, select Time Domain (Transient).</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048421">See </a><a href="08start.html#1048556" title="08start.html"><font color="Blue"><u>Setting up analyses</u></font></a><a href="08start.html#1048556" title="08start.html"></a> for a description of the Simulation Settings dialog box.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048422">Under Options, select Parametric Sweep if it is not already </a>enabled.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048423">Specify the required parameters for the sweep.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048427"><img src="images/12param.17.1.1.png" width="675" height="512" alt=""></a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048428">Click OK to save the simulation profile.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048429">From the PSpice menu, choose Run to start the simulation.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1048430">Do not specify a DC sweep and a parametric analysis for the </a>same variable.</p>
+      <h3><a name="1048433">Overview of parametric analysis</a></h3>
+      <p><a name="1048434">Parametric analysis performs multiple iterations of a specified </a>standard analysis while varying a global parameter, model parameter, component value, or operational temperature. The effect is the same as running the circuit several times, once for each value of the swept variable.</p>
+      <p><a name="1048438">See </a><a href="02simex.html#1049065" title="Simulation examples"><font color="Blue"><u>Parametric analysis</u></font></a><a href="02simex.html#1049065" title="Simulation examples"></a> for a description of how to set up a parametric analysis.</p>
+      <h3><a name="1048442">RLC filter example</a></h3>
+      <p><a name="1048443">This example shows how to perform a parametric sweep and analyze </a>the results with performance analysis.</p>
+      <p><a name="1048445">Use performance analysis to derive values from a series of simulator </a>runs and plot these values versus a parameter that varies between the simulator runs. </p>
+      <p><a name="1048446">For this example, the derived values are the overshoot and the rise </a>time versus the damping resistance of the filter. </p>
+      <h4><a name="1048448">Entering the design</a></h4>
+      <p><a name="1048452">The schematic representation for the RLC filter (</a><font size="2" face="'Courier New'" color="#000000">RLCFILT.OPJ</font>) is shown in Figure <font color="#0000ff"><u>11&#45;1</u></font>.</p>
+      <p align="left"><a name="1048461"><img src="images/12param.17.1.2.png" width="525" height="300" alt=""></a></p>
+      <p><a name="1048462">This series of PSpice runs varies the value of resistor R1 from 0.5 to </a>1.5 ohms in 0.1 ohm steps. Since the time&#45;constant of the circuit is about one second, perform a transient analysis of approximately 20 seconds.</p>
+      <p><a name="1048463">Create the circuit in Capture by placing a piecewise linear </a>independent current source (IPWL from <font size="2" face="'Courier New'" color="#000000">SOURCE.OLB</font>). Set the current source properties as follows:</p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048464">AC = 1a</a><br>T1 = 0s<br>I1 = 0a<br>T2 = 10ms<br>I2 = 0a<br>T3 = 10.1ms<br>I3 = 1a</font></blockquote>
+      <p><a name="1048465">Place an instance of a resistor and set its VALUE property to the </a>expression, {R}. To define R as a global parameter, place a PARAM pseudo&#45;component and use the Property Editor to create a new property R and set its value to 0.5. Place an inductor and set its value to 1H, place a capacitor and set its value to 1, and place an analog ground symbol (0 from the  <font size="2" face="'Courier New'" color="#000000">SOURCE.OLB</font> library). Wire the schematic symbols together as shown in Figure <font color="#0000ff"><u>11&#45;1</u></font>.</p>
+      <h4><a name="1048470">Running the simulation</a></h4>
+      <p><a name="1048471">Run PSpice</a>&nbsp;A&#47;D with the following analyses enabled:</p>
+      <p align="left"><a name="1048481">&nbsp;</a></p>
+      <table summary="" border="0" cellpadding="4" cellspacing="0" bordercolor="#D3D3D3" width="363">
+        <caption>
+        <tr>
+          <td cellpadding="4" valign="top" width="96">
+            <p><a name="1048474">transient</a></p>
+          </td>
+          <td cellpadding="4" valign="top" width="266">
+            <p><a name="1048476">print step:</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;100ms<br>final time:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;20s</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048478">parametric</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048480">swept var. type:</a>&nbsp;&nbsp;&nbsp;&nbsp;global parameter <br>sweep type:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;linear<br>name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R<br>start value:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.5<br>end value:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.5<br>increment:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.1</p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1048482">After setting up the analyses, start the simulation by choosing Run </a>from the PSpice menu.</p>
+      <h4><a name="1048484">Using performance analysis to plot overshoot and rise time</a></h4>
+      <p><a name="1048486">After performing the simulation that creates the data file </a><font size="2" face="'Courier New'" color="#000000">RLCFILT.DAT</font>, you can calculate the specified performance analysis measurements.</p>
+      <p><a name="1048487">When the simulation is finished, a list appears containing all of the </a>sections (runs) in the data file produced by PSpice. To use the data from every run, select All and click OK in the Available Selections dialog box. In the case of Figure <a href="#1048501" title="Parametric and temperature analysis"><font color="#0000ff"><u>11&#45;2</u></font></a>, the trace I(L1) from the ninth section was added by specifying the following in the Add Traces dialog box:</p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048491">&#45;I(L1)@9</a></font></blockquote>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1048492">To display the Add Traces dialog box, from the Trace menu, </a>choose Add Trace or click the Add Trace toolbar button <img src="images/Tracebut.gif" width="23" height="19" alt="">.</p>
+      <p align="left"><a name="1048499"><img src="images/12param.17.1.4.png" width="675" height="498" alt=""></a></p>
+      <p><font color="#000000"><strong>Figure 11&#45;2&nbsp; </strong></font><strong><a name="1048501">Current of L1 when R1 is 1.5 ohms.</a></strong></p>
+      <h4><em><a name="1048503">To run performance analysis</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048504">From the Trace menu, choose Performance Analysis.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048505">Click OK.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048506">PSpice resets the X&#45;axis variable for the graph to be the </a>parameter that changed between PSpice runs. In the example, this is the R parameter.</blockquote>
+      <p><a name="1048507">To see the rise time for the current through the inductor L1, click the </a>Add Trace toolbar button <img src="images/Tracebut.gif" width="23" height="19" alt=""> and then enter:</p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048511">genrise(&#45;I(L1) )</a></font></blockquote>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1048512">The genrise and overshoot measurements are contained in </a>the PSPICE.PRB file in the &#60;target installation directory&#62;\PSpice\Common directory. For legacy users, there are now two files in the PSpice\Common directory that uses measurement names:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.872">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.128319999999995">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048513">PSPICE_OLB.PRB</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.872">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.128319999999995">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048514">PSPICE.PRB</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1048857">Figure </a><a href="#1048531" title="Parametric and temperature analysis"><font color="#0000ff"><u>11&#45;3</u></font></a>, shows how the rise time decreases as the damping resistance increases for the filter.</p>
+      <p><a name="1048520">Another Y axis can be added to the plot for the overshoot of the </a>current through L1 by selecting Add Y Axis from the Plot menu. The Y axis is immediately added. Now click the Add Trace toolbar button and enter:</p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048521">overshoot(&#45;I(L1) ) </a></font></blockquote>
+      <p><a name="1048858">Figure </a><a href="#1048531" title="Parametric and temperature analysis"><font color="#0000ff"><u>11&#45;3</u></font></a> shows how the overshoot increases with increasing resistance.</p>
+      <p align="left"><a name="1048529"><img src="images/Perfanal.gif" width="952" height="453" alt=""></a></p>
+      <p><font color="#000000"><strong>Figure 11&#45;3&nbsp; </strong></font><strong><a name="1048531">Rise time and overshoot vs. damping resistance.</a></strong></p>
+      <h4><em><a name="1048533">Troubleshooting tip</a></em></h4>
+      <p><a name="1048535">More than one PSpice run or data section is required for performance </a>analysis. Because one data value is derived for each waveform in a related set of waveforms, at least two data points are required to produce a trace.</p>
+      <p><a name="1048537">Use </a><font color="#000000"><em>Evaluate Measurement</em></font> (from the Trace menu) to evaluate a measurements on a single waveform and produce a single data point result.</p>
+      <h3><a name="1048540">Example: frequency response vs. arbitrary parameter</a></h3>
+      <p><a name="1048541">You can view a plot of the linear response of a circuit at a specific </a>frequency as one of the circuit parameters varies (such as the output of a band pass filter at its center frequency vs. an inductor value). </p>
+      <p><a name="1048542">In this example, the value of a nonlinear capacitance is measured </a>using a 10 kHz AC signal and plotted versus its bias voltage. The capacitance is in parallel with a resistor, so a trace expression is used to calculate the capacitance from the complex admittance of the R&#45;C pair.</p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1048543">This technique for measuring branch capacitances works well </a>in both simple and complex circuits.</p>
+      <h4><a name="1048544">Setting up the circuit</a></h4>
+      <p><a name="1048548">Enter the circuit in Capture as shown in Figure </a><font color="#0000ff"><u>11&#45;4</u></font>.</p>
+      <p align="left"><a name="1048556"><img src="images/12param.17.1.7.png" width="638" height="469" alt=""></a></p>
+      <p><a name="1048557">To create the capacitor model in the schematic editor:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048558">Place a CBREAK part.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048559">Select it so that it is highlighted.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048560">From the Edit menu, choose PSpice Model.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048561">In the Model Text frame, enter the following:</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048562">.model Cnln CAP(C=1 VC1=&#45;0.01 VC2=0.05)</a></font></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048563">From the File menu, choose Save.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1048564">Set up the circuit for a parametric AC analysis (sweep Vbias), and run </a>PSpice. Include only the frequency of interest in the AC sweep.</p>
+      <h4><em><a name="1048565">To display the results</a></em></h4>
+      <p><a name="1048566">Use PSpice to display the capacitance calculated at the frequency of </a>interest versus the stepped parameter.</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048567">Simulate the circuit.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048568">Load all AC analysis sections.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048572">From the Trace menu, choose Add Trace or click the Add Trace </a>toolbar button <img src="images/Tracebut.gif" width="23" height="19" alt="">.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048573">Add the following trace expression:</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048574">IMG(&#45;I(Vin)&#47;V(1,0))&#47;(2*3.1416*Frequency)</a></font></blockquote>
+      <blockquote><a name="1048575">Or add the expression:</a></blockquote>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048576">CvF(&#45;I(Vin)&#47;V(1,0))</a></font></blockquote>
+      <p><a name="1048577">Where CvF is a macro which measures the effective capacitance in </a>a complex conductance. Macros are defined using the Macros command on the Trace menu. The CvF macro should be defined as:</p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048578">CvF(G)= IMG(G)&#47;(2*3.1416*Frequency)</a></font></blockquote>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1048579">&#45;I(Vin)&#47;V(1) is the complex admittance of the R&#45;C branch; the </a>minus sign is required for correct polarity.</p>
+      <h4><em><a name="1048581">To use performance analysis to plot capacitance vs. bias </a>voltage</em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048582">From the Trace menu, choose Performance Analysis.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048583">Click Wizard.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048584">Click Next&#62;.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048585">Click YatX in the </a><font color="#000000"><em>Choose a Measurement</em></font> list, and then click Next&#62;.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048586">In the Name of Trace text box, type the following:</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048587">CvF(&#45;I(Vin)&#47;V(1))</a></font></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	6.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048588">In the X value to get Y value at text box, type </a><font size="2" face="'Courier New'" color="#000000">10K</font>.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	7.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048589">Click Next&#62;. </a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048590">The wizard displays the gain trace for the first run to text the </a>measurement (YatX).</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	8.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048591">Click Finish. </a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048596">The resultant plot is shown in Figure </a><a href="#1048602" title="Parametric and temperature analysis"><font color="#0000ff"><u>11&#45;5</u></font></a>.</blockquote>
+      <p align="left"><a name="1048600"><img src="images/12param.17.1.9.png" width="675" height="430" alt=""></a></p>
+      <p><font color="#000000"><strong>Figure 11&#45;5&nbsp; </strong></font><strong><a name="1048602">Plot of capacitance versus bias voltage.</a></strong></p>
+      <h2><a name="1048605">Temperature analysis</a></h2>
+      <h3><a name="1048606">Minimum requirements to run a temperature analysis</a></h3>
+      <h4><em><a name="1048607">Minimum circuit design requirements</a></em></h4>
+      <p><a name="1048608">None.</a></p>
+      <h4><em><a name="1048610">Minimum program setup requirements</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048611">In the Simulation Settings dialog box, from the Analysis type list </a>box, select Time Domain (Transient).</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048615">See </a><a href="08start.html#1048556" title="08start.html"><font color="Blue"><u>Setting up analyses</u></font></a><a href="08start.html#1048556" title="08start.html"></a> for a description of the Simulation Settings dialog box.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048616">Under Options, select Temperature Sweep if it is not already </a>enabled.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><font color="#000000"><strong>Note: </strong></font><a name="1055290">Temperature Sweep is not supported in the Advanced </a>Analysis flow.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048617">Specify the required parameters for the sweep.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048621"><img src="images/12param.17.1.10.png" width="675" height="512" alt=""></a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048622">Click OK to save the simulation profile.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048623">From the PSpice menu, choose Run to start the simulation.</a></td>
+          </tr>
+        </table>
+      </div>
+      <h3><a name="1048625">Overview of temperature analysis</a></h3>
+      <p><a name="1048626">For a temperature analysis, PSpice reruns standard analyses set in </a>the Simulation Settings dialog box at different temperatures.</p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1048627">Running multiple analyses for different temperatures can also </a>be achieved using parametric analysis (see <a href="#1048378" title="Parametric and temperature analysis"><font color="Blue"><u>Parametric analysis</u></font></a><a href="#1048378" title="Parametric and temperature analysis"> </a>). With parametric analysis, the temperatures can be specified either by list, or by range and increments within the range.</p>
+      <p><a name="1048631">You can specify zero or more temperatures. If no temperature is </a>specified, the circuit is run at 27&#176;C. If more than one temperature is listed, the simulation runs once for each temperature in the list.</p>
+      <p><a name="1048633">Setting the temperature to a value other than the default results in </a>recalculating the values of temperature&#45;dependent devices. In <font size="2" face="'Courier New'" color="#000000">EXAMPLE.OPJ</font> (see Figure <a href="#1048644" title="Parametric and temperature analysis"><font color="#0000ff"><u>11&#45;6</u></font></a>), the temperature for all of the analyses is set to 35&#176;C. The values for resistors RC1 and RC2 are recomputed based upon the CRES model which has parameters TC1 and TC2 reflecting linear and quadratic temperature dependencies.</p>
+      <p><a name="1048637">Likewise, the Q3 and Q4 device values are recomputed using the </a>Q2N2222 model which also has temperature&#45;dependent parameters. In the simulation output file, these recomputed device values are reported in the section labeled TEMPERATURE ADJUSTED VALUES.</p>
+      <p align="left"><a name="1048642"><img src="images/12param.17.1.11.png" width="675" height="442" alt=""></a></p>
+      <p><font color="#000000"><strong>Figure 11&#45;6&nbsp; </strong></font><strong><a name="1048644">Example schematic EXAMPLE.OPJ.</a></strong></p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1048645">The example circuit EXAMPLE.OPJ is provided with the </a>installed programs.</p>
+    </div>
+    <br>
+    <a href="#pagetop">Return to top of page</a>
+    <hr>
+    <hr align="left">
+    <div style="text-align: left;">
+      <!-- Begin Buttons -->
+      <table width="650" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                    </td>
+<td height="20" width="73">
+<a href="pspugTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<a href="pspugIX.html"><img src="../support/nav2_index.gif" border="0"></a>
+</td>
+          <td>
+            <a href="10ac.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+          </td>
+          <td>
+            <a href="11tran.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+          </td>
+          <td>
+            <a>
+<a href="pspug.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+            </a>
+          </td>
+          <td height="20" width="61">
+            <img src="../support/nav2_black.gif">
+          </td>
+          <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+          </td>
+          <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+          </td>
+          <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+          </td>
+        </tr>
+      </table>
+      <!-- End Buttons -->
+    </div>
+    <br>
+    <font size="-1" >
+For support, see <a href="http://support.cadence.com" target="_blank">Cadence Online Support</a> service.</font>
+    <br>
+    <br>
+    <font size="-1" >
+      <i>Copyright &#169; 2011, <a href="http://www.cadence.com">Cadence Design Systems, Inc.</a></i>
+    </font>
+    <br>
+    <font size="-1" >
+All rights reserved.</font>
+    <br>
+    <br>
+  </body>
+</html>

@@ -1,0 +1,330 @@
+//------------------------------------------------------------------------
+//
+//  Cadence Design Systems
+//
+// (C) COPYRIGHT, Cadence Design Systems, Inc. 2000
+// All Rights Reserved
+// Licensed Materials - Property of Cadence Design Systems
+//
+// No part of this file may be reproduced, stored in a retrieval system,
+// or transmitted in any form or by any means --- electronic, mechanical,
+// photocopying, recording, or otherwise --- without prior written permission
+// of Cadence Design Systems, Inc.
+//
+// WARRANTY:
+// Use all material in this file at your own risk.  Cadence Design Systems
+// makes no claims about any material contained in this file.
+//
+//------------------------------------------------------------------------
+//
+// Loadable Menu File
+// **************************  SPECCTRAQUEST        **********************
+
+SPECCTRAQUEST MENU DISCARDABLE
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New...",         "new"
+        MENUITEM "&Open...",            "open"
+        MENUITEM SEPARATOR
+        MENUITEM "&Save",           "save"
+        MENUITEM "Save &As...",         "save_as"
+        MENUITEM SEPARATOR
+    POPUP "&Import"
+    BEGIN
+        MENUITEM "&Logic...",       "netin"
+        MENUITEM SEPARATOR
+            MENUITEM "&Router...",               "specctra_in"
+        MENUITEM SEPARATOR
+        MENUITEM "Tech&file...",         "techfile in"
+        MENUITEM "Active &Times...",     "signal atimes"
+        MENUITEM "T&iming...",       "import timing"
+        MENUITEM SEPARATOR
+        MENUITEM "&Mentor...",       "import mentor"
+        MENUITEM "&Board...",        "boardoutline import"
+    END
+    POPUP "&Export"
+    BEGIN
+            MENUITEM "&Logic...",        "feedback"
+            MENUITEM "&Netlist w/Properties...", "netout"
+            MENUITEM SEPARATOR
+            MENUITEM "&Router...",               "specctra_out"
+            MENUITEM SEPARATOR
+        MENUITEM "&Techfile...",         "techfile out"
+            MENUITEM SEPARATOR
+            MENUITEM "Save design to 16.01...",  "downrev"
+    END
+        MENUITEM SEPARATOR
+        MENUITEM "&Viewlog...",         "viewlog -last"
+        MENUITEM "&File Viewer...",     "viewlog -browse"
+        MENUITEM "Plot Set&up...",      "plot setup"
+#ifndef __unix
+    MENUITEM "Plot Previe&w...",            "plot preview"
+#endif
+        MENUITEM "&Plot...",            "plot"
+        MENUITEM SEPARATOR
+    MENUITEM "P&roperties...",      "file_property"
+        MENUITEM "C&hange Editor...",           "toolswap"
+        MENUITEM "S&cript...",          "script"
+        MENUITEM SEPARATOR
+        POPUP "Recent &Designs"
+        BEGIN
+            MENUITEM "Recent File List",        "|mru"
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",           "exit"
+    END
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "&Undo",                       "undo"
+        MENUITEM "&Redo",                       "redo"
+        MENUITEM SEPARATOR
+        MENUITEM "&Move",                       "move"
+        MENUITEM "&Copy",                       "copy"
+        MENUITEM "M&irror",                     "mirror"
+        MENUITEM "&Spin",                       "spin"
+        MENUITEM "C&hange",                     "change"
+        MENUITEM "&Delete",                     "delete"
+        MENUITEM SEPARATOR
+        MENUITEM "&Vertex",                     "vertex"
+        MENUITEM "Delete Verte&x",              "delete vertex"
+        MENUITEM SEPARATOR
+        MENUITEM "P&roperties",                 "property edit"
+        MENUITEM "&Net Properties...",          "net_properties"
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Zoom By Points",     "zoom points"
+        MENUITEM "Zoom &Fit",           "zoom fit"
+        MENUITEM "Zoom &In",            "zoom in"
+        MENUITEM "Zoom &Out",           "zoom out"
+        MENUITEM "Zoom &World",         "zoom world"
+        MENUITEM "Zoo&m Center",        "zoom center"
+        MENUITEM "Zoom Pre&vious",              "zoom previous"
+        MENUITEM SEPARATOR
+        MENUITEM "Color View &Save",            "colorview create"
+        MENUITEM "Color View Restore &Last",    "colorview restore"
+        MENUITEM SEPARATOR
+        MENUITEM "&Refresh",            "redraw"
+      POPUP "Wi&ndows"
+      BEGIN
+         MENUITEM "Command",          "showhide text"
+         MENUITEM "World View",       "showhide view"
+         MENUITEM "Options",          "showhide options"
+         MENUITEM "Find",             "showhide find"
+         MENUITEM "Visibility",       "showhide vis"
+         MENUITEM "Show All",         "show allpanes"
+      END
+      MENUITEM "&Customize Toolbar...",             "display toolbar param"
+      MENUITEM "Reset UI to Cadence Default...", "reset dockwindows"
+    END
+    POPUP "&Display"
+    BEGIN
+        MENUITEM "&Color/Visibility...",    "color192"
+        MENUITEM "&Layer Priority...",          "layer priority"
+        MENUITEM SEPARATOR
+        MENUITEM "S&tatus...",                  "status"
+        MENUITEM "&Element",            "show element"
+        MENUITEM "&Measure",            "show measure"
+    MENUITEM "Constra&int",         "cns show"
+    MENUITEM "P&arasitic",          "show parasitic"
+        MENUITEM "P&roperty...",        "show property"
+        MENUITEM "Segments Over &Voids",        "highlight sov"
+        MENUITEM SEPARATOR
+        MENUITEM "&Highlight/De-highlight...",  "view hilite"
+    MENUITEM "&Assign Color",               "assign color"
+        MENUITEM "High&light By Pick",          "hilight"
+        MENUITEM "&De-highlight By Pick",       "dehilight"
+        MENUITEM SEPARATOR
+        POPUP "&Waive DRCs"
+        BEGIN
+            MENUITEM "&Waive",            "waive drc"
+            MENUITEM "&Show",             "show waived drcs"
+            MENUITEM "&Blank",            "blank waived drcs"
+            MENUITEM "&Restore",          "restore waived drc"
+            MENUITEM "&Restore All",      "restore waived drcs"
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "&Ratsnest...",                "ratsnest"
+        MENUITEM "&Blank Rats All",             "unrats all"
+        MENUITEM "&Show Rats All",              "rats all"
+    END
+    POPUP "Set&up"
+    BEGIN
+        MENUITEM "Desi&gn Parameters...",        "prmed"
+        MENUITEM "&Grids...",                   "define grid"
+        MENUITEM "&Cross-section...",           "xsection"
+        MENUITEM "&Materials...",               "define materials"
+        POPUP "Applica&tion Mode"
+        BEGIN
+          MENUITEM "General Edit",              "generaledit"
+          MENUITEM "Etch Edit",                 "etchedit" 
+          MENUITEM "None",                      "noappmode"
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "Enable On-Line D&RC",         "cns onlinedrc"
+        POPUP "Co&nstraints"
+        BEGIN
+           MENUITEM "&Modes...",                "cns cmmodes"
+           MENUITEM "&Electrical...",           "cmgr_elec"
+           MENUITEM "&Physical...",             "cmgr_phys"
+           MENUITEM "&Spacing...",              "cmgr_spac"
+           MENUITEM "Sa&me Net Spacing...",       "cmgr_snspac"
+           MENUITEM "&Physical Net Overrides...", "property edit -net_data"
+           MENUITEM "&Spacing Net Overrides...",  "property edit -net_space"
+           MENUITEM "&Constraint Manager...",   "cmgr"
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "P&roperty Definitions...",    "define property"
+        MENUITEM "Define &Lists...",        "define list"
+        MENUITEM SEPARATOR
+        POPUP "O&utlines"
+        BEGIN
+            MENUITEM "&Room Outline...",    "room outline"
+            MENUITEM "&Board Outline...",   "board outline"
+            MENUITEM "&Keepout...",         "board keepout"
+            MENUITEM "&Plane Outline...",   "board plane"
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "Note&s...",                   "edit note"
+        MENUITEM SEPARATOR
+        MENUITEM "SI &Design Setup...",         "signal setup"
+        MENUITEM "SI Design &Audit...",         "signal audit"
+        MENUITEM SEPARATOR
+        MENUITEM "Datatip Customization...",    "custom datatips"
+        MENUITEM "&User Preferences...",        "enved"
+    END
+    POPUP "&Shape"
+    BEGIN
+        MENUITEM "&Polygon",                "shape add"
+        MENUITEM "&Rectangular",            "shape add rect"
+        MENUITEM "&Circular",               "shape add circle"
+        MENUITEM SEPARATOR
+        MENUITEM "&Select Shape or Void",   "shape select"
+        MENUITEM SEPARATOR
+        POPUP "Manual &Void"
+        BEGIN
+            MENUITEM "&Polygon",            "shape void polygon"
+            MENUITEM "&Rectangular",        "shape void rectangle"
+            MENUITEM "&Circular",           "shape void circle"
+            MENUITEM "&Delete",             "shape void delete"
+            MENUITEM "&Element",            "shape void element"
+            MENUITEM "&Move",               "shape void move"
+            MENUITEM "&Copy",               "shape void copy"
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "Edit &Boundary",      "shape edit boundary"
+        MENUITEM "&Delete Islands",     "island_delete"
+        MENUITEM SEPARATOR
+        MENUITEM "Change Shape T&ype",  "shape change type"
+        MENUITEM "&Merge Shapes",       "shape merge shapes"
+        MENUITEM "Chec&k",          "shape check"
+        MENUITEM SEPARATOR
+        MENUITEM "C&ompose Shape",       "compose shape"
+        MENUITEM "D&ecompose Shape",     "decompose shape"
+        MENUITEM SEPARATOR
+        MENUITEM "&Global Dynamic Params...",    "shape global param"
+    END
+    POPUP "&Logic"
+    BEGIN
+    MENUITEM "&Parts List...",              "edit parts"
+        MENUITEM SEPARATOR
+        MENUITEM "&Edit &Nets...",              "edit nets"
+    MENUITEM "Net &Logic",                  "net logic"        
+    MENUITEM "&Net Schedule",       "net schedule"
+    MENUITEM "Assign &Differential Pair...", "diff pairs"
+        MENUITEM SEPARATOR
+    MENUITEM "&Identify DC Nets...",        "identify nets"
+    MENUITEM "&Create List of Nets...",     "create nets"
+        MENUITEM SEPARATOR
+    MENUITEM "Room &Assignment...",         "component assign"
+        MENUITEM SEPARATOR
+    MENUITEM "Pin &Type...",                "topology pinuse"
+        MENUITEM SEPARATOR
+    MENUITEM "De&fine Terminators...",      "termination edit"
+    MENUITEM "P&ackage Terminators...",     "termination package"
+    END
+    POPUP "&Place"
+    BEGIN
+        MENUITEM "&Manually...",                "place manual"
+        MENUITEM "&Quickplace...",              "quickplace"
+        MENUITEM SEPARATOR
+    MENUITEM "&Fix Component Location...",  "component fix"
+    MENUITEM SEPARATOR
+        POPUP "S&wap"
+        BEGIN
+            MENUITEM "&Pins",                   "swap pins"
+            MENUITEM "&Functions",              "swap functions"
+            MENUITEM "&Components",             "swap components"
+        END
+    END
+    POPUP "&Route"
+    BEGIN
+        MENUITEM "&Connect",                    "add connect"
+        MENUITEM "&Slide",                      "slide"
+        MENUITEM "&Delay Tune",         "delay tune"
+        MENUITEM "P&hase Tune",			"phase_tune"
+        MENUITEM "Cust&om Smooth",              "custom smooth"
+        MENUITEM SEPARATOR
+        MENUITEM "Spread Between &Voids",       "spread between voids"
+        POPUP "&Gloss"
+        BEGIN
+            MENUITEM "&Add Fillet",             "add fillet"
+            MENUITEM "D&elete Fillet",          "delete fillet"
+            MENUITEM SEPARATOR
+            MENUITEM "&Parameters...",          "gloss param"
+            MENUITEM "&Design",                 "gloss area design"
+            MENUITEM "&Room",                   "gloss area room"
+            MENUITEM "&Window",                 "gloss area window"
+            MENUITEM "&Highlighted",              "gloss area highlight"
+            MENUITEM "&List",                   "gloss area list"
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "Define Ne&t Priority",        "route priority"
+    END
+    POPUP "A&nalyze"
+    BEGIN
+        MENUITEM "&Initialize...",              "signal init"
+        MENUITEM "Model &Browser...",           "signal library"
+        MENUITEM "&Model Assignment...",        "signal model"
+        MENUITEM "Model Dump/Re&fresh...",      "signal model refresh"
+        MENUITEM "P&references",                "signal prefs"
+        MENUITEM SEPARATOR
+#ifdef _PCB_PI_XL
+        MENUITEM "Power Integrity (Legacy)",    "power integrity"
+#endif
+#ifndef _PCB_PI_XL
+        MENUITEM "&PDN Analysis...",            "pdns pi"
+#endif
+    END
+    POPUP "&Tools"
+    BEGIN
+        MENUITEM "&Reports...",         "reports"
+        POPUP "Quick Reports"
+        BEGIN
+            MENUITEM "Reports...", "reports"
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "&Topology Editor...",     "sigxp"
+        MENUITEM "&Model Integrity...",     "model integrity"
+        MENUITEM SEPARATOR
+        MENUITEM "Database &Check...",      "dbdoctor"
+    MENUITEM "&Update DRC",                 "drc update"
+    MENUITEM "&Window DRC",                 "drc window"
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&Documentation",              "cdsdoc specctraquest HSmast"
+        MENUITEM "&What's New",                 "cdsdoc specctraquest SqPN"
+        POPUP "&Web Resources"
+        BEGIN
+           MENUITEM "&Community",       "http http://www.cadence.com/community"
+           MENUITEM "&Online Support",             "http http://support.cadence.com"
+           MENUITEM "&Web Collaboration",   "http http://collaboration.cadence.com"
+           MENUITEM "&Education Services",     "http http://www.cadence.com/education"
+           MENUITEM "Software &Updates",        "http http://downloads.cadence.com"
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "&About...",                   "about"
+    END
+END

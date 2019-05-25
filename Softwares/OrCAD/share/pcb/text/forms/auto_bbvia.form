@@ -1,0 +1,169 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 60 18
+HEADER "Create bbvia"
+DEFAULT execute
+
+POPUP <START>" "" ".
+POPUP <END>" "" ".
+
+MESSAGE nexist 0 "Please input pad name."
+MESSAGE nerror 0 "A problem occurred - please check the bbvia logfile."
+MESSAGE ndone 0 "bbvia is complete."
+MESSAGE ndemo 0 "Cannot Run in Demo Mode."
+
+TILE
+TEXT "Select start layer:"
+TLOC 29 3
+ENDTEXT
+
+TEXT "Select end layer:"
+TLOC 29 6
+ENDTEXT
+
+FIELD padstack_name
+FLOC 2 3
+STRFILLIN 18 255
+ENDFIELD
+
+FIELD bbvia_list
+FLOC 22 3
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+FIELD start_layer
+FLOC 42 3
+ENUMSET 14
+POP "START"
+OPTIONS prettyprint
+ENDFIELD
+
+FIELD prefix
+FLOC 2 6
+CHECKLIST "Add prefix"
+ENDFIELD
+
+FIELD prefix_val
+FLOC 14 6
+STRFILLIN 10 255
+ENDFIELD
+
+FIELD end_layer
+FLOC 42 6
+ENUMSET 14
+POP "END"
+OPTIONS prettyprint
+ENDFIELD
+
+FIELD ext_layers
+FLOC 35 12
+CHECKLIST "Use only external layers"
+ENDFIELD
+
+FIELD all_layers
+FLOC 2 12
+CHECKLIST "Use all layers" "Layers"
+ENDFIELD
+
+FIELD wire_bond_layers
+FLOC 35 14
+CHECKLIST "Use wire bond layers"
+ENDFIELD
+
+FIELD adj_layers
+FLOC 2 14
+CHECKLIST "Use only adjacent layers" "Layers"
+ENDFIELD
+
+FIELD top_pad
+FLOC 35 16
+CHECKLIST "Use top pad"
+ENDFIELD
+
+FIELD uvia
+FLOC 35 18
+CHECKLIST "Generate uvia"
+ENDFIELD
+
+FIELD num_layers
+FLOC 2 16
+CHECKLIST "Set number of layers" "Layers"
+ENDFIELD
+
+FIELD layers_val
+FLOC 22 16
+INTFILLIN 2 50
+ENDFIELD
+
+TEXT "Available"
+TLOC 8 23
+ENDTEXT
+
+FIELD available_rules
+FLOC 3 25
+LIST "" 20 6
+ENDFIELD
+
+TEXT "Selected"
+TLOC 42 23
+ENDTEXT
+
+FIELD selected_rules
+FLOC 36 25
+LIST "" 20 6
+ENDFIELD
+
+FIELD execute
+FLOC 2 37
+MENUBUTTON "Generate" 12 3
+ENDFIELD
+
+FIELD viewlog
+FLOC 16 37
+MENUBUTTON "Viewlog..." 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 27 37
+MENUBUTTON "Close" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 50 37
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+FIELD select_all
+FLOC 25 26
+MENUBUTTON "All >>" 8 3
+ENDFIELD
+
+FIELD deselect_all
+FLOC 25 30
+MENUBUTTON "<< All" 8 3
+ENDFIELD
+
+GROUP "Layers"
+GLOC 1 10
+GSIZE 58 11
+ENDGROUP
+
+GROUP "Rule Sets"
+GLOC 1 21	
+GSIZE 58 15
+ENDGROUP
+
+GROUP "Input Pad Name"
+GLOC 1 1
+GSIZE 26 8
+ENDGROUP
+
+
+ENDTILE
+
+ENDFORM
+
+
+
+

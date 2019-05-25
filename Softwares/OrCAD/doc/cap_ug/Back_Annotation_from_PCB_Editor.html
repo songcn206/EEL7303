@@ -1,0 +1,802 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>
+      Back Annotation from PCB Editor
+    </title>
+    <meta name="Approver" content="Technical Publications" />
+    <meta name="Author" content="Technical Publications" />
+    <meta name="CreateDate" content="2012-10-10" />
+    <meta name="CreateTime" content="1349876210" />
+    <meta name="DataType" content="Manuals" />
+    <meta name="Description" content="UG" />
+    <meta name="DocTitle" content="OrCAD Capture User Guide" />
+    <meta name="DocType" content="User Guide" />
+    <meta name="FileTitle"
+    content="Back Annotation from PCB Editor" />
+    <meta name="Keywords" content="" />
+    <meta name="FileType" content="Chapter" />
+    <meta name="Keyword" content="cap_ug" />
+    <meta name="Language" content="English" />
+    <meta name="ModifiedDate" content="2012-10-10" />
+    <meta name="ModifiedTime" content="1349876210" />
+    <meta name="NextFile"
+    content="Physical%2BLayout%2Bof%2Ba%2BSimulation%2BDesign.html" />
+    <meta name="Group" content="" />
+    <meta name="Platform" content="All," />
+    <meta name="PrevFile"
+    content="Pin%2BSwapping%2BIn%2BCapture-PCB%2BEditor%2BFlow.html" />
+    <meta name="Product"
+    content="Allegro Design Entry CIS,OrCAD Capture," />
+    <meta name="ProductFamily"
+    content="Silicon-Package-Board Co-Design,Silicon-Package-Board Co-Design," />
+    <meta name="ProductVersion" content="16.6" />
+    <meta name="RightsManagement"
+    content="Copyright 2011-2012 Cadence Design Systems Inc." />
+    <meta name="Title"
+    content="OrCAD Capture User Guide -- Back Annotation from PCB Editor" />
+    <meta name="Version" content="16.6" />
+    <meta name="Renderer" content="WIKI" />
+    <meta name="SpaceKey" content="capug166" />
+    <link href="styles/site.css" rel="stylesheet"
+    type="text/css" />
+    <meta content="text/html; charset=UTF-8"
+    http-equiv="Content-Type" />
+  </head>
+  <body style="margin-left: 5%;background-color: #FFFFFF;">
+    <a xmlns:html="http://www.w3.org/1999/xhtml" id="pagetop"
+    name="pagetop"></a> <a
+    xmlns:html="http://www.w3.org/1999/xhtml" id="firstpage"
+    name="firstpage"></a> <!-- Begin Buttons -->
+     
+    <table xmlns:html="http://www.w3.org/1999/xhtml" border="0"
+    cellpadding="0" cellspacing="0" width="650">
+      <tbody>
+        <tr>
+          <td colspan="10" height="36" width="650">
+            <img height="34" src="../support/header_doc.gif"
+            width="650" />
+          </td>
+        </tr>
+        <tr>
+          <td height="20" width="59">
+            <a href="javascript:openLibrary()"><img
+            alt="View Library" border="0" height="20"
+            src="../support/nav2_library.gif" width="59" /></a>
+          </td>
+          <td height="20" width="73">
+            <a href="cap_ugTOC.html"><img alt="Table of Contents"
+            border="0" src="../support/nav2_toc.gif" /></a>
+          </td>
+          <td height="20" width="46">
+            <img alt="Index" border="0"
+            src="../support/nav2_index_b.gif" />
+          </td>
+          <td>
+            <a
+            href="Pin_Swapping_In_Capture-PCB_Editor_Flow.html"><img
+             alt="Previous" border="0"
+            src="../support/nav2_previous.gif" /></a>
+          </td>
+          <td>
+            <a
+            href="Physical_Layout_of_a_Simulation_Design.html"><img
+            alt="Next" border="0"
+            src="../support/nav_next.gif" /></a>
+          </td>
+          <td height="20">
+            <a href="cap_ug.pdf"><img alt="Open PDF to print book"
+            border="0" height="20" src="../support/nav2_print.gif"
+            width="114" /></a>
+          </td>
+          <td height="20" width="61">
+            <img src="../support/nav2_black.gif" />
+          </td>
+          <td height="20" width="76">
+            <a href="/feedback.htm"><img alt="Email Comments"
+            border="0" height="20"
+            src="../support/nav2_feedback.gif" width="76" /></a>
+          </td>
+          <td height="20" width="43">
+            <a href="../cdsuser/help.html"><img
+            alt="Help Using Documentation" border="0" height="20"
+            src="../support/nav2_help.gif" width="43" /></a>
+          </td>
+          <td height="20" width="37">
+            <a href="/exitsearch.htm"><img
+            alt="Shut Down Cadence Documentation Server" border="0"
+            height="20" src="../support/nav2_exit.gif"
+            width="37" /></a>
+          </td>
+        </tr>
+      </tbody>
+    </table><!-- End Buttons -->
+    <hr xmlns:html="http://www.w3.org/1999/xhtml" />
+    <div id="main-header">
+      <a xmlns="" id="BackAnnotationfromPCBEditor"
+      name="BackAnnotationfromPCBEditor"></a> 
+      <h1 xmlns="" style=" margin: 4px 0 4px;">
+        <span>Back Annotation from PCB Editor</span>
+      </h1>
+    </div>
+    <div class="wiki-content group" id="main-content">
+      <p>
+        The <span style="color: rgb(51,51,51);">Back Annotate
+        dialog box</span> appears when you choose Back Annotate
+        from the Tools menu after selecting the design folder of a
+        Capture project. The back annotation process generates a
+        Capture-compatible <span style="color: rgb(51,51,51);">swap
+        file</span>, which is based on the differences between the
+        logical view (PST*.DAT netlist files) and the physical view
+        (*VIEW.DAT files of board changes).<br />
+         <span class="confluence-anchor-link">&#160;</span>You use
+        back annotation to synchronize the design file with the
+        changes done in the board file. Changes in the PCB Editor
+        board need to be back annotated to the Capture schematic to
+        ensure the physical board design is consistent with the
+        logical schematic design.<br />
+         <span class="confluence-anchor-link">&#160;</span>The Back
+        annotation process includes the following steps:
+      </p>
+      <ol>
+        <li>
+          Generating feedback files (*VIEW.DAT files) - A utility
+          called genfeedformat generates board file information in
+          four files named compview.dat, pinview.dat, netview.dat,
+          and funcview.dat. These four files are also called
+          *VIEW.DAT files.
+        </li>
+        <li>
+          Generating PCB Editor netlist files (PST* files) -
+          Capture- PCB Editor netlister generates netlist files
+          (PST* files) again. This step is necessary to check if
+          any changes are made in the Capture design after board
+          file creation.
+        </li>
+        <li>
+          Generating the swap file (.swp file) - Capture-PCB Editor
+          netlister runs in the Feedback mode and generates the
+          swap files by comparing netlist files with feedback
+          files.
+        </li>
+        <li>
+          Updating the design with swap information - Capture
+          updates the design based on the information in the swap
+          file.
+        </li>
+      </ol>
+      <p>
+        <span class="confluence-anchor-link">&#160;</span>While
+        generating *VIEW.DAT files, the PCB Editor Export Logic
+        utility (genfeedformat.exe) uses the pxlBA.txt file to
+        decide which properties need to be written into the
+        *VIEW.DAT files. The pxlBA.txt sets up the properties that
+        are back annotated from the PCB Editor board file.<br />
+         <span class="confluence-anchor-link">&#160;</span>When you
+        create an PCB Editor netlist (forward mode), the pxlBA.txt
+        file is generated and is stored in the same location as the
+        PST*.DAT files. When you back annotate a design (backward
+        mode), the pxlBA.txt file is generated again and is stored
+        in the same location as the .BRD file (board file).<br />
+         <span class="confluence-anchor-link">&#160;</span>If PCB
+        Editor is not installed on the same system as Capture, you
+        can use the Export Logic command of PCB Editor on the
+        system where PCB Editor is installed. By default, PCB
+        Editor picks the pxlBA.txt file from the location where the
+        board file resides. If the pxlBA.txt file does not exist at
+        the board file location, PCB Editor picks it from the
+        standard PCB Editor installation path, which is
+        <em>&lt;install_dir&gt;</em>/share/pcb/text/views. However,
+        this pxlBA.txt file may not have all the properties that
+        you want to back annotate to Capture and some of the
+        properties may get annotated as deleted or with a null
+        value. To avoid this problem, you must copy the pxlBA.txt
+        file generated by Capture to the board file location,
+        before running the Export Logic command from PCB
+        Editor.<br />
+         <span class="confluence-anchor-link">&#160;</span>PCB
+        Editor back annotation includes property changes, additions
+        and deletions; changes to part reference designators; and
+        gate (function) and pin swaps. Here are some details:<br />
+         &#160;
+      </p>
+      <p>
+        <strong><strong>Table 2-3&#160;</strong> Modifications in
+        PCB Editor back-annotated to Capture<br />
+        </strong>
+      </p>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <span style="color: rgb(0,51,102);"><strong>Pin
+                  swaps</strong></span>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <span
+                  class="confluence-anchor-link">&#160;</span>Interchanges
+                  two pin numbers. For example, pin 6 could become
+                  pin 9. Pin 9 would become pin 6 in the process.
+                  On the board, the net is just routed to a
+                  different pin, since the order of the pins on the
+                  physical IC cannot be changed. On the schematic,
+                  the pin numbers will visually switch places.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <span style="color: rgb(0,51,102);"><strong>Gate
+                  swaps</strong></span>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <span
+                  class="confluence-anchor-link">&#160;</span>Switches
+                  or interchanges two gates, or functions. For
+                  example, a 74LS00 has four NAND gates: U1A, U1B,
+                  U1C, and U1D. You can swap U1A with U1B or any
+                  other of the NAND gates in the package.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <span
+                  style="color: rgb(0,51,102);"><strong>Reference
+                  changes</strong></span>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <span
+                  class="confluence-anchor-link">&#160;</span>You
+                  can change reference designators, U1 to a value
+                  of ST1, for example. If the part is a
+                  multi-package, then U1A through U1D, would become
+                  ST1A through ST1D.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <span
+                  style="color: rgb(0,51,102);"><strong>Property
+                  changes</strong></span>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <span
+                  class="confluence-anchor-link">&#160;</span>Properties
+                  defined or changed in PCB Editor are back
+                  annotated to Capture, provided the properties are
+                  listed in the configuration file.<br
+                  class="atl-forced-newline" />
+                   <span
+                  class="confluence-anchor-link">&#160;</span>Just
+                  as occurrence values are always used in the PCB
+                  Editor netlist, these values are also the ones
+                  replaced or updated in the back annotation
+                  process. Instance values are neither netlisted
+                  nor back annotated unless the instance value is
+                  the same as the occurrence value.<br
+                  class="atl-forced-newline" />
+                   <span
+                  class="confluence-anchor-link">&#160;</span>If
+                  you double-click on the part to invoke the part
+                  editor on the schematic page the occurrence
+                  values are the ones in the yellow rows below the
+                  instance values (white rows).<br
+                  class="atl-forced-newline" />
+                   <span
+                  class="confluence-anchor-link">&#160;</span>Back
+                  annotation from PCB Editor only uses CHANGEREF
+                  and PINSWAP format lines in the .SWP file for pin
+                  and gate swaps and reference designator changes.
+                  The properties are back annotated in a separate
+                  section.<br class="atl-forced-newline" />
+                   <span
+                  class="confluence-anchor-link">&#160;</span>If a
+                  net name is renamed in the physical design (on
+                  the PCB Editor board) and net properties are
+                  added or edited, the net name does not back
+                  annotate to Capture, even though the properties
+                  do.<br class="atl-forced-newline" />
+                   <span
+                  class="confluence-anchor-link">&#160;</span>To
+                  get around this naming discrepancy between the
+                  physical layout and schematic designs, you should
+                  rename the net in Capture, then netlist the
+                  design to PCB Editor. The net names then
+                  correspond and properties may be passed without a
+                  problem.
+                </p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <span style="color: rgb(0,51,102);"><strong>Setup
+                  button</strong></span>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <span
+                  class="confluence-anchor-link">&#160;</span>
+                  <span
+                  class="confluence-link unresolved">&#160;</span>Click
+                  this button to open Setup dialog box, where you
+                  can set up, edit and view information about the
+                  configuration file used for netlisting and back
+                  annotating property information between Capture
+                  and PCB Editor. You can also specify the number
+                  of backup files to keep in your design directory.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <span
+                  style="color: rgb(0,51,102);"><strong>Generate
+                  Feedback<br />
+                   Files</strong></span>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <span
+                  class="confluence-anchor-link">&#160;</span>Select
+                  this option to generate the *VIEW.DAT back
+                  annotation files from the specified PCB Editor
+                  Board File. These files are listed under the
+                  project manager. Selecting this option is
+                  equivalent to using the Export Logic command in
+                  PCB Editor.<br class="atl-forced-newline" />
+                   <span
+                  class="confluence-anchor-link">&#160;</span>This
+                  option is only available if you have PCB Editor
+                  installed.<br class="atl-forced-newline" />
+                   <span
+                  class="confluence-anchor-link">&#160;</span>If
+                  this option is unselected, then make sure the *
+                  VIEW.DAT files are saved in the same directory as
+                  PST*.DAT netlist files for your design.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <span style="color: rgb(0,51,102);"><strong>PCB
+                  Editor Board File</strong></span>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <span
+                  class="confluence-anchor-link">&#160;</span>Accept
+                  the path and file listed or navigate to the PCB
+                  Editor board (.BRD) file that contains
+                  previously-imported netlist information and the
+                  design changes you want to back annotate. This is
+                  the same board file used to create feedback files
+                  (*VIEW.DAT files) need for generating the .SWP
+                  file during back annotation.<br
+                  class="atl-forced-newline" />
+                   <span
+                  class="confluence-anchor-link">&#160;</span>By
+                  default, the name of your design (with a .BRD
+                  extension) in the allegro subfolder is used,
+                  unless you have run a previous back annotation.
+                  In this case, the field contains the file
+                  previously entered. If the file in this field is
+                  not valid, back annotation cannot proceed and
+                  Capture issues an error message.<br
+                  class="atl-forced-newline" />
+                   <span
+                  class="confluence-anchor-link">&#160;</span>Back
+                  annotation from PCB Editor only uses CHANGEREF
+                  and PINSWAP format lines in the .SWP file for pin
+                  and gate swaps and reference designator changes.
+                  The properties are back annotated in a separate
+                  section.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <span
+                  style="color: rgb(0,51,102);"><strong>Netlist
+                  Directory</strong></span>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <span
+                  class="confluence-anchor-link">&#160;</span>Browse
+                  to the directory where you have your PST*.DAT
+                  files. This is also the location where the *
+                  VIEW.DAT files will be placed after being
+                  extracted from the board.<br
+                  class="atl-forced-newline" />
+                   <span
+                  class="confluence-anchor-link">&#160;</span>The
+                  default directory is the allegro subfolder for
+                  your design. If you have run a previous back
+                  annotation on the current .DSN design, the
+                  netlist directory for that back annotation is the
+                  default. A netlist directory must be specified
+                  for back annotation to proceed.<br
+                  class="atl-forced-newline" />
+                   <span
+                  class="confluence-anchor-link">&#160;</span>It is
+                  critical that the original design not be modified
+                  before attempting to back annotate. Otherwise,
+                  errors can result when comparing the netlist
+                  files with the *VIEW.DAT board files.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <span
+                  style="color: rgb(0,51,102);"><strong>Output
+                  File</strong></span>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <span
+                  class="confluence-anchor-link">&#160;</span>Specifies
+                  the path and file name for the .SWP file that is
+                  saved after back annotation. By default the file
+                  name is DESIGN_NAME.SWP unless you have
+                  previously run a back annotation on the current
+                  design. In this case the default output file is
+                  the name given to the previous output file.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <span
+                  style="color: rgb(0,51,102);"><strong>Back</strong></span>
+                  <span
+                  style="color: rgb(0,51,102);"><strong>Annotation</strong></span>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <span
+                  class="confluence-anchor-link">&#160;</span>
+                  <strong>Update Schematic.</strong> Select this
+                  option if you want the Capture schematic design
+                  to be updated with back annotation information
+                  from the .SWP file. Selecting this check box lets
+                  you review the back annotation details. This
+                  option is selected by default.<br
+                  class="atl-forced-newline" />
+                   <span
+                  class="confluence-anchor-link">&#160;</span>If
+                  you don&#39;t select this check box, you can
+                  still use the Layout tab later to back annotate
+                  the generated .SWP file to Capture. You might
+                  choose this option, for example, if you wanted to
+                  view the SWP file before actually back
+                  annotating. In this case, you can also select the
+                  check box later in the Allegro tab when you rerun
+                  the back annotation.<br
+                  class="atl-forced-newline" />
+                   <span
+                  class="confluence-anchor-link">&#160;</span>
+                  <strong>View Output (.SWP) File.</strong> Select
+                  this option if you want the .SWP file to be
+                  automatically opened and available for viewing
+                  and editing in a Capture text window after the
+                  .SWP file is generated. You can also close the
+                  file and re-open it from the project manager.
+                  This check box is not selected by default
+                </p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="panelMacro">
+        <div class="table-wrap">
+          <table class="confluenceTable">
+            <colgroup>
+              <col />
+              <col />
+            </colgroup>
+            <tbody>
+              <tr>
+                <td class="confluenceTd">
+                  <img
+                  class="confluence-embedded-image confluence-external-resource"
+                   data-image-src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                   height="16"
+                  src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                   width="16" />
+                </td>
+                <td class="confluenceTd">
+                  <p>
+                    PCB Editor back annotation allows you to do the
+                    following:
+                  </p>
+                  <ul>
+                    <li>
+                      Perform more than one back annotation in a
+                      row without netlisting in-between, once you
+                      have made an initial netlisting.
+                    </li>
+                    <li>
+                      Netlist occurrence values for user-added
+                      properties.
+                    </li>
+                    <li>
+                      Back annotate parts with added connections or
+                      properties that are not used, including
+                      unwired parts and those that could be used in
+                      the future.
+                    </li>
+                    <li>
+                      Back annotate properties and their values to
+                      components, pins, and nets using a
+                      configuration file.
+                    </li>
+                    <li>
+                      Back annotate numeric and alphabetic
+                      reference designators for multi-section
+                      parts.
+                    </li>
+                    <li>
+                      Check the Capture session log for errors.
+                    </li>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          &#160;
+        </p>
+      </div>
+      <p>
+        &#160;
+      </p>
+      <h3
+      id="BackAnnotationfromPCBEditor-&#160;Bestpracticesforsmoothbackannotation">
+        <span class="confluence-anchor-link">&#160;</span>Best
+        practices for smooth back annotation
+      </h3>
+      <ul>
+        <li>
+          Do not change design name, hierarchical block names, or
+          reference designators in Capture after board files
+          creation.
+        </li>
+        <li>
+          Do not edit a part from schematic in Capture after board
+          file creation.
+        </li>
+        <li>
+          Do not replace cache as it changes the Source library
+          name and part name, in capture.
+        </li>
+        <li>
+          Do not change the values of component definition
+          properties in capture after board files creation.
+        </li>
+        <li>
+          Capture does not support electrical constraint sets
+          (ECSets). ECSets will not be back annotated to your
+          Capture design.
+        </li>
+        <li>
+          Do not change Design file/root schematic/hierarchical
+          block names in Capture after board file creation.
+        </li>
+        <li>
+          Do not add or delete components to or from the schematic
+          design immediately after the board file creation. Add or
+          delete components after finishing the back annotation
+          process.
+        </li>
+        <li>
+          Do not add any additional components in PCB Editor.
+          Instead, add components in Capture and take them to PCB
+          Editor.
+        </li>
+        <li>
+          Do not add, rename, or delete a net in PCB Editor.
+        </li>
+        <li>
+          Do not change the format for reference designators for
+          parts in PCB Editor as
+          &lt;Alphabet(s)&gt;&lt;Numeric&gt;&lt;Alphabet(s)&gt; or
+          &lt;Alphabet(s)&gt;-&lt;Alphabet(s)&gt;.
+        </li>
+        <li>
+          Run PCB Editor Dbdoctor before running Back annotation by
+          selecting the Database Check command from the Tools menu
+          in PCB Editor.
+        </li>
+        <li>
+          Make backups of the original design before updating the
+          design with the swap information in Capture.
+        </li>
+        <li>
+          Back annotate the design immediately after making the
+          board file. Though not a mandatory step, back annotating
+          the design before placing components helps avoid problems
+          in back-annotation at a later stage.
+        </li>
+      </ul>
+      <div class="panelMacro">
+        <p>
+          &#160;
+        </p>
+        <div class="table-wrap">
+          <table class="confluenceTable">
+            <colgroup>
+              <col />
+              <col />
+            </colgroup>
+            <tbody>
+              <tr>
+                <td class="confluenceTd">
+                  <img
+                  class="confluence-embedded-image confluence-external-resource"
+                   data-image-src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                   height="16"
+                  src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                   width="16" />
+                </td>
+                <td class="confluenceTd">
+                  <ul>
+                    <li>
+                      During back annotation, if you encounter
+                      Error <em>[ALG0037] Unable to read physical
+                      netlist data.</em> The probable reasons for
+                      this error are:<br />
+                       
+                      <ul>
+                        <li>
+                          Netlist files not found.<br />
+                           or
+                        </li>
+                        <li>
+                          Unable to read the netlist file because
+                          either the path name is long or has
+                          spelling errors.
+                        </li>
+                      </ul>If back annotation at this stage
+                      generates an empty swap file, you can proceed
+                      with placing and routing the board file. In
+                      case any problems are detected, you must
+                      correct them in the design file and generate
+                      the board file again until an empty swap file
+                      is generated.
+                    </li>
+                    <li>
+                      In PCB Editor, if you modify properties on a
+                      net, which does not have a corresponding
+                      physical object (also called invisible nets)
+                      in Capture, the modified properties will not
+                      be imported during back&#160;annotation. The
+                      error messages are displayed in the sessions
+                      log.
+                    </li>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <hr xmlns:html="http://www.w3.org/1999/xhtml" />
+    <hr xmlns:html="http://www.w3.org/1999/xhtml" align="left" />
+    <div xmlns:html="http://www.w3.org/1999/xhtml"
+    style="text-align: left;">
+      <!-- Begin Buttons -->
+      <table border="0" cellpadding="0" cellspacing="0"
+      width="650">
+        <tbody>
+          <tr>
+            <td colspan="10" height="36" width="650">
+              <img height="34" src="../support/header_doc.gif"
+              width="650" />
+            </td>
+          </tr>
+          <tr>
+            <td height="20" width="59">
+              <a href="javascript:openLibrary()"><img
+              alt="View Library" border="0" height="20"
+              src="../support/nav2_library.gif" width="59" /></a>
+            </td>
+            <td height="20" width="73">
+              <a href="cap_ugTOC.html"><img alt="Table of Contents"
+              border="0" src="../support/nav2_toc.gif" /></a>
+            </td>
+            <td height="20" width="46">
+              <img alt="Index" border="0"
+              src="../support/nav2_index_b.gif" />
+            </td>
+            <td>
+              <a
+              href="Pin_Swapping_In_Capture-PCB_Editor_Flow.html"><img
+               alt="Previous" border="0"
+              src="../support/nav2_previous.gif" /></a>
+            </td>
+            <td>
+              <a
+              href="Physical_Layout_of_a_Simulation_Design.html"><img
+               alt="Next" border="0"
+              src="../support/nav_next.gif" /></a>
+            </td>
+            <td height="20">
+              <a href="cap_ug.pdf"><img
+              alt="Open PDF to print book" border="0" height="20"
+              src="../support/nav2_print.gif" width="114" /></a>
+            </td>
+            <td height="20" width="61">
+              <img src="../support/nav2_black.gif" />
+            </td>
+            <td height="20" width="76">
+              <a href="/feedback.htm"><img alt="Email Comments"
+              border="0" height="20"
+              src="../support/nav2_feedback.gif" width="76" /></a>
+            </td>
+            <td height="20" width="43">
+              <a href="../cdsuser/help.html"><img
+              alt="Help Using Documentation" border="0" height="20"
+              src="../support/nav2_help.gif" width="43" /></a>
+            </td>
+            <td height="20" width="37">
+              <a href="/exitsearch.htm"><img
+              alt="Shut Down Cadence Documentation Server"
+              border="0" height="20" src="../support/nav2_exit.gif"
+              width="37" /></a>
+            </td>
+          </tr>
+        </tbody>
+      </table><!-- End Buttons -->
+    </div><br xmlns:html="http://www.w3.org/1999/xhtml" />
+     <font xmlns:html="http://www.w3.org/1999/xhtml" size="-1">For
+    support, see <a href="http://support.cadence.com"
+    target="_blank">Cadence Online Support</a> service.</font> <br
+    xmlns:html="http://www.w3.org/1999/xhtml" />
+     <br xmlns:html="http://www.w3.org/1999/xhtml" />
+     <font xmlns:html="http://www.w3.org/1999/xhtml"
+    size="-1"><i>Copyright &#169; 2012, <a
+    href="http://www.cadence.com">Cadence Design Systems,
+    Inc.</a></i></font> <br
+    xmlns:html="http://www.w3.org/1999/xhtml" />
+     <font xmlns:html="http://www.w3.org/1999/xhtml" size="-1">All
+    rights reserved.</font> <br
+    xmlns:html="http://www.w3.org/1999/xhtml" />
+     <br xmlns:html="http://www.w3.org/1999/xhtml" />
+  </body>
+</html>

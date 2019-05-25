@@ -1,0 +1,75 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM 
+FIXED
+PORT 46 30
+HEADER "Rats Display by Layer"
+
+TILE
+
+GRID layer_grid
+FLOC 1 1
+FSIZE 44 12
+OPTIONS VLINES HLINES USERSIZE
+GHEAD TOP
+HEADSIZE 2
+OPTIONS 3D
+ENDGHEAD
+ENDGRID
+
+TEXT "Active Color:"
+TLOC 1 15
+INFO color_label
+ENDTEXT
+FIELD color
+FLOC 12 15
+COLOR 20 1
+ENDFIELD
+
+GRID color_grid
+FLOC 1 17
+FSIZE 44 8
+OPTIONS VLINES HLINES
+ENDGRID
+
+GROUP
+GLOC 1 26
+GSIZE 44 6
+ENDGROUP 
+
+TEXT "* This command is based on the ASSIGN_ROUTE_LAYER property, which may be added to nets/pins using the assign route layer or auto assign net command."
+TLOC 3 28
+FSIZE 40 4
+ENDTEXT
+
+FIELD update
+FLOC 1 34
+MENUBUTTON "Update" 10 3
+ENDFIELD
+
+FIELD clear
+FLOC 12 34
+MENUBUTTON "Clear" 10 3
+ENDFIELD
+
+FIELD close
+FLOC 24 34
+MENUBUTTON "Close" 10 3
+ENDFIELD
+
+FIELD help
+FLOC 36 34
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+FLEXMODE EdgeGravity
+FLEX layer_grid  0 0 1 1
+FLEX color_label 0 1 1 0
+FLEX color       0 1 1 0
+FLEX color_grid  0 1 1 0
+FLEX update      0 1 0 0
+FLEX clear       0 1 0 0
+FLEX close       0 1 0 0
+FLEX help        1 1 0 0
+
+ENDTILE
+ENDFORM

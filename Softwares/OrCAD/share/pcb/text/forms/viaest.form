@@ -1,0 +1,200 @@
+FILE_TYPE=FORM_DEFN VERSION=1
+FORM autogreytext
+FIXED
+PORT 36 50
+
+HEADER "Wire Bond Via Estimation"
+
+POPUP <diestack_vals> "DS1""DS1".
+POPUP <line_width_dbrep_vals> "0""0".
+POPUP <via_pad_size_dbrep_vals> "0""0".
+POPUP <via_list> "padstack1""padstack1".
+POPUP <line_to_line_space_dbrep_vals> "0""0".
+POPUP <via_pad_to_line_space_dbrep_vals> "0""0".
+POPUP <via_pad_to_via_pad_space_dbrep_vals> "0""0".
+POPUP <via_pad_to_finger_space_dbrep_vals> "0""0".
+POPUP <via_pad_to_die_outline_space_dbrep_vals> "0""0".
+POPUP <via_pad_to_shape_space_dbrep_vals> "0""0".
+POPUP <via_pad_to_pin_space_dbrep_vals> "0""0".
+POPUP <number_of_escape_layers_vals> "1""1","2""2","3""3","4""4","5""5","6""6","7""7","8""8","9""9","10""10".
+
+TILE VIAEST
+
+TEXT "Die Stack"
+FLOC 1 1
+INFO die_or_diestack_label 10
+ENDTEXT
+
+FIELD diestack
+FLOC 18 1
+ENUMSET 16
+POP "diestack_vals"
+ENDFIELD
+
+TEXT "1) Line Width"
+FLOC 1 3
+ENDTEXT
+
+FIELD line_width
+FLOC 27 3
+STRFILLIN 5 6
+POP "line_width_dbrep_vals"
+ENDFIELD
+
+TEXT "2) Via-Pad Size"
+FLOC 1 5
+ENDTEXT
+
+FIELD padstack_form
+FLOC 15 5
+MENUBUTTON "Padstack..." 11 1
+ENDFIELD
+
+FIELD via_pad_size
+FLOC 27 5
+STRFILLIN 5 6
+POP "via_pad_size_dbrep_vals"
+ENDFIELD
+
+#TEXT "From Padstack"
+#FLOC 4 7
+#ENDTEXT
+#
+#FIELD padstack
+#FLOC 17 7
+#ENUMSET 16
+#POP "via_list"
+#ENDFIELD
+
+TEXT "3) Line to Line Space"
+FLOC 1 7
+ENDTEXT
+
+FIELD line_to_line_space
+FLOC 27 7
+STRFILLIN 5 6
+POP "line_to_line_space_dbrep_vals"
+ENDFIELD
+
+TEXT "4) Via-Pad to Line Space"
+FLOC 1 9
+ENDTEXT
+
+FIELD via_pad_to_line_space
+FLOC 27 9
+STRFILLIN 5 6
+POP "via_pad_to_line_space_dbrep_vals"
+ENDFIELD
+
+TEXT "5) Via-Pad to Via-Pad Space"
+FLOC 1 11
+ENDTEXT
+
+FIELD via_pad_to_via_pad_space
+FLOC 27 11
+STRFILLIN 5 6
+POP "via_pad_to_via_pad_space_dbrep_vals"
+ENDFIELD
+
+TEXT "6) Via-Pad to Finger Space"
+FLOC 1 13
+ENDTEXT
+
+FIELD via_pad_to_finger_space
+FLOC 27 13
+STRFILLIN 5 6
+POP "via_pad_to_finger_space_dbrep_vals"
+ENDFIELD
+
+TEXT "7) Via-Pad to Die-Outline Space"
+FLOC 1 15
+ENDTEXT
+
+FIELD via_pad_to_die_outline_space
+FLOC 27 15
+STRFILLIN 5 6
+POP "via_pad_to_die_outline_space_dbrep_vals"
+ENDFIELD
+
+TEXT "8) Via-Pad to Shape Space"
+FLOC 1 17
+ENDTEXT
+
+FIELD via_pad_to_shape_space
+FLOC 27 17
+STRFILLIN 5 6
+POP "via_pad_to_shape_space_dbrep_vals"
+ENDFIELD
+
+TEXT "9) Via-Pad to Package-Pin Space"
+FLOC 1 19
+ENDTEXT
+
+FIELD via_pad_to_pin_space
+FLOC 27 19
+STRFILLIN 5 6
+POP "via_pad_to_pin_space_dbrep_vals"
+ENDFIELD
+
+TEXT "Number of Escape Layers"
+FLOC 1 21
+ENDTEXT
+
+FIELD number_of_escape_layers
+FLOC 27 21
+ENUMSET 7
+POP "number_of_escape_layers_vals"
+ENDFIELD
+
+FIELD include_voltage_nets
+FLOC 1 23
+CHECKLIST "Include Voltage Nets"
+ENDFIELD
+
+FIELD parameter_diagram
+FLOC 20 25
+MENUBUTTON "Parameter Diagram..." 15 1
+ENDFIELD
+
+TEXT "Display Options:"
+FLOC 1 26
+ENDTEXT
+
+FIELD show_escape_lines
+FLOC 4 28
+CHECKLIST "Show Escape Lines"
+ENDFIELD
+
+FIELD show_finger_to_via_lines
+FLOC 4 30
+CHECKLIST "Show Finger To Via Lines"
+ENDFIELD
+
+FIELD run_via_estimation
+FLOC 2 33
+MENUBUTTON "Run Via Estimation" 3 1
+ENDFIELD
+
+FIELD delete_via_markers
+FLOC 19 33
+MENUBUTTON "Delete Via Markers" 3 1
+ENDFIELD
+
+FIELD ok
+FLOC 5 36
+MENUBUTTON "Ok" 7 1
+ENDFIELD
+
+FIELD cancel
+FLOC 15 36
+MENUBUTTON "Cancel" 7 1
+ENDFIELD
+
+FIELD help
+FLOC 25 36
+MENUBUTTON "Help" 7 1
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

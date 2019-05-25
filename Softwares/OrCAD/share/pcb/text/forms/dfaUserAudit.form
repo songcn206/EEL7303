@@ -1,0 +1,152 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 60 12
+HEADER "DFA User Audit"
+
+POPUP <ptype>"Body""1","Pin""2","Property""3".
+POPUP <p_name>"Logical""1","Physical""2".
+POPUP <pglobal>"Can""1","Be""2","Seen""3","Anywhere""4","In""5","Grid""6",\
+        "Body""7".
+POPUP <penum>"String""String","Numeric""Numeric","Numeric List""Numeric List","Numeric Pair""Numeric Pair","Numeric Pair List""Numeric Pair List".
+POPUP <ptop>"Top""1","Of""2","Header""3","Popup""4".
+POPUP <pside>"Side""1","Of""2","Header""3","Popup""4".
+
+POPUP <MY_POP>" "" ".
+
+TILE
+
+GRID grid1
+
+FLOC 4 19
+FSIZE 48 10
+OPTIONS HLINES VLINES 
+POP "pglobal"
+
+
+GHEAD TOP 
+HEADSIZE 2
+OPTIONS 3D 
+POP "ptop"
+ENDGHEAD
+
+GHEAD SIDE
+HEADSIZE 0
+ENDGHEAD
+
+ENDGRID
+
+
+TEXT "Audit Name:"
+TLOC 4 2
+ENDTEXT
+
+FIELD AuditName
+FLOC 14 2
+STRFILLIN 28 100
+POP MY_POP
+ENDFIELD
+
+FIELD Browse
+FLOC 47 2
+MENUBUTTON "Browse..." 10 3
+ENDFIELD
+
+FIELD HierarchyToggle
+FLOC 4 5
+CHECKLIST "Hierarchical" 
+ENDFIELD
+
+TEXT "Name:"
+TLOC 6 9
+ENDTEXT  
+ 
+FIELD ComponentObject
+FLOC 10 11 
+FGROUP "Selection Settings"  
+CHECKLIST "Component"  "ComponentObject"
+ENDFIELD 
+
+ 
+FIELD HoleObject
+FLOC 25 11
+FGROUP "Selection Settings"  
+CHECKLIST "Hole"  "HoleObject"
+ENDFIELD 
+
+ 
+FIELD NoObject
+FLOC 38 11
+FGROUP "Selection Settings"  
+CHECKLIST "None"  "NoObject"
+ENDFIELD 
+
+TEXT "Number of Selections:" 
+TLOC 6 13 
+ENDTEXT   
+
+FIELD OneSelectorToggle
+FLOC 10 15
+FGROUP "Selection Settings"
+CHECKLIST "One "  "OneSelectorToggle"
+ENDFIELD
+
+FIELD TwoSelectorToggle
+FLOC 25 15
+FGROUP "Selection Settings"
+CHECKLIST "Two " "TwoSelectorToggle"
+ENDFIELD
+
+
+FIELD Add
+FLOC 53 23
+FGROUP ""
+MENUBUTTON "Add" 5 2
+ENDFIELD
+
+FIELD Delete
+FLOC 53 25
+FGROUP ""
+MENUBUTTON "Del" 5 2
+ENDFIELD
+
+FIELD Edit
+FLOC 33 30
+FGROUP ""
+MENUBUTTON "Edit Audit..." 15 3
+ENDFIELD
+
+FIELD NewPred
+FLOC 8 30
+FGROUP ""
+MENUBUTTON "Edit Predicate..." 15 3
+ENDFIELD
+
+FIELD done
+FLOC 3 34 
+MENUBUTTON "OK" 10 3
+ENDFIELD
+
+FIELD cancel
+FLOC 15 34
+MENUBUTTON "Cancel" 10 3
+ENDFIELD
+
+FIELD help
+FLOC 48 34
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+GROUP "Selection Settings"
+GLOC 4 7
+GSIZE 47 10
+ENDGROUP
+
+GROUP ""
+GLOC 2 0
+GSIZE 57 33
+ENDGROUP
+
+ENDTILE
+
+ENDFORM

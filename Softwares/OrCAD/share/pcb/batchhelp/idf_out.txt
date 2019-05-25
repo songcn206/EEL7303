@@ -1,0 +1,41 @@
+
+Command line arguments for idf_out. 
+        Utility to export mechanical data from Allegro to IDF Format.
+
+idf_out <brd> [-doVbhs] [-c <config>]
+
+    OPTIONAL ARGUMENTS
+        [-d]  Third party file format.
+              Valid Arguments:  IDF, PTC, SDRC
+              Default: IDF
+
+        [-o]  Output file name.  Name of the resultant IDF files.
+              Default: <design_name>.bdf, <design_name>.ldf
+
+        [-V]  IDF Version.
+              Valid Arguments: 2.0, 3.0
+              Default: 2.0
+
+        [-b]  Design Version.
+              Valid Arguments:  user specified integer.
+              Default:  1
+  
+        [-s]  System ID.
+              Valid Arguments:  user specified string.
+	      On UNIX spaces in this string is not supported.
+              Default: ""
+             
+        [-h]  Default height.  Applies this value to all package symbols 
+                  without a specified package height.
+              Valid Arguments:  a floating point value consistent with the
+                  original design units.
+              Default: 0.0
+
+        [-c <config>] Configuration File.  Name of the file to use to 
+              filter the specified parameters from the resultant IDF file.
+       
+    REQUIRED ARGUMENTS:
+        <brd>  Name of the design file.
+
+    EXAMPLE:
+	idf_out -d IDF -o out_test -s ACME_CAD_2.0 -b 2.0 -h 20 -V 3.0 test

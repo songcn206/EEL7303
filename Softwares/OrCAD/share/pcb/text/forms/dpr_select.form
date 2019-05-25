@@ -1,0 +1,67 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+VARIABLE
+PORT 35 16
+HEADER "Define Property"
+
+
+MESSAGE nopropselect   0 "Property has not been selected."
+MESSAGE badpropname    0 "Name %s contains illegal characters. Use only A-Z, 0-9, '-', '_'."
+MESSAGE reservedname   0 "%s is an Allegro reserved property name and cannot be used."
+MESSAGE propinuse      0 "Property %s is currently being used; definition cannot be edited."
+MESSAGE propnoedit     0 "Property %s cannot be edited."
+
+TILE avail_props
+TPANEL 1
+GROUP "Table of Contents"
+GLOC 1 1
+GSIZE 32 27
+ENDGROUP
+
+TEXT "Available Properties"
+TLOC 6 3
+ENDTEXT
+
+FIELD prop_list
+FLOC 2 5
+LIST "" 30 8
+ENDFIELD
+
+TEXT "Name:"
+TLOC 2 22
+ENDTEXT
+
+FIELD name
+FLOC 8 22
+STRFILLIN 21 31
+ENDFIELD
+
+FIELD copy_prop_def
+FLOC 3 25
+MENUBUTTON "Copy" 9 3
+ENDFIELD
+
+FIELD delete_prop_def
+FLOC 13 25
+MENUBUTTON "Delete" 9 3
+ENDFIELD
+
+FIELD done
+FLOC 3 29
+MENUBUTTON "Done" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 13 29
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 23 29
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+ENDTILE
+
+
+ENDFORM

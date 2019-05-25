@@ -1,0 +1,99 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 33 18
+HEADER "Edit Tile Parameters"
+MESSAGE	invalparameter 0 "Parameter %s is invalid."
+MESSAGE	wrongValue 0 "Parameter %s can not be negative."
+MESSAGE sameprop 0 "Parameter %s can not be selected again."
+#POPUP <PARAMETERLIST>"tile offset""0","tile overlap""1","tile alignment""2","die edge distance""3".
+POPUP <PARAMETERLIST>""""
+MESSAGE offsetprop 0 "If you type a negative value, it creates a tile-to-core overlap. See Parameter Description."
+MESSAGE overlapprop 0 "You can not select tile offset again, but if you type negative value, it creates tile offset."
+
+
+TILE
+
+GROUP "Table of Contents"
+GLOC 1 2
+GSIZE 30 25
+ENDGROUP
+
+TEXT "Available Parameters"
+TLOC 3 5
+TGROUP "Table of Contents"
+ENDTEXT
+
+FIELD parameters
+FLOC 3 8
+FGROUP "Table of Contents"
+LIST "" 26 9
+OPTIONS sort
+ENDFIELD
+
+#FIELD parameters
+#FLOC 3 3
+#FGROUP "Table of Contents"
+#ENUMSET 20
+#POP "PARAMETERLIST"
+#ENDFIELD
+
+#FIELD parameters
+#FLOC 3 3
+#FGROUP "Table of Contents"
+#STRFILLIN 23 17
+#POP "PARAMETERLIST"
+#ENDFIELD
+
+#TEXT
+#FLOC 3 9
+#INFO message 1
+#FSIZE 26 8
+#ENDTEXT
+
+#FIELD bitmap
+#THUMBNAIL ""
+#FLOC 2 20
+#FSIZE 30 14 
+#ENDFIELD
+
+#TEXT "Find By Name"
+#TLOC 3 21
+#TGROUP "Table of Contents"
+#ENDTEXT
+
+#GROUP "Find By Name"
+#GLOC 2 21
+#GSIZE 28 6
+#ENDGROUP
+
+#TEXT "Name:"
+#TLOC 3 24
+#TGROUP "Table of Contents"
+#ENDTEXT
+
+#FIELD parameter_name
+#FLOC 8 24
+#FGROUP "Table of Contents"
+#STRFILLIN 19 32
+#ENDFIELD
+
+FIELD done
+FLOC 1 34
+MENUBUTTON "Done" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 11 34
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 22 34
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM
+

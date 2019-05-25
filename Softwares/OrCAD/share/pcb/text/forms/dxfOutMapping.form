@@ -1,0 +1,136 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 100 1
+HEADER "DXF Out Edit Layer Conversion File"
+
+POPUP <allLayers>""""
+POPUP <subClassFilters>"FORMAT""1","PACKAGE""2","MECHANICAL""3","VIA""4".
+POPUP <classFilters>"FORMAT""1","PACKAGE""2","MECHANICAL""3","VIA""4".
+
+TILE
+
+
+FIELD SelectAll
+FLOC 2 2
+CHECKLIST "Select all"
+ENDFIELD
+
+TEXT "Class filter:"
+TLOC 13 2
+ENDTEXT
+
+FIELD ClassFilter
+FLOC 22 2
+ENUMSET 7
+POP "classFilters"
+STRFILLIN 17 20
+ENDFIELD
+
+TEXT "Subclass filter:"
+TLOC 42 2
+ENDTEXT
+
+FIELD SubClassFilter
+FLOC 54 2
+ENUMSET 7
+POP "subClassFilters"
+STRFILLIN 31 48
+ENDFIELD
+
+GRID DxfOutGrid
+
+FLOC 2 5
+FSIZE 98 18
+OPTIONS HLINES VLINES
+
+GHEAD TOP 
+HEADSIZE 2
+OPTIONS 3D MULTI
+ENDGHEAD
+
+ENDGRID
+
+GROUP "Map selected items"
+GLOC 2 23
+GSIZE 98 12
+ENDGROUP
+
+FIELD UseDefaultLayerNames
+FLOC 4 26
+CHECKLIST "Use layer names generated from class and subclass names"
+ENDFIELD
+
+FIELD UseSubclassNameOnly
+FLOC 50 26
+CHECKLIST "Subclass name only"
+ENDFIELD
+
+TEXT "Layer:"
+TLOC 4 29
+TGROUP "Map selected items"
+ENDTEXT
+
+FIELD LayerEnum
+FLOC 9 29
+ENUMSET 45
+FGROUP "Map selected items"
+POP "allLayers"
+ENDFIELD
+
+FIELD Map
+FLOC 9 32
+MENUBUTTON "Map" 10 3
+FGROUP "Map selected items"
+ENDFIELD
+
+FIELD UnMap
+FLOC 24 32
+MENUBUTTON "Unmap" 10 3
+FGROUP "Map selected items"
+ENDFIELD
+
+FIELD NewLayer
+FLOC 43 32
+MENUBUTTON "New DXF layer" 13 3
+FGROUP "Map selected items"
+ENDFIELD
+
+FIELD ShowSelectLayers
+FLOC 75 26
+MENUBUTTON "Show Selected Layers" 10 3
+FGROUP "Map selected items"
+ENDFIELD
+
+FIELD ShowOriginalLayers
+FLOC 75 29
+MENUBUTTON "Restore Layer Visibility" 10 3
+FGROUP "Map selected items"
+ENDFIELD
+
+FIELD ExternalCopperLayers
+FLOC 2 36
+CHECKLIST "Include external copper layers (pads, traces, shapes)"
+ENDFIELD
+
+FIELD Done
+FLOC 2 39
+MENUBUTTON "OK" 10 3
+ENDFIELD
+
+FIELD Cancel
+FLOC 15 39
+MENUBUTTON "Cancel" 10 3
+ENDFIELD
+
+FIELD Help
+FLOC 84 39
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+FLEXMODE EdgeGravityOne
+FLEX DxfOutGrid 0 0 1 1
+
+ENDTILE
+
+ENDFORM

@@ -1,0 +1,1883 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN" "http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+<html xmlns="http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>PSpice Advanced Analysis User Guide -- Sensitivity</title>
+<META NAME="Approver" CONTENT="Technical Publications">
+<META NAME="Author" CONTENT="Technical Publications">
+<META NAME="CreateDate" CONTENT="2012-09-11">
+<META NAME="CreateTime" CONTENT="1347371596">
+<META NAME="DataType" CONTENT="Manuals">
+<META NAME="Description" CONTENT="PSpice Advanced Analysis allows users to optimize design performance and also improve the design quality through sensitivity analysis, optimization, Monte Carlo and Smoke analysis.">
+<META NAME="DocTitle" CONTENT="PSpice Advanced Analysis User Guide">
+<META NAME="DocType" CONTENT="User Guide">
+<META NAME="EdmsRelease" CONTENT="EDMS Windows-P015">
+<META NAME="FileTitle" CONTENT="Sensitivity">
+<META NAME="FileType" CONTENT="Chapter">
+<META NAME="Keyword" CONTENT="pspaugca">
+<META NAME="Language" CONTENT="English">
+<META NAME="ModifiedDate" CONTENT="2012-09-11">
+<META NAME="ModifiedTime" CONTENT="1347371596">
+<META NAME="NextFile" CONTENT="04opti.html">
+<META NAME="PageCount" CONTENT="30">
+<META NAME="Platform" CONTENT="ALL">
+<META NAME="PrevFile" CONTENT="02libr.html">
+<META NAME="Product" CONTENT="Allegro AMS Simulator, PSpice">
+<META NAME="ProductFamily" CONTENT="PCB Design, PCB Design">
+<META NAME="ProductVersion" CONTENT="16.6">
+<META NAME="RightsManagement" CONTENT="Copyright 19912012 Cadence Design Systems Inc.">
+<META NAME="Title" CONTENT="PSpice Advanced Analysis User Guide -- Sensitivity">
+<META NAME="TopicTags" CONTENT="FALSE">
+<META NAME="Version" CONTENT="16.6">
+  </head>
+  <body style="margin-left: 5%;">
+    <a name="pagetop"></a>
+    <a name="firstpage"></a>
+    <!-- Begin Buttons -->
+    <table width="650" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td height="36" width="650" colspan="10">
+          <img src="../support/header_doc.gif" width="650" height="34">
+        </td>
+      </tr>
+      <tr>
+        <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                </td>
+<td height="20" width="73">
+<a href="pspaugcaTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<a href="pspaugcaIX.html"><img src="../support/nav2_index.gif" border="0"></a>
+</td>
+        <td>
+          <a href="02libr.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+        </td>
+        <td>
+          <a href="04opti.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+        </td>
+        <td height="20">
+          <a>
+<a href="pspaugca.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+          </a>
+        </td>
+        <td height="20" width="61">
+          <img src="../support/nav2_black.gif">
+        </td>
+        <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+        </td>
+        <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+        </td>
+        <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+        </td>
+      </tr>
+    </table>
+    <!-- End Buttons -->
+    <p>
+    <hr>
+    <p>
+      <h3>
+        <center>
+          <font >
+            <div>PSpice&#174; Advanced Analysis User Guide</div>
+            <font >
+              <div>
+            </font>
+          </font>
+        </center>
+      </h3>
+      <br>
+    </p>
+    <div>
+      <h1>3<a name="1156579">&nbsp;</a></h1>
+      <h1><a name="1158055">Sensitivity</a></h1>
+      <h2><a name="1158063">In this chapter</a></h2>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1156604" title="Sensitivity" name="1158060"><font color="#0000ff"><u>Sensitivity overview</u></font></a><a href="#1156604" title="Sensitivity"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1156670" title="Sensitivity" name="1156590"><font color="#0000ff"><u>Sensitivity strategy</u></font></a><a href="#1156670" title="Sensitivity"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1156742" title="Sensitivity" name="1156594"><font color="#0000ff"><u>Sensitivity procedure</u></font></a><a href="#1156742" title="Sensitivity"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1157315" title="Sensitivity" name="1156598"><font color="#0000ff"><u>Example</u></font></a><a href="#1157315" title="Sensitivity"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1157546" title="Sensitivity" name="1156602"><font color="#0000ff"><u>For power users</u></font></a><a href="#1157546" title="Sensitivity"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <h2><a name="1156604">Sensitivity overview</a></h2>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="48">
+              <div>
+                <nobr><font color="#3300ff"><strong>Note:	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1159134">Sensitivity analysis is available with the following </a>products:</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="64.032">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bss_bullet_sub_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1159135">PSpice<sup><a name="wwfootnote_inline_208" href="#208">1</a></sup> Advanced Optimizer Option</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="64.032">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bss_bullet_sub_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1159136">PSpice Advanced Analysis</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1049770">Sensitivity identifies which components have parameters </a>critical to the measurement goals of your circuit design.</p>
+      <p><a name="1049771">The Sensitivity Analysis tool examines how much each </a>component affects circuit behavior by itself and in comparison to the other components. It also varies all tolerances to create worst&#45;case (minimum and maximum) measurement values.</p>
+      <p><a name="1049772">You can use Sensitivity to identify the sensitive components, </a>then export the components to Optimizer to fine&#45;tune the circuit behavior.</p>
+      <p><a name="1049773">You can also use Sensitivity to identify which components </a>affect yield the most, then tighten tolerances of sensitive components and loosen tolerances of non&#45;sensitive components. With this information you can evaluate yield versus cost trade&#45;offs.</p>
+      <h4><em><a name="1049774">Absolute and relative sensitivity</a></em></h4>
+      <p><a name="1049775">Sensitivity displays the absolute sensitivity or the relative </a>sensitivity of a component. Absolute sensitivity is the ratio of change in a measurement value to a one unit positive change in the parameter value.</p>
+      <p><a name="1049776">For example: There may be a 0.1V change in voltage for a 1 </a>Ohm change in resistance.</p>
+      <p><a name="1049777">Relative sensitivity is the percentage of change in a </a>measurement based on a one percent positive change of a component parameter value.</p>
+      <p><a name="1049778">For example: For each 1 percent change in resistance, there </a>may be 2 percent change in voltage.</p>
+      <p><a name="1049779">Since capacitor and conductor values are much smaller than </a>one unit of measurement (Farads or Henries), relative sensitivity is the more useful calculation.</p>
+      <p><a name="1156663">For more on how this tool calculates </a><a href="Glos.html#1093392" title="Glossary"><font color="#0000ff"><u>sensitivity</u></font></a>, see <a href="#1157575" title="Sensitivity"><font color="#0000ff"><u>Sensitivity calculations</u></font></a><a href="#1157575" title="Sensitivity"> </a>. </p>
+      <p><a name="1066150">Absolute sensitivity should be used when the tolerance limits </a>are not tight or have wide enough bandwidth. Where as relative sensitivity should be used when the tolerance limits are tight enough or have less bandwidth. The tolerance variations are assumed to be linear in this case.</p>
+      <h2><a name="1156670">Sensitivity strategy</a></h2>
+      <p><a name="1049792">If Sensitivity analysis shows that the circuit is highly sensitive </a>to a single parameter, adjust component tolerances on the schematic and rerun the analysis before continuing on to Optimizer.</p>
+      <p><a name="1049793">Optimizer works best when all measurements are initially </a>close to their specification values and require only fine adjustments. </p>
+      <h3><a name="1156688">Plan ahead</a></h3>
+      <p><a name="1049796">Sensitivity requires:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1051464">Circuit components that are Advanced Analysis&#45;ready</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1156709">See Chapter 2, </a><a href="02libr.html#1145265" title="Libraries"><font color="#0000ff"><u>Libraries</u></font></a> for more information.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049802">A circuit design, that is working and can be simulated in </a>PSpice</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049803">Measurements set up in </a>PSpice</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1156719">See </a><a href="07meas.html#1106247" title="Measurement Expressions"><font color="#0000ff"><u>Procedure for creating measurement expressions</u></font></a><a href="07meas.html#1106247" title="Measurement Expressions"> </a></blockquote>
+      <p><a name="1049808">Any circuit components you want to include in the Sensitivity </a>data need to be Advanced Analysis&#45;ready, with their tolerances specified. </p>
+      <p><a name="1156727">See Chapter 2, </a><a href="02libr.html#1145265" title="Libraries"><font color="#0000ff"><u>Libraries</u></font></a> for more information.</p>
+      <h3><a name="1156733">Workflow</a></h3>
+      <p align="left"><a name="1156740"><img src="images/sensiworkflow.gif" width="628" height="505" alt=""></a></p>
+      <h2><a name="1156742">Sensitivity procedure</a></h2>
+      <h3><a name="1156743">Setting up the circuit in the schematic editor</a></h3>
+      <p><a name="1049846">Start with a working circuit in the schematic editor. Circuit </a>components you want to include in the Sensitivity data need to have the tolerances of their parameters specified. Circuit simulations and measurements should already be set up.</p>
+      <p><a name="1049847">The simulations can be Time Domain (transient), DC Sweep, </a>and AC Sweep&#47;Noise analyses.</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1049859">Open your circuit from your schematic editor.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>2	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1150912">Run a PSpice simulation.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>3	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1049861">Check your key waveforms in </a>PSpice and make sure they are what you expect.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>4	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1049862">Check your measurements and make sure they have the </a>results you expect.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="48">
+              <div>
+                <nobr><font color="#3300ff"><strong>Note:	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1156812">For information on circuit layout and simulation setup, </a>see your schematic editor and PSpice user guides.</td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1156836">For information on components and the tolerances of their </a>parameters, see <a href="02libr.html#prepare_design" title="Libraries"><font color="#0000ff"><u>Preparing your design for Advanced Analysis</u></font></a><a href="02libr.html#prepare_design" title="Libraries"> </a>.</p>
+      <p><a name="1156839">For information on setting up measurements, see </a><a href="07meas.html#1106247" title="Measurement Expressions"><font color="#0000ff"><u>Procedure for creating measurement expressions</u></font></a><a href="07meas.html#1106247" title="Measurement Expressions"> </a>.</p>
+      <p><a name="1156843">For information on testing measurements, see </a><a href="07meas.html#view_result" title="Measurement Expressions"><font color="#0000ff"><u>Viewing the results of measurement evaluations</u></font></a><a href="07meas.html#view_result" title="Measurement Expressions"> </a>.</p>
+      <h3><a name="1156849">Setting up Sensitivity in Advanced Analysis</a></h3>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1151015">From the </a><font color="#000000"><strong>PSpice</strong></font> menu in your schematic editor, select <font color="#000000"><strong>Advanced Analysis</strong></font> &#47; <font color="#000000"><strong>Sensitivity</strong></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1049913">The Advanced Analysis Sensitivity tool opens.</a></blockquote>
+      <h4><em><a name="1086328">Parameters Window</a></em></h4>
+      <p><a name="1091172">In the Parameters window, a list of component parameters </a>appears with the parameter values listed in the Original column. Only  the parameters for which tolerances are specified appear in the Parameters window. </p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="48">
+              <div>
+                <nobr><font color="#3300ff"><strong>Note:	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1091179">Sensitivity analysis can only be run if tolerances are </a>specified for the component parameters.</td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1091173">In case you want to remove a parameter from the list, you can </a>do so by using the TOL_ON_OFF property. In the schematic design, set the value of TOL_ON_OFF property attached to the instance as OFF. If there is no TOL_ON_OFF property attached to the instance of the device, attach the property and set its value to OFF. This is so, because if the tolerance value is specified for a parameter and TOL_ON_OFF property is not attached to the component, by default Advanced Analysis assumes that the value of TOL_ON_OFF property is set to ON.</p>
+      <p align="left"><a name="1086599"><img src="images/tolonoff.gif" width="582" height="303" alt=""></a></p>
+      <p><a name="1087713">In case of hierarchical designs, the value of the TOL_ON_OFF </a>property attached to the hierarchical block has a higher priority over the property value attached to the individual components. For example, if the hierarchical block has the TOL_ON_OFF property value set to OFF, tolerance values of all the components within that hierarchical design will be ignored.</p>
+      <h4><em><a name="1086364">Specifications Window</a></em></h4>
+      <p><a name="1086376">In the Specifications window, add measurements for which </a>you want to analyze the sensitivity of the parameters. You can either import the measurements created in PSpice or can create new measurements in Advanced Analysis.</p>
+      <p><a name="1086409">To import measurements:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1049915">In the Specifications table, click on the row containing the </a>text "Click here to import a measurement created within PSpice."</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1049916">The </a><font color="#000000"><strong>Import Measurement(s)</strong></font> dialog box appears.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>2	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1049917">Select the measurements you want to include.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1086414">To create new measurements:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1086426">From the </a><font color="#000000"><strong>Analysis</strong></font> drop&#45;down menu, choose <font color="#000000"><strong>Sensitivity </strong></font>&#47;<font color="#000000"><strong> Create New Measurements</strong></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1086442">The </a><font color="#000000"><strong>New Measurement</strong></font> dialog box appears.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>2	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1086455">Create the measurement expression to be evaluated and </a>click OK.</td>
+          </tr>
+        </table>
+      </div>
+      <h3><a name="1156908">Running Sensitivity</a></h3>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049974">Click <img src="images/runIcon.gif" width="22" height="22" alt="">on the top toolbar.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1049975">The Sensitivity analysis begins. The messages in the </a>output window tell you the status of the analysis.</blockquote>
+      <blockquote><a name="1156990">For more information, see </a><a href="#1157575" title="Sensitivity"><font color="#0000ff"><u>Sensitivity calculations</u></font></a><a href="#1157575" title="Sensitivity"> </a>.</blockquote>
+      <h4><a name="1156991">Displaying run data</a></h4>
+      <p><a name="1049984">Sensitivity displays results in two tables for each selected </a>measurement:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049985">Parameters table</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049986">Parameter values at minimum and maximum </a>measurement values</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049987">Absolute &#47; Relative sensitivities per parameter</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049988">Linear &#47; Log bar graphs per parameter</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049989">Specifications table</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049990">Worst&#45;case min and max measurement values</a></td>
+          </tr>
+        </table>
+      </div>
+      <h4><em><a name="1050002">Sorting data</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/arrwrite.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1050004">Double click on column headers to sort data in ascending </a>or descending order.</td>
+          </tr>
+        </table>
+      </div>
+      <h4><em><a name="1050005">Reviewing measurement data</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/arrwrite.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1050007">Select a measurement on the Specifications table.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1050008">A black arrow appears in the left column on the </a>Specifications table, the row is highlighted, and the <font color="#000000"><strong>Min</strong></font> and <font color="#000000"><strong>Max</strong></font> columns display the worst&#45;case minimum and maximum measurement values.</blockquote>
+      <blockquote><a name="1050009">The Parameters table will display the values for </a>parameters and measurements using the selected measurement only.</blockquote>
+      <h4><em><a name="1050010">Interpreting @min and @max</a></em></h4>
+      <p><a name="1050011">Values displayed in the </a><font color="#000000"><strong>@min</strong></font> and <font color="#000000"><strong>@max</strong></font> columns are the parameter values at the measurement's worst&#45;case minimum and maximum values.</p>
+      <p><a name="1072227">If a measurement value is insensitive to a component, the </a>sensitivity displayed for that component will be zero. In such cases, values displayed in the @Min and @Max columns will be same and will be equal to the Original value of the component.</p>
+      <p><a name="1164901">The @Min and @Max columns display values depending </a>upon which defined goal (Measurement) specification has the minimum and maximum value respectively. These minimum and maximum bound of component value can be either of the tolerances, POSTOL and NEGTOL, depending upon measurement specifications.For example, in the circuit shown below, maximum voltage exists across the resistor Rbottom exists when Rbottom has maximum value and TOLERANCE is set to OFF for Rtop and set to ON for Rbottom. As a result, @Min has the lower value given by NEGTOL for defined goal specification's minimum value and @Max bound has a higher value given by POSTOL for defined goal specification's maximum value. Similarly, if TOLERANCE is ON for Rtop and OFF for Rbottom, then Rbottom has maximum voltage when Rtop has minmum value. As a result, @Min bound has higher value given by POSTOl and @MAX bound has lower value given by NEGTOL. <img src="images/minmax_example.gif" width="341" height="430" alt=""></p>
+      <h4><em><a name="1085448">Negative and positive sensitivity</a></em></h4>
+      <p><a name="1085345">If the absolute or the relative sensitivity is negative it implies </a>that for one unit positive increase in the parameter value, the measurement value increases in the negative direction.</p>
+      <p><a name="1085372">For example, if for a unit increase in the parameter value, the </a>measurement value decreases, the component exhibits negative sensitivity. It can also be that for a unit decrease in the parameter value, there is an increase in the measurement value.</p>
+      <p><a name="1085437">On the other hand, positive sensitivity implies that for a unit </a>increase in the component value, there is an increase in the measurement value.</p>
+      <h4><em><a name="1157034">Changing from Absolute to Relative sensitivity</a></em></h4>
+      <h4><em><a name="1050017">&nbsp;</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1118070">Right click anywhere in the Parameters table.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>2	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1051127">Select </a><font color="#000000"><strong>Display </strong></font>&#47; <font color="#000000"><strong>Absolute Sensitivity</strong></font> or <font color="#000000"><strong>Relative </strong></font><font color="#000000"><strong>Sensitivity </strong></font>from the pop&#45;up menu.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="48">
+              <div>
+                <nobr><font color="#3300ff"><strong>Note:	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1157042">See </a><a href="#1157575" title="Sensitivity"><font color="#0000ff"><u>Sensitivity calculations</u></font></a><a href="#1157575" title="Sensitivity"> </a>.</td>
+          </tr>
+        </table>
+      </div>
+      <h4><em><a name="1051129">Changing bar graph style from linear to log</a></em></h4>
+      <p><a name="1067653">Most of the sensitivity values can be analyzed using the linear </a>scale. Logarithmic scale is effective for analyzing the smaller but non&#45;zero sensitivity values.</p>
+      <p><a name="1067730">To change the bar graph style,</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1051130">Right&#45;click anywhere in the Parameters table.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>2	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050024">Select </a><font color="#000000"><strong>Bar Graph Style</strong></font> &#47; <font color="#000000"><strong>Linear </strong></font>or<font color="#000000"><strong> Log </strong></font>from the pop&#45;up menu.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="13.333333333333332">
+              <div>&nbsp;</div>
+            </td>
+            <td width="133.33333333333331">
+              <div>
+                <nobr>
+                  <img src="images/important.gif" alt="ParagraphBullet" border="0">
+                </nobr>
+              </div>
+            </td>
+            <td>
+              <font size="3"><a name="1067355">If &#39;X&#39; is the bar graph value on a linear scale, then the </a>bar graph value on the logarithmic scale is not log&nbsp;(X). The logarithmic values are calculated separately. </font>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <h4><em><a name="1050025">Interpreting &#60;MIN&#62; results</a></em></h4>
+      <p><a name="1050028">Sensitivity displays &#60;MIN&#62; on the bar graph when sensitivity </a>values are very small but nonzero.</p>
+      <h4><em><a name="1050029">Interpreting zero results</a></em></h4>
+      <p><a name="1050031">Sensitivity displays zero in the absolute &#47; relative sensitivity </a>and bar graph columns if the selected measurement is not sensitive to the component parameter value.</p>
+      <h3><a name="1157047">Controlling Sensitivity</a></h3>
+      <p><a name="1050065">Data cells with cross&#45;hatched backgrounds are read&#45;only and </a>cannot be edited. The graphs are also read&#45;only.</p>
+      <h4><a name="1157100">Pausing, stopping, and starting</a></h4>
+      <h4><em><a name="1050078">Pausing and resuming</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050082">Click <img src="images/pauseIcon.gif" width="13" height="12" alt=""> on the top toolbar.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1050083">The analysis stops, available data is displayed, and the </a>last completed run number appears in the output window.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>2	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050090">Click the <img src="images/pauseIcon.gif" width="13" height="12" alt=""> or <img src="images/runIcon.gif" width="22" height="22" alt=""> to resume calculations.</a></td>
+          </tr>
+        </table>
+      </div>
+      <h4><em><a name="1050091">Stopping</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/arrwrite.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1050095">Click <img src="images/stop.gif" width="14" height="12" alt=""> on the top toolbar.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1050096">If a Sensitivity analysis has been stopped, you cannot </a>resume the analysis.</blockquote>
+      <blockquote><a name="1050097">Sensitivity does not save data from a stopped analysis.</a></blockquote>
+      <h4><em><a name="1050098">Starting</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/arrwrite.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1119738"> Click <img src="images/runIcon.gif" width="22" height="22" alt=""> to start or restart.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1157128"><font color="#3300ff"><strong>Controlling measurement specifications</strong></font></a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1050118">To exclude a measurement specification from </a>Sensitivity analysis: click <img src="images/checkIcon.gif" width="16" height="16" alt=""> on the applicable measurement row in the Specifications table.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote>
+<blockquote>        <font color="#000000"><a name="1050119">This removes the check and excludes the </a>measurement from the next Sensitivity analysis.</font></blockquote>
+      </blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1050120">To add a new measurement: </a>click on the row containing the text "Click here to import a measurement created within PSpice."</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote>
+<blockquote>        <font color="#000000"><a name="1050121">The </a><font color="#000000"><strong>Import Measurement(s) </strong></font>dialog box appears.</font></blockquote>
+      </blockquote>
+      <blockquote>
+<blockquote>        <font color="#000000"><a name="1050122">Or:</a></font></blockquote>
+      </blockquote>
+      <blockquote>
+<blockquote>        <font color="#000000"><a name="1050123">Right click on the Specifications table and select </a><font color="#000000"><strong>Create New Measurement</strong></font>.</font></blockquote>
+      </blockquote>
+      <blockquote>
+<blockquote>        <font color="#000000"><a name="1050124">The</a><font color="#000000"><strong> New Measurement </strong></font>dialog box appears. </font></blockquote>
+      </blockquote>
+      <blockquote>
+<blockquote>        <font color="#000000"><a name="1157160">See </a><a href="07meas.html#1106247" title="Measurement Expressions"><font color="#0000ff"><u>Procedure for creating measurement expressions</u></font></a><a href="07meas.html#1106247" title="Measurement Expressions"> </a>.</font></blockquote>
+      </blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1050129">To export a new measurement to Optimizer or Monte </a>Carlo, select the measurement and right click on the row containing the text "Click here to import a measurement created within PSpice." </td>
+          </tr>
+        </table>
+      </div>
+      <blockquote>
+<blockquote>        <font color="#000000"><a name="1050130">Select </a><font color="#000000"><strong>Send To</strong></font> from the pop&#45;up menu.</font></blockquote>
+      </blockquote>
+      <h4><a name="1157165">Adjusting component values</a></h4>
+      <p><a name="1050157">Use </a><font color="#000000"><strong>Find in Design</strong></font> from Advanced Analysis to quickly return to the schematic editor and change component information. </p>
+      <p><a name="1050158">For example: You may want to tighten tolerances on </a>component parameters that are highly sensitive or loosen tolerances on component parameters that are less sensitive.</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050170">Right click on the component's critical parameter in the </a>Sensitivity Parameters table and select <font color="#000000"><strong>Find in Design</strong></font> from the pop&#45;up menu.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>2	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050171">Change the parameter value in the schematic editor.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>3	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050172">Rerun the simulation and check results.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>4	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050173">Rerun Sensitivity.</a></td>
+          </tr>
+        </table>
+      </div>
+      <h4><a name="1091564">Varying the tolerance range</a></h4>
+      <p><a name="1091568">During Sensitivity analysis, by default Advanced Analysis </a>varies parameter values by 40% of the tolerance range. You can modify the default value and specify the percentage by which the parameter values should be varied within the tolerance range.</p>
+      <p><a name="1091778">&nbsp;</a></p>
+      <p><a name="1091215">To specify the percentage variation:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1091271">From the </a><font color="#000000"><strong>Edit</strong></font> drop&#45;down menu in Advanced Analysis, choose <font color="#000000"><strong>Profile Settings</strong></font>. </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>2	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1091272">In the Profile Settings dialog box, select the </a><font color="#000000"><strong>Sensitivity</strong></font> tab.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>3	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1091273">In the Sensitivity Variation text box, specify the </a>percentage by which you want the parameter values to be varied. </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>4	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1091247">Click OK to save the modifications. </a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1091292">If you now run the Sensitivity analysis, the value specified by </a>you would be used for calculating the absolute and relative sensitivity.</p>
+      <h3><a name="1157280">Sending parameters to Optimizer</a></h3>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050186">Select the critical parameters in Sensitivity.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>2	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050187">Right click and select </a><font color="#000000"><strong>Send to Optimizer </strong></font>from the pop&#45;up menu.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>3	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050188">Select </a><font color="#000000"><strong>Optimizer </strong></font>from the drop&#45;down list on the top toolbar.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1050189">This switches the active window to the Optimizer view </a>where you can double check that your critical parameters are listed in the Optimizer Parameters table.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>4	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050190">Click the </a><font color="#000000"><strong>Sensitivity</strong></font> tab at the bottom of the Optimizer Specifications table.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1050191">This switches the active window back to the Sensitivity </a>tool.</blockquote>
+      <h4><a name="1157937">Printing results</a></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/arrwrite.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1157941">Click <img src="images/printIcon.gif" width="22" height="25" alt="">.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1157942">Or:</a></blockquote>
+      <blockquote><a name="1157943">From the </a><font color="#000000"><strong>File</strong></font> menu, select <font color="#000000"><strong>Print</strong></font>.</blockquote>
+      <h4><a name="1157955">Saving results</a></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/arrwrite.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1157959">Click <img src="images/saveIcon.gif" width="19" height="19" alt="">.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1157960">Or:</a></blockquote>
+      <blockquote><a name="1157961">From the </a><font color="#000000"><strong>File</strong></font> menu, select <font color="#000000"><strong>Save</strong></font>.</blockquote>
+      <blockquote><a name="1157962">The final results will be saved in the Advanced Analysis </a>profile (.aap).</blockquote>
+      <h4><a name="1157315">Example</a></h4>
+      <p><a name="1050219">The Advanced Analysis examples folder contains several </a>demonstration circuits. This example uses the RFAmp circuit.</p>
+      <p><a name="1050220">The circuit contains components with the tolerances of their </a>parameters specified, so you can use the components without any modification.</p>
+      <p><a name="1050221">Two PSpice simulation profiles have already been created and </a>tested. Circuit measurements, entered in PSpice, have been set up and tested.</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="48">
+              <div>
+                <nobr><font color="#3300ff"><strong>Note:	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1157347">See Chapter 2, </a><a href="02libr.html#1145265" title="Libraries"><font color="#0000ff"><u>Libraries</u></font></a> for information about setting tolerances for other circuit examples.</td>
+          </tr>
+        </table>
+      </div>
+      <h4><a name="1157348">Setting up the circuit in the schematic editor</a></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1157975">In your schematic editor, browse to the RFAmp tutorials </a>directory.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1157976">&#60;target directory&#62; </a><br>\PSpice\tutorial\Capture\pspiceaa\rfamp</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>2	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1157978">Open the RFAmp project.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p align="left"><a name="1151202"><img src="images/03sens.6.1.13.png" width="673" height="443" alt=""></a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>3	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050253">Select the SCHEMATIC1&#45;AC simulation profile.</a></td>
+          </tr>
+        </table>
+      </div>
+      <h4><em><a name="1050254">The AC simulation included with the RF example</a></em></h4>
+      <p align="left"><a name="1050258"><img src="images/ZCIRsim.gif" width="527" height="396" alt=""></a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050262">Click <img src="images/runIcon.gif" width="22" height="22" alt=""> to run the simulation.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>2	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050263">Review the results.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p align="left"><a name="1050267"><img src="images/allrfamp_acwaveform.gif" width="832" height="222" alt=""></a></p>
+      <blockquote><a name="1050268">The waveforms are what we expected.</a></blockquote>
+      <p align="left"><a name="1050276"><img src="images/03sens.6.1.17.png" width="672" height="100" alt=""></a></p>
+      <blockquote><a name="1050277">The measurements in </a>PSpice give the results we expected.</blockquote>
+      <h4><a name="1157353">Setting up Sensitivity in Advanced Analysis</a></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1151249">From the </a><font color="#000000"><strong>PSpice</strong></font> menu in your schematic editor, select <font color="#000000"><strong>Advanced Analysis </strong></font>&#47; <font color="#000000"><strong>Sensitivity</strong></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1050282">The Advanced Analysis window opens, and the </a>Sensitivity tool is activated. Sensitivity automatically lists component parameters for which tolerances are specified and the component parameter original (nominal) values.</blockquote>
+      <p align="left"><a name="1050296"><img src="images/03sens.6.1.18.png" width="674" height="615" alt=""></a></p>
+      <blockquote><a name="1085911">In case you want to remove some parameters from the </a>Parameters list, you can do so by modifying the parameter properties in the schematic tool.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>2	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050297">In the Specifications table, right click the row titled, "Click </a>here to import a measurement created within PSpice."</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1050298">The </a><font color="#000000"><strong>Import Measurement(s)</strong></font> dialog box appears with measurements configured earlier in PSpice .</blockquote>
+      <p align="left"><a name="1050303"><img src="images/03sens.6.1.19.png" width="462" height="323" alt=""></a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>3	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050304">Select the four ac.sim measurements.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>4	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050305">Click </a><font color="#000000"><strong>OK</strong></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1050306">The Specifications table lists the measurements.</a></blockquote>
+      <p align="left"><a name="1050310"><img src="images/sensimportmeas.gif" width="543" height="114" alt=""></a></p>
+      <h4><a name="1157373">Running Sensitivity</a></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/arrwrite.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1050318">Click <img src="images/runIcon.gif" width="22" height="22" alt="">on the top toolbar.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p align="left"><a name="1050326"><img src="images/03sens.6.1.22.png" width="451" height="63" alt=""></a></p>
+      <h4><a name="1157392">Displaying run data</a></h4>
+      <p align="left"><a name="1050331">Results are displayed in the Parameters and Specifications </a>tables according to the selected measurement.</p>
+      <p align="left"><a name="1050380"> <img src="images/03sens.6.1.23.png" width="684" height="640" alt=""></a></p>
+      <h4><em><a name="1050381">Sorting data</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/arrwrite.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1050382">Double click on the </a><font color="#000000"><strong>Linear </strong></font>column header to sort the bar graph data in ascending order. Double click again to sort the data in descending order.</td>
+          </tr>
+        </table>
+      </div>
+      <h4><em><a name="1050383">Selecting the measurement to view</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/arrwrite.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1050384">Select a measurement in the Specifications table.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1050385">The data in the Parameters table relates to the </a>measurement you selected.</blockquote>
+      <p align="left"><a name="1050459">&nbsp;</a></p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="648">
+        <caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="top" width="179">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1050388">Table...</a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="top" width="156">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1050390">Column heading...</a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="top" width="313">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1050392">Means...</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1050394">Parameters</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1050396">Original</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1050398">The nominal component parameter values </a>used to calculate nominal measurement.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050400">&nbsp;</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050403">@Min</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050405">The parameter value used to calculate the </a>worst&#45;case minimum measurement.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050407">&nbsp;</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050410">@Max</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050412">The parameter value used to calculate the </a>worst&#45;case maximum measurement.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050414">&nbsp;</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050421">absolute sensitivity</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050423">The change in the measurement value </a>divided by a unit of change in the parameter value.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050425">&nbsp;</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050432">relative sensitivity</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050434">The percent of change in a measurement </a>value based on a one percent change in the parameter value.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050436">Specifications</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050438">Original</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050440">The nominal value of the measurement </a>using original component parameter values.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1050442">&nbsp;</a></strong></font>
+            </p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050444">Min</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1050446">The worst&#45;case minimum value for the </a>measurement. </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1050448">&nbsp;</a></strong></font>
+            </p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1050450">Max</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1050452">The worst&#45;case maximum value for the </a>measurement.</p>
+          </td>
+        </tr>
+      </table>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="48">
+              <div>
+                <nobr><font color="#3300ff"><strong>Note:	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1054327">To see all the parameter and measurement values </a>used in Sensitivity calculations: from the View menu, select Log File.</td>
+          </tr>
+        </table>
+      </div>
+      <h4><em><a name="1157411">Changing from Absolute to Relative sensitivity</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050465">Right click anywhere on the Parameters table.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1050466">A pop&#45;up menu appears</a></blockquote>
+      <blockquote>	<a name="1050470"><img src="images/sensRelSel.gif" width="322" height="193" alt=""></a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>2	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050471">Select </a><font color="#000000"><strong>Relative Sensitivity</strong></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="48">
+              <div>
+                <nobr><font color="#3300ff"><strong>Note:	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1051230"> See </a><a href="#1157575" title="Sensitivity"><font color="#0000ff"><u>Sensitivity calculations</u></font></a><a href="#1157575" title="Sensitivity"> </a>.</td>
+          </tr>
+        </table>
+      </div>
+      <h4><em><a name="1050472">Changing the bar graph to linear view</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050475">Right click anywhere on the Parameters table.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1050476">A pop&#45;up menu appears.</a></blockquote>
+      <blockquote>	<a name="1050480"><img src="images/sensgrafSel.gif" width="257" height="192" alt=""></a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>2	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050481">Select </a><font color="#000000"><strong>Linear</strong></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <h4><a name="1157424">Controlling Sensitivity</a></h4>
+      <h4><em><a name="1157425">Pausing, stopping, and starting</a></em></h4>
+      <p align="left"><a name="1050503"><img src="images/03sens.6.1.26.png" width="451" height="82" alt=""></a></p>
+      <p><a name="1157444"><font color="#000000"><strong>Pausing and resuming</strong></font></a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1157448">Click <img src="images/pauseIcon.gif" width="13" height="12" alt=""> on the top toolbar.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1157449">The analysis stops, available data is displayed, and the </a>last completed run number appears in the output window.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>2	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1157456">Click the depressed <img src="images/pauseIcon.gif" width="13" height="12" alt=""> or <img src="images/runIcon.gif" width="22" height="22" alt=""> to resume calculations.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1157457"><font color="#000000"><strong>Stopping</strong></font></a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/arrwrite.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1157461">Click <img src="images/stop.gif" width="14" height="12" alt=""> on the top toolbar.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1157462">If a Sensitivity analysis has been stopped, you cannot </a>resume the analysis.</blockquote>
+      <p><a name="1157463"><font color="#000000"><strong>Starting</strong></font></a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/arrwrite.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1157467"> Click <img src="images/runIcon.gif" width="22" height="22" alt=""> to start or resume.</a></td>
+          </tr>
+        </table>
+      </div>
+      <h4><a name="1157468">Controlling Measurements</a></h4>
+      <p align="left"><a name="1050542"><img src="images/03sens.6.1.32.png" width="672" height="239" alt=""></a></p>
+      <h4><a name="1157487">Adjusting component values</a></h4>
+      <p><a name="1050546">In the RF example, we will not change any component </a>parameters. </p>
+      <p><a name="1050547">With another example you may decide after reviewing </a>sensitivity results that you want to change component values or tighten tolerances. You can use <font color="#000000"><strong>Find in Design</strong></font> from Advanced Analysis to return to your schematic editor and locate the components you would like to change.</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050549">In the Parameters table, highlight the components you </a>want to change.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>2	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050550">Right click the selected components. </a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1050551">A pop&#45;up menu appears.</a></blockquote>
+      <blockquote>	<a name="1050555"><img src="images/sensFindNdesgn.gif" width="170" height="193" alt=""></a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>3	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050556">Left click on </a><font color="#000000"><strong>Find in Design</strong></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1050557">The schematic editor appears with the components </a>highlighted.</blockquote>
+      <blockquote>	<a name="1050561"><img src="images/ZZfindNDesign3.gif" width="115" height="290" alt=""></a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>4	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050566">Change the parameter value in the schematic editor.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>5	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050567">Rerun the </a>PSpice simulation and check results.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>6	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050568">Rerun Sensitivity.</a></td>
+          </tr>
+        </table>
+      </div>
+      <h4><a name="1157506">Sending parameters to Optimizer</a></h4>
+      <p><a name="1050572">Review the results of the Sensitivity calculations. We need to </a>use engineering judgment to select the sensitive components to optimize: </p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1050573">We won't change R5 or R9 because they control the input </a>and output impedances. </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1050574">We won't change R2 or R3 because they control </a>transistor biasing. </td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1050575">The linear bar graph at the Relative Sensitivity setting shows </a>that R4, R6, and R8 are also critical parameters. We'll import these parameters and values to Optimizer.</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050579">In the Parameters table, hold down the Ctrl key and select </a>R4, R6, and R8.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>2	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050580">Right click the selected components.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1050581">A pop&#45;up menu appears.</a></blockquote>
+      <blockquote>	<a name="1050585"><img src="images/sensSend2opt.gif" width="170" height="192" alt=""></a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>3	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050587">Select </a><font color="#000000"><strong>Send to Optimizer</strong></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>4	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050588">From the </a><font color="#000000"><strong>View</strong></font> menu, select <font color="#000000"><strong>Optimizer</strong></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote>	<a name="1050596"><img src="images/03sens.6.1.36.png" width="450" height="310" alt=""></a></blockquote>
+      <blockquote><a name="1050597">Optimizer becomes the active window and your critical </a>parameters are listed in the Optimizer Parameters table.</blockquote>
+      <h4><a name="1157946">Printing results</a></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/arrwrite.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1157950">Click <img src="images/printIcon.gif" width="22" height="25" alt="">.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1157951">Or:</a></blockquote>
+      <blockquote><a name="1157952">From the </a><font color="#000000"><strong>File</strong></font> menu, select <font color="#000000"><strong>Print</strong></font>.</blockquote>
+      <h4><a name="1157965">Saving results</a></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/arrwrite.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1157969">Click <img src="images/saveIcon.gif" width="19" height="19" alt="">.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1157970">Or:</a></blockquote>
+      <blockquote><a name="1157971">From the </a><font color="#000000"><strong>File</strong></font> menu, select <font color="#000000"><strong>Save</strong></font>.</blockquote>
+      <blockquote><a name="1157972">The final results will be saved in the Advanced Analysis </a>profile (.aap).</blockquote>
+      <h4><a name="1157546">For power users</a></h4>
+      <h3><a name="1157575">Sensitivity calculations</a></h3>
+      <h4><a name="1050625">Absolute sensitivity</a></h4>
+      <p><a name="1050627">Absolute sensitivity is the ratio of change in a measurement </a>value to a one unit positive change in the parameter value.</p>
+      <p><a name="1050628">For example: There may be a 0.1V change in voltage for a 1 </a>Ohm change in resistance.</p>
+      <p><a name="1050629">The formula for absolute sensitivity is:</a></p>
+      <blockquote>
+        <font size="2" face="&quot;Microsoft Sans Serif&quot;" color="#000000"><a name="1050630">[(M</a><font color="#000000"><sub>s</sub></font> &#45; M<font color="#000000"><sub>n</sub></font>) &#47; (P<font color="#000000"><sub>n</sub></font> * S<font color="#000000"><sub>v</sub></font> * Tol)]</font>
+      </blockquote>
+      <blockquote><a name="1050631">Where:</a></blockquote>
+      <blockquote><a name="1050633"><font size="2" face="'Courier New'" color="#000000"><em>M</em></font></a><font color="#000000"><sub>s</sub></font> = the measurement from the sensitivity run for that parameter</blockquote>
+      <blockquote><a name="1085647"><font size="2" face="'Courier New'" color="#000000"><em>M</em></font></a><font color="#000000"><sub>n</sub></font> = the measurement from the nominal run</blockquote>
+      <blockquote><a name="1050634"><font size="2" face="'Courier New'" color="#000000"><em>Tol</em></font></a> = relative tolerance of the parameter</blockquote>
+      <blockquote><a name="1085667"><font size="2" face="'Courier New'" color="#000000"><em>P</em></font></a><font color="#000000"><sub>n</sub></font> = Nominal parameter value</blockquote>
+      <blockquote><a name="1085700">S</a><font color="#000000"><sub>v = </sub></font>Sensitivity Variation. (Default = 40%)</blockquote>
+      <p><a name="1091415">By default, the parameter value is varied within 40% of the set </a>tolerance. </p>
+      <p><a name="1091416">You can change this value to any desired percentage using </a>the Profile settings dialog box. </p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1085527">From the Edit drop&#45;down menu, choose Profile Settings. </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>2	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1085535">In the Profile setting dialog box, select the Sensitivity tab.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>3	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1085543">In the Sensitivity Variation dialog box, specify the value by </a>which you want to vary the parameter value.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>4	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1085790">Click OK to save your settings.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1085791">The values entered by you in the Profile Setting dialog box, are </a>stored for the future use as well. Every time you load the project, old values are used for advanced analysis simulations.</p>
+      <h4><em><a name="1085813">Example</a></em></h4>
+      <p><a name="1085804">For example, if you specify the Sensitivity Variation as 10%, </a>the parameter values will be varied within 10% of the tolerance value. </p>
+      <p><a name="1085805">Consider that you want to test a resistor of 100k for sensitivity. </a>The tolerance value attached to the resistor is 10%. </p>
+      <p><a name="1085806">By default, for sensitivity calculations, the value of resistor will </a>be varied from 96K to 104K.  But if you change thedefault value of Sensitiviy Variation to 10%, the resistor values will be varied from 99K to 101K for sensitivity calculations.</p>
+      <h4><a name="1050636">Relative sensitivity</a></h4>
+      <p><a name="1050638">Relative sensitivity is the percentage of change in a </a>measurement based on a one percent positive change of a component's parameter value.</p>
+      <p><a name="1050639">For example: For each 1 percent change in resistance, there </a>may be 2 percent change in voltage.</p>
+      <p><a name="1050640">The formula for relative sensitivity is:</a></p>
+      <blockquote>
+        <font size="2" face="&quot;Microsoft Sans Serif&quot;" color="#000000"><a name="1050641"> [(Ms &#45; Mn) &#47; (S</a><font color="#000000"><sub>v</sub></font>*Tol)]</font>
+      </blockquote>
+      <blockquote><a name="1050642">Where:</a></blockquote>
+      <blockquote><a name="1050644"><font size="2" face="'Courier New'" color="#000000"><em>M</em></font></a><font color="#000000"><sub>s</sub></font> = the measurement from the sensitivity run for that parameter</blockquote>
+      <blockquote><a name="1085744"><font size="2" face="'Courier New'" color="#000000"><em>M</em></font></a><font color="#000000"><sub>n</sub></font> = the measurement from the nominal run</blockquote>
+      <blockquote><a name="1050645"><font size="2" face="'Courier New'" color="#000000"><em>Tol</em></font></a> = relative tolerance of the parameter</blockquote>
+      <blockquote><a name="1085720">S</a><font color="#000000"><sub>v = </sub></font>Sensitivity Variation. (Default = 40%)</blockquote>
+      <p><a name="1050646">Relative sensitivity calculations determine the measurement </a>change between simulations with the component parameter first set at its original value and then changed by <font size="2" face="'Courier New'" color="#000000"><em>Sv</em></font> percent of its positive tolerance. Linearity is assumed. This approach reduces numerical calculation errors related to small differences. </p>
+      <p><a name="1050647">For example, assume that an analysis is run on a 100&#45;ohm </a>resistor which has a tolerance of 10 percent. The maximum value for the resistor would be 110 ohms. Assuming the default value of <font size="2" face="'Courier New'" color="#000000"><em>Sv</em></font>, which is 40%, the analysis is run with the value of the resistor set to 104 ohms (40 percent of the 10 ohm tolerance) and a measurement value is obtained. Using that value as a base, Sensitivity assumes that the resistance change from 100 to 104 ohms is linear and calculates (interpolates) the measured value at 1 percent tolerance (101 ohms).</p>
+      <h4><a name="1050648">Worst&#45;case minimums and maximums</a></h4>
+      <p><a name="1050651">For each measurement, Sensitivity sets all parameters to their </a>tolerance limits in the direction that will increase the measurement value, runs a simulation, and records the measurement value. Sensitivity then sets the parameters to the opposite tolerance limits and gets the resulting value.</p>
+      <p><a name="1050652">If worst&#45;case measurement values are within acceptable limits </a>for the design, the measurements can in most cases be ignored for the purpose of optimization.</p>
+      <p><a name="1050653">Sensitivity assumes that the measured quantity varies </a>monotonically throughout the range of tolerances. If not (if there is an inflection point in the curve of output function values), the tool does not detect it. Symptoms of this include a maximum worst&#45;case value that is less than the original value, or a minimum value greater than the original value.</p>
+      <h4><a name="1050654">Sensitivity analysis runs</a></h4>
+      <p><a name="1050656">Sensitivity performs the following runs: </a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1050657">A nominal run with all parameters set at original values</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1050658">The next run with one parameter varied within tolerance</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1050659">Values are obtained for each measurement. View the Log </a>File for parameter values used in each measurement calculation.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1050660">Subsequent runs with one parameter varied within </a>tolerance</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1050661">A minimum worst&#45;case run for each measurement</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1050662">A maximum worst&#45;case run for each measurement</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1050663">For our example circuit with 4 measurements and 12 </a>parameters with tolerances, Sensitivity performs 21 runs.</p>
+      <p align="left"><a name="1050685"> <img src="images/03sens.6.1.39.png" width="450" height="295" alt=""></a></p>
+      <blockquote><a name="1050686">To see the details of parameter and measurement </a>calculations: from the <font color="#000000"><strong>View</strong></font> menu select <font color="#000000"><strong>Log File</strong></font>.</blockquote>
+      <hr>
+      <table width="100%" border="0" cellpadding="3" cellspacing="0" summary="">
+        <tr valign="baseline">
+          <td>
+            <p>
+              <font size="-1">
+                <a name="208" href="#wwfootnote_inline_208">1</a>
+              </font>
+            </p>
+          </td>
+          <td>
+            <p>
+              <font size="3" face="Sans-Serif" color="#000000"><a name="1165514"><font color="#000000">Depending on the license available, you will access either PSpice or</font></a></font>
+            </p>
+            <p><a name="1165491"><font color="#000000">AMS Simulator.</font></a></p>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <br>
+    <a href="#pagetop">Return to top of page</a>
+    <hr>
+    <hr align="left">
+    <div style="text-align: left;">
+      <!-- Begin Buttons -->
+      <table width="650" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                    </td>
+<td height="20" width="73">
+<a href="pspaugcaTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<a href="pspaugcaIX.html"><img src="../support/nav2_index.gif" border="0"></a>
+</td>
+          <td>
+            <a href="02libr.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+          </td>
+          <td>
+            <a href="04opti.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+          </td>
+          <td>
+            <a>
+<a href="pspaugca.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+            </a>
+          </td>
+          <td height="20" width="61">
+            <img src="../support/nav2_black.gif">
+          </td>
+          <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+          </td>
+          <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+          </td>
+          <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+          </td>
+        </tr>
+      </table>
+      <!-- End Buttons -->
+    </div>
+    <br>
+    <font size="-1" >
+For support, see <a href="http://support.cadence.com" target="_blank">Cadence Online Support</a> service.</font>
+    <br>
+    <br>
+    <font size="-1" >
+      <i>Copyright &#169; 2011, <a href="http://www.cadence.com">Cadence Design Systems, Inc.</a></i>
+    </font>
+    <br>
+    <font size="-1" >
+All rights reserved.</font>
+    <br>
+    <br>
+  </body>
+</html>

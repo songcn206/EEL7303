@@ -1,0 +1,262 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM fixed_font
+FIXED
+PORT 120 60
+HEADER "Multi-Net Assignment"
+
+POPUP <targetTypePOP>"""".
+POPUP <sourceTypePOP>"""".
+#POPUP <pinUsePOP>"Unspecified""0", "Power""1", "Ground""2", "No Connect""3", "Input""4", "Output""5", "Bidirectional""6", "Tri-State""7", "Open Source""8", "Open Drain""9".
+POPUP <selectTypePOP> "All""ALL", "by Refdes:""REFDES", "by Class:""CLASS", "by Device:""DEVICE".
+POPUP <sortPOP>"Sort ascending""ASCENDING", "Sort descending""DESCENDING".
+POPUP <gridPOP>"Top""TOP", "Buttom""BOTTOM", "Up""UP", "Down""DOWN", "Sort ascending""ASCENDING", "Sort descending""DESCENDING".
+
+TILE
+
+GROUP "Assign selected source nets to selected target pins." g1
+GLOC 2 0
+GSIZE 117 52
+ENDGROUP
+
+GROUP "Target Pins" gTarg
+GLOC 66 2
+GSIZE 51 44
+ENDGROUP
+
+TEXT "Select Pins" tSelect
+TLOC 68 4
+ENDTEXT
+
+FIELD targetSelect
+FLOC 80 4
+ENUMSET 11
+POP "selectTypePOP"
+ENDFIELD
+
+FIELD targetType
+FLOC 94 4
+ENUMSET 18
+POP "targetTypePOP"
+ENDFIELD
+
+FIELD reassign
+FLOC 68 8
+CHECKLIST "Net reassignment allowed"
+ENDFIELD
+
+TEXT "<-Filter->" tFilt
+TLOC 55 17 
+ENDTEXT
+
+TEXT "Right click in table to sort or reorder rows." tReorder
+FLOC 68 14
+ENDTEXT
+
+GRID targetPinList
+FLOC 68 16
+FSIZE 47 25
+POP "gridPOP"
+OPTIONS HLINES VLINES USERSIZE 
+
+GHEAD TOP 
+HEADSIZE 2
+OPTIONS 3D
+POP "sortPOP"
+ENDGHEAD
+
+#GHEAD SIDE
+#OPTIONS NUMBER 
+#HEADSIZE 3
+#ENDGHEAD
+
+ENDGRID
+
+FIELD resetTargetPins
+FLOC 70 42
+MENUBUTTON "Reset" 10 3
+ENDFIELD
+
+FIELD removeSelectedTargetPin
+FLOC 84 42
+MENUBUTTON "Remove Selected Pin" 22 3
+ENDFIELD
+
+TEXT "Number of Selected Pins:" tTargetNum
+TLOC 70 44
+ENDTEXT
+
+TEXT " 0" numTargetPins
+TLOC 95 44
+ENDTEXT
+
+#GROUP "Pin Use"
+#GLOC 68 46
+#GSIZE 46 5
+#ENDGROUP
+
+#FIELD targetPinUse
+#FLOC 70 48
+#ENUMSET 14
+#POP "pinUsePOP"
+#ENDFIELD
+
+#FIELD targetPinUseChange
+#FLOC 89 48
+#MENUBUTTON "Change Selected Pins" 22 3
+#ENDFIELD
+
+GROUP "Source Nets" gSource
+GLOC 4 2
+GSIZE 51 44
+ENDGROUP
+
+FIELD useExistingNets
+FLOC 5 4
+CHECKLIST "Use Existing Nets" "source_mode"
+ENDFIELD
+
+TEXT "Select Nets"
+TLOC 8 6
+ENDTEXT
+
+FIELD sourceSelect
+FLOC 20 6
+ENUMSET 11
+POP "selectTypePOP"
+ENDFIELD
+
+FIELD sourceType
+FLOC 34 6
+ENUMSET 17
+POP "sourceTypePOP"
+ENDFIELD
+
+FIELD createNewNets
+FLOC 5 8
+CHECKLIST "Create New Net(s)" "source_mode"
+ENDFIELD
+
+TEXT "Pattern:" tPattern
+FLOC 8 10
+ENDTEXT
+
+FIELD createNetPattern
+FLOC 16 10
+STRFILLIN 36 128
+ENDFIELD
+
+TEXT "e.g. (CLK or D0-15 or AD1,3,5-7)" tEgPatt
+FLOC 8 12
+ENDTEXT
+
+TEXT "Right click in table to sort or reorder rows."
+FLOC 6 14
+ENDTEXT
+
+GRID sourceNetList
+FLOC 6 16
+FSIZE 47 25
+POP "gridPOP"
+OPTIONS HLINES VLINES USERSIZE 
+
+GHEAD TOP 
+HEADSIZE 2
+OPTIONS 3D 
+POP "sortPOP"
+ENDGHEAD
+
+#GHEAD SIDE
+#OPTIONS NUMBER 
+#HEADSIZE 3
+#ENDGHEAD
+
+ENDGRID
+
+FIELD resetSourceNets
+FLOC 7 42
+MENUBUTTON "Reset" 10 3
+ENDFIELD
+
+FIELD removeSelectedSourceNet
+FLOC 21 42
+MENUBUTTON "Remove Selected Net" 22 3
+ENDFIELD
+
+TEXT "Number of Selected Nets:" tSourceNum
+TLOC 7 44
+ENDTEXT
+
+TEXT " 0" numSourceNets
+TLOC 32 44
+ENDTEXT
+
+FIELD assignNets
+FLOC 4 49
+MENUBUTTON "Assign" 10 3
+ENDFIELD
+
+FIELD oops
+FLOC 16 49
+MENUBUTTON "Undo" 10 3
+ENDFIELD
+
+FIELD done
+FLOC 4 54
+MENUBUTTON "OK" 10 3
+ENDFIELD
+
+FIELD apply
+FLOC 16 54
+MENUBUTTON "Apply" 10 3
+ENDFIELD
+
+FIELD cancel
+FLOC 28 54
+MENUBUTTON "Cancel" 10 3
+ENDFIELD
+
+FIELD help
+FLOC 109 54
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+FLEXMODE EdgeGravity
+
+FLEX g1 0 0 1 1
+FLEX tFilt 0.5 0 0 0
+
+FLEX gTarg 0.5 0 0.5 1
+FLEX tSelect 0.5 0 0 0
+FLEX targetSelect 0.5 0 0 0
+FLEX targetType 0.5 0 0 0
+FLEX reassign 0.5 0 0 0
+FLEX tReorder 0.5 0 0 0
+FLEX targetPinList 0.5 0 0.5 1
+FLEX resetTargetPins 0.5 1 0 0
+FLEX removeSelectedTargetPin 0.5 1 0 0
+#FLEX targetPinUseChange 0.5 1 0 0
+FLEX tTargetNum 0.5 1 0 0
+FLEX numTargetPins 0.5 1 0 0
+
+FLEX gSource 0 0 0.5 1
+FLEX useExistingNets 0 0 0 0
+FLEX sourceSelect 0 0 0 0
+FLEX sourceType 0 0 0 0
+FLEX createNewNets 0 0 0 0
+FLEX tPattern 0 0 0 0
+FLEX createNetPattern 0 0 0 0
+FLEX tEgPatt 0 0 0 0
+FLEX sourceNetList 0 0 0.5 1
+FLEX resetSourceNets 0 1 0 0
+FLEX removeSelectedSourceNet 0 1 0 0
+FLEX tSourceNum 0 1 0 0
+FLEX numSourceNets 0 1 0 0
+
+#FLEX assignNets 0.5 1 0 0
+#FLEX oops 0.5 1 0 0
+
+ENDTILE
+
+ENDFORM
+
+

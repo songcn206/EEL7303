@@ -1,0 +1,145 @@
+html body { /* HACK: Temporary fix for CONF-15412 */
+    overflow: visible;
+}
+/* IE7 fix for CONFDEV-1056 */
+body.dashboard {
+    *min-width: 1000px;
+}
+img {
+    -ms-interpolation-mode: bicubic;
+}
+
+#breadcrumbs {
+    *height: 1%; /* IE6-IE7 wrapping */
+    overflow: auto;
+    *overflow: visible; /* IE7 and below */
+}
+#breadcrumbs li {
+    white-space: nowrap;
+}
+* html #breadcrumbs li {
+    background-image: url(../../../images/decoration/white_breadcrumbs_indicator.gif); /* IE6 */
+}
+* html .page-metadata {
+    height: 1.2em; /* IE6 */
+}
+#breadcrumbs li {
+    background-position: 3px 12px;
+}
+form {
+    margin: 0;
+    padding: 0;
+}
+.tab-navigation .tab {
+    float: left;
+    display: inline;
+    font-weight: bold;
+    margin: 0 5px 0 0;
+    position: relative;
+}
+.tab-navigation .tab a {
+    display: inline-block; /* anchors were making tabs very wide in Clickr theme in IE */
+}
+a.icon {
+    height: 16px;
+}
+#tree-div {
+    min-height: 300px;
+    height: auto !important;
+    height: 300px;
+}
+h1 #content-title {
+    margin: 0;
+    display: block;
+    width: 90%; /* 93% and upwards breaks at least one of the IEs */
+}
+
+h1 span.title-text {
+    height: 1%;
+}
+
+h1.pagetitle {
+    width: auto;
+}
+
+h1.pagetitle img.logo {
+    *margin-bottom: 0;
+}
+
+* html h1.pagetitle img.custom {
+   /* sets max-height for IE - roughly equivalent to what real browsers do with 2.5em max-height */
+   height: expression( this.scrollHeight > 59 ? "60px" : "auto" );
+}
+
+#tab-navigation,
+.tab-navigation {
+    zoom: 1;
+}
+.has-sidebar #content .code {
+    _clear: both; 
+    _overflow: auto; 
+}
+.menu-section-list li a:visited,
+.menu-section-list li a:hover {
+    color: #666;
+}
+.menu-section-list li.active a:visited {
+    color: #fff;
+}
+
+/* Don't remove or dropdowns may break in IE6. CONF-17932 */
+* html #header-menu-bar .hidden {
+    width: 12em;
+}
+
+* .bloglistitems{
+    list-style-type: none;
+    padding-left: 1em;
+    padding-right: 1em;
+    margin-top: 0.5em;
+    margin-bottom: 0;
+    padding-bottom: 0.5em;
+    margin-left: 0;
+}
+
+* .blogmonthnavigation{
+    border:1px solid #CCCCCC;
+    position:relative;
+    text-decoration:none;
+    display: inline-block;
+    width: 10em;
+    font-size: 0.85em;
+    text-align:center;
+    margin: 0 -0.5em 1em 1em;
+    padding: 0.2em 0.4em;
+}
+
+#page-diffs .diff {
+    *margin-right: 1em;
+}
+
+/*CONFDEV-2008: Remove Help tips*/
+/*This is used because in IE8 the heading text is middle aligned*/
+.permissionTab {
+    text-align: left;
+}
+
+/*This is used because in IE7 the inline help goes to the next line and so this will make the
+ help go next to the header instead.*/
+*+html .permissionTab .inline-help {
+    float: none;
+}
+
+/* Dashboard in divs - IE6, 7. Reduce size by 1% to avoid dropped columns. */
+div.dashboard .dashboard-group {
+    *display: block;
+    *float: left;
+}
+div.dashboard .dashboard-group.left {
+    *width: 34%;
+}
+div.dashboard .dashboard-group.right {
+    *width: 64%;
+}
+
+/* @end Dashboard in divs */

@@ -1,0 +1,93 @@
+####################################################################################
+#       Cadence Design Systems                                                     #
+#                                                                                  #
+# (C) COPYRIGHT, Cadence Design Systems, Inc. 2010                                 #
+# All Rights Reserved                                                              #
+# Licensed Materials - Property of Cadence Design Systems                          #
+#                                                                                  #
+# No part of this file may be reproduced, stored in a retrieval system,            #
+# or transmitted in any form or by any means --- electronic, mechanical,           #
+# photocopying, recording, or otherwise --- without prior written permission       #
+# of Cadence Design Systems, Inc.                                                  #
+#                                                                                  #
+# WARRANTY:                                                                        #
+# Use all material in this file at your own risk.  Cadence Design Systems          #
+# makes no claims about any material contained in this file.                       #
+####################################################################################
+FILE_TYPE=FORM_DEFN VERSION=2
+    FORM
+    FIXED
+    PORT 35 27
+    HEADER "Virtual Noise"
+
+    ACTIVEFIELD "Done"
+    DEFAULT Done
+
+    TILE
+
+    FIELD Done
+        FLOC 1 18
+        MENUBUTTON "OK" 10 3
+    ENDFIELD
+
+    FIELD Cancel
+        FLOC 12 18
+        MENUBUTTON "Cancel" 10 3
+    ENDFIELD
+
+    FIELD Help
+        FLOC 25 18
+        MENUBUTTON "Help" 10 3
+    ENDFIELD
+
+    GROUP ""
+        GLOC 1 0
+        GSIZE 34 17
+    ENDGROUP
+
+    TEXT "RefDes:"
+        TLOC 2 2
+    ENDTEXT
+
+    TEXT
+        TLOC 12 2
+        INFO CompName 11
+    ENDTEXT
+
+    TEXT "Sink:"
+        TLOC 2 5
+    ENDTEXT
+
+    POPUP <SinkCurrentPopup>"""".
+    FIELD SinkCurrent
+        FLOC 12 5
+        STRFILLIN 16 50
+        POP "SinkCurrentPopup"
+    ENDFIELD
+
+    TEXT "Package:"
+        TLOC 2 8
+    ENDTEXT
+
+    TEXT
+        FLOC 12 8
+        INFO PackageName 15
+    ENDFIELD
+
+    POPUP <NetNamePopup>"""".
+    GRID PinGrid
+    FLOC 2 10
+    FSIZE 31 6
+    OPTIONS HLINES VLINES
+
+    GHEAD TOP
+        HEADSIZE 2
+        OPTIONS 3D
+    ENDGHEAD
+    GHEAD SIDE
+        HEADSIZE 0
+    ENDGHEAD
+    ENDGRID
+
+    ENDTILE
+ENDFORM

@@ -1,0 +1,419 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN" "http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+<html xmlns="http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>PSpice Advanced Analysis Help -- Working with parameterized components</title>
+<META NAME="Approver" CONTENT="Technical Publications">
+<META NAME="Author" CONTENT="Technical Publications">
+<META NAME="CreateDate" CONTENT="2012-09-07">
+<META NAME="CreateTime" CONTENT="1346997939">
+<META NAME="DataType" CONTENT="Manuals">
+<META NAME="Description" CONTENT="PSpice Advanced Analysis Online Help.">
+<META NAME="DocTitle" CONTENT="PSpice Advanced Analysis Help">
+<META NAME="DocType" CONTENT="Reference">
+<META NAME="EdmsRelease" CONTENT="EDMS Windows-P015">
+<META NAME="FileTitle" CONTENT="Working with parameterized components">
+<META NAME="FileType" CONTENT="Chapter">
+<META NAME="Keyword" CONTENT="optimChapt">
+<META NAME="Language" CONTENT="English">
+<META NAME="ModifiedDate" CONTENT="2012-09-07">
+<META NAME="ModifiedTime" CONTENT="1346997939">
+<META NAME="NextFile" CONTENT="04_aa_libs.html">
+<META NAME="PageCount" CONTENT="4">
+<META NAME="Platform" CONTENT="ALL">
+<META NAME="PrevFile" CONTENT="02_project_setup.html">
+<META NAME="Product" CONTENT="Allegro AMS Simulator, PSpice">
+<META NAME="ProductFamily" CONTENT="PCB Design, PCB Design">
+<META NAME="ProductVersion" CONTENT="16.5">
+<META NAME="RightsManagement" CONTENT="Copyright 19912011 Cadence Design Systems Inc.">
+<META NAME="Title" CONTENT="PSpice Advanced Analysis Help -- Working with parameterized components">
+<META NAME="TopicTags" CONTENT="FALSE">
+<META NAME="Version" CONTENT="16.5">
+  </head>
+  <body style="margin-left: 5%;">
+    <a name="pagetop"></a>
+    <a name="firstpage"></a>
+    <!-- Begin Buttons -->
+    <table width="650" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td height="36" width="650" colspan="10">
+          <img src="../support/header_doc.gif" width="650" height="34">
+        </td>
+      </tr>
+      <tr>
+        <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                </td>
+<td height="20" width="73">
+<a href="optimChaptTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<a href="optimChaptIX.html"><img src="../support/nav2_index.gif" border="0"></a>
+</td>
+        <td>
+          <a href="02_project_setup.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+        </td>
+        <td>
+          <a href="04_aa_libs.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+        </td>
+        <td height="20">
+          <a>
+<a href="optimChapt.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+          </a>
+        </td>
+        <td height="20" width="61">
+          <img src="../support/nav2_black.gif">
+        </td>
+        <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+        </td>
+        <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+        </td>
+        <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+        </td>
+      </tr>
+    </table>
+    <!-- End Buttons -->
+    <p>
+    <hr>
+    <p>
+      <h3>
+        <center>
+          <font >
+            <div>PSpice Advanced Analysis Help</div>
+            <font >
+              <div>
+            </font>
+          </font>
+        </center>
+      </h3>
+      <br>
+    </p>
+    <div>
+      <h2><a name="1046166">Working with parameterized components</a></h2>
+      <p><a name="1048453">PSpice<sup><a name="wwfootnote_inline_40" href="#40">1</a></sup> </a>ships with over 30 Advanced Analysis libraries containing over 4,300 <a href="Glos.html#1046399" title="Glossary"><font color="#0000ff"><u>component</u></font></a><font color="#0000ff"><u>s</u></font>. Separate library lists are provided for Advanced Analysis libraries and standard PSpice libraries. The components in the Advanced Analysis libraries are listed in the <font color="#000000"><em>Advanced </em></font><font color="#000000"><em>Analysis library list</em></font>. The Advanced Analysis libraries contain parameterized and standard components. The majority of the components are parameterized. Standard components in the Advanced Analysis libraries are similar to components in the standard PSpice libraries and will not be discussed further in this document.</p>
+      <h3><a name="1048460">Parameterized components</a></h3>
+      <p><a name="parameterized components"></a><a name="parameterized components"></a><a name="parameterized components"></a><a name="1048457">A parameter is a physical characteristic of a component that controls behavior for the </a>component model. In schematic editor, a parameter is called a <font color="#000000"><strong>property</strong></font>. A parameter value is either a number or a variable. When the parameter value is a variable, you have the option to vary its numerical solution within a mathematical expression and use it in optimization.</p>
+      <p><a name="1046302">Design Entry</a>When the parameter value is a variable, you have the option to vary its numerical solution within a mathematical expression and use it in optimization.In the Advanced Analysis libraries, components may contain one or more of the following parameters:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046303">Tolerance parameters</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1046304">For example, for a resistor the positive tolerance could be POSTOL = 10%.</a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046305">Distribution parameters</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1046306">For example, for a resistor the distribution function used in Monte Carlo analysis could </a>be DIST = FLAT.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046307">Optimizable parameters</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1046308">For example, for an opamp the gain bandwidth could be GBW = 10 MHz.</a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046309">Smoke parameters</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1046310">For example, for a resistor the power maximum operating condition could be POWER = </a>0.25 W.</blockquote>
+      <p><a name="1046311">To analyze a circuit component with an Advanced Analysis tool, make sure the component </a>contains the following parameters:</p>
+      <p align="left"><a name="1046339">&nbsp;</a></p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="432">
+        <caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="top" width="182">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1046314"><font color="#3300ff"><strong>This Advanced </strong></font></a><font color="#3300ff"><strong>Analysis tool...</strong></font></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="top" width="249">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1046316"><font color="#3300ff"><strong>Uses these component </strong></font></a><font color="#3300ff"><strong>parameters...</strong></font></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1046318">Sensitivity</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1046321">Tolerance parameters</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1046323">Optimizer</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1046326">Optimizable parameters</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1046328">Smoke</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1046331">Smoke parameters</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1046333">Monte Carlo</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1046336">Tolerance parameters,</a></p>
+            <p><a name="1046338">Distribution parameters</a><br>(default parameter value is Flat &#47; Uniform)</p>
+          </td>
+        </tr>
+      </table>
+      <h4><a name="1046343">Tolerance parameters</a></h4>
+      <p><a name="1046345">Tolerance parameters define the positive and negative deviation from a component's nominal </a>value. In order to include a circuit component in a Sensitivity or Monte Carlo analysis, the component must have tolerances for the parameters specified. Use the <font color="#000000"><em>Advanced Analysis </em></font><font color="#000000"><em>library list</em></font> to identify components with parameter tolerances.</p>
+      <p><a name="1046346">In Advanced Analysis, tolerance information includes:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046347">Positive tolerance</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1046349">For example, POSTOL for RLC is the amount a value can vary in the plus direction.</a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046350">Negative tolerance</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1046352">For example, NEGTOL for RLC is the amount a value can vary in the negative direction.</a></blockquote>
+      <p><a name="1048534">Tolerance values can be entered as percents or absolute numbers.</a></p>
+      <h4><a name="1048538">Distribution parameters</a></h4>
+      <p><a name="1048543">Distribution parameters define types of distribution functions. Monte Carlo uses these </a>distribution functions to randomly select tolerance values within a range.</p>
+      <p><a name="1046364">For example, in the schematic editor's property editor, a resistor could provide the following </a>information:</p>
+      <p align="left"><a name="1046374">&nbsp;</a></p>
+      <table summary="" border="0" cellpadding="4" cellspacing="0" bordercolor="#D3D3D3" width="174">
+        <caption>
+        <tr>
+          <td cellpadding="4" border="0" bordercolor="#D3D3D3" valign="top" width="80">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1046367"><font color="#3300ff"><strong>Property</strong></font></a></strong></font>
+            </p>
+          </td>
+          <td cellpadding="4" border="0" bordercolor="#D3D3D3" valign="top" width="93">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1046369"><font color="#3300ff"><strong>Value</strong></font></a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1046371">DIST</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1046373">FLAT</a></p>
+          </td>
+        </tr>
+      </table>
+      <h4><a name="1046389">Optimizable parameters</a></h4>
+      <p><a name="1046391">Optimizable parameters are any characteristics of a model that you can vary during </a>simulations. In order to include a circuit component in an Optimizer analysis, the component must have optimizable parameters. Use the <font color="#000000"><em>Advanced Analysis library list</em></font> to identify components with optimizable parameters.</p>
+      <p><a name="1046392">For example, in schematic editor's property editor, an opamp could provide the following gain </a>bandwidth:</p>
+      <p align="left"><a name="1046402">&nbsp;</a></p>
+      <table summary="" border="0" cellpadding="4" cellspacing="0" bordercolor="#D3D3D3" width="228">
+        <caption>
+        <tr>
+          <td cellpadding="4" border="0" bordercolor="#D3D3D3" valign="top" width="94">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1046395"><font color="#3300ff"><strong>Property</strong></font></a></strong></font>
+            </p>
+          </td>
+          <td cellpadding="4" border="0" bordercolor="#D3D3D3" valign="top" width="134">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1046397"><font color="#3300ff"><strong>Value</strong></font></a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1046399">GBW</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1046401">1e7</a></p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1046403">Note that the parameter is available for optimization only if you add it as a property on the </a>schematic instance and assign it a value.</p>
+      <p><a name="1046416">During Optimization, the GBW can be varied between any user&#45;defined limits to achieve the </a>desired specification.</p>
+      <h4><a name="1046420">Smoke parameters</a></h4>
+      <p><a name="1046422">Smoke parameters are maximum operating conditions for the component. To perform a </a>Smoke analysis on a component, define the smoke parameters for that component. You can still use non&#45;smoke&#45;defined components in your design, but the smoke test ignores these components. Use the online <font color="#000000"><em>Advanced Analysis library list</em></font> to identify components with smoke parameters. </p>
+      <p><a name="1046423">Most of the analog components in the standard PSpice libraries also contain smoke </a>parameters. Use the online <font color="#000000"><em>PSpice library list</em></font> to identify components in the standard PSpice libraries that have smoke parameters.</p>
+      <p><a name="1046428">For example, in schematic editor's property editor, a resistor could provide the following </a>smoke parameter information:</p>
+      <p align="left"><a name="1046442">&nbsp;</a></p>
+      <table summary="" border="0" cellpadding="4" cellspacing="0" bordercolor="#D3D3D3" width="385">
+        <caption>
+        <tr>
+          <td cellpadding="4" border="0" bordercolor="#D3D3D3" valign="top" width="94">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1046431"><font color="#3300ff"><strong>Property</strong></font></a></strong></font>
+            </p>
+          </td>
+          <td cellpadding="4" border="0" bordercolor="#D3D3D3" valign="top" width="291">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1046433"><font color="#3300ff"><strong>Value</strong></font></a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1046435">POWER</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1046437">RMAX</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1046439">MAX_TEM</a>P</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1046441">RTMAX</a></p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1046443">Use the design variables table to set the values of RMAX and RTMAX to 0.25 Watts and 200 </a>degrees Centigrade, respectively.</p>
+      <h4><a name="1046470">Advanced Analysis libraries location</a></h4>
+      <h4><em><a name="1046473"><font color="#3300ff"><strong>Schematic Editor symbol libraries</strong></font></a></em></h4>
+      <p><a name="1046474">&#60;Target_directory&#62;\Capture\Library\PSpice\AdvAnls\</a></p>
+      <h4><em><a name="1046477"><font color="#3300ff"><strong>PSpice Advanced Analysis model libraries</strong></font></a></em></h4>
+      <p><a name="1046478">&#60;Target_directory&#62; \ PSpice \ Library</a></p>
+      <p><a name="1046282">&nbsp;</a></p>
+      <hr>
+      <table width="100%" border="0" cellpadding="3" cellspacing="0" summary="">
+        <tr valign="baseline">
+          <td>
+            <p>
+              <font size="-1">
+                <a name="40" href="#wwfootnote_inline_40">1</a>
+              </font>
+            </p>
+          </td>
+          <td>
+            <p><a name="1048671">Depending on the license and installation, either PSpice or AMS Simulator is installed. However, the </a>information for PSpice provided in this manual is also true for AMS Simulator.</p>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <br>
+    <a href="#pagetop">Return to top of page</a>
+    <hr>
+    <hr align="left">
+    <div style="text-align: left;">
+      <!-- Begin Buttons -->
+      <table width="650" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                    </td>
+<td height="20" width="73">
+<a href="optimChaptTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<a href="optimChaptIX.html"><img src="../support/nav2_index.gif" border="0"></a>
+</td>
+          <td>
+            <a href="02_project_setup.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+          </td>
+          <td>
+            <a href="04_aa_libs.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+          </td>
+          <td>
+            <a>
+<a href="optimChapt.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+            </a>
+          </td>
+          <td height="20" width="61">
+            <img src="../support/nav2_black.gif">
+          </td>
+          <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+          </td>
+          <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+          </td>
+          <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+          </td>
+        </tr>
+      </table>
+      <!-- End Buttons -->
+    </div>
+    <br>
+    <font size="-1" >
+For support, see <a href="http://support.cadence.com" target="_blank">Cadence Online Support</a> service.</font>
+    <br>
+    <br>
+    <font size="-1" >
+      <i>Copyright &#169; 2011, <a href="http://www.cadence.com">Cadence Design Systems, Inc.</a></i>
+    </font>
+    <br>
+    <font size="-1" >
+All rights reserved.</font>
+    <br>
+    <br>
+  </body>
+</html>

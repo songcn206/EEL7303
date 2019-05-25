@@ -1,0 +1,199 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 34 6
+HEADER "Automatic Net Assignment"
+
+POPUP <SOURCE_POPUP> """".
+POPUP <DEST_POPUP> """".
+POPUP <ALGORITHM_POPUP> """".
+
+TILE
+
+FIELD advance_filter
+FLOC 1 1
+CHECKLIST "Use advanced selection filtering"
+ENDFIELD
+
+TEXT "Source: "
+TLOC 1 4
+ENDTEXT
+
+FIELD source_type
+FLOC 11 4
+ENUMSET 19
+POP "SOURCE_POPUP"
+ENDFIELD
+
+TEXT "Number selected: "
+TLOC 1 6
+ENDTEXT
+TEXT ""
+TLOC 15 6
+INFO num_source_pins 15
+ENDTEXT
+
+TEXT "Destination: "
+TLOC 1 9
+ENDTEXT
+
+FIELD dest_type
+FLOC 11 9
+ENUMSET 19
+POP "DEST_POPUP"
+ENDFIELD
+
+TEXT "Number selected: "
+TLOC 1 11
+ENDTEXT
+TEXT ""
+TLOC 15 11
+INFO num_dest_pins 15
+ENDTEXT
+
+FIELD power_ground_assign
+FLOC 1 14
+CHECKLIST "Assign power and ground nets"
+ENDFIELD
+
+FIELD assign_new
+FLOC 1 16
+CHECKLIST "Assign new connections" "radioOptimize"
+ENDFIELD
+
+FIELD reassign
+FLOC 3 18
+CHECKLIST "Net reassignment allowed"
+ENDFIELD
+
+FIELD create_nets
+FLOC 3 20
+CHECKLIST "Create nets for unassigned pins"
+ENDFIELD
+
+FIELD single_dest
+FLOC 3 22
+CHECKLIST "Assign one pin only for multi-pin nets"
+ENDFIELD
+
+FIELD exclude_routed
+FLOC 3 24
+CHECKLIST "Exclude pre-routed pins"
+ENDFIELD
+
+FIELD optimize_assign
+FLOC 1 26
+CHECKLIST "Optimize existing assignments" "radioOptimize"
+ENDFIELD
+
+TEXT "Algorithm: "
+TLOC 1 29
+ENDTEXT
+
+FIELD algorithm
+FLOC 11 29
+ENUMSET 19
+POP "ALGORITHM_POPUP"
+ENDFIELD
+
+#ifdef CHIPIO
+# IO Planner doesn't have any of the route feasibility stuff.
+
+FIELD done
+FLOC 1 36
+MENUBUTTON "Ok" 10 3
+ENDFIELD
+
+FIELD cancel
+FLOC 12 36
+MENUBUTTON "Cancel" 10 3
+ENDFIELD
+
+FIELD assign
+FLOC 23 36
+MENUBUTTON "Assign" 10 3
+ENDFIELD
+
+FIELD help
+FLOC 23 33
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+#else
+
+GROUP "Routing options"
+GLOC 1 31
+GSIZE 32 23
+ENDGROUP
+
+FIELD route_feasibility
+FLOC 3 33
+CHECKLIST "Invoke route feasibility on results"
+ENDFIELD
+
+FIELD route_pbar
+FLOC 3 35
+CHECKLIST "Route to plating bar"
+ENDFIELD
+
+TEXT "Available routing layers:"
+TLOC 3 37
+ENDTEXT
+
+GRID layer_grid
+FLOC 5 39
+FSIZE  26 7
+OPTIONS VLINES HLINES USERSIZE
+ENDGRID
+
+GROUP "Default fanout via diameter"
+GLOC 3 46
+GSIZE 28 7
+ENDGROUP
+
+TEXT "Source:"
+TLOC 5 48
+ENDTEXT
+FIELD source_via_diameter
+FLOC 12 48
+STRFILLIN 16 50
+ENDFIELD
+
+TEXT "Dest:"
+TLOC 5 50
+ENDTEXT
+FIELD dest_via_diameter
+FLOC 12 50
+STRFILLIN 16 50
+ENDFIELD
+
+FIELD rats_layer
+FLOC 1 55
+MENUBUTTON "Configure Rats Display" 10 3
+ENDFIELD 
+
+FIELD done
+FLOC 1 58
+MENUBUTTON "Ok" 10 3
+ENDFIELD
+
+FIELD cancel
+FLOC 12 58
+MENUBUTTON "Cancel" 10 3
+ENDFIELD
+
+FIELD assign
+FLOC 23 58
+MENUBUTTON "Assign" 10 3
+ENDFIELD
+
+FIELD help
+FLOC 23 55
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+#endif
+
+ENDTILE
+
+ENDFORM

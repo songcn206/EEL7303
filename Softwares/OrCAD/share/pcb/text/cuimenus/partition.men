@@ -1,0 +1,373 @@
+//------------------------------------------------------------------------
+//
+//  Cadence Design Systems
+//
+// (C) COPYRIGHT, Cadence Design Systems, Inc. 2004
+// All Rights Reserved
+// Licensed Materials - Property of Cadence Design Systems
+//
+// No part of this file may be reproduced, stored in a retrieval system,
+// or transmitted in any form or by any means --- electronic, mechanical,
+// photocopying, recording, or otherwise --- without prior written permission
+// of Cadence Design Systems, Inc.
+//
+// WARRANTY:
+// Use all material in this file at your own risk.  Cadence Design Systems 
+// makes no claims about any material contained in this file.
+//
+//------------------------------------------------------------------------
+
+// Loadable Menu File
+// ****************** ALLEGRO_DESIGN_PARTITION *********************
+// Common menu for 2 tiers of Allegro  (230 & 620)
+//
+// Environment variables used:
+//    _allegro_dfa
+//
+
+partition MENU DISCARDABLE
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&Open...",            "open"
+        MENUITEM SEPARATOR
+        MENUITEM "&Save",           "save"
+        MENUITEM "Save &As...",         "save_as"
+        MENUITEM SEPARATOR
+        POPUP "&Import"
+        BEGIN
+            MENUITEM "&Sub-Drawing",          "clpPaste"
+        END
+        POPUP "&Export"
+        BEGIN
+            MENUITEM "&Netlist w/Properties...","netout"
+    	    MENUITEM "PDF...",			"pdf out"
+            MENUITEM "I&PF...",         	"create plot"
+            MENUITEM "&Sub-Drawing",        	"clpCopy"
+	    MENUITEM "&Techfile...",		"techfile out"
+            MENUITEM "Li&braries...",       	"dlib"
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "&Viewlog...",         "viewlog -last"
+        MENUITEM "&File Viewer...",     "viewlog -browse"
+        MENUITEM "Plot Set&up...",      "plot setup"
+#ifndef __unix
+        MENUITEM "Plot Previe&w...",        "plot preview"
+#endif
+        MENUITEM "&Plot...",            "plot"
+        MENUITEM "Capture &Canvas Image...",      "capture image"
+        MENUITEM SEPARATOR
+        MENUITEM "P&roperties...",      "file_property"
+        MENUITEM "S&cript...",          "script"
+        MENUITEM SEPARATOR
+        POPUP "Recent &Designs"
+        BEGIN
+            MENUITEM "Recent File List",        "|mru"
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",           "exit"
+    END
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "&Undo",                       "undo"
+        MENUITEM "&Redo",                       "redo"
+        MENUITEM SEPARATOR
+        MENUITEM "&Move",           "move"
+        MENUITEM "&Copy",           "copy"
+        MENUITEM "M&irror",         "mirror"
+        MENUITEM "&Spin",           "spin"
+        MENUITEM "C&hange",         "change"
+        MENUITEM "&Delete",         "delete"
+        MENUITEM SEPARATOR
+        MENUITEM "&Z-Copy",         "zcopy shape"
+        MENUITEM SEPARATOR
+        MENUITEM "&Vertex",         "vertex"
+        MENUITEM "Delete Verte&x",              "delete vertex"
+        MENUITEM "&Text",           "text edit"
+        MENUITEM SEPARATOR
+        MENUITEM "&Groups",         "groupedit"
+        MENUITEM "P&roperties",     "property edit"
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Zoom By Points",     "zoom points"
+        MENUITEM "Zoom &Fit",           "zoom fit"
+        MENUITEM "Zoom &In",            "zoom in"
+        MENUITEM "Zoom &Out",           "zoom out"
+        MENUITEM "Zoom &World",         "zoom world"
+        MENUITEM "Zoo&m Center",        "zoom center"
+        MENUITEM "Zoom Pre&vious",              "zoom previous"
+        MENUITEM SEPARATOR
+        MENUITEM "Color View &Save",            "colorview create"
+        MENUITEM "Color View Restore &Last",    "colorview restore" 
+        MENUITEM SEPARATOR
+        MENUITEM "&3D View",                    "3d_viewer"
+        MENUITEM "&Flip Design",                "flipdesign"
+        MENUITEM SEPARATOR
+        MENUITEM "&Refresh",            "redraw"
+         POPUP "Wi&ndows"
+         BEGIN
+            MENUITEM "Command",          "showhide text"
+            MENUITEM "World View",       "showhide view"
+            MENUITEM "Options",          "showhide options"
+            MENUITEM "Find",             "showhide find"
+            MENUITEM "Visibility",       "showhide vis"
+            MENUITEM "Show All",         "show allpanes"
+         END
+      MENUITEM "&Customize Toolbar...",             "display toolbar param"
+      MENUITEM "Reset UI to Cadence Default...", "reset dockwindows"
+    END
+    POPUP "&Add"
+    BEGIN
+        MENUITEM "&Line",           "add line"
+        MENUITEM "&Arc w/Radius",       "add rarc"
+        MENUITEM "&3pt Arc",            "add arc"
+        MENUITEM "&Circle",         "add circle"
+        MENUITEM "&Rectangle",          "add rect"
+        MENUITEM "&Frectangle",         "add frect"
+        MENUITEM "&Text",           "add text"
+    END
+    POPUP "&Display"
+    BEGIN
+        MENUITEM "&Color/Visibility...",    "color192"
+        MENUITEM "&Layer Priority...",      "layer priority"
+        MENUITEM SEPARATOR
+        MENUITEM "S&tatus...",              "status"
+        MENUITEM "&Element",            "show element"
+        MENUITEM "&Measure",            "show measure"
+	MENUITEM "Constra&int",		"cns show"
+        MENUITEM "P&roperty...",        "show property"
+        MENUITEM "P&arasitic",          "show parasitic"
+#ifdef _ALLEGRO_EXPERT && !_LEGACY_TOOL
+	MENUITEM "Segments Over &Voids",        "highlight sov"
+#endif
+        MENUITEM SEPARATOR
+	MENUITEM "&Assign Color",       "assign color"
+        MENUITEM "&Highlight",          "hilight"
+        MENUITEM "&Dehighlight",        "dehilight"
+        MENUITEM SEPARATOR
+        POPUP "&Show Rats"
+        BEGIN
+            MENUITEM "&All",            "rats all"
+            MENUITEM "&Components",     "rats component"
+            MENUITEM "&Net",            "rats net"
+            MENUITEM "&Outside Partition",           "rats outside partition"
+        END
+#ifdef _ALLEGRO_GRE_VIEW
+    MENUITEM "Show All Bundles",            "bundle show_all"
+    MENUITEM "Show All Router Plan",        "rplan show_all"
+#endif
+        POPUP "&Blank Rats"
+        BEGIN
+            MENUITEM "&All",            "unrats all"
+            MENUITEM "&Components",     "unrats component"
+            MENUITEM "&Nets",           "unrats net"
+            MENUITEM "&Outside Partition",           "unrats outside partition"
+        END
+#ifdef _ALLEGRO_GRE_VIEW
+    MENUITEM "Blank All Bundles",           "bundle blank_all"
+    MENUITEM "Blank All Router Plan",       "rplan blank_all"
+#endif
+    END
+    POPUP "Set&up"
+    BEGIN
+        MENUITEM "Desi&gn Parameters...",        "prmed"
+        POPUP "Applica&tion Mode"
+        BEGIN
+          MENUITEM "General Edit",              "generaledit"
+          MENUITEM "Placement Edit",		"placementedit"	 
+          MENUITEM "Etch Edit",                 "etchedit"
+          MENUITEM "None",                      "noappmode"
+        END
+
+        MENUITEM "&Grids...",                   "define grid"
+        MENUITEM "&Cross-section...",           "xsection"
+        MENUITEM "&Embedded Layer Setup...",    "define embedded layer"
+        MENUITEM SEPARATOR
+	MENUITEM "Enable On-Line D&RC",		 "cns onlinedrc"
+	POPUP "Co&nstraints"
+	BEGIN
+           MENUITEM "&Modes...",		"cns cmmodes"
+	   MENUITEM "&Electrical...",	    "cmgr_elec"
+      	   MENUITEM "&Physical...",	  "cmgr_phys"
+	   MENUITEM "&Spacing...",	 "cmgr_spac"
+       MENUITEM "Sa&me Net Spacing...",       "cmgr_snspac"
+#ifdef _ALLEGRO_EXPERT || _ALLEGRO_PCB_GXL && !_LEGACY_TOOL
+	   MENUITEM "D&FA Constraint Spreadsheet...", "dfa_spreadsheet"
+#endif
+	   MENUITEM "&Constraint Manager...",	 "cmgr"
+      	END
+
+#ifdef _ALLEGRO_EXPERT
+	MENUITEM "Crosstalk &Table...",          "signal xtalktable"
+#endif
+        MENUITEM SEPARATOR
+        MENUITEM "Define &Lists...",        "define list"
+        MENUITEM SEPARATOR
+        POPUP "&Areas"
+        BEGIN
+            MENUITEM "Package &Keepout",    "keepout package"
+            MENUITEM "Package &Height",     "package_height"
+            MENUITEM SEPARATOR
+            MENUITEM "Ro&ute Keepout",      "keepout router"
+            MENUITEM "&Wire Keepout",       "keepout wire"
+            MENUITEM "&Via Keepout",        "keepout via"
+            MENUITEM "&Shape Keepout",		"keepout shape"
+            MENUITEM SEPARATOR
+            MENUITEM "Pro&be Keepout",      "keepout probe"
+            MENUITEM "&Gloss Keepout",      "keepout gloss"
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "Datatip Customization...",    "custom datatips"
+        MENUITEM "&User Preferences...",        "enved"
+    END
+    POPUP "&Shape"
+    BEGIN
+        MENUITEM "&Polygon",                "shape add"
+        MENUITEM "&Rectangular",            "shape add rect"
+        MENUITEM "&Circular",               "shape add circle"
+        MENUITEM SEPARATOR
+        MENUITEM "&Select Shape or Void",   "shape select"
+        MENUITEM SEPARATOR
+        POPUP "Manual &Void"
+        BEGIN
+            MENUITEM "&Polygon",            "shape void polygon"
+            MENUITEM "&Rectangular",        "shape void rectangle"
+            MENUITEM "&Circular",           "shape void circle"
+            MENUITEM "&Delete",             "shape void delete"
+            MENUITEM "&Element",            "shape void element"
+            MENUITEM "&Move",               "shape void move"
+            MENUITEM "&Copy",               "shape void copy"
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "Edit &Boundary",      "shape edit boundary"
+        MENUITEM "&Delete Islands",     "island_delete"
+        MENUITEM SEPARATOR
+        MENUITEM "Change Shape T&ype",  "shape change type"
+        MENUITEM "&Merge Shapes",       "shape merge shapes"
+        MENUITEM "Chec&k",          "shape check"
+        MENUITEM SEPARATOR
+        MENUITEM "C&ompose Shape",       "compose shape"
+        MENUITEM "D&ecompose Shape",     "decompose shape"
+        MENUITEM SEPARATOR
+        MENUITEM "&Global Dynamic Params...",    "shape global param"
+    END
+    POPUP "&Logic"
+    BEGIN
+    MENUITEM "&Net Schedule",       "net schedule"
+    END
+    POPUP "&Place"
+    BEGIN
+        MENUITEM "&Manually...",                "place manual"
+        MENUITEM SEPARATOR
+        POPUP "S&wap"
+        BEGIN
+            MENUITEM "&Pins",           "swap pins"
+            MENUITEM "&Functions",      "swap functions"
+            MENUITEM "&Components",     "swap components"
+        END
+        POPUP "&Via Arrays"
+        BEGIN
+            MENUITEM "&Matrix",     "add_viaarray"
+            MENUITEM "&Boundary",   "add_bviaarray"
+            MENUITEM "&Unplace",    "del_viaarray"
+        END
+        MENUITEM SEPARATOR
+        POPUP "&Design Partition"
+        BEGIN
+            MENUITEM "&Partitions",       "partition"
+            MENUITEM "&Workflow Manager", "workflow"
+            MENUITEM "&Soft Net Assignment", "soft net"
+        END
+    END
+    POPUP "&Route"
+    BEGIN
+        MENUITEM "&Connect",            "add connect"
+        MENUITEM "&Slide",          "slide"
+        MENUITEM "&Delay Tune",         "delay tune"
+#ifdef _ALLEGRO_GRE_ALL || _ALLEGRO_OPTION_HIGHSPEED || _ALLEGRO_ADV_OPTIMIZE
+        MENUITEM "Auto-interactive Delay Tune",     "aidt"
+#endif
+        MENUITEM "P&hase Tune",			"phase_tune"
+        MENUITEM "Cust&om Smooth",              "custom smooth"
+        MENUITEM SEPARATOR
+        MENUITEM "Create Fanout",               "create fanout"
+        MENUITEM "Copy Fanout",                 "copy fanout"
+        POPUP "&Via Structure"
+        BEGIN
+            MENUITEM "&Define...",	        "define via structure"
+            MENUITEM "D&elete...",	        "delete_via_structure"
+        END
+        POPUP "&Convert Fanout"
+        BEGIN
+            MENUITEM "Mark",                    "mark fanout"
+            MENUITEM "Unmark",                  "unmark fanout"
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "Router C&hecks",      "specctra checks"
+        MENUITEM "&Fanout By Pick",     "fanout_by_pick"
+        MENUITEM "Route Net(s) By &Pick",   "route_by_pick"
+        MENUITEM "&Elongation By Pick",     "elong_by_pick"
+        MENUITEM "Route &Automatic...",     "auto_route"
+        MENUITEM "&Route Editor...",     "specctra"
+        MENUITEM SEPARATOR
+        MENUITEM "&Miter By Pick",      "miter_by_pick"
+        MENUITEM "&UnMiter By Pick",        "unmiter_by_pick"
+#ifdef _ALLEGRO_EXPERT
+	MENUITEM "Spread Between &Voids",	"spread between voids"
+#endif
+#ifndef disable_ee_beta_functionality
+        POPUP "&Unsupported Prototypes"
+        BEGIN
+	    MENUITEM "Auto-interactive Convert Corner",      "aicc"
+            MENUITEM "Snake Router",        "snake"
+            MENUITEM SEPARATOR
+            MENUITEM "Help On Unsupported Utilities", "helpcmd -unsupported"
+        END
+#endif
+    END
+    POPUP "&Manufacture"
+    BEGIN
+        MENUITEM "&Dimension Environment",             "dimension edit"
+        MENUITEM SEPARATOR
+        MENUITEM "T&hieving...",        "thieving"
+        POPUP "&Testprep"
+        BEGIN
+            MENUITEM "&Manual...",                "testprep manual"
+        END
+    END
+    POPUP "&Tools"
+    BEGIN
+        MENUITEM "Create &Module...",           "create module"
+        POPUP "&Padstack"
+        BEGIN
+            MENUITEM "Modify &Design Padstack...",  "padeditdb"
+        END
+        MENUITEM "&Reports...",         "reports"
+        MENUITEM "Database &Check...",      "dbdoctor"       
+        MENUITEM "&Update DRC",         "drc update"
+        MENUITEM "&Window DRC",         "drc window"
+	MENUITEM "&Technology File Compare...",	"techfile compare"
+        POPUP "Uti&lities"
+        BEGIN
+            MENUITEM "&Env Variables...",   "set"
+            MENUITEM "&Aliases/Function Keys...", "alias"
+            MENUITEM "&Keyboard Commands",  "helpcmd"
+            MENUITEM "&Licenses Used...",   "license_use"
+        END
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&Documentation",              "cdsdoc allegro allegrolaunch"
+        POPUP "&Web Resources"
+        BEGIN
+           MENUITEM "&Community",		"http http://www.cadence.com/community"
+            MENUITEM "&Online Support",     "http http://support.cadence.com"
+           MENUITEM "&Web Collaboration",	"http http://collaboration.cadence.com"
+            MENUITEM "&Education Services", "http http://www.cadence.com/education"
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "&About Allegro Partition...", "about"
+    END
+END
+

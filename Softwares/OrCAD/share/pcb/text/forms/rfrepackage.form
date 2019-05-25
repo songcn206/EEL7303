@@ -1,0 +1,202 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 30 60
+HEADER "RF Autoplace"
+
+POPUP <rotate>"0""0.000","45""45.000","90""90.000".
+POPUP <modes>"General""0","Net exceptions""1","Component exceptions""2".
+
+TILE
+
+TEXT "Parameter set:"
+TLOC 1 1
+ENDTEXT
+
+FIELD mode
+FLOC 11 1
+ENUMSET 17
+POP "modes"
+ENDFIELD
+
+GROUP "General parameters" generallabel
+GLOC 1 3
+GSIZE 29 43
+ENDGROUP
+
+FIELD fixplaced
+FLOC 2 5
+CHECKLIST "Fix placed symbols"
+ENDFIELD
+
+FIELD ignorefixed
+FLOC 2 7
+CHECKLIST "Ignore FIXED property"
+ENDFIELD
+
+FIELD zoomselection
+FLOC 2 9
+CHECKLIST "Zoom to selected symbols"
+ENDFIELD
+
+FIELD userelangle
+FLOC 2 11
+CHECKLIST "Enable relative rotation for non RF"
+ENDFIELD
+
+TEXT "Additional relative rotation:" relativelabel
+TLOC 2 13
+ENDTEXT
+
+FIELD relangle
+FLOC 21 13
+REALFILLIN 5 8
+ENDFIELD
+
+TEXT "Rotation lock:" locklabel
+TLOC 2 15
+ENDTEXT
+
+FIELD angle
+FLOC 17 15
+REALFILLIN 6 10
+POP "rotate"
+ENDFIELD
+
+TEXT "Components to place:" placemsg
+TLOC 2 18
+ENDTEXT
+
+FIELD rpkgcomplist
+FLOC 2 20
+TREEVIEW 27 11
+ENDFIELD
+
+TEXT "Group filter:" groupnamemsg
+TLOC 2 43
+ENDTEXT
+
+FIELD groupfilter
+FLOC 12 43
+STRFILLIN 12 10
+ENDFIELD
+
+GROUP "Net exceptions" netexceptionslabel
+GLOC 1 3
+GSIZE 29 40
+ENDGROUP
+
+FIELD excludedcnets
+FLOC 2 5
+CHECKLIST "Exclude DC nets"
+ENDFIELD
+
+TEXT "Net filter:" netnamemsg
+TLOC 2 7
+ENDTEXT
+
+FIELD netfilter
+FLOC 9 7
+STRFILLIN 18 15
+ENDFIELD
+
+TEXT "Available nets:" availablenetsmsg
+TLOC 2 9
+ENDTEXT
+
+FIELD availablenets
+FLOC 2 11
+LIST "" 27 5
+OPTIONS SORT | MULTISELECT
+ENDFIELD
+
+FIELD addnets
+FLOC 6 20
+MENUBUTTON "Add nets" 18 3
+ENDFIELD
+
+TEXT "Net exceptions list:" netexceptionssmsg
+TLOC 2 22
+ENDTEXT
+
+FIELD netexceptionslist
+FLOC 2 24
+LIST "" 27 6
+OPTIONS SORT | MULTISELECT
+ENDFIELD
+
+FIELD removenets
+FLOC 6 35
+MENUBUTTON "Remove nets" 18 3
+ENDFIELD
+
+FIELD clearnodcnets
+FLOC 6 37
+MENUBUTTON "Clear non-DC nets" 18 3
+ENDFIELD
+
+FIELD clearallnets
+FLOC 6 39
+MENUBUTTON "Clear all nets" 18 3
+ENDFIELD
+
+GROUP "Component exceptions" compexceptionslabel
+GLOC 1 3
+GSIZE 29 40
+ENDGROUP
+
+FIELD ignoreic
+FLOC 2 5
+CHECKLIST "Ignore IC components"
+ENDFIELD
+
+FIELD ignoreio
+FLOC 2 7
+CHECKLIST "Ignore IO components"
+ENDFIELD
+
+FIELD ignorediscrete
+FLOC 2 9
+CHECKLIST "Ignore discrete components"
+ENDFIELD
+
+TEXT "Component exceptions list:" compexceptionssmsg
+TLOC 2 12
+ENDTEXT
+
+FIELD ignoredcomplist
+FLOC 2 14
+TREEVIEW 27 14
+ENDFIELD
+
+GROUP "Progress" progresslabel
+GLOC 1 46
+GSIZE 29 7
+ENDGROUP
+
+TEXT "Repackaging RFU1..." repackemsg
+TLOC 2 48
+ENDTEXT
+
+FIELD action
+FLOC 2 50
+MENUBUTTON "Start" 9 3
+ENDFIELD
+
+FLEXMODE EdgeGravity
+FLEX generallabel     0 0 1 1
+FLEX groupfilter		0 1 1 0
+FLEX netexceptionslabel  0 0 1 1
+FLEX availablenets 	0 0 1 0
+FLEX netfilter 		0 0 1 0
+FLEX netexceptionslist 0 0 1 1
+FLEX compexceptionslabel 0 0 1 1
+FLEX ignoredcomplist  0 0 1 1
+FLEX rpkgcomplist     0 0 1 1
+FLEX relativelabel     0 0 0 1
+FLEX progresslabel     0 1 1 0
+
+ENDTILE
+
+ENDFORM
+

@@ -1,0 +1,128 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 30 6
+HEADER "Thieving Parameters"
+
+POPUP <THIEVINGSTYLEPOP>"Circle""0","Rectangle""1","Line""2".
+POPUP <THIEVINGOUTLINEPOP>"Shape""0","Rectangle""1".
+
+TILE
+
+TEXT "Thieving style:"
+TLOC 1 2
+ENDTEXT
+
+FIELD thieving_style
+FLOC 17 2
+ENUMSET 9
+POP "THIEVINGSTYLEPOP"
+ENDFIELD
+
+TEXT "Thieving outline:"
+TLOC 1 4
+ENDTEXT
+
+FIELD thieving_outline
+FLOC 17 4 
+ENUMSET 9
+POP "THIEVINGOUTLINEPOP"
+ENDFIELD
+
+TEXT "Size X:"
+TLOC 1 6
+ENDTEXT
+
+FIELD size_x
+FLOC 17 6
+STRFILLIN 10 10
+ENDFIELD
+
+TEXT "Size Y:"
+TLOC 1 8
+ENDTEXT
+
+FIELD size_y
+FLOC 17 8
+STRFILLIN 10 10
+ENDFIELD
+
+TEXT "Clearance:"
+TLOC 1 10
+ENDTEXT
+
+FIELD clearance
+FLOC 17 10
+STRFILLIN 10 10
+ENDFIELD
+
+TEXT "Spacing X:"
+TLOC 1 12
+ENDTEXT
+
+FIELD spacing_x
+FLOC 17 12
+STRFILLIN 10 10
+ENDFIELD
+
+TEXT "Spacing Y:"
+TLOC 1 14
+ENDTEXT
+
+FIELD spacing_y
+FLOC 17 14
+STRFILLIN 10 10
+ENDFIELD
+
+FIELD border
+FLOC 1 16
+CHECKLIST "Border width:"
+ENDFIELD
+
+FIELD border_width
+FLOC 17 16
+STRFILLIN 10 10
+ENDFIELD
+
+FIELD staggered_pattern
+FLOC 1 18
+CHECKLIST "Staggered pattern"
+ENDFIELD
+
+FIELD clip_rki
+FLOC 1 20
+CHECKLIST "Clip to Route Keepin"
+ENDFIELD
+
+FIELD all_etch_layers
+FLOC 1 22
+#ifdef APD || ALLEGRO_MCM || SIP
+CHECKLIST "All conductor layers"
+#else
+CHECKLIST "All etch layers"
+#endif
+ENDFIELD
+
+FIELD all_soldermask_layers
+FLOC 1 24
+CHECKLIST "All soldermask layers"
+ENDFIELD
+
+FIELD offset_layers
+FLOC 1 26
+CHECKLIST "Offset layers"
+ENDFIELD
+
+FIELD done
+FLOC 2 30
+MENUBUTTON "OK" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 20 30
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

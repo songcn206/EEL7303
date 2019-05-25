@@ -1,0 +1,82 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 29 12
+
+HEADER "Calc Min Airgap"
+
+POPUP <class_popup> "" "".
+POPUP <subclass_popup> "" "".
+
+TILE
+
+TEXT "Layer for gap computation:"
+TLOC 1 1
+ENDTEXT
+
+FIELD gap_class
+FLOC 3 3
+ENUMSET 21
+POP "class_popup"
+ENDFIELD
+
+FIELD gap_subclass
+FLOC 3 5
+ENUMSET 21
+POP "subclass_popup"
+ENDFIELD
+
+FIELD include_same_net
+FLOC 1 8
+CHECKLIST "Include same net items"
+ENDFIELD
+
+FIELD check_drill_holes
+FLOC 1 10
+CHECKLIST "Check drill holes"
+ENDFIELD
+
+GROUP "Results"
+GLOC 1 13
+GSIZE 27 13
+ENDGROUP
+
+TEXT "Items selected:"
+TLOC 3 15
+ENDTEXT
+TEXT "0"
+TLOC 15 15
+INFO selected_count 1024
+ENDTEXT
+
+TEXT "Items on layer:"
+TLOC 3 17
+ENDTEXT
+TEXT "0"
+TLOC 15 17
+INFO layer_count 1024
+ENDTEXT
+
+TEXT "Minimum gap:"
+TLOC 3 19
+ENDTEXT
+TEXT "---"
+TLOC 15 19
+INFO min_gap 1024
+ENDTEXT
+
+FIELD zoom_to_gap
+FLOC 3 21
+CHECKLIST "Zoom display to minimum gap"
+ENDFIELD
+
+FIELD calc_progress
+FLOC 3 23
+CHECKLIST "Progress"
+PROGRESS 23 2
+ENDFIELD
+
+
+
+ENDTILE
+ENDFORM

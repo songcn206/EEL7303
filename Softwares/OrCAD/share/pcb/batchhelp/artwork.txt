@@ -1,0 +1,40 @@
+
+Command line arguments for artwork
+	 Generates films from Allegro boards.
+
+artwork [-s -p <-o outline_offset> <-a min_aperture>] 
+		[-f <filmname1> -f <filmname2> -f...] <board>
+   OR
+artwork -l <board>
+
+	[-s]
+	    Array outside of the shapes is not to be filled on a 
+	    negative film.
+	[-p] 
+	    Use vector pad-type behavior for raster artwork.
+	[-o <outline_offset>] 
+	    Applies to negative films. Adds another outline around
+	    the design outline extending the shape boundary of
+	    the filled area. This new artwork outline extends in
+	    all directions beyond the design outline.
+	    Default is "Shape bound box" obtained from the film record.
+	    Value must be given in mils.
+	[-a <min_aperture>] 
+	    For vector artwork, uses this as the minimum aperture.
+	    Default is 3 mils. min_aperture is an integer number whose 
+	    units must be given in mils. Fractional numbers is not
+	    supported and you must round the value to the nearest integer.
+
+	    Normally we use the smallest aperature defined in the
+	    or 3 mils whatever is larger. This allows you to set the
+	    default smaller then 3 mils. Do NOT attempt to use this
+	    to set a larger value then 3 mils.
+
+	    This option is NOT recommended.
+	[-f <filmname1> -f <filmname2> -f...] 
+	    Films to genrerate from artwork control record. Default
+	    is to generate all films.
+	[-l] 
+	    list films in board; one per line
+
+	<board> An Allegro .brd or .mcm file

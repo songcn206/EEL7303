@@ -1,0 +1,90 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 56 6
+HEADER "Wirebond OLP Export"
+
+POPUP <UNITS_POPUP>"Inches""INCHES","Mils""MILS","Millimeters""MILLIMETERS","Centimeters""CENTIMETERS","Microns""MICRONS".
+
+TILE
+
+FIELD export_top
+FLOC  1 1
+CHECKLIST "Export top side wirebonds"
+ENDFIELD
+TEXT "File name:"
+TLOC 3 3
+ENDTEXT
+FIELD top_name
+FLOC 12 3
+STRFILLIN 38 1024
+ENDFIELD
+
+FIELD export_bot
+FLOC  1 5
+CHECKLIST "Export bottom side wirebonds"
+ENDFIELD
+TEXT "File name:"
+TLOC 3 7
+ENDTEXT
+FIELD bot_name
+FLOC 12 7
+STRFILLIN 38 1024
+ENDFIELD
+
+TEXT "Ouput units:"
+TLOC 1 11
+ENDTEXT
+FIELD units
+FLOC 12 11
+ENUMSET 20
+POP "UNITS_POPUP"
+ENDFIELD
+TEXT "Accuracy:"
+TLOC 38 11
+ENDTEXT
+FIELD accuracy
+FLOC 47 11
+INTSLIDEBAR 1 1
+MIN 0
+MAX 4
+ENDFIELD
+
+FIELD fill_shapes
+FLOC 1 13
+CHECKLIST "Export filled pads/shapes in DXF"
+ENDFIELD
+
+FIELD standard_colors
+FLOC 1 15
+CHECKLIST "Color DXF layers by layer type"
+ENDFIELD
+
+FIELD detailed_wires
+FLOC 1 17
+CHECKLIST "Export full 3D geometry for bond wires"
+ENDFIELD
+
+FIELD export_profiles
+FLOC 1 19
+CHECKLIST "Write XML file with wire profile definitions"
+ENDFIELD
+
+FIELD generate
+FLOC 1 23
+MENUBUTTON "Export" 10 3
+ENDFIELD
+
+FIELD close
+FLOC 12 23
+MENUBUTTON "Close" 10 3
+ENDFIELD
+
+FIELD help
+FLOC 42 23
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

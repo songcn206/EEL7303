@@ -1,0 +1,251 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM 
+FIXED
+PORT 62 38
+HEADER "Placement Evaluator"
+
+POPUP <mapdata_popup>"Current Only""0","Predicted Only""1","Both No Pins""2","Both With Pins""3".
+
+POPUP <slices_popup>"1""1","2""2","5""5","10""10".
+
+MESSAGE CANT_RTPARM 1 "Can't create route general parameter"
+MESSAGE CANT_GRDPARM 1 "Can't get grid parameter record"
+MESSAGE BAD_XGRAN 1 "Not multiple of major x grid (%s)"
+MESSAGE BAD_YGRAN 1 "Not multiple of major y grid (%s)"
+MESSAGE WINDOW_TWIST 1 "Trace window is twisted"
+
+TILE
+
+TABSET "one"
+FLOC 1 1
+TSSIZE 61 22
+
+TAB "Ratsnest"
+
+FIELD rat_display
+FLOC 17 3
+CHECKLIST "Evaluate Ratsnest Density"
+ENDFIELD
+
+FIELD setrat_histogram
+FLOC 14 6
+CHECKLIST "Histogram" "ratdisp_group"
+ENDFIELD
+
+FIELD setrat_colormap
+FLOC 14 8
+CHECKLIST "Colormap:" "ratdisp_group"
+ENDFIELD
+
+TEXT "Contour Slices:"
+TLOC 29 8
+ENDTEXT 
+ 
+FIELD set_ratslices
+FLOC 42 8
+ENUMSET 3
+POP "slices_popup"
+ENDFIELD 
+ 
+TEXT "Display Grid:"
+TLOC 16 11
+ENDTEXT
+
+TEXT "X:"
+TLOC 27 11
+ENDTEXT
+
+FIELD rat_grainx
+FLOC 29 11
+REALFILLIN 6 6
+DECIMAL 2
+ENDFIELD
+
+TEXT "Y:"
+TLOC 27 13
+ENDTEXT
+
+FIELD rat_grainy
+FLOC 29 13
+REALFILLIN 6 6
+DECIMAL 2
+ENDFIELD
+
+ENDTAB
+
+TAB "Router"
+
+FIELD route_display
+FLOC 1 1
+CHECKLIST "Evaluate Route Density"
+ENDFIELD
+
+FIELD setroute_histogram
+FLOC 4 3
+CHECKLIST "Histogram" "routedisp_group"
+ENDFIELD
+
+FIELD setroute_colormap
+FLOC 4 5
+CHECKLIST "Colormap" "routedisp_group"
+ENDFIELD
+
+FIELD setroute_tracemap
+FLOC 4 7
+CHECKLIST "Tracemap" "routedisp_group"
+ENDFIELD
+
+TEXT "Contour Slices:"
+TLOC 7 9
+ENDTEXT 
+ 
+FIELD set_routeslices
+FLOC 20 9
+ENUMSET 3
+POP "slices_popup"
+ENDFIELD 
+
+ 
+TEXT "Display Grid:"
+TLOC 4 12
+ENDTEXT
+
+TEXT "X:"
+TLOC 15 12
+ENDTEXT
+
+FIELD route_grainx
+FLOC 17 12
+REALFILLIN 6 6
+DECIMAL 2
+ENDFIELD
+
+TEXT "Y:"
+TLOC 15 14
+ENDTEXT
+
+FIELD route_grainy
+FLOC 17 14
+REALFILLIN 6 6
+DECIMAL 2
+ENDFIELD
+
+TEXT "Map:"
+TLOC 4 17
+ENDTEXT
+
+FIELD data_tomap
+FLOC 9 17
+ENUMSET 13
+POP "mapdata_popup"
+ENDFIELD
+
+TEXT "Lower Left:"
+TLOC 29 5
+ENDTEXT
+
+TEXT "X:"
+TLOC 31 7
+ENDTEXT
+
+FIELD set_traceminx
+FLOC 33 7
+REALFILLIN 8 8
+DECIMAL 2
+ENDFIELD
+
+TEXT "Y:"
+TLOC 31 9
+ENDTEXT
+
+FIELD set_traceminy
+FLOC 33 9
+REALFILLIN 8 8
+DECIMAL 2
+ENDFIELD
+
+TEXT "Upper Right:"
+TLOC 29 11
+ENDTEXT
+
+TEXT "X:"
+TLOC 31 13
+ENDTEXT
+
+FIELD set_tracemaxx
+FLOC 33 13
+REALFILLIN 8 8
+DECIMAL 2
+ENDFIELD
+
+TEXT "Y:"
+TLOC 31 15
+ENDTEXT
+
+FIELD set_tracemaxy
+FLOC 33 15
+REALFILLIN 8 8
+DECIMAL 2
+ENDFIELD
+
+FIELD trace_vertical
+FLOC 46 7
+CHECKLIST "Vertical"
+ENDFIELD
+
+FIELD trace_horizontal
+FLOC 46 9
+CHECKLIST "Horizontal"
+ENDFIELD
+
+FIELD trace_45
+FLOC 46 11
+CHECKLIST "+45"
+ENDFIELD
+
+FIELD trace_m45
+FLOC 46 13
+CHECKLIST "-45"
+ENDFIELD
+
+FIELD trace_via
+FLOC 46 15
+CHECKLIST "Via"
+ENDFIELD
+
+GROUP "Tracemap Window"
+GLOC 27 2
+GSIZE 17 17
+ENDGROUP
+
+GROUP "Tracemap Layers"
+GLOC 44 2
+GSIZE 15 17
+ENDGROUP
+
+ENDTAB
+
+ENDTABSET
+
+FIELD statistics
+FLOC 2 24
+CHECKLIST "Generate Board Statistics"
+ENDFIELD
+
+FIELD Run
+FLOC 1 27
+MENUBUTTON "Run" 9 3
+ENDFIELD
+
+FIELD Done
+FLOC 11 27
+MENUBUTTON "Close" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 53 27
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+ENDTILE
+ENDFORM

@@ -1,0 +1,28 @@
+#  $Header: /vobs/psd_backend_data/data/prefs/ui.prf /main/13 17-Sep-01.11:07:00 fxf $
+#------------------------------------------------------------------------------
+#			Input Interface Variables
+#------------------------------------------------------------------------------
+#
+# See User.prf for complete descriptions of fields in this file.
+
+PARENT:PARENT_L=ui/xprobe
+
+SUMMARY:HELP= Manage internal and external cross-probing.
+
+longmsg_noxprobe:TYPE=CHECK:EFF_IMMEDIATE:\
+HELP=Disables xy center functionality from text view windows such \
+as show element, reports, etc. By default, clicking on a text coordinate \
+causes the main Allegro canvas to center on that coordinate.
+
+ignore_external_highlight:TYPE=CHECK:EFF_RESTART:\
+HELP=If this is set, then highlight (cross-probe) messages from  \
+simultaneously running, external instances of this program are ignored.
+
+allegro_no_xprobe:TYPE=ENUM:POPUP=yes,exceptProjectManager:\
+DEFAULT=:EFF_IMMEDIATE:\
+HELP=Controls Allegro cross-probing with external tools. By default, \
+inter-tool cross-probing is enabled. If set to yes both input and \
+output communication is disabled. If set to exceptProjectManager, \
+cross-probing is enabled if Allegro is started from project manager. \
+When Allegro is run stand-alone cross-probing is disabled.
+

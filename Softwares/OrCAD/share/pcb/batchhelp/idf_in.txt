@@ -1,0 +1,75 @@
+
+Command line arguments for idf_in: 
+    Translates design outline and component placement information from Intermediate 
+    Data Format (IDF) for use in an electrical design. You can import data into a 
+    new design or into an existing design.
+
+    For additional information, see the Transferring Logic Design Data user guide
+    in your documentation set.
+
+    Based on the mechanical system used, the editor looks for the file extensions described 
+    below:
+      PTC  - <idf file>.emn
+      SDRC - <idf file>.out
+      IDF  - <idf file>.bdf
+
+    Any error or warning messages are stored in the idf_in.log file.
+
+idf_in [-d <name_type>] <idf data file> [-o <output design>] [-i <input design> -[a[p|m|f]] 
+
+
+    OPTIONAL ARGUMENTS
+        [-d <name_type>]
+              Switch specifying the name of the mechanical system.  <name_type> can be one 
+	      of the following: PTC, SDRC, or IDF.
+	      Default: IDF
+
+        [-o <output design>]
+              The name of the output design database to be created/updated by idf_in. 
+              Default: <drawing_name>.brd
+
+        [-i <input design>]
+              The name of the input design database to be updated by import. If no
+	      output name is given the input design is overwritten.
+              Default: <draing_name>.brd
+
+        [-p]
+              Generates a .dra file of type symbol package.
+	      Output design name is: <drawing_name>.dra
+
+        [-m]
+              Generates a .dra file of type symbol mechanical.
+	      Output design name is: <drawing_name>.dra
+
+        [-f]
+              Generates a .dra file of type symbol format.
+	      Output design name is: <drawing_name>.dra
+
+        [-a <number>]  The accuracy that is the number of decimal places.
+              Range is 0 to 4.
+              Default: 3
+       
+    REQUIRED ARGUMENTS:
+        <idf data file>
+              Name of the IDF Data File. If no extension is given,
+              then the <name_foramt> determines the file's extension. 
+
+	The -p, -m, or -f arguments may not be combined.
+             
+EXAMPLES:
+
+- This command creates or updates the in_test board file by reading the IDF file
+  test.out. The -d SDRC argument indicates that the IDF file (test) extension is .out.
+	idf_in -d SDRC -o in_test test
+
+- This command creates or updates the in_test.dra file by reading the IDF file
+  test.emn. The -d SDRC argument indicates that the IDF file extension is .emn. The -p
+  argument indicates the generation of a .dra file.
+	idf_in -d PTC -p -o in_test test
+
+- This command shows an example using only the required argument. The IDF file is
+  test. Because there is no -d <name_type> argument, the default is IDF. The IDF file 
+  extension is .bdf. Because there is no outname argument, the current design name, test, 
+  is used.
+	idf_in test
+

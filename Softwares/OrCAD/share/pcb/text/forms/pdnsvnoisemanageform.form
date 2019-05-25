@@ -1,0 +1,95 @@
+####################################################################################
+#       Cadence Design Systems                                                     #
+#                                                                                  #
+# (C) COPYRIGHT, Cadence Design Systems, Inc. 2010                                 #
+# All Rights Reserved                                                              #
+# Licensed Materials - Property of Cadence Design Systems                          #
+#                                                                                  #
+# No part of this file may be reproduced, stored in a retrieval system,            #
+# or transmitted in any form or by any means --- electronic, mechanical,           #
+# photocopying, recording, or otherwise --- without prior written permission       #
+# of Cadence Design Systems, Inc.                                                  #
+#                                                                                  #
+# WARRANTY:                                                                        #
+# Use all material in this file at your own risk.  Cadence Design Systems          #
+# makes no claims about any material contained in this file.                       #
+####################################################################################
+FILE_TYPE=FORM_DEFN VERSION=2
+
+    FORM
+    FIXED
+    PORT 83 33
+    HEADER "Virutal Noise Management"
+
+    ACTIVEFIELD Refresh
+    DEFAULT Done
+
+    TILE
+
+    FIELD Done
+        FLOC 1 31
+        MENUBUTTON "Close" 10 3
+    ENDFIELD
+
+    FIELD Refresh
+        FLOC 61 31
+        MENUBUTTON "Refresh" 10 3
+    ENDFIELD
+
+    FIELD Help
+        FLOC 72 31
+        MENUBUTTON "Help" 10 3
+    ENDFIELD
+
+    GROUP "" "VirtualGroup"
+        GLOC 1 0
+        GSIZE 82 30
+    ENDGROUP
+
+    POPUP <VNoiseGridHeadPopup>"""".
+    GRID VNoiseGrid
+    FLOC 2 2
+    FSIZE 80 24
+    OPTIONS HLINES VLINES USERSIZE
+
+    GHEAD TOP
+        HEADSIZE 2
+        OPTIONS 3D
+        POP "VNoiseGridHeadPopup"
+    ENDGHEAD
+    GHEAD SIDE
+        HEADSIZE 0
+    ENDGHEAD
+    ENDGRID
+
+    FIELD VNoiseAdd
+        FLOC 2 27
+        MENUBUTTON "Add" 10 3
+    ENDFIELD
+
+    FIELD VNoiseEdit
+        FLOC 13 27
+        MENUBUTTON "Edit" 10 3
+    ENDFIELD
+
+    FIELD VNoiseDel
+        FLOC 24 27
+        MENUBUTTON "Delete" 10 3
+    ENDFIELD
+
+    FIELD VNoiseDelAll
+        FLOC 35 27
+        MENUBUTTON "Delete All" 10 3
+    ENDFIELD
+
+    FIELD VNoiseZoom
+        FLOC 46 27
+        MENUBUTTON "Zoom" 10 3
+    ENDFIELD
+
+    FLEXMODE EdgeGravity
+    FLEX VirtualGroup   0   0   1   1
+    FLEX VNoiseGrid   0   0   1   1
+
+    ENDTILE
+ENDFORM

@@ -1,0 +1,78 @@
+####################################################################################
+#       Cadence Design Systems                                                     #
+#                                                                                  #
+# (C) COPYRIGHT, Cadence Design Systems, Inc. 2010                                 #
+# All Rights Reserved                                                              #
+# Licensed Materials - Property of Cadence Design Systems                          #
+#                                                                                  #
+# No part of this file may be reproduced, stored in a retrieval system,            #
+# or transmitted in any form or by any means --- electronic, mechanical,           #
+# photocopying, recording, or otherwise --- without prior written permission       #
+# of Cadence Design Systems, Inc.                                                  #
+#                                                                                  #
+# WARRANTY:                                                                        #
+# Use all material in this file at your own risk.  Cadence Design Systems          #
+# makes no claims about any material contained in this file.                       #
+####################################################################################
+FILE_TYPE=FORM_DEFN VERSION=2
+    FORM
+    FIXED
+    PORT 35 27
+    HEADER "Virtual VRM"
+
+    ACTIVEFIELD "Done"
+    DEFAULT Done
+
+    TILE
+
+    FIELD Done
+        FLOC 1 12
+        MENUBUTTON "OK" 10 3
+    ENDFIELD
+
+    FIELD Cancel
+        FLOC 12 12
+        MENUBUTTON "Cancel" 10 3
+    ENDFIELD
+
+    FIELD Help
+        FLOC 25 12
+        MENUBUTTON "Help" 10 3
+    ENDFIELD
+
+    GROUP ""
+        GLOC 1 0
+        GSIZE 34 11
+    ENDGROUP
+
+    TEXT "RefDes:"
+        TLOC 2 2
+    ENDTEXT
+
+    TEXT
+        TLOC 12 2
+        INFO CompName 11
+    ENDTEXT
+
+    TEXT "Package:"
+        TLOC 2 5
+    ENDTEXT
+
+    TEXT
+        FLOC 12 5
+        INFO PackageName 15
+    ENDFIELD
+
+    TEXT "Net name:"
+        TLOC 2 8
+    ENDTEXT
+
+    POPUP <PowerNetPopup>"""".
+    FIELD PowerNet
+        FLOC 12 8
+        ENUMSET 19
+        POP "PowerNetPopup"
+    ENDFIELD
+
+    ENDTILE
+ENDFORM

@@ -1,0 +1,246 @@
+#
+# pxlBA-rfpcb.txt : Extract file used to extract properties for
+#             back annotation using packagerxl. Refer to Allegro extract
+#             documentation for more details on the syntax of this file
+#             and the Extract program.
+#
+#             The lines starting with # are comments.
+#
+#	      This file is used instead of the default file, pxlBA.txt if
+#	      the pcb databases has RFPCB properties.
+#
+#             genfeedformat looks for this file in the current directory.
+#             If it is not found there, it looks for it in the hierarchy 
+#	      in the following location: VIEWPATH
+#	      It is recommended for company wide backannotation settings
+#	      that this file be located @ <cdssite>/share/local/pcb/views
+
+#
+# Connection view. File: pinView.dat
+#
+LOGICAL_PIN
+#
+# These properties must not be removed, moved or modified.
+#  vvvvvvvvvvvvvvvvvvv
+   NET_NAME
+   REFDES
+   PIN_NUMBER
+   FUNC_LOGICAL_PATH
+   COMP_DEVICE_TYPE
+   FUNC_SCH_SIZE
+   FUNC_HAS_FIXED_SIZE
+   FUNC_DES
+   PIN_CDS_PINID
+   PIN_TERMINATION
+   PIN_TERM_IDENT
+#  ^^^^^^^^^^^^^^^^^^^
+# Any other PIN properties to be back annotated show up here.
+# You may extract standard Allgero properties or
+# Allegro user defined properties.
+# The following two are sample properties. To extract them, remove the '#'
+# sign at the beginning of the line.
+#   PIN_POWER
+#   PIN_NAME
+#
+END
+
+#
+# Function properties view. File: funcView.dat
+# Include this section only if you wish to extract and
+# ba any function properties.
+# In order to backannotate function properties you must 
+# include FUNC_LOGICAL_PATH.
+#
+FUNCTION
+    FUNC_LOGICAL_PATH
+    COMP_DEVICE_TYPE
+    REFDES
+    FUNC_PRIM_FILE
+    COMP_PARENT_PPT
+    COMP_PARENT_PPT_PART
+    COMP_PARENT_PART_TYPE
+    FUNC_SCH_SIZE
+    FUNC_HAS_FIXED_SIZE
+    FUNC_DES
+    FUNC_GROUP
+    FUNC_ROOM
+    FUNC_TERM_IDENT
+#  ^^^^^^^^^^^^^^^^^^^
+# Any other FUNCTION properties to be back annotated show up here.
+# You may extract standard Allgero properties or
+# Allegro user defined properties.
+# The following two are sample properties. To extract them, remove the '#'
+# sign at the beginning of the line.
+#   FUNC_NO_SWAP_PIN
+END
+
+#
+# Component properties view. File: compView.dat
+# Include this section only if you wish to extract and ba component instance
+# or component definition properties.
+# In order to backannotate component properties you must 
+# include REFDES
+#
+COMPONENT
+   REFDES
+#  SYM_NAME
+###  Module reuse backannotation support
+   COMP_REUSE_ID
+#  ^^^^^^^^^^^^^^^^^^^
+# Any other COMPONENT properties to be back annotated show up here.
+# You may extract standard Allgero properties or
+# Allegro user defined properties.
+# The following are sample properties. To extract them, remove the '#'
+# sign at the beginning of the line.
+#   COMP_COMPONENT_WEIGHT
+#   COMP_FIX_ALL
+#   COMP_J_TEMPERATURE
+#   COMP_MAX_POWER_DISS_DEVICE
+#   COMP_MAX_POWER_DISS_INSTANCE
+#   COMP_FIXED
+#   COMP_NO_PIN_ESCAPE
+#   COMP_NO_ROUTE
+#   COMP_PIN_ESCAPE
+#   COMP_PLACE_TAG
+# The following property is used to have XNets properly communicate
+# between the board and schematic. Comment out if you do not use.
+    COMP_SIGNAL_MODEL
+#   The following properties are needed to feedback ppt
+#   part selections done in Allegro.
+#   You may comment them out if you do not use this functionality.
+    COMP_PARENT_PPT
+    COMP_SYMBOL_EDITED
+    COMP_PARENT_PPT_PART
+	COMP_ISRFELEMENT
+	COMP_RFELEMENTTYPE
+	COMP_RFLAYER
+	COMP_RFLAYER1
+	COMP_RFLAYER2
+	COMP_RFLAYER3
+	COMP_RFLAYER4
+	COMP_RFLAYER5
+	COMP_RFLAYER6
+	COMP_RFLAYER7
+	COMP_RFLAYER8
+	COMP_RFLAYER9
+	COMP_RFLAYER10
+	COMP_RFLAYER11
+	COMP_RFLAYER12
+	COMP_RFLAYER13
+	COMP_RFLAYER14
+	COMP_RFLAYER15
+	COMP_RFLAYER16
+	COMP_RFCOUPLINGMODE
+	COMP_RFFLIPMODE
+	COMP_RFANGLE
+	COMP_RFANGLE1
+	COMP_RFWIDTH
+	COMP_RFWIDTH1
+	COMP_RFWIDTH2
+	COMP_RFWIDTH3
+	COMP_RFWIDTH4
+	COMP_RFWIDTH5
+	COMP_RFWIDTH6
+	COMP_RFWIDTH7
+	COMP_RFWIDTH8
+	COMP_RFWIDTH9
+	COMP_RFWIDTH10
+	COMP_RFWIDTH11
+	COMP_RFWIDTH12
+	COMP_RFWIDTH13
+	COMP_RFWIDTH14
+	COMP_RFWIDTH15
+	COMP_RFWIDTH16
+	COMP_RFLENGTH
+	COMP_RFLENGTH1
+	COMP_RFLENGTH2
+	COMP_RFLENGTH3
+	COMP_RFLENGTH4
+	COMP_RFLENGTH5
+	COMP_RFLENGTH6
+	COMP_RFLENGTH7
+	COMP_RFLENGTH8
+	COMP_RFSPACING
+	COMP_RFSPACING1
+	COMP_RFSPACING2
+	COMP_RFSPACING3
+	COMP_RFSPACING4
+	COMP_RFSPACING5
+	COMP_RFSPACING6
+	COMP_RFSPACING7
+	COMP_RFSPACING8
+	COMP_RFSPACING9
+	COMP_RFSPACING10
+	COMP_RFSPACING11
+	COMP_RFSPACING12
+	COMP_RFSPACING13
+	COMP_RFSPACING14
+	COMP_RFSPACING15
+	COMP_RFOFFSETX
+	COMP_RFOFFSETY
+	COMP_RFRADIUS
+	COMP_RFDEPTH
+	COMP_RFFREQUENCY
+	COMP_RFMITERFRACTION
+	COMP_RFBENDMODE
+	COMP_RFNUMBERLEGS
+	COMP_RFNUMBERPAIRS
+	COMP_RFNUMBERTURNS
+	COMP_RFCAPACITANCE
+	COMP_RFRESISTANCE
+	COMP_RFINDUCTANCE
+	COMP_RFPADSTACKNAME
+	COMP_RFPADSSMNAME1
+	COMP_RFPADSSMNAME2
+	COMP_RFPADBEGINLAYER
+	COMP_RFPADENDLAYER
+	COMP_RFPADLINEWIDTH1
+	COMP_RFPADLINEWIDTH2
+	COMP_RFPADDIAMETER1
+	COMP_RFPADDIAMETER2
+	COMP_RFPADLENGTH1
+	COMP_RFPADLENGTH2
+	COMP_RFHOLEDIAMETER
+	COMP_RFPADANGLE
+	COMP_RFDRANAME
+	COMP_RFPADTYPE
+	COMP_RFBLOCK
+	COMP_RFDCNET
+END
+
+#
+# Signal properties view. File: netView.dat
+# Include this section only if you wish to extract and ba any net properties.
+# In order to backannotate signal properties you must 
+# include NET_NAME
+#
+NET
+   NET_NAME
+   NET_LOGICAL_PATH
+   NET_VOLTAGE
+#  ^^^^^^^^^^^^^^^^^^^
+# Any other NET properties to be back annotated show up here.
+# You may extract standard Allgero properties or
+# Allegro user defined properties.
+# The following are sample properties. To extract them, remove the '#'
+# sign at the beginning of the line.
+#   NET_SPACING_TYPE
+#   NET_PHYSICAL_TYPE
+#   NET_ELECTRICAL_CONSTRAINT_SET
+#
+#   NET_TOTAL_ETCH_LENGTH
+#   NET_PROPAGATION_DELAY
+#   NET_RELATIVE_PROPAGATION_DELAY
+#   NET_DRIVER_TERM_VAL
+#   NET_ECL
+#   NET_FIXED
+#   NET_LOAD_TERM_VAL
+#   NET_NO_GLOSS
+#   NET_NO_PIN_ESCAPE
+#   NET_NO_RIPUP
+#   NET_ROUTE_PRIORITY
+#   NET_ROUTE_TO_SHAPE
+#   NET_STATUS
+#   NET_STUB_LENGTH
+#   NET_WEIGHT
+END

@@ -1,0 +1,358 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM 
+FIXED
+PORT 84 21
+HEADER "Testprep Parameters"
+
+POPUP <TPPINTYPPOP>"Input""0","Output""1","Any Pin""2","Via""3",\
+"Any Pnt""4".
+
+POPUP <TPPADTYPPOP>"SMT/Blind""1","Thru""0","Either""2".
+
+POPUP <TPMTHDPOP>"Single""0","Node""1","Flood""2".
+
+POPUP <PRBLYRPOP>"Top""0","Bottom""1","Either""2".
+
+POPUP <PRBAUCPOP>"Never""0","Top layer only""1","Bottom layer only""2","Either layer""3".
+
+POPUP <PRBREPPOP>"Assembly""0","Place Bound""1".
+
+POPUP <TPTXTROTPOP>"0""0","90""1","180""2","270""3".
+
+POPUP <right_mouse> "Dummy""Dummy".
+
+POPUP <figure_list> "Square"     "5",\
+                    "Hexagon X" "15",\
+                    "Hexagon Y" "16",\
+                    "Octagon"    "3",\
+                    "Diamond"    "7",\
+                    "Triangle"  "18",\
+                    "Oblong X"  "11",\
+                    "Oblong Y"  "12",\
+                    "Rectangle"  "6". 
+
+POPUP <via_list> "" "".
+
+TILE
+
+TABSET "TestprepParametersTABS"
+FLOC 1 1
+TSSIZE 83 36
+
+TAB "General Parameters"
+
+TEXT "Pin type:"
+TLOC 5 4
+TGROUP "Preferences:"
+ENDTEXT
+
+FIELD TEST_PIN_TYPE
+FLOC 20 4
+FGROUP "Preferences:"
+ENUMSET 8
+POP "TPPINTYPPOP"
+ENDFIELD
+
+TEXT "Pad stack type:"
+TLOC 5 6
+TGROUP "Preferences:"
+ENDTEXT
+
+FIELD TEST_PAD_TYPE
+FLOC 20 6
+FGROUP "Preferences:"
+ENUMSET 8
+POP "TPPADTYPPOP"
+ENDFIELD
+
+FIELD DISPLAY_TEXT
+FLOC 4 15
+FGROUP "Text:"
+CHECKLIST "Display"
+ENDFIELD
+
+FIELD EXTENSION_ALPHA
+FLOC 7 17
+FGROUP "Text:"
+CHECKLIST "net-Alphabetic" "extension_group"
+ENDFIELD
+
+FIELD EXTENSION_NUMERIC
+FLOC 7 19 
+FGROUP "Text:"
+CHECKLIST "net-Numeric" "extension_group"
+ENDFIELD
+
+FIELD STRING_NUMERIC
+FLOC 7 21 
+FGROUP "Text:"
+CHECKLIST "stringNumeric" "extension_group"
+ENDFIELD
+
+FIELD STRING_TO_USE
+FLOC 20 21
+FGROUP "Text:"
+STRFILLIN 14 7
+ENDFIELD
+
+TEXT "Rotation:"
+TLOC 7 24 
+TGROUP "Text:"
+ENDTEXT
+
+FIELD TEXT_ROTATION
+FLOC 20 24
+FGROUP "Text:"
+ENUMSET 3
+POP "TPTXTROTPOP"
+ENDFIELD
+
+TEXT "Offset:"
+TLOC 7 27 
+TGROUP "Text:"
+ENDTEXT
+
+TEXT "X:"
+TLOC 17 27
+TGROUP "Text:"
+ENDTEXT
+
+FIELD TEXT_OFFSET_X
+FLOC 20 27
+FGROUP "Text:"
+STRFILLIN 14 10
+ENDFIELD
+
+TEXT "Y:"
+TLOC 17 29
+TGROUP "Text:"
+ENDTEXT
+
+FIELD TEXT_OFFSET_Y
+FLOC 20 29
+FGROUP "Text:"
+STRFILLIN 14 10
+ENDFIELD
+
+TEXT "Layer:"
+TLOC 44 4
+TGROUP "Methodology:"
+ENDTEXT
+
+FIELD LAYER_TO_TEST
+FLOC 60 4 
+FGROUP "Methodology:"
+ENUMSET 7
+POP "PRBLYRPOP"
+ENDFIELD
+
+TEXT "Test method:"
+TLOC 44 6
+TGROUP "Methodology:"
+ENDTEXT
+
+FIELD TEST_METHOD
+FLOC 60 6 
+FGROUP "Methodology:"
+ENUMSET 7
+POP "TPMTHDPOP"
+ENDFIELD
+
+FIELD BARE_BOARD_TEST
+FLOC 41 8
+FGROUP "Methodology:"
+CHECKLIST "Bare board test"
+ENDFIELD
+
+TEXT "Test grid:"
+TLOC 44 15
+TGROUP "Restrictions:"
+ENDTEXT
+
+TEXT "X:"
+TLOC 57 15
+TGROUP "Restrictions:"
+ENDTEXT
+
+FIELD TEST_GRID_X
+FLOC 61 15
+FGROUP "Restrictions:"
+STRFILLIN 14 14
+ENDFIELD
+
+TEXT "Y:"
+TLOC 57 17
+TGROUP "Restrictions:"
+ENDTEXT
+
+FIELD TEST_GRID_Y
+FLOC 61 17
+FGROUP "Restrictions:"
+STRFILLIN 14 14
+ENDFIELD
+
+TEXT "Min pad size:"
+TLOC 44 20
+TGROUP "Restrictions:"
+ENDTEXT
+
+FIELD MIN_TEST_PAD_SIZE
+FLOC 61 20
+FGROUP "Restrictions:"
+STRFILLIN 14 14
+ENDFIELD
+
+TEXT "Allow under component:"
+TLOC 41 23
+TGROUP "Restrictions:"
+ENDTEXT
+
+FIELD ALLOW_UNDER_COMP
+FLOC 61 23
+FGROUP "Restrictions:"
+ENUMSET 14
+POP "PRBAUCPOP"
+ENDFIELD
+
+TEXT "Component representation:"
+TLOC 41 25
+TGROUP "Restrictions:"
+ENDTEXT
+
+FIELD COMPONENT_REP
+FLOC 61 25
+FGROUP "Restrictions:"
+ENUMSET 14
+POP "PRBREPPOP"
+ENDFIELD
+
+FIELD DISABLE_BUBBLING
+FLOC 41 28
+FGROUP "Restrictions:"
+CHECKLIST "Disable cline bubbling"
+ENDFIELD
+
+GROUP "Preferences:"
+GLOC 3 1
+GSIZE 34 10
+ENDGROUP
+
+GROUP "Text:"
+GLOC 3 12 
+GSIZE 34 20
+ENDGROUP
+
+GROUP "Methodology:"
+GLOC 40 1
+GSIZE 39 10
+ENDGROUP
+
+GROUP "Restrictions:"
+GLOC 40 12
+GSIZE 39 20
+ENDGROUP
+
+ENDTAB
+
+TAB "Padstack Selections"
+
+GRID VIA_SETTING
+FLOC 1 1
+FSIZE 80 8 
+OPTIONS HLINES VLINES USERSIZE
+
+GHEAD TOP
+HEADSIZE 2
+OPTIONS 3D MULTI
+ENDGHEAD
+
+ENDGRID
+
+GRID VIA_REPLACE
+FLOC 1 10
+FSIZE 80 20
+OPTIONS HLINES VLINES USERSIZE
+POP "right_mouse"
+
+GHEAD TOP
+HEADSIZE 2
+OPTIONS 3D MULTI
+POP "via_list"
+ENDGHEAD
+
+ENDGRID
+
+FIELD LOAD_SELECTIONS
+FLOC 1 30 
+MENUBUTTON "Load selections from file" 15 3
+ENDFIELD
+
+FIELD SAVE_SELECTIONS
+FLOC 21 30
+MENUBUTTON "Save selections to file" 15 3
+ENDFIELD
+
+FIELD NEW_EXISTING_VIAS
+FLOC 40 30
+MENUBUTTON "Load new existing vias" 15 3
+ENDFIELD
+
+FIELD REPLACE_VIAS
+FLOC 60 30
+CHECKLIST "Replace vias"
+ENDFIELD
+
+ENDTAB
+
+TAB "Probe Types"
+
+GRID PROBE_TYPES_SPACING
+FLOC 1 1
+FSIZE 80 30
+OPTIONS HLINES VLINES USERSIZE
+POP "right_mouse"
+
+GHEAD TOP
+HEADSIZE 2
+OPTIONS 3D MULTI
+ENDGHEAD
+
+ENDGRID
+
+FIELD LOAD_TYPES
+FLOC 1 30 
+MENUBUTTON "Load types from file" 15 3
+ENDFIELD
+
+FIELD SAVE_TYPES
+FLOC 25 30
+MENUBUTTON "Save types to file" 15 3
+ENDFIELD
+
+TEXT 
+TLOC 1 32
+INFO ILLEGAL_PROBE_TEXT 50
+ENDTEXT
+
+ENDTAB
+
+FIELD close
+FLOC 2 38
+MENUBUTTON "Close" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 14 38
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 61 38
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+ENDTABSET
+
+ENDTILE
+
+ENDFORM

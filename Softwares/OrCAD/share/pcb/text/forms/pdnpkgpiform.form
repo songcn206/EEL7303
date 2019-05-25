@@ -1,0 +1,326 @@
+####################################################################################
+#       Cadence Design Systems                                                     #
+#                                                                                  #
+# (C) COPYRIGHT, Cadence Design Systems, Inc. 2008                                 #
+# All Rights Reserved                                                              #
+# Licensed Materials - Property of Cadence Design Systems                          #
+#                                                                                  #
+# No part of this file may be reproduced, stored in a retrieval system,            #
+# or transmitted in any form or by any means --- electronic, mechanical,           #
+# photocopying, recording, or otherwise --- without prior written permission       #
+# of Cadence Design Systems, Inc.                                                  #
+#                                                                                  #
+# WARRANTY:                                                                        #
+# Use all material in this file at your own risk.  Cadence Design Systems          #
+# makes no claims about any material contained in this file.                       #
+####################################################################################
+FILE_TYPE=FORM_DEFN VERSION=2
+
+    FORM
+    FIXED
+    PORT 112 60
+    HEADER "Power Integrity"
+
+    ACTIVEFIELD "Done"
+    DEFAULT Done
+
+    TILE
+
+    FIELD Done
+        FLOC 2 43
+        MENUBUTTON "Close" 10 3
+    ENDFIELD
+
+    FIELD Analyze
+        FLOC 13 43
+        MENUBUTTON "Analyze" 10 3
+    ENDFIELD
+
+    FIELD DecapReport
+        FLOC 79 43
+        MENUBUTTON "Report" 10 3
+    ENDFIELD
+
+    FIELD Hide
+        FLOC 90 43
+        MENUBUTTON "Hide" 10 3
+    ENDFIELD
+
+    FIELD Help
+        FLOC 101 43
+        MENUBUTTON "Help" 10 3
+    ENDFIELD
+
+    TABSET "one"
+    FLOC 1 0
+    TSSIZE 111 42
+
+    TAB "General"
+
+    GROUP "Net Information"
+        GLOC 1 0
+        GSIZE 93 14
+    ENDGROUP
+
+    FIELD FieldSovler
+        FLOC 95 1
+        MENUBUTTON "Parameters" 15 3
+    ENDFIELD
+
+    FIELD PowerSupply
+        FLOC 95 3
+        MENUBUTTON "Power Supply" 15 3
+    ENDFIELD
+
+    FIELD Excitation
+        FLOC 95 5
+        MENUBUTTON "Excitation Source" 15 3
+    ENDFIELD
+
+    TEXT "Power Net:"
+        TLOC 2 2
+    ENDTEXT
+
+    POPUP <PowerNetList>"""".
+    FIELD PowerNet
+        FLOC 12 2
+        ENUMSET 16
+        POP "PowerNetList"
+    ENDFIELD
+
+    TEXT "Ground Nets:"
+        TLOC 32 2
+    ENDTEXT
+
+    ##TEXT
+    ##    TLOC 42 2
+    ##    INFO RtnGndList 43
+    ##ENDFIELD
+
+    FIELD RtnGndList
+        FLOC 42 2
+        STRFILLIN 43 256
+        INFO_ONLY
+    ENDFIELD
+
+    FIELD RtnGndEdit
+      FLOC 87 2
+      MENUBUTTON "Edit" 5 3
+    ENDFIELD
+
+    TEXT "Voltage:"
+        TLOC 2 4
+    ENDTEXT
+
+    TEXT
+        TLOC 16 4
+        INFO Voltage 13
+    ENDFIELD
+
+    TEXT "Ripple Tolerance:"
+        TLOC 2 6
+    ENDTEXT
+
+    POPUP <VoltageRippleList>"1%""1%","2%""2%","3%""3%","4%""4%","5%""5%".
+    FIELD VoltageRipple
+        FLOC 16 6
+        STRFILLIN 10 10
+        POP "VoltageRippleList"
+    ENDFIELD
+
+    TEXT "Max. delta current:"
+        TLOC 2 8
+    ENDTEXT
+
+    FIELD MaxDeltaCurrent
+        FLOC 16 8
+        STRFILLIN 13 13
+    ENDFIELD
+
+    TEXT "Target Impedance:"
+        TLOC 2 11
+    ENDTEXT
+
+    TEXT
+        TLOC 16 11
+        INFO TargetImpedance 9
+    ENDFIELD
+
+    FIELD TIEdit
+      FLOC 26 11
+      MENUBUTTON "Edit" 5 3
+    ENDFIELD
+
+    GROUP "Decoupling Capacitors"
+        GLOC 1 14
+        GSIZE 109 25
+    ENDGROUP
+
+    POPUP <DecapGridPopup>"""".
+    GRID DecapGrid
+    FLOC 2 16
+    FSIZE 107 20
+    OPTIONS HLINES VLINES USERSIZE
+    POP "DecapGridPopup"
+
+    GHEAD TOP
+        HEADSIZE 2
+        OPTIONS 3D
+    ENDGHEAD
+    GHEAD SIDE
+        HEADSIZE 0
+    ENDGHEAD
+    ENDGRID
+
+    FIELD DecapModelAdd
+        FLOC 2 36
+        MENUBUTTON "Add Model" 12 3
+    ENDFIELD
+
+    FIELD DecapModelEdit
+        FLOC 15 36
+        MENUBUTTON "Edit Model" 12 3
+    ENDFIELD
+
+    FIELD DecapModelDelete
+        FLOC 28 36
+        MENUBUTTON "Delete Model" 12 3
+    ENDFIELD
+
+    FIELD DecapModelAssign
+        FLOC 97 36
+        MENUBUTTON "Assign Model" 12 3
+    ENDFIELD
+
+    ENDTAB
+
+    TAB "Port Information"
+
+    GROUP "Components"
+        GLOC 1 0
+        GSIZE 39 21
+    ENDGROUP
+
+    TEXT "Filter:"
+        TLOC 2 2
+    ENDTEXT
+
+    FIELD CompNameFilter
+        FLOC 6 2
+        STRFILLIN 10 25
+    ENDFIELD
+
+    FIELD CompSelectAll
+        FLOC 18 2
+        MENUBUTTON "Select All" 10 3
+    ENDFIELD
+
+    FIELD PortGroupEdit
+        FLOC 29 2
+        MENUBUTTON "Port Group" 10 3
+    ENDFIELD
+
+    FIELD CompNameList
+        FLOC 2 5
+        LIST "" 37 8
+        OPTIONS multiselect
+    ENDFIELD
+
+    GROUP "Die Information:"
+        GLOC 1 21
+        GSIZE 39 18
+    ENDGROUP
+
+    TEXT "Current Profile:"
+        TLOC 2 24
+    ENDTEXT
+
+    POPUP <CurrentProfileList>"""".
+    FIELD CurrentProfile
+        FLOC 14 24
+        ENUMSET 12
+        POP "CurrentProfileList"
+    ENDFIELD
+
+    FIELD DieModeNone
+        FLOC 2 28
+        CHECKLIST "" ""
+    ENDFIELD
+
+    TEXT "None"
+        TLOC 5 28
+    ENDTEXT
+
+    FIELD DieModeSimple
+        FLOC 2 31
+        CHECKLIST "" ""
+    ENDFIELD
+
+    TEXT "Capacitance:"
+        TLOC 5 31
+    ENDTEXT
+
+    FIELD DieCapacitance
+        FLOC 14 31
+        STRFILLIN 13 20
+    ENDFIELD
+
+    TEXT "Resistance:"
+        TLOC 5 33
+    ENDTEXT
+
+    FIELD DieResistance
+        FLOC 14 33
+        STRFILLIN 13 20
+        INFO_ONLY
+    ENDFIELD
+
+    FIELD DieModeSubCkt
+        FLOC 2 36
+        CHECKLIST "" ""
+    ENDFIELD
+
+    TEXT "SubCkt:"
+        TLOC 5 36
+    ENDTEXT
+
+    FIELD DieSubCktName
+        FLOC 14 36
+        STRFILLIN 13 256
+    ENDFIELD
+
+    FIELD DieSubCktNameEdit
+        FLOC 29 36
+        MENUBUTTON "Edit" 10 3
+    ENDFIELD
+
+    GROUP "Ports"
+        GLOC 41 0
+        GSIZE 68 39
+    ENDGROUP
+
+    POPUP <PortTypePopup>"Open""OPEN","Sink""SINK","Source""SOURCE".
+    POPUP <PortExictationPopup>"""".
+    POPUP <PortGridHeadPopup>"""".
+    GRID PortGrid
+    FLOC 42 2
+    FSIZE 66 37
+    OPTIONS HLINES VLINES USERSIZE
+
+    GHEAD TOP
+        HEADSIZE 2
+        OPTIONS 3D
+        POP "PortGridHeadPopup"
+    ENDGHEAD
+    GHEAD SIDE
+        HEADSIZE 0
+    ENDGHEAD
+    ENDGRID
+
+    ENDTAB
+
+    ENDTABSET
+
+    ENDTILE
+ENDFORM
+

@@ -1,0 +1,47 @@
+
+Command line arguments for refresh_symbol
+    Ensures symbols in provided design file contain the most
+    recent versions of your library symbols.
+
+
+refresh_symbol <args> <input design> [<output design>]
+    With no options updates all symbols in the design. With no output
+    design provided the input design is updated.
+
+    ARGS:
+	[-a]
+	    Refreshes all symbols; combination of (-f -h -m -p)
+	[-e]
+	    Resets pin escapes (fan outs). If symbol in design has
+	    fanouts these will be deleted. Default is to only delete
+	    design pin escapes if the disk based symbol has pin escapes.
+	    In either case, any pin escapes in the disk based symbol
+	    are loaded into the design.
+	[-f|-o]
+	    Refreshes format symbols.
+	[-h]
+	    Refreshes shape and flash symbols.
+	[-m|-b]
+	    Refreshes mechanical symbols.
+	[-p]
+	    Refreshes package symbols.
+	[-k]
+	    Refreshes padstacks used by package and mechanical symbols.
+	[-t]
+	    Resets text locations in symbols to their library location.
+	    By default, symbol text locations of the board are preserved.
+	[-x]
+	    Ripup etch connected to symbol pins.  Ripup mode(s) set in 
+            Interactive page of User Preferences will apply when this switch
+            is set.
+	[-z] 
+	    Ignore fixed property. This allows the program to replace
+	    symbol even if it is fixed in the board.
+	[-s|-l <list file>]
+	    File containing a list of symbols to update. File should
+	    contain one symbol name per line.
+	[-d]
+	    If padstacks are being refreshed with the -k switch,
+	    the customizable drill data of the padstack will NOT be
+	    refreshed though unless this switch is also specified.
+

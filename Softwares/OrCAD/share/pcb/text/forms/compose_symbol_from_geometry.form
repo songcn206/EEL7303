@@ -1,0 +1,246 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 63 42
+HEADER "Compose Die From Geometry"
+
+POPUP <pin_class>"class""class".
+POPUP <pin_subclass>"subclass""subclass".
+POPUP <pinname_class>"class""class".
+POPUP <pinname_subclass>"subclass""subclass".
+POPUP <outline_class>"class""class".
+POPUP <outline_subclass>"subclass""subclass".
+POPUP <design_name_class>"class""class".
+POPUP <design_name_subclass>"subclass""subclass".
+POPUP <design_name>"""".
+POPUP <PADPOPUP>"""".
+POPUP <primary_name>"""".
+POPUP <secondary_name>"""".
+POPUP <PINUSE_POPUP>"""".
+POPUP <HEADER_POPUP>"""".
+TILE
+GROUP " Symbol Outline "
+GLOC 1 0
+GSIZE 62 9
+ENDGROUP
+
+TEXT "Outline Class"
+TLOC 2 2
+ENDTEXT
+
+FIELD outline_class
+FLOC 2 4
+ENUMSET 25
+OPTIONS prettyprint ownerdrawn
+POP "outline_class"
+ENDFIELD
+
+TEXT "Outline Subclass"
+TLOC 31 2
+ENDTEXT
+
+FIELD outline_subclass
+FLOC 31 4
+ENUMSET 25
+OPTIONS prettyprint ownerdrawn
+POP "outline_subclass"
+ENDFIELD
+
+
+TEXT "Outline Width (X)"
+TLOC 2 7
+ENDTEXT
+
+TEXT ""
+TLOC 18 7
+INFO outlineWidth 10
+ENDTEXT
+
+
+TEXT "Outline Height (Y)"
+TLOC 31 7
+ENDTEXT
+
+TEXT ""
+TLOC 47 7
+INFO outlineHeight 10
+ENDTEXT
+
+
+GROUP " Symbol Pins "
+GLOC 1 9
+GSIZE 62 43
+ENDGROUP
+
+GROUP " Pins"
+GLOC 2 11
+GSIZE 60 7
+ENDGROUP
+
+TEXT "Class"
+TLOC 3 13
+ENDTEXT
+
+FIELD pin_class
+FLOC 3 15
+ENUMSET 24
+OPTIONS prettyprint ownerdrawn
+POP "pin_class"
+ENDFIELD
+
+TEXT "Subclass"
+TLOC 31 13
+ENDTEXT
+
+FIELD pin_subclass
+FLOC 31 15
+ENUMSET 25
+OPTIONS prettyprint ownerdrawn
+POP "pin_subclass"
+ENDFIELD
+
+
+GROUP " Pin Name"
+GLOC 2 18
+GSIZE 60 11
+ENDGROUP
+
+TEXT "Class"
+TLOC 3 20
+ENDTEXT
+
+FIELD pinname_class
+FLOC 3 22
+ENUMSET 20
+OPTIONS prettyprint ownerdrawn
+POP "pinname_class"
+ENDFIELD
+
+TEXT "Subclass"
+TLOC 3 24
+ENDTEXT
+
+FIELD pinname_subclass
+FLOC 3 26
+ENUMSET 20
+OPTIONS prettyprint ownerdrawn
+POP "pinname_subclass"
+ENDFIELD
+
+GROUP "Delimiter"
+GLOC 31 20
+GSIZE 27 7
+ENDGROUP
+
+FIELD del_colon
+FLOC 33 22
+CHECKLIST "Colon" "delimiter"
+ENDFIELD
+
+FIELD del_semicolon
+FLOC 33 24
+CHECKLIST "Semicolon" "delimiter"
+ENDFIELD
+
+
+FIELD del_other
+FLOC 45 22
+CHECKLIST "Other" "delimiter"
+ENDFIELD
+
+FIELD del_text
+FLOC 53 22
+STRFILLIN 1 12
+ENDFIELD
+
+FIELD del_none
+FLOC 45 24
+CHECKLIST "None" "delimiter"
+ENDFIELD
+
+FIELD find_pins
+FLOC 50 30
+MENUBUTTON "Find Pins" 12 3
+FGROUP ""
+ENDFIELD
+
+GRID pinsGrid
+FLOC 2 33
+FSIZE 58 18
+OPTIONS HLINES VLINES USERSIZE 
+
+GHEAD TOP 
+HEADSIZE 2
+OPTIONS 3D 
+POP "HEADER_POPUP"
+ENDGHEAD
+
+GHEAD SIDE
+OPTIONS 3D NUMBER 
+HEADSIZE 4
+ENDGHEAD
+
+POP "PINUSE_POPUP"
+ENDGRID
+
+GROUP " Design Name "
+GLOC 1 52
+GSIZE 62 11
+ENDGROUP
+
+TEXT "Symbol Name Class"
+TLOC 2 54
+ENDTEXT
+
+FIELD design_name_class
+FLOC 2 56
+ENUMSET 25
+OPTIONS prettyprint ownerdrawn
+POP "design_name_class"
+ENDFIELD
+
+TEXT "Symbol Name Subclass"
+TLOC 31 54
+ENDTEXT
+
+FIELD design_name_subclass
+FLOC 31 56
+ENUMSET 25
+OPTIONS prettyprint ownerdrawn
+POP "design_name_subclass"
+ENDFIELD
+
+TEXT "Symbol Name"
+TLOC 2 60
+ENDTEXT
+
+FIELD design_name
+FLOC 18 60
+ENUMSET 25
+OPTIONS prettyprint ownerdrawn
+POP "design_name"
+ENDFIELD
+
+FIELD remove_geometry
+FLOC 1 64
+CHECKLIST "Remove Geometry From Design"
+ENDFIELD
+
+FIELD help
+FLOC 27 64
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+FIELD close
+FLOC 38 64
+MENUBUTTON "Cancel" 10 3
+ENDFIELD
+
+FIELD run
+FLOC 49 64
+MENUBUTTON "Create Symbol..." 12 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

@@ -1,0 +1,234 @@
+include "dfa_constraints.par"
+
+use DFA;
+
+
+RuleDefine
+
+Rule hole_audit
+
+/* Check   for maximum number of drill bits .
+   This is actually a rule for the whole design and
+   should be executed only once. */
+
+executeOnce(1) AND
+design1 := getDesign(hole1) AND
+via1 := via(design1) AND
+pin1 := pin(design1) AND
+drill_size1 := drillDia(via1) AND
+drill_size2 := drillDia(pin1) AND
+drill_size3 := concat(drill_size1,drill_size2) AND
+num_drills := count(unique(drill_size3)) AND
+num_drills > car(concat(MAX_DRILL_BITS)) AND
+num_allowed := car(concat(MAX_DRILL_BITS))
+
+Message(ERROR, design1, 
+        "Exceeds maximum number of drill bits",
+        "\nNumber of drill bits : ?num_drills",
+          "Allowed number       : ?num_allowed"
+);
+
+
+/*  Checks related to via holes   */
+
+via1 := isVia(hole1) AND
+category := concat(SELECT_BY1) AND 
+names := concat(VALUE1) AND
+const := concat(CONSTRAINTS) AND
+allowed_unit := concat(UNITS) AND
+allowed_min_via := concat(MIN_VIA_HOLE_SIZE) AND 
+allowed_max_via := concat(MAX_VIA_HOLE_SIZE) AND 
+min_plated_annsize := concat(MIN_PLATED_ANNULAR_RING_SIZE) AND 
+min_nonplated_annsize := concat(MIN_NON_PLATED_ANNULAR_RING_SIZE) AND 
+allowed_plated_list := concat(PLATED_SIZE_LIST) AND
+allowed_nonplated_list := concat(NON_PLATED_SIZE_LIST) AND
+
+findfirst(category,
+              append(done,category) and
+              curr_ind := count(done) and
+              curr_name := nth(names,curr_ind) and
+              matchPinOrViaCategory(via1,category,curr_name)
+            ) and
+
+valDia := convertDbToUserUnits(drillDia(via1),nth(allowed_unit,count(done))) AND   /* ignores SMT */
+
+if(isPlated(via1) , 
+   my_plated_list := nth(allowed_plated_list,count(done)) AND
+   preferred_drill_sizes := atof(getAllSubstrings(my_plated_list, {"", " "}, {"", " "})) AND 
+   if(isNull(valDia == preferred_drill_sizes) ,
+      WriteDRCMarker(via1, 
+                 "DFA / Illegal plated drill sizes. Allowed values are " + my_plated_list,
+                  valDia) AND
+      val_err_msg1 := "Preferred plated hole size(s)      :" + my_plated_list + "\n"  ,
+      val_err_msg1 := ""
+   ),
+   my_plated_list := nth(allowed_nonplated_list,count(done)) AND
+   preferred_drill_sizes := atof(getAllSubstrings(my_plated_list, {"", " "}, {"", " "})) AND
+   if(isNull(valDia == preferred_drill_sizes) ,
+      WriteDRCMarker(via1, 
+                 "DFA / Illegal non-plated drill sizes. Allowed values are " + my_plated_list,
+                  valDia) AND
+      val_err_msg1 :=  "Preferred non-plated hole size(s)  :" + my_plated_list + " \n" ,
+      val_err_msg1 := ""
+   )
+) AND
+
+my_max_via := nth(allowed_max_via, count(done)) AND
+if(valDia > my_max_via ,
+   WriteDRCMarker(via1, 
+                 "DFA / Via hole size greater than maximum allowed value of " + toString(my_max_via),
+                  valDia) AND
+   val_err_msg2 := "Hole size greater than maximum allowed value of " + tostring(my_max_via) + "\n",
+
+   val_err_msg2 := ""
+) AND
+
+my_min_via := nth(allowed_min_via, count(done)) AND 
+if(valDia < my_min_via ,
+   WriteDRCMarker(via1, 
+                 "DFA / Via hole size less than minimum allowed value of " + toString(my_min_via),
+                  valDia) AND
+   val_err_msg3 := "Hole size less than minimum allowed value of " + tostring(my_min_via) + "\n",
+
+   val_err_msg3 := ""
+) AND
+
+my_min_plated_ann :=  nth(min_plated_annsize, count(done)) AND
+my_min_nonplated_ann :=  nth(min_nonplated_annsize, count(done)) AND 
+
+count(valAnnSize := convertDbToUserUnits(getMinAnnularRingSize(via1),nth(allowed_unit,count(done)))) AND
+if(valAnnSize == 0.0,
+   WriteDRCMarker(via1,"DFA / Annular ring size is 0",valAnnSize) AND
+   val_err_msg1_2 := "\nAnnular ring size is 0",
+   val_err_msg1_2 := ""
+) AND
+
+if(isPlated(via1) ,
+  if(valAnnSize < my_min_plated_ann ,
+   WriteDRCMarker(via1, 
+                 "DFA / Annular ring size less than minimum allowed value of " + toString(my_min_plated_ann),
+                  valAnnSize) AND
+   val_err_msg4 :=
+          "Pad annular ring size              : " + toString(valAnnSize) +
+        "\nAnnular ring size less than minimum allowed value of " + toString(my_min_plated_ann) ,
+   val_err_msg4 := ""
+  ),
+  if(valAnnSize < my_min_nonplated_ann ,
+   WriteDRCMarker(via1,  
+                 "DFA / Annular ring size less than minimum allowed value of " + toString(my_min_nonplated_ann),
+                  valAnnSize) AND
+   val_err_msg4 :=
+          "Pad annular ring size              : " + toString(valAnnSize) +
+        "\nAnnular ring size less than minimum allowed value of " + toString(my_min_nonplated_ann) ,
+   val_err_msg4 := ""
+  )
+) AND
+
+valConstraint := nth(concat(CONSTRAINTS), count(done)) AND
+val_err_msg := val_err_msg1 + val_err_msg1_2 + val_err_msg2 + val_err_msg3 + val_err_msg4 AND
+val_err_msg /= ""
+
+Message(ERROR, via1,
+        "Via hole violations",
+        "\nVia name                           : ?via1",
+        "Hole size                          : ?valDia",
+        "Constraint name                    : ?valConstraint",
+        "?val_err_msg"
+);
+
+
+
+/* Checks related to pin holes  */
+
+pin1 := isPin(hole1) AND
+category := concat(SELECT_BY1) AND
+names := concat(VALUE1) AND
+allowed_unit := concat(UNITS) AND
+allowed_min_via := concat(MIN_VIA_HOLE_SIZE) AND
+allowed_max_via := concat(MAX_VIA_HOLE_SIZE) AND
+min_plated_annsize := concat(MIN_PLATED_ANNULAR_RING_SIZE) AND
+min_nonplated_annsize := concat(MIN_NON_PLATED_ANNULAR_RING_SIZE) AND
+allowed_plated_list := concat(PLATED_SIZE_LIST) AND
+allowed_nonplated_list := concat(NON_PLATED_SIZE_LIST) AND
+
+findfirst(category,
+              append(done,category) and
+              curr_ind := count(done) and
+              curr_name := nth(names,curr_ind) and
+              matchPinOrViaCategory(pin1,category,curr_name)
+            ) and
+ 
+
+valDia := convertDbToUserUnits(drillDia(pin1),nth(allowed_unit,count(done))) AND   /* ignores SMT */
+valDia /= 0.0 AND
+
+
+if(isPlated(pin1) , 
+   my_plated_list := nth(allowed_plated_list,count(done)) AND
+   preferred_drill_sizes := atof(getAllSubstrings(my_plated_list, {"", " "}, {"", " "})) AND
+   if(isNull(valDia == preferred_drill_sizes) ,
+      WriteDRCMarker(pin1,
+                 "DFA / Illegal plated drill sizes. Allowed values are " + my_plated_list,
+                  valDia) AND
+      val_err_msg1 := "Preferred plated hole size(s)      : " + my_plated_list + " \n"  ,
+      val_err_msg1 := ""
+   ),
+   my_plated_list := nth(allowed_nonplated_list,count(done)) AND
+   preferred_drill_sizes := atof(getAllSubstrings(my_plated_list, {"", " "}, {"", " "})) AND
+   if(isNull(valDia == preferred_drill_sizes) ,
+      WriteDRCMarker(pin1,
+                 "DFA / Illegal non-plated drill sizes. Allowed values are " + my_plated_list,
+                  valDia) AND
+      val_err_msg1 :=  "Preferred non-plated hole size(s)  :" + my_plated_list + " \n" ,
+      val_err_msg1 := ""
+   )
+) AND
+
+my_min_plated_ann :=  nth(min_plated_annsize, count(done)) AND
+my_min_nonplated_ann :=  nth(min_nonplated_annsize, count(done)) AND
+
+count(valAnnSize := convertDbToUserUnits(getMinAnnularRingSize(pin1),nth(allowed_unit,count(done)))) AND
+if(valAnnSize == 0.0,
+   WriteDRCMarker(pin1,"DFA / Annular ring size is 0",valAnnSize) AND
+   val_err_msg1_2 := "\nAnnular ring size is 0",
+   val_err_msg1_2 := ""
+) AND
+
+if(isPlated(pin1) ,
+  if(valAnnSize < my_min_plated_ann ,
+   WriteDRCMarker(pin1,
+                 "DFA / Annular ring size less than minimum allowed value of " + toString(my_min_plated_ann),
+                  valAnnSize) AND
+   val_err_msg2 :=
+          "Pad annular ring size              : " + toString(valAnnSize) +
+        "\nAnnular ring size less than minimum allowed value of " + toString(my_min_plated_ann) ,
+   val_err_msg2 := ""
+  ),
+  if(valAnnSize < my_min_nonplated_ann ,
+   WriteDRCMarker(pin1,
+                 "DFA / Annular ring size less than minimum allowed value of " + toString(my_min_nonplated_ann),
+                  valAnnSize) AND
+   val_err_msg2 :=
+          "Pad annular ring size              : " + toString(valAnnSize) +
+        "\nAnnular ring size less than minimum allowed value of " + toString(my_min_nonplated_ann) ,
+   val_err_msg2 := ""
+  )
+) AND
+ 
+valConstraint := nth(concat(CONSTRAINTS), count(done)) AND
+
+val_err_msg := val_err_msg1 + val_err_msg1_2 + val_err_msg2 AND
+val_err_msg /= ""
+
+Message(ERROR, pin1,
+        "Pin hole violations",
+        "\nPin name                           : ?pin1",
+        "Hole size                          : ?valDia",
+        "Constraint name                    : ?valConstraint",
+        "?val_err_msg"
+);
+
+
+EndRule
+
+EndRuleDefine

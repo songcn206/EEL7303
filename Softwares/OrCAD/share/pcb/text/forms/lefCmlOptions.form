@@ -1,0 +1,588 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 56 32
+HEADER  "Filter options" 
+
+POPUP <LEFMAXNUMBEROFPINS>"1""".
+POPUP <LEFMAXNUMBEROFCPTS>"1""".
+POPUP <LAYERPOPUP>"""".
+POPUP <LAYER_BACKSIDE_POPUP>"""".
+POPUP <MACRO_OPTION_POPUP>"""".
+POPUP <MACRO_PIN_TYPE_POPUP>"""".
+
+
+TILE
+
+TEXT "Library File (LEF or Dia):"
+TLOC 3 0
+ENDTEXT
+
+TEXT ""
+TLOC 11 0
+INFO lefFilePath 255
+ENDTEXT
+
+TABSET "tab"
+OPTIONS tabSetDispatch
+FLOC 2 2
+FSIZE 54 51
+
+
+# ************  Tab 1. **************************
+#           File Options
+# ************  Tab 1. **************************
+
+TAB "File"
+
+TEXT "Load or save option settings"
+TLOC 2 1
+ENDTEXT
+
+GROUP " Load option settings from CML file"
+GLOC 2 3
+GSIZE 50 8
+ENDGROUP
+
+TEXT "Current directory:"
+TLOC 4 5
+ENDTEXT
+
+TEXT "C:\data"
+TLOC 17 5
+INFO libFileDir 100
+ENDTEXT
+
+TEXT "File name:"
+TLOC 4 8
+ENDTEXT
+
+FIELD libFilePath
+FLOC 12 8
+STRFILLIN 24 33
+ENDFIELD
+
+FIELD cmlBrowseBtn
+FLOC  40 8
+MENUBUTTON "&Browse..." 10 3
+ENDFIELD
+
+# END GROUP
+
+GROUP " Default option settings "
+GLOC 2 11
+GSIZE 50 8
+ENDGROUP
+
+FIELD loadDefaultSBtn
+FLOC 5 15
+MENUBUTTON "&Load defaults" 20 3
+ENDFIELD
+
+FIELD saveAsDefaultCmlBtn
+FLOC 30 15
+MENUBUTTON "&Save as default" 20 3
+ENDFIELD
+
+
+ENDTAB
+
+# ************  Tab 2. **************************
+#           General / Statistics Options
+# ************  Tab 2. **************************
+TAB "General"
+TEXT "Summary Statistics"
+TLOC 2 1
+ENDTEXT
+
+GROUP " Macros "
+GLOC 2 2
+GSIZE 50 11
+ENDGROUP
+
+GRID gridStatMacros
+FLOC 4 4
+FSIZE 46 8
+OPTIONS HLINES VLINES USERSIZE 
+
+GHEAD TOP 
+HEADSIZE 2
+OPTIONS 3D 
+#POP "PTOP"
+ENDGHEAD
+
+#GHEAD SIDE
+#OPTIONS 3D NUMBER 
+#HEADSIZE 4
+#ENDGHEAD
+
+ENDGRID
+
+TEXT "Total number:"
+TLOC 4 11
+ENDTEXT
+
+TEXT ""
+TLOC 40 11
+INFO totalNumberOfMacrosStat 20
+ENDTEXT
+
+# END GROUP
+
+GROUP " Macro Pins "
+GLOC 2 13
+GSIZE 50 15
+ENDGROUP
+
+GRID gridStatPins
+FLOC 4 15
+FSIZE 46 8
+OPTIONS HLINES VLINES USERSIZE 
+
+GHEAD TOP 
+HEADSIZE 2
+OPTIONS 3D 
+#POP "PTOP"
+ENDGHEAD
+
+#GHEAD SIDE
+#OPTIONS 3D NUMBER 
+#HEADSIZE 4
+#ENDGHEAD
+
+ENDGRID
+
+TEXT "Total number of unique names:"
+TLOC 4 22
+ENDTEXT
+
+TEXT ""
+TLOC 29 22
+INFO totalNumberOfUniquePinNamesStat 20
+ENDTEXT
+
+TEXT "Maximum size:"
+TLOC 4 24
+ENDTEXT
+
+TEXT ""
+TLOC 29 24
+INFO maxPinSizeStat 20
+ENDTEXT
+
+TEXT "microns"
+TLOC 45 24
+ENDTEXT
+
+TEXT "Minimum size:"
+TLOC 4 26
+ENDTEXT
+
+TEXT ""
+TLOC 29 26
+INFO minPinSizeStat 20
+ENDTEXT
+
+TEXT "microns"
+TLOC 45 26
+ENDTEXT
+
+# END GROUP
+
+GROUP " IC Layers "
+GLOC 2 28
+GSIZE 50 18
+ENDGROUP
+
+GRID gridStatLayers
+FLOC 4 31
+FSIZE 46 12
+OPTIONS HLINES VLINES USERSIZE 
+
+GHEAD TOP 
+HEADSIZE 2
+OPTIONS 3D 
+POP "LAYERPOPUP"
+ENDGHEAD
+
+GHEAD TOP 
+HEADSIZE 2
+OPTIONS 3D 
+POP "LAYER_BACKSIDE_POPUP"
+ENDGHEAD
+
+#GHEAD SIDE
+#OPTIONS 3D NUMBER 
+#HEADSIZE 4
+#ENDGHEAD
+
+ENDGRID
+
+
+TEXT ""
+TLOC 4 44
+INFO isPassivation 40
+ENDTEXT
+
+ENDTAB
+
+# ************  Tab 3. **************************
+#           Die Pins, Connection points  Options
+# ************  Tab 4. **************************
+TAB "Pins" Die_Pins
+
+TEXT
+FLOC 2 1
+INFO diePinInfoMultiline 2
+FSIZE 50 6
+ENDTEXT
+
+#-------Pin size group----
+
+GROUP " Pin size filter "
+GLOC 2 7
+GSIZE 50 17
+ENDGROUP
+
+TEXT "Minimum die pin size"
+TLOC 4 9
+ENDTEXT
+
+TEXT "Width:"
+TLOC 5 11
+ENDTEXT
+
+FIELD pinsMinWidth
+FLOC 11 11
+STRFILLIN 13 17
+ENDFIELD
+
+
+TEXT "Height:"
+TLOC 29 11
+ENDTEXT
+
+FIELD pinsMinHeight
+FLOC 36 11
+STRFILLIN 13 17
+ENDFIELD
+
+TEXT "Die Pins:"
+TLOC 4 14
+ENDTEXT
+#------All available die pin based on pin size filter-----
+FIELD pinsTabDiePinNames
+FLOC 11 14
+LIST "" 39 5
+OPTIONS sort
+ENDFIELD
+
+#------Pin Name Filter Group------
+
+GROUP " Pin names filter"
+GLOC 2 24
+GSIZE 50 22
+ENDGROUP
+
+GRID gridPinNameOverride
+FLOC 4 27
+FSIZE 46 18
+OPTIONS HLINES VLINES USERSIZE 
+
+GHEAD TOP 
+HEADSIZE 2
+OPTIONS 3D 
+#POP "MACRO_PIN_TYPE_POPUP"
+ENDGHEAD
+     
+ENDGRID
+
+
+# END GROUP
+
+
+ENDTAB
+
+    # ************  Tab 4. **************************
+    #           Auto Pads Options
+    # ************  Tab 6. **************************
+
+#ifdef LEFDEF_CUSTOM_PINS
+
+    TAB "Custom Die Pins" Auto_Pads
+    TEXT "Auto creation options for die pins"
+    TLOC 2 1
+    ENDTEXT
+
+    GROUP " Macro pins "
+    GLOC 2 3
+    GSIZE 50 21
+    ENDGROUP
+
+    TEXT "Available:"
+    TLOC 4 5
+    ENDTEXT
+
+    FIELD padsAvailableCpts
+    FLOC 4 7
+    LIST "" 20 8
+    OPTIONS sort
+    ENDFIELD
+
+    FIELD moveAutoPadsToSelectedList
+    FLOC 25 11
+    MENUBUTTON ">>" 3 2
+    ENDFIELD
+
+
+    FIELD moveAutoPadsToAvailableList
+    FLOC 25 13
+    MENUBUTTON "<<" 3 2
+    ENDFIELD
+
+    TEXT "Auto create die pins for:"
+    TLOC 30 5
+    ENDTEXT
+
+    FIELD cptsWithPads
+    FLOC 30 7
+    LIST "" 20 8
+    OPTIONS sort
+    ENDFIELD
+
+    # END GROUP
+
+    GROUP " Die pin size "
+    GLOC 2 25
+    GSIZE 50 6
+    ENDGROUP
+
+    TEXT "Width:"
+    TLOC 4 28
+    ENDTEXT
+
+    FIELD padsWidth
+    FLOC 11 28
+    STRFILLIN 13 17
+    ENDFIELD
+
+    TEXT "Height:"
+    TLOC 29 28
+    ENDTEXT
+
+    FIELD padsHeight
+    FLOC 36 28
+    STRFILLIN 13 17
+    ENDFIELD
+
+
+    # END GROUP
+
+    GROUP " Offset of die pin from macro pin"
+    GLOC 2 31
+    GSIZE 50 6
+    ENDGROUP
+
+    TEXT "Offset X:"
+    TLOC 4 34
+    ENDTEXT
+
+    FIELD padsOffsetX
+    FLOC 11 34
+    STRFILLIN 13 17
+    ENDFIELD
+
+    TEXT "Offset Y:"
+    TLOC 29 34
+    ENDTEXT
+
+    FIELD padsOffsetY
+    FLOC 36 34
+    STRFILLIN 13 17
+    ENDFIELD
+
+    # END GROUP
+
+    FIELD AUTO_PADS_APPLY
+    FLOC 4 44
+    MENUBUTTON "&Apply changes" 46 3
+    ENDFIELD
+
+
+    ENDTAB
+
+#endif
+
+
+
+
+# ************  Tab 5. **************************
+#           Macro Options
+# ************  Tab 5. **************************
+
+    TAB "Macros"
+
+    GROUP " Settings "
+    GLOC 2 0
+    GSIZE 50 48
+    ENDGROUP
+
+        GROUP " Macros "
+        GLOC 4 2
+        GSIZE 46 19
+        ENDGROUP
+
+        TEXT "Available:"
+        TLOC 6 4
+        ENDTEXT
+
+        FIELD macrosAvailable
+        FLOC 6 6
+        LIST "" 42 5
+        ENDFIELD
+
+        TEXT "Macro size:"
+        TLOC  6 15
+        ENDTEXT
+
+        TEXT ""
+        TLOC 15 15
+        INFO macrosMacroSize 30
+        ENDTEXT
+
+        TEXT "microns"
+        TLOC  29 15
+        ENDTEXT
+        
+        TEXT "Number of pins:"
+        TLOC 6 17
+        ENDTEXT
+
+        TEXT ""
+        TLOC 18 17
+        INFO macrosMaxNumberOfPins 10
+        ENDTEXT
+        
+        TEXT "Macro class:"
+        TLOC 6 19
+        ENDTEXT
+
+        TEXT ""
+        TLOC 18 19
+        INFO macrosMacroClassName 30
+        ENDTEXT
+        
+        TEXT ""
+        TLOC 30 19
+        INFO macrosMacroStaggerBump 12
+        ENDTEXT
+        
+        
+# #############################################
+        # END GROUP
+        GROUP " Pin names filter "
+        GLOC 4 21
+        GSIZE 46 26
+        ENDGROUP
+
+        GRID gridMacroPinsOverride
+        FLOC 6 23
+        FSIZE 42 16
+        OPTIONS HLINES VLINES USERSIZE 
+
+        GHEAD TOP 
+        HEADSIZE 2
+        OPTIONS 3D 
+        POP "MACRO_PIN_TYPE_POPUP"
+        ENDGHEAD
+             
+        ENDGRID
+       
+        TEXT "Size:"
+        TLOC 6 39
+        ENDTEXT
+
+        TEXT ""
+        TLOC 15 39
+        INFO macrosPinSize 10
+        ENDTEXT
+
+        TEXT "Location:"
+        TLOC 29 39
+        ENDTEXT
+
+        TEXT ""
+        TLOC 37 39
+        INFO macrosPinOffset 10
+        ENDTEXT
+
+        TEXT "Pin use:"
+        TLOC 6 41
+        ENDTEXT
+
+        TEXT ""
+        TLOC 15 41
+        INFO macrosPinUse 10
+        ENDTEXT
+
+        TEXT "Layer:"
+        TLOC 29 41
+        ENDTEXT
+
+        TEXT ""
+        TLOC 37 41
+        INFO macrosPinsLayer 10
+        ENDTEXT
+       
+       TEXT "Port Class:"
+       TLOC 6 43
+       ENDTEXT
+
+       TEXT ""
+       TLOC 15 43
+       INFO macrosPinPortClass 10
+       ENDTEXT
+
+
+       TEXT ""
+       TLOC 6 45
+       INFO macrosPinStagger 40
+       ENDTEXT
+        
+       # END GROUP
+
+   
+    # END GROUP
+
+
+    ENDTAB
+
+# ************  End of tab set **************************
+#               End of tab set
+# ************  End of tab set **************************
+
+ENDTABSET
+
+# *******************************************************
+#                          BUTTONS
+# *******************************************************
+
+
+FIELD DONE
+FLOC 5 54
+MENUBUTTON "&OK" 10 3
+ENDFIELD
+
+FIELD CANCEL
+FLOC 17 54
+MENUBUTTON "&Cancel" 10 3
+ENDFIELD
+ 
+FIELD HELP
+FLOC 43 54
+MENUBUTTON "&Help" 10 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

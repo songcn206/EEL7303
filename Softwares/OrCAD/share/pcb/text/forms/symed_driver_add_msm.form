@@ -1,0 +1,75 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 39 6
+HEADER "Add_Driver"
+
+POPUP <MIRROR_POPUP> "Not mirrored" "Not mirrored".
+POPUP <ROTATION_POPUP> "North" "North".
+POPUP <DRIVER_LIBRARY_POPUP> "Test" "Test".
+POPUP <SHOVE_POPUP> "Clockwise" "CW", "Counter-Clockwise" "CCW", "None" "None".
+
+TILE
+
+TEXT "Bubble:"
+TLOC 1 1
+ENDTEXT
+FIELD driver_bubble
+FLOC 10 1
+ENUMSET 15
+POP "SHOVE_POPUP"
+ENDFIELD
+
+TEXT "Mirror:"
+TLOC 1 3
+ENDTEXT
+FIELD driver_mir
+FLOC 10 3
+ENUMSET 15
+POP "MIRROR_POPUP"
+ENDFIELD
+
+TEXT "Rotation:"
+TLOC 1 5
+ENDTEXT
+FIELD driver_rot
+FLOC 10 5
+ENUMSET 15
+POP "ROTATION_POPUP"
+ENDFIELD
+
+TEXT "Size:"
+TLOC 1 7
+ENDTEXT
+TEXT "100um x 500um"
+TLOC 10 7
+INFO driver_size 15 256
+ENDTEXT
+
+
+TEXT "Current IC library:"
+TLOC 1 9
+ENDTEXT
+FIELD driver_library
+FLOC 3 11
+ENUMSET 20
+POP "DRIVER_LIBRARY_POPUP"
+ENDFIELD
+FIELD driver_lib_manager
+FLOC 3 13
+MENUBUTTON "IC Library Manager..." 20 3
+ENDFIELD
+
+TEXT "Available Definitions"
+TLOC 1 16
+ENDTEXT
+FIELD driver_def_tree
+FLOC 3 18
+TREEVIEW 25 8
+ENDFIELD
+
+
+ENDTILE
+
+ENDFORM
+

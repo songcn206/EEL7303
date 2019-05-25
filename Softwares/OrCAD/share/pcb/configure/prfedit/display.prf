@@ -1,0 +1,110 @@
+#  $Header: /vobs/psd_backend_data/data/prefs/display.prf /main/26 29-Nov-07.17:50:03 amiles $
+#------------------------------------------------------------------------------
+#			Allegro Display Variables
+#------------------------------------------------------------------------------
+#
+# See User.prf for complete descriptions of fields in this file.
+
+PARENT:PARENT_L=display/general
+
+SUMMARY:HELP=Display Settings
+
+display_backingstore:TYPE=ENUM:POPUP=on,off,ifmapped:DEFAULT=off:EFF_ONREPAINT:\
+HELP=If set stores a copy of the screen in memory to save repainting when a \
+form is closed or a window moved. Supported only with X-windows (UNIX) and applies \
+to drawing data, not forms. Can be set on the command line by typing \
+"backingstore".
+
+display_drcfill:TYPE=CHECK:EFF_ONREPAINT:\
+PARENT_L=display/visual:\
+HELP=If set, Allegro displays DRC markers as "filled" butterflies.
+
+display_norepair:TYPE=ENUM:POPUP=rats,all:DEFAULT=all:EFF_ONNEXTCMD:\
+HELP=If set, display repair is disabled for the described elements. \
+Options are rats or all. If not set, display repair mode is enabled \
+for all elements. For slower systems, setting this to "all" provides \
+better performance but results in some graphics qlitches. Leaving the \
+variable unset results in the best display.
+
+display_nodynamicarcwidth:TYPE=CHECK:EFF_ONNEXTCMD:\
+PARENT_L=display/visual:\
+HELP=If set, for performance reasons, arcs and circles are drawn \
+at a 1 pixel width when using interactive commands such \
+as move or copy. Unset to see correct width.
+
+display_nohilitefont:TYPE=CHECK:EFF_ONREPAINT:\
+PARENT_L=display/highlight:\
+HELP=If set, displays all highlighted elements with a solid highlight color. \
+The default is to display highlighted elements with a combination of the \
+highlight color and the element's original color (striped). OpenGL may \
+not support striped highlighting at all zoom levels.
+
+display_nolinewidth:TYPE=CHECK:EFF_ONREPAINT:\
+PARENT_L=display/visual:\
+HELP=If set, all lines are displayed at a 1 pixel width. This variable can \
+increase performance at the expense of an accurate display. The default \
+is lines at width. Note, dymanics drawing ignores this variable.
+
+display_nosaved_geometry:TYPE=ENUM:POPUP=position,size,both:DEFAULT=both:EFF_ONRESTART:\
+PARENT_L=ui/general:\
+HELP=If set, controls the feature that remembers user sizing and positioning \
+of windows. If set to position, only sizing saved. If set to \
+size, only window locations is saved. If set to both, \
+no window infomation is saved.
+
+display_thintext:TYPE=CHECK:EFF_ONREPAINT:\
+PARENT_L=display/visual:\
+HELP=Text is always drawn at one pixel width (ignores photoplot width). \
+This restores 13.5 Allegro behavior.
+
+display_nocolor_dynamics:TYPE=CHECK:EFF_ONNEXTCMD:\
+PARENT_L=display/visual:\
+HELP=When set, the dynamic cursor buffer draws the elements as white. \
+When unset, the elements are drawn with their assigned color.
+
+display_readonly_intensity:TYPE=LONG:MIN=0:MAX=100:EFF_IMMEDIATE:\
+PARENT_L=display/visual:\
+HELP=Sets display color intensity for disabled (readonly) database objects. \
+If not set, disabled objects are drawn at 40% intensity by default. \
+Note that Shadow mode in Allegro does not effect disabled objects.
+
+bug_solaris_hlt_lines:TYPE=CHECK:EFF_ONREPAINT:\
+PARENT_L=display/visual:\
+HELP=On some solaris 7 systems,  long odd angled highlighted lines (e.g. \
+ratsnests) can cause graphic glitches.  Setting this variable causes the line \
+draw to use a line width of 1 rather than 0 to work around the problem. \
+This may slow down the line draw slightly but is needed until the platform \
+vendor fixes the problem.
+
+display_noskeletal_draw:TYPE=CHECK:EFF_ONNEXTCMD:\
+HELP=If set, skeletal draw mode is disabled. Skeletal draw is used when \
+very fast refresh of graphics is required such as dynamic zoom out mode.
+
+display_norefdes:TYPE=CHECK:EFF_ONNEXTCMD:\
+PARENT_L=placement/general:\
+HELP=By default, when a symbol is being moved we will show the refdes. \
+This restores pre-15.2 behavior where the refdes was never shown for \
+symbols while in dynamic mode.
+
+display_refdes_rats:TYPE=CHECK:EFF_IMMEDIATE:\
+PARENT_L=placement/general:\
+HELP=Display a rat line from refdes origin to component's pin 1 in order to \
+show component to refdes relationship.
+
+display_raster_ops:TYPE=ENUM:POPUP=off,slow,on:DEFAULT=on:\
+EFF_ONNEXTCMD:HELP=Controls the use of raster operations to improve \
+appearance of display features. The tradeoff is the use of additional system \
+memory. Depending on your graphics hardware performance may be slow. \
+For example, it greatly improves the look of the dynamic graphics. If set to "slow", \
+features that require frequent use of the capability are not allowed \
+to use it. The default is "on". \
+In OpenGL this option may get turned off automatically if allegro display area is bigger \
+than hardware supported storage mechanism. Making Allegro smaller should fix it.
+
+display_no_auto_hide_boundary:TYPE=CHECK:EFF_ONNEXTCMD:\
+HELP=By default, turning the visibility of an etch layer off through \
+the options panel will automatically turn off the corresponding \
+dynamic shape boundary layer. Turn on this variable to disable this \
+feature and have the boundary layer remain visible unless manually \
+toggled through the Display -> Color/Visibility form.
+

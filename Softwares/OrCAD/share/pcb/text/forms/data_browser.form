@@ -1,0 +1,71 @@
+# $Header: /vobs/psd_backend_data/data/forms-core/data_browser.form /main/10 22-Jan-04.10:07:30 fxf $
+# Allegro data browser without quickview panel
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM 
+FIXED
+PORT 40 13
+HEADER "Physical Data Browser"
+
+POPUP <filter_pop>"*""*".
+
+MESSAGE INELIGIBLE_XPROBE 1 "Cross-probe selection not applicable."
+
+
+TILE
+TEXT "Total elements:"
+TLOC 1 24
+ENDTEXT
+
+TEXT
+TLOC 13 24
+INFO total 8
+ENDTEXT
+
+FIELD filter
+FLOC 1 1
+STRFILLIN 21 128
+POP "filter_pop"
+ENDFIELD
+
+FIELD done
+FLOC 28 4
+MENUBUTTON "OK" 10 3
+ENDFIELD
+
+FIELD cancel
+FLOC 28 7
+MENUBUTTON "Cancel" 10 3
+ENDFIELD
+
+FIELD help
+FLOC 28 12
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+FIELD database
+FLOC 28 17
+CHECKLIST "Database"
+ENDFIELD
+
+FIELD available
+FLOC 1 4
+LIST "" 26 10
+OPTIONS longstrings
+ENDFIELD
+
+FIELD library
+FLOC 28 19
+CHECKLIST "Library"
+ENDFIELD
+
+FIELD dcnets
+FLOC 28 21
+CHECKLIST "DC Nets"
+ENDFIELD
+
+FLEXMODE edgegravityone
+FLEX available 0 0 1 1
+
+ENDTILE
+
+ENDFORM

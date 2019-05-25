@@ -1,0 +1,85 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+#VARIABLE
+PORT 80 34
+HEADER "Driver Info."
+
+POPUP <HEADER_POPUP>"""".
+
+TILE
+
+TEXT "Select column data to be included."
+TLOC 3 1
+ENDTEXT
+
+TEXT "Right click column headers to see available choices. Choosing blank columns allows you to add more data to the file or move existing columns. Picking existing headers allows you to change that column's data. Use REMOVE to delete columns. For nets requiring multiple lines, 'Duplicate driver info' will cause basic net information to be written on every line."
+TLOC 3 3
+FSIZE 74 8
+ENDTEXT
+
+FIELD colum_headers
+FLOC 7 9
+CHECKLIST "Include column headers"
+ENDFIELD
+
+FIELD duplicate_info
+FLOC 35 9
+CHECKLIST "Duplicate driver information."
+ENDFIELD
+
+GRID grid
+FLOC 3 12
+FSIZE 75 18
+OPTIONS HLINES VLINES USERSIZE 
+
+GHEAD TOP 
+HEADSIZE 2
+OPTIONS 3D 
+POP "HEADER_POPUP"
+ENDGHEAD
+
+GHEAD SIDE
+OPTIONS 3D NUMBER 
+HEADSIZE 4
+ENDGHEAD
+
+ENDGRID
+
+FIELD view
+FLOC 40 31
+MENUBUTTON "Preview" 9 3
+ENDFIELD
+
+FIELD sort
+FLOC 50 31
+MENUBUTTON "Sort" 9 3
+ENDFIELD
+
+FIELD back
+FLOC 3 31
+MENUBUTTON "<Back" 9 3
+ENDFIELD
+
+FIELD done
+FLOC 13 31
+MENUBUTTON "Done" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 24 31
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 69 31
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+FLEXMODE StandButtons
+FLEX grid 0 0 1 1
+
+ENDTILE
+
+ENDFORM
+

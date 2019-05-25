@@ -1,0 +1,196 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM {fixed_font}
+FIXED
+PORT 86 14
+#ifdef "VSE_RESULTS"
+HEADER "Automatic Router Results"
+ACTIVEFIELD "close"
+#else
+HEADER "Automatic Router Progress"
+ACTIVEFIELD "stop"
+#endif
+
+
+TILE
+
+TEXT "Nets:"
+TLOC 1 1
+ENDTEXT
+TEXT
+TLOC 17 1
+INFO net_count 8
+ENDTEXT
+
+TEXT "Connections:"
+TLOC 30 1
+ENDTEXT
+TEXT
+TLOC 46 1
+INFO connections 8
+ENDTEXT
+
+TEXT "Pass Type:"
+TLOC 1 3
+ENDTEXT
+TEXT
+TLOC 17 3
+INFO pass_type 11
+ENDTEXT
+
+TEXT "Pass Number:"
+TLOC 30 3
+ENDTEXT
+TEXT
+TLOC 46 3
+INFO pass_number 8
+ENDTEXT
+
+TEXT "Current Wire:"
+TLOC 1 5
+ENDTEXT
+TEXT
+TLOC 17 5
+INFO current_wire 8
+ENDTEXT
+
+TEXT "Wires To Route:"
+TLOC 30 5
+ENDTEXT
+TEXT
+TLOC 46 5
+INFO reroute_wire 8
+ENDTEXT
+
+TEXT "Completion:"
+TLOC 1 7
+ENDTEXT
+TEXT
+TLOC 17 7
+INFO complete_wire 6
+ENDTEXT
+
+TEXT "Unconnections:"
+TLOC 30 7
+ENDTEXT
+TEXT
+TLOC 46 7
+INFO unconnect_wire 8
+ENDTEXT
+
+FIELD details
+FLOC 44 10
+MENUBUTTON "Details>>" 10 3
+ENDFIELD
+
+FIELD stop
+FLOC 20 11
+MENUBUTTON "Stop" 10 4
+ENDFIELD
+
+GROUP "Routing History"
+GLOC 1 9
+GSIZE 84 40
+INFO routing_history 15
+ENDGROUP
+
+TEXT "Pass"
+TLOC 11 11
+INFO pass 4
+ENDTEXT
+TEXT "Name"
+TLOC 7 12
+INFO name 4
+ENDTEXT
+TEXT "#"
+TLOC 16 12
+INFO number 1
+ENDTEXT
+
+TEXT "Fail"
+TLOC 20 12
+INFO fail 4
+ENDTEXT
+
+TEXT "Unrte"
+TLOC 25 12
+INFO unrte 5
+ENDTEXT
+
+TEXT "Vias"
+TLOC 31 12
+INFO vias 4
+ENDTEXT
+
+TEXT "---- Conflicts --------"
+TLOC 37 11
+INFO conflicts 23
+ENDTEXT
+TEXT "Cross"
+TLOC 37 12
+INFO cross 5
+ENDTEXT
+TEXT "Clear"
+TLOC 43 12
+INFO clear 5
+ENDTEXT
+
+TEXT "XTalk"
+TLOC 48 12
+INFO xtalk 5
+ENDTEXT
+
+TEXT "Len."
+TLOC 55 12
+INFO len 4
+ENDTEXT
+
+TEXT "Red."
+TLOC 59 11
+INFO red 5
+ENDTEXT
+TEXT "%"
+TLOC 60 12
+INFO percent 1
+ENDTEXT
+
+TEXT "CPU Time"
+TLOC 68 11
+INFO cpu_time 8
+ENDTEXT
+TEXT "Pass"
+TLOC 65 12
+INFO pass_time 4
+ENDTEXT
+TEXT "Total"
+TLOC 74 12
+INFO total_time 5
+ENDTEXT
+
+GRID "history_grid"
+FSIZE 85 35
+FLOC 2 14
+OPTIONS VLINES
+
+ENDGRID
+
+#ifdef VSE_RESULTS
+FIELD close
+FLOC 34 51
+MENUBUTTON "Close" 10 4
+ENDFIELD
+#else
+FIELD summary
+FLOC 73 50
+MENUBUTTON "<<Summary" 10 3
+ENDFIELD
+
+FIELD stop2
+FLOC 34 51
+MENUBUTTON "Stop" 10 4
+ENDFIELD
+#endif
+
+
+ENDTILE
+
+ENDFORM

@@ -1,0 +1,104 @@
+####################################################################################
+#       Cadence Design Systems                                                     #
+#                                                                                  #
+# (C) COPYRIGHT, Cadence Design Systems, Inc. 2010                                 #
+# All Rights Reserved                                                              #
+# Licensed Materials - Property of Cadence Design Systems                          #
+#                                                                                  #
+# No part of this file may be reproduced, stored in a retrieval system,            #
+# or transmitted in any form or by any means --- electronic, mechanical,           #
+# photocopying, recording, or otherwise --- without prior written permission       #
+# of Cadence Design Systems, Inc.                                                  #
+#                                                                                  #
+# WARRANTY:                                                                        #
+# Use all material in this file at your own risk.  Cadence Design Systems          #
+# makes no claims about any material contained in this file.                       #
+####################################################################################
+FILE_TYPE=FORM_DEFN VERSION=2
+
+    FORM
+    FIXED
+    PORT 68 28
+    HEADER "Power/Ground Plane Meshing"
+
+    ACTIVEFIELD SkipAudit
+    DEFAULT Done
+
+    TILE
+
+    FIELD Done
+        FLOC 1 26
+        MENUBUTTON "Mesh" 10 3
+    ENDFIELD
+
+    FIELD Cancel
+        FLOC 12 26
+        MENUBUTTON "Cancel" 10 3
+    ENDFIELD
+
+    FIELD Apply
+        FLOC 47 26
+        MENUBUTTON "Apply" 10 3
+    ENDFIELD
+
+    FIELD Help
+        FLOC 58 26
+        MENUBUTTON "Help" 10 3
+    ENDFIELD
+
+    GROUP "Description"
+        GLOC 1 0
+        GSIZE 67 16
+    ENDGROUP
+
+    TEXT "Performs meshing for all the shapes associated with the selected DC Nets for graphical review."
+        TLOC 2 2
+    ENDTEXT
+
+    TEXT "The audit before meshing and the report after meshing can be skipped (see options below)."
+        TLOC 2 4
+    ENDTEXT
+
+    TEXT "The adaptive rectangular mesh scheme includes odd shapes, cutouts, slots, antipads"
+        TLOC 2 6
+    ENDTEXT
+
+    TEXT "(perforations), and voids in shapes. You can optionally ignore these in the Preferences section."
+        TLOC 2 8
+    ENDTEXT
+
+    TEXT "The mesh cell size is automatically calculated based on the upper frequency value preset for"
+        TLOC 2 10
+    ENDTEXT
+
+    TEXT "each of the three mesh types: fine, regular, and coarse. You can also specify a custom cell"
+        TLOC 2 12
+    ENDTEXT
+
+    TEXT "size for a mesh."
+        TLOC 2 14
+    ENDTEXT
+
+    FIELD SkipAudit
+        FLOC 2 17
+        CHECKLIST "Skip audit before analysis."
+    ENDFIELD
+
+    FIELD SkipReport
+        FLOC 2 19
+        CHECKLIST "Skip report after analysis."
+    ENDFIELD
+
+    FIELD Preference
+        FLOC 55 17
+        MENUBUTTON "Preferences" 10 3
+    ENDFIELD
+
+    FIELD SessionName
+        FLOC 55 20
+        MENUBUTTON "Session" 10 3
+    ENDFIELD
+
+    ENDTILE
+ENDFORM
+

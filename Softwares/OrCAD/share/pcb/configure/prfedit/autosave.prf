@@ -1,0 +1,27 @@
+#  $Header: /net/wicked/pcs/data/prefs/autosave.prf,v 1.4 1901/07/27 16:42:23 rez Prealpha $
+#------------------------------------------------------------------------------
+#Allegro Autosave Variables
+#------------------------------------------------------------------------------
+#
+# See User.prf for complete descriptions of fields in this file.
+
+
+PARENT:PARENT_L=file_management/autosave
+
+SUMMARY:HELP=Autosave Settings
+
+autosave:TYPE=CHECK:EFF_ONRESTART:\
+HELP=Enables autosaving. It must be set/unset before starting Allegro.
+
+autosave_name:TYPE=STRING:EFF_ONRESTART:\
+HELP=Sets base name used for the autosave file. The default name is AUTOSAVE. \
+Do NOT provide a file extension. Allegro will use the approrpiate extension \
+for the type of database under edit.
+
+autosave_time:TYPE=LONG:MIN=10:MAX=300:EFF_ONRESTART:\
+HELP=Controls autosave intervals. The default is 30 minutes. The minimum is \
+10 minutes and the maximum is 300 minutes.
+
+autosave_dbcheck:TYPE=CHECK:EFF_ONRESTART:\
+HELP=Enables quick database check before an autosave. In default mode, this \
+is turned off because this increases the time for a save.

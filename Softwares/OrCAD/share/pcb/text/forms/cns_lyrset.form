@@ -1,0 +1,114 @@
+# CNS LayerSet creation
+
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM autogreytext unixhgt
+FIXED
+PORT 61 14
+HEADER "Layer Sets"
+
+MESSAGE selectLayerSet 2 "Must first select a Layer Set."
+MESSAGE exists 3 "Layer Set by that name already exists, %s"
+MESSAGE assignSelect 2 "Must first select layer from available list"
+MESSAGE deassignSelect 2 "Must first select layer from assign list"
+MESSAGE invalidName 3 "Name of layer set contains invalid character"
+MESSAGE unknownError 3 "An error occured while attempting operation."
+
+
+TILE
+
+GROUP "Layer Sets" vgec
+FLOC 3 0
+FSIZE 56 15
+ENDGROUP
+
+FIELD layerset_list
+FLOC 4 2
+LIST "" 53 4
+OPTIONS sort
+ENDFIELD
+
+FIELD new
+FLOC 37 12
+MENUBUTTON "New" 7 3
+ENDFIELD
+
+FIELD delete
+FLOC 47 12
+MENUBUTTON "Delete" 7 3
+ENDFIELD
+
+
+TEXT "Layer Set name:"
+OPTIONS BOLD
+FLOC 4 10
+ENDTEXT
+
+TEXT ""
+FLOC 20 10
+INFO layerset_name 22
+ENDFIELD
+
+FIELD new_layerset_name
+FLOC 4 12
+STRFILLIN 28 31
+ENDFIELD
+
+#------------------------------------
+
+FIELD auto_assign
+FLOC 24 16
+CHECKLIST "Auto move"
+ENDFIELD
+
+TEXT "Available Layers"
+OPTIONS underline
+FLOC 6 16
+ENDTEXT
+
+FIELD all_layers_list
+FLOC 3 18
+LIST "" 23 7
+ENDFIELD
+
+FIELD assign_layers_arrow
+FLOC 30 22
+MENUBUTTON ">" 2 3
+ENDFIELD
+
+FIELD deassign_layers_arrow
+FLOC 30 24
+MENUBUTTON "<" 2 3
+ENDFIELD
+
+TEXT "Assigned Layers"
+OPTIONS underline
+FLOC 41 16
+ENDTEXT
+
+FIELD assign_layers_list
+FLOC 36 18
+LIST "" 23 7
+ENDFIELD
+
+
+#----------------------------------------------------------
+# BUTTONS
+
+FIELD done
+FLOC 3 33
+MENUBUTTON "OK" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 13 33
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 23 33
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+
+ENDTILE
+ENDFORM

@@ -1,0 +1,84 @@
+####################################################################################
+#       Cadence Design Systems                                                     #
+#                                                                                  #
+# (C) COPYRIGHT, Cadence Design Systems, Inc. 2010                                 #
+# All Rights Reserved                                                              #
+# Licensed Materials - Property of Cadence Design Systems                          #
+#                                                                                  #
+# No part of this file may be reproduced, stored in a retrieval system,            #
+# or transmitted in any form or by any means --- electronic, mechanical,           #
+# photocopying, recording, or otherwise --- without prior written permission       #
+# of Cadence Design Systems, Inc.                                                  #
+#                                                                                  #
+# WARRANTY:                                                                        #
+# Use all material in this file at your own risk.  Cadence Design Systems          #
+# makes no claims about any material contained in this file.                       #
+####################################################################################
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+    FIXED
+    PORT 48 36
+    HEADER "PDN Import"
+
+    MESSAGE errormessage 2 "%s"
+
+    TILE
+        TEXT "Import From:"
+            TLOC 2 1
+        ENDTEXT
+
+        FIELD FilePath
+            FLOC 11 1
+            STRFILLIN 29 512
+        ENDFIELD
+
+        FIELD FileBrowser
+            FLOC 42 1
+            MENUBUTTON "..." 5 3
+        ENDFIELD
+
+        GROUP "Select items to import" "ImportGroup"
+            GLOC 2 3
+            GSIZE 45 28
+        ENDTEXT
+
+        POPUP <ImportGridHeadPopup>"SelectAll""SelectAll","UnselectAll""UnselectAll".
+        GRID ImportGrid
+            FLOC 4 5
+            FSIZE 41 26
+            OPTIONS HLINES VLINES USERSIZE
+
+            GHEAD TOP
+                HEADSIZE 2
+                OPTIONS 3D
+                POP "ImportGridHeadPopup"
+            ENDGHEAD
+        ENDGRID
+
+        FIELD Next
+            FLOC 13 4
+            MENUBUTTON "Next ->" 10 3
+        ENDFIELD
+
+        FIELD Prev
+            FLOC 13 32
+            MENUBUTTON "<- Prev" 10 3
+        ENDFIELD
+
+        FIELD Done1
+            FLOC 2 4
+            MENUBUTTON "Close" 10 3
+        ENDFIELD
+
+        FIELD Done2
+            FLOC 2 32
+            MENUBUTTON "Close" 10 3
+        ENDFIELD
+
+        FIELD Import
+            FLOC 24 32
+            MENUBUTTON "Import" 10 3
+        ENDFIELD
+
+    ENDTILE
+ENDFORM

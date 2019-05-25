@@ -1,0 +1,54 @@
+#
+# Property of Cadence Design Systems, Inc.  All rights reserved.
+#
+# $Header: nb1_rep_view.txt.v 1.1 12/01/87 ddd Prealpha 
+#
+# File: nbn_rep_view.txt - extract cmd file for Non back annotatable netlist
+#
+# Revision history:
+#	(1.00) jds  9/11/89	initial version
+#
+# Note:
+#	This command file contains two views
+#
+
+#
+# component view for component data
+#
+COMPONENT
+#
+# Extract: refdes(sort), refdes, device_type, value, tolerance,
+# 	  package, x, y, angle, mirror.
+#
+COMP_PACKAGE
+COMP_DEVICE_TYPE
+COMP_VALUE
+COMP_TOL
+REFDES_SORT
+REFDES
+#
+END
+
+#
+# comopnent pin view for the pin data
+#
+COMPONENT_PIN
+#
+# Extract: refdes(sort), refdes, pin_number
+# 	  
+#   Filter for only assigned comps:
+REFDES  != ''
+NET_NAME != ''
+#
+NET_NAME_SORT
+NET_NAME
+REFDES_SORT
+REFDES
+PIN_NUMBER_SORT
+PIN_NUMBER
+#
+END
+
+#
+# end of nbn_rep_view
+#

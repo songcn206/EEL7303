@@ -1,0 +1,312 @@
+<?xml version="1.0"?>
+
+<!--============================================================================
+ = This file, its machine readable form, and any representation of the material=
+ = contained herein are owned by:                                              =
+ =                                                                             =
+ =                        Cadence Design Systems, Inc.                         = 
+ =                                                                             =
+ = The materials are proprietary and confidential and may not be reproduced    =
+ = in any form without the prior written permission of Cadence Design Systems, = 
+ = Inc.                                                                        = 
+ =               Copyright @ 2010 Cadence Design Systems, Inc.                 = 
+ =                            All Rights Reserved                              =
+ ============================================================================-->
+
+<xs:schema 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns="http://www.cadence.com/spb/csschema"
+    targetNamespace="http://www.cadence.com/spb/csschema"
+    elementFormDefault="qualified">
+
+<!-- Define a type representing non-negative integers, and -1 -->
+<xs:simpleType name="bitType">
+    <xs:restriction base="xs:integer">
+        <xs:minInclusive value="-1" />
+    </xs:restriction>
+</xs:simpleType>
+
+<!-- Group representing bit range -->
+<xs:group name="bitrange">
+    <xs:sequence>
+        <xs:element name="msb" type="bitType" minOccurs="0" />
+        <xs:element name="lsb" type="bitType" minOccurs="0" />
+    </xs:sequence>
+</xs:group>
+
+<!-- Enumeration representing port/net direction -->
+<xs:simpleType name="directionType">
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="input" />
+        <xs:enumeration value="output" />
+        <xs:enumeration value="inout" />
+    </xs:restriction>
+</xs:simpleType>
+
+<!-- Enumeration representing net scope -->
+<xs:simpleType name="scopeType">
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="local" />
+        <xs:enumeration value="global" />
+        <xs:enumeration value="interface" />
+    </xs:restriction>
+</xs:simpleType>
+
+<!-- Enumeration representing id or name based schema -->
+<xs:simpleType name="schemaKeyType">
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="idBased" />
+        <xs:enumeration value="nameBased" />
+    </xs:restriction>
+</xs:simpleType>
+
+<!-- Type representing an id with bit information -->
+<xs:complexType name="idBitPairType">
+    <xs:sequence>
+        <xs:element name="id" type="xs:string" />
+        <xs:group ref="bitrange" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Type representing last ids used in the schema -->
+<xs:complexType name="lastIdType">
+    <xs:all>
+        <xs:element name="instanceid" type="xs:positiveInteger" minOccurs="0" />
+        <xs:element name="insttermid" type="xs:positiveInteger" minOccurs="0" />
+        <xs:element name="netid"      type="xs:positiveInteger" minOccurs="0" />
+    </xs:all>
+</xs:complexType>
+
+<!-- Type representing parameters on cells and instances -->
+<xs:complexType name="parameterType">
+    <xs:sequence>
+        <xs:element name="name"   type="xs:string" />
+        <xs:element name="value"  type="xs:string" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Container for multiple parameters -->
+<xs:complexType name="parametersType">
+    <xs:sequence>
+        <xs:element name="parameter" type="parameterType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Type representing a terminal on a cell -->
+<xs:complexType name="termType">
+    <xs:sequence>
+        <xs:element name="name"         type="xs:string" />
+        <xs:element name="direction"    type="directionType" />
+        <xs:element name="displayName"  type="xs:string" minOccurs="0" />
+        <xs:group   ref="bitrange" />
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:ID" use="required" />
+</xs:complexType>
+
+<!-- Container for multiple terminals -->
+<xs:complexType name="termsType" >
+    <xs:sequence>
+        <xs:element name="term" type="termType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Type representing a cell in the design -->
+<xs:complexType name="cellType">
+    <xs:sequence>
+        <xs:element name="library"      type="xs:string" />
+        <xs:element name="name"         type="xs:string" />
+        <xs:element name="view"         type="xs:string" />
+        <xs:element name="parameters"   type="parametersType" minOccurs="0" />
+        <xs:element name="terms"        type="termsType" minOccurs="0" />
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:ID" use="required" />
+</xs:complexType>
+
+<!-- Container for multiple cells -->
+<xs:complexType name="cellsType">
+    <xs:sequence>
+        <xs:element name="cell" type="cellType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Type representing a net in the design -->
+<xs:complexType name="netType">
+    <xs:sequence>
+        <xs:element name="name"         type="xs:string" />
+        <xs:element name="scope"        type="scopeType" minOccurs="0"/>
+        <xs:element name="direction"    type="directionType" minOccurs="0"/>
+        <xs:element name="base"         type="xs:boolean" minOccurs="0" />
+        <xs:group   ref="bitrange" />
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:ID" use="required" />
+</xs:complexType>
+
+<!-- Container for multiple nets -->
+<xs:complexType name="netsType">
+    <xs:sequence>
+        <xs:element name="net" type="netType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Type representing an alias in the design -->
+<xs:complexType name="aliasType">
+    <xs:attribute name="net1" type="xs:IDREF" use="required" />
+    <xs:attribute name="lsb1" type="bitType"  use="optional" default="-1" />
+    <xs:attribute name="msb1" type="bitType"  use="optional" default="-1" />
+
+    <xs:attribute name="net2" type="xs:IDREF" use="required" />
+    <xs:attribute name="lsb2" type="bitType"  use="optional" default="-1" />
+    <xs:attribute name="msb2" type="bitType"  use="optional" default="-1" />
+</xs:complexType>
+
+<!-- Container for multiple aliases -->
+<xs:complexType name="aliasesType">
+    <xs:sequence>
+        <xs:element name="alias" type="aliasType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Type representing masked global signals on instance -->
+<!-- NOTE: This structure currently does not allow bits to be masked -->
+<xs:complexType name="maskType">
+    <xs:attribute name="net"    type="xs:string" use="required" />
+    <xs:attribute name="maskid" type="xs:IDREF"  use="required" />
+</xs:complexType>
+
+<!-- Container for multiple masks -->
+<xs:complexType name="masksType">
+    <xs:sequence>
+        <xs:element name="mask" type="maskType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Type representing power overrides on an instance -->
+<xs:complexType name="powerType">
+    <xs:sequence>
+        <xs:element name="name"     type="xs:string" />
+        <xs:element name="override" type="xs:string" />
+        <xs:element name="bit"      type="bitType" minOccurs="0" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Container for power overrides -->
+<xs:complexType name="powersType">
+    <xs:sequence>
+        <xs:element name="power" type="powerType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Type representing a pin on an instance -->
+<xs:complexType name="pinType">
+    <xs:sequence>
+        <xs:group ref="bitrange" />
+    </xs:sequence>
+    <xs:attribute name="id"     type="xs:ID" use="required" />
+    <xs:attribute name="termid" type="xs:IDREF" use="required" />
+</xs:complexType>
+
+<!-- Container for multiple pins -->
+<xs:complexType name="pinsType">
+    <xs:sequence>
+        <xs:element name="pin" type="pinType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Type representing an instance in the design -->
+<xs:complexType name="instanceType">
+    <xs:sequence>
+        <xs:element name="name"         type="xs:string" />
+        <xs:element name="parameters"   type="parametersType" minOccurs="0" />
+        <xs:element name="masks"        type="masksType"  minOccurs="0" />
+        <xs:element name="powers"       type="powersType" minOccurs="0" />
+        <xs:element name="pins"         type="pinsType"   minOccurs="0" />
+    </xs:sequence>
+    <xs:attribute name="id"     type="xs:ID" use="required" />
+    <xs:attribute name="cellid" type="xs:IDREF" use="required" />
+</xs:complexType>
+
+<!-- Container for multiple instances -->
+<xs:complexType name="instancesType">
+    <xs:sequence>
+        <xs:element name="instance" type="instanceType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Type representing a connection in the design -->
+<xs:complexType name="connectionType">
+    <xs:attribute name="pin" type="xs:IDREF" use="required" />
+    <xs:attribute name="pinmsb" type="bitType" use="optional" default="-1" />
+    <xs:attribute name="pinlsb" type="bitType" use="optional" default="-1" />
+
+    <xs:attribute name="net" type="xs:IDREF" use="required" />
+    <xs:attribute name="netmsb" type="bitType" use="optional" default="-1" />
+    <xs:attribute name="netlsb" type="bitType" use="optional" default="-1" />
+</xs:complexType>
+
+<!-- Container for multiple connections -->
+<xs:complexType name="connectionsType">
+    <xs:sequence>
+        <xs:element name="connection" type="connectionType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Type representing an extension section in the design -->
+<xs:complexType name="extensionType">
+    <xs:sequence>
+        <xs:any  namespace="##any" processContents="skip" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="name"   type="xs:string"    use="required" />
+</xs:complexType>
+
+<!-- Container for multiple extensions -->
+<xs:complexType name="extensionsType">
+    <xs:sequence>
+        <xs:element name="extension" type="extensionType"   minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Type representing a design -->
+<xs:complexType name="designType">
+    <xs:sequence>
+        <xs:element name="lastids"      type="lastIdType"       minOccurs="0" />
+        <xs:element name="cells"        type="cellsType"        minOccurs="0" />
+        <xs:element name="nets"         type="netsType"         minOccurs="0" />
+        <xs:element name="instances"    type="instancesType"    minOccurs="0" />
+        <xs:element name="aliases"      type="aliasesType"      minOccurs="0" />
+        <xs:element name="connections"  type="connectionsType"  minOccurs="0" />
+        <xs:element name="extensions"   type="extensionsType"   minOccurs="0" />
+    </xs:sequence>
+    <xs:attribute   name="schemaType"   type="schemaKeyType" use="required" />
+    <xs:attribute   name="name"         type="xs:string"     use="required" />
+</xs:complexType>
+
+<!-- Container for multiple designs -->
+<xs:complexType name="designsType">
+    <xs:sequence>
+        <xs:element name="design" type="designType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Type representing Schema Header -->
+<xs:complexType name="schemaHeaderType">
+    <xs:sequence>
+        <xs:element name="schemaVersion"        type="xs:decimal" />
+        <xs:element name="creatorTool"          type="xs:string"  />
+        <xs:element name="modifierTool"         type="xs:string"  />
+        <xs:element name="modificationTime"     type="xs:dateTime" />
+        <xs:element name="savedLibrary"         type="xs:string" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- The schema Element - Root for the database -->
+<xs:element name="schema">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="header" type="schemaHeaderType" />
+            <xs:element name="designs" type="designsType" />
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+
+</xs:schema>
+

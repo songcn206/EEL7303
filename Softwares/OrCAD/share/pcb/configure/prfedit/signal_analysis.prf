@@ -1,0 +1,145 @@
+#------------------------------------------------------------------------------
+#			Signal Analysis Variables
+#------------------------------------------------------------------------------
+#
+# See User.prf for complete descriptions of fields in this file.
+
+SUMMARY:HELP=Signal Analysis Settings
+
+Frequency_at_Max_Loss_Tangent_in_GHz:TYPE=REAL:DEFAULT=1:EFF_IMMEDIATE:\
+HELP=This variable allows the user to control the non-linear dependency of \
+the loss tangent to the signal frequency. The value of this variable specifies \
+the frequency (in GHz) where the dielectric losses are maximum. The field solver \
+uses this value to calculate the asymptotic behavior of the frequency-dependent \
+G parameter. The default value is 1 GHz.
+
+Enforce_Welement_Simulation:TYPE=CHECK:EFF_ONNEXTCMD:\
+HELP=By default, cline segments shorter than the simulation timestep are \
+modeled as lumped elements. When set, this variable forces all cline \
+segments to be modeled as distributed elements.
+
+DirectConvolutionWithApproximation:TYPE=CHECK:EFF_ONNEXTCMD:\
+HELP=If set, enables an accelerated S parameter simulation algorithm, \
+which will improve the time domain simulation performance of circuits \
+containing S parameters.
+
+SQ_Enable_Udiff_Extraction:TYPE=CHECK:EFF_IMMEDIATE:\
+HELP=Normally, a topology extraction of a net that's part of a user defined \
+diff pair will only extract a single net. If this variable is set, both nets \
+in the diff pair will be extracted.
+
+SimSaveFiles:TYPE=CHECK:EFF_IMMEDIATE:\
+HELP=Normally, the tlsim circuit files that get created during a signoise \
+simulation are deleted after the simulation is completed. If this variable is \
+set, these files will be saved in your local directory.
+
+Sig_Mapfile_OrgPath:TYPE=LONG:EFF_IMMEDIATE:\
+HELP=Normally, the "Include ORIGINAL Model Path in Map File" option on the \
+Signal Model Assignment form is not selected. If this variable is set to "1", \
+this option will be set by default.
+
+Sig_Pinuse_Frozen:TYPE=CHECK:EFF_IMMEDIATE:\
+HELP=Normally, when a packaged device model is assigned to a component, the \
+pin use codes of the pins of the component are updated to match the type of \
+buffer model that is assigned to each pin. If this variable is set, the component \
+pin use codes are not updated.
+
+Sigxp_AllowOldRevs:TYPE=CHECK:EFF_IMMEDIATE:\
+HELP=Normally, a topology that was created by a newer release of sigxp cannot \
+be imported into an older release of Constraint Manager. If this variable is set \
+importing a newer topology into an older version of Constraint Manager will be \
+allowed. Any part of the topology that isn't legal in the older release will be \
+ignored.
+
+Sigxp_Length_Mode:TYPE=CHECK:EFF_IMMEDIATE:\
+HELP=By default, when a topology is extracted, T-line delays are shown in time. \
+If this variable is set, then the default display of T-line delay will be in length.
+
+SIGNAL_OPTLIB_DIR:TYPE=BUTTON:DIR_BROWSE:EFF_ONNEXTCMD:\
+PARENT_L=paths/signoise:\
+HELP=Paths of directories that contain optional signoise model libraries.
+
+SIGNAL_INSTALL_DIR:TYPE=BUTTON:DIR_BROWSE:EFF_ONNEXTCMD:\
+PARENT_L=paths/signoise:\
+HELP=Path of directory that contains standard signoise model libraries.
+
+SIGNOISEPATH:TYPE=BUTTON:DIR_BROWSE:EFF_ONNEXTCMD:\
+PARENT_L=paths/signoise:\
+HELP=Miscellaneous Signoise file locations (.dat .wave .mod .ctl).
+
+Anl_Min_Void_Area:TYPE=REAL:EFF_ONNEXTCMD:\
+HELP=Specifies, in mils, the smallest void that should be considered in plane \
+shapes, when non-ideal plane modeling is desired (i.e. the "Shield" buttons are \
+turned off in the stack-up description). The default value is "99", signifying \
+that voids with an area less than 99x99 square mils will be ignored.
+
+SimSaveFiles:TYPE=CHECK:EFF_ONNEXTCMD:\
+HELP=When set, the tlsim circuit files that get created when a simulation is run \
+will be saved. If not set, these files are deleted after the simulation is complete.
+
+Anl_Show_Coupled_Trace:TYPE=CHECK:EFF_ONNEXTCMD:\
+HELP=If set, the Display>Parasitic command will find the crosstalk neighbors \
+(within the geometry window) and show the multi-trace model name, such that the \
+user can get the coupled RLGC matrices from the interconn library using this \
+model name.
+
+SN_MaxWidthLimit:TYPE=REAL:EFF_ONNEXTCMD:\
+HELP=Specifies that wider traces are to be modeled as traces rather than as \
+shapes. The value is the maximum width of a trace (in meters) that is to be modeled \
+as a trace. All traces wider than this value will be modeled as shapes. The \
+default value is 0.001016 meters (40 mils).
+
+SIGXP_TIER:TYPE=STRING:EFF_IMMEDIATE:\
+HELP=This variable controls which license is checked out when  \
+SigXplorer is invoked from Allegro PCB. For example, if \
+this variable is set to PA5630, (the Allegro PCB SI 630 \
+product) while running Allegro PCB Design 610, and \
+SigXplorer is invoked, it will check out a PA5630 license \
+and run SigXplorer 630 tier.
+
+No_Duplicate_Model_Checks:TYPE=CHECK:EFF_IMMEDIATE:\
+HELP=If set, no checks will be make for Iml or Dml models with duplicate names.
+
+Num_New_Iml_Models_Before_Save:TYPE=LONG:EFF_ONRESTART:\
+HELP=This integer value defines the number of new IML models that must be added \
+to the IML working library before this library is saved to disk. For simulations \
+that generate a large number of IML models, the frequent writing of this library \
+to disk can create a performance problem. By default, this value is set to 50 but \
+this preference allows a user to change this value. The value must be an integer \
+that is greater than zero or it will be ignored.
+
+Avoid_Matched_Delay_Calculations:TYPE=CHECK:EFF_ONNEXTCMD:\
+HELP=If set, no delay will be computed for pin pairs with relative prop delay \
+constraints if the constraint is defined as length rather than delay. Since \
+the field solver is used to compute delay values, this will prevent the field \
+solver from being run when the constraint is in length. For these cases the \
+Delay column in the Constraint Manager Relative Propagation Delay worksheet \
+will contain zeros.
+
+Variant_To_Ignore:TYPE=STRING:EFF_IMMEDIATE:\
+HELP=This variable defines the name of the variant whose pins are to be \
+ignored when extracting a topology. The default value of this variable is "DNI".
+
+Variant_Property_Name:TYPE=STRING:EFF_IMMEDIATE:\
+HELP=This variable defines the name of the property that when attached to a \
+component defines that the component is a member of a variant. The value of the \
+property is the name of the variant. The default name for this property is "VARIANT".
+
+Max_Mappings_Factor:TYPE=LONG:EFF_IMMEDIATE:\
+HELP=When mapping an Electrical Cset topology to an Xnet, there are limits to \
+the number of possible mappings that will be tried. For very large topologies \
+that have many pins or T-points this limit can cause a "no mapping found" error. \
+The limit can be increased by using this variable. The value of the variable is \
+an integer multiplier. For example, a value of 10 means that the limit is \
+increased by 10X.
+
+Ignore_Mapping_Discrete_Values:TYPE=CHECK:EFF_IMMEDIATE:\
+HELP=When mapping an Electrical Cset topology to an Xnet, the values of the \
+discrete components in the topology must match the values of the discretes \
+in the Xnet. If this variable is set then discretes must match by type (i.e., \
+a resistor, capacitor or inductor) but the discrete values are not required \
+to match.
+
+No_Pullup_Diff_pairs:TYPE=CHECK:EFF_IMMEDIATE:\
+HELP=If set, a diff pair will not be created if one side of the diff pair \
+only consists of a pin connected to a pullup or pulldown resistor.

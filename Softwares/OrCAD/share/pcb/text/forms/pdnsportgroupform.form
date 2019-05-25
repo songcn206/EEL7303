@@ -1,0 +1,170 @@
+####################################################################################
+#       Cadence Design Systems                                                     #
+#                                                                                  #
+# (C) COPYRIGHT, Cadence Design Systems, Inc. 2010                                 #
+# All Rights Reserved                                                              #
+# Licensed Materials - Property of Cadence Design Systems                          #
+#                                                                                  #
+# No part of this file may be reproduced, stored in a retrieval system,            #
+# or transmitted in any form or by any means --- electronic, mechanical,           #
+# photocopying, recording, or otherwise --- without prior written permission       #
+# of Cadence Design Systems, Inc.                                                  #
+#                                                                                  #
+# WARRANTY:                                                                        #
+# Use all material in this file at your own risk.  Cadence Design Systems          #
+# makes no claims about any material contained in this file.                       #
+####################################################################################
+FILE_TYPE=FORM_DEFN VERSION=2
+
+    FORM AUTOGREYTEXT
+    FIXED
+    PORT 65 37
+    HEADER "Port Group Configuration"
+
+    ACTIVEFIELD CompNameList
+    DEFAULT Done
+
+    TILE
+
+    FIELD Done
+        FLOC 2 34
+        MENUBUTTON "OK" 10 3
+    ENDFIELD
+
+    FIELD Cancel
+        FLOC 14 34
+        MENUBUTTON "Cancel" 10 3
+    ENDFIELD
+
+    FIELD Apply
+        FLOC 42 34
+        MENUBUTTON "Apply" 10 3
+    ENDFIELD
+
+    FIELD Help
+        FLOC 54 34
+        MENUBUTTON "Help" 10 3
+    ENDFIELD
+
+    GROUP "Selection area" "SelectGroup"
+        GLOC 1 0
+        GSIZE 64 15
+    ENDGROUP
+
+    TEXT "Component:" "ComponentTitle"
+        TLOC 2 2
+    ENDTEXT
+
+    FIELD CompNameFilter
+        FLOC 13 2
+        STRFILLIN 11 31
+    ENDFIELD
+
+    FIELD SelCompList
+        FLOC 2 4
+        LIST "" 26 6
+        OPTIONS multiselect
+    ENDFIELD
+
+    TEXT "Net Name:" "NetListTitle"
+        TLOC 38 2
+    ENDTEXT
+
+    FIELD NetNameFilter
+        FLOC 49 2
+        STRFILLIN 11 31
+    ENDFIELD
+
+    FIELD SelNetList
+        FLOC 38 4
+        LIST "" 26 6
+        OPTIONS multiselect
+    ENDFIELD
+
+    GROUP "Port group assignment" "AssignGroup"
+        GLOC 1 15
+        GSIZE 64 18
+    ENDGROUP
+
+    TEXT "Group filter:"
+        TLOC 2 18
+    ENDTEXT
+
+    POPUP <GroupFilterList>"""".
+    FIELD GroupFilter
+        FLOC 14 18
+        STRFILLIN 8 31
+        POP "GroupFilterList"
+    ENDFIELD
+
+    TEXT "Pin name              Pin group"
+        TLOC 2 20
+    ENDTEXT
+
+    FIELD PinExcludeList
+        FLOC 2 22
+        LIST "" 26 6
+        OPTIONS multiselect
+    ENDFIELD
+
+    FIELD IncludeAll
+        FLOC 29 23
+        MENUBUTTON "-->>" 8 3
+    ENDFIELD
+
+    FIELD Include
+        FLOC 29 25
+        MENUBUTTON "--->" 8 3
+    ENDFIELD
+
+    FIELD Exclude
+        FLOC 29 27
+        MENUBUTTON "<---" 8 3
+    ENDFIELD
+
+    FIELD ExcludeAll
+        FLOC 29 29
+        MENUBUTTON "<<--" 8 3
+    ENDFIELD
+
+    TEXT "New group:" "NewGroupTitle"
+        TLOC 38 18
+    ENDTEXT
+
+    POPUP <NewGroupList>"""".
+    FIELD NewGroup
+        FLOC 50 18
+        STRFILLIN 8 31
+        POP "NewGroupList"
+    ENDFIELD
+
+    TEXT "Pin name              Pin group" "PinTitle"
+        TLOC 38 20
+    ENDTEXT
+
+    FIELD PinIncludeList
+        FLOC 38 22
+        LIST "" 26 6
+        OPTIONS multiselect
+    ENDFIELD
+
+    FLEXMODE EdgeGravity
+    FLEX SelectGroup    0 0 1 0.3
+    FLEX SelCompList   0 0 0.5 1
+    FLEX NetListTitle   0.5 0 0   0
+    FLEX SelNetList    0.5 0 0.5 1
+    FLEX AssignGroup    0 0.3 1 0.7
+    FLEX GroupFilter    0 0   0.5 0
+    FLEX PinExcludeList 0 0   0.5 1
+    FLEX IncludeAll     0.5 0   0 0
+    FLEX Include        0.5 0   0 0
+    FLEX Exclude        0.5 1   0 0
+    FLEX ExcludeAll     0.5 1   0 0
+    FLEX NewGroupTitle  0.5 0   0 0
+    FLEX NewGroup       0.5 0   0.5 0
+    FLEX PinTitle       0.5 0   0 0
+    FLEX PinIncludeList 0.5 0 0.5 1
+
+    ENDTILE
+ENDFORM
+

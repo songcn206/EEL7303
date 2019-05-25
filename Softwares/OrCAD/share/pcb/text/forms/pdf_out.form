@@ -1,0 +1,419 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 60 42
+HEADER "Allegro PDF Publisher"
+
+POPUP <ATTRPOP> "Add Property""1".
+POPUP <pageSizeList>" "" ".
+POPUP <unitList>"Millimeter""Millimeter","Inch""Inch".
+
+MESSAGE nerror 3 "A problem occurred, please check the logfile."
+MESSAGE nwarn 2 "PDF file generated with warnings."
+MESSAGE ndone 0 "PDF output completed."
+MESSAGE norec 2 "No film record selected."
+MESSAGE nofile 2 "No output file name entered."
+MESSAGE nopass 2 "No password entered."
+
+MESSAGE ILLEGAL_VALUE 1 "Illegal value"
+MESSAGE VALUE_MUST_BE_GE_ZERO 1 "Value cannot be negative"
+
+
+TILE 
+
+TABSET "tab_selector"
+FLOC 2 1
+TSSIZE 58 54
+
+#-----------------------
+TAB "PDF Export"
+
+ACTIVEFIELD "fileName"
+TEXT "Output file name:"
+TLOC 2 1
+ENDTEXT
+
+FIELD fileName
+FLOC 14 1
+STRFILLIN 36 256
+ENDFIELD
+
+FIELD browse
+FLOC 52 1
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+GROUP "Available Films" "grp_af"
+GLOC 1 3
+GSIZE 55 17
+ENDGROUP
+
+FIELD pdfTree
+FLOC 3 5
+TREEVIEW 51 6
+ENDFIELD
+
+FIELD selectAll
+FLOC 3 17
+MENUBUTTON "Select All" 9 3
+ENDFIELD
+
+FIELD clearAll
+FLOC 13 17
+MENUBUTTON "Clear All" 9 3
+ENDFIELD
+
+FIELD artwork
+FLOC 40 17
+MENUBUTTON "Film Creation ..." 9 3
+ENDFIELD
+
+
+GROUP "Export Options" "grp_options"
+GLOC 1 20
+GSIZE 55 28
+ENDGROUP
+
+FIELD pin_related
+FLOC 3 22
+CHECKLIST "Export board/symbol outlines and refdes if pins exported"
+ENDFIELD
+
+FIELD pad_filled
+FLOC 3 24
+CHECKLIST "Filled pads"
+ENDFIELD
+
+FIELD fill_shapes
+FLOC 14 24
+CHECKLIST "Filled shapes"
+ENDFIELD
+
+
+FIELD hole_filtered
+FLOC 29 24
+CHECKLIST "Filter holes"
+ENDFIELD
+
+FIELD trace_filtered
+FLOC 40 24
+CHECKLIST "Filter traces"
+ENDFIELD
+
+FIELD text_vector
+FLOC 3 26
+CHECKLIST "Vector text"
+ENDFIELD
+
+
+FIELD meta_data
+FLOC 3 28
+CHECKLIST "Property Options"
+ENDFIELD
+
+FIELD data_comp
+FLOC 6 30
+CHECKLIST "Comp Tree"
+ENDFIELD
+
+FIELD data_net
+FLOC 18 30
+CHECKLIST "Net Tree"
+ENDFIELD
+
+FIELD data_testpt
+FLOC 28 30
+CHECKLIST "TestPoint Tree"
+ENDFIELD
+
+FIELD data_pin
+FLOC 6 32
+CHECKLIST "Pin"
+ENDFIELD
+
+FIELD data_via
+FLOC 13 32
+CHECKLIST "Via"
+ENDFIELD
+
+FIELD data_cline
+FLOC 20 32
+CHECKLIST "Cline"
+ENDFIELD
+
+FIELD data_shape
+FLOC 28 32
+CHECKLIST "Shape"
+ENDFIELD
+
+
+FIELD security
+FLOC 3 34
+CHECKLIST "Security"
+ENDFIELD
+
+ACTIVEFIELD "user_pass"
+TEXT "Document open password:"
+TLOC 6 36
+ENDTEXT
+
+FIELD user_pass
+FLOC 26 36
+STRFILLIN 20 100
+ENDFIELD
+
+ACTIVEFIELD "owner_pass"
+TEXT "Permissions password:"
+TLOC 6 38
+ENDTEXT
+
+FIELD owner_pass
+FLOC 26 38
+STRFILLIN 20 100
+ENDFIELD
+
+FIELD black_white
+FLOC 3 40
+CHECKLIST "Output PDF in black and white mode"
+ENDFIELD
+
+FIELD doc_separated
+FLOC 3 42
+CHECKLIST "Create separate PDF file for each art film"
+ENDFIELD
+
+FIELD print_only
+FLOC 3 44
+CHECKLIST "Create PDF optimized for print (no meta data but smaller files)"
+ENDFIELD
+
+FIELD alt_comp_view
+FLOC 3 46
+CHECKLIST "Display Component by RefDes without the package name"
+ENDFIELD
+
+FIELD doc_open
+FLOC 2 49
+CHECKLIST "Launch PDF Viewer"
+ENDFIELD
+
+
+ENDTAB
+
+#-----------------------
+TAB "Property Parameters"
+
+FIELD attrTree
+FLOC 2 2
+TREEVIEW 53 24
+POP "ATTRPOP"
+ENDFIELD
+
+GROUP "Available properties" "grp_attr"
+GLOC 1 0
+GSIZE 55 51
+ENDGROUP
+
+ENDTAB
+
+#-----------------------
+TAB "Page Setup"
+
+ACTIVEFIELD "page_setup_unit"
+TEXT "Unit:"
+TLOC 2 1
+ENDTEXT
+
+FIELD pageUnitField
+FLOC 6 1
+ENUMSET 15
+POP "unitList"
+ENDFIELD
+
+#####
+
+FIELD pageSizeField
+FLOC 2 7
+ENUMSET 18
+POP "pageSizeList"
+ENDFIELD
+
+ACTIVEFIELD "page_setup_width"
+TEXT "Width:"
+TLOC 2 10
+ENDTEXT
+
+FIELD page_width
+FLOC 8 10
+STRFILLIN 10 12
+ENDFIELD
+
+ACTIVEFIELD "page_setup_height"
+TEXT "Height:"
+TLOC 2 12
+ENDTEXT
+
+FIELD page_height
+FLOC 8 12
+STRFILLIN 10 12
+ENDFIELD
+
+GROUP "Paper Size" "paper_size"
+GLOC 1 4
+GSIZE 26 11
+ENDGROUP
+
+#---------------
+FIELD pdf_portrait
+FLOC 31 7
+CHECKLIST "Portrait" "PDF_ORIRNTATION"
+ENDFIELD 
+
+FIELD pdf_landscape
+FLOC 31 9
+CHECKLIST "Landscape" "PDF_ORIRNTATION"
+ENDFIELD 
+
+FIELD pdf_orirntation_drawing
+THUMBNAIL
+FLOC 31 11
+FSIZE 5 3 
+ENDFIELD
+
+GROUP "Orientation" "orientation"
+GLOC 30 4
+GSIZE 26 11
+ENDGROUP
+
+#---------------
+ACTIVEFIELD "margin_l"
+TEXT "Left:"
+TLOC 2 20
+ENDTEXT
+
+FIELD page_margin_l
+FLOC 8 20
+STRFILLIN 10 12
+ENDFIELD
+
+ACTIVEFIELD "margin_r"
+TEXT "Right:"
+TLOC 25 20
+ENDTEXT
+
+FIELD page_margin_r
+FLOC 31 20
+STRFILLIN 10 12
+ENDFIELD
+
+ACTIVEFIELD "margin_t"
+TEXT "Top:"
+TLOC 2 22
+ENDTEXT
+
+FIELD page_margin_t
+FLOC 8 22
+STRFILLIN 10 12
+ENDFIELD
+
+ACTIVEFIELD "margin_b"
+TEXT "Bottom:"
+TLOC 25 22
+ENDTEXT
+
+FIELD page_margin_b
+FLOC 31 22
+STRFILLIN 10 12
+ENDFIELD
+
+GROUP "Margins" "margins"
+GLOC 1 17
+GSIZE 55 8
+ENDGROUP
+
+#---------------
+FIELD scale_factor_selected
+FLOC 2 30
+CHECKLIST "Scale factor:" "scaling_group"
+ENDFIELD
+
+FIELD scale_factor
+FLOC 14 30
+STRFILLIN 10 12
+ENDFIELD
+
+FIELD scale_fit
+FLOC 2 32
+CHECKLIST "Fit to page" "scaling_group"
+ENDFIELD
+
+GROUP "Scaling" "scaling"
+GLOC 1 27
+GSIZE 55 7
+ENDGROUP
+
+#---------------
+ACTIVEFIELD "footer_text_w_label"
+TEXT "Width:"
+TLOC 2 39
+ENDTEXT
+
+FIELD footer_text_w
+FLOC 8 39
+STRFILLIN 10 12
+ENDFIELD
+
+ACTIVEFIELD "footer_text_h_label"
+TEXT "Height:"
+TLOC 2 41
+ENDTEXT
+
+FIELD footer_text_h
+FLOC 8 41
+STRFILLIN 10 12
+ENDFIELD
+
+GROUP "Text Size for Header/Footer" "header_footer_text"
+GLOC 1 36
+GSIZE 55 8
+ENDGROUP
+
+ENDTAB
+
+ENDTABSET
+#-----------------------
+
+FIELD export
+FLOC 3 56
+MENUBUTTON "Export" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 15 56
+MENUBUTTON "Close" 9 3
+ENDFIELD
+
+FIELD viewlog
+FLOC 27 56
+MENUBUTTON "Viewlog..." 9 3 
+ENDFIELD
+
+FIELD help
+FLOC 40 56
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+FLEXMODE EdgeGravityOne
+FLEX tab_selector 0 0 1 1
+FLEX filename 0 0 1 0
+FLEX grp_af 0 0 1 1
+FLEX pdftree 0 0 1 1
+FLEX grp_attr 0 0 1 1
+FLEX attrtree 0 0 1 1
+FLEX orientation 0 0 0 0
+FLEX margins 0 0 0 0
+FLEX scaling 0 0 0 0
+FLEX header_footer_text 0 0 0 0
+ENDTILE
+
+ENDFORM

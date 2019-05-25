@@ -1,0 +1,91 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 43 30
+HEADER "Placement"
+
+MESSAGE nidone 0 "Import completed."
+MESSAGE nxdone 0 "Export completed."
+MESSAGE nerror 0 "A problem occurred - please check the logfile (using Viewlog)."
+ACTIVEFIELD "cancel"
+TILE
+
+TEXT "Placement File:"
+TLOC 1 1
+ENDTEXT
+
+FIELD filename
+FLOC 1 4
+STRFILLIN 25 128
+ENDFIELD 
+
+FIELD symbol_origin
+FLOC 3 8
+FGROUP "Placement Center"
+CHECKLIST "Symbol Origin" "DFormat"
+ENDFIELD
+
+FIELD body_center
+FLOC 3 10
+FGROUP "Placement Center"
+CHECKLIST "Body Center" "DFormat"
+ENDFIELD
+
+FIELD pin_1
+FLOC 3 12
+FGROUP "Placement Center"
+CHECKLIST "Pin 1" "DFormat"
+ENDFIELD
+
+#---------------
+FIELD add_unplaced_comp
+FLOC 3 16
+FGROUP "Place Mode"
+CHECKLIST "Add Unplaced Component Only" "PMode"
+ENDFIELD
+
+FIELD add_and_move
+FLOC 3 19
+FGROUP "Place Mode"
+CHECKLIST "Add and Move" "PMode"
+ENDFIELD
+
+FIELD ignore_fix
+FLOC 5 21
+CHECKLIST "Ignore FIXED Property"
+ENDFIELD
+
+GROUP "Placement Options" "place_options"
+GLOC   1 14 
+GSIZE   27 9
+ENDGROUP
+#---------------
+
+FIELD execute
+FLOC 30 4
+MENUBUTTON "Run" 11 3
+ENDFIELD
+
+FIELD cancel
+FLOC 30 7 
+MENUBUTTON "Close" 11 3
+ENDFIELD
+
+FIELD browse
+FLOC 30 10
+MENUBUTTON "Browse..." 11 3
+ENDFIELD
+
+FIELD help
+FLOC 30 16
+MENUBUTTON "Help" 11 3
+ENDFIELD
+
+GROUP "Placement Origin"
+GLOC   1 6 
+GSIZE   27 8
+ENDGROUP
+
+ENDTILE
+
+ENDFORM

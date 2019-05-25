@@ -1,0 +1,65 @@
+####################################################################################
+#       Cadence Design Systems                                                     #
+#                                                                                  #
+# (C) COPYRIGHT, Cadence Design Systems, Inc. 2010                                 #
+# All Rights Reserved                                                              #
+# Licensed Materials - Property of Cadence Design Systems                          #
+#                                                                                  #
+# No part of this file may be reproduced, stored in a retrieval system,            #
+# or transmitted in any form or by any means --- electronic, mechanical,           #
+# photocopying, recording, or otherwise --- without prior written permission       #
+# of Cadence Design Systems, Inc.                                                  #
+#                                                                                  #
+# WARRANTY:                                                                        #
+# Use all material in this file at your own risk.  Cadence Design Systems          #
+# makes no claims about any material contained in this file.                       #
+####################################################################################
+FILE_TYPE=FORM_DEFN VERSION=2
+
+    FORM
+    FIXED
+    PORT 40 8
+    HEADER "Sink Current"
+
+    ACTIVEFIELD SinkCurrent
+    DEFAULT Done
+
+    TILE
+
+    FIELD Done
+        FLOC 1 6
+        MENUBUTTON "OK" 10 3
+    ENDFIELD
+
+    FIELD Cancel
+        FLOC 12 6
+        MENUBUTTON "Cancel" 10 3
+    ENDFIELD
+
+    FIELD Help
+        FLOC 30 6
+        MENUBUTTON "Help" 10 3
+    ENDFIELD
+
+    GROUP "Add/browse sink current:" "SinkGroup"
+        GLOC 1 0
+        GSIZE 39 5
+    ENDGROUP
+
+    TEXT "Sink Current:"
+        TLOC 2 2
+    ENDTEXT
+
+    POPUP <SinkExcitationList>"Browse...""Browse...".
+    FIELD SinkCurrent
+        FLOC 12 2
+        STRFILLIN 22 256
+        POP "SinkExcitationList"
+    ENDFIELD
+
+    FLEXMODE EdgeGravity
+    FLEX SinkGroup 0 0 1 0
+    FLEX SinkCurrent 0 0 1 0
+
+    ENDTILE
+ENDFORM

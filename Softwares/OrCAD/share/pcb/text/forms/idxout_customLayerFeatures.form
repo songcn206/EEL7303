@@ -1,0 +1,88 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM autogreytext
+FIXED 
+PORT 65 25
+HEADER "IDX Out for User Layers"
+
+MESSAGE nIdxFile 0 "You must enter an IDX filename first."
+MESSAGE nLayerCnvFile 0 "You must enter a layer conversion filename first."
+MESSAGE lLayerCnvFile 0 "Given layer filename does not exist. You must create one."
+MESSAGE nerror 0 "Error occurred - Check logfile (using File->Viewlog)."
+MESSAGE nEditable 0 "You must close Edit Layer Conversion File form first."
+MESSAGE ndemo 0 "Cannot Run in Demo Mode."
+MESSAGE nBusy 0 "Working..."
+
+ACTIVEFIELD "DxfFile"
+
+TILE
+
+GROUP "User Layer Specifications"
+GLOC 3 1
+GSIZE 60 11
+ENDGROUP
+
+
+TEXT "IDX file:"
+TLOC 5 4
+ENDTEXT
+
+FIELD customShpFile
+FLOC 21 4
+STRFILLIN 30 1024
+ENDFIELD
+
+FIELD BrowseFile
+FLOC 53 4
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+
+
+TEXT "Layer conversion file:"
+TLOC 5 7
+ENDTEXT
+
+FIELD LayerCnvFile
+FLOC 21 7
+STRFILLIN 30 1024
+ENDFIELD
+
+FIELD BrowseLayer
+FLOC 53 7
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+FIELD LibLayer
+FLOC 56 7
+MENUBUTTON "Lib..." 5 3
+ENDFIELD
+
+FIELD Edit
+FLOC 21 9
+MENUBUTTON "Edit..." 8 3
+ENDFIELD
+
+FIELD unfill_trace
+FLOC 3 13
+CHECKLIST "Export traces as outlines"
+ENDFIELD
+
+
+FIELD Execute
+FLOC 3 16
+MENUBUTTON "Export" 10 3
+ENDFIELD
+
+FIELD Close
+FLOC 16 16
+MENUBUTTON "Close" 10 3
+ENDFIELD
+
+FIELD help
+FLOC 53 16
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

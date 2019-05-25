@@ -1,0 +1,54 @@
+#  $Header: /vobs/psd_backend_data/data/prefs/idf.prf /main/23 23-Mar-04.13:53:06 fxf $
+#-------------------------------------------------------------------------------
+#			Allegro IDF Variables
+#-------------------------------------------------------------------------------
+#
+# See User.prf for complete descriptions of fields in this file.
+
+PARENT:PARENT_L=Interfaces/IDF
+
+SUMMARY:HELP=IDF (Mechanical Interface) Options
+
+
+idf_nodelete:TYPE=CHECK:EFF_ONNEXTCMD:\
+HELP=If set, idf_in will only import the .PLACEMENT and .NOTES sections of the \
+IDF file.  All other sections of the IDF file will be ignored.
+
+idf_ignore_part_number:TYPE=CHECK:EFF_ONNEXTCMD:\
+HELP=If set, idf_out will ignore the component definition PART_NUMBER  \
+property and instead export the component definition device type.
+
+idf_mech_refdes:TYPE=CHECK:EFF_ONNEXTCMD:\
+HELP=If set, idf_out outputs refdes and part number for mechanical parts. \
+This appears to violate the IDF standard in that mechanical parts should output NOREFDES.
+
+idf_ignore_comp_height:TYPE=CHECK:EFF_ONNEXTCMD:\
+HELP=If set, idf_out will ignore the component definition HEIGHT property \
+and instead export the symbol definition height value.
+
+idf_place_bounds_top:TYPE=STRING:EFF_ONNEXTCMD:\
+HELP=A subclass of the Package Geometry class that is used to calculate the \
+component outline for the IDF Library file.  User should also specify \
+IDF_PLACE_BOUNDS_BOTTOM.
+
+idf_place_bounds_bottom:TYPE=STRING:EFF_ONNEXTCMD:\
+HELP=A subclass of the Package Geometry class that is used to calculate the \
+component outline for the IDF Library file.  User should also specify \
+IDF_PLACE_BOUNDS_TOP.
+
+idf_layer_delineate:TYPE=STRING:EFF_ONNEXTCMD:\
+HELP=By default, idf export uses the slash character to delinate between \
+our class and subclass names. This variable allows you to substitute a \
+new character if the slash character is illegal in your MCAD system.
+
+dxf_version:TYPE=ENUM:POPUP=12,14:DEFAULT=12:EFF_ONNEXTCMD:\
+PARENT_L=Interfaces/DXF:\
+HELP=Specifies DXF output version for command dxf out. Values can be 12 or 14. \
+Default is 12.
+
+place_text_filename:TYPE=STRING:EFF_ONNEXTCMD:\
+PARENT_L=Interfaces/plctxt:\
+HELP=Override default plctxt filename, default name is place_txt.txt. \
+TIP\: Variable expansion is supported to use current values of other variables. \
+To use the current design name use the value \\$module \
+The backslash (or single quotes around name and $) and $ are required in this mode.

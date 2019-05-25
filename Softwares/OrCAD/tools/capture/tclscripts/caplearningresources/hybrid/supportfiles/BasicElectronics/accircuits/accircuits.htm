@@ -1,0 +1,2215 @@
+﻿
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
+<!--# 	Cadence Design Systems
+#  (c) 2012 Cadence Design Systems, Inc. All rights reserved.
+#  This work may not be copied, modified, re-published, uploaded, 
+#  executed, or distributed in any way, in any medium, whether in 
+#  whole or in part, without prior written permission from Cadence 
+#  Design Systems, Inc.
+#  -->
+
+
+
+
+    
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  <title>AC circuits</title>
+  <link rel="stylesheet" type="text/css" href="../../../../basescripts/css/sheet.css" />
+
+
+
+
+
+
+  
+  
+  
+  
+  <script type="text/javascript" src="../../../../basescripts/scripts/OpenOpj.js"></script>
+  
+  
+  
+  
+  <script type="text/javascript">
+
+
+ </script>
+</head>
+
+
+<body style="width:99%;height:100%" class="content">
+
+
+
+
+
+
+<h1><a class="Mheading" id="ACcircuits">AC Circuits</a></h1>
+
+
+
+
+                                           
+<p class="para">This section describes how to use OrCAD&reg;
+Capture-PSpice&reg; to perform sinusoidal steady-state analysis of
+networks with resistance (<span style="font-family: Courier New,Courier,monospace;">R</span>), inductance (<span style="font-family: Courier New,Courier,monospace;">L</span>),&nbsp;and conductance
+(<span style="font-family: Courier New,Courier,monospace;">C</span>). </p>
+
+
+
+
+
+
+<br />
+
+
+
+
+
+<p class="para"><b>Reactance(<span style="font-family: Courier New,Courier,monospace;">X</span>)</b>: The opposition of a circuit
+element to the change of current or voltage due to its conductance or
+inductance is called reactance. The conductance of an element creates
+an electric field that opposes the change of voltage. Similarly, the
+inductance of an element creates a magnetic field that opposes the
+change of current. Reactance of&nbsp;inductors (<span style="font-family: monospace;">X</span><sub style="font-family: monospace;">L</sub>) and capacitors (<span style="font-family: monospace;">X</span><sub style="font-family: monospace;">C</sub>) are given as follows:</p>
+
+
+
+
+ 
+<center>
+<table width="100%">
+
+
+
+
+
+  <tbody>
+
+
+
+
+    <tr>
+
+
+
+
+      <td style="width: 97%;">
+      
+      
+      
+      
+      <center><img src="Images/l_reac.png" alt="" /></center>
+
+
+
+
+      </td>
+
+
+
+
+      <td style="width: 3%;"><a name="equation1"></a>(1)</td>
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+      <td style="width: 97%;">
+      
+      
+      
+      
+      <center><img src="Images/C_reac.png" alt="" /></center>
+
+
+
+
+      </td>
+
+
+
+
+      <td style="width: 3%;"><a name="equation2"></a>(2)</td>
+
+
+
+
+    </tr>
+
+
+
+
+  
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+
+</center>
+
+
+
+
+
+<p class="para">where&nbsp;<img style="width: 17px; height: 18px;" alt="" src="Images/omega.gif" />
+is the frequency of the alternating current (AC) applied, and&nbsp;<span style="font-family: Courier New,Courier,monospace;">L</span>
+is the inductance and <span style="font-family: Courier New,Courier,monospace;">C</span> is the conductance of the circuit.</p>
+
+
+
+
+<p class="para"><b>Impedance (<span style="font-family: Courier New,Courier,monospace;">Z</span>)</b>:-The opposition of a circuit to current when a voltage is applied is called electrical
+impedance, or simply impedance. It is the ratio of&nbsp;voltage to
+current in an&nbsp;AC circuit. Impedance has a magnitude and a phase. The magnitude of impedance
+is the ratio of the voltage amplitude to the current amplitude and the
+phase of&nbsp;impedance is the phase&nbsp;by which the current
+leads or lags the voltage. The series impedance (<span style="font-family: Courier New,Courier,monospace;">Z</span>) of an RLC
+circuit is given as follows:</p>
+
+
+
+
+ 
+<br />
+
+
+
+
+
+<center>
+<table width="100%">
+
+
+
+
+
+  <tbody>
+
+
+
+
+    <tr>
+
+
+
+
+      <td style="width: 97%;">
+      
+      
+      
+      
+      <center><img src="Images/imped.png" alt="" /></center>
+
+
+
+
+      </td>
+
+
+
+
+      <td style="width: 3%;"><a name="equation3"></a>(3)</td>
+
+
+
+
+    </tr>
+
+
+
+
+  
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+
+</center>
+
+
+
+
+
+
+
+<p class="para">where&nbsp;<img style="width: 17px; height: 18px;" alt="" src="Images/omega.gif" />
+is the frequency of the alternating current (AC) applied and&nbsp;<span style="font-family: Courier New,Courier,monospace;">R</span> is the resistance,&nbsp;<span style="font-family: Courier New,Courier,monospace;">L</span>
+is the inductance, and <span style="font-family: Courier New,Courier,monospace;">C</span> is the conductance of the circuit.</p>
+
+
+<p class="para"><b>Concept of Power</b><br />
+
+
+
+
+<br />
+
+
+
+A&nbsp;purely resistive circuit with only resistance does not return
+any&nbsp;power to the source because it uses all&nbsp;the
+supplied power. A purely&nbsp;reactive circuit with only
+reactance returns all the power to the source because it does not
+use any of the supplied power. In a circuit with both
+resistance and reactance, resistance dissipates part of the
+supplied&nbsp;power and reactance returns part of the supplied power
+to the source. As a result, circuits with&nbsp;both resistive and
+reactive elements lead to the following power concepts:<br />
+
+
+
+&nbsp;<br />
+
+
+
+</p>
+
+
+
+
+
+<p class="para"><b>True power: </b>The power that is used by the resistive components in the
+circuit.</p>
+
+
+
+
+
+
+<center>
+<table width="100%">
+
+
+
+
+
+  <tbody>
+
+
+
+
+    <tr>
+
+
+
+
+      <td style="width: 97%;">
+      
+      
+      
+      
+      <center><img src="Images/true_power.png" alt="" /></center>
+
+
+
+
+      </td>
+
+
+
+
+      <td style="width: 3%;"><a name="equation4"></a>(4)</td>
+
+
+
+
+    </tr>
+
+
+
+
+  
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+
+</center>
+
+
+
+
+
+
+<p class="para">where <span style="font-family: Courier New,Courier,monospace;">I</span><sub style="font-family: Courier New,Courier,monospace;">R</sub> is the current passing through the resistance <span style="font-family: Courier New,Courier,monospace;">R</span>.<b></b></p>
+
+
+<p class="para"><b>Reactive power: </b>The power that is returned to the source by the reactive components in the circuit.</p>
+
+
+
+
+
+
+<center>
+<table width="100%">
+
+
+
+
+
+  <tbody>
+
+
+
+
+    <tr>
+
+
+
+
+      <td style="width: 97%;">
+      
+      
+      
+      
+      <center><img src="Images/reactive_power.png" alt="" /></center>
+
+
+
+
+      </td>
+
+
+
+
+      <td style="width: 3%;"><a name="equation5"></a>(5)</td>
+
+
+
+
+    </tr>
+
+
+
+
+  
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+
+</center>
+
+
+
+
+
+
+<p class="para">where <span style="font-family: Courier New,Courier,monospace;">I</span><sub style="font-family: Courier New,Courier,monospace;">L</sub> is the current passing through the inductor, <span style="font-family: Courier New,Courier,monospace;">I</span><sub style="font-family: Courier New,Courier,monospace;">C</sub> is the current passing through the capacitor,&nbsp;<span style="font-family: Courier New,Courier,monospace;">X</span><sub style="font-family: Courier New,Courier,monospace;">L</sub> is the inductive reactance,&nbsp;and <span style="font-family: Courier New,Courier,monospace;">X</span><sub style="font-family: Courier New,Courier,monospace;">C</sub> is the capacitive reactance.</p>
+
+
+<p class="para"><b>Apparent power: </b>The power that
+reaches&nbsp;the
+source. The complete reactive power does not reach the source
+because&nbsp;the impedance in the circuit opposes&nbsp;AC. Apparent
+power is given as follows.</p>
+
+
+
+
+
+
+<center>
+<table width="100%">
+
+
+
+
+
+  <tbody>
+
+
+
+
+    <tr>
+
+
+
+
+      <td style="width: 97%;">
+      
+      
+      
+      
+      <center><img src="Images/apparent_power.png" alt="" id = "equation6" /></center>
+
+
+
+
+      </td>
+
+
+
+
+      <td style="width: 3%;">(6)</td>
+
+
+
+
+    </tr>
+
+
+
+
+  
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+
+</center>
+
+
+
+
+
+
+
+<p class="para"><b>Power Factor:</b> The ratio of&nbsp;true power to the total apparent power in a circuit.</p>
+
+
+
+
+
+
+<center>
+<table width="100%">
+
+
+
+
+
+  <tbody>
+
+
+
+
+    <tr>
+
+
+
+
+      <td style="width: 97%;">
+      
+      
+      
+      
+      <center><img src="Images/power_factor.png" alt="" id = "equation7"/></center>
+
+
+
+
+      </td>
+
+
+
+
+      <td style="width: 3%;">(7)</td>
+
+
+
+
+    </tr>
+
+
+
+
+  
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+
+</center>
+
+
+
+
+
+<br />
+
+
+
+
+<br />
+
+
+
+
+<br />
+
+
+
+
+<br />
+
+
+
+
+
+
+
+
+
+
+
+<table style="width: 100%" >
+
+
+
+
+  <tbody>
+
+
+
+
+    <tr>
+
+
+
+
+
+      
+
+<td style="width: 50%;">
+
+
+      
+
+      
+      
+      
+      
+      <h1><a class="Mheading" id="A1">RC circuit</a></h1></td>
+
+
+<td style="width: 50%;" align="right"><span style="text-decoration: underline; cursor : pointer" onclick="OpenOpjSim('BasicElectronics','ACcircuits','Designfiles','ACcircuits','RC','PAGE1','Tran')"><img alt="click to view circuit" src="../../../../hybrid/Images/cap_icon.png" style=" margin-top: 20px" /></span>
+
+
+      </td>
+
+
+    </tr>
+
+
+
+
+  
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+
+
+<p class="para">An RC series circuit excited by an alternating sinusoidal voltage is shown below.</p>
+
+
+
+
+ 
+<center>
+<table>
+
+
+
+
+
+<!--<tr><td><img src="Images/RC_gen.png"   class = "tximage" alt = "RC"/></td><td><img src="Images/rc_sc.png" alt = "RC circuit" /></td></tr> -->
+  <tbody>
+
+
+
+
+    <tr>
+
+
+
+
+      <td><img src="Images/rc_sc.png" alt="" style ="cursor :pointer" onclick="OpenOpjSim('BasicElectronics','ACcircuits','Designfiles','ACcircuits','RC','PAGE1','Tran')" /></td>
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+      <td class="caption"><i><a name="Figure_1._RC_circuit_in_capture"></a>Figure 1.  RC circuit in capture</i></td>
+
+
+
+
+    </tr>
+
+
+
+
+
+  
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+
+</center>
+
+
+
+
+
+ <br />
+
+
+
+
+<br />
+
+
+
+
+<br />
+
+
+
+
+
+<center>
+<table width="100%">
+
+
+
+
+
+  <tbody>
+
+
+
+
+    <tr>
+
+
+
+
+      <td style="width: 97%;">
+      
+      
+      
+      
+      <center><img src="Images/inp_sine.png" alt="" /></center>
+
+
+
+
+      </td>
+
+
+
+
+      <td style="width: 3%;"><a name="equation8"></a>(8)</td>
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+      <td style="width: 97%;">
+      
+      
+      
+      
+      <center><img src="Images/rc_eq1.png" alt="" /></center>
+
+
+
+
+      </td>
+
+
+
+
+      <td style="width: 3%;"><a name="equation9"></a>(9)</td>
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+      <td style="width: 97%;">
+      
+      
+      
+      
+      <center><img src="Images/rc_eq2.png" alt="" /></center>
+
+
+
+
+      </td>
+
+
+
+
+      <td style="width: 3%;"><a name="equation10"></a>(10)</td>
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+      <td style="width: 97%;">
+      
+      
+      
+      
+      <center><img src="Images/rc_eq3.png" alt="" /></center>
+
+
+
+
+      </td>
+
+
+
+
+      <td style="width: 3%;"><a name="equation11"></a>(11)</td>
+
+
+
+
+    </tr>
+
+
+
+
+  
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+
+</center>
+
+
+
+
+
+
+<p class="para">In <span style="font-style: italic;">equation (10)</span> the factor <span style="font-family: Courier New,Courier,monospace;">(tan</span><sup style="font-family: Courier New,Courier,monospace;">-1</sup><span style="font-family: Courier New,Courier,monospace;">(1/wrc))</span>
+denotes the phase angle by which current leads the voltage in the
+circuit. It can be clearly seen from <span style="font-style: italic;">equation (11)</span> that voltage drop
+across the capacitor lags behind the current by an angle of <span style="font-family: Courier New,Courier,monospace;">90degrees</span>.
+</p>
+
+
+
+
+ <br />
+
+
+
+
+
+
+<p class="para">Solve <span style="font-style: italic;">equation (10)</span> for I&nbsp;with the following values:<br />
+
+
+
+
+<br />
+
+
+<span style="font-family: Courier New,Courier,monospace;">
+
+V</span><sub style="font-family: Courier New,Courier,monospace;">m</sub><span style="font-family: Courier New,Courier,monospace;"> = VAMPL = 5V</span>, <span style="font-family: Courier New,Courier,monospace;">R = R2= 100Ohm</span>, <span style="font-family: Courier New,Courier,monospace;">C = C1 = 5uF</span>, <span style="font-family: Courier New,Courier,monospace;">FREQ = 50Hz</span>, and <span style="font-family: Courier New,Courier,monospace;">t = 30ms</span>&nbsp;
+
+
+
+
+<br />The result is&nbsp;<span style="font-family: Courier New,Courier,monospace;">-7.66mA</span>.</p><br />
+
+
+<br />
+
+
+<br />
+
+
+
+
+Solve&nbsp;<span style="font-style: italic;">equation (11)</span> for Vc&nbsp;with the following values:<br />
+
+
+
+
+<p class="para"><span style="font-family: Courier New,Courier,monospace;">V</span><sub style="font-family: Courier New,Courier,monospace;">m</sub><span style="font-family: Courier New,Courier,monospace;">= VAMPL = 5V</span>, <span style="font-family: Courier New,Courier,monospace;">R = R2 = 100Ohm</span>, <span style="font-family: Courier New,Courier,monospace;">C = C1 = 5uF</span>, <span style="font-family: Courier New,Courier,monospace;">FREQ = 50Hz</span>, and <span style="font-family: Courier New,Courier,monospace;">t = 30ms</span></p>
+
+
+The result is <span style="font-family: Courier New,Courier,monospace;">767.22mV</span>. 
+
+ 
+
+<p class="para"> The same value is obtained in the resultant waveform
+in PSpice as well. It can be clearly seen that voltage across the
+capacitor lags&nbsp;the current by <span style="font-family: Courier New,Courier,monospace;">90degrees</span>.</p>
+
+
+
+
+<br />
+
+
+
+
+<br />
+
+
+
+
+
+<center>
+<p><img src="Images/rc_sim_out.png" class="simout" alt="" /></p>
+
+
+
+
+</center>
+
+
+
+
+
+<p class="imgcap"><i><a name="Figure_2._Resultant_waveform"></a>Figure 2. Resultant waveform</i></p>
+
+
+
+
+
+<p class="para">One can use Cursor in PSpice to measure voltage across the capacitor (<span style="font-family: Courier New,Courier,monospace;">C1</span>) at different time points. </p>
+
+
+
+
+
+<center><img src="Images/rc_curs_out.png" alt="" /></center>
+
+
+
+
+
+<p class="imgcap"><i><a name="Figure_3._Cursor_window"></a>Figure 3. Cursor window</i></p>
+
+
+
+
+<br />
+
+
+
+
+
+<p class="para">To view the variation of capacitive reactance with
+frequency, select the RC-AC profile. In this profile, simulation
+type is AC sweep and frequency is swept from <span style="font-family: Courier New,Courier,monospace;">1</span> to <span style="font-family: Courier New,Courier,monospace;">1000Hz</span>. To plot the
+reactance of the capacitor, add the expression <span style="font-family: Courier New,Courier,monospace;">V(C1:1,C1:2)/I(R2)</span>in
+the Add Trace dialog of PSpice probe window.<br />
+
+
+
+
+</p>
+
+
+
+
+
+
+<p class="para">To view phase difference between current and voltage
+for the capacitor, use the traces <span style="font-family: Courier New,Courier,monospace;">P(I(R2))</span> and <span style="font-family: Courier New,Courier,monospace;">P(V(C1:1,C1:2))</span>. To view
+phase relation between current and voltage in the whole circuit, add
+the traces <span style="font-family: Courier New,Courier,monospace;">P(I(R2))</span> and <span style="font-family: Courier New,Courier,monospace;">P(V(V1:+))</span>.
+</p>
+
+
+
+
+
+
+<center>
+<p><img src="Images/rc_ac_sim.png" class="simout" alt="" /></p>
+
+
+
+
+</center>
+
+
+
+
+
+<p class="imgcap"><i><a name="Figure_4._Resultant_waveform"></a>Figure 4. Resultant waveform</i></p>
+
+
+
+
+
+<center><img src="Images/rc_ac_cursor.png" alt="" /></center>
+
+
+
+
+
+<p class="imgcap"><i><a name="Figure_5._Cursor_window"></a>Figure 5. Cursor window</i></p>
+
+
+
+
+<br />
+
+
+
+
+
+<p class="para">Note that the reactance, <span style="font-family: Courier New,Courier,monospace;">X</span><sub style="font-family: Courier New,Courier,monospace;">C</sub>, must decrease with
+an increase in the value of the frequency because reactance is inversely
+proportional to the frequency. Also, the phase of the
+current always  leads the voltage across the capacitor by <span style="font-family: Courier New,Courier,monospace;">90degrees</span>.
+When both <span style="font-family: Courier New,Courier,monospace;">R</span> and <span style="font-family: Courier New,Courier,monospace;">C</span> are considered together in an RC circuit at <span style="font-family: Courier New,Courier,monospace;">50Hz</span>, the
+phase of the current leads the voltage by <span style="font-family: Courier New,Courier,monospace;">81degrees</span>. <br />
+
+
+
+
+</p>
+
+
+
+
+
+<br />
+
+
+
+
+ 
+
+<table style="width: 100%;">
+
+
+
+
+  <tbody>
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td style="width: 50%;">
+      
+      
+      
+      
+      <h1><a class="Mheading" id="A2">RL circuit</a></h1>
+
+
+
+
+      </td>
+
+
+
+
+      <td style="width: 50%;" align="right"><span style="text-decoration: underline;cursor :pointer" onclick="OpenOpjSim('BasicElectronics','ACcircuits','Designfiles','ACcircuits','RL','PAGE1','Tran')"><img alt="click to view circuit" src="../../../../hybrid/Images/cap_icon.png" style="margin-top: 20px;" /></span></td>
+
+
+
+
+    </tr>
+
+
+
+
+  
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+
+
+<p class="para">An RL series circuit excited by an alternating sinusoidal voltage is shown below.</p>
+
+
+
+
+ 
+<center>
+<table>
+
+
+
+
+
+<!--<tr><td><img src="Images/RL_gen.png"   class = "tximage" alt = "RL" /></td><td><img src="Images/rl_sc.png" alt="RL Circuit"  /></td></tr> -->
+  <tbody>
+
+
+
+
+    <tr>
+
+
+
+
+      <td><img src="Images/rl_sc.png" style ="cursor :pointer" alt="" onclick="OpenOpjSim('BasicElectronics','ACcircuits','Designfiles','ACcircuits','RL','PAGE1','Tran')" /></td>
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+      <td class="caption"><i>Figure 6.  RL circuit in capture</i></td>
+
+
+
+
+    </tr>
+
+
+
+
+
+  
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+
+</center>
+
+
+
+
+
+ <br />
+
+
+
+
+<br />
+
+
+
+
+<br />
+
+
+
+
+
+<center>
+<table width="100%">
+
+
+
+
+
+  <tbody>
+
+
+
+
+    <tr>
+
+
+
+
+      <td style="width: 97%;">
+      
+      
+      
+      
+      <center><img src="Images/inp_sine.png" alt="" /></center>
+
+
+
+
+      </td>
+
+
+
+
+      <td style="width: 3%;"><a name="equation12"></a>(12)</td>
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+      <td style="width: 97%;">
+      
+      
+      
+      
+      <center><img src="Images/rl_eq1.png" alt="" /></center>
+
+
+
+
+      </td>
+
+
+
+
+      <td style="width: 3%;"><a name="equation13"></a>(13)</td>
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+      <td style="width: 97%;">
+      
+      
+      
+      
+      <center><img src="Images/rl_eq2.png" alt="" id = "equation14"/></center>
+
+
+
+
+      </td>
+
+
+
+
+      <td style="width: 3%;">(14)</td>
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+      <td style="width: 97%;">
+      
+      
+      
+      
+      <center><img src="Images/rl_eq3.png" alt="" id = "equation15"/></center>
+
+
+
+
+      </td>
+
+
+
+
+      <td style="width: 3%;">(15)</td>
+
+
+
+
+    </tr>
+
+
+
+
+  
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+
+</center>
+
+
+
+
+
+<p class="para">In <a href="#equation14"><span style="font-style: italic;">equation (14)</span></a> the factor <span style="font-family: Courier New,Courier,monospace;">(tan</span><sup style="font-family: Courier New,Courier,monospace;">-1</sup><span style="font-family: Courier New,Courier,monospace;">(wL/R))</span>
+denotes the phase angle by which current lags the voltage in the
+circuit. It can be&nbsp;seen from <a href="#equation15"><span style="font-style: italic;">equation (15)</span></a> that voltage drop
+across the inductor leads the current by an angle of <span style="font-family: Courier New,Courier,monospace;">90degrees</span>. </p>
+
+
+
+
+ <br />
+
+
+
+
+
+
+
+<p class="para">Solve<a href="#equation14">  <span style="font-style: italic;">equation (14)</span></a> for <span style="font-family: Courier New,Courier,monospace;">I</span>&nbsp;with the following values:<br />
+
+
+
+
+<br />
+
+
+<span style="font-family: Courier New,Courier,monospace;">
+
+V</span><sub style="font-family: Courier New,Courier,monospace;">m </sub><span style="font-family: Courier New,Courier,monospace;">= VAMPL = 5V</span>, <span style="font-family: Courier New,Courier,monospace;">R = R1 = 100Ohm</span>, <span style="font-family: Courier New,Courier,monospace;">C = L1 = 10uH</span>, <span style="font-family: Courier New,Courier,monospace;">FREQ = 50Hz</span>, and <span style="font-family: Courier New,Courier,monospace;">t = 21.969ms</span>&nbsp;</p>
+
+
+
+
+  The result is <span style="font-family: Courier New,Courier,monospace;">28.978mA</span>.
+
+
+<p class="para">Solve <a href="#equation15"><span style="font-style: italic;">equation (15)</span></a> for <span style="font-family: Courier New,Courier,monospace;">V</span><sub style="font-family: Courier New,Courier,monospace;">L</sub>&nbsp;with the following values:&nbsp;<br />
+
+
+
+
+<br />
+
+
+<span style="font-family: Courier New,Courier,monospace;">
+
+V</span><sub style="font-family: Courier New,Courier,monospace;">m </sub><span style="font-family: Courier New,Courier,monospace;">= VAMPL = 5V</span>, <span style="font-family: Courier New,Courier,monospace;">R = R1 = 100Ohm</span>, <span style="font-family: Courier New,Courier,monospace;">C = L1 = 10uH</span>, <span style="font-family: Courier New,Courier,monospace;">FREQ = 50Hz</span>, and <span style="font-family: Courier New,Courier,monospace;">t = 21.969ms</span>&nbsp;</p>
+
+
+<p class="para"> The result is <span style="font-family: Courier New,Courier,monospace;">128uV</span>. </p>
+
+
+
+
+ 
+<p class="para">The same value is obtained in the resultant waveform in
+PSpice as well. Note that voltage across inductor leads the current by
+<span style="font-family: Courier New,Courier,monospace;">90degrees</span>.</p>
+
+
+
+
+<br />
+
+
+
+
+<br />
+
+
+
+
+
+<center>
+<p><img src="Images/rl_sim_out.png" class="simout" alt="" /></p>
+
+
+
+
+</center>
+
+
+
+
+
+<p class="imgcap"><i><a name="Figure_7._Resultant_waveform"></a>Figure 7. Resultant waveform</i></p>
+
+
+
+
+
+<center><img src="Images/rl_sim_cursor.png" alt="" /></center>
+
+
+
+
+
+<p class="imgcap"><i><a name="Figure_8._Cursor_window"></a>Figure 8. Cursor window</i></p>
+
+
+
+
+<br />
+
+
+
+
+
+<p class="para">To view the variation of inductive reactance with
+frequency, select the RL-AC profile. In this profile, the simulation
+type is AC sweep and the frequency is swept from <span style="font-family: Courier New,Courier,monospace;">1</span> to <span style="font-family: Courier New,Courier,monospace;">1000Hz</span>.To plot
+the reactance of the inductor, add the expression <span style="font-family: Courier New,Courier,monospace;">V(L1:1,L1:2)/I(R1)</span> in
+the Add Trace dialog of PSpice probe window.<br />
+
+
+
+
+</p>
+
+
+
+
+
+
+<p class="para">To view the phase difference between&nbsp;current and
+voltage across the inductor, use the&nbsp;traces <span style="font-family: Courier New,Courier,monospace;">P(I(R1))</span> and
+<span style="font-family: Courier New,Courier,monospace;">P(V(L1:1,L1:2))</span>. To view the phase relation between the current and the
+voltage in the whole circuit, add the traces <span style="font-family: Courier New,Courier,monospace;">P(I(R1))</span> and <span style="font-family: Courier New,Courier,monospace;">P(V(V1:+))</span>.</p>
+
+
+
+
+
+
+<center>
+<p><img src="Images/rl_ac_sim.png" class="simout" alt="" /></p>
+
+
+
+
+</center>
+
+
+
+
+
+<p class="imgcap"><i><a name="Figure_9._Resultant_waveform"></a>Figure 9. Resultant waveform</i></p>
+
+
+
+
+
+<center><img src="Images/rl_ac_cursor.png" alt="" /></center>
+
+
+
+
+
+<p class="imgcap"><i><a name="Figure_10._Cursor_window"></a>Figure 10. Cursor window</i></p>
+
+
+
+
+<br />
+
+
+
+
+
+<p class="para">Note&nbsp;that reactance <span style="font-family: Courier New,Courier,monospace;">X</span><sub style="font-family: Courier New,Courier,monospace;">L</sub> is proportional
+to the frequency; it increases with an&nbsp;increase in the value of
+the frequency. The inductor current&nbsp;always
+lags the voltage across the inductor by <span style="font-family: Courier New,Courier,monospace;">90degrees</span>. In the complete RL
+circuit at <span style="font-family: Courier New,Courier,monospace;">50Hz</span>, the current lags the voltage by <span style="font-family: Courier New,Courier,monospace;">1.8m-degrees</span>. <br />
+
+
+
+
+</p>
+
+
+
+
+
+<br />
+
+
+
+
+ 
+
+
+
+<table style="width: 100%;">
+
+
+
+
+  <tbody>
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td style="width: 50%;">
+      
+      
+      
+      
+      <h1><a class="Mheading" id="A3">RLC circuit</a></h1>
+
+
+
+
+      </td>
+
+
+
+
+      <td style="width: 50%;" align="right"><span style="text-decoration: underline; cursor :pointer " onclick="OpenOpjSim('BasicElectronics','ACcircuits','Designfiles','ACcircuits','RLC','PAGE1','Tran')"><img alt="click to view circuit" src="../../../../hybrid/Images/cap_icon.png" style="margin-top: 20px;" /></span></td>
+
+
+
+
+    </tr>
+
+
+
+
+  
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+
+
+<p class="para">An RLC series circuit excited by an alternating sinusoidal voltage is shown below.</p>
+
+
+
+
+ 
+<center>
+<table>
+
+
+
+
+
+<!--<tr><td><img src="Images/RLC_gen.png"   class = "tximage" alt = "RLC"/></td><td><img src="Images/rlc_sc.png" alt = "RLC circuit" /></td></tr> -->
+  <tbody>
+
+
+
+
+    <tr>
+
+
+
+
+      <td><img src="Images/rlc_sc.png" alt="" style ="cursor :pointer" onclick="OpenOpjSim('BasicElectronics','ACcircuits','Designfiles','ACcircuits','RLC','PAGE1','Tran')" /></td>
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+      <td class="caption"><i><a name="Figure_11._RLC_circuit_in_capture"></a>Figure 11.  RLC circuit in capture</i></td>
+
+
+
+
+    </tr>
+
+
+
+
+
+  
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+
+</center>
+
+
+
+
+
+ <br />
+
+
+
+
+<br />
+
+
+
+
+<br />
+
+
+
+
+
+<center><br />
+
+
+
+
+
+<table width="100%">
+
+
+
+
+
+  <tbody>
+
+
+
+
+    <tr>
+
+
+
+
+      <td style="width: 97%;">
+      
+      
+      
+      
+      <center><img src="Images/inp_sine.png" alt="" /></center>
+
+
+
+
+      </td>
+
+
+
+
+      <td style="width: 3%;"><a name="equation16"></a>(16)</td>
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+
+      <td style="width: 97%;">
+      
+      
+      
+      
+      <center><img src="Images/rlc_eq1.png" alt="" /></center>
+
+
+
+
+      </td>
+
+
+
+
+      <td style="width: 3%;"><a name="equation17"></a>(17)</td>
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+      <td style="width: 97%;">
+      
+      
+      
+      
+      <center><img src="Images/rlc_eq2.png" alt="" /></center>
+
+
+
+
+      </td>
+
+
+
+
+      <td style="width: 3%;"><a name="equation18"></a>(18)</td>
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+      <td style="width: 97%;">
+      
+      
+      
+      
+      <center><img src="Images/rlc_eq3.png" alt="" /></center>
+
+
+
+
+      </td>
+
+
+
+
+      <td style="width: 3%;"><a name="equation19"></a>(19)</td>
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+      <td style="width: 97%;">
+      
+      
+      
+      
+      <center><img src="Images/rlc_eq4.png" alt="" /></center>
+
+
+
+
+      </td>
+
+
+
+
+      <td style="width: 3%;"><a name="equation20"></a>(20)</td>
+
+
+
+
+    </tr>
+
+
+
+
+  
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+
+</center>
+
+
+
+
+
+
+<p class="para">It can be clearly seen that the voltage drop
+across the inductor leads the current by an angle of <span style="font-family: Courier New,Courier,monospace;">90degrees</span>, and
+the voltage drop across the capacitor lags the current by an angle of
+<span style="font-family: Courier New,Courier,monospace;">90degrees</span>.</p>
+
+
+
+
+ <br />
+
+
+
+
+
+
+
+<p class="para"> The same can be observed in the resultant waveform generated from the simulation of the above circuit as well.</p>
+
+
+
+
+<br />
+
+
+
+
+<br />
+
+
+
+
+
+<center>
+<p><img src="Images/rlc_sim_out.png" class="simout" alt="" id = "Figure_12._Resultant_waveform"/></p>
+
+
+
+
+</center>
+
+
+
+
+
+<p class="imgcap"><i>Figure 12. Resultant waveform</i></p>
+
+
+
+
+
+<p class="para"> <b>Concept of Resonance</b>: At a particular frequency, called resonant frequency, inductive reactance (<span style="font-family: Courier New,Courier,monospace;">X</span><sub style="font-family: Courier New,Courier,monospace;">L</sub>) is exactly equal to capacitive reactance (<span style="font-family: Courier New,Courier,monospace;">X</span><sub style="font-family: Courier New,Courier,monospace;">C</sub>)&nbsp;in a circuit for any combination of&nbsp;L and C. A circuit is at resonance when <span style="font-family: Courier New,Courier,monospace;">X</span><sub style="font-family: Courier New,Courier,monospace;">L</sub> is exactly equal to X<sub><span style="font-family: Courier New,Courier,monospace;">C</span>.</sub>&nbsp;Each RLC circuit responds to resonant frequency differently than it
+does to any other frequency. Because of this, an RLC circuit has the
+ability to separate frequencies. <br />
+
+
+
+
+</p>
+
+
+
+
+
+<center>
+<table width="100%">
+
+
+
+
+
+  <tbody>
+
+
+
+
+    <tr>
+
+
+
+
+      <td style="width: 97%;">
+      
+      
+      
+      
+      <center><img src="Images/reso_freq.png" alt="" /></center>
+
+
+
+
+      </td>
+
+
+
+
+      <td style="width: 3%;"><a name="equation21"></a>(21)</td>
+
+
+
+
+    </tr>
+
+
+
+
+  
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+
+</center>
+
+
+
+
+
+
+<p class="para">To view resonance, change the simulation profile to
+RLC-AC in which the simulation type is AC sweep and the frequency has
+been swept from <span style="font-family: Courier New,Courier,monospace;">1</span> to <span style="font-family: Courier New,Courier,monospace;">100KHz</span>. The simulation waveform for this&nbsp;is
+shown below.<br />
+
+
+
+
+</p>
+
+
+
+
+
+
+<center>
+<p><img src="Images/rlc_ac_sim.png" class="simout" alt="" /></p>
+
+
+
+
+</center>
+
+
+
+
+
+<p class="imgcap"><i><a name="Figure_13._Resultant_waveform"></a>Figure 13. Resultant waveform</i></p>
+
+
+
+
+
+
+<br />
+
+
+
+
+
+<center><img src="Images/rlc_ac_cursor.png" alt="" /></center>
+
+
+
+
+
+<p class="imgcap"><i><a name="Figure_14._Cursor_window"></a>Figure 14. Cursor window</i></p>
+
+
+
+
+<br />
+
+
+
+
+
+
+<p class="para">Key observations from above simulation results are: </p>
+
+
+
+
+
+<ul class="para">
+
+
+
+
+  <li>The resonance occurs at&nbsp;<span style="font-family: Courier New,Courier,monospace;">84.84Hz</span> (resonant frequency).</li>
+
+
+
+
+
+  <li>At resonance the phase difference between current and the voltage
+reduces to zero; the reactive components L and C cancel out each other.</li>
+
+
+
+
+</ul>
+
+
+
+
+
+
+
+<p class="para">To measure the power factor&nbsp;of
+this RLC circuit, use <span style="font-style: italic;">equation (4)</span> and <span style="font-style: italic;">(5)</span> to calculate the true power
+and the apparent power, respectively. The power can also be calculated
+from the result obtained from the simulation plot in <a href="#Figure_12._Resultant_waveform"><span style="font-style: italic;">figure (12)</span></a>.<br />
+
+
+
+
+
+
+
+
+<br />
+
+For this circuit:<br /></p>
+
+
+
+
+
+<ul class = "para">
+
+
+
+  <li>True power is a product of <span style="font-family: Courier New,Courier,monospace;">I</span><sub style="font-family: Courier New,Courier,monospace;">PEAK</sub> and <span style="font-family: Courier New,Courier,monospace;">V</span><sub style="font-family: Courier New,Courier,monospace;">PEAK</sub> across Resistor <span style="font-family: Courier New,Courier,monospace;">R1</span> and is equal to <span style="font-family: Courier New,Courier,monospace;">182.54mW</span>.</li>
+
+
+
+</ul>
+
+
+
+
+
+<ul class = "para">
+
+
+
+  <li>Reactive power is calculated as <span style="font-family: Courier New,Courier,monospace;">(I</span><sub style="font-family: Courier New,Courier,monospace;">L-PEAK</sub><span style="font-family: Courier New,Courier,monospace;"> X V</span><sub style="font-family: Courier New,Courier,monospace;">L-PEAK</sub><span style="font-family: Courier New,Courier,monospace;">)-(I</span><sub style="font-family: Courier New,Courier,monospace;">C-PEAK</sub><span style="font-family: Courier New,Courier,monospace;"> X V</span><sub style="font-family: Courier New,Courier,monospace;">C-PEAK</sub><span style="font-family: Courier New,Courier,monospace;">)</span> and is equal to <span style="font-family: Courier New,Courier,monospace;">-110.76mW</span>.</li>
+
+
+
+</ul>
+
+
+
+
+
+<ul class = "para">
+
+
+
+  <li>Apparent power, using <a href="#equation6"><span style="font-style: italic;">equation (6)</span></a>, comes out to be <span style="font-family: Courier New,Courier,monospace;">213.514mW</span>.</li>
+
+
+
+</ul>
+
+
+
+
+
+<ul class = "para">
+
+
+
+  <li>Power factor, using <a href="#equation7"><span style="font-style: italic;">equation (7)</span></a>, comes out to be <span style="font-family: Courier New,Courier,monospace;">0.854</span>.</li>
+
+
+
+</ul>
+
+
+
+
+
+
+<br />
+
+
+
+
+<br />
+
+
+
+
+
+<hr />
+<hr />
+
+
+
+    <br />
+
+
+
+
+
+    <font size="-1">
+      <i>Copyright &copy; 2012, <span style="color:blue;cursor:pointer" onclick="window.open('http://www.cadence.com')"><u>Cadence Design Systems, Inc.</u></span> </i>
+    </font>
+    <br />
+
+
+
+
+
+    <font size="-1">
+All rights reserved.</font>
+
+
+
+
+</body>
+</html>

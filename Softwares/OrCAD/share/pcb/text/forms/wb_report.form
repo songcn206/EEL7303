@@ -1,0 +1,113 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 44 35
+
+HEADER "Wire Bond Reporting"
+
+POPUP <sort_pop> "" "".
+POPUP <grid_pop> "" "".
+
+TILE
+
+TEXT "File name:"
+TLOC 1 2
+ENDTEXT
+FIELD report_name
+FLOC 11 2
+STRFILLIN 25 128
+ENDFIELD
+FIELD report_browse
+FLOC 38 2
+MENUBUTTON "..." 4 3
+ENDFIELD
+
+TEXT "File type:"
+TLOC 1 4
+ENDTEXT
+FIELD rpt_report
+FLOC 11 4
+CHECKLIST "RPT" "file_type"
+ENDFIELD
+FIELD txt_report
+FLOC 19 4
+CHECKLIST "TXT" "file_type"
+ENDFIELD
+FIELD html_report
+FLOC 26 4
+CHECKLIST "HTML" "file_type"
+ENDFIELD
+
+
+TEXT "Sort column:"
+TLOC 1 7
+ENDTEXT
+FIELD sort_field
+FLOC 11 7
+ENUMSET 28
+POP "sort_pop"
+ENDFIELD
+
+TEXT "Report fields:"
+TLOC 1 10   
+ENDTEXT
+
+FIELD load_columns
+FLOC 11 10
+MENUBUTTON "Load report config" 15 3
+ENDFIELD
+
+FIELD save_columns
+FLOC 27 10
+MENUBUTTON "Save report config" 15 3
+ENDFIELD
+
+GRID columns_grid
+FLOC 1 13
+FSIZE  41 18
+OPTIONS VLINES HLINES USERSIZE
+ENDGRID
+
+FIELD default_columns
+FLOC 1 31
+MENUBUTTON "Default columns" 12 3
+ENDFIELD
+
+FIELD add_all_columns
+FLOC 14 31
+MENUBUTTON "Add all columns" 12 3
+ENDFIELD
+
+FIELD del_all_columns
+FLOC 27 31 
+MENUBUTTON "Remove all columns" 12 3
+ENDFIELD
+
+FIELD write_report
+FLOC 1 34
+CHECKLIST "Write report"
+ENDFIELD
+
+FIELD view_report
+FLOC 17 34
+CHECKLIST "View report"
+ENDFIELD
+
+FIELD report
+FLOC 1 37
+MENUBUTTON "Report" 9 3
+ENDFIELD
+
+FIELD close
+FLOC 11 37
+MENUBUTTON "Close" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 34 37
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+
+ENDTILE
+ENDFORM

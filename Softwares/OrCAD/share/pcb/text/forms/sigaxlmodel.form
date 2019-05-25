@@ -1,0 +1,393 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM fixed_font
+FIXED
+PORT 72 45
+HEADER "Signal Model Assignment"
+
+POPUP <ProgBufferPopup>"placeholder""0".
+
+POPUP <DeviceTypeFilterPopup>"placeholder""0".
+
+POPUP <DeviceRefdesFilterPopup>"placeholder""0".
+
+POPUP <DeviceClassFilterPopup>"IC""0","DISCRETE""1","IO""2","Other""3","*""4".
+
+POPUP <AssignedModelPopup>"No Model""No Model","Library Setting""Library Setting".
+
+ACTIVEFIELD "OK"
+
+TILE
+
+TABSET "TABS"
+FLOC 1 1
+TSSIZE 70 57
+
+TAB "Devices"
+
+TEXT "Signal Model"
+TLOC 33 1
+ENDTEXT
+
+TEXT "DevType Value/Refdes"
+TLOC 2 1
+ENDTEXT
+
+FIELD DeviceRefdesTree
+FLOC 1 4
+TREEVIEW 67 9
+ENDFIELD
+
+GROUP "Display Filters"
+GLOC 1 23
+GSIZE 67 8
+ENDGROUP
+
+TEXT "Device Type:"
+TLOC 2 25
+ENDTEXT
+
+FIELD DeviceTypeFilter
+FLOC 15 25
+STRFILLIN 21 128
+POP "DeviceTypeFilterPopup"
+ENDFIELD
+
+TEXT "Device Class:"
+TLOC 42 25
+ENDTEXT
+
+FIELD DeviceClassFilter
+TLOC 55 25
+ENUMSET 9
+POP "DeviceClassFilterPopup"
+ENDFIELD
+
+TEXT "Refdes:
+TLOC 2 28
+ENDTEXT
+
+FIELD DeviceRefdesFilter
+FLOC 15 28
+STRFILLIN 21 128
+POP "DeviceRefdesFilterPopup"
+ENDFIELD
+
+GROUP "Model Assignment"
+GLOC 1 31
+GSIZE 67 23
+ENDGROUP
+
+TEXT "Model:"
+TLOC 2 33
+ENDTEXT
+
+FIELD SignalModelComp
+FLOC 15 33
+STRFILLIN 21 128
+POP "AssignedModelPopup"
+ENDFIELD
+
+FIELD AutoSetup
+FLOC 47 33
+MENUBUTTON "Auto Setup" 20 3
+ENDFIELD
+
+FIELD CreateModelDevices
+FLOC 2 36
+MENUBUTTON "Create Model..." 20 3
+ENDFIELD
+
+FIELD FindModelDevices
+FLOC 25 36
+MENUBUTTON "Find Model..." 20 3
+ENDFIELD
+
+FIELD EditModelDevices
+FLOC 47 36
+MENUBUTTON "Edit Model..." 20 3
+ENDFIELD
+
+GROUP "Assignment Map File"
+GLOC 3 38
+GSIZE 62 12
+ENDGROUP
+
+FIELD SaveMapFileByDevice
+FLOC 8 41
+MENUBUTTON "Save By Device..." 20 3
+ENDFIELD
+
+FIELD LoadMapFileByDevice
+FLOC 40 41
+MENUBUTTON "Load By Device..." 20 3
+ENDFIELD
+
+FIELD SaveMapFileByRefdes
+FLOC 8 44
+MENUBUTTON "Save By Refdes..." 20 3
+ENDFIELD
+
+FIELD LoadMapFileByRefdes
+FLOC 40 44
+MENUBUTTON "Load By Refdes..." 20 3
+ENDFIELD
+
+FIELD MapFileSaveOption
+FLOC 8 47
+CHECKLIST "Include ORIGINAL Model Path in Map File"
+ENDFIELD
+
+FIELD ClearAll
+FLOC 18 51
+MENUBUTTON "Clear All Model Assignments" 32 3
+ENDFIELD
+
+ENDTAB
+
+TAB "BondWires"
+
+TEXT "Signal Model:"
+TLOC 1 23
+ENDTEXT
+
+TEXT "Die Pad"
+TLOC 1 1
+ENDTEXT
+
+TEXT "Pkg Pin"
+TLOC 10 1
+ENDTEXT
+
+TEXT "Net"
+TLOC 19 1
+ENDTEXT
+
+TEXT "Signal Model"
+TLOC 48 1
+ENDTEXT
+
+FIELD SignalModelCline
+FLOC 16 23
+STRFILLIN 16 32
+POP "AssignedModelPopup"
+ENDFIELD
+
+FIELD BondWiresList
+FLOC 1 4
+LIST "" 67 9
+ENDFIELD
+
+FIELD FindModelBondWires
+FLOC 25 26
+MENUBUTTON "Find Model..." 20 3
+ENDFIELD
+
+FIELD EditModelBondWires
+FLOC 48 26
+MENUBUTTON "Edit Model..." 20 3
+ENDFIELD
+
+GROUP "Signal Model Assignment Options"
+GLOC 1 30
+GSIZE 67 7
+ENDGROUP
+
+FIELD PickAssignMode
+FLOC 6 32
+CHECKLIST "Assign current Signal Model to BondWire picks"
+FGROUP "Signal Model Assignment Options"
+ENDFIELD
+
+TEXT "Assign current Signal Model to all BondWires"
+TLOC 9 34
+TGROUP "Signal Model Assignment Options"
+ENDTEXT
+
+FIELD AllModelAssign
+FLOC 2 34 
+MENUBUTTON "All" 6 3
+FGROUP "Signal Model Assignment Options"
+ENDFIELD
+
+ENDTAB
+
+TAB "RefDesPins"
+
+TEXT "Device Class Filter:"
+TLOC 1 23
+ENDTEXT
+
+FIELD PinDeviceClassFilter
+FLOC 22 23
+ENUMSET 9
+POP "DeviceClassFilterPopup"
+ENDFIELD
+
+TEXT "Signal Model:"
+TLOC 1 26
+ENDTEXT
+
+TEXT "Signal Model"
+TLOC 44 1
+ENDTEXT
+
+TEXT "Refdes"
+TLOC 2 1
+ENDTEXT
+
+TEXT
+TLOC 58 26
+INFO ProgBufferCount 4
+ENDTEXT
+
+FIELD RefdesPinTree
+FLOC 1 4
+TREEVIEW 67 9
+ENDFIELD
+
+FIELD SignalModelRefdes
+FLOC 16 26
+STRFILLIN 16 32
+POP "AssignedModelPopup"
+ENDFIELD
+
+FIELD ProgBufferModel
+FLOC 38 26
+MENUBUTTON "Prog.Buffers" 20 3
+POP "ProgBufferPopup"
+ENDFIELD
+
+FIELD CreateModelRefdesPins
+FLOC 1 29
+MENUBUTTON "Create Model..." 20 3
+ENDFIELD
+
+FIELD FindModelRefdesPins
+FLOC 25 29
+MENUBUTTON "Find Model..." 20 3
+ENDFIELD
+
+FIELD EditModelRefdesPins
+FLOC 48 29
+MENUBUTTON "Edit Model..." 20 3
+ENDFIELD
+
+FIELD DisplayAllPins
+FLOC 1 32
+CHECKLIST "Display All Pins" PinsDisplay
+ENDFIELD
+
+FIELD DisplayIbisBuffersOnly
+FLOC 25 32
+CHECKLIST "Display IBIS Buffers Only" PinsDisplay
+ENDFIELD
+
+ENDTAB
+
+TAB "Connectors"
+
+TEXT "Connector Model"
+TLOC 33 1
+ENDTEXT
+
+TEXT "DevType Value/Refdes"
+TLOC 2 1
+ENDTEXT
+
+FIELD ConnectorRefdesTree
+FLOC 1 4
+TREEVIEW 67 9
+ENDFIELD
+
+GROUP "Display Filters"
+GLOC 1 23
+GSIZE 67 9
+ENDGROUP
+
+TEXT "Device Type:"
+TLOC 2 26
+ENDTEXT
+
+FIELD ConnectorTypeFilter
+FLOC 15 26
+STRFILLIN 21 128
+POP "DeviceTypeFilterPopup"
+ENDFIELD
+
+TEXT "Device Class:"
+TLOC 42 26
+ENDTEXT
+
+FIELD ConnectorClassFilter
+TLOC 55 26
+ENUMSET 9
+POP "DeviceClassFilterPopup"
+ENDFIELD
+
+TEXT "Refdes:
+TLOC 2 29
+ENDTEXT
+
+FIELD ConnectorRefdesFilter
+FLOC 15 29
+STRFILLIN 21 128
+POP "DeviceRefdesFilterPopup"
+ENDFIELD
+
+GROUP "Model Assignment"
+GLOC 1 33
+GSIZE 67 12
+ENDGROUP
+
+TEXT "Model:"
+TLOC 2 36
+ENDTEXT
+
+FIELD ConnectorModelComp
+FLOC 15 36
+STRFILLIN 21 128
+POP "AssignedModelPopup"
+ENDFIELD
+
+FIELD FindConnectorModels
+FLOC 15 39
+MENUBUTTON "Find Model..." 20 3
+ENDFIELD
+
+FIELD EditConnectorModels
+FLOC 47 39
+MENUBUTTON "Edit Model..." 20 3
+ENDFIELD
+
+FIELD ClearAllConnector
+FLOC 15 42
+MENUBUTTON "Clear All Connector Model Assignments" 32 3
+ENDFIELD
+
+ENDTAB
+
+ENDTABSET
+
+FIELD OK
+FLOC 3 59
+MENUBUTTON "OK" 9 3
+ENDFIELD
+
+FIELD Cancel
+FLOC 18 59
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD Preferences
+FLOC 32 59
+MENUBUTTON "Preferences..." 20 3
+ENDFIELD
+
+FIELD help
+FLOC 59 59
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

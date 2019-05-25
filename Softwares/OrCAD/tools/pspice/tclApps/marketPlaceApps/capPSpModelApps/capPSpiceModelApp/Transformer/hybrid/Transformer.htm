@@ -1,0 +1,244 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<!-- Copyright Cadence Design Systems - 2012 -->
+<title>Transformer With Ideal (Linear) Core</title>
+        <!-- Enable IE9 Standards mode -->
+        <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+		<meta http-equiv="MSThemeCompatible" content="yes" />        
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252"/>
+
+<script type="text/javascript" src="..\..\basescripts\Orvaluechk.js"></script>
+<script type="text/javascript" src="../../../../../../share/orJSLibs/jQuery/jquery-1.7.1.min.js"> </script>
+<script type="text/javascript" src="../../../../../../share/orJSLibs/jQuery/jquery-ui.min"> </script>
+<script type="text/javascript" src="scripts\transformer.js"></script>
+<script type="text/javascript" src="..\..\basescripts\modelAppCommon.js"></script>
+<link rel="stylesheet" type="text/css" href=".\css\style.css" />
+
+</head>
+<script language="javascript1.2" type="text/javascript">
+
+
+</script>
+<body lang="EN-US" onload="StartUp()">
+<!--Goal is to have command line ability to load a specific transformer page
+To load "A" transformer user can call "LoadTransformerGui" function with name of tranformer
+ -->
+
+
+<table class="top">
+<tr><td><div style="text-align: center;"><h2>PSpice Modeling Application: Transformer With Ideal Core </h2></div>
+</td></tr>
+</table>
+
+<table  class="side" id="choice" style="display:inline" >
+<tr><th><h4> Sine Wave Transformers</h4></th></tr>
+<tr><td class="wraptocenter"><img alt="Two Winding Transformer"  width="90" height="60" id="ST" src="Images/ST.png" onclick="LoadTransformerGui(this.id)"/></td></tr>
+<tr style = "display : none "><td class="wraptocenter"><img alt="Multiple Winding Transformer" width="90" height="60" id="MWT" src="Images/MWT.png" onclick="LoadTransformerGui(this.id)"/></td></tr>
+<tr><td class="wraptocenter"><img alt= "Custom Tap Transformer" width="90" height="60" id="CUTAP" src="Images/CUT.png" onclick="LoadTransformerGui(this.id)"/></td></tr>
+<tr><td class="wraptocenter"><img alt="Centre Tap Transformer" width="90" height="60" id="CETAP" src="Images/CTP.png" onclick="LoadTransformerGui(this.id)"/></td></tr>
+<tr><th><h4> SMPS Transformers</h4> </th></tr>
+<tr><td class="wraptocenter"><img alt="Flyback Transformer" width="90" height="60" id="FLB" src="Images/FLB.png" onclick="LoadTransformerGui(this.id)"/></td></tr>
+<tr><td class="wraptocenter"><img alt="Forward Transformer" width="90" height="60" id="FWD" src="Images/FWD.png" onclick="LoadTransformerGui(this.id)" /></td></tr>
+</table>
+
+<form id="all" action="" class="param" style="display:block  ">
+<table class="main_ov" >
+<tr><td>Select the appropriate transformer type to start the transformer modeling flow. Based on selection, you shall be presented with an input form to define various transformer parameters and model would be generated. You shall also be able to place part based on this model directly into schematic.<br /><br />
+<!--<tr><td align="justify" style="width: 1035px; height: 626px">Select the appropriate transformer type to start the transformer modeling flow. Based on selection, you shall be presented with an input form to define various transformer parameters and model would be generated. You shall also be able to place part based on this model directly into schematic.<br /><br />-->
+<h4> Sine Wave Transformers: </h4>This device would model basic two winding transformer with ideal coupling. 
+<!--<h4> Multi Winding Transformer: </h4>This device would model a transformer multiple secondary winding, where number of secondary windings can be specified by user.-->
+<h4> Custom Tap Transformer: </h4>This device would model a custom tap transformer, where user can select the winding in which he needs to put tap and tap%.    
+<h4> Centre Tap Transformer: </h4>This device would model a center tap transformer, where user can select the winding in which he needs to put tap.    <br />
+<h4> Flyback converter Transformer: </h4>This device would model a single ended flyback converter transformer.
+<h4> Forward converter Transformer: </h4>This device would model a single ended forward converter transformer with linear core. You can model this with or without RESET winding.
+</td></tr>
+</table>
+</form>
+<form id="FST" action="" class="param" style="display:none">
+<table class="main_top" >
+<tr><td align="justify"> <strong>Two Winding Transformers:</strong> This device would model basic two winding transformer with ideal coupling. You need to define primary winding inductance, primary winding resistance, turn ratio and mutual coupling. Turn ratio is defined as N2/N1; 
+thus for step up transformer with step up ratio of 10, turn ratio should be 10 and for step down ration of 10 it should be 0.1. Coupling represents the coefficient of mutual coupling, which must be between 0 and 1.0.This coefficient is defined by the equation <br /> <br /> "coupling value" = Mij/SQRT(Li·Lj) <br />
+<strong>where, </strong><br /> <br />
+    Lij = a coupled-pair of inductors <br />
+    Mij = the mutual inductance between Li and Lj
+    
+</td></tr>
+</table>
+<table class="main_top_img" >
+<tr><td> <img alt="Two Winding Transformer" height="160" width="224" id="Img1" src="Images/ST_CKT.png" /></td></tr>
+</table>
+
+
+    <table class="main_mid">
+        <thead><tr><th align="right" >Parameter Name </th> <th align="center"> Parameter value</th></tr></thead>
+        <tr><td class ="paramt_n">Model Name </td><td class ="paramt_v"><input type="text" name="Name" onblur="namecheck(this.value)" tabindex="1"/></td></tr>
+        <tr><td class ="paramt_n">Primary Winding Inductance (LP) </td><td class ="paramt_v"><input type="text" name="LP"  onblur="verify_value(this.value,this.name,0,undefined)" tabindex="2" /></td></tr>
+        <tr><td class ="paramt_n">Primary Winding Resistance (Rp1) </td><td class ="paramt_v"><input type="text" name="Rp1" onblur="verify_value(this.value,this.name,0,undefined)" tabindex="3"/></td></tr>
+        <tr><td class ="paramt_n">Secondary Winding Resistance (Rs1) </td><td class ="paramt_v"><input type="text" name="Rs1" onblur="verify_value(this.value,this.name,0,undefined)" tabindex="4"/></td></tr>
+        <tr><td class ="paramt_n">Coupling between Windings </td><td class ="paramt_v"><input type="text" name="Coupling" onblur="verify_value(this.value,this.name,0,1)" tabindex="5"/></td></tr>
+        <tr><td class ="paramt_n">Turn Ratio (N2/N1)</td><td class ="paramt_v"><input type="text" name="T_Ratio" onblur="verify_value(this.value,this.name,0,undefined)" tabindex="6" /></td></tr>
+        <tr style = "display : none "><td class ="paramt_n">Number of Windings</td><td class ="paramt_v"><input type="text" name="NWDG" onblur="verify_value(this.value,this.name,0,undefined)" style = "display : none "/></td></tr>
+        <tr style = "display : none "><td class ="paramt_n" >Tap %</td><td class ="paramt_v"><input type="text" name="TAP" style = "display : none "/></td></tr>
+        <tr style = "display : none "><td class ="paramt_n"><input type="radio" name="TAP" id="Radio1" onclick="SetSym(this.id)" /> Primary Tap</td><td class ="paramt_v"><input type="radio" name="TAP" id="Radio2" onclick="SetSym(this.id)" style = "display : none "/> Secondary Tap </td></tr>
+        <tr style = "display : none "><td class ="paramt_n">Leakage Inductance</td><td class ="paramt_v"><input type="text" name="Lls" onblur="verify_value(this.value,this.name,0,undefined)" style = "display : none "/></td></tr>
+        <tr style = "display : none "><td class ="paramt_n"><input type="radio" name="RESET" id="Radio3" onclick ="Set_Input('XX',0)" style = "display : none "/>Without RESET Winding</td><td class ="paramt_v"><input type="radio" name="RESET" id="Radio4"  onclick ="Set_Input('XX',1)" style = "display : none "/>With RESET Winding</td></tr>
+        <tr id="Tr1" style="display:none"><td class ="paramt_n">RESET Winding Ratio</td><td class ="paramt_v"><input type="text" name="Rst" onblur="verify_value(this.value,this.name,1,undefined)" style = "display : none "/></td></tr>
+
+    
+    </table>
+<br />
+    
+</form>
+
+<form id="FMWT" action="" class="param" style="display:none">
+<table class="main_top" >
+<tr><td> <strong>Multi Winding Transformers:</strong> This device would model a transformer where the number of secondary windings can be specified by user and this would be based on ideal coupling. You need to define primary winding inductance, primary winding resistance, and number of secondary windings and turn ratio for each secondary. Turn ratio is defined as N2/N1; thus for step up transformer with step up ratio of 10, turn ratio should be 10 and for step down ratio of 10 it should be 0.1. You also need to define mutual coupling between primary and secondary, which must be between 0 and 1.0.</td></tr></table>
+<table class="main_top_img" >
+<tr><td> <img alt="Two Winding Transformer"  width="240" height="280" id="Img2" src="Images/MWT_CKT.png" /></td></tr>
+</table>
+
+    <table class="main_mid">
+        <tr><th align="right" >Parameter Name </th><th align="center" > Parameter value</th></tr>
+        <tr><td class ="paramt_n">Model Name </td><td class ="paramt_v"><input type="text" name="Name" onblur="namecheck(this.value)" /></td></tr>
+        <tr><td class ="paramt_n">Primary Winding Inductance (LP) </td><td class ="paramt_v"><input type="text" name="LP"  onblur="verify_value(this.value,this.name,0,undefined)"/></td></tr>
+        <tr><td class ="paramt_n">Primary Winding Resistance (RP1) </td><td class ="paramt_v"><input type="text" name="Rp1" onblur="verify_value(this.value,this.name,0,undefined)"/></td></tr>
+        <tr><td class ="paramt_n">Coupling between Windings</td><td class ="paramt_v"><input type="text" name="Coupling" onblur="verify_value(this.value,this.name,0,1)"/></td></tr>
+        <tr><td class ="paramt_n">Turn Ratio (N2/N1)</td><td class ="paramt_v"><input type="text" name="T_Ratio" onblur="verify_value(this.value,this.name,0,undefined)"/></td></tr>
+        <tr><td class ="paramt_n">Number of Windings</td><td class ="paramt_v"><input type="text" name="NWDG" onblur="verify_value(this.value,this.name,0,undefined)"/></td></tr>
+        <tr style = "display : none "><td class ="paramt_n" >Tap %</td><td class ="paramt_v"><input type="text" name="TAP" style = "display : none "/></td></tr>
+        <tr style = "display : none "><td class ="paramt_n"><input type="radio" name="TAP" id="Radio5" onclick="SetSym(this.id)" /> Primary Tap</td><td class ="paramt_v"><input type="radio" name="TAP" id="Radio6" onclick="SetSym(this.id)" style = "display : none "/> Secondary Tap </td></tr>
+        <tr style = "display : none "><td class ="paramt_n">Leakage Inductance</td><td class ="paramt_v"><input type="text" name="Lls" onblur="verify_value(this.value,this.name,0,undefined)" style = "display : none "/></td></tr>
+        <tr style = "display : none "><td class ="paramt_n"><input type="radio" name="RESET" id="Radio7" onclick ="Set_Input('XX',0)" style = "display : none "/>Without RESET Winding</td><td class ="paramt_v"><input type="radio" name="RESET" id="Radio8"  onclick ="Set_Input('XX',1)" style = "display : none "/>With RESET Winding</td></tr>
+        <tr id="Tr2" style="display:none"><td class ="paramt_n">RESET Winding Ratio</td><td class ="paramt_v"><input type="text" name="Rst" onblur="verify_value(this.value,this.name,1,undefined)" style = "display : none "/></td></tr>
+        <tr style = "display : none "><td class ="paramt_n">Secondary Winding Resistance (RS1) </td><td class ="paramt_v"><input type="text" name="RS1" onblur="verify_value(this.value,this.name,0,undefined)" style = "display : none "/></td></tr>
+
+    </table>
+<br />
+    
+</form>
+<br />
+<form id="FCUTAP" action="" class="param" style="display:none">
+<table class="main_top" >
+<tr><td> <strong>Custom Tap Transformers:</strong> This device would model a custom tap transformer, where user can select the winding in which he needs to put tap and tap%. This transformer would be based on ideal coupling. You need to define primary winding inductance, primary winding resistance, winding in which you need to apply tap and turn ratio. Turn ratio is defined as N2/N1; thus for step up transformer with step up ratio of 10, turn ratio should be 10.
+ Here turn ratio is applied on complete secondary winding. Secondary winding resistance is divided as per tap% and put at end of corresponding secondary winding. You also need to define mutual coupling between primary and secondary, which must be between 0 and 1.0.</td></tr></table>
+<table class="main_top_img" >
+<tr><td> <img alt="Custom Tap Transformer"  width="300" height="175" id="Img5" src="Images/cut_img.png" /></td></tr>
+</table>
+
+    <table class="main_mid">
+        <tr><th align="right" >Parameter Name </th><th align="center" > Parameter value</th></tr>
+        <tr><td class ="paramt_n">Model Name </td><td class ="paramt_v"><input type="text" name="Name" onblur="namecheck(this.value)" /></td></tr>
+        <tr><td class ="paramt_n">Primary Winding Inductance (LP) </td><td class ="paramt_v"><input type="text" name="LP" onblur="verify_value(this.value,this.name,0,undefined)" /></td></tr>
+        <tr><td class ="paramt_n">Primary Winding Resistance (Rp1)</td><td class ="paramt_v"><input type="text" name="Rp1" onblur="verify_value(this.value,this.name,0,undefined)"/></td></tr>
+        <tr><td class ="paramt_n">Secondary Winding Resistance (Rs1)</td><td class ="paramt_v"><input type="text" name="Rs1" onblur="verify_value(this.value,this.name,0,undefined)"/></td></tr>
+        <tr><td class ="paramt_n">Coupling between Windings</td><td class ="paramt_v"><input type="text" name="Coupling" onblur="verify_value(this.value,this.name,0,1)"/></td></tr>
+        <tr><td class ="paramt_n">Turn Ratio (N2/N1) </td><td class ="paramt_v"><input type="text" name="T_Ratio" onblur="verify_value(this.value,this.name,0,undefined)"/></td></tr>
+        <tr><td class ="paramt_n">Tap %</td><td class ="paramt_v"><input type="text" name="TAP" onblur="verify_value(this.value,this.name,0,100)"/></td></tr>
+        <tr></tr>
+        <tr><td class ="paramt_n"><input type="radio" name="TAPR" id="CUTAPP" onclick="SetSym(this.id)" /> Primary Tap</td><td class ="paramt_v"><input type="radio" name="TAPR" id="CUTAPS" onclick="SetSym(this.id)" /> Secondary Tap </td></tr>
+        <tr style = "display : none "><td class ="paramt_n">Number of Windings</td><td class ="paramt_v"><input type="text" name="NWDG" onblur="verify_value(this.value,this.name,0,undefined)" style = "display : none "/></td></tr>
+        <tr style = "display : none "><td class ="paramt_n">Leakage Inductance</td><td class ="paramt_v"><input type="text" name="Lls" onblur="verify_value(this.value,this.name,0,undefined)" style = "display : none "/></td></tr>
+        <tr style = "display : none "><td class ="paramt_n"><input type="radio" name="RESET" id="Radio9" onclick ="Set_Input('XX',0)" style = "display : none "/>Without RESET Winding</td><td class ="paramt_v"><input type="radio" name="RESET" id="Radio10"  onclick ="Set_Input('XX',1)" style = "display : none "/>With RESET Winding</td></tr>
+        <tr id="Tr3" style="display:none"><td class ="paramt_n">RESET Winding Ratio</td><td class ="paramt_v"><input type="text" name="Rst" onblur="verify_value(this.value,this.name,1,undefined)" style = "display : none "/></td></tr>
+        
+   
+    </table>
+  
+</form>
+
+<form id="FCETAP" action=""class="param" style="display:none" >
+<table class="main_top" >
+<tr><td> <strong>Center Tap Transformers:</strong> This device would model a center tap transformer, where user can select the winding in which he needs to put tap. This transformer would be based on ideal coupling. You need to define primary winding inductance, primary winding resistance, 
+winding, where which you need to apply tap and turn ratio. Turn ratio is defined as N2/N1; thus for step up transformer with step up ratio of 10, turn ratio should be 10. Here turn ratio is applied on complete secondary winding. Secondary winding resistance is equally divided at each end of secondary winding. You also need to define mutual coupling between primary and secondary, which must be between 0 and 1.0.</td></tr></table>
+<table class="main_top_img" >
+<tr><td> <img alt="Center Tap Transformer"  width="300" height="175" id="Img6" src="Images/cet_img.png" /></td></tr>
+</table>
+
+   <table class="main_mid">
+        <tr><th align="right" >Parameter Name </th><th align="center" > Parameter value</th></tr>
+        <tr><td class ="paramt_n">Model Name </td><td class ="paramt_v"><input type="text" name="Name" onblur="namecheck(this.value)" /></td></tr>
+        <tr><td class ="paramt_n">Primary Winding Inductance (LP) </td><td class ="paramt_v"><input type="text" name="LP" onblur="verify_value(this.value,this.name,0,undefined)" /></td></tr>
+        <tr><td class ="paramt_n">Primary Winding Resistance (Rp1)</td><td class ="paramt_v"><input type="text" name="Rp1" onblur="verify_value(this.value,this.name,0,undefined)"/></td></tr>
+        <tr><td class ="paramt_n">Secondary Winding Resistance (Rs1)</td><td class ="paramt_v"><input type="text" name="Rs1" onblur="verify_value(this.value,this.name,0,undefined)"/></td></tr>
+        <tr><td class ="paramt_n">Turn Ratio (N2/N1)</td><td class ="paramt_v"><input type="text" name="T_Ratio" onblur="verify_value(this.value,this.name,0,undefined)"/></td></tr>
+        <tr><td class ="paramt_n">Coupling between Windings</td><td class ="paramt_v"><input type="text" name="Coupling" onblur="verify_value(this.value,this.name,0,1)"/></td></tr>
+        <tr style = "display : none "><td class ="paramt_n">Number of Windings</td><td class ="paramt_v"><input type="text" name="NWDG" onblur="verify_value(this.value,this.name,0,undefined)" style = "display : none "/> </td></tr>
+        <tr style = "display : none "><td class ="paramt_n">Leakage Inductance</td><td class ="paramt_v"><input type="text" name="Lls" onblur="verify_value(this.value,this.name,0,undefined)" style = "display : none "/> </td></tr>
+        <tr style = "display : none "><td class ="paramt_n"><input type="radio" name="RESET" id="Radio11" onclick ="Set_Input('XX',0)" style = "display : none "/>Without RESET Winding</td><td class ="paramt_v"><input type="radio" name="RESET" id="Radio12"  onclick ="Set_Input('XX',1)" style = "display : none "/>With RESET Winding</td></tr>
+        <tr id="Tr4" style="display:none"><td class ="paramt_n">RESET Winding Ratio</td><td class ="paramt_v"><input type="text" name="Rst" onblur="verify_value(this.value,this.name,1,undefined)" style = "display : none "/> </td></tr>
+        <tr style = "display : none "><td class ="paramt_n" >Tap %</td><td class ="paramt_v"><input type="text" name="TAP" onblur="verify_value(this.value,this.name,0,100)" style = "display : none "/></td></tr>
+        <tr><td class ="paramt_n"><input type="radio" name="TAP" id="CETAPP" onclick="SetSym(this.id)" /> Primary Tap</td><td class ="paramt_v"><input type="radio" name="TAP" id="CETAPS" onclick="SetSym(this.id)" /> Secondary Tap </td></tr>
+    
+    </table>
+   
+</form>
+
+<form id="FFLB" action=""class="param" style="display:none" >
+<table class="main_top" >
+<tr><td><strong>FlyBack Transformers:</strong> This device would model a single ended flyback converter transformer with linear core. You need to define primary winding inductance, primary & secondary winding resistance, leakage inductance and turn ratio. Leakage inductance value should be referred to secondary side. Turn ratio is defined as N2/N1; thus for step up transformer with step up ratio of 10, turn ratio should be 10. </td></tr></table>
+<table class="main_top_img" >
+<tr><td> <img alt="FlyBack Transformer"  width="300" height="175" id="Img7" src="Images/flb_img.png" /></td></tr>
+</table>
+
+   <table class="main_mid">
+        <tr><th align="right" >Parameter Name </th><th align="center" > Parameter value</th></tr>
+        <tr><td class ="paramt_n">Model Name </td><td class ="paramt_v"><input type="text" name="Name" onblur="namecheck(this.value)" /></td></tr>
+        <tr><td class ="paramt_n">Primary Winding Inductance (LP) </td><td class ="paramt_v"><input type="text" name="LP" onblur="verify_value(this.value,this.name,0,undefined)" /></td></tr>
+        <tr><td class ="paramt_n">Primary Winding Resistance (Rp1) </td><td class ="paramt_v"><input type="text" name="Rp1" onblur="verify_value(this.value,this.name,0,undefined)"/> </td></tr>
+        <tr><td class ="paramt_n">Secondary Winding Resistance (Rs1) </td><td class ="paramt_v"><input type="text" name="Rs1" onblur="verify_value(this.value,this.name,0,undefined)"/></td></tr>
+        <tr><td class ="paramt_n">Turn Ratio (N2/N1) </td><td class ="paramt_v"><input type="text" name="T_Ratio" onblur="verify_value(this.value,this.name,0,undefined)"/></td></tr>
+        <tr><td class ="paramt_n">Leakage Inductance (Ll1) </td><td class ="paramt_v"><input type="text" name="Lls" onblur="verify_value(this.value,this.name,0,undefined)"/></td></tr>
+        <tr style = "display : none "><td class ="paramt_n">Coupling between Windings  </td><td class ="paramt_v"><input type="text" name="Coupling" onblur="verify_value(this.value,this.name,0,1)" style = "display : none "/></td></tr>
+        <tr style = "display : none "><td class ="paramt_n">Number of Windings</td><td class ="paramt_v"><input type="text" name="NWDG" onblur="verify_value(this.value,this.name,0,undefined)" style = "display : none "/></td></tr>
+        <tr style = "display : none "><td class ="paramt_n" >Tap %</td><td class ="paramt_v"><input type="text" name="TAP" onblur="verify_value(this.value,this.name,0,100)" style = "display : none "/></td></tr>
+        <tr style = "display : none "><td class ="paramt_n"><input type="radio" name="TAP" id="Radio13" onclick="SetSym(this.id)" /> Primary Tap</td><td class ="paramt_v"><input type="radio" name="TAP" id="Radio14" onclick="SetSym(this.id)" style = "display : none "/> Secondary Tap </td></tr>
+        <tr style = "display : none "><td class ="paramt_n"><input type="radio" name="RESET" id="Radio15" onclick ="Set_Input('XX',0)" style = "display : none "/>Without RESET Winding</td><td class ="paramt_v"><input type="radio" name="RESET" id="Radio16"  onclick ="Set_Input('XX',1)" style = "display : none "/>With RESET Winding</td></tr>
+        <tr id="Tr5" style="display:none"><td class ="paramt_n">RESET Winding Ratio</td><td class ="paramt_v"><input type="text" name="Rst" onblur="verify_value(this.value,this.name,1,undefined)" style = "display : none "/></td></tr>
+    </table>
+</form>
+<form id="FFWD" action="" class="param" style="display:none"  >
+<table class="main_top" >
+<tr><td> <strong>Forward Converter Transformers:</strong> This device would model a single ended forward converter transformer with linear core. You can model this with or without RESET winding. You need to define primary winding inductance, primary & secondary winding resistance, leakage inductance and turn ratio. Turn ratio is defined as N2/N1; thus for step up transformer with step up ratio of 10, turn ratio should be 10. Here turn ratio is applied on complete secondary winding.  </td></tr></table>
+<table class="main_top_img" >
+<tr><td> <img alt="Forward Converter Transformer"  width="300" height="175" id="Img3" src="Images/fwb_img.png" /></td></tr>
+</table>
+   <table class="main_mid">
+        <tr><th align="right"  >Parameter Name </th><th align="center" > Parameter value</th></tr>
+        <tr><td class ="paramt_n" >Model Name </td><td class ="paramt_v"><input type="text" name="Name" onblur="namecheck(this.value)" /></td></tr>
+        <tr><td class ="paramt_n" >Primary Winding Inductance (LP) </td><td class ="paramt_v"><input type="text" name="LP" onblur="verify_value(this.value,this.name,0,undefined)" /></td></tr>
+        <tr><td class ="paramt_n" >Primary Winding Resistance (Rp1) </td><td class ="paramt_v"><input type="text" name="Rp1" onblur="verify_value(this.value,this.name,0,undefined)"/></td></tr>
+        <tr><td class ="paramt_n" >Secondary Winding Resistance (Rs1) </td><td class ="paramt_v"><input type="text" name="Rs1" onblur="verify_value(this.value,this.name,0,undefined)"/></td></tr>
+        <tr><td class ="paramt_n" >Turn Ratio (N2/N1) </td><td class ="paramt_v"><input type="text" name="T_Ratio" onblur="verify_value(this.value,this.name,0,undefined)"/></td></tr>
+        <tr><td class ="paramt_n" >Leakage Inductance (Lls) </td><td class ="paramt_v"><input type="text" name="Lls" onblur="verify_value(this.value,this.name,0,undefined)"/></td></tr>
+        <tr><td class ="paramt_n" ><input type="radio" name="RESET" id="WOR" onclick ="Set_Input('XX',0)" />Without RESET Winding</td><td class ="paramt_v"><input type="radio" name="RESET" id="WR"  onclick ="Set_Input('XX',1)" />With RESET Winding</td></tr>
+        <tr id="XX" style="display:none"><td class ="paramt_n" >RESET Winding Ratio</td><td class ="paramt_v"><input type="text" name="Rst" onblur="verify_value(this.value,this.name,1,undefined)"/></td></tr>
+        <tr style = "display : none "><td class ="paramt_n" >Coupling between Windings  </td><td class ="paramt_v"><input type="text" name="Coupling" onblur="verify_value(this.value,this.name,0,1)" style = "display : none "/></td></tr>
+        <tr style = "display : none "><td class ="paramt_n" >Number of Windings</td><td class ="paramt_v"><input type="text" name="NWDG" onblur="verify_value(this.value,this.name,0,undefined)" style = "display : none "/></td></tr>
+        <tr style = "display : none "><td class ="paramt_n"  >Tap %</td><td class ="paramt_v"><input type="text" name="TAP" onblur="verify_value(this.value,this.name,0,100)" style = "display : none "/></td></tr>
+        <tr style = "display : none "><td class ="paramt_n" ><input type="radio" name="TAP" id="Radio17" onclick="SetSym(this.id)" /> Primary Tap</td><td class ="paramt_v"><input type="radio" name="TAP" id="Radio18" onclick="SetSym(this.id)" style = "display : none "/> Secondary Tap </td></tr>
+
+    </table>
+</form>
+
+
+<form id = "subckt" action="" style="display:none" class="txt">
+<table class="main_mid2">
+<tr><td><textarea id="subckt_textarea"  readonly="readonly" rows="14" cols="44"> Transformer Model</textarea> </td></tr>
+</table>
+</form>
+
+<table class="main_bottom">
+<tr><td ><input type="Button" class="gm" id = "gmod" name= "gm1" value="Place" onclick="Gen_Model(this.name)"  style="display:none"/></td>
+<td><input type="BUTTON" class="cc" id = "bc" name= "Close" value="Close" onclick="Close_View()" /></td>
+<td><input type="BUTTON" class="rs" id = "rs" name= "RESET" value="HOME" onclick="window.location.reload()"  style="display:inline"/></td>
+
+<!--<td class="button"><input type="Button" class="pp" id = "ppart" name= "pp1" value="Place Part" onclick="Place_Part(this.name)"  style="display:none"/></td> -->
+
+</tr>
+</table>
+
+
+</body>
+</html>
+
+

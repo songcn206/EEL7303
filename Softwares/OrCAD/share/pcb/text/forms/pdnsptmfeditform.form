@@ -1,0 +1,242 @@
+####################################################################################
+#       Cadence Design Systems                                                     #
+#                                                                                  #
+# (C) COPYRIGHT, Cadence Design Systems, Inc. 2008                                 #
+# All Rights Reserved                                                              #
+# Licensed Materials - Property of Cadence Design Systems                          #
+#                                                                                  #
+# No part of this file may be reproduced, stored in a retrieval system,            #
+# or transmitted in any form or by any means --- electronic, mechanical,           #
+# photocopying, recording, or otherwise --- without prior written permission       #
+# of Cadence Design Systems, Inc.                                                  #
+#                                                                                  #
+# WARRANTY:                                                                        #
+# Use all material in this file at your own risk.  Cadence Design Systems          #
+# makes no claims about any material contained in this file.                       #
+####################################################################################
+FILE_TYPE=FORM_DEFN VERSION=2
+
+    FORM
+    FIXED
+    PORT 100 35
+    HEADER "Port Terminor Mapping File (PTMF) Editor"
+
+    ACTIVEFIELD CompNameList
+    DEFAULT Done
+
+    TILE
+
+    FIELD Done
+        FLOC 1 36
+        MENUBUTTON "OK" 10 3
+    ENDFIELD
+
+    FIELD Cancel
+        FLOC 12 36
+        MENUBUTTON "Cancel" 10 3
+    ENDFIELD
+
+    FIELD Check
+        FLOC 68 36
+        MENUBUTTON "Check" 10 3
+    ENDFIELD
+
+    FIELD TextEdit
+        FLOC 79 36
+        MENUBUTTON "Text Edit" 10 3
+    ENDFIELD
+
+    FIELD Help
+        FLOC 90 36
+        MENUBUTTON "Help" 10 3
+    ENDFIELD
+
+    GROUP "General:" "GeneralGroup"
+        GLOC 1 0
+        GSIZE 99 8
+    ENDGROUP
+
+    TEXT "Version:"
+        TLOC 2 2
+    ENDTEXT
+
+    FIELD Version
+        FLOC 10 2
+        STRFILLIN 13 64
+        INFO_ONLY
+    ENDFIELD
+
+    TEXT "Structure:"
+        TLOC 42 2
+    ENDTEXT
+
+    POPUP <StructureTypePop>"PCB""PCB","PKG""PKG","DIE""DIE".
+    FIELD StructureType
+        FLOC 50 2
+        ENUMSET 12
+        POP "StructureTypePop"
+    ENDFIELD
+
+    TEXT "Units:"
+        TLOC 78 2
+    ENDTEXT
+
+    POPUP <CoordinateUnitPop>"centimeters""centimeters","inchs""inchs","meters""meters","microns""microns","millimeters""millimeters","mils""mils".
+    FIELD CoordinateUnit
+        FLOC 84 2
+        ENUMSET 12
+        POP "CoordinateUnitPop"
+    ENDFIELD
+
+    TEXT "Source:"
+        TLOC 2 5
+    ENDTEXT
+
+    FIELD Source
+        FLOC 10 5
+        STRFILLIN 87 256
+    ENDFIELD
+
+    GROUP "Pin Mapping:" "PinMapGroup"
+        GLOC 1 8
+        GSIZE 99 27
+    ENDGROUP
+
+    TEXT "Component:"
+        TLOC 2 10
+    ENDTEXT
+
+    FIELD CompAdd
+        FLOC 11 10
+        MENUBUTTON "Add" 5 3
+    ENDFIELD
+
+    FIELD CompDel
+        FLOC 17 10
+        MENUBUTTON "Del" 5 3
+    ENDFIELD
+
+    FIELD CompNameList
+        FLOC 2 12
+        LIST "" 20 8
+        OPTIONS multiselect
+    ENDFIELD
+
+    TEXT "Connection:"
+        TLOC 2 27
+    ENDTEXT
+
+    POPUP <ConnNamePop>"Board""Board","Package""Package","Chip""Chip".
+    FIELD ConnName
+        FLOC 11 27
+        ENUMSET 8
+        POP "ConnNamePop"
+    ENDFIELD
+
+    FIELD ConnPCB
+        FLOC 2 30
+        CHECKLIST "PCB" "ConnType"
+    ENDFIELD
+
+    FIELD ConnPKG
+        FLOC 9 30
+        CHECKLIST "PKG" "ConnType"
+    ENDFIELD
+
+    FIELD ConnDie
+        FLOC 16 30
+        CHECKLIST "DIE" "ConnType"
+    ENDFIELD
+
+    FIELD ConnVRM
+        FLOC 2 32
+        CHECKLIST "VRM"
+    ENDFIELD
+
+    FIELD ConnSink
+        FLOC 9 32
+        CHECKLIST "SINK"
+    ENDFIELD
+
+    TEXT "Net Name:"
+        TLOC 24 10
+    ENDTEXT
+
+    POPUP <NetNamePop>"""".
+    FIELD NetName
+        FLOC 32 10
+        ENUMSET 12
+        POP "NetNamePop"
+    ENDFIELD
+
+    FIELD NetNameAdd
+        FLOC 47 10
+        MENUBUTTON "Add" 5 3
+    ENDFIELD
+
+    FIELD NetNameDel
+        FLOC 53 10
+        MENUBUTTON "Del" 5 3
+    ENDFIELD
+
+    FIELD PortNameAdd
+        FLOC 78 32
+        MENUBUTTON "Add Port" 10 3
+    ENDFIELD
+
+    FIELD PortNameDel
+        FLOC 89 32
+        MENUBUTTON "Del Port" 10 3
+    ENDFIELD
+
+    FIELD PinNameAdd
+        FLOC 24 32
+        MENUBUTTON "Add Pin" 10 3
+    ENDFIELD
+
+    FIELD PinNameDel
+        FLOC 35 32
+        MENUBUTTON "Del Pin" 10 3
+    ENDFIELD
+
+    FIELD PinNameDelAll
+        FLOC 46 32
+        MENUBUTTON "Del All" 10 3
+    ENDFIELD
+
+    POPUP <PinGridPinUseList>"Ground""Ground","Power""Power","Signal""Signal".
+    POPUP <PinGridNetNameList>"""".
+    POPUP <PinGridPortNameList>"""".
+    POPUP <PinGridHeadPopup>"""".
+    GRID PinGrid
+    FLOC 24 12
+    FSIZE 75 20
+    OPTIONS HLINES VLINES USERSIZE
+
+    GHEAD TOP
+        HEADSIZE 2
+        OPTIONS 3D
+        POP "PinGridHeadPopup"
+    ENDGHEAD
+    GHEAD SIDE
+        HEADSIZE 0
+    ENDGHEAD
+    ENDGRID
+
+    FLEXMODE EdgeGravity
+    FLEX GeneralGroup    0 0 1 0
+    #FLEX Version        0 0 0 0
+    FLEX StructureType   0 0 1 0
+    #FLEX CoordinateUnit 0 0 0 0
+    FLEX Source          0 0 1 0
+    FLEX PinMapGroup     0 0 1 1
+    FLEX CompNameList    0 0 0 1
+    FLEX NetName         0 0 1 0
+    FLEX NetNameAdd      1 0 0 0
+    FLEX NetNameDel      1 0 0 0
+    FLEX PinGrid         0 0 1 1
+    FLEX PinNameDelAll   0 1 0 0
+
+    ENDTILE
+ENDFORM
+

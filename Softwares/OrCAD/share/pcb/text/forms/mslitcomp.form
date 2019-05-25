@@ -1,0 +1,176 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 84 20
+HEADER "Microstrip Slit"
+
+POPUP <actlayers>"""".
+POPUP <gndlayers>"""".
+POPUP <rotate>"0""0.000","45""45.000","90""90.000".
+
+TILE MSLIT
+
+TABSET "tab"
+OPTIONS tabsetDispatch
+FLOC 1 1
+FSIZE 30 24
+
+TAB "Parameters"
+TEXT "Layer:"
+TLOC 1 1
+ENDTEXT
+
+FIELD active_subclass
+FLOC 7 1
+ENUMSET 16
+POP "actlayers"
+ENDFIELD
+
+FIELD activelayervar
+FLOC 26 1
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+TEXT "Ground:"
+TLOC 1 3
+ENDTEXT
+
+FIELD ground_subclass
+FLOC 7 3
+ENUMSET 16
+POP "gndlayers"
+ENDFIELD
+
+FIELD groundlayervar
+FLOC 26 3
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+TEXT "Slit Length:"
+TLOC 1 5
+ENDTEXT
+
+FIELD lengthvar
+FLOC 10 5
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+FIELD length
+FLOC 1 7
+REALFILLIN 10 10
+ENDFIELD
+
+TEXT lengthunitslabel
+TLOC 14 7
+INFO lengthunits
+ENDTEXT
+
+TEXT "Line Width:"
+TLOC 1 9
+ENDTEXT
+
+FIELD widthvar
+FLOC 10 9
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+FIELD swidth
+FLOC 1 11
+REALFILLIN 10 10
+ENDFIELD
+
+TEXT swidthunitslabel
+TLOC 14 11
+INFO swidthunits
+ENDTEXT
+
+TEXT "Slit Depth:"
+TLOC 1 13
+ENDTEXT
+
+FIELD depthvar
+FLOC 10 13
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+FIELD depth
+FLOC 1 15
+REALFILLIN 10 10
+ENDFIELD
+
+TEXT depthunitslabel
+TLOC 14 15
+INFO depthunits
+ENDTEXT
+
+TEXT "Rotation Lock:"
+TLOC 1 17
+ENDTEXT
+
+FIELD angle
+FLOC 14 17
+REALFILLIN 7 7
+POP "rotate"
+DECIMAL 3
+ENDFIELD
+
+FIELD newtrace
+FLOC 1 19
+CHECKLIST "New trace after insertion"
+ENDFIELD
+
+ENDTAB
+
+TAB "Nets"
+TEXT "Pin 1 Net:"
+TLOC 1 1
+ENDTEXT
+
+TEXT
+TLOC 10 1
+INFO pin1netname 12
+ENDTEXT
+
+FIELD pin1netname_list
+FLOC 24 1
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+TEXT "Pin 2 Net:"
+TLOC 1 3
+ENDTEXT
+
+TEXT
+TLOC 10 3
+INFO pin2netname 12
+ENDTEXT
+
+FIELD pin2netname_list
+FLOC 24 3
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+ENDTAB
+ENDTABSET
+
+FIELD onhelp
+FLOC 1 26
+MENUBUTTON "Help" 14 3
+ENDFIELD
+
+FIELD help
+FLOC 22 26
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+FIELD graphic
+THUMBNAIL rfpcbmslit.bmp
+OPTIONS STRETCH
+FLOC 32 2
+FSIZE 48 24
+ENDFIELD
+
+ENDTILE
+
+ENDFORM
+

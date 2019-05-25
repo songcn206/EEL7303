@@ -1,0 +1,152 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+#ifndef PKG_DESIGN_CHECK_NO_DESCRIP
+PORT 94 60
+#else
+PORT 46 60
+#endif
+HEADER "Package Design Integrity Checks"
+
+TILE
+
+################################################################################
+# Left hand side of form has tree view, and underneath it there is
+# the reporting options.
+################################################################################
+
+GROUP "Check Categories"
+INFO pkg_check_tree_group 40
+GLOC 1 0
+GSIZE 44 36
+ENDGROUP
+
+FIELD pkg_check_all_on
+FLOC 2 3
+MENUBUTTON "All On" 20 3
+ENDFIELD
+
+FIELD pkg_check_all_off
+FLOC 23 3
+MENUBUTTON "All Off" 20 3
+ENDFIELD
+
+FIELD pkg_check_tree
+FLOC 2 5
+TREEVIEW 42 15
+ENDFIELD
+
+GROUP "Reporting Options"
+INFO pkg_check_report_group 40
+GLOC 1 36
+GSIZE 44 11
+ENDGROUP
+
+FIELD pkg_check_log
+FLOC 2 38
+CHECKLIST "Log file: "
+ENDFIELD
+
+FIELD pkg_check_log_name
+FLOC 12 38
+STRFILLIN 30 256
+ENDFIELD
+
+FIELD pkg_check_verbose_log
+FLOC 2 40
+CHECKLIST "Write descriptions to log (verbose mode)"
+ENDFIELD
+
+FIELD pkg_check_fix_errors
+FLOC 2 42
+CHECKLIST "Fix errors automatically (where possible)"
+ENDFIELD
+
+FIELD pkg_check_drcs
+FLOC 2 44
+CHECKLIST "External DRC markers"
+ENDFIELD
+
+FIELD pkg_check_clear_drcs
+FLOC 24 44
+MENUBUTTON "Clear DRCs" 20 3
+ENDFIELD
+
+################################################################################
+# Right hand side of the form is for descriptions of items
+# The layout is a bitmap at the top and description underneath. Idea is to
+# explain here WHY something is a bad idea. You can enter as much text into the
+# box underneath as you wish, as it is a huge text panel that will scroll. 
+################################################################################
+
+#ifndef PKG_DESIGN_CHECK_NO_DESCRIP
+GROUP "Description"
+INFO pkg_check_item_name 40
+GLOC 46 0
+GSIZE 48 47
+ENDGROUP
+
+FIELD pkg_check_item_pic
+THUMBNAIL "adrcAllRules.bmp"
+OPTIONS stretch
+FLOC 47 2
+FSIZE 46 16
+ENDFIELD
+
+FIELD pkg_check_item_text
+FLOC 47 19
+LIST "" 46 14
+ENDFIELD
+
+#endif
+
+################################################################################
+# Buttons along the bottom of the form. Not in a Group box.
+################################################################################
+
+FIELD done
+FLOC 1 48
+MENUBUTTON "OK" 10 3
+ENDFIELD
+
+FIELD cancel
+FLOC 12 48
+MENUBUTTON "Cancel" 10 3
+ENDFIELD
+
+FIELD close
+FLOC 23 48
+MENUBUTTON "Close" 10 3
+ENDFIELD
+
+FIELD apply
+FLOC 34 48
+MENUBUTTON "Apply" 10 3
+ENDFIELD
+
+FIELD help
+#ifndef PKG_DESIGN_CHECK_NO_DESCRIP
+FLOC 84 48
+#else
+FLOC 34 48
+#endif
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+FLEXMODE edgegravity
+FLEX pkg_check_tree_group   0   0   1   1
+FLEX pkg_check_report_group 0   1   1   0
+FLEX pkg_check_item_name    1   0   0   1
+FLEX pkg_check_all_on       0.5 0 0.5   0
+FLEX pkg_check_all_off      0.5 0 0.5   0
+FLEX pkg_check_tree         0   0   1   1
+FLEX pkg_check_verbose_log  0   0   0   0
+FLEX pkg_check_fix_errors   0   0   0   0
+FLEX pkg_check_drcs         0   0   0   0
+FLEX pkg_check_log          0   0   0   0
+FLEX pkg_check_log_name     0   0   1   0
+FLEX pkg_check_item_text    0   0   0   1
+
+ENDTILE
+
+ENDFORM

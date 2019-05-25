@@ -1,0 +1,202 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM autogreytext
+FIXED 
+PORT 65 25
+HEADER "DXF Out"
+
+POPUP <revision>"Revision 12""12", "Revision 14""14".
+POPUP <units>"INCHES""INCHES","MILS""MILS","MM""MM","CM""CM","MICRONS""MICRONS".
+POPUP <colormode> "Match Database Colors""L", "Monochrome""M", "Unique""S".
+
+MESSAGE nLayerCnvFile 0 "You must enter a layer conversion filename first."
+MESSAGE lLayerCnvFile 0 "Given layer filename does not exist. You must create one."
+
+MESSAGE nDxfFile 0 "You must enter a dxf filename first."
+MESSAGE nerror 0 "Error occurred - Check logfile (using File->Viewlog)."
+MESSAGE nUnits 0 "You must use Units popup button to set dxf units."
+MESSAGE nAccuracy 0 "Round-offs possible, since DXF accuracy(%d) < Brd accuracy(%d)" 
+MESSAGE nEditable 0 "You must close Edit Layer Conversion File form first."
+MESSAGE ndone 0 "Translation complete. See logfile (using File->ViewLog)."
+MESSAGE ndemo 0 "Cannot Run in Demo Mode."
+MESSAGE nBusy 0 "Working..."
+
+ACTIVEFIELD "DxfFile"
+
+TILE
+
+GROUP "DXF file specifications"
+GLOC 3 1
+GSIZE 60 17
+ENDGROUP
+
+TEXT "DXF output file:"
+TLOC 5 4
+ENDTEXT
+
+FIELD DxfFile
+FLOC 22 4
+STRFILLIN 28 1024
+ENDFIELD
+
+FIELD BrowseDxf
+FLOC 53 4
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+TEXT "DXF format:"
+TLOC 5 6
+ENDTEXT
+
+FIELD DxfFormat
+FLOC 22 6
+ENUMSET 27
+POP "revision"
+ENDFIELD
+
+TEXT "Output units:"
+TLOC 5 9
+ENDTEXT
+
+FIELD Units
+FLOC 22 9
+STRFILLIN 7 7
+POP "units"
+ENDFIELD
+
+TEXT "Accuracy:"
+TLOC 42 9
+ENDTEXT
+
+FIELD Accuracy
+FLOC 51 9
+INTSLIDEBAR 1 1
+MIN 0
+MAX 4
+ENDFIELD
+
+TEXT "Layer conversion file:"
+TLOC 5 12
+ENDTEXT
+
+FIELD LayerCnvFile
+FLOC 22 12
+STRFILLIN 28 1024
+ENDFIELD
+
+FIELD BrowseLayer
+FLOC 53 12
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+FIELD LibLayer
+FLOC 56 12
+MENUBUTTON "Lib..." 5 3
+ENDFIELD
+
+FIELD Edit
+FLOC 22 15
+MENUBUTTON "Edit..." 8 3
+ENDFIELD
+
+GROUP "Data Configuration"
+GLOC 3 18
+GSIZE 60 26
+ENDGROUP
+
+TEXT "Color mapping:"
+TLOC 5 21
+ENDTEXT
+FIELD ColorMode
+FLOC 18 21
+ENUMSET 20
+POP "colormode"
+ENDFIELD
+
+FIELD ExportSymbols
+FLOC 5 23
+CHECKLIST "Export symbols as BLOCKs"
+ENDFIELD
+
+TEXT "Default package height:"
+TLOC 8 25
+INFO SymHeight 20
+ENDTEXT
+
+FIELD SymbolHeight
+FLOC 30 25
+REALFILLIN 5 5
+ENDFIELD
+
+FIELD ExportPadstacks
+FLOC 5 27
+CHECKLIST "Export padstacks as BLOCKs"
+ENDFIELD
+
+FIELD ExportFilledPads
+FLOC 5 29
+CHECKLIST "Export filled pads"
+ENDFIELD
+
+TEXT "Pad fill line width (rev 12):"
+TLOC 8 31
+INFO PadFill 20
+ENDTEXT
+
+FIELD PadFillValue
+FLOC 30 31
+REALFILLIN 5 5
+ENDFIELD
+
+FIELD ExportFilledShapes
+FLOC 5 33
+CHECKLIST "Fill solid shapes and rectangles"
+ENDFIELD
+
+TEXT "Shape fill line width (rev 12):"
+TLOC 8 35
+INFO ShapeFill 20
+ENDTEXT
+
+FIELD ShapeFillValue
+FLOC 30 35
+REALFILLIN 5 5
+ENDFIELD
+
+FIELD DrillInfo
+FLOC 5 37
+CHECKLIST "Export drill information"
+ENDFIELD
+
+FIELD ExportLinesAsShapes
+FLOC 5 39
+CHECKLIST "Draw clines/lines as shapes"
+ENDFIELD
+
+FIELD NoMultiSegPoly
+FLOC 5 41
+CHECKLIST "Do not create multi-segment polylines"
+ENDFIELD
+
+FIELD Execute
+FLOC 5 45
+MENUBUTTON "Export" 10 3
+ENDFIELD
+
+FIELD ViewLog
+FLOC 21 45
+MENUBUTTON "View Log" 10 3
+ENDFIELD
+
+FIELD Close
+FLOC 38 45
+MENUBUTTON "Close" 10 3
+ENDFIELD
+
+FIELD help
+FLOC 53 45
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

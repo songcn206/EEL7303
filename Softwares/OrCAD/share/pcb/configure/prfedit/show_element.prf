@@ -1,0 +1,61 @@
+#  $Header: /vobs/psd_backend_data/data/prefs/show_element.prf /main/10 2011-02-03T13:52:56-05 fxf $
+#------------------------------------------------------------------------------
+#			User Interface Variables
+#------------------------------------------------------------------------------
+#
+# See User.prf for complete descriptions of fields in this file.
+
+PARENT:PARENT_L=display/element
+
+SUMMARY:HELP=Show Element Preference Settings
+
+show_max_manhattan_pins:TYPE=LONG:MIN=1:EFF_IMMEDIATE:\
+HELP=Show element does not display information when nets contain more than \
+50 pins for performance reasons. Value can be any number greater than 0. \
+Not applicable for nets with NO_RAT property.
+
+noshow_current_selections:TYPE=CHECK:EFF_ONNEXTCMD:\
+HELP=By default, if an interactive command is running, and there are some \
+elements that currently are selected or highlighted (with temp highlight), \
+running show element will result in a window displaying information for those \
+elements. The other command will remain active. Setting this variable \
+disables that feature. The other command will terminate and an interactive \
+show element command will start.
+
+showelement_autoavoid:TYPE=CHECK:EFF_ONNEXTCMD:\
+HELP=If set, the show element window is automatically positioned to avoid \
+the main window. When unset (default) the previous location of the window \
+is used on next open.
+
+showelement_brief:TYPE=CHECK:EFF_ONNEXTCMD:\
+HELP=If set, certain show element detail is filtered. Currently \
+for shapes it filters boundary and void segments. 
+
+showelement_basearea:TYPE=ENUM:POPUP=traditional,artwork,design:EFF_ONNEXTCMD:\
+HELP=For show element, default (or traditional) reports shape area in \
+Sq In. if design units is English or Sq Cent. if design is Metric. \
+The artwork option matches film area output which reports Microns in \
+Sq Millim. and everything else the same as traditional. \
+Finally, the design option reports units the same as current design units.
+
+showelement_xhatcharea:TYPE=CHECK:EFF_ONNEXTCMD:\
+HELP=If set, reports that actual area of cross-hatched shapes. By default, \
+the cross hatch lines are not considered when calculating the area. \
+This calculation is time consuming which is why it is not the default.
+
+showelement_highspeed:TYPE=CHECK:EFF_ONNEXTCMD:\
+HELP=If set and product is Allegro or APD, show element for nets \
+will display in PCB SI format.
+
+showmeasure_altunits:TYPE=ENUM:EFF_ONNEXTCMD:\
+POPUP=mils,inches,millimeters,centimeters,microns:\
+HELP=If set, the show measure command will also display measurements in the \
+specified units.
+
+etchlen_ignore_pinvia:TYPE=CHECK:EFF_ONNEXTCMD:\
+HELP=By default, the etch length that is computed for show element and \
+other commands will include via to via offset distances when a via \
+or pin are direct connected. This makes this calculation agree with our \
+delay calculations. Setting this variable \
+will restore the older version of the calculation that excludes these \
+offsets.

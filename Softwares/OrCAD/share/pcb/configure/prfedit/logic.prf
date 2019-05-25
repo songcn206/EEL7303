@@ -1,0 +1,44 @@
+#  $Header: /vobs/psd_backend_data/data/prefs/misc.prf /main/fxf051019.downrev/1 19-Oct-05.15:12:07 fxf $
+#-------------------------------------------------------------------------------
+#			Allegro Logic Control Variables
+#-------------------------------------------------------------------------------
+#
+# See User.prf for complete descriptions of fields in this file.
+
+PARENT:PARENT_L=logic
+
+SUMMARY:HELP=Settings to control logic import/export and editing
+
+netrev_missing_footprints:TYPE=CHECK:EFF_ONNEXTCMD:\
+HELP=Normally netrev reports missing footprints as a warning and \
+updates the design. By setting this variable, any footprint warnings \
+are reported as an error and logic import will fail. Also can by \
+driven via the '-e' command line switch to netrev batch.
+
+netrev_no_footprint_warnings:TYPE=CHECK:EFF_ONNEXTCMD:\
+HELP=Normally netrev reports missing footprints as warnings. This \
+suppresses these warnings. This variable overrides the \
+netrev_missing_footprints environment variable. 
+
+edit_parts_expand_lists:TYPE=CHECK:EFF_ONNEXTCMD:\
+HELP=When set, the edit parts command will display reference designator \
+lists in an expanded format. Items are grouped together by default. For \
+example, U1, U2, and U3 will be listed as U1-3. This format does not support \
+dashes in designator names. If your design uses dashes, enable this variable \
+to have full capabilities in the edit parts command.
+
+logic_edit_enabled:TYPE=CHECK:EFF_ONNEXTCMD:\
+HELP=When set, enables the \"net logic\" command. \
+By default, this feature is disabled to prevent inadvertent changes \
+to the logic.
+
+pcb_baf_pin_number:TYPE=CHECK:EFF_ONNEXTCMD:\
+HELP=When set, backannotation uses the pin number- not the pin name - for the \
+"was" part of the PIN statement for preassigned and not yet assigned \
+functions.
+
+schematic_editor:TYPE=ENUM:POPUP=hdl-concept,capture,scald:EFF_ONNEXTCMD:\
+HELP=Use this variable to preset brand of a new drawing. Possible values are\:\
+"capture" for capture designs and \
+"hdl-concept" for Design Entry HDL (Concept) based designs.
+

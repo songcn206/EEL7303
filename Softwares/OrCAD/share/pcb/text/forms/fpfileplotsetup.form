@@ -1,0 +1,224 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM autogrey
+FIXED
+PORT 48 9
+HEADER "Plot Setup"
+
+MESSAGE stipple 3 "Cannot find specified stipple file."
+
+TILE
+
+TABSET "Plot Setup"
+FLOC 1 1
+TSSIZE 47 39
+
+TAB "General"
+
+FIELD fpPlotFitToPage
+FLOC 3 2
+CHECKLIST "Fit to page" "fpPlotScale"
+ENDFIELD
+
+FIELD fpPlotScaling
+FLOC 3 4
+CHECKLIST "Scaling factor:" "fpPlotScale"
+ENDFIELD
+
+FIELD fpPlotScale
+FLOC 25 4
+REALFILLIN 4 4
+DECIMAL 2
+ENDFIELD
+
+TEXT "Default line weight:"
+TLOC 3 7
+ENDTEXT
+
+FIELD fpPlotLineWeight
+FLOC 25 7
+LONGFILLIN 4 4
+ENDFIELD
+
+TEXT "X normal width"
+TLOC 31 7
+ENDTEXT
+
+GROUP "Plot scaling:"
+GLOC 1 0
+GSIZE 45 10
+ENDGROUP
+
+FIELD fpPlotAutoCenter
+FLOC 3 12
+CHECKLIST "Auto center"
+ENDFIELD
+
+FIELD fpPlotMirror
+FLOC 3 14
+CHECKLIST "Mirror"
+ENDFIELD
+
+GROUP "Plot orientation:"
+GLOC 1 10
+GSIZE 45 6
+ENDGROUP
+
+FIELD fpPlotColor
+FLOC 3 18
+CHECKLIST "Color" "fpPlotColor"
+ENDFIELD
+
+FIELD fpPlotBlackWhite
+FLOC 3 20
+CHECKLIST "Black and white" "fpPlotColor"
+ENDFIELD
+
+#ifdef __unix
+TEXT "Stipple file (optional):"
+TLOC 5 22
+ENDTEXT
+
+FIELD stippleFile
+FLOC 21 22
+STRFILLIN 17 1000
+ENDFIELD
+
+FIELD stippleFileBrowse
+FLOC 41 22
+MENUBUTTON "..." 4 3
+ENDFIELD
+#endif
+
+GROUP "Plot method:"
+GLOC 1 16
+GSIZE 45 9
+ENDGROUP
+
+FIELD fpPlotScreenContents
+FLOC 3 27
+CHECKLIST "Screen contents" "fpPlotContents"
+ENDFIELD
+
+FIELD fpPlotSheetContents
+FLOC 3 29
+CHECKLIST "Sheet contents" "fpPlotContents"
+ENDFIELD
+
+GROUP "Plot contents:"
+GLOC 1 25
+GSIZE 45 6
+ENDGROUP
+
+FIELD fpIPFVectorText
+FLOC 3 33
+CHECKLIST "Vectorize text:"
+ENDFIELD
+
+FIELD fpIPFVectorWidth
+FLOC 25 33
+REALFILLIN 5 5
+ENDFIELD
+
+TEXT "width"
+TLOC 32 33
+ENDTEXT
+
+GROUP "IPF setup:"
+GLOC 1 31
+GSIZE 45 5
+ENDGROUP
+
+ENDTAB
+
+#ifndef __unix
+
+TAB "Windows"
+
+GROUP "Non-vectorized text control:"
+GLOC 1 0
+GSIZE 45 13
+ENDGROUP
+
+FIELD fpPlotNonVectorText
+FLOC 3 3
+CHECKLIST "Non-vectorized text"      
+ENDFIELD
+
+TEXT "Font:"
+TLOC 5 5
+ENDTEXT
+
+FIELD fpPlotNonVectorTextFont  
+FLOC 10 5
+STRFILLIN 32 32
+ENDFIELD
+
+TEXT "Font height:"
+TLOC 5 7
+ENDTEXT
+
+FIELD fpPlotNonVectorTextFontHeight
+FLOC 14 7
+LONGFILLIN 3 3
+ENDFIELD
+
+TEXT "%"
+TLOC 19 7
+ENDTEXT
+
+TEXT "Font width:" 
+TLOC 22 7
+ENDTEXT
+
+FIELD fpPlotNonVectorTextFontWidth 
+FLOC 30 7
+LONGFILLIN 3 3
+ENDFIELD
+
+TEXT "%"
+TLOC 35 7
+ENDTEXT
+
+FIELD fpViewAvailableFonts
+FLOC 5 10
+MENUBUTTON "View available fonts" 15 3
+ENDFIELD
+
+GROUP "Margin control:"              
+GLOC 1 13
+GSIZE 45 7
+ENDGROUP
+
+TEXT "Margin width:"
+TLOC 3 16
+ENDTEXT 
+
+FIELD fpPlotWindowsMargins
+FLOC 15 16
+REALFILLIN 10 10
+ENDFIELD
+
+ENDTAB
+
+#endif
+
+ENDTABSET
+
+FIELD Done
+FLOC 1 41
+MENUBUTTON "Done" 10 3
+ENDFIELD
+
+FIELD Cancel
+FLOC 20 41
+MENUBUTTON "Cancel" 10 3
+ENDFIELD
+
+FIELD help
+FLOC 38 41
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

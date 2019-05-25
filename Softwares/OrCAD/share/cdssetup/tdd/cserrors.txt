@@ -1,0 +1,477 @@
+(
+  (module "DSCS" "DSCS"
+    (messages
+      (  "1"
+         "LOG"
+         (short
+         	"No error rules found."
+         )
+         (long
+         	""
+         )
+      )
+
+      (  "2"
+         "STATUS_BAR"
+         (short
+         	"Loading error rule file '%s'."
+         )
+         (long
+         	""
+         )
+      )
+
+      (  "3"
+         "WARNING"
+         (short
+         	"Could not load error rule file '%s'."
+         )
+         (long
+         	"Could not load error rule file."
+         )
+      )
+
+      (  "4"
+         "LOG"
+         (short
+         	"Initialization routine not found in error rule file '%s'."
+         )
+         (long
+         	""
+         )
+      )
+
+      (  "5"
+         "LOG"
+         (short
+         	"Initializing error rule file '%s'."
+         )
+         (long
+         	""
+         )
+      )
+
+      (  "6"
+         "WARNING"
+         (short
+         	"Routine 'handlesError' not found in error rule file '%s'. Rule not loaded."
+         )
+         (long
+         	"Routine 'handlesError' not found in the specified error rule file. Rule not loaded."
+         )
+      )
+
+      (  "7"
+         "LOG"
+         (short
+         	"Registered error rule file '%s' for error code '%s'."
+         )
+         (long
+         	""
+         )
+      )
+
+      (  "8"
+         "ERROR"
+         (short
+         	"Error code '%s' is already registered for error rule file '%s'. Rule %s not loaded."
+         )
+         (long
+         	""
+         )
+      )
+
+      (  "9"
+         "ERROR"
+         (short
+         	"Routine 'evaluateRule' not found in error rule file '%s'. Rule not loaded."
+         )
+         (long
+         	""
+         )
+      )
+
+      (  "10"
+         "STATUS_BAR"
+         (short
+         	"Loading connectivity file '%s'."
+         )
+         (long
+         	""
+         )
+      )
+
+      (  "11"
+         "STATUS_BAR"
+         (short
+         	"Loading property file '%s'."
+         )
+         (long
+         	""
+         )
+      )
+
+      (  "12"
+         "STATUS_BAR"
+         (short
+         	"Loading design '%s'."
+         )
+         (long
+         	""
+         )
+      )
+
+      (  "13"
+         "STATUS_BAR"
+         (short
+         	"Using design template file '%s'."
+         )
+         (long
+         	""
+         )
+      )
+
+      (  "14"
+         "WARNING"
+         (short
+         	"Could not find design template file."
+         )
+         (long
+         	""
+         )
+      )
+
+      (  "15"
+         "STATUS_BAR"
+         (short
+         	"Packaging design '%s'."
+         )
+         (long
+         	""
+         )
+      )
+
+      (  "16"
+         "ERROR"
+         (short
+         	"Error in loading schema file for block '%s' because of syntax error. Contact Cadence customer support with an archive of the design."
+         )
+         (long
+         	"Error in loading schema file for block '%s' because of syntax error. Contact Cadence customer support with an archive of the design."
+         )
+      )
+
+      (  "17"
+         "ERROR"
+         (short
+            "Could not find connectivity information for block '%s' in library '%s'. Ensure that the design is saved."
+         )
+         (long
+            "Connectivity information stored in .con or .xcon files could not be found for the specified block."
+            "Please ensure that the design is saved in the latest version of the tool."
+         )
+      )
+
+      (  "18"
+         "ERROR"
+         (short
+            "Could not find cell '%s'. Ensure that all libraries required are present and referenced in the project file."
+         )
+         (long
+            "One or more libraries/cells were found missing while loading design."
+            "All libraries required need to be referenced in the project file and cds.lib"
+         )
+      )
+
+      (  "101"
+         "INFO"
+         (short
+         	"Global signal '%s' in block '%s' shorts rippled up global signals with the same name from instance(s) '%s'."
+         )
+         (long
+         	"Global signals of the same name are rippling up from multiple instances, and are hence shorted."
+			"The short may or may not be desirable in the design. If you do not want the global signals"
+			"coming from a particular instance to short, edit the block packaging options for that instance."
+         )
+      )
+
+      (  "102"
+         "WARNING"
+         (short
+         	"Conflict in voltage among aliases of global signal '%s.%s'."
+         )
+         (long
+         	"One or more aliases of the specified signal have differing voltage values."
+			"The tool will use the voltage value specified on one of these aliases."
+         )
+      )
+
+      (  "103"
+         "INFO"
+         (short
+         	"Global signal '%s' in instance '%s' is masked in block '%s' because a non global signal of the same name already exists in the block."
+         )
+         (long
+         	"A signal of non-global scope (local or interface), exists in the specified block."
+			"Due to this, a global signal of the same name in the specified instance has been"
+			"masked, in order to prevent shorting the two signals of different scopes."
+         )
+      )
+
+      (  "104"
+         "WARNING"
+         (short
+         	"Net '%s' connected to power pin '%s:%s' of Ref Des '%s' has no voltage assigned."
+         )
+         (long
+         	"Any nets connected to the power pins of an Ref Des should have a voltage assigned to it."
+         )
+      )      
+
+      (  "110"
+         "ERROR"
+         (short
+         	"Failed to load component cell '%s.%s:%s'. Ensure that settings for the library in the cds.lib file and the project are correct."
+         )
+         (long
+         	"Design Editor failed to load the specified component cell. This could happen because of any of the following:"
+			"  1. The cell for the component does not exist in the library."
+			"  2. The library in which the component exists is not defined in the cds.lib file, or the specified path is incorrect."
+			"  3. The library in which the component exists is not added to the list of project libraries."
+			"     Choose Project --> Settings --> Libraries and ensure that the library is added to the list of project libraries."
+			"  4. There are errors in the component. Open the component in Part Developer and verify that there are no errors."
+         )
+      )
+      (  "111"
+         "INFO"
+         (short
+         	"Component cell '%s.%s' is now being loaded from a different library '%s'."
+         )
+         (long
+		    "The specified component is being loaded from a library which is different from where it was originally added."
+			"This is harmless if you have moved the component from one library to another. However, ensure that this component"
+			"is not different from the component in the library from where it was originally used."
+         )
+      )
+      (  "112"
+         "WARNING"
+         (short
+         	"View '%s' of component cell '%s.%s' is being re-bound to view '%s'."
+         )
+         (long
+         	"The specified component is being loaded from a view which is different from what was originally instantiated."
+			"This happens mostly when the original view is no longer present, or the configuration settings have changed"
+			"with respect to view loading rules."
+         )
+      )
+      (  "113"
+         "WARNING"
+         (short
+         	"Property file '%s' found in both '%s' and '%s' views. Properties in '%s' view ignored."
+         )
+         (long
+         	"Property files (dcf) were found in both the specified views. This"
+			"mostly happens when you have invoked Constraint Manager on a schematic"
+			"block, but not saved the Design Entry HDL design after that. Please consider"
+			"this warning as severe, as it may result into further packaging errors"
+			"and loss of constraint information."
+         )
+      )
+      (  "114"
+         "WARNING"
+         (short
+         	"Unable to add property '%s=%s' on object '%s'."
+         )
+         (long
+         	"The specified property could not be added on the object."
+			"Not being able to add the property may cause packaging or other errors."
+			"Check the Property Flow Setup to ensure that the definition for the specified property exists"
+			"and that the property value conforms to the property definition."
+         )
+      )
+      (  "115"
+         "WARNING"
+         (short
+         	"Property deletion failed for property '%s' on object '%s'"
+         )
+         (long
+         	"The specified property could not be deleted from the object."
+         )
+      )
+      (  "116"
+         "ERROR"
+         (short "Property Value '%s' is not legal syntax for Property Name '%s'")
+         (long 
+               "The specified property value is not valid syntax for the"
+               "specified property name. Please update the value to have"
+               "correct syntax"
+         )
+      )
+      (  "117"
+         "WARNING"
+         (short "Property '%s' is not legal for Object '%s'")
+         (long 
+               "The specified property is not allowed on objects of type"
+               "mentioned. Most common causes are annotating net properties"
+               "on instances or vice-versa. Legal object types for properties"
+               "are specified in the CM-Dictionary (cmdict.l) in the installation"
+         )
+      )
+	  (  "118"
+         "WARNING"
+         (short "Property value '%s' is out of range for Property Name '%s'")
+         (long 
+               "The specified property value is not in valid range for the"
+               "specified property name. Please update the value to be"
+               "in correct range"
+         )
+      )
+      (  "120"
+         "ERROR"
+         (short "Failed to open file '%s' in write mode")
+         (long 
+                "The specified file could not be opened for writing."
+                "Check if the file has write permissions."
+         )
+      )
+	  (  "121"
+         "STATUS_BAR"
+         (short
+         	"Validating physical part information for components in design '%s'."
+         )
+         (long
+         	""
+         )
+      )
+      (  "2000"
+         "ERROR"
+         (short
+         	"%s"
+         )
+         (long
+         	"Audit model failed."
+         )
+      )
+      (  "2001"
+         "ERROR"
+         (short
+         	"Unable to automatically update instances of component '%s'."
+         )
+         (long
+		    "Instances of the specified component as used as associated components such as"
+			"terminations, bypass capacitors or pullup and pulldown resistors."
+			"Currently, it is not possible to automatically update such instances. You need"
+			"to manually delete and add such instances to update them."
+         )
+      )      
+      (  "1"
+         "INFO"
+         (short
+         	"%s"
+         )
+         (long
+         	"Generic Info Message"
+         )
+      )
+
+      (  "100"
+         "ERROR"
+         (short
+         	"File %s Not Found"
+         )
+         (long
+         	"A required file was not found"
+         )
+      )
+
+      (  "1000"
+         "LOG"
+         (short
+         	"%s"
+         )
+         (long
+         	"Generic Log Message"
+         )
+      )
+
+      (  "1010"
+         "STATUS_BAR"
+         (short
+         	"%s"
+         )
+         (long
+         	"Generic Status Message"
+         )
+      )
+
+      (  "1020"
+         "ERROR"
+         (short
+         	"%s"
+         )
+         (long
+         	"There was an error in loading the cds.lib file for the project."
+    		"Check the cds.lib file in the project directory and reopen the project in Design Editor."
+         )
+      )
+
+      (  "1021"
+         "WARNING"
+         (short
+         	"%s"
+         )
+         (long
+       		"There was an error in loading the cds.lib file for the project."
+    		"Check the cds.lib file in the project directory and reopen the project in Design Editor."
+         )
+      )
+
+      (  "1022"
+         "ERROR"
+         (short
+			"Mismatch in the interface ports in design '%s' for block '%s'."
+			"%s"
+         )
+         (long
+			"Interface ports of the specified block in the specified design do not match"
+			"with the interface ports of the block in the library. This occurs if you delete,"
+			"rename or change the type of a port of the specified block. Click resolve in the"
+			"violations window to update instances of the specified block."
+         )
+      )
+      (  "1023"
+         "INFO"
+         (short
+         	"Electrical constraints will be retained on nets in this design."
+         )
+         (long
+         	"Electrical constraints will be retained on nets in this design."
+         )
+      )
+      (  "1024"
+         "ERROR"
+         (short
+			"Only single instance of a codesign package is allowed in the entire design hierarchy."
+			"Remove duplicate instances of '%s'."
+         )
+         (long
+			"Only single instance of a codesign package is allowed in the entire design hierarchy."
+         )
+      )
+	  (  "1025"
+         "ERROR"
+         (short
+         	"Constraint/Property database %s.dcf could not be saved." 
+			"File may be used by another process or have read-only property."
+			"Temporary database file saved as %s.dcf,new"
+         )
+         (long
+         	"Constraint/Property database %s.dcf could not be saved." 
+			"File may be used by another process or have read-only property." 
+			"Temporary database file saved as %s.dcf,new"
+         )
+      )
+    )
+  )
+)
+

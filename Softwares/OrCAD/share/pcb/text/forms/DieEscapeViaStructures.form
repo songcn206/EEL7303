@@ -1,0 +1,80 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 41 20
+HEADER "Die Escape: Add Via Structures"
+
+POPUP <top_subcla>"Surface""Surface".
+POPUP <bottom_subcla>"Surface""Surface".
+POPUP <ANGLE>"0""0","45""45","90""90","135""135","180""180","225""225","270""270","315""315".
+
+TILE
+
+FIELD top_sc
+FLOC 2 2
+ENUMSET 17
+POP "top_subcla"
+ENDFIELD
+
+TEXT "Start Subclass"
+TLOC 22 2
+ENDTEXT
+
+FIELD bottom_sc
+FLOC 2 4
+ENUMSET 17
+POP "bottom_subcla"
+ENDFIELD
+
+TEXT "End Subclass"
+TLOC 22 4
+ENDTEXT
+
+TEXT "List Via Structures found in"
+TLOC 2 7
+ENDTEXT
+
+FIELD by_database
+FLOC 4 9
+CHECKLIST "Database"
+ENDFIELD
+
+FIELD by_library
+FLOC 16 9
+CHECKLIST "Library (pad$path)"
+ENDFIELD
+
+FIELD vs_list
+FLOC 4 11
+LIST "" 29 4
+OPTIONS sort
+ENDFIELD
+
+FIELD rotation
+FLOC 2 19
+REALFILLIN 4 6
+DECIMAL 2
+POP "ANGLE"
+ENDFIELD
+
+TEXT "Rotation"
+TLOC 11 19
+ENDTEXT
+
+FIELD assign_via_structure
+FLOC 2 22
+MENUBUTTON "Add Via Structures" 17 3
+ENDFIELD
+
+FIELD cancel
+FLOC 20 22
+MENUBUTTON "Cancel" 10 3
+ENDFIELD
+
+FIELD help
+FLOC 31 22
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+ENDTILE
+ENDFORM

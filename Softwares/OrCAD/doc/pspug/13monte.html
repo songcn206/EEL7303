@@ -1,0 +1,2710 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN" "http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+<html xmlns="http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>PSpice User Guide -- Monte Carlo and sensitivity&#47; worst&#45;case analyses</title>
+<META NAME="Approver" CONTENT="Technical Publications">
+<META NAME="Author" CONTENT="Technical Publications">
+<META NAME="CreateDate" CONTENT="2012-08-31">
+<META NAME="CreateTime" CONTENT="1346413404">
+<META NAME="DataType" CONTENT="Manuals">
+<META NAME="Description" CONTENT="User guide for PSpice and AMS Simulator.">
+<META NAME="DocTitle" CONTENT="PSpice User Guide">
+<META NAME="DocType" CONTENT="User Guide">
+<META NAME="EdmsRelease" CONTENT="EDMS Windows-P015">
+<META NAME="FileTitle" CONTENT="Monte Carlo and sensitivity&#47; worst&#45;case analyses">
+<META NAME="Keywords" CONTENT="">
+<META NAME="FileType" CONTENT="Chapter">
+<META NAME="Keyword" CONTENT="pspug">
+<META NAME="Language" CONTENT="English">
+<META NAME="ModifiedDate" CONTENT="2012-08-31">
+<META NAME="ModifiedTime" CONTENT="1346413404">
+<META NAME="NextFile" CONTENT="14digsim.html">
+<META NAME="PageCount" CONTENT="50">
+<META NAME="Platform" CONTENT="ALL">
+<META NAME="PrevFile" CONTENT="11tran.html">
+<META NAME="Product" CONTENT="Allegro AMS Simulator, PSpice">
+<META NAME="ProductFamily" CONTENT="PCB Design, PCB Design">
+<META NAME="ProductVersion" CONTENT="16.6">
+<META NAME="Syntax" CONTENT="<instance_name>::ParameterName.">
+<META NAME="RightsManagement" CONTENT="Copyright 2012 Cadence Design Systems Inc.">
+<META NAME="Title" CONTENT="PSpice User Guide -- Monte Carlo and sensitivity&#47; worst&#45;case analyses">
+<META NAME="TopicTags" CONTENT="FALSE">
+<META NAME="Version" CONTENT="16.6">
+  </head>
+  <body style="margin-left: 5%;">
+    <a name="pagetop"></a>
+    <a name="firstpage"></a>
+    <!-- Begin Buttons -->
+    <table width="650" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td height="36" width="650" colspan="10">
+          <img src="../support/header_doc.gif" width="650" height="34">
+        </td>
+      </tr>
+      <tr>
+        <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                </td>
+<td height="20" width="73">
+<a href="pspugTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<a href="pspugIX.html"><img src="../support/nav2_index.gif" border="0"></a>
+</td>
+        <td>
+          <a href="11tran.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+        </td>
+        <td>
+          <a href="14digsim.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+        </td>
+        <td height="20">
+          <a>
+<a href="pspug.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+          </a>
+        </td>
+        <td height="20" width="61">
+          <img src="../support/nav2_black.gif">
+        </td>
+        <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+        </td>
+        <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+        </td>
+        <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+        </td>
+      </tr>
+    </table>
+    <!-- End Buttons -->
+    <p>
+    <hr>
+    <p>
+      <h3>
+        <center>
+          <font >
+            <div>PSpice&#174; User Guide</div>
+            <font >
+              <div>
+            </font>
+          </font>
+        </center>
+      </h3>
+      <br>
+    </p>
+    <div>
+      <h1>13<a name="1057073">&nbsp;</a></h1>
+      <h1><a name="1057080">Monte Carlo and sensitivity&#47;</a> worst&#45;case analyses</h1>
+      <h2><a name="1048364">Chapter overview</a></h2>
+      <p><a name="1048365">This chapter describes how to set up Monte Carlo and sensitivity&#47;</a> worst&#45;case analyses and includes the following sections:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1048380" title="Monte Carlo and sensitivity/ worst-case analyses" name="1048369"><font color="Blue"><u>Statistical analyses</u></font></a><a href="#1048380" title="Monte Carlo and sensitivity/ worst-case analyses"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1048499" title="Monte Carlo and sensitivity/ worst-case analyses" name="1048373"><font color="Blue"><u>Monte Carlo analysis</u></font></a><a href="#1048499" title="Monte Carlo and sensitivity/ worst-case analyses"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1048932" title="Monte Carlo and sensitivity/ worst-case analyses" name="1048377"><font color="Blue"><u>Worst&#45;case analysis</u></font></a><a href="#1048932" title="Monte Carlo and sensitivity/ worst-case analyses"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <h2><a name="1048380">Statistical analyses</a></h2>
+      <p><a name="1048381">Monte Carlo and sensitivity&#47;</a> worst&#45;case are statistical analyses. This section describes information common to both types of analyses.</p>
+      <p><a name="1048385">See </a><a href="#1048499" title="Monte Carlo and sensitivity/ worst-case analyses"><font color="Blue"><u>Monte Carlo analysis</u></font></a><a href="#1048499" title="Monte Carlo and sensitivity/ worst-case analyses"></a> for information specific to Monte Carlo analyses, and see <a href="#1048932" title="Monte Carlo and sensitivity/ worst-case analyses"><font color="Blue"><u>Worst&#45;case analysis</u></font></a><a href="#1048932" title="Monte Carlo and sensitivity/ worst-case analyses"></a> for information specific to sensitivity&#47; worst&#45;case analyses.</p>
+      <h3><a name="1048390">Overview of statistical analyses</a></h3>
+      <p><a name="1048391">The Monte Carlo and worst&#45;case analyses vary the lot or device </a>tolerances of devices between multiple runs of an analysis (DC, AC, or transient). Before running the analysis, you must set up the model and&#47;or lot tolerances of the model parameter to be investigated.</p>
+      <p><a name="1048392">A Monte Carlo analysis performs a Monte Carlo (statistical) analysis </a>of the circuit. A worst&#45;case analysis performs a sensitivity and worst&#45;case analysis of the circuit.</p>
+      <p><a name="1048393">Sensitivity&#47;</a> worst&#45;case analyses are different from Monte Carlo analyses in that they compute the parameters using the sensitivity data rather than using random numbers.</p>
+      <p><a name="1048394">You can run either a Monte Carlo or a worst&#45;case analysis, but you </a><font color="#000000"><em>cannot</em></font> run both at the same time. Multiple runs of the selected analysis are done while parameters are varied. You can select only one analysis type (AC, DC, or transient) per run. The selected analysis is repeated in subsequent passes of the analysis.</p>
+      <h4><a name="1048395">Generating statistical results </a></h4>
+      <p><a name="1048396">As the number of Monte Carlo or worst&#45;case runs increases, </a>simulation takes longer and the data file gets larger. Large data files may be slow to open and slow to draw traces.</p>
+      <p><a name="1048397">One way to work around this is to set up an overnight batch job to run </a>the simulation and execute commands. You can even set up the batch job to produce a series of plots on paper to be ready for you in the morning.</p>
+      <h3><a name="1048399">Output control for statistical analyses</a></h3>
+      <p><a name="1048400">Monte Carlo and sensitivity&#47;</a> worst&#45;case analyses generate the following types of reports:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048401">Model parameter values used for each run (that is, the values </a>with tolerances applied)</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048402">Waveforms from each run, as a function of specifying data </a>collection, or by specifying output variables in the analysis set up</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048403">Summary of all the runs using a collating function</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1048404">Output is saved to the data file for use by the waveform analyzer. For </a>Monte Carlo analyses, you can use the performance analysis feature to produce histograms of derived data. For information about performance analysis, see <a href="12param.html#1048442" title="Parametric and temperature analysis"><font color="Blue"><u>RLC filter example</u></font></a><a href="12param.html#1048442" title="Parametric and temperature analysis"></a>. For information about histograms, see <a href="#1048850" title="Monte Carlo and sensitivity/ worst-case analyses"><font color="Blue"><u>Creating histograms</u></font></a><a href="#1048850" title="Monte Carlo and sensitivity/ worst-case analyses"></a>.</p>
+      <h3><a name="1048412">Model parameter values reports</a></h3>
+      <p><a name="1048413">To produce a list of the model parameters actually used for each run, </a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048414">In the Simulation Settings dialog box, click the Analysis tab.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048415">From the Analysis type list, select an analysis type.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048416">Under Options, select Monte Carlo&#47;Worst Case.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048417">Click the More Settings button.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048418">Select List model parameter values.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	6.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048419">Click OK to close the Simulation Settings dialog box.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1048420">This list is written to the simulation output file at the beginning of the </a>run and contains the parameters for each device, as opposed to the parameters for each .MODEL statement. This is because devices can have different parameter values when using a model statement containing a DEV tolerance.</p>
+      <p><a name="1048421">Note that for midsize and large circuits, the </a>List option can produce a large output file.</p>
+      <h3><a name="1057596">Monte Carlo history support</a></h3>
+      <p><a name="1057597">Using the history support feature of Monte Carlo, you can store the </a>model parameter values used for each Monte Carlo run, in a separate file, and later reuse these values. </p>
+      <p><a name="1057598">For every Monte Carlo run, the model parameter values are </a>generated randomly with in the tolerance range specified by you. With the history support feature, you can save these randomly generated values and reuse exactly the same values in the next analysis. </p>
+      <p><a name="1057599">The Monte Carlo history support feature allows you to compare the </a>results of two Monte Carlo analyses by manually changing only one or more parameter values. For comparison between simulations, the random numbers have to remain the same for the toleranced model parameters and this can be achieved using the Monte carlo history support feature.</p>
+      <h4><a name="1057600">Saving parameter values in a file</a></h4>
+      <p><a name="1057601">To enable saving of the randomly generated model parameter values:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="3.1679999999999966">
+              <div>&nbsp;</div>
+            </td>
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1057602">Select </a><font color="#000000"><em>PSpice &#62; Edit Simulation Profile</em></font>. </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="3.1679999999999966">
+              <div>&nbsp;</div>
+            </td>
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1057603">In the Simulation Settings dialog box, select the Analysis tab. </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="3.1679999999999966">
+              <div>&nbsp;</div>
+            </td>
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1057604">Select the Analysis type as transient, DC or AC&#47;Noise.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="3.1679999999999966">
+              <div>&nbsp;</div>
+            </td>
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1057605">In the Options list select Monte Calro&#47;Worst Case. </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="3.1679999999999966">
+              <div>&nbsp;</div>
+            </td>
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1057606">Select the MC Load&#47;Save button. </a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1057611"><img src="images/13monte.19.1.1.png" width="675" height="499" alt=""></a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="3.1679999999999966">
+              <div>&nbsp;</div>
+            </td>
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	6.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1057612">In the Load&#47;Save Monte Carlo Parameter File dialog box, select </a>the <font color="#000000"><em>Save parameter values in filename:</em></font> check box.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1057616"><img src="images/MCdialogbox.gif" width="344" height="205" alt=""></a>	</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="3.1679999999999966">
+              <div>&nbsp;</div>
+            </td>
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	7.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1057617">In the text box that is enabled, specify the name and the location </a>of the file in which the parameter data is to be saved. </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="3.1679999999999966">
+              <div>&nbsp;</div>
+            </td>
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	8.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1057618">Click OK to save your settings.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1057619">If you now run the Monte Carlo analysis, the model parameter values </a>used for various simulation runs will be stored in the <font size="2" face="'Courier New'" color="#000000">.mcp</font> file specified by you.</p>
+      <h4><a name="1057620">Reusing parameter values</a></h4>
+      <p><a name="1057621">To reuse model parameter values from a previous Monte Carlo </a>analysis:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="3.1679999999999966">
+              <div>&nbsp;</div>
+            </td>
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1057622">Select </a><font color="#000000"><em>PSpice &#62; Edit Simulation Profile</em></font>. </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="3.1679999999999966">
+              <div>&nbsp;</div>
+            </td>
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1057623">In the Simulation Settings dialog box, select the Analysis tab. </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="3.1679999999999966">
+              <div>&nbsp;</div>
+            </td>
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1057624">Select the Analysis type as transient, DC or AC&#47;Noise.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="3.1679999999999966">
+              <div>&nbsp;</div>
+            </td>
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1057625">In the Options list select Monte Calro&#47;Worst Case. </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="3.1679999999999966">
+              <div>&nbsp;</div>
+            </td>
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1057626">Select the MC Load&#47;Save button. </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="3.1679999999999966">
+              <div>&nbsp;</div>
+            </td>
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	6.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1057627">In the Load&#47;Save Monte Carlo Parameter File dialog box, select </a>the <font color="#000000"><em>Load parameter values in filename:</em></font> check box.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="3.1679999999999966">
+              <div>&nbsp;</div>
+            </td>
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	7.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1057628">In the text box that is enabled, specify the name and the location </a>of the <font size="2" face="'Courier New'" color="#000000">.mcp</font> file from which the parameter data is to be read. </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="3.1679999999999966">
+              <div>&nbsp;</div>
+            </td>
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	8.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1057629">Click OK to save your settings. </a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1059817">Now when you run the Monte Carlo analysis, the simulator will reuse </a>all the model parameter values stored in the <font size="2" face="'Courier New'" color="#000000">.mcp</font> files. Any new or additional parameter values will be varied separately with in the tolerance range.</p>
+      <p><a name="1059818">While reusing values from a </a><font size="2" face="'Courier New'" color="#000000">.mcp</font> file, you must take care of the points listed below.</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1059137">When you use the Monte Carlo history support feature, the </a>values stored in a <font size="2" face="'Courier New'" color="#000000">.mcp</font> file for model parameters are different from the values stored for components, such as resistor, capacitor, and inductor. In case of model parameters, actual parameter values used for simulation are stored. Whereas in case of the components, instead of the actual value, the multiplication factor used for generating the random values are stored. </td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a href="#1059345" title="Monte Carlo and sensitivity/ worst-case analyses" name="1059129"><font color="Blue"><u>Table&nbsp;13&#45;1</u></font></a><a href="#1059345" title="Monte Carlo and sensitivity/ worst-case analyses"></a> lists down the actual entries recorded in a <font size="2" face="'Courier New'" color="#000000">.mcp</font> file for a model parameter and a resistor.</blockquote>
+      <p align="left"><a name="1059312">&nbsp;</a></p>
+<ul>      <table summary="" border="1" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" width="28%">
+        <caption>
+          <blockquote align="left"><font color="#000000"><strong>Table 13&#45;1&nbsp; </strong></font><strong><a name="1059345">Entries in a .mcp file</a></strong></blockquote>
+        </caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="208">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1059349">For a model parameter:</a><br>base value 100<br>tolerance 10%</strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="180">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1059351">For a resistor:</a><br>base value 100<br>tolerance 10%</strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1059353"><font color="#000000">1.00000e+002</font></a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1059355">1</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1059357"><font color="#000000">1.02747e+002</font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1059359">1.002</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1059382"><font color="#000000">1.07986e+002</font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1059384">.986</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1059378"><font color="#000000">1.04803e+002</font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1059380">1.003</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1059394"><font color="#000000">9.17754e+001</font></a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1059396">.9912</a></p>
+          </td>
+        </tr>
+      </table></ul>
+      <blockquote><a name="1059485">The difference in the method used for storing values from </a>previous Monte Carlo runs, is highlighted when you change the original value of a parameter and also choose to reuse the values from a previous Monte Carlo run. </blockquote>
+      <blockquote><a name="1059942">For example, if you change the original base value of a model </a>parameter from 100 to 50 and reuse the values from an <font size="2" face="'Courier New'" color="#000000">.mcp</font> file, the simulation results will be based on the original parameter value, which is 100. Whereas, in case you change the value of a resistor from 100<img src="images/13monte.19.1.3.png" width="17" height="21" alt=""> to 10<img src="images/13monte.19.1.4.png" width="17" height="21" alt="">, and reuse the values from a <font size="2" face="'Courier New'" color="#000000">.mcp</font> file, simulation results will be based on the changed value of 10<img src="images/13monte.19.1.5.png" width="17" height="21" alt="">. </blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1059134">If the number of Monte Carlo runs is greater than the number of </a>values in the <font size="2" face="'Courier New'" color="#000000">.mcp</font> file, PSpice simulator with first reuse all the values from the .mcp file and then for rest of the runs, the random values will be generated using the base value and the tolerance defined for the parameter in the schematic.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1059974">For example, consider that for a particular model parameter, the </a>.mcp file from which the parameter data is to be read has 10 entries, but for the current simulation, 20 Monte Carlo runs are required. In such cases, for the first 10 Monte Carlo runs the values will be read from the <font size="2" face="'Courier New'" color="#000000">.mcp</font> file. For the last 10 runs, the simulator will calculate the values using the base value of the model parameter and the tolerance specified on it.</blockquote>
+      <h4><a name="1057807">The Monte Carlo Parameter (.mcp) file</a></h4>
+      <p><a name="1057808">When you use the Monte Carlo history support feature, you either </a>generate a Monte Carlo Parameter (<font size="2" face="'Courier New'" color="#000000">.mcp</font>) file or use parameters from a <font size="2" face="'Courier New'" color="#000000">.mcp</font> file. A <font size="2" face="'Courier New'" color="#000000">.mcp</font> file is a text file that stores the parameter information generated during Monte Carlo analysis. The data is stored in a tabular format with the data values separated by white spaces, blanks, or tabs. Each columns in a <font size="2" face="'Courier New'" color="#000000">.mcp</font> file indicates a parameter whose values was varied during the Monte Carlo analysis.</p>
+      <p><a name="1057809">The format for a </a><font size="2" face="'Courier New'" color="#000000">.mcp</font> file is shown below:</p>
+      <p align="left"><a name="1057813"><img src="images/mcpfileformat.gif" width="652" height="275" alt=""></a></p>
+      <p><a name="1057814">In a </a><font size="2" face="'Courier New'" color="#000000">.mcp</font> file, the name of the variable parameter is defined using the following format:</p>
+      <dl>
+        <font size="2" face="'Courier New'" color="#000000"><a name="1057815">&#60;instance_name&#62;::ParameterName.</a></font>
+      </dl>
+      <p><a name="1057829">&nbsp;</a></p>
+<ul>      <table summary="" cellpadding="16" cellspacing="0" bgcolor="#FFFFFF" width="399">
+        <caption>
+        <tr>
+          <td cellpadding="16" valign="top" width="152">
+            <p><a name="1057818">where...</a></p>
+          </td>
+          <td cellpadding="16" valign="top" width="246">
+            <p><a name="1057820">indicates...</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="16" valign="top">
+            <p><a name="1057822"><font size="2" face="'Courier New'" color="#000000">instance_name</font></a></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1057824">reference designator or the </a>name that appears in the PSpice netlist</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="16" valign="top">
+            <p><a name="1057826">ParameterName</a> </p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1057828">indicates whether the </a>component is a resistor, capacitor, transistor, and so on.</p>
+          </td>
+        </tr>
+      </table></ul>
+      <p><a name="1057830">For example, if the name of the variable parameter is </a><font size="2" face="'Courier New'" color="#000000">R_U2_R2::R</font>, <font size="2" face="'Courier New'" color="#000000">R_U2_R2</font> is the reference designator and <font size="2" face="'Courier New'" color="#000000">R</font> indicates the parameter name, which in this case is a resistor.</p>
+      <p><a name="1057831">A sample </a><font size="2" face="'Courier New'" color="#000000">.mcp</font> file that has three parameters values varied is shown below.</p>
+      <p align="left"><a name="1057835"><img src="images/mcpfile.gif" width="432" height="96" alt=""></a></p>
+      <p><a name="1057950">&nbsp;</a></p>
+      <h3><a name="1048423">Waveform reports</a></h3>
+      <p><a name="1048424">For Monte Carlo analyses, there are five variations of the output that </a>you can specify in the Save data from text box on the Monte Carlo dialog box. Options:</p>
+      <p align="left"><a name="1048447">&nbsp;</a></p>
+      <table summary="" border="0" cellpadding="4" cellspacing="0" bordercolor="#D3D3D3" width="432">
+        <caption>
+        <tr>
+          <td cellpadding="4" valign="top" width="96">
+            <p><a name="1048428">&#60;none&#62;</a></p>
+          </td>
+          <td cellpadding="4" valign="top" width="336">
+            <p><a name="1048430">No output is generated</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048432">All</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048434">Forces all output to be generated (including </a>nominal run)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048436">First*</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048438">Generates output only during the first </a><font color="#000000"><em>n</em></font> runs</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048440">Every*</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048442">Generates output for every </a><font color="#000000"><em>n</em></font>th run</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048444">Runs(list)*</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048446">Does specified analysis and generates outputs </a>only for the listed runs (up to 25 values can be specified in the list)</p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1048448">The * indicates that you can set the number of runs in the runs text </a>box.</p>
+      <p><a name="1048449">Values for the output variables specified in the selected analyses are </a>saved to the simulation output file and data file. </p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1048450">In excess of about 10 runs, the waveform display can look </a>more like a band than a set of individual waveforms. This can be useful for seeing the typical spread for a particular output variable. As the number of runs increases, the spread more closely approximates the actual worst&#45;case limits for the circuit.</p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1048451">Even a modest number of runs can produce large output files.</a></p>
+      <h3><a name="1048453">Collating functions</a></h3>
+      <p><a name="1048454">You can further compress the results of Monte Carlo and worst&#45;case </a>analyses. If you use the collating function, a single number represents each run. (Click the More Settings Options button and select a function from the Find list.) A table of deviations per run is reported in the simulation output file.</p>
+      <p><a name="1048458">Collating functions are listed in Table </a><a href="#1049757" title="Monte Carlo and sensitivity/ worst-case analyses"><font color="#0000ff"><u>13&#45;2</u></font></a>.</p>
+      <p align="left"><font color="#000000"><strong>Table 13&#45;2&nbsp; </strong></font><strong><a name="1049757">Collating functions used in statistical analyses</a></strong></p>
+      <p align="left"><a name="1048484">&nbsp;</a></p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="432">
+        <caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="120">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048461">Function</a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="312">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048463">Description</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048465">YMAX</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048467">Find the greatest difference in each </a>waveform from the nominal</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048469">MAX</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048471">Find the maximum value of each waveform</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048473">MIN</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048475">Find the minimum value of each waveform</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048477">RISE_EDGE</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048479">Find the first occurrence of the waveform </a>crossing above a specified threshold value</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048481">FALL_EDGE</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048483">Find the first occurrence of the waveform </a>crossing below a specified threshold value</p>
+          </td>
+        </tr>
+      </table>
+      <h3><a name="1048486">Temperature considerations in statistical analyses</a></h3>
+      <p><a name="1048487">The statistical analyses perform multiple runs, as does the </a>temperature analysis. Conceptually, the Monte Carlo and worst&#45;case loops are inside the temperature loop.</p>
+      <p><a name="1048488">However, since both temperature and tolerances affect the model </a>parameters, OrCAD recommends not using temperature analysis when using Monte Carlo or worst&#45;case analysis.</p>
+      <p><a name="1048489">Also, you cannot sweep the temperature in a DC sweep analysis or </a>put tolerances on temperature coefficients while performing one of these statistical analyses. In <font size="2" face="'Courier New'" color="#000000">EXAMPLE.OPJ</font>, the temperature value is fixed at 35<font face="symbol" color="#000000">&#176; </font>C.</p>
+      <p align="left"><a name="1048493"><img src="images/example_circuit.gif" width="506" height="402" alt=""></a></p>
+      <p><font color="#000000"><strong>Figure 13&#45;1&nbsp; </strong></font><strong><a name="1048495">Example schematic EXAMPLE.OPJ.</a></strong></p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1048496">The example schematic </a><font size="2" face="'Courier New'" color="#000000">EXAMPLE.OPJ</font> is provided with the installed programs.</p>
+      <h2><a name="1048499">Monte Carlo analysis</a></h2>
+      <p><a name="1048500">The Monte Carlo analysis calculates the circuit response to changes </a>in part values by randomly varying all of the model parameters for which a tolerance is specified. This provides statistical data on the impact of a device parameter's variance.</p>
+      <p><a name="1048502">Monte Carlo analysis is frequently used to predict yields on </a>production runs of a circuit. With Monte Carlo analysis, model parameters are given tolerances, and multiple analyses (DC, AC, or transient) are run using these tolerances. </p>
+      <p><a name="1052320">For </a><font size="2" face="'Courier New'" color="#000000">EXAMPLE.OPJ</font> in <a href="#1048495" title="Monte Carlo and sensitivity/ worst-case analyses"><font color="Blue"><u>Figure&nbsp;13&#45;1</u></font></a><a href="#1048495" title="Monte Carlo and sensitivity/ worst-case analyses"> </a>, you can analyze the effects of variances in the values of resistors RC1 and RC2 by assigning a model description to these resistors that includes a 5% device tolerance on the multiplier parameter R. The steps for adding the 5% device tolerance are given below.</p>
+      <p><a name="1048507">Then you can perform a Monte Carlo analysis. First, the simulator </a>performs a DC analysis with the nominal R multiplier value for RC1 and RC2. Then it performs a set number of additional runs with the R multiplier varied independently for RC1 and RC2 within a 5% tolerance.</p>
+      <h4><em><a name="1048508">To modify example.opj and set up simulation</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048510">Replace RC1 and RC2 with RBREAK parts from the </a><font size="2" face="'Courier New'" color="#000000">BREAKOUT.OLB</font> part library, setting property values to match the resistors that are being replaced (VALUE=10k) and reference designators to match previous names.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048511">Select an RBREAK part and choose PSpice Model from the Edit </a>menu. </td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1056331">The Model Editor window appears.</a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1056435">Create the model CRES by replacing the model text:</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1056436">.model Rbreak RES R=1</a></font></blockquote>
+      <blockquote><a name="1056447">with the text:</a></blockquote>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1056437">.MODEL CRES RES( R=1 DEV=5% TC1=0.02</a><br>+ TC2=0.0045 )</font></blockquote>
+      <blockquote><a name="1048514">Where TC1 is the linear temperature coefficient. TC2 is the </a>quadratic temperature coefficient.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1052292">From the File menu in Model Editor, choose Save.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1056451">The schematic editor automatically attaches the CRES model to </a>the selected RBREAK part by updating the IMPLEMENTATION property on the part.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1052340">Double&#45;click the second RBREAK part to display the Parts </a>spreadsheet.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	6.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1052342">In the IMPLEMENTATION text box, change the value to CRES, </a>then click Apply.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	7.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1052704">Close the Parts spreadsheet.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	8.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1052338">From the File menu, choose Save. By default, Capture saves the </a>definition to the model library <font size="2" face="'Courier New'" color="#000000">EXAMPLE.LIB</font> and automatically configures the file for local use with the current schematic.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	9.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048519">In Capture, set up a new Monte Carlo analysis as shown in </a>Figure <font color="#0000ff"><u>13&#45;2</u></font>. The analysis specification tells PSpice to do one nominal run and four Monte Carlo runs, saving the DC analysis output from those five runs.</td>
+          </tr>
+        </table>
+      </div>
+      <p align="left"><a name="1049761"><img src="images/13monte.19.1.9.png" width="675" height="542" alt=""></a></p>
+      <p><a name="1048529">Enter DC sweep settings in the Simulation Settings dialog box </a>Analysis tab.</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048530">Select Voltage source in the Sweep variable frame.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048531">Enter V2 in the Name text box.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048532">Select Linear in the Sweep type frame.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048533">Enter a 0 in the Start value text box.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048534">Enter a 12 in the End value text box.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	6.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048535">Enter a 1 in the Increment text box.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1048536">PSpice starts by running </a><font color="#000000"><em>all</em></font> of the analyses enabled in the Simulation Settings dialog box with all parameters set to their nominal values.</p>
+      <p><a name="1048537">However, with Monte Carlo enabled, PSpice saves the DC sweep </a>analysis results for later reference and comparison. After the nominal analyses are finished, PSpice&nbsp;A&#47;D performs the additional specified analysis runs (in this example, DC sweep). </p>
+      <p><a name="1048538">Subsequent runs use the same analysis specification as the nominal </a>run with one major exception: instead of using the nominal parameter values, the tolerances are applied to set new parameter values and thus, new part values.</p>
+      <p><a name="1048539">There is a trade&#45;off in choosing the number of Monte Carlo runs. </a>More runs provide better statistics, but they require more time. The amount of time scales directly with the number of runs: 20 transient analyses take 20 times as long as one transient analysis. During Monte Carlo runs, the PSpice status display includes the current run number and the total number of runs left.</p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1048540">PSpice offers a facility to generate histograms of data derived </a>from Monte Carlo waveform families through the performance analysis feature. For information about performance analysis, see <a href="12param.html#1048442" title="Parametric and temperature analysis"><font color="Blue"><u>RLC filter example</u></font></a><a href="12param.html#1048442" title="Parametric and temperature analysis"></a>. For information about histograms, see <a href="#1048850" title="Monte Carlo and sensitivity/ worst-case analyses"><font color="Blue"><u>Creating histograms</u></font></a><a href="#1048850" title="Monte Carlo and sensitivity/ worst-case analyses"></a>.</p>
+      <h4><a name="1057364">History support</a></h4>
+      <p><a name="1057368">The Monte Carlo analysis calculates the circuit response to changes </a>in part values by randomly varying all of the model parameters for which a tolerance is specified. However, at times users might want to keep some or all of the parameters similar for multiple analysis so that they can compare the results of multiple simulations.</p>
+      <p><a name="1057475">Consider an example of IC designs, which usually require numerous </a>runs. In such cases, rather than doing large number of runs (with too many model parameters), users would prefer doing less number of runs (with less number of parameters), manually change some components&#47;parameters values or add a small amount of circuitry, and then continue the analysis. Here user expects that simulator should use similar values for all model parameters, so that a comparison can be done between multiple simulations.</p>
+      <p><a name="1057524">PSpice allows you to save randomly generated values for a run in a </a>.mcp file. You can then load this file to reuse the values for subsequent runs.</p>
+      <p align="left"><a name="1057556"><img src="images/monte_carlo_leg_supp.gif" width="527" height="396" alt=""></a></p>
+      <p align="left"><a name="1057567"><img src="images/13monte.19.1.11.png" width="450" height="200" alt=""></a></p>
+      <h4><a name="1048547">Reading the summary report</a></h4>
+      <p><a name="1048551">The summary report generated in this example (see Figure </a><font color="#0000ff"><u>13&#45;3</u></font>) specifies that the waveform generated from V(OUT1) should be the subject of the collating function YMAX. In each of the last four runs, the new V(OUT1) waveform is compared to the nominal V(OUT1) waveform for the first run, calculating the maximum deviation in the Y direction (YMAX collating function). The deviations are printed in order of size along with their run number.</p>
+      <p align="left"><a name="1049863"><img src="images/13monte.19.1.12.png" width="675" height="491" alt=""></a></p>
+      <p><a name="1049792">With the </a>List option enabled, a report is also generated showing the parameter value used for each device in each run. In this case (see Figure <font color="#0000ff"><u>13&#45;4</u></font>), run three shows the highest deviation.</p>
+      <p align="left"><a name="1050225"><img src="images/13monte.19.1.13.png" width="675" height="313" alt=""></a></p>
+      <h3><a name="1049811">Example: Monte Carlo analysis of a pressure sensor</a></h3>
+      <p><a name="1048583">This example shows how the performance of a pressure sensor </a>circuit with a pressure&#45;dependent resistor bridge is affected by manufacturing tolerances, using Monte Carlo analysis to explore these effects.</p>
+      <h4><a name="1048584">Drawing the schematic</a></h4>
+      <p><a name="1048595">To begin, construct the bridge as shown in Figure </a><font color="#0000ff"><u>13&#45;5</u></font>.</p>
+      <p align="left"><a name="1050260"> <img src="images/13monte.19.1.14.png" width="675" height="413" alt=""></a></p>
+      <p><a name="1048596">Here are a few things to know when placing and connecting the part:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048597">To get the part you want to place, from the Place menu, choose </a>Part.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048598">To rotate a part before placing it, press </a><font color="#000000"><em>R</em></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1051904">For V1 and Meter, place a generic voltage source using the </a>VSRC part. When you place the source for the meter, change its name by double&#45;clicking the part and typing <font size="2" face="'Courier New'" color="#000000">Meter</font> in the Reference cell in the Parts Spreadsheet.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1051905">For R1&#45;R7, place a resistor using the R</a>&nbsp;part.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048601">Place the analog ground using the 0 ground symbol from the </a>SOURCE.OLB part library.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048602">To connect the parts, from the Place menu, choose Wire.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048603">To move values or reference designators, click the value or </a>reference designator to select it, then drag it to the new location.</td>
+          </tr>
+        </table>
+      </div>
+      <h4><a name="1048604">Defining part values</a></h4>
+      <p><a name="1048608">Define the part values as shown in Figure </a><font color="#0000ff"><u>13&#45;5</u></font>. For the pressure sensor, you need to do the following:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048609">Change the resistor values for R3, R5, R6, and R7 from their </a>default value of 1 k.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048610">Set the DC value for the V1 voltage source.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1048611">Because the Meter source is used to measure current, it has </a>no DC value and can be left unchanged. </p>
+      <h4><em><a name="1048612">To change resistor values </a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048614">Double&#45;click the value for a resistor.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048616">Type the new value. Depending on the resistor you are changing, </a>set its value to one of the following (refer to Figure <font color="#0000ff"><u>13&#45;5</u></font>).</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048642">&nbsp;</a></blockquote>
+<ul>      <table summary="" border="1" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" width="401">
+        <caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="172">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048622">If you are changing</a><br>this resistor...</strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="228">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048624"><br></a>Type this...</strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048626">R3</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048628"><font size="2" face="'Courier New'" color="#000000">{1k*(1+P*Pcoeff&#47;Pnom)}</font></a></p>
+            <p><font color="#000000"><strong>Note: </strong></font><a name="1048629">The value for R3--</a>{1k*(1+P*Pcoeff&#47;Pnom)}--is an expression that represents linear dependence of resistance on pressure. To complete the definition for R3, you will create and define global parameters for Pcoeff, P, and Pnom later on in this example.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048631">R5</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048633">2k</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048635">R6</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048637">470</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048639">R7</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048641">25</a></p>
+          </td>
+        </tr>
+      </table></ul>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048649">Repeat steps </a><a href="#1048614" title="Monte Carlo and sensitivity/ worst-case analyses"><font color="#0000ff"><u>1</u></font></a>&#45;<a href="#1048616" title="Monte Carlo and sensitivity/ worst-case analyses"><font color="#0000ff"><u>2</u></font></a> for each resistor on your schematic page.</td>
+          </tr>
+        </table>
+      </div>
+      <h4><em><a name="1048650">To set the DC value for the V1 source and make it visible</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048651">Double&#45;click the V1 source part.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048652">In the Parts Spreadsheet, click in the cell under the DC column.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048653">Type </a><font size="2" face="'Courier New'" color="#000000">1.35v</font>.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048654">Click the Display button.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048655">In the Display Format frame, choose the Value Only option to </a>make the DC value (<font size="2" face="'Courier New'" color="#000000">1.35v</font>) visible on the schematic. </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	6.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048656">Click OK, then click Apply to apply the changes you have made </a>to the part.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	7.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048657">Close the Parts Spreadsheet.</a></td>
+          </tr>
+        </table>
+      </div>
+      <h4><a name="1048658">Setting up the parameters</a></h4>
+      <p><a name="1048659">To complete the value specification for R3, define the global </a>parameters Pcoeff, P, and Pnom.</p>
+      <h4><em><a name="1048660">To define and initialize Pcoeff, P, and Pnom</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048661">Place a PARAM part on the schematic page.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048662">Double&#45;click the PARAM part to display the Parts Spreadsheet.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048663">For each parameter, create a new property by clicking New and </a>typing its name. Enter its corresponding value by clicking in the cell under the new property name and typing its value. Specify the parameter name and corresponding value as follows.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048681">&nbsp;</a></blockquote>
+<ul>      <table summary="" border="1" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" width="28%">
+        <caption>
+          <blockquote align="left"><font color="#000000"><strong>Table 13&#45;3&nbsp; </strong></font><strong><a name="1051342">&nbsp;</a></strong></blockquote>
+        </caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="124">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048666">Property</a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="90">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048668">Value</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048670">Pcoeff</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048672">&#45;0.06</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048674">P</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048676">0</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048678">Pnom</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048680">1.0</a></p>
+          </td>
+        </tr>
+      </table></ul>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048682">Click Apply to save the changes you have made then close the </a>Parts Spreadsheet.</td>
+          </tr>
+        </table>
+      </div>
+      <h4><a name="1048683">Using resistors with models</a></h4>
+      <p><a name="1048684">To explore the effects of manufacturing tolerances on the behavior of </a>this circuit, you set device (DEV) and (LOT) tolerances on the model parameters for resistors R1, R2, R3, and R4 in a later step (see <a href="#1048706" title="Monte Carlo and sensitivity/ worst-case analyses"><font color="Blue"><u>Defining tolerances for the resistor models</u></font></a><a href="#1048706" title="Monte Carlo and sensitivity/ worst-case analyses"> </a>). This means you need to use resistor parts that have model associations.</p>
+      <p><a name="1048690">Because R parts do not have associated models (and therefore no </a>model parameters), change the resistor parts to Rbreak parts that do have models.</p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1052890">When PSpice runs a Monte Carlo analysis, it uses tolerance </a>values to determine how to vary model parameters during the simulation.</p>
+      <h4><em><a name="1048691">To replace R1, R2, R3, and R4 with the RBREAK part</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048692">Click R1 to select it.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048694">Hold down the </a><font color="#000000"><em>Ctrl</em></font> key and click R2, R3 and R4 to add them to the selection set.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048695">Press </a><font color="#000000"><em>Delete</em></font> to delete the selection set.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048696">From the Place menu, choose Part.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048697">Type </a><font size="2" face="'Courier New'" color="#000000">RBREAK</font> in the Part text box. (If RBREAK is not available, click the Add Library button and select <font size="2" face="'Courier New'" color="#000000">BREAKOUT.OLB</font> to configure it for use in Capture.)</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	6.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048698">Click OK.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	7.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048699">Manually place the RBREAK part in the circuit diagram where </a>R1, R2, R3 and R4 were located.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	8.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048700">Double&#45;click on each RBREAK part and change the reference </a>designators as desired.</td>
+          </tr>
+        </table>
+      </div>
+      <h4><a name="1048701">Saving the design</a></h4>
+      <p><a name="1048702">Before editing the models for the Rbreak resistors, save the </a>schematic.</p>
+      <h4><em><a name="1048703">To save the design</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048704">From Capture's File menu, choose Save.</a></td>
+          </tr>
+        </table>
+      </div>
+      <h4><a name="1048706">Defining tolerances for the resistor models</a></h4>
+      <p><a name="1048707">This section shows how to assign device (DEV) and lot (LOT) </a>tolerances to the model parameters for resistors R1, R2, R3, and R4 using the model editor.</p>
+      <p><a name="1048708">You can use the model editor to change the .MODEL or .SUBCKT </a>syntax for a model definition. To find out more about the model editor, see <a href="04model.html#1049619" title="Creating and editing models"><font color="Blue"><u>Editing model text</u></font></a><a href="04model.html#1049619" title="Creating and editing models"> </a>, or refer to the online <font color="#000000"><em>PSpice </em></font><font color="#000000"><em>Reference Guide</em></font>.</p>
+      <h4><em><a name="1048712">To assign 2% device and 10% lot tolerances to the resistance </a>multiplier for R1</em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048713">Select R1.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048714">From the Edit menu, choose PSpice Model.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048715">Capture searches the libraries for the Rbreak model definition </a>and makes a copy to create an instance model.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048716">To change the instance model name from Rbreak to Rmonte1, </a>do the following:</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	a.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048717">In the Model Text frame, double&#45;click </a><font size="2" face="'Courier New'" color="#000000">Rbreak</font>.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	b.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048718">Type </a><font size="2" face="'Courier New'" color="#000000">RMonte1</font>.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048719">To add a 2% device tolerance and a 10% lot tolerance to the </a>resistance multiplier, do the following:</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	a.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048720">Add the following to the .MODEL statement (after </a><font size="2" face="'Courier New'" color="#000000">R=1</font>):</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote>
+<blockquote>        <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048721">DEV=2% LOT=10% </a></font></blockquote>
+      </blockquote>
+      <blockquote>
+<blockquote>        <font color="#000000"><a name="1050351">The model editing window should look something like </a>Figure <font color="#0000ff"><u>13&#45;6</u></font>.</font></blockquote>
+      </blockquote>
+      <blockquote><a name="1051517"><img src="images/13monte.19.1.15.png" width="675" height="488" alt=""></a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050362">From the File menu, choose Save.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1048734">By default, Capture saves the RMonte1 .MODEL definition to the </a><font size="2" face="'Courier New'" color="#000000">DESIGN_NAME.LIB</font> library, which is <font size="2" face="'Courier New'" color="#000000">PSENSOR.LIB</font>. Capture also automatically configures the library for local use. To find out more about adding model libraries to the configuration, see <a href="04model.html#1049791" title="Creating and editing models"><font color="Blue"><u>Configuring model libraries</u></font></a><a href="04model.html#1049791" title="Creating and editing models"></a>.</p>
+      <h4><em><a name="1048738">To have resistors R2 and R4 use the same tolerances as R1</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048739">In Capture's schematic page editor, select R2 and R4.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048740">From the Edit menu, select Properties.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048741">In the R2 row, click in the cell under the Implementation column </a>and type <font size="2" face="'Courier New'" color="#000000">RMonte1</font>.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048742">In the R4 row, click in the cell under the Implementation column </a>and type <font size="2" face="'Courier New'" color="#000000">RMonte1</font>. </td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1048743">To assign 5% device tolerance to the resistance multiplier for R3</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048744">Select R3.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048745">From the Edit menu, select PSpice Model.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048746">In the Model Text frame, change the .MODEL statement to: </a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048747">.model RTherm RES R=1 DEV=5%</a></font></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048748">From the File menu, choose Save. </a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048752">Your schematic page should look like Figure </a><font color="#0000ff"><u>13&#45;7</u></font>. </blockquote>
+      <h4><a name="1048753">Setting up the analyses</a></h4>
+      <p><a name="1048754">This section shows how to define and enable a DC analysis that </a>sweeps the pressure value and a Monte Carlo analysis that runs the DC sweep with each change to the resistance multipliers.</p>
+      <h4><em><a name="1048755">To set up the DC sweep</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048756">In the PSpice menu, choose New Simulation Profile or Edit </a>Simulation Profile. (If this is a new simulation, enter the name of the profile and click OK.)</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048757">The Simulation Settings dialog box appears.</a></blockquote>
+      <blockquote><a name="1048761">See </a><a href="08start.html#1048556" title="08start.html"><font color="Blue"><u>Setting up analyses</u></font></a><a href="08start.html#1048556" title="08start.html"></a> for a description of the Simulation Settings dialog box.</blockquote>
+      <blockquote><a name="1048769"><img src="images/13monte.19.1.16.png" width="675" height="425" alt=""></a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048770">Select DC Sweep in the Analysis type list box.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048771">In the Sweep Variable frame, select Global Parameter.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048772">Enter the following values:</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048794">&nbsp;</a></blockquote>
+<ul>      <table summary="" border="1" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" width="28%">
+        <caption>
+          <blockquote align="left"><font color="#000000"><strong>Table 13&#45;4&nbsp; </strong></font><strong><a name="1051600">&nbsp;</a></strong></blockquote>
+        </caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="124">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048775">In this text </a>box...</strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="124">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048777">Type this...</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048779">Parameter </a>name</p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048781">P</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048783">Start value</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048785">0</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048787">End value</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048789">5.0</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048791">Increment</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048793">0.1</a></p>
+          </td>
+        </tr>
+      </table></ul>
+      <h4><em><a name="1048795">To set up the Monte Carlo analysis</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048796">Select the Monte Carlo&#47;Worst Case option.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048797">Check Monte Carlo if it is not already selected.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048798">In the Number of runs text box, type </a>10.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048799">In the Save data from list box, select All.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048800">Type </a><font size="2" face="'Courier New'" color="#000000">I(Meter)</font> in the Output variable text box.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	6.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048801">Click OK to save the simulation profile.</a></td>
+          </tr>
+        </table>
+      </div>
+      <h4><a name="1048802">Running the analysis and viewing the results</a></h4>
+      <h4><em><a name="1048803">To complete setup, simulate, and view results</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048804">From Capture's PSpice menu, choose Run to start the </a>simulation</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048805">When the simulation is complete, PSpice automatically displays </a>the selected waveform. Because PSpice ran a Monte Carlo analysis, it saved multiple runs or sections of data. These are listed in the Available Sections dialog box.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048806">From PSpice's Trace menu, choose Performance Analysis.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048807">Click the Select sections button.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048808">In the Available Sections dialog box, click the All button.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048809">Click OK.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	6.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048810">To display current through the Meter voltage source, do the </a>following:</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	a.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048811">From Capture's PSpice menu, point to markers and choose </a>Current into Pin.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	b.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048812">Place a current probe on the left&#45;hand pin of the Meter </a>source.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	7.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048813">Switch to the Probe window to see the family of curves for </a>I(Meter) as a function of P.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048814">Another way to view the family of curves without using schematic </a>markers is as follows:</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	a.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048815">From PSpice's Trace menu, choose Add Trace.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	b.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048816">In the Simulation Output Variables list, double&#45;click I(Meter).</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1048817">For more on analyzing Monte Carlo results in PSpice, see the </a>next section on Monte Carlo histograms.</p>
+      <h3><a name="1048820">Monte Carlo Histograms</a></h3>
+      <p><a name="1048821">You can display data derived from Monte Carlo waveform families as </a>histograms. This is part of the performance analysis feature.</p>
+      <p><a name="1048822">In this example, you simulate a fourth&#45;order Chebyshev active filter, </a>running a series of 100 AC analyses while randomly varying resistor and capacitor values for each run. Then, having defined performance analysis measurements for bandwidth and center frequency, you observe the statistical distribution of these quantities for the 100 runs. For more information about performance analysis, see <a href="12param.html#1048442" title="Parametric and temperature analysis"><font color="Blue"><u>RLC filter example</u></font></a><a href="12param.html#1048442" title="Parametric and temperature analysis"></a>.</p>
+      <h4><a name="1048828">Chebyshev filter example</a></h4>
+      <p><a name="1048829">The Chebyshev filter is designed to have a 10 kHz center frequency </a>and a 1.5 kHz bandwidth. The schematic page for the filter is shown in Figure <font color="#0000ff"><u>13&#45;8</u></font>. The stimulus specifications for V1, V2, and V3 are:</p>
+      <blockquote><a name="1048833">V1:</a>&nbsp;DC=&#45;15<br>V2:&nbsp;DC=+15<br>V3:&nbsp;AC=1</blockquote>
+      <p><a name="1048834">The parts are rounded to the nearest available 1% resistor and 5% </a>capacitor value. In this example, note how the bandwidth and the center frequency vary when 1% resistors and 5% capacitors are used in the circuit.</p>
+      <p align="left"><a name="1048842"><img src="images/13monte.19.1.17.png" width="675" height="467" alt=""></a></p>
+      <h4><a name="1048843">Creating models for Monte Carlo analysis</a></h4>
+      <p><a name="1048844">To vary the resistors and capacitors in the filter circuit, create models </a>for these parts on which you can set device tolerances for Monte Carlo analysis. The <font size="2" face="'Courier New'" color="#000000">BREAKOUT.OLB</font> library contains generic devices for this purpose. The resistors and capacitors in this schematic are the Rbreak and Cbreak parts from <font size="2" face="'Courier New'" color="#000000">BREAKOUT.OLB</font>. </p>
+      <p><a name="1048845">Using the Model Editor, modify the models for these parts as follows:</a></p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048846">.model RMOD RES(R=1 DEV=1%)</a><br>.model CMOD CAP(C=1 DEV=5%)</font></blockquote>
+      <h4><a name="1048847">Setting up the analysis</a></h4>
+      <p><a name="1048848">To analyze the filter, set up both an AC analysis and a Monte Carlo </a>analysis. The AC analysis sweeps 50 points per decade from 100 Hz to 1 MHz. The Monte Carlo analysis is set to take 100 runs. Save data from all runs and set the output variable to V(OUT).</p>
+      <h4><a name="1048850">Creating histograms</a></h4>
+      <p><a name="1048851">Because the data file can become quite large when running a Monte </a>Carlo analysis, to view just the output of the filter, you place a voltage probe at the output of the filter.</p>
+      <h4><em><a name="1048852">To collect data for the marked node only</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048853">From the PSpice menu, choose New Simulation Profile or Edit </a>Simulation Profile. (If this is a new simulation, enter the name of the profile and click OK.)</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048854">The Simulation Settings dialog box appears.</a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048855">On the Data Collection tab, choose the At Markers Only option </a>for each type of marker (Voltages, Currents, Power, Digital, Noise).</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048856">Click OK.</a></td>
+          </tr>
+        </table>
+      </div>
+      <h4><em><a name="1048857">To run the simulation and load Probe with data</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048858">From Capture's PSpice menu, choose Run to start the </a>simulation.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048859">When the simulation is complete, PSpice automatically displays </a>the selected waveform. Because PSpice ran a Monte Carlo analysis, it saved multiple runs or sections of data. These are listed in the Available Sections dialog box.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048860">In the Available Sections dialog box, click All.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048861">Click OK.</a></td>
+          </tr>
+        </table>
+      </div>
+      <h4><em><a name="1048862">To display a histogram for the 1 dB bandwidth</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048863">From PSpice's Plot menu, choose Axis Settings.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048864">Select the X Axis tab.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048865">In the Processing Options frame, select the Performance </a>Analysis check box.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048869">For information about performance analysis, see </a><a href="12param.html#1048442" title="Parametric and temperature analysis"><font color="Blue"><u>RLC filter example</u></font></a><a href="12param.html#1048442" title="Parametric and temperature analysis"></a>.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048870">Click OK.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048871">The histogram display appears. The Y axis is the percent of </a>samples. </blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048872">From the Trace menu, choose Add Trace.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	6.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048873">Choose Bandwidth.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	7.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048874">In the Trace Expression box, specify Bandwidth(VDB(OUT),1).</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1048875">You can also display this histogram by using the performance </a>analysis wizard to display Bandwidth (VDB(OUT),1).</p>
+      <h4><em><a name="1048876">To change the number of histogram divisions</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048877">From the Tools menu, choose Options.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048878">In the Number of Histogram Divisions text box, replace </a><font size="2" face="'Courier New'" color="#000000">10</font> with <font size="2" face="'Courier New'" color="#000000">20</font>. </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048879">Click OK. </a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1048883">The histogram for 1</a>&nbsp;dB bandwidth is shown in Figure <font color="#0000ff"><u>13&#45;9</u></font>.</p>
+      <p align="left"><a name="1048891"><img src="images/13monte.19.1.18.png" width="675" height="481" alt=""></a></p>
+      <p><a name="1048892">The statistics for the histogram are shown along the bottom of the </a>display. The statistics show the number of Monte Carlo runs, the number of divisions or vertical bars that make up the histogram, mean, sigma, minimum, maximum, 10th percentile, median, and 90th percentile. </p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048893">Ten percent of the measurement values is less than or equal to </a>the 10th percentile number, and 90% of the measured values is greater than or equal to that number.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048894">If there is more than one measurement expression value that </a>satisfies this criteria, then the 10th percentile is the midpoint of the interval between the measured values that satisfy the criteria. Similarly, the median and 90th percentile numbers represent measured values such that 50% and 90% (respectively) of the measured values are less than or equal to those numbers.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048895">Sigma is the standard deviation of the measurement expression </a>values.</td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1048896">If needed, you can turn off the statistical data display as follows:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048897">From the Tools menu, choose Options.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048898">Clear the Display Statistics check box.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048899">Click Save, and then OK.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1048900">You can also show the distribution of the center frequency of the filter.</a></p>
+      <h4><em><a name="1048901">To display the center frequency</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048902">From the Trace menu, choose Add Trace.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048903">Choose CenterFreq.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048904">In the Trace Expression box, specify CenterFreq(VDB(OUT),1).</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1048905">The new histogram replaces the previous histogram. To display both </a>histograms at once, choose Add Plot to Window on the Plot menu before choosing Add from the Trace menu. The histogram of the center frequency is as shown in Figure <font color="#0000ff"><u>13&#45;10</u></font>.</p>
+      <p align="left"><a name="1048916"><img src="images/13monte.19.1.19.png" width="675" height="480" alt=""></a></p>
+      <h4><a name="1048920">Copying histogram data</a></h4>
+      <p><a name="1048921">You can use the copy function to transfer the raw histogram data </a>points for a particular trace to the Windows clipboard. This allows you to save the data as a standard ASCII text file, or paste it directly into a report or other document for later reference.</p>
+      <h4><em><a name="1048922">To copy histogram data to the clipboard</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048923">Select the trace symbol, or the trace name, in the histogram.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048924">From the Edit menu, choose Copy (or press </a><font color="#000000"><em>Ctrl</em></font>+<font color="#000000"><em>C</em></font>).</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048925">The histogram data points for the trace will be transferred to the </a>Windows clipboard.</blockquote>
+      <h4><em><a name="1048926">To copy the histogram display to the clipboard</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048927">From the Window menu, choose Copy to Clipboard.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048929">The histogram graph will be transferred to the Windows </a>clipboard.</blockquote>
+      <h2><a name="1048932">Worst&#45;case analysis</a></h2>
+      <p><a name="1048933">This section discusses the analog worst&#45;case analysis feature of </a>PSpice. The information provided in this section explains how to use worst&#45;case analysis properly and with realistic expectations.</p>
+      <h3><a name="1048936">Overview of worst&#45;case analysis</a></h3>
+      <p><a name="1048937">Worst&#45;case analysis is used to find the worst probable output of a </a>circuit or system given the restricted variance of its parameters. For instance, if the values of R1, R2, and R3 can vary by <u>+</u>10%, then the worst&#45;case analysis attempts to find the combination of possible resistor values which result in the worst simulated output. As with any other analysis, there are three important parts: inputs, procedure, and outputs.</p>
+      <h4><a name="1048938">Inputs</a></h4>
+      <p><a name="1048939">In addition to the circuit description, you need to provide two pieces </a>of information: </p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048940">the parameter tolerances</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048941">a definition of what </a><font color="#000000"><em>worst</em></font> means</td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1048942">You can set tolerances on any number of the parameters that </a>characterize a model.</p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1048943">You can define models for nearly all primitive analog circuit </a>parts, such as resistors, capacitors, inductors, and semiconductor devices. PSpice reads the standard model parameter tolerance syntax specified in the .MODEL statement. For each model parameter, PSpice uses the nominal, minimum, and maximum probable values, and the DEV and&#47;or LOT specifiers; the probability distribution type (such as UNIFORM or GAUSS) is ignored.</p>
+      <p><a name="1048944">The criterion for determining the </a><font color="#000000"><em>worst </em></font>values for the relevant model parameters is defined in the .WC statement as a function of any standard output variable in a specified range of the sweep. </p>
+      <p><a name="1048945">In a given range, reduce the measurement to a single value by one </a>of these five collating functions:</p>
+      <p align="left"><a name="1048967">&nbsp;</a></p>
+      <table summary="" border="0" cellpadding="4" cellspacing="0" bordercolor="#D3D3D3" width="432">
+        <caption>
+        <tr>
+          <td cellpadding="4" valign="top" width="120">
+            <p><a name="1048948">MAX</a></p>
+          </td>
+          <td cellpadding="4" valign="top" width="312">
+            <p><a name="1048950">Maximum output variable value</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048952">MIN</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048954">Minimum output variable value </a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048956">YMAX</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048958">Output variable value at the point where it </a>differs the most with the nominal run</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048960">RISE_EDGE</a><br>(value)</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048962">Sweep value where the output variable </a>value crosses <font color="#000000"><em>above</em></font> a given threshold value</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048964">FALL_EDGE</a><br>(value)</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048966">Sweep value where the output variable </a>value crosses <font color="#000000"><em>below</em></font> a given threshold value</p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1048968">You can define </a><font color="#000000"><em>worst</em></font> as the highest (HI) or lowest (LO) possible collating function relative to the nominal run.</p>
+      <p><a name="1048970">You can use analog behavioral models to measure waveform </a>characteristics other than those detected by the available collating functions, such as rise time or slope. You can also use analog behavioral models to incorporate several voltages and currents into one output variable to which a collating function may be applied. See <a href="06abm.html#1058062" title="Analog behavioral modeling"><font color="#0000ff"><u>Chapter&nbsp;6, "Analog behavioral modeling,"</u></font></a> for more information.</p>
+      <h4><a name="1048974">Procedure</a></h4>
+      <p><a name="1048975">To establish the initial value of the collating function, worst&#45;case </a>analysis begins with a nominal run using all model parameters at their nominal values. </p>
+      <p><a name="1048976">Next, multiple sensitivity analyses determine the individual effect of </a>each model parameter on the collating function. This is accomplished by varying model parameters, one at a time, in consecutive simulations. The direction (<font color="#000000"><em>better</em></font> or <font color="#000000"><em>worse</em></font>) in which the collating function changes with a small increase in each model parameter is recorded.</p>
+      <p><a name="1048977">Finally, for the worst&#45;case run, each parameter value is taken as far </a>from its nominal as allowed by its tolerance, in the direction which should cause the collating function to be its worst (given by the HI or LO specification).</p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1048978">This procedure saves time by performing the minimum </a>number of simulations required to make an educated guess at the parameter values that produce the worst results. It also has some limitations, which are described in the following sections.</p>
+      <h4><a name="1048979">Outputs</a></h4>
+      <p><a name="1048980">A summary of the sensitivity analysis is printed in the PSpice output </a>file (<font size="2" face="'Courier New'" color="#000000">.OUT</font>). This summary shows the percent change in the collating function corresponding to a small change in each model parameter. If a .PROBE statement is included in the circuit file, then the results of the nominal and worst&#45;case runs are saved for viewing in the Probe window.</p>
+      <h4><a name="1048981">Caution: An important condition for correct worst&#45;case analysis</a></h4>
+      <p><a name="1048982">Worst&#45;case analysis is not an optimization process; it does not </a><font color="#000000"><em>search</em></font> for the set of parameter values that result in the worst result. </p>
+      <p><a name="1048983">It assumes that the worst case occurs when each parameter has </a>been either pushed to one of its limits or left at its nominal value as indicated by the sensitivity analysis. It shows the true worst&#45;case results when the collating function is <font color="#000000"><strong><em>monotonic</em></strong></font><font color="#000000"><strong> </strong></font>within all tolerance combinations. </p>
+      <p><a name="1048984">Otherwise, there is no guarantee. Usually you cannot be certain </a>whether this condition is true, but insight into the operation of the circuit may alert you to possible anomalies.</p>
+      <h3><a name="1048986">Worst&#45;case analysis example</a></h3>
+      <p><a name="1048990">The schematic shown in Figure </a><font color="#0000ff"><u>13&#45;11</u></font> is for an amplifier circuit that is a biased BJT. This circuit is used to demonstrate how a simple worst&#45;case analysis works. It also shows how <font color="#000000"><em>non&#45;monotonic </em></font>dependence of the output on a single parameter can adversely affect the worst&#45;case analysis. </p>
+      <p><a name="1048991">Because an AC (small&#45;signal) analysis is being performed, setting </a>the input to unity means that the output, Vm([OUT]), is the magnitude of the gain of the amplifier. The only variable declared in this circuit is the resistance of <font color="#000000"><em>Rb2</em></font>. Because the value of <font color="#000000"><em>Rb2</em></font> determines the bias on the BJT, it also affects the amplifier's gain.</p>
+      <p align="left"><a name="1048999"><img src="images/13monte.19.1.20.png" width="675" height="410" alt=""></a></p>
+      <p><a name="1049003">Figure </a><font color="#0000ff"><u>13&#45;12</u></font> is the circuit file used to run one of the following:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049004">a parametric analysis (.STEP, shown enabled in the circuit file) </a>that sets the value of resistor <font color="#000000"><em>Rb2</em></font> by stepping model parameter R through values spanning the specified DEV tolerance range, or</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049005">a worst&#45;case analysis (shown disabled in the circuit file) that </a>allows PSpice to determine the worst&#45;case value for parameter R based upon a sensitivity analysis.</td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1049006">Only one of these analyses can run in any given simulation. </a></p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1049007">The AC and worst&#45;case analysis specifications (.AC and .WC </a>statements) are written so that the worst&#45;case analysis tries to minimize Vm([OUT]) at 100 kHz.</p>
+      <p><a name="1049028">The netlist and circuit file in Figure </a><font color="#0000ff"><u>13&#45;12</u></font> are set up to run either a parametric (.STEP) or worst&#45;case (.WC) analysis of the specified AC analysis. These simulations demonstrate the conditions under which worst&#45;case analysis works well and those that can produce misleading results when output is not monotonic with a variable parameter (see Figure <a href="#1049079" title="Monte Carlo and sensitivity/ worst-case analyses"><font color="#0000ff"><u>13&#45;15</u></font></a> and Figure <a href="#1049087" title="Monte Carlo and sensitivity/ worst-case analyses"><font color="#0000ff"><u>13&#45;16</u></font></a>).</p>
+      <p align="left"><a name="1050627"><img src="images/13monte.19.1.21.png" width="388" height="557" alt=""></a></p>
+      <p><a name="1049035">For demonstration, the parametric analysis is run first, generating the </a>curve shown in Figure <a href="#1049079" title="Monte Carlo and sensitivity/ worst-case analyses"><font color="#0000ff"><u>13&#45;15</u></font></a> and Figure <a href="#1049087" title="Monte Carlo and sensitivity/ worst-case analyses"><font color="#0000ff"><u>13&#45;16</u></font></a>. This curve, derived using the YatX measurement shown in Figure <font color="#0000ff"><u>13&#45;14</u></font> illustrates the non&#45;monotonic dependence of gain on <font color="#000000"><em>Rb2</em></font>.</p>
+      <p align="left"><a name="1051615"><img src="images/13monte.19.1.22.png" width="400" height="80" alt=""></a></p>
+      <p><a name="1049053">To do this yourself, place the measurement definition in a </a><font size="2" face="'Courier New'" color="#000000">PROBE.GF</font> file in the circuit directory. Then start PSpice, load all of the AC sweeps, set up the X axis for performance analysis, and add the following trace:</p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049054">YatX(Vm([OUT]),100k)</a></font></blockquote>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1049055">The YatX measurement is used on the simulation results for </a>the parametric sweep (.STEP) defined in Figure <font color="#0000ff"><u>13&#45;12</u></font>. The resulting curves are shown in Figure <a href="#1049079" title="Monte Carlo and sensitivity/ worst-case analyses"><font color="#0000ff"><u>13&#45;15</u></font></a> and Figure <a href="#1049087" title="Monte Carlo and sensitivity/ worst-case analyses"><font color="#0000ff"><u>13&#45;16</u></font></a>.</p>
+      <p><a name="1049065">Next, the parametric analysis is commented out and the worst&#45;case </a>analysis is enabled. Two runs are made using the two versions of the <font color="#000000"><em>Rbmod</em></font> .MODEL statement shown in the circuit file. The model parameter, R, is a multiplier which is used to scale the nominal value of any resistor referencing the <font color="#000000"><em>Rbmod</em></font> model (<font color="#000000"><em>Rb2</em></font> in this case).</p>
+      <p><a name="1050686">The first .MODEL statement leaves the nominal value of </a><font color="#000000"><em>Rb2</em></font> at 720 ohms. The sensitivity analysis increments R by a small amount and checks its effect on Vm([OUT]). This slight increase in R causes an increase in the base bias voltage of the BJT, and increases the amplifier's gain, Vm([OUT]). The worst&#45;case analysis correctly sets R to its minimum value for the lowest possible Vm([OUT]) (see Figure <a href="#1049079" title="Monte Carlo and sensitivity/ worst-case analyses"><font color="#0000ff"><u>13&#45;15</u></font></a>).</p>
+      <p><a name="1050690">The second .MODEL statement scales the nominal value of </a><font color="#000000"><em>Rb2</em></font> by 1.1 to approximately 800 ohms. The gain still increases with a small increase in R, but a larger increase in R increases the base voltage so much that it drives the BJT into saturation and nearly eliminates the gain. The worst&#45;case analysis is fooled by the sensitivity analysis into assuming that <font color="#000000"><em>Rb2</em></font> must be minimized to degrade the gain, but maximizing <font color="#000000"><em>Rb2</em></font> is much worse (see Figure <a href="#1049087" title="Monte Carlo and sensitivity/ worst-case analyses"><font color="#0000ff"><u>13&#45;16</u></font></a>). Note that even an optimizer, which checks the local gradients to determine how the parameters should be varied, is fooled by this circuit.</p>
+      <p align="left"><a name="1049077"><img src="images/13monte.19.1.23.png" width="675" height="439" alt=""></a></p>
+      <p><font color="#000000"><strong>Figure 13&#45;15&nbsp; </strong></font><strong><a name="1049079">Correct worst&#45;case results.</a></strong></p>
+      <p><a name="1049081">In the above figure, output is monotonic within the tolerance range. </a>Sensitivity analysis correctly points to the minimum value.</p>
+      <p align="left"><a name="1049085"><img src="images/13monte.19.1.24.png" width="675" height="435" alt=""></a></p>
+      <p><font color="#000000"><strong>Figure 13&#45;16&nbsp; </strong></font><strong><a name="1049087">Incorrect worst&#45;case results.</a></strong></p>
+      <p><a name="1049089">In the above figure, output is non&#45;monotonic within the tolerance </a>range, thus producing incorrect worst&#45;case results.</p>
+      <p><a name="1049091">Consider a slightly different scenario: Rb2 is set to 720 ohms so that </a>maximizing it is not enough to saturate the BJT, but Rb1 is variable also. The true worst case occurs when Rb2 is maximized and Rb1 is minimized. Checking their individual effects is not sufficient, even if the circuit were simulated four times with each resistor in turn set to its extreme values.</p>
+      <h3><a name="1049093">Tips and other useful information</a></h3>
+      <h4><a name="1049094">VARY BOTH, VARY DEV, and VARY LOT</a></h4>
+      <p><a name="1049095">When VARY BOTH is specified in the .WC statement and a model </a>parameter is specified with both DEV and LOT tolerances defined, the worst&#45;case analysis may produce unexpected results. The sensitivity of the collating function is only tested with respect to LOT variations of such a parameter.</p>
+      <p align="left"><a name="1049103"><img src="images/13monte.19.1.25.png" width="638" height="577" alt=""></a></p>
+      <p><a name="1049104">For example, during the sensitivity analysis, the parameter is varied </a>once affecting all devices referring to it and its effect on the collating function is recorded. For the worst&#45;case analysis, the parameter is changed for all devices by LOT + DEV in the determined direction. See the example schematic in Figure <font color="#0000ff"><u>13&#45;17</u></font> and circuit file in Figure <a href="#1049119" title="Monte Carlo and sensitivity/ worst-case analyses"><font color="#0000ff"><u>13&#45;18</u></font></a>.</p>
+      <p align="left"><a name="1049117"><img src="images/13monte.19.1.26.png" width="413" height="145" alt=""></a></p>
+      <p><font color="#000000"><strong>Figure 13&#45;18&nbsp; </strong></font><strong><a name="1049119">Circuit file using VARY BOTH.</a></strong></p>
+      <p><a name="1049120">In this case, V(3) is maximized if:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049121"><font color="#000000"><em>Rwc1</em></font></a> and <font color="#000000"><em>Rwc2</em></font> are both increased by 10% per the LOT tolerance specification, and</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049122"><font color="#000000"><em>Rwc1</em></font></a> is decreased by 5% and <font color="#000000"><em>Rwc2</em></font> is increased by 5% per the DEV tolerance specification.</td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1049123">The final values for </a><font color="#000000"><em>Rwc1</em></font> and <font color="#000000"><em>Rwc2</em></font> should be 105 and 115, respectively. However, because <font color="#000000"><em>Rwc1</em></font> and <font color="#000000"><em>Rwc2</em></font> are varied together during the sensitivity analysis, it is assumed that both must be increased to their maximum for a maximum V(3). Therefore, both are increased by 15%.</p>
+      <p><a name="1049125">The purpose of the technique is to reduce the number of simulations. </a>For a more accurate worst&#45;case analysis, you should first perform a worst&#45;case analysis with VARY LOT, manually adjust the nominal model parameter values according to the results, then perform another analysis with VARY DEV specified.</p>
+      <h4><a name="1049126">Gaussian distributions</a></h4>
+      <p><a name="1069836">Parameters using Gaussian distributions are changed by 1</a>σ (one sigma) for the worst&#45;case analysis.</p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1069887">The default Gaussian distribution shall have the sigma value </a>of 3.</p>
+      <blockquote><a name="1069888">A new Gaussian distribution </a><font color="#000000"><em>GaussUser</em></font> will have a default sigma value of 1.When this is selected, user can see the value of sigma displayed alongside. The sigma value can be changed from 1 to 9.</blockquote>
+      <p><a name="1069881">&nbsp;</a></p>
+      <h4><a name="1049128">YMAX collating function</a></h4>
+      <p><a name="1049129">The purpose of the YMAX collating function is often misunderstood. </a>This function does not try to maximize the deviation of the output variable value from nominal. Depending on whether HI or LO is specified, it tries to maximize or minimize the output variable value itself at the point where maximum deviation occurred during sensitivity analysis. </p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1049130">This may result in maximizing or minimizing the output </a>variable value over the entire range of the sweep. This collating function is useful when you know the direction in which the maximum deviation occurs.</p>
+      <h4><a name="1049131">RELTOL</a></h4>
+      <p><a name="1049132">During the sensitivity analysis, each parameter is varied (multiplied) </a>by 1+RELTOL where RELTOL is specified in a .OPTIONS statement, or defaults to 0.001.</p>
+      <h4><a name="1049133">Sensitivity analysis</a></h4>
+      <p><a name="1049134">The sensitivity analysis results are printed in the output file (.OUT). </a>For each varied parameter, the percent change in the collating function and the sweep variable value at which the collating function was measured are given. The parameters are listed in <font color="#000000"><em>worst output</em></font> order; for example, the collating function was its worst when the first parameter printed in the list was varied.</p>
+      <p><a name="1049135">When you use the YMAX collating function, the output file also lists </a>mean deviation and sigma values. These are based on the changes in the output variable from nominal at every sweep point in every sensitivity run.</p>
+      <h4><a name="1049136">Manual optimization</a></h4>
+      <p><a name="1049137">You can use worst&#45;case analysis to perform </a><font color="#000000"><em>manual optimization</em></font> with PSpice. The monotonicity condition is usually met if the parameters have a very limited range. </p>
+      <p><a name="1049138">Performing worst&#45;case analysis with tight tolerances on the </a>parameters produces sensitivity and worst&#45;case results (in the output file). You can use these to decide how the parameters should be varied to achieve the desired response. You can then make adjustments to the nominal values in the circuit file, and perform the worst&#45;case analysis again for a new set of gradients.</p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1049139">Parametric sweeps (.STEP), like the one performed in the </a>circuit file shown in Figure <font color="#0000ff"><u>13&#45;12</u></font>, can be used to augment this procedure.</p>
+      <h4><a name="1049143">Monte Carlo analysis</a></h4>
+      <p><a name="1049144">Monte Carlo (.MC) analysis may be helpful when worst&#45;case analysis </a>cannot be used. Monte Carlo analysis can often be used to verify or improve on worst&#45;case analysis results. Monte Carlo analysis randomly selects possible parameter values, which can be thought of as randomly selecting points in the <font color="#000000"><em>parameter space</em></font>. The worst&#45;case analysis assumes that the worst results occur somewhere on the surface of this space, where parameters (to which the output is sensitive) are at one of their extreme values.</p>
+      <p><a name="1050744">If this is not true, the Monte Carlo analysis may find a point at which </a>the results are worse. To try this, replace .WC in the circuit file with .MC &#60;<font color="#000000"><em>#runs</em></font>&#62;, where &#60;<font color="#000000"><em>#runs</em></font>&#62; is the number of simulations you want to perform. More runs provide higher confidence results. The Monte Carlo summary in the output file lists the runs in decreasing order of collating function value.</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="13.333333333333332">
+              <div>&nbsp;</div>
+            </td>
+            <td width="133.33333333333331">
+              <div>
+                <nobr>
+                  <img src="images/tip.gif" alt="ParagraphBullet" border="0">
+                </nobr>
+              </div>
+            </td>
+            <td>
+              <font size="3"><a name="1049147">To save disk space, do not specify any OUTPUT options.</a></font>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1049148">Next, add the following option to the </a>.MC statement, and simulate again.</p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049149">OUTPUT LIST RUNS &#60;worst_run#&#62;</a></font></blockquote>
+      <p><a name="1049150">This performs only two simulations: the nominal and the worst Monte </a>Carlo run. The parameter values used during the worst run are written to the output file, and the results of both simulations are saved.</p>
+      <p><a name="1049151">Using Monte Carlo analysis with YMAX is a good way to obtain a </a>conservative guess at the maximum possible deviation from nominal, since worst&#45;case analysis usually cannot provide this information.</p>
+    </div>
+    <br>
+    <a href="#pagetop">Return to top of page</a>
+    <hr>
+    <hr align="left">
+    <div style="text-align: left;">
+      <!-- Begin Buttons -->
+      <table width="650" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                    </td>
+<td height="20" width="73">
+<a href="pspugTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<a href="pspugIX.html"><img src="../support/nav2_index.gif" border="0"></a>
+</td>
+          <td>
+            <a href="11tran.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+          </td>
+          <td>
+            <a href="14digsim.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+          </td>
+          <td>
+            <a>
+<a href="pspug.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+            </a>
+          </td>
+          <td height="20" width="61">
+            <img src="../support/nav2_black.gif">
+          </td>
+          <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+          </td>
+          <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+          </td>
+          <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+          </td>
+        </tr>
+      </table>
+      <!-- End Buttons -->
+    </div>
+    <br>
+    <font size="-1" >
+For support, see <a href="http://support.cadence.com" target="_blank">Cadence Online Support</a> service.</font>
+    <br>
+    <br>
+    <font size="-1" >
+      <i>Copyright &#169; 2011, <a href="http://www.cadence.com">Cadence Design Systems, Inc.</a></i>
+    </font>
+    <br>
+    <font size="-1" >
+All rights reserved.</font>
+    <br>
+    <br>
+  </body>
+</html>

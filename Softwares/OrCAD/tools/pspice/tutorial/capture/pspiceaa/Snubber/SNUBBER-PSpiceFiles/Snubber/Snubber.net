@@ -1,0 +1,14 @@
+* source SNUBBER
+V_V2         N22965 0 DC 1 
++PULSE -10 15 0 {trise} {tfall} 4u 10u
+L_L1         N22438 N22361 L_L1 2u  
+.model        l_L1 IND L=1 DEV=5%
+X_Q1         N22361 N001271 0 awbirf640 PARAMS:    CGSO=1410p                  
++                 MTYPE=1
+R_R3         N001271 N22965  10  
+R_R2         N22361 N23530  10  
+V_V1         N00203 0 100Vdc
+C_C1         0 N23530  .05n  
+R_R1         N00203 N22438 R_R1 25  
+.model        R_R1 RES R=1 DEV=10%
+.PARAM  trise=10n tfall=10n

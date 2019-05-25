@@ -1,0 +1,201 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM autogreytext
+FIXED
+PORT 50 15
+HEADER "Room Outline"
+
+POPUP <fpRoPopup> """".
+
+POPUP <ROOMTYPE> "<Use design value>""none","Hard""HARD","Soft""SOFT",\
+"Inclusive""INCLUSIVE","Hard straddle""HARD_STRADDLE",\
+"Inclusive straddle""INCLUSIVE_STRADDLE".
+
+POPUP <DROOMTYPE> "<None>""none","Hard""HARD",\
+"Inclusive""INCLUSIVE","Hard straddle""HARD_STRADDLE",\
+"Inclusive straddle""INCLUSIVE_STRADDLE".
+
+TILE
+
+FIELD fpRoCreate
+FLOC 2 2
+CHECKLIST "Create" "Mode"
+ENDFIELD
+
+FIELD fpRoEdit
+FLOC 14 2
+CHECKLIST "Edit" "Mode"
+ENDFIELD
+
+FIELD fpRoMove
+FLOC 26 2
+CHECKLIST "Move" "Mode"
+ENDFIELD
+
+FIELD fpRoDelete
+FLOC 38 2
+CHECKLIST "Delete" "Mode"
+ENDFIELD
+
+GROUP "Command Operations"
+GLOC 1 0
+GSIZE 48 4
+ENDGROUP
+
+TEXT "Name:"
+TLOC 2 6
+ENDTEXT
+
+GROUP "Room Name"
+GLOC 1 4
+GSIZE 48 5
+ENDGROUP
+
+FIELD fpRoName
+FLOC 8 6
+STRFILLIN 33 31
+POP "fpRoPopup"
+ENDFIELD
+
+GROUP "Side of Board"
+GLOC 1 9
+GSIZE 15 8
+ENDGROUP
+
+FIELD fpRoTop
+FLOC 2 11
+CHECKLIST "Top" "Layer"
+ENDFIELD
+
+FIELD fpRoBottom
+FLOC 2 13
+CHECKLIST "Bottom" "Layer"
+ENDFIELD
+
+FIELD fpRoBoth
+FLOC 2 15
+CHECKLIST "Both" "Layer"
+ENDFIELD
+
+GROUP "ROOM_TYPE Properties"
+GLOC 18 9
+GSIZE 31 8
+ENDGROUP
+
+TEXT "Room:"
+TLOC 19 11
+ENDTEXT
+
+FIELD room_type
+FLOC 29 11
+ENUMSET 15
+POP "ROOMTYPE"
+ENDFIELD
+
+TEXT "Design level:"
+TLOC 19 14
+ENDTEXT
+
+FIELD design_room_type
+FLOC 29 14
+ENUMSET 15
+POP "DROOMTYPE"
+ENDFIELD
+
+GROUP "Create/Edit Options"
+GLOC 1 17
+GSIZE 48 12
+ENDGROUP
+ 
+FIELD fpRoDrawRect
+FLOC 2 19
+CHECKLIST "Draw Rectangle" "Shape"
+ENDFIELD
+
+FIELD fpRoPlaceRect
+FLOC 2 21
+CHECKLIST "Place Rectangle" "Shape"
+ENDFIELD
+
+TEXT "Width:" fpRoWdtLabel
+TLOC 5 23
+ENDTEXT
+
+FIELD fpRoPlaceWdt
+FLOC 11 23
+STRFILLIN 10 30
+ENDFIELD
+
+TEXT "Height:" fpRoHgtLabel
+TLOC 5 25
+ENDTEXT
+
+FIELD fpRoPlaceHgt
+FLOC 11 25
+STRFILLIN 10 30
+ENDFIELD
+
+FIELD fpRoDrawPoly
+FLOC 2 27
+CHECKLIST "Draw Polygon" "Shape"
+ENDFIELD
+
+
+TEXT
+TLOC 22 19
+INFO "fpRoAreaLabel" 25
+ENDTEXT
+ 
+TEXT
+TLOC 43 19
+INFO "fpRoAreaInUse" 3
+ENDTEXT
+
+TEXT
+TLOC 46 19
+INFO "fpRoPcntLabel1" 1
+ENDTEXT
+ 
+FIELD fpRoAutosize
+FLOC 27 21
+MENUBUTTON "Autosize" 10 3
+ENDFIELD
+ 
+TEXT
+TLOC 39 21
+INFO "fpRoAutoLabel" 3
+ENDTEXT
+ 
+FIELD fpRoAreaToUse
+FLOC 42 21
+STRFILLIN 2 2
+ENDFIELD
+ 
+TEXT
+TLOC 46 21
+INFO "fpRoPcntLabel2" 1
+ENDTEXT
+
+FIELD Done
+FLOC 1 30
+MENUBUTTON "OK" 10 3
+ENDFIELD
+ 
+FIELD Apply
+FLOC 14 30
+MENUBUTTON "Apply" 10 3
+ENDFIELD
+
+FIELD Cancel
+FLOC 26 30
+MENUBUTTON "Cancel" 10 3
+ENDFIELD
+
+FIELD help
+FLOC 39 30
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM
+

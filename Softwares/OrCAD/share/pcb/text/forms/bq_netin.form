@@ -1,0 +1,148 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM 
+FIXED
+PORT 65 12
+HEADER "Import Logic"
+
+MESSAGE MUST_BE_DIR 0 "Source must be a directory for HDL-Concept"
+
+TILE
+
+FIELD five_dot_x
+FLOC 5 4
+CHECKLIST "HDL-Concept" "netlist_group"
+ENDFIELD
+
+FIELD netrev_netlist
+FLOC 20 4
+CHECKLIST "SCALD" "netlist_group"
+ENDFIELD
+
+FIELD netin_netlist
+FLOC 32 4
+CHECKLIST "Third party" "netlist_group"
+ENDFIELD
+
+TEXT "Database Branding:"
+TLOC 3 6
+ENDTEXT
+
+TEXT
+TLOC 20 6
+INFO current_state 44
+ENDTEXT
+
+FIELD import
+FLOC 53 1
+MENUBUTTON "Import" 11 4
+ENDFIELD
+
+FIELD close
+FLOC 53 5
+MENUBUTTON "Close" 11 3
+ENDFIELD
+
+FIELD apply
+FLOC 53 8
+MENUBUTTON "Apply" 11 3
+ENDFIELD
+
+FIELD browse
+FLOC 53 12
+MENUBUTTON "Browse..." 11 3
+ENDFIELD
+
+FIELD help
+FLOC 53 16
+MENUBUTTON "Help" 11 3
+ENDFIELD
+
+TEXT "Import From:"
+TLOC 2 10
+ENDTEXT
+
+FIELD filename
+FLOC 12 10
+STRFILLIN 36 1024
+ENDFIELD
+
+FIELD place_always
+FLOC 3 14
+CHECKLIST "Always" "pl"
+ENDFIELD
+
+FIELD place_never
+FLOC 3 16
+CHECKLIST "Never" "pl"
+ENDFIELD
+
+FIELD place_if_same
+FLOC 3 18
+CHECKLIST "If Same Symbol" "pl"
+ENDFIELD
+
+FIELD syntax_check_only
+FLOC 26 14
+CHECKLIST "Syntax Check Only" 
+ENDFIELD
+
+FIELD supercede
+FLOC 26 16
+FGROUP 3
+CHECKLIST "Supersede All Logical Data" 
+ENDFIELD
+
+FIELD append_device_log
+FLOC 26 18
+FGROUP 3
+CHECKLIST "Append Device File Log"
+ENDFIELD
+
+FIELD remove_etch
+FLOC 3 21
+CHECKLIST "Allow Etch Removal During ECO"
+ENDFIELD
+
+FIELD rename
+FLOC 3 23
+CHECKLIST "Rename Existing RefDes" 
+ENDFIELD
+
+FIELD cmgr_enable
+FLOC 3 28
+CHECKLIST "Enable Import"
+ENDFIELD
+
+FIELD cmgr_override
+FLOC 26 27
+CHECKLIST "Schematic Overrides" "cmgr"
+ENDFIELD
+
+FIELD cmgr_diff3
+FLOC 26 29
+CHECKLIST "Apply Diff3 Processing" "cmgr"
+ENDFIELD
+
+GROUP "Logic Type"
+GLOC 2 1
+GSIZE 49 8
+ENDGROUP
+
+GROUP "Place Changed Component"
+GLOC 2 12
+GSIZE 22 8
+ENDGROUP
+
+GROUP "Third Party"
+GLOC 25 12
+GSIZE 26 8
+ENDGROUP
+
+GROUP "Import Electrical Constraints"
+GLOC 2 25
+GSIZE 49 6
+ENDGROUP
+
+ENDTILE
+
+ENDFORM

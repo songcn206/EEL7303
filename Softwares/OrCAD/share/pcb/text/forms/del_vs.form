@@ -1,0 +1,84 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 73 17
+HEADER "Delete Via Structures"
+
+POPUP <FIND_NAME_TYPE>"""".
+
+TILE
+
+TEXT "Name filter:"
+TLOC 2 3
+ENDTEXT
+
+FIELD namefilter
+FLOC 16 3
+STRFILLIN 13 255
+ENDFIELD
+
+FIELD objlist
+FLOC 2 6
+LIST "" 30 7
+OPTIONS alphanumsort prettyprint
+ENDFIELD
+
+FIELD destlist
+FLOC 43 3
+LIST "" 29 8
+OPTIONS prettyprint
+#OPTIONS ALPHANUMSORT
+ENDFIELD
+
+FIELD all_right
+FLOC 34 11
+MENUBUTTON "All->" 5 3
+ENDFIELD
+
+FIELD all_left
+FLOC 34 14
+MENUBUTTON "<-All" 5 3
+ENDFIELD
+
+FIELD done
+FLOC 1 21
+MENUBUTTON "OK" 10 3
+ENDFIELD
+
+FIELD cancel
+FLOC 12 21
+MENUBUTTON "Cancel" 10 3
+ENDFIELD
+
+FIELD apply
+FLOC 42 21
+MENUBUTTON "Delete" 10 3
+ENDFIELD
+
+FIELD help
+FLOC 63 21
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+GROUP "Available Via Structures" g1
+FLOC 1 1
+FSIZE 32 18
+ENDGROUP
+
+GROUP "Selected Via Structures" g2
+FLOC 42 1
+FSIZE 31 18
+ENDGROUP
+
+FLEXMODE edgegravityone
+FLEX g1 0 0 0.5 1
+FLEX g2 0.5 0 0.5 1
+FLEX namefilter 0 0 1 0
+FLEX objlist 0 0 1 1
+FLEX destlist 0 0 1 1
+FLEX all_right 0.5 0 0 0
+FLEX all_left 0.5 0 0 0
+
+ENDTILE
+
+ENDFORM

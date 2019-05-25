@@ -1,0 +1,76 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 40 20
+HEADER "Equation Generator"
+
+TILE EQGEN_MINI
+POPUP <constants>"e""e","ln10""ln10","c0""c0","e0""e0","u0""u0","boltzmann""boltzmann","qelectron""eelectron","planck""planck","pi""pi".
+POPUP <ops>"**""**","^""^","*""*","/""/","+""+","-""-","<""<",">"">","<=""<=",">="">=","=""=","!=""!=","&&""&&","||""||","if_clause""if()then()else()endif".
+POPUP <funcs>"abs""abs()","acos""acos()","acosh""acosh()","arcsinh""arcsinh()","arctan""arctan()","asin""asin()","asinh""asinh()",\
+			 "atan""atan()","atan2""atan2()","atanh""atanh()","ceil""ceil()","cos""cos()","cosh""cosh()","cot""cot()","coth""coth()",\
+			 "exp""exp()","floor""floor()","int""int()","length""length()","ln""ln()","log""log()","log10""log10()","max""max()",\
+			 "min""min()","pow""pow()","sin""sin()","sinh""sinh()","sqrt""sqrt()","tan""tan()","tanh""tanh()".
+
+TEXT "Variable:"
+TLOC 1 1
+ENDTEXT
+
+TEXT "X"
+TLOC 8 1
+INFO varname 20
+ENDTEXT
+
+FIELD equation
+FLOC 1 3
+STRFILLIN 37 256
+ENDFIELD
+
+TEXT "Functions:"
+TLOC 1 6
+ENDTEXT
+
+FIELD funclist
+FLOC 1 8
+ENUMSET 10 8
+POP funcs
+ENDFIELD
+
+TEXT "Operators:"
+TLOC 14 6
+ENDTEXT
+
+FIELD oplist
+FLOC 14 8
+ENUMSET 10 8
+POP ops
+ENDFIELD
+
+TEXT "Constants:"
+TLOC 27 6
+ENDTEXT
+
+FIELD constantlist
+FLOC 27 8
+ENUMSET 10 8
+POP constants
+ENDFIELD
+
+FIELD Done
+FLOC 1 20
+MENUBUTTON "OK" 9 3
+ENDFIELD
+
+FIELD Cancel
+FLOC 12 20
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 30 20
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

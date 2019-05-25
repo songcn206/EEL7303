@@ -1,0 +1,84 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM 
+FIXED
+PORT 76 7
+HEADER "DFA_UPDATE"
+
+MESSAGE dnexist 0 "That directory does not exist."
+MESSAGE nexist 0 "That file does not exist."
+MESSAGE ndone 0 "dfa_update completed."
+MESSAGE nerror 0 "dfa_update Not completed successfully."
+MESSAGE inprogress 0 "dfa_update in progress - please wait."
+MESSAGE nfile 0 "You must enter a file name first."
+
+ACTIVEFIELD "cancel" 
+
+TILE
+TEXT "Enter Symbol File Name[s] (dra extension)"
+TLOC 1 2
+ENDTEXT
+
+FIELD filename
+FLOC 1 4
+STRFILLIN 66 256
+ENDFIELD
+
+FIELD file_browse
+FLOC 70 4
+MENUBUTTON "..." 4 3
+ENDFIELD
+
+TEXT "Enter Destination Directory"
+TLOC 1 8
+ENDTEXT
+
+FIELD destination
+FLOC 1 10
+STRFILLIN 66 256
+ENDFIELD
+
+FIELD dest_browse
+FLOC 70 10
+MENUBUTTON "..." 4 3
+ENDFIELD
+
+TEXT "DFA_DEV_CLASS property (optional)"
+TLOC 1 14
+ENDTEXT
+
+FIELD attr_tag
+FLOC 1 16
+STRFILLIN 26 256
+ENDFIELD
+
+{
+TEXT "Updates DFA boundary information. File extension: .dra. Symbols are automatically generated."
+TLOC 1 20
+FSIZE 58 5
+ENDTEXT
+}
+
+FIELD execute
+FLOC 8 24
+MENUBUTTON "Update" 12 3
+ENDFIELD
+
+FIELD view_log
+FLOC 24 24
+MENUBUTTON "View Log" 12 3
+ENDFIELD
+
+FIELD cancel
+FLOC 40 24
+MENUBUTTON "Close" 12 3
+ENDFIELD
+
+
+FIELD help
+FLOC 56 24
+MENUBUTTON "Help" 12 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

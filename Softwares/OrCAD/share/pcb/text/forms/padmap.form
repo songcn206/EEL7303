@@ -1,0 +1,81 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+VARIABLE
+PORT 65 15
+HEADER "Padstack Map"
+
+MESSAGE NO_PADS 1 "No pads or vias mathing selection criteria found"
+MESSAGE FIELD_NOEDIT 1 "This not an editable field"
+MESSAGE PAD_EXISTS 1 "Padstack already exists in the design"
+MESSAGE PAD_NOCHANGE 1 "You must change values in ministatus or cancel"
+MESSAGE PAD_NONAME 1 "New padstack name must be specified"
+
+ACTIVEFIELD "pad_to"
+
+TILE StdTile
+TPANEL 2
+FIELD done
+FLOC 1 1
+MENUBUTTON "Done" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 11 1
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD reset
+FLOC 22 1
+MENUBUTTON "Reset" 9 3
+ENDFIELD
+
+FIELD autoname
+FLOC 33 1
+MENUBUTTON "Autoname" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 53 1
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+ENDTILE
+
+TILE PAD_TILE
+TPANEL 1
+
+TEXT
+TLOC 2 0
+INFO pad_from 20
+ENDTEXT
+
+FIELD pad_to
+FLOC 26 0
+STRFILLIN 20 255
+ENDFIELD
+
+TEXT 
+TLOC 50 0
+INFO pad_number 8
+ENDTEXT
+
+ENDTILE
+
+TILE HEADING
+TPANEL 0
+
+TEXT "Original Padstack"
+TLOC 2 3
+ENDTEXT
+
+TEXT "Modified Padstack"
+TLOC 26 3
+ENDTEXT
+
+TEXT "# of Pads"
+TLOC 50 3
+ENDTEXT
+
+ENDTILE
+
+ENDFORM

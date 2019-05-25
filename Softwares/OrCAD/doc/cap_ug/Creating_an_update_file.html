@@ -1,0 +1,380 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>
+      Creating an update file
+    </title>
+    <meta name="Approver" content="Technical Publications" />
+    <meta name="Author" content="Technical Publications" />
+    <meta name="CreateDate" content="2012-10-10" />
+    <meta name="CreateTime" content="1349876207" />
+    <meta name="DataType" content="Manuals" />
+    <meta name="Description" content="UG" />
+    <meta name="DocTitle" content="OrCAD Capture User Guide" />
+    <meta name="DocType" content="User Guide" />
+    <meta name="FileTitle" content="Creating an update file" />
+    <meta name="Keywords" content="" />
+    <meta name="FileType" content="Chapter" />
+    <meta name="Keyword" content="cap_ug" />
+    <meta name="Language" content="English" />
+    <meta name="ModifiedDate" content="2012-10-10" />
+    <meta name="ModifiedTime" content="1349876207" />
+    <meta name="NextFile"
+    content="Creating%2Ba%2BCombined%2BSwap%2Band%2BUpdate%2BFile.html" />
+    <meta name="Group" content="" />
+    <meta name="Platform" content="All," />
+    <meta name="PrevFile"
+    content="Designating%2BPins%252C%2BGates%252C%2Bor%2BPackages%2Bfor%2BSwapping.html" />
+    <meta name="Product"
+    content="Allegro Design Entry CIS,OrCAD Capture," />
+    <meta name="ProductFamily"
+    content="Silicon-Package-Board Co-Design,Silicon-Package-Board Co-Design," />
+    <meta name="ProductVersion" content="16.6" />
+    <meta name="RightsManagement"
+    content="Copyright 2011-2012 Cadence Design Systems Inc." />
+    <meta name="Title"
+    content="OrCAD Capture User Guide -- Creating an update file" />
+    <meta name="Version" content="16.6" />
+    <meta name="Renderer" content="WIKI" />
+    <meta name="SpaceKey" content="capug166" />
+    <link href="styles/site.css" rel="stylesheet"
+    type="text/css" />
+    <meta content="text/html; charset=UTF-8"
+    http-equiv="Content-Type" />
+  </head>
+  <body style="margin-left: 5%;background-color: #FFFFFF;">
+    <a xmlns:html="http://www.w3.org/1999/xhtml" id="pagetop"
+    name="pagetop"></a> <a
+    xmlns:html="http://www.w3.org/1999/xhtml" id="firstpage"
+    name="firstpage"></a> <!-- Begin Buttons -->
+     
+    <table xmlns:html="http://www.w3.org/1999/xhtml" border="0"
+    cellpadding="0" cellspacing="0" width="650">
+      <tbody>
+        <tr>
+          <td colspan="10" height="36" width="650">
+            <img height="34" src="../support/header_doc.gif"
+            width="650" />
+          </td>
+        </tr>
+        <tr>
+          <td height="20" width="59">
+            <a href="javascript:openLibrary()"><img
+            alt="View Library" border="0" height="20"
+            src="../support/nav2_library.gif" width="59" /></a>
+          </td>
+          <td height="20" width="73">
+            <a href="cap_ugTOC.html"><img alt="Table of Contents"
+            border="0" src="../support/nav2_toc.gif" /></a>
+          </td>
+          <td height="20" width="46">
+            <img alt="Index" border="0"
+            src="../support/nav2_index_b.gif" />
+          </td>
+          <td>
+            <a
+            href="Designating_Pins__Gates__or_Packages_for_Swapping.html"><img
+             alt="Previous" border="0"
+            src="../support/nav2_previous.gif" /></a>
+          </td>
+          <td>
+            <a
+            href="Creating_a_Combined_Swap_and_Update_File.html"><img
+             alt="Next" border="0"
+            src="../support/nav_next.gif" /></a>
+          </td>
+          <td height="20">
+            <a href="cap_ug.pdf"><img alt="Open PDF to print book"
+            border="0" height="20" src="../support/nav2_print.gif"
+            width="114" /></a>
+          </td>
+          <td height="20" width="61">
+            <img src="../support/nav2_black.gif" />
+          </td>
+          <td height="20" width="76">
+            <a href="/feedback.htm"><img alt="Email Comments"
+            border="0" height="20"
+            src="../support/nav2_feedback.gif" width="76" /></a>
+          </td>
+          <td height="20" width="43">
+            <a href="../cdsuser/help.html"><img
+            alt="Help Using Documentation" border="0" height="20"
+            src="../support/nav2_help.gif" width="43" /></a>
+          </td>
+          <td height="20" width="37">
+            <a href="/exitsearch.htm"><img
+            alt="Shut Down Cadence Documentation Server" border="0"
+            height="20" src="../support/nav2_exit.gif"
+            width="37" /></a>
+          </td>
+        </tr>
+      </tbody>
+    </table><!-- End Buttons -->
+    <hr xmlns:html="http://www.w3.org/1999/xhtml" />
+    <div id="main-header">
+      <a xmlns="" id="Creatinganupdatefile"
+      name="Creatinganupdatefile"></a> 
+      <h1 xmlns="" style=" margin: 4px 0 4px;">
+        <span>Creating an update file</span>
+      </h1>
+    </div>
+    <div class="wiki-content group" id="main-content">
+      <p>
+        The update file is used by the Update Properties tool to
+        determine which objects to change, which of the
+        objects&#39; properties are affected, and what values those
+        properties receive. You can create an update (.UPD) file
+        using any text editor that saves files in ASCII format. The
+        file can include comments; any text to the right of a
+        semicolon is ignored by the Update Properties tool. Strings
+        in the update file (except for comments) must be enclosed
+        in quotation marks and cannot exceed 124 characters. You
+        can use spaces and tab characters to format the update file
+        in rows and columns, as shown in the example below.
+      </p>
+      <p>
+        The first line of the update file is a header line. It
+        starts with a combined property string that identifies
+        which properties to compare. In the example, only the Net
+        Name property is compared. The other strings on the first
+        line specify which properties to update when a match is
+        found. The rest of the file contains lines for each match
+        string to be compared and the values to be recorded in the
+        updated properties. In the following example, the combined
+        property string is {Net Name}. For every object whose Net
+        Name property value matches one of the strings in the first
+        column, the object&#39;s Track Width, Net Spacing, and
+        Routing Priority properties are updated with the
+        corresponding values. For example, every object whose Net
+        Name property is set to VCC will be updated as follows: the
+        Track Width property is set to 0.04, the Net Spacing
+        property to 0.035, and the Routing Priority property to 3.
+      </p>
+      <p>
+        <em><strong>Combined property strings</strong></em>
+      </p>
+      <p>
+        With many of the tools in Capture, such as Create Netlist
+        and Annotate, you use combined property strings to convey
+        information to the tool or to limit the tool&#39;s action.
+        A combined property string consists of one or more property
+        names, enclosed in braces, and can also contain literal
+        text. Capture combines the values of the named properties
+        with any literal text to create a string. An example is:
+      </p>
+<pre>
+{Value}{Reference}
+</pre>
+      <p>
+        where &quot;Value&quot; and &quot;Reference&quot; are
+        property names. Using this combined property string and a
+        part with a part value of 74LS32 and a part reference of
+        U?A, Capture creates the string:
+      </p>
+<pre>
+74LS32U?A
+</pre>
+      <p>
+        You can include spaces and other characters in the combined
+        property string, as in this example:
+      </p>
+<pre>
+Part: {Value} ({Reference})
+</pre>
+      <p>
+        Using this combined property string and the same part,
+        Capture creates the string:
+      </p>
+<pre>
+Part: 74LS32 (U?A)
+</pre>
+      <p>
+        Different tools use combined property strings in different
+        ways. For example, Annotate uses one to compare
+        parts&#8212;if one part&#39;s combined property string
+        matches another part&#39;s combined property string, it
+        packages the parts together.
+      </p>
+      <div class="panelMacro">
+        <table class="noteMacro">
+          <colgroup>
+            <col width="24" />
+            <col />
+          </colgroup>
+          <tr>
+            <td valign="top">
+              <img align="absmiddle" alt="" border="0" height="16"
+              src="images/icons/emoticons/warning.png"
+              width="16" />
+            </td>
+            <td>
+              <ul>
+                <li>
+                  Bill of Materials and other commands on the Tools
+                  menu that generate an output file based on a
+                  combined property string may produce errors if
+                  you include extra curly braces.
+                </li>
+                <li>
+                  You can include tabs in combined property
+                  strings, so that the output file can be
+                  manipulated in a spreadsheet or database
+                  application. Tabs also help format report files,
+                  such as those created by the Bill of Materials
+                  command. Wherever you want to have a tab in the
+                  output file, insert the characters \t (a
+                  backslash and a lowercase &quot;t&quot;) in the
+                  combined property string.
+                </li>
+                <li>
+                  Do not use {GROUP} as a property name in combined
+                  property strings. This may cause problems while
+                  annotating your design for a PCB Editor tool,
+                  like Allegro PCB Editor. The GROUP property is
+                  used in PCB Editor for a specific purpose.
+                </li>
+                <li>
+                  Except for the header line, update files for
+                  Capture have the same format as the update files
+                  used by Update Field Contents in SDT. Once you
+                  add the appropriate header line, you can use an
+                  SDT update file without modification to change
+                  individual property values using Update
+                  Properties. You can also build on an SDT update
+                  file for a more elaborate property update,
+                  because Capture can update multiple properties in
+                  a single pass.
+                </li>
+              </ul>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <p>
+        Example :
+      </p>
+<pre>
+&quot;{Net Name}&quot; &quot;Track Width&quot; &quot;Net Spacing&quot; &quot;Routing Priority&quot;
+</pre>
+<pre>
+&quot;VCC&quot; &quot;0.04&quot; &quot;0.035&quot; &quot;3&quot; ; Any text to the right
+</pre>
+<pre>
+&quot;CLK&quot; &quot;0.01&quot; &quot;0.025&quot; &quot;1&quot; ; of a semicolon is
+</pre>
+<pre>
+&quot;CLR&quot; &quot;0.01&quot; &quot;0.025&quot; &quot;3&quot; ; ignored by the
+</pre>
+<pre>
+&quot;RESET&quot; &quot;0.01&quot; &quot;0.025&quot; &quot;3&quot; ; Update Properties
+</pre>
+<pre>
+&quot;GND&quot; &quot;0.04&quot; &quot;0.035&quot; &quot;2&quot; ; tool.
+</pre>
+      <div class="panelMacro">
+        <table class="noteMacro">
+          <colgroup>
+            <col width="24" />
+            <col />
+          </colgroup>
+          <tr>
+            <td valign="top">
+              <img align="absmiddle" alt="" border="0" height="16"
+              src="images/icons/emoticons/warning.png"
+              width="16" />
+            </td>
+            <td>
+              <p>
+                Do not create an empty string (two consecutive
+                double quotation marks without intervening
+                characters) in the header line. Update Properties
+                reports an empty string as an error.
+              </p>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <hr xmlns:html="http://www.w3.org/1999/xhtml" />
+    <hr xmlns:html="http://www.w3.org/1999/xhtml" align="left" />
+    <div xmlns:html="http://www.w3.org/1999/xhtml"
+    style="text-align: left;">
+      <!-- Begin Buttons -->
+      <table border="0" cellpadding="0" cellspacing="0"
+      width="650">
+        <tbody>
+          <tr>
+            <td colspan="10" height="36" width="650">
+              <img height="34" src="../support/header_doc.gif"
+              width="650" />
+            </td>
+          </tr>
+          <tr>
+            <td height="20" width="59">
+              <a href="javascript:openLibrary()"><img
+              alt="View Library" border="0" height="20"
+              src="../support/nav2_library.gif" width="59" /></a>
+            </td>
+            <td height="20" width="73">
+              <a href="cap_ugTOC.html"><img alt="Table of Contents"
+              border="0" src="../support/nav2_toc.gif" /></a>
+            </td>
+            <td height="20" width="46">
+              <img alt="Index" border="0"
+              src="../support/nav2_index_b.gif" />
+            </td>
+            <td>
+              <a
+              href="Designating_Pins__Gates__or_Packages_for_Swapping.html"><img
+               alt="Previous" border="0"
+              src="../support/nav2_previous.gif" /></a>
+            </td>
+            <td>
+              <a
+              href="Creating_a_Combined_Swap_and_Update_File.html"><img
+               alt="Next" border="0"
+              src="../support/nav_next.gif" /></a>
+            </td>
+            <td height="20">
+              <a href="cap_ug.pdf"><img
+              alt="Open PDF to print book" border="0" height="20"
+              src="../support/nav2_print.gif" width="114" /></a>
+            </td>
+            <td height="20" width="61">
+              <img src="../support/nav2_black.gif" />
+            </td>
+            <td height="20" width="76">
+              <a href="/feedback.htm"><img alt="Email Comments"
+              border="0" height="20"
+              src="../support/nav2_feedback.gif" width="76" /></a>
+            </td>
+            <td height="20" width="43">
+              <a href="../cdsuser/help.html"><img
+              alt="Help Using Documentation" border="0" height="20"
+              src="../support/nav2_help.gif" width="43" /></a>
+            </td>
+            <td height="20" width="37">
+              <a href="/exitsearch.htm"><img
+              alt="Shut Down Cadence Documentation Server"
+              border="0" height="20" src="../support/nav2_exit.gif"
+              width="37" /></a>
+            </td>
+          </tr>
+        </tbody>
+      </table><!-- End Buttons -->
+    </div><br xmlns:html="http://www.w3.org/1999/xhtml" />
+     <font xmlns:html="http://www.w3.org/1999/xhtml" size="-1">For
+    support, see <a href="http://support.cadence.com"
+    target="_blank">Cadence Online Support</a> service.</font> <br
+    xmlns:html="http://www.w3.org/1999/xhtml" />
+     <br xmlns:html="http://www.w3.org/1999/xhtml" />
+     <font xmlns:html="http://www.w3.org/1999/xhtml"
+    size="-1"><i>Copyright &#169; 2012, <a
+    href="http://www.cadence.com">Cadence Design Systems,
+    Inc.</a></i></font> <br
+    xmlns:html="http://www.w3.org/1999/xhtml" />
+     <font xmlns:html="http://www.w3.org/1999/xhtml" size="-1">All
+    rights reserved.</font> <br
+    xmlns:html="http://www.w3.org/1999/xhtml" />
+     <br xmlns:html="http://www.w3.org/1999/xhtml" />
+  </body>
+</html>

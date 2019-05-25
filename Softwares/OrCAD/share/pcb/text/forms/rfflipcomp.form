@@ -1,0 +1,67 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 37 20
+HEADER "Flip Operation"
+
+POPUP <flipaxismodes>"Horizontal Line""0","Vertical Line""1","Diagonal Line""2","Odd Line""3","Left Edge of Object BBox""4","Right Edge of Object BBox""5","Top Edge of Object BBox""6","Bottom Edge of BBox""7".
+POPUP <rotate>"0""0.000","45""45.000","90""90.000".
+POPUP <rotatemodes>"Absolute""0","Incremental""1".
+
+TILE
+
+FIELD enabledrccheck
+FLOC 1 1
+CHECKLIST "Enable DRC check"
+ENDFIELD
+
+FIELD ignorefixed
+FLOC 1 3
+CHECKLIST "Ignore Fixed property"
+ENDFIELD
+
+TEXT "Flip axis mode:"
+TLOC 1 6
+ENDTEXT
+
+FIELD flipaxismode
+FLOC 3 8
+ENUMSET 20
+POP "flipaxismodes"
+ENDFIELD
+
+FIELD picksegment
+FLOC 1 10
+CHECKLIST "Pick segment for axis"
+ENDFIELD
+
+TEXT "Rotation type:"
+TLOC 1 13
+ENDTEXT
+
+FIELD rotatemode
+FLOC 12 13
+ENUMSET 10
+POP "rotatemodes"
+ENDFIELD
+
+TEXT "Rotation angle:"
+TLOC 1 15
+ENDTEXT
+
+FIELD angle
+FLOC 12 15
+REALFILLIN 7 7
+POP "rotate"
+DECIMAL 3
+ENDFIELD
+
+FIELD includeAssembly
+FLOC 1 17
+CHECKLIST "Include clearance assembly"
+ENDFIELD
+
+ENDTILE
+
+ENDFORM
+

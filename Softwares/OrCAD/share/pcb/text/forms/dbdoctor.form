@@ -1,0 +1,90 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 53 7
+HEADER "DBDoctor (PCB/APD database health monitor)"
+DEFAULT execute
+
+MESSAGE nexist 2 "The design %s does not exist."
+MESSAGE ndone 0 "Dbdoctor completed for %s."
+MESSAGE nwarn 2 "Dbdoctor commpleted with warnings."
+MESSAGE nerror 3 "Dbdoctor failed for %s."
+MESSAGE inprogress 0 "Dbdoctor in progress - please wait."
+MESSAGE nfile 2 "You must enter a design name first."
+MESSAGE no_outputfile 3 "Output design name, %s, is illegal."
+MESSAGE illegal_type 3 "Input design name, %s, is illegal."
+
+TILE
+TEXT "Input design with extension (wildcards supported):"
+FLOC 1 2
+ENDTEXT 
+
+FIELD filename
+FLOC 2 4
+STRFILLIN 32 1024
+OPTIONS dropfile
+ENDFIELD         
+
+FIELD browse
+FLOC 35 4 
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+
+TEXT "Output design (optional with 1 input design):"
+FLOC 1 6
+ENDTEXT 
+
+FIELD outputfile
+FLOC 2 8
+STRFILLIN 32 1024
+ENDFIELD
+
+FIELD browse_out
+FLOC 35 8 
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+
+FIELD drc
+FLOC 1 	 10	 	  
+CHECKLIST "Update all DRC (including Batch)"
+ENDFIELD 
+
+FIELD backup
+FLOC 1 	 12	 	  
+CHECKLIST "No backup"
+ENDFIELD
+
+FIELD shapes
+FLOC 1 	 14	 	  
+CHECKLIST "Check shape outlines"
+ENDFIELD
+
+FIELD xnets
+FLOC 1 	 16	 	  
+CHECKLIST "Regenerate Xnets"
+ENDFIELD
+
+FIELD execute
+FLOC 41 3
+MENUBUTTON "Check" 11 4
+ENDFIELD
+
+FIELD close
+FLOC 41 7
+MENUBUTTON "Close" 11 3
+ENDFIELD
+
+FIELD vlog
+FLOC 41 10
+MENUBUTTON "Viewlog..." 11 3
+ENDFIELD
+
+FIELD help
+FLOC 41 13
+MENUBUTTON "Help" 11 3
+ENDFIELD
+
+ENDTILE
+ENDFORM

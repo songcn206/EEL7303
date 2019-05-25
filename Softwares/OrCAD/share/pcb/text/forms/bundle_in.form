@@ -1,0 +1,130 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM 
+FIXED
+PORT 73 30
+HEADER "Bundle Import"
+
+MESSAGE nexist 0 "You must enter a drawing name before importing."
+MESSAGE ndemo 0 "Cannot Run in Demo Mode."
+
+MESSAGE imp_open_start 0 "Opening import database"
+MESSAGE imp_success 0 "All bundles imported successfully"
+MESSAGE imp_warning 0 "Bundles imported with warnings/errors - see Viewlog"
+
+TILE
+
+TEXT "Import from:"
+TLOC 1 1
+ENDTEXT
+
+FIELD drawingNameField
+FLOC 10 1
+STRFILLIN 23 1024
+ENDFIELD
+
+FIELD browse
+FLOC 36 1
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+FIELD supersede
+FLOC 1 4
+CHECKLIST "Replace all bundles with all bundles in import design"
+ENDFIELD
+
+FIELD copy_flow
+FLOC 1 6
+CHECKLIST "Import bundle's flow as well as member rats"
+ENDFIELD
+
+FIELD import_plan
+FLOC 1 8
+CHECKLIST "Import bundle's plan data as well as member rats"
+ENDFIELD
+
+TEXT "Bundle name filter:"
+TLOC 2 12
+ENDTEXT
+
+FIELD namefilter
+FLOC 16 12
+STRFILLIN 13 255
+ENDFIELD
+
+FIELD objlist
+FLOC 2 15
+LIST "" 30 8
+OPTIONS alphanumsort prettyprint
+ENDFIELD
+
+FIELD destlist
+FLOC 43 12
+LIST "" 30 10
+OPTIONS alphanumsort prettyprint
+ENDFIELD
+
+FIELD all_right
+FLOC 34 18
+MENUBUTTON "All->" 5 3
+ENDFIELD
+
+FIELD all_left
+FLOC 34 20
+MENUBUTTON "<-All" 5 3
+ENDFIELD
+
+FIELD done
+FLOC 1 32
+MENUBUTTON "OK" 10 3
+ENDFIELD
+
+FIELD cancel
+FLOC 11 32
+MENUBUTTON "Close" 10 3
+ENDFIELD
+
+FIELD undo
+FLOC 21 32
+MENUBUTTON "Undo" 10 3
+ENDFIELD
+
+FIELD execute
+FLOC 31 32
+MENUBUTTON "Apply" 10 3
+ENDFIELD
+
+FIELD viewlog
+FLOC 41 32
+MENUBUTTON "Viewlog..." 10 3
+ENDFIELD
+
+FIELD help
+FLOC 63 32
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+GROUP "Available bundles" g1
+FLOC 1 10
+FSIZE 32 21
+ENDGROUP
+
+GROUP "Selected bundles" g2
+FLOC 42 10
+FSIZE 32 21
+ENDGROUP
+
+FLEXMODE edgegravityone
+FLEX g1 0 0 0.5 1
+FLEX g2 0.5 0 0.5 1
+FLEX namefilter 0 0 1 0
+FLEX drawingNameField 0 0 1 0
+FLEX browse 1 0 0 0
+FLEX objlist 0 0 1 1
+FLEX destlist 0 0 1 1
+FLEX all_right 0.5 0 0 0
+FLEX all_left 0.5 0 0 0
+
+ENDTILE
+
+ENDFORM
+

@@ -1,0 +1,519 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 103 35
+HEADER "Die-stack Editor"
+
+POPUP <diestackNamePopup>"""".
+POPUP <diestackLocPopup>"SUBSTRATE_TOP""SUBSTRATE_TOP","SUBSTRATE_BOTTOM""SUBSTRATE_BOTTOM","CAVITY_TOP""CAVITY_TOP","CAVITY_BOTTOM""CAVITY_BOTTOM".
+POPUP <diestackViewPopup>"NORTH""NORTH","EAST""EAST","SOUTH""SOUTH","WEST""WEST".
+POPUP <diestackLayerPopup>"TOP_COND" "TOP_COND".
+
+POPUP <dieRefdesPopup>"""".
+POPUP <typePopup>"FLIPCHIP""FLIPCHIP","WIREBOND""WIREBOND".
+POPUP <orientationPopup>"CHIP_UP""CHIP_UP","CHIP_DOWN""CHIP_DOWN".
+POPUP <dieLayerPopup>"""".
+POPUP <rotationPopup>"0""0.000","90""90.000","180""180.000","270""270.000".
+
+POPUP <spacerIdPopup>"""".
+POPUP <spacerLayerPopup>"""".
+POPUP <iposerIdPopup>"""".
+POPUP <iposerLayerPopup>"""".
+
+TILE
+
+TABSET "tabs"
+FLOC 1 1
+TSSIZE 39 36
+
+TAB "Die Stacks" 
+
+TEXT "Die stack name:"
+TLOC 2 1
+ENDTEXT
+FIELD diestackName
+FLOC 4 3
+ENUMSET 19
+POP "diestackNamePopup"
+ENDFIELD
+FIELD diestackRename
+FLOC 27 3
+MENUBUTTON "Rename..." 9 3
+ENDFIELD
+
+FIELD excludeSingle
+FLOC 1 5
+CHECKLIST " Exclude Single-die Stacks"
+ENDFIELD
+
+GROUP "Stack Placement"
+GLOC 1 7
+GSIZE 35 13
+ENDGROUP
+
+TEXT "Substrate location:"
+TLOC 3 9
+ENDTEXT
+TEXT
+TLOC 19 9
+INFO diestackLocation 16
+ENDTEXT
+
+TEXT "Sits on layer:"
+TLOC 3 11
+ENDTEXT
+FIELD dieStackStartLayer
+FLOC 19 11
+ENUMSET 14
+POP "diestackLayerPopup"
+ENDFIELD
+
+TEXT "Cavity edge clearance:"
+TLOC 3 13
+ENDTEXT
+FIELD dieStackCavityClearance
+FLOC 19 13
+STRFILLIN 15 128
+ENDFIELD
+
+TEXT "Expansion per layer:"
+TLOC 5 15
+ENDTEXT
+FIELD dieStackCavityExpansion
+FLOC 19 15
+STRFILLIN 15 128
+ENDFIELD
+
+FIELD diestackMove
+FLOC 3 17
+MENUBUTTON "Move" 8 3
+ENDFIELD
+
+FIELD diestackDefaults
+FLOC 12 17
+MENUBUTTON "Save as Defaults" 23 3
+ENDFIELD
+
+GROUP "Outputs"
+GLOC 1 21
+GSIZE 35 12
+ENDGROUP
+
+FIELD outputReportEnable
+FLOC 3 23
+CHECKLIST " Report"
+ENDFIELD
+
+FIELD display3dView
+FLOC 3 25
+CHECKLIST " Launch 3D viewer"
+ENDFIELD
+
+FIELD output3diFileEnable
+FLOC 3 27
+CHECKLIST " 3Di file:"
+ENDFIELD
+FIELD output3diFile
+FLOC 13 27
+STRFILLIN 17 256
+ENDFIELD
+FIELD output3DiFileBrowse
+FLOC 32 27
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+FIELD execute
+FLOC 3 30
+MENUBUTTON "Execute" 9 3
+ENDFIELD
+
+ENDTAB
+
+TAB "Dies" 
+
+TEXT "Refdes:"
+TLOC 2 1
+ENDTEXT
+FIELD dieRefdes
+FLOC 17 1
+ENUMSET 15
+POP "dieRefdesPopup"
+ENDFIELD
+
+TEXT "Type:"
+TLOC 2 3
+ENDTEXT
+TEXT
+TLOC 17 3
+INFO dieType 18
+ENDTEXT
+
+TEXT "Orientation:"
+TLOC 2 5
+ENDTEXT
+TEXT
+TLOC 17 5
+INFO dieOrientation 15
+ENDTEXT
+
+TEXT "Thickness:"
+TLOC 2 7
+ENDTEXT
+FIELD dieThickness
+FLOC 17 7
+STRFILLIN 16 40
+ENDFIELD
+
+FIELD bumpDataEdit
+FLOC 17 10
+MENUBUTTON "Edit Bump Dimensions" 18 3
+ENDFIELD
+
+GROUP "Die Placement"
+GLOC 1 12
+GSIZE 35 21
+ENDGROUP
+
+TEXT "Layer:"
+TLOC 2 15 
+ENDTEXT
+FIELD dieLayer
+FLOC 17 15
+ENUMSET 15
+POP "dieLayerPopup"
+ENDFIELD
+
+TEXT "Origin:"
+TLOC 2 17
+ENDTEXT
+TEXT "X:"
+TLOC 15 17
+ENDTEXT
+FIELD dieOriginX
+FLOC 17 17
+STRFILLIN 16 40
+ENDFIELD
+TEXT "Y:"
+TLOC 15 19
+ENDTEXT
+FIELD dieOriginY
+FLOC 17 19
+STRFILLIN 16 40
+ENDFIELD
+
+TEXT "Rotation:"
+TLOC 2 21
+ENDTEXT
+FIELD dieRotation
+FLOC 17 21
+STRFILLIN 13 13
+POP "rotationPopup"
+ENDFIELD
+
+FIELD dieMove
+FLOC 3 24
+MENUBUTTON "Move" 8 3
+ENDFIELD
+
+FIELD dieStretchEtch
+FLOC 12 24
+CHECKLIST "Stretch bond wires on Move"
+ENDFIELD
+
+FIELD dieDelete
+FLOC 3 27
+MENUBUTTON "Delete" 8 3
+ENDFIELD
+
+FIELD dieRipupEtch
+FLOC 12 27
+CHECKLIST "Ripup etch on Delete"
+ENDFIELD
+
+FIELD dieSwap
+FLOC 3 30
+MENUBUTTON "Swap" 8 3
+ENDFIELD
+
+ENDTAB
+
+TAB "Spacers"
+
+TEXT "Ref ID:"
+TLOC 2 1
+ENDTEXT
+FIELD spacerId
+FLOC 13 1
+ENUMSET 15
+POP "spacerIdPopup"
+ENDFIELD
+
+TEXT "Symbol name:"
+TLOC 2 3
+ENDTEXT
+TEXT
+TLOC 13 3
+INFO spacerSymbolName 18
+ENDTEXT
+
+TEXT "Part number:"
+TLOC 2 5
+ENDTEXT
+FIELD spacerPartNumber
+FLOC 13 5
+STRFILLIN 16 40
+ENDFIELD
+
+GROUP "Material"
+GLOC 1 7 
+GSIZE 35 7
+ENDGROUP
+
+TEXT "Name:"
+TLOC 2 9
+ENDTEXT
+FIELD spacerMatlName
+FLOC 13 9
+STRFILLIN 16 40
+ENDFIELD
+FIELD spacerMatlNameBrowse
+FLOC 32 9
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+TEXT "Thickness:"
+TLOC 2 11
+ENDTEXT
+FIELD spacerThickness
+FLOC 13 11
+STRFILLIN 16 40
+ENDFIELD
+
+GROUP "Dimensions"
+GLOC 1 14 
+GSIZE 35 9
+ENDGROUP
+
+TEXT "Length:"
+TLOC 2 16
+ENDTEXT
+TEXT
+TLOC 13 16
+INFO spacerLength 18
+ENDTEXT
+
+TEXT "Width:"
+TLOC 2 18
+ENDTEXT
+TEXT
+TLOC 13 18
+INFO spacerWidth 18
+ENDTEXT
+
+FIELD spacerDimResize
+FLOC 13 20
+MENUBUTTON "Resize Spacer" 12 3
+ENDFIELD
+
+GROUP "Spacer Placement"
+GLOC 1 23
+GSIZE 35 10
+ENDGROUP
+
+TEXT "Layer:"
+TLOC 2 25
+ENDTEXT
+FIELD spacerLayer
+FLOC 13 25
+ENUMSET 15
+POP "spacerLayerPopup"
+ENDFIELD
+
+TEXT "Rotation:"
+TLOC 2 27
+ENDTEXT
+FIELD spacerRotation
+FLOC 13 27
+STRFILLIN 15 15
+POP "rotationPopup"
+ENDFIELD
+
+FIELD spacerDelete
+FLOC 3 30
+MENUBUTTON "Delete" 8 3
+ENDFIELD
+
+FIELD spacerMove
+FLOC 13 30
+MENUBUTTON "Move" 8 3
+ENDFIELD
+
+FIELD spacerSwap
+FLOC 23 30
+MENUBUTTON "Swap" 8 3
+ENDFIELD
+
+ENDTAB
+
+TAB "Interposers"
+
+TEXT "Ref ID:"
+TLOC 2 2
+ENDTEXT
+FIELD iposerId
+FLOC 13 2
+ENUMSET 15
+POP "iposerIdPopup"
+ENDFIELD
+
+TEXT "Symbol name:"
+TLOC 2 4
+ENDTEXT
+TEXT
+TLOC 13 4
+INFO iposerSymbolName 18
+ENDTEXT
+
+TEXT "Part number:"
+TLOC 2 6
+ENDTEXT
+FIELD iposerPartNumber
+FLOC 13 6
+STRFILLIN 16 40
+ENDFIELD
+
+GROUP "Conductor Material"
+GLOC 1 8
+GSIZE 35 7
+ENDGROUP
+
+TEXT "Name:"
+TLOC 2 10
+ENDTEXT
+FIELD iposerCondName
+FLOC 13 10
+STRFILLIN 16 40
+ENDFIELD
+FIELD iposerCondNameBrowse
+FLOC 32 10
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+TEXT "Thickness:"
+TLOC 2 12
+ENDTEXT
+FIELD iposerCondThickness
+FLOC 13 12
+STRFILLIN 16 40
+ENDFIELD
+
+GROUP "Dielectric Material"
+GLOC 1 15
+GSIZE 35 7
+ENDGROUP
+
+TEXT "Name:"
+TLOC 2 17
+ENDTEXT
+FIELD iposerDielName
+FLOC 13 17
+STRFILLIN 16 40
+ENDFIELD
+FIELD iposerDielNameBrowse
+FLOC 32 17
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+TEXT "Thickness:"
+TLOC 2 19
+ENDTEXT
+FIELD iposerDielThickness
+FLOC 13 19
+STRFILLIN 16 40
+ENDFIELD
+
+GROUP "Interpose Placement"
+GLOC 1 22
+GSIZE 35 10
+ENDGROUP
+
+TEXT "Layer:"
+TLOC 2 24
+ENDTEXT
+FIELD iposerLayer
+FLOC 13 24
+ENUMSET 15
+POP "iposerLayerPopup"
+ENDFIELD
+
+TEXT "Rotation:"
+TLOC 2 26
+ENDTEXT
+FIELD iposerRotation
+FLOC 13 26
+STRFILLIN 15 15
+POP "rotationPopup"
+ENDFIELD
+
+FIELD iposerDelete
+FLOC 3 29
+MENUBUTTON "Delete" 8 3
+ENDFIELD
+
+FIELD iposerMove
+FLOC 13 29
+MENUBUTTON "Move" 8 3
+ENDFIELD
+
+FIELD iposerSwap
+FLOC 23 29
+MENUBUTTON "Swap" 8 3
+ENDFIELD
+
+ENDTAB
+
+ENDTABSET
+
+FIELD diestackDwg
+THUMBNAIL
+FLOC 44 1
+FSIZE 58 34
+ENDFIELD
+
+FIELD bumpDwg
+THUMBNAIL
+FLOC 44 1
+FSIZE 58 33
+ENDFIELD
+
+FIELD done
+FLOC 2 38
+MENUBUTTON "OK" 9 3
+ENDFIELD
+
+FIELD apply
+FLOC 16 38
+MENUBUTTON "Apply" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 30 38
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+TEXT "View Orientation:"
+TLOC 52 37
+ENDTEXT
+FIELD diestackView
+FLOC 66 37
+ENUMSET 15
+POP "diestackViewPopup"
+ENDFIELD
+
+FIELD help
+FLOC 94 37
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+ENDTILE
+ENDFORM

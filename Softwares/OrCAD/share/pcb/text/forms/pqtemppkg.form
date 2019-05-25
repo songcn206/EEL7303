@@ -1,0 +1,168 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM fixed_font
+FIXED
+PORT 72 45
+HEADER "Create Surface Mounted Capacitor Temporary Package"
+
+ACTIVEFIELD "devtype"
+
+POPUP <devtypes>"0603""0603","other""other".
+POPUP <pkgsides>"Both""Both","Left""Left","Right""Right".
+
+MESSAGE badentry 0 "%s"
+
+TILE
+
+FIELD package_bitmap
+THUMBNAIL
+FLOC 46 1
+FSIZE 45 14
+ENDFIELD
+
+TEXT "Name:"
+TLOC 2 1
+TGROUP
+ENDTEXT
+
+FIELD name
+FLOC 16 1
+STRFILLIN 24 32
+FGROUP 
+ENDFIELD
+
+TEXT "Type:"
+TLOC 2 3
+TGROUP
+ENDTEXT
+
+FIELD dev_type
+FLOC 16 3
+STRFILLIN 21 50
+POP "devtypes"
+FGROUP 
+ENDFIELD
+
+TEXT "Length:"
+TLOC 2 5
+TGROUP
+ENDTEXT
+
+FIELD length
+FLOC 16 5
+STRFILLIN 24 50
+FGROUP 
+ENDFIELD
+
+TEXT
+TLOC 16 5
+INFO length_info 24
+TGROUP
+ENDTEXT
+
+TEXT "Width:"
+TLOC 2 7
+TGROUP
+ENDTEXT
+
+FIELD width
+FLOC 16 7
+STRFILLIN 24 50
+FGROUP 
+ENDFIELD
+
+TEXT
+TLOC 16 7
+INFO width_info 24
+TGROUP
+ENDTEXT
+
+TEXT "Pin width:"
+TLOC 2 9
+TGROUP
+ENDTEXT
+
+FIELD pin_width
+FLOC 16 9
+STRFILLIN 24 50
+FGROUP 
+ENDFIELD
+
+TEXT "Via diameter:"
+TLOC 2 11
+TGROUP
+ENDTEXT
+
+FIELD via_hole_size
+FLOC 16 11
+STRFILLIN 24 50
+FGROUP 
+ENDFIELD
+
+TEXT "Etch width:"
+TLOC 2 13
+TGROUP
+ENDTEXT
+
+FIELD etch_width
+FLOC 16 13
+STRFILLIN 24 50
+FGROUP 
+ENDFIELD
+
+#############################################################################
+
+GROUP "Pin Escapes"
+FLOC 2 16
+FSIZE 69 16
+ENDGROUP
+
+GRID pq_temppkg_surfacemount_grid
+FLOC 3 19
+FSIZE 67 10
+OPTIONS HLINES VLINES USERSIZE 
+
+GHEAD TOP 
+HEADSIZE 3
+OPTIONS 3D MULTI
+ENDGHEAD
+
+#GHEAD SIDE
+#HEADSIZE 3
+#OPTIONS 3D NUMBER
+#ENDGHEAD
+
+ENDGRID
+
+FIELD add_line
+FLOC 14 29
+FGROUP "Pin Escapes"
+MENUBUTTON "Add Pin Escape" 20 3
+ENDFIELD
+
+FIELD delete_line
+FLOC 38 29
+MENUBUTTON "Delete Pin Escape" 20 3
+FGROUP "Pin Escapes"
+ENDFIELD
+
+#############################################################################
+
+FIELD done
+FLOC 3 34
+MENUBUTTON "Done" 10 3
+ENDFIELD
+
+FIELD cancel
+FLOC 19 34
+MENUBUTTON "Cancel" 10 3
+ENDFIELD
+
+FIELD help
+FLOC 35 34
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM
+

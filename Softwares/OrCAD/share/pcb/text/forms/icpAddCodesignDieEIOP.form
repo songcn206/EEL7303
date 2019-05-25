@@ -1,0 +1,393 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 76 48
+HEADER "Add Co-Design Die"
+
+POPUP <LIBRARYNAME_LIST> "" "".
+POPUP <CELLNAME_LIST>    "" "".
+POPUP <VIEWNAME_LIST>    "" "".
+POPUP <REFLIB_LIST>      "" "".
+
+TILE
+TABSET "tab_selector"
+FLOC 2 1
+TSSIZE 74 44
+
+#ifdef ACD_CONCURRENT_CODESIGN
+TAB "Existing OA design" "existing_oa_tab"
+    TEXT "OpenAccess library: "
+    TLOC 2 2
+    ENDTEXT
+
+    FIELD libdefsname_text_oa
+    FLOC 20 2
+    STRFILLIN 32 1024
+    ENDFIELD
+
+    FIELD libdefs_browse_oa
+    FLOC 57 2
+    MENUBUTTON "Browse..." 10 3
+    ENDFIELD
+
+    TEXT "Library name: "
+    TLOC 2 5
+    ENDTEXT
+
+    FIELD libraryname_list_oa
+    FLOC 20 5
+    STRFILLIN 28 256
+    OPTIONS prettyprint ownerdrawn
+    POP "LIBRARYNAME_LIST"
+    ENDFIELD
+
+    TEXT "Cell name: "
+    TLOC 2 8
+    ENDTEXT
+
+    FIELD cellname_list_oa
+    FLOC 20 8
+    STRFILLIN 28 256
+    OPTIONS prettyprint ownerdrawn
+    POP "CELLNAME_LIST"
+    ENDFIELD
+
+    TEXT "View name: "
+    TLOC 2 11
+    ENDTEXT
+
+    FIELD viewname_list_oa
+    FLOC 20 11
+    STRFILLIN 28 256
+    OPTIONS prettyprint ownerdrawn
+    POP "VIEWNAME_LIST"
+    ENDFIELD
+
+    TEXT "Co-design die from OpenAccess database source."
+    TLOC 4 16
+    ENDTEXT
+
+    TEXT "On platforms that support Cadence I/O Planner (IOP), these dies can be edited in concurrent"
+    TLOC 4 18
+    ENDTEXT
+
+    TEXT "mode with IOP."
+    TLOC 4 20
+    ENDTEXT
+
+    TEXT "Library and Cell lists are populated from the OA libraries."
+    TLOC 4 22
+    ENDTEXT
+
+ENDTAB
+
+#ifdef __unix
+
+TAB "New design from DEF" "new_from_def_tab"
+    TEXT "DEF file to load: "
+    TLOC 2 2
+    ENDTEXT
+
+    FIELD defname_text
+    FLOC 20 2
+    STRFILLIN 32 1024
+    ENDFIELD
+
+    FIELD deffile_browse
+    FLOC 57 2
+    MENUBUTTON "Browse..." 10 3
+    ENDFIELD
+
+    TEXT "OpenAccess library: "
+    TLOC 2 5
+    ENDTEXT
+
+    FIELD libdefsname_text_def
+    FLOC 20 5
+    STRFILLIN 32 1024
+    ENDFIELD
+
+    FIELD libdefs_browse_def
+    FLOC 57 5
+    MENUBUTTON "Browse..." 10 3
+    ENDFIELD
+
+    TEXT "Reference library: "
+    TLOC 2 7
+    ENDTEXT
+
+    FIELD reflibname_list_def
+    FLOC 20 7
+    ENUMSET 30
+    POP "REFLIB_LIST"
+    ENDFIELD
+
+    GROUP "OA library/cell/view to save to: "
+    GLOC 1 9
+    GSIZE 53 13
+    ENDGROUP
+
+    TEXT "Library name: "
+    TLOC 2 12
+    ENDTEXT
+
+    FIELD libraryname_list_def
+    FLOC 20 12
+    STRFILLIN 28 256
+    OPTIONS prettyprint ownerdrawn
+    POP "LIBRARYNAME_LIST"
+    ENDFIELD
+
+    TEXT "Cell name: "
+    TLOC 2 15
+    ENDTEXT
+
+    FIELD cellname_list_def
+    FLOC 20 15
+    STRFILLIN 28 256
+    OPTIONS prettyprint ownerdrawn
+    POP "CELLNAME_LIST"
+    ENDFIELD
+
+    TEXT "View name: "
+    TLOC 2 18
+    ENDTEXT
+
+    FIELD viewname_list_def
+    FLOC 20 18
+    STRFILLIN 28 256
+    OPTIONS prettyprint ownerdrawn
+    POP "VIEWNAME_LIST"
+    ENDFIELD
+
+    TEXT "Co-design die source from Verilog requires concurrent co-design with Cadence I/O Planner (IOP)"
+    TLOC 4 23
+    ENDTEXT
+
+    TEXT "in order to initialize the floorplan to provide a physical representation of the die for placement"
+    TLOC 4 25
+    ENDTEXT
+
+    TEXT "in the package. Once this is updated from IOP to SiP Layout, it will have an OpenAccess database"
+    TLOC 4 27
+    ENDTEXT
+
+    TEXT "as its co-design source."
+    TLOC 4 29
+    ENDTEXT
+
+    TEXT "Library and Cell lists are initially populated from the OA libraries."
+    TLOC 4 31
+    ENDTEXT
+
+ENDTAB
+
+TAB "New design from Verilog" "new_from_verilog_tab"
+    TEXT "Verilog file to load: "
+    TLOC 2 2
+    ENDTEXT
+
+    FIELD vername_text
+    FLOC 20 2
+    STRFILLIN 32 1024
+    ENDFIELD
+
+    FIELD verfile_browse
+    FLOC 57 2
+    MENUBUTTON "Browse..." 10 3
+    ENDFIELD
+
+#ifdef ICP_CODESIGN_VERILOG_OPT_DEF
+    TEXT "(Optional) DEF file: "
+    TLOC 2 4
+    ENDTEXT
+
+    FIELD verdefname_text
+    FLOC 20 4
+    STRFILLIN 32 1024
+    ENDFIELD
+
+    FIELD verdeffile_browse
+    FLOC 57 4
+    MENUBUTTON "Browse..." 10 3
+    ENDFIELD
+#endif
+
+    TEXT "OpenAccess library: "
+    TLOC 2 6
+    ENDTEXT
+
+    FIELD libdefsname_text_ver
+    FLOC 20 6
+    STRFILLIN 32 1024
+    ENDFIELD
+
+    FIELD libdefs_browse_ver
+    FLOC 57 6
+    MENUBUTTON "Browse..." 10 3
+    ENDFIELD
+
+    TEXT "Reference library: "
+    TLOC 2 8
+    ENDTEXT
+
+    FIELD reflibname_list_ver
+    FLOC 20 8
+    ENUMSET 30
+    POP "REFLIB_LIST"
+    ENDFIELD
+
+    GROUP "OA library/cell/view to save to: "
+    GLOC 1 10
+    GSIZE 53 12
+    ENDGROUP
+
+    TEXT "Library name: "
+    TLOC 2 12
+    ENDTEXT
+
+    FIELD libraryname_list_ver
+    FLOC 20 12
+    STRFILLIN 28 256
+    OPTIONS prettyprint ownerdrawn
+    POP "LIBRARYNAME_LIST"
+    ENDFIELD
+
+    TEXT "Cell name: "
+    TLOC 2 15
+    ENDTEXT
+
+    FIELD cellname_list_ver
+    FLOC 20 15
+    STRFILLIN 28 256
+    OPTIONS prettyprint ownerdrawn
+    POP "CELLNAME_LIST"
+    ENDFIELD
+
+    TEXT "View name: "
+    TLOC 2 18
+    ENDTEXT
+
+    FIELD viewname_list_ver
+    FLOC 20 18
+    STRFILLIN 28 256
+    OPTIONS prettyprint ownerdrawn
+    POP "VIEWNAME_LIST"
+    ENDFIELD
+
+    TEXT "Power nets: "
+    TLOC 2 23
+    ENDTEXT
+
+    FIELD verilog_powernets_text
+    FLOC 20 23
+    STRFILLIN 32 256
+    OPTIONS prettyprint ownerdrawn
+    ENDFIELD
+
+    TEXT "Ground nets: "
+    TLOC 2 25
+    ENDTEXT
+
+    FIELD verilog_gndnets_text
+    FLOC 20 25
+    STRFILLIN 32 256
+    OPTIONS prettyprint ownerdrawn
+    ENDFIELD
+
+    TEXT "Co-design die source from Verilog requires concurrent co-design with Cadence I/O Planner (IOP)"
+    TLOC 4 28
+    ENDTEXT
+
+    TEXT "in order to initialize the floorplan to provide a physical representation of the die for placement"
+    TLOC 4 30
+    ENDTEXT
+
+    TEXT "in the package. Once this is updated from IOP to SiP Layout, it will have an OpenAccess database"
+    TLOC 4 32
+    ENDTEXT
+
+    TEXT "as its co-design source."
+    TLOC 4 34
+    ENDTEXT
+
+    TEXT "Library and Cell lists are initially populated from the OA libraries."
+    TLOC 4 36
+    ENDTEXT
+
+    TEXT "You must specify the cell name to match the top level module of the IC design."
+    TLOC 4 38
+    ENDTEXT
+
+ENDTAB
+
+#endif
+#endif
+
+#ifdef ACD_DISTRIBUTED_CODESIGN
+
+TAB "New design from Abstract" "new_from_xml_tab"
+    TEXT "Die abstract file to load: "
+    TLOC 2 2
+    ENDTEXT
+
+    FIELD xmlname_text
+    FLOC 20 2
+    STRFILLIN 32 1024
+    ENDFIELD
+
+    FIELD xmlfile_browse
+    FLOC 57 2
+    MENUBUTTON "Browse..." 10 3
+    ENDFIELD
+
+    TEXT "Design Name: "
+    TLOC 2 5
+    ENDTEXT
+
+    FIELD design_name_text
+    FLOC 20 5
+    STRFILLIN 32 1024
+    ENDFIELD
+
+    TEXT "Co-design die from Die Abstract file (.dia or .xda) source; no OpenAccess library."
+    TLOC 4 9
+    ENDTEXT
+    
+    TEXT "Co-design dies added using this method are not available for concurrent editing with Cadence"
+    TLOC 4 11
+    ENDTEXT
+
+    TEXT "I/O Planner, since that requires an OpenAccess database source."
+    TLOC 4 13
+    ENDTEXT
+
+ENDTAB
+
+#endif
+
+ENDTABSET
+
+FIELD done
+FLOC 3 46
+MENUBUTTON "OK" 12 3
+ENDFIELD
+
+FIELD cancel
+FLOC 22 46
+MENUBUTTON "Cancel" 12 3
+ENDFIELD
+
+FIELD leflibmgr
+FLOC 40 46
+MENUBUTTON "Library Manager" 12 3
+ENDFIELD
+
+FIELD help
+FLOC 59 46
+MENUBUTTON "Help" 12 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

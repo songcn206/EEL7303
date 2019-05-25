@@ -1,0 +1,71 @@
+####################################################################################
+#       Cadence Design Systems                                                     #
+#                                                                                  #
+# (C) COPYRIGHT, Cadence Design Systems, Inc. 2010                                 #
+# All Rights Reserved                                                              #
+# Licensed Materials - Property of Cadence Design Systems                          #
+#                                                                                  #
+# No part of this file may be reproduced, stored in a retrieval system,            #
+# or transmitted in any form or by any means --- electronic, mechanical,           #
+# photocopying, recording, or otherwise --- without prior written permission       #
+# of Cadence Design Systems, Inc.                                                  #
+#                                                                                  #
+# WARRANTY:                                                                        #
+# Use all material in this file at your own risk.  Cadence Design Systems          #
+# makes no claims about any material contained in this file.                       #
+####################################################################################
+FILE_TYPE=FORM_DEFN VERSION=2
+
+    FORM
+    FIXED
+    PORT 44 8
+    HEADER "Multiple Choice"
+
+    ACTIVEFIELD Done
+    DEFAULT Done
+
+    TILE
+
+    FIELD Done
+        FLOC 34 3
+        MENUBUTTON "OK" 10 3
+    ENDFIELD
+
+    FIELD Cancel
+        FLOC 34 6
+        MENUBUTTON "Cancel" 10 3
+    ENDFIELD
+
+    FIELD Help
+        FLOC 34 23
+        MENUBUTTON "Help" 10 3
+    ENDFIELD
+
+    GROUP "" "NameGroup"
+        GLOC 1 0
+        GSIZE 32 25
+    ENDGROUP
+
+    TEXT "Name:"
+        TLOC 2 3
+    ENDTEXT
+
+    POPUP <NameFilterPop>"""".
+    FIELD NameFilter
+        FLOC 9 3
+        STRFILLIN 18 256
+        POP "NameFilterPop"
+    ENDFIELD
+
+    FIELD NameList
+        FLOC 2 5
+        LIST "" 30 10
+    ENDFIELD
+
+    FLEXMODE EdgeGravity
+    FLEX NameGroup 0 0 1 1
+    FLEX NameFilter 0 0 1 0
+    FLEX NameList 0 0 1 1
+
+    ENDTILE
+ENDFORM

@@ -1,0 +1,156 @@
+####################################################################################
+#       Cadence Design Systems                                                     #
+#                                                                                  #
+# (C) COPYRIGHT, Cadence Design Systems, Inc. 2010                                 #
+# All Rights Reserved                                                              #
+# Licensed Materials - Property of Cadence Design Systems                          #
+#                                                                                  #
+# No part of this file may be reproduced, stored in a retrieval system,            #
+# or transmitted in any form or by any means --- electronic, mechanical,           #
+# photocopying, recording, or otherwise --- without prior written permission       #
+# of Cadence Design Systems, Inc.                                                  #
+#                                                                                  #
+# WARRANTY:                                                                        #
+# Use all material in this file at your own risk.  Cadence Design Systems          #
+# makes no claims about any material contained in this file.                       #
+####################################################################################
+FILE_TYPE=FORM_DEFN VERSION=2
+    FORM
+    FIXED
+    PORT 55 24
+    HEADER "Mounted Inductance Estimator"
+
+    ACTIVEFIELD PackageName
+    DEFAULT Done
+
+    TILE
+
+    FIELD Done
+        FLOC 2 22
+        MENUBUTTON "Done" 10 3
+    ENDFIELD
+
+    FIELD Cancel
+        FLOC 13 22
+        MENUBUTTON "Cancel" 10 3
+    ENDFIELD
+
+    FIELD Help
+        FLOC 44 22
+        MENUBUTTON "Help" 10 3
+    ENDFIELD
+
+    GROUP ""
+        GLOC 1 0
+        GSIZE 54 21
+    ENDGROUP
+
+    TEXT "Package:"
+        TLOC 2 2
+    ENDTEXT
+
+    POPUP <PackageNamePop>"""".
+    FIELD PackageName
+        FLOC 12 2
+        ENUMSET 23
+        POP "PackageNamePop"
+    ENDFIELD
+
+    FIELD PackageBrowse
+        FLOC 38 2
+        MENUBUTTON "..." 5 3
+    ENDFIELD
+
+    FIELD PackageCreate
+        FLOC 44 2
+        MENUBUTTON "Create" 10 3
+    ENDFIELD
+
+    TEXT "Mirror:"
+        TLOC 2 5
+    ENDTEXT
+
+    POPUP <MirrorPop>"Yes""Yes","No""No".
+    FIELD Mirror
+        FLOC 12 5
+        ENUMSET 12
+        POP "MirrorPop"
+    ENDFIELD
+
+    TEXT "Power plane:"
+        TLOC 2 8
+    ENDTEXT
+
+    POPUP <PlanePop>"""".
+    FIELD PowerPlane
+        FLOC 12 8
+        ENUMSET 12
+        POP "PlanePop"
+    ENDFIELD
+
+    TEXT "Height:"
+        TLOC 2 11
+    ENDTEXT
+
+    FIELD PowerHeight
+        FLOC 12 11
+        STRFILLIN 13 50
+        INFO_ONLY
+    ENDFIELD
+
+    TEXT "Thickness:"
+        TLOC 2 14
+    ENDTEXT
+
+    FIELD PowerThickness
+        FLOC 12 14
+        STRFILLIN 13 50
+        INFO_ONLY
+    ENDFIELD
+
+    TEXT "Ground plane:"
+        TLOC 30 8
+    ENDTEXT
+
+    FIELD GroundPlane
+        FLOC 40 8
+        ENUMSET 12
+        POP "PlanePop"
+    ENDFIELD
+
+    TEXT "Height:"
+        TLOC 30 11
+    ENDTEXT
+
+    FIELD GroundHeight
+        FLOC 40 11
+        STRFILLIN 13 50
+        INFO_ONLY
+    ENDFIELD
+
+    TEXT "Thickness:"
+        TLOC 30 14
+    ENDTEXT
+
+    FIELD GroundThickness
+        FLOC 40 14
+        STRFILLIN 13 50
+        INFO_ONLY
+    ENDFIELD
+
+    TEXT "Inductance:"
+        TLOC 2 18
+    ENDTEXT
+
+    TEXT
+        TLOC 12 18
+        INFO MountInduct 19
+    ENDTEXT
+
+    FIELD Calculate
+        FLOC 44 18
+        MENUBUTTON "Calculate" 10 3
+    ENDFIELD
+
+    ENDTILE
+ENDFORM

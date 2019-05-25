@@ -1,0 +1,208 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 49 49
+HEADER "Derive Die"
+
+POPUP <PINNUMPOPUP>"""".
+POPUP <LAYERPOPUP>"""".
+POPUP <PINSTARTPOPUP>"""".
+POPUP <TEXTBLOCKPOPUP>"""".
+
+TILE
+
+TABSET "tab"
+FLOC 1 1
+TSSIZE 47 45
+
+
+# Tab 1.
+# Comp/Symbol Generation information.
+# Symbol Name, Ref Des, die type, etc.
+# Tab 1.
+TAB "Die Information" Die_Information
+    GROUP "Identifiers"
+    GLOC 1 0
+    GSIZE 43 10
+    ENDGROUP
+
+    TEXT "Name:"
+    TLOC 5 3
+    ENDTEXT
+
+    FIELD package_name
+    FLOC 16 3
+    STRFILLIN 23 255
+    ENDFIELD
+
+    TEXT "Ref Des:"
+    TLOC 5 6
+    ENDTEXT
+
+    FIELD package_refDes
+    FLOC 16 6
+    STRFILLIN 23 128
+    ENDFIELD
+
+    GROUP "Die Attachment"
+    GLOC 1 10
+    GSIZE 43 13
+    ENDGROUP
+
+    FIELD package_wirebond
+    FLOC 5 13
+    CHECKLIST "Wire bond" "IC type"
+    ENDFIELD
+
+    FIELD package_flipchip
+    FLOC 5 15
+    CHECKLIST "Flip chip" "IC type"
+    ENDFIELD
+
+    FIELD package_chipup
+    FLOC 5 18
+    CHECKLIST "Chip up" "Chip Orientation"
+    ENDFIELD
+
+    FIELD package_chipdown
+    FLOC 5 20
+    CHECKLIST "Chip down" "Chip Orientation"
+    ENDFIELD
+
+    FIELD package_type_graphic
+    THUMBNAIL dgwirebond.bmp
+    FLOC 27 14
+    FSIZE 13 7
+    ENDFIELD
+ENDTAB
+
+# Tab 2.
+# Pin Number Information
+# Labelling scheme, start position, padding, JEDEC conventions, etc.
+# Also include which sides -- if any -- pin numbers should be 
+# displayed on.
+# Tab 2.
+TAB "Pin Numbering" Pin_Numbering
+    FIELD pin_number_graphic
+    THUMBNAIL dgnumcwtopleft.bmp
+    FLOC 12 1
+    FSIZE 22 10
+    ENDFIELD
+
+    GROUP "Pin Numbering"
+    GLOC 1 10
+    GSIZE 43 17
+    ENDGROUP
+
+    TEXT "Ordering:"
+    TLOC 5 13
+    ENDTEXT
+
+    FIELD pin_label_scheme
+    FLOC 13 13
+    ENUMSET 20
+    POP "PINNUMPOPUP"
+    ENDFIELD
+
+    TEXT "Start at:"
+    TLOC 5 15
+    ENDTEXT
+
+    FIELD pin_label_start
+    FLOC 13 15
+    ENUMSET 20
+    POP "PINSTARTPOPUP"
+    ENDFIELD
+
+    FIELD pin_letter_first
+    FLOC 5 18
+    CHECKLIST "Label with letters before numbers"
+    ENDFIELD
+
+    FIELD pin_jedec
+    FLOC 5 20
+    CHECKLIST "JEDEC standard."
+    ENDFIELD
+
+    FIELD pin_alpha_pad
+    TLOC 5 22 
+    CHECKLIST "Pad letter with A's."
+    ENDFIELD
+
+    FIELD pin_number_pad
+    TLOC 5 24
+    CHECKLIST "Pad number with zeros."
+    ENDFIELD
+
+    GROUP "Display Settings"
+    GLOC 1 27
+    GSIZE 43 15
+    ENDGROUP
+
+    FIELD pin_number_display
+    TLOC 5 29
+    CHECKLIST "Display pin numbers."
+    ENDFIELD
+
+    FIELD pin_number_left
+    TLOC 10 31
+    CHECKLIST "Left"
+    ENDFIELD
+
+    FIELD pin_number_right
+    TLOC 10 33
+    CHECKLIST "Right"
+    ENDFIELD
+
+    FIELD pin_number_top
+    TLOC 20 31
+    CHECKLIST "Top"
+    ENDFIELD
+
+    FIELD pin_number_bottom
+    TLOC 20 33
+    CHECKLIST "Bottom"
+    ENDFIELD
+
+    TEXT "Text Size:"
+    TLOC 5 36
+    ENDTEXT
+
+    FIELD pin_text_block
+    FLOC 13 36
+    ENUMSET 15
+    POP "TEXTBLOCKPOPUP"
+    ENDFIELD
+
+    TEXT "Distance from symbol edge:"
+    TLOC 5 39
+    ENDTEXT
+
+    FIELD pin_text_edge_spacing
+    FLOC 27 39
+    STRFILLIN 12 128
+    ENDFIELD
+ENDTAB
+ENDTABSET
+
+FIELD done
+FLOC 1 48
+MENUBUTTON "Ok" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 11 48
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 39 48
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+
+ENDTILE
+ENDFORM
+
+
+

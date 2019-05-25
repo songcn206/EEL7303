@@ -1,0 +1,201 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM 
+FIXED
+PORT 100 80
+HEADER "Workflow Manager"
+
+POPUP <right_mouse> "Default""Default".
+POPUP <path_popup> "Restore Default Path""Restore Default Path".
+POPUP <select_popup> "Select All""0","Deselect All""1","Select All Conductor""2".
+
+POPUP <layer_pop>" "" ".
+
+POPUP <prtn_lock_stat>"Inactive""0","Exported""1","Active""2","Master""3","Imported""4","Retracted""5".
+
+POPUP <prtn_prog_stat>"New""0","In Progress""1","Complete""2".
+
+MESSAGE wfm_ready 0 "Ready."
+MESSAGE wfm_none 0 "No valid partitions selected for %s.  Verify selections and press %s again."
+MESSAGE wfm_apply 0 "Use the Apply button to save changes."
+MESSAGE wfm_exporting 0 "Exporting partitions ... "
+MESSAGE wfm_export_ok 0 "Successfully exported %d partitions. Drawing saved."
+MESSAGE wfm_export_ok_no_save 0 "Successfully exported %d partitions. Drawing must be saved at exit."
+MESSAGE wfm_export_fail 3 "Export failed. See log file for more information."
+MESSAGE wfm_importing 0 "Importing partitions ... "
+MESSAGE wfm_import_ok 0 "Successfully imported %d of %d partitions."
+MESSAGE wfm_import_fail 3 "Import failed. See log file for more information."
+MESSAGE wfm_refreshing 0 "Refreshing partitions ... "
+MESSAGE wfm_refresh_ok 0 "Successfully refreshed %d of %d partitions."
+MESSAGE wfm_refresh_fail 3 "Refresh failed. See log file for more information."
+MESSAGE wfm_cancelling 0 "Cancelling partitions ... "
+MESSAGE wfm_cancel_ok 0 "Successfully cancelled %d partitions."
+MESSAGE wfm_cancel_fail 3 "Cancel failed. See log file for more information."
+MESSAGE wfm_nobrowse_master 0 "File browse not allowed for Master Design."
+MESSAGE wfm_nobrowse_inactive 0 "File browse not allowed for Inactive Partition."
+MESSAGE wfm_nobrowse_active 0 "File browse not allowed for Active Partition."
+MESSAGE wfm_generating_report 0 "Generating report ..."
+MESSAGE wfm_path_error 0 "Errors in referenced files.  See log file for more information."
+MESSAGE wfm_recovery 0 "Recovery mode."
+MESSAGE wfm_prtn_overlap 0 "Error: Partitions overlap. Please change start/stop layer to fix it."
+MESSAGE wfm_netrev_failed 3 "Netrev had errors, you must correct those problems before continuing with exporting partitions."
+MESSAGE wfm_netrev_succeeded 0 "Netrev had no errors."
+
+TILE
+
+GRID prtn_mgr_grid
+FLOC 1 0
+FSIZE 98 12
+OPTIONS HLINES VLINES USERSIZE
+POP "right_mouse"
+
+GHEAD TOP
+HEADSIZE 2
+OPTIONS 3D MULTI 
+POP "select_popup"
+ENDGHEAD
+
+ENDGRID
+
+TEXT "Notes:" prtn_mgr_note_label
+TLOC 51 12
+FSIZE 50 3
+ENDTEXT
+
+FIELD prtn_mgr_note
+FLOC 51 14
+STRFILLIN 40 10240
+FSIZE 48 10
+ENDFIELD
+
+TEXT "Append Note:" prtn_mgr_append_label
+TLOC 1 12
+ENDTEXT
+
+TEXT "Recovery Instructions:" prtn_mgr_recovery_label
+TLOC 1 12
+ENDTEXT
+
+#FIELD prtn_mgr_select_all
+#FLOC 0 0
+#MENUBUTTON "Select" 8 3
+#ENDFIELD
+
+FIELD prtn_mgr_new_note
+FLOC 1 14
+STRFILLIN 40 1024
+FSIZE 48 10
+ENDFIELD
+
+FIELD prtn_mgr_recovery_note
+FLOC 1 14
+STRFILLIN 40 1024
+FSIZE 98 10
+ENDFIELD
+
+FIELD prtn_mgr_import
+FLOC 1 25
+MENUBUTTON "Import" 8 3
+ENDFIELD
+
+FIELD prtn_mgr_defer_drc
+FLOC 1 28
+CHECKLIST "Defer DRC"
+ENDFIELD
+
+FIELD prtn_mgr_recover
+FLOC 1 30
+CHECKLIST "Recovery Mode"
+ENDFIELD
+
+FIELD prtn_mgr_export
+FLOC 16 25
+MENUBUTTON "Export" 8 3
+ENDFIELD
+
+FIELD prtn_mgr_edit_cns
+FLOC 16 28
+CHECKLIST "Edit Cns"
+ENDFIELD
+
+FIELD prtn_mgr_soft_boundary
+FLOC 16 30
+CHECKLIST "Soft Boundary"
+ENDFIELD
+
+FIELD prtn_mgr_mail
+FLOC 30 25
+MENUBUTTON "Mail" 8 3
+ENDFIELD
+
+FIELD prtn_mgr_suppress_mail
+FLOC 30 28
+CHECKLIST "Suppress Mail"
+ENDFIELD
+
+FIELD prtn_mgr_cancel_export
+FLOC 44 25
+MENUBUTTON "Retract" 8 3
+ENDFIELD
+
+FIELD prtn_mgr_delete
+FLOC 44 28
+MENUBUTTON "Delete" 8 3
+ENDFIELD
+
+FIELD prtn_mgr_refresh
+FLOC 44 31
+MENUBUTTON "Refresh" 8 3
+ENDFIELD
+
+FIELD prtn_mgr_preview
+FLOC 56 25
+MENUBUTTON "Preview" 11 3
+ENDFIELD
+
+FIELD prtn_mgr_report
+FLOC 56 28
+MENUBUTTON "Report" 11 3
+ENDFIELD
+
+FIELD prtn_mgr_cns_report
+FLOC 56 31
+MENUBUTTON "Cns Report" 11 3
+ENDFIELD
+
+FIELD prtn_mgr_import_ecos
+FLOC 72 25
+MENUBUTTON "ECO Wizard" 12 3
+ENDFIELD
+
+FIELD prtn_mgr_cancel
+FLOC 1 35
+MENUBUTTON "Done" 8 3
+ENDFIELD
+
+FIELD prtn_mgr_apply
+FLOC 16 35
+MENUBUTTON "Apply" 8 3
+ENDFIELD
+
+FIELD prtn_mgr_viewlog
+FLOC 30 35
+MENUBUTTON "ViewLog" 8 3
+ENDFIELD
+
+FIELD help
+FLOC 92 35
+MENUBUTTON "Help" 8 3
+ENDFIELD
+
+FLEXMODE edgegravity
+FLEX prtn_mgr_grid           0   0   1 1
+FLEX prtn_mgr_new_note       0   1 0.5 1
+FLEX prtn_mgr_append_label   0   1 0.5 1
+FLEX prtn_mgr_recovery_label 0   1 0.5 1
+FLEX prtn_mgr_note           0.5 1 0.5 1
+FLEX prtn_mgr_note_label     0.5 1 0.5 1
+
+ENDTILE
+
+ENDFORM
+

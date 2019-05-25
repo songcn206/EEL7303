@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta http-equiv="MSThemeCompatible" content="yes" />
+
+        <link type="text/css" rel="stylesheet" href="AdvancedSave.css">
+
+        <title>OrCAD Capture Advanced Save Framework</title>
+
+		<script language="javascript">
+			var englishString = null;
+			var localString = null;
+		</script>
+		
+        <script type="text/javascript" language="javascript" src="../../../../capture/tclscripts/orPrmCommon/baseScripts/orPrmJSLayerLoader.js"></script> 
+        <script type="text/javascript" src="nativeJs/String/ENU/AdvancedSave.js"></script>
+        <script type="text/javascript" src="../../orPrmCommon/baseScripts/orPrmLoadLocaleString.js"></script>
+		<script language="javascript">
+			 orLoadLocalString("../../capAdvancedSaveFramework/hybrid/nativeJs/String" , "AdvancedSave.js" , ArchiveString ,"../../capAdvancedSaveFramework/hybrid/advancedsave/advancedsave.nocache.js");
+		</script>
+        <script>
+            function normalizeSize()
+            {
+                var scrollWidth = ( document.documentElement.scrollWidth ? document.documentElement.scrollWidth : document.body.scrollWidth );
+                var scrollHeight = ( document.documentElement.scrollHeight ? document.documentElement.scrollHeight : document.body.scrollHeight );
+
+                var clientWidth =  ( document.documentElement.clientWidth ? document.documentElement.clientWidth : document.body.clientWidth );
+                var clientHeight =  ( document.documentElement.clientHeight ? document.documentElement.clientHeight : document.body.clientHeight );
+
+                deltaWidth = scrollWidth - clientWidth;
+                deltaHeight = scrollHeight - clientHeight;
+
+                if(deltaWidth > 0 || deltaHeight > 0)
+                {
+                    orPrmNativeCall("executeTcl", "capAdvancedSave::normalizeSize " + orPrmGetWidgetId() + " " + deltaWidth + " " + deltaHeight);
+                }
+            }
+        </script>
+    </head>
+    <body scroll="auto" onload="normalizeSize()">
+        <iframe src="javascript:''" id="__gwt_historyFrame" tabIndex='-1' style="position:absolute;width:0;height:0;border:0"></iframe>
+        <noscript>
+            <div style="width: 22em; position: absolute; left: 50%; margin-left: -11em; color: red; background-color: white; border: 1px solid red; padding: 4px; font-family: sans-serif">
+                Your web browser must have JavaScript enabled
+                in order for this application to display correctly.
+            </div>
+        </noscript>
+    </body>
+</html>

@@ -1,0 +1,37 @@
+
+     dbstat [-v] [-p] [-t] <filename.ext> ... <designM>
+
+Dbstat reports the Allegro design revision and platform architecture.
+
+Dbstat supports the following file types (extensions):
+      .brd .mdd .mcm .sip 
+      .mdd .dpf .dpm .dps .scf 
+      .pad .dra .mcm .psm .ssm .fsm, .bsm
+
+Options:
+    -v - Database version of design
+    -t - Report last saved tiering level. This is NOT the same as the last
+	product/option(s) active during saving the design. Instead it is the 
+	equivalent product and options that match the DRC in effect when the 
+	design was saved.
+    -p - The architecture on which the design was last saved (UNIX or NT) 
+	UNIX: big-endian systems (SPARC, PA-RISC)
+	NT: Little-endian systems (Intel or AMD)  (Windows, Linux, Sol86)
+	    This means it reports NT for saved designs on Linux.
+    -e - Editing time and last user (login) who saved design. Same as data reported
+	in status dialog. Edit time is in minutes
+
+The reported database version of the design may NOT be the same as the 
+version of Allegro used to save the database. The version reported by
+dbstat is the earliest version of Allegro that can open the design. If
+you do not use the capability of latter Allegro dot releases then
+the database revision is not changed.
+
+Dbstat accepts the wildcard character *.<ext> to report on multiple designs.
+
+Note:  For padstack (.pad) designs saved prior to version 10, dbstat 
+	returns the message, "Pre-rev 10 pad file." 
+
+Example: dbstat test.brd
+     returns information similar to the following:
+         test.brd: 16.0 UNIX

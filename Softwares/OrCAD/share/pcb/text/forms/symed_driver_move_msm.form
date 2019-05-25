@@ -1,0 +1,65 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 39 6
+HEADER "Move_Driver"
+
+POPUP <ROTATION_POPUP> "Automatic" "0", "Keep Current" "5", "North" "1", "West" "2", "South" "3", "East" "4".
+POPUP <MIRROR_POPUP> "No change" "0", "No" "1", "Yes" "2".
+## POPUP <SHOVE_POPUP> "Clockwise" "CW", "Counter-Clockwise" "CCW", "None" "None".
+
+TILE
+
+TEXT "MOVE DRIVER OPTIONS"
+TLOC 6 1
+ENDTEXT
+
+FIELD driver_unplace
+FLOC 1 5
+CHECKLIST "Unplace conflicting drivers"
+ENDFIELD
+
+FIELD driver_stretch
+FLOC 1 7
+CHECKLIST "Stretch connections"
+ENDFIELD
+
+##  TEXT "Shove Direction:"
+##  TLOC 1 9
+##  ENDTEXT
+##  FIELD driver_push_shove
+##  FLOC 12 7
+##  ENUMSET 13
+##  POP "SHOVE_POPUP"
+##  ENDFIELD
+
+TEXT "Driver Rotation:"
+TLOC 1 11
+ENDTEXT
+FIELD driver_rot
+FLOC 12 11
+ENUMSET 13
+POP "ROTATION_POPUP"
+ENDFIELD
+
+TEXT "Driver Mirror:"
+TLOC 1 13
+ENDTEXT
+FIELD driver_mirror
+FLOC 12 13
+ENUMSET 13
+POP "MIRROR_POPUP"
+ENDFIELD
+
+## TEXT "Size:"
+## TLOC 1 15
+## ENDTEXT
+## TEXT "100um x 500um"
+## TLOC 10 10
+## INFO driver_size 15 256
+## ENDTEXT
+
+ENDTILE
+
+ENDFORM
+

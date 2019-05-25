@@ -1,0 +1,35 @@
+
+Command line arguments for allegro_plot
+	On Unix Plots Allegro ipf (Intermediate Plot Files) file to 
+	to specified plotter.
+
+
+Unix Plot
+  allegro_plot [-b] [-c <number>] [-m] [-o outFile] 
+		[-p parmFile] [-s scrFile] [-S <stippleFile>]
+		[<ipf file>]
+
+Arguments and Switches (all are optional):
+    -b 		   run program in batch mode
+    -c <int>       the number of copies to be plotted
+    -m             send mail to user when plot is completed
+    -o <outFile>    output to file only to this output file
+    -p <parmFile>  the parameter file to be used on startup
+    -s <scrFile>   run script file
+    -S <stippleFile> use specified stipple file (if does not have a 
+		   directory component uses LOCALPATH env variable to find
+
+   <ipf file>      Intermediate plot file, normally two files a data file
+		   with a plt extension and a pen file with a ctl extension.
+		   Both files must have the same base name.
+
+Notes:
+   1) cannot use -s and -b options together
+   2) -b option still requires a Xserver (e.g. UI) to be active
+   3) This program does not require a license
+   4) ~/.cdsplotinit file is required and specifies the print/plotters
+	available in your environment
+   5) Plot options is controlled by the <parmFile> which has a 
+      default name of allegro_plot_param.txt. It is found using
+      env variable ADS_SDPLOT so can be installed using the CDS_SITE
+      methodology.

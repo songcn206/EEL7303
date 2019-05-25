@@ -1,0 +1,122 @@
+
+include "dfa_constraints.par"
+
+use DFA;
+
+RuleDefine
+
+
+/***********************************************************************
+ This defines the allowable lead spans for AXIAL 
+ components.
+***********************************************************************/
+
+Rule lead_span_audit
+
+component1 and
+
+/* Is of type axial and has only two pins */
+count(getPin(component1)) == 2 and
+getSymbolProperty(component1,"DFA_DEV_CLASS") == "AL" and
+/* Some initialization to get the inputs as a list */
+category := concat(SELECT_BY1) and
+names := concat(VALUE1) and
+/* Can be by list and by Equation */
+methods := concat(METHOD) and
+allowed_units := concat(UNITS) and
+/* For By Equation, a single item in the list has" X Y Base:Increment" in that order*/
+list_allowed_spans := concat(SPAN_VALUE_LIST) and
+bi_allowed_spans := concat(IPC_MIL_INSERTION_GRID) and
+
+
+/* Find the first category that matches */
+findfirst(category,
+              append(done,category) and
+              curr_ind := count(done) and
+              curr_name := nth(names,curr_ind) and
+              matchCompCategory(component1,category,curr_name)
+            ) and
+curr_iter := count(done) and
+
+/* Get the method to be used for that category */
+curr_method := nth(methods,curr_iter) and
+curr_unit := nth(allowed_units,curr_iter) and
+
+/* Get the body length.Body length is the pacakage body length if one exists, else 
+   it is the maximum distance between the pins */
+
+body_length := getComponentBodyLength(component1) and
+current_span := convertDbToUserUnits(getComponentSpan(component1),curr_unit) and
+if(curr_method == concat("IPC-CM-770A","MIL-STD-275C"),
+/* By equation, so calculate the minimum span value */
+   dia := max(convertUnits(getPropertyValue(getPin(component1),"LEAD_DIAMETER"), "MIL")) and
+   const := if((curr_method == "IPC-CM-770A"),60,30) and
+   comp_span := convertDbToUserUnits(body_length + convertUserToDbUnits(3 * dia,"MILS") + convertUserToDbUnits(const,"MILS"),curr_unit) and
+   cur_base_inc := nth(bi_allowed_spans,curr_iter) and
+   base_and_inc := getAllSubStrings(cur_base_inc,{""," "},{" ",""}) and
+
+/* Get the first item in the list whose base is greater than the component span .The
+   value to start with  would be the item with base less than this if one exists. Else
+   the allowed span is this base value itself. */
+   val_dec := count(
+                consider := findfirst(base_and_inc,
+                                      toFloat(getSubString(base_and_inc,
+                                                             {""," "},":")) 
+                                       >= toFloat(comp_span)
+                                      )  
+                    ) and
+   if(val_dec > 0 ,
+            if((toFloat(getSubString(consider,{""," "},":")) == comp_span),
+                a_vals := comp_span  and
+                a_vals /= current_span , 
+                left := index(base_and_inc,consider) and
+                if((left - 1) == 0 ,
+                   /* A value less than this does not exist, so allowed component span is
+                      just the base value of the base:increment pair */
+                    a_vals :=  toFloat(getSubString(consider,{""," "},":")) and
+                    a_vals /= current_span, 
+                   /* A value les than this exists, so check if the base-increment pair
+                      of that can be used */
+                    base := toFloat(getSubString(consider,{""," "},":")) and
+                    use_this := nth(base_and_inc,(left - 1)) and
+
+                    /* Get the actual component span */
+
+                    a_vals := inStep(comp_span,use_this,base) and
+                    a_vals /= current_span
+                  ) 
+               ),
+
+           /* Did not find any base greater , so take the last specified base increment pair 
+              and calculate based on that */
+
+             a_vals := inStep(comp_span,last(base_and_inc),0) and
+             a_vals /= current_span 
+      ) ,
+
+/* Check if any of the span values matches for "By List" option */
+      curr_span := nth(list_allowed_spans,curr_iter) and
+      curr_items := getAllSubStrings(curr_span,{""," "},{" ",""}) and
+      isNull(toFloat(current_span) == toFloat(curr_items)) and
+      a_vals :=  curr_span and
+      comp_span := body_length
+   ) and
+   val_allowed := concat_str(ntoa(a_vals)) and
+WriteDRCMarker(component1, "DFA / Wrong lead span value. Allowed values are: " + val_allowed , 
+                           ntoa(current_span)) and
+valConstraint := nth(concat(CONSTRAINTS), curr_iter) 
+
+
+Message(ERROR, component1,
+        "Component does not have standard span value" ,
+        "\nAllowed span value(s) : ?val_allowed" ,
+        "Component             : ?component1" ,
+        "Span Value            : ?current_span" ,
+        "Body Length           : ?convertDbToUserUnits(body_length,curr_unit)" ,
+        "Span value specified  : ?curr_method" ,
+        "Constraint name       : ?valConstraint" 
+);
+
+EndRule
+
+EndRuleDefine

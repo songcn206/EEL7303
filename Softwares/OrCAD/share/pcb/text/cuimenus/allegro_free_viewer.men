@@ -1,0 +1,142 @@
+// $Header: /vobs/psd_backend_data/data/men/allegro_free_viewer.men /main/5 2009-05-08T07:46:42-04 fxf $
+//------------------------------------------------------------------------
+//
+//	Cadence Design Systems
+//
+// (C) COPYRIGHT, Cadence Design Systems, Inc. 2007
+// All Rights Reserved
+// Licensed Materials - Property of Cadence Design Systems
+//
+// No part of this file may be reproduced, stored in a retrieval system,
+// or transmitted in any form or by any means --- electronic, mechanical,
+// photocopying, recording, or otherwise --- without prior written permission
+// of Cadence Design Systems, Inc.
+//
+// WARRANTY:
+// Use all material in this file at your own risk.  Cadence Design Systems 
+// makes no claims about any material contained in this file.
+//
+// ENVIRONMENT VARIABLES USED
+//	_SYMBOL
+//
+//------------------------------------------------------------------------
+
+// Loadable Menu File
+// ******************** ALLEGRO & SIP FREE_VIEWER menu
+
+
+viewlayout MENU DISCARDABLE
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&Open...",			"open"
+        POPUP "Recent &Designs"
+        BEGIN
+            MENUITEM "Recent File List",        "|mru"
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "&File Viewer...",		"viewlog -browse"
+#ifndef __unix
+        MENUITEM "&Plot...",			"plot"
+        MENUITEM "Plot Set&up...",		"plot setup"
+        MENUITEM "Plot Previe&w...",            "plot preview"
+        MENUITEM "Capture &Canvas Image...",    "capture image"
+#endif
+	MENUITEM "S&cript...",                  "script"
+	MENUITEM SEPARATOR
+        MENUITEM "E&xit",			"exit"
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Zoom By Points",		"zoom points"
+        MENUITEM "Zoom &Fit",			"zoom fit"
+        MENUITEM "Zoom &In",			"zoom in"
+        MENUITEM "Zoom &Out",			"zoom out"
+        MENUITEM "Zoom &World",			"zoom world"
+        MENUITEM "Zoo&m Center",		"zoom center"
+        MENUITEM "Zoom Pre&vious",              "zoom previous"
+        MENUITEM SEPARATOR
+        MENUITEM "Color View &Save",         	"colorview create"
+        MENUITEM "Color View Restore &Last",	"colorview restore"	
+        MENUITEM SEPARATOR
+	MENUITEM "&Flip Design",                "flipdesign"
+        MENUITEM SEPARATOR
+        MENUITEM "&Refresh",			"redraw"
+      POPUP "Wi&ndows"
+      BEGIN
+         MENUITEM "Command",          "showhide text"
+         MENUITEM "World View",       "showhide view"
+         MENUITEM "Options",          "showhide options"
+         MENUITEM "Find",             "showhide find"
+         MENUITEM "Visibility",       "showhide vis"
+         MENUITEM "Show All",         "show allpanes"
+      END
+      MENUITEM "&Customize Toolbar...",             "display toolbar param"
+      MENUITEM "Reset UI to Cadence Default", "reset dockwindows"
+    END
+    POPUP "&Display"
+    BEGIN
+        MENUITEM "&Color/Visibility...",	"color192"
+        MENUITEM "&Layer Priority...",          "layer priority"
+        MENUITEM SEPARATOR
+	MENUITEM "S&tatus...",			"status"
+        MENUITEM "&Element",			"show element"
+	MENUITEM "&Measure",			"show measure"
+	MENUITEM "Constra&int",			"cns show"
+        MENUITEM "P&roperty...",                "show property"
+#ifdef SIP
+        MENUITEM SEPARATOR
+	MENUITEM "Die &Stack...",               "diestack editor"
+#endif
+        MENUITEM SEPARATOR
+	MENUITEM "&Assign Color",               "assign color"
+        MENUITEM "&Highlight",			"hilight"
+        MENUITEM "&Dehighlight",		"dehilight"
+        MENUITEM SEPARATOR
+        POPUP "&Waive DRCs"
+        BEGIN
+            MENUITEM "&Show",             "show waived drcs"
+            MENUITEM "&Blank",            "blank waived drcs"
+        END
+#ifndef _SYMBOL
+        MENUITEM SEPARATOR
+#ifdef SIP
+        MENUITEM "Rats by &Layer...",           "rats layer"
+#endif
+        POPUP "&Show Rats"
+        BEGIN
+            MENUITEM "&All",			"rats all"
+            MENUITEM "&Components",		"rats component"
+            MENUITEM "&Net",			"rats net"
+        END
+        POPUP "&Blank Rats"
+        BEGIN
+            MENUITEM "&All",			"unrats all"
+            MENUITEM "&Components",		"unrats component"
+            MENUITEM "&Nets",			"unrats net"
+        END
+#endif
+    END
+    POPUP "&Setup"
+    BEGIN
+        MENUITEM "Desi&gn Parameters...",        "prmed"
+        MENUITEM "&Grid...",        		"define grid"
+        MENUITEM "&Cross-section...",           "xsection"
+        MENUITEM "&Embedded Layer Setup...",	"define embedded layer"
+        MENUITEM "&OpenGL Status", 		"opengl report"
+        MENUITEM "Datatip Customization...",      "custom datatips"
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&Documentation",              "cdsdoc allegro allegrolaunch"
+        POPUP "&Web Resources"
+	BEGIN
+           MENUITEM "&Community",		"http http://www.cadence.com/community"
+           MENUITEM "&Online Support",		"http http://support.cadence.com"
+           MENUITEM "&Web Collaboration",	"http http://collaboration.cadence.com"
+           MENUITEM "&Education Services",	"http http://www.cadence.com/education"
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "&About...",			"about"
+    END
+END

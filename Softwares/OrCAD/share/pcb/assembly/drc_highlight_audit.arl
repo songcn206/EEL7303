@@ -1,0 +1,22 @@
+include "dfa_constraints.par"
+use DFA;
+
+
+
+RuleDefine
+Rule intel_drc_highlight
+
+drc1 AND
+if(hasProperty(drc1, "EXTERNAL_VIOLATION_DESCRIPTION"),
+   val_description := getPropertyValue(drc1, "EXTERNAL_VIOLATION_DESCRIPTION"),
+   val_description := "Allegro defined DRC"
+)
+
+Message(INFO, drc1,
+        "cross probe DRCs",
+        "\n?drc1",
+        "\n?val_description"
+);
+
+EndRule
+EndRuleDefine

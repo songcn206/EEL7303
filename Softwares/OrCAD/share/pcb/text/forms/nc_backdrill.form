@@ -1,0 +1,69 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED    
+PORT 84 24
+HEADER "Backdrill Setup and Analysis"
+
+POPUP <objects_pop> "Pins"      "1",\
+                    "Vias"      "2",\
+                    "Pins&Vias" "3".
+
+POPUP <right_mouse> "Dummy"     "Dummy".
+
+TILE
+
+TABSET "BackdrillParametersTABS"
+FLOC 1 1
+TSSIZE 82 36
+
+TAB "Backdrill Passes"
+
+GRID PassGrid
+FLOC 1 1
+FSIZE 80 32
+OPTIONS HLINES VLINES USERSIZE
+POP "right_mouse"
+
+GHEAD TOP
+HEADSIZE 2
+OPTIONS 3D MULTI
+ENDGHEAD
+
+ENDGRID
+
+ENDTAB
+
+FIELD close
+FLOC 2 38
+MENUBUTTON "Close" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 12 38
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD analyze
+FLOC 30 38
+MENUBUTTON "Analyze" 9 3
+ENDFIELD
+
+FIELD view_log     
+FLOC 40 38
+MENUBUTTON "View Log" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 74 38
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+ENDTABSET
+
+FLEXMODE edgegravity
+FLEX BackdrillParametersTABS 0 0 1 1
+FLEX PassGrid 0 0 1 1
+
+ENDTILE
+
+ENDFORM

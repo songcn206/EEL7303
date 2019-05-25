@@ -1,0 +1,670 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM fixed_font
+FIXED
+PORT 73 50
+HEADER "Analysis Report Generator"
+
+POPUP <c_column9>"Net""Net".
+
+POPUP <c_column10>"Net""Net".
+
+POPUP <c_column11>"Net""Net".
+
+POPUP <c_column12>"Net""Net".
+
+POPUP <c_sort>"NoiseMargin High""NMHigh","NoiseMargin Low""NMLow","FirstSwitch Delay""SwitchDly","FinalSettle Delay""SettleDly",\
+"Overshoot High""OshootHigh","Overshoot Low""OshootLow".
+
+POPUP <c_column1>"NoiseMargin Low""NMLow","FirstSwitch Delay""SwitchDly","FinalSettle Delay""SettleDly","Overshoot High""OshootHigh",\
+"Overshoot Low""OshootLow","NoiseMargin High""NMHigh".
+
+POPUP <c_column2>"NoiseMargin Low""NMLow","FirstSwitch Delay""SwitchDly","FinalSettle Delay""SettleDly","Overshoot High""OshootHigh",\
+"Overshoot Low""OshootLow","NoiseMargin High""NMHigh".
+
+POPUP <c_column3>"FirstSwitch Delay""SwitchDly","FinalSettle Delay""SettleDly","Overshoot High""OshootHigh","Overshoot Low""OshootLow",\
+"NoiseMargin High""NMHigh","NoiseMargin Low""NMLow".
+
+POPUP <c_column4>"FinalSettle Delay""SettleDly","Overshoot High""OshootHigh","Overshoot Low""OshootLow","NoiseMargin High""NMHigh",\
+"NoiseMargin low""NMLow","FirstSwitch Delay""SwitchDly".
+
+POPUP <c_column5>"NoiseMargin High""NMHigh","NoiseMargin Low""NMLow","FirstSwitch Delay""SwitchDly","FinalSettle Delay""SettleDly",\
+"Overshoot High""OshootHigh","Overshoot Low""OshootLow".
+
+POPUP <c_column6>"NoiseMargin High""NMHigh".
+
+POPUP <c_column7>"NoiseMargin High""NMHigh".
+
+POPUP <c_column8>"NoiseMargin High""NMHigh".
+
+POPUP <CasePOP>"case1""case1".
+
+POPUP <NetSelectionPOP> "All Selected Nets" "All Selected Nets", "Highlighted Net Only" "Highlighted Net Only".
+
+POPUP <DriverSelectionPOP> "Fastest Driver" "Fastest Driver", "Hilighted Driver Only" "Hilighted Driver Only", "All Xnet Drivers" "All Xnet Drivers".
+
+POPUP <OddEvenPOP>"Odd""Odd","Even""Even","Odd/Even""Odd/Even".
+
+POPUP <NetNeighborSelectionPOP> "All Neighbors Simultaneously" "All Neighbors Simultaneously", "Fastest Neighbor" "Fastest Neighbor", "All TWGroups" "All TWGroups".
+
+POPUP <DriverNeighborSelectionPOP> "Fastest Driver" "Fastest Driver".
+
+POPUP <RptPOP> "none" "none"
+
+TILE
+
+TABSET "TABS"
+FLOC 1 1
+TSSIZE 72 49
+
+TAB "Standard Report"
+
+GROUP "Case Selection" "StdCaseSelection"
+GLOC 1 0
+GSIZE 69 4
+ENDGROUP
+
+TEXT
+TLOC 2 2
+INFO StdCurrentCaseLabel 14
+TGROUP "StdCaseSelection"
+ENDTEXT
+
+FIELD StdCurrentCase
+FLOC 16 2
+ENUMSET 50 
+POP "CasePOP"
+FGROUP "StdCaseSelection"
+ENDFIELD
+
+GROUP "Report Types"
+GLOC 1 4
+GSIZE 69 10
+ENDGROUP
+
+FIELD RptReflectionSummary
+FLOC 2 6
+CHECKLIST "Reflection Summary"
+FGROUP "Report Types"
+ENDFIELD
+
+FIELD RptParasitics
+FLOC 25 6
+CHECKLIST "Parasitics"
+FGROUP "Report Types"
+ENDFIELD
+
+FIELD RptCrosstalkEstimated
+FLOC 46 6
+CHECKLIST "Segment Crosstalk"
+FGROUP "Report Types"
+ENDFIELD
+
+FIELD RptDelay
+FLOC 2 8
+CHECKLIST "Delay"
+FGROUP "Report Types"
+ENDFIELD
+
+FIELD RptSSN
+FLOC 25 8
+CHECKLIST "SSN"
+FGROUP "Report Types"
+ENDFIELD
+
+FIELD RptCrosstalkSummary
+FLOC 46 8
+CHECKLIST "Crosstalk Summary"
+FGROUP "Report Types"
+ENDFIELD
+
+FIELD RptRinging
+FLOC 2 10
+CHECKLIST "Ringing"
+FGROUP "Report Types"
+ENDFIELD
+
+    #ifdef CHIPIO 
+FIELD RptSPEFParasitic
+FLOC 25 10
+CHECKLIST "SPEF Parasitic"
+FGROUP "Report Types"
+ENDFIELD
+    #endif
+
+FIELD RptCrosstalkDetailed
+FLOC 46 10
+CHECKLIST "Crosstalk Detailed"
+FGROUP "Report Types"
+ENDFIELD
+
+FIELD RptEMISN
+FLOC 2 12 
+CHECKLIST "Single Net EMI"
+FGROUP "Report Types"
+ENDFIELD
+
+
+GROUP "Fast/Typical/Slow Mode"
+GLOC 1 14
+GSIZE 69 4
+ENDGROUP
+
+FIELD StandardFast
+FLOC 2 16
+CHECKLIST "Fast"
+FGROUP "Fast/Typical/Slow Mode"
+ENDFIELD
+
+FIELD StandardTypical
+FLOC 15 16
+CHECKLIST "Typical"
+FGROUP "Fast/Typical/Slow Mode"
+ENDFIELD
+
+FIELD StandardSlow
+FLOC 28 16
+CHECKLIST "Slow"
+FGROUP "Fast/Typical/Slow Mode"
+ENDFIELD
+
+FIELD StandardFastSlow
+FLOC 41 16
+CHECKLIST "Fast/Slow"
+FGROUP "Fast/Typical/Slow Mode"
+ENDFIELD
+
+FIELD StandardSlowFast
+FLOC 54 16
+CHECKLIST "Slow/Fast"
+FGROUP "Fast/Typical/Slow Mode"
+ENDFIELD
+
+
+GROUP "Primary Net"
+GLOC 1 18
+GSIZE 69 6
+ENDGROUP
+
+TEXT "Net Selection:"
+TLOC 2 20
+TGROUP "Primary Net"
+ENDTEXT
+
+FIELD StandardNetSelection
+FLOC 26 20
+ENUMSET 25
+POP "NetSelectionPOP"
+FGROUP "Primary Net"
+ENDFIELD
+
+TEXT "Driver Selection:"
+TLOC 2 22
+TGROUP "Primary Net"
+ENDTEXT
+
+FIELD StandardDriverSelection
+FLOC 26 22
+ENUMSET 25
+POP "DriverSelectionPOP"
+FGROUP "Primary Net"
+ENDFIELD
+
+
+GROUP "Aggressor"
+GLOC 1 24
+GSIZE 69 8
+ENDGROUP
+
+TEXT "Switch Mode:"
+TLOC 2 26
+TGROUP "Aggressor"
+ENDTEXT
+
+FIELD RptOddEven
+FLOC 26 26
+ENUMSET 12
+POP "OddEvenPOP"
+FGROUP "Aggressor"
+ENDFIELD
+
+TEXT "Net Selection:"
+TLOC 2 28
+TGROUP "Aggressor"
+ENDTEXT
+
+FIELD RptNeighborNetSelection
+FLOC 26 28
+ENUMSET 35
+POP "NetNeighborSelectionPOP"
+FGROUP "Aggressor"
+ENDFIELD
+
+TEXT "Driver Selection:"
+TLOC 2 30
+TGROUP "Aggressor"
+ENDTEXT
+
+FIELD RptNeighborDriverSelection
+FLOC 26 30
+ENUMSET 35
+POP "DriverNeighborSelectionPOP"
+FGROUP "Aggressor"
+ENDFIELD
+
+
+GROUP "Reflection Data Simulation"
+GLOC 1 32
+GSIZE 69 10
+ENDGROUP
+
+TEXT "Type:"
+TLOC 2 34
+TGROUP "Reflection Data Simulation"
+ENDTEXT
+
+FIELD RptReflForReflData
+FLOC 8 34
+CHECKLIST "Reflection" "simType"
+FGROUP "Reflection Data Simulation"
+ENDFIELD
+
+FIELD RptCompOddForReflData
+FLOC 8 36
+CHECKLIST "Comprehensive Odd" "simType"
+FGROUP "Reflection Data Simulation"
+ENDFIELD
+
+FIELD RptCompEvenForReflData
+FLOC 8 38
+CHECKLIST "Comprehensive Even" "simType"
+FGROUP "Reflection Data Simulation"
+ENDFIELD
+
+FIELD RptCompStatForReflData
+FLOC 8 40
+CHECKLIST "Comprehensive Static" "simType"
+FGROUP "Reflection Data Simulation"
+ENDFIELD
+
+TEXT "Measurement:"
+TLOC 35 34
+TGROUP "Reflection Data Simulation"
+ENDTEXT
+
+FIELD RptMeasTypePulse
+FLOC 38 36
+CHECKLIST "Pulse" "measType"
+FGROUP "Reflection Data Simulation"
+ENDFIELD
+
+FIELD RptMeasTypeRiseFall
+FLOC 38 38
+CHECKLIST "Rise/Fall" "measType"
+FGROUP "Reflection Data Simulation"
+ENDFIELD
+
+FIELD RptMeasTypeCustom
+FLOC 38 40
+CHECKLIST "Custom Stimulus" "measType"
+FGROUP "Reflection Data Simulation"
+ENDFIELD
+
+FIELD AssignStimulus
+FLOC 58 40 
+MENUBUTTON "Assign..." 10 3
+ENDFIELD
+
+FIELD StandardUseTimingWindows
+FLOC 2 42
+CHECKLIST "Use Timing Windows"
+ENDFIELD
+
+FIELD StandardSaveCkt
+FLOC 25 42
+CHECKLIST "Save Circuit Files"
+ENDFIELD
+
+FIELD StandardSaveWave
+FLOC 48 42
+CHECKLIST "Save Waveforms"
+ENDFIELD
+
+FIELD StandardCreateReport
+FLOC 26 44
+MENUBUTTON "Create Report" 20 3
+ENDFIELD
+
+ENDTAB
+
+
+TAB "Custom Report"
+
+GROUP "Case Selection" "CustomCaseSelection"
+GLOC 1 0
+GSIZE 69 4
+ENDGROUP
+
+TEXT
+TLOC 2 2
+INFO CustomCurrentCaseLabel 14
+TGROUP "CustomCaseSelection"
+ENDTEXT
+
+FIELD CustomCurrentCase
+FLOC 16 2
+ENUMSET 50 
+POP "CasePOP"
+FGROUP "CustomCaseSelection"
+ENDFIELD
+
+GROUP ""
+GLOC 1 4
+GSIZE 69 6
+ENDGROUP
+
+TEXT "Report Name:"
+TLOC 2 6
+TGROUP ""
+ENDTEXT
+
+FIELD CustomRptName
+FLOC 16 6
+FGROUP ""
+STRFILLIN 23 23
+POP "RptPOP"
+ENDFIELD
+
+FIELD CustomCloneReport
+FLOC 46 6
+MENUBUTTON "Clone Selected Report" 23 3
+ENDFIELD
+
+TEXT "Sort By:"
+TLOC 2 8
+TGROUP ""
+ENDTEXT
+
+FIELD RptCustomSort
+FLOC 16 8
+FGROUP "Simulation Data Table"
+ENUMSET 25
+POP "c_sort"
+ENDFIELD
+
+FIELD CustomNewReport
+FLOC 46 8
+MENUBUTTON "New Custom Report" 23 3
+ENDFIELD
+
+
+GROUP "Fast/Typical/Slow Mode"
+GLOC 1 10
+GSIZE 69 4
+ENDGROUP
+
+FIELD CustomFast
+FLOC 2 12
+CHECKLIST "Fast"
+FGROUP "Fast/Typical/Slow Mode"
+ENDFIELD
+
+FIELD CustomTypical
+FLOC 15 12
+CHECKLIST "Typical"
+FGROUP "Fast/Typical/Slow Mode"
+ENDFIELD
+
+FIELD CustomSlow
+FLOC 28 12
+CHECKLIST "Slow"
+FGROUP "Fast/Typical/Slow Mode"
+ENDFIELD
+
+FIELD CustomFastSlow
+FLOC 41 12
+CHECKLIST "Fast/Slow"
+FGROUP "Fast/Typical/Slow Mode"
+ENDFIELD
+
+FIELD CustomSlowFast
+FLOC 54 12
+CHECKLIST "Slow/Fast"
+FGROUP "Fast/Typical/Slow Mode"
+ENDFIELD
+
+
+GROUP "Primary Net"
+GLOC 1 14
+GSIZE 69 6
+ENDGROUP
+
+TEXT "Net Selection:"
+TLOC 2 16
+TGROUP "Primary Net"
+ENDTEXT
+
+FIELD CustomNetSelection
+FLOC 26 16
+ENUMSET 25
+POP "NetSelectionPOP"
+FGROUP "Primary Net"
+ENDFIELD
+
+TEXT "Driver Selection:"
+TLOC 2 18
+TGROUP "Primary Net"
+ENDTEXT
+
+FIELD CustomDriverSelection
+FLOC 26 18
+ENUMSET 25
+POP "DriverSelectionPOP"
+FGROUP "Primary Net"
+ENDFIELD
+
+
+GROUP "Simulation Data Table"
+GLOC 1 20
+GSIZE 69 10 
+ENDGROUP
+
+TEXT "Column 1:"
+TLOC 2 22
+TGROUP "Simulation Data Table"
+ENDTEXT
+
+FIELD RptCustomColumn1
+FLOC 12 22
+FGROUP "Simulation Data Table"
+ENUMSET 19
+POP "c_column1"
+ENDFIELD
+
+TEXT "Column 2:"
+TLOC 38 22
+TGROUP "Simulation Data Table"
+ENDTEXT
+
+FIELD RptCustomColumn2
+FLOC 48 22
+FGROUP "Simulation Data Table"
+ENUMSET 19
+POP "c_column2"
+ENDFIELD
+
+TEXT "Column 3:"
+TLOC 2 24
+TGROUP "Simulation Data Table"
+ENDTEXT
+
+FIELD RptCustomColumn3
+FLOC 12 24
+FGROUP "Simulation Data Table"
+ENUMSET 19
+POP "c_column3"
+ENDFIELD
+
+TEXT "Column 4:"
+TLOC 38 24
+TGROUP "Simulation Data Table"
+ENDTEXT
+
+FIELD RptCustomColumn4
+FLOC 48 24
+FGROUP "Simulation Data Table"
+ENUMSET 19
+POP "c_column4"
+ENDFIELD
+
+TEXT "Column 5:"
+TLOC 2 26
+TGROUP "Simulation Data Table"
+ENDTEXT
+
+FIELD RptCustomColumn5
+FLOC 12 26
+FGROUP "Simulation Data Table"
+ENUMSET 19
+POP "c_column5"
+ENDFIELD
+
+TEXT "Column 6:"
+TLOC 38 26
+TGROUP "Simulation Data Table"
+ENDTEXT
+
+FIELD RptCustomColumn6
+FLOC 48 26
+FGROUP "Simulation Data Table"
+ENUMSET 19
+POP "c_column6"
+ENDFIELD
+
+TEXT "Column 7:"
+TLOC 2 28
+TGROUP "Simulation Data Table"
+ENDTEXT
+
+FIELD RptCustomColumn7
+FLOC 12 28
+FGROUP "Simulation Data Table"
+ENUMSET 19
+POP "c_column7"
+ENDFIELD
+
+TEXT "Column 8:"
+TLOC 38 28
+TGROUP "Simulation Data Table"
+ENDTEXT
+
+FIELD RptCustomColumn8
+FLOC 48 28
+FGROUP "Simulation Data Table"
+ENUMSET 19
+POP "c_column8"
+ENDFIELD
+
+
+GROUP "Setup Data Table"
+GLOC 1 30
+GSIZE 69 6
+ENDGROUP
+
+TEXT "Column 1:"
+TLOC 2 32
+TGROUP "Setup Data Table"
+ENDTEXT
+
+FIELD RptCustomColumn9
+FLOC 12 32
+FGROUP "Setup Data Table"
+ENUMSET 19
+POP "c_column9"
+ENDFIELD
+
+TEXT "Column 2:"
+TLOC 38 32
+TGROUP "Setup Data Table"
+ENDTEXT
+
+FIELD RptCustomColumn10
+FLOC 48 32
+FGROUP "Setup Data Table"
+ENUMSET 19
+POP "c_column10"
+ENDFIELD
+
+TEXT "Column 3:"
+TLOC 2 34
+TGROUP "Setup Data Table"
+ENDTEXT
+
+FIELD RptCustomColumn11
+FLOC 12 34
+FGROUP "Setup Data Table"
+ENUMSET 19
+POP "c_column11"
+ENDFIELD
+
+TEXT "Column 4:"
+TLOC 38 34
+TGROUP "Setup Data Table"
+ENDTEXT
+
+FIELD RptCustomColumn12
+FLOC 48 34
+FGROUP "Setup Data Table"
+ENUMSET 19
+POP "c_column12"
+ENDFIELD
+
+
+FIELD CustomUseTimingWindows
+FLOC 2 42
+CHECKLIST "Use Timing Windows"
+ENDFIELD
+
+FIELD CustomSaveCkt
+FLOC 25 42
+CHECKLIST "Save Circuit Files"
+ENDFIELD
+
+FIELD CustomSaveWave
+FLOC 48 42
+CHECKLIST "Save Waveforms"
+ENDFIELD
+
+FIELD CustomCreateReport
+FLOC 26 44
+MENUBUTTON "Create Report" 20 3
+ENDFIELD
+
+
+ENDTAB
+
+ENDTABSET
+
+FIELD SimPrefs
+FLOC 27 51
+MENUBUTTON "Preferences..." 20 3
+ENDFIELD
+
+FIELD OK
+FLOC 2 51
+MENUBUTTON "OK" 11 3
+ENDFIELD
+
+FIELD Cancel
+FLOC 14 51
+MENUBUTTON "Cancel" 11 3
+ENDFIELD
+
+FIELD Help
+FLOC 62 51
+MENUBUTTON "Help" 11 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM
+

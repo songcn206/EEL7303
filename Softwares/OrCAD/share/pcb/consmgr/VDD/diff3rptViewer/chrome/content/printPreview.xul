@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://diff3rptViewer/skin/default/skin.css" type="text/css"?>
+
+<!-- window size is enough to open full screen -->
+<window id="printPreview" title="Print preview" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" onload="ppreview.Initialize();">
+
+    <script type="application/javascript" src="chrome://diff3rptViewer/content/print.js"/>
+
+    <commandset>
+        <command id="print-cmd" oncommand="ppreview.OnPrint();"/>
+        <command id="close-cmd" oncommand="ppreview.Close();"/>
+    </commandset>
+
+    <keyset>
+        <key keycode="VK_RETURN" command="print-cmd"/>
+        <key keycode="VK_ESCAPE" command="close-cmd"/>
+    </keyset>
+
+    <toolbar id="toolbar">
+        <toolbarbutton id="print-btn" command="print-cmd" tooltiptext="Send to printer [Enter]"/>
+        <toolbarbutton id="close-btn"  command="close-cmd" tooltiptext="Cancel [Esc]"/>
+    </toolbar>
+
+    <browser autoscroll="true" type="content-primary" id="printPreview-html-browser" flex="10"/>
+        
+</window>

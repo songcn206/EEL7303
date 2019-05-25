@@ -1,0 +1,105 @@
+####################################################################################
+#       Cadence Design Systems                                                     #
+#                                                                                  #
+# (C) COPYRIGHT, Cadence Design Systems, Inc. 2010                                 #
+# All Rights Reserved                                                              #
+# Licensed Materials - Property of Cadence Design Systems                          #
+#                                                                                  #
+# No part of this file may be reproduced, stored in a retrieval system,            #
+# or transmitted in any form or by any means --- electronic, mechanical,           #
+# photocopying, recording, or otherwise --- without prior written permission       #
+# of Cadence Design Systems, Inc.                                                  #
+#                                                                                  #
+# WARRANTY:                                                                        #
+# Use all material in this file at your own risk.  Cadence Design Systems          #
+# makes no claims about any material contained in this file.                       #
+####################################################################################
+FILE_TYPE=FORM_DEFN VERSION=2
+
+    FORM
+    FIXED
+    PORT 85 30
+    HEADER "Return Path Configuration"
+
+    DEFAULT Cancel
+
+    TILE
+
+    FIELD Done
+        FLOC 1 28
+        MENUBUTTON "OK" 10 3
+    ENDFIELD
+
+    FIELD Cancel
+        FLOC 12 28
+        MENUBUTTON "Cancel" 10 3
+    ENDFIELD
+
+    FIELD Reset
+        FLOC 53 28
+        MENUBUTTON "Reset" 10 3
+    ENDFIELD
+
+    FIELD Apply
+        FLOC 64 28
+        MENUBUTTON "Apply" 10 3
+    ENDFIELD
+
+    FIELD Help
+        FLOC 75 28
+        MENUBUTTON "Help" 10 3
+    ENDFIELD
+
+    GROUP "Power Net:" "PowerNetGroup"
+        GLOC 1 0
+        GSIZE 22 27
+    ENDGROUP
+
+    FIELD PowerNetList
+        FLOC 2 2
+        LIST "" 20 13
+        OPTIONS multiselect
+    ENDFIELD
+
+    GROUP "Specify the return path for the selected power pin:" "ReturnPathGroup"
+        GLOC 24 0
+        GSIZE 61 27
+    ENDGROUP
+
+    TEXT "Comp Name:"
+        TLOC 25 3
+    ENDTEXT
+
+    POPUP <CompNameList>"""".
+    FIELD CompName
+        FLOC 35 3
+        STRFILLIN 17 64
+        POP "CompNameList"
+    ENDFIELD
+
+    POPUP <RtnPinPop>"""".
+    POPUP <PinGridHeadPopup>"""".
+    GRID PinGrid
+    FLOC 25 5
+    FSIZE 59 22
+    OPTIONS HLINES VLINES USERSIZE
+
+    GHEAD TOP
+        HEADSIZE 2
+        OPTIONS 3D
+        POP "PinGridHeadPopup"
+    ENDGHEAD
+    GHEAD SIDE
+        HEADSIZE 0
+    ENDGHEAD
+    ENDGRID
+
+    FLEXMODE EdgeGravity
+    FLEX PowerNetGroup    0 0 1 1
+    FLEX PowerNetList     0 0 0 1
+    FLEX CompName         0 0 1 0
+    FLEX PinGrid          0 0 1 1
+
+    ENDTILE
+ENDFORM
+

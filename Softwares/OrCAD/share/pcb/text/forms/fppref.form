@@ -1,0 +1,282 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM fixed_font
+FIXED
+PORT 61 26
+HEADER "Setup - Drawing Preferences"
+
+POPUP <UNITS_POP>"Mils""1","Inch""2","Microns""5","Millimeter""3",\
+"Centimeter""4".
+
+POPUP <SIZE_POP>"Other""5".
+
+POPUP <TEXT_POP>"a""a".
+
+MESSAGE START 1 "No changes made until 'OK'."
+MESSAGE W_ZERO 1 "Drawing width is zero."
+MESSAGE H_ZERO 1 "Drawing height is zero."
+MESSAGE ZERO_DIM 1 "Non-zero, positive value only."
+MESSAGE NEG_DIM 1 "Positive value only."
+MESSAGE W_2_LARGE 1 "Drawing width is too large for this accuracy."
+MESSAGE H_2_LARGE 1 "Drawing height is too large for this accuracy."
+MESSAGE W_2_SMALL 1 "Drawing width is too small."
+MESSAGE H_2_SMALL 1 "Drawing height is too small."
+MESSAGE VALUE_2_LARGE 1 "Value(s) would be too large to process."
+MESSAGE REDUCE_LX 1 "Can't reduce lower X extent."
+MESSAGE REDUCE_LY 1 "Can't reduce lower Y extent."
+MESSAGE REDUCE_UX 1 "Can't reduce upper X extent."
+MESSAGE REDUCE_UY 1 "Can't reduce upper Y extent."
+MESSAGE NOT_DURING_INTER 1 "Not editable while in interactive command."
+MESSAGE PROCESS_OR_CLEAR 1 "Please process current changes or clear the form."
+MESSAGE DRC_PROBLEM 1 "Problem running batch drc."
+MESSAGE CHG_ORIGIN 1 "Change origin error."
+MESSAGE CHG_SIZE 1 "Change drawing size error."
+MESSAGE AFFECTS_DB 3 "Change may cause round-off; run dbcheck."
+MESSAGE LIMIT_B 1 "Exceeds minimum allowed %s coordinate."
+MESSAGE LIMIT_T 1 "Exceeds maximum allowed %s coordinate."
+MESSAGE WORK 1 "Working..."
+MESSAGE ILLEGAL_VAL 3 "Numeric values only."
+
+TILE
+TEXT "Units:"
+TLOC 2 3
+TGROUP "Drawing Parameters"
+ENDTEXT
+
+TEXT "Size:"
+TLOC 31 3
+TGROUP "Drawing Parameters"
+ENDTEXT
+
+TEXT "Accuracy:"
+TLOC 2 5
+TGROUP "Drawing Parameters"
+ENDTEXT
+
+TEXT "(decimal places)"
+TLOC 33 5
+TGROUP "Drawing Parameters"
+ENDTEXT
+
+
+TEXT "Left X:"
+TLOC 2 12
+TGROUP "Drawing Extents"
+ENDTEXT
+
+TEXT "Lower Y:"
+TLOC 31 12
+TGROUP "Drawing Extents"
+ENDTEXT
+
+TEXT "Width:"
+TLOC 2 14
+TGROUP "Drawing Extents"
+ENDTEXT
+
+TEXT "Height:"
+TLOC 31 14
+TGROUP "Drawing Extents"
+ENDTEXT
+
+TEXT "X:"
+TLOC 2 21
+TGROUP "Move Origin"
+ENDTEXT
+
+TEXT "Y:"
+TLOC 31 21
+TGROUP "Move Origin"
+ENDTEXT
+
+TEXT "Refdes:"
+TLOC 2 28
+TGROUP "Text Sizes"
+ENDTEXT
+
+TEXT "Room Name:"
+TLOC 2 30
+TGROUP "Text Sizes"
+ENDTEXT
+
+TEXT "Notes:"
+TLOC 2 32
+TGROUP "Text Sizes"
+ENDTEXT
+
+
+TEXT "Spacing X:"
+TLOC 2 39
+TGROUP "Placement Grid"
+ENDTEXT
+
+TEXT "Spacing Y:"
+TLOC 31 39
+TGROUP "Placement Grid"
+ENDTEXT
+
+TEXT "Offset X:"
+TLOC 2 41
+TGROUP "Placement Grid"
+ENDTEXT
+
+TEXT "Offset Y:"
+TLOC 31 41
+TGROUP "Placement Grid"
+ENDTEXT
+
+FIELD units
+FLOC 13 3
+ENUMSET 14
+POP "UNITS_POP"
+FGROUP "Drawing Parameters"
+ENDFIELD
+
+FIELD size
+FLOC 42 3
+ENUMSET 14
+POP "SIZE_POP"
+FGROUP "Drawing Parameters"
+ENDFIELD
+
+FIELD accuracy
+FLOC 13 5
+INTSLIDEBAR 12 12
+MIN 0
+MAX 5
+FGROUP "Drawing Parameters"
+ENDFIELD
+
+GROUP "Drawing Parameters"
+GLOC 1 0
+GSIZE 59 8
+ENDGROUP
+
+FIELD x
+FLOC 13 12
+STRFILLIN 12 12
+FGROUP "Drawing Extents"
+ENDFIELD
+
+FIELD y
+FLOC 42 12
+STRFILLIN 12 12
+FGROUP "Drawing Extents"
+ENDFIELD
+
+FIELD width
+FLOC 13 14
+STRFILLIN 12 12
+FGROUP "Drawing Extents"
+ENDFIELD
+
+FIELD height
+FLOC 42 14
+STRFILLIN 12 12
+FGROUP "Drawing Extents"
+ENDFIELD
+
+GROUP "Drawing Extents"
+GLOC 1 09
+GSIZE 59 8
+ENDGROUP
+
+FIELD move_x
+FLOC 13 21
+STRFILLIN 12 12
+FGROUP "Move Origin"
+ENDFIELD
+
+FIELD move_y
+FLOC 42 21
+STRFILLIN 12 12
+FGROUP "Move Origin"
+ENDFIELD
+
+GROUP "Move Origin"
+GLOC 1 18
+GSIZE 59 6
+ENDGROUP
+
+FIELD reftext
+FLOC 13 28
+ENUMSET 14
+POP "TEXT_POP"
+FGROUP "Text Sizes"
+ENDFIELD
+
+FIELD roomtext
+FLOC 13 30
+ENUMSET 14
+POP "TEXT_POP"
+FGROUP "Text Sizes"
+ENDFIELD
+
+FIELD notetext
+FLOC 13 32
+ENUMSET 14
+POP "TEXT_POP"
+FGROUP "Text Sizes"
+ENDFIELD
+
+GROUP "Text Sizes"
+GLOC 1 25
+GSIZE 59 10
+ENDGROUP
+
+FIELD x_grids
+FLOC 13 39
+STRFILLIN 12 12
+FGROUP "Placement Grid"
+ENDFIELD
+
+FIELD y_grids
+FLOC 42 39
+STRFILLIN 12 12
+FGROUP "Placement Grid"
+ENDFIELD
+
+FIELD x_offset
+FLOC 13 41
+STRFILLIN 12 12
+FGROUP "Placement Grid"
+ENDFIELD
+
+FIELD y_offset
+FLOC 42 41
+STRFILLIN 12 12
+FGROUP "Placement Grid"
+ENDFIELD
+
+GROUP "Placement Grid"
+GLOC 1 36
+GSIZE 59 8
+ENDGROUP
+
+FIELD fat_rats
+FLOC 1 45
+CHECKLIST "Single Ratsnest Line for Buses"
+ENDFIELD
+ 
+
+FIELD done
+FLOC 7 49
+MENUBUTTON "Done" 10 3
+ENDFIELD
+
+FIELD cancel
+FLOC 24 49
+MENUBUTTON "Cancel" 10 3
+ENDFIELD
+
+FIELD help
+FLOC 42 49
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM
+
+
+
+

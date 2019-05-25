@@ -1,0 +1,110 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM 
+FIXED
+PORT 85 80
+HEADER "IDX Flow Manager Import"
+
+POPUP <right_mouse> "Default""Default".
+POPUP <select_popup> "Select All""Select All".
+
+MESSAGE idxin_filter_ready 0 "Ready."
+
+
+TILE
+
+GRID idxin_filter_grid
+FLOC 1 0
+FSIZE 79 20
+OPTIONS HLINES VLINES USERSIZE
+POP "right_mouse"
+
+GHEAD TOP
+HEADSIZE 2
+OPTIONS 3D MULTI
+ENDGHEAD
+
+ENDGRID
+
+FIELD idxin_filter_prev
+FLOC 81 3
+MENUBUTTON "<--" 4 3
+ENDFIELD
+
+FIELD idxin_filter_next
+FLOC 81 6
+MENUBUTTON "-->" 4 3
+ENDFIELD
+
+TEXT "History:" idxin_filter_note_label
+TLOC 1 20
+FSIZE 50 3
+ENDTEXT
+
+FIELD idxin_filter_note
+FLOC 1 22
+STRFILLIN 40 10240
+FSIZE 79 7
+ENDFIELD
+
+#----------
+FIELD idxin_query
+FLOC 1 30
+MENUBUTTON "?" 3 3
+ENDFIELD
+
+TEXT "IDX accept/reject file:"
+TLOC 4 30
+INFO idxin_response_file_label
+ENDTEXT
+
+FIELD idxin_response_file_name
+FLOC 20 30
+STRFILLIN 52 256
+ENDFIELD
+
+FIELD idxin_browse
+FLOC 75 30
+MENUBUTTON "..." 3 3
+ENDFIELD
+#-------
+
+FIELD idxin_filter_import_all
+FLOC 3 34
+CHECKLIST "Select All"
+ENDFIELD
+
+FIELD idxin_filter_zp_zoom
+FLOC 15 34
+CHECKLIST "Roam and Zoom"
+ENDFIELD
+
+FIELD idxin_filter_ok
+FLOC 35 34
+MENUBUTTON "Done" 8 3
+ENDFIELD
+
+FIELD idxin_filter_cancel
+FLOC 44 34
+MENUBUTTON "Cancel" 8 3
+ENDFIELD
+
+FIELD idxin_filter_reset
+FLOC 53 34
+MENUBUTTON "Reset" 8 3
+ENDFIELD
+
+FIELD help
+FLOC 62 34
+MENUBUTTON "Help" 8 3
+ENDFIELD
+
+FLEXMODE edgegravity
+FLEX idxin_filter_grid    0   0   1 1
+FLEX idxin_filter_note    0   1   1 1
+FLEX idxin_response_file_name 0   1   1 1
+
+
+ENDTILE
+
+ENDFORM
+

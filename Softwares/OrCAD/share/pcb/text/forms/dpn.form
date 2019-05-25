@@ -1,0 +1,131 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 29 12
+
+HEADER "Display Pinnumber Netname"
+
+POPUP <class_popup> "Component Geometry" "COMPONENT GEOMETRY".
+POPUP <subclass_popup> "Pin_Number" "PIN_NUMBER".
+POPUP <mode_popup> "Package Pin Number" "PACKAGE PIN", "Package Pin Name" "PACKAGE PIN NAME", "Die Pin Number" "DIE PAD", "Die Pin Name" "DIE PAD NAME", "Bond Finger" "BOND FINGER", "Net Name" "NETNAME".
+POPUP <textrotation_popup> "0" "0", "90" "90", "270" "270", \
+                           "Align" "ALIGN", "Align CW" "ALIGN CW", "Align CCW" "ALIGN CCW".
+POPUP <textjust_popup> "Left" "LEFT", "Center" "CENTER", "Right" "RIGHT".
+
+TILE
+
+FIELD refresh_data
+FLOC 1 1
+MENUBUTTON "Refresh All Labels" 30 3
+ENDFIELD
+
+TEXT "Mode:"
+TLOC 1 5
+ENDTEXT
+
+FIELD dpmode
+FLOC 8 5
+ENUMSET 19
+POP "mode_popup"
+ENDFIELD
+
+FIELD single_string_only
+FLOC 1 7
+CHECKLIST "Display single text name only"
+ENDFIELD
+
+FIELD first_alphabetically
+FLOC 3 9
+CHECKLIST "Use first label alphabetically"
+ENDFIELD
+
+FIELD single_finger_label
+FLOC 1 11
+CHECKLIST "Single label for merged fingers"
+ENDFIELD
+
+FIELD append_to_existing
+FLOC 1 13
+CHECKLIST "Append to existing label"
+ENDFIELD
+
+FIELD update_selected
+FLOC 1 15
+MENUBUTTON "Updated selected objects" 20 3
+ENDFIELD
+
+TEXT "Text on Class and Subclass:"
+TLOC 1 19
+ENDTEXT
+
+FIELD dpclass
+FLOC 3 21
+ENUMSET 21
+POP "class_popup"
+ENDFIELD
+
+FIELD dpsubclass
+FLOC 3 23
+ENUMSET 21
+POP "subclass_popup"
+ENDFIELD
+
+
+GROUP "Text Parameter"
+GLOC 1 25
+GSIZE 27 13
+ENDGROUP
+
+TEXT "Block number:"
+TLOC 3 27
+ENDTEXT
+
+TEXT "Rotation:"
+TLOC 3 29
+ENDTEXT
+
+TEXT "Justification:"
+TLOC 3 31
+ENDTEXT
+
+TEXT "Offset X:"
+TLOC 3 33
+ENDTEXT
+
+TEXT "Offset Y:"
+TLOC 3 35
+ENDTEXT
+
+FIELD textblock
+FLOC 14 27
+INTSLIDEBAR 2 2
+MIN 1
+MAX 64
+ENDFIELD
+
+FIELD textrotation
+FLOC 14 29
+ENUMSET 10
+POP "textrotation_popup"
+ENDFIELD
+
+FIELD textjust
+FLOC 14 31
+ENUMSET 10
+POP "textjust_popup"
+ENDFIELD
+
+FIELD textoffsetx
+FLOC 14 33
+REALFILLIN 8 8
+DECIMAL 5
+ENDFIELD
+
+FIELD textoffsety
+FLOC 14 35
+REALFILLIN 8 8
+DECIMAL 5
+ENDFIELD
+
+ENDTILE
+ENDFORM

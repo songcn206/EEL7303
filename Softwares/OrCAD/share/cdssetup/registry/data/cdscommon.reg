@@ -1,0 +1,41 @@
+/*
+** Cadence Data Registry - cdscommon.reg
+**   File:  core definitions related to the Cadence Library Structure
+*/
+
+Library {
+    // cdsinfo.tag is the file that indicates that this directory
+    // IS a cadence library if the associated strict lib checking 
+    // facility is turned on.
+    //
+    // *.Cat and *.TopCat describe cell categories
+    // techfile.cds is the binary tech file representation
+    // *.tf is an ascii tech file representation
+    // display.drf is the display resource file
+    // *.att is a translated 'attach' file from DFII 4.3.X 
+    // *.cfg is a DFII 4.3.X config file converted to a DM checkpoint
+    // data.dm OA version of property file
+    // tech.db is the OA version of the tech file
+    // *.ctf new category format
+    // *.layermap is a naming convention (other suffixes are possible).
+    // .oalib has library characteristics (much like cdsinfo.tag)
+    Also_Managed = cdsinfo.tag display.drf techfile.cds
+	*.Cat *.TopCat *.att *.cfg *.rul *.tf data.dm tech.db *.ctf *.lam
+	*.layermap  .oalib;
+}
+
+Cell {
+    // *.att is an attached file at the cell level
+    // data.dm OA version of property file
+    Also_Managed = *.att data.dm;
+}
+
+DataFormat dfIICtfFiles { // dsCat based category files
+    Pattern             = *.ctf;
+    updaterProg         = ccpCtfUpdtr;
+}
+
+DataFormat dfIICategoryFiles {  // dfII catagory files
+    Pattern             = *.*Cat;
+    updaterProg         = ccpDfIICatUpdtr;
+}

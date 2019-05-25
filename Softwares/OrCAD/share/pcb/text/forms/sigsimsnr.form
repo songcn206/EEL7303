@@ -1,0 +1,114 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM 
+FIXED
+PORT 90 60
+HEADER "Signal Quality Screening Results"
+
+ACTIVEFIELD "Close"
+DEFAULT Done
+POPUP <SnrInfoGridSortByPopup> """".
+POPUP <NetFilter>"none" "none"
+POPUP <DrvrFilter>"none" "none"
+POPUP <RcvrFilter>"none" "none"
+POPUP <SnrValFilter>"none" "none"
+
+
+TILE
+
+GROUP "" SNRScreening
+FLOC 2 0
+FSIZE 87 33
+ENDGROUP
+
+    
+    FIELD NetFilter
+        FLOC 10 3
+        STRFILLIN 15 255
+        POP "NetFilter"
+    ENDFIELD
+
+    
+    FIELD DrvrFilter
+        FLOC 30 3
+        STRFILLIN 15 255
+        POP "DrvrFilter"
+    ENDFIELD
+    
+    FIELD RcvrFilter
+        FLOC 50 3
+        STRFILLIN 15 255
+        POP "RcvrFilter"
+    ENDFIELD
+
+	POPUP <SnrValFilterMode>"""".
+    FIELD SnrValFilterMode
+	FLOC 70 3
+	ENUMSET 3
+	POP "SnrValFilterMode"
+	ENDFIELD
+	
+    FIELD SnrValFilter
+    FLOC 75 3
+    REALFILLIN 5 25
+    DECIMAL 3
+    POP "SnrValFilter"
+    OPTIONS prettyprint
+    ENDFIELD
+	
+    
+    GRID SnrInfoGrid
+    FLOC 4 5
+    FSIZE 83 24
+    OPTIONS HLINES VLINES USERSIZE
+    GHEAD TOP
+    HEADSIZE 2
+    OPTIONS 3D
+		POP "SnrInfoGridSortByPopup"
+    ENDGHEAD
+    ENDGRID
+    
+        
+   	FIELD SaveSnrNets
+        FLOC 13 30
+        MENUBUTTON "Save List of Nets..." 10 3
+        FGROUP ""
+    ENDFIELD
+
+
+    FIELD SaveSnrReport
+        FLOC 63 30
+        MENUBUTTON " View Report" 10 3
+        FGROUP ""
+    ENDFIELD 
+
+
+ 	FIELD Close
+        FLOC 10 34
+        MENUBUTTON "OK" 10 3
+        FGROUP ""
+    ENDFIELD
+
+
+    FIELD Help
+        FLOC 68 34
+        MENUBUTTON "Help" 10 3
+        FGROUP ""
+    ENDFIELD
+    
+FLEXMODE EDGEGRAVITY
+FLEX NetFilter           0.05    0 0.26 0
+FLEX DrvrFilter          0.31  0 0.26 0
+FLEX RcvrFilter          0.57  0 0.26 0
+FLEX SnrValFilterMode    0.83 0 0.05 0
+FLEX SnrValFilter        0.88  0 0.12    0
+FLEX SNRScreening        0    0 1    1
+FLEX SnrInfoGrid         0    0 1    1
+FLEX SaveSnrNets         0    1 0    0
+FLEX SaveSnrReport       1    1 0    0
+
+
+    
+ENDTILE
+
+ENDFORM
+

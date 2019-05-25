@@ -1,0 +1,146 @@
+# $Header: /vobs/psd_backend_data/data/forms-core/dtun_mini.form /main/6 08-Feb-06.19:14:48 amiles $
+
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM autogreytext
+FIXED
+PORT 29 13
+
+HEADER "Delay Tune Options"
+
+POPUP <dtun_style>"Accordion""0","Trombone""1","Sawtooth""2".
+POPUP <dtun_gap>"3x width""0".
+POPUP <dtun_corner_mode>"90""0","45""1","FullArc""3".
+POPUP <dtun_corner_size>"1x width""0".
+POPUP <subclass>"subclass""subclass".
+
+TILE DTUN_MINI
+
+TEXT "Active etch subclass:"
+TLOC 1 1
+ENDTEXT
+
+FIELD subcolor
+FLOC 2 3
+COLOR 2 1
+OPTIONS colorchooser
+ENDFIELD
+
+FIELD subclass
+FLOC 5 3
+ENUMSET 19
+OPTIONS prettyprint ownerdrawn
+POP "subclass"
+ENDFIELD
+
+FIELD net_mode
+THUMBNAIL
+FLOC 1 6
+FSIZE 2 2
+ENDFIELD
+
+TEXT "Net:"
+TLOC 4 6
+ENDTEXT
+
+TEXT
+TLOC 8 6
+INFO netname 32
+OPTIONS prettyprint
+ENDTEXT
+
+TEXT "Gap in use:"
+TLOC 4 8
+ENDTEXT
+
+TEXT
+TLOC 13 8
+INFO dtun_current_gap 16
+ENDTEXT
+
+#GROUP "Style:"
+#GLOC 1 10
+#GSIZE 25 17
+#ENDGROUP
+
+#FIELD dtun_accordion_thumb
+#THUMBNAIL
+#FLOC 3 12
+#FSIZE 3 2
+#ENDFIELD
+
+#FIELD dtun_accordion_style
+#FLOC 7 12
+#CHECKLIST "Accordion" "AccordionOrTrombone"
+#ENDFIELD
+
+#FIELD dtun_trombone_thumb
+#THUMBNAIL
+#FLOC 3 14
+#FSIZE 3 2
+#ENDFIELD
+
+#FIELD dtun_trombone_style
+#FLOC 7 14
+#CHECKLIST "Trombone" "AccordionOrTrombone"
+#ENDFIELD
+
+#FIELD dtun_sawtooth_thumb
+#THUMBNAIL
+#FLOC 3 16
+#FSIZE 3 2
+#ENDFIELD
+
+#FIELD dtun_sawtooth_style
+#FLOC 7 16
+#CHECKLIST "Sawtooth" "AccordionOrTrombone"
+#ENDFIELD
+
+#FIELD dtun_centered_style
+#FLOC  3 18
+#CHECKLIST "Centered"
+#ENDFIELD
+
+#TEXT "Gap:"
+#TLOC 3 20
+#ENDTEXT
+
+#FIELD dtun_gap
+#FLOC 11 20
+##REALFILLIN 7 7
+#STRFILLIN 7 20
+#POP dtun_gap_vals
+##DECIMAL 0
+#ENDFIELD
+
+#TEXT "Corners:"
+#TLOC 3 22
+#ENDTEXT
+
+#FIELD corner_mode
+#FLOC 11 22
+#ENUMSET 9
+#POP "dtun_corner"
+#ENDFIELD
+
+#TEXT "Miter size:"
+#TLOC 3 24
+#INFO corner_label
+#ENDTEXT
+
+#FIELD corner_size
+#FLOC 11 24
+##REALFILLIN 7 7
+#STRFILLIN 7 20
+#POP dtun_corner_vals
+##DECIMAL 0
+#ENDFIELD
+
+#FIELD DRC
+#FLOC 1 27
+#CHECKLIST "Allow DRCs"
+#ENDFIELD
+
+ENDTILE
+
+ENDFORM
+

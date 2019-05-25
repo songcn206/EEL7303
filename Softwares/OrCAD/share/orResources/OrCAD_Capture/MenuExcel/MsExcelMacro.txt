@@ -1,0 +1,88 @@
+Sub menu()
+MyFile = "D:\build1\166\tools\capture\tclscripts\capAutoLoad\" & "capTCLMenu.tcl"
+fnum = FreeFile()
+Open MyFile For Output As fnum
+Dim qt As String
+qt = Chr$(34)
+'determine no. of row and cols'
+Dim Rng As Range
+Dim NumRow As Long, NumCol As Long
+Set Rng = ActiveSheet.UsedRange
+NumRow = Rng(Rng.Cells.Count).Row
+NumCol = Rng(Rng.Cells.Count).Column
+
+Print #fnum, "#/////////////////////////////////////////////////////////////////////////////////"
+Print #fnum, "# WARRANTY: NONE. THIS PROGRAM WAS WRITTEN AS "; SHAREWARE; " AND IS AVAILABLE AS IS"
+Print #fnum, "#           AND MAY NOT WORK AS ADVERTISED IN ALL ENVIRONMENTS. THERE IS NO"
+Print #fnum, "#            SUPPORT FOR THIS PROGRAM"
+Print #fnum, "#      NOTE: YOU ARE STRONGLY ADVISED TO BACKUP YOUR DESIGN"
+Print #fnum, "#            BEFORE RUNNING THIS PROGRAM"
+Print #fnum, "#TCL file: sample.tcl"
+Print #fnum, "#/////////////////////////////////////////////////////////////////////////////////"
+Print #fnum, ""
+Print #fnum, ""
+Print #fnum, "package require OrPrmUIIntegration"
+Print #fnum, "package require Tcl 8.4"
+Print #fnum, "package provide capTCLMenu 1.0"
+Print #fnum, ""
+Print #fnum, "namespace eval ::capTCLMenu {"
+'adding TCL function for register Action'
+Print #fnum, ""
+Print #fnum, "    proc registerMenuActions { args } {"
+Print #fnum, "        catch {"
+Print #fnum, "          RegisterAction " & qt & "ScopeChangeTag" & qt & " " & qt & "::capTCLMenu::shouldProcess" & qt & " " & qt & qt & " " & qt & "::capTCLMenu::capTCLMenuScope" & qt & " " & qt & qt
+Print #fnum, "          RegisterAction " & qt & "MenuTag" & qt & " " & qt & "::capTCLMenu::shouldProcess" & qt & " " & qt & qt & " " & qt & "::capTCLMenu::CanAddMenu" & qt & " " & qt & qt
+Print #fnum, "        }"
+Print #fnum, "    }"
+'adding TCL function should process'
+Print #fnum, ""
+Print #fnum, "    proc shouldProcess { args } {"
+Print #fnum, "        return 1"
+Print #fnum, "    }"
+'adding TCL function capTCLMenuScope'
+Print #fnum, ""
+Print #fnum, "    proc capTCLMenuScope { args } {"
+Print #fnum, "       set result [::SetCurrentScope $args]"
+Print #fnum, "    }"
+'main code for creating script'
+Print #fnum, ""
+Print #fnum, "    proc CanAddMenu { args } {"
+Print #fnum, ""
+Print #fnum, "        set menuName [lindex $args 0]"
+Print #fnum, "        set scope [lindex $args 1]"
+Print #fnum, ""
+Dim context As String
+Dim sntc As String
+For j = 2 To NumCol Step 2 'forloop for two step'
+context = Cells(1, j)
+sntc = "        if { [string compare $scope " & qt & context & qt & "] == 0 } {"
+Print #fnum, sntc
+Print #fnum, ""
+'inner loop'
+For i = 1 To NumRow
+strPath = Cells(i, 1)
+Value = Cells(i, j + 1)
+If Value = "False" Then
+    'parsing menu path'
+    Dim lngPos As Long
+    Dim strPart As String
+    lngPos = InStrRev(strPath, "|")
+    strPart = Right$(strPath, Len(strPath) - lngPos)
+    Print #fnum, "            if { [string compare $menuName " & qt & strPart & qt & "] == 0 } {"
+    Print #fnum, "                return false"
+    Print #fnum, "            }"
+End If
+Next i
+Print #fnum, ""
+Print #fnum, "            return true"
+Print #fnum, "        }"
+Next j
+Print #fnum, "     return true"
+Print #fnum, "    }"
+Print #fnum, "}"
+Print #fnum, ""
+Print #fnum, "::capTCLMenu::registerMenuActions"
+Print #fnum, ""
+Print #fnum, "#end of file"
+Close #fnum
+End Sub

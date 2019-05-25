@@ -1,0 +1,116 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM 
+FIXED
+PORT 53 7
+HEADER "IDF Out"
+
+POPUP <formatList>"IDF""IDF","PTC""PTC","SDRC""SDRC".
+
+MESSAGE nerror 0 "Error occurred - Check logfile."
+MESSAGE ndone 0 "Translation complete."
+MESSAGE ndemo 0 "Cannot Run in Demo Mode."
+MESSAGE nexist 0 "Using Board name for Output File Name."
+
+TILE
+
+TEXT "File Name Type:"
+TLOC 2 1
+ENDTEXT
+
+FIELD formatField
+FLOC 18 1
+ENUMSET 6
+POP "formatList"
+ENDFIELD
+
+TEXT "IDF Version:"
+TLOC 30 1
+ENDTEXT
+
+FIELD idf_version_2
+FLOC 40 1
+CHECKLIST "2.0" "idf_version_group"
+ENDFIELD
+
+FIELD idf_version_3
+FLOC 48 1
+CHECKLIST "3.0" "idf_version_group"
+ENDFIELD
+
+TEXT "Output file name:"
+TLOC 2 4
+ENDTEXT
+
+FIELD outnameField
+FLOC 18 4
+STRFILLIN 30 1024
+ENDFIELD
+
+FIELD browse
+FLOC 50 4
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+TEXT "Design version:"
+TLOC 2 7
+ENDTEXT
+
+FIELD versionField
+FLOC 18 7
+LONGFILLIN 5 5
+MIN 0
+ENDFIELD
+
+TEXT "Source identification:"
+TLOC 2 10
+ENDTEXT
+
+FIELD srcField
+FLOC 18 10
+STRFILLIN 30 256
+ENDFIELD
+
+TEXT "Default package height:"
+TLOC 2 13
+ENDTEXT
+
+FIELD heightField
+FLOC 18 13
+REALFILLIN 8 8
+MIN 0
+ENDFIELD
+
+FIELD use_filter
+FLOC 2 16
+CHECKLIST "Use Filter"
+ENDFIELD
+
+FIELD filter
+FLOC 15 16
+MENUBUTTON "Filter" 10 3
+ENDFIELD
+
+FIELD execute
+FLOC 2 19
+MENUBUTTON "Export" 10 3
+ENDFIELD
+
+FIELD viewlog
+FLOC 15 19
+MENUBUTTON "Viewlog" 10 3
+ENDFIELD
+
+FIELD cancel
+FLOC 28 19
+MENUBUTTON "Close" 10 3
+ENDFIELD
+
+FIELD help
+FLOC 41 19
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM
+

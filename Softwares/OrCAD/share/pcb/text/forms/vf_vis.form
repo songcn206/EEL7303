@@ -1,0 +1,259 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+VARIABLE
+PORT 29 12 
+HEADER "Visibility"
+
+POPUP <CVIEW>"""".
+
+MESSAGE PLN_VIS 0 "Click planes checkbox to redisplay plane layer information"
+
+
+TILE HEADER
+TPANEL 0
+TEXT "Views:"
+TLOC 0 1
+ENDTEXT 
+
+FIELD colorview_list
+FLOC 6 1
+ENUMSET 20
+POP "CVIEW"
+OPTIONS dispatchsame
+ENDFIELD
+
+TEXT "Layer"
+OPTIONS underline
+TLOC 0 3
+ENDTEXT 
+
+TEXT "Conductor" conductor_label
+OPTIONS underline
+FLOC 9 3
+ENDTEXT
+
+TEXT "Plan" plan_label
+OPTIONS underline
+TLOC 9 3
+ENDTEXT
+
+TEXT "Etch" condetch_label
+OPTIONS underline
+FLOC 13 3
+ENDTEXT
+
+TEXT "Via" via_label
+OPTIONS underline
+TLOC 17 3   
+ENDTEXT 
+
+TEXT "Rte" etch_via_label
+OPTIONS underline
+FLOC 17 3
+ENDTEXT
+
+TEXT "Pin" pin_label
+OPTIONS underline
+TLOC 20 3    
+ENDTEXT 
+
+TEXT "Drc" drc_label
+OPTIONS underline
+TLOC 23 3   
+ENDTEXT 
+
+TEXT "All"    
+OPTIONS underline
+TLOC 26 3   
+ENDTEXT    
+
+TEXT "Conductors"
+TLOC 0 5
+ENDTEXT  
+ 
+TEXT "Planes"
+TLOC 0 7
+ENDTEXT  
+
+FIELD plane_checkbox
+FLOC 7 7 
+CHECKLIST
+ENDFIELD
+ 
+FIELD all_plan_visible
+FLOC 11 5
+CHECKLIST
+ENDFIELD  
+
+FIELD all_etch_visible
+FLOC 14 5
+CHECKLIST
+ENDFIELD 
+ 
+FIELD all_via_visible
+FLOC 17 5
+CHECKLIST
+ENDFIELD  
+
+FIELD all_etch_via_visible
+FLOC 17 5
+CHECKLIST
+ENDFIELD 
+
+FIELD all_pin_visible
+FLOC 20 5
+CHECKLIST
+ENDFIELD  
+ 
+FIELD all_drc_visible
+FLOC 23 5
+CHECKLIST
+ENDFIELD  
+ 
+FIELD all_all_visible
+FLOC 26 5
+CHECKLIST
+OPTIONS dispatchsame
+ENDFIELD
+
+FIELD all_etch_visible_pln
+FLOC 14 7
+CHECKLIST
+ENDFIELD 
+ 
+FIELD all_via_visible_pln
+FLOC 17 7
+CHECKLIST
+ENDFIELD  
+
+FIELD all_etch_via_visible_pln
+FLOC 17 7
+CHECKLIST
+ENDFIELD  
+
+FIELD all_pin_visible_pln
+FLOC 20 7
+CHECKLIST
+ENDFIELD  
+ 
+FIELD all_drc_visible_pln
+FLOC 23 7
+CHECKLIST
+ENDFIELD  
+ 
+FIELD all_all_visible_pln
+FLOC 26 7
+CHECKLIST
+OPTIONS dispatchsame
+ENDFIELD
+
+ENDTILE
+
+TILE LAYER 
+TPANEL 1
+TEXT
+TLOC 0 0
+INFO layer_name 9 
+ENDTEXT
+
+FIELD plan_colorvisible
+FLOC 11 0
+COLOR 2 1
+OPTIONS colorchooser
+ENDFIELD
+
+FIELD etch_colorvisible
+FLOC 14 0
+COLOR 2 1 
+OPTIONS colorchooser
+ENDFIELD
+
+FIELD via_colorvisible
+FLOC 17 0
+COLOR 2 1  
+OPTIONS colorchooser
+ENDFIELD
+
+FIELD etch_via_colorvisible
+FLOC 17 0
+COLOR 2 1
+OPTIONS colorchooser
+ENDFIELD
+
+FIELD pin_colorvisible
+FLOC 20 0
+COLOR 2 1  
+OPTIONS colorchooser
+ENDFIELD
+ 
+FIELD drc_colorvisible
+FLOC 23 0
+COLOR 2 1  
+OPTIONS colorchooser
+ENDFIELD
+
+FIELD all_colorvisible
+FLOC 26 0
+CHECKLIST
+OPTIONS dispatchsame
+ENDFIELD
+
+ENDTILE
+
+# Wire Profile/DRC Tiles for SIP/APD.
+
+#ifdef APD || SIP
+TILE PROFILEHEADER
+TPANEL 1
+TEXT "Profile"
+OPTIONS underline
+TLOC 0 3
+ENDTEXT 
+
+TEXT "Wire"
+OPTIONS underline
+TLOC 22 3
+ENDTEXT 
+
+TEXT "Drc"
+OPTIONS underline
+TLOC 26 3
+ENDTEXT 
+
+TEXT "All"
+TLOC 0 5
+ENDTEXT 
+
+FIELD all_profile_visible
+FLOC 23 5
+CHECKLIST
+ENDFIELD 
+
+FIELD wire_drc_colorvisible
+FLOC 26 5
+COLOR 2 1  
+OPTIONS colorchooser
+ENDFIELD
+
+ENDTILE
+
+TILE PROFILE
+TPANEL 1
+TEXT
+TLOC 0 0
+INFO profile_name 18 
+ENDTEXT
+
+FIELD profile_colorvisible
+FLOC 23 0
+COLOR 2 1 
+OPTIONS colorchooser
+ENDFIELD
+
+ENDTILE
+#endif
+
+ENDFORM
+
+
+

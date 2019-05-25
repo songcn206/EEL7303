@@ -1,0 +1,62 @@
+
+plctxt [-r] [-s] [-c|p] [-o] [-m] [-z] <in_design> [<out_design>] [<place_text_file>]
+
+Plctxt operates in two modes:
+  1) Create a place text file containing the refdes, origin, rotation,
+     mirror status, and embedded layer for all placed parts in a design. 
+  2) Utilizes an existing place text file to place a board. Will not
+     effect already place parts.
+
+Note: 
+    Place text will not save nor place mechanical or format symbols.
+
+Arguments:
+    -r: reads from <place_text_file> placement positions of parts specified
+
+    -s: If errors deteched when placing then continue processing all
+	data in place text file and save design.
+
+    -m: Move the existing components if any. By default, add unplaced components only.
+
+    -z: Ignore the FIXED property, work with the option "-m".
+
+    -o: Create a place text file in old format supported in release 16.3-
+
+    Optionally arguments, if neither present then uses symbol origin:
+    -c: Places symbol so its body center or subclass BODY_CENTER point
+	occurs at the point specified in the <place_text_file>
+    -p: Places sybmol by origin of Pin 1 location.
+
+    In_design: input design name
+    Out_design: (optional) If not present overwrites in_design.
+
+    place_text_file: Default name is place_txt.txt. If name is provided
+		you MUST also provide and out_design name.
+
+
+place_text_file file syntax:
+
+   VERSION = <version>
+   UUNITS = <units>
+   ( <comment> ) or # <comment>
+   
+   <refdes> ! (<xy location>) ! <rotation> ! [<mirror>] ! <symbol_name> ! <embedded_layer>
+
+comment:
+	comment may appear anywhere put surround with parenthesis
+
+version: 2.0 for release 16.4+
+
+units: MILS, INCH, INCHES, MILLIMETER, MILLIMETERS,
+	CENTIMETER, CENTIMETERS, or MICRONS
+
+refdes: refdes of component
+
+rotation: rotation in degrees (to 1000sths)
+
+mirror: (optional) if blank don't mirror
+	m - mirror to bottom
+	g - mirror geometry (APD feature)
+
+symbol_name: Name of symbol
+

@@ -1,0 +1,169 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 84 20
+HEADER "90-Deg Mitered Bend"
+
+POPUP <actlayers>"""".
+POPUP <gndlayers>"""".
+POPUP <rotate>"0""0.000","45""45.000","90""90.000".
+POPUP <frequnits>"Hz""1","KHz""1000","MHz""1000000","GHz""1000000000".
+
+TILE MBEND2
+
+TABSET "tab"
+OPTIONS tabsetDispatch
+FLOC 1 1
+FSIZE 30 24
+
+TAB "Parameters"
+TEXT "Layer:"
+TLOC 1 1
+ENDTEXT
+
+FIELD active_subclass
+FLOC 7 1
+ENUMSET 16
+POP "actlayers"
+ENDFIELD
+
+FIELD activelayervar
+FLOC 26 1
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+TEXT "Ground:"
+TLOC 1 3
+ENDTEXT
+
+FIELD ground_subclass
+FLOC 7 3
+ENUMSET 16
+POP "gndlayers"
+ENDFIELD
+
+FIELD groundlayervar
+FLOC 26 3
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+TEXT "Line Width:"
+TLOC 1 5
+ENDTEXT
+
+FIELD widthvar
+FLOC 10 5
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+FIELD swidth
+FLOC 1 7
+REALFILLIN 10 10
+ENDFIELD
+
+TEXT swidthunitslabel
+TLOC 14 7
+INFO swidthunits
+ENDTEXT
+
+TEXT "Rotation Lock:"
+TLOC 1 9
+ENDTEXT
+
+FIELD angle
+FLOC 14 9
+REALFILLIN 7 7
+POP "rotate"
+DECIMAL 3
+ENDFIELD
+
+TEXT "Working Frequency:"
+TLOC 1 11
+ENDTEXT
+
+FIELD frequency
+FLOC 1 13
+REALFILLIN 10 10
+REALMIN 0.0
+DECIMAL 10
+ENDFIELD
+
+FIELD frequnit
+FLOC 13 13
+ENUMSET 6
+POP "frequnits"
+ENDFIELD
+
+TEXT "Electrical Length:"
+TLOC 1 15
+ENDTEXT
+
+TEXT
+FLOC 1 17
+INFO electricallength 12
+ENDTEXT
+
+TEXT
+TLOC 14 17
+INFO electricallengthunits 6
+ENDTEXT
+
+FIELD newtrace
+FLOC 1 19
+CHECKLIST "New trace after insertion"
+ENDFIELD
+
+ENDTAB
+
+TAB "Nets"
+TEXT "Pin 1 Net:"
+TLOC 1 1
+ENDTEXT
+
+TEXT
+TLOC 10 1
+INFO pin1netname 12
+ENDTEXT
+
+FIELD pin1netname_list
+FLOC 24 1
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+TEXT "Pin 2 Net:"
+TLOC 1 3
+ENDTEXT
+
+TEXT
+TLOC 10 3
+INFO pin2netname 12
+ENDTEXT
+
+FIELD pin2netname_list
+FLOC 24 3
+MENUBUTTON "..." 3 3
+ENDFIELD
+ENDTAB
+ENDTABSET
+
+FIELD onhelp
+FLOC 1 26
+MENUBUTTON "Help" 14 3
+ENDFIELD
+
+FIELD help
+FLOC 22 26
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+FIELD graphic
+THUMBNAIL rfpcbmbend2.bmp
+OPTIONS STRETCH
+FLOC 32 2
+FSIZE 38 24
+ENDFIELD
+
+ENDTILE
+
+ENDFORM
+

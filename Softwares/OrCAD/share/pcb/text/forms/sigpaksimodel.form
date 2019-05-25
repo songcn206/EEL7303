@@ -1,0 +1,273 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 60 50 
+HEADER "3-D Interconnect Modeling"
+
+POPUP <pkg_net_pattern>"0""0".
+POPUP <net_net_pattern>"0""0".
+POPUP <pkg_model_type> "DML Narrowband" "DML Narrowband","DML RLGC" "DML RLGC","DML Wideband" "DML Wideband","IBIS" "IBIS"
+POPUP <net_model_type> "DML Narrowband" "DML Narrowband","DML Wideband" "DML Wideband","S Parameter" "S Parameter"
+
+TILE
+
+TABSET "one"
+FLOC 1 1
+TSSIZE 58 43 
+
+TAB "Package Model"
+
+TEXT "Select method to create Package Model:"
+TLOC 2 2 
+ENDTEXT
+
+FIELD PackageByDesign
+FLOC 4 5 
+CHECKLIST "Package Model for the whole design" "mode"
+ENDFIELD
+
+FIELD PackageByNets 
+FLOC 4 7 
+CHECKLIST "Package Model by nets" "mode"
+ENDFIELD
+
+TEXT "Net"
+TLOC 6 10
+INFO PkgNetText 6
+ENDTEXT
+
+FIELD PackageNetPattern
+FLOC 10 10 
+STRFILLIN 10 255
+POP "pkg_net_pattern"
+ENDFIELD
+
+FIELD PackageNetList
+FLOC 27 10
+MENUBUTTON "List of Nets..." 15 3 
+ENDFIELD
+
+FIELD PackageNetBrowser
+FLOC 44 10
+MENUBUTTON "Net Browser" 13 3
+ENDFIELD
+
+FIELD PackageNets
+FLOC 10 15 
+LIST "" 28 6 
+FGROUP "            " 
+ENDFIELD
+
+GROUP "            " 
+GLOC 8 12 
+GSIZE 32 14 
+ENDGROUP
+
+TEXT "Selected Nets"
+TLOC 10 13
+INFO PkgNetGroupText 20
+ENDTEXT
+
+TEXT "* Net can also be selected by mouse pick or by window in canvas."
+TLOC 6 26
+INFO PkgNetSelectText 50 
+ENDTEXT
+
+TEXT "Model name"
+TLOC 2 30
+ENDTEXT
+
+FIELD PackageModelName
+FLOC 13 30
+STRFILLIN 25 250
+ENDFIELD
+
+TEXT "Package Model Type"
+TLOC 2 33 
+ENDTEXT
+
+FIELD PackageModelType
+FLOC 20 33
+ENUMSET 20
+#FGROUP "Options"
+POP "pkg_model_type"
+ENDFIELD
+
+#FIELD DMLLAPLACE 
+#FLOC 4 35 
+#CHECKLIST "DML Laplace" "pkgtype"
+#ENDFIELD
+
+#FIELD DMLRLGC 
+#FLOC 20 35 
+#CHECKLIST "DML RLGC" "pkgtype"
+#ENDFIELD
+
+#FIELD DMLNB 
+#FLOC 34 35 
+#CHECKLIST "DML SUBCKT NB" "pkgtype"
+#ENDFIELD
+
+
+#FIELD DMLWB 
+#FLOC 4 37 
+#CHECKLIST "DML SUBCKT WB" "pkgtype"
+#ENDFIELD
+
+#FIELD IBIS 
+#FLOC 20 37 
+#CHECKLIST "IBIS" "pkgtype"
+#ENDFIELD
+
+#FIELD SPARAM
+#FLOC 34 37
+#CHECKLIST "S Parameter" "pkgtype"
+#ENDFIELD
+
+FIELD PackageLoadModel
+FLOC 2 39 
+CHECKLIST "Load into the existing device library"
+ENDFIELD
+
+ENDTAB
+
+TAB "Net Model"
+
+TEXT "Select method to create Net Model:"
+TLOC 2 1
+ENDTEXT
+
+FIELD OnlySelectedNets 
+FLOC 4 3
+CHECKLIST "Single or coupled net model for selected net(s)" "net_mode"
+ENDFIELD
+
+FIELD IncludeNeighborNets 
+FLOC 4 5
+CHECKLIST "Coupled net model for selected nets and neighbor nets" "net_mode"
+ENDFIELD
+
+FIELD NetIncludeNeighborNets 
+FLOC 4 7
+CHECKLIST "One model for each net coupled with neighbor nets" "net_mode"
+ENDFIELD
+
+TEXT "Net"
+TLOC 2 9 
+ENDTEXT
+
+FIELD NetNetPattern
+FLOC 6 9 
+STRFILLIN 14 255
+POP "pkg_net_pattern"
+ENDFIELD
+
+FIELD NetNetList
+FLOC 27 9 
+MENUBUTTON "List of Nets..." 15 3
+ENDFIELD
+
+FIELD NetNetBrowser
+FLOC 44 9 
+MENUBUTTON "Net Browser" 13 3
+ENDFIELD
+
+FIELD NetNets
+FLOC 10 14 
+LIST "" 28 4 
+FGROUP "Nets"
+ENDFIELD
+
+GROUP "Selected Nets"
+GLOC 8 11 
+GSIZE 32 11 
+ENDGROUP
+
+TEXT "* Net can also be selected by mouse pick or by window in canvas."
+TLOC 6 22 
+ENDTEXT
+
+TEXT "Model name"
+TLOC 2 26 
+ENDTEXT
+
+FIELD NetModelName
+FLOC 13 26 
+STRFILLIN 25 250
+ENDFIELD
+
+TEXT "Net Model Type"
+TLOC 2 29 
+ENDTEXT
+
+FIELD NetModelType
+FLOC 20 29
+ENUMSET 20
+#FGROUP "Options"
+POP "net_model_type"
+ENDFIELD
+
+#FIELD ESpiceLaplace 
+#FLOC 4 31 
+#CHECKLIST "DML ESpice model with Laplace sources" "nettype"
+#ENDFIELD
+
+#FIELD NBESpiceLump 
+#FLOC 4 33 
+#CHECKLIST "DML Narrowband ESpice model with lumped element circuit" "nettype"
+#ENDFIELD
+
+#FIELD WBESpiceLump 
+#FLOC 4 35 
+#CHECKLIST "DML Wideband ESpice model with lumped element circuit" "nettype"
+#ENDFIELD
+
+#FIELD TouchStoneSparam 
+#FLOC 4 37 
+#CHECKLIST "TouchStone S-Parameter model" "nettype"
+#ENDFIELD
+
+FIELD NetCreatePkgTermMapFile
+FLOC 2 37
+CHECKLIST "Create Package Terminal Map File"
+ENDFIELD
+
+FIELD NetLoadModel
+FLOC 2 39
+CHECKLIST "Load into the existing device library"
+ENDFIELD
+
+ENDTAB
+
+ENDTABSET
+
+FIELD Close 
+FLOC 3 45
+MENUBUTTON "Close" 8 3
+ENDFIELD
+
+FIELD CreateModel 
+FLOC 12 45
+MENUBUTTON "Create Model" 13 3
+ENDFIELD
+
+FIELD Parameter 
+FLOC 26 45
+MENUBUTTON "Parameters" 10 3
+ENDFIELD
+
+FIELD PortGroup
+FLOC 37 45 
+MENUBUTTON "Port Group" 10 3
+ENDFIELD
+
+FIELD help
+FLOC 48 45 
+MENUBUTTON "Help" 8 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM
+
+

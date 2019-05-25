@@ -1,0 +1,723 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM fixed_font
+FIXED
+PORT 73 31
+HEADER "Analysis Waveform Generator"
+
+POPUP <RefStimPOP>"""".
+
+POPUP <StimPOP>"Pulse""Pulse","Rise""Rise","Fall""Fall","Rise/Fall""RiseFall",\
+"InvPulse""InvPulse".
+
+POPUP <OddEvenStaticPOP>"Odd""Odd","Even""Even","Odd/Even""Odd/Even","Static""Static".
+
+POPUP <EMISNStimPOP> "Pulse""Pulse".
+
+POPUP <CasePOP>"case1""case1".
+
+POPUP <OddEvenPOP>"Odd""Odd","Even""Even","Odd/Even""Odd/Even".
+
+POPUP <CompOddEvenPOP>"Odd""Odd","Even""Even","Odd/Even""Odd/Even","Static""Static".
+
+POPUP <NetSelectionPOP> "All Selected Nets" "All Selected Nets", "Highlighted Net Only" "Highlighted Net Only".
+
+POPUP <DriverSelectionPOP> "Fastest Driver Each Net" "Fastest Driver Each Net", "Hilighted Driver Only" "Hilighted Driver Only", "All Xnet Drivers" "All Xnet Drivers".
+
+POPUP <NetNeighborSelectionPOP> "All Neighbors Simultaneously" "All Neighbors Simultaneously", "Fastest Neighbor" "Fastest Neighbor", "All TWGroups" "All TWGroups".
+
+POPUP <DriverNeighborSelectionPOP> "Fastest Driver Each Neighbor" "Fastest Driver Each Neighbor".
+
+
+TILE
+TABSET "TABS"
+FLOC 1 1
+TSSIZE 72 34
+
+TAB "Reflection"
+
+TEXT "Stimulus:"
+TLOC 2 6
+ENDTEXT
+
+TEXT "Net Selection:"
+TLOC 2 14
+TGROUP "Primary Net"
+ENDTEXT
+
+TEXT "Driver Selection:"
+TLOC 2 16
+TGROUP "Primary Net"
+ENDTEXT
+
+GROUP "Case Selection" "ReflectionCaseSelection"
+GLOC 1 0
+GSIZE 69 4
+ENDGROUP
+
+TEXT
+TLOC 2 2
+INFO ReflectionCurrentCaseLabel 14
+TGROUP "ReflectionCaseSelection"
+ENDTEXT
+
+FIELD ReflectionCurrentCase
+FLOC 16 2
+ENUMSET 50 
+POP "CasePOP"
+FGROUP "ReflectionCaseSelection"
+ENDFIELD
+
+FIELD ReflectionStimulus
+FLOC 26 6
+ENUMSET 25
+POP "RefStimPOP"
+FGROUP "Primary Net"
+ENDFIELD
+
+FIELD AssignStimulus
+FLOC 56 6
+MENUBUTTON "Assign..." 10 3
+ENDFIELD
+
+FIELD ReflectionNetSelection
+FLOC 26 14
+ENUMSET 25
+POP "NetSelectionPOP"
+FGROUP "Primary Net"
+ENDFIELD
+
+FIELD ReflectionDriverSelection
+FLOC 26 16
+ENUMSET 25
+POP "DriverSelectionPOP"
+FGROUP "Primary Net"
+ENDFIELD
+
+FIELD ReflectionFast
+FLOC 2 10
+CHECKLIST "Fast"
+FGROUP "Fast/Typical/Slow Mode"
+ENDFIELD
+
+FIELD ReflectionTypical
+FLOC 15 10
+CHECKLIST "Typical"
+FGROUP "Fast/Typical/Slow Mode"
+ENDFIELD
+
+FIELD ReflectionSlow
+FLOC 28 10
+CHECKLIST "Slow"
+FGROUP "Fast/Typical/Slow Mode"
+ENDFIELD
+
+FIELD ReflectionFastSlow
+FLOC 41 10
+CHECKLIST "Fast/Slow"
+FGROUP "Fast/Typical/Slow Mode"
+ENDFIELD
+
+FIELD ReflectionSlowFast
+FLOC 54 10
+CHECKLIST "Slow/Fast"
+FGROUP "Fast/Typical/Slow Mode"
+ENDFIELD
+
+FIELD ReflectionSaveCircuits
+FLOC 2 27
+CHECKLIST "Save Circuit Files"
+ENDFIELD
+
+FIELD ReflectionCreateWaveForms
+FLOC 26 29
+MENUBUTTON "Create Waveforms" 20 3
+ENDFIELD
+
+GROUP ""
+GLOC 1 4
+GSIZE 69 4
+ENDGROUP
+
+GROUP "Fast/Typical/Slow Mode"
+GLOC 1 8
+GSIZE 69 4
+ENDGROUP
+
+GROUP "Primary Net"
+GLOC 1 12
+GSIZE 69 6
+ENDGROUP
+
+ENDTAB
+
+TAB "Comprehensive"
+
+TEXT "Stimulus:"
+TLOC 2 6
+ENDTEXT
+
+TEXT "Net Selection:"
+TLOC 2 14
+TGROUP "Victim"
+ENDTEXT
+
+TEXT "Driver Selection:"
+TLOC 2 16
+TGROUP "Victim"
+ENDTEXT
+
+TEXT "Switch Mode:"
+TLOC 2 20
+TGROUP "Aggressor"
+ENDTEXT
+
+GROUP "Case Selection" "ComprehensiveCaseSelection"
+GLOC 1 0
+GSIZE 69 4
+ENDGROUP
+
+TEXT
+TLOC 2 2
+INFO ComprehensiveCurrentCaseLabel 14
+TGROUP "ComprehensiveCaseSelection"
+ENDTEXT
+
+FIELD ComprehensiveCurrentCase
+FLOC 16 2
+ENUMSET 50 
+POP "CasePOP"
+FGROUP "ComprehensiveCaseSelection"
+ENDFIELD
+
+FIELD ComprehensiveStimulus
+FLOC 26 6
+ENUMSET 25 
+POP "StimPOP"
+FGROUP "Victim"
+ENDFIELD
+
+FIELD ComprehensiveNetSelection
+FLOC 26 14
+ENUMSET 25
+POP "NetSelectionPOP"
+FGROUP "Victim"
+ENDFIELD
+
+FIELD ComprehensiveDriverSelection
+FLOC 26 16
+ENUMSET 25
+POP "DriverSelectionPOP"
+FGROUP "Victim"
+ENDFIELD
+
+FIELD ComprehensiveFast
+FLOC 2 10
+CHECKLIST "Fast"
+FGROUP "Fast/Typical/Slow Mode"
+ENDFIELD
+
+FIELD ComprehensiveTypical
+FLOC 15 10
+CHECKLIST "Typical"
+FGROUP "Fast/Typical/Slow Mode"
+ENDFIELD
+
+FIELD ComprehensiveSlow
+FLOC 28 10
+CHECKLIST "Slow"
+FGROUP "Fast/Typical/Slow Mode"
+ENDFIELD
+
+FIELD ComprehensiveFastSlow
+FLOC 41 10
+CHECKLIST "Fast/Slow"
+FGROUP "Fast/Typical/Slow Mode"
+ENDFIELD
+
+FIELD ComprehensiveSlowFast
+FLOC 54 10
+CHECKLIST "Slow/Fast"
+FGROUP "Fast/Typical/Slow Mode"
+ENDFIELD
+
+FIELD ComprehensiveOddEven
+FLOC 26 20
+ENUMSET 12
+POP "CompOddEvenPOP"
+FGROUP "Aggressor"
+ENDFIELD
+
+FIELD ComprehensiveSaveCircuits
+FLOC 2 27
+CHECKLIST "Save Circuit Files"
+ENDFIELD
+
+{
+FIELD ComprehensiveTimingWindows
+FLOC 25 27
+CHECKLIST "Use Timing Windows"
+ENDFIELD
+}
+
+FIELD ComprehensiveCreateWaveForms
+FLOC 26 29
+MENUBUTTON "Create Waveforms" 20 3
+ENDFIELD
+
+GROUP ""
+GLOC 1 4
+GSIZE 69 4
+ENDGROUP
+
+GROUP "Fast/Typical/Slow Mode"
+GLOC 1 8
+GSIZE 69 4
+ENDGROUP
+
+GROUP "Victim"
+GLOC 1 12
+GSIZE 69 6
+ENDGROUP
+
+GROUP "Aggressor"
+GLOC 1 18
+GSIZE 69 4
+ENDGROUP
+
+ENDTAB
+
+TAB "Crosstalk"
+
+TEXT "Stimulus:"
+TLOC 2 6
+ENDTEXT
+
+TEXT "Net Selection:"
+TLOC 2 14
+TGROUP "Victim"
+ENDTEXT
+
+TEXT "Driver Selection:"
+TLOC 2 16
+TGROUP "Victim"
+ENDTEXT
+
+TEXT "Switch Mode:"
+TLOC 2 20
+TGROUP "Aggressor"
+ENDTEXT
+
+TEXT "Net Selection:"
+TLOC 2 22
+TGROUP "Aggressor"
+ENDTEXT
+
+TEXT "Driver Selection:"
+TLOC 2 24
+TGROUP "Aggressor"
+ENDTEXT
+
+GROUP "Case Selection" "CrosstalkCaseSelection"
+GLOC 1 0
+GSIZE 69 4
+ENDGROUP
+
+TEXT
+TLOC 2 2
+INFO CrosstalkCurrentCaseLabel 14
+TGROUP "CrossTalkCaseSelection"
+ENDTEXT
+
+FIELD CrosstalkCurrentCase
+FLOC 16 2
+ENUMSET 50 
+POP "CasePOP"
+FGROUP "CrossTalkCaseSelection"
+ENDFIELD
+
+FIELD CrosstalkStimulus
+FLOC 26 6
+ENUMSET 25
+POP "StimPOP"
+FGROUP "Victim"
+ENDFIELD
+
+FIELD CrosstalkNetSelection
+FLOC 26 14
+ENUMSET 25
+POP "NetSelectionPOP"
+FGROUP "Victim"
+ENDFIELD
+
+FIELD CrosstalkDriverSelection
+FLOC 26 16
+ENUMSET 25
+POP "DriverSelectionPOP"
+FGROUP "Victim"
+ENDFIELD
+
+FIELD CrosstalkNeighborNetSelection
+FLOC 26 22
+ENUMSET 35
+POP "NetNeighborSelectionPOP"
+FGROUP "Aggressor"
+ENDFIELD
+
+FIELD CrosstalkNeighborDriverSelection
+FLOC 26 24
+ENUMSET 35
+POP "DriverNeighborSelectionPOP"
+FGROUP "Aggressor"
+ENDFIELD
+
+FIELD CrosstalkFast
+FLOC 2 10
+CHECKLIST "Fast"
+FGROUP "Fast/Typical/Slow Mode"
+ENDFIELD
+
+FIELD CrosstalkTypical
+FLOC 15 10
+CHECKLIST "Typical"
+FGROUP "Fast/Typical/Slow Mode"
+ENDFIELD
+
+FIELD CrosstalkSlow
+FLOC 28 10
+CHECKLIST "Slow"
+FGROUP "Fast/Typical/Slow Mode"
+ENDFIELD
+
+FIELD CrosstalkFastSlow
+FLOC 41 10
+CHECKLIST "Fast/Slow"
+FGROUP "Fast/Typical/Slow Mode"
+ENDFIELD
+
+FIELD CrosstalkSlowFast
+FLOC 54 10
+CHECKLIST "Slow/Fast"
+FGROUP "Fast/Typical/Slow Mode"
+ENDFIELD
+
+FIELD CrosstalkOddEven
+FLOC 26 20
+ENUMSET 12
+POP "OddEvenPOP"
+FGROUP "Aggressor"
+ENDFIELD
+
+FIELD CrosstalkSaveCircuits
+FLOC 2 27
+CHECKLIST "Save Circuit Files"
+ENDFIELD
+
+FIELD CrosstalkTimingWindows
+FLOC 25 27
+CHECKLIST "Use Timing Windows"
+ENDFIELD
+
+FIELD CrosstalkCreateWaveForms
+FLOC 26 29
+MENUBUTTON "Create Waveforms" 20 3
+ENDFIELD
+
+GROUP ""
+GLOC 1 4
+GSIZE 69 4
+ENDGROUP
+
+GROUP "Fast/Typical/Slow Mode"
+GLOC 1 8
+GSIZE 69 4
+ENDGROUP
+
+GROUP "Victim"
+GLOC 1 12
+GSIZE 69 6
+ENDGROUP
+
+GROUP "Aggressor"
+GLOC 1 18
+GSIZE 69 8
+ENDGROUP
+
+ENDTAB
+
+TAB "SSN"
+
+TEXT "Stimulus:"
+TLOC 2 6
+TGROUP "Simultaneous Switching Noise"
+ENDTEXT
+
+TEXT "Net Selection:"
+TLOC 2 14
+TGROUP "Primary Net"
+ENDTEXT
+
+TEXT "Driver Selection:"
+TLOC 2 16
+TGROUP "Primary Net"
+ENDTEXT
+
+GROUP "Case Selection" "SSNCaseSelection"
+GLOC 1 0
+GSIZE 69 4
+ENDGROUP
+
+TEXT
+TLOC 2 2
+INFO SSNCurrentCaseLabel 14
+TGROUP "SSNCaseSelection"
+ENDTEXT
+
+FIELD SSNCurrentCase
+FLOC 16 2
+ENUMSET 50 
+POP "CasePOP"
+FGROUP "SSNCaseSelection"
+ENDFIELD
+
+FIELD SSNStimulus
+FLOC 26 6
+ENUMSET 25
+POP "StimPOP"
+FGROUP "Simultaneous Switching Noise"
+ENDFIELD
+
+FIELD SSNNetSelection
+FLOC 26 14
+ENUMSET 25
+POP "NetSelectionPOP"
+FGROUP "Primary Net"
+ENDFIELD
+
+FIELD SSNDriverSelection
+FLOC 26 16
+ENUMSET 25
+POP "DriverSelectionPOP"
+FGROUP "Primary Net"
+ENDFIELD
+
+FIELD SSNFast
+FLOC 2 10
+CHECKLIST "Fast"
+FGROUP "Fast/Typical/Slow Mode"
+ENDFIELD
+
+FIELD SSNTypical
+FLOC 15 10
+CHECKLIST "Typical"
+FGROUP "Fast/Typical/Slow Mode"
+ENDFIELD
+
+FIELD SSNSlow
+FLOC 28 10
+CHECKLIST "Slow"
+FGROUP "Fast/Typical/Slow Mode"
+ENDFIELD
+
+FIELD SSNFastSlow
+FLOC 41 10
+CHECKLIST "Fast/Slow"
+FGROUP "Fast/Typical/Slow Mode"
+ENDFIELD
+
+FIELD SSNSlowFast
+FLOC 54 10
+CHECKLIST "Slow/Fast"
+FGROUP "Fast/Typical/Slow Mode"
+ENDFIELD
+
+FIELD SSNSaveCircuits
+FLOC 2 27
+CHECKLIST "Save Circuit Files"
+ENDFIELD
+
+{
+FIELD SSNTimingWindows
+FLOC 25 27
+CHECKLIST "Use Timing Windows"
+ENDFIELD
+}
+
+FIELD SSNCreateWaveForms
+FLOC 26 29
+MENUBUTTON "Create Waveforms" 20 3
+ENDFIELD
+
+GROUP "Simultaneous Switching Noise"
+GLOC 1 4
+GSIZE 69 4
+ENDGROUP
+
+GROUP "Fast/Typical/Slow Mode"
+GLOC 1 8
+GSIZE 69 4
+ENDGROUP
+
+GROUP "Primary Net"
+GLOC 1 12
+GSIZE 69 6
+ENDGROUP
+
+ENDTAB
+
+TAB "EMI_Single"
+
+TEXT "Stimulus:"
+TLOC 2 6
+TGROUP "EMI for Single Net"
+ENDTEXT
+
+TEXT "Net Selection:"
+TLOC 2 14
+TGROUP "y"
+ENDTEXT
+
+TEXT "Driver Selection:"
+TLOC 2 16
+TGROUP "Primary Net"
+ENDTEXT
+
+GROUP "Case Selection" "EMISNCaseSelection"
+GLOC 1 0
+GSIZE 69 4
+ENDGROUP
+
+TEXT
+TLOC 2 2
+INFO EMISNCurrentCaseLabel 14
+TGROUP "EMISNCaseSelection"
+ENDTEXT
+
+FIELD EMISNCurrentCase
+FLOC 16 2
+ENUMSET 50 
+POP "CasePOP"
+FGROUP "EMISNCaseSelection"
+ENDFIELD
+
+FIELD EMISNStimulus
+FLOC 26 6
+ENUMSET 25
+POP "EMISNStimPOP"
+FGROUP "EMI for Single Net"
+ENDFIELD
+
+FIELD EMISNNetSelection
+FLOC 26 14
+ENUMSET 25
+POP "NetSelectionPOP"
+FGROUP "Primary Net"
+ENDFIELD
+
+FIELD EMISNDriverSelection
+FLOC 26 16
+ENUMSET 25
+POP "DriverSelectionPOP"
+FGROUP "Primary Net"
+ENDFIELD
+
+FIELD EMISNFast
+FLOC 2 10
+CHECKLIST "Fast"
+FGROUP "Fast/Typical/Slow Mode"
+ENDFIELD
+
+FIELD EMISNTypical
+FLOC 15 10
+CHECKLIST "Typical"
+FGROUP "Fast/Typical/Slow Mode"
+ENDFIELD
+
+FIELD EMISNSlow
+FLOC 28 10
+CHECKLIST "Slow"
+FGROUP "Fast/Typical/Slow Mode"
+ENDFIELD
+
+FIELD EMISNFastSlow
+FLOC 41 10
+CHECKLIST "Fast/Slow"
+FGROUP "Fast/Typical/Slow Mode"
+ENDFIELD
+
+FIELD EMISNSlowFast
+FLOC 54 10
+CHECKLIST "Slow/Fast"
+FGROUP "Fast/Typical/Slow Mode"
+ENDFIELD
+
+FIELD EMISNSaveCircuits
+FLOC 2 27
+CHECKLIST "Save Circuit Files"
+ENDFIELD
+
+FIELD EMISNCreateWaveForms
+FLOC 26 29
+MENUBUTTON "Create Waveforms" 20 3
+ENDFIELD
+
+GROUP "EMI for Single Net"
+GLOC 1 4
+GSIZE 69 4
+ENDGROUP
+
+GROUP "Fast/Typical/Slow Mode"
+GLOC 1 8
+GSIZE 69 4
+ENDGROUP
+
+GROUP "Primary Net"
+GLOC 1 12
+GSIZE 69 6
+ENDGROUP
+
+ENDTAB
+
+ENDTABSET
+
+FIELD Simulations
+FLOC 2 36
+LIST "" 70 7
+OPTIONS multiselect
+ENDFIELD
+
+FIELD ViewWaveForm
+FLOC 10 50
+MENUBUTTON "View Selected Waveform(s)" 20 3
+ENDFIELD
+
+FIELD ViewAllWaveForm
+FLOC 40 50
+MENUBUTTON "View All Waveforms" 20 3
+ENDFIELD
+
+FIELD OK
+FLOC 2 54
+MENUBUTTON "OK" 10 3
+ENDFIELD
+
+FIELD Cancel
+FLOC 13 54
+MENUBUTTON "Cancel" 10 3
+ENDFIELD
+
+FIELD SimulationPrefs
+FLOC 27 54
+MENUBUTTON "Preferences ..." 20 3
+ENDFIELD
+
+FIELD help
+FLOC 62 54
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+
+
+ENDTILE
+
+ENDFORM
+

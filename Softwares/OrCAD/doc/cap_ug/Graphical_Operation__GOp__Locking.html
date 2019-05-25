@@ -1,0 +1,699 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>
+      Graphical Operation (GOp) Locking
+    </title>
+    <meta name="Approver" content="Technical Publications" />
+    <meta name="Author" content="Technical Publications" />
+    <meta name="CreateDate" content="2012-10-10" />
+    <meta name="CreateTime" content="1349876202" />
+    <meta name="DataType" content="Manuals" />
+    <meta name="Description" content="UG" />
+    <meta name="DocTitle" content="OrCAD Capture User Guide" />
+    <meta name="DocType" content="User Guide" />
+    <meta name="FileTitle"
+    content="Graphical Operation (GOp) Locking" />
+    <meta name="Keywords" content="" />
+    <meta name="FileType" content="Chapter" />
+    <meta name="Keyword" content="cap_ug" />
+    <meta name="Language" content="English" />
+    <meta name="ModifiedDate" content="2012-10-10" />
+    <meta name="ModifiedTime" content="1349876202" />
+    <meta name="NextFile"
+    content="Establishing%2Bconnectivity.html" />
+    <meta name="Group" content="" />
+    <meta name="Platform" content="All," />
+    <meta name="PrevFile"
+    content="Undoing%2Band%2BRepeating%2Bcommands.html" />
+    <meta name="Product"
+    content="Allegro Design Entry CIS,OrCAD Capture," />
+    <meta name="ProductFamily"
+    content="Silicon-Package-Board Co-Design,Silicon-Package-Board Co-Design," />
+    <meta name="ProductVersion" content="16.6" />
+    <meta name="RightsManagement"
+    content="Copyright 2011-2012 Cadence Design Systems Inc." />
+    <meta name="Title"
+    content="OrCAD Capture User Guide -- Graphical Operation (GOp) Locking" />
+    <meta name="Version" content="16.6" />
+    <meta name="Renderer" content="WIKI" />
+    <meta name="SpaceKey" content="capug166" />
+    <link href="styles/site.css" rel="stylesheet"
+    type="text/css" />
+    <meta content="text/html; charset=UTF-8"
+    http-equiv="Content-Type" />
+  </head>
+  <body style="margin-left: 5%;background-color: #FFFFFF;">
+    <a xmlns:html="http://www.w3.org/1999/xhtml" id="pagetop"
+    name="pagetop"></a> <a
+    xmlns:html="http://www.w3.org/1999/xhtml" id="firstpage"
+    name="firstpage"></a> <!-- Begin Buttons -->
+     
+    <table xmlns:html="http://www.w3.org/1999/xhtml" border="0"
+    cellpadding="0" cellspacing="0" width="650">
+      <tbody>
+        <tr>
+          <td colspan="10" height="36" width="650">
+            <img height="34" src="../support/header_doc.gif"
+            width="650" />
+          </td>
+        </tr>
+        <tr>
+          <td height="20" width="59">
+            <a href="javascript:openLibrary()"><img
+            alt="View Library" border="0" height="20"
+            src="../support/nav2_library.gif" width="59" /></a>
+          </td>
+          <td height="20" width="73">
+            <a href="cap_ugTOC.html"><img alt="Table of Contents"
+            border="0" src="../support/nav2_toc.gif" /></a>
+          </td>
+          <td height="20" width="46">
+            <img alt="Index" border="0"
+            src="../support/nav2_index_b.gif" />
+          </td>
+          <td>
+            <a href="Undoing_and_Repeating_commands.html"><img
+            alt="Previous" border="0"
+            src="../support/nav2_previous.gif" /></a>
+          </td>
+          <td>
+            <a href="Establishing_connectivity.html"><img
+            alt="Next" border="0"
+            src="../support/nav_next.gif" /></a>
+          </td>
+          <td height="20">
+            <a href="cap_ug.pdf"><img alt="Open PDF to print book"
+            border="0" height="20" src="../support/nav2_print.gif"
+            width="114" /></a>
+          </td>
+          <td height="20" width="61">
+            <img src="../support/nav2_black.gif" />
+          </td>
+          <td height="20" width="76">
+            <a href="/feedback.htm"><img alt="Email Comments"
+            border="0" height="20"
+            src="../support/nav2_feedback.gif" width="76" /></a>
+          </td>
+          <td height="20" width="43">
+            <a href="../cdsuser/help.html"><img
+            alt="Help Using Documentation" border="0" height="20"
+            src="../support/nav2_help.gif" width="43" /></a>
+          </td>
+          <td height="20" width="37">
+            <a href="/exitsearch.htm"><img
+            alt="Shut Down Cadence Documentation Server" border="0"
+            height="20" src="../support/nav2_exit.gif"
+            width="37" /></a>
+          </td>
+        </tr>
+      </tbody>
+    </table><!-- End Buttons -->
+    <hr xmlns:html="http://www.w3.org/1999/xhtml" />
+    <div id="main-header">
+      <a xmlns="" id="GraphicalOperation%28GOp%29Locking"
+      name="GraphicalOperation%28GOp%29Locking"></a> 
+      <h1 xmlns="" style=" margin: 4px 0 4px;">
+        <span>Graphical Operation (GOp) Locking</span>
+      </h1>
+    </div>
+    <div class="wiki-content group" id="main-content">
+      <p>
+        <span class="confluence-anchor-link"
+        id="GraphicalOperation(GOp)Locking-gop_locking"></span>
+        <span class="confluence-anchor-link"
+        id="GraphicalOperation(GOp)Locking-gop_locking"></span><br />
+         A schematic page often contains a large number of
+        different types of objects like parts, pins, buses, wires.
+        A user often needs to perform operations like adding new
+        objects, changing object properties, moving, creating and
+        deleting objects. All these operations require extensive
+        user interaction with the Capture interface. Also, with the
+        increasing complexity of designs, the number of objects on
+        a page and pages in a design has increased exponentially.
+        All these issues raise the need in Capture for providing a
+        methodology to lock the state of a design at a particular
+        point of the design process. For example, a designer should
+        have the ability to maybe lock the layout of a schematic
+        page.<br />
+        <br />
+         To address such issues, Capture includes a graphical
+        operation locking (GOp) feature that allows you to lock
+        objects (like components, pages, folders and even design)
+        in a Capture project.<br />
+        <br />
+         When you graphically lock an object, the graphical aspects
+        of the object are locked. This implies that non-graphical
+        aspects of an object such as its properties are still
+        editable. For example, if you lock a part on a schematic
+        page, you cannot delete, or move the part but you can
+        change, say, the PCB footprint of the part.<br />
+        <br />
+         GOp locking allows you to lock any object in a Capture
+        design. You can lock the design, the schematic folders
+        within the design, the pages within the schematic folders
+        and the objects on the schematic pages.
+      </p>
+      <p>
+        <strong>In this section:</strong>
+      </p>
+      <div>
+        <ul>
+          <li>
+            <strong><a
+            href="#GraphicalOperation(GOp)Locking-lock_unlock_object_designLockingandUnlockingObjectsinaDesign"><span
+             class="confluence-anchor-link"
+            id="GraphicalOperation(GOp)Locking-lock_unlock_object_design">Locking
+            and Unlocking Objects in a Design</span></a></strong>
+          </li>
+          <li>
+            <strong><a
+            href="#GraphicalOperation(GOp)Locking-1853309FeaturesofaLockedSchematicPageobject"><span
+             class="confluence-anchor-link"
+            id="GraphicalOperation(GOp)Locking-1853309">Features of
+            a Locked Schematic Page object</span></a></strong>
+          </li>
+          <li>
+            <strong><a
+            href="#GraphicalOperation(GOp)Locking-1856127FeaturesofaLockedSchematicPage"><span
+             class="confluence-anchor-link"
+            id="GraphicalOperation(GOp)Locking-1856127">Features of
+            a Locked Schematic Page</span></a></strong>
+          </li>
+          <li>
+            <strong><a
+            href="#GraphicalOperation(GOp)Locking-1856823FeaturesofaLockedSchematicFolder"><span
+             class="confluence-anchor-link"
+            id="GraphicalOperation(GOp)Locking-1856823">Features of
+            a Locked Schematic Folder</span></a></strong>
+          </li>
+          <li>
+            <strong><a
+            href="#GraphicalOperation(GOp)Locking-1857252FeaturesofaLockedDesign"><span
+             class="confluence-anchor-link"
+            id="GraphicalOperation(GOp)Locking-1857252">Features of
+            a Locked Design</span></a></strong>
+          </li>
+          <li>
+            <strong><a
+            href="#GraphicalOperation(GOp)Locking-1857919CascadingandRoll-upeffectsofLocking"><span
+             class="confluence-anchor-link"
+            id="GraphicalOperation(GOp)Locking-1857919">Cascading
+            and Roll-up effects of Locking</span></a></strong>
+          </li>
+        </ul>
+      </div><strong><br class="confluence-link" />
+      </strong><br />
+      <br />
+       
+      <h4
+      id="GraphicalOperation(GOp)Locking-lock_unlock_object_designLockingandUnlockingObjectsinaDesign">
+        <span class="confluence-anchor-link"
+        id="GraphicalOperation(GOp)Locking-lock_unlock_object_design"></span>Locking
+        and Unlocking Objects in a Design
+      </h4>
+      <p>
+        You can lock (and subsequently unlock) any object in a
+        Capture project. You can lock the objects on a schematic
+        page, the pages in a schematic folder, the folders in a
+        design, and the design in a project.
+      </p>
+      <p>
+        <strong><em>To lock an object in Capture:</em></strong>
+      </p>
+      <ol>
+        <li>
+          <p>
+            Select the object to lock.<br />
+             For schematic page objects, you can use the
+            multi-select feature on the schematic page to select
+            and lock multiple objects simultaneously.<br />
+             For project manager objects (pages, folders and
+            designs), you select the objects in project manager.
+          </p>
+          <div class="panelMacro">
+            <table class="noteMacro">
+              <colgroup>
+                <col width="24" />
+                <col />
+              </colgroup>
+              <tr>
+                <td valign="top">
+                  <img align="absmiddle" alt="" border="0"
+                  height="16"
+                  src="images/icons/emoticons/warning.png"
+                  width="16" />
+                </td>
+                <td>
+                  <p>
+                    You cannot lock multiple Project manager
+                    objects simultaneously.
+                  </p>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </li>
+        <li>
+          From the <em>Edit</em> menu choose the Lock menu
+          item.<br />
+           Alternatively, you can right-click on the object (on the
+          page or in the Project manager) and choose the Lock item
+          in the pop-up menu.&#160;When you lock a schematic page
+          object the look-and-feel of the object when it is
+          selected is changed.&#160;When you lock a project manager
+          object, a lock symbol appears over the icon of the object
+          in the Project manager.
+        </li>
+      </ol>
+      <div class="panelMacro">
+        <table class="noteMacro">
+          <colgroup>
+            <col width="24" />
+            <col />
+          </colgroup>
+          <tr>
+            <td valign="top">
+              <img align="absmiddle" alt="" border="0" height="16"
+              src="images/icons/emoticons/warning.png"
+              width="16" />
+            </td>
+            <td>
+              <ul>
+                <li>
+                  After locking (or unlocking) one or more objects
+                  on a design, the lock (or unlocked) state of the
+                  objects must be saved. For exmaple, say you lock
+                  one or more objects on a schematic page. After
+                  locking the objects, if you close the page
+                  without saving changes, the lock state of these
+                  objects is lost.
+                </li>
+                <li>
+                  If you lock one or more objects in a design,
+                  export the design and then again import the
+                  design, all the locks on the imported design are
+                  lost.
+                </li>
+              </ul>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <p>
+        <strong><em>To unlock an object in Capture:</em></strong>
+      </p>
+      <ol>
+        <li>
+          Select the object to unlock.<br />
+           For schematic page objects, you can use the multi-select
+          feature on the schematic page to select and unlock
+          multiple objects simultaneously.<br />
+           For Project manager objects (pages, folders and
+          designs), you select the objects in the Project manager.
+          However, you cannot unlock multiple Project manager
+          objects simultaneously.
+        </li>
+        <li>
+          From the Edit menu choose the UnLock menu item.
+        </li>
+      </ol>
+      <div class="panelMacro">
+        <table class="noteMacro">
+          <colgroup>
+            <col width="24" />
+            <col />
+          </colgroup>
+          <tr>
+            <td valign="top">
+              <img align="absmiddle" alt="" border="0" height="16"
+              src="images/icons/emoticons/warning.png"
+              width="16" />
+            </td>
+            <td>
+              <p>
+                The lock and unlock menu items (in the Edit menu or
+                the pop-up menu) are disabled or enabled depending
+                on the lock state of the selected object (or
+                objects).
+              </p>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <h4
+      id="GraphicalOperation(GOp)Locking-1853309FeaturesofaLockedSchematicPageobject">
+        <span class="confluence-anchor-link"
+        id="GraphicalOperation(GOp)Locking-1853309"></span>
+        Features of a Locked Schematic Page object
+      </h4>
+      <ul>
+        <li>
+          The object cannot be deleted or cut.
+        </li>
+        <li>
+          The object cannot be moved to another part of the page
+          (using a cut-and-paste operation or a mouse drag
+          operation).
+        </li>
+        <li>
+          The object cannot be moved to another page (using a
+          cut-and-paste operation or a mouse drag-and-drop
+          operation).
+        </li>
+        <li>
+          The object can be copied to another page or as another
+          instance on the current page. However, the copied
+          instance of the object is locked as soon as you paste it
+          on the page.
+        </li>
+        <li>
+          If the locked object is a part, the part editor for the
+          object is inaccessible. This means that the menu option
+          to open the part editor for a locked part is unavailable.
+        </li>
+        <li>
+          The replace or update cache operations will fail if they
+          effect a locked part. Say a design contains multiple
+          instances of a part where some instances are locked and
+          some are unlocked. In this case, the replace or update
+          cache operations on a part with multiple instances will
+          fail if these operations effect the locked instances.
+          This means that these operations will not update even on
+          the unlocked part instances.
+        </li>
+        <li>
+          The Update All operation on an unlocked part instance
+          (executed in the edit part procedure) will fail if this
+          operation effects a locked part instance. This means that
+          this operation will not effect even on the unlocked part
+          instances.<br />
+           Since, this type of locking is graphical so you are
+          still permitted to edit the properties of a locked part.
+          This implies that you can open the property editor for a
+          locked object and add, modify or delete properties on the
+          part.
+        </li>
+      </ul>
+      <h4
+      id="GraphicalOperation(GOp)Locking-1856127FeaturesofaLockedSchematicPage">
+        <span class="confluence-anchor-link"
+        id="GraphicalOperation(GOp)Locking-1856127"></span>
+        Features of a Locked Schematic Page
+      </h4>
+      <ul>
+        <li>
+          The page cannot be deleted or cut.
+        </li>
+        <li>
+          The page cannot be moved to another schematic folder
+          (using a cut-and-paste operation or a mouse drag-and-drop
+          operation).
+        </li>
+        <li>
+          The page cannot be renamed.
+        </li>
+        <li>
+          Schematic page objects cannot be added to the page. This
+          implies that an object cannot be placed on a locked page
+          using the Place command. Also, an object cannot be placed
+          on a locked page by copying the object from another page
+          and pasted it onto the locked page.
+        </li>
+        <li>
+          The page can be copied to another folder. However, the
+          copied page is locked as soon as you paste it to the
+          destination folder.
+        </li>
+        <li>
+          All the page objects are locked as soon as the page is
+          locked. Also, objects on a locked page may be explicitly
+          unlocked. For details on the cascading and roll-up
+          effects of locking pages see the section <a
+          href="Graphical_Operation__GOp__Locking.html">Cascading
+          and roll-up effects of Locking</a>.
+        </li>
+      </ul>
+      <h4
+      id="GraphicalOperation(GOp)Locking-1856823FeaturesofaLockedSchematicFolder">
+        <span class="confluence-anchor-link"
+        id="GraphicalOperation(GOp)Locking-1856823"></span>
+        Features of a Locked Schematic Folder
+      </h4>
+      <ul>
+        <li>
+          The folder cannot be deleted or cut.
+        </li>
+        <li>
+          The folder cannot be moved to another design (using a
+          cut-and-paste operation or a mouse drag-and-drop
+          operation).
+        </li>
+        <li>
+          The folder cannot be renamed.
+        </li>
+        <li>
+          Schematic pages cannot be added to the folder.
+        </li>
+        <li>
+          The make root property of a locked schematic folder
+          cannot be modified.
+        </li>
+        <li>
+          The folder can be copied to another design. However, the
+          copied design is locked as soon as you paste it to the
+          destination design.
+        </li>
+        <li>
+          All the pages are locked as soon as the folder is locked.
+          Also, pages in a locked folder may be explicitly
+          unlocked. For details on the cascading and roll-up
+          effects of locking folders see the section <a
+          href="Graphical_Operation__GOp__Locking.html">Cascading
+          and roll-up effects of Locking</a>.
+        </li>
+      </ul>
+      <h4
+      id="GraphicalOperation(GOp)Locking-1857252FeaturesofaLockedDesign">
+        <span class="confluence-anchor-link"
+        id="GraphicalOperation(GOp)Locking-1857252"></span>
+        Features of a Locked Design
+      </h4>
+      <ul>
+        <li>
+          Schematic folders cannot be added to the design.
+        </li>
+        <li>
+          All the folders are locked as soon as the design is
+          locked. Also, folders in a locked design may be
+          explicitly unlocked. For details on the cascading and
+          roll-up effects of locking designs see the section <a
+          href="Graphical_Operation__GOp__Locking.html">Cascading
+          and roll-up effects of Locking</a>.
+        </li>
+        <li>
+          Design operations, netlisting, annotations, DRC and
+          permitted on a locked design. You can also simulate a
+          locked design.<br />
+           Note: However, if you run these commands on a locked
+          design, and this causes a graphical change in the design,
+          Capture allows the change but it will immediately be
+          locked onto the design.<br />
+           Say you run the DRC on a locked design (or the DRC
+          effects locked objects in the design). If the design has
+          any DRC errors or warnings, Capture allows the process to
+          place the markers even on locked object of the design.
+          However, if a marker is placed on a locked page, the
+          marker is immediately locked and you will need to either
+          unlock the page or the marker if you need to remove the
+          marker.
+        </li>
+      </ul>
+      <h4
+      id="GraphicalOperation(GOp)Locking-1857919CascadingandRoll-upeffectsofLocking">
+        <span class="confluence-anchor-link"
+        id="GraphicalOperation(GOp)Locking-1857919"></span>
+        Cascading and Roll-up effects of Locking
+      </h4>
+      <p>
+        When you lock a container object (a page, a folder, or a
+        design), all the objects within the container are also
+        locked. Also, this process cascades down to the lowest
+        level object.<br />
+         So, if you lock a page, all the objects on the page are
+        locked. If you lock a folder, all the pages contained in
+        the folder are locked. In addition, the objects on each of
+        the pages are locked.
+      </p>
+      <div class="panelMacro">
+        <table class="noteMacro">
+          <colgroup>
+            <col width="24" />
+            <col />
+          </colgroup>
+          <tr>
+            <td valign="top">
+              <img align="absmiddle" alt="" border="0" height="16"
+              src="images/icons/emoticons/warning.png"
+              width="16" />
+            </td>
+            <td>
+              <p>
+                Unlocking has the same cascading effect on a
+                container and the objects within the container.
+              </p>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <p>
+        When you lock a container object, you can unlock specific
+        objects within the locked container by explicitly unlocking
+        these. However, since locking and unlocking does not cause
+        a roll-up effect, the unlock operation does not unlock the
+        object container.<br />
+        <br />
+         When you lock a container object, a lock symbol appears
+        over the container icon in the Project manager. Now, if you
+        explicitly unlock one or more objects within the locked
+        container, the lock symbol remains but it changes to an
+        open lock. This indicates that the container is locked but
+        one or more objects within the container are
+        unlocked.<br />
+        <br />
+         The locking operation on an object within a container is
+        specific to the object. This implies that the lock (or
+        unlock) operation on an object overrides the operation on
+        the object container. Consider the example of a folder,
+        SCHEMATIC1, containing two pages, PAGE1 and PAGE2.
+      </p>
+      <ol>
+        <li>
+          Lock PAGE2.
+        </li>
+        <li>
+          Lock SCHEMATIC1.<br />
+           Since locking is a cascading operation, locking
+          SCHEMATIC1 effects the lock status of its pages. In this
+          case, since PAGE2 is assigned locked state, so the
+          cascading operation will effect only PAGE1.<br />
+           The lock operation did not effect PAGE2 not because the
+          page was already locked but because the lock (or unlock)
+          state on an object overrides the locked (or unlocked)
+          state of the container.
+        </li>
+        <li>
+          Unlock SCHEMATIC1.<br />
+           Again, due to the cascading effect of unlocking, the
+          pages within SCHEMATIC1 are unlocked.<br />
+           However, since PAGE2 was locked specifically and not as
+          part of the cascading lock on SCHEMATIC1, the cascading
+          lock operation will not effect the lock state of PAGE1.
+        </li>
+      </ol>
+      <div class="panelMacro">
+        <table class="warningMacro">
+          <colgroup>
+            <col width="24" />
+            <col />
+          </colgroup>
+          <tr>
+            <td valign="top">
+              <img align="absmiddle" alt="" border="0" height="16"
+              src="images/icons/emoticons/forbidden.png"
+              width="16" />
+            </td>
+            <td>
+              <p>
+                Locking (or unlocking) a container does not
+                necessarily imply that the state of the entire
+                contents of the container will be effected by
+                operation. So objects within the container are
+                assigned their own lock (or unlock) state.
+              </p>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <hr xmlns:html="http://www.w3.org/1999/xhtml" />
+    <hr xmlns:html="http://www.w3.org/1999/xhtml" align="left" />
+    <div xmlns:html="http://www.w3.org/1999/xhtml"
+    style="text-align: left;">
+      <!-- Begin Buttons -->
+      <table border="0" cellpadding="0" cellspacing="0"
+      width="650">
+        <tbody>
+          <tr>
+            <td colspan="10" height="36" width="650">
+              <img height="34" src="../support/header_doc.gif"
+              width="650" />
+            </td>
+          </tr>
+          <tr>
+            <td height="20" width="59">
+              <a href="javascript:openLibrary()"><img
+              alt="View Library" border="0" height="20"
+              src="../support/nav2_library.gif" width="59" /></a>
+            </td>
+            <td height="20" width="73">
+              <a href="cap_ugTOC.html"><img alt="Table of Contents"
+              border="0" src="../support/nav2_toc.gif" /></a>
+            </td>
+            <td height="20" width="46">
+              <img alt="Index" border="0"
+              src="../support/nav2_index_b.gif" />
+            </td>
+            <td>
+              <a href="Undoing_and_Repeating_commands.html"><img
+              alt="Previous" border="0"
+              src="../support/nav2_previous.gif" /></a>
+            </td>
+            <td>
+              <a href="Establishing_connectivity.html"><img
+              alt="Next" border="0"
+              src="../support/nav_next.gif" /></a>
+            </td>
+            <td height="20">
+              <a href="cap_ug.pdf"><img
+              alt="Open PDF to print book" border="0" height="20"
+              src="../support/nav2_print.gif" width="114" /></a>
+            </td>
+            <td height="20" width="61">
+              <img src="../support/nav2_black.gif" />
+            </td>
+            <td height="20" width="76">
+              <a href="/feedback.htm"><img alt="Email Comments"
+              border="0" height="20"
+              src="../support/nav2_feedback.gif" width="76" /></a>
+            </td>
+            <td height="20" width="43">
+              <a href="../cdsuser/help.html"><img
+              alt="Help Using Documentation" border="0" height="20"
+              src="../support/nav2_help.gif" width="43" /></a>
+            </td>
+            <td height="20" width="37">
+              <a href="/exitsearch.htm"><img
+              alt="Shut Down Cadence Documentation Server"
+              border="0" height="20" src="../support/nav2_exit.gif"
+              width="37" /></a>
+            </td>
+          </tr>
+        </tbody>
+      </table><!-- End Buttons -->
+    </div><br xmlns:html="http://www.w3.org/1999/xhtml" />
+     <font xmlns:html="http://www.w3.org/1999/xhtml" size="-1">For
+    support, see <a href="http://support.cadence.com"
+    target="_blank">Cadence Online Support</a> service.</font> <br
+    xmlns:html="http://www.w3.org/1999/xhtml" />
+     <br xmlns:html="http://www.w3.org/1999/xhtml" />
+     <font xmlns:html="http://www.w3.org/1999/xhtml"
+    size="-1"><i>Copyright &#169; 2012, <a
+    href="http://www.cadence.com">Cadence Design Systems,
+    Inc.</a></i></font> <br
+    xmlns:html="http://www.w3.org/1999/xhtml" />
+     <font xmlns:html="http://www.w3.org/1999/xhtml" size="-1">All
+    rights reserved.</font> <br
+    xmlns:html="http://www.w3.org/1999/xhtml" />
+     <br xmlns:html="http://www.w3.org/1999/xhtml" />
+  </body>
+</html>

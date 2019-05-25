@@ -1,0 +1,98 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 40 32
+HEADER "Refresh Via Structures"
+
+ACTIVEFIELD "cancel"
+DEFAULT execute
+
+MESSAGE nfile 3 "You must enter a list file first."
+MESSAGE nselection 3 "You must select at least one vs to refresh."
+MESSAGE werror 3 "A problem occurred on creating list file."
+MESSAGE nerror 3 "A problem occurred - please check the logfile."
+MESSAGE ndone 0 "Via Structures refreshed."
+MESSAGE ndemo 2 "Cannot Run in Demo Mode."
+
+
+TILE
+TEXT "Via Structures to refresh:"
+TLOC 1 3
+ENDTEXT
+
+FIELD force
+FLOC 1 1
+CHECKLIST "Ignore Fixed Property"
+ENDTEXT
+
+FIELD viastruct_list
+FLOC 2 5
+CHECKLIST "Via Structure list" rf
+ENDFIELD
+
+FIELD listfile
+FLOC 4 7
+STRFILLIN 26 127
+ENDFIELD
+
+FIELD browse
+FLOC 33 7
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+FIELD selectvs
+FLOC 2 10
+CHECKLIST "Select from the following list" rf
+ENDFIELD
+
+
+TEXT "Refresh:"
+TLOC 5 12
+ENDTEXT
+FIELD refresh_list
+FLOC 5 14
+LIST "" 15 5
+OPTIONS SORT
+ENDFIELD
+FIELD saveall
+FLOC 8 23
+MENUBUTTON "Ignore All >>" 9 3
+ENDFIELD
+
+TEXT "Ignore:"
+TLOC 23 12
+ENDTEXT
+FIELD save_list
+FLOC 23 14
+LIST "" 15 5
+OPTIONS SORT
+ENDFIELD
+FIELD refreshall
+FLOC 24 23
+MENUBUTTON "<< Refresh All" 9 3
+ENDFIELD
+
+FIELD viewlog
+FLOC 2 26
+MENUBUTTON "View Log..." 9 3
+ENDFIELD
+
+FIELD execute
+FLOC 2 29
+MENUBUTTON "Refresh" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 16 29
+MENUBUTTON "Close" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 31 29
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+
+ENDTILE
+
+ENDFORM

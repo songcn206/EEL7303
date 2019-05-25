@@ -1,0 +1,860 @@
+<?xml version="1.0"?>
+
+<!--============================================================================
+ = This file, its machine readable form, and any representation of the material=
+ = contained herein are owned by:                                              =
+ =                                                                             =
+ =                        Cadence Design Systems, Inc.                         = 
+ =                                                                             =
+ = The materials are proprietary and confidential and may not be reproduced    =
+ = in any form without the prior written permission of Cadence Design Systems, = 
+ = Inc.                                                                        = 
+ =               Copyright @ 2010 Cadence Design Systems, Inc.                 = 
+ =                            All Rights Reserved                              =
+ ============================================================================-->
+
+<xs:schema 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns="http://www.cadence.com/spb/csschema"
+    targetNamespace="http://www.cadence.com/spb/csschema"
+    elementFormDefault="qualified">
+
+<!-- Define a type representing non-negative integers, and -1 -->
+<xs:simpleType name="bitType">
+    <xs:restriction base="xs:integer">
+        <xs:minInclusive value="-1" />
+    </xs:restriction>
+</xs:simpleType>
+
+<!-- Group representing bit range -->
+<xs:group name="bitrange">
+    <xs:sequence>
+        <xs:element name="msb" type="bitType" minOccurs="0" />
+        <xs:element name="lsb" type="bitType" minOccurs="0" />
+    </xs:sequence>
+</xs:group>
+
+<!-- Enumeration representing port/net direction -->
+<xs:simpleType name="directionType">
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="unspec" />
+        <xs:enumeration value="input" />
+        <xs:enumeration value="output" />
+        <xs:enumeration value="inout" />
+    </xs:restriction>
+</xs:simpleType>
+
+<!-- Enumeration representing net scope -->
+<xs:simpleType name="scopeType">
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="local" />
+        <xs:enumeration value="global" />
+        <xs:enumeration value="interface" />
+    </xs:restriction>
+</xs:simpleType>
+
+<!-- Enumeration representing port group direction -->
+<xs:simpleType name="groupDirectionType">
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="inout" />
+    </xs:restriction>
+</xs:simpleType>
+
+<!-- Enumeration representing net group scope -->
+<xs:simpleType name="groupScopeType">
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="local" />
+        <xs:enumeration value="interface" />
+    </xs:restriction>
+</xs:simpleType>
+
+<!-- Enumeration representing id or name based schema -->
+<xs:simpleType name="schemaKeyType">
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="idBased" />
+        <xs:enumeration value="nameBased" />
+    </xs:restriction>
+</xs:simpleType>
+
+<!-- Type representing an id with bit information -->
+<xs:complexType name="idBitPairType">
+    <xs:sequence>
+        <xs:element name="id" type="xs:string" />
+        <xs:group ref="bitrange" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Type representing last ids used in the schema -->
+<xs:complexType name="lastIdType">
+    <xs:all>
+        <xs:element name="instanceid" type="xs:positiveInteger" minOccurs="0" />
+        <xs:element name="insttermid" type="xs:positiveInteger" minOccurs="0" />
+        <xs:element name="netid"      type="xs:positiveInteger" minOccurs="0" />
+        <xs:element name="dpnetid"    type="xs:positiveInteger" minOccurs="0" />
+        <xs:element name="dpinsttermid" type="xs:positiveInteger" minOccurs="0" />
+        <xs:element name="dpconnid"   type="xs:positiveInteger" minOccurs="0" />
+        <xs:element name="netgroupid"     type="xs:positiveInteger" minOccurs="0" />
+        <xs:element name="netinterfaceid" type="xs:positiveInteger" minOccurs="0" />
+        <xs:element name="portgroupid"     type="xs:positiveInteger" minOccurs="0" />
+        <xs:element name="portinterfaceid" type="xs:positiveInteger" minOccurs="0" />
+        <xs:element name="groupconnid"     type="xs:positiveInteger" minOccurs="0" />
+        <xs:element name="instgroupid"     type="xs:positiveInteger" minOccurs="0" />
+    </xs:all>
+</xs:complexType>
+
+<!-- Type representing parameters on cells and instances -->
+<xs:complexType name="parameterType">
+    <xs:sequence>
+        <xs:element name="name"   type="xs:string" />
+        <xs:element name="value"  type="xs:string" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Container for multiple parameters -->
+<xs:complexType name="parametersType">
+    <xs:sequence>
+        <xs:element name="parameter" type="parameterType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+</xs:complexType>
+
+  <!-- Type representing parameters on cells and instances -->
+  <xs:complexType name="propertyType">
+    <xs:sequence>
+      <xs:element name="bit"    type="bitType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="name"   type="xs:string" />
+      <xs:element name="value"  type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Container for multiple parameters -->
+  <xs:complexType name="propertiesType">
+    <xs:sequence>
+      <xs:element name="property" type="propertyType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Type representing a terminal on a cell -->
+<xs:complexType name="termType">
+    <xs:sequence>
+        <xs:element name="id"           type="xs:string" />
+        <xs:element name="name"         type="xs:string" />
+        <xs:element name="direction"    type="directionType" />
+        <xs:element name="displayName"  type="xs:string" minOccurs="0" />
+        <xs:element name="deleted"      type="xs:boolean" minOccurs="0" />
+        <xs:group   ref="bitrange" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Container for multiple terminals -->
+<xs:complexType name="termsType" >
+    <xs:sequence>
+        <xs:element name="term" type="termType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Type representing a cell in the design -->
+<xs:complexType name="cellType">
+    <xs:sequence>
+        <xs:element name="id"           type="xs:string" />
+        <xs:element name="library"      type="xs:string" />
+        <xs:element name="name"         type="xs:string" />
+        <xs:element name="view"         type="xs:string" />
+        <xs:element name="detached"     type="xs:boolean" minOccurs="0" />
+        <xs:element name="parameters"   type="parametersType" minOccurs="0" />
+        <xs:element name="terms"        type="termsType" minOccurs="0" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Container for multiple cells -->
+<xs:complexType name="cellsType">
+    <xs:sequence>
+        <xs:element name="cell" type="cellType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Type representing a net in the design -->
+<xs:complexType name="netType">
+    <xs:sequence>
+        <xs:element name="id"           type="xs:string" />
+        <xs:element name="name"         type="xs:string" />
+        <xs:element name="scope"        type="scopeType" minOccurs="0"/>
+        <xs:element name="direction"    type="directionType" minOccurs="0"/>
+        <xs:element name="inherited"    type="xs:boolean" minOccurs="0" />
+        <xs:element name="base"         type="xs:boolean" minOccurs="0" />
+        <xs:group   ref="bitrange" />
+        <xs:element name="properties"   type="propertiesType" minOccurs="0" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Container for multiple nets -->
+<xs:complexType name="netsType">
+    <xs:sequence>
+        <xs:element name="net" type="netType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Enumeration representing differential polarity -->
+<xs:simpleType name="differentialPolarityType">
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="negative" />
+        <xs:enumeration value="positive" />
+        <xs:enumeration value="none" />
+    </xs:restriction>
+</xs:simpleType>
+
+<!-- Enumeration representing differential source -->
+<xs:simpleType name="differentialSourceType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="user" />
+      <xs:enumeration value="model" />
+      <xs:enumeration value="library" />
+      <xs:enumeration value="none" />
+    </xs:restriction>
+</xs:simpleType>
+
+<!-- Type representing a differential net member -->
+<xs:complexType name="differentialNetMemberType">
+    <xs:sequence>
+        <xs:element name="id"           type="xs:string" />
+        <xs:element name="polarity"     type="differentialPolarityType" />
+        <xs:element name="bit"          type="bitType" minOccurs="0" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Container for differential net members -->
+<xs:complexType name="differentialNetMembersType">
+    <xs:sequence>
+        <xs:element name="differentialnetmember" type="differentialNetMemberType" minOccurs="2" maxOccurs="2"/>
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Type representing a differential net in the design -->
+<xs:complexType name="differentialNetType">
+    <xs:sequence>
+        <xs:element name="id"           type="xs:string" />
+        <xs:element name="name"         type="xs:string" />
+        <xs:element name="differentialnetmembers"  type="differentialNetMembersType" minOccurs="1" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Container for multiple differential nets -->
+<xs:complexType name="differentialNetsType">
+    <xs:sequence>
+        <xs:element name="differentialnet"    type="differentialNetType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Type representing a differential bus member -->
+<xs:complexType name="differentialBusNetMemberType">
+    <xs:sequence>
+        <xs:element name="id"           type="xs:string" />
+        <xs:element name="bit"          type="bitType" minOccurs="0" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Container for multiple differential bus members -->
+<xs:complexType name="differentialBusNetMembersType">
+    <xs:sequence>
+        <xs:element name="differentialbusnetmember" type="differentialBusNetMemberType" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+</xs:complexType>
+
+
+<!-- Type representing a differential bus in the design -->
+<xs:complexType name="differentialBusNetType">
+    <xs:sequence>
+        <xs:element name="id"           type="xs:string" />
+        <xs:element name="name"         type="xs:string" />
+        <xs:element name="differentialbusnetmembers"  type="differentialBusNetMembersType" minOccurs="1" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Container for multiple differential bus nets -->
+<xs:complexType name="differentialBusNetsType">
+    <xs:sequence>
+        <xs:element name="differentialbusnet" type="differentialBusNetType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Type representing an alias in the design -->
+<xs:complexType name="aliasType">
+    <xs:attribute name="net1" type="xs:string" use="required" />
+    <xs:attribute name="lsb1" type="bitType"  use="optional" default="-1" />
+    <xs:attribute name="msb1" type="bitType"  use="optional" default="-1" />
+
+    <xs:attribute name="net2" type="xs:string" use="required" />
+    <xs:attribute name="lsb2" type="bitType"  use="optional" default="-1" />
+    <xs:attribute name="msb2" type="bitType"  use="optional" default="-1" />
+</xs:complexType>
+
+<!-- Container for multiple aliases -->
+<xs:complexType name="aliasesType">
+    <xs:sequence>
+        <xs:element name="alias" type="aliasType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Type representing masked global signals on instance -->
+<!-- NOTE: This structure currently does not allow bits to be masked -->
+<xs:complexType name="maskType">
+    <xs:attribute name="net"    type="xs:string" use="required" />
+    <xs:attribute name="maskid" type="xs:string"  use="required" />
+</xs:complexType>
+
+<!-- Container for multiple masks -->
+<xs:complexType name="masksType">
+    <xs:sequence>
+        <xs:element name="mask" type="maskType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Type representing power overrides on an instance -->
+<xs:complexType name="powerType">
+    <xs:sequence>
+        <xs:element name="name"     type="xs:string" />
+        <xs:element name="override" type="xs:string" />
+        <xs:element name="bit"      type="bitType" minOccurs="0" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Container for power overrides -->
+<xs:complexType name="powersType">
+    <xs:sequence>
+        <xs:element name="power" type="powerType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Type representing a connection in the design -->
+<xs:complexType name="connectionType">
+    <xs:attribute name="pinmsb" type="bitType" use="optional" default="-1" />
+    <xs:attribute name="pinlsb" type="bitType" use="optional" default="-1" />
+
+    <xs:attribute name="net" type="xs:string" use="required" />
+    <xs:attribute name="netmsb" type="bitType" use="optional" default="-1" />
+    <xs:attribute name="netlsb" type="bitType" use="optional" default="-1" />
+</xs:complexType>
+
+<!-- Container for multiple connections -->
+<xs:complexType name="connectionsType">
+    <xs:sequence>
+        <xs:element name="connection" type="connectionType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Type representing a pin on an instance -->
+<xs:complexType name="pinType">
+    <xs:sequence>
+        <xs:element name="id"           type="xs:string" />
+        <xs:element name="termid"       type="xs:string" />
+        <xs:group ref="bitrange" />
+        <xs:element name="connections"  type="connectionsType"  minOccurs="0" />
+        <xs:element name="properties"   type="propertiesType"   minOccurs="0" />      
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Container for multiple pins -->
+<xs:complexType name="pinsType">
+    <xs:sequence>
+        <xs:element name="pin" type="pinType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Type representing a differential pin member -->
+<xs:complexType name="differentialPinMemberType">
+    <xs:sequence>
+        <xs:element name="id"           type="xs:string" />
+        <xs:element name="polarity"     type="differentialPolarityType" />
+        <xs:element name="bit"          type="bitType" minOccurs="0" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Container for differential pin members -->
+<xs:complexType name="differentialPinMembersType">
+    <xs:sequence>
+        <xs:element name="differentialpinmember" type="differentialPinMemberType" minOccurs="2" maxOccurs="2"/>
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Type representing a differential connection -->
+<xs:complexType name="differentialConnectionType">
+    <xs:attribute name="id" type="xs:string" use="required" />
+    <xs:attribute name="netid" type="xs:string" use="required" />
+</xs:complexType>
+
+<!-- Type representing a differential pin in the design -->
+<xs:complexType name="differentialPinType">
+    <xs:sequence>
+        <xs:element name="id"           type="xs:string" />
+        <xs:element name="name"         type="xs:string" />
+        <xs:element name="source"       type="differentialSourceType" minOccurs="0" />
+        <xs:element name="differentialpinmembers"  type="differentialPinMembersType" minOccurs="1" />
+        <xs:element name="differentialconnection"  type="differentialConnectionType" minOccurs="0" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Container for multiple differential pins -->
+<xs:complexType name="differentialPinsType">
+    <xs:sequence>
+        <xs:element name="differentialpin"    type="differentialPinType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Type representing a differential bus member -->
+<xs:complexType name="differentialBusPinMemberType">
+    <xs:sequence>
+        <xs:element name="id"           type="xs:string" />
+        <xs:element name="source"       type="differentialSourceType" minOccurs="0" />
+        <xs:element name="bit"          type="bitType" minOccurs="0" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Container for multiple differential bus members -->
+<xs:complexType name="differentialBusPinMembersType">
+    <xs:sequence>
+        <xs:element name="differentialbuspinmember" type="differentialBusPinMemberType" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+</xs:complexType>
+
+
+<!-- Type representing a differential bus in the design -->
+<xs:complexType name="differentialBusPinType">
+    <xs:sequence>
+        <xs:element name="id"           type="xs:string" />
+        <xs:element name="name"         type="xs:string" />
+        <xs:element name="differentialbuspinmembers"  type="differentialBusPinMembersType" minOccurs="1" />
+        <xs:element name="differentialconnection"  type="differentialConnectionType" minOccurs="0" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Container for multiple differential bus nets -->
+<xs:complexType name="differentialBusPinsType">
+    <xs:sequence>
+        <xs:element name="differentialbuspin" type="differentialBusPinType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Type representing a group connection -->
+<xs:complexType name="groupConnectionType">
+      <xs:attribute name="netid" type="xs:string" use="required" />
+</xs:complexType>
+
+<!-- Type representing a pin/net member on port group-->
+<xs:complexType name="pinnetMemberType">
+    <xs:sequence>
+      <xs:element name="id" type="xs:string" />
+      <xs:element name="bit" type="bitType" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Type representing a bus member on port group-->
+<xs:complexType name="busMemberType">
+  <xs:sequence>
+    <xs:element name="id" type="xs:string" />
+  </xs:sequence>
+</xs:complexType>
+
+<!-- Type representing a differentialpin/net member on port group-->
+<xs:complexType name="differentialPinNetMemberType">
+    <xs:sequence>
+        <xs:element name="id" type="xs:string" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Type representing a portgroup/netgroup member on port group-->
+<xs:complexType name="portnetgroupMemberType">
+    <xs:sequence>
+    	<xs:element name="id" type="xs:string" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Container for multiple net members -->
+<xs:complexType name="netMembersType">
+    <xs:sequence>
+        <xs:element name="netmem" type="pinnetMemberType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+</xs:complexType>
+  
+<!-- Container for net bus members -->
+<xs:complexType name="busMembersType">
+  <xs:sequence>
+    <xs:element name="busmem" type="busMemberType" minOccurs="0" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<!-- Container for multiple dpnet members -->
+<xs:complexType name="dpNetMembersType">
+    <xs:sequence>
+        <xs:element name="dpnetmem" type="differentialPinNetMemberType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Container for multiple netgroup members -->
+<xs:complexType name="netgroupMembersType">
+    <xs:sequence>
+        <xs:element name="netgrpmem" type="portnetgroupMemberType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Container for multiple pin members -->
+<xs:complexType name="pinMembersType">
+    <xs:sequence>
+        <xs:element name="pinmem" type="pinnetMemberType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Container for bus members -->
+<xs:complexType name="busPinMembersType">
+    <xs:sequence>
+      <xs:element name="buspinmem" type="busMemberType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+</xs:complexType>
+  
+<!-- Container for multiple dppin members -->
+<xs:complexType name="dpPinMembersType">
+    <xs:sequence>
+        <xs:element name="dppinmem" type="differentialPinNetMemberType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Container for multiple port group members -->
+<xs:complexType name="portgroupMembersType">
+    <xs:sequence>
+        <xs:element name="portgrpmem" type="portnetgroupMemberType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+</xs:complexType>
+
+
+<!-- Group representing grouping of nets -->
+<xs:group name="netGrouping">
+    <xs:sequence>
+      <xs:element name="id" type="xs:string" />
+      <xs:element name="name" type="xs:string" />
+      <xs:element name="scope" type="groupScopeType" minOccurs="0" />
+      <xs:element name="direction" type="groupDirectionType" minOccurs="0" />
+      <xs:element name="netmems" type="netMembersType" minOccurs="0" />
+      <xs:element name="busmems" type="busMembersType" minOccurs="0" />
+      <xs:element name="dpnetmems" type="dpNetMembersType" minOccurs="0" />
+      <xs:element name="netgrpmems" type="netgroupMembersType" minOccurs="0" />
+    </xs:sequence>
+</xs:group>
+
+<!-- Type representing netgroup in the design -->
+<xs:complexType name="netGroupType">
+    <xs:sequence>
+      <xs:group ref="netGrouping"/>
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Container for multiple net groups -->
+<xs:complexType name="netGroupsType">
+    <xs:sequence>
+        <xs:element name="netgroup" type="netGroupType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+</xs:complexType>
+
+
+<!-- Type representing net interface in the design -->
+<xs:complexType name="netInterfaceType">
+    <xs:sequence>
+      <xs:element name="defname" type="xs:string" />
+      <xs:element name="defversion" type="xs:string" />
+      <xs:group ref="netGrouping"/>
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Container for multiple net interfaces -->
+<xs:complexType name="netInterfacesType">
+    <xs:sequence>
+        <xs:element name="netinterface" type="netInterfaceType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Group representing grouping of ports -->
+<xs:group name="portGrouping">
+    <xs:sequence>
+      <xs:element name="id" type="xs:string" />
+      <xs:element name="name" type="xs:string" />
+      <xs:element name="direction" type="groupDirectionType" minOccurs="0" />
+	    <xs:element name="groupconnection"  type="groupConnectionType"  minOccurs="0" />
+      <xs:element name="pinmems" type="pinMembersType" minOccurs="0" 	/>
+      <xs:element name="buspinmems" type="busPinMembersType" minOccurs="0" />
+      <xs:element name="dppinmems" type="dpPinMembersType" minOccurs="0" />
+      <xs:element name="portgrpmems" type="portgroupMembersType" minOccurs="0" />
+    </xs:sequence>
+</xs:group>
+
+<!-- Type representing portgroup in the design -->
+<xs:complexType name="portGroupType">
+    <xs:sequence>
+      <xs:group ref="portGrouping"/>
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Container for multiple port groups -->
+<xs:complexType name="portGroupsType">
+    <xs:sequence>
+        <xs:element name="portgroup" type="portGroupType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+</xs:complexType>
+ 
+<!-- Type representing portinterface in the design -->
+<xs:complexType name="portInterfaceType">
+    <xs:sequence>
+      <xs:element name="defname" type="xs:string" />
+      <xs:element name="defversion" type="xs:string" />
+      <xs:group ref="portGrouping"/>
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Container for multiple port interfaces -->
+<xs:complexType name="portInterfacesType">
+    <xs:sequence>
+        <xs:element name="portinterface" type="portInterfaceType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Type representing an instance in the design -->
+<xs:complexType name="instanceType">
+    <xs:sequence>
+        <xs:element name="id"           type="xs:string" />
+        <xs:element name="cellid"       type="xs:string" />
+        <xs:element name="name"         type="xs:string" />
+        <xs:element name="parameters"   type="parametersType" minOccurs="0" />
+        <xs:element name="masks"        type="masksType"  minOccurs="0" />
+        <xs:element name="powers"       type="powersType" minOccurs="0" />
+        <xs:element name="pins"         type="pinsType"   minOccurs="0" />
+        <xs:element name="differentialpins" type="differentialPinsType"   minOccurs="0" />
+        <xs:element name="differentialbuspins" type="differentialBusPinsType"   minOccurs="0" />
+        <xs:element name="portgroups" type="portGroupsType" minOccurs="0" />
+        <xs:element name="portinterfaces" type="portInterfacesType" minOccurs="0" />
+        <xs:element name="properties"   type="propertiesType" minOccurs="0" />      
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Container for multiple instances -->
+<xs:complexType name="instancesType">
+    <xs:sequence>
+        <xs:element name="instance" type="instanceType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+</xs:complexType>
+
+
+
+<!-- Type representing sub-instances that are clubbed together in a groupInstance -->
+<xs:complexType name="subInstanceType">
+  <xs:sequence>
+    <xs:element name="id" type="xs:string" />
+    <xs:element name="flag" type="xs:string" />
+  </xs:sequence>
+</xs:complexType>
+
+<!-- Container for multiple subinstances -->
+<xs:complexType name="subInstancesType">
+<xs:sequence>
+  <xs:element name="subinstance" type="subInstanceType" minOccurs="0" maxOccurs="unbounded" />
+</xs:sequence>
+</xs:complexType>
+  
+<!-- Type representing grouped instances -->
+<xs:complexType name="groupInstanceType">
+  <xs:sequence>
+    <xs:element name="id"           type="xs:string" />
+    <xs:element name="name"         type="xs:string" />
+    <xs:element name="flag"         type="xs:string" />
+    <xs:element name="subinstances" type="subInstancesType" minOccurs="0" />
+  </xs:sequence>
+</xs:complexType>
+
+<!-- Container for multiple group instances -->
+<xs:complexType name="groupInstancesType">
+  <xs:sequence>
+    <xs:element name="groupinstance" type="groupInstanceType" minOccurs="0" maxOccurs="unbounded" />
+  </xs:sequence>
+</xs:complexType>
+
+
+  <!-- Type representing a resolved term -->
+<xs:complexType name="resolvedTermType">
+    <xs:sequence>
+        <xs:element name="defn" type="xs:string" />
+        <xs:element name="term" type="xs:string" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Container for resolved terms -->
+<xs:complexType name="resolvedTermsType">
+    <xs:sequence>
+        <xs:element name="resolvedterm" type="resolvedTermType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Type representing a resolved cell -->
+<xs:complexType name="resolvedCellType">
+    <xs:sequence>
+        <xs:element name="defn"     type="xs:string" />
+        <xs:element name="cell"     type="xs:string" />
+        <xs:element name="resolvedterms" type="resolvedTermsType" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Container for multiple resolved cells -->
+<xs:complexType name="resolvedCellsType">
+    <xs:sequence>
+        <xs:element name="resolvedcell" type="resolvedCellType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="resolvedNetType">
+    <xs:sequence>
+        <xs:element name="defn" type="xs:string" />
+        <xs:element name="net"  type="xs:string" />
+        <xs:element name="bit"  type="bitType" minOccurs="0" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Container for multipl resolved nets -->
+<xs:complexType name="resolvedNetsType">
+    <xs:sequence>
+        <xs:element name="resolvednet" type="resolvedNetType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Type representing a template resolution -->
+<xs:complexType name="templateResolutionType">
+    <xs:sequence>
+        <xs:element name="defn"             type="xs:string" />
+        <xs:element name="name"             type="xs:string" />
+        <xs:element name="resolvedcells"    type="resolvedCellsType" />
+        <xs:element name="resolvednets"     type="resolvedNetsType" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Container for multiple template resolutions -->
+<xs:complexType name="templateResolutionsType">
+    <xs:sequence>
+        <xs:element name="templateresolution" type="templateResolutionType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Type representing referred net in a template instance -->
+<xs:complexType name="referredNetType" >
+    <xs:sequence>
+        <xs:element name="id"   type="xs:string" />
+        <xs:element name="defn" type="xs:string" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Container for multiple referred nets -->
+<xs:complexType name="referredNetsType">
+    <xs:sequence>
+        <xs:element name="referrednet" type="referredNetType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Enumeration representing association kind -->
+<xs:simpleType name="associationObjectType">
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="net" />
+        <xs:enumeration value="instance" />
+        <xs:enumeration value="connection" />
+        <xs:enumeration value="diffpairconnection" />
+    </xs:restriction>
+</xs:simpleType>
+
+<!-- Type representing a template instance association -->
+<xs:complexType name="associationType">
+    <xs:sequence>
+        <xs:element name="to" type="associationObjectType" />
+        <xs:element name="id" type="xs:string" />
+        <xs:element name="bit" type="bitType" minOccurs="0" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Type representing a template instance -->
+<xs:complexType name="templateInstanceType">
+    <xs:sequence>
+        <xs:element name="id" type="xs:string" />
+        <xs:element name="resolution" type="xs:string" />
+        <xs:element name="association" type="associationType" minOccurs="0" />
+        <xs:element name="referrednets" type="referredNetsType" minOccurs="0" />
+        <xs:element name="instances" type="instancesType" minOccurs="0" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Container for multiple template instances -->
+<xs:complexType name="templateInstancesType">
+    <xs:sequence>
+        <xs:element name="templateinstance" type="templateInstanceType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Type representing an extension section in the design -->
+<xs:complexType name="extensionType">
+    <xs:sequence>
+        <xs:any  namespace="##any" processContents="skip" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="name"   type="xs:string"    use="required" />
+</xs:complexType>
+
+<!-- Container for multiple extensions -->
+<xs:complexType name="extensionsType">
+    <xs:sequence>
+        <xs:element name="extension" type="extensionType"   minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Type representing a design -->
+<xs:complexType name="designType">
+    <xs:sequence>
+        <xs:element name="external_errors" type="xs:boolean"    minOccurs="0" />
+        <xs:element name="lastids"      type="lastIdType"       minOccurs="0" />
+        <xs:element name="properties"   type="propertiesType"   minOccurs="0" />      
+        <xs:element name="cells"        type="cellsType"        minOccurs="0" />
+        <xs:element name="nets"         type="netsType"         minOccurs="0" />
+        <xs:element name="aliases"      type="aliasesType"      minOccurs="0" />
+        <xs:element name="differentialnets" type="differentialNetsType" minOccurs="0" />
+        <xs:element name="differentialbusnets" type="differentialBusNetsType" minOccurs="0" />
+	      <xs:element name="netgroups"    type="netGroupsType"     minOccurs="0" />
+        <xs:element name="netinterfaces"    type="netInterfacesType"    minOccurs="0" />
+        <xs:element name="instances"    type="instancesType"    minOccurs="0" />
+        <xs:element name="groupinstances" type="groupInstancesType" minOccurs="0" />
+        <xs:element name="templateresolutions" type="templateResolutionsType" minOccurs="0" />
+        <xs:element name="templateinstances" type="templateInstancesType" minOccurs="0"/>
+        <xs:element name="extensions"   type="extensionsType"   minOccurs="0" />
+    </xs:sequence>
+    <xs:attribute   name="schemaType"   type="schemaKeyType" use="required" />
+    <xs:attribute   name="name"         type="xs:string"     use="required" />
+    <xs:attribute   name="view"         type="xs:string"     use="optional" />
+    <xs:attribute   name="ignoreIds"    type="xs:boolean"    use="optional" />
+</xs:complexType>
+
+<!-- Container for multiple designs -->
+<xs:complexType name="designsType">
+    <xs:sequence>
+        <xs:element name="design" type="designType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+</xs:complexType>
+
+<!-- Type representing Schema Header -->
+<xs:complexType name="schemaHeaderType">
+    <xs:sequence>
+        <xs:element name="schemaVersion"        type="xs:decimal" />
+        <xs:element name="creatorTool"          type="xs:string"  />
+        <xs:element name="modifierTool"         type="xs:string"  />
+        <xs:element name="modificationTime"     type="xs:dateTime" />
+        <xs:element name="savedLibrary"         type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+</xs:complexType>
+
+<!-- The schema Element - Root for the database -->
+<xs:element name="schema">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="header" type="schemaHeaderType" />
+            <xs:element name="designs" type="designsType" />
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+
+</xs:schema>
+

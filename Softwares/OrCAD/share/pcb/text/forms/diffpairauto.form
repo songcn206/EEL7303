@@ -1,0 +1,65 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 34 20
+HEADER "Auto Differential Pair Generator"
+
+DEFAULT generate
+
+TILE
+TEXT "DiffPair name prefix (optional):"
+TLOC 2 3
+ENDTEXT
+
+FIELD prefix
+FLOC 24 3
+STRFILLIN 7 7
+ENDFIELD
+
+GROUP "Net name suffix for"
+FLOC 2 5
+FSIZE 31 7
+ENDGROUP
+
+TEXT "+ polarity:"
+TLOC 8 7
+ENDTEXT
+
+FIELD net1
+FLOC 20 7
+STRFILLIN 7 5
+ENDFIELD
+
+TEXT "- polarity:"
+TLOC 8 9
+ENDTEXT
+
+FIELD net2
+FLOC 20 9
+STRFILLIN 7 5
+ENDFIELD
+
+TEXT "Use of bus bit syntax <n> is handled when forming diffpairs. For example, nets of two busses DATA_P<n> and DATA_N<n> can be formed into a diffpair with a name DP_DATAn by prefix=DP, + polarity=_P and - polarity=_N where <n> is the bit number."
+TLOC 2 13
+FSIZE 31 10
+OPTIONS border
+ENDTEXT
+
+FIELD generate
+FLOC 2 24
+MENUBUTTON "Generate" 12 3
+ENDFIELD
+
+FIELD cancel
+FLOC 16 24
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 26 24
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

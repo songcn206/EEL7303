@@ -1,0 +1,817 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN" "http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+<html xmlns="http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>PSpice Advanced Analysis Help -- Advanced Analysis Engines</title>
+<META NAME="Approver" CONTENT="Technical Publications">
+<META NAME="Author" CONTENT="Technical Publications">
+<META NAME="CreateDate" CONTENT="2012-09-07">
+<META NAME="CreateTime" CONTENT="1346997940">
+<META NAME="DataType" CONTENT="Manuals">
+<META NAME="Description" CONTENT="PSpice Advanced Analysis Online Help.">
+<META NAME="DocTitle" CONTENT="PSpice Advanced Analysis Help">
+<META NAME="DocType" CONTENT="Reference">
+<META NAME="EdmsRelease" CONTENT="EDMS Windows-P015">
+<META NAME="FileTitle" CONTENT="Advanced Analysis Engines">
+<META NAME="FileType" CONTENT="Chapter">
+<META NAME="Keyword" CONTENT="optimChapt">
+<META NAME="Language" CONTENT="English">
+<META NAME="ModifiedDate" CONTENT="2012-09-07">
+<META NAME="ModifiedTime" CONTENT="1346997940">
+<META NAME="NextFile" CONTENT="13_troubleshooting.html">
+<META NAME="PageCount" CONTENT="12">
+<META NAME="Platform" CONTENT="ALL">
+<META NAME="PrevFile" CONTENT="11_measurements.html">
+<META NAME="Product" CONTENT="Allegro AMS Simulator, PSpice">
+<META NAME="ProductFamily" CONTENT="PCB Design, PCB Design">
+<META NAME="ProductVersion" CONTENT="16.5">
+<META NAME="RightsManagement" CONTENT="Copyright 19912011 Cadence Design Systems Inc.">
+<META NAME="Title" CONTENT="PSpice Advanced Analysis Help -- Advanced Analysis Engines">
+<META NAME="TopicTags" CONTENT="FALSE">
+<META NAME="Version" CONTENT="16.5">
+  </head>
+  <body style="margin-left: 5%;">
+    <a name="pagetop"></a>
+    <a name="firstpage"></a>
+    <!-- Begin Buttons -->
+    <table width="650" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td height="36" width="650" colspan="10">
+          <img src="../support/header_doc.gif" width="650" height="34">
+        </td>
+      </tr>
+      <tr>
+        <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                </td>
+<td height="20" width="73">
+<a href="optimChaptTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<a href="optimChaptIX.html"><img src="../support/nav2_index.gif" border="0"></a>
+</td>
+        <td>
+          <a href="11_measurements.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+        </td>
+        <td>
+          <a href="13_troubleshooting.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+        </td>
+        <td height="20">
+          <a>
+<a href="optimChapt.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+          </a>
+        </td>
+        <td height="20" width="61">
+          <img src="../support/nav2_black.gif">
+        </td>
+        <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+        </td>
+        <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+        </td>
+        <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+        </td>
+      </tr>
+    </table>
+    <!-- End Buttons -->
+    <p>
+    <hr>
+    <p>
+      <h3>
+        <center>
+          <font >
+            <div>PSpice Advanced Analysis Help</div>
+            <font >
+              <div>
+            </font>
+          </font>
+        </center>
+      </h3>
+      <br>
+    </p>
+    <div>
+      <h2><a name="1046167">Advanced Analysis Engines</a></h2>
+      <p><a name="1047510">You can see the following for more information:</a></p>
+      <p align="left"><a name="1047728">&nbsp;</a></p>
+      <table summary="" border="0" cellpadding="4" cellspacing="0" bordercolor="#D3D3D3" width="648">
+        <caption>
+        <tr>
+          <td cellpadding="4" valign="top" width="348">
+            <p><a name="1047715"><font color="#000000">How to select an engine</font></a></p>
+          </td>
+          <td cellpadding="4" valign="top" width="300">
+            <p>
+              <u><a href="07_optim_tool.html#1046685" title="The Optimizer Tool" name="1047720"><font color="#0000ff"><u>Selecting an engine</u></font></a></u>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1047722">Engine overview</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p>
+              <u><a href="07_optim_tool.html#1048510" title="The Optimizer Tool" name="1047727"><font color="#0000ff"><u>Optimizer Engine Overview</u></font></a></u>
+            </p>
+          </td>
+        </tr>
+      </table>
+      <h3><a name="1047751">The Modified LSQ engine</a></h3>
+      <p><a name="1046533">The Modified LSQ engine uses both constrained and unconstrained minimization algorithms, </a>which allow it to optimize goals subject to nonlinear constraints. The Modified LSQ engine runs faster than the LSQ engine because it runs a reduced number of incremental adjustments toward the goal.</p>
+      <h4><a name="mlsq_engine"></a><a name="modified LSQ engine"></a><a name="1046537">Configuring the Modified LSQ engine</a></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1046546">From the Advanced Analysis </a><font color="#000000"><strong>Edit </strong></font>menu, select <font color="#000000"><strong>Profile Settings</strong></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>2	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1046547">Click the </a><font color="#000000"><strong>Optimizer</strong></font> tab.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>3	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1046548">From the </a><font color="#000000"><strong>Engine</strong></font> drop&#45;down list, select <font color="#000000"><strong>Modified LSQ</strong></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote>	<a name="1046552"><img src="images/EnhancedLSQ.gif" width="481" height="450" alt=""></a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>4	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1046553">Edit default values in the text boxes.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1046554">See detailed explanations provided on the next few pages.</a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>5	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1046555">Select the </a><font color="#000000"><strong>One Goal </strong></font>option that you prefer: <font color="#000000"><strong>Least Squares</strong></font> or <font color="#000000"><strong>Minimize</strong></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1046559">See </a><a href="#1046649" title="Advanced Analysis Engines"><font color="#0000ff"><u>Single goal optimization settings</u></font></a> for details.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>6	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1046564">Click </a><font color="#000000"><strong>OK</strong></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <h4><a name="1046566">The Modified LSQ engine options</a></h4>
+      <p align="left"><a name="1046602">&nbsp;</a></p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="647">
+        <caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="top" width="106">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1046570"><font color="#3300ff"><strong>Modified </strong></font></a><font color="#3300ff"><strong>LSQ Engine </strong></font><font color="#3300ff"><strong>Options</strong></font></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="top" width="475">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1046572"><font color="#3300ff"><strong><br></strong></font></a><font color="#3300ff"><strong><br></strong></font><font color="#3300ff"><strong>Function</strong></font></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="top" width="65">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1046574"><font color="#3300ff"><strong><br></strong></font></a><font color="#3300ff"><strong>Default </strong></font><font color="#3300ff"><strong>Value</strong></font></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1046578">Delta</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1046580">The relative amount (as a percentage of current parameter value) </a>the engine moves each parameter from the proceeding value when calculating the derivatives.</p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1046582">1%</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1046585">Max # of </a>Optimizations</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1046587">The most attempts the Modified LSQ Engine should make before </a><font color="#000000"><em>giving up</em></font> on the solution (even if making progress).</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1046589">20</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1046591">Cutback</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1046593">The minimum fraction by which an internal step is reduced while </a>the Modified LSQ Engine searches for a reduction in the goal's target value. If the data is noisy, consider increasing the Cutback value from its default of 0.25.</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1046595">0.25</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1046597">Threshold</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1046599">The minimum step size the Modified LSQ engine uses to adjust </a>the optimization parameters.</p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1046601">0</a></p>
+          </td>
+        </tr>
+      </table>
+      <h4><a name="1046603">Delta calculations</a></h4>
+      <p><a name="1046604">The optimizer uses gradient&#45;based optimization algorithms that use a finite difference method </a>to approximate the gradients (gradients are not known analytically). To implement finite differencing, the Modified LSQ engine:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1046605">Moves each parameter from its current value by an amount Delta.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>2	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1046606">Evaluates the function at the new value.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>3	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1046607">Subtracts the old function value from the new.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>4	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1046608">Divides the result by Delta. </a></td>
+          </tr>
+        </table>
+      </div>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1046609">There is a trade&#45;off. If Delta is too small, the difference in function values is unreliable </a>due to numerical inaccuracies. However if Delta is too large, the result is a poor approximation to the true gradient.</p>
+      <h4><a name="1046610">Editing Delta</a></h4>
+      <p><a name="1046611">Enter a value in the Delta text box that defines a fraction of the parameter's total range.</a></p>
+      <blockquote><a name="1046612">Example: If a parameter has a current value of 10</a><sup>-8</sup>, and Delta is set to 1% (the default), then the Modified LSQ Engine moves the parameter by 10<sup>-10</sup>.</blockquote>
+      <p><a name="1046614">The 1% default accuracy works well in most simulations.</a></p>
+      <p><a name="1046615">If the accuracy of your simulation is very different from typical (perhaps because of the use </a>of a non&#45;default value for either RELTOL or the time step ceiling for a Transient analysis), then change the value of Delta as follows:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046617">If simulation accuracy is better, smaller adjustments are needed; decrease Delta by </a>an appropriate amount.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046618">If simulation accuracy is worse, larger adjustments are needed; increase Delta by </a>an appropriate amount.</td>
+          </tr>
+        </table>
+      </div>
+      <p><font color="#000000"><strong>Note:	</strong></font><a name="1046619">The optimum value of Delta varies as the square root of the relative accuracy of the </a>simulation. For example, if your simulation is 100 times more accurate than typical, you should reduce Delta by a factor of 10.</p>
+      <h4><a name="1046620">Threshold calculations</a></h4>
+      <p><a name="1046621">The Threshold option defines the minimum step size the Modified LSQ Engine uses to adjust </a>the optimization parameters.</p>
+      <p><a name="1046622">The optimizer assumes that the values measured for the specifications change continuously </a>as the parameters are varied. In practice, this assumption is not justified. For some analyses, especially transient analyses, the measurement expression values show discontinuous behavior for small parameter changes. This can be caused by accumulation of errors in iterative simulation algorithms. </p>
+      <p align="left"><a name="1046626"><img src="images/glitch.gif" width="605" height="360" alt=""></a></p>
+      <p><a name="1046627">The hypothetical data glitch figure demonstrates a typical case. The effect of the glitch is </a>serious -- the optimizer can get stuck in the spurious local minimum represented by the glitch. The optimizer's threshold mechanism limits the effect of unreliable data. </p>
+      <h4><em><a name="1046628"><font color="#3300ff"><strong>Between iterations</strong></font></a></em></h4>
+      <p><a name="1046629">Enter a value that defines a fraction of the current parameter value.</a></p>
+      <blockquote><a name="1046630">Example: A Threshold value of 0.01 means that the Modified LSQ Engine will change a </a>parameter value by 1% of its current value when the engine makes a change. </blockquote>
+      <blockquote><a name="1046631">By default, Threshold is set to 0 so that small changes in parameter values are not </a>arbitrarily rejected. To obtain good results, however, you may need to adjust the Threshold value. When making adjustments, consider the following:</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046632">If data quality is good, and Threshold is greater than zero, reduce the Threshold </a>value to find more accurate parameter values.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046633">If data quality is suspect (has potential for spurious peaks or glitches), increase the </a>Threshold value to ensure that the optimizer will not get stuck during the run.</td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1046635"><font color="#3300ff">Least squares &#47; minimization</font></a></p>
+      <p><a name="1046637">The Modified LSQ Engine implements two general classes of algorithm to measure design </a>performance: least squares and minimization. These algorithms are applicable to both unconstrained and constrained problems.</p>
+      <p><a name="1046639"><font color="#3300ff">Least squares</font></a> </p>
+      <p><a name="1046640">When optimizing for more than one goal, the Modified LSQ Engine always uses the least&#45;</a>squares algorithm. A reliable measure of performance for a design with multiple targets is to take the deviation of each output from its target, square all deviations (so each term is positive) and sum all of the squares. The Modified LSQ Engine then tries to reduce this sum to zero.</p>
+      <p><a name="1046641">This technique is known as least squares. Note that the sum of the squares of the deviations </a>becomes zero only if all of the goals are met.</p>
+      <p><a name="1046644"><font color="#3300ff">Minimization</font></a> </p>
+      <p><a name="1046645">Another measure of design performance considers a single output and reduces it to the </a>smallest value possible. </p>
+      <p><a name="1046646">Example: Power or propagation delay, each of which is a positive number with ideal </a>performance corresponding to zero. </p>
+      <h4><a name="1046649">Single goal optimization settings</a></h4>
+      <p><a name="1046650">When optimizing for more than one goal, the Modified LSQ Engine always uses the least&#45;</a>squares algorithm. For a single goal, however, you must specify the algorithm for the optimizer.</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1046651">Do one of the following:</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046653">Select the </a><font color="#000000"><strong>Least Squares</strong></font> option button to minimize the square of the deviation between the measured and target value.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote>
+<blockquote>        <font color="#000000"><a name="1046654"><font color="#000000">Or:</font></a></font></blockquote>
+      </blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046656">Select the </a><font color="#000000"><strong>Minimize</strong></font> option button to reduce a value to the smallest possible value.</td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1046657">If your optimization problem is to maximize a single goal, then set up the specification to </a>minimize the negative of the value.</p>
+      <p><a name="1046658">For example: To maximize gain, set up the problem to minimize </a> -<font color="#000000"><em> </em></font><font color="#000000"><em>gain</em></font>.</p>
+      <p><a name="1047529">You can see the following for more information:</a></p>
+      <p align="left"><a name="1046676">&nbsp;</a></p>
+      <table summary="" border="0" cellpadding="4" cellspacing="0" bordercolor="#D3D3D3" width="648">
+        <caption>
+        <tr>
+          <td cellpadding="4" valign="top" width="348">
+            <p><a name="1046667">How to select an engine</a></p>
+          </td>
+          <td cellpadding="4" valign="top" width="300">
+            <p>
+              <u><a href="07_optim_tool.html#1046685" title="The Optimizer Tool" name="1046670"><font color="#0000ff"><u>Selecting an engine</u></font></a></u>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1046672">Engine overview</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p>
+              <u><a href="07_optim_tool.html#1048510" title="The Optimizer Tool" name="1046675"><font color="#0000ff"><u>Optimizer Engine Overview</u></font></a></u>
+            </p>
+          </td>
+        </tr>
+      </table>
+      <h3><a name="1046680">The Random engine</a></h3>
+      <p><a name="1046682">When you use the LSQ or Modified LSQ engines, it is sometimes difficult to determine where </a>your starting points for optimization should be. The Random engine provides a good way to find these points. </p>
+      <p><a name="1046685">The Random engine applies a grid to the design space and randomly runs analysis at the grid </a>points. It keeps track of the grid points already run so that it never runs a duplicate set of parameter values. Once it finishes it­s initial analysis, it reruns the best points so you can easily use them for LSQ or Modified LSQ.</p>
+      <h4><a name="random_engine"></a><a name="random engine"></a><a name="1046689">Configuring the Random engine</a></h4>
+      <p><a name="1046698">The Random Engine defaults are listed in a dialog box available from the </a><font color="#000000"><strong>Optimizer</strong></font> tab's, <font color="#000000"><strong>Engine</strong></font>, <font color="#000000"><strong>Random</strong></font> options.</p>
+      <p align="left"><a name="1046702"><img src="images/Random.gif" width="401" height="443" alt=""></a></p>
+      <p><a name="1046703">To view and change the default options:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1046704">From the Advanced Analysis </a><font color="#000000"><strong>Edit </strong></font>menu, select <font color="#000000"><strong>Profile Settings</strong></font></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>2	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1046705">Click the </a><font color="#000000"><strong>Optimizer</strong></font> tab and select <font color="#000000"><strong>Random</strong></font> from the <font color="#000000"><strong>Engine</strong></font> drop&#45;down list.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>3	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1046706">Edit the default value in the text box.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>4	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1046707">Click </a><font color="#000000"><strong>OK</strong></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <h4><a name="1046709">Configuring the Random engine options</a></h4>
+      <p align="left"><a name="1046732">&nbsp;</a></p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="324">
+        <caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="top" width="204">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1046712"><font color="#3300ff"><strong>Random Engine Options </strong></font></a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="top" width="120">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1046714"><font color="#3300ff"><strong>Default Value</strong></font></a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1046716">Steps per Range</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1046718">10 </a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1046720">Max Number of Runs</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1046722">10 </a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1046724">Replay Best N Runs at End</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1046726">0</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1046728">Random Number </a>Generator Seed</p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1046730">0</a></p>
+          </td>
+        </tr>
+      </table>
+      <h4><em><a name="1046733">Steps per Range</a></em></h4>
+      <p><a name="1046734">Specifies the number of steps into which each parameter</a>­'s range of values should be divided. </p>
+      <p><a name="1046736">For example, if this option is set to 7 and you have the following parameters</a></p>
+      <p align="left"><a name="1046756">&nbsp;</a></p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="278">
+        <caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="top" width="126">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1046739"><font color="#3300ff"><strong>Parameter</strong></font></a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="top" width="76">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1046741"><font color="#3300ff"><strong>Min</strong></font></a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="top" width="76">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1046743"><font color="#3300ff"><strong>Max</strong></font></a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1046745">A</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1046747">1</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1046749">4</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1046751">B</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1046753">10</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1046755">16</a></p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1046757">The possible parameter values would be </a></p>
+      <blockquote><a name="1046758">Parameter A = 1, 1.5, 2, 2.5, 3, 3.5, 4</a></blockquote>
+      <blockquote><a name="1046759">Parameter B = 10, 11, 12, 13, 14, 15, 16</a></blockquote>
+      <h4><em><a name="1046760">Max Number of Runs</a></em></h4>
+      <p><a name="1046761">Specifies the maximum number of random trial runs that the engine will run. The engine will </a>run either the total number of all grid points or the number specified in this option, whichever is less.</p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1046762">With 10 parameters, the number of grid points in the design exploration</a><sup> </sup>(NumSteps<sup>#params</sup>) would be 8<sup>10</sup> = 1,073,741,824. </p>
+      <p><a name="1046763">For example, if Max Number of Runs is 100, Steps per Range is 8, and you have one </a>parameter being optimized, there will be 8 trial runs. However, if you have 10 parameters being optimized, then there will be 100 runs.</p>
+      <h4><em><a name="1046764">Replay Best N Runs at End</a></em></h4>
+      <p><a name="1046765">Specifies the number of "best" runs the engine should rerun and display at the end of the </a>analysis. </p>
+      <p><a name="1046767">&nbsp;</a></p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1046768">The Replay runs are done after the trial runs. If Max Number of Runs is 100 and Replay </a>is 10, there may be up to 110 runs total. </p>
+      <h4><em><a name="1046770">Random Number Generator Seed</a></em></h4>
+      <p><a name="1046771">Specifies the seed for the random number generator. Unlike the Monte Carlo tool, the seed </a>in this engine does not automatically change between runs. Therefore, if you rerun the Random engine without changing any values, you will get the same results.</p>
+      <p><a name="1047576">You can see the following for more information:</a></p>
+      <p align="left"><a name="1046789">&nbsp;</a></p>
+      <table summary="" border="0" cellpadding="4" cellspacing="0" bordercolor="#D3D3D3" width="648">
+        <caption>
+        <tr>
+          <td cellpadding="4" valign="top" width="348">
+            <p><a name="1046780">How to select an engine</a></p>
+          </td>
+          <td cellpadding="4" valign="top" width="300">
+            <p>
+              <u><a href="07_optim_tool.html#1046685" title="The Optimizer Tool" name="1046783"><font color="#0000ff"><u>Selecting an engine</u></font></a></u>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1046785">Engine overview</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p>
+              <u><a href="07_optim_tool.html#1048510" title="The Optimizer Tool" name="1046788"><font color="#0000ff"><u>Optimizer Engine Overview</u></font></a></u>
+            </p>
+          </td>
+        </tr>
+      </table>
+      <h3><a name="1046794">The Discrete engine</a></h3>
+      <p><a name="1046798">The Discrete engine finds the nearest commercially available value for a component. The </a>other engines calculate component values, but those values might not be commercially available.</p>
+      <p><a name="1046799">The discrete engine is a conceptual engine, rather than a true engine in that it does not </a>actually perform an optimization, it finds available values from lists. </p>
+      <p><a name="1046800">&nbsp;</a></p>
+      <p><a name="1046801">An example is a resistor that is assigned an optimal value of 1.37654328K ohms, which is not </a>a standard value. Depending on the parameter tolerance and the manufacturer­'s part number, the only values available might be 1.2K and 1.5K ohms. The Discrete engine selects parameter values based on discrete value tables for these parameters.</p>
+      <p><a name="1046802">Once a value is selected, the engine makes a final run that lets you review the results in both </a>the Optimizer and the output tools. If the results of the discrete analysis are not acceptable, the design can be optimized again to find another global minimum that might be less sensitive.</p>
+      <h4><a name="discrete_engine"></a><a name="descrete value engine"></a><a name="1046806">Configuring the Discrete engine</a></h4>
+      <p><a name="1046815">Advanced Analysis includes discrete tables of commercially available values for resistors, </a>capacitors, and inductors. These tables are text files with a .table file extension.</p>
+      <p align="left"><a name="1046827">In addition, you can add your own discrete values tables to an Advanced Analysis project </a>using the dialog box shown below. To know more about the adding user&#45;defined discrete value tables, see <img src="images/discreteEng.gif" width="401" height="443" alt=""></p>
+      <p><a name="1046828">After you have found commercial values for your design, you should run Monte Carlo and </a>Sensitivity to ensure that the design is producible. Occasionally, the optimization process can find extremely good results, but it can be sensitive to even minor changes in parameter values.</p>
+      <p><a name="1047612">You can see the following for more information:</a></p>
+      <p align="left"><a name="1046842">&nbsp;</a></p>
+      <table summary="" border="0" cellpadding="4" cellspacing="0" bordercolor="#D3D3D3" width="648">
+        <caption>
+        <tr>
+          <td cellpadding="4" valign="top" width="348">
+            <p><a name="1046833">How to select an engine</a></p>
+          </td>
+          <td cellpadding="4" valign="top" width="300">
+            <p>
+              <u><a href="07_optim_tool.html#1046685" title="The Optimizer Tool" name="1046836"><font color="#0000ff"><u>Selecting an engine</u></font></a></u>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1046838">Engine overview</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p>
+              <u><a href="07_optim_tool.html#1048510" title="The Optimizer Tool" name="1046841"><font color="#0000ff"><u>Optimizer Engine Overview</u></font></a></u>
+            </p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1046843">&nbsp;</a></p>
+      <p><a name="1046281">&nbsp;</a></p>
+      <p><a name="1045204">&nbsp;</a></p>
+    </div>
+    <br>
+    <a href="#pagetop">Return to top of page</a>
+    <hr>
+    <hr align="left">
+    <div style="text-align: left;">
+      <!-- Begin Buttons -->
+      <table width="650" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                    </td>
+<td height="20" width="73">
+<a href="optimChaptTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<a href="optimChaptIX.html"><img src="../support/nav2_index.gif" border="0"></a>
+</td>
+          <td>
+            <a href="11_measurements.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+          </td>
+          <td>
+            <a href="13_troubleshooting.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+          </td>
+          <td>
+            <a>
+<a href="optimChapt.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+            </a>
+          </td>
+          <td height="20" width="61">
+            <img src="../support/nav2_black.gif">
+          </td>
+          <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+          </td>
+          <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+          </td>
+          <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+          </td>
+        </tr>
+      </table>
+      <!-- End Buttons -->
+    </div>
+    <br>
+    <font size="-1" >
+For support, see <a href="http://support.cadence.com" target="_blank">Cadence Online Support</a> service.</font>
+    <br>
+    <br>
+    <font size="-1" >
+      <i>Copyright &#169; 2011, <a href="http://www.cadence.com">Cadence Design Systems, Inc.</a></i>
+    </font>
+    <br>
+    <font size="-1" >
+All rights reserved.</font>
+    <br>
+    <br>
+  </body>
+</html>

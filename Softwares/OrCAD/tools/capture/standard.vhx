@@ -1,0 +1,1125 @@
+--------------------------------------------------------------------------
+--                                                                      --
+-- Copyright (c) 1996,1997,1998 by OrCAD, Inc.  All rights reserved.    --
+--                                                                      --
+-- This source file may be used and distributed without restriction     --
+-- provided that this copyright statement is not removed from the file  --
+-- and that any derivative work contains this copyright notice.         --
+--                                                                      --
+--	File name: STANDARD.VHX                                             --
+--	Purpose:                                							--
+--	 Source Editor Samples for OrCAD Express.                           --									--
+--  Revision History:                                                   --
+--    REV1 Original, December 22, 1996                                  --
+--    REV2 Reviewed, December 26, 1996                                  --
+--    REV3 Reviewed, January 5, 1997                                    --
+--    REV4 Added testbench samples, January 6, 1997                     --
+--    REV5 Added to Type Conversion topic, January 30, 1997             --
+--    REV6 New samples for Version 7.20 VHDL extensions, February 29, 1998 --
+--    REV7 New samples for Version 9.0 VHDL extensions, March 18, 1998  --
+--  Directions:                                                         --
+--    All text in between the Begin_Sample and End_Sample comments will --
+--    appear in the list dialog available from the VHDL Samples option  --
+--    of the Edit menu.                                                 --
+--    The begin and end comments must start in the first column.        --
+--    The name of the sample is the first non-blank character following --
+--    the Begin_Sample string to the end of the line.                   --
+--------------------------------------------------------------------------
+
+--Begin_Sample Aggregate
+-- set all members of array to 'Z'
+(others=>'Z')
+-- assignment from an aggregate
+D <= (A,B,C);
+-- assignment to an aggregate
+(A,B,C) <= D;
+--End_Sample  
+
+--Begin_Sample Alias
+-- Alternative signal name sample
+signal DATA: std_logic_vector(15 downto 0);
+alias MSB: std_logic is DATA(15);
+--End_Sample  
+
+--Begin_Sample Architecture
+-- insert after entity declaration
+architecture BEHAVIOR of ENTITY_NAME is
+begin
+end;
+--End_Sample  
+
+--Begin_Sample Arithmetic Operators (IEEE 1076.3 Numeric_Std package)
+NOSIGN <= abs(X);
+NEGATE <= -(X);
+SUM  <= X + Y;
+DIFF <= X - Y;
+MULT <= X * Y;
+DIVD <= X / Y;
+SIGN_of_X <= X rem Y;
+SIGN_of_Y <= X mod Y;
+--End_Sample  
+
+--Begin_Sample Arithmetic Operators (Synopsys, Inc. Std_Logic_Unsigned package)
+NOSIGN <= abs(X);
+NEGATE <= -(X);
+POS <= +(X);
+SUM  <= X + Y;
+DIFF <= X - Y;
+MULT <= X * Y;
+--End_Sample  
+
+--Begin_Sample Array
+-- Insert within architecture before the begin keyword.
+type DATA_FILE is 
+  array(0 to 3) of std_logic_vector(7 downto 0);
+constant TABLE_1: DATA_FILE:=
+  (x"00",x"01",x"02",x"03");
+--End_Sample  
+
+--Begin_Sample Assert
+assert (Q='0')
+  report "Test Bench Report: q did not clear."
+  severity ERROR;
+--End_Sample  
+
+--Begin_Sample Attribute
+-- attribute of component instance
+attribute LOC: string;
+attribute LOC of U1: label is "p32";
+-- attribute of signal or port
+attribute CRIT: string;
+attribute CRIT of SYSCLK: signal is "true";
+--End_Sample  
+
+--Begin_Sample Block
+-- sample to group concurrent statements
+LSB: block
+begin
+  Y(0) <= not(A);
+  Y(1) <= A and B;
+  Y(2) <= A or B;
+  Y(3) <= A nand B;
+end block LSB;
+
+MSB: block
+begin
+  Y(4) <= A nor B;
+  Y(5) <= A xor B;
+  Y(6) <= A xnor B;
+  Y(7) <= A and not(B);
+end block MSB;
+--End_Sample
+
+--Begin_Sample Boolean Operators
+Y(0) <= not(A);
+Y(1) <= A and B;
+Y(2) <= A or B;
+Y(3) <= A nand B;
+Y(4) <= A nor B;
+Y(5) <= A xor B;
+Y(6) <= A xnor B;
+--End_Sample
+
+--Begin_Sample Case
+case STATE is
+  when RESET=>
+    NEXT_STATE<=ST1;
+  when ST1=>
+    NEXT_STATE<=ST2;
+  when ST2=>
+    NEXT_STATE<=ST1;
+  when others=>
+    NEXT_STATE<=RESET;       
+end case;
+--End_Sample  
+
+--Begin_Sample Comments
+-- "--" marks a comment in VHDL.
+-- Anything on a line following "--" is interpreted as a comment.
+-- Sample:
+--   Output signal declarations:
+     signal DOUT: std_logic_vector(3 downto 0);  -- data out nibble
+     signal QOUT: std_logic_vector(3 downto 0);  -- result out nibble
+--End_Sample
+
+--Begin_Sample Comparison Operators (IEEE 1076.3 Numeric_Std package)
+if (X > Y) then
+if (X >= Y) then
+if (X < Y) then
+if (X <= Y) then
+if (X = Y) then
+if (X /= Y) then  
+--End_Sample          
+
+--Begin_Sample Comparison Operators (Synopsys, Inc. Std_Logic_Unsigned package)
+if (X > Y) then
+if (X >= Y) then
+if (X < Y) then
+if (X <= Y) then
+if (X = Y) then
+if (X /= Y) then  
+--End_Sample          
+
+--Begin_Sample Component
+-- place component declarations in architecture bodies before begin
+component AND2 
+  generic(TIPD,TILO: time);
+  port(A,B: std_logic;
+       Y: out std_logic);
+end component;
+--End_Sample  
+
+--Begin_Sample Component Instance
+-- place instances in architecture bodies after begin
+U1: AND2 
+generic map (TIPD=>2 ns,TILO=>3 ns)
+port map (A=>DATA(0), B=>DATA(1), Y=>PRODUCT);
+--End_Sample  
+
+--Begin_Sample Conditional Assignment
+Q <= '1' when (CURRENT_STATE=SWE)
+         else '0';
+--End_Sample  
+
+--Begin_Sample Configuration Declaration
+-- Direct binding of Entity ARBITER to a variety of Architectures
+configuration CFG_TEST_ARBITER of TEST_ARBITER is
+  for TEST_BENCH
+    for INDESIGN: ARBITER 
+      use entity work.ARBITER(BEHAVE): 
+    end for;
+    for COMPILED: ARBITER 
+      use entity work.ARBITER(GATE): 
+    end for;
+    for TIMED: ARBITER 
+      use entity work.ARBITER(POST_ROUTE): 
+    end for;
+  end for;  
+end CFG_TEST_ARBITER;
+--End_Sample  
+
+--Begin_Sample Configuration Specification
+  -- explicit configuration overrides default binding
+  -- insert into declarative region of model architecture
+  for DUT1: ARBITER use entity work.ARBITER(MAPPED);
+--End_Sample  
+
+--Begin_Sample Constant
+-- insert within architecture before the begin keyword
+type DATA_FILE is 
+  array(0 to 31) of std_logic_vector(7 downto 0);
+-- user-defined type constant
+constant TABLE_1: data_file;
+-- predefined type constant
+constant INIT: std_logic_vector:= "00001010";
+--End_Sample  
+
+--Begin_Sample Data Types
+signal DATA_BUS: std_logic_vector(7 downto 0);
+variable WORD: integer range 0 to 255;
+--End_Sample  
+
+--Begin_Sample Design Unit
+library IEEE;
+use IEEE.STD_LOGIC_1164.all;
+use IEEE.NUMERIC_STD.all;
+
+entity ENTITY_NAME is
+	port(PORT1_NAME: in std_logic;
+	     PORT2_NAME: out std_logic);  
+end ENTITY_NAME;
+
+architecture ARCH_NAME of ENTITY_NAME is
+-- insert declarations here
+begin
+-- insert statements here
+end ARCH_NAME;
+
+--End_Sample  
+
+--Begin_Sample Entity
+entity AND2 is
+  generic (TIPD,TILO: time);
+  port (A,B: std_logic;
+        Y: out std_logic);
+end;
+--End_Sample  
+
+--Begin_Sample Enumeration
+type STATE is (RESET,ST0,ST1,ST2);
+type OPCODE is (IDLE,START,STOP,CLEAR);
+--End_Sample  
+
+--Begin_Sample Exit
+for i in VEC'reverse_range loop
+  exit when VEC(i)='1';
+  Result:=Result+1;
+end loop;
+--End_Sample  
+
+--Begin_Sample Extended Identifier
+-- Backslash characters escape reserved VHDL keywords,
+   attribute \library\ : string;
+   attribute \library\ of U31 : label is "ispLSI";
+-- or unusual names.
+   \Q\\\ <= not(A and B or C);
+--End_Sample  
+
+--Begin_Sample File
+-- declaring a file to write
+file DATA_OUT: text open write_mode is "test.txt";
+-- declaring a file to read
+file DATA_IN: text open read_mode is "vectors.txt";
+--End_Sample  
+
+--Begin_Sample For Loop
+-- indexed Boolean equations
+for i in 7 downto 0 loop
+  Q(i) <= A(i) xor B(i);
+end loop;
+--End_Sample  
+
+--Begin_Sample Function
+-- insert in declarative region (package body or between architecture and begin)
+function BOOL_TO_SL(X: boolean) return std_logic is
+begin
+  if X then
+    return '1';
+  else
+    return '0';
+  end if;
+end BOOL_TO_SL;
+--End_Sample  
+
+--Begin_Sample Generate
+   DEC: for N in natural range 7 downto 0 generate
+      DEC(N) <= '1' when unsigned(A)=N else
+                '0';
+   end generate;
+--End_Sample  
+
+--Begin_Sample Generic
+entity AND2 is
+  generic (TIPD,TILO: time);
+  port (A,B: std_logic;
+        Y: out std_logic);
+end;
+--End_Sample  
+
+--Begin_Sample Generic Map
+U1: AND2 
+generic map (TIPD=>2 ns,TILO=>3 ns)
+port map (A=>DATA(0),B=>DATA(1),Y=>PRODUCT);
+--End_Sample  
+
+--Begin_Sample Library
+library IEEE;
+--End_Sample  
+
+--Begin_Sample Next
+for I in 0 to 7 loop
+  if SKIP='1' then
+    next;		-- break from loop
+  else
+    N_BUS<=TABLE_DAT(I); 
+    wait for 5 ns;
+end loop;
+--End_Sample  
+
+--Begin_Sample Null
+case FLAG is
+  when TRUE=>   Q:='1';
+  when FALSE=>  Q:='0';	
+  when others=> null;
+end case;
+--End_Sample  
+
+--Begin_Sample Numeric_Std (IEEE 1076.3) Package Overview
+-- Arithmetic operations and functions for std_logic arrays.
+-- Note: This overview used to determine expression syntax and arguments only.
+
+-- Data Types from Numeric_Std
+--   type unsigned is array (natural range <>) of std_logic;
+--   type signed   is array (natural range <>) of std_logic;
+
+-- Arithmetic Operators
+--   +, -, *, /, sign (-), abs, rem, mod
+
+-- Comparison Operators
+--   >, >=, <=, =, /=
+
+-- Boolean Operators
+--   not, and, or, nand, nor, xor, xnor
+
+-- Shift and Rotate Functions
+--   shift_left(), shift_right(), rotate_left(), rotate_right()
+
+-- Resize Functions
+--   function resize (arg: signed; new_size: natural) return signed;
+--   function resize (arg: unsigned; new_size: natural) return unsigned;
+
+-- Conversion Functions
+--   function to_integer (arg: unsigned) return natural;
+--   function to_integer (arg: signed)   return integer;
+--   function to_unsigned (arg: integer; size: natural) return unsigned;
+--   function to_signed (arg: integer; size natural) return signed;
+
+-- Match Functions
+--   function STD_MATCH (L, R: STD_ULOGIC) return BOOLEAN;
+--   function STD_MATCH (L, R: UNSIGNED) return BOOLEAN;
+--   function STD_MATCH (L, R: SIGNED) return BOOLEAN;
+--   function STD_MATCH (L, R: STD_LOGIC_VECTOR) return BOOLEAN;
+--   function STD_MATCH (L, R: STD_ULOGIC_VECTOR) return BOOLEAN;
+
+-- Translation Functions
+--   function TO_01 (S: UNSIGNED; XMAP: STD_LOGIC := '0') return UNSIGNED;
+--   function TO_01 (S: SIGNED; XMAP: STD_LOGIC := '0') return SIGNED;
+--End_Sample  
+
+--Begin_Sample Package
+library IEEE;
+use IEEE.STD_LOGIC_1164.all;
+-- Package of custom data types
+package CUST_DAT_PACK is
+  subtype POS_FLOAT is REAL range 0.0 to REAL'high; 
+  type PATTERN is 
+    array(0 to 3) of POS_FLOAT;
+  constant DATA: PATTERN:= (1.1,1.2,0.1,0.2);
+  subtype BYTE is std_logic_vector(7 downto 0);
+  signal GSR: std_logic:='0';
+  signal GTS: std_logic:='0';
+end CUST_DAT_PACK;
+
+--End_Sample  
+
+--Begin_Sample Package Body
+-- Package of utilities
+library IEEE;
+use IEEE.STD_LOGIC_1164.all;
+use WORK.CUST_DAT_PACK.all;
+package UTIL_PACK is
+  function LARGEST (TOTAL_NO: integer; SET: pattern) return REAL;
+end UTIL_PACK;
+
+package body UTIL_PACK is
+  function LARGEST(TOTAL_NO: integer; SET: pattern)
+    return REAL is
+    variable RETURN_VALUE: REAL:=0.0;
+  begin
+    for K in SET'RANGE loop
+      if SET(K)>RETURN_VALUE then
+        RETURN_VALUE:=SET(K);
+      end if;
+    end loop;
+    return RETURN_VALUE;
+  end LARGEST;
+end UTIL_PACK;
+--End_Sample  
+
+--Begin_Sample Port
+  port (A,B: std_logic;
+        Y: out std_logic);
+--End_Sample  
+
+--Begin_Sample Port Map
+port map (A=>DATA(0),B=>DATA(1),Y=>PRODUCT);
+--End_Sample  
+
+--Begin_Sample Procedure
+library IEEE;
+use IEEE.STD_LOGIC_1164.all;
+package UTIL_PACK is
+  procedure FULL_ADDER(A,B,C: in std_logic; SUM,COUT: out std_logic);
+end UTIL_PACK;
+
+package body UTIL_PACK is
+  procedure FULL_ADDER(A,B,C: in std_logic; SUM,COUT: out std_logic) is
+  begin
+    SUM:=A xor B xor C;
+    COUT:=(A and B) or (A and C) or (B and C);
+  end; 
+end UTIL_PACK;
+--End_Sample  
+
+--Begin_Sample Process
+-- place process statements in architecture bodies after begin
+OPTIONAL_LABEL: process (OPTIONAL_SENSITIVITY_LIST)
+begin
+-- insert sequential statements here
+end process;
+--End_Sample  
+
+--Begin_Sample Range
+subtype INT is integer range 7 downto 0;
+subtype BYTE is std_logic_vector(INT);
+--End_Sample  
+
+--Begin_Sample Read and Readline (Textio package)
+-- File input sample
+library IEEE;
+use IEEE.STD_LOGIC_1164.all;
+use STD.TEXTIO.all;
+entity TEST is
+end TEST;
+architecture TEST_BENCH of TEST is
+  signal DATA: std_logic_vector(15 downto 0);
+begin
+  process
+    -- declare file
+    file INFILE: text;
+    -- line variable to hold raw file data
+    variable PTR: line;
+    -- digital logic data type to receive raw file data
+    variable DATA_IN: std_logic_vector(15 downto 0);
+    begin
+      -- open file for reading
+      file_open(INFILE,"C:\PROJECT\CHIP1\INDESIGN\DATAIN.TXT",read_mode);
+      while not (endfile(INFILE)) loop
+        -- read one line from file
+        readline(INFILE,PTR);
+        -- assign raw data to data type std_logic_vector
+        read(PTR,DATA_IN);
+
+        DATA <= DATA_IN; wait for 35 ns;
+      end loop;
+      -- close the input file
+      file_close(INFILE);
+      wait;
+  end process;
+end;
+
+-- See also: Textio, and Write and Writeline
+--End_Sample  
+
+--Begin_Sample Record
+-- declare user-defined data type
+type FLOAT is
+  record
+    SIGN: bit;
+    MANTISSA,EXPONENT: integer;
+  end record;
+-- declare a variable of user-defined type
+variable A,B: FLOAT;
+--End_Sample  
+
+--Begin_Sample Report
+assert (Q='0')
+  report "Test Bench Report: Q did not clear."
+  severity ERROR;
+--End_Sample  
+
+
+--Begin_Sample Resize Function (IEEE 1076.3 Numeric_Std package)
+A_sig <= resize(A,8);
+B_sig <= resize(B,8);
+SUM <= A_sig + A_sig;
+--End_Sample
+
+--Begin_Sample Shift Operators
+signal A: std_logic_vector(3 downto 0);
+constant R: integer:="3"; 
+-- :
+-- shift left logical
+Y <= A sll R;
+-- shift right logical
+Y <= A srl R;
+-- shift left arithmetic
+Y <= A sla R;
+-- shift right arithmetic
+Y <= A sra R;
+-- rotate left logical
+Y <= A rol R;
+-- rotate right logical
+Y <= A ror R;
+--End_Sample
+
+--Begin_Sample Shift Functions (IEEE 1076.3 Numeric_Std package)
+if (S_sig=b"001") then
+  Q_sig <= shift_right(Q_sig,1);
+elsif (S_sig=b"010") then
+  Q_sig <= shift_right(Q_sig,2);
+endif;
+--End_Sample
+ 
+--Begin_Sample Shift Functions (Synopsys, Inc. Std_Logic_Unsigned package)
+  Q_sig <= shr(Q_sig,S_sig);
+endif;
+--End_Sample
+ 
+--Begin_Sample Signal
+signal TRI_OUT: std_logic_vector(3 downto 0):= "ZZZZ";
+signal DATA_IN: std_logic_vector(7 downto 0):= x"01";
+signal CLK: std_logic:= '1';
+--End_Sample  
+
+--Begin_Sample Standard (IEEE 1076) Package Overview
+-- Predefined VHDL package of VHDL data types and functions.
+-- Note: This overview used to determine expression syntax and arguments only.
+
+package STANDARD is 
+	type boolean is (false,true); 
+	type bit is ('0', '1'); 
+	type character is (
+		nul, soh, stx, etx, eot, enq, ack, bel, 
+		bs,  ht,  lf,  vt,  ff,  cr,  so,  si, 
+		dle, dc1, dc2, dc3, dc4, nak, syn, etb, 
+		can, em,  sub, esc, fsp, gsp, rsp, usp, 
+
+		' ', '!', '"', '#', '$', '%', '&', ''', 
+		'(', ')', '*', '+', ',', '-', '.', '/', 
+		'0', '1', '2', '3', '4', '5', '6', '7', 
+		'8', '9', ':', ';', '<', '=', '>', '?', 
+
+		'@', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 
+		'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 
+		'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 
+		'X', 'Y', 'Z', '[', '\', ']', '^', '_', 
+
+		'`', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 
+		'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 
+		'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 
+		'x', 'y', 'z', '{', '|', '}', '~', del,
+
+		c128, c129, c130, c131, c132, c133, c134, c135,
+		c136, c137, c138, c139, c140, c141, c142, c143,
+		c144, c145, c146, c147, c148, c149, c150, c151,
+		c152, c153, c154, c155, c156, c157, c158, c159,
+
+		' ', '¡', '¢', '£', '¤', '¥', '¦', '§',
+		'¨', '©', 'ª', '«', '¬', '­', '®', '¯',
+		'°', '±', '²', '³', '´', 'µ', '¶', '·',
+		'¸', '¹', 'º', '»', '¼', '½', '¾', '¿',
+
+		'À', 'Á', 'Â', 'Ã', 'Ä', 'Å', 'Æ', 'Ç',
+		'È', 'É', 'Ê', 'Ë', 'Ì', 'Í', 'Î', 'Ï',
+		'Ð', 'Ñ', 'Ò', 'Ó', 'Ô', 'Õ', 'Ö', '×',
+		'Ø', 'Ù', 'Ú', 'Û', 'Ü', 'Ý', 'Þ', 'ß',
+
+		'à', 'á', 'â', 'ã', 'ä', 'å', 'æ', 'ç',
+		'è', 'é', 'ê', 'ë', 'ì', 'í', 'î', 'ï',
+		'ð', 'ñ', 'ò', 'ó', 'ô', 'õ', 'ö', '÷',
+		'ø', 'ù', 'ú', 'û', 'ü', 'ý', 'þ', 'ÿ' ); 
+
+	type severity_level is (note, warning, error, failure); 
+	type integer is range -2147483648 to 2147483647; 
+	type real is range -1.0E308 to 1.0E308; 
+	type time is range -2147483647 to 2147483647 
+		units 
+			fs;
+			ps = 1000 fs;
+			ns = 1000 ps;
+			us = 1000 ns; 
+			ms = 1000 us; 
+			sec = 1000 ms; 
+			min = 60 sec; 
+			hr = 60 min; 
+		end units; 
+	subtype delay_length is time range 0 fs to time'high;
+	impure function now return delay_length; 
+	subtype natural is integer range 0 to integer'high; 
+	subtype positive is integer range 1 to integer'high; 
+	type string is array (positive range <>) of character; 
+	type bit_vector is array (natural range <>) of bit; 
+	type file_open_kind is (
+		read_mode,
+		write_mode,
+		append_mode);
+	type file_open_status is (
+		open_ok,
+		status_error,
+		name_error,
+		mode_error);
+	attribute foreign : string;
+end STANDARD;
+--End_Sample  
+
+--Begin_Sample Std_logic_1164 (IEEE 1076-1164) Package Overview
+-- IEEE package of VHDL data types and functions for digital logic.
+-- Note: This overview used to determine expression syntax and arguments only.
+--       See OrCAD Express Help, VHDL Reference, for a complete index of constructs
+--       supported from the std_logic_1164 package.
+
+PACKAGE std_logic_1164 IS
+
+    TYPE std_ulogic IS ( 'U',  -- Uninitialized
+                         'X',  -- Forcing  Unknown
+                         '0',  -- Forcing  0
+                         '1',  -- Forcing  1
+                         'Z',  -- High Impedance   
+                         'W',  -- Weak     Unknown
+                         'L',  -- Weak     0       
+                         'H',  -- Weak     1       
+                         '-'   -- Don't care
+                       );
+
+    TYPE std_ulogic_vector IS ARRAY ( NATURAL RANGE <> ) OF std_ulogic;
+                                    
+    FUNCTION resolved ( s : std_ulogic_vector ) RETURN std_ulogic;
+
+    SUBTYPE std_logic IS resolved std_ulogic;
+
+    TYPE std_logic_vector IS ARRAY ( NATURAL RANGE <>) OF std_logic;
+
+    SUBTYPE X01     IS resolved std_ulogic RANGE 'X' TO '1'; -- ('X','0','1') 
+    SUBTYPE X01Z    IS resolved std_ulogic RANGE 'X' TO 'Z'; -- ('X','0','1','Z') 
+    SUBTYPE UX01    IS resolved std_ulogic RANGE 'U' TO '1'; -- ('U','X','0','1') 
+    SUBTYPE UX01Z   IS resolved std_ulogic RANGE 'U' TO 'Z'; -- ('U','X','0','1','Z') 
+
+    FUNCTION "and"  ( l : std_ulogic; r : std_ulogic ) RETURN UX01;
+    FUNCTION "nand" ( l : std_ulogic; r : std_ulogic ) RETURN UX01;
+    FUNCTION "or"   ( l : std_ulogic; r : std_ulogic ) RETURN UX01;
+    FUNCTION "nor"  ( l : std_ulogic; r : std_ulogic ) RETURN UX01;
+    FUNCTION "xor"  ( l : std_ulogic; r : std_ulogic ) RETURN UX01;
+    FUNCTION "not"  ( l : std_ulogic                 ) RETURN UX01;
+    
+    FUNCTION "and"  ( l, r : std_logic_vector  ) RETURN std_logic_vector;
+    FUNCTION "and"  ( l, r : std_ulogic_vector ) RETURN std_ulogic_vector;
+
+    FUNCTION "nand" ( l, r : std_logic_vector  ) RETURN std_logic_vector;
+    FUNCTION "nand" ( l, r : std_ulogic_vector ) RETURN std_ulogic_vector;
+
+    FUNCTION "or"   ( l, r : std_logic_vector  ) RETURN std_logic_vector;
+    FUNCTION "or"   ( l, r : std_ulogic_vector ) RETURN std_ulogic_vector;
+
+    FUNCTION "nor"  ( l, r : std_logic_vector  ) RETURN std_logic_vector;
+    FUNCTION "nor"  ( l, r : std_ulogic_vector ) RETURN std_ulogic_vector;
+
+    FUNCTION "xor"  ( l, r : std_logic_vector  ) RETURN std_logic_vector;
+    FUNCTION "xor"  ( l, r : std_ulogic_vector ) RETURN std_ulogic_vector;
+
+    FUNCTION "not"  ( l : std_logic_vector  ) RETURN std_logic_vector;
+    FUNCTION "not"  ( l : std_ulogic_vector ) RETURN std_ulogic_vector;
+
+    FUNCTION To_bit       ( s : std_ulogic;        xmap : BIT := '0') RETURN BIT;
+    FUNCTION To_bitvector ( s : std_logic_vector ; xmap : BIT := '0') RETURN BIT_VECTOR;
+    FUNCTION To_bitvector ( s : std_ulogic_vector; xmap : BIT := '0') RETURN BIT_VECTOR;
+
+    FUNCTION To_StdULogic       ( b : BIT               ) RETURN std_ulogic;
+    FUNCTION To_StdLogicVector  ( b : BIT_VECTOR        ) RETURN std_logic_vector;
+    FUNCTION To_StdLogicVector  ( s : std_ulogic_vector ) RETURN std_logic_vector;
+    FUNCTION To_StdULogicVector ( b : BIT_VECTOR        ) RETURN std_ulogic_vector;
+    FUNCTION To_StdULogicVector ( s : std_logic_vector  ) RETURN std_ulogic_vector;
+    
+    FUNCTION To_X01  ( s : std_logic_vector  ) RETURN  std_logic_vector;
+    FUNCTION To_X01  ( s : std_ulogic_vector ) RETURN  std_ulogic_vector;
+    FUNCTION To_X01  ( s : std_ulogic        ) RETURN  X01;
+    FUNCTION To_X01  ( b : BIT_VECTOR        ) RETURN  std_logic_vector;
+    FUNCTION To_X01  ( b : BIT_VECTOR        ) RETURN  std_ulogic_vector;
+    FUNCTION To_X01  ( b : BIT               ) RETURN  X01;       
+
+    FUNCTION To_X01Z ( s : std_logic_vector  ) RETURN  std_logic_vector;
+    FUNCTION To_X01Z ( s : std_ulogic_vector ) RETURN  std_ulogic_vector;
+    FUNCTION To_X01Z ( s : std_ulogic        ) RETURN  X01Z;
+    FUNCTION To_X01Z ( b : BIT_VECTOR        ) RETURN  std_logic_vector;
+    FUNCTION To_X01Z ( b : BIT_VECTOR        ) RETURN  std_ulogic_vector;
+    FUNCTION To_X01Z ( b : BIT               ) RETURN  X01Z;      
+
+    FUNCTION To_UX01  ( s : std_logic_vector  ) RETURN  std_logic_vector;
+    FUNCTION To_UX01  ( s : std_ulogic_vector ) RETURN  std_ulogic_vector;
+    FUNCTION To_UX01  ( s : std_ulogic        ) RETURN  UX01;
+    FUNCTION To_UX01  ( b : BIT_VECTOR        ) RETURN  std_logic_vector;
+    FUNCTION To_UX01  ( b : BIT_VECTOR        ) RETURN  std_ulogic_vector;
+    FUNCTION To_UX01  ( b : BIT               ) RETURN  UX01;       
+
+    FUNCTION rising_edge  (SIGNAL s : std_ulogic) RETURN BOOLEAN;
+    FUNCTION falling_edge (SIGNAL s : std_ulogic) RETURN BOOLEAN;
+
+    FUNCTION Is_X ( s : std_ulogic_vector ) RETURN  BOOLEAN;
+    FUNCTION Is_X ( s : std_logic_vector  ) RETURN  BOOLEAN;
+    FUNCTION Is_X ( s : std_ulogic        ) RETURN  BOOLEAN;
+
+END std_logic_1164;
+
+--End_Sample  
+
+--Begin_Sample Std_Logic_Arith (Synopsys, Inc.) Package Overview
+-- Copyright (c) 1990, 1991, 1992 by Synopsys, Inc.
+-- All rights reserved.
+--
+-- Arithmetic operations and functions for std_logic arrays.
+-- Note: This overview used to determine expression syntax and arguments only.
+
+-- Data Types from Std_Logic_Arith
+--    type UNSIGNED is array (NATURAL range <>) of STD_LOGIC;
+--    type SIGNED is array (NATURAL range <>) of STD_LOGIC;
+--    subtype SMALL_INT is INTEGER range 0 to 1;
+
+-- Arithmetic Operators
+--   +, -, *, /, sign (-), sign (+), abs
+
+-- Comparison Operators
+--   >, >=, <=, =, /=
+
+-- Shift Functions
+--   SHL(), SHR()
+
+-- Conversion Functions
+--    function CONV_INTEGER(ARG: INTEGER) return INTEGER;
+--    function CONV_INTEGER(ARG: UNSIGNED) return INTEGER;
+--    function CONV_INTEGER(ARG: SIGNED) return INTEGER;
+--    function CONV_INTEGER(ARG: STD_ULOGIC) return SMALL_INT;
+--
+--    function CONV_UNSIGNED(ARG: INTEGER; SIZE: INTEGER) return UNSIGNED;
+--    function CONV_UNSIGNED(ARG: UNSIGNED; SIZE: INTEGER) return UNSIGNED;
+--    function CONV_UNSIGNED(ARG: SIGNED; SIZE: INTEGER) return UNSIGNED;
+--    function CONV_UNSIGNED(ARG: STD_ULOGIC; SIZE: INTEGER) return UNSIGNED;
+--
+--    function CONV_SIGNED(ARG: INTEGER; SIZE: INTEGER) return SIGNED;
+--    function CONV_SIGNED(ARG: UNSIGNED; SIZE: INTEGER) return SIGNED;
+--    function CONV_SIGNED(ARG: SIGNED; SIZE: INTEGER) return SIGNED;
+--    function CONV_SIGNED(ARG: STD_ULOGIC; SIZE: INTEGER) return SIGNED;
+--
+--    function CONV_STD_LOGIC_VECTOR(ARG: INTEGER; SIZE: INTEGER) 
+--						       return STD_LOGIC_VECTOR;
+--    function CONV_STD_LOGIC_VECTOR(ARG: UNSIGNED; SIZE: INTEGER) 
+--						       return STD_LOGIC_VECTOR;
+--    function CONV_STD_LOGIC_VECTOR(ARG: SIGNED; SIZE: INTEGER) 
+--						       return STD_LOGIC_VECTOR;
+--    function CONV_STD_LOGIC_VECTOR(ARG: STD_ULOGIC; SIZE: INTEGER) 
+--						       return STD_LOGIC_VECTOR;
+
+-- Zero and Sign Extension Functions
+--    function EXT(ARG: STD_LOGIC_VECTOR; SIZE: INTEGER) return STD_LOGIC_VECTOR;
+--    function SXT(ARG: STD_LOGIC_VECTOR; SIZE: INTEGER) return STD_LOGIC_VECTOR;
+
+--End_Sample  
+
+--Begin_Sample Std_Logic_Signed (Synopsys, Inc.) Package Overview
+-- Copyright (c) 1990, 1991, 1992 by Synopsys, Inc.
+-- All rights reserved.
+--
+-- Arithmetic operations and functions for std_logic arrays.
+-- Note: This overview used to determine expression syntax and arguments only.
+
+-- Arithmetic Operators
+--   +, -, *, sign (-), sign (+), abs
+
+-- Comparison Operators
+--   >, >=, <=, =, /=
+
+-- Shift Functions
+--   SHL(), SHR()
+
+-- Conversion Functions
+--    function CONV_INTEGER(ARG: STD_LOGIC_VECTOR) return INTEGER;
+
+--End_Sample  
+
+--Begin_Sample Std_Logic_Unsigned (Synopsys, Inc.) Package Overview
+-- Copyright (c) 1990, 1991, 1992 by Synopsys, Inc.
+-- All rights reserved.
+--
+-- Arithmetic operations and functions for std_logic arrays.
+-- Note: This overview used to determine expression syntax and arguments only.
+
+-- Arithmetic Operators
+--   +, -, *, sign (+)
+
+-- Comparison Operators
+--   >, >=, <=, =, /=
+
+-- Shift Functions
+--   SHL(), SHR()
+
+-- Conversion Functions
+--    function CONV_INTEGER(ARG: STD_LOGIC_VECTOR) return INTEGER;
+
+--End_Sample  
+
+--Begin_Sample Subtype
+  subtype BYTE is std_logic_vector(7 downto 0);
+  subtype NIBBLE is std_logic_vector(3 downto 0);
+--End_Sample  
+
+--Begin_Sample String
+"hello, world"
+"ZZZZ"
+b"0000_0111" -- 8 bit binary
+o"07"  -- 6 bit octal
+x"7"   -- 4 bit hex
+--End_Sample  
+
+--Begin_Sample Testbench: Clock
+process begin
+  -- modify the delay values and clock signal name
+  CK <= '0'; wait for 100 ns;
+  CK <= '1'; wait for 100 ns;
+end process;
+--End_Sample  
+
+--Begin_Sample Testbench: Table of Vectors
+  -- Modify array depth and vector length
+  type TABLE_TYPE is array(0 to 15) of std_logic_vector(3 downto 0);
+  -- Modfy vector values
+  constant INPUT_VECTOR: TABLE_TYPE:=
+   (x"0",x"1",x"2",x"3",
+    x"4",x"5",x"6",x"7",
+    x"8",x"9",x"A",x"B",
+    x"C",x"D",x"E",x"F");
+  signal NIBBLE: std_logic_vector(3 downto 0);
+:
+  --  Place signal assignments in a process
+  for i in 0 to 15 loop
+    NIBBLE <= INPUT_VECTOR(i); wait for 100 ns;
+  end loop;
+--End_Sample  
+
+--Begin_Sample Testbench: Self-Check (ASSERT)
+
+--  Place in a process
+  assert (SUM /= x"20A0")
+    report "Bus SUM=20A0H is valid..."
+    severity NOTE;
+--End_Sample  
+
+--Begin_Sample Testbench: Wire to Bus Conversion
+-- add these lines in the architecture before the begin
+signal BUSIN:  std_logic_vector(3 downto 0);
+signal BUSOUT: std_logic_vector(3 downto 0);
+
+-- add these lines in the architecture after the begin
+port1_name <= BUSIN(0);  -- signal bus drives input ports
+port2_name <= BUSIN(1);
+port3_name <= BUSIN(2);
+port4_name <= BUSIN(3);
+
+BUSOUT(0) <= port5_name; -- output ports drive signal bus
+BUSOUT(1) <= port6_name;
+BUSOUT(2) <= port7_name;
+BUSOUT(3) <= port8_name;
+--End_Sample  
+
+--Begin_Sample Textio (IEEE 1076) Package Overview
+-- Predefined package of VHDL data types and procedures to read and write ASCII files.
+-- Note: This overview used to determine expression syntax and arguments only.
+
+package TEXTIO is
+    type LINE is access string;
+    type TEXT is file of string;
+    type SIDE is (right, left);
+    subtype WIDTH is natural;
+
+    file input : TEXT open read_mode is "STD_INPUT";
+    file output : TEXT open write_mode is "STD_OUTPUT";
+
+    procedure READLINE(file f: TEXT; L: out LINE);
+
+    procedure READ(L:inout LINE; VALUE: out bit; GOOD : out BOOLEAN);
+    procedure READ(L:inout LINE; VALUE: out bit);
+
+    procedure READ(L:inout LINE; VALUE: out bit_vector; GOOD : out BOOLEAN);
+    procedure READ(L:inout LINE; VALUE: out bit_vector);
+
+    procedure READ(L:inout LINE; VALUE: out BOOLEAN; GOOD : out BOOLEAN);
+    procedure READ(L:inout LINE; VALUE: out BOOLEAN);
+
+    procedure READ(L:inout LINE; VALUE: out character; GOOD : out BOOLEAN);
+    procedure READ(L:inout LINE; VALUE: out character);
+
+    procedure READ(L:inout LINE; VALUE: out integer; GOOD : out BOOLEAN);
+    procedure READ(L:inout LINE; VALUE: out integer);
+
+    procedure READ(L:inout LINE; VALUE: out real; GOOD : out BOOLEAN);
+    procedure READ(L:inout LINE; VALUE: out real);
+
+    procedure READ(L:inout LINE; VALUE: out string; GOOD : out BOOLEAN);
+    procedure READ(L:inout LINE; VALUE: out string);
+
+    procedure READ(L:inout LINE; VALUE: out time; GOOD : out BOOLEAN);
+    procedure READ(L:inout LINE; VALUE: out time);
+
+    procedure WRITELINE(file f : TEXT; L : inout LINE);
+
+    procedure WRITE(L : inout LINE; VALUE : in bit;
+	      JUSTIFIED: in SIDE := right;
+	      FIELD: in WIDTH := 0);
+
+    procedure WRITE(L : inout LINE; VALUE : in bit_vector;
+	      JUSTIFIED: in SIDE := right;
+	      FIELD: in WIDTH := 0);
+
+    procedure WRITE(L : inout LINE; VALUE : in BOOLEAN;
+	      JUSTIFIED: in SIDE := right;
+	      FIELD: in WIDTH := 0);
+
+    procedure WRITE(L : inout LINE; VALUE : in character;
+	      JUSTIFIED: in SIDE := right;
+	      FIELD: in WIDTH := 0);
+
+    procedure WRITE(L : inout LINE; VALUE : in integer;
+	      JUSTIFIED: in SIDE := right;
+	      FIELD: in WIDTH := 0);
+
+    procedure WRITE(L : inout LINE; VALUE : in real;
+	      JUSTIFIED: in SIDE := right;
+	      FIELD: in WIDTH := 0;
+	      DIGITS: in NATURAL := 0);
+
+    procedure WRITE(L : inout LINE; VALUE : in string;
+	      JUSTIFIED: in SIDE := right;
+	      FIELD: in WIDTH := 0);
+
+    procedure WRITE(L : inout LINE; VALUE : in time;
+	      JUSTIFIED: in SIDE := right;
+	      FIELD: in WIDTH := 0;
+	      UNIT: in TIME := ns);
+
+end;
+--End_Sample  
+
+--Begin_Sample Type
+-- insert within architecture before the begin keyword
+type DATA_FILE is 
+  array(0 to 3) of std_logic_vector(7 downto 0);
+constant TABLE_1: DATA_FILE:=
+  (x"00",x"01",x"02",x"03");
+--End_Sample  
+
+--Begin_Sample Type Conversion Functions (IEEE 1076.3 Numeric_Std package)
+-- conversion from std_logic_vector to integer
+-- DATA is an integer variable and MD is a std_logic_vector port
+DATA:= to_integer(unsigned(MD));
+
+-- conversion from integer to std_logic_vector 
+MD <= std_logic_vector(to_unsigned(DATA,8));
+
+-- conversion from integer to signed
+signal   X: signed(7 downto 0):=x"00";
+signal   Y: signed(7 downto 0):=x"00";
+:
+for i in integer range 0 to 63 loop
+  X <= to_signed(i,8);
+  Y <= to_signed(i,8); wait for 35 ns;
+end loop;
+
+-- conversion from signed to integer
+for i in integer range 0 TO 63 loop
+   X <= to_signed(63-i,8);
+   Y <= to_signed(i,8); wait for 35 ns;
+   write(POKE,to_integer(X),right,5); 
+   write(POKE,to_integer(Y),right,5); 
+   write(POKE,to_integer(SUM),right,5); 
+   writeline(OUTFILE,POKE);	                
+end loop;
+
+--End_Sample
+
+--Begin_Sample Type Conversion Functions (Synopsys, Inc. and Std_Logic_Arith and Std_Logic_Unsigned packages)
+-- conversion from std_logic_vector to integer
+-- DATA is an integer variable and MD is a std_logic_vector port
+DATA:= conv_integer(MD);
+
+-- conversion from integer to std_logic_vector 
+MD <= conv_std_logic_vector(DATA,8);
+
+-- conversion from integer to signed
+signal   X: signed(7 downto 0):=x"00";
+signal   Y: signed(7 downto 0):=x"00";
+:
+for i in integer range 0 to 63 loop
+  X <= conv_signed(i,8);
+  Y <= conv_signed(i,8); wait for 35 ns;
+end loop;
+
+-- conversion from signed to integer
+for i in integer range 0 TO 63 loop
+   X <= conv_signed(63-i,8);
+   Y <= conv_signed(i,8); wait for 35 ns;
+   write(POKE,conv_integer(X),right,5); 
+   write(POKE,conv_integer(Y),right,5); 
+   write(POKE,conv_integer(SUM),right,5); 
+   writeline(OUTFILE,POKE);	                
+end loop;
+
+--End_Sample
+
+--Begin_Sample Use
+use IEEE.STD_LOGIC_1164.all;
+use IEEE.NUMERIC_STD.all;
+use WORK.UTIL_PACK.all;
+
+-- See also: library, package
+--End_Sample  
+
+--Begin_Sample Variable
+variable X,Y: integer range 0 to 15;
+variable PRODUCT: std_logic_vector(7 downto 0);
+
+-- See also: signal
+--End_Sample  
+
+--Begin_Sample Wait
+wait for 35 ns;
+...
+constant DUTY: time:= 35 ns;
+...
+process begin
+  CLK <= not(CLK); wait for DUTY;
+end process;
+--End_Sample  
+
+--Begin_Sample While
+while not(endfile(INFILE)) loop
+  readline (INFILE,PTR); -- read one line from file
+  read (PTR,DATA_IN);   -- assign raw data to data type std_logic_vector
+  wait for 35 ns; DATA <= DATA_IN;
+end loop;
+
+-- See also: For Loop, Exit
+--End_Sample  
+
+
+--Begin_Sample Write and Writeline (Textio package)
+-- File output sample
+library IEEE;
+use IEEE.STD_LOGIC_1164.all;
+use STD.TEXTIO.all;
+entity TEST is
+end TEST;
+architecture TEST_BENCH of TEST is
+  signal DATA:   std_logic_vector(15 downto 0);
+  signal RESULT: std_logic_vector(15 downto 0);
+  signal QUAN:   unsigned(15 downto 0):=x"0011";
+begin
+  process
+    -- declare files
+    file INFILE,OUTFILE: text;
+
+    -- line variables to hold raw file data
+    variable PTR,POKE: line;
+
+    -- digital logic data type to receive raw file data
+    variable DATA_IN: std_logic_vector(15 downto 0);
+    begin
+      -- open files
+      file_open(INFILE,"C:\PROJECT\CHIP1\INDESIGN\DATAIN.TXT",read_mode);
+      file_open(OUTFILE,"C:\PROJECT\CHIP1\INDESIGN\DATAOUT.TXT",write_mode);
+
+      -- process file data
+      while not(endfile(INFILE)) loop
+        readline(INFILE,PTR); read(PTR,DATA_IN);
+        DATA <= DATA_IN; wait for 35 ns; 
+
+        RESULT <= std_logic_vector(unsigned(DATA)+QUAN); wait for 35 ns; 
+        write(POKE,RESULT,right,10); writeline(OUTFILE,POKE);
+      end loop;
+
+      -- close files
+      file_close(INFILE);
+      file_close(OUTFILE);wait;
+  end process;
+end;
+
+-- See also: Read and Readline, Textio
+--End_Sample  
+
+--Begin_Sample Zero and Sign Extension Functions (Synopsys, Inc. Std_Logic_Arith package)
+  -- zero extend STD_LOGIC_VECTOR (ARG) to SIZE, 
+  Sig_8SLV<=EXT(Sig_4SLV,8);
+  -- sign extend STD_LOGIC_VECTOR (ARG) to SIZE, 
+  Sig_8SLV<=SXT(Sig_4SLV,8);
+
+--End_Sample  
+
+
+

@@ -1,0 +1,96 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+VARIABLE
+PORT 69 12
+
+    #ifdef APD || ALLEGRO_MCM || SIP
+HEADER "Define Conductor Subclass"
+    #else
+HEADER "Define Etch Subclass"
+    #endif
+
+
+POPUP <film_pop>"Positive""0","Negative""1".
+POPUP <layer_type_pop>"Conductor""CONDUCTOR","Plane""PLANE".
+
+MESSAGE ADD_SUBC 1 ""
+MESSAGE READ_ONLY_MASTER 1 "Not editable with exported partitions."
+MESSAGE READ_ONLY_DPF 1 "Not editable within design partition."
+
+TILE HEADER_TILE
+TPANEL 0
+
+TEXT "Subclass Edit"
+TLOC 2 1
+ENDTEXT
+
+TEXT "Subclass Name"
+TLOC 21 1
+ENDTEXT
+
+TEXT "Layer Type"
+TLOC 41 1
+ENDTEXT
+ 
+
+TEXT "Film Type"
+TLOC 53 1
+ENDTEXT
+
+ENDTILE
+
+TILE SECTION_TILE
+TPANEL 1
+
+FIELD delete
+FLOC 2 0
+MENUBUTTON "Delete" 8 2
+ENDFIELD
+ 
+FIELD insert
+FLOC 11 0
+MENUBUTTON "Insert" 8 2
+ENDFIELD
+ 
+FIELD etch_subc_name
+FLOC 21 0
+STRFILLIN 18 18
+ENDFIELD
+
+FIELD layer_type
+FLOC 41 0
+ENUMSET 9
+POP "layer_type_pop"
+ENDFIELD
+ 
+FIELD film_type
+FLOC 53 0
+ENUMSET 10
+POP "film_pop"
+ENDFIELD
+ 
+ENDTILE
+
+TILE StdTile
+TPANEL 2
+
+FIELD done
+FLOC 1 1
+MENUBUTTON "Done" 9 3
+ENDFIELD
+
+{
+FIELD cancel
+FLOC 12 3
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+}
+
+FIELD help
+FLOC 56 1
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

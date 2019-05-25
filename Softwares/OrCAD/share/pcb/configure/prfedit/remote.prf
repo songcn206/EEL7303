@@ -1,0 +1,23 @@
+#------------------------------------------------------------------------------
+#			Allegro Remote Performance Tuning
+#------------------------------------------------------------------------------
+#
+# See User.prf for complete descriptions of fields in this file.
+
+PARENT:PARENT_L=ui/remote
+
+SUMMARY:HELP=Tuning options for thin clients, VNC, Remote Desktop, \
+remote X-windows and graphics poor environments. Also see OpenGL group \
+for more options.
+
+allegro_no_ownerdraw:TYPE=CHECK:EFF_ONRESTART:\
+HELP=Can improve drop-down menu performance by disabling bitmaps shown in \
+the menus. If you notice a noticable delay in the menus invoking \
+(e.g. like the File menu), set this variable and re-start the tool.
+
+roam_slowconnect:TYPE=CHECK:EFF_ONNEXTCMD:\
+HELP=Improves roam control when using the middle mouse button to roam \
+over high latency connections like VNC, Remote Desktop or remote X WAN \
+connection. Side effect of setting this variable is the cursor \
+is not kept at its starting location. This option should not be used \
+for running the software locally.

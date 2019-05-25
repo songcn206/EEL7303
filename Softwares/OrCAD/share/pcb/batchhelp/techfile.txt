@@ -1,0 +1,110 @@
+
+Read, write, compare, uprev Allegro techfile 
+	OR
+Read, write Allegro parameter file
+
+Techfile mode:
+  techfile -r|-w|-c|-u [-q][-d][-n] [-i <tech_contents>] [-t <drawing_type>] [<files>]
+
+Parameter mode:
+  techfile -r|-w -p [-o <param_type> -o <param_type> ...] [<files>]
+
+  Techfile extensions
+	 .tcf  - new XML based techfile (16.0 introduction). Contains design
+		independent constraint data.
+	 .tech - older EDIF format (phased out with 16.0) 
+		- use the -u option to convert to .tcf format
+	 .dcf - Design control file. A comma delimited file containing constraint data 
+		plus logic overrides. Since it contains design specific data it may not 
+		load properly in other designs.
+
+  Parameter file extensions
+	 .prm  - XML based parameter file (16.01 introduction)
+
+  Techfile Examples:
+    Read techfile into design
+	techfile -r [-n][-d] [-t <drawing_type>] [<in_techfile> <in_design>] [out_design] 
+	   - if out_design not provided input design is overwritten
+
+    Write techfile from the design
+	techfile -w [ <in_design> <out_techfile> ]
+
+    Compare techfile with the design
+	techfile -c  [ <techfile> <design> ]
+
+    Uprev techfile to current release version
+	techfile -u [-t <drawing_type>] [ <in_techfile> <out_techfile> ]
+
+    Uprev old (tech) techfile to XML format
+	techfile -u [-t <drawing_type>] [ <in_techfile>.tech <out_techfile> ]
+
+  Design Control File (dcf) Examples:
+    Read dcf into design
+	techfile -r [-n][-d] [-t <drawing_type>] [<in_techfile>.dcf <in_design>] [out_design] 
+
+    Write techfile from the design
+	techfile -w [ <in_design> <out_techfile>.dcf ]
+
+  Parameter Mode Examples:
+    Read parameter file into database
+	techfile -rp [<in_paramfile> <in_design>] [out_design] 
+	   - if out_design not provided input design is overwritten
+
+    Write parameter file from the design
+	techfile -wp [ <in_design> <out_paramfile> ]
+	techfile -wp [-o <param_type> -o <param_type> ...] [ <in_design> <out_paramfile> ]
+
+        where <param_type> could be "Design_Setting", "Color_Layer",
+       "Color_Palette",  "Color_Net", "Color_Component", "Color_Generic_Group",
+       "Color_Profile", "Text_Size", or "Application_or_Command_Parameters".
+
+
+    Options (one of the following required):
+	-r - read a techfile/paramfile into a design
+	-w - write a techfile/paramfile from a design
+	-c - compare a techfile with a design
+	-u - uprev an older techfile to a new name
+
+    Additional options:
+	-p - used for parameter file only, works with -r or -w switch
+	-o - <param_type> parameter group to generate parameter file, works with -wp switch.
+	-n - create a new design for specified function (-r only)
+	-d - do NOT run DRC on design after a techfile read (-r only)
+	-q - quiet mode, continue with warnings
+	-t - target <drawing type> as a .mcm or .sip design,
+             default drawing type is .brd
+	     - works with -n or -u switches only
+             - use "mcm" for .mcm  and  "sip" for .sip 
+             - example: techfile -rn -t mcm my_pkg.tech my_pkg.mcm
+	-i - <tech_contents> Controls writing techfile content setions. Specifies 
+	     sections of a techfile which are written. By default, all techfile 
+	     sections are written. 
+	     (example to write all sections: -i speuaxnr)
+		s - spacing  (sets stackup)
+		p - physical (sets stackup)
+		e - electrical
+		u - user defined properties
+		a - assembly (SIP only) (sets stackup)
+		x - stackup
+		n - netclass settings
+		r - properties
+		
+    Files:
+	techfile - an existing technology file (.tcf, .tech or .dcf)
+	new_techfile - output technology file (.tcf or dcf)
+	design - Allegro/APD/SIP design design (.brd, .mcm, .sip, .dra)
+	new_design - optional output Allegro/APD/SIP design. 
+	    	If not present will overwrite input design
+	drawing_type - use file extension (mcm, sip, brd, dra)
+
+Notes:
+	- It allows reading and writing a dcf file if the constraint file is provided 
+	  with a .dcf file extension. It no extension is provided, assumes tcf based files.
+	- In upreving older .tech files to .tcf format, we do not support the uprev
+	  of partial .tech files. These files, on uprev, will be converted to full
+	  design .tcf files.
+	- With the new XML based techfile (.tcf), you are no longer required to uprev 
+	  techfiles with each new release. From a best practice standpoint, you may wish 
+	  to still uprev your techfiles to incorporate the release's new constraint 
+	  settings into your corporate CAD libraries.
+	  

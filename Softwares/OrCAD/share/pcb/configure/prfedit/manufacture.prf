@@ -1,0 +1,84 @@
+#  $Header: /vobs/psd_backend_data/data/prefs/misc.prf /main/fxf051019.downrev/1 19-Oct-05.15:12:07 fxf $
+#-------------------------------------------------------------------------------
+#			Allegro Manufacturing Variables
+#-------------------------------------------------------------------------------
+#
+# See User.prf for complete descriptions of fields in this file.
+
+
+SUMMARY:HELP=Settings for manufacturing interfaces
+
+autosilk_disregard_solder_mask:TYPE=CHECK:EFF_ONNEXTCMD:\
+PARENT_L=manufacture/silkscreen:\
+HELP=Autosilk does not clear vias when the soldermask is not defined. Setting \
+this variable causes autosilk to clear vias which have no soldermask \
+pads defined.
+
+draft_retain_class_subclass:TYPE=CHECK:EFF_ONNEXTCMD:\
+PARENT_L=manufacture/draft:\
+HELP=Instructs the drafting commands to maintain current active layer.\
+Default behavior is to switch to Board Geometry/Dimension layer when starting \
+these commands.
+
+ipc356_unique_netname:TYPE=CHECK:EFF_ONNEXTCMD:\
+PARENT_L=manufacture/IPC_netlist:\
+HELP=By default, ipc356_out uses net name "N/C" for dummy net pins with no \
+connections. With variable set, a unique net name will be generated for \
+each dummy net pin using the same methodology as dummy net pins with \
+connections.
+
+ipc356_nomechpin_warnings:TYPE=CHECK:EFF_ONNEXTCMD:\
+PARENT_L=manufacture/IPC_netlist:\
+HELP=By default, ipc356_out generates warnings if mechanical pins are \
+defined without drill holes. This suppresses that warning.
+
+ipc356_truncate_large:TYPE=CHECK:EFF_ONNEXTCMD:\
+PARENT_L=manufacture/IPC_netlist:\
+HELP=By default, ipc356_out generates errors if numbers exceed the magnitude \
+required by the specification. This option truncates these numbers and \
+issues a warning. THIS OPTION SHOULD NOT BE USED FOR PRODUCTION OUTPUT. It is \
+intended for debug use of problematic coordinates and sizes.
+
+ipc356_027record_netname:TYPE=CHECK:EFF_ONNEXTCMD:\
+PARENT_L=manufacture/IPC_netlist:\
+HELP=By default, ipc356 (rev A) continuation records (027) do not require the netname \
+since the previous record has the name. We have found that some manufacturers expect \
+the netname. This option enables the netname with the 027 record.
+
+nclegend_file:TYPE=STRING:EFF_ONNEXTCMD:\
+PARENT_L=manufacture/NC_legend:\
+HELP=Override the default filename convention for NC Drill Legend. \
+By default, NC Drill Legend uses a name of default-<units> where units \
+is the current board units. The override name should contain only the \
+filename not a PATH component.
+
+stream_bond_finger_class:TYPE=CHECK:EFF_ONRESTART:\
+PARENT_L=ic_packaging/Manufacture:\
+HELP=By default, bond finger objects in IC Package and SiP designs are \
+exported to stream as via objects using the "VIA CLASS" class. This override \
+should be used if bond fingers should be controlled and exported using \
+their own class, "BOND FINGER".  
+
+stream_out_clean_shapes:TYPE=CHECK:EFF_ONRESTART:\
+PARENT_L=ic_packaging/Manufacture:\
+HELP=When exporting stream data with the flatten geometry option, \
+complex shapes are broken into multiple pieces. In rare occasions, one or more \
+of these pieces will have two boundary segments that touch, but do not overlap. \
+This can introduce errors in some tools reading the shape, as it can appear that \
+the boundary is self-intersecting. If set, this option will force stream out to \
+examine and attempt to break these shapes into multiple pieces.
+
+dxf_bond_finger_class:TYPE=CHECK:EFF_ONRESTART:\
+PARENT_L=ic_packaging/Manufacture:\
+HELP=By default, bond finger objects in IC Package and SiP designs are \
+exported to DXF as via objects using the "VIA CLASS" class. This override \
+should be used if bond fingers should be controlled and exported using \
+their own class, "BOND FINGER".  
+
+dxf_suppress_wire_vias:TYPE=CHECK:EFF_ONRESTART:\
+PARENT_L=ic_packaging/Manufacture:\
+HELP=By default, when a bond wire is exported to DXF from the IC Packaging \
+layout tools, a via with the same diameter as the wire is placed at each end \
+to connect the wire to the start and end items. Set this variable to suppress \
+creation of these connecting via objects.  
+

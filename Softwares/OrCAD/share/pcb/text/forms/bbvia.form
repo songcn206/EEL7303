@@ -1,0 +1,119 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+VARIABLE
+PORT 85 15
+HEADER "Blind / Buried Vias"
+
+POPUP <LAYER_NAME_POP>"TOP""0".
+
+MESSAGE NO_DEFAULT_VIA 1 "No default via found."
+MESSAGE PAD_NOT_IN_DB 1 "Padstack not in database"
+MESSAGE PAD_IN_USE 1 "Padstack is in use.  Use padstack editor to replace."
+MESSAGE ENTER_NEW_NAME 1 "Enter a name for the new padstack"
+MESSAGE START_EQ_END 1 "Start and end layers cannot be equal"
+MESSAGE PAD_UNDEF_ON_LYR 1 "%s is not defined on layer %s"
+MESSAGE CANT_MOD_PAD 1 "Padstack %s in use.  Cannot modify"
+MESSAGE NEW_PAD_CREATED 1 "%s created from %s"
+MESSAGE USE_PAD_EDITOR 1 "Use padstack editor to edit existing pads"
+MESSAGE PAD_DEFINED 1 "Padstack %s already defined in drawing"
+MESSAGE PAD_DOESNT_EXIST 1 "Padstack %s does not exist."
+MESSAGE NO_PAD_TO_COPY 1 "Missing Padstack to copy."
+MESSAGE NO_START_OR_END 1 "Missing start or end subclass."
+
+TILE StdTile
+TPANEL 2
+FIELD done
+FLOC 1 1
+MENUBUTTON "Ok" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 11 1
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD add
+FLOC 23 1
+MENUBUTTON "Add BBVia" 13 3
+ENDFIELD
+
+FIELD help
+FLOC 47 1
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+ENDTILE
+
+TILE Top
+TPANEL 0
+
+TEXT "Bbvia Padstack"
+OPTIONS bold
+TLOC 12 1
+ENDTEXT
+
+TEXT "Padstack to Copy"
+TLOC 30 1
+OPTIONS bold
+ENDTEXT
+
+TEXT "UVia"
+INFO uvia_text
+TLOC 49 1
+OPTIONS bold
+ENDTEXT
+
+TEXT "Start Layer"
+TLOC 56 1
+OPTIONS bold
+ENDTEXT
+
+TEXT "End Layer"
+TLOC 72 1
+OPTIONS bold
+ENDTEXT
+
+ENDTILE
+
+TILE BB_VIA_TILE
+TPANEL 1
+FIELD delete
+FLOC 1 0
+MENUBUTTON "Delete" 7 2
+ENDFIELD
+
+FIELD name
+FLOC 10 0
+STRFILLIN 16 255
+ENDFIELD
+
+FIELD pad_copyname
+FLOC 28 0
+STRFILLIN 16 255
+ENDFIELD
+
+FIELD pad_browser
+FLOC 46 0
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+FIELD uvia
+FLOC 50 0
+CHECKLIST ""
+ENDFIELD
+
+FIELD start_layername
+FLOC 54 0
+ENUMSET 13
+POP "LAYER_NAME_POP"
+ENDFIELD
+
+FIELD end_layername
+FLOC 70 0
+ENUMSET 13
+POP "LAYER_NAME_POP"
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

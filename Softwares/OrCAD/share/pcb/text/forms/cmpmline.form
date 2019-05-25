@@ -1,0 +1,80 @@
+# $Header: /net/wicked/pcs/data/cuiforms/cmpshape.form,v 1.10 1902/05/02 09:08:37 pbernard Exp $
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 41 24
+HEADER "Ministatus"
+
+ACTIVEFIELD "extend_trim"
+
+TILE
+ 
+GROUP "Line intersection"
+FLOC 1 0
+FSIZE 27 12
+ENDGROUP
+ 
+FIELD autoTolerance
+FLOC 3 3
+CHECKLIST "Use auto gap"
+FSIZE 13 2
+ENDTEXT
+
+TEXT "Maximum gap:"
+TLOC 6 5
+ENDTEXT
+
+FIELD gapTolerance
+FLOC 17 5
+STRFILLIN 8 256
+ENDFIELD
+
+FIELD round_corner
+FLOC 3 7
+CHECKLIST "Round corners"
+ENDFIELD
+
+TEXT "Radius:"
+TLOC 6 9
+ENDTEXT
+
+FIELD radius
+FLOC 17 9
+STRFILLIN 8 256
+ENDFIELD
+
+POPUP <class_list>"""".
+
+TEXT "Active class:" 
+TLOC 2 13
+ENDTEXT 
+
+FIELD class_name
+FLOC 2 15
+ENUMSET 19
+OPTIONS prettyprint
+POP "class_list"
+ENDFIELD
+
+POPUP <subclass_list>"""".
+
+TEXT "Add line to subclass:" 
+TLOC 2 17
+ENDTEXT 
+ 
+FIELD subclass_name
+FLOC 2 19
+ENUMSET 19
+OPTIONS prettyprint ownerdrawn
+POP "subclass_list"
+ENDFIELD
+
+FIELD hide_lines
+FLOC 2 22
+CHECKLIST "Delete original lines"
+ENDFIELD
+
+
+ENDTILE
+
+ENDFORM

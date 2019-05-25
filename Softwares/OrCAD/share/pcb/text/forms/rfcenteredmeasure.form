@@ -1,0 +1,109 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 27 20
+HEADER "RF Centered Measurement"
+
+POPUP <frequnits>"Hz""1","KHz""1000","MHz""1000000","GHz""1000000000".
+POPUP <electricallengthunitenum>"degree""degree","radian""radian","lambda""lambda".
+
+TILE
+
+TEXT "Measurement type:"
+TLOC 1 1
+ENDTEXT
+
+FIELD exact
+FLOC 2 3
+CHECKLIST "General measurement" "MeasurementType"
+ENDFIELD
+
+FIELD segment
+FLOC 2 5
+CHECKLIST "Segment measurement" "MeasurementType"
+ENDFIELD
+
+FIELD trace
+FLOC 2 7
+CHECKLIST "Trace measurement" "MeasurementType"
+ENDFIELD
+
+FIELD spacing
+FLOC 2 9
+CHECKLIST "Centered spacing" "MeasurementType"
+ENDFIELD
+
+TEXT "Measurement result:"
+TLOC 1 12
+ENDTEXT
+
+TEXT "Physical length:"
+TLOC 2 14
+ENDTEXT
+
+FIELD length
+FLOC 2 16
+REALFILLIN 15 15
+DECIMAL 4
+ENDFIELD
+
+TEXT "Parallel spacing:"
+TLOC 2 18
+ENDTEXT
+
+FIELD xspacing
+FLOC 2 20
+REALFILLIN 15 15
+DECIMAL 4
+ENDFIELD
+
+TEXT "Perpendicular spacing:"
+TLOC 2 22
+ENDTEXT
+
+FIELD yspacing
+FLOC 2 24
+REALFILLIN 15 15
+DECIMAL 4
+ENDFIELD
+
+TEXT "Virtual electrical parameters:"
+TLOC 1 27
+ENDTEXT
+
+TEXT "Working frequency:"
+TLOC 2 29
+ENDTEXT
+
+FIELD frequency
+FLOC 2 31
+REALFILLIN 15 32
+REALMIN 0.0
+DECIMAL 4
+ENDFIELD
+
+FIELD frequnit
+FLOC 19 31
+ENUMSET 6
+POP "frequnits"
+ENDFIELD
+
+TEXT "Electrical length:"
+TLOC 2 33
+ENDTEXT
+
+FIELD electricallength
+FLOC 2 35
+REALFILLIN 15 15
+DECIMAL 4
+ENDTEXT
+
+FIELD electricallengthunits
+TLOC 19 35
+ENUMSET 6
+POP "electricallengthunitenum"
+ENDTEXT
+
+ENDTILE
+
+ENDFORM

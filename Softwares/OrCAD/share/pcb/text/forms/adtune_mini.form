@@ -1,0 +1,209 @@
+# $Header: /vobs/psd_backend_data/data/forms-core/prmedit.form /main/64 2010-09-02T07:55:28-04 jds $ 
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 19 13
+HEADER "Auto Delay Tune Options"
+
+# ADT command related popups
+# Note that pop-ups are shared if pop-up names are shared
+
+POPUP <boolean>"Yes""1","No""0".
+POPUP <adt_pattern>"Accordion""2","Trombone""1".
+POPUP <elong_corner_45_only>"45""1".
+POPUP <adt_ac_elong_gap_vals>"3x width""0".
+POPUP <adt_ac_elong_min_amplitude_vals>"3x width""0".
+POPUP <adt_ac_elong_max_amplitude_vals>"3x width""0".
+POPUP <adt_ac_elong_corner_size_vals>"1x width""0".
+POPUP <adt_tr_elong_gap_vals>"3x width""0".
+POPUP <adt_tr_elong_min_amplitude_vals>"3x width""0".
+POPUP <adt_tr_elong_corner_size_vals>"1x width""0".
+
+
+MESSAGE mustarc 3 "Lock fields must be set to Arc and not be Off."
+MESSAGE must45 3 "Lock fields must be set to Line and 45."
+
+# parameters for Auto Delay Tune
+
+TILE ADTUNE_MINI
+
+TEXT "Active etch subclass:"
+TLOC 1 1
+ENDTEXT
+
+FIELD subcolor
+FLOC 2 3
+COLOR 2 1
+OPTIONS colorchooser
+ENDFIELD
+
+FIELD subclass
+FLOC 5 3
+ENUMSET 21
+OPTIONS prettyprint ownerdrawn
+POP "subclass"
+ENDFIELD
+
+TEXT "Override bundle params:" adt_override_bundle_params
+TLOC 3 6
+ENDTEXT
+
+FIELD adt_elong_bundle_prop_ok
+FLOC 21 6
+ENUMSET 5
+POP boolean
+ENDFIELD
+
+TEXT "Allow in cns areas:" adt_elong_cns_area_label
+TLOC 3 8
+ENDTEXT
+
+FIELD adt_elong_cns_area_ok
+FLOC 21 8
+ENUMSET 5
+POP boolean
+ENDFIELD
+
+TEXT "Tuning Pattern:" adt_elong_pattern_label
+TLOC 3 10
+ENDTEXT
+
+FIELD adt_elong_tuning_pattern
+FLOC 18 10
+ENUMSET 8
+POP adt_pattern
+ENDFIELD
+
+FIELD adt_elong_pattern_thumb
+THUMBNAIL dtun_acc.bmp
+FLOC 14 10
+FSIZE 4 2
+ENDFIELD
+
+GROUP "Accordion" adt_accordion_group
+GLOC 1 12
+GSIZE 28 13
+ENDFIELD
+
+#FIELD adt_elong_accordion_thumb
+#THUMBNAIL dtun_acc.bmp
+#FLOC 36 12
+#FSIZE 4 2
+#ENDFIELD
+
+TEXT "Gap:" adt_ac_gap_label
+TLOC 3 14
+ENDTEXT
+
+FIELD adt_ac_elong_gap
+FLOC 19 14
+STRFILLIN 5 20
+POP adt_ac_elong_gap_vals
+ENDFIELD
+
+TEXT "Min Amplitude:" adt_ac_min_amp_label
+TLOC 3 16
+ENDTEXT
+
+FIELD adt_ac_elong_min_amplitude
+FLOC 19 16
+STRFILLIN 5 20
+POP adt_ac_elong_min_amplitude_vals
+ENDFIELD
+
+TEXT "Max Amplitude:" adt_ac_max_amp_label
+TLOC 3 18
+ENDTEXT
+
+FIELD adt_ac_elong_max_amplitude
+FLOC 19 18
+STRFILLIN 5 20
+POP adt_ac_elong_max_amplitude_vals
+ENDFIELD
+
+TEXT "Corner Type:" adt_ac_corner_type_label
+TLOC 3 20
+ENDTEXT
+
+FIELD adt_ac_elong_corner_type
+FLOC 19 20
+ENUMSET 7
+POP "elong_corner_45_only"
+ENDFIELD
+
+TEXT "Miter Size:" adt_ac_corner_size_label
+TLOC 3 22
+ENDTEXT
+
+FIELD adt_ac_elong_corner_size
+FLOC 19 22
+STRFILLIN 5 20
+POP adt_ac_elong_corner_size_vals
+ENDFIELD
+
+GROUP "Trombone" adt_trombone_group
+GLOC 1 25
+GSIZE 28 13
+ENDFIELD
+
+#FIELD adt_elong_trombone_thumb
+#THUMBNAIL dtun_trom.bmp
+#FLOC 36 26
+#FSIZE 4 2
+#ENDFIELD
+
+TEXT "Max Levels:" adt_tr_max_levels_label
+TLOC 3 27
+ENDTEXT
+
+FIELD adt_tr_max_levels
+FLOC 19 27
+INTSLIDEBAR 5 3
+MIN 1
+MAX 9999
+ENDFIELD
+
+TEXT "Gap:" adt_tr_gap_label
+TLOC 3 29
+ENDTEXT
+
+FIELD adt_tr_elong_gap
+FLOC 19 29
+STRFILLIN 5 20
+POP adt_tr_elong_gap_vals
+ENDFIELD
+
+TEXT "Min Amplitude:" adt_tr_min_amp_label
+TLOC 3 31
+ENDTEXT
+
+FIELD adt_tr_elong_min_amplitude
+FLOC 19 31
+STRFILLIN 5 20
+POP adt_tr_elong_min_amplitude_vals
+ENDFIELD
+
+TEXT "Corner Type:" adt_tr_corner_type_label
+TLOC 3 33
+ENDTEXT
+
+FIELD adt_tr_elong_corner_type
+FLOC 19 33
+ENUMSET 7
+POP "elong_corner_45_only"
+ENDFIELD
+
+TEXT "Miter Size:" adt_tr_corner_size_label
+TLOC 3 35
+ENDTEXT
+
+FIELD adt_tr_elong_corner_size
+FLOC 19 35
+STRFILLIN 5 20
+POP adt_tr_elong_corner_size_vals
+ENDFIELD
+
+ENDTILE
+# end parameters for Auto Delay Tune
+
+ENDFORM

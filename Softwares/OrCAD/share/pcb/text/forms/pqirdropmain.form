@@ -1,0 +1,331 @@
+####################################################################################
+#       Cadence Design Systems                                                     #
+#                                                                                  #
+# (C) COPYRIGHT, Cadence Design Systems, Inc. 2006                                 #
+# All Rights Reserved                                                              #
+# Licensed Materials - Property of Cadence Design Systems                          #
+#                                                                                  #
+# No part of this file may be reproduced, stored in a retrieval system,            #
+# or transmitted in any form or by any means --- electronic, mechanical,           #
+# photocopying, recording, or otherwise --- without prior written permission       #
+# of Cadence Design Systems, Inc.                                                  #
+#                                                                                  #
+# WARRANTY:                                                                        #
+# Use all material in this file at your own risk.  Cadence Design Systems          #
+# makes no claims about any material contained in this file.                       #
+####################################################################################
+FILE_TYPE=FORM_DEFN VERSION=2
+
+    FORM NODEFAULTBUTTON
+    FIXED TOOLWINDOW
+    PORT 112 60
+    HEADER "IR-Drop Analysis"
+
+    ACTIVEFIELD "Done"
+    DEFAULT Done
+
+    TILE
+
+    POPUP <PlugMaterialNameListPopup>"""".
+    POPUP <PlateMaterialNameListPopup>"""".
+
+    FIELD Done
+        FLOC 2 43
+        MENUBUTTON "OK" 10 3
+        FGROUP ""
+    ENDFIELD
+
+    FIELD Cancel
+        FLOC 15 43
+        MENUBUTTON "Cancel" 10 3
+        FGROUP ""
+    ENDFIELD
+
+    FIELD AnalyzeAll
+        FLOC 28 43
+        MENUBUTTON "Analyze All" 10 3
+        FGROUP ""
+    ENDFIELD
+
+    FIELD Hide
+        FLOC 79 43
+        MENUBUTTON "Hide" 10 3
+        FGROUP ""
+    ENDFIELD
+
+    FIELD Material
+        FLOC 90 43
+        MENUBUTTON "Material" 10 3
+        FGROUP ""
+    ENDFIELD
+
+    FIELD Help
+        FLOC 101 43
+        MENUBUTTON "Help" 10 3
+        FGROUP ""
+    ENDFIELD
+
+    TABSET "one"
+    FLOC 1 0
+    TSSIZE 111 42
+
+    TAB "Net Information"
+
+    GROUP "Net List"
+        GLOC 1 0
+        GSIZE 52 19
+    ENDGROUP
+
+    FIELD DCNetMode
+        FLOC 20 2
+        FGROUP "Net List"
+        CHECKLIST "DC Net Only"
+    ENDFIELD
+
+    TEXT "Filter:"
+        TLOC 2 2
+        TGROUP "Net List"
+    ENDTEXT
+
+    FIELD NetNameFilter
+        FLOC 6 2
+        FGROUP "Net List"
+        STRFILLIN 10 25
+        OPTIONS prettyprint
+    ENDFIELD
+
+    FIELD AssignDCNet
+        FLOC 35 2
+        MENUBUTTON "Identify DC Nets..." 15 3
+        FGROUP ""
+    ENDFIELD
+
+    POPUP <NetInfoGridHeadPopup>"""".
+    GRID NetInfoGrid
+    FLOC 2 4
+    FSIZE 50 16
+    OPTIONS HLINES VLINES USERSIZE
+
+    GHEAD TOP
+        HEADSIZE 2
+        OPTIONS 3D
+        POP "NetInfoGridHeadPopup"
+    ENDGHEAD
+    GHEAD SIDE
+        HEADSIZE 0
+    ENDGHEAD
+    ENDGRID
+
+    GROUP "Components On Selected Net"
+        GLOC 1 19
+        GSIZE 52 20
+    ENDGROUP
+
+    TEXT "Filter:"
+        TLOC 2 21
+        TGROUP "Components On Selected Net"
+    ENDTEXT
+
+    FIELD CompNameFilter
+        FLOC 6 21
+        FGROUP "Components On Selected Net"
+        STRFILLIN 10 25
+    ENDFIELD
+
+    FIELD SelectAllComponent
+        FLOC 31 21
+        MENUBUTTON "Select All" 10 3
+        FGROUP "Components On Selected Net"
+    ENDFIELD
+
+    FIELD DeselectAllComponent
+        FLOC 42 21
+        MENUBUTTON "Deselect All" 10 3
+        FGROUP "Components On Selected Net"
+    ENDFIELD
+
+    FIELD CompNameList
+        FLOC 2 23
+        FGROUP "Components On Selected Nets"
+        LIST "" 50 8
+        OPTIONS multiselect ALPHANUMSORT
+    ENDFIELD
+
+    GROUP "Pins On Selected Components"
+        GLOC 55 0
+        GSIZE 54 39
+    ENDGROUP
+
+    POPUP <PinPortTypePopup>"Open""Open","Sink""Sink","Source""Source".
+    POPUP <PinInfoGridHeadPopup>"""".
+    GRID PinInfoGrid
+    FLOC 56 2
+    FSIZE 52 37
+    OPTIONS HLINES VLINES USERSIZE
+
+    GHEAD TOP
+        HEADSIZE 2
+        OPTIONS 3D
+        POP "PinInfoGridHeadPopup"
+    ENDGHEAD
+    GHEAD SIDE
+        HEADSIZE 0
+    ENDGHEAD
+    ENDGRID
+
+    ENDTAB
+
+    TAB "Preferences"
+
+    GROUP "Drill Plating Information"
+        GLOC 1 0
+        GSIZE 72 18
+    ENDGROUP
+
+    FIELD pq_decap_intro_bitmap
+        THUMBNAIL pqIRDropDrill.bmp
+        FLOC 2 2
+        FSIZE 15 15
+    ENDFIELD
+
+    FIELD PadStackSelectMode
+        FLOC 17 2
+        FGROUP "Drill Information"
+        CHECKLIST "Selected Net Only"
+    ENDFIELD
+
+    TEXT "Units:  Mil"
+        TLOC 62 2
+        TGROUP "Drill Information"
+    ENDTEXT
+
+    POPUP <DrillInfoGridHeadPopup>"""".
+    GRID DrillInfoGrid
+    FLOC 17 4
+    FSIZE 55 14
+    OPTIONS HLINES VLINES USERSIZE
+
+    GHEAD TOP
+        HEADSIZE 2
+        OPTIONS 3D
+        POP "DrillInfoGridHeadPopup"
+    ENDGHEAD
+    GHEAD SIDE
+        HEADSIZE 0
+    ENDGHEAD
+    ENDGRID
+
+    #GROUP "Drill Filling Information"
+    #    GLOC 1 18
+    #    GSIZE 72 5
+    #ENDGROUP
+
+    #TEXT "Filling all vias with                                  when those drill sizes are less than                              mils"
+    #    TLOC 3 20
+    #    TGROUP "Drill Information"
+    #ENDTEXT
+
+    FIELD DrillFillMaterial
+        FLOC 16 20
+        FGROUP "Drill Information"
+        ENUMSET 10
+        POP "PlugMaterialNameListPopup"
+    ENDFIELD
+
+    FIELD DrillFillThreshold
+        FLOC 53 20
+        REALFILLIN 10 10
+        MIN 0.0
+        FGROUP "Drill Information"
+    ENDFIELD
+
+    GROUP "Shape Mesh Information"
+        GLOC 1 23
+        GSIZE 46 8
+    ENDGROUP
+
+    FIELD MeshSizeFine
+        FLOC 3 25
+        FGROUP "Shape Mesh Information"
+        CHECKLIST "Fine""Fine"
+    ENDFIELD
+
+    FIELD MeshSizeRegular
+        FLOC 14 25
+        FGROUP "Shape Mesh Information"
+        CHECKLIST "Regular""Regular"
+    ENDFIELD
+
+    FIELD MeshSizeCoarse
+        FLOC 25 25
+        FGROUP "Shape Mesh Information"
+        CHECKLIST "Coarse""Coarse"
+    ENDFIELD
+
+    FIELD MeshSizeCustom
+        FLOC 36 25
+        FGROUP "Shape Mesh Information"
+        CHECKLIST "Custom""Custom"
+    ENDFIELD
+
+    TEXT "X Size:"
+        TLOC 3 28
+        TGROUP "Shape Mesh Information"
+    ENDTEXT
+
+    FIELD MeshSizeX
+        FLOC 9 28
+        FGROUP "Shape Mesh Information"
+        STRFILLIN 10 25
+    ENDFIELD
+
+    TEXT "Y Size:"
+        TLOC 26 28
+        TGROUP "Shape Mesh Information"
+    ENDTEXT
+
+    FIELD MeshSizeY
+        FLOC 32 28
+        FGROUP "Shape Mesh Information"
+        STRFILLIN 10 25
+    ENDFIELD
+
+    TEXT "Ambient Temperature:"
+        TLOC 2 32
+        TGROUP ""
+    ENDTEXT
+
+    FIELD AmbientTemp
+        FLOC 22 32
+        FGROUP ""
+        REALFILLIN 5 10
+    ENDFIELD
+
+    TEXT "degC"
+        TLOC 29 32
+        TGROUP ""
+    ENDTEXT
+
+    TEXT "Temperature rise threshold:"
+        TLOC 2 35
+        TGROUP ""
+    ENDTEXT
+
+    FIELD TempThreshold
+        FLOC 22 35
+        FGROUP ""
+        REALFILLIN 5 5
+        MIN 0.0
+    ENDFIELD
+
+    TEXT "degC"
+        TLOC 29 35
+        TGROUP ""
+    ENDTEXT
+
+    ENDTAB
+    ENDTABSET
+
+    ENDTILE
+ENDFORM
+

@@ -1,0 +1,2004 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
+
+
+	
+  
+  
+  <title>Operational Amplifier</title>
+  <link rel="stylesheet" type="text/css" href="../../../../basescripts/css/sheet.css" />
+
+
+
+  
+  <script type="text/javascript" src="../../../../basescripts/scripts/OpenOpj.js"></script>
+  
+  <script type="text/javascript">
+
+
+
+  </script>
+</head>
+
+
+<body style="width:99%;height:100%" class="content">
+
+
+<h1><a class="Mheading" id="opamp">Operational Amplifiers</a></h1>
+
+  
+<p class="para">This section discusses various basic circuits using
+operational amplifier (opamp) and explains&nbsp;how to simulate these in
+OrCAD&reg; Capture-PSpice&reg;. </p>
+
+
+                                         
+<p class="para">An operational amplifier is a linear analog device with
+differential input and an amplified output. It&nbsp;usually has three
+terminals; two high-impedance&nbsp;inputs and one output. One of the
+input is termed inverting input and shown with a negative sign (<span style="font-family: Courier New,Courier,monospace;">-</span>) and the other input is termed non-inverting input and shown with a positive or plus sign (<span style="font-family: Courier New,Courier,monospace;">+</span>). The output is characterized by an amplification factor called gain (<span style="font-family: Courier New,Courier,monospace;">A</span>) that denotes the amount by which the input is amplified.</p>
+
+
+<center>
+<p><img src="Images/1.jpg" alt = "" /></p>
+
+</center>
+
+
+<p class="imgcap"><i><a name="Figure_1._Circuit_notation"></a>Figure 1. Circuit notation</i></p>
+
+
+<p class="para">A&nbsp;circuit symbol for an opamp is shown in <span style="font-style: italic;">figure (1)</span>, where: </p>
+
+
+<ul>
+
+
+  <li class="para"><span style="font-family: Courier New,Courier,monospace;">IN+</span> : non-inverting input</li>
+
+
+  <li class="para"><span style="font-family: Courier New,Courier,monospace;">IN-</span> : inverting input</li>
+
+
+  <li class="para"><span style="font-family: Courier New,Courier,monospace;">OUT</span> : output</li>
+
+
+  <li class="para"><span style="font-family: Courier New,Courier,monospace;">V+</span> : positive power supply</li>
+
+
+  <li class="para"><span style="font-family: Courier New,Courier,monospace;">V-</span> : negative power supply</li>
+
+
+</ul>
+
+<br />
+
+<br />
+
+
+
+
+
+
+
+
+<table style="width: 100%;">
+
+  <tbody>
+
+    <tr>
+
+
+      <td style="width: 50%;">
+      
+      <h1><a class="Mheading" id="A1">Inverting Amplifier </a></h1>
+
+      </td>
+
+      <td style="width: 50%;" align="right"><span style="text-decoration: underline; cursor : pointer" onclick="OpenOpjSim('BasicElectronics','OpAmp','Designfiles','OpAmpBasic','inverting','PAGE1','Tran')"> <img alt="click to view circuit" src="../../../../hybrid/Images/cap_icon.png" style="margin-top: 20px;" /></span></td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+
+<p class="para">In an inverting amplifier, input is applied to the
+inverting terminal and the non-inverting input is kept at ground to
+ensure no current flows through it. The amplified output&nbsp;is in
+inverted
+form; for example, if the input is positive the output is
+negative.&nbsp;<span style="font-style: italic;"></span></p>
+<p style="text-align: center;" class="para"><img id ="Figure_2._Inverting_Amplifier_Diagram" style="width: 490px; height: 248px;"  src="Images/inv_ckt_basic.jpg" alt = "" /></p>
+<p class="imgcap"><span style="font-style: italic;">Figure 2. Inverting Amplifier Diagram</span></p>
+<p class="para">In <a href="#Figure_2._Inverting_Amplifier_Diagram"><span style="font-style: italic;">figure (2)</span></a>, the current <span style="font-family: Courier New,Courier,monospace;">I1</span> flowing through the input resistor <span style="font-family: Courier New,Courier,monospace;">R</span><sub style="font-family: Courier New,Courier,monospace;">in</sub> is equal to the current <span style="font-family: Courier New,Courier,monospace;">I2</span> flowing through the feedback resistor <span style="font-family: Courier New,Courier,monospace;">R</span><sub style="font-family: Courier New,Courier,monospace;">f</sub>,&nbsp;assuming
+zero current in the non-inverting input. In addition, the output
+voltage is opposite to the input.&nbsp;This is represented in the
+following equations.</p>
+
+
+<center>
+<table width="100%">
+
+
+  <tbody>
+
+    <tr>
+
+      <td style="width: 97%;">
+      
+      <center><img style="width: 189px; height: 30px;" alt="" src="Images/inv_eqn1.jpg" /></center>
+
+      </td>
+
+      <td style="width: 3%;"><a name="equation1"></a>(1)</td>
+
+    </tr>
+
+
+    <tr>
+
+      <td style="width: 97%;">
+      
+      <center><img id="equation2" style="width: 109px; height: 31px;" alt="" src="Images/inv_eqn2.jpg" /></center>
+
+      </td>
+
+      <td style="width: 3%;">(2)</td>
+
+    </tr>
+
+
+  
+  </tbody>
+</table>
+
+</center>
+
+
+<p class="para">In <a href="#equation2"><span style="font-style: italic;">equation (2)</span></a> <span style="font-family: Courier New,Courier,monospace;">-Rf/Rin</span> is the gain (<span style="font-family: Courier New,Courier,monospace;">A</span>) of the amplifier.</p>
+<p class="para">The minus sign&nbsp;indicates that input is applied to the inverting terminal.</p>
+
+
+<center>
+<table>
+
+
+  <tbody>
+
+    <tr>
+
+      <td><img id = "Figure_3._Inverting_amplifier_circuit" src="Images/inv_sch.jpg" alt = "" style = "cursor : pointer" onclick="OpenOpjSim('BasicElectronics','OpAmp','Designfiles','OpAmpBasic','inverting','PAGE1','Tran')"/></td>
+
+    </tr>
+
+
+    <tr>
+
+      <td class="caption"><i>Figure 3.  Inverting amplifier circuit</i></td>
+
+    </tr>
+
+
+  
+  </tbody>
+</table>
+
+</center>
+
+
+
+<br />
+
+<center><br />
+</center>
+
+<br />
+
+<br />
+
+<p class="para">In the circuit shown in&nbsp; <a href="#Figure_3._Inverting_amplifier_circuit"><span style="font-style: italic;">figure (3)</span></a>, <span style="font-family: Courier New,Courier,monospace;">R</span><sub style="font-family: Courier New,Courier,monospace;">in</sub><span style="font-family: Courier New,Courier,monospace;">=R1</span>=<span style="font-family: Courier New,Courier,monospace;">100k</span> and <span style="font-family: Courier New,Courier,monospace;">R<sub>f</sub>=R2=500k</span> and <span style="font-family: Courier New,Courier,monospace;">V<sub>in</sub>=V4=1V</span><span style="font-family: monospace;">.</span><br />
+
+</p>
+<p class="para">Using the values in <a href="#equation2"><span style="font-style: italic;">equation (2)</span></a>, we get &nbsp;Vout = 5V.<br />
+<br />
+
+ This is the value&nbsp;obtained in the resultant waveform as well.</p>
+
+<br />
+
+<br />
+
+
+<center>
+<p><img src="Images/inv_rslt_wav.jpg" alt = "" class="simout" /></p>
+
+</center>
+
+
+<p class="imgcap"><i><a name="Figure_4._Resultant_waveform"></a>Figure 4.  Resultant waveform</i></p>
+
+
+
+
+
+
+
+
+
+
+<table style="width: 100%;">
+
+  <tbody>
+
+    <tr>
+
+
+      <td style="width: 50%;">
+      
+      <h1><a class="Mheading" id="A2">Non-inverting Amplifier </a></h1>
+
+      </td>
+
+      <td style="width: 50%;" align="right"><span style="text-decoration: underline; cursor : pointer" onclick="OpenOpjSim('BasicElectronics','OpAmp','Designfiles','OpAmpBasic','noninverting','PAGE1','Tran')"> <img alt="click to view circuit" src="../../../../hybrid/Images/cap_icon.png" style="margin-top: 20px;" /></span></td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+
+<p class="para">In a non-inverting amplifier, input is applied to the non-inverting terminal
+and the&nbsp;inverting input is kept at ground.&nbsp;</p>
+<p style="text-align: center;" class="para"><img id="Figure_5._Non-inverting_Amplifier" style="width: 490px; height: 248px;" alt="" src="Images/non_inv_ckt_basic.jpg" /></p>
+<p class="imgcap"><span style="font-style: italic;">Figure 5. Non-inverting Amplifier Diagram</span></p>
+<p class="para">As can be seen from <a href="#Figure_5._Non-inverting_Amplifier"><span style="font-style: italic;">figure (5)</span></a>, the opamp output drives current
+into <span style="font-family: Courier New,Courier,monospace;">R</span><sub style="font-family: Courier New,Courier,monospace;">f</sub> until the negative input is at the voltage <span style="font-family: Courier New,Courier,monospace;">Vin</span>. This action causes <span style="font-family: Courier New,Courier,monospace;">Vin</span> to appear across <span style="font-family: Courier New,Courier,monospace;">Rg</span>.&nbsp;The voltage divider rule can be used to calculate <span style="font-family: Courier New,Courier,monospace;">V</span><sub style="font-family: Courier New,Courier,monospace;">in</sub>. The input to the voltage divider is&nbsp;<span style="font-family: Courier New,Courier,monospace;">V</span><sub style="font-family: Courier New,Courier,monospace;">out</sub>, and the output of the voltage divider is <span style="font-family: Courier New,Courier,monospace;">V</span><sub style="font-family: Courier New,Courier,monospace;">in</sub>.&nbsp;</p>
+
+
+<center>
+<table width="100%">
+
+
+  <tbody>
+
+    <tr>
+
+      <td style="width: 97%;">
+      
+      <center><img src="Images/non_inv_eqn1.jpg" alt = "" /></center>
+
+      </td>
+
+      <td style="width: 3%;"><a name="equation3"></a>(3)</td>
+
+    </tr>
+
+
+    <tr>
+
+      <td style="width: 97%;">
+      
+      <center><img id="equation4" src="Images/non_inv_eqn2.jpg" alt = "" /></center>
+
+      </td>
+
+      <td style="width: 3%;">(4)</td>
+
+    </tr>
+
+
+  
+  </tbody>
+</table>
+
+</center>
+
+
+<p class="para"><br />
+</p>
+
+
+<center>
+<table>
+
+
+  <tbody>
+
+    <tr>
+
+      <td><img id ="Figure_6._Non_inverting_amplifier" src="Images/non_inv_sch.jpg" alt = "" style = "cursor : pointer" onclick="OpenOpjSim('BasicElectronics','OpAmp','Designfiles','OpAmpBasic','noninverting','PAGE1','Tran')" /></td>
+
+    </tr>
+
+
+    <tr>
+
+      <td><i class="imgcap">Figure 6.  Non inverting amplifier circuit</i></td>
+
+    </tr>
+
+
+  
+  </tbody>
+</table>
+
+</center>
+
+
+<p class="para"><br />
+
+
+In the circuit shown in <a href="#Figure_6._Non_inverting_amplifier"><span style="font-style: italic;">figure (6)</span></a>, <span style="font-family: Courier New,Courier,monospace;">Rf =R2= 500k</span> , <span style="font-family: Courier New,Courier,monospace;">Rg=R1= 200k</span> and <span style="font-family: Courier New,Courier,monospace;">Vin = V4 = 1V</span>  <br />
+</p><p class="para">
+<br />
+Using <a href="#equation4"><span style="font-style: italic;">equation (4)</span></a>, <span style="font-family: Courier New,Courier,monospace;">Vout = (1+(500k / 200k)) x 1V = 3.5V</span><br />
+
+<br />
+
+ This is the value&nbsp;obtained in resultant waveform as well.</p>
+
+<br />
+
+<br />
+
+
+<center>
+<p><img src="Images/non_inv_rslt_wav.jpg" alt = "" class="simout" /></p>
+
+</center>
+
+
+<p class="imgcap"><i><a name="Figure_7._Resultant_waveform"></a>Figure 7. Resultant waveform</i></p>
+
+
+
+
+
+
+
+
+
+<table style="width: 100%;">
+
+  <tbody>
+
+    <tr>
+
+
+      <td style="width: 50%;">
+      
+      <h1><a class="Mheading" id="A3">Differential Amplifier</a></h1>
+
+      </td>
+
+      <td style="width: 50%;" align="right"><span style="text-decoration: underline; cursor : pointer" onclick="OpenOpjSim('BasicElectronics','OpAmp','Designfiles','OpAmpBasic','differential','PAGE1','Tran')"> <img alt="click to view circuit" src="../../../../hybrid/Images/cap_icon.png" style="margin-top: 20px;" /></span></td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+
+<p class="para">The differential amplifier circuit amplifies the
+difference between the input signals.&nbsp;</p>
+<p style="text-align: center;" class="para"><img id="Figure_8._Differential_Amplifier_Diagram" style="width: 542px; height: 322px;" alt="" src="Images/diff_ckt_basic.jpg" /></p>
+<p class="imgcap"><span style="font-style: italic;">Figure 8. Differential Amplifier Diagram</span></p>
+<p class="para">In <a href="#Figure_8._Differential_Amplifier_Diagram"><span style="font-style: italic;">figure (8)</span></a>, <span style="font-family: Courier New,Courier,monospace;">V</span><sub style="font-family: Courier New,Courier,monospace;">1</sub> is applied at the non-inverting pin and <span style="font-family: Courier New,Courier,monospace;">V</span><sub style="font-family: Courier New,Courier,monospace;">2</sub> is applied at the inverting pin.</p>
+<p class="para">To find the output voltage of the amplifier, the
+circuit can be solved separately using the voltage divider rule for
+inverting and non-inverting output voltages and then&nbsp;the two
+voltages can be added. </p>
+<p class="para">Using the voltage
+divider rule for the non-inverting
+terminal, and then using the non-inverting gain equation gives the
+following equations for the non-inverting&nbsp;output voltage, <span style="font-family: Courier New,Courier,monospace;">V</span><sub style="font-family: Courier New,Courier,monospace;">out1</sub>.</p>
+
+
+<center>
+<table width="100%">
+
+
+  <tbody>
+
+    <tr>
+
+      <td style="width: 97%;">
+      
+      <center><img style="width: 229px; height: 42px;" alt="" src="Images/11.jpg" /></center>
+
+      </td>
+
+      <td style="width: 3%;"><a name="equation5"></a>(5)</td>
+
+    </tr>
+
+
+  
+  </tbody>
+</table>
+
+</center>
+
+
+<p class="para">Similarly, the inverting voltage&nbsp;<span style="font-family: Courier New,Courier,monospace;">V</span><sub style="font-family: Courier New,Courier,monospace;">out2</sub> can be calculated. Finally, the
+inverting and non-inverting voltages are added to get the total output, <span style="font-family: Courier New,Courier,monospace;">Vout</span>.</p>
+
+
+<center>
+<table width="100%">
+
+
+  <tbody>
+
+    <tr>
+
+      <td style="width: 97%;">
+      
+      <center><img style="width: 157px; height: 43px;" alt="" src="Images/12.jpg" /></center>
+
+      </td>
+
+      <td style="width: 3%;"><a name="equation6"></a>(6)</td>
+
+    </tr>
+
+
+    <tr>
+
+      <td style="width: 97%;">
+      
+      <center><img id ="equation7" style="width: 334px; height: 41px;" alt="" src="Images/12.1.jpg" /></center>
+
+      </td>
+
+      <td style="width: 3%;">(7)</td>
+
+    </tr>
+
+
+  
+  </tbody>
+</table>
+
+</center>
+
+
+<center>
+<table>
+
+
+  <tbody>
+
+    <tr>
+
+      <td><img id="Figure_9._Diffrential_amplifier_circuit" src="Images/73.jpg" alt = "" style = "cursor : pointer" onclick="OpenOpjSim('BasicElectronics','OpAmp','Designfiles','OpAmpBasic','differential','PAGE1','Tran')"/></td>
+
+    </tr>
+
+
+    <tr>
+
+      <td><i class="imgcap">Figure 9.  Differential  amplifier circuit</i></td>
+
+    </tr>
+
+
+  
+  </tbody>
+</table>
+
+</center>
+
+
+<p class="para"><br />
+
+<br />
+
+</p>
+In <a href="#Figure_9._Diffrential_amplifier_circuit"><span style="font-style: italic;">figure (9)</span></a> <span style="font-family: Courier New,Courier,monospace;">R<sub>1</sub>=50k</span>, <span style="font-family: Courier New,Courier,monospace;">R<sub>2</sub>=R<sub>g</sub>=200k</span>, <span style="font-family: Courier New,Courier,monospace;">R</span><sub style="font-family: Courier New,Courier,monospace;">3</sub><span style="font-family: Courier New,Courier,monospace;">=100k</span> and <span style="font-family: Courier New,Courier,monospace;">R</span><sub style="font-family: Courier New,Courier,monospace;">4</sub><span style="font-family: Courier New,Courier,monospace;">=R</span><sub style="font-family: Courier New,Courier,monospace;">f</sub><span style="font-family: Courier New,Courier,monospace;">=500k</span>, <span style="font-family: Courier New,Courier,monospace;">V</span><sub style="font-family: Courier New,Courier,monospace;">1</sub><span style="font-family: Courier New,Courier,monospace;">=3V</span> and <span style="font-family: Courier New,Courier,monospace;">V</span><sub style="font-family: Courier New,Courier,monospace;">2</sub><span style="font-family: Courier New,Courier,monospace;">=2V</span><br />
+<p class="para">
+<br />
+Using <a href="#equation7"><span style="font-style: italic;">equation (7)</span></a>, <span style="font-family: Courier New,Courier,monospace;">Vout = (((100+500)/100) x (200/(50+200)) x 5) - (1 x (500/100)) = 19V</span></p>
+<p class="para">
+ This is the value&nbsp;obtained in resultant waveform as well.</p>
+
+<br />
+
+<br />
+
+
+<center>
+<p><img src="Images/75.jpg" alt = "" class="simout" /></p>
+
+</center>
+
+
+<p class="imgcap"><i><a name="Figure_10._Resultant_waveform"></a>Figure 10. Resultant waveform</i></p>
+
+
+
+
+
+
+
+
+
+
+<table style="width: 100%;">
+
+  <tbody>
+
+    <tr>
+
+
+      <td style="width: 50%;">
+      
+      <h1><a class="Mheading" id="A4">Voltage Follower</a></h1>
+
+      </td>
+
+      <td style="width: 50%;" align="right"><span style="text-decoration: underline; cursor : pointer" onclick="OpenOpjSim('BasicElectronics','OpAmp','Designfiles','OpAmpBasic','voltagefollower','PAGE1','Tran')"> <img alt="click to view circuit" src="../../../../hybrid/Images/cap_icon.png" style="margin-top: 20px;" /></span></td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+
+<p class="para">Voltage follower, also known as unity gain buffer, is an
+amplifier with a closed loop gain of unity. This configuration is used as
+a buffer amplifier to eliminate loading effects such as to connect a
+device with a high source impedance to a device with a low input
+impedance. The output voltage (<span style="font-family: Courier New,Courier,monospace;">Vout</span>) of a voltage follower is equal to the input voltage (<span style="font-family: Courier New,Courier,monospace;">Vin</span>) and the differential input impedance (<span style="font-family: Courier New,Courier,monospace;">Zin</span>)
+is infinity as given in the following equations. In real circuits, the
+impedance is usually of the order of 1megaohm to 1teraohm.
+</p>
+
+
+<center>
+<table width="100%">
+
+
+
+  <tbody>
+
+    <tr>
+
+      <td style="width: 97%;">
+      
+      <center><img src="Images/18.jpg" alt = "" /></center>
+
+      </td>
+
+      <td style="width: 3%;"><a name="equation8"></a>(8)</td>
+
+    </tr>
+
+
+    <tr>
+
+      <td style="width: 97%;">
+      
+      <center><img src="Images/19.jpg" alt = "" /></center>
+
+      </td>
+
+      <td style="width: 3%;"><a name="equation9"></a> (9)</td>
+
+    </tr>
+
+
+  
+  </tbody>
+</table>
+
+</center>
+
+
+<p class="para"><br />
+</p>
+
+
+<center>
+<table>
+
+
+  <tbody>
+
+    <tr>
+
+      <td><img id="Figure_11._Voltage_follower_circuit" src="Images/80.jpg" alt = ""  style = "cursor : pointer" onclick="OpenOpjSim('BasicElectronics','OpAmp','Designfiles','OpAmpBasic','voltagefollower','PAGE1','Tran')"/></td>
+
+    </tr>
+
+
+    <tr>
+
+      <td><i class="imgcap">Figure 11.  Voltage follower circuit</i></td>
+
+    </tr>
+
+
+  
+  </tbody>
+</table>
+
+</center>
+
+
+<p class="para">The resultant output for the circuit in <a href="#Figure_11._Voltage_follower_circuit"><span style="font-style: italic;">figure (11)</span></a>,&nbsp;<span style="font-family: Courier New,Courier,monospace;">Vout = Vin = 5V</span>.</p>
+
+<br />
+
+<br />
+
+
+<center>
+<p><img src="Images/81.jpg" alt = "" class="simout" /></p>
+
+</center>
+
+
+<p class="imgcap"><i><a name="Figure_12._Resultant_waveform"></a>Figure 12. Resultant waveform</i></p>
+
+
+
+
+
+<table style="width: 100%;">
+
+  <tbody>
+
+    <tr>
+
+
+      <td style="width: 50%;">
+      
+      <h1><a class="Mheading" id="A5">Adder</a></h1>
+
+      </td>
+
+      <td style="width: 50%;" align="right"><span style="text-decoration: underline; cursor : pointer" onclick="OpenOpjSim('BasicElectronics','OpAmp','Designfiles','OpAmpBasic','adder','PAGE1','Tran')"> <img alt="click to view circuit" src="../../../../hybrid/Images/cap_icon.png" style="margin-top: 20px;" /></span></td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+
+<p class="para">An adder or a&nbsp;summing amplifier is a circuit
+that can be used to combine multiple inputs. The inputs are added to the inverting terminal as shown in <a href="#Figure_13._Adder_diagram"><span style="font-style: italic;">figure (13)</span></a> for three inputs <span style="font-family: Courier New,Courier,monospace;">V1</span>, <span style="font-family: Courier New,Courier,monospace;">V2</span>, and <span style="font-family: Courier New,Courier,monospace;">V3</span>.</p>
+<p style="text-align: center;" class="para"><img id = "Figure_13._Adder_diagram" style="width: 493px; height: 255px;" alt="" src="Images/adder_ckt_basic.jpg" /></p>
+<p class="para"></p>
+<p class="imgcap"><span style="font-style: italic;">Figure 13. Adder diagram</span></p>
+<p class="para">The opposite end of the
+resistors connected to the inverting input is held at virtual
+ground by the feedback; therefore, adding new inputs do not affect the
+response of the
+existing inputs. In the following equations the output is calculated for each individual input such <span style="font-family: Courier New,Courier,monospace;">Vout1</span> for <span style="font-family: Courier New,Courier,monospace;">V1</span> and so on. The total output is found by adding all the outputs for the individual inputs.</p>
+
+
+<center>
+<table width="100%">
+
+
+  <tbody>
+
+    <tr>
+
+      <td style="width: 97%;">
+      
+      <center><img src="Images/23.jpg" alt = "" /></center>
+
+      </td>
+
+      <td style="width: 3%;"><a name="equation10"></a>(10)</td>
+
+    </tr>
+
+
+    <tr>
+
+      <td style="width: 97%;">
+      
+      <center><img src="Images/23.1.jpg" alt = "" /></center>
+
+      </td>
+
+      <td style="width: 3%;"><a name="equation11"></a> (11)</td>
+
+    </tr>
+
+
+    <tr>
+
+      <td style="width: 97%;">
+      
+      <center><img src="Images/23.2.jpg" alt = "" /></center>
+
+      </td>
+
+      <td style="width: 3%;"><a name="equation12"></a>(12)</td>
+
+    </tr>
+
+
+    <tr>
+
+      <td style="width: 97%;">
+      
+      <center><img id="equation13" src="Images/23.3.jpg" alt = "" /></center>
+
+      </td>
+
+      <td style="width: 3%;"> (13)</td>
+
+    </tr>
+
+
+  
+  </tbody>
+</table>
+
+</center>
+
+<br />
+
+
+<center>
+<table>
+
+
+  <tbody>
+
+    <tr>
+
+      <td><img id="Figure_14._Adder_circuit" src="Images/86.jpg" alt = ""  style = "cursor : pointer" onclick="OpenOpjSim('BasicElectronics','OpAmp','Designfiles','OpAmpBasic','adder','PAGE1','Tran')"/></td>
+
+    </tr>
+
+
+    <tr>
+
+      <td><i class="imgcap">Figure 14.  Adder circuit</i></td>
+
+    </tr>
+
+
+  
+  </tbody>
+</table>
+
+</center>
+<br />
+
+<br />
+
+
+<p class="para">In <a href="#Figure_14._Adder_circuit"><span style="font-style: italic;">figure (14)</span></a>, <span style="font-family: Courier New,Courier,monospace;">R1 = 200k</span> , <span style="font-family: Courier New,Courier,monospace;">R2 = 300k</span> , <span style="font-family: Courier New,Courier,monospace;">R3 = 400k</span>, <span style="font-family: Courier New,Courier,monospace;">Rf = R4 = 240k</span> , <span style="font-family: Courier New,Courier,monospace;">V1 = 3V</span>, <span style="font-family: Courier New,Courier,monospace;">V2 = 2V</span>, and <span style="font-family: Courier New,Courier,monospace;">V3 = 5V</span>,<br />
+
+<br />
+Using <a href="#equation13"><span style="font-style: italic;">equation (13)</span></a>, <span style="font-family: Courier New,Courier,monospace;">Vout = -((240/200) x 3 + (240/300) x 2 + (240/400) x 5)= -9V</span>&nbsp;</p>
+
+ <p class = "para">This is the value&nbsp;obtained in resultant waveform as well.</p>
+
+
+<center>
+<p><img src="Images/84.jpg" alt = "" class="simout" /></p>
+
+</center>
+
+
+<p class="imgcap"><i><a name="Figure_15._Resultant_waveform"></a>Figure 15. Resultant waveform</i></p>
+
+
+
+
+
+
+<table style="width: 100%;">
+
+  <tbody>
+
+    <tr>
+
+
+      <td style="width: 50%;">
+      
+      <h1><a class="Mheading" id="A6">Subtractor</a></h1>
+
+      </td>
+
+      <td style="width: 50%;" align="right"><span style="text-decoration: underline; cursor : pointer" onclick="OpenOpjSim('BasicElectronics','OpAmp','Designfiles','OpAmpBasic','subtractor','PAGE1','Tran')"> <img alt="click to view circuit" src="../../../../hybrid/Images/cap_icon.png" style="margin-top: 20px;" /></span></td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+
+<p class="para">The total output <span style="font-family: Courier New,Courier,monospace;">Vout</span>&nbsp;for a differential amplifier, given in <a href="#equation7"><span style="font-style: italic;">equation (7)</span></a>, is</p>
+
+<br />
+
+
+<center>
+<table width="100%">
+
+
+  <tbody>
+
+    <tr>
+
+      <td style="width: 97%;">
+      
+      <center><img style="width: 334px; height: 41px;" alt="" src="Images/12.1.jpg" /></center>
+
+      </td>
+
+      <td style="width: 3%;"></td>
+
+    </tr>
+
+
+  
+  </tbody>
+</table>
+
+</center>
+
+
+ 
+<p class="para">If&nbsp;<span style="font-family: Courier New,Courier,monospace;">R<sub>1</sub> = R<sub>2</sub></span> and <span style="font-family: Courier New,Courier,monospace;">R<sub>g</sub> = R<sub>f</sub></span>, this equation reduces to:</p>
+
+
+<center>
+<table width="100%">
+
+
+  <tbody>
+
+    <tr>
+
+      <td style="width: 97%;">
+      
+      <center><img id = "equation14" style="width: 199px; height: 43px;" alt="" src="Images/subtractor_eqn.jpg" /></center>
+
+      </td>
+
+      <td style="width: 3%;">(14)</td>
+
+    </tr>
+
+
+  
+  </tbody>
+</table>
+
+</center>
+
+
+<p class="para">The differential signal (V1&ndash;V2) is multiplied by the stage gain giving the name subtractor to this form of a circuit.</p>
+
+
+<center>
+<table>
+
+
+  <tbody>
+
+    <tr>
+
+      <td><img id = "Figure_16._Subtractor_circuit" src="Images/89.jpg" alt = "" style = "cursor : pointer" onclick="OpenOpjSim('BasicElectronics','OpAmp','Designfiles','OpAmpBasic','subtractor','PAGE1','Tran')"/></td>
+
+    </tr>
+
+
+    <tr>
+
+      <td><i class="imgcap">Figure 16.  Subtractor circuit</i></td>
+
+    </tr>
+
+
+  
+  </tbody>
+</table>
+
+</center>
+
+
+<p class="para">In the circuit shown in <a href="#Figure_16._Subtractor_circuit"><span style="font-style: italic;">figure (16)</span></a>,&nbsp; <span style="font-family: Courier New,Courier,monospace;">V1=5V</span>, <span style="font-family: Courier New,Courier,monospace;">V2=2V</span> , <span style="font-family: Courier New,Courier,monospace;">R4 = Rf = 50k</span> and <span style="font-family: Courier New,Courier,monospace;">R3 = 100 k</span> <br />
+
+<br />
+Using <a href="#equation14"><span style="font-style: italic;">equation (14)</span></a>, <span style="font-family: Courier New,Courier,monospace;">Vout = (5-2)V x (100/50) = 1.5V</span><br />
+
+</p>
+
+
+<p class="para">
+ This is the value&nbsp;obtained in resultant waveform as well.</p>
+
+<br />
+
+<br />
+
+
+<center>
+<p><img src="Images/90.jpg" alt = "" class="simout" /></p>
+
+</center>
+
+
+<p class="imgcap"><i><a name="Figure_17._Resultant_waveform"></a>Figure 17. Resultant waveform</i></p>
+
+
+
+
+
+
+<table style="width: 100%;">
+
+  <tbody>
+
+    <tr>
+
+
+      <td style="width: 50%;">
+      
+      <h1><a class="Mheading" id="A7">Integrator</a></h1>
+
+      </td>
+
+      <td style="width: 50%;" align="right"><span style="text-decoration: underline; cursor : pointer" onclick="OpenOpjSim('BasicElectronics','OpAmp','Designfiles','OpAmpAdv1','integrator','PAGE1','Tran')"> <img alt="click to view circuit" src="../../../../hybrid/Images/cap_icon.png" style="margin-top: 20px;" /></span></td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+
+<p class="para">An integrator is created by using a capacitor as the feedback element in an inverting amplifier. The current flowing through the feedback loop charges the
+capacitor and is stored there as a voltage from the output to ground.
+This is a voltage input current integrator.&nbsp;</p>
+
+
+<center>
+<table width="100%">
+
+
+  <tbody>
+
+    <tr>
+
+      <td style="width: 97%;">
+      
+      <center><img src="Images/93.jpg" alt = "" /></center>
+
+      </td>
+
+      <td style="width: 3%;"><a name="equation15"></a>(15)</td>
+
+    </tr>
+
+
+  
+  </tbody>
+</table>
+
+</center>
+
+<br />
+
+
+<center>
+<table>
+
+
+  <tbody>
+
+    <tr>
+
+      <td><img id = "Figure_18._Integrator_circuit" src="Images/92.jpg" alt = "" style="width: 400px; height: 300px; cursor : pointer" onclick="OpenOpjSim('BasicElectronics','OpAmp','Designfiles','OpAmpAdv1','integrator','PAGE1','Tran')"/></td>
+
+    </tr>
+
+
+    <tr>
+
+      <td><i class="imgcap">Figure 18.  Integrator circuit</i></td>
+
+    </tr>
+
+
+  
+  </tbody>
+</table>
+
+</center>
+<center></center>
+
+ <br />
+
+
+<p class="para">In the circuit shown in <a href="#Figure_18._Integrator_circuit"><span style="font-style: italic;">figure (18)</span></a>,&nbsp; <span style="font-family: Courier New,Courier,monospace;">R1 = 10k</span> and <span style="font-family: Courier New,Courier,monospace;">C=20uF</span> 
+for pulse period <span style="font-family: Courier New,Courier,monospace;">0</span> to <span style="font-family: Courier New,Courier,monospace;">100ms</span><br />
+
+</p>
+
+
+<p class="para">When <span style="font-family: Courier New,Courier,monospace;">Vin= +5V</span> (<span style="font-family: Courier New,Courier,monospace;">0</span> to <span style="font-family: Courier New,Courier,monospace;">50ms</span>),<br />
+
+<img src="Images/94.jpg" alt = "" /><br />
+
+
+        <br />
+
+when <span style="font-family: Courier New,Courier,monospace;">Vin= -5V</span> (<span style="font-family: Courier New,Courier,monospace;">50</span> to <span style="font-family: Courier New,Courier,monospace;">100ms</span>),<br />
+
+ <img src="Images/95.jpg" alt = "" /><br />
+
+
+		<br />
+
+Similarly, the values in different sections of time can be calculated.</p>
+
+<br />
+
+
+		
+<p class="para">Same result is obtained from the waveform as well.</p>
+
+<br />
+
+<br />
+
+
+<center>
+<p><img src="Images/96.jpg" alt = "" class="simout" /></p>
+
+</center>
+
+
+<p class="imgcap"><i><a name="Figure_19._Resultant_waveform"></a>Figure 19. Resultant waveform</i></p>
+
+
+
+
+
+
+
+
+
+
+
+<table style="width: 100%;">
+
+  <tbody>
+
+    <tr>
+
+
+      <td style="width: 50%;">
+      
+      <h1><a class="Mheading" id="A10">Differentiator</a></h1>
+
+      </td>
+
+      <td style="width: 50%;" align="right"><span style="text-decoration: underline; cursor : pointer" onclick="OpenOpjSim('BasicElectronics','OpAmp','Designfiles','OpAmpAdv1','differentiator','PAGE1','Tran')"> <img alt="click to view circuit" src="../../../../hybrid/Images/cap_icon.png" style="margin-top: 20px;" /></span></td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+
+<p class="para">A differentiator can be created by using a capacitor as the input element to the
+inverting amplifier.</p>
+
+
+<center>
+<table width="100%">
+
+
+  <tbody>
+
+    <tr>
+
+      <td style="width: 97%;">
+      
+      <center><img src="Images/110.jpg" alt = "" /></center>
+
+      </td>
+
+      <td style="width: 3%;"><a name="equation16"></a>(16)</td>
+
+    </tr>
+
+
+  
+  </tbody>
+</table>
+
+</center>
+
+
+<center>
+<table>
+
+
+  <tbody>
+
+    <tr>
+
+      <td><img id ="Figure_20._Differentiator_circuit" src="Images/112.jpg" alt = "" style = "cursor : pointer" onclick="OpenOpjSim('BasicElectronics','OpAmp','Designfiles','OpAmpAdv1','differentiator','PAGE1','Tran')"/></td>
+
+    </tr>
+
+
+    <tr>
+
+      <td><i class="imgcap">Figure 20.  Differentiator circuit</i></td>
+
+    </tr>
+
+
+  
+  </tbody>
+</table>
+
+</center>
+<br />
+In the circuit shown in <a href="#Figure_20._Differentiator_circuit"><span style="font-style: italic;">figure (20)</span></a>,&nbsp; <span style="font-family: Courier New,Courier,monospace;">R1 = 100k</span> and <span style="font-family: Courier New,Courier,monospace;">C=1uF</span><br />
+<p class="para">
+<br />
+
+
+The input signal is in a triangular form with <span style="font-family: Courier New,Courier,monospace;">320t+k1</span> as the increasing part and <span style="font-family: Courier New,Courier,monospace;">-320t+k2</span> as the decreasing one. <br />
+
+</p>
+
+
+<table>
+
+  <tbody>
+
+    <tr>
+
+      <td>when <span style="font-family: Courier New,Courier,monospace;">Vin=V4=320t+k1</span>,</td>
+
+      <td><img src="Images/36.jpg" alt = "" /></td>
+
+ </tr>
+
+
+        <tr>
+
+ <td>and <span style="font-family: Courier New,Courier,monospace;">Vin=V4=-320t+k2</span>,</td>
+
+      <td><img src="Images/37.jpg" alt = "" /></td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+
+<p class="para">This is the value&nbsp;obtained in resultant waveform as well.</p>
+
+<br />
+
+<br />
+
+
+<center>
+<p><img src="Images/64.jpg" alt = "" class="simout" /></p>
+
+</center>
+
+
+<p class="imgcap"><i>Figure 21. Resultant waveform</i></p>
+
+
+
+
+
+
+
+
+<table style="width: 100%;">
+
+  <tbody>
+
+    <tr>
+
+
+      <td style="width: 50%;">
+      
+      <h1><a class="Mheading" id="A11">Active Peak Detector</a></h1>
+
+      </td>
+
+      <td style="width: 50%;" align="right"><span style="text-decoration: underline; cursor : pointer" onclick="OpenOpjSim('BasicElectronics','OpAmp','Designfiles','OpAmpAdv1','activepeakdetector','PAGE1','Tran')"> <img alt="click to view circuit" src="../../../../hybrid/Images/cap_icon.png" style="margin-top: 20px;" /></span></td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+
+<p class="para">The active peak detector circuit detects&nbsp;the peak levels&nbsp;of the input
+signals and is created by adding diodes and capacitors to an operational amplifier. During the positive half-cycle of <span style="font-family: Courier New,Courier,monospace;">Vin</span>, the output of the opamp
+drives the diode <span style="font-family: Courier New,Courier,monospace;">D1</span> ON charging capacitor <span style="font-family: Courier New,Courier,monospace;">C1</span> to the positive peak value <span style="font-family: Courier New,Courier,monospace;">V</span><sub style="font-family: Courier New,Courier,monospace;">P</sub> of the
+input voltage <span style="font-family: Courier New,Courier,monospace;">Vin</span>. In other words, when <span style="font-family: Courier New,Courier,monospace;">D1</span> is forward-biased, the opamp acts as a
+voltage follower. During the negative half-cycle of&nbsp; <span style="font-family: Courier New,Courier,monospace;">V<sub>in</sub></span>, the diode <span style="font-family: Courier New,Courier,monospace;">D1</span> is reverse-biased, and the voltage across <span style="font-family: Courier New,Courier,monospace;">C1</span> is
+retained. Since the input
+bias current is negligible,&nbsp;<span style="font-family: Courier New,Courier,monospace;">C1</span> discharges through <span style="font-family: Courier New,Courier,monospace;">R5</span>&nbsp;. For proper operation of the circuit, the
+charging time constant (<span style="font-family: Courier New,Courier,monospace;">CRd</span>) and the discharge time constant (<span style="font-family: Courier New,Courier,monospace;">CRL</span>)<br />
+
+ must satisfy the following conditions:<br />
+<span style="font-family: Courier New,Courier,monospace;">
+CRd &lt;&lt; T/10</span> and <span style="font-family: Courier New,Courier,monospace;">CRL =10T</span> <br />
+
+<br />
+
+
+where <span style="font-family: Courier New,Courier,monospace;">Rd</span> is the forward resistance of the diode, <span style="font-family: Courier New,Courier,monospace;">RL</span> is the load resistor and <span style="font-family: Courier New,Courier,monospace;">T</span> is the time period of the input waveform.<br />
+
+
+</p>
+
+
+<center>
+<table>
+
+
+  <tbody>
+
+    <tr>
+
+      <td><img src="Images/114.jpg" alt = "" style = "cursor : pointer" onclick="OpenOpjSim('BasicElectronics','OpAmp','Designfiles','OpAmpAdv1','activepeakdetector','PAGE1','Tran')" /></td>
+
+    </tr>
+
+
+    <tr>
+
+      <td><i class="imgcap"><a name="Figure_22._Active_peak_detector_circuit"></a>Figure 22.  Active peak detector circuit</i></td>
+
+    </tr>
+
+
+  
+  </tbody>
+</table>
+
+</center>
+
+
+<p class="para">It can be seen through the waveform, the circuit is
+able to detect the active peak whenever peak is present in the input
+signal.</p>
+
+<br />
+
+<br />
+
+
+<center>
+<p><img src="Images/115.jpg" alt = "" class="simout" /></p>
+
+</center>
+
+
+<p class="imgcap"><i><a name="Figure_23._Resultant_waveform"></a>Figure 23. Resultant waveform</i></p>
+
+
+
+
+
+
+
+
+<table style="width: 100%;">
+
+  <tbody>
+
+    <tr>
+
+
+      <td style="width: 50%;">
+      
+      <h1><a class="Mheading" id="A12">Precision Rectifier</a></h1>
+
+      </td>
+
+      <td style="width: 50%;" align="right"><span style="text-decoration: underline; cursor : pointer" onclick="OpenOpjSim('BasicElectronics','OpAmp','Designfiles','OpAmpAdv1','precisionrectifier','PAGE1','Tran')"> <img alt="click to view circuit" src="../../../../hybrid/Images/cap_icon.png" style="margin-top: 20px;" /></span></td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+
+<p class="para">In a passive rectifier circuit, there is a&nbsp;voltage drop VF across the forward biased diode. In the active
+version shown in the figure, the&nbsp;diode is connected&nbsp;in the negative
+feedback loop to&nbsp;remove the voltage drop. The opamp compares the output voltage across the load
+with the input voltage and increases its own output voltage with the
+value of VF. As a result, the voltage drop VF is compensated and the
+circuit behaves very nearly as an ideal (super) diode with VF = 0V,
+this circuit configuration is known as precision rectifier.</p>
+
+
+<center>
+<table>
+
+
+  <tbody>
+
+    <tr>
+
+      <td><img src="Images/117.jpg" alt = "" style = "cursor : pointer" onclick="OpenOpjSim('BasicElectronics','OpAmp','Designfiles','OpAmpAdv1','precisionrectifier','PAGE1','Tran')"/> </td>
+
+    </tr>
+
+
+    <tr>
+
+      <td><i class="imgcap"><a name="Figure_24._Precision_rectifier_circuit"></a>Figure 24.  Precision rectifier circuit</i></td>
+
+    </tr>
+
+
+  
+  </tbody>
+</table>
+
+</center>
+
+
+<p class="para">As can be seen voltage at the output is equal to input voltage, <span style="font-family: Courier New,Courier,monospace;">5V</span>, and there is no voltage drop.</p>
+
+<br />
+
+<br />
+
+
+<center>
+<p><img src="Images/118.jpg" alt = "" class="simout" /></p>
+
+</center>
+
+
+<p class="imgcap"><i><a name="Figure_25._Resultant_waveform"></a>Figure 25. Resultant waveform</i></p>
+
+
+
+
+
+
+<table style="width: 100%;">
+
+  <tbody>
+
+    <tr>
+
+
+      <td style="width: 50%;">
+      
+      <h1><a class="Mheading" id="A13">Linear Current Source</a></h1>
+
+      </td>
+
+      <td style="width: 50%;" align="right"><span style="text-decoration: underline; cursor : pointer" onclick="OpenOpjSim('BasicElectronics','OpAmp','Designfiles','OpAmpAdv1','linearcurrentsource','PAGE1','Tran')"> <img alt="click to view circuit" src="../../../../hybrid/Images/cap_icon.png" style="margin-top: 20px;" /></span></td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+
+<p class="para">In the feedback path of an inverting and a
+non-inverting
+amplifier, the current is proportional to the incoming voltage.
+Therefore,&nbsp;these two circuits may be used as linear voltage
+controlled current
+sources.
+<br />
+
+<br />
+
+The current through Rload is given by:</p>
+
+
+<center>
+<table width="100%">
+
+
+  <tbody>
+
+    <tr>
+
+      <td style="width: 97%;">
+      
+      <center><img src="Images/119.jpg" alt = "" /></center>
+
+      </td>
+
+      <td style="width: 3%;"><a name="equation17"></a>(17)</td>
+
+    </tr>
+
+
+  
+  </tbody>
+</table>
+
+</center>
+
+
+<center>
+<table>
+
+
+  <tbody>
+
+    <tr>
+
+      <td><img src="Images/120.jpg" alt = "" id = "Figure_26._Linear_current_source_circuit"  style = "cursor : pointer" onclick="OpenOpjSim('BasicElectronics','OpAmp','Designfiles','OpAmpAdv1','linearcurrentsource','PAGE1','Tran')" /></td>
+
+    </tr>
+
+
+    <tr>
+
+      <td><i class="imgcap">Figure 26.  Linear current source circuit</i></td>
+
+    </tr>
+
+
+  
+  </tbody>
+</table>
+
+</center>
+<br />
+<p class = "para">In the circuit shown in <a href="#Figure_26._Linear_current_source_circuit"><span style="font-style: italic;">figure (26)</span></a>,&nbsp; <span style="font-family: Courier New,Courier,monospace;">Rin=R1 = 2k</span> , <span style="font-family: Courier New,Courier,monospace;">Vin=V1=5V</span></p><br />
+<p class="para">
+<br />
+<span style="font-family: Courier New,Courier,monospace;">
+
+Iload = 5/2 = 2.5A</span></p>
+
+
+<p class="para">This is the value&nbsp;obtained in resultant waveform as well.</p>
+
+<br />
+
+<br />
+
+
+<center>
+<p><img src="Images/121.jpg" alt = "" class="simout" /></p>
+
+</center>
+
+
+<p class="imgcap"><i><a name="Figure_27._Resultant_waveform"></a>Figure 27. Resultant waveform</i></p>
+
+
+
+
+
+
+
+
+<table style="width: 100%;">
+
+  <tbody>
+
+    <tr>
+
+
+      <td style="width: 50%;">
+      
+      <h1><a class="Mheading" id="A14">Zero Cross Detector</a></h1>
+
+      </td>
+
+      <td style="width: 50%;" align="right"><span style="text-decoration: underline; cursor : pointer" onclick="OpenOpjSim('BasicElectronics','OpAmp','Designfiles','OpAmpAdv1','zerocrossdetector','PAGE1','Tran')"> <img alt="click to view circuit" src="../../../../hybrid/Images/cap_icon.png" style="margin-top: 20px;" /></span></td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+
+<p class="para">A zero cross detector is&nbsp;a comparator with
+the reference level set at zero. It is used to detect the zero
+crossings of AC signals. The circuit consists of a comparator with an
+input voltage at the non-inverting input.<br />
+
+When the input voltage is positive, the output voltage is a positive
+value; when the input voltage is negative, the output voltage is a
+negative value. The magnitude of the output voltage is a property of
+the operational amplifier and its power supply.</p>
+
+
+<center>
+<table>
+
+
+  <tbody>
+
+    <tr>
+
+      <td><img src="Images/127.jpg" alt = "" style = "cursor : pointer" onclick="OpenOpjSim('BasicElectronics','OpAmp','Designfiles','OpAmpAdv1','zerocrossdetector','PAGE1','Tran')"/></td>
+
+    </tr>
+
+
+    <tr>
+
+      <td><i class="imgcap"><a name="Figure_28._Zero_cross_detector_circuit"></a>Figure 28.  Zero cross detector circuit</i></td>
+
+    </tr>
+
+
+  
+  </tbody>
+</table>
+
+</center>
+
+
+<p class="para">If the voltage remains higher
+than the reference voltage, <span style="font-family: Courier New,Courier,monospace;">0V</span>, the output is high. If the voltages becomes
+lower than 0V, the output drops down to the negative saturation value.</p>
+
+<br />
+
+<br />
+
+
+<center>
+<p><img src="Images/128.jpg" alt = "" class="simout" /></p>
+
+</center>
+
+
+<p class="imgcap"><i><a name="Figure_29._Resultant_waveform"></a>Figure 29. Resultant waveform</i></p>
+
+
+
+
+
+<table style="width: 100%;">
+
+  <tbody>
+
+    <tr>
+
+
+      <td style="width: 50%;">
+      
+      <h1><a class="Mheading" id="A15">Simple Oscillator</a></h1>
+
+      </td>
+
+      <td style="width: 50%;" align="right"><span style="text-decoration: underline; cursor : pointer" onclick="OpenOpjSim('BasicElectronics','OpAmp','Designfiles','OpAmpAdv2','simpleoscillator','PAGE1','Tran')"> <img alt="click to view circuit" src="../../../../hybrid/Images/cap_icon.png" style="margin-top: 20px;" /></span></td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+
+<p class="para">The simple oscillator is&nbsp;a double integrator circuit, with regenerative feedback resulting in a sinusoidal output.</p>
+
+
+<center>
+<table width="100%">
+
+
+  <tbody>
+
+    <tr>
+
+      <td style="width: 97%;">
+      
+      <center><img id = "equation18" src="Images/131.jpg" alt = "" /></center>
+
+      </td>
+
+      <td style="width: 3%;">(18)</td>
+
+    </tr>
+
+
+  
+  </tbody>
+</table>
+
+</center>
+
+
+<center>
+<table>
+
+
+  <tbody>
+
+    <tr>
+
+      <td><img id = "Figure_30._Simple_oscillator_circuit" src="Images/132.jpg" alt = "" style = "cursor : pointer" onclick="OpenOpjSim('BasicElectronics','OpAmp','Designfiles','OpAmpAdv2','simpleoscillator','PAGE1','Tran')"/></td>
+
+    </tr>
+
+
+    <tr>
+
+      <td><i class="imgcap">Figure 30.  Simple oscillator circuit</i></td>
+
+    </tr>
+
+
+  
+  </tbody>
+</table>
+
+</center>
+<br />
+
+
+<p class="para">In the circuit shown in&nbsp;<a href="#Figure_30._Simple_oscillator_circuit"><span style="font-style: italic;">figure (30)</span></a> , <span style="font-family: Courier New,Courier,monospace;">R=R1=100</span> , <span style="font-family: Courier New,Courier,monospace;">C=0.2u</span><br />
+
+<br />
+
+
+Using <a href="#equation18"><span style="font-style: italic;">equation (18)</span></a>,<span style="font-family: Courier New,Courier,monospace;"> Fc=7.77khz</span> and the time period is <span style="font-family: Courier New,Courier,monospace;">129u</span><br />
+
+</p>
+
+
+<p class="para">The same value is obtained in resultant waveform as well.</p>
+
+<br />
+
+<br />
+
+
+<center>
+<p><img src="Images/133.jpg" alt = "" class="simout" /></p>
+
+</center>
+
+
+<p class="imgcap"><i><a name="Figure_31._Resultant_waveform"></a>Figure 31. Resultant waveform</i></p>
+
+
+<p class="para">Toggle the cursor ON to see the output time period. </p>
+
+
+<center><img src="Images/134.jpg" alt = "" /></center>
+
+
+<p class="imgcap"><i><a name="Figure_32._cursor_window"></a>Figure 32. Cursor window</i></p>
+
+
+
+
+
+
+<table style="width: 100%;">
+
+  <tbody>
+
+    <tr>
+
+
+      <td style="width: 50%;">
+      
+      <h1><a class="Mheading" id="A16">Wien Bridge Oscillator</a></h1>
+
+      </td>
+
+      <td style="width: 50%;" align="right"><span style="text-decoration: underline; cursor : pointer" onclick="OpenOpjSim('BasicElectronics','OpAmp','Designfiles','OpAmpAdv2','wienbridgeoscillator','PAGE1','Tran')"> <img alt="click to view circuit" src="../../../../hybrid/Images/cap_icon.png" style="margin-top: 20px;" /></span></td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+
+<p class="para">Wein bridge oscillator is one of the most commonly used audio frequency
+oscillators. As shown in <a href="#Figure_33._Wein_bridge_oscillator"><span style="font-style: italic;">figure (33)</span></a>,
+the output of the operational amplifier is fed back to the inverting
+and non-inverting pins. The total phase shift&nbsp;around the circuit
+must be <span style="font-family: Courier New,Courier,monospace;">0</span>
+and this condition occurs only when the bridge is at resonance.</p>
+
+
+<center>
+<table width="100%">
+
+
+  <tbody>
+
+    <tr>
+
+      <td style="width: 97%;">
+      
+      <center><img id = "equation19" src="Images/131.jpg" alt = "" /></center>
+
+      </td>
+
+      <td style="width: 3%;">(19)</td>
+
+    </tr>
+
+
+  
+  </tbody>
+</table>
+
+</center>
+
+
+<center>
+<table>
+
+
+  <tbody>
+
+    <tr>
+
+      <td><img id = "Figure_33._Wein_bridge_oscillator" src="Images/136.jpg" alt = "" style = "cursor : pointer" onclick="OpenOpjSim('BasicElectronics','OpAmp','Designfiles','OpAmpAdv2','wienbridgeoscillator','PAGE1','Tran')" /></td>
+
+    </tr>
+
+
+    <tr>
+
+      <td><i class="imgcap">Figure 33.  Wein bridge oscillator circuit</i></td>
+
+    </tr>
+
+
+  
+  </tbody>
+</table>
+
+</center>
+<br />
+<p class="para">In the circuit shown in <a href="#Figure_33._Wein_bridge_oscillator"><span style="font-style: italic;">figure (33)</span></a>,&nbsp;<span style="font-family: Courier New,Courier,monospace;">R=R4 = 3.3k</span> , <span style="font-family: Courier New,Courier,monospace;">C=C1=0.05u</span><br />
+
+<br />
+
+
+Using <a href="#equation19"><span style="font-style: italic;">equation (19)</span></a>, <span style="font-family: Courier New,Courier,monospace;">Fc=961.064hz</span> and time period is <span style="font-family: Courier New,Courier,monospace;">1.0362ms</span><br />
+
+</p>
+
+
+<p class="para"> The same value is obtained in resultant waveform as well.</p>
+
+<br />
+
+<br />
+
+
+<center>
+<p><img src="Images/137.jpg" alt = "" class="simout" /></p>
+
+</center>
+
+
+<p class="imgcap"><i><a name="Figure_34._Resultant_waveform"></a>Figure 34. Resultant waveform</i></p>
+
+
+<p class="para">Toggle cursor ON to see output time period.</p>
+
+
+<center><img src="Images/138.jpg" alt = "" /></center>
+
+
+<p class="imgcap"><i><a name="Figure_35._cursor_window"></a>Figure 35. Cursor window</i></p>
+
+
+
+
+
+
+
+
+<table style="width: 100%;">
+
+  <tbody>
+
+    <tr>
+
+
+      <td style="width: 50%;">
+      
+      <h1><a class="Mheading" id="A17">Schmitt Trigger</a></h1>
+
+      </td>
+
+      <td style="width: 50%;" align="right"><span style="text-decoration: underline; cursor : pointer" onclick="OpenOpjSim('BasicElectronics','OpAmp','Designfiles','OpAmpAdv2','schmitttrigger','PAGE1','Tran')"> <img alt="click to view circuit" src="../../../../hybrid/Images/cap_icon.png" style="margin-top: 20px;" /></span></td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+
+<p class="para">Schmitt Trigger is a positive feedback opamp circuit
+with gain greater than unity. The output voltage obtained from this
+circuit is retained until the input voltage crosses the threshold
+voltage .In this configuration, the input voltage is applied through
+the resistor <span style="font-family: Courier New,Courier,monospace;">R1</span> to the non-inverting input and the inverting input is
+grounded or referenced. The hysteresis curve is non-inverting and the
+switching thresholds are.</p>
+
+
+<center>
+<table width="100%">
+
+
+  <tbody>
+
+    <tr>
+
+      <td style="width: 97%;">
+      
+      <center><img id="equation20" src="Images/139.jpg" alt = "" /></center>
+
+      </td>
+
+      <td style="width: 3%;">(20)</td>
+
+    </tr>
+
+
+  
+  </tbody>
+</table>
+
+</center>
+
+
+<p class="para">where <span style="font-family: Courier New,Courier,monospace;">Vsat</span> is the largest output magnitude of the operational amplifier.</p>
+
+
+<center>
+<table>
+
+
+  <tbody>
+
+    <tr>
+
+      <td><img id="Figure_36._Schmitt_trigger_circuit" src="Images/141.jpg" alt = "" style = "cursor :pointer" onclick="OpenOpjSim('BasicElectronics','OpAmp','Designfiles','OpAmpAdv2','schmitttrigger','PAGE1','Tran')"/></td>
+
+    </tr>
+
+
+    <tr>
+
+      <td><i class="imgcap">Figure 36.  Schmitt trigger circuit</i></td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+</center>
+<br />
+<p class = "para">In the circuit shown in <a href="#Figure_36._Schmitt_trigger_circuit"><span style="font-style: italic;">figure (36)</span></a>,&nbsp;<span style="font-family: Courier New,Courier,monospace;">R1 = 1k</span>, <span style="font-family: Courier New,Courier,monospace;">R2=2k</span>, <span style="font-family: Courier New,Courier,monospace;">Vsat=5V</span>, and <span style="font-family: Courier New,Courier,monospace;">Vin=5V</span></p><br />
+<p class="para">
+<br />
+Using equation (20), <span style="font-family: Courier New,Courier,monospace;">V(threshold)=+2.5v</span> and <span style="font-family: Courier New,Courier,monospace;">-2.5V</span><br />
+
+</p>
+
+
+<p class="para">Approximately the same values are obtained in resultant waveform as well.</p>
+
+<br />
+
+<br />
+
+
+<center>
+<p><img src="Images/142.jpg" alt = "" class="simout" /></p>
+
+</center>
+
+
+<p class="imgcap"><i><a name="Figure_33._Resultant_waveform"></a>Figure 37. Resultant waveform</i></p>
+
+
+<p class="para">Toggle cursor ON to see the input  voltage triggering the output voltage at the threshold.</p>
+
+
+<center><img src="Images/143.jpg" alt = "" /></center>
+
+
+<p class="imgcap"><i><a name="Figure_38._Cursor_window"></a>Figure 38. Cursor window</i></p>
+
+
+<br />
+
+<br />
+
+
+<hr />
+<hr />
+
+
+
+    <br />
+
+
+    <font size="-1">
+      <i>Copyright &copy; 2012, <span style="color:blue;cursor:pointer" onclick="window.open('http://www.cadence.com')"><u>Cadence Design Systems, Inc.</u></span></i>
+    </font>
+    <br />
+
+
+    <font size="-1">
+All rights reserved.</font>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

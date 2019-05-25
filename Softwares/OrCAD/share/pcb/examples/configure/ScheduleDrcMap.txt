@@ -1,0 +1,74 @@
+
+The text below describes a procedure to graphically analyze a net schedule drc
+error to determine the source of the mismatch between the logical and physical
+structures on a net. The analysis displays are triggered by setting an
+environmental variable "sched_drc_output", and in show element selecting a
+single topology drc error of the net.
+
+Once the DRC information is displayed, graphical data is created on several
+subclasses under the Analysis Class. These are:
+
+  - Required logical connections appear as lines on class Analysis and subclass
+    Anl_Logicalconnect.
+
+  - Actual physical connections appear as lines on class Analysis and subclass
+    Anl_Physicalconnect.
+
+  - Any extra physical connections appear as lines on class Analysis and
+    subclass Anl_Extraconnect. These are physical connections not called for
+    in the logical schedule.
+
+  - Any missing physical connections appear as lines on class Analysis and
+    subclass Anl_Missingconnect. These are connections called for in the logic
+    but not appearing in the physical connections.
+
+In conjunction with the graphical output is a logfile "NetSchedLog.log", which,
+together with the graphics, gives a roadmap for dissecting the structure of the
+graphs.
+
+A detailed set of steps for this procedure:
+
+ 1) "set sched_drc_output" on the message line.
+
+ 2) Pick a single one of the topology drcs on the net.
+
+ 3) The visibility of the displays changes to show only pins and rat Ts and
+    branch vias and physical Ts on the connection layers for the net. Pins and
+    vias on other layers are not displayed and pass thru vias are invisible.
+    The relevant connecting pins, branch vias and Ts are highlighted, as are
+    lines on analysis layers which display the drc discovered connectivity.
+
+ 4) You should set show element to select just pins, rat T's, and other segs.
+    When you hover over these elements connectivity information displays via 
+    data tips. The Other segs displays, via data tips, information about the
+    Analysis class lines.
+
+ 5) Turn on/off the individual analysis layers to display the required
+    connections, the physical connections, and extra or missing connections.
+    Correlate this with the output in the NetSchedLog.log file. Use data tips
+    to display pins and rat Ts as you walk around the graphs.
+
+ 6) The graphical displays are only concerned with connections that form branch
+    points or are target points for the logic. The connections for pass thru
+    vias are ignored, as are direct connect vias (an abstract graph). Physical
+    connects off a branch are not a violation if they can be merged into the
+    matching logical path within the stub length requirement. This implies that
+    the display of connections for physical etch for a stub meeting the stub
+    length requirement displays as a direct connection to the stub pin, rather
+    than a connection through the intermediate stub branch.
+
+ 7) By selecting the "done" popup of show element, the display returns back to
+    its previous setting.
+
+Analysis segments remain there until the next show element map cleans them up.
+This means that on a busy board, the analysis can be continued outside show
+element by turning off etch layers, and turning on only analysis layers and the
+subclasses for pins and vias traversed by the net.
+
+Note that for delay errors which appear on a scheduled net with rat Ts, the
+user can often analyze the error further if it is caused by a mismatched rat T
+by generating a topology drc and following the procedure shown above. This is
+easily accomplished by adding a net schedule property to the net with the value
+"verify" and setting stub check mode on.
+
+

@@ -1,0 +1,40 @@
+#
+# testpoint_exampleview - example to extract test point data
+#
+#
+# view is COMPOSITE_PAD
+#
+COMPOSITE_PAD
+
+#
+# include only pads that have a non blank TEST_POINT field
+#
+	TEST_POINT != ''
+
+#
+# CLASS = 'VIA CLASS' or 'PIN'
+#
+  CLASS
+#
+# NET_PROBE_NUMBER is property of the net, it is what is displayed in the
+# drawing. If the property doesn't exist then NET_NAME is displayed.
+#
+  NET_NAME
+  NET_PROBE_NUMBER
+#
+#	PIN_X and PIN_Y are the x/y location of the pin (blank for vias)
+  REFDES
+  PIN_NUMBER
+  PIN_X
+  PIN_Y
+#
+#	VIA_X and VIA_Y are the x/y location of the via (blank for pins)
+#
+  VIA_X
+  VIA_Y
+#
+# TEST_POINT = "TOP" or "BOTTOM"
+#
+  TEST_POINT
+
+END

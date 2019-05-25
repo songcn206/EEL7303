@@ -1,0 +1,219 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM fixed_font
+FIXED
+PORT 58 32
+HEADER "Signal Analysis Parameters"
+
+POPUP <unspecpinspop>"UNSPECIFIED""1","POWER""2","GROUND""3","NC""4",\
+"LOADIN""5","LOADOUT""6","BI""7","TRI""8",\
+"OCA""9","OCL""10".
+
+POPUP <xtalkcalcpop>"SUMMED back xtalk""18","PEAK back xtalk""19","SUMMED forw xtalk""20","PEAK forw xtalk""21".
+
+POPUP <fastslowpop>"Fast""0","Thorough""1".
+
+MESSAGE UNITS_ERROR 1 "UNITS ERROR : %s"
+MESSAGE NO_DELAYS 1 "At least one delay type must be checked"
+MESSAGE NO_EDGES 1 "At least one signal edge must be checked"
+
+ACTIVEFIELD "netfilename"
+
+TILE
+TEXT "Default for UNSPECIFIED pins:"
+TLOC 6 13
+TGROUP "Startup"
+ENDTEXT
+
+TEXT "Number of waveform points   :"
+TLOC 6 33
+TGROUP "Simulation"
+ENDTEXT
+
+TEXT "Calculate noise margin using   :"
+TLOC 3 40
+TGROUP "Crosstalk"
+ENDTEXT
+
+TEXT "Ignore lines spaced more than  :"
+TLOC 3 42
+TGROUP "Crosstalk"
+ENDTEXT
+
+TEXT "Ignore lines shorter than      :"
+TLOC 3 44
+TGROUP "Crosstalk"
+ENDTEXT
+
+FIELD f_netfile
+FLOC 3 4
+FGROUP "Startup"
+CHECKLIST "Use net file      :"
+ENDFIELD
+
+FIELD netfilename
+FLOC 27 4
+FGROUP "Startup"
+STRFILLIN 26 255
+ENDFIELD
+
+FIELD f_rptfile
+FLOC 3 6
+FGROUP "Startup"
+CHECKLIST "Use report file   :"
+ENDFIELD
+
+FIELD rptfilename
+FLOC 27 6
+FGROUP "Startup"
+STRFILLIN 26 80
+ENDFIELD
+
+FIELD f_risedelay
+FLOC 3 9
+FGROUP "Startup"
+CHECKLIST "Analyze rising edges"
+ENDFIELD
+
+FIELD f_falldelay
+FLOC 3 11
+FGROUP "Startup"
+CHECKLIST "Analyze falling edges"
+ENDFIELD
+
+FIELD unspecpins
+FLOC 37 13
+FGROUP "Startup"
+ENUMSET 16
+POP "unspecpinspop"
+ENDFIELD
+
+FIELD f_sigloss
+FLOC 3 20
+FGROUP "Simulation"
+CHECKLIST "Calculate line loss effects"
+ENDFIELD
+
+FIELD f_sigskin
+FLOC 3 22
+FGROUP "Simulation"
+CHECKLIST "Calculate skin effect"
+ENDFIELD
+
+FIELD f_monotonic
+FLOC 3 24
+FGROUP "Simulation"
+CHECKLIST "Verify monotonic edge"
+ENDFIELD
+
+FIELD f_firstincident
+FLOC 3 26
+FGROUP "Simulation"
+CHECKLIST "Verify first incident switching"
+ENDFIELD
+
+FIELD f_waveform
+FLOC 3 29
+FGROUP "Simulation"
+CHECKLIST "Save and display waveforms"
+ENDFIELD
+
+FIELD f_simtime
+FLOC 3 31
+FGROUP "Simulation"
+CHECKLIST "Fixed waveform duration     :"
+ENDFIELD
+
+FIELD simtime
+FLOC 37 31
+FGROUP "Simulation"
+STRFILLIN 16 64
+ENDFIELD
+
+FIELD simresolution
+FLOC 37 33
+FGROUP "Simulation"
+LONGFILLIN 16 64
+MIN 1
+ENDFIELD
+
+FIELD xtalkcalc
+FLOC 37 40
+FGROUP "Crosstalk"
+ENUMSET 16
+POP "xtalkcalcpop"
+ENDFIELD
+
+FIELD xtalkrange
+FLOC 37 42
+FGROUP "Crosstalk"
+STRFILLIN 16 64
+ENDFIELD
+
+FIELD shortlines
+FLOC 37 44
+FGROUP "Crosstalk"
+STRFILLIN 16 64
+ENDFIELD
+
+FIELD f_propdelay
+FLOC 3 51
+FGROUP "Min/Max Delay"
+CHECKLIST "Use propagation delays"
+ENDFIELD
+
+FIELD f_switchdelay
+FLOC 3 53
+FGROUP "Min/Max Delay"
+CHECKLIST "Use first switch delays"
+ENDFIELD
+
+FIELD f_settledelay
+FLOC 3 55
+FGROUP "Min/Max Delay"
+CHECKLIST "Use final settle delays"
+ENDFIELD
+
+FIELD Done
+FLOC 1 61
+MENUBUTTON "OK" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 12 61
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 23 61
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+FIELD setup
+FLOC 39 61
+MENUBUTTON "Special setup" 18 3
+POP "fastslowpop"
+ENDFIELD
+
+GROUP "Startup"
+GLOC 1 1
+GSIZE 56 15
+ENDGROUP
+
+GROUP "Simulation"
+GLOC 1 17
+GSIZE 56 19
+ENDGROUP
+
+GROUP "Crosstalk"
+GLOC 1 37
+GSIZE 56 10
+ENDGROUP
+
+GROUP "Min/Max Delay"
+GLOC 1 48
+GSIZE 56 10
+ENDGROUP
+
+ENDTILE
+
+ENDFORM

@@ -1,0 +1,121 @@
+# $Header: /vobs/psd_backend_data/data/forms-core/prmedit.form /main/64 2010-09-02T07:55:28-04 jds $ 
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 19 13
+HEADER "AiPT Options"
+
+# AiPT command related popups
+# Note that pop-ups are shared if pop-up names are shared
+
+# AIPT popups
+POPUP <boolean>"Yes""1","No""0".
+POPUP <aipt_location_pop>"Any""1","High Pin Comp.""2","Low Pin Comp.""3","Auto""4".
+POPUP <aipt_height_vals_pop>"""".
+POPUP <aipt_length_vals_pop>"""".
+
+# parameters for AIPT
+
+TILE AIPT_MINI
+
+# parameters for AIPT (Phase Tuning)
+
+TEXT "Compensation Loc." aipt_compensation_location_label
+TLOC 1 1
+ENDTEXT
+
+FIELD aipt_compensation_location
+FLOC 16 1
+ENUMSET 12
+POP "aipt_location_pop"
+ENDFIELD
+
+GROUP "Compensation Techniques" aipt_compensation_techniques
+GLOC 1 4
+GSIZE 30 22
+ENDFIELD
+
+
+TEXT "Pad Entry Shortening" aipt_pad_entry_shortening_label
+TLOC 2 7
+ENDTEXT
+
+FIELD aipt_pad_entry_shortening
+FLOC 22 7
+ENUMSET 6
+POP boolean
+ENDFIELD
+
+
+TEXT "Pad Entry Lengthening" aipt_pad_entry_lengthening_label
+TLOC 2 9
+ENDTEXT
+
+FIELD aipt_pad_entry_lengthening
+FLOC 22 9
+ENUMSET 6
+POP boolean
+ENDFIELD
+
+
+TEXT "Allow off-angle segs" aipt_allow_off_angle_label
+TLOC 4 11
+ENDTEXT
+
+FIELD aipt_allow_off_angle
+FLOC 22 11
+ENUMSET 6
+POP boolean
+ENDFIELD
+
+
+TEXT "Allow gather move" aipt_allow_gather_movement_label
+TLOC 4 13
+ENDTEXT
+
+FIELD aipt_allow_gather_movement
+FLOC 22 13
+ENUMSET 6
+POP boolean
+ENDFIELD
+
+
+TEXT "Allow Uncoupled Bumps" aipt_uncoupled_bump_creation_label
+TLOC 2 17
+ENDTEXT
+
+FIELD aipt_uncoupled_bump_creation
+FLOC 22 17
+ENUMSET 6
+POP boolean
+ENDFIELD
+
+
+TEXT "Height:" aipt_bump_height_label
+TLOC 4 19
+ENDTEXT
+
+FIELD aipt_bump_height
+FLOC 21 19
+STRFILLIN 5 20
+POP aipt_height_vals_pop
+ENDFIELD
+
+
+TEXT "Length:" aipt_bump_length_label
+TLOC 4 21
+ENDTEXT
+
+FIELD aipt_bump_length
+FLOC 21 21
+STRFILLIN 5 20
+POP aipt_length_vals_pop
+ENDFIELD
+
+
+# end parameters for  AIBT (Breakout)
+
+ENDTILE
+
+
+ENDFORM

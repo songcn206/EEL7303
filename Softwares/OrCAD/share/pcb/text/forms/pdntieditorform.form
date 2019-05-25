@@ -1,0 +1,141 @@
+####################################################################################
+#       Cadence Design Systems                                                     #
+#                                                                                  #
+# (C) COPYRIGHT, Cadence Design Systems, Inc. 2008                                 #
+# All Rights Reserved                                                              #
+# Licensed Materials - Property of Cadence Design Systems                          #
+#                                                                                  #
+# No part of this file may be reproduced, stored in a retrieval system,            #
+# or transmitted in any form or by any means --- electronic, mechanical,           #
+# photocopying, recording, or otherwise --- without prior written permission       #
+# of Cadence Design Systems, Inc.                                                  #
+#                                                                                  #
+# WARRANTY:                                                                        #
+# Use all material in this file at your own risk.  Cadence Design Systems          #
+# makes no claims about any material contained in this file.                       #
+####################################################################################
+FILE_TYPE=FORM_DEFN VERSION=2
+
+    FORM
+    FIXED
+    PORT 45 30
+    HEADER "Target Impedance Editor"
+
+    ACTIVEFIELD "Done"
+    DEFAULT Done
+
+    TILE
+
+    FIELD Done
+        FLOC 2 31
+        MENUBUTTON "OK" 10 3
+    ENDFIELD
+
+    FIELD PlotGraph
+      FLOC 23 31
+      MENUBUTTON "Plot" 10 3
+    ENDFIELD
+
+    FIELD Help
+        FLOC 34 31
+        MENUBUTTON "Help" 10 3
+    ENDFIELD
+
+    GROUP ""
+        GLOC 2 0
+        GSIZE 43 30
+    ENDGROUP
+
+    TEXT "Power Net:"
+        TLOC 4 2
+    ENDTEXT
+
+    POPUP <PowerNetList>"""".
+    #FIELD PowerNet
+    #    TLOC 22 2
+    #    ENUMSET 17
+    #    #STRFILLIN 18 256
+    #    POP "PowerNetList"
+    #ENDTEXT
+    TEXT ""
+        TLOC 22 2
+        INFO PowerNet 18
+    ENDTEXT
+
+    TEXT "Voltage:"
+        TLOC 4 5
+    ENDTEXT
+
+    TEXT ""
+        TLOC 22 5
+        INFO PowerNetVoltage 18
+    ENDTEXT
+
+    TEXT "Ripple Tolerance:"
+        TLOC 4 8
+    ENDTEXT
+
+    POPUP <VoltageRippleList>"1%""1","2%""2","3%""3","4%""4","5%""5".
+    FIELD VoltageRipple
+        FLOC 22 8
+        STRFILLIN 15 15
+        POP "VoltageRippleList"
+    ENDFIELD
+
+    TEXT "Max. delta current:"
+        TLOC 4 11
+    ENDTEXT
+
+    FIELD MaxDeltaCurrent
+        FLOC 22 11
+        STRFILLIN 18 18
+    ENDFIELD
+
+    TEXT "Corner frequency:"
+        TLOC 4 15
+    ENDTEXT
+
+    FIELD CornerFrequency
+        FLOC 22 15
+        STRFILLIN 18 18
+    ENDFIELD
+
+    TEXT "Slope (dB/Decade):"
+        TLOC 4 18
+    ENDTEXT
+
+    FIELD Slope
+        FLOC 22 18
+        REALFILLIN 18 18
+    ENDFIELD
+
+    TEXT "Lower Frequency:"
+        TLOC 4 21
+    ENDTEXT
+
+    FIELD LowerFrequency
+        FLOC 22 21
+        STRFILLIN 18 18
+    ENDFIELD
+
+    TEXT "Upper Frequency:"
+        TLOC 4 24
+    ENDTEXT
+
+    FIELD UpperFrequency
+        FLOC 22 24
+        STRFILLIN 18 18
+    ENDFIELD
+
+    TEXT "Target Impedance:"
+        TLOC 4 27
+    ENDTEXT
+
+    TEXT ""
+        TLOC 22 27
+        INFO TargetImpedance 18
+    ENDFIELD
+
+    ENDTILE
+ENDFORM
+

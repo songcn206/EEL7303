@@ -1,0 +1,295 @@
+####################################################################################
+#       Cadence Design Systems                                                     #
+#                                                                                  #
+# (C) COPYRIGHT, Cadence Design Systems, Inc. 2010                                 #
+# All Rights Reserved                                                              #
+# Licensed Materials - Property of Cadence Design Systems                          #
+#                                                                                  #
+# No part of this file may be reproduced, stored in a retrieval system,            #
+# or transmitted in any form or by any means --- electronic, mechanical,           #
+# photocopying, recording, or otherwise --- without prior written permission       #
+# of Cadence Design Systems, Inc.                                                  #
+#                                                                                  #
+# WARRANTY:                                                                        #
+# Use all material in this file at your own risk.  Cadence Design Systems          #
+# makes no claims about any material contained in this file.                       #
+####################################################################################
+FILE_TYPE=FORM_DEFN VERSION=2
+
+    FORM
+    FIXED
+    PORT 60 50
+    HEADER "Preferences"
+
+    ACTIVEFIELD DefaultDeltaCurrent
+    DEFAULT Done
+
+    TILE
+
+    FIELD Done
+        FLOC 2 45
+        MENUBUTTON "OK" 10 3
+    ENDFIELD
+
+    FIELD Cancel
+        FLOC 13 45
+        MENUBUTTON "Cancel" 10 3
+    ENDFIELD
+
+    FIELD Apply
+        FLOC 39 45
+        MENUBUTTON "Apply" 10 3
+    ENDFIELD
+
+    FIELD Help
+        FLOC 50 45
+        MENUBUTTON "Help" 10 3
+    ENDFIELD
+
+    TABSET "TabSet"
+    FLOC 1 0
+    TSSIZE 59 42
+
+    TAB "General"
+
+    GROUP "Default"
+        GLOC 1 0
+        GSIZE 56 20
+    ENDGROUP
+
+    TEXT "Delta current:"
+        TLOC 2 2
+    ENDTEXT
+
+    FIELD DefaultDeltaCurrent
+        FLOC 22 2
+        STRFILLIN 13 256
+    ENDFIELD
+
+    TEXT "Voltage ripple:"
+        TLOC 2 5
+    ENDTEXT
+
+    POPUP <DefaultVoltageThreshPop>"1%""1%","2%""2%","3%""3%","4%""4%","5%""5%".
+    FIELD DefaultVoltageThresh
+        FLOC 22 5
+        STRFILLIN 10 10
+        POP "DefaultVoltageThreshPop"
+    ENDFIELD
+
+    TEXT "Voltage(DC) IRDrop:"
+        TLOC 2 8
+    ENDTEXT
+
+    FIELD DefaultVoltageDCThresh
+        TLOC 22 8
+        STRFILLIN 13 32
+    ENDFIELD
+
+    TEXT "Current threshold:"
+        TLOC 2 11
+    ENDTEXT
+
+    FIELD DefaultCurrentThresh
+        FLOC 22 11
+        STRFILLIN 13 256
+    ENDFIELD
+
+    TEXT "Density threshold:"
+        TLOC 2 14
+    ENDTEXT
+
+    FIELD DefaultDensityThresh
+        FLOC 22 14
+        STRFILLIN 13 256
+    ENDFIELD
+
+    TEXT "Temp.rise threshold:"
+        TLOC 2 17
+    ENDTEXT
+
+    FIELD TempThreshold
+        FLOC 22 17
+        REALFILLIN 13 256
+    ENDFIELD
+
+    TEXT "degC"
+        TLOC 37 17
+    ENDTEXT
+
+    GROUP "Target impedance shape (Default)"
+        GLOC 1 20
+        GSIZE 56 11
+    ENDGROUP
+
+    TEXT "Corner frequency"
+        TLOC 2 22
+    ENDTEXT
+
+    FIELD DefaultTICornerFrequency
+        FLOC 22 22
+        STRFILLIN 18 18
+    ENDFIELD
+
+    TEXT "Slope (dB/Decade):"
+        TLOC 2 25
+    ENDTEXT
+
+    FIELD DefaultTISlope
+        FLOC 22 25
+        REALFILLIN 18 18
+    ENDFIELD
+
+    TEXT "Multiplier:"
+        TLOC 2 28
+    ENDTEXT
+
+    FIELD DefaultTIFactor
+        FLOC 22 28
+        REALFILLIN 18 18
+    ENDFIELD
+
+    GROUP "Decoupling capacitor"
+        GLOC 1 31
+        GSIZE 56 8
+    ENDGROUP
+
+    TEXT "Mounted inductance:"
+        TLOC 2 33
+    ENDTEXT
+
+    FIELD DefaultMountInduct
+        FLOC 22 33
+        STRFILLIN 18 18
+    ENDFIELD
+
+    TEXT "Effective radius:"
+        TLOC 2 36
+    ENDTEXT
+
+    FIELD EffectRadiusFactor
+        FLOC 22 36
+        REALFILLIN 18 18
+        MIN 0
+        DECIMAL 4
+    ENDFIELD
+
+    ENDTAB
+
+    TAB "Field Solver""FieldSolver"
+
+    GROUP "Shape Mesh Information ---- Rectangle" "MeshInfoTitle"
+        GLOC 1 0
+        GSIZE 56 12
+    ENDGROUP
+
+    POPUP <MeshExactModePop>"Ignore""Ignore","Include""Include".
+    FIELD MeshExactMode
+        FLOC 3 3
+        ENUMSET 15
+        POP "MeshExactModePop"
+    ENDFIELD
+
+    TEXT
+        TLOC 21 3
+        INFO MeshExactModeTitle 35
+    ENDTEXT
+
+    TEXT "Ignore all shapes/voids less than                                    meshing cell size"
+        TLOC 3 6
+    ENDTEXT
+
+    POPUP <MeshMinAreaPop>"0.0""0.0","0.5""0.5","1.0""1.0","1.5""1.5","2.0""2.0","2.5""2.5","3.0""3.0".
+    FIELD MeshMinArea
+        FLOC 27 6
+        REALFILLIN 7 20
+        MIN 0.0
+        POP "MeshMinAreaPop"
+    ENDFIELD
+
+    TEXT "Scope:"
+        TLOC 3 9
+    ENDTEXT
+
+    POPUP <ScopeModePop>"Power Net""PowerNet","Whole Design""WholeDesign".
+    FIELD ScopeMode
+        FLOC 9 9
+        ENUMSET 14
+        POP "ScopeModePop"
+    ENDFIELD
+
+    TEXT "extend" "ScopeExtendTitle"
+        TLOC 27 9
+    ENDTEXT
+
+    POPUP <ScopeExtendPop>"0.0""0.0","0.5""0.5","1.0""1.0","1.5""1.5","2.0""2.0","2.5""2.5","3.0""3.0".
+    FIELD ScopeExtend
+        FLOC 33 9
+        REALFILLIN 7 20
+        MIN 0.0
+        POP "ScopeExtendPop"
+    ENDFIELD
+
+    TEXT "cell size" "ScopeExtendSize"
+        TLOC 46 9
+    ENDTEXT
+
+    GROUP "Field Solver Option" "FieldSolver"
+        GLOC 1 12
+        GSIZE 56 15
+    ENDGROUP
+
+    FIELD FSModelDebye
+        FLOC 3 15
+        CHECKLIST "Use debye model for causality enforcement on dielectric material."
+    ENDFIELD
+
+    FIELD LayerIgnoreCheck
+        TLOC 3 18
+        CHECKLIST "Ignore all shapes/clines in the specific layers"
+    ENDFIELD
+
+    FIELD LayerIgnore
+        FLOC 38 18
+        MENUBUTTON "Specify Layers" 10 3
+    ENDFIELD
+
+    TEXT "Ambient Temperature:"
+        TLOC 3 21
+    ENDTEXT
+
+    FIELD AmbientTemp
+        FLOC 23 21
+        REALFILLIN 13 10
+        MIN -300.0
+    ENDFIELD
+
+    TEXT "degC"
+        TLOC 38 21
+    ENDTEXT
+
+    TEXT "Surface Roughness:"
+        TLOC 3 24
+    ENDTEXT
+
+    FIELD FSRoughness
+        FLOC 23 24
+        STRFILLIN 13 32
+    ENDFIELD
+
+     TEXT "Color Legend:"
+        TLOC 2 28
+    ENDTEXT
+
+    FIELD LegendCustom
+        FLOC 23 28
+        MENUBUTTON "Custom" 10 3
+    ENDFIELD
+
+    ENDTAB
+    ENDTABSET
+
+    ENDTILE
+
+ENDFORM
+

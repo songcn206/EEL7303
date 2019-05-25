@@ -1,0 +1,230 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM fixed_font
+FIXED
+PORT 120 40
+HEADER "Stimulus Setup"
+
+
+POPUP <XNetNamePopup>     "*" "ALL"
+POPUP <FreqPopup>         "*" "ALL"
+POPUP <DutyCyclePopup>    "*" "ALL"
+POPUP <CycleCountPopup>   "*" "ALL"
+POPUP <ConOffsetPopup>    "*" "ALL"
+POPUP <JitterPopup>       "*" "ALL"
+POPUP <BitPatternPopup>   "*" "ALL"
+
+
+POPUP <AssignFreqPopup>         "50 MHz"    "DEFAULT"
+POPUP <AssignDutyCyclePopup>    "50"        "DEFAULT"
+POPUP <AssignCycleCountPopup>   "1"         "DEFAULT"
+POPUP <AssignConOffsetPopup>    "0 ns"      "DEFAULT"
+POPUP <AssignJitterPopup>       "0 ns"      "DEFAULT"
+POPUP <AssignBitPatternPopup>   "1010 1010" "DEFAULT"
+
+
+POPUP <RadomPopup>              "Random..." "RANDOM"
+
+POPUP <ClockStrobe_BitPatternPopup>      "01" "01 " , "10" "10 "
+POPUP <Data_BitPatternPopup>      "0101 0101" "0101 0101" , "1010 1010"  \
+                                  "1010 1010", "Random" "Random"
+
+
+ACTIVEFIELD "Ok"
+
+
+TILE
+
+GROUP "Stimulus"
+GLOC 1 0
+GSIZE 119 36
+ENDGROUP
+
+FIELD XNetNameFilter
+FLOC 10 3
+STRFILLIN 15 40
+POP XNetNamePopup
+ENDFIELD
+
+FIELD FreqFilter
+FLOC 31 3
+STRFILLIN 6 40
+POP FreqPopup
+ENDFIELD
+
+FIELD DutyCycleFilter
+FLOC 43 3
+STRFILLIN 5 40
+POP DutyCyclePopup
+ENDFIELD
+
+FIELD ClockCountFilter
+FLOC 54 3
+STRFILLIN 4 40
+POP CycleCountPopup
+ENDFIELD
+
+FIELD ConOffsetFilter
+FLOC 64 3
+STRFILLIN 8 40
+POP ConOffsetPopup
+ENDFIELD
+
+FIELD JitterFilter
+FLOC 78 3
+STRFILLIN 5 40
+POP JitterPopup
+ENDFIELD
+
+FIELD BitPatternFilter
+FLOC 89 3
+STRFILLIN 21 2048 
+POP BitPatternPopup
+ENDFIELD
+
+GRID StimulusGrid
+FLOC 4 5
+FSIZE 114 22
+OPTIONS HLINES VLINES USERSIZE
+
+
+GHEAD TOP 
+HEADSIZE 3
+OPTIONS 3D MULTI
+ENDGHEAD
+
+ENDGRID
+
+FIELD Export
+FLOC 9 30
+MENUBUTTON "Export..." 9 3
+ENDFIELD
+
+FIELD Import
+FLOC 9 32
+MENUBUTTON "Import..." 9 3
+ENDFIELD
+
+
+TEXT "Assign To Xnets:"
+TLOC 12 27
+TGROUP "Select Bus to Setup"
+ENDTEXT
+
+FIELD AssignFreq
+FLOC 31 27
+STRFILLIN 6 40
+POP AssignFreqPopup
+ENDFIELD
+
+
+FIELD AssignDutyCycle
+FLOC 43 27
+STRFILLIN 5 40
+POP AssignDutyCyclePopup
+ENDFIELD
+
+
+FIELD AssignCycleCount
+FLOC 54 27
+STRFILLIN 4 40
+POP AssignCycleCountPopup
+ENDFIELD
+
+FIELD AssignConOffset
+FLOC 64 27
+STRFILLIN 8 40
+POP AssignConOffsetPopup
+ENDFIELD
+
+FIELD AssignJitter
+FLOC 78 27
+STRFILLIN 5 40
+POP AssignJitterPopup
+ENDFIELD
+
+FIELD AssignBitPattern
+FLOC 89 27
+STRFILLIN 21 2048
+POP AssignBitPatternPopup
+ENDFIELD
+
+
+FIELD UpdateFreq
+FLOC 32 30
+MENUBUTTON "Assign" 9 3
+ENDFIELD
+
+FIELD UpdateDutyCycle
+FLOC 44 30
+MENUBUTTON "Assign" 9 3
+ENDFIELD
+
+FIELD UpdateCycleCount
+FLOC 55 30
+MENUBUTTON "Assign" 9 3
+ENDFIELD
+
+FIELD UpdateConOffset
+FLOC 66  30
+MENUBUTTON "Assign" 9 3
+ENDFIELD
+
+FIELD UpdateJitter
+FLOC 79 30
+MENUBUTTON "Assign" 9 3
+ENDFIELD
+
+FIELD UpdateBitPattern
+FLOC 96 30
+MENUBUTTON "Assign" 9 3
+ENDFIELD
+
+{
+
+FIELD Export
+FLOC 8 34
+MENUBUTTON "Export ..." 9 3
+ENDFIELD
+
+FIELD Import
+FLOC 8 36
+MENUBUTTON "Import ..." 9 3
+ENDFIELD
+
+FIELD waveform
+THUMBNAIL
+FLOC 30 22
+FSIZE 78 13
+ENDFIELD
+
+FIELD ThumbNail
+FLOC 31 32
+LIST "" 75 5
+OPTIONS multiselect
+ENDFIELD
+
+}
+
+FIELD Ok
+FLOC 2 37
+MENUBUTTON "OK" 9 3
+ENDFIELD
+
+FIELD Apply
+FLOC 15 37
+MENUBUTTON "Apply" 9 3
+ENDFIELD
+
+FIELD Cancel
+FLOC 28 37
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 82 37
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+
+ENDTILE
+ENDFORM

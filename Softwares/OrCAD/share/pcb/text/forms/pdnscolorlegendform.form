@@ -1,0 +1,98 @@
+####################################################################################
+#       Cadence Design Systems                                                     #
+#                                                                                  #
+# (C) COPYRIGHT, Cadence Design Systems, Inc. 2010                                 #
+# All Rights Reserved                                                              #
+# Licensed Materials - Property of Cadence Design Systems                          #
+#                                                                                  #
+# No part of this file may be reproduced, stored in a retrieval system,            #
+# or transmitted in any form or by any means --- electronic, mechanical,           #
+# photocopying, recording, or otherwise --- without prior written permission       #
+# of Cadence Design Systems, Inc.                                                  #
+#                                                                                  #
+# WARRANTY:                                                                        #
+# Use all material in this file at your own risk.  Cadence Design Systems          #
+# makes no claims about any material contained in this file.                       #
+####################################################################################
+FILE_TYPE=FORM_DEFN VERSION=2
+
+    FORM
+    FIXED
+    PORT 47 40
+    HEADER "Color Legend"
+
+    ACTIVEFIELD LegendGrid
+    DEFAULT Done
+
+    TILE
+
+    FIELD Done
+        FLOC 1 39
+        MENUBUTTON "OK" 10 3
+    ENDFIELD
+
+    FIELD Cancel
+        FLOC 12 39
+        MENUBUTTON "Cancel" 10 3
+    ENDFIELD
+
+    FIELD Apply
+        FLOC 26 39
+        MENUBUTTON "Apply" 10 3
+    ENDFIELD
+
+    FIELD Help
+        FLOC 37 39
+        MENUBUTTON "Help" 10 3
+    ENDFIELD
+
+    GROUP "" "LegendGroup"
+        GLOC 1 0
+        GSIZE 46 38
+    ENDGROUP
+
+    TEXT "Format:"
+        TLOC 2 2
+    ENDTEXT
+
+    POPUP <LegendFormatPop>"""".
+    FIELD LegendFormat
+        FLOC 10 2
+        ENUMSET 13
+        POP "LegendFormatPop"
+    ENDFIELD
+
+    TEXT "Method:"
+        TLOC 2 5
+    ENDTEXT
+
+    POPUP <LegendMethodPop>"""".
+    FIELD LegendMethod
+        FLOC 10 5
+        ENUMSET 13
+        POP "LegendMethodPop"
+    ENDFIELD
+
+    GRID LegendGrid
+    FLOC 2 8
+    FSIZE 44 30
+    OPTIONS HLINES VLINES USERSIZE
+
+    GHEAD TOP
+        HEADSIZE 2
+        OPTIONS 3D
+    ENDGHEAD
+    GHEAD SIDE
+        HEADSIZE 0
+    ENDGHEAD
+    ENDGRID
+
+    FLEXMODE StandButtons
+    FLEX LegendGroup    0 0 1 1
+    FLEX LegendFormat   0 0 1 0
+    FLEX LegendMethod   0 0 1 0
+    FLEX LegendGrid     0 0 1 1
+
+    ENDTILE
+ENDFORM
+

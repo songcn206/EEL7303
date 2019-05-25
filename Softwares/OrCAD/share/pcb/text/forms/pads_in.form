@@ -1,0 +1,90 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM 
+FIXED
+PORT 64 7
+HEADER "PADS IN"
+
+MESSAGE PADS_IN_NO_FILENAME 0 "You must enter a PADS ASCII filename first."
+MESSAGE PADS_IN_NO_OPTIONS 0 "You must enter an options filename first."
+MESSAGE PADS_IN_ERROR 0 "A problem occurred - please check the logfile (using Viewlog)."
+MESSAGE PADS_IN_DONE 0 "Translation completed."
+MESSAGE PADS_IN_NOT_IN_DEMO 0 "Cannot Run in Demo Mode."
+
+ACTIVEFIELD "filename"
+
+TILE
+TEXT "PADS ASCII input file:"
+TLOC 1 1
+ENDTEXT
+
+TEXT "Options File:"
+TLOC 1 3
+ENDTEXT
+
+TEXT "Output Design:"
+TLOC 1 5
+ENDTEXT
+
+FIELD filename
+FLOC 18 1
+STRFILLIN 37 512
+ENDFIELD
+
+FIELD filename_browse
+FLOC 58 1
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+FIELD options
+FLOC 18 3
+STRFILLIN 37 512
+ENDFIELD
+
+FIELD options_browse
+FLOC 58 3
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+FIELD destination
+FLOC 18 5
+STRFILLIN 37 512
+ENDFIELD
+
+FIELD destination_browse
+FLOC 58 5
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+FIELD show_options_dialog
+FLOC 1 7
+CHECKLIST "Show options dialog"
+ENDFIELD
+
+FIELD execute
+FLOC 1 9
+MENUBUTTON "Translate" 13 3
+ENDFIELD
+
+FIELD viewlog
+FLOC 15 9
+MENUBUTTON "Viewlog" 10 3
+ENDFIELD
+
+FIELD cancel
+FLOC 28 9
+MENUBUTTON "Close" 10 3
+ENDFIELD
+
+FIELD help
+FLOC 52 9
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+FLEXMODE StandButtons
+FLEX filename 0 0 1 0
+FLEX options 0 0 1 0
+FLEX destination 0 0 1 0
+
+ENDTILE
+
+ENDFORM

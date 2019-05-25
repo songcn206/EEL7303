@@ -1,0 +1,127 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM fixed_font
+FIXED
+PORT 88 42
+HEADER "SI Design Audit"
+
+POPUP <StatusFilterChoices> "All""All","Unresolved""Unresolved","Resolved""Resolved","Ignored""Ignored".
+
+POPUP <TestFilterChoices> "All""All".
+
+POPUP <SortByChoices> "Status""Status","Test Type""Test Type".
+
+POPUP <StatusPopup> "Resolve""Resolve","Unresolved""Unresolved","Ignore""Ignore".
+
+ACTIVEFIELD "AuditOneOK"
+
+TILE
+
+GROUP "Audit Errors"
+GLOC 1 1
+GSIZE 86 37
+ENDGROUP
+
+TEXT "Status Filter:"
+TLOC 3 4
+ENDTEXT
+
+FIELD StatusFilter
+FLOC 18 4
+ENUMSET 9
+POP StatusFilterChoices
+ENDFIELD
+
+TEXT "Test Filter:"
+TLOC 33 4
+ENDTEXT
+
+FIELD TestFilter
+FLOC 46 4
+ENUMSET 11
+POP TestFilterChoices
+ENDFIELD
+
+TEXT "Sort By:"
+TLOC 63 4
+ENDTEXT
+
+FIELD SortBy
+FLOC 71 4
+ENUMSET 10
+POP SortByChoices
+ENDFIELD
+
+GRID "ErrorsGrid"
+FLOC 3 6
+FSIZE 81 26
+OPTIONS HLINES VLINES MULTISELROW
+POP StatusPopup
+GHEAD TOP
+HEADSIZE 2
+OPTIONS 3D MULTI
+ENDGHEAD
+ENDGRID
+
+GROUP "Resolve Errors"
+GLOC 3 31
+GSIZE 34 6
+ENDGROUP
+
+FIELD ResolveAllErrors
+FLOC 4 34
+MENUBUTTON "All" 10 3
+ENDFIELD
+
+FIELD ResolveSelectedErrors
+FLOC 15 34
+MENUBUTTON "Selected" 10 3
+ENDFIELD
+
+FIELD ManuallyResolveError
+FLOC 26 34
+MENUBUTTON "Manually" 10 3
+ENDFIELD
+
+GROUP "Ignore Errors"
+GLOC 39 31
+GSIZE 24 6
+ENDGROUP
+
+FIELD IgnoreAllErrors
+FLOC 40 34
+MENUBUTTON "All" 10 3
+ENDFIELD
+
+FIELD IgnoreSelectedErrors
+FLOC 51 34
+MENUBUTTON "Selected" 10 3
+ENDFIELD
+
+FIELD ShowResolution
+FLOC 66 32
+MENUBUTTON "Show Resolution" 18 3
+ENDFIELD
+
+FIELD ReportErrors
+FLOC 66 35
+MENUBUTTON "Report" 18 3
+ENDFIELD
+
+FIELD AuditOneOK
+FLOC 2 39
+MENUBUTTON "OK" 12 3
+ENDFIELD
+
+FIELD AuditOneCancel
+FLOC 30 39
+MENUBUTTON "Cancel" 12 3
+ENDFIELD
+
+FIELD help
+FLOC 58 39
+MENUBUTTON "Help" 12 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

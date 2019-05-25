@@ -1,0 +1,790 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN" "http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+<html xmlns="http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>PSpice User Guide -- Mixed analog&#47;digital simulation</title>
+<META NAME="Approver" CONTENT="Technical Publications">
+<META NAME="Author" CONTENT="Technical Publications">
+<META NAME="CreateDate" CONTENT="2012-08-31">
+<META NAME="CreateTime" CONTENT="1346413404">
+<META NAME="FileTitle" CONTENT="Mixed analog&#47;digital simulation">
+<META NAME="Language" CONTENT="English">
+<META NAME="ModifiedDate" CONTENT="2012-08-31">
+<META NAME="ModifiedTime" CONTENT="1346413404">
+<META NAME="Title" CONTENT="PSpice User Guide -- Mixed analog&#47;digital simulation">
+<META NAME="DataType" CONTENT="Manuals">
+<META NAME="Description" CONTENT="User guide for PSpice and AMS Simulator.">
+<META NAME="DocTitle" CONTENT="PSpice User Guide">
+<META NAME="DocType" CONTENT="User Guide">
+<META NAME="Keyword" CONTENT="pspug">
+<META NAME="Platform" CONTENT="ALL">
+<META NAME="Product" CONTENT="Allegro AMS Simulator, PSpice">
+<META NAME="ProductFamily" CONTENT="PCB Design, PCB Design">
+<META NAME="ProductVersion" CONTENT="16.6">
+<META NAME="RightsManagement" CONTENT="Copyright 2012 Cadence Design Systems Inc.">
+<META NAME="TopicTags" CONTENT="FALSE">
+<META NAME="Version" CONTENT="16.6">
+<META NAME="FileType"  CONTENT="Chapter">  </head>
+  <body style="margin-left: 5%;">
+    <a name="pagetop"></a>
+    <a name="firstpage"></a>
+    <!-- Begin Buttons -->
+    <table width="650" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td height="36" width="650" colspan="10">
+          <img src="../support/header_doc.gif" width="650" height="34">
+        </td>
+      </tr>
+      <tr>
+        <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                </td>
+<td height="20" width="73">
+<a href="pspugTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<a href="pspugIX.html"><img src="../support/nav2_index.gif" border="0"></a>
+</td>
+        <td>
+          <a href="14digsim.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+        </td>
+        <td>
+          <a href="16digwct.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+        </td>
+        <td height="20">
+          <a>
+<a href="pspug.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+          </a>
+        </td>
+        <td height="20" width="61">
+          <img src="../support/nav2_black.gif">
+        </td>
+        <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+        </td>
+        <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+        </td>
+        <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+        </td>
+      </tr>
+    </table>
+    <!-- End Buttons -->
+    <p>
+    <hr>
+    <p>
+      <h3>
+        <center>
+          <font >
+            <div>PSpice&#174; User Guide</div>
+            <font >
+              <div>
+            </font>
+          </font>
+        </center>
+      </h3>
+      <br>
+    </p>
+    <div>
+      <h1>15<a name="1052483">&nbsp;</a></h1>
+      <h1><a name="1052490">Mixed analog&#47;digital </a>simulation</h1>
+      <h2><a name="1048360">Chapter overview</a></h2>
+      <p><a name="1048361">This chapter describes how PSpice</a>&nbsp;A&#47;D runs mixed analog&#47;digital simulations and includes the following sections:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1048382" title="Mixed analog/digital simulation" name="1048365"><font color="Blue"><u>Interconnecting analog and digital parts</u></font></a><a href="#1048382" title="Mixed analog/digital simulation"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1048398" title="Mixed analog/digital simulation" name="1048369"><font color="Blue"><u>Interface subcircuit selection by PSpice</u></font></a><a href="#1048398" title="Mixed analog/digital simulation"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1048480" title="Mixed analog/digital simulation" name="1048373"><font color="Blue"><u>Specifying digital power supplies</u></font></a><a href="#1048480" title="Mixed analog/digital simulation"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1048648" title="Mixed analog/digital simulation" name="1048377"><font color="Blue"><u>Interface generation and node names</u></font></a><a href="#1048648" title="Mixed analog/digital simulation"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1048378">This entire chapter describes features that are not included in </a>PSpice.</p>
+      <h2><a name="1048382">Interconnecting analog and digital parts</a></h2>
+      <p><a name="1048384">Prior to simulation, netlisting translates the part instances and nets </a>defined in your schematic into parts connected by nodes. The standard simulation netlist contains a flat view of the circuit. You can also create hierarchical netlists. PSpice&nbsp;A&#47;D extracts the definitions for all parts modeled as subcircuits, viewing parts as a collection of primitive parts and node connections.</p>
+      <p><a name="1048385">The digital primitives that make up a digital part determine the way </a>that PSpice&nbsp;A&#47;D processes an analog&#47;digital interface to that part. Specifically, the I&#47;O model for each digital primitive connected at the interface gives PSpice&nbsp;A&#47;D the necessary information.</p>
+      <p><a name="1048386">PSpice</a>&nbsp;A&#47;D recognizes three types of nodes: analog nodes, digital nodes, and interface nodes. The node type is determined by the types of parts connected to it. If all of the parts connected to a node are analog, then it is an analog node. If all of the parts are digital, then it is a digital node. If there is a combination of analog and digital parts, then it is an interface node.</p>
+      <p><a name="1048387">PSpice</a>&nbsp;A&#47;D automatically breaks interface nodes into one purely analog and one or more digital nodes by inserting one or more analog&#47;digital interface subcircuits.</p>
+      <p><a name="1048389">PSpice</a>&nbsp;A&#47;D also automatically connects a power supply to the interface subcircuit to complete the generation of the interface.</p>
+      <p><a name="1048391">To view simulation results at an analog&#47;digital interface in your </a>schematic using the graphical waveform analyzer:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048392">Place a marker on the appropriate interface net. The additional </a>nodes created by PSpice&nbsp;A&#47;D remain transparent.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048393">View results in PSpice</a>&nbsp;A&#47;D by selecting traces from the output variable list (from the Trace menu, choose Add Trace). If you use this approach, note the names PSpice&nbsp;A&#47;D generates for the new nodes. To find out more, see <a href="#1048648" title="Mixed analog/digital simulation"><font color="Blue"><u>Interface generation and node names</u></font></a><a href="#1048648" title="Mixed analog/digital simulation"></a>.</td>
+          </tr>
+        </table>
+      </div>
+      <h2><a name="1048398">Interface subcircuit selection by PSpice</a></h2>
+      <p><a name="1048399">Analog&#45;to&#45;digital (AtoD) and digital&#45;to&#45;analog (DtoA) interface </a>subcircuits handle the translation between analog voltages&#47; impedances and digital states, or vice&#45;versa. The main component of an interface subcircuit is either a PSpice N part (digital input: digital&#45;to&#45;analog) or a PSpice O (that's the letter O, not the numeral zero) part (digital output: analog&#45;to&#45;digital).</p>
+      <p><a name="1048400">PSpice N and O parts are neatly packaged into interface subcircuits </a>in the model library. The standard model library shipped with your software installation includes interface subcircuits for each of the supported logic families: TTL, CD4000 series CMOS and high&#45;speed CMOS (HC&#47;HCT), ECL 10K, and ECL 100K. This frees you from ever having to define them yourself when using parts in the standard library. If you are creating custom digital parts in technologies other than those provided in the standard model library, you may need to create your own interface subcircuits.</p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1048401">To search for particular parts in the standard PSpice libraries, </a>see the online <font color="#000000"><em>PSpice Library List</em></font>.</p>
+      <p><a name="1048403">Every digital primitive comprising the subcircuit description of a </a>digital part has an I&#47;O model describing its loading and driving characteristics. The name of the interface subcircuit actually inserted by PSpice&nbsp;A&#47;D is specified by the I&#47;O model of the digital primitive at the interface. The I&#47;O model has parameters for up to four analog&#45;to&#45;digital (AtoD) and four digital&#45;to&#45;analog (DtoA) subcircuit names.</p>
+      <p><a name="1048404">You can choose among four interface levels of subcircuit models, </a>depending on the simulation accuracy you need. In some cases you may need more accurate simulations of the input&#47;output stages of a digital part, while in other cases, a simpler, smaller model is enough. </p>
+      <p><a name="1048405">Digital parts provided in the standard libraries only use interface </a>levels 1 and 2. With the exception of the HC&#47;HCT series (described below), levels 3 and 4 reference the same subcircuits as levels 1 and 2. Table <a href="#1048890" title="Mixed analog/digital simulation"><font color="#0000ff"><u>15</u></font></a><font color="#000000"> below </font>summarizes the four interface levels.</p>
+      <p><a name="1048819">The difference between levels 1 and 2 only occurs in the AtoD </a>interfaces, described below. In all cases, the level 1 DtoA interface is the same as the level 2 DtoA interface, except that the level 2 DtoA interface does not generate intermediate R, F, and X levels.</p>
+      <p align="left"><a name="1048890">&nbsp;</a></p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="432">
+        <caption>
+          <p align="left"><font color="#000000"><strong>Table 15&#45;1&nbsp; </strong></font><strong><a name="1049313">Interface subcircuit models</a></strong></p>
+        </caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="60">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048861">Level</a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="120">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048863">Subcircuits</a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="252">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048865">Definition</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048867">1</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048869">AtoD1&#47;DtoA1</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048871">AtoD generates intermediate R, F, </a>and X levels</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048873">2</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048875">AtoD2&#47;DtoA2</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048877">AtoD does not generate </a>intermediate R, F, and X levels</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048879">3</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048881">AtoD3&#47;DtoA3</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048883">(same as level 1)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048885">4</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048887">AtoD4&#47;DtoA4</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048889">(same as level 2)</a></p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1048891">The OrCAD libraries provide two different DtoA models in the </a>HC&#47;HCT series: the <font color="#000000"><em>simple</em></font> model and the <font color="#000000"><em>elaborate</em></font> model. You can use the simple model by specifying level 1 or 2, the elaborate model by specifying level 3 or 4. The elaborate model is noticeably slower than the simple model, so you should only use it if you are using a power supply level other than 5.0 volts.</p>
+      <p><a name="1048444">The HC&#47;HCT level 1 and 2 DtoA models produce accurate I&#45;V curves </a>given a fixed power supply of 5.0 volts and a temperature of 25&#176;C. The level 3 and 4 DtoA models produce accurate I&#45;V curves over the acceptable range of power supply voltages (2&#45;6 volts), and they include temperature derating.</p>
+      <h3><a name="1048445">Level 1 interface</a></h3>
+      <p><a name="1048446">The level 1 AtoD interface generates intermediate logic levels (R, F, </a>X) between the voltage ranges VILMAX and VIHMIN (specific voltages depend on the technology you are using). A steadily rising voltage on the input of the AtoD will transition from 0 to R at VILMAX and from R to 1 at VIHMIN. The F level is output for steadily falling voltages in a similar manner. The X level is produced if the input voltage starts in the threshold region or doubles back into a previously crossed threshold.</p>
+      <p><a name="1048447">Level 1 (the default) strictly maps logic levels onto the changing input </a>voltage. The exact switching voltage is assumed to be anywhere between VILMAX and VIHMIN due to temperature or power supply variations. Thus, it provides more accurate, less optimistic results. </p>
+      <p><a name="1048448">This behavior may not be appropriate when the input rise and fall </a>times are long, or when the input voltage never leaves the threshold region. If this is the case, you may want to use the level 2 interface.</p>
+      <h3><a name="1048449">Level 2 interface</a></h3>
+      <p><a name="1048450">The level 2 AtoD interface transitions directly from 0 to 1 and 1 to 0 </a>without passing through intermediate R, F, or X levels. An exact switching voltage is assumed (again, the specific voltage depends on the technology you are using). It provides a more optimistic, and therefore less accurate, response than level 1. Level 2's behavior is appropriate when the input voltage oscillates around the threshold voltage.</p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1048452">You can avoid simulations that get bogged down with the </a>greater detail of R, F, and X states around these oscillations. You may want to specify level 2 on only those parts for which this behavior is critical to a successful simulation. This is described in <a href="#1048457" title="Mixed analog/digital simulation"><font color="#0000ff"><u>Setting the default A&#47;D interface</u></font></a> below.</p>
+      <h3><a name="1048457">Setting the default A&#47;D interface</a></h3>
+      <p><a name="1048458">For mixed&#45;signal simulation, you can select the AtoD and DtoA </a>interface level circuit&#45;wide and on individual part instances.</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048459">To select the default interface level circuit&#45;wide, select one of the </a>four Default A&#47;D interfaces in the Simulation Settings dialog box by selecting the Gate&#45;level simulation category under the Options tab. Part instances with the IO_LEVEL property set to 0 use this value.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048460">You can override the circuit&#45;wide default on an individual part by </a>specifying an IO_LEVEL property from 1 to 4, where:&nbsp;</td>
+          </tr>
+        </table>
+      </div>
+      <p align="left"><a name="1049324">&nbsp;</a></p>
+<ul>      <table summary="" cellpadding="16" cellspacing="0" bgcolor="#FFFFFF" width="336">
+        <caption>
+        <tr>
+          <td cellpadding="16" valign="top" width="48">
+            <p><a name="1048463">1:</a></p>
+          </td>
+          <td cellpadding="16" valign="top" width="288">
+            <p><a name="1048465">AtoD1 and DtoA1 (default)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="16" valign="top">
+            <p><a name="1048467">2:</a></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1048469">AtoD2 and DtoA2</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="16" valign="top">
+            <p><a name="1048471">3:</a></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1048473">AtoD3 and DtoA3</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="16" valign="top">
+            <p><a name="1048475">4:</a></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1048477">AtoD4 and DtoA4</a></p>
+          </td>
+        </tr>
+      </table></ul>
+      <p><a name="1048478">For example, you can tell the simulator to use the level 2 interface </a>subcircuits for a 7400 part by setting the IO_LEVEL property to 2. All other part instances continue to use the circuit&#45;wide setting. By default, IO_LEVEL is set to 0, which tells the simulator to use the circuit&#45;wide level defined in the Gate&#45;level simulation category in the Simulation Settings dialog box.</p>
+      <h2><a name="1048480">Specifying digital power supplies</a></h2>
+      <p><a name="1048482">Digital power supplies are used to power interface subcircuits that are </a>automatically created by PSpice&nbsp;A&#47;D when simulating analog&#47;digital interfaces. They are specified as follows:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048483">PSpice</a>&nbsp;A&#47;D can instantiate them automatically.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048484">You can create your own digital power supplies and place them </a>in your design.</td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1048485">When using parts from the standard libraries in your design, you can </a>usually have PSpice&nbsp;A&#47;D automatically create the necessary digital power supply. If you use custom digital parts created in technologies other than those provided in the standard model library, you may need to create your own digital power supplies. </p>
+      <p><a name="1048486">Because digital power supplies are used only by analog&#47;digital </a>interface subcircuits, digital power supplies are not needed for digital&#45;only designs. We recommend avoiding placing a power supply to a digital&#45;only design because it may increase simulation time and memory usage.</p>
+      <h3><a name="1048488">Default power supply selection by PSpice</a>&nbsp;A&#47;D</h3>
+      <p><a name="1048489">When PSpice</a>&nbsp;A&#47;D encounters an analog&#47;digital interface, it creates the appropriate interface subcircuit and power supply according to the I&#47;O model referenced by the digital part. The I&#47;O model is specific to the digital part's logic family. The power supply provides reference or drive voltage for the analog side of the interface.</p>
+      <p><a name="1048490">By default, PSpice</a>&nbsp;A&#47;D inserts one power supply subcircuit for every logic family in which a digital primitive is involved with an analog&#47;digital interface. These power supply subcircuits create the digital power and ground nodes that are the defaults for all parts in that family. If multiple digital primitives from the same logic family are involved with analog&#47;digital interfaces, one instance of the power supply subcircuit is created with all primitives connected to the power supply nodes.</p>
+      <p><a name="1048494">Table </a><a href="#1048904" title="Mixed analog/digital simulation"><font color="#0000ff"><u>15&#45;2</u></font></a> summarizes the default node names and values. For instance, TTL power supplies have a default value of 5.0 volts at analog&#47;digital interfaces.</p>
+      <p align="left"><font color="#000000"><strong>Table 15&#45;2&nbsp; </strong></font><strong><a name="1048904">Default digital power&#47;ground pin connections</a></strong></p>
+      <p align="left"><a name="1048533">&nbsp;</a></p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="528">
+        <caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="72">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048498">Logic </a>family</strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="216">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048500">Digital power&#47;</a><br>ground pin properties</strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="240">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048502">Default digital power&#47;ground </a>nodes</strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048504">TTL</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048506">PSPICEDEFAULTNET </a>(PWR)</p>
+            <p><a name="1048507">PSPICEDEFAULTNET </a>(GND)</p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048509">$G_DPWR (5.0 volts)</a><br>$G_DGND (0 volts)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048511">CD4000</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048513">PSPICEDEFAULTNET </a>(VDD)</p>
+            <p><a name="1048514">PSPICEDEFAULTNET (VSS)</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048516">$G_CD4000_VDD (5 volts)</a><br>$G_CD4000_VSS (0 volts)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048518">ECL 10K</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048520">PSPICEDEFAULTNET (VEE)</a></p>
+            <p><a name="1048521">PSPICEDEFAULTNET </a>(VCC1)</p>
+            <p><a name="1048522">PSPICEDEFAULTNET </a>(VCC2)</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048524">$G_ECL_10K_VEE (&#45;5.2 volts)</a><br>$G_ECL_10K_VCC1 (0 volts)<br>$G_ECL_10K_VCC2 (0 volts)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048526">ECL </a>100K</p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048528">PSPICEDEFAULTNET (VEE)</a></p>
+            <p><a name="1048529">PSPICEDEFAULTNET </a>(VCC1)</p>
+            <p><a name="1048530">PSPICEDEFAULTNET </a>(VCC2)</p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048532">$G_ECL_100K_VEE (&#45;4.5 volts)</a><br>$G_ECL_100K_VCC1 (0 volts)<br>$G_ECL_100K_VCC2 (0 volts)</p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1048534">The PSPICEDEFAULTNET pin properties have the same default </a>values as the digital power and ground nodes created by the default power supply. These node assignments are passed from the part instance to the digital primitives describing its behavior, connecting any digital primitive affected by an analog connection to the correct power supply.</p>
+      <p><a name="1048535">The default I&#47;O models and power supply subcircuits are found in </a>DIG_IO.LIB. The four default power supplies provided in the model library are DIGIFPWR (TTL), CD4000_PWR (CD4000 series CMOS), ECL_10K_PWR (ECL 10K), and ECL_100K_PWR (ECL 100K).</p>
+      <h3><a name="1048538">Creating custom digital power supplies</a></h3>
+      <p><a name="1048539">Each digital part model has optional digital power and ground nodes </a>that you can use to specify custom power supplies. To do this, use one of the digital power supplies listed in Table <a href="#1048569" title="Mixed analog/digital simulation"><font color="#0000ff"><u>15&#45;3</u></font></a> below in your design and redefine the digital power supply nodes.</p>
+      <p align="left"><font color="#000000"><strong>Table 15&#45;3&nbsp; </strong></font><strong><a name="1048569">Digital power supply parts in SPECIAL.OLB</a></strong></p>
+      <p align="left"><a name="1049114">&nbsp;</a></p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="432">
+        <caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="209">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1049118">Part type</a><br>(PSpice&nbsp;A&#47;D X model)</strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="223">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1049120">Part name</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1049122">CD4000 power supply</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1049125">CD4000_PWR</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049127">TTL power supply</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049130">DIGIFPWR</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049132">ECL 10K power supply</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049135">ECL_10K_PWR</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1049137">ECL 100K power supply</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1049140">ECL_100K_PWR</a></p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1048570">When creating custom power supplies, you can refer to the power </a>supply definitions in DIG_IO.LIB for examples of power supply subcircuit definitions. The properties relevant to creating custom power supplies are shown in Table <a href="#1048618" title="Mixed analog/digital simulation"><font color="#0000ff"><u>15&#45;4</u></font></a>.</p>
+      <p align="left"><font color="#000000"><strong>Table 15&#45;4&nbsp; </strong></font><strong><a name="1048618">Digital power supply properties</a></strong></p>
+      <p align="left"><a name="1049179">&nbsp;</a></p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="648">
+        <caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="162">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1049192">Part name</a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="236">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1049194">Property</a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="250">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1049196">Description</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="2" cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1049198">CD4000_PWR</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1049200">VOLTAGE</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1049202">CD4000 series CMOS power </a>supply voltage</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049206">PSPICEDEFAULTNET</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049208">CD4000 series CMOS hidden </a>power supply pins for VDD and VSS</p>
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="2" cellpadding="4" valign="top">
+            <p><a name="1049210">DIGIFPWR</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049212">VOLTAGE</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049214">TTL power supply voltage</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049218">PSPICEDEFAULTNET</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049220">TTL hidden power (PWR) and </a>ground (GND) pins</p>
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="2" cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1049222">ECL_10K_PWR</a><br>ECL_100K_PWR</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049224">VEE</a><br>VCC1<br>VCC2</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049226">ECL power supply voltages</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1049230">PSPICEDEFAULTNET</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1049232">ECL hidden power supply pins for </a>VEE, VCC1 and VCC2</p>
+          </td>
+        </tr>
+      </table>
+      <h4><em><a name="1048619">To create a custom digital power supply</a></em></h4>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1048620">This procedure applies to all logic families.</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048624">Place the appropriate power supply part listed in Table </a><a href="#1048569" title="Mixed analog/digital simulation"><font color="#0000ff"><u>15&#45;3</u></font></a> in your design (by logic family).</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048625">Rename the power supply power and ground pins </a>(PSPICEDEFAULTNET properties).</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048626">Reset the power supply power and ground voltages as required.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048627">For any digital part instance that uses the power supply, set its </a>appropriate PSPICEDEFAULTNET pin properties to the power and ground pins created by the secondary power supply.</td>
+          </tr>
+        </table>
+      </div>
+      <h4><a name="1048628">Overriding CD4000 power supply voltage throughout a design</a></h4>
+      <p><a name="1048629">Designs using CD4000 parts often require power supply voltages </a>other than the default 5.0 volts supplied by the standard CD4000_PWR power supply part. If needed, you can override the power supply voltage for all CD4000 parts in a design.</p>
+      <p><a name="1048630">The default power supply nodes used by CD4000 parts are named </a>$G_CD4000_VDD and $G_CD4000_VSS as created by the power supply subcircuit CD4000_PWR. This supply defaults to 5.0 volts. You can override the voltage across these two nodes by defining values for the parameters named CD4000_VDD and CD4000_VSS that are referenced by the CD4000_PWR subcircuit definition.</p>
+      <h4><em><a name="1048631">To change the CD4000_PWR power supply to 12 volts, </a>referenced to ground:</em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048632">Place an instance of the PARAM pseudo&#45;part from </a><font size="2" face="'Courier New'" color="#000000">SPECIAL.OLB</font>.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048633">Create a new PARAM property as follows:</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048634">CD4000_VDD = 12.0V</a></font></blockquote>
+      <p><a name="1048635">DC4000_VSS is left at its default of 0 volts.</a></p>
+      <p><a name="1048636">If the reference voltage also needs to be reset, the same method can </a>be used to define the CD4000_VSS parameter by setting this property of the same PARAM instance. For example, if you want the supplies to go between &#45;5 volts and +5 volts (a difference of 10 volts), set CD4000_VSS to &#45;5V and CD4000_VDD to +10V; as a result, CD4000_VDD is 10 volts above CD4000_VSS, or +5 volts.</p>
+      <h4><a name="1048638">Creating a secondary CD4000, TTL, or ECL power supply</a></h4>
+      <p><a name="1048639">Designs using CD4000, TTL, or ECL parts may require power supply </a>voltages in addition to the default 5.0 volts supplied by the standard CD4000_PWR power supply part. </p>
+      <p><a name="1048640">To create a secondary power supply for any one of the CD4000, TTL, </a>or ECL technologies, you must place the appropriate power supply part and create user&#45;defined nodes with a new voltage value.</p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1048641">Designs with TTL and ECL parts rarely require secondary </a>power supplies. If needed, however, you can use this procedure to add a secondary power supply for TTL and ECL parts.</p>
+      <h4><em><a name="1048642">To create and use a secondary CD4000 power supply with nodes </a>MY_VDD and MY_VSS and a voltage of 3.5 volts:</em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048643">Place the CD4000_PWR power supply and modify the </a>appropriate pin properties as follows:</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048644">VOLTAGE = 3.5V</a><br>PSPICEDEFAULTNET = MY_VDD<br>PSPICEDEFAULTNET = MY_VSS</font></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048645">Select a CD4000 part in the schematic to which the new power </a>supply should apply, then change the appropriate pin properties as follows:</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048646">PSPICEDEFAULTNET = MY_VDD</a><br>PSPICEDEFAULTNET = MY_VSS </font></blockquote>
+      <h2><a name="1048648">Interface generation and node names</a></h2>
+      <p><a name="1048649">The majority of the interface generation process involves PSpice</a>&nbsp;A&#47;D determining whether analog and digital primitives are connected, and if so, inserting an interface subcircuit for each digital connection. This turns the interface node into a purely analog node, which now connects to the analog terminal of the interface subcircuit. To complete the original connection, PSpice&nbsp;A&#47;D creates a new digital node between the digital terminal of the interface subcircuit and the digital primitive.</p>
+      <p><a name="1048650">Because PSpice</a>&nbsp;A&#47;D must create new digital nodes, it must give them unique names. These node names are used in the output variables in the list of viewable traces when you choose Add Trace from the Trace menu. Name generation follows these rules:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048651">The analog node retains the name of the original interface </a>node--either the labeled wire name in the design, or the node name automatically generated for an unlabeled wire.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048652">Each new digital node name consists of the labeled wire name </a>in the design or the node name automatically generated for an unlabeled wire, appended with $AtoD or $DtoA. If the node is attached to more than one digital part, the second digital node is appended with $AtoD2 or $DtoA2, and so on.</td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1048656">Figure </a><font color="#0000ff"><u>15&#45;1</u></font> below shows a fragment of a mixed analog&#47; digital circuit before and after the interface subcircuits have been added. The wires labeled 1 and 2 in the schematic representation are the interface nets connecting analog and digital parts. These translate to interface nodes, which are processed by PSpice&nbsp;A&#47;D to create the circuit fragment shown in the PSpice&nbsp;A&#47;D representation.</p>
+      <p align="left"><a name="1048668"><img src="images/15mix-ad.21.1.1.png" width="388" height="450" alt=""></a></p>
+      <p><a name="1048669">After interface generation, node 1 is a purely analog node, </a>connecting the resistor, transistor, and the analog inputs of both AtoD subcircuits. Node 2 is also a purely analog node, connecting the resistor and the analog output of the DtoA interface. You can see that PSpice&nbsp;A&#47;D inserted two new digital nodes, 1$AtoD and 1$AtoD2, which connect the outputs of the AtoD interfaces to the inverter inputs. It also created one digital node, 2$DtoA, to connect the output of U1 to the digital input of the DtoA interface.</p>
+      <p><a name="1048670">The interface subcircuits PSpice</a>&nbsp;A&#47;D automatically generates are listed in the simulation output file under the section named Generated AtoD and DtoA Interfaces. For the example in Figure <font color="#0000ff"><u>15&#45;1</u></font>, this section would appear in the simulation output file as shown in Figure <font color="#0000ff"><u>15&#45;2</u></font> below.</p>
+      <p align="left"><a name="1048686"><img src="images/15mix-ad.21.1.2.png" width="450" height="363" alt=""></a></p>
+      <p><a name="1048687">The lines that begin with "Moving&#8230;from analog node" indicate the </a>new digital node names that were generated. Below each of these are the interface subcircuit calls inserted by PSpice&nbsp;A&#47;D. </p>
+      <p><a name="1048688">In this example, the subcircuits named AtoD_STD and DtoA_STD </a>are obtained from the I&#47;O model that is referenced by the inverter primitive inside the subcircuit describing the 7404 part. The CAPACITANCE, DRVL (low&#45;level driving resistance), and DRVH (high&#45;level driving resistance) subcircuit parameter values come from the same I&#47;O model.</p>
+      <p><a name="1048691">After the interface subcircuit calls, PSpice</a>&nbsp;A&#47;D inserts one or more interface power supply subcircuits. The subcircuit name is specified in the I&#47;O model for the digital primitive at the interface. In this example, PSpice&nbsp;A&#47;D inserted DIGIFPWR, which is the power supply subcircuit used by all TTL models in the model library. DIGIFPWR creates the global nodes $G_DPWR and $G_DGND, which are the default nodes used by each TTL part.</p>
+    </div>
+    <br>
+    <a href="#pagetop">Return to top of page</a>
+    <hr>
+    <hr align="left">
+    <div style="text-align: left;">
+      <!-- Begin Buttons -->
+      <table width="650" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                    </td>
+<td height="20" width="73">
+<a href="pspugTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<a href="pspugIX.html"><img src="../support/nav2_index.gif" border="0"></a>
+</td>
+          <td>
+            <a href="14digsim.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+          </td>
+          <td>
+            <a href="16digwct.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+          </td>
+          <td>
+            <a>
+<a href="pspug.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+            </a>
+          </td>
+          <td height="20" width="61">
+            <img src="../support/nav2_black.gif">
+          </td>
+          <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+          </td>
+          <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+          </td>
+          <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+          </td>
+        </tr>
+      </table>
+      <!-- End Buttons -->
+    </div>
+    <br>
+    <font size="-1" >
+For support, see <a href="http://support.cadence.com" target="_blank">Cadence Online Support</a> service.</font>
+    <br>
+    <br>
+    <font size="-1" >
+      <i>Copyright &#169; 2011, <a href="http://www.cadence.com">Cadence Design Systems, Inc.</a></i>
+    </font>
+    <br>
+    <font size="-1" >
+All rights reserved.</font>
+    <br>
+    <br>
+  </body>
+</html>

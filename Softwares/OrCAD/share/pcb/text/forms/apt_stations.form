@@ -1,0 +1,160 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+VARIABLE
+PORT 82 21
+HEADER "Edit Aperture Stations"
+
+POPUP <APT_SORTP>"By Geometry""1","By Station""2".
+
+POPUP <APT_ROTP>"Without Rotation""1","With Rotation""2".
+
+POPUP <APT_GEOPOP>"Line""1","Circle""2","Square""3","Rectangle""4",\
+"Oblong""5","Flash""6".
+
+MESSAGE ALREADY 1 "Already Editing..."
+MESSAGE NEW_COUNT 1 "%d new apertures created"
+MESSAGE ILLEGAL_VALUE 1 "Illegal Value"
+MESSAGE NO_UNDO 1 "No delete to undo"
+MESSAGE SAME 1 "Station by this name already exists"
+
+TILE StdTile
+TPANEL 2
+FIELD apt_done
+FLOC 1 1
+MENUBUTTON "OK" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 70 1
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+ENDTILE
+
+TILE HEADER
+TPANEL 0
+TEXT "Wheel number:"
+TLOC 2 0
+ENDTEXT
+
+TEXT
+TLOC 17 0
+INFO number 4
+ENDTEXT
+
+TEXT "Units:"
+TLOC 22 0
+ENDTEXT
+
+TEXT "Width"
+TLOC 24 6
+ENDTEXT
+
+TEXT "Height"
+TLOC 37 6
+ENDTEXT
+
+TEXT "Rotation"
+TLOC 48 6
+ENDTEXT
+
+TEXT "Station"
+TLOC 2 7
+ENDTEXT
+
+TEXT "Geometry"
+TLOC 11 7
+ENDTEXT
+
+TEXT "(or flash name)"
+TLOC 25 8
+ENDTEXT
+
+TEXT "(degrees)"
+TLOC 48 8
+ENDTEXT
+
+FIELD english_units
+FLOC 30 0
+CHECKLIST "Inches" "APT_UNITSGROUP"
+ENDFIELD
+
+FIELD metric_units
+FLOC 42 0
+CHECKLIST "Millimeters" "APT_UNITSGROUP"
+ENDFIELD
+
+FIELD auto
+FLOC 5 3
+MENUBUTTON "Auto" 11 3
+POP "APT_ROTP"
+ENDFIELD
+
+FIELD add
+FLOC 20 3
+MENUBUTTON "Add" 9 3
+POP "APT_GEOPOP"
+ENDFIELD
+
+FIELD sort
+FLOC 33 3
+MENUBUTTON "Sort" 9 3
+POP "APT_SORTP"
+ENDFIELD
+
+FIELD undo
+FLOC 62 7
+MENUBUTTON "Undo Delete" 13 3
+ENDFIELD
+
+ENDTILE
+
+TILE GTILE
+TPANEL 1
+FIELD geometry_copy
+FLOC 59 0
+MENUBUTTON "Copy" 9 2
+ENDFIELD
+
+FIELD geometry_delete
+FLOC 69 0
+MENUBUTTON "Delete" 9 2
+ENDFIELD
+
+FIELD geometry
+FLOC 10 0
+ENUMSET 7
+POP "APT_GEOPOP"
+ENDFIELD
+
+FIELD geometry_station
+FLOC 2 0
+STRFILLIN 5 5
+ENDFIELD
+
+FIELD geometry_width
+FLOC 21 0
+REALFILLIN 10 10
+DECIMAL 3
+ENDFIELD
+
+FIELD geometry_height
+FLOC 34 0
+REALFILLIN 10 10
+DECIMAL 3
+ENDFIELD
+
+FIELD flash_name
+FLOC 21 0
+STRFILLIN 23 32
+ENDFIELD
+
+FIELD geometry_rotation
+FLOC 47 0
+REALFILLIN 8 8
+DECIMAL 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

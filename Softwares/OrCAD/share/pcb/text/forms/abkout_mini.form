@@ -1,0 +1,90 @@
+# $Header: /vobs/psd_backend_data/data/forms-core/prmedit.form /main/64 2010-09-02T07:55:28-04 jds $ 
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 19 13
+HEADER "AiBT Options"
+
+# AiBT command related popups
+# Note that pop-ups are shared if pop-up names are shared
+
+# AIBT popups
+POPUP <boolean>"Yes""1","No""0".
+POPUP <aibt_layer_pop>"Top_Cond""Top_Cond".
+POPUP <aibt_direction_pop>"Closest Side""1","North""2","South""3","East""4","West""5","North-East""6","North-West""7","South-East""8","South-West""9".
+POPUP <aibt_distance_pop>"""".
+
+# parameters for AIBT
+
+TILE ABKOUT_MINI
+
+# parameters for AIBT (Breakout)
+
+TEXT "Override bundle params:" aibt_override_bundle_params_label
+TLOC 1 1
+ENDTEXT
+
+FIELD aibt_bundle_prop_ok
+FLOC 20 1
+ENUMSET 8
+POP boolean
+ENDFIELD
+
+TEXT "Ripup Existing:" aibt_ripup_existing_label
+TLOC 1 3
+ENDTEXT
+
+FIELD aibt_ripup_existing
+FLOC 20 3
+ENUMSET 8
+POP boolean
+ENDFIELD
+
+TEXT "Intermix Bundle Routes:" aibt_intermix_bundle_routes_label
+TLOC 1 5
+ENDTEXT
+
+FIELD aibt_intermix_bundle_routes
+FLOC 20 5
+ENUMSET 8
+POP boolean
+ENDFIELD
+
+TEXT "Breakout Direction:" aibt_direction_label
+TLOC 1 9
+ENDTEXT
+
+FIELD aibt_direction
+FLOC 15 9
+ENUMSET 12
+POP "aibt_direction_pop"
+ENDFIELD
+
+TEXT "Breakout Layer:" aibt_layer_label
+TLOC 1 11
+ENDTEXT
+
+FIELD aibt_layer
+FLOC 15 11
+ENUMSET 12
+OPTIONS prettyprint ownerdrawn
+POP "aibt_layer_pop"
+ENDFIELD
+
+TEXT "Breakout Distance:" aibt_distance_label
+TLOC 1 13
+ENDTEXT
+
+FIELD aibt_distance
+FLOC 15 13
+STRFILLIN 10 20
+POP "aibt_distance_pop"
+ENDFIELD
+
+
+# end parameters for  AIBT (Breakout)
+
+ENDTILE
+
+
+ENDFORM

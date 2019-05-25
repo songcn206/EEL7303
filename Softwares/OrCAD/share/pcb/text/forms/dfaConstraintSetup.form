@@ -1,0 +1,203 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM 
+FIXED
+PORT 56 38
+HEADER "DFA Audit Setup"
+
+POPUP <POPUP2>"Symbol extent""1","pads""2".
+
+POPUP <POPUP4>"Symbol extent""1","pads""2".
+
+POPUP <POPUP6>"Symbol extent""1","pads""2".
+
+POPUP <POPUP8>"Symbol extent""1","pads""2".
+
+POPUP <POPUP_FILTER>"Any""Any","Symbol""Symbol","DevType""DevType","RefDes""RefDes","Property""Property".
+
+POPUP <POPUP_PINFILTER>"Any""Any","Pin Type""Pin Type","Property""Property".
+
+POPUP <POPUP_LAYER>"TOP""TOP","BOTTOM""BOTTOM","Either""Either".
+ 
+POPUP <POPUP_SPACING_LAYER>"BOTH""BOTH","TOP""TOP","BOTTOM""BOTTOM".
+
+POPUP <POPUP_EDGE>"Any""Any","Left""Left","Right""Right","Top""Top","Bottom""Bottom","Side""Side","End""End".
+
+POPUP <POPUP_SUBCLASS>"PLACE_BOUND""PLACE_BOUND","ASSEMBLY""ASSEMBLY".
+
+POPUP <POPUP_METHOD>"IPC-CM-770A""IPC-CM-770A","MIL-STD-275C""MIL-STD-275C","By List""By List".
+
+POPUP <POPUP_BOOLEAN>"No""No","Yes""Yes".
+
+POPUP <POPUP_PINTYPE>"Input""Input","Output""Output","Any Pin""Any Pin","Via""Via","Any Pnt" "Any Pnt".
+
+POPUP <POPUP_PADSTACK>"SMT""SMT","THRU""THRU","Either""Either".
+
+POPUP <POPUP_UNITS>"Mils""Mils","Inch""Inch","Microns""Microns","Millimeter""Millimeter","Centimeter""Centimeter".
+
+POPUP <POPUP_TREE>"Copy""Copy","Delete""Delete".
+
+POPUP <ptype>"Body""1","Pin""2","Property""3".
+POPUP <p_name>"Logical""1","Physical""2".
+POPUP <pglobal>"Can""1","Be""2","Seen""3","Anywhere""4","In""5","Grid""6",\
+        "Body""7".
+POPUP <penum>"A""1","Typical""2","Dropdown""3".
+POPUP <ptop>"Top""1","Of""2","Header""3","Popup""4".
+POPUP <pside>"Side""1","Of""2","Header""3","Popup""4".
+
+
+
+
+TILE
+
+FIELD TreeList
+FLOC 2 2
+FGROUP "Audits"
+TREEVIEW  52 9
+POP "POPUP_TREE"
+ENDFIELD
+ 
+FIELD ImportAudit
+FLOC 2 20 
+FGROUP "Audits"  
+MENUBUTTON "Import Audit..." 15 3  
+ENDFIELD 
+
+
+TEXT
+TLOC 2 26
+INFO NameLabel 15
+TGROUP "Constraints"
+ENDTEXT
+
+TEXT
+TLOC 2 28
+INFO FilterLabel1 24
+TGROUP "Constraints"
+ENDTEXT
+ 
+TEXT
+TLOC 29 28
+INFO FilterLabel2 24
+TGROUP "Constraints"
+ENDTEXT
+
+FIELD Name
+FLOC 10 26
+FGROUP "Constraints"
+STRFILLIN 10 50
+ENDFIELD
+
+
+TEXT
+TLOC 2 30
+INFO SelectLabel1 7
+TGROUP "Constraints"
+ENDTEXT
+
+TEXT
+TLOC 2 32
+INFO ValueLabel1 15
+TGROUP "Constraints"
+ENDTEXT
+
+TEXT
+TLOC 29 30
+INFO SelectLabel2 7
+TGROUP "Constraints"
+ENDTEXT
+
+TEXT
+TLOC 29 32
+INFO ValueLabel2 15
+TGROUP "Constraints"
+ENDTEXT
+
+FIELD Filter1
+FLOC 10 30
+FGROUP "Constraints"
+ENUMSET 9
+POP "POPUP_FILTER"
+ENDFIELD
+
+FIELD FilterValue1
+FLOC 10 32
+FGROUP "Constraints"
+STRFILLIN 10 100
+ENDFIELD
+
+ 
+FIELD Filter2
+FLOC 37 30
+FGROUP "Constraints"
+ENUMSET 9
+POP "POPUP_FILTER"
+ENDFIELD
+ 
+FIELD FilterValue2
+FLOC 37 32
+FGROUP "Constraints"
+STRFILLIN 10 100
+ENDFIELD
+
+
+FIELD FilterButton1
+FLOC 22 32
+FGROUP "Constraints"
+MENUBUTTON "..." 2 3
+ENDFIELD
+
+FIELD FilterButton2
+FLOC 49 32
+FGROUP "Constraints"
+MENUBUTTON "..." 2 3 
+ENDFIELD
+
+GRID grid
+
+FLOC 3 35
+FSIZE 52 11
+OPTIONS HLINES VLINES 
+POP "pglobal"
+
+GHEAD TOP
+HEADSIZE 2
+OPTIONS 3D
+POP "ptop"
+ENDGHEAD
+
+ENDGRID
+
+FIELD UserAudits
+FLOC 26 48
+MENUBUTTON "User Audits..." 15 3
+ENDFIELD
+
+
+FIELD done
+FLOC 3 48
+MENUBUTTON "OK" 10 3
+ENDFIELD
+
+FIELD cancel
+FLOC 14 48
+MENUBUTTON "Cancel" 10 3
+ENDFIELD
+
+FIELD help
+FLOC 44 48
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+GROUP "Audits"
+GLOC 1 0
+GSIZE 55 23
+ENDGROUP
+
+GROUP "Constraints"
+GLOC 1 24
+GSIZE 55 23
+ENDGROUP
+
+ENDTILE
+
+ENDFORM

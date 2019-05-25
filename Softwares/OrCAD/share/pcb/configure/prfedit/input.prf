@@ -1,0 +1,67 @@
+#  $Header: /vobs/psd_backend_data/data/prefs/ui.prf /main/13 17-Sep-01.11:07:00 fxf $
+#------------------------------------------------------------------------------
+#			Input Interface Variables
+#------------------------------------------------------------------------------
+#
+# See User.prf for complete descriptions of fields in this file.
+
+PARENT:PARENT_L=ui/input
+
+SUMMARY:HELP= Changes keyboard and mouse behavior
+
+unix_numlock:TYPE=CHECK:EFF_ONRESTART:\
+HELP=On certain Linux and AIX XServer implementations, we may not be able to correctly \
+detect the 'Numlock' setting on startup. If you see multiple characters echoed to the \
+Allegro commend area when you press the keypad, you will want to set this variable. \
+This variable does not apply to Windows.
+
+buttonfactor:TYPE=REAL:MIN=0.1:MAX=5:EFF_IMMEDIATE:\
+PARENT_L=ui/zoom:\
+HELP=Provides mouse wheel zooming adjustment. By default, uses a value \
+of 1 which zooms by a factor of 2 for every click of the mouse wheel. If \
+less sensitivity is desired then try 0.5 or 0.25 which will zoom by a \
+factor of 1.5 and 1.25 respectively. Range is 0.1 to 5.
+
+no_dragpopup:TYPE=CHECK:EFF_ONNEXTCMD:\
+HELP=By default, to use strokes you must hold down the Ctrl key when pressing \
+the right mouse button.  Setting this option allows strokes to be \
+used by just dragging with the right mouse button depressed. With this \
+option, you lose the ability to select popup menu items by doing right \
+mouse button drag. Instead, you have to click \
+twice with the right mouse button\: once to see the popup and a second \
+time to select a popup item (works like the ValidUI based allegro_layout).
+
+no_shiftpopup:TYPE=CHECK:EFF_ONNEXTCMD:\
+HELP=By default, the mouse Shift-RMB is directed to pre-selection popup. \
+This variable restores roam capability to the Shift-RMB. Useful for \
+2-button mice such as notebooks. Normal pre-selection without the Shift \
+modifier will still function with this option.
+
+form_oldreturn:TYPE=CHECK:EFF_ONNEXTCMD:\
+HELP=When a carriage return is used after adding a value in an Allegro \
+form, forms follows standand conventions and pushes the default button. \
+Set this variable to cause a carriage return to "tab" to the next field.
+
+canvasCommandMode:TYPE=CHECK:EFF_ONNEXTCMD:\
+HELP=Changes Allegro behavior back to 15.0 mode, where the Enter key \
+is required when typing in commands. In new mode, when cursor is in \
+the graphics canvas and an alias is recognized, it is immediately \
+executed without the need of the Enter key. To have type-in command \
+mode the cursor must be clicked in the console (TITO) area.
+
+no_dynamic_zoom:TYPE=CHECK:EFF_ONRESTART:\
+PARENT_L=ui/zoom:\
+HELP=Middle mouse click now performs dynamic zoom which provides zoom in, zoom \
+out, window fit and zoon center operations. If disabled, middle mouse key will \
+behave the old way, providing zoom in and zoom out only.
+
+no_zoom_to_object:TYPE=CHECK:EFF_IMMEDIATE:\
+PARENT_L=ui/zoom:\
+HELP=In find by name, an automatic zoom in operation is performed to enhance \
+display of highlighted objects. If set, the zoom operation is disabled.
+
+cmd_linebuffer:TYPE=LONG:MIN=50:MAX=1000:EFF_ONRESTART:\
+HELP=Provides history length in the canvas/message area (TITO window). \
+Default is 200 lines and may be set anywhere from 50 to 1000 lines. \
+The environment variable, skill_linebuffer, provides the same control for the \
+Skill type-in window.

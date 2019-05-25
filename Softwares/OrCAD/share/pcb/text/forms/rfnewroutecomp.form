@@ -1,0 +1,404 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 28 52
+HEADER "Route RF Comp"
+
+POPUP <subclass>"subclass""subclass".
+POPUP <gndlayers1>"""".
+POPUP <gndlayers2>"""".
+POPUP <linelock>"Off""0","45""45","90""90".
+POPUP <bendmode>"bendmode""bendmode".
+POPUP <meanderbendmode>"Mitered""0","Curved""1".
+POPUP <via_list>"""".
+POPUP <route_type>"Microstrip""0","Stripline""1".
+POPUP <frequnits>"Hz""1","KHz""1000","MHz""1000000","GHz""1000000000".
+POPUP <ElementTypes>"Dummy""0"
+
+TILE
+
+TEXT "Act"
+TLOC 24 1
+INFO acttext 5
+ENDTEXT
+
+FIELD subcolor
+FLOC 1 1
+COLOR 2 1
+ENDFIELD
+
+FIELD active_subclass
+FLOC 4 1
+ENUMSET 17
+OPTIONS prettyprint ownerdrawn
+POP "subclass"
+ENDFIELD
+
+TEXT "Alt"
+TLOC 24 3
+INFO alttext 5
+ENDTEXT
+
+FIELD alt_subcolor
+FLOC 1 3
+COLOR 2 1
+ENDFIELD
+
+FIELD alt_subclass
+FLOC 4 3
+ENUMSET 17
+OPTIONS prettyprint ownerdrawn
+POP "subclass"
+ENDFIELD
+
+TEXT "Via"
+TLOC 24 5
+INFO viatext 5
+ENDTEXT
+
+FIELD padstack_list
+FLOC 4 5
+ENUMSET 17
+POP "via_list"
+ENDFIELD
+
+TEXT "Ground above:" abovegndlabel
+TLOC 1 7
+ENDTEXT
+
+FIELD ground1_subclass
+FLOC 12 7
+ENUMSET 13
+POP "gndlayers1"
+ENDFIELD
+
+TEXT "Ground below:" belowgndlabel
+TLOC 1 9
+ENDTEXT
+
+FIELD ground2_subclass
+FLOC 12 9
+ENUMSET 13
+POP "gndlayers2"
+ENDFIELD
+
+TEXT "Net:" netlabel
+TLOC 1 11
+ENDTEXT
+
+TEXT
+TLOC 7 11
+INFO netname 12
+ENDTEXT
+
+FIELD netname_list
+FLOC 24 11
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+FIELD Trace
+FLOC 1 13
+CHECKLIST "Trace" "rg"
+ENDFIELD
+
+FIELD Meander
+FLOC 18 13
+CHECKLIST "Meander" "rg"
+ENDFIELD
+
+TEXT "Bend mode:" bendmodelabel
+TLOC 1 15
+ENDTEXT
+
+FIELD bend_mode
+FLOC 12 15
+ENUMSET 12
+POP "bendmode"
+ENDFIELD
+
+FIELD meanderbendmode
+FLOC 12 15
+ENUMSET 12
+POP "meanderbendmode"
+ENDFIELD
+
+TEXT "Line width:" linewidthlabel
+TLOC 1 17
+ENDTEXT
+
+FIELD line_width
+FLOC 12 17
+REALFILLIN 10 10
+ENDFIELD
+
+TEXT
+TLOC 24 17
+INFO widthunits 5
+ENDTEXT
+
+TEXT "Radius:" radiuslabel
+TLOC 1 19
+ENDTEXT
+
+FIELD radius
+FLOC 12 19
+REALFILLIN 10 128
+ENDFIELD
+
+TEXT "MILS"
+TLOC 24 19
+INFO radiusunits
+ENDTEXT
+
+TEXT "MiterFraction:"
+TLOC 1 19
+INFO miterfractionlabel
+ENDTEXT
+
+FIELD miter_fraction
+FLOC 18 19
+REALFILLIN 7 7
+REALMIN 0.0
+REALMAX 1.0
+ENDFIELD
+
+TEXT "Line lock:"
+TLOC 1 21
+INFO linelocktext 15
+ENDTEXT
+
+FIELD lock_direction
+FLOC 12 21
+ENUMSET 4
+POP "linelock"
+ENDFIELD
+
+FIELD relative
+FLOC 19 21
+CHECKLIST "Relative"
+ENDFIELD
+
+TEXT "Max leg spacing:"
+TLOC 1 21
+INFO maxspacingtext
+ENDTEXT
+
+FIELD maxspacing
+FLOC 15 21
+REALFILLIN 7 128
+DECIMAL 5
+ENDFIELD
+
+TEXT "MILS"
+TLOC 24 21
+INFO maxspacingunits
+ENDTEXT
+
+TEXT "Max leg length:"
+TLOC 1 23
+INFO maxlengthtext
+ENDTEXT
+
+FIELD maxlength
+FLOC 15 23
+REALFILLIN 7 128
+DECIMAL 5
+ENDFIELD
+
+TEXT "MILS"
+TLOC 24 23
+INFO maxlengthunits
+ENDTEXT
+
+FIELD addrfcomp
+FLOC 1 23
+MENUBUTTON "Insert RF Component" 26 3
+ENDFIELD
+
+FIELD snaptoconnect
+FLOC 1 25
+CHECKLIST "Snap to connect point"
+ENDFIELD
+
+FIELD snaptopadedge
+FLOC 4 27
+CHECKLIST "Snap to pad edge"
+ENDFIELD
+
+FIELD variablelinewidth
+FLOC 4 29
+CHECKLIST "Variable line width"
+ENDFIELD
+
+FIELD taperwidth
+FLOC 4 31
+CHECKLIST "Taper width difference"
+ENDFIELD
+
+FIELD lambdamode
+FLOC 1 31
+CHECKLIST "Lambda/N"
+ENDFIELD
+
+TEXT "Physical length:"
+TLOC 1 33
+INFO physicallengthlabel 12
+ENDTEXT
+
+TEXT
+FLOC 4 35
+INFO physicallength 8
+ENDTEXT
+
+TEXT
+TLOC 18 35
+INFO physicallengthunits 5
+ENDTEXT
+
+TEXT "Desired electrical length:"
+TLOC 1 33
+INFO desiredelengthtext
+ENDTEXT
+
+FIELD desiredelectricallength
+FLOC 4 35
+REALFILLIN 10 128
+DECIMAL 5
+ENDFIELD
+
+TEXT "lambda"
+TLOC 16 35
+INFO lambdatext
+ENDTEXT
+
+TEXT "Working frequency:" frequencylabel
+TLOC 1 37
+ENDTEXT
+
+FIELD frequency
+FLOC 7 39
+REALFILLIN 10 10
+REALMIN 0.0
+ENDFIELD
+
+FIELD frequnit
+FLOC 19 39
+ENUMSET 6
+POP "frequnits"
+ENDFIELD
+
+TEXT "Electrical length:" elengthtextlabel
+TLOC 1 41
+ENDTEXT
+
+TEXT
+FLOC 4 43
+INFO electricallength 12
+ENDTEXT
+
+TEXT
+TLOC 16 43
+INFO electricallengthunits 6
+ENDTEXT
+
+FIELD acinit
+FLOC 1 45
+CHECKLIST "Initialize clearance"
+ENDFIELD
+
+FIELD addassembly
+FLOC 5 47
+CHECKLIST "Add into existing assembly"
+ENDFIELD
+
+TEXT "Active layer:" activelayerlabel
+TLOC 1 1
+ENDTEXT
+
+FIELD activelayer
+FLOC 3 3
+ENUMSET 20
+OPTIONS prettyprint ownerdrawn
+POP "subclass"
+ENDFIELD
+
+TEXT "Component categories:" compcategorylabel
+TLOC 1 5
+ENDTEXT
+
+FIELD radio1
+FLOC 3 7
+CHECKLIST "Microstrip" "rg"
+ENDFIELD
+
+FIELD radio2
+FLOC 15 7
+CHECKLIST "Stripline" "rg"
+ENDFIELD
+
+FIELD radio3
+FLOC 3 9
+CHECKLIST "Multi-layer" "rg"
+ENDFIELD
+
+FIELD radio4
+FLOC 15 9
+CHECKLIST "PCB" "rg"
+ENDFIELD
+
+FIELD radio5
+FLOC 3 11
+CHECKLIST "Waveguide" "rg"
+ENDFIELD
+
+FIELD radio6
+FLOC 15 11
+CHECKLIST "Miscellaneous" "rg"
+ENDFIELD
+
+FIELD radio7
+FLOC 3 13
+CHECKLIST "Lumped" "rg"
+ENDFIELD
+
+FIELD radio8
+FLOC 15 13
+CHECKLIST "Special vias" "rg"
+ENDFIELD
+
+TEXT "Element type:" elementtypelabel
+TLOC 1 15
+ENDTEXT
+
+FIELD element_list
+FLOC 3 17
+#ENUMSET 20
+#POP "ElementTypes"
+LIST "" 24 11
+ENDFIELD
+
+FIELD enabledrccheck
+FLOC 1 38
+CHECKLIST "Enable DRC check"
+ENDFIELD
+
+FIELD placesnaptoconnect
+FLOC 1 45
+CHECKLIST "Snap to connect point"
+ENDFIELD
+
+TEXT "Offset to connect point:" offsetlabel
+TLOC 1 47
+ENDTEXT
+
+FIELD offset
+FLOC 3 49
+REALFILLIN 12 32
+ENDFIELD
+
+
+ENDTILE
+
+ENDFORM
+
+

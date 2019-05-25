@@ -1,0 +1,133 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 27 36
+HEADER "Via Array Matrix"
+
+POPUP <netslist>"""".
+POPUP <padstacklist>"""".
+POPUP <avpthcpop>"Orthogonal""1","Diagonal""0","Full contact""2","8 way connect""3", "None""4".
+
+TILE
+
+GROUP "General options:"
+GLOC 1 0
+GSIZE 26 8
+ENDGROUP
+
+FIELD enabledrc
+FLOC 2 2
+CHECKLIST "Enable DRC check"
+ENDFIELD
+
+FIELD groupmode
+FLOC 2 4
+CHECKLIST "Enable grouping"
+ENDFIELD
+
+FIELD disablepreview
+FLOC 2 6
+CHECKLIST "Disable preview"
+ENDFIELD
+
+GROUP "Operation mode:"
+GLOC 1 8
+GSIZE 26 8
+ENDGROUP
+
+FIELD board
+FLOC 2 10
+CHECKLIST "Board mode" "opmodes"
+ENDFIELD
+
+FIELD bbox
+FLOC 2 12
+CHECKLIST "Area mode" "opmodes"
+ENDFIELD
+
+FIELD shape
+FLOC 2 14
+CHECKLIST "Shape mode" "opmodes"
+ENDFIELD
+
+GROUP "Via net and padstack:"
+GLOC 1 16
+GSIZE 26 11
+ENDGROUP
+
+TEXT "Via net:"
+TLOC 2 18
+ENDTEXT
+
+FIELD availablenetslist
+FLOC 2 20
+STRFILLIN 16 36
+POP "netslist"
+ENDFIELD
+
+FIELD netbrowser
+FLOC 23 20
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+TEXT "Padstack:"
+TLOC 2 22
+ENDTEXT
+
+FIELD availablepadstackslist
+FLOC 2 24
+STRFILLIN 19 36
+POP "padstacklist"
+ENDFIELD
+
+GROUP "Matrix parameters"
+GLOC 1 27
+GSIZE 26 17
+ENDGROUP
+
+FIELD staggeredarray
+FLOC 2 29
+CHECKLIST "Staggered vias"
+ENDFIELD
+
+TEXT "Via-boundary offset:"
+TLOC 2 31
+ENDTEXT
+
+FIELD voffset
+FLOC 3 33
+REALFILLIN 10 128
+ENDFIELD
+
+TEXT "Horizontal via-via gap:"
+TLOC 2 35
+ENDTEXT
+
+FIELD hvvgap
+FLOC 3 37
+REALFILLIN 9 128
+ENDFIELD
+
+TEXT "Vertical via-via gap:"
+TLOC 2 39
+ENDTEXT
+
+FIELD vvvgap
+FLOC 3 41
+REALFILLIN 9 128
+ENDFIELD
+
+GROUP "Thermal relief connects"
+GLOC 1 44
+GSIZE 26 5
+ENDGROUP
+
+FIELD thermconnects
+FLOC 2 46
+ENUMSET 16
+POP "avpthcpop"
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

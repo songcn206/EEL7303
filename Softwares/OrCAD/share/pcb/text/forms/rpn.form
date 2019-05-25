@@ -1,0 +1,122 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM 
+FIXED
+PORT 31 13
+HEADER "Display Pinnumber Netname"
+
+POPUP <textrotation_popup>"0""0","90""90","270""270".
+
+POPUP <textjust_popup>"LEFT""LEFT","CENTER""CENTER","RIGHT""RIGHT".
+
+
+TILE
+
+FIELD renumber
+FLOC 1 1
+CHECKLIST "Re-Number Pins"
+ENDFIELD
+
+TEXT "Start Pin Number:"
+TLOC 4 3
+ENDTEXT
+
+FIELD pinnumber
+FLOC 18 3
+INTFILLIN 5 5
+ENDFIELD
+
+FIELD r2l
+FLOC 17 5
+CHECKLIST "R to L" "right2left"
+ENDFIELD
+
+FIELD t2b
+FLOC 4 5
+CHECKLIST "T to B" "top2bottom"
+ENDFIELD
+
+FIELD l2r
+FLOC 4 7
+CHECKLIST "L to R" "left2right"
+ENDFIELD
+
+FIELD b2t
+FLOC 17 7
+CHECKLIST "B to T" "bottom2top"
+ENDFIELD
+
+FIELD compress
+FLOC 1 9
+CHECKLIST "Compress Pin"
+ENDFIELD
+
+TEXT "Staggered Pin Spacing:"
+TLOC 4 11
+ENDTEXT
+
+FIELD space
+FLOC 18 13
+REALFILLIN 5 5
+DECIMAL 5
+ENDFIELD
+
+
+GROUP "Text Parameter"
+GLOC 1 15
+GSIZE 27 13
+ENDGROUP
+
+TEXT "Block Number:"
+TLOC 3 17
+ENDTEXT
+
+TEXT "Rotation:"
+TLOC 3 19
+ENDTEXT
+
+TEXT "Justification:"
+TLOC 3 21
+ENDTEXT
+
+TEXT "OffsetX:"
+TLOC 3 23
+ENDTEXT
+
+TEXT "OffsetY:"
+TLOC 3 25
+ENDTEXT
+
+FIELD textblock
+FLOC 18 17
+INTSLIDEBAR 2 2
+MIN 1
+MAX 64
+ENDFIELD
+
+FIELD textrotation
+FLOC 18 19
+ENUMSET 6
+POP "textrotation_popup"
+ENDFIELD
+
+FIELD textjust
+FLOC 18 21
+ENUMSET 6
+POP "textjust_popup"
+ENDFIELD
+
+FIELD textoffsetx
+FLOC 18 23
+REALFILLIN 5 5
+DECIMAL 5
+ENDFIELD
+
+FIELD textoffsety
+FLOC 18 25
+REALFILLIN 5 5
+DECIMAL 5
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

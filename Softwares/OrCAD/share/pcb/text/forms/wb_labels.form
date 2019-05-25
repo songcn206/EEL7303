@@ -1,0 +1,171 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 32 12
+
+HEADER "Bond Finger Labels"
+
+POPUP <die_pop> "DIE1" "DIE1".
+POPUP <sort_dir_pop> "Clockwise" "Clockwise", "Counter-Clockwise" "Counter-Clockwise".
+POPUP <sort_start_pop> "Top Left" "Top Left", "Top Right" "Top Right", "Bottom Left" "Bottom Left", "Bottom Right" "Bottom Right".
+
+TILE
+
+TEXT "Refdes:"
+TLOC 1 2
+ENDTEXT
+FIELD comp_name
+FLOC 8 2
+ENUMSET 20
+POP "die_pop"
+ENDFIELD
+
+GROUP "Numbering"
+GLOC 1 5
+GSIZE 30 11
+ENDGROUP
+
+FIELD use_pin_num
+FLOC 3 7
+CHECKLIST "Use die pin numbers"
+ENDFIELD
+
+TEXT "Prefix:"
+TLOC 3 9
+ENDTEXT
+
+FIELD prefix
+FLOC 12 9
+STRFILLIN 16 20
+ENDFIELD
+
+TEXT "Start at:"
+TLOC 3 11
+ENDTEXT
+
+FIELD num_start
+FLOC 12 11
+STRFILLIN 13 20
+POP "die_pop"
+ENDFIELD
+
+TEXT "Increment:"
+TLOC 3 13
+ENDTEXT
+
+FIELD increment
+FLOC 12 13
+ENUMSET 19
+INTFILLIN 16 10 
+ENDFIELD
+
+#ifdef WB_TIERED_SORTING_BETA
+
+GROUP "Sorting"
+GLOC 1 17
+GSIZE 30 13
+ENDGROUP
+
+FIELD sort_finger_loc
+FLOC 3 19
+CHECKLIST "Sort by bond finger location" "sort_item"
+ENDFIELD
+
+FIELD sort_path_tier
+FLOC 5 21
+CHECKLIST "Use tier index on guide path"
+ENDFIELD
+
+FIELD sort_pin_loc
+FLOC 3 23
+CHECKLIST "Sort by die pin location" "sort_item"
+ENDFIELD
+
+TEXT "Primary:"
+TLOC 3 25
+ENDTEXT
+FIELD sort_dir
+FLOC 12 25
+ENUMSET 15
+POP "sort_dir_pop"
+ENDFIELD
+
+TEXT "Start:"
+TLOC 3 27
+ENDTEXT
+FIELD sort_start
+FLOC 12 27
+ENUMSET 15
+POP "sort_start_pop"
+ENDFIELD
+
+FIELD done
+FLOC 1 31
+MENUBUTTON "OK" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 11 31
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 22 31
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+#else
+
+GROUP "Sorting"
+GLOC 1 17
+GSIZE 30 11
+ENDGROUP
+
+FIELD sort_finger_loc
+FLOC 3 19
+CHECKLIST "Sort by bond finger location" "sort_item"
+ENDFIELD
+
+FIELD sort_pin_loc
+FLOC 3 21
+CHECKLIST "Sort by die pin location" "sort_item"
+ENDFIELD
+
+TEXT "Primary:"
+TLOC 3 23
+ENDTEXT
+FIELD sort_dir
+FLOC 12 23
+ENUMSET 15
+POP "sort_dir_pop"
+ENDFIELD
+
+TEXT "Start:"
+TLOC 3 25
+ENDTEXT
+FIELD sort_start
+FLOC 12 25
+ENUMSET 15
+POP "sort_start_pop"
+ENDFIELD
+
+FIELD done
+FLOC 1 29
+MENUBUTTON "OK" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 11 29
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 22 29
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+#endif
+
+
+ENDTILE
+ENDFORM

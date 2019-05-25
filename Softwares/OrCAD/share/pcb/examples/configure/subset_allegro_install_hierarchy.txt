@@ -1,0 +1,156 @@
+
+	Techniques for Creating Smaller SPB Cadence Hierarchy
+
+This paper describes how to create a sub-set of Cadence hierarchy. This
+process is not supported by Cadence may change from release to release. 
+Typically this is done to separate out a batch program like extracta.
+
+This technique only applies to programs from <cdsroot>/tools/pcb/bin
+
+
+=========================================================================
+Alternatives
+1) It is much easier to use the actual Cadence install hierarchy and
+   delete certain directories to save disk space. Your install hierarchy
+   may not have all these directories.
+
+   doc - Documentation, this saves a large amount of space
+   OpenAccess - only required if you use certain SIP features
+   veriloglib - Verilog libraries, not required for back-end tools
+   tools/oa   - required if you require certain SIP features
+   tools/cdnshelp - If you delete the above doc directory, then delete this
+
+
+=========================================================================
+Tools to help separate out stand-alone executables
+
+1) Allegro env variable: set wait_debug
+   - When running tools this will tell you if one Allegro executable
+     needs to spawn another program. It is does then you will need to copy
+     that program and run a dll analysis on that program.
+
+2) Dll/Share Library Dependency Analysis
+   - Most programs require additional dlls (Windows) or shared libraries (UNIX)
+     to run. You can discover these requirements by analyzing the program
+
+     UNIX: ldd
+	example: To discover the shared libraries required by Allegro
+		wstarter ldd `which allegro.exe`
+
+	    The Cadence wstarter program ensures that the correct library paths
+	    are initialized
+
+     Windows: procexp.exe  or depends.exe can be found by searching Google.
+	Both sport a user interface.
+	- procexp can be obtained from sysinternals (now part of Microsoft)
+	  This is a dynamic dll analyzer and can look at any running program
+	- depends.exe is a static analyzer
+
+3) On Windows, starting with SPB16.2, Cadence tools require certain Microsoft
+   provided dlls be installed in the Windows directories on systems that run
+   Cadence provided executables. This needs to be done once and you can do
+   it with via any of the following methods:
+   - install the actual Cadence release via the client install option
+   - install the Allegro Free Viewer for that release
+   - run the installer provided in <cdsroot>/tools/msbase
+   - obtain the Microsoft Visual Studio 2005 redistributable package from Microsoft.
+
+   Older SPB releases provided older versions of these libraries in our
+   <cdsroot>/tools/bin directory. The required files you would need to
+   copy are to your new tools/bin directory are:
+	msvcp71.dll, msvcr71.dll and mfc*.dll
+
+
+=========================================================================
+
+Creating a sub-hierarchy
+1) First identify the additional programs required. Test run the program with 
+   typical test data and the env variable, wait_debug set. Any program that
+   is spawned by the testing we be reported in the window.
+2) Identify your dll dependencies by looking at the dll requirements via your
+   Dll/shared library analysis tool. Look for any Dlls with the Cadence path.
+3) Create an empty Cadence hierarchy:
+	<cdsroot>
+		tools
+			pcb/bin
+		share
+			pcb
+4) Copy the identified exe and dlls. Programs need to remain in the same bin 
+   directory as the real Cadence hierarchy.
+    TIP: On Windows, to avoid setting the PATH variable you can copy any Dll to 
+	the tools/pcb/bin directory 
+
+5) Starting with SPB16.2, many Allegro batch programs have been combined into
+   a single executable. The required files are different on UNIX vs. Windows.
+   All files are in <cdsroot>/tools/pcb/bin
+
+   UNIX
+	- allegro_batch.exe required
+	- <program> is a symbolic link to allegro_batch.exe
+   Windows
+	- allegro_batch_sh.dll required
+	- <program>.exe required
+	     - This note program is just a copy of allegro_batch.exe
+   Note programs like extracta will appear and function like it did in older 
+   releases. 
+
+6) Always copy programs
+	tools/bin/cds_root.exe
+	tools/pcb/bin/sys_root.exe
+
+7) Allegro programs require additional files from the share hierarchy. They
+   MUST be placed in the same location in your subset hierarchy. The following 
+   is the minimal set for batch programs:
+	share/cdssetup/spsmi
+	pcb/text - For batch programs you can delete icons, cuimenus and forms
+		- You MUST keep views if your desire is extracta.
+
+8) Other typical programs and files
+	bem2d - required to perform calculations in certain extract views.
+   Don't forget to analysis the dll requirements for these seconday programs.
+
+9) You are done. Remove the Cadence PATH items (or update it to reflect your
+   new sub-hierarchy), then test it.
+
+		
+=========================================================================
+EXPERT NOTES:
+-) SPB files on UNIX take advantage of symbolic links (e.g. ln -s ). If you 
+    copy a symbolic link you don't create a link, you create an additional
+    copy of the file. To preserve links, it is better to duplicate the
+    Cadence hierarchy using tar and then delete the files you don't want.
+    Example of tar (assumes you have created an empty <new cdsroot>)
+	cd <cdsroot>; tar cf - . | (cd <new cdsroot>; tar xvf - )
+    The rsync program can also be used to duplicate Cadence hierarchies.
+-) On Windows, SPB programs in tools/pcb/bin can function without having 
+   the Windows PATH variable modified with the following restrictions:
+      - All dlls they require are in the same directory as the program.
+      - they don't require spawning other SPB programs. 
+-) GUI programs require these additional binaries
+    Interprocess Communication
+	tools/bin/cdsMsgServer
+	tools/bin/cdsNameServer
+    Starting in 16.3, on UNIX, these CDS programs are wrappers and require
+    a dependancy analysis.
+-) netrev/genfeedformat require (also required of GUI programs in 16.3)
+	tools/bin/cdszip
+-) Skill IPC interface (not normally required)
+	tools/bin/cdsServIpc
+-) Skill in GUI programs
+	tools/SKILL08.01  - select the highest version of this directory
+	share/etc
+-) Constraint Manager
+	share/consmgr
+	share/cdssetup/smi/spcmgr
+-) Sigware
+	share/sigwave
+-) Error messages - recommend copy entire hierarchy as it is not that big
+	share/cdssetup/smi
+-) If using GUI programs on UNIX only, you will need to copy the following:
+	tools/mainwin*
+	share/mainwin*
+-) In certain rare cases (in the GUI programs), we explicitly load dlls. Via
+   the dependency analysis, you won't see the dependancy unless you run that
+   command. The tools will function without these dlls but will refuse the
+   run the commands requiring those dlls.
+

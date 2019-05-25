@@ -1,0 +1,74 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 29 40
+HEADER "Group"
+
+POPUP <padPopup>"""".
+POPUP <groupPopup>"""".
+POPUP <profilePopup>"""".
+
+TILE
+
+TEXT "Spacing:"
+TLOC 1 1
+ENDTEXT
+FIELD fingerSpacing
+FLOC 10 1
+STRFILLIN 16 128
+ENDFIELD
+
+
+GROUP "Bond finger"
+GLOC 1 5
+GSIZE 27 5
+ENDGROUP
+FIELD padName
+FLOC 3 7
+ENUMSET 16
+POP "padPopup"
+ENDFIELD
+FIELD addPadstack
+FLOC 22 7
+MENUBUTTON "Add" 4 3
+ENDFIELD
+
+GROUP "Wire Profile"
+GLOC 1 10
+GSIZE 27 5
+ENDGROUP
+FIELD profile
+FLOC 3 12
+STRFILLIN 16 1023
+POP "profilePopup"
+ENDFIELD
+
+FIELD create
+FLOC 1 16
+MENUBUTTON "Create bond fingers" 27 3
+ENDFIELD
+
+TEXT "Number of bond fingers that will be created given current settings:"
+TLOC 1 20
+FSIZE 27 3
+ENDTEXT
+
+TEXT "0"
+TLOC 5 23
+INFO finger_count 10 20
+OPTIONS bold
+ENDTEXT
+
+TEXT "Number of new DRCs based on current settings:"
+TLOC 1 25
+FSIZE 27 3
+ENDTEXT
+
+TEXT "0"
+TLOC 5 28
+INFO finger_drcs 10 20
+OPTIONS bold
+ENDTEXT
+
+ENDTILE
+ENDFORM

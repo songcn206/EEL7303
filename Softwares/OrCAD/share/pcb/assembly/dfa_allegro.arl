@@ -1,0 +1,210 @@
+
+Environment DFA "___ERC_BHARAT"
+
+    Object design
+
+        Public
+            Predicate Mergeable (component) component(design) is SKILL Function emiGetComp;
+            Predicate Mergeable (value) name(design) is SKILL Function emiGetDesignName;
+            Predicate Mergeable (via) via(design) is SKILL Function emiGetVia;
+            Predicate Mergeable (pin) pin(design) is SKILL Function emiGetDesignPin;
+            Predicate Mergeable (net) net(design) is SKILL Function emiGetNet;
+            Predicate Mergeable (value) getLayer(design) is SKILL Function emiGetDesignLayer;
+			Predicate Mergeable (polygon) getPlaneOutline(design) is SKILL Function emiGetPlaneOutline;
+
+        EndPublic
+    EndObject design
+    
+    
+    
+    
+    Object component
+        
+        Public
+           Predicate  Mergeable (value) isConnector(component) is Function emiIsConnector;
+           Predicate  Mergeable (value) name(component) is SKILL Function emiGetCompName;
+           Predicate  Mergeable (value) getComp2CompDistance(component, component) is SKILL Function emiGetComp2CompDistance;
+           Predicate Mergeable (component) hasProperty(component, value ) is SKILL Function emiObjectHasProperty;
+           Predicate Mergeable (value) getPropertyValue( component, value ) is SKILL Function emiGetObjectPropValue;
+           Predicate  Mergeable (component) getCompInArea(component, Value, Value) is SKILL Function emiGetCompInArea;
+           Predicate  Mergeable (component) matchObjectByValue(component, value, value) is SKILL Function emiMatchObjectByValueUU;
+           Predicate  Mergeable (polygon) polygon(component) is SKILL Function emiGetPolygonOfComponent;
+
+           Predicate  Mergeable (design)   getDesign(component) is SKILL Function emiGetDesign;
+           Predicate  Mergeable (pin)      getPin(component) is SKILL Function emiGetPin;
+           Predicate  Mergeable (value) getComponentType(component) is SKILL Function emiGetComponentType;
+           Predicate  Mergeable (component) getByName(value) is SKILL Function emiGetComponentByName;
+           Predicate  Mergeable (value) getLayer(component) is SKILL Function emiGetComponentLayer;
+           Predicate Mergeable (value) getCenter(component) is SKILL Function emiGetCenter;
+           Predicate Mergeable (value) getCompOrient(component) is SKILL Function dfaGetComponentOrient;
+           Predicate Mergeable (value) getCompPackType(component) is SKILL Function dfaGetComponentPackageType;
+           Predicate Mergeable (value) getCompDeviceType(component) is SKILL Function dfaGetComponentDeviceType;
+           Predicate Mergeable (value) inStep(value,value,value) is SKILL Function dfaValinStep;
+           Predicate Mergeable (value) getComponentBodyLength(component) is SKILL Function dfaGetCompBodyLength;
+           Predicate Mergeable (value) getComponentSpan(component) is SKILL Function dfaGetComponentSpan;
+           Predicate Mergeable (component) matchCompCategory(component,value,value) is SKILL Function dfaMatchCompCategory;
+           Predicate  Mergeable (component) isMountingHole(component)
+is SKILL Function emiIsMountingHoleComponent;
+           Predicate Mergeable (value) WriteDRCMarker(component,component,value,value) is SKILL Function dfaWriteDRCMarker;
+           Predicate Mergeable (value) WriteDRCMarker(component,value,value) is SKILL Function dfaWriteDRCMarkerOne;
+           Predicate Mergeable (value) getDistance(component,component,value,value,value) is SKILL Function dfaGetDistance;
+           Predicate Mergeable (value) getSymbolProperty(component, value) is SKILL Function dfaGetSymbolProperty;
+           Predicate Mergeable (value) checkRedundant(component, component, value) is SKILL Function dfaCheckRedundant;
+           Predicate Mergeable (value) remainder(value, value)  is SKILL Function dfaFindRemainder;
+
+        EndPublic
+    EndObject component
+  
+
+    Object via
+ 
+      Public
+         Predicate Mergeable (value) name(via) is SKILL Function emiGetViaName;
+         Predicate Mergeable (value) getViaLayer(via) is SKILL Function emiGetViaLayer;
+         Predicate Mergeable (value) drillDia(via) is SKILL Function dfaGetDrillDiameter;
+         Predicate Mergeable (via) isPlated(via) is SKILL Function dfaIsPlated;
+		 Predicate Mergeable (Value) isNetConnected(via) is SKILL Function dfaIsNetConnected;
+		 Predicate Mergeable (Value) isThroughHole(via) is SKILL Function dfaIsThroughHole;
+		 Predicate Mergeable (Value) noOfCLines(via) is SKILL Function dfaNoOfCLines;
+         Predicate Mergeable (hole) testPoint(via) is SKILL Function dfaIsTestPoint;
+         Predicate Mergeable (via) matchPinOrViaCategory(via,value,value) is SKILL Function dfaMatchPinOrViaCategory;
+         Predicate Mergeable (value) getMinAnnularRingSize(via) is SKILL Function dfaGetMinAnnularRing;
+         Predicate           (value)     WriteDRCMarker(via, value, value ) is SKILL Function dfaWriteDRCMarkerOne;
+      EndPublic
+    EndObject via 
+
+    Object pin          
+
+     Public
+         Predicate  Mergeable (value) name(pin) is SKILL Function emiGetPinName;
+         Predicate Mergeable (value) drillDia(pin) is SKILL Function dfaGetDrillDiameter;
+         Predicate Mergeable (pin) isPlated(pin) is SKILL Function dfaIsPlated;
+         Predicate Mergeable (hole) testPoint(pin) is SKILL Function dfaIsTestPoint;
+         Predicate Mergeable (value) getMinAnnularRingSize(pin) is SKILL Function dfaGetMinAnnularRing;
+         Predicate Mergeable (pin) matchPinOrViaCategory(pin,value,value) is SKILL Function dfaMatchPinOrViaCategory;
+         Predicate Mergeable (value)     getPropertyValue(pin, value ) is SKILL Function emiGetObjectPropValue;
+         Predicate  Mergeable (value) getDistance( pin, component) is
+SKILL Function emiMatchDistance;
+         Predicate  Mergeable (value) getDistance(pin, pin) is SKILL Function emiGetPin2PinDistance;
+         Predicate  Mergeable (value) getNetName(pin) is SKILL Function emiGetPinNetName;
+         Predicate  Mergeable (pin) hasProperty( pin, value ) is SKILL Function emiObjectHasProperty;
+         Predicate  Mergeable (component) getComponent(pin) is SKILL Function emiGetComponentOfPin;
+         Predicate  Mergeable (net)   getNetOfPin(pin) is SKILL Function emiGetNetOfPin ;
+         Predicate  Mergeable (pin) isMountingHole(pin) is SKILL Function emiIsMountingHolePin;
+         Predicate           (value)     WriteDRCMarker(pin, value, value ) is SKILL Function dfaWriteDRCMarkerOne;
+
+      EndPublic
+     EndObject pin
+   
+    Object hole          
+
+     Public
+         Predicate  Mergeable (pin)       isPin(hole) is SKILL Function dfaIsPin;
+         Predicate  Mergeable (via)       isVia(hole) is SKILL Function dfaIsVia;
+         Predicate  Mergeable (design)    getDesign(hole) is SKILL Function emiGetDesign;
+         Predicate Mergeable (value) getHolePadStackName(hole) is SKILL Function dfaGetHolePadStackName;
+         Predicate Mergeable (value) name(hole) is SKILL Function dfaGetHoleName;
+         Predicate Mergeable (hole) getAutoGeneratedTP(pin) is SKILL Function dfaGetAutoGeneratedTP;
+         Predicate Mergeable (hole) getAutoGeneratedTP(via) is SKILL Function dfaGetAutoGeneratedTP;
+         Predicate Mergeable (pin) getPinsInArea(hole, value, value ) is SKILL Function dfaGetPinsInArea;
+         Predicate Mergeable (via) getViasInArea(hole, value, value ) is SKILL Function dfaGetViasInArea;
+         Predicate Mergeable (value) getPadStack(hole) is SKILL Function dfaGetPadStack;
+         Predicate Mergeable (value) matchPinType(hole,value) is SKILL Function dfaMatchPinType;
+         Predicate Mergeable (value) getLayerTP(hole) is SKILL Function dfaGetLayerTP;
+         Predicate Mergeable (value) getLayer(hole) is SKILL Function dfaGetPinViaLayer;
+         Predicate Mergeable (value) getXCoord(hole) is SKILL Function dfaGetXCoord;
+         Predicate Mergeable (value) getYCoord(hole) is SKILL Function dfaGetYCoord;
+         Predicate Mergeable (value) getMinPadSize(hole,value) is SKILL Function dfaGetMinPadSize;
+         Predicate Mergeable (value) getHole2HoleDistance(hole,via) is SKILL Function dfaGetPin2PinDistance;
+         Predicate Mergeable (value) getHole2HoleDistance(hole,pin) is SKILL Function dfaGetPin2PinDistance;
+         Predicate  Mergeable (hole) TPViaUnderComp(component, hole) is SKILL Function dfaTestPointViaUnderComp;
+           
+         Predicate Mergeable (value) findFixedTP(hole) is SKILL Function dfaFindFixedTP;
+         Predicate Mergeable (value) getTPDirectlyOnPin(hole) is SKILL Function dfaGetTPDirectlyOnPin;
+         Predicate Mergeable (value) symbolVia(hole) is SKILL Function dfaIsSymbolVia;
+         Predicate Mergeable (hole) testPointTented(hole) is SKILL Function
+dfaIsTPTented;
+         Predicate Mergeable (value) isSymbolVia(hole) is SKILL Function dfaGetTPDirectlyOnPin;
+         Predicate           (value)     WriteDRCMarker(hole, value, value ) is SKILL Function dfaWriteDRCMarkerOne;
+
+      EndPublic
+     EndObject hole
+  
+    Object net
+
+      Public
+         Predicate Mergeable (value) name(net) is SKILL Function emiGetNetName;
+         Predicate Mergeable (net) getNetOnLayer(net, value) is  SKILL Function emiGetNetOnLayer;
+         Predicate Mergeable (net) getNetSegOnLayer(net, value) is  SKILL Function emiGetNetSegOnLayer;
+         Predicate Mergeable (value) getSegLength(net) is  SKILL Function emiGetSegLength;
+         Predicate Mergeable (value) getSegLengthinMeter(net) is  SKILL Function emiGetSegLengthinMeter;
+         Predicate Mergeable (design) getDesign(net) is  SKILL Function emiGetDesign;
+         Predicate Mergeable (via) getViasOnNet(net) is  SKILL Function emiGetViasOnNet;
+         Predicate Mergeable (pin) getPinsOnNet(net) is  SKILL Function emiGetPinsOnNet;
+         Predicate  Mergeable (net) matchObjectByPropValue(net, value, value) is SKILL Function emiMatchObjectByValue;
+         Predicate  Mergeable (net) getNetOfSeg(net) is SKILL Function emiGetNetOfSeg;
+         Predicate  Mergeable (component) getCompsConnToNet(net) is SKILL Function emiGetCompsConnToNet;
+         Predicate  Mergeable (net)   getClineOfSeg(net) is SKILL function emiGetClineOfSeg;
+         Predicate  Mergeable (value) getClineLength(net) is SKILL function emiGetClineLength ;
+         Predicate  Mergeable (value) getLayer(net) is SKILL Function
+emiGetSegmentLayer ;
+         Predicate  Mergeable (value) getWidth(net) is SKILL Function
+emiGetSegmentWidth ;
+         Predicate  Mergeable (value) getDistance(net, pin) is Function emiGetPinOrVia2SegmentDistance ;
+         Predicate  Mergeable (value) getDistance(net, via) is Function emiGetPinOrVia2SegmentDistance ;
+         Predicate  Mergeable (value) getDistance(net, component) is SKILL Function emiGetComponent2SegmentDistance ;
+      EndPublic
+
+    EndObject net 
+    Object drc          
+
+     Public
+         Predicate  Mergeable (value)     name(drc) is SKILL Function dfaGetDRCName;
+         Predicate  Mergeable (drc)       hasProperty(drc, value ) is SKILL Function emiObjectHasProperty;
+         Predicate  Mergeable (value)     getPropertyValue(drc, value) is SKILL Function emiGetObjectPropValue;
+         Predicate  Mergeable (design)    getDesign(drc) is SKILL Function emiGetDesign;
+      EndPublic
+     EndObject drc
+   
+
+
+    Object polygon
+        Private
+            Predicate hilite(polygon) is Function emiAObjectHilite;
+        EndPrivate
+
+
+        Public
+            Predicate Mergeable (value) name(polygon) is SKILL Function emiGetPolygonName;
+            Predicate Mergeable (polygon) getIntersectionPolygon(polygon , polygon) is SKILL Function emiGetIntersectionPolygon;
+            Predicate Mergeable (polygon) getUnionPolygon(polygon , polygon) is SKILL Function emiGetUnionPolygon;
+            Predicate Mergeable (value) getArea(polygon) is SKILL Function emiGetPolygonArea;
+			Predicate Mergeable (net) getClineSegsInArea(polygon) is SKILL Function emiGetClineSegsInArea;
+ 
+        EndPublic
+    EndObject polygon
+ 
+
+    Predicate Mergeable (value) convertUnits( value, value) is SKILL Function emiConvertUnits;
+    Predicate Mergeable (value) convertDbToUserUnits( value, value) is SKILL Function dfaConvertDbToUserUnits;
+    Predicate Mergeable (value) convertUserToDBUnits( value, value) is SKILL Function dfaConvertUserToDBUnits;
+    Predicate Mergeable (value) getShapeOutline(value) is SKILL Function emiGetOutline;
+    Predicate Mergeable (value) integer(value) is SKILL Function emiInteger;
+    Predicate Mergeable (value) matchCapType(value,value) is SKILL Function emiMatchCapType;
+    Predicate Mergeable (value) float(value) is SKILL Function float;
+    Predicate Mergeable (value) atof(value) is SKILL Function evalstring;
+    Predicate Mergeable (value) upperCase(value) is SKILL Function getUpperCase;
+    Predicate Mergeable (value) atoi(value) is SKILL Function evalstring;
+    Predicate Mergeable (value) isTrue(value) is SKILL Function emiReturn;
+
+    Predicate  (value) CompareProfile(value, value, value,value) is SKILL Function emiCompareProfile;
+    Predicate  (value) getListSumMerge(value) is SKILL Function emigetListSumMerge;
+    Predicate  Mergeable (value) getDistance(value,value, value,value) is SKILL Function emiGetDistance;
+    Predicate  Mergeable (value) ntoa(value) is SKILL Function emiMPMakeString;
+    Predicate  Mergeable (value) format(value, value) is SKILL Function emiFormatString;
+    Predicate  Mergeable (value) getEdge(value) is SKILL Function dfaGetEdge;
+    Predicate  Mergeable (value) getOtherEdge(value,value) is SKILL Function dfaGetOtherEdge;
+    Predicate Mergeable (value) expandLayers(value) is SKILL Function dfaExpandLayers;
+    Predicate           (value) executeOnce(value) is SKILL Function dfaExecuteOnce;
+     
+EndEnvironment DFA

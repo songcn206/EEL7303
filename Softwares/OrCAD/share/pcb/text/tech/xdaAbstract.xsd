@@ -1,0 +1,904 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+xmlns:dieAbs="http://www.cadence.com/dieAbs"
+targetNamespace="http://www.cadence.com/dieAbs" elementFormDefault="qualified">
+
+  <!-- Simple data types used -->
+  <simpleType name="integerList">
+    <list itemType="integer" />
+  </simpleType>
+
+  <simpleType name="char">
+    <restriction base="string">
+      <length value="1" fixed="true" />
+    </restriction>
+  </simpleType>
+
+  <simpleType name="xy" >
+    <restriction base="dieAbs:integerList">
+      <minLength value="2" />
+      <maxLength value="2" />
+    </restriction>
+  </simpleType>
+
+  <simpleType name="widthHeight" >
+    <restriction base="dieAbs:integerList">
+      <minLength value="2" />
+      <maxLength value="2" />
+    </restriction>
+  </simpleType>
+
+  <!-- A rectangle is defined by a lower left x&y and an upper right x&y coordinate pair.
+       For example, 0 0 100 100 -->
+  <simpleType name="rectangle" >
+    <restriction base="dieAbs:integerList">
+      <minLength value="4" />
+      <maxLength value="4" />
+    </restriction>
+  </simpleType>
+
+  <simpleType name="endPoints" >
+    <restriction base="dieAbs:integerList">
+      <minLength value="4" />
+      <maxLength value="4" />
+    </restriction>
+  </simpleType>
+
+  <complexType name="polygon">
+    <sequence>
+      <element name="VERTEX" type="dieAbs:xy" minOccurs="3" maxOccurs="unbounded" />
+    </sequence>
+  </complexType>
+
+  <complexType name="property">
+    <sequence>
+      <element name="PROPNAME" type="string" />
+      <element name="PROPVALUE" type="string" />
+    </sequence>
+  </complexType>
+
+  <!-- Allows users to extend types. Recursive.-->
+  <complexType name="userDef">
+    <sequence>
+      <element name="NAME" type="string" />
+      <element name="VALUE" type="string" minOccurs="0" />
+      <element name="PROPERTY" type="dieAbs:property" minOccurs="0" maxOccurs="unbounded" />
+      <element name="USERDEFINED" type="dieAbs:userDef" minOccurs="0" maxOccurs="unbounded" />
+    </sequence>
+  </complexType>
+
+  <!-- dbUnits specifies the database units per micron to convert distance values to microns
+       distance value divided by dbUnits = microns
+        -->
+  <simpleType name="dbUnits">
+    <restriction base="unsignedShort">
+      <enumeration value="100" />
+      <enumeration value="200" />
+      <enumeration value="1000" />
+      <enumeration value="2000" />
+      <enumeration value="10000" />
+      <enumeration value="20000" />
+    </restriction>
+  </simpleType>
+
+  <!-- Reference from LEF/DEF
+        -->
+  <simpleType name="macroType">
+    <restriction base="string">
+      <enumeration value="RING"/>
+      <enumeration value="BLOCK"/>
+      <enumeration value="BLOCK BLACKBOX"/>
+      <enumeration value="BLOCK SOFT"/>
+      <enumeration value="BLOCK MEMORY"/>
+      <enumeration value="COVER"/>
+      <enumeration value="COVER BUMP"/>
+      <enumeration value="PAD"/>
+      <enumeration value="PAD INPUT"/>
+      <enumeration value="PAD OUTPUT"/>
+      <enumeration value="PAD INOUT"/>
+      <enumeration value="PAD POWER"/>
+      <enumeration value="PAD SPACER"/>
+      <enumeration value="PAD AREAIO"/>
+      <enumeration value="ENDCAP"/>
+      <enumeration value="ENDCAP PRE"/>
+      <enumeration value="ENDCAP POST"/>
+      <enumeration value="ENDCAP TOPLEFT"/>
+      <enumeration value="ENDCAP TOPRIGHT"/>
+      <enumeration value="ENDCAP BOTTOMLEFT"/>
+      <enumeration value="ENDCAP BOTTOMRIGHT"/>
+      <enumeration value="CORE"/>
+      <enumeration value="CORE FEEDTHRU"/>
+      <enumeration value="CORE TIEHIGH"/>
+      <enumeration value="CORE TIELOW"/>
+      <enumeration value="CORE SPACER"/>
+      <enumeration value="CORE ANTENNACELL"/>
+      <enumeration value="CORE WELLTAP"/>
+      <enumeration value="BLOCK RING"/>
+      <enumeration value="CORNER"/>
+      <enumeration value="VIA"/>
+      <enumeration value="UNKNOWN" />
+      <enumeration value="NONE"/>
+    </restriction>
+  </simpleType>
+
+  <!-- Gather control type -->
+  <simpleType name="gatherControlType">
+    <restriction base="string">
+      <enumeration value="IGNORE" />
+      <enumeration value="INCLUDE" />
+    </restriction>
+  </simpleType>
+
+  <!-- CELLNAME specifies the name of the GDSII structure name to use when placing 
+           an instance of a macro. -->
+  <!-- MACROOFFSET specifies the macro origin offset from the foreign cell 
+           origin.  Offset is 0,0 by default.  -->
+  <!-- ORIENT specifies the orientation of the foreign cell when the macro is in 
+           north orientation.  The default value is R0 (N) -->
+  <complexType name="foreign" >
+    <sequence>
+      <element name="CELLNAME" type="string" />
+      <element name="MACROOFFSET" type="dieAbs:xy" minOccurs="0" />
+      <element name="ORIENT" type="dieAbs:orientation" minOccurs="0" />
+    </sequence>
+  </complexType>
+
+  <!-- Bondpad position on driver -->
+  <simpleType name="staggerPosStrings">
+    <restriction base="string">
+      <enumeration value="INNER" />
+      <enumeration value="MIDDLE" />
+      <enumeration value="OUTER" />
+    </restriction>
+  </simpleType>
+
+  <!-- Reference from LEF/DEF -->
+  <simpleType name="direction">
+    <restriction base="string">
+      <enumeration value="INOUT" />
+      <enumeration value="OUTPUT" />
+      <enumeration value="INPUT" />
+      <enumeration value="FEEDTHRU" />
+      <enumeration value="TRISTATE" />
+      <enumeration value="SWITCH" />
+      <enumeration value="JUMPER" />
+      <enumeration value="UNKNOWN" />
+      <enumeration value="UNUSED" />
+    </restriction>
+  </simpleType>
+
+  <!-- Reference from LEF/DEF -->
+  <simpleType name="orientation">
+    <restriction base="string">
+      <enumeration value="R0" />
+      <enumeration value="R90" />
+      <enumeration value="R180" />
+      <enumeration value="R270" />
+      <enumeration value="MX" />
+      <enumeration value="MY" />
+      <enumeration value="MX90" />
+      <enumeration value="MY90" />
+    </restriction>
+  </simpleType>
+
+  <simpleType name="orientationNoMirror">
+    <restriction base="string">
+      <enumeration value="R0" />
+      <enumeration value="R90" />
+      <enumeration value="R180" />
+      <enumeration value="R270" />
+    </restriction>
+  </simpleType>
+
+  <!-- Reference from LEF/DEF -->
+  <simpleType name="placeStatus">
+    <restriction base="string">
+      <enumeration value="COVER" />
+      <enumeration value="FIXED" />
+      <enumeration value="PLACED" />
+      <enumeration value="UNPLACED" />
+    </restriction>
+  </simpleType>
+
+  <simpleType name="bumpPlaceStatus">
+    <restriction base="string">
+      <enumeration value="COVER" />
+      <enumeration value="FIXED" />
+      <enumeration value="PLACED" />
+    </restriction>
+  </simpleType>
+
+  <simpleType name="routeStatus">
+    <restriction base="string">
+      <enumeration value="COVER" />
+      <enumeration value="FIXED" />
+      <enumeration value="ROUTED" />
+    </restriction>
+  </simpleType>
+
+  <!-- Reference from LEF/DEF -->
+  <simpleType name="use">
+    <restriction base="string">
+      <enumeration value="SIGNAL" />
+      <enumeration value="POWER" />
+      <enumeration value="GROUND" />
+      <enumeration value="CLOCK" />
+      <enumeration value="ANALOG" />
+      <enumeration value="SCAN" />
+      <enumeration value="RESET" />
+      <enumeration value="TIEOFF" />
+      <enumeration value="SUPPLY" />
+      <enumeration value="TESTLATCH" />
+      <enumeration value="TIEHI" />
+      <enumeration value="TIELO" />
+      <enumeration value="UNKNOWN" />
+    </restriction>
+  </simpleType>
+
+  <simpleType name="macroPinUse">
+    <restriction base="string">
+      <enumeration value="SIGNAL" />
+      <enumeration value="POWER" />
+      <enumeration value="GROUND" />
+      <enumeration value="CLOCK" />
+      <enumeration value="ANALOG" />
+      <enumeration value="SUPPLY" />
+      <enumeration value="TESTLATCH" />
+      <enumeration value="TIEOFF" />
+      <enumeration value="TIEHI" />
+      <enumeration value="TIELO" />
+      <enumeration value="SCAN" />
+      <enumeration value="RESET" />
+      <enumeration value="UNKNOWN" />
+    </restriction>
+  </simpleType>
+
+  <!-- Reference from LEF/DEF -->  
+  <simpleType name="routeType">
+    <restriction base="string">
+      <enumeration value="RING" />
+      <enumeration value="PADRING" />
+      <enumeration value="BLOCKRING" />
+      <enumeration value="STRIPE" />
+      <enumeration value="FOLLOWPIN" />
+      <enumeration value="IOWIRE" />
+      <enumeration value="COREWIRE" />
+      <enumeration value="BLOCKWIRE" />
+      <enumeration value="BLOCKAGEWIRE" />
+      <enumeration value="FILLWIRE" />
+      <enumeration value="DRCFILL" />
+    </restriction>
+  </simpleType>
+
+  <!-- Reference from APD/SIP Pin numbering schemes -->
+  <simpleType name="pinNumberSchemes">
+    <restriction base="string">
+      <enumeration value="NUMBERHORIZLETTERVERT" />
+      <enumeration value="LETTERHORIZNUMBERVERT" />
+      <enumeration value="LETTERHORIZ" />
+      <enumeration value="LETTERVERT" />
+      <enumeration value="NUMBERHORIZ" />
+      <enumeration value="NUMBERVERT" />
+      <enumeration value="NUMBERSPIRALCW" />
+      <enumeration value="NUMBERSPIRALCCW" />
+      <enumeration value="NUMBERSPIRALCWSTAGGER" />
+      <enumeration value="NUMBERSPIRALCCWSTAGGER" />
+      <enumeration value="NUMBERSERPENTINEHORIZ" />
+      <enumeration value="NUMBERSERPENTINEVERT" />
+      <enumeration value="INHERITFROMBASEGRID" />
+      <enumeration value="SEQUENTIAL" />
+      <enumeration value="CUSTOM" />
+    </restriction>
+  </simpleType>
+
+  <simpleType name="corners">
+    <restriction base="string">
+      <enumeration value="TOPLEFT" />
+      <enumeration value="TOPRIGHT" />
+      <enumeration value="BOTTOMLEFT" />
+      <enumeration value="BOTTOMRIGHT" />
+    </restriction>
+  </simpleType>
+
+  <simpleType name="portClass">
+    <restriction base="string">
+      <enumeration value="CORE" />
+      <enumeration value="BUMP" />
+    </restriction>
+  </simpleType>
+
+  <simpleType name="rowDir">
+    <restriction base="string">
+      <enumeration value="HORIZONTAL" />
+      <enumeration value="VERTICAL" />
+    </restriction>
+  </simpleType>
+
+  <complexType name="net">
+    <sequence>
+      <element name="NAME" type="string" />
+      <element name="USE" type="dieAbs:use" minOccurs="0" />
+      <element name="BUMPS" minOccurs="0">
+        <complexType>
+          <sequence>
+            <element name="INSTNAME" maxOccurs="unbounded" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="INSTTERM" minOccurs="0" maxOccurs="unbounded" >
+        <complexType>
+          <all>
+            <element name="INSTNAME" type="string" />
+            <element name="PINNAME" type="string" />
+          </all>
+        </complexType>
+      </element>
+      <element name="COREPINLOCATIONS" minOccurs="0">
+        <complexType>
+          <sequence>
+            <element name="COREXY" type="dieAbs:xy" maxOccurs="unbounded" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="VIA" minOccurs="0" maxOccurs="unbounded">
+        <complexType>
+          <all>
+            <element name="NAME" type="string" minOccurs="0" />
+            <element name="STARTLAYER" type="string" />
+            <element name="ENDLAYER" type="string" />
+            <element name="LOCATION" type="dieAbs:xy" />
+            <element name="SIZE" type="dieAbs:widthHeight" />
+          </all>
+        </complexType>
+      </element>
+      <element name="ROUTESEG" minOccurs="0" maxOccurs="unbounded" >
+        <complexType>
+          <sequence>
+            <element name="LAYER" type="string" minOccurs="0" />
+            <element name="ENDPOINTS" type="dieAbs:endPoints" />
+            <element name="WIDTH" type="unsignedInt" />
+            <element name="STATUS" type="dieAbs:routeStatus" minOccurs="0" />
+            <element name="TYPE" type="dieAbs:routeType" minOccurs="0" />
+            <element name="PROPERTY" type="dieAbs:property" minOccurs="0" maxOccurs="unbounded" />
+          </sequence>
+        </complexType>
+      </element>      
+      <element name="PROPERTY" type="dieAbs:property" minOccurs="0" maxOccurs="unbounded" />
+    </sequence>
+  </complexType>
+
+
+  <!-- Reference from APD/SIP -->
+  <complexType name="pinNumScheme">
+    <sequence>
+      <element name="GRIDNAME" type="string" />
+      <element name="PRIORITY" type="nonNegativeInteger" />
+      <element name="TYPE" type="dieAbs:pinNumberSchemes" />
+      <element name="STAGGER" type="boolean" minOccurs="0"/>
+      <element name="STARTLOCATION" type="dieAbs:corners" />
+      <element name="LETTERSBEFORENUMBERS" type="boolean" minOccurs="0"/>
+      <element name="JEDECSTANDARD" type="boolean" minOccurs="0"/>
+      <element name="PADWITHAS" type="boolean" minOccurs="0"/>
+      <element name="PADWITHOS" type="boolean" minOccurs="0"/>
+      <element name="PREFIX" type="string" />
+      <element name="PITCH" type="dieAbs:xy" />
+      <element name="OFFSET" type="dieAbs:xy" />
+      <element name="OFFSETCORNER" type="dieAbs:corners" />
+      <element name="EXTENTS" type="dieAbs:rectangle" />
+      <element name="LABELUNUSED" type="boolean" minOccurs="0"/>
+      <element name="LABELNONSTAGGERED" type="boolean" minOccurs="0"/>
+      <element name="STARTNUMBER" type="string" minOccurs="0"/>
+    </sequence>
+  </complexType>
+
+  <!-- Location represents the absolute design-level xy coordinate (not relative to the origin of instance) where a pin number is to be placed when there are multiple ports-->  
+  <complexType name="pinNumber">
+    <sequence>
+      <element name="NUMBER" type="string" />
+      <element name="PORTNAME" type="string" minOccurs="0" />
+      <element name="LOCATION" type="dieAbs:xy" minOccurs="0" />
+      <element name="GRIDNAME" type="string" minOccurs="0" />
+    </sequence>
+  </complexType>
+
+  <!-- PROBEPOINT represents the absolute design-level xy location (not relative to the origin of macro) where the probe point is on the die pin.
+       If this is not provided, it is assumed the probe point is the center of the pin. This allows for a pin to have separate connect and probe point locations.-->
+  <complexType name="isProbe">
+    <sequence>
+      <element name="PROBEPOINT" type="dieAbs:xy" minOccurs="0" />
+    </sequence>
+  </complexType>
+
+  <complexType name="staggerDriverMacroPin" >
+    <sequence>
+      <!-- These three are each space separated strings listing legal bumps that can be used in these positions
+        Not all are required to be defined.  If it exists, then it must have at least one bump cell named.
+        If a bump cell is named, that cell must exist in the library. -->
+      <element name="BONDPADOUTER" type="string" minOccurs="0" />
+      <element name="BONDPADMIDDLE" type="string" minOccurs="0"  />
+      <element name="BONDPADINNER" type="string" minOccurs="0" />
+      <!-- The next two items define the xy location of the reference point the bump is placed on. -->     
+      <element name="IOCELLORIGINX" type="integer" />
+      <element name="IOCELLORIGINY" type="integer" />
+      <!-- The following two parameters gives the ability to shift the placement of the
+          bond pad from the origin (above) by a given amount.  If more than one bond pad are listed
+          above, then more than one value, separated by spaces, may be included here to correspond 
+          to each of the bond pads above. -->
+      <element name="IOORIGINSHIFTX" type="string" minOccurs="0" />
+      <element name="IOORIGINSHIFTY" type="string" minOccurs="0" />
+    </sequence>
+  </complexType>
+
+  <!-- The two elements define the offset from the reference point in the driver pin that the bump is
+        placed on -->
+  <complexType name="staggerBumpMacro" >
+    <sequence>
+      <element name="IOCELLOFFSETX" type="string" />
+      <element name="IOCELLOFFSETY" type="string" />
+    </sequence>
+  </complexType>
+
+  <!-- Bondpadposition gives the position the bond pad will be placed on the driver (inner, middle, outer) -->
+  <!-- this comes from the Encounter property, POSBONDPAD -->
+  <!-- IOBONDPAD must be a name of an existing bond pad instance -->
+  <complexType name="staggerPinInfo" >
+    <sequence>
+      <element name="BONDPADPOSITION" type="dieAbs:staggerPosStrings" />
+      <element name="IOBONDPAD" type="string" />
+    </sequence>
+  </complexType>
+
+  <!-- Referenced by bumpInstance & instance complexTypes-->
+  <!-- NAME must match a valid pin name in the macro definition. -->
+  <!-- NAME is required for pins in bumps and I/O instances, but not for standalone pins
+           since it is provided in the main body of that object -->
+  <!-- CONNECTPT is the absolute design-level xy location of the connect point.
+           If this is not provided, it is assumed the connect point is the center
+           of the pin -->
+  <!-- If ISPROBE is not defined, then the pin is NOT a probe pin -->
+  <!-- STAGGERINFO is only on die pins of I/O instances that have a staggered bond pad
+           placed on it -->
+  <complexType name="diePin">
+    <sequence>
+      <element name="NAME" type="string" minOccurs="0"/>
+      <element name="PINNUMBER" type="dieAbs:pinNumber" minOccurs="0" />
+      <element name="CONNECTPT" type="dieAbs:xy" minOccurs="0" />
+      <element name="ISPROBE" type="dieAbs:isProbe" minOccurs="0" />
+      <element name="STAGGERINFO" type="dieAbs:staggerPinInfo" minOccurs="0" />
+      <element name="PROPERTY" type="dieAbs:property" minOccurs="0" maxOccurs="unbounded" />
+      <element name="USERDEFINED" type="dieAbs:userDef" minOccurs="0" maxOccurs="unbounded" />
+    </sequence>
+  </complexType>
+
+  <!-- LOWERLEFT gives the xy coordinates of the location of the lower left 
+           corner of the object in the design.  It must be given if the inst is not unplaced -->
+  <complexType name="instance">
+    <sequence>
+      <element name="NAME" type="string" />
+      <element name="ORIENT" type="dieAbs:orientation" />
+      <element name="LOWERLEFT" type="dieAbs:xy" minOccurs="0"/>
+      <element name="CELLNAME" type="string" />
+      <element name="STATUS" type="dieAbs:placeStatus" />
+      <element name="DIEPIN" type="dieAbs:diePin" minOccurs="0" maxOccurs="unbounded" />
+      <element name="PROPERTY" type="dieAbs:property" minOccurs="0" maxOccurs="unbounded" />
+      <element name="USERDEFINED" type="dieAbs:userDef" minOccurs="0" maxOccurs="unbounded" />
+    </sequence>
+  </complexType>
+
+  <!-- LOWERLEFT gives the location of the lower left corner of the instance after it is placed and rotated.
+           Coordinates are relative to the origin of the die. This is required for all bumps because unplaced
+           bumps are not supported.  -->
+  <!-- DIEPIN should be included only if the bump is a die pin or when pin number or probe points need to be defined -->
+  <complexType name="bumpInstance">
+    <sequence>
+      <element name="INSTNAME" type="string" />
+      <element name="CELLNAME" type="string" />
+      <element name="ORIENT" type="dieAbs:orientation" />
+      <element name="STATUS" type="dieAbs:bumpPlaceStatus" />
+      <element name="LOWERLEFT" type="dieAbs:xy" />
+      <element name="NETNAME" type="string" minOccurs="0" />
+      <element name="IOINSTNAME" type="string" minOccurs="0" />
+      <element name="DIEPIN" type="dieAbs:diePin" minOccurs="0" />
+      <element name="PROPERTY" type="dieAbs:property" minOccurs="0" maxOccurs="unbounded" />
+      <element name="USERDEFINED" type="dieAbs:userDef" minOccurs="0" maxOccurs="unbounded" />
+    </sequence>
+  </complexType>
+
+  <complexType name="shape" >
+    <sequence>
+      <element name="LAYER" type="string" />
+      <element name="POLYGON" type="dieAbs:polygon" minOccurs="0" maxOccurs="unbounded" />
+      <element name="RECTANGLE" type="dieAbs:rectangle" minOccurs="0" maxOccurs="unbounded" />
+    </sequence>
+  </complexType>
+
+  <!-- If CONNECTPT is not provided, the connect point is the center of all the shapes provided in the port -->
+  <!-- If ISPROBE is not defined, then the pin is NOT a probe pin -->
+  <complexType name="topPort" >
+    <sequence>
+      <element name="SHAPE" type="dieAbs:shape" maxOccurs="unbounded"/>
+      <element name="NAME" type="string" minOccurs="0"/>
+      <element name="PINNUMBER" type="dieAbs:pinNumber" minOccurs="0"/>
+      <element name="STATUS" type="dieAbs:bumpPlaceStatus" minOccurs="0"/>
+      <element name="CONNECTPT" type="dieAbs:xy" minOccurs="0" />
+      <element name="ISPROBE" type="dieAbs:isProbe" minOccurs="0" />
+      <element name="PROPERTY" type="dieAbs:property" minOccurs="0" maxOccurs="unbounded"/>
+      <element name="USERDEFINED" type="dieAbs:userDef" minOccurs="0" maxOccurs="unbounded" />
+    </sequence>
+  </complexType>
+
+  <!-- STAGGERPIN is used only for pins of I/O macros that will have bond pads placed on top -->
+  <!-- It won't be used if this is a bump macro -->
+  <complexType name="macroPin">
+    <sequence>
+      <element name="NAME" type="string" />
+      <element name="DIRECTION" type="dieAbs:direction" />
+      <element name="USE" type="dieAbs:macroPinUse" />
+      <element name="MUSTJOIN" type="boolean" minOccurs="0" />
+      <element name="STAGGERPIN" type="dieAbs:staggerDriverMacroPin" minOccurs="0" />
+      <element name="PORT" minOccurs="0" maxOccurs="unbounded">
+        <complexType>
+          <sequence>
+            <element name="NAME" type="string" minOccurs="0" />
+            <element name="CLASS" type="dieAbs:portClass" minOccurs="0" />
+            <element name="SHAPE" type="dieAbs:shape" minOccurs="0" maxOccurs="unbounded" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="PROPERTY" type="dieAbs:property" minOccurs="0" maxOccurs="unbounded" />
+      <element name="USERDEFINED" type="dieAbs:userDef" minOccurs="0" maxOccurs="unbounded" />
+    </sequence>
+  </complexType>
+
+
+  <!-- Routing blockage type -->
+  <complexType name="routeBlockage">
+    <sequence>
+      <element name="POLYGON" type="dieAbs:polygon" minOccurs="0" maxOccurs="unbounded"/>
+      <element name="RECTANGLE" type="dieAbs:rectangle" minOccurs="0" maxOccurs="unbounded" />
+    </sequence>
+  </complexType>
+
+  <!-- Placement blockage type -->
+  <complexType name="placeBlockage">
+    <sequence>
+      <element name="POLYGON" type="dieAbs:polygon" minOccurs="0" maxOccurs="unbounded"/>
+      <element name="RECTANGLE" type="dieAbs:rectangle" minOccurs="0" maxOccurs="unbounded" />
+    </sequence>
+  </complexType>
+
+  <!-- NAME must match a name defined in the CELLLIBRARY-->
+  <complexType name="layerDetails" >
+    <sequence>
+      <element name="NAME" type="string" />
+      <element name="TYPE" type="string" minOccurs="0"/>
+      <element name="WIDTH" type="float" minOccurs="0"/>
+      <element name="SPACING" type="float" minOccurs="0"/>
+      <element name="ISPASSIVATION" type="boolean" minOccurs="0" />
+      <element name="PROPERTY" type="dieAbs:property"  minOccurs="0" maxOccurs="unbounded"/>
+      <element name="USERDEFINED" type="dieAbs:userDef"  minOccurs="0" maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
+
+  <!-- Scribe type -->  
+  <complexType name="scribeType">
+    <sequence>
+      <element name="NORTH" type="float" />
+      <element name="SOUTH" type="float" />
+      <element name="EAST" type="float" />
+      <element name="WEST" type="float" />
+    </sequence>
+  </complexType>
+
+  <!-- Color type - in RGB format -->
+  <complexType name="color">
+    <sequence>
+      <element name="RED" type="integer"/>
+      <element name="GREEN" type="integer"/>
+      <element name="BLUE" type="integer"/>
+    </sequence>
+  </complexType>
+
+  <!-- Port group members type -->
+  <!-- Pin Names refer to the logical pin members of the group -->
+  <!-- Bumps and instterms refer to the physical pin members of the group -->
+  <complexType name="portGroupMembers">
+    <sequence>
+      <element name="PINNAME" type="string" minOccurs="0" maxOccurs="unbounded" />
+      <element name="BUMPNAME" type="string" minOccurs="0" maxOccurs="unbounded" />
+      <element name="INSTTERM" minOccurs="0" maxOccurs="unbounded">
+        <complexType>
+          <all>
+            <element name="INSTNAME" type="string" />
+            <element name="PINNAME" type="string" />
+          </all>
+        </complexType>
+      </element>
+    </sequence>
+  </complexType>
+
+  <!-- PortGroup type. Portgroups refer to a hierarchical collection of ports -->
+  <!-- Interfacename is set on top level portgroups. -->
+  <complexType name="portGroup">
+    <sequence>
+      <element name="NAME" type="string" />
+      <element name="INTERFACENAME" type="string" minOccurs="0" />
+      <element name="PARENTNAME" type="string" minOccurs="0" />
+      <element name="COLOR" type="dieAbs:color" minOccurs="0" />
+      <element name="MEMBERS" type="dieAbs:portGroupMembers" />
+      <element name="PROPERTY" type="dieAbs:property" minOccurs="0" maxOccurs="unbounded" />
+      <element name="USERDEFINED" type="dieAbs:userDef" minOccurs="0" maxOccurs="unbounded" />
+    </sequence>
+  </complexType>
+  
+  <!-- Diff pair type -->
+  <!-- Static phase tolerance is in nanoseconds -->
+  <!-- Dynamic phase max length is the maximum length allowed once diff pair exceeds dynamic phase tolerance -->
+  <!-- Dynamic phase tolerance is in microns -->  
+  <complexType name="diffPair">
+    <sequence>
+      <element name="NAME" type="string" minOccurs="0" />
+      <element name="NETNAME" type="string" minOccurs="2" maxOccurs="2" />
+      <element name="PRIMARYWIDTH" type="integer" minOccurs="0" />
+      <element name="PRIMARYGAP" type="integer" minOccurs="0" />
+      <element name="WIDTH" type="integer" minOccurs="0" />
+      <element name="GAP" type="integer" minOccurs="0" />
+      <element name="POSITIVETOLERANCE" type="float" minOccurs="0" />
+      <element name="NEGATIVETOLERANCE" type="float" minOccurs="0" />
+      <element name="STATICPHASETOLERANCE" type="float" minOccurs="0" />
+      <element name="DYNAMICPHASEMAXLENGTH" type="integer" minOccurs="0" />
+      <element name="DYNAMICPHASETOLERANCE" type="integer" minOccurs="0" />
+      <element name="MAXUNCOUPLEDLENGTH" type="integer" minOccurs="0" />
+      <element name="GATHERCONTROL" type="dieAbs:gatherControlType" minOccurs="0" />
+      <element name="PROPERTY" type="dieAbs:property" minOccurs="0" maxOccurs="unbounded" />
+      <element name="USERDEFINED" type="dieAbs:userDef" minOccurs="0" maxOccurs="unbounded" />
+    </sequence>
+  </complexType>
+
+  <!-- Net Group members type -->  
+  <complexType name="netGroupMembers">
+    <sequence>
+      <element name="NETNAME" type="string" minOccurs="0" maxOccurs="unbounded" />
+      <element name="DIFFPAIRNAME" type="string" minOccurs="0" maxOccurs="unbounded" />
+    </sequence>
+  </complexType>
+
+  <!-- Net Group type -->
+  <!-- All netgroups must have a unique name -->
+  <!-- Parent name refers to a previously defined net group name in a hierarchical netgroup structure. -->
+  <complexType name="netGroup">
+    <sequence>
+      <element name="NAME" type="string" minOccurs="0" />
+      <element name="INTERFACENAME" type="string" minOccurs="0" />
+      <element name="PARENTNAME" type="string" minOccurs="0" />
+      <element name="TOLERANCE" type="float" minOccurs="0" />
+      <element name="WIREWIDTH" type="integer" minOccurs="0" />
+      <element name="MAXLENGTH" type="integer" minOccurs="0" />
+      <element name="MEMBERS" type="dieAbs:netGroupMembers" />
+      <element name="PROPERTY" type="dieAbs:property" minOccurs="0" maxOccurs="unbounded" />
+      <element name="USERDEFINED" type="dieAbs:userDef" minOccurs="0" maxOccurs="unbounded" />
+    </sequence>
+  </complexType>
+
+
+  <!-- Top-level tag-->
+  <!-- Define top-level elements-->
+  <element name="DIEABSTRACT">
+    <complexType>
+      <sequence>
+        <element name="SCHEMAVERSION" type="float" />
+        <element name="DATE" type="string" />
+        <element name="APPLICATION" type="string" />
+        <element name="USER" type="string" />
+        <element name="DBUNITS" type="dieAbs:dbUnits" />
+        <!-- The LAYER list includes all metal layers and a top and bottom cut layer if they exist. -->
+        <!-- The layers in this list must be given in order from lowest layer to highest layer.  -->
+        <!-- R0SIDE for this cell library indicates what side of a die any I/O cell will be placed on when it is
+             R0. It will only be R0 R90 R180 or R270.  If R0SIDE==R90 for example, all I/O's
+             on the East or R90 side will be R0. All I/O cells on the North side will be R90, etc. -->
+        <element name="CELLLIBRARY" minOccurs="0" >
+          <complexType>
+            <sequence>
+              <element name="LAYER" type="string" maxOccurs="unbounded"/>
+              <element name="LAYERDETAILS" type="dieAbs:layerDetails" minOccurs="0" maxOccurs="unbounded" />
+              <element name="R0SIDE" type="dieAbs:orientationNoMirror"/>
+              <!-- Define I/O sites which constrain the placement of I/O drivers -->
+              <element name="SITES" minOccurs="0" >
+                <complexType>
+                  <sequence>
+                    <!-- SYMMETRY is a space-separated list that must contain legal combinations of the following
+                         orientations:  X Y R90 -->
+                    <element name="SITE" minOccurs="0" maxOccurs="unbounded">
+                      <complexType>
+                        <sequence>
+                          <element name="NAME" type="string" />
+                          <element name="SIZE" type="dieAbs:widthHeight" />
+                          <element name="SYMMETRY" type="string" minOccurs="0" />
+                        </sequence>
+                      </complexType>
+                    </element>
+                  </sequence>
+                </complexType>
+              </element>
+              <!-- Macros are typically required in order to represent bumps & I/O cells. However, there
+                 may be some cases in an analog design in which all the pins are physical pins and there are
+                 no bump or I/O cells. Only in this case would you have no macros listed.  -->
+              <element name="MACROS" minOccurs="0">
+                <complexType>
+                  <sequence>
+                    <!-- If no ORIGIN is given, it is at 0,0 -->
+                    <!-- The BOUNDARY has been added to support rectilinear macro boundaries.  It must follow the same
+                             rules as described below for RECTILINEARDIEBOX -->
+                    <!-- A SITE referenced by the following line must be defined in the SITES section  -->
+                    <!-- STAGGERBUMP is used only for bump macros -->
+                    <element name="MACRO" maxOccurs="unbounded">
+                      <complexType>
+                        <sequence>
+                          <element name="CELLNAME" type="string" />
+                          <element name="FOREIGN" type="dieAbs:foreign" minOccurs="0" />
+                          <element name="TYPE" type="dieAbs:macroType" />
+                          <element name="ORIGIN" type="dieAbs:xy" minOccurs="0" />
+                          <element name="SIZE" type="dieAbs:widthHeight" />
+                          <element name="BOUNDARY" type="dieAbs:shape" minOccurs="0"/>
+                          <element name="SYMMETRY" type="string" minOccurs="0" />
+                          <element name="SITE" type="string" minOccurs="0" />
+                          <element name="STAGGERBUMP" type="dieAbs:staggerBumpMacro"  minOccurs="0" />
+                          <element name="PINS" minOccurs="0" >
+                            <complexType>
+                              <sequence>
+                                <element name="PIN" minOccurs="0" maxOccurs="unbounded" type="dieAbs:macroPin"/>
+                              </sequence>
+                            </complexType>
+                          </element>
+                          <element name="PROPERTY" type="dieAbs:property" minOccurs="0" maxOccurs="unbounded" />
+                          <element name="USERDEFINED" type="dieAbs:userDef" minOccurs="0" maxOccurs="unbounded" />
+                        </sequence>
+                      </complexType>
+                    </element>
+                  </sequence>
+                </complexType>
+              </element>
+            </sequence>
+          </complexType>
+        </element>
+
+        <!-- Default BUSBITCHARs is "[]" -->
+        <!-- Default DIVIDECHAR is "/" -->
+        <!-- If RECTILINEARDIEBOX exists, then DIEBOX gives the bounding box of the actual die boundary 
+                 which is rectilinear.  It is up to the code that processes this element to ensure that this
+                 is a rectlinear shape that makes sense.  No side of the shape may intersect any other side.  -->
+        <element name="DIE">
+          <complexType>
+            <sequence>
+              <element name="NAME" type="string" />
+              <element name="INSTANCENAME" type="string" minOccurs="0" />
+              <element name="MFGGRID" type="float" />
+              <element name="BUSBITCHARS" type="string" minOccurs="0" />
+              <element name="DIVIDERCHAR" type="dieAbs:char" minOccurs="0" />
+              <element name="DIEBOX" type="dieAbs:rectangle" />
+              <element name="RECTILINEARDIEBOX" type="dieAbs:shape" minOccurs="0"/>
+              <element name="COREBOX" type="dieAbs:rectangle" minOccurs="0" />
+              <element name="RECTILINEARCOREBOX" type="dieAbs:shape" minOccurs="0"/>
+              <element name="DIESHRINK" type="decimal" minOccurs="0" />
+              <element name="SCRIBE" type="dieAbs:scribeType" minOccurs="0" />
+              <element name="DIETHICKNESS" type="float" minOccurs="0" />
+              <element name="PINNUMSCHEME" type="dieAbs:pinNumScheme" minOccurs="0" maxOccurs="unbounded" />
+              <element name="SHAPE" type="dieAbs:shape" minOccurs="0" maxOccurs="unbounded" />
+              <element name="PINS">
+                <complexType>
+                  <sequence>
+                    <!-- Any NETNAME listed here must be included in the NETS section  -->
+                    <element name="PIN" maxOccurs="unbounded">
+                      <complexType>
+                        <sequence>
+                          <element name="NAME" type="string" />
+                          <element name="NETNAME" minOccurs="0" maxOccurs="1" type="string" />
+                          <element name="DIRECTION" type="dieAbs:direction" />
+                          <element name="USE" type="dieAbs:use" minOccurs="0" />
+                          <element name="PROPERTY" type="dieAbs:property" minOccurs="0" maxOccurs="unbounded" />
+                          <element name="USERDEFINED" type="dieAbs:userDef" minOccurs="0" maxOccurs="unbounded" />
+                          <element name="PORT" type="dieAbs:topPort" minOccurs="0" maxOccurs="unbounded" />
+                        </sequence>
+                      </complexType>
+                    </element>
+                  </sequence>
+                </complexType>
+              </element>
+
+              <element name="PORTGROUPS" minOccurs="0">
+                <complexType>
+                  <sequence>
+                    <element name="PORTGROUP" maxOccurs="unbounded" type="dieAbs:portGroup" />
+                  </sequence>
+                </complexType>
+              </element>
+
+              <element name="INSTANCES" minOccurs="0" >
+                <complexType>
+                  <sequence>
+                    <element name="INSTANCE" minOccurs="0" maxOccurs="unbounded" type="dieAbs:instance"/>
+                  </sequence>
+                </complexType>
+              </element>
+
+              <element name="ROWS" minOccurs="0" >
+                <complexType>
+                  <sequence>
+                    <!-- A SITENAME referenced by the following line must be defined in the SITES section  -->
+                    <!-- NUMXY & STEPXY must have either the x or y value equal to 1.  It cannot
+                                   be used to define a multidimensional array.  -->
+                    <!-- SITECOUNT, SITESTEP, DIRECTION are added for future use to replace
+                               NUMXY AND STEPXY.  -->
+                    <element name="ROW" minOccurs="0" maxOccurs="unbounded" >
+                      <complexType>
+                        <sequence>
+                          <element name="NAME" type="string" />
+                          <element name="SITENAME" type="string" />
+                          <element name="ORIGIN" type="dieAbs:xy" minOccurs="0" />
+                          <element name="ORIENT" type="dieAbs:orientation" />
+                          <element name="BOX" type="dieAbs:rectangle" minOccurs="0" />
+                          <element name="NUMXY" type="dieAbs:xy" />
+                          <element name="STEPXY" type="dieAbs:xy" minOccurs="0" />
+                          <element name="SITECOUNT" type="integer" minOccurs="0" />
+                          <element name="SITESTEP" type="integer" minOccurs="0" />
+                          <element name="DIRECTION" type ="dieAbs:rowDir" minOccurs="0" />
+                          <element name="PROPERTY" type="dieAbs:property" minOccurs="0" maxOccurs="unbounded" />
+                        </sequence>
+                      </complexType>
+                    </element>
+                  </sequence>
+                </complexType>
+              </element>
+
+              <element name="BUMPS" minOccurs="0" >
+                <complexType>
+                  <sequence>
+                    <element name="BUMP" minOccurs="0" maxOccurs="unbounded" type="dieAbs:bumpInstance" />
+                  </sequence>
+                </complexType>
+              </element>
+
+              <!-- A PHYSNET does not exist in the Verilog netlist. Typically used for Power/Ground (VDD/VSS) -->
+              <element name="NETS" minOccurs="0" >
+                <complexType>
+                  <sequence>
+                    <element name="NET" minOccurs="0" maxOccurs="unbounded" type="dieAbs:net"/>
+                    <element name="PHYSNET" minOccurs="0" maxOccurs="unbounded" type="dieAbs:net"/>
+                  </sequence>
+                </complexType>
+              </element>
+
+              <element name="DIFFPAIRS" minOccurs="0">
+                <complexType>
+                  <sequence>
+                    <element name="DIFFPAIR" minOccurs="0" maxOccurs="unbounded" type="dieAbs:diffPair" />
+                  </sequence>
+                </complexType>
+              </element>
+
+              <element name="NETGROUPS" minOccurs="0">
+                <complexType>
+                  <sequence>
+                    <element name="NETGROUP" minOccurs="0" maxOccurs="unbounded" type="dieAbs:netGroup" />
+                  </sequence>
+                </complexType>
+              </element>
+
+              <element name="BLOCKAGES" minOccurs="0" >
+                <complexType>
+                  <sequence>
+                    <element name="ROUTINGBLOCKAGE" minOccurs="0" maxOccurs="unbounded"  type="dieAbs:routeBlockage" />
+                    <element name="PLACEMENTBLOCKAGE" minOccurs="0" maxOccurs="unbounded"  type="dieAbs:placeBlockage" />
+                  </sequence>
+                </complexType>
+              </element>
+
+              <element name="PROPERTY" type="dieAbs:property" minOccurs="0" maxOccurs="unbounded" />
+              <element name="USERDEFINED" type="dieAbs:userDef" minOccurs="0" maxOccurs="unbounded" />
+            </sequence>
+          </complexType>
+        </element>
+      </sequence>
+    </complexType>
+  </element>
+</schema>

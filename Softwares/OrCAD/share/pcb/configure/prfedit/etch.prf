@@ -1,0 +1,145 @@
+#  $Header: /vobs/psd_backend_data/data/prefs/etch.prf /main/25 17-Aug-04.11:44:44 dkm $ #-------------------------------------------------------------------------------
+#			Allegro General Use Variables
+#-------------------------------------------------------------------------------
+#
+# See User.prf for complete descriptions of fields in this file.
+
+
+PARENT:PARENT_L=route/connect
+
+SUMMARY:HELP=Etch Settings 
+
+slide_no_snap:TYPE=CHECK:EFF_ONNEXTCMD:\
+HELP=If left unchecked (default), slide will snap to adjacent segments in \
+order to make it easier to line up a track with the neighboring tracks.  \
+If checked, the snap feature will be disabled.
+
+allegro_etch_length_on:TYPE=CHECK:EFF_ONNEXTCMD:\
+HELP=Add connect can display the pin to pin etch length information and \
+the net length information while interactively routing. This is done \
+by typing "etch length" on the command line while in add connect. To \
+have this feature active at all times allegro expert, set the \
+allegro_etch_length_on variable. If desired, an alias can be set up using \
+a function key to activate add connect and etch length as follows\: \
+alias F2 "add connect;etch length"
+
+no_show_dynam_elec_errors:TYPE=CHECK:EFF_IMMEDIATE:\
+HELP=Controls etch editing commands that dynamically update the screen while \
+the cursor moves. When set this will DISABLE the following feature. \
+Length errors in the dynamic clines are indicated by drawing a "centerline" \
+on the etch in the DRC "Through All" color. All dynamic clines that \
+are part of the edit or have been involved in bubbling will have \
+their errors indicated.
+
+allegro_dynam_timing:TYPE=ENUM:POPUP=on,off:DEFAULT=on:EFF_IMMEDIATE:\
+HELP=If unset or if set to "on",  the dynamic timing feedback is enabled.  If \
+set to "off",  the feedback is disabled.  You can alias a function key to \
+toggle the timing display enable using the settoggle command as follows\: \
+alias F2 "settoggle allegro_dynam_timing off on"
+
+allegro_dynam_timing_fixedpos:TYPE=CHECK:EFF_ONNEXTCMD:\
+HELP=If set,  the dynamic timing feedback display does not move with the \
+cursor.  Instead,  it remains at a fixed location.  You will not be able \
+to move the display. With this option, you also get multiple timing meters, \
+one for each type of timing constraint that applies for the current edit.
+
+rats_factor:TYPE=REAL:MIN=0:EFF_ONNEXTCMD:\
+HELP=Controls the preference to select straight pin to pin \
+horizontal and vertical ratsnest connections. The legal value is a range \
+between 0.0 and 1.0. The default is .5. A value close to 0.0 = no preference \
+to straightness, short manhattan length is the sole determining factor. \
+A value close to 1.0 causes ratsnesting preference for straight connections, \
+regardless of distance between the pins.
+
+ratt_off_if_connected:TYPE=ENUM:POPUP=on,unhighlighted:EFF_ONREPAINT:\
+PARENT_L=display/visual:\
+HELP=Controls the visibility of Rat Ts that are fully connected (all of its \
+Ratsnests are connected).  By default,  a Rat T will remain visible when its \
+Ratnests are all connected.  A value of "on" causes a fully connected Rat T \
+to be invisible.  A value of "unhighlighted" causes a fully connected Rat T \
+to be invisible unless it is highlighted.
+
+bubble_no_display_invisible:TYPE=CHECK:EFF_IMMEDIATE:\
+HELP=Set this option to prevent elements on nonvisible subclasses from \
+appearing in the etch editing dynamics when they are bubbled.  The default \
+behavior is for any bubbled etch to be displayed in the dynamics even if the \
+element would not normally displayed.
+
+bubble_shove_bondpads:TYPE=CHECK:EFF_IMMEDIATE:\
+HELP=Set this option to allow bondpad vias to be bubbled when via shoving \
+is enabled.  The default behavior is for bondpads to not be shoved.
+
+acon_route_on_active_subclass:TYPE=CHECK:EFF_ONNEXTCMD:HELP=Set this to \
+limit add connect so that it always begins a route on the active subclass.  \
+Otherwise,  it may change the subclass to match an element that is findable \
+at the starting pick.
+
+options_no_enhanced_padentry:TYPE=CHECK:EFF_ONNEXTCMD:HELP=For new designs \
+set the default pad entry to off. By default, enhanced pad entry is enabled in \
+new designs for the etch editing commands.
+
+acon_no_impedance_width:TYPE=CHECK:EFF_IMMEDIATE:\
+HELP=If this option is on,  impedance rules will have no effect on the \
+trace witdth in add connect.  The default behavior is for add connect to use \
+a trace width that satisfies the impedance requirement unless that width is \
+less than the minimum allowable trace width.
+
+acon_oldhlt:TYPE=ENUM:POPUP=fromto,all,off:EFF_COMMAND:\
+HELP=If this option is set to "fromto", add connect will highlight the source \
+and destination elements instead of the entire net. This restores the behavior \
+that existed before 14.2. Setting the value to "all" causes the entire net \
+to highlight for all types of nets (14.2 behavior). By default, the entire \
+net is highlighted unless the net is NO_RAT or POWER_AND_GROUND.
+
+padentry_factor:TYPE=LONG:EFF_IMMEDIATE:MIN=0:MAX=100:DEFAULT=100:\
+HELP=Used to control gathering for traces exiting a round pin or via while \
+concurrently routing more than one net (e.g. differential pair). The purpose \
+is to allow the traces to gather sooner.  The value is used as a percentage \
+to reduce the minimum clearance that the gathering code requires between \
+the pin/via and the second segment of the cline exiting the pad. By default, \
+it requires 100 percent of the applicable minimum segment to pin/via spacing \
+constraint. A value of 75 causes the minimum space to be 75 percent of the \
+constraint set value.
+
+acon_restore_space_mode:TYPE=CHECK:EFF_ONNEXTCMD:\
+HELP=By default, add connect sets the group route space mode to "Current \
+Space" at the start of the command. If this option is set, add connect will \
+restore the space mode to the value that was active the last time that the \
+command was run.
+
+acon_diag:TYPE=CHECK:EFF_ONNEXTCMD:\
+HELP=By default, while in line lock 45 mode, add connect has a preference \
+for first routing in an orthogonal direction before bending towards the \
+cursor. If acon_diag is set, and you are routing from the dangling end of a \
+non-orthogonal segment, add connect will start in the same direction as the \
+existing segment before making the bend.
+
+acon_offnet_snap:TYPE=ENUM:POPUP=off,endpoint,hug:DEFAULT=hug:EFF_IMMEDIATE:\
+HELP=By default, unless bubble is set to "Shove preferred", add connect will \
+snap the endpoint of the new cline to the minimum drc distance from another \
+net's cline if the cursor is near the other cline and that cline is on the \
+active subclass. If the previous pick was also at the drc distance from the \
+other cline, the new cline will hug to the other cline. You can totally \
+disable this behavior by setting acon_offnet_snap to "off". You can turn off \
+the hug part and only snap the endpoint by setting the variable to "endpoint".
+
+acon_dest_sched_pinonly:TYPE=CHECK:EFF_ONNEXTCMD:\
+HELP=By default, add connect picks up source and destination points as per \
+nearest endpoints which may not be the ones specified in the user schedule. \
+Setting this variable causes add connect to always choose the pin as the \
+destination for user scheduled rats.
+
+acon_disable_nullnet_route:TYPE=CHECK:EFF_IMMEDIATE:\
+HELP=By default, add connect allows routing start when pick is done in an \
+open area. When this option is enabled, routing can only start on a legal \
+element like pin,via,cline,shape,rat etc.
+
+acon_diffpair_pad_connect:TYPE=ENUM:POPUP=cursor,center,old:DEFAULT=cursor:\
+EFF_IMMEDIATE:HELP= This option changes the behavior for the diffpair \
+gathering that happens at target terminals when the cursor is near the target \
+terminal of the control trace. By default, when the cursor is on the near-side \
+of the terminal, midpoint gathering is performed. When the cursor is on the \
+far-side of the terminal, the control trace is connected using line lock \
+segments and the mate is connected with automatic "Finish" (old behavior). \
+A value of "center" forces midpoint gathering at the target terminals \
+regardless of cursor position. A value of "off" forces the old behavior.

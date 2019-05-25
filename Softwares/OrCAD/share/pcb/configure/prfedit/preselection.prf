@@ -1,0 +1,41 @@
+#  $Header: /vobs/psd_backend_data/data/prefs/preselection.prf /main/8 2009-08-31T11:07:25-04 PCS $    
+#-------------------------------------------------------------------------------
+#               Allegro Preselection and application mode options
+#-------------------------------------------------------------------------------
+#
+# See User.prf for complete descriptions of fields in this file.
+
+
+PARENT:PARENT_L=display/datatips:\
+
+SUMMARY:HELP=Allegro Preselection and Application mode options
+
+datatips_delay:TYPE=LONG:MIN=100:MAX=2000:EFF_ONNEXTCMD:\
+HELP=By default a datatip appears if the cursor remains in the same \
+position for 250 milliseconds. This allows this delay to be adjusted between \
+100 and 2000 milliseconds.
+
+custom_datatip_remove_delay:TYPE=LONG:MIN=0:MAX=2000:EFF_ONNEXTCMD:\
+HELP=By default a customizible datatip disappears 250 milliseconds after the cursor leaves the object datatip is displayed for. It is the time required for the user to move cursor to the datatip in order to access its advanced functionalities. This allows this delay to be adjusted between 0 (for immediate datatip disappearance) and 2000 milliseconds.
+
+datatips_fixedpos:TYPE=CHECK:EFF_ONNEXTCMD:\
+HELP=By default, datatips appear next to the cursor. This option causes \
+them to display at the bottom of the options panel.
+
+disable_datatips:TYPE=CHECK:EFF_IMMEDIATE:\
+HELP=Disables context sensitive Data tips when mouse hover over Allegro data elements.
+
+disable_hover_over:TYPE=CHECK:EFF_ONNEXTCMD:\
+HELP=Disables dynamic highlighting and datatips that occur when you hover over elements in the display. Dynamic highlighting and datatips will still occur for application mode commands because they are needed for preselection preview.
+
+appmode:TYPE=ENUM:POPUP=none,generaledit,etchedit,placementedit,ifp,signalintegrity,rfedit_appm:EFF_ONRESTART:\
+PARENT_L=ui/app_modes:\
+HELP=Controls initial tool application mode. Default is to use \
+application mode that was in use on previous invocation of tool. \
+The none mode disables pre-selection.
+
+focus_followmouse:TYPE=ENUM:POPUP=allegro_derived,anywhere:EFF_IMMEDIATE:\
+HELP=Controls interaction of window focus and hover-over highlighting and datatips. If not set, \
+highlighting/datatips are enabled only when the Allegro canvas is in focus. If set to "allegro_derived", \
+they are also enabled when Allegro sub-windows such as show element are in focus. When set to \
+"anywhere", they are enabled regardless of focus.

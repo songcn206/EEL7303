@@ -1,0 +1,219 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM fixed_font
+FIXED
+#ifdef GERSWIN_PROGRESS
+PORT 88 15
+#elseif GERSWIN_PROGRESS_NO_STATUS
+PORT 88 10
+#else
+PORT 88 10
+#endif
+HEADER "Router Status"
+
+POPUP <TIME_UNITS_POP>"sec""0","min""1".
+
+MESSAGE route_init_fail 0 "Router could not be started."
+MESSAGE route_init_wait 0 "Router initializing..."
+MESSAGE route_active 0 "Routing..."
+MESSAGE route_pause_wait 0 "Waiting for the router to pause..."
+MESSAGE route_pause_wait_update_pending 0 "Waiting for the router to pause... Plan will update when router pauses."
+MESSAGE route_updatepause_wait 0 "Pausing router for plan update..."
+MESSAGE route_paused_for_pending_update 0 "Router paused for plan update which will occur when the current interactive command finishes."
+MESSAGE route_resume_wait 0 "Waiting for the router to resume..."
+MESSAGE route_stop_wait 0 "Waiting for the router to stop..."
+MESSAGE route_cancel_wait 0 "Waiting for the router to cancel..."
+MESSAGE route_paused 0 "Routing paused."
+MESSAGE route_paused_pending_update 0 "Routing paused. Plan update will occur when the current interactive command finishes."
+MESSAGE route_done 0 "Routing done."
+MESSAGE route_cancelled 0 "Routing cancelled."
+MESSAGE plan_update_wait 0 "Updating router plan..."
+MESSAGE route_active_update_pending 0 "Routing... Plan update will start when the current interactive command finishes."
+MESSAGE route_done_pending_update 0 "Routing done, but the plan cannot update until the current interactive command finishes."
+MESSAGE status_init_wait 0 "Initializing router data needed for status..."
+MESSAGE status_wait 0 "Getting route status..."
+MESSAGE status_done 0 "Done."
+MESSAGE statgrid_cmds_noappmode 0 "Commands are not enabled unless idle in an application mode."
+MESSAGE statgrid_cmds_routebusy 0 "Commands are not enabled while the router is busy."
+
+TILE
+
+#ifdef GERSWIN_PROGRESS
+TEXT "Command Completion:"
+TLOC 1 1
+ENDTEXT
+
+FIELD completion_percent
+FLOC 21 1
+PROGRESS 38 3
+ENDFIELD
+
+TEXT "Task Completion:"
+TLOC 1 3
+ENDTEXT
+
+FIELD task_completion_percent
+FLOC 21 3
+PROGRESS 38 3
+ENDFIELD
+
+GROUP "Plan Update"
+GLOC 1 5
+GSIZE 52 6
+ENDGROUP
+
+FIELD autoupdate
+FLOC 2 8
+CHECKLIST "Automatic:"
+ENDFIELD
+
+FIELD autoupdate_time
+FLOC 15 8
+INTSLIDEBAR 4 4
+ENDFIELD
+
+FIELD autoupdate_units
+FLOC 24 8
+ENUMSET 7
+POP "TIME_UNITS_POP"
+ENDFIELD
+
+FIELD update
+FLOC 38 8
+MENUBUTTON "Update Now" 10 3
+ENDFIELD
+
+FIELD status_grid
+THUMBNAIL
+FLOC 1 12
+FSIZE 87 14
+ENDFIELD
+
+FIELD done
+FLOC 2 27
+MENUBUTTON "OK" 10 3
+ENDFIELD
+
+FIELD pause
+FLOC 13 27
+MENUBUTTON "Pause" 10 3
+ENDFIELD
+
+FIELD resume
+FLOC 13 27
+MENUBUTTON "Resume" 10 3
+ENDFIELD
+
+FIELD stop
+FLOC 24 27
+MENUBUTTON "Stop" 10 3
+ENDFIELD
+
+{ Removed because it is not being implemented for 16.0
+FIELD cancel
+FLOC 35 27
+MENUBUTTON "Cancel" 10 3
+ENDFIELD
+}
+
+FIELD viewlog
+{ Move to Cancel spot until it it implemented
+FLOC 46 27
+}
+FLOC 35 27
+MENUBUTTON "View Log" 10 3
+ENDFIELD
+
+FIELD help
+FLOC 78 27
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+#elseif GERSWIN_PROGRESS_NO_STATUS
+
+TEXT "Command Completion:"
+TLOC 1 1
+ENDTEXT
+
+FIELD completion_percent
+FLOC 21 1
+PROGRESS 38 3
+ENDFIELD
+
+TEXT "Task Completion:"
+TLOC 1 3
+ENDTEXT
+
+FIELD task_completion_percent
+FLOC 21 3
+PROGRESS 38 3
+ENDFIELD
+
+FIELD done
+FLOC 2 7
+MENUBUTTON "OK" 10 3
+ENDFIELD
+
+FIELD pause
+FLOC 13 7
+MENUBUTTON "Pause" 10 3
+ENDFIELD
+
+FIELD resume
+FLOC 13 7
+MENUBUTTON "Resume" 10 3
+ENDFIELD
+
+FIELD stop
+FLOC 24 7
+MENUBUTTON "Stop" 10 3
+ENDFIELD
+
+{ Removed because it is not being implemented for 16.0
+FIELD cancel
+FLOC 35 7
+MENUBUTTON "Cancel" 10 3
+ENDFIELD
+}
+
+FIELD help
+FLOC 78 7
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+#else
+FIELD status_grid
+THUMBNAIL
+FLOC 1 1
+FSIZE 87 14
+ENDFIELD
+
+FIELD done
+FLOC 2 16
+MENUBUTTON "OK" 10 3
+ENDFIELD
+
+FIELD viewlog
+FLOC 13 16
+MENUBUTTON "View Log" 10 3
+ENDFIELD
+
+FIELD help
+FLOC 78 16
+MENUBUTTON "Help" 10 3
+ENDFIELD
+#endif
+
+
+ENDTILE
+
+#ifdef GERSWIN_PROGRESS
+FLEXMODE EdgeGravity  25 10
+#else
+FLEXMODE EdgeGravity  25 5
+#endif
+FLEX status_grid 0 0 1 1
+FLEX help 1 1 0 0
+FLEX viewlog 0 1 0 0
+
+
+ENDFORM

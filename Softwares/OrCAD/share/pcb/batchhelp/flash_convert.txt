@@ -1,0 +1,22 @@
+
+flash_convert [-t] [-v] [-b] <allegro database(s)>
+
+     Convert bsm files to fsm files and set drawings to new flash mode.
+     Allows batch conversions where you can specify more then one file
+     on the command line.
+
+	-t   run in test mode only. report proposed changes to logfile
+	-b   only convert given database. By default, flash_convert will
+		also attempt to convert any dependant external bsm files
+		to fsm files. This option is usefull in environments where
+		these files are stored in read-only areas.
+	-v   report if board is new or old flash type (no conversion done)
+		this option causes any other options to be ignored
+		
+	<allegro database(s)> may be one or more board, dra or old
+		style artwork flash (mechanical.bsm)
+
+Note: When creating flashes an error is generated if anything
+	other then a  flash geometry is encountered in the target bsm file.
+	A flash geometry is one or more shapes on a single layer.
+	Voids are not supported at this time.

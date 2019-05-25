@@ -1,0 +1,120 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM 
+FIXED
+PORT 65 18
+HEADER "FSP Synchronize"
+
+MESSAGE fsp_sync_choose_place_to 1 "Select placement sychronize direction."
+
+TILE
+
+GROUP "Comparison Results"
+GLOC 1 1
+GSIZE 64 21
+ENDGROUP
+
+TEXT "There are differences between FSP and Allegro designs"
+TLOC 2 4
+ENDTEXT
+
+FIELD fspShowDetails
+FLOC 53 4
+MENUBUTTON "Details..." 10 3
+ENDFIELD
+
+TEXT "(Select Categories to Synchronize)"
+TLOC 2 7
+ENDTEXT
+
+FIELD fspPinSwaps
+FLOC 5 10
+COLOR 2 1
+OPTIONS value
+ENDFIELD
+
+TEXT "Pin Swaps                     "
+TLOC 8 10
+INFO PinswapsDetailsLabel
+ENDTEXT
+
+TEXT "(FSP --> Allegro)"
+TLOC 36 10
+INFO PinswapSyncInfo
+ENDTEXT
+
+FIELD fspSchedules
+FLOC 5 12
+COLOR 2 1
+OPTIONS value
+ENDFIELD
+
+TEXT "Schedules                     "
+TLOC 8 12
+INFO ScheduleDetailsLabel
+ENDTEXT
+
+TEXT "(FSP --> Allegro)"
+TLOC 36 12
+INFO ScheduleSyncInfo
+ENDTEXT
+
+FIELD fspPlacement
+FLOC 5 14
+COLOR 2 1
+OPTIONS value
+ENDFIELD
+
+TEXT "Placement                     "
+TLOC 8 14
+INFO PlacementDetailsLabel
+ENDTEXT
+
+FIELD fspPlaceToFsp
+FLOC 34 14
+CHECKLIST "FSP --> Allegro" "PlaceDirection"
+ENDFIELD
+
+FIELD fspPlaceToAllegro
+FLOC 49 14
+CHECKLIST "Allegro --> FSP" "PlaceDirection"
+ENDFIELD
+
+FIELD fspRefDes
+FLOC 5 16
+COLOR 2 1
+OPTIONS value
+ENDFIELD
+
+TEXT "Reference Designators"
+TLOC 8 16
+INFO RefdesDetailsLabel
+ENDTEXT
+
+TEXT "(Allegro --> FSP)"
+TLOC 36 16
+INFO RefdesSyncInfo
+ENDTEXT
+
+FIELD fspAll
+FLOC 5 18
+CHECKLIST "Select/Clear All"
+ENDFIELD
+
+FIELD ok
+FLOC 3 23
+MENUBUTTON "OK" 10 3
+ENDFIELD
+FIELD cancel
+
+FLOC 28 23
+MENUBUTTON "Cancel" 10 3
+ENDFIELD
+
+FIELD help
+FLOC 53 23
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

@@ -1,0 +1,129 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 79 6
+HEADER "Place Driver(s)"
+
+POPUP <ROTATION_POPUP> "Automatic" "0", "North" "1", "West" "2", "South" "3", "East" "4".
+POPUP <MIRROR_POPUP> "No" "0", "Yes" "1".
+## POPUP <SHOVE_POPUP> "Clockwise" "CW", "Counter-Clockwise" "CCW", "None" "None".
+
+TILE
+
+TEXT "Driver Rotation:"
+TLOC 2 4
+ENDTEXT
+FIELD driver_rot
+FLOC 13 4
+ENUMSET 13
+POP "ROTATION_POPUP"
+ENDFIELD
+
+TEXT "Driver Mirror:"
+TLOC 2 6
+ENDTEXT
+FIELD driver_mirror
+FLOC 13 6
+ENUMSET 13
+POP "MIRROR_POPUP"
+ENDFIELD
+
+FIELD driver_unplace
+FLOC 33 4
+CHECKLIST "Unplace conflicting drivers"
+ENDFIELD
+
+## FIELD driver_stretch
+## FLOC 33 6
+## CHECKLIST "Stretch connections"
+## ENDFIELD
+
+##  TEXT "Shove Direction:"
+##  TLOC 1 9
+##  ENDTEXT
+##  FIELD driver_push_shove
+##  FLOC 12 7
+##  ENUMSET 13
+##  POP "SHOVE_POPUP"
+##  ENDFIELD
+
+FIELD driver_lib_manager
+FLOC 58 5
+MENUBUTTON "Library Manager..." 20 3
+ENDFIELD
+
+GROUP "Options" g0
+FLOC 1 1
+FSIZE 78 8
+ENDGROUP
+
+FIELD unplaced_drivers_list
+FLOC 2 12
+LIST "" 30 9
+OPTIONS sort
+# OPTIONS alphanumsort prettyprint
+ENDFIELD
+
+FIELD selected_drivers_list
+FLOC 36 12
+LIST "" 30 9
+# OPTIONS ALPHANUMSORT
+ENDFIELD
+
+FIELD done
+FLOC 1 31
+MENUBUTTON "Done" 10 3
+ENDFIELD
+
+FIELD cancel
+FLOC 12 31
+MENUBUTTON "Cancel" 10 3
+ENDFIELD
+
+FIELD apply
+FLOC 42 31
+MENUBUTTON "Apply" 10 3
+ENDFIELD
+
+FIELD help
+FLOC 63 31
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+GROUP "Unplaced Drivers - Click to Select" g1
+FLOC 1 10
+FSIZE 32 20
+ENDGROUP
+ 
+GROUP "Selected Drivers" g2
+FLOC 35 10
+FSIZE 32 20
+ENDGROUP
+
+FIELD moveup
+FLOC 69 14
+MENUBUTTON "Up" 9 3
+ENDFIELD
+
+FIELD movedown
+FLOC 69 18
+MENUBUTTON "Down" 9 3
+ENDFIELD
+
+FIELD deselect
+FLOC 69 22
+MENUBUTTON "Deselect" 9 3
+ENDFIELD
+
+## TEXT "Size:"
+## TLOC 1 15
+## ENDTEXT
+## TEXT "100um x 500um"
+## TLOC 10 10
+## INFO driver_size 15 256
+## ENDTEXT
+
+ENDTILE
+
+ENDFORM
+

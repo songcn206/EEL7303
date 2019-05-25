@@ -1,0 +1,151 @@
+# $Header: /vobs/psd_backend_data/data/cuiforms/fileprop.form,v 1.1 1901/05/15 16:26:59 fxf Prealpha $
+# File Properties form
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM autogreytext
+FIXED
+PORT 67 14
+HEADER "File Properties"
+
+POPUP <EXP_DURATION_POP>"No Limit""1","3 Months""2","6 Months""3","12 Months""4"
+
+MESSAGE unlock 0 "Database unlocked."
+
+TILE
+TABSET "tab_selector"
+FLOC 2 1
+TSSIZE 65 35
+
+TAB "Locking"
+
+TEXT "File:"
+FLOC 2 1
+ENDFIELD
+
+TEXT "" 
+FLOC 7 1
+INFO file 32
+ENDTEXT
+
+FIELD lock
+FLOC 2 4
+CHECKLIST "Lock database" 
+ENDFIELD
+
+TEXT "Password:"
+FLOC 5 6
+ENDFIELD
+
+FIELD lock_password
+FLOC 15 6
+STRFILLIN 14 20
+ENDFIELD
+
+TEXT "Expiration Duration :"
+FLOC 5 8
+ENDFIELD
+
+FIELD exp_duration
+FLOC 15 10
+ENUMSET 9
+POP "EXP_DURATION_POP"
+ENDFIELD 
+
+FIELD unlock
+FLOC 40 4
+MENUBUTTON "Unlock" 12 4
+ENDFIELD
+
+GROUP ""
+FLOC 2 12
+FSIZE 29 5
+ENDGROUP
+
+FIELD view_only
+FLOC 3 14
+CHECKLIST "View Lock (No Save and Export)" "LOCK_LEVELS"
+ENDFIELD
+
+GROUP ""
+FLOC 2 17
+FSIZE 29 5
+ENDGROUP
+
+FIELD view_export
+FLOC 3 19
+CHECKLIST "Export Lock (No Export)" "LOCK_LEVELS"
+ENDFIELD
+
+GROUP ""
+FLOC 2 22
+FSIZE 29 5
+ENDGROUP
+
+FIELD write_lock
+FLOC 3 24
+CHECKLIST "Write Lock (No Save)" "LOCK_LEVELS"
+ENDFIELD
+
+GROUP "Info" 
+FLOC 33 12
+FSIZE 29 9
+ENDGROUP
+
+TEXT "By:" 
+FLOC 35 14
+ENDTEXT
+
+TEXT "" 
+FLOC 42 14
+INFO lock_by 16
+ENDTEXT
+
+TEXT "System:" 
+FLOC 35 16
+ENDTEXT
+
+TEXT "" 
+FLOC 42 16
+INFO lock_system 16
+ENDTEXT
+
+TEXT "When:" 
+FLOC 35 18
+ENDTEXT
+
+TEXT ""
+FLOC 42 18
+INFO lock_when 16
+ENDTEXT
+
+TEXT "Comments:"
+FLOC 33 22
+ENDTEXT
+
+FIELD lock_comments
+FLOC 33 24
+STRFILLIN 28 256
+FSIZE 29 7
+ENDFIELD
+
+ENDTAB
+
+ENDTABSET
+
+FIELD ok
+FLOC 15 37 
+MENUBUTTON "OK" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 29 37	 
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 43 37 
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

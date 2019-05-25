@@ -1,0 +1,77 @@
+
+Command line arguments for APD
+    Primary purpose is creation and editing of package and MCM designs. 
+    Can also edit Allegro boards and is a symbol editor.
+
+apd <args>
+	[-s <script>] 
+		- Play script on startup (default extension is .scr), last
+		  directory in allegro.ini is NOT used.
+		  Multiple -s options may be specified and they will
+		  be replayed in order on command line. Example
+			-s script1 -s script2 ... -s scriptN
+		  Up to 63 scripts are supported.
+	[-S <script>] 
+		- Play script on startup (default extension is .scr), last
+		  directory in allegro.ini is used unless -p or board
+		  name provided.
+		  Multiple -S options are permitted (see -s above). 
+	[-p <start directory>] 
+		- start in indicated directory (ignore ini file)
+	[-j|-o <journal file>]
+		- open journal file (default journal file is <prog>.jrl)
+
+	[-proj <cpm file>]
+		- read the HDL indicated cpm file on startup. Initial
+		  starting directory and board are present in cpm file.
+
+        [-product <product name>]
+                - specifies the product to be run. The legal values for
+                  <product name> are shown below. This overrides any default 
+		  set in an ini file. 
+		  Use "-product help" for list of available products at your
+		  site or see below.
+
+	[-sq]    - invoke as SI (SPECCTRAQuest) for APD packaging.
+
+	[-nographic|-nograph]
+		- run in pseudo non-graphic mode. On Unix requires an X 
+		  server but will typically not display any graphics.
+		  Suggest using the VNC server (http://www.realvnc.com)
+
+	[-safe]
+		- run without user or site configuration files and settings
+		  see <cdsroot>/share/pcb/batchhelp/safe.txt
+	[-noopengl]
+		- disable openGL
+
+	[-mps<XXX>]
+		- These are not typically not required. See MPS
+		  on-line documents for full description.
+
+
+    [<apd database>]
+        - start editing with this database (ignore ini file)
+        - default extensions .mcm, .brd, .dra, .mdd
+
+Notes:
+	If no scripts are specified on command line (-s or -S options)
+	and environment variable "script_startup" has a value then
+	we will replay a script in startup directory with name
+		<program>_<script_startup_value>.scr
+	Example for allegro if variable script_startup=foo then
+	script would be allegro_foo.scr
+
+
+License is one of the following:
+Each line lists the license name, product code, and actual tool name.
+  Current APD Tools:
+    adv_package_designer_expert    (PX4100)
+    Allegro_Package_SI_L_II        (PA7625)
+  Legacy APD Tools:
+    adv_package_engineer_expert    (PX4000)
+  SiP License Support:  
+    SiP_RF_Layout_GXL_II           (SIP525) (Run APD L using SiP GXL License)
+    SiP_Layout_XL                  (SIP225) (Run APD L using SiP XL License)
+    SiP_Digital_SI_XL_II           (SIP215) (Run APD SI L using SiP SI XL License)
+

@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+xmlns:bgaAbs="http://www.cadence.com/bgaAbs"
+targetNamespace="http://www.cadence.com/bgaAbs" elementFormDefault="qualified">
+
+<!-- BGA Abstract Schema
+     Version 0.2
+     2011-06-28: First cut of BGA Abstract
+     2011-07-06: Adding comments from Brian
+     2011-08-29: Adding color element to PortGroups
+     2011-08-31: Feedback from Brian and Tom
+     (C) COPYRIGHT, Cadence Design Systems, Inc. 2011
+-->
+  
+  <!-- Port refers to a function pin in the Allegro database. It is a logical pin on a 
+       component that is connected to a net. -->
+  <complexType name="logicalPort">
+    <sequence>
+      <!-- Port name refers to the VERILOG_PORT_NAME property in the database -->
+      <element name="PORTNAME" type="string" />
+      <element name="USE" type="bgaAbs:use" />
+      <element name="DIRECTION" type="bgaAbs:direction" />
+
+      <!-- TODO: Reference to a net should be provided here. The Net object will only
+                 be included from SiP databases because PCB design might want insight
+                 into the SiP design but not vice-versa. -->
+      <element name="FUNCTIONPINS">
+        <complexType>
+          <sequence>
+            <element name ="FUNCTIONPIN" type="bgaAbs:functionPin" maxOccurs="unbounded"/>
+          </sequence>
+        </complexType>
+      </element>
+    </sequence>  
+  </complexType>
+
+  <complexType name="functionPin">
+    <sequence>
+      <element name="NAME" type="bgaAbs:pinname" />
+      <!-- The pin number of the pin assigned to this port. If a port is not assigned,
+           this element won't be present -->
+      <element name="ASSIGNEDPINNUMBER" minOccurs="0" maxOccurs="1" type="string"/>
+      <element name="PROPERTYLIST" type="bgaAbs:propertyList" minOccurs="0" maxOccurs="unbounded" />
+    </sequence>
+  </complexType>
+  
+  <complexType name="pinname">
+    <sequence>
+      <element name="FUNCNAME" minOccurs="0" type="string"/>
+      <element name="PINNAME" type="string" />
+    </sequence>
+  </complexType>
+  
+  <!-- Pin refers to a var pin in the Allegro database. It is a physical pin
+       on a symbol. 
+       TODO: Add the pin shape here -->
+  <complexType name="physicalPin">
+    <sequence>
+      <element name="PINNUMBER" type="bgaAbs:pinNumber" />
+      <!-- In future, to handle unplaced BGAs location must be made optional -->
+      <element name="LOCATION" type="bgaAbs:xy" />
+      <!-- TODO: Add shape here -->
+      <element name="PROPERTYLIST" type="bgaAbs:propertyList" minOccurs="0" />
+    </sequence>  
+  </complexType>
+
+  <complexType name="pinNameList">
+    <sequence>
+      <element name="PINNAME" type="string" maxOccurs="unbounded" />
+    </sequence>
+  </complexType>
+
+  <complexType name="pinNumberList">
+    <sequence>
+      <element name="PINNUMBER" type="string" maxOccurs="unbounded" />
+    </sequence>
+  </complexType>
+
+  <!--  color is in r,g,b format -->
+  <complexType name="color">
+    <sequence>
+      <element name="RED" type="integer" />
+      <element name="GREEN" type="integer" />
+      <element name="BLUE" type="integer" />
+    </sequence>
+  </complexType>
+
+  <complexType name="portGroupList">
+    <sequence>
+      <element name="PORTGROUP" type="bgaAbs:portGroup" maxOccurs="unbounded" />
+    </sequence>
+  </complexType>
+
+  <complexType name="portGroupMemberList">
+    <sequence>
+      <!-- A simple list of logical pins that are members of the group. -->
+      <element name="PINNAMES" minOccurs="0" type="bgaAbs:pinNameList" />
+
+      <!-- A simple list of physical pins that are members of the group.
+                     These physical pins are "soft" assigned to the group. -->
+      <element name="PINNUMBERS" minOccurs="0" type="bgaAbs:pinNumberList" />
+
+      <!-- A list of child port groups -->
+      <element name="PORTGROUPS" minOccurs="0" type="bgaAbs:portGroupList" />
+    </sequence>
+  </complexType>
+  
+  <!-- portGroup refers to a hierarchical collection of ports -->
+  <complexType name="portGroup">
+    <sequence>
+      <element name="NAME" type="string"/>
+      <!-- The name of the interface definition is optional and is set on top level portgroups. -->
+      <element name="INTERFACENAME" type="string" minOccurs="0"/>
+      <element name="COLOR" type="bgaAbs:color" minOccurs="0" />
+      <element name="PROPERTYLIST" type="bgaAbs:propertyList" minOccurs="0" />
+      <element name="MEMBERS" type="bgaAbs:portGroupMemberList" />
+    </sequence>
+  </complexType>
+
+  <simpleType name="decimalList">
+    <list itemType="decimal" />
+  </simpleType>
+
+  <simpleType name="xy" >
+    <restriction base="bgaAbs:decimalList">
+      <minLength value="2" />
+      <maxLength value="2" />
+    </restriction>
+  </simpleType>
+
+  <simpleType name="widthHeight" >
+    <restriction base="bgaAbs:decimalList">
+      <minLength value="2" />
+      <maxLength value="2" />
+    </restriction>
+  </simpleType>
+
+  <!-- A rectangle is defined by a lower left x&y and an upper right x&y coordinate pair. -->
+  <simpleType name="rectangle" >
+    <restriction base="bgaAbs:decimalList">
+      <minLength value="4" />
+      <maxLength value="4" />
+    </restriction>
+  </simpleType>
+
+  <complexType name="polygon">
+    <sequence>
+      <element name="VERTEX" type="bgaAbs:xy" minOccurs="3" maxOccurs="unbounded" />
+    </sequence>
+  </complexType>
+
+  <!-- Eventually outline should include the capability to handle arcs -->
+  <complexType name="outline">
+    <choice>
+      <element name="RECTANGLE" type="bgaAbs:rectangle"/>
+      <element name="SHAPE" type="bgaAbs:polygon" />
+    </choice>
+  </complexType>
+
+  <complexType name="pinNumber">
+    <sequence>
+      <element name="NUMBER" type="string" />
+      <element name="GRIDNAME" type="string" minOccurs="0" />
+    </sequence>
+  </complexType>
+  
+  <simpleType name="direction">
+    <restriction base="string">
+      <enumeration value="UNSPECIFIED" />
+      <enumeration value="LOADIN" />
+      <enumeration value="LOADOUT" />
+      <enumeration value="BI" />
+      <enumeration value="TRI" />
+      <enumeration value="OCA" />
+      <enumeration value="OCL" />
+      <!-- TODO: Any other direction codes for PCB/Pkg? -->
+    </restriction>
+  </simpleType>
+
+  <simpleType name="use">
+    <restriction base="string">
+      <enumeration value="UNSPECIFIED" />
+      <enumeration value="POWER" />
+      <enumeration value="GROUND" />
+      <!-- TODO: Any other direction codes for PCB/Pkg? -->
+    </restriction>
+  </simpleType>
+
+  <complexType name="property">
+    <sequence>
+      <element name="PROPNAME" type="string" />
+      <element name="PROPVALUE" type="string" />
+    </sequence>
+  </complexType>
+
+  <complexType name="propertyList">
+    <sequence>
+      <element name="PROPERTY" minOccurs="1" maxOccurs="unbounded" type="bgaAbs:property" />
+    </sequence>
+  </complexType>
+  
+  <element name="BGAABSTRACT">
+    <complexType>
+      <sequence>
+        <element name="SCHEMAVERSION" type="float" />
+        <element name="DATE" type="string" />
+        <element name="APPLICATION" type="string" />
+        <element name="USER" type="string" />
+        
+        <!-- The measurement units values in the abstract are expressed in. -->
+        <element name="UNITS">
+
+          <simpleType>
+            <restriction base="string">
+              <!-- Add other units that are supported by Allegro here -->
+              <enumeration value="MILS" />
+              <enumeration value="INCHES" />
+              <enumeration value="CENTIMETERS" />
+              <enumeration value="MILLIMETERS" />
+              <enumeration value="MICRONS" />
+              <enumeration value="METERS" />
+            </restriction>
+          </simpleType>        
+        </element>
+
+        <!-- NOTE: Put accuracy under units -->
+        <!-- The precision of values in the abstract. For example,
+          if accuracy is specified as 50 and the units are millimeters, 
+          then the precision of numbers is 0.02 -->
+        <element name="ACCURACY" type="integer"/>
+
+
+        <!-- BGA Abstract should only output for placed components -->
+        <element name="BGA">
+          <complexType>
+            <sequence>
+              <!-- Symbol Name in the Allegro Database -->
+              <element name="SYMBOLNAME" type="string" />
+              <!-- Component Definition name in the Allegro Database -->
+              <element name="COMPNAME" type="string" />
+              <element name="OUTLINE" type="bgaAbs:outline" />
+
+              <!-- List of properties on the BGA. Put the property on the
+              component or symbol based on the property -->
+              <element name="BGAPROPERTY" type="bgaAbs:property" minOccurs="0" />
+
+              <!-- TODO: Add PINNUMSCHEME from die abstract here -->
+              
+              <!-- list of the pins in the symbol -->
+              <element name="PHYSICALPINS">
+                <complexType>
+                  <sequence>
+                    <element name="PHYSICALPIN" minOccurs="1" maxOccurs="unbounded" type="bgaAbs:physicalPin" />
+                  </sequence>
+                </complexType>
+              </element>
+
+              <!-- list of ports in the component -->
+              <element name="LOGICALPORTS">
+                <complexType>
+                  <sequence>
+                    <element name="LOGICALPORT" minOccurs="1" maxOccurs="unbounded" type="bgaAbs:logicalPort"/>
+                  </sequence>
+                </complexType>
+              </element>
+
+              <!-- list of portgroups if any. Portgroups are optional in the BGA abstract-->
+              <element name="PORTGROUPS" minOccurs="0" maxOccurs="1">
+                <complexType>
+                  <sequence>
+                    <element name="PORTGROUP" minOccurs="0" maxOccurs="unbounded" type="bgaAbs:portGroup"/>
+                  </sequence>
+                </complexType>
+              </element>
+            </sequence>
+          </complexType>
+        </element>
+      </sequence>
+    </complexType>
+  </element>
+</schema>
+                
+            

@@ -1,0 +1,535 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+VARIABLE
+PORT 62 28
+    #ifdef APD || ALLEGRO_MCM || SIP
+HEADER "Spacing Rule Set    Conductor Spacing    Values"
+    #else
+HEADER "Spacing Rule Set    Etch Spacing    Values"
+    #endif
+
+
+    #ifdef APD || ALLEGRO_MCM || SIP
+POPUP <SUBCLASSP>"All Conductor""-1","All Bonding Wire""-3".
+    #else
+POPUP <SUBCLASSP>"All Etch""-1","All Multi/Micro Wire""-2","All Bonding Wire""-3".
+    #endif
+
+POPUP <SAMENETP>"On""TRUE","Off""FALSE".
+
+POPUP <CONSTRAINTNAMEP>"Default""1".
+
+POPUP <CONSTRAINTLISTP>"Global""11","Thru Pin""1","Smd Pin""2","Test Pin""3",\
+"Thru Via""5","B/B Via""6","Test Via""7","Bond Finger""8","Line""9",\
+"Shape""10".
+
+MESSAGE NO_NAME_DEF 3 "Constraint name not specified."
+MESSAGE NOT_CREATED 3 "Constraint not created."
+MESSAGE EXISTS 3 "Constraint exists, not created."
+MESSAGE NOT_COPIED 3 "Constraint not copied."
+MESSAGE NOT_NOTEXISTS 3 "Old constraint does not exist."
+MESSAGE NOT_DELETED 3 "Constraint not deleted."
+MESSAGE DONE 1 "Done."
+MESSAGE NOTYPESUBC 2 "No subclasses of this type are available."
+MESSAGE DPF_WARNING 1 "Changes will NOT be seen by exported partitions."
+MESSAGE READ_ONLY_DPF 1 "Not editable within design partition."
+
+TILE TOP
+TPANEL 0
+TEXT "Constraint Set Name:"
+TLOC 1 0
+ENDTEXT
+
+FIELD constraint_set_name
+FLOC 24 0
+ENUMSET 24
+POP "CONSTRAINTNAMEP"
+ENDFIELD
+
+ENDTILE
+
+TILE SUBCLASS
+TPANEL 0
+
+TEXT "Subclass:"
+TLOC 12 0
+ENDTEXT
+
+FIELD subclass
+FLOC 24 0
+ENUMSET 24
+POP "SUBCLASSP"
+ENDFIELD
+
+ENDTILE
+
+TILE ADD_DELETE
+TPANEL 0
+
+FIELD add
+FLOC 1 1
+MENUBUTTON "Add" 10 3
+ENDFIELD
+
+FIELD copy
+FLOC 12 1
+MENUBUTTON "Copy" 10 3
+ENDFIELD
+
+FIELD delete
+FLOC 23 1
+MENUBUTTON "Delete" 10 3
+ENDFIELD
+
+FIELD constraint_name
+FLOC 34 1
+STRFILLIN 24 32
+ENDFIELD
+
+ENDTILE
+
+TILE GLOBAL_INFO
+TPANEL 1
+TEXT
+TLOC 1 0
+INFO global_info 60
+ENDTEXT
+
+ENDTILE
+
+TILE ELEMENTS_TILE
+TPANEL 1
+TEXT "Spacing:"
+TLOC 24 0
+ENDTEXT
+
+FIELD elements_list
+FLOC 1 0
+ENUMSET 10
+POP "CONSTRAINTLISTP"
+ENDFIELD
+
+ENDTILE
+
+TILE GLOBALS_A
+TPANEL 1
+TEXT "Pin To Pin:"
+TLOC 5 0
+ENDTEXT
+
+TEXT "Line To Pin:"
+TLOC 5 2
+ENDTEXT
+
+TEXT "Line To Line:"
+TLOC 5 4
+ENDTEXT
+
+TEXT "Via To Pin:"
+TLOC 5 6
+ENDTEXT
+
+FIELD pin_to_pin
+FLOC 24 0
+STRFILLIN 15 15
+ENDFIELD
+
+FIELD line_to_pin
+FLOC 24 2
+STRFILLIN 15 15
+ENDFIELD
+
+FIELD line_to_line
+FLOC 24 4
+STRFILLIN 15 15
+ENDFIELD
+
+FIELD via_to_pin
+FLOC 24 6
+STRFILLIN 15 15
+ENDFIELD
+
+ENDTILE
+
+TILE VIA_TO_SMD_PIN
+TPANEL 1
+TEXT "Via To Smd Pin:"
+TLOC 5 0
+ENDTEXT
+
+FIELD via_to_smd_pin
+FLOC 24 0
+STRFILLIN 15 15
+ENDFIELD
+
+ENDTILE
+
+TILE GLOBALS_B
+TPANEL 1
+
+TEXT "Via To Via:"
+TLOC 5 0
+ENDTEXT
+
+TEXT "Via To Line:"
+TLOC 5 2
+ENDTEXT
+
+TEXT "Shape To Pin:"
+TLOC 5 4
+ENDTEXT
+
+TEXT "Shape To Via:"
+TLOC 5 6
+ENDTEXT
+
+TEXT "Shape To Line:"
+TLOC 5 8
+ENDTEXT
+
+TEXT "Shape To Shape:"
+TLOC 5 10
+ENDTEXT
+
+FIELD via_to_via
+FLOC 24 0
+STRFILLIN 15 15
+ENDFIELD
+
+FIELD via_to_line
+FLOC 24 2
+STRFILLIN 15 15
+ENDFIELD
+
+FIELD shape_to_pin
+FLOC 24 4
+STRFILLIN 15 15
+ENDFIELD
+
+FIELD shape_to_via
+FLOC 24 6
+STRFILLIN 15 15
+ENDFIELD
+
+FIELD shape_to_line
+FLOC 24 8
+STRFILLIN 15 15
+ENDFIELD
+
+FIELD shape_to_shape
+FLOC 24 10
+STRFILLIN 15 15
+ENDFIELD
+
+ENDTILE
+
+TILE SAMENET
+TPANEL 1
+TEXT "Same Net DRC:"
+TLOC 5 0
+ENDTEXT
+
+FIELD same_net_drc
+FLOC 24 0
+ENUMSET 12
+POP "SAMENETP"
+ENDFIELD
+
+ENDTILE
+
+TILE _TO_TILE
+TPANEL 1
+TEXT "to Thru Pin:"
+TLOC 4 0
+ENDTEXT
+
+TEXT "to SMD Pin:"
+TLOC 4 2
+ENDTEXT
+
+TEXT "to Test Pin:"
+TLOC 4 4
+ENDTEXT
+
+TEXT "to Thru Via:"
+TLOC 4 6
+ENDTEXT
+
+TEXT "to Test Via:"
+TLOC 4 8
+ENDTEXT
+
+TEXT "to B/B Via:"
+TLOC 4 10
+ENDTEXT
+
+TEXT "to Bond Finger:"
+TLOC 4 12
+ENDTEXT
+
+TEXT "to Line:"
+TLOC 4 14
+ENDTEXT
+
+TEXT "to Shape:"
+TLOC 4 16
+ENDTEXT
+
+FIELD _to_thru_pin
+FLOC 24 0
+STRFILLIN 15 15
+ENDFIELD
+
+FIELD _to_smd_pin
+FLOC 24 2
+STRFILLIN 15 15
+ENDFIELD
+
+FIELD _to_test_pin
+FLOC 24 4
+STRFILLIN 15 15
+ENDFIELD
+
+FIELD _to_thru_via
+FLOC 24 6
+STRFILLIN 15 15
+ENDFIELD
+
+FIELD _to_test_via
+FLOC 24 8
+STRFILLIN 15 15
+ENDFIELD
+
+FIELD _to_bb_via
+FLOC 24 10
+STRFILLIN 15 15
+ENDFIELD
+
+FIELD _to_bondpad
+FLOC 24 12
+STRFILLIN 15 15
+ENDFIELD
+
+FIELD _to_line
+FLOC 24 14
+STRFILLIN 15 15
+ENDFIELD
+
+FIELD _to_shape
+FLOC 24 16
+STRFILLIN 15 15
+ENDFIELD
+
+ENDTILE
+
+TILE WARN 
+TPANEL 2
+TEXT "** Constraint set values not the same for all subclasses." 
+TLOC 0 0
+ENDTEXT 
+ 
+ENDTILE
+
+TILE StdTile
+TPANEL 2
+FIELD done
+FLOC 1 0
+MENUBUTTON "Done" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 11 0
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD reset
+FLOC 22 0
+MENUBUTTON "Reset" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 50 0
+MENUBUTTON "Help" 9 3
+ENDFIELD
+ 
+ENDTILE
+
+TILE NON_PAIRED_DRC
+TPANEL 1
+TEXT "Non Paired"
+TLOC 1 1
+ENDTEXT
+
+TEXT "Same Net DRC:"
+TLOC 1 3
+ENDTEXT
+
+TEXT "Min BB Via Gap:"
+TLOC 1 5
+ENDTEXT
+
+FIELD same_net_drc
+FLOC 24 3
+ENUMSET 12
+POP "SAMENETP"
+ENDFIELD
+
+FIELD max_bb_via_gap
+FLOC 24 5
+STRFILLIN 15 15
+ENDFIELD
+
+ENDTILE
+
+TILE HLOE_SPACE_WIRE
+TPANEL 1
+TEXT "Hole Spacing"
+TLOC 1 0
+ENDTEXT
+
+TEXT "to Hole:"
+TLOC 1 2
+ENDTEXT
+
+TEXT "to Diagonal Wire:"
+TLOC 1 4
+ENDTEXT
+
+TEXT "to Orthogonal Wire:"
+TLOC 1 6
+ENDTEXT
+
+FIELD to_hole_wire
+FLOC 24 2
+STRFILLIN 15 24
+ENDFIELD
+
+FIELD to_diagonal_wire
+FLOC 24 4
+STRFILLIN 15 24
+ENDFIELD
+
+FIELD to_orthogonal_wire
+FLOC 24 6
+STRFILLIN 15 24
+ENDFIELD
+
+ENDTILE
+
+TILE WIRE_TO_WIRE
+TPANEL 1
+TEXT "Wire to Wire Spacing"
+TLOC 1 1
+ENDTEXT
+
+TEXT "Diagonal:"
+TLOC 1 3
+ENDTEXT
+
+TEXT "Orthogonal:"
+TLOC 1 5
+ENDTEXT
+
+TEXT "Ortho to Diag:"
+TLOC 1 7
+ENDTEXT
+ 
+TEXT "Crossing to Segment:"
+TLOC 1 10
+ENDTEXT
+ 
+TEXT "Crossing to 135 Turn:"
+TLOC 1 12
+ENDTEXT
+ 
+TEXT "Crossing to 90 Turn:"
+TLOC 1 14
+ENDTEXT
+ 
+TEXT "Segment to 135 Turn:"
+TLOC 1 16
+ENDTEXT
+ 
+TEXT "Segment to 90 Turn:"
+TLOC 1 18
+ENDTEXT
+ 
+TEXT "Min Loopback Length:"
+TLOC 1 20
+ENDTEXT
+
+TEXT "Same Net DRC:"
+TLOC 1 24
+ENDTEXT
+
+FIELD diagonal_wire
+FLOC 24 3
+STRFILLIN 15 24
+ENDFIELD
+
+FIELD orthogonal_wire
+FLOC 24 5
+STRFILLIN 15 24
+ENDFIELD
+
+FIELD ortho_diag_wire
+FLOC 24 7
+STRFILLIN 15 24
+ENDFIELD
+
+FIELD crossing_to_seg
+FLOC 24 10
+STRFILLIN 15 24
+ENDFIELD
+
+FIELD crossing_to_135
+FLOC 24 12
+STRFILLIN 15 24
+ENDFIELD
+
+FIELD crossing_to_90
+FLOC 24 14
+STRFILLIN 15 24
+ENDFIELD
+
+FIELD seg_to_135
+FLOC 24 16
+STRFILLIN 15 24
+ENDFIELD
+
+FIELD seg_to_90
+FLOC 24 18
+STRFILLIN 15 24
+ENDFIELD
+
+FIELD loop_length
+FLOC 24 20
+STRFILLIN 15 24
+ENDFIELD
+
+FIELD same_net_drc
+FLOC 24 24
+ENUMSET 12
+POP "SAMENETP"
+ENDFIELD
+
+ENDTILE
+
+TILE BONDING_WIRE
+TPANEL 1
+TEXT "Wire to Wire Spacing"
+TLOC 1 0
+ENDTEXT
+
+TEXT "Minimum Distance:"
+TLOC 1 2
+ENDTEXT
+
+FIELD min_distance_bond
+FLOC 24 2
+STRFILLIN 15 24
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

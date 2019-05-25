@@ -1,0 +1,89 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+VARIABLE
+PORT 50 24
+HEADER "Define Subclass"
+
+POPUP <DEL>"Delete""0".
+
+MESSAGE BAD_SUBCLASS 3 "Illegal subclass name."
+MESSAGE SUBCLASS_RENAMED 1 "Subclass is renamed"
+MESSAGE CHANGE_PROBLEM 2 "Problem changing this subclass."
+MESSAGE CANT_ADD 3 "Max number of subclasses reached, can't add."
+MESSAGE SUBCLASS_EXISTS 2 "Subclass already exists."
+MESSAGE SUBCLASS_ADDED 1 "Subclass added successfully."
+MESSAGE DBMSG_SC_NOT_FOUND 3 "Can't locate subclass to delete."
+MESSAGE DBMSG_SC_NOT_EMPTY 3 "Can't delete a subclass until all items are deleted."
+MESSAGE DBMSG_SC_SYM_DEFS 3 "Can't delete this subclass, SYMBOL DEFS contain geometry on this subclass."
+
+ACTIVEFIELD "subclass"
+
+TILE StdTile
+TPANEL 2
+{
+FIELD done
+FLOC 1 1
+MENUBUTTON "Done" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 11 1
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+}
+
+FIELD help
+FLOC 31 1
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+ENDTILE
+
+TILE NEW_SUBCLASS_NAME
+TPANEL 0
+TEXT "Class: "
+TLOC 1 0
+ENDTEXT
+
+TEXT
+TLOC 8 0
+INFO class 18
+ENDTEXT
+
+TEXT "New Subclass:"
+TLOC 1 3
+ENDTEXT
+
+FIELD name
+FLOC 12 3
+STRFILLIN 27 31
+ENDFIELD
+
+ENDTILE
+
+TILE USERDEF_SC_TILE
+TPANEL 1
+FIELD delete
+FLOC 1 0
+MENUBUTTON "" 4 2
+POP "DEL"
+ENDFIELD
+
+FIELD rename
+FLOC 6 0
+STRFILLIN 31 31
+ENDFIELD
+
+ENDTILE
+
+TILE FIXED_SC_TILE
+TPANEL 1
+TEXT
+TLOC 6 0
+INFO fname 47
+OPTIONS prettyprint
+ENDTEXT
+
+ENDTILE
+
+ENDFORM

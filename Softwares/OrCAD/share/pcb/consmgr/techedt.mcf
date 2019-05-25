@@ -1,0 +1,92 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;    Cadence Design Systems
+;
+; (C) COPYRIGHT, Cadence Design Systems, Inc. 2001-2012
+; All Rights Reserved
+; Licensed Materials - Property of Cadence Design Systems
+;
+; No part of this file may be reproduced, stored in a retrieval system,
+; or transmitted in any form or by any means --- electronic, mechanical,
+; photocopying, recording, or otherwise --- without prior written permission
+; of Cadence Design Systems, Inc.
+;
+; WARRANTY:
+; Use all material in this file at your own risk.  Cadence Design Systems
+; makes no claims about any material contained in this file.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;
+; NEXT HELP TAG = 320
+;
+(MaestroConfigurationFile
+  (MaestroConfigurationHeader
+    (Version 3)
+  )
+  (WorkbookDefinitions
+    (GridConfigurationVersion
+      ( 16.6 )
+    )
+    (Width 9)
+    (EnumValueMappings
+      (EnumAttribute CDS_LAYER_TYPE
+        (EnumConversion "SURFACE" "Surface")
+        (EnumConversion "CONDUCTOR" "Conductor")
+        (EnumConversion "DIELECTRIC" "Dielectric")
+        (EnumConversion "PLANE" "Plane")
+        (EnumConversion "MULTIWIRE" "Multiwire")
+        (EnumConversion "MICROWIRE" "Microwire")
+        (EnumConversion "CROSSOVER" "Crossover")
+        (EnumConversion "BONDING_WIRE" "Bonding Wire")
+        (EnumConversion "OPTICAL_WAVE" "Optical Wave")
+        (EnumConversion "THERMAL_GLUE" "Thermal Glue")
+      )
+    )      
+    (Domain "Cross Section"
+      (HelpTag 144)
+      (ColumnHeader "Objects" (Height 2)
+          (Column "Type" (Width 6)(Hidden "Yes"))
+          (Column "S" (Width 2)(Hidden "Yes"))
+          (Column "Name" (Width 2)(SortState 0))
+       )
+      (WorksheetSync "Off")
+      (ObjectType "Layer"
+        (HelpTag 164)
+        (Column "Layer Type" (Attribute CDS_LAYER_TYPE) (Width 12))
+        (Column "Thickness" (Attribute CDS_LAYER_THICKNESS) (Width 9))
+        (EnableObject "Design")
+        (EnableObject "Layer")
+        (DisableObject "ElectricalNetClass")
+        (Workbook "Cross Section"
+          (HelpTag 165)
+          (EnableObject "NonEtchLayer")
+          (Worksheet "Physical"
+            (HelpTag 315)
+            (Column "Material" (Attribute CDS_LAYER_MATERIAL) (Width 15))
+            (Column "Negative Artwork" (Attribute CDS_LAYER_NEGATIVE_ARTWORK) (Width 9))
+          )
+          (Worksheet "Embedded"
+            (HelpTag 316)
+          )
+          (Worksheet "Signal Integrity"
+            (HelpTag 317)
+            (Column "Conductivity" (Attribute CDS_LAYER_ELECTRICAL_CONDUCTIVITY) (Width 12))
+            (Column "Dielectric Constant" (Attribute CDS_LAYER_DIELECTRIC_CONSTANT) (Width 9))
+            (Column "Loss Tangent" (Attribute CDS_LAYER_LOSS_TANGENT) (Width 9))
+            (Column "Shield" (Attribute CDS_LAYER_IS_SHIELD) (Width 9))
+          )
+          (Worksheet "Differential Pair"
+            (HelpTag 318)
+          )
+          (Worksheet "User Property"
+            (HelpTag 319)
+          )
+          (Worksheet "X-Section (other)"
+            (HelpTag 166)
+            (Column "Freq. Dep. File" (Attribute CDS_LAYER_FREQ_DEP_FILE) (Width 15))
+            (Column "Etch Factor" (Attribute CDS_LAYER_ETCH_FACTOR) (Width 9))
+          )
+        )
+      )
+    )
+  )
+)

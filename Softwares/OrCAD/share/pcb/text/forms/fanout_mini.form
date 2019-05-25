@@ -1,0 +1,70 @@
+# $Header: /net/wicked/pcs/data/cuiforms/fanout_mini.form,v 1.3 1902/01/04 15:05:37 fxf Exp $
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 30 12
+HEADER "Fanout Options"
+
+POPUP <subclass>"""".
+POPUP <route_directions>"Up""1","Down""2","Left""3","Right""4".
+
+TILE
+
+TEXT "Active Subclass:"
+TLOC 1 1
+ENDTEXT
+
+FIELD active_subcolor
+FLOC 1 3
+INFO_ONLY
+COLOR 2 1
+OPTIONS colorchooser
+ENDFIELD
+
+FIELD subclass
+FLOC 4 3
+ENUMSET 18
+OPTIONS prettyprint ownerdrawn
+POP "subclass"
+ENDFIELD
+
+TEXT "Guide angle:"
+TLOC 1 7
+ENDTEXT
+
+FIELD guide_angle
+FLOC 13 7
+INTFILLIN 2 2
+MIN 10
+MAX 90
+ENDFIELD
+
+TEXT "Route direction:"
+TLOC 1 9
+ENDTEXT
+
+FIELD route_direction
+FLOC 13 9
+ENUMSET 10
+POP "route_directions"
+ENDFIELD
+
+TEXT "Line width:"
+TLOC 1 11
+ENDTEXT
+
+FIELD line_width
+FLOC 13 11
+REALFILLIN 8 8
+REALMIN 0.0
+ENDFIELD
+
+FIELD use_pad_angle
+FLOC 1 13
+CHECKLIST "Align clines with pad rotation"
+ENDFIELD
+
+
+ENDTILE
+
+ENDFORM

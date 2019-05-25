@@ -1,0 +1,117 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM 
+FIXED
+PORT 53 14
+HEADER "Export Logic"
+
+MESSAGE BAF_TOO_LONG 0 "Current Design limit is %d characters, with directory."
+MESSAGE MUST_BE_DIR 0 "Destination is a directory for Cadence design entry"
+
+TILE
+
+TABSET "tab"
+FLOC 1 1
+TSSIZE 39 25
+
+TAB "Cadence" cadence
+
+GROUP "Logic type"
+GLOC 1 1
+GSIZE 37 10
+ENDGROUP
+
+FIELD format_hdl
+FLOC 2 4
+CHECKLIST "Design entry HDL" "BAFORMATGROUP"
+ENDFIELD
+
+FIELD format_capture
+FLOC 2 6
+CHECKLIST "Design entry CIS" "BAFORMATGROUP"
+ENDFIELD
+
+FIELD format_valid
+FLOC 2 8
+CHECKLIST "SCALD" "BAFORMATGROUP"
+ENDFIELD
+
+FIELD export_ecset
+FLOC 1 12
+CHECKLIST "Export using Constraint Manager enabled flow"
+ENDFIELD
+
+
+TEXT "Database branding:"
+TLOC 1 15
+ENDTEXT
+
+TEXT 
+TLOC 16 15
+INFO current_state 35
+ENDTEXT
+
+TEXT "Export to directory:"
+TLOC 1 17
+ENDTEXT
+
+FIELD destination
+FLOC 1 19
+STRFILLIN 32 256
+ENDFIELD
+
+FIELD browse_export
+FLOC 35 19
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+ENDTAB
+
+TAB "Other" other
+
+TEXT "Comparison design:"
+TLOC 1 4
+ENDTEXT
+
+FIELD old_drawing
+FLOC 1 6
+STRFILLIN 31 512
+ENDFIELD
+
+FIELD browse_comparison
+FLOC 34 6
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+FIELD include_spares
+FLOC 1 9
+CHECKLIST "Include spare TF- functions"
+ENDFIELD
+
+ENDTAB
+
+ENDTABSET
+
+FIELD Export
+FLOC 41 3
+MENUBUTTON "Export" 11 4
+OPTIONS multiline
+ENDFIELD
+
+FIELD close
+FLOC 41 7
+MENUBUTTON "Close" 11 3
+ENDFIELD
+
+FIELD cancel
+FLOC 41 10
+MENUBUTTON "Cancel" 11 3
+ENDFIELD
+
+FIELD help
+FLOC 41 24
+MENUBUTTON "Help" 11 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

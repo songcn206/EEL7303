@@ -1,0 +1,144 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 80 37
+
+HEADER "Layer Compare"
+
+POPUP <ref_class_popup>     "" "".
+POPUP <ref_subclass_popup>  "" "".
+POPUP <comp_class_popup>    "" "".
+POPUP <comp_subclass_popup> "" "".
+POPUP <dest_class_popup>    "" "".
+POPUP <dest_subclass_popup> "" "".
+POPUP <operation_popup>     "Logical AND" "AND", "Logical OR" "OR", "Logical XOR" "XOR", "Logical ANDNOT" "ANDNOT".
+
+TILE
+
+FIELD select_design
+FLOC 1 1
+CHECKLIST "Use substrate outline" "selection_type"
+ENDFIELD
+FIELD select_window
+FLOC 21 1
+CHECKLIST "Select window region" "selection_type"
+ENDFIELD
+FIELD select_symbol
+FLOC 45 1
+CHECKLIST "Select symbol" "selection_type"
+ENDFIELD
+FIELD select_shape
+FLOC 65 1
+CHECKLIST "Select shape" "selection_type"
+ENDFIELD
+
+TEXT "Reference Layer:"
+TLOC 1 4
+ENDTEXT
+TEXT "Class:"
+TLOC 3 6
+ENDTEXT
+FIELD ref_class
+FLOC 11 6
+ENUMSET 25
+POP "ref_class_popup"
+ENDFIELD
+TEXT "Subclass:"
+TLOC 3 8
+ENDTEXT
+FIELD ref_subclass
+FLOC 11 8
+ENUMSET 25
+POP "ref_subclass_popup"
+ENDFIELD
+FIELD ref_positive
+FLOC 11 10
+CHECKLIST "Positive" "ref_polarity"
+ENDFIELD
+FIELD ref_negative
+FLOC 25 10
+CHECKLIST "Negative" "ref_polarity"
+ENDFIELD
+
+TEXT "Comparison Layer:"
+TLOC 43 4
+ENDTEXT
+TEXT "Class:"
+TLOC 45 6
+ENDTEXT
+FIELD comp_class
+FLOC 53 6
+ENUMSET 25
+POP "comp_class_popup"
+ENDFIELD
+TEXT "Subclass:"
+TLOC 45 8
+ENDTEXT
+FIELD comp_subclass
+FLOC 53 8
+ENUMSET 25
+POP "comp_subclass_popup"
+ENDFIELD
+FIELD comp_positive
+FLOC 53 10
+CHECKLIST "Positive" "comp_polarity"
+ENDFIELD
+FIELD comp_negative
+FLOC 67 10
+CHECKLIST "Negative" "comp_polarity"
+ENDFIELD
+
+TEXT "Destination Layer:"
+TLOC 1 13
+ENDTEXT
+TEXT "Class:"
+TLOC 3 15
+ENDTEXT
+FIELD dest_class
+FLOC 11 15
+ENUMSET 25
+POP "dest_class_popup"
+ENDFIELD
+TEXT "Subclass:"
+TLOC 3 17
+ENDTEXT
+FIELD dest_subclass
+FLOC 11 17
+STRFILLIN 23 1024
+POP "dest_subclass_popup"
+ENDFIELD
+TEXT "Operation:"
+TLOC 45 15
+ENDTEXT
+FIELD dest_op
+FLOC 53 15
+ENUMSET 25
+POP "operation_popup"
+ENDFIELD
+FIELD dest_clear
+FLOC 53 17
+CHECKLIST "Remove existing shapes on layer"
+ENDFIELD
+
+FIELD done
+FLOC 1 21
+MENUBUTTON "OK" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 11 21
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD generate
+FLOC 24 21
+MENUBUTTON "Generate" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 70 21
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+ENDTILE
+ENDFORM

@@ -1,0 +1,620 @@
+# $Header: /vobs/psd_backend_data/data/forms-core/status.form /main/78 2010-03-12T17:03:11-05 fxf $
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 60 20
+HEADER "Status"
+
+POPUP <LINELP>"Off""0","45""45","90""90".
+
+POPUP <ADDAP>"0""0","45""45","90""90","135""135",\
+"180""180","225""225","270""270","315""315".
+
+POPUP <JUSTP>"Left""1","Center""3","Right""2".
+
+POPUP <lockmode>"Line""1","Arc""0".
+
+POPUP <RJOGP>"Jogged""0","Straight""1".
+
+POPUP <PRINTP>"to File""0","to Printer""1","to Script""2".
+
+POPUP <RNETDISTPOP>"Closest endpoint""0","Pin to pin""1".
+
+POPUP <TEXT_POP>"a""a".
+
+MESSAGE nedit 2 "Not editable while in interactive command."
+MESSAGE mustarc 3 "Lock fields must be set to Arc and not be Off."
+MESSAGE must45 3 "Lock fields must be set to Line and 45."
+MESSAGE dodrc 0 "Running DRC, please wait..."
+MESSAGE drcdone 0 "DRC done."
+MESSAGE nodrcrun 2 "DRC Update can not be run while command active."
+MESSAGE noshape 2 "Shape Update can not be run while command active."
+MESSAGE nodone 2 "Finish current interactive command before closing form."
+MESSAGE wdrcno   2 "Refresh can not be run while command is active."
+MESSAGE wdrcdo   0 "Updating Waived DRC display, please wait..."
+MESSAGE wdrcdone 0 "Waived DRC display updated."
+
+
+TILE
+TABSET "tab_selector"
+FLOC 2 1
+TSSIZE 57 45
+
+TAB "Status"
+
+#ifdef _symbol
+
+GROUP "Pins"
+FLOC 2 3
+FSIZE 53 8
+ENDFIELD
+
+TEXT "Connect pins:"
+TLOC 5 6
+ENDTEXT
+
+TEXT
+TLOC 25 6
+INFO connectpin_count 10
+OPTIONS right
+ENDTEXT
+
+TEXT "Mechanical pins:"
+TLOC 5 8
+ENDTEXT
+
+TEXT
+TLOC 25 8
+INFO mechpin_count 10
+OPTIONS right
+ENDTEXT
+
+#else
+
+# SYMBOLS
+
+GROUP "Symbols and nets"
+FLOC 2 1
+FSIZE 53 10
+ENDFIELD
+
+FIELD symbol_color
+FLOC 4 4
+COLOR 2 1
+ENDFIELD
+
+TEXT "Unplaced symbols:"
+TLOC 7 4
+ENDTEXT
+
+TEXT
+TLOC 26 4
+INFO symbol_count 10
+OPTIONS right
+ENDTEXT
+
+TEXT 
+TLOC 39 4
+INFO symbol_percent 4
+OPTIONS right
+ENDTEXT
+
+# NETS
+FIELD net_color
+FLOC 4 6
+INFO_ONLY
+COLOR 2 1
+ENDFIELD
+
+TEXT "Unrouted nets:"
+TLOC 7 6
+ENDTEXT
+
+TEXT 
+TLOC 26 6
+INFO net_count 10
+OPTIONS right
+ENDTEXT
+
+TEXT  
+TLOC 39 6
+INFO net_percent 4
+OPTIONS right
+ENDTEXT
+
+# FROM-TO
+FIELD fromto_color
+FLOC 4 8
+COLOR 2 1
+ENDFIELD
+
+TEXT "Unrouted connections:"
+TLOC 7 8
+ENDTEXT
+
+TEXT 
+TLOC 26 8
+INFO fromto_count 10
+OPTIONS right
+ENDTEXT
+
+TEXT  
+TLOC 39 8
+INFO fromto_percent 4
+OPTIONS right
+ENDTEXT
+
+GROUP "Shapes"
+FLOC 2 11
+FSIZE 53 13
+ENDFIELD
+
+# ISOLATED SHAPES
+FIELD isolated_color
+FLOC 4 14
+COLOR 2 1
+ENDFIELD
+
+TEXT "Isolated shapes:"
+TLOC 7 14
+ENDTEXT
+
+TEXT
+TLOC 26 14
+INFO isolated_count 10
+OPTIONS right
+ENDTEXT
+
+# UNASSIGENED SHAPES (shapes not on a real net)
+FIELD netless_color
+FLOC 4 16
+COLOR 2 1
+ENDFIELD
+
+TEXT "Unassigned shapes:"
+TLOC 7 16
+ENDTEXT
+
+TEXT
+TLOC 26 16
+INFO netless_count 10
+OPTIONS right
+ENDTEXT
+
+# SHAPES
+FIELD shape_color
+FLOC 4 18
+COLOR 2 1
+ENDFIELD
+
+TEXT "Out of date shapes:"
+TLOC 7 18
+ENDTEXT
+
+TEXT
+TLOC 26 18
+INFO shape_count 10
+OPTIONS right
+ENDTEXT
+
+FIELD fill_update
+FLOC 39 18
+MENUBUTTON "Update to Smooth" 14 3
+ENDFIELD
+
+#endif
+
+#ifndef _symbol
+
+TEXT "Dynamic fill:"
+TLOC 4 21
+ENDTEXT
+
+FIELD fill_wysiwyg
+FLOC 23 21
+CHECKLIST "Smooth" dcp
+ENDFIELD
+
+FIELD fill_rough
+FLOC 34 21
+CHECKLIST "Rough" dcp
+ENDFIELD
+
+FIELD fill_disabled
+FLOC 44 21
+CHECKLIST "Disabled" dcp
+ENDFIELD
+#endif
+
+GROUP "DRCs"
+FLOC 2 24
+FSIZE 53 11
+ENDFIELD
+
+FIELD drc_color
+FLOC 4 27
+COLOR 2 1
+ENDFIELD
+
+TEXT "DRC errors:"
+TLOC 7 27
+ENDTEXT
+
+TEXT
+TLOC 16 27
+INFO drc_status 18
+OPTIONS prettyprint
+ENDTEXT
+
+TEXT
+TLOC 30 27
+INFO drc_count 6
+OPTIONS right
+ENDTEXT
+
+FIELD drc_update
+FLOC 39 27
+MENUBUTTON "Update DRC" 14 3
+ENDFIELD
+
+FIELD shorts_drc_color
+FLOC 7 29
+COLOR 2 1
+ENDFIELD
+
+TEXT "DRC Net Shorting errors:"
+TLOC 10 29
+ENDTEXT
+
+TEXT
+TLOC 29 29
+INFO shorts_drc_count 7
+OPTIONS right
+ENDTEXT
+
+FIELD waived_drc_color
+FLOC 4 32
+COLOR 2 1
+ENDFIELD
+
+TEXT "Waived DRC errors:"
+TLOC 7 32
+ENDTEXT
+
+TEXT
+TLOC 26 32
+INFO waived_drc_count 10
+OPTIONS right
+ENDTEXT
+
+FIELD drc_on
+FLOC 39 30
+CHECKLIST " On-Line DRC" 
+ENDFIELD
+
+GROUP "Statistics"
+FLOC 2 35
+FSIZE 53 7
+ENDFIELD
+
+TEXT "Last saved by:"
+TLOC 4 37
+ENDTEXT
+
+TEXT "xxx"
+FLOC 16 37
+INFO save_user 20
+OPTIONS right
+ENDFIELD
+
+TEXT "Editing time:"
+TLOC 4 39
+ENDTEXT
+
+TEXT "yyy"
+FLOC 16 39
+INFO edit_time 20
+OPTIONS right
+ENDFIELD
+
+FIELD reset_time
+FLOC 39 39
+MENUBUTTON "Reset" 14 3
+ENDFIELD
+
+ENDTAB
+
+#ifdef STATUS_ALL_TABS
+
+TAB "Display"
+
+TEXT "Connect point size:"
+TLOC 4 1
+ENDTEXT
+
+FIELD cpoint_size
+FLOC 22 1
+REALFILLIN 7 7
+DECIMAL 0
+ENDFIELD
+
+TEXT "DRC marker size:"
+TLOC 4 3
+ENDTEXT
+
+FIELD drc_marker_size
+FLOC 22 3
+REALFILLIN 7 7
+DECIMAL 0
+ENDFIELD
+
+TEXT "Rat T (Virtual pin) size:"
+TLOC 4 5
+ENDTEXT
+
+FIELD rat_t_size
+FLOC 22 5
+REALFILLIN 7 7
+DECIMAL 0
+ENDFIELD
+
+TEXT "Max rband count:"
+TLOC 4 7
+ENDTEXT
+
+FIELD max_rubberband
+FLOC 22 7
+INTFILLIN 5 5
+MIN 0
+MAX 500
+ENDFIELD
+
+TEXT "Ratsnest geometry:"
+TLOC 4 9
+ENDTEXT
+
+FIELD ratsnest_display
+FLOC 22 9
+ENUMSET 9
+POP "RJOGP"
+ENDFIELD
+
+TEXT "Ratsnest points:"
+TLOC 4 11
+ENDTEXT
+
+FIELD ratsnest_distance
+FLOC 22 11
+ENUMSET 16
+POP "RNETDISTPOP"
+ENDFIELD
+
+GROUP "Enhanced Display Modes"
+GLOC 1 14
+GSIZE 42 18
+ENDGROUP
+
+FIELD display_plated_holes
+FLOC 2 16
+CHECKLIST "Display plated holes"
+ENDFIELD
+ 
+FIELD display_non_plated_holes
+FLOC 2 18
+CHECKLIST "Display non-plated holes"
+ENDFIELD
+
+FIELD display_enhance
+FLOC 2 20
+CHECKLIST "Filled pads"
+ENDFIELD
+
+FIELD display_endcaps
+FLOC 2 22
+CHECKLIST "Cline endcaps"
+ENDFIELD
+
+FIELD display_thermal
+FLOC 2 24
+CHECKLIST "Thermal pads"
+ENDFIELD
+
+# This field is turned off until the display_modules command is fixed.
+#FIELD display_module_members
+#FLOC 2 25
+#CHECKLIST "Display module members"
+#ENDFIELD
+
+FIELD display_fat_rats
+FLOC 2 26
+CHECKLIST "Bus rats"
+ENDFIELD
+
+FIELD display_grid
+FLOC 2 28
+CHECKLIST "Grids"
+ENDFIELD
+
+FIELD waived_drc_on
+FLOC 2 30
+CHECKLIST "Waived DRCs" 
+ENDFIELD
+
+ENDTAB
+
+TAB "Text"
+
+TEXT "Justification:"
+TLOC 4 2
+ENDTEXT
+
+TEXT "Parameter block:"
+TLOC 4 4
+ENDTEXT
+
+TEXT "Text marker size:"
+TLOC 4 6
+ENDTEXT
+
+FIELD text_justification
+FLOC 22 2
+ENUMSET 7
+POP "JUSTP"
+ENDFIELD
+
+FIELD text_block
+FLOC 22 4
+INTSLIDEBAR 2 2
+MIN 1
+MAX 64
+ENDFIELD
+
+FIELD text_marker_size
+FLOC 22 6
+REALFILLIN 7 7
+DECIMAL 0
+ENDFIELD
+#endif
+
+#ifdef STATUS_ALL_TABS && specctraquest
+TEXT "Refdes:
+TLOC 4 11
+ENDTEXT
+
+TEXT "Room name:"
+TLOC 4 13
+ENDTEXT
+
+TEXT "Notes:"
+TLOC 4 15
+ENDTEXT
+
+FIELD reftext
+FLOC 22 11
+ENUMSET 14
+POP "TEXT_POP"
+ENDFIELD
+
+FIELD roomtext
+FLOC 22 13
+ENUMSET 14
+POP "TEXT_POP"
+ENDFIELD
+
+FIELD notetext
+FLOC 22 15
+ENUMSET 14
+POP "TEXT_POP"
+ENDFIELD
+
+GROUP "Special SI text sizes"
+GLOC 2 8
+GSIZE 39 10
+ENDGROUP
+#endif
+
+#ifdef STATUS_ALL_TABS
+ENDTAB
+
+TAB "Line Lock"
+
+TEXT "Lock direction:"
+TLOC 4 2
+ENDTEXT
+
+TEXT "Lock mode:"
+TLOC 4 4
+ENDTEXT
+
+TEXT "Minimum radius:"
+TLOC 4 6
+ENDTEXT
+
+FIELD lock_direction
+FLOC 22 2
+ENUMSET 4
+POP "LINELP"
+ENDFIELD
+ 
+FIELD lock_mode
+FLOC 22 4
+ENUMSET 4
+POP "lockmode"
+ENDFIELD
+
+FIELD min_radius
+FLOC 22 6
+REALFILLIN 7 7
+DECIMAL 0
+ENDFIELD
+ 
+FIELD fixed_45
+FLOC 2 8
+CHECKLIST "Fixed 45 length:"
+ENDFIELD
+ 
+FIELD length_45
+FLOC 22 8
+REALFILLIN 7 7
+DECIMAL 0
+ENDFIELD
+
+FIELD fixed_radius
+FLOC 2 10
+CHECKLIST "Fixed radius:"
+ENDFIELD
+
+FIELD length_radius
+FLOC 22 10
+REALFILLIN 7 7
+DECIMAL 0
+ENDFIELD
+
+FIELD lock_tangent
+FLOC 2 12
+CHECKLIST "Tangent"
+ENDFIELD
+
+ENDTAB
+
+TAB "Symbol"
+
+TEXT "Angle:"
+TLOC 4 2
+ENDTEXT
+
+FIELD symbol_angle
+FLOC 12 2
+REALFILLIN 7 7
+POP "ADDAP"
+DECIMAL 3
+ENDFIELD
+
+FIELD symbol_mirror
+FLOC 2 4
+CHECKLIST "Mirror"
+ENDFIELD
+
+ENDTAB
+#endif
+
+ENDTABSET
+
+FIELD done
+FLOC 2 47
+MENUBUTTON "OK" 9 3
+ENDFIELD
+
+FIELD refresh
+FLOC 27 47
+MENUBUTTON "Refresh" 8 3
+ENDFIELD
+
+FIELD help
+FLOC 51 47
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

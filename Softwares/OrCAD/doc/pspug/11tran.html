@@ -1,0 +1,2503 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN" "http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+<html xmlns="http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>PSpice User Guide -- Transient analysis</title>
+<META NAME="Approver" CONTENT="Technical Publications">
+<META NAME="Author" CONTENT="Technical Publications">
+<META NAME="CreateDate" CONTENT="2012-08-31">
+<META NAME="CreateTime" CONTENT="1346413404">
+<META NAME="DataType" CONTENT="Manuals">
+<META NAME="Description" CONTENT="User guide for PSpice and AMS Simulator.">
+<META NAME="DocTitle" CONTENT="PSpice User Guide">
+<META NAME="DocType" CONTENT="User Guide">
+<META NAME="EdmsRelease" CONTENT="EDMS Windows-P015">
+<META NAME="FileTitle" CONTENT="Transient analysis">
+<META NAME="FileType" CONTENT="Chapter">
+<META NAME="Keyword" CONTENT="pspug">
+<META NAME="Language" CONTENT="English">
+<META NAME="ModifiedDate" CONTENT="2012-08-31">
+<META NAME="ModifiedTime" CONTENT="1346413404">
+<META NAME="NextFile" CONTENT="13monte.html">
+<META NAME="PageCount" CONTENT="34">
+<META NAME="Platform" CONTENT="ALL">
+<META NAME="PrevFile" CONTENT="12param.html">
+<META NAME="Product" CONTENT="Allegro AMS Simulator, PSpice">
+<META NAME="ProductFamily" CONTENT="PCB Design, PCB Design">
+<META NAME="ProductVersion" CONTENT="16.6">
+<META NAME="RightsManagement" CONTENT="Copyright 2012 Cadence Design Systems Inc.">
+<META NAME="Title" CONTENT="PSpice User Guide -- Transient analysis">
+<META NAME="TopicTags" CONTENT="FALSE">
+<META NAME="Version" CONTENT="16.6">
+  </head>
+  <body style="margin-left: 5%;">
+    <a name="pagetop"></a>
+    <a name="firstpage"></a>
+    <!-- Begin Buttons -->
+    <table width="650" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td height="36" width="650" colspan="10">
+          <img src="../support/header_doc.gif" width="650" height="34">
+        </td>
+      </tr>
+      <tr>
+        <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                </td>
+<td height="20" width="73">
+<a href="pspugTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<a href="pspugIX.html"><img src="../support/nav2_index.gif" border="0"></a>
+</td>
+        <td>
+          <a href="12param.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+        </td>
+        <td>
+          <a href="13monte.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+        </td>
+        <td height="20">
+          <a>
+<a href="pspug.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+          </a>
+        </td>
+        <td height="20" width="61">
+          <img src="../support/nav2_black.gif">
+        </td>
+        <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+        </td>
+        <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+        </td>
+        <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+        </td>
+      </tr>
+    </table>
+    <!-- End Buttons -->
+    <p>
+    <hr>
+    <p>
+      <h3>
+        <center>
+          <font >
+            <div>PSpice&#174; User Guide</div>
+            <font >
+              <div>
+            </font>
+          </font>
+        </center>
+      </h3>
+      <br>
+    </p>
+    <div>
+      <h1>12<a name="1055070">&nbsp;</a></h1>
+      <h1><a name="1055075">Transient analysis</a></h1>
+      <h2><a name="1048364">Chapter overview</a></h2>
+      <p><a name="1048366">This chapter describes how to set up a transient analysis and </a>includes the following sections:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1048401" title="Transient analysis" name="1048370"><font color="Blue"><u>Overview of transient analysis</u></font></a><a href="#1048401" title="Transient analysis"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1048432" title="Transient analysis" name="1048374"><font color="Blue"><u>Defining a time&#45;based stimulus</u></font></a><a href="#1048432" title="Transient analysis"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1048531" title="Transient analysis" name="1048378"><font color="Blue"><u>The Stimulus Editor utility</u></font></a><a href="#1048531" title="Transient analysis"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1048746" title="Transient analysis" name="1048382"><font color="Blue"><u>Transient (time) response</u></font></a><a href="#1048746" title="Transient analysis"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1048780" title="Transient analysis" name="1048386"><font color="Blue"><u>Internal time steps in transient analyses</u></font></a><a href="#1048780" title="Transient analysis"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1048793" title="Transient analysis" name="1048390"><font color="Blue"><u>Switching circuits in transient analyses</u></font></a><a href="#1048793" title="Transient analysis"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1048799" title="Transient analysis" name="1048394"><font color="Blue"><u>Plotting hysteresis curves</u></font></a><a href="#1048799" title="Transient analysis"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1048841" title="Transient analysis" name="1048398"><font color="Blue"><u>Fourier components</u></font></a><a href="#1048841" title="Transient analysis"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <h2><a name="1048401">Overview of transient analysis</a></h2>
+      <h3><a name="1048403">Minimum requirements to run a transient analysis</a></h3>
+      <h4><a name="1048404">Minimum circuit design requirements</a></h4>
+      <p><a name="1048405">Circuit should contain one of the following:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048409">An independent source with a transient specification (see Table </a><a href="#1048449" title="Transient analysis"><font color="#0000ff"><u>12&#45;1</u></font></a>)</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048410">An initial condition on a reactive element</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048411">A controlled source that is a function of time</a></td>
+          </tr>
+        </table>
+      </div>
+      <h4><a name="1048412">Minimum program setup requirements</a></h4>
+      <p align="left"><a name="1048416"><img src="images/11tran.18.1.1.png" width="527" height="396" alt=""></a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048418">From Capture's PSpice menu, choose New Simulation Profile or </a>Edit Simulation Profile. (If this is a new simulation, enter the name of the profile and click OK.)</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048419">The Simulation Settings dialog box appears.</a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048420">Click the Analysis tab.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048424">See </a><a href="08start.html#1048556" title="08start.html"><font color="Blue"><u>Setting up analyses</u></font></a><a href="08start.html#1048556" title="08start.html"></a> for a description of the Analysis Setup dialog box.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048425">From the Analysis type list box, select Time Domain (Transient).</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048426">Specify the required parameters for the transient analysis you </a>want to run.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048427">Click OK to save the simulation profile.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	6.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048428">From the PSpice menu, choose Run to start the simulation.</a></td>
+          </tr>
+        </table>
+      </div>
+      <h2><a name="1048432">Defining a time&#45;based stimulus </a></h2>
+      <h3><a name="1048433">Overview of stimulus generation</a></h3>
+      <p><a name="1048434">Symbols that generate input signals for your circuit can be divided </a>into two categories:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048435">those whose transient behavior is characterized graphically </a>using the Stimulus Editor</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048436">those whose transient behavior is characterized by manually </a>defining their properties within Capture</td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1049208">These symbols are summarized in Table </a><a href="#1048449" title="Transient analysis"><font color="#0000ff"><u>12&#45;1</u></font></a>.</p>
+      <p align="left"><a name="1048521">&nbsp;</a></p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="429">
+        <caption>
+          <p align="left"><font color="#000000"><strong>Table 12&#45;1&nbsp; </strong></font><strong><a name="1048449">Stimulus symbols for time&#45;based input signals</a>&nbsp;</strong></p>
+        </caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="96">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048455">Specified </a>by...</strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="192">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048457">Symbol name</a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="141">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048459">Description</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="3" cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1048461">Using the </a>Stimulus Editor</p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048463">VSTIM</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048465">voltage source</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048469">ISTIM</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048471">current source</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="2" valign="top">
+            <p><a name="1048475">DIGSTIM1</a></p>
+            <p><a name="1048476">DIGSTIM2</a></p>
+            <p><a name="1048477">DIGSTIM4</a></p>
+            <p><a name="1048478">DIGSTIM8</a></p>
+            <p><a name="1048479">DIGSTIM16</a></p>
+            <p><a name="1048480">DIGSTIM32</a></p>
+          </td>
+          <td cellpadding="4" border="2" valign="top">
+            <p><a name="1048482">digital stimuli</a></p>
+            <p><a name="1048483">&nbsp;</a></p>
+            <p><font color="#000000"><strong>Note: </strong></font><a name="1048484">Digital </a>stimuli are not supported in PSpice.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048486">Defining </a>symbol attribute</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048488">VSRC</a><br>VEXP<br>VPULSE<br>VPWL<br>VPWL_RE_FOREVER<br>VPWL_F_RE_FOREVER<br>VPWL_N_TIMES<br>VPWL_F_N_TIMES<br>VSFFM<br>VSIN</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048490">voltage sources</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048492">&nbsp;</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048494">ISRC</a><br>IEXP<br>IPULSE<br>IPWL<br>IPWL_RE_FOREVER<br>IPWL_F_RE_FOREVER<br>IPWL_N_TIMES<br>IPWL_F_N_TIMES<br>ISFFM<br>ISIN</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048496">current sources</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048498">&nbsp;</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048500">DIGCLOCK</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048502">digital clock signal</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048504">&nbsp;</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048506">STIM1</a><br>STIM4<br>STIM8<br>STIM16</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048508">digital stimuli</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048510">&nbsp;</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048512">FILESTIM1</a></p>
+            <p><a name="1048513">FILESTIM2</a></p>
+            <p><a name="1048514">FILESTIM4</a></p>
+            <p><a name="1048515">FILESTIM8</a></p>
+            <p><a name="1048516">FILESTIM16</a></p>
+            <p><a name="1048517">FILESTIM32</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048519">digital file stimuli</a></p>
+            <p><font color="#000000"><strong>Note: </strong></font><a name="1048520">Digital </a>stimuli are not supported in PSpice.</p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1048522">To use any of these source types, you must place the symbol in your </a>schematic and then define its transient behavior. </p>
+      <p><a name="1048523">Each property&#45;characterized stimulus has a distinct set of attributes </a>depending upon the kind of transient behavior it represents. For VPWL_F_<font color="#000000"><em>xxx</em></font>, IPWL_F_<font color="#000000"><em>xxx</em></font>, and FSTIM, a separate file contains the stimulus specification. For information on digital stimuli characterized by property, see <a href="14digsim.html#1056266" title="Digital simulation"><font color="#0000ff"><u>Chapter&nbsp;14, "Digital simulation."</u></font></a></p>
+      <p><a name="1048527">As an alternative, the Stimulus Editor automates the process of </a>defining the transient behavior of stimulus devices. The Stimulus Editor allows you to create analog stimuli which generate sine wave, repeating pulse, exponential pulse, single&#45;frequency FM, and piecewise linear waveforms. It also facilitates creating digital stimuli with complex timing relations. This applies to both stimulus symbols placed in your schematic as well as new ones that you might create.</p>
+      <p><a name="1048528">The stimulus specification created using the Stimulus Editor is saved </a>to a file, automatically configured into the schematic, and associated with the corresponding VSTIM, ISTIM, or DIGSTIM part instance or symbol definition.</p>
+      <h2><a name="1057181">Using CheckPoints</a></h2>
+      <p><a name="1057182">You can save the state of a transient simulation at different moments </a>as CheckPoints. You can specify any of the CheckPoints as a restart point and rerun the simulation from that point. As a result, you can avoid running a long simulation from the start and run only the portion that is expected to have the outputs of interest. For example, you simulate an SMPS design and determine a convergence error towards the end of the simulation. You can change design settings and rerun the portion of simulation that throws the error instead of running the simulation from the beginning. </p>
+      <p><a name="1059046">For a quick overview of the CheckPoint Restart feature, view the </a>multimedia demonstration <a href="../pspug/menu/demo/checkpoint_restart.html" target="external_window"><font color="#0000ff"><u>Using CheckPoint Restart</u></font></a>.</p>
+      <p><a name="1057183">To use CheckPoints:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1057184">Specify the CheckPoints </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1057185">Run the initial analysis</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1057186">Specify the restart point </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1057187">Restart the analysis</a></td>
+          </tr>
+        </table>
+      </div>
+      <h3><a name="1057188">Specifying CheckPoints</a></h3>
+      <p><a name="1057189">You need to define the following for CheckPoints:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1057190">Simulation time interval: The interval in simulation time between </a>two CheckPoints. The default unit is seconds (s) but you can also specify the time in all standard scale modifiers, such as microseconds (ms) and nanoseconds (ns).</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1057191">Real time interval: The interval between two CheckPoints in real </a>time. The default is minutes (min) but you can also specify intervals in hours (hrs).</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1057192">Time points: Specific times when CheckPoints are created. </a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><font color="#000000"><strong>Note: </strong></font><a name="1060164">In case of digital circuits, CheckPoint will not be generated </a>at a timepoint if there are no events. For example, if a digital circuit changes state from 0 to 1 at a specified timepoint, a checkpoint will be generated. But if there is no transition, checkpoint will not be generated at that timepoint.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1057193">Directory location: The location where CheckPoint data is </a>stored. The default location is the transient simulation profile directory. </td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1057194">You can define CheckPoints either from the Simulation Settings </a>dialog box or by editing the circuit file (.cir).</p>
+      <h4><a name="1057195">Using the Simulation Settings dialog box</a></h4>
+      <p><a name="1057196">To define CheckPoints using the simulation settings dialog box:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1057197">Open the Simulation Settings dialog box</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1057198">In the </a><font color="#000000"><em>Analysis</em></font> tab, check the option <font color="#000000"><em>Save CheckPoints</em></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1057199"><img src="images/checkpnt.gif" width="527" height="403" alt=""></a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1057200">In the </a><font color="#000000"><em>Check Point Location</em></font> box, specify the location where the CheckPoint data will be stored. You can specify more than one directory and change the order of directories in the Directories field using the buttons.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1057201">In the </a><font color="#000000"><em>Simulation Interval</em></font> box, specify the interval in seconds.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1057202">In the </a><font color="#000000"><em>Real Time Interval</em></font> box, specify the real time in minutes or hours.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	6.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1057203">In the </a><font color="#000000"><em>Time Points</em></font> box, specify the time points where CheckPoints are to be created.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="13.333333333333332">
+              <div>&nbsp;</div>
+            </td>
+            <td width="133.33333333333331">
+              <div>
+                <nobr>
+                  <img src="images/important.gif" alt="ParagraphBullet" border="0">
+                </nobr>
+              </div>
+            </td>
+            <td>
+              <font size="3"><a name="1057204">The time points must be separated by either space or </a>comma.</font>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <h4><a name="1057205">Editing the Circuit File</a></h4>
+      <p><a name="1057206">You can edit the circuit file to specify CheckPoints. The syntax for </a>CheckPoint is:</p>
+      <p><a name="1057207"><font size="2" face="'Courier New'" color="#000000">.chkpt CheckPoint_name time_interval_type </font></a><font size="2" face="'Courier New'" color="#000000">time_interval_value [time_interval_type </font><font size="2" face="'Courier New'" color="#000000">time_interval_value ][TSTEP 0&#47;1]</font></p>
+      <p><a name="1057208">The TSTEP values can be:</a></p>
+      <table summary="" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF" width="433">
+        <caption>
+        <tr>
+          <td cellpadding="4" border="0" valign="top" >
+            <p><a name="1057382">0</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top" >
+            <p><a name="1057384">generate CheckPoints closest to the  </a>specified time points using default time step of PSpice engine  </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1057386">1</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1057388">generate CheckPoints at the specified </a>time points</p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1057213">The value for the parameter time_interval_type cane be:</a></p>
+      <table summary="" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF" width="433">
+        <caption>
+        <tr>
+          <td cellpadding="4" border="0" valign="top" >
+            <p><a name="1057412">SINT</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top" >
+            <p><a name="1057414"> Specifies simulation time interval</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1057416">RINT</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1057418"> Specifies real time interval</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1057420">TP</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1057422"> Specifies time points</a></p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1057217">For example, the following specifies a CheckPoint to be saved as </a>D:\simdata\checkset1 with simulation time interval of 1ms, real time interval 10 minutes, and time points 2.5ms and 7.5ms:</p>
+      <p><a name="1057218"><font size="2" face="'Courier New'" color="#000000">.chkpt "D:&#47;simdata&#47;checkset1" SINT 1ms RINT 10min </font></a><font size="2" face="'Courier New'" color="#000000">TP 2.5ms,7.5ms </font></p>
+      <p><a name="1057219">Ensure that you have a transient analysis defined before running the </a>simulation.</p>
+      <h3><a name="1057220">Restarting Simulation from a Saved CheckPoint</a></h3>
+      <p><a name="1057221">You might want to restart a simulation from a saved CheckPoint after </a>changing the design. You can view the CheckPoint locations on the traces displayed in the Probe window. This will enable you to choose the CheckPoint to restart the simulation. </p>
+      <p><a name="1057222">You can change the following in the schematic before restarting a </a>simulation:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1057223">Component values</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1057224">Parameter values</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1057225">Simulation options</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1057226">CheckPoint restart options</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1057227">Data save options</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="13.333333333333332">
+              <div>&nbsp;</div>
+            </td>
+            <td width="133.33333333333331">
+              <div>
+                <nobr>
+                  <img src="images/caution.gif" alt="ParagraphBullet" border="0">
+                </nobr>
+              </div>
+            </td>
+            <td>
+              <strong><em><a name="1057228">Before restarting simulations, note that you cannot:</a></em></strong>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.872">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.128319999999995">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1057229">Add or remove components before restarting simulation</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.872">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.128319999999995">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1057230">Change device name or order in the circuit file</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.872">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.128319999999995">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1057231">Change initial condition of device such as capacitor</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.872">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.128319999999995">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1057232">Change multi&#45;analysis options, such as temperature, </a>parameter, or MC sweep</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.872">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.128319999999995">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1059596">Topology changes for digital and mixed signal circuits:</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="69">
+              <div>&nbsp;</div>
+            </td>
+            <td width="31.872000000000003">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bss_bullet_sub_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1059670"> Changes in IO Model</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="69">
+              <div>&nbsp;</div>
+            </td>
+            <td width="31.872000000000003">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bss_bullet_sub_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1059671">Changes in IO_LEVEL</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="69">
+              <div>&nbsp;</div>
+            </td>
+            <td width="31.872000000000003">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bss_bullet_sub_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1059672">Changes in Timing models</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="69">
+              <div>&nbsp;</div>
+            </td>
+            <td width="31.872000000000003">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bss_bullet_sub_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1059673">Changes in minimum time and maximum delay </a>properties </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="69">
+              <div>&nbsp;</div>
+            </td>
+            <td width="31.872000000000003">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bss_bullet_sub_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1059674">Change in the stimulus source</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="13.333333333333332">
+              <div>&nbsp;</div>
+            </td>
+            <td width="133.33333333333331">
+              <div>
+                <nobr>
+                  <img src="images/important.gif" alt="ParagraphBullet" border="0">
+                </nobr>
+              </div>
+            </td>
+            <td>
+              <font size="3"><a name="1057233">Multi analysis options are not supported currently. If you </a>select multi analysis and enable Save Checkpoint option, the simulation will run but Checkpoint states will not be saved.</font>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1057234">To restart simulation from a CheckPoint:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1057235">Choose </a><font color="#000000"><em>PSpice</em></font> &#45; <font color="#000000"><em>Edit Simulation Profile</em></font></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1057236">In the </a><font color="#000000"><em>Analysis</em></font> tab, check the <font color="#000000"><em>Restart Simulation</em></font> option.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1057237"><img src="images/checkpt_restart.gif" width="527" height="403" alt=""></a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1057238">Ensure that the correct CheckPoint location is selected in the </a><font color="#000000"><em>Check Point Location</em></font> box.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1057239">From the </a><font color="#000000"><em>Restart At </em></font>box, select any one of the <font color="#000000"><em>Simulation </em></font><font color="#000000"><em>Time</em></font> or <font color="#000000"><em>Real Time</em></font> options</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1057240">Select the time from the list and click </a><font color="#000000"><em>OK</em></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	6.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1057241">Run the simulation</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1057242"> You can also edit the circuit file to specify the restart point. The </a>syntax for the restart option is:</p>
+      <p><a name="1057243"><font size="2" face="'Courier New'" color="#000000">.restart CheckPoint_name state_number [0&#47;1]</font></a></p>
+      <p><a name="1057244">Where,</a></p>
+      <table summary="" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF" width="433">
+        <caption>
+        <tr>
+          <td cellpadding="4" border="0" valign="top" >
+            <p><a name="1057439">0 </a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top" >
+            <p><a name="1057441"> Original DAT file is overwritten</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1057443">1</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1057445"> Original DAT file is saved as </a><font size="2" face="'Courier New'" color="#000000">checkpoint_&#60;DAT_file_name&#62;.dat</font></p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1057247">You can check the Save Original Dat File option to ensure that the </a>original file is not overwritten.</p>
+      <p><a name="1057248">For example, to restart a simulation from the 20th saved state of the </a>CheckPoint D:&#47;simdata&#47;checkset1:</p>
+      <p><a name="1057175"><font size="2" face="'Courier New'" color="#000000">.restart "D:&#47;simdata&#47;checkset1" state20 </font></a></p>
+      <h2><a name="1048531">The Stimulus Editor utility </a></h2>
+      <p><a name="1048532">The Stimulus Editor is a utility that allows you to quickly set up and </a>verify the input waveforms for a transient analysis. You can create and edit voltage sources, current sources, and digital stimuli for your circuit. Menu prompts guide you to provide the necessary parameters, such as the rise time, fall time, and period of an analog repeating pulse, or the complex timing relations with repeating segments of a digital stimulus. Graphical feedback allows you to quickly verify the waveform. See the Stimulus Editor online help for more information about this utility.</p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1048534">If you are using a PSpice product that does not include the </a>Stimulus Editor, you must use the characterized&#45;by&#45;property sources listed in <a href="#1048449" title="Transient analysis"><font color="Blue"><u>Table&nbsp;12&#45;1</u></font></a><a href="#1048449" title="Transient analysis"></a>.</p>
+      <h3><a name="1048539">Stimulus files</a></h3>
+      <p><a name="1048540">The Stimulus Editor produces a file containing the stimuli with their </a>transient specification. These stimuli are defined as simulator device declarations using the V (voltage source), I (current source), and U STIM (digital stimulus generator) forms. Since the Stimulus Editor produces these statements automatically, you will never have to be concerned with their syntax. However, if you are interested in a detailed description of their syntax, see the descriptions of V and I devices in the <font color="#000000"><em>Analog Devices</em></font> chapter and stimulus generator in the <font color="#000000"><em>Digital Devices</em></font> chapter of the online PSpice Reference Guide.</p>
+      <h3><a name="1048543">Configuring stimulus files</a></h3>
+      <p><a name="1048544">The Stimulus files list in the Configuration Files tab of the Simulation </a>Settings dialog box allows you to view the list of stimulus files pertaining to your current schematic. </p>
+      <p align="left"><a name="1048548"><img src="images/11tran.18.1.4.png" width="527" height="396" alt=""></a></p>
+      <p><a name="1049403">You can also manually add, delete, or change the stimulus file </a>configuration in this tab dialog box. The list box displays all of the currently configured stimulus files. One file is specified per line. Files can be configured as either global to the Capture environment, local to the current design, or only for the current profile. Global files are marked with the <img src="images/global_level.gif" width="16" height="18" alt=""> icon before the file name.</p>
+      <p><a name="1048550">When starting the Stimulus Editor from Capture, stimulus files are </a>automatically configured (added to the list) as local to the current design. Otherwise, new stimulus files can be added to the list by entering the file name in the Filename text box and then clicking the Add to Profile (profile specific configuration), Add to Design (local configuration) or Add as Global (global configuration) button.</p>
+      <h3><a name="1048553">Starting the Stimulus Editor</a></h3>
+      <p><a name="1048554">The Stimulus Editor is fully integrated with Capture and can be run </a>from either the schematic editor or symbol editor.</p>
+      <p align="left"><a name="1048558"><img src="images/11tran.18.1.6.png" width="668" height="410" alt=""></a></p>
+      <p><a name="1049409">You can start the Stimulus Editor by doing the following:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048560">Select one or more stimulus instances in the schematic.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048561">From the Edit menu, choose PSpice Stimulus.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1048563">When you first start the Stimulus Editor, you may need to adjust the </a>scale settings to fit the trace you are going to add. You can use Axis Settings on the Plot menu or the corresponding toolbar button to change the displayed data, the extent of the scrolling region, and the minimum resolution for each of the axes. Displayed Data Range parameters determine what portion of the stimulus data set will be presented on the screen. Extent of Scrolling Region parameters set the absolute limits on the viewable range. Minimum Resolution parameters determine the smallest usable increment (example: if it is set to 1 msec, then you cannot add a data point at 1.5 msec).</p>
+      <h3><a name="1048565">Defining stimuli</a>&nbsp;&nbsp;&nbsp;&nbsp;</h3>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048566">Place stimulus part instances from the symbol set: VSTIM, </a>ISTIM and DIGSTIMn (found in the SOURCSTM.OLB part library).</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048567">Click the source instance to select it.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048568">From the Edit menu, choose PSpice Stimulus to start the </a>Stimulus Editor. </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048569">Fill in the transient specification according to the dialogs and </a>prompts. </td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048570">Piecewise linear and digital stimuli can be specified by direct </a>manipulation of the input waveform display.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048571">From the File menu, choose Save to save the edits.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	6.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048572">Click Yes to update the schematic.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1048576">See </a><a href="14digsim.html#1056266" title="Digital simulation"><font color="#0000ff"><u>Chapter&nbsp;14, "Digital simulation,"</u></font></a> for detailed information about creating digital stimuli.</p>
+      <h4><a name="1048578">Example: piecewise linear stimulus</a></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048579">Open an existing schematic or start a new one.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048580">From the Place menu, choose Part and browse the </a><font size="2" face="'Courier New'" color="#000000">SOURCSTM.OLB</font> part library file for VSTIM (and select it).</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048581">Place the part. It looks like a regular voltage source with an </a>implementation property displayed.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048582">Click the implementation label and type </a><font size="2" face="'Courier New'" color="#000000">Vfirst</font>. This names the stimulus that you are going to create.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048583">If you are working in a new schematic, choose Save from the File </a>menu. This schematic save step is necessary since the schematic name is used to create the default stimulus file name.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	6.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048584">Click the VSTIM part to select it.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	7.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048585">From the Edit menu, choose PSpice Stimulus. This starts the </a>Stimulus Editor and displays the New Stimulus dialog box. You can see that the stimulus already has the name of Vfirst.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048590"><img src="images/11tran.18.1.7.png" width="231" height="348" alt=""></a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	8.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048591">Select PWL in the dialog box and click OK. The cursor looks like </a>a pencil. The message in the status bar at the bottom of the screen lets you know that you are in the process of adding new data points to the stimulus. The left end of the bottom status bar displays the current coordinates of the cursor.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	9.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048592">Move the cursor to (200ns, 1) and click the left mouse button. </a>This adds the point. Notice that there is automatically a point at (0,0). Ignore it for now and continue to add a couple more points to the right of the current one. </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	10.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048593">Click&#45;right to stop adding points.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	11.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048594">From the File menu, choose Save.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1048595">If you make a mistake or want to make any changes, reshape the </a>trace by dragging any of the handles to a new location. The dragged handle cannot pass any other defined data point.</p>
+      <p><a name="1048596">To delete a point, click its handle and press </a><font color="#000000"><em>Delete</em></font>. </p>
+      <p><a name="1048597">To add additional points, either choose Add Point from the Edit menu, </a>press <font color="#000000"><em>Alt</em></font>+<font color="#000000"><em>A</em></font>, or click the Add Point toolbar button <img src="images/11tran.18.1.8.png" width="31" height="27" alt="">. </p>
+      <p><a name="1048599">At this point you can return to Capture, edit the current stimulus, or </a>go on to create another.</p>
+      <h4><a name="1048601">Example: sine wave sweep</a></h4>
+      <p><a name="1048602">This example creates a 10k sine wave with the amplitude </a>parameterized so that it can be swept during a simulation.</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048603">Open an existing schematic or start a new one.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048604">Place a VSTIM part on your schematic.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048605">To name the stimulus, double&#45;click the implementation property </a>and type <font size="2" face="'Courier New'" color="#000000">Vsin</font>.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048606">Click the VSTIM part to select it.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048607">From the PSpice menu, choose Edit Stimulus to start the </a>Stimulus Editor.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	6.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048608">Define the stimulus parameter for amplitude:</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	a.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048609">From the New Stimulus dialog box, choose Cancel. </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	b.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048610">From the Tools menu, choose Parameters.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	c.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048611">Enter </a><font size="2" face="'Courier New'" color="#000000">AMP=1</font> in the Definition text box, and click OK.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	d.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048612">From the Stimulus menu, choose New or click the New </a>Stimulus button <img src="images/11tran.18.1.9.png" width="27" height="27" alt=""> in the toolbar.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	e.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048614">Give the stimulus the name of Vsin.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	f.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048615">Select SIN as the type of stimulus to be created, and click </a>OK.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	7.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048616">Define the other stimulus properties:</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048621"><img src="images/11tran.18.1.10.png" width="229" height="239" alt=""></a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	a.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048622">Enter </a><font size="2" face="'Courier New'" color="#000000">0</font> for Offset Value.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	b.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048623">Enter </a><font size="2" face="'Courier New'" color="#000000">{AMP}</font> for Amplitude. The curly braces are required. They indicate that the expression needs to be evaluated at simulation time.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	c.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048624">Enter </a><font size="2" face="'Courier New'" color="#000000">10k</font> for Frequency and click OK.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	d.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048625">From the File menu, choose Save.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	e.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048626">Click Yes to update the schematic.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	8.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048627">Within Capture, place and define the PARAM symbol:</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	a.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048628">From the Place menu, choose Part.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	b.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048629">Either browse </a><font size="2" face="'Courier New'" color="#000000">SPECIAL.OLB</font> for the PARAM part or type in the name.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	c.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048630">Place the part on your schematic and double&#45;click it.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	d.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048631">Click New to add a new user property.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	e.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048632">Set the value property name to AMP (no curly braces).</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	f.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048633">Set the value of the AMP property to 1.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	9.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048634">Set up the parametric sweep and other analyses:</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	a.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048635">From the PSpice menu, choose Edit Simulation Profile, and </a>select the Parametric Sweep option.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	b.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048636">Select Global Parameter in the Swept Var. Type frame.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	c.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048637">Select Linear in the Sweep type frame.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	10.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048638">Enter </a><font size="2" face="'Courier New'" color="#000000">AMP</font> in the Parameter name text box.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	11.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048639">Specify values for the Start Value, End Value, and Increment text </a>boxes.</td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1048640">You can now set up your usual Transient, AC, or DC analysis and run </a>the simulation.</p>
+      <h3><a name="1048642">Creating new stimulus symbols</a></h3>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048643">Use the Capture part editor to edit or create a part with the </a>following properties:</td>
+          </tr>
+        </table>
+      </div>
+      <p align="left"><a name="1048662">&nbsp;</a></p>
+<ul>      <table summary="" border="1" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" width="401">
+        <caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="149">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048646">Property</a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="251">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048648">Value</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048650">Implementation </a>Type</p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048652">PSpice Stimulus</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048654">Implementation</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048656">Name of the stimulus model</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048659">STIMTYPE</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048661">Type of stimulus; valid values are </a>ANALOG or DIGITAL; if this property is nonexistent, the stimulus is assumed to be ANALOG</p>
+          </td>
+        </tr>
+      </table></ul>
+      <h3><a name="1048664">Editing a stimulus</a></h3>
+      <h4><a name="1048665">To edit an existing stimulus</a></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048666">Start the Stimulus Editor and select File, Open to open the </a>required Stimulus library.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048667">Double&#45;click the trace name (at the bottom of the X axis for </a>analog and to the left of the Y axis for digital traces.) This opens the Stimulus Attributes dialog box where you can modify the attributes of the stimulus directly and immediately see the effect of the changes.</td>
+          </tr>
+        </table>
+      </div>
+      <h4><a name="1048669">To edit a PWL stimulus</a></h4>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1048670">PWL stimuli are a little different since they are a series of </a>time&#47;value pairs.</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048671">Double&#45;click the trace name. This displays the handles for each </a>defined data point.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048672">Click any handle to select it. To reshape the trace, drag it to a </a>new location. To delete the data point, press <font color="#000000"><em>Delete</em></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048673">To add additional data points, either select Add from the Edit </a>menu or click the Add Point button. </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048674">Right&#45;click to end adding new points.</a></td>
+          </tr>
+        </table>
+      </div>
+      <h4><a name="1048675">To select a time and value scale factor for PWL stimuli</a></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048676">Select the PWL trace by clicking on its name.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048680">Select Attributes from the Edit menu or click the corresponding </a>toolbar button <img src="images/11tran.18.1.11.png" width="29" height="28" alt="">.</td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1048681">&nbsp;</a></p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1048682">The above procedure provides a fast way to scale a PWL </a>stimulus.</p>
+      <h3><a name="1048683">Deleting and removing traces</a></h3>
+      <p><a name="1048685">To delete a trace from the displayed screen, select the trace name by </a>clicking on its name, then press <font color="#000000"><em>Delete</em></font>. This will only erase the display of the trace, not delete it from your file. The trace is still available by selecting Get from the Stimulus menu.</p>
+      <p><a name="1048687">To remove a trace from a file, select Remove from the Stimulus menu. </a></p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1048688">Once a trace is removed, it is no longer retrievable. Remove </a>traces with caution.</p>
+      <h3><a name="1048689">Manual stimulus configuration</a></h3>
+      <p><a name="1048690">Stimuli can be characterized by manually starting the Stimulus Editor </a>and saving their specifications to a file. These stimulus specifications can then be associated to stimulus instances in your schematic or to stimulus symbols in the symbol library. </p>
+      <h4><a name="1048692">To manually configure a stimulus</a></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048694">Start the Stimulus Editor by choosing the Stimulus Editor icon </a>from the Windows Start menu, installed OrCAD program group, PSpice Accessories option.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048695">Open a stimulus file by choosing Open from the File menu. If the </a>file is not found in your current library search path, you are prompted for a new file name.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048696">Create one or more stimuli to be used in your schematic. For </a>each stimulus:</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	a.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048697">Name it whatever you want. This name will be used to </a>associate the stimulus specification to the stimulus instance in your schematic, or to the symbol in the symbol library.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	b.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048698">Provide the transient specification.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	c.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048699">From the File menu, choose Save.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048700">In the schematic page editor, configure the Stimulus Editor's </a>output file into your schematic:</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	a.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048701">From the PSpice menu, choose Edit Simulation Profile to </a>display the Simulation Settings dialog box.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	b.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048702">In the Simulation Settings dialog box, select the </a>Configuration Files tab.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	c.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050949">Click Include in the Category field to display the Include files </a>list.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	d.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048703">Enter the file name specified in step </a><a href="#1048695" title="Transient analysis"><font color="#0000ff"><u>2</u></font></a>.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	e.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048704">If the stimulus specifications are for only for the current </a>profile, click the Add to Profile button. For local use in the current design, click the Add to Design button. For global use by any design, use Add as Global instead.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	f.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048705">Click OK.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048706">Modify either the stimulus instances in the schematic or symbols </a>in the symbol library to reference the new stimulus specification.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	6.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048707">Associate the transient stimulus specification to a stimulus </a>instance:</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	a.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048708">Place a stimulus part in your schematic from the part set: </a>VSTIM, ISTIM, and DIGSTIMn.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	b.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048709">Click the VSTIM, ISTIM, or DIGSTIMn instance.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	c.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048710">From the Edit menu, choose Properties.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	d.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048711">Click the Implementation cell, type in the name of the </a>stimulus, and click Apply.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	e.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048712">Complete specification of any VSTIM or ISTIM instances by </a>selecting Properties from the Edit menu and editing their DC and AC attributes.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote>
+<blockquote>        <font color="#000000"><a name="1048713">Click the DC cell and type its value.</a></font></blockquote>
+      </blockquote>
+      <blockquote>
+<blockquote>        <font color="#000000"><a name="1048714">Click the AC cell, type its value, and then click Apply.</a></font></blockquote>
+      </blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	f.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048715">Close the property editor spreadsheet.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	7.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048716">To change stimulus references globally for a part:</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	a.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048717">Select the part you want to edit.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	b.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048718">From the Edit menu, choose Part to start the part editor.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote>
+<blockquote>        <font color="#000000"><a name="1048722">See </a><a href="05part.html#1057389" title="Creating parts for models"><font color="#0000ff"><u>Chapter&nbsp;5, "Creating parts for models,"</u></font></a> for a description of how to create and edit parts.</font></blockquote>
+      </blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	c.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048724">Create or change the part definition, making sure to define </a>the following property:</td>
+          </tr>
+        </table>
+      </div>
+      <p align="left"><a name="1048731">&nbsp;</a></p>
+<ul>      <table summary="" cellpadding="16" cellspacing="0" bgcolor="#FFFFFF" width="363">
+        <caption>
+        <tr>
+          <td cellpadding="16" valign="top" width="146">
+            <p><a name="1049462">Implementation</a></p>
+          </td>
+          <td cellpadding="16" valign="top" width="216">
+            <p><a name="1049464">stimulus name as defined in </a>the Stimulus Editor</p>
+          </td>
+        </tr>
+      </table></ul>
+      <h3><a name="1048732">Finding out more about the Stimulus Editor</a></h3>
+      <p align="left"><a name="1048742">&nbsp;</a></p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="432">
+        <caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="210">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048735">To find out more about </a>this...</strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="222">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048737">See this...</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048739">Stimulus Editor</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048741">Stimulus Editor online help</a></p>
+          </td>
+        </tr>
+      </table>
+      <h2><a name="1048746">Transient (time) response</a></h2>
+      <p><a name="1048747">The Transient response analysis causes the response of the circuit </a>to be calculated from TIME = 0 to a specified time. A transient analysis specification is shown for the circuit <font size="2" face="'Courier New'" color="#000000">EXAMPLE.OPJ</font> in Figure <font color="#0000ff"><u>12&#45;1</u></font>. (<font size="2" face="'Courier New'" color="#000000">EXAMPLE.OPJ</font> is shown in Figure <a href="#1048773" title="Transient analysis"><font color="#0000ff"><u>12&#45;2</u></font></a>.)</p>
+      <p><a name="1048755">The analysis is to span the time interval from 0 to 1000 nanoseconds </a>and values should be reported to the simulation output file every 20 nanoseconds.</p>
+      <p align="left"><a name="1048763"><img src="images/11tran.18.1.12.png" width="675" height="673" alt=""></a></p>
+      <p><a name="1048764">During a transient analysis, any or all of the independent sources </a>may have time&#45;varying values. In <font size="2" face="'Courier New'" color="#000000">EXAMPLE.OPJ</font>, the only source which has a time&#45;varying value is V1 (VSIN part) with attributes:</p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048765">VOFF = 0v</a><br>VAMPL = 0.1v<br>FREQ = 5Meg</font></blockquote>
+      <p><a name="1048766">V1's value varies as a 5 MHz sine wave with an offset voltage of 0 </a>volts and a peak amplitude of 0.1 volts. </p>
+      <p><a name="1048767">In general, more than one source has time&#45;varying values; for </a>instance, two or more clocks in a digital circuit.</p>
+      <p align="left"><a name="1048771"><img src="images/11tran.18.1.13.png" width="675" height="441" alt=""></a></p>
+      <p><font color="#000000"><strong>Figure 12&#45;2&nbsp; </strong></font><strong><a name="1048773">Example schematic EXAMPLE.OPJ.</a></strong></p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1048774">The example circuit EXAMPLE.OPJ is provided with the </a>PSpice program.</p>
+      <p><a name="1048775">The transient analysis does its own calculation of a bias point to start </a>with, using the same technique as described for DC sweep. This is necessary because the initial values of the sources can be different from their DC values. In the simulation output file <font size="2" face="'Courier New'" color="#000000">EXAMPLE.OUT</font>, the bias point report for the transient bias point is labeled INITIAL TRANSIENT SOLUTION. To report the bias point information for nonlinear controlled sources and semiconductors, choose the OP option from the Output File Options dialog box. This bias point information is reported in the output file under the OPERATING POINT INFORMATION section.</p>
+      <h2><a name="1048780">Internal time steps in transient analyses</a></h2>
+      <p><a name="1048781">During analog analysis, PSpice maintains an internal time step which </a>is continuously adjusted to maintain accuracy while not performing unnecessary steps. During periods of inactivity, the internal time step is increased. During active regions, it is decreased. The maximum internal step size can be controlled by specifying it in the Maximum Time Step text box in the Transient dialog box. PSpice will never exceed either the step ceiling value or two percent of the total transient run time, whichever is less.</p>
+      <p><a name="1048783">The internal time steps used may not correspond to the time steps at </a>which information is reported. The values at the print time steps are obtained by second&#45;order polynomial interpolation from values at the internal steps.</p>
+      <p><a name="1048786">When simulating mixed analog&#47;</a> digital circuits, there are actually two time steps: one analog and one digital. This is necessary for efficiency. Since the analog and digital circuitry usually have very different time constants, any attempt to lock them together would greatly slow down the simulation. The time step shown on the PSpice display during a transient analysis is that of the analog section.</p>
+      <p><a name="1048790">See </a><a href="14digsim.html#1056266" title="Digital simulation"><font color="#0000ff"><u>Chapter&nbsp;14, "Digital simulation,"</u></font></a> for more information on the digital timing analysis of PSpice&nbsp;A&#47;D.</p>
+      <h2><a name="1048793">Switching circuits in transient analyses</a></h2>
+      <p><a name="1048794">Running transient analysis on switching circuits can lead to long run </a>times. PSpice must keep the internal time step short compared to the switching period, but the circuit's response extends over many switching cycles.</p>
+      <p><a name="1048795">One method of avoiding this problem is to transform the switching </a>circuit into an equivalent circuit without switching. The equivalent circuit represents a sort of quasi steady&#45;state of the actual circuit and can correctly model the actual circuit's response as long as the inputs do not change too fast. </p>
+      <p><a name="1048796">This technique is described in: V. Bello, "Computer Program Adds </a>SPICE to Switching&#45;Regulator Analysis," <font color="#000000"><em>Electronic Design</em></font>, March 5, 1981.</p>
+      <h2><a name="1048799">Plotting hysteresis curves</a></h2>
+      <p><a name="1049538">Transient analysis can be used to look at a circuit's hysteresis. </a>Consider, for instance, the circuit shown in Figure <font color="#0000ff"><u>12&#45;3</u></font> (netlist in Figure <font color="#0000ff"><u>12&#45;4</u></font>).</p>
+      <p align="left"><a name="1049552"><img src="images/11tran.18.1.14.png" width="675" height="450" alt=""></a></p>
+      <p align="left"><a name="1049562"><img src="images/11tran.18.1.15.png" width="388" height="286" alt=""></a></p>
+      <p><a name="1048824">The QSTD model is defined as:</a></p>
+      <p><a name="1048825">&nbsp;</a>&nbsp;.MODEL QSTD NPN( is=1e&#45;16 bf=50 br=0.1 rb=50 rc=10 tf=.12ns tr=5ns<br>&nbsp;&nbsp;+ cje=.4pF pe=.8 me=.4 cjc=.5pF pc=.8 mc=.333 ccs=1pF va=50)</p>
+      <p><a name="1048826">Instead of using the DC sweep to look at the hysteresis, use the </a>transient analysis, (Print Step = .01ms and Final Time = 2ms) sweeping VIN from &#45;1.8 volts to &#45;1.0 volts and back down to &#45;1.8 volts, very slowly. This has two advantages:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048827">it avoids convergence problems</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048828">it covers both the upward and downward transitions in one </a>analysis</td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1048829">After the simulation, in the Probe window in PSpice, the X</a>&nbsp;axis variable is initially set to Time. By selecting X&nbsp;Axis Settings from the Plot menu and clicking on the Axis Variable button, you can set the X&nbsp;axis variable to V(1). Then use Add on the Trace menu to display V(7), and change the X&nbsp;axis to a user&#45;defined data range from &#45;1.8V to &#45;1.0V (Axis Settings on the Plot menu). This plots the output of the Schmitt trigger against its input, which is the desired outcome. The result looks similar to Figure <a href="#1048838" title="Transient analysis"><font color="#0000ff"><u>12&#45;5</u></font></a>.</p>
+      <p align="left"><a name="1048836"><img src="images/11tran.18.1.16.png" width="675" height="467" alt=""></a></p>
+      <p><font color="#000000"><strong>Figure 12&#45;5&nbsp; </strong></font><strong><a name="1048838">Hysteresis curve example: Schmitt trigger.</a></strong></p>
+      <h2><a name="1048841">Fourier components</a></h2>
+      <p><a name="1048842">Fourier analysis is enabled through the Output File Options dialog </a>box under the Time Domain (Transient) Analysis type. Fourier analysis calculates the DC and Fourier components of the result of a transient analysis. By default, the first through ninth components are computed; however, more can be specified.</p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1049592">You must do a transient analysis in order to do a Fourier </a>analysis. The sampling interval used during the Fourier transform is equal to the print step specified for the transient analysis.</p>
+      <p><a name="1048849">When selecting Fourier to run a harmonic decomposition analysis on </a>a transient waveform, only a portion of the waveform is used. Using the Probe window in PSpice, a Fast Fourier Transform (FFT) of the complete waveform can be calculated and its spectrum displayed.</p>
+      <p><a name="1048854">In the example shown in </a><font color="Blue"><u>Figure&nbsp;12&#45;1</u></font> , the voltage waveform at node OUT2 from the transient analysis is used and the fundamental frequency is one megahertz for the harmonic decomposition. The period of fundamental frequency is one microsecond (inverse of the fundamental frequency). Only the last one microsecond of the transient analysis is used, and that portion is assumed to repeat indefinitely. Since V1's sine wave does indeed repeat every one microsecond, this is sufficient. In general, however, you must make sure that the fundamental Fourier period fits the waveform in the transient analysis.</p>
+    </div>
+    <br>
+    <a href="#pagetop">Return to top of page</a>
+    <hr>
+    <hr align="left">
+    <div style="text-align: left;">
+      <!-- Begin Buttons -->
+      <table width="650" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                    </td>
+<td height="20" width="73">
+<a href="pspugTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<a href="pspugIX.html"><img src="../support/nav2_index.gif" border="0"></a>
+</td>
+          <td>
+            <a href="12param.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+          </td>
+          <td>
+            <a href="13monte.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+          </td>
+          <td>
+            <a>
+<a href="pspug.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+            </a>
+          </td>
+          <td height="20" width="61">
+            <img src="../support/nav2_black.gif">
+          </td>
+          <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+          </td>
+          <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+          </td>
+          <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+          </td>
+        </tr>
+      </table>
+      <!-- End Buttons -->
+    </div>
+    <br>
+    <font size="-1" >
+For support, see <a href="http://support.cadence.com" target="_blank">Cadence Online Support</a> service.</font>
+    <br>
+    <br>
+    <font size="-1" >
+      <i>Copyright &#169; 2011, <a href="http://www.cadence.com">Cadence Design Systems, Inc.</a></i>
+    </font>
+    <br>
+    <font size="-1" >
+All rights reserved.</font>
+    <br>
+    <br>
+  </body>
+</html>

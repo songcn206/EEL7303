@@ -1,0 +1,81 @@
+#!/bin/csh -f
+#############################################################################
+#
+# Script to determine the platform type.  Used by the license configuration
+# scripts and others.
+#
+#############################################################################
+#
+#                          Copyright  1992
+#
+#               CADENCE  DESIGN  SYSTEMS  INCORPORATED
+#
+# The copyright notice appearing above is included to provide statutory
+# protection in the event of unauthorized or unintentional public disclosure
+# without written consent of an officer of Cadence Design Systems Incorporated.
+#
+#############################################################################
+
+unset platform
+
+if (-x /bin/uname) then
+    set osname = `/bin/uname -s`
+
+    switch ($osname)
+    case 'Sun*':
+	set osrev = `/bin/uname -r`
+        set machine = `/bin/uname -m`
+        if ($machine =~ "i86pc") then
+            # SunOS on x86
+            set platform = "sol86"
+	else if ($osrev =~ 4*) then
+	    set platform = "sun4"
+	else
+	    set platform = "sun4v"
+	endif
+	breaksw
+    case 'AIX*':
+	set platform = "ibmrs"
+	breaksw
+    case 'HP*':
+	# we know it's an HP, but which one
+	if (-x /bin/hp-pa) then
+	    if { /bin/hp-pa } then
+		set platform = "hppa"
+	    else
+		set platform = "hpipf"
+	    endif
+	else
+	    set platform = "hp"
+	endif
+	breaksw
+    case 'Linux':
+        set machine = `/bin/uname -m`
+        if ( $machine =~ i*86 || $machine == "x86_64" ) then
+                set platform = "lnx86"
+	else if ( $machine =~ ia64 ) then
+                set platform = "lni64"
+        endif
+	breaksw
+    endsw
+endif
+
+if ($?platform) then
+    echo $platform
+    exit 0
+endif
+
+# uname didn't exist, or didn't get us what we needed.
+# Maybe it's an old Sun machine.
+if (-x /bin/sun) then
+    # It's an old sun, or a sun where they've lost the /bin/uname command.
+    if (-f /bin/arch) then
+	echo "sun"
+    else
+	echo "sun4v"
+    endif
+    exit 0
+endif
+
+echo "Unsupported platform - sorry..."
+exit 1

@@ -1,0 +1,224 @@
+####################################################################################
+#       Cadence Design Systems                                                     #
+#                                                                                  #
+# (C) COPYRIGHT, Cadence Design Systems, Inc. 2010                                 #
+# All Rights Reserved                                                              #
+# Licensed Materials - Property of Cadence Design Systems                          #
+#                                                                                  #
+# No part of this file may be reproduced, stored in a retrieval system,            #
+# or transmitted in any form or by any means --- electronic, mechanical,           #
+# photocopying, recording, or otherwise --- without prior written permission       #
+# of Cadence Design Systems, Inc.                                                  #
+#                                                                                  #
+# WARRANTY:                                                                        #
+# Use all material in this file at your own risk.  Cadence Design Systems          #
+# makes no claims about any material contained in this file.                       #
+####################################################################################
+FILE_TYPE=FORM_DEFN VERSION=2
+    FORM
+    FIXED
+    PORT 80 38
+    HEADER "Create Surface Mounted Temporary Package"
+
+    ACTIVEFIELD DeviceType
+    DEFAULT Cancel
+
+    TILE
+
+    FIELD Done
+        FLOC 1 43
+        MENUBUTTON "OK" 10 3
+    ENDFIELD
+
+    FIELD Cancel
+        FLOC 12 43
+        MENUBUTTON "Cancel" 10 3
+    ENDFIELD
+
+    FIELD Help
+        FLOC 70 43
+        MENUBUTTON "Help" 10 3
+    ENDFIELD
+
+    GROUP "Package graph" "GraphGroup"
+        FLOC 40 0
+        FSIZE 40 24
+    ENDGROUP
+
+    FIELD PackageBitmap
+        THUMBNAIL
+        FLOC 41 2
+        OPTIONS STRETCH
+        FSIZE 38 21
+    ENDFIELD
+
+    GROUP "Package information" "PackageGroup"
+        FLOC 1 0
+        FSIZE 38 24
+    ENDGROUP
+
+    TEXT "Package name:"
+        TLOC 2 2
+    ENDTEXT
+
+    FIELD PackageName
+        FLOC 14 2
+        STRFILLIN 23 32
+    ENDFIELD
+
+    TEXT "Device type:"
+        TLOC 2 4
+    ENDTEXT
+
+    POPUP <DeviceTypePop>"""".
+    FIELD DeviceType
+        FLOC 14 4
+        ENUMSET 22
+        POP "DeviceTypePop"
+    ENDFIELD
+
+    TEXT "Length:"
+        TLOC 2 6
+    ENDTEXT
+
+    FIELD PackageLength
+        FLOC 14 6
+        STRFILLIN 23 50
+    ENDFIELD
+
+    TEXT "Width:"
+        TLOC 2 8
+    ENDTEXT
+
+    FIELD PackageWidth
+        FLOC 14 8
+        STRFILLIN 23 50
+    ENDFIELD
+
+    TEXT "Pad length (Hor):"
+        TLOC 2 11
+    ENDTEXT
+
+    FIELD PadLengthHor
+        FLOC 14 11
+        STRFILLIN 23 50
+    ENDFIELD
+
+    TEXT "Pad width (Hor):"
+        TLOC 2 13
+    ENDTEXT
+
+    FIELD PadWidthHor
+        FLOC 14 13
+        STRFILLIN 23 50
+    ENDFIELD
+
+    TEXT "Pad length (Ver):"
+        TLOC 2 15
+    ENDTEXT
+
+    FIELD PadLengthVer
+        FLOC 14 15
+        STRFILLIN 23 50
+    ENDFIELD
+
+    TEXT "Pad width (Ver):"
+        TLOC 2 17
+    ENDTEXT
+
+    FIELD PadWidthVer
+        FLOC 14 17
+        STRFILLIN 23 50
+    ENDFIELD
+
+    TEXT "Via diameter:"
+        TLOC 2 19
+    ENDTEXT
+
+    FIELD ViaHoleSize
+        FLOC 14 19
+        STRFILLIN 23 50
+    ENDFIELD
+
+    TEXT "Etch width:"
+        TLOC 2 21
+    ENDTEXT
+
+    FIELD EtchWidth
+        FLOC 14 21
+        STRFILLIN 23 50
+    ENDFIELD
+
+    GROUP "Pin and escape via list" "PinGroup"
+        FLOC 1 24
+        FSIZE 79 18
+    ENDGROUP
+
+    POPUP <PinGridSidePop>"Down""Down","Left""Left","Right""Right","Up""Up".
+    POPUP <PinGridHeadPopup>"""".
+    GRID PinGrid
+        FLOC 2 26
+        FSIZE 40 13
+        OPTIONS HLINES VLINES USERSIZE
+
+        GHEAD TOP
+            HEADSIZE 2
+            OPTIONS 3D
+            POP "PinGridHeadPopup"
+        ENDGHEAD
+    ENDGRID
+    FIELD PinAdd
+        FLOC 2 39
+        MENUBUTTON "Add Pin" 10 3
+    ENDFIELD
+
+    FIELD PinDel
+        FLOC 13 39
+        MENUBUTTON "Del Pin" 10 3
+    ENDFIELD
+
+    POPUP <ViaGridHeadPopup>"""".
+    GRID ViaGrid
+        FLOC 43 26
+        FSIZE 36 13
+        OPTIONS HLINES VLINES USERSIZE
+
+        GHEAD TOP
+            HEADSIZE 2
+            OPTIONS 3D
+            POP "ViaGridHeadPopup"
+        ENDGHEAD
+    ENDGRID
+    FIELD ViaAdd
+        FLOC 43 39
+        MENUBUTTON "Add Via" 10 3
+    ENDFIELD
+
+    FIELD ViaDel
+        FLOC 54 39
+        MENUBUTTON "Del Via" 10 3
+    ENDFIELD
+
+    FLEXMODE StandButtons
+    FLEX PackageGroup    0   0   0.5 0.5
+    FLEX PackageName     0   0   1   0
+    FLEX DeviceType      0   0   1   0
+    FLEX PackageLength   0   0   1   0
+    FLEX PackageWidth    0   0   1   0
+    FLEX PadLengthHor    0   0   1   0
+    FLEX PadWidthHor     0   0   1   0
+    FLEX PadLengthVer    0   0   1   0
+    FLEX PadWidthVer     0   0   1   0
+    FLEX ViaHoleSize     0   0   1   0
+    FLEX EtchWidth       0   0   1   0
+    FLEX GraphGroup      0.5 0   0.5 0.5
+    FLEX PackageBitmap   0   0   1   1
+    FLEX PinGroup        0   0.5 1   0.5
+    FLEX PinGrid         0   0   0.5 1
+    FLEX ViaGrid         0.5 0   0.5 1
+    FLEX ViaAdd          0.5 1   0   0
+    FLEX ViaDel          0.5 1   0   0
+    FLEX Help            1   1   0   0
+
+    ENDTILE
+ENDFORM

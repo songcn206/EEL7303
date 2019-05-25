@@ -1,0 +1,103 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+VARIABLE
+PORT 74 24
+HEADER "Physical (Lines/Vias) Rule Assignment Table"
+
+POPUP <CONSTRAINTNAMEP>"Default""1".
+
+POPUP <SORTP>"By Net""0","By Area""1".
+
+MESSAGE DONE 1 "Done."
+MESSAGE DPF_WARNING 1 "Changes will NOT be seen by exported partitions."
+MESSAGE READ_ONLY_DPF 1 "Not editable within design partition."
+
+TILE LABEL
+TPANEL 0
+
+TEXT "Net Physical Property"
+TLOC 0 0
+OPTIONS bold
+ENDTEXT
+
+TEXT "Area Property"
+TLOC 25 0
+INFO area_property 14
+OPTIONS bold
+ENDTEXT
+
+TEXT "Physical Constraint Set"
+TLOC 46 0
+OPTIONS bold
+ENDTEXT
+
+ENDTILE
+
+TILE PROPERTY
+TPANEL 1
+TEXT
+TLOC 0 0
+INFO net_data 20
+OPTIONS prettyprint
+ENDTEXT
+
+TEXT
+TLOC 25 0
+INFO area 20
+OPTIONS prettyprint
+ENDTEXT
+
+FIELD constraint
+FLOC 46 0
+ENUMSET 24
+POP "CONSTRAINTNAMEP"
+ENDFIELD
+
+ENDTILE
+
+TILE StdTile
+TPANEL 2
+FIELD done
+FLOC 1 0
+MENUBUTTON "Done" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 11 0
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD reset
+FLOC 22 0
+MENUBUTTON "Reset" 9 3
+ENDFIELD
+
+FIELD purge
+FLOC 33 0
+MENUBUTTON "Purge" 9 3
+ENDFIELD
+
+FIELD sort
+FLOC 43 0
+MENUBUTTON "Sort" 9 3
+POP "SORTP"
+ENDFIELD
+
+TEXT "Total:"
+TLOC 53 0
+INFO  20
+ENDTEXT
+
+TEXT  
+TLOC 58 0
+INFO total 5
+ENDTEXT
+
+FIELD help
+FLOC 64 0
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

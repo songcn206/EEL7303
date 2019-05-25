@@ -1,0 +1,278 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 50 10
+HEADER "Stream Out"
+DEFAULT execute
+
+POPUP <UNITS>"mils""1","inch""2","microns""5","millimeter""3", "centimeter""4".
+POPUP <ENDPOINTS>"Round""1","Flush"" 2","Square""3".
+
+
+MESSAGE nerror 0 "A problem occurred - please check the stream_out logfile."
+MESSAGE ndone 0 "Stream out is completed."
+MESSAGE ndemo 0 "Cannot Run in Demo Mode."
+
+TILE
+
+TEXT "Output file name:"
+TLOC 1 1
+ENDTEXT
+
+FIELD out_file
+FLOC 18 1
+STRFILLIN 22 1024
+ENDFIELD
+
+FIELD browse_out_file
+FLOC 42 1
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+TEXT "Top structure name:"
+TLOC 1 3
+ENDTEXT
+
+FIELD top_structure_name
+FLOC 18 3 
+STRFILLIN 22 32
+ENDFIELD
+
+TEXT "Layer conversion file:"
+TLOC 1 5
+ENDTEXT
+
+FIELD conv_file
+FLOC 18 5
+STRFILLIN 22 1024
+ENDFIELD
+
+FIELD browse_cnv_file
+FLOC 42 5
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+FIELD edit_cnv_file
+FLOC 18 8
+MENUBUTTON "Edit..." 8 3
+ENDFIELD
+
+GROUP "Units"
+GLOC 1 11
+GSIZE 49 8 
+ENDGROUP
+
+TEXT "Drawing units:"
+TLOC 2 13
+ENDTEXT
+
+TEXT
+TLOC 13 13
+INFO drawing_units 8 
+ENDTEXT
+
+TEXT "Output units:"
+TLOC 2 15
+ENDTEXT
+
+FIELD output_units
+FLOC 13 15 
+ENUMSET 8
+POP "UNITS"
+ENDFIELD
+
+TEXT "Output precision:"
+TLOC 27 13
+ENDTEXT
+
+FIELD user_precision
+FLOC 40 13
+INTFILLIN 6 50
+ENDFIELD
+
+TEXT "Scale factor:"
+TLOC 27 15
+ENDTEXT
+
+FIELD user_scale 
+FLOC 40 15
+REALFILLIN 6 50
+DECIMAL 4
+ENDFIELD
+
+#ifndef _stream_out_merge_polygons
+
+GROUP "Geometry"
+GLOC 1 20
+GSIZE 49 18
+ENDGROUP
+
+TEXT "End cap style:"
+TLOC 2 22
+ENDTEXT
+
+FIELD endpoints
+FLOC 25 22
+ENUMSET 22
+POP "ENDPOINTS"
+ENDFIELD
+
+TEXT "Vectorized segments per circle:"
+TLOC 2 24
+ENDTEXT
+
+FIELD arc_segments
+FLOC 25 24
+INTFILLIN 23 50
+MIN 6
+MAX 360
+ENDFIELD
+
+FIELD flat_data
+FLOC 2 26
+CHECKLIST "Flatten geometry"
+ENDFIELD
+
+FIELD dracula
+FLOC 2  28
+CHECKLIST "Output to Dracula"
+ENDFIELD
+
+FIELD rect_as_boundary
+FLOC 2 30
+CHECKLIST "Output all rectangles as boundaries"
+ENDFIELD
+
+FIELD cline_as_boundary
+FLOC 2 32 
+CHECKLIST "Output all clines as boundaries"
+ENDFIELD
+
+FIELD xhatch_as_boundary
+FLOC 2 34 
+CHECKLIST "Output cross-hatched shapes as segment boundaries"
+ENDFIELD
+
+FIELD text_height_as_mag
+FLOC 2 36 
+CHECKLIST "Output text height as magnification"
+ENDFIELD
+
+FIELD shape_update
+FLOC 12 38
+MENUBUTTON "Dynamic shapes need updating..." 14 3
+ENDFIELD
+
+FIELD execute
+FLOC 2 41
+MENUBUTTON "Export" 9 3
+ENDFIELD
+
+FIELD viewlog
+FLOC 13 41
+MENUBUTTON "Viewlog..." 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 24 41
+MENUBUTTON "Close" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 38 41
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+#else
+
+GROUP "Geometry"
+GLOC 1 20
+GSIZE 49 20
+ENDGROUP
+
+TEXT "End cap style:"
+TLOC 2 22
+ENDTEXT
+
+FIELD endpoints
+FLOC 25 22
+ENUMSET 22
+POP "ENDPOINTS"
+ENDFIELD
+
+TEXT "Vectorized segments per circle:"
+TLOC 2 24
+ENDTEXT
+
+FIELD arc_segments
+FLOC 25 24
+INTFILLIN 23 50
+MIN 3
+MAX 360
+ENDFIELD
+
+FIELD flat_data
+FLOC 2 26
+CHECKLIST "Flatten geometry"
+ENDFIELD
+
+FIELD merge_polygons
+FLOC 5 28
+CHECKLIST "Merge overlapping polygons prior to export"
+ENDFIELD
+
+FIELD dracula
+FLOC 2  30
+CHECKLIST "Output to Dracula"
+ENDFIELD
+
+FIELD rect_as_boundary
+FLOC 2 32
+CHECKLIST "Output all rectangles as boundaries"
+ENDFIELD
+
+FIELD cline_as_boundary
+FLOC 2 34 
+CHECKLIST "Output all clines as boundaries"
+ENDFIELD
+
+FIELD xhatch_as_boundary
+FLOC 2 36 
+CHECKLIST "Output cross-hatched shapes as segment boundaries"
+ENDFIELD
+
+FIELD text_height_as_mag
+FLOC 2 38 
+CHECKLIST "Output text height as magnification"
+ENDFIELD
+
+FIELD shape_update
+FLOC 12 40
+MENUBUTTON "Dynamic shapes need updating..." 14 3
+ENDFIELD
+
+FIELD execute
+FLOC 2 43
+MENUBUTTON "Export" 9 3
+ENDFIELD
+
+FIELD viewlog
+FLOC 13 43
+MENUBUTTON "Viewlog..." 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 24 43
+MENUBUTTON "Close" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 38 43
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+#endif
+
+ENDTILE
+ENDFORM
+

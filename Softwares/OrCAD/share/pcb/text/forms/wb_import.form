@@ -1,0 +1,122 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 38 40
+HEADER "Wire Bond Import"
+
+POPUP <die_popup> "" "".
+POPUP <pad_popup> "" "".
+POPUP <rot_popup> "" "".
+
+TILE
+
+TEXT "File name:"
+TLOC 1 1
+ENDTEXT
+
+FIELD filename
+FLOC 11 1
+STRFILLIN 23 255
+ENDFIELD 
+
+FIELD browse
+FLOC 36 1
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+TEXT "Parent die:"
+TLOC 1 4
+ENDTEXT
+
+FIELD die
+FLOC 11 4
+ENUMSET 22
+POP "die_popup"
+ENDFIELD
+
+FIELD show_diestacks
+FLOC 11 6
+CHECKLIST "Show die stacks"
+ENDFIELD
+
+GROUP "Import data"
+GLOC 1 9
+GSIZE 35 13
+ENDGROUP
+
+FIELD paths
+FLOC 3 11
+CHECKLIST "Guide paths"
+ENDFIELD
+
+FIELD wires
+FLOC 23 11
+CHECKLIST "Bond wires"
+ENDFIELD
+
+FIELD placement
+FLOC 3 13
+CHECKLIST "Bond finger placement"
+ENDFIELD
+
+FIELD definition
+FLOC 3 15
+CHECKLIST "Bond finger definition"
+ENDFIELD
+
+TEXT "Padstack to use:"
+TLOC 6 17
+ENDTEXT
+FIELD padstack
+FLOC 19 17
+ENUMSET 13
+POP "pad_popup"
+ENDFIELD
+
+FIELD rings
+FLOC 3 19
+CHECKLIST "Ring boundaries"
+ENDFIELD
+
+GROUP "Placement details"
+GLOC 1 23
+GSIZE 35 9
+ENDGROUP
+
+FIELD absoluteLocation
+FLOC 3 25
+CHECKLIST "Use values in file as absolute"
+ENDFIELD
+
+FIELD mirror
+FLOC 3 27
+CHECKLIST "Apply mirroring"
+ENDFIELD
+
+TEXT "Rotation: "
+TLOC 3 29
+ENDTEXT
+
+FIELD rotation
+FLOC 13 29
+ENUMSET 10
+POP "rot_popup"
+ENDFIELD
+
+FIELD import
+FLOC 1 33
+MENUBUTTON "Import" 9 3
+ENDFIELD
+
+FIELD close
+FLOC 14 33
+MENUBUTTON "Close" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 27 33
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+ENDTILE
+ENDFORM

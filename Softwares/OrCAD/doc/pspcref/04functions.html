@@ -1,0 +1,855 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN" "http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+<html xmlns="http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>PSpice Reference Guide -- Behavioral Simulation Functions</title>
+<META NAME="Approver" CONTENT="Technical Publications">
+<META NAME="Author" CONTENT="Technical Publications">
+<META NAME="CreateDate" CONTENT="2012-06-02">
+<META NAME="CreateTime" CONTENT="1338639123">
+<META NAME="DataType" CONTENT="Manuals">
+<META NAME="Description" CONTENT="This manual contains the reference material needed when working with circuit analysis in PSpice. This manual also details the command description, start-up option definitions, and lists the devices supported in analog and digital libraries.">
+<META NAME="DocTitle" CONTENT="PSpice Reference Guide">
+<META NAME="DocType" CONTENT="Reference">
+<META NAME="EdmsRelease" CONTENT="EDMS Windows-P015">
+<META NAME="FileTitle" CONTENT="Behavioral Simulation Functions">
+<META NAME="FileType" CONTENT="Chapter">
+<META NAME="Keyword" CONTENT="pspcref">
+<META NAME="Language" CONTENT="English">
+<META NAME="ModifiedDate" CONTENT="2012-06-02">
+<META NAME="ModifiedTime" CONTENT="1338639123">
+<META NAME="NextFile" CONTENT="05profilelibraries.html">
+<META NAME="PageCount" CONTENT="8">
+<META NAME="Platform" CONTENT="ALL">
+<META NAME="PrevFile" CONTENT="03digita.html">
+<META NAME="Product" CONTENT="Allegro AMS Simulator, PSpice">
+<META NAME="ProductFamily" CONTENT="PCB Design, PCB Design">
+<META NAME="ProductVersion" CONTENT="16.6">
+<META NAME="RightsManagement" CONTENT="Copyright 19912012 Cadence Design Systems Inc.">
+<META NAME="Title" CONTENT="PSpice Reference Guide -- Behavioral Simulation Functions">
+<META NAME="TopicTags" CONTENT="FALSE">
+<META NAME="Version" CONTENT="16.6">
+  </head>
+  <body style="margin-left: 5%;">
+    <a name="pagetop"></a>
+    <a name="firstpage"></a>
+    <!-- Begin Buttons -->
+    <table width="650" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td height="36" width="650" colspan="10">
+          <img src="../support/header_doc.gif" width="650" height="34">
+        </td>
+      </tr>
+      <tr>
+        <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                </td>
+<td height="20" width="73">
+<a href="pspcrefTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<a href="pspcrefIX.html"><img src="../support/nav2_index.gif" border="0"></a>
+</td>
+        <td>
+          <a href="03digita.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+        </td>
+        <td>
+          <a href="05profilelibraries.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+        </td>
+        <td height="20">
+          <a>
+<a href="pspcref.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+          </a>
+        </td>
+        <td height="20" width="61">
+          <img src="../support/nav2_black.gif">
+        </td>
+        <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+        </td>
+        <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+        </td>
+        <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+        </td>
+      </tr>
+    </table>
+    <!-- End Buttons -->
+    <p>
+    <hr>
+    <p>
+      <h3>
+        <center>
+          <font >
+            <div>PSpice A&#47;D Reference Guide</div>
+            <font >
+              <div>
+            </font>
+          </font>
+        </center>
+      </h3>
+      <br>
+    </p>
+    <div>
+      <h1>4<a name="1036924">&nbsp;</a></h1>
+      <h1><a name="1038690">Behavioral Simulation Functions</a></h1>
+      <p align="left"><a name="1037659">&nbsp;</a></p>
+      <table summary="" border="0" cellpadding="4" cellspacing="0" bordercolor="#D3D3D3" width="588">
+        <caption>
+        <tr>
+          <td cellpadding="4" border="0" bordercolor="#D3D3D3" valign="middle" width="312">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1037826">General functions</a></strong></font>
+            </p>
+          </td>
+          <td cellpadding="4" border="0" bordercolor="#D3D3D3" valign="top" width="276">
+            <p><a name="1037828">&nbsp;</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" bordercolor="#D3D3D3" valign="top">
+            <p><a href="#1037837" title="Behavioral Simulation Functions" name="1037830"><font color="#0000ff"><u>ZERO()</u></font></a><a href="#1037837" title="Behavioral Simulation Functions"> </a></p>
+          </td>
+          <td cellpadding="4" border="0" bordercolor="#D3D3D3" valign="top">
+            <p><a href="#1037930" title="Behavioral Simulation Functions" name="1037832"><font color="#0000ff"><u>ONE(expression)</u></font></a><a href="#1037930" title="Behavioral Simulation Functions"> </a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" bordercolor="#D3D3D3" valign="top">
+            <p><a href="#1037938" title="Behavioral Simulation Functions" name="1037834"><font color="#0000ff"><u>CEIL(arg)</u></font></a><a href="#1037938" title="Behavioral Simulation Functions"> </a></p>
+          </td>
+          <td cellpadding="4" border="0" bordercolor="#D3D3D3" valign="top">
+            <p><a href="#1038153" title="Behavioral Simulation Functions" name="1037836"><font color="#0000ff"><u>FLOOR(arg)</u></font></a><a href="#1038153" title="Behavioral Simulation Functions"> </a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" bordercolor="#D3D3D3" valign="top">
+            <p><a href="#1038243" title="Behavioral Simulation Functions" name="1038384"><font color="#0000ff"><u>INTQ(arg)</u></font></a><a href="#1038243" title="Behavioral Simulation Functions"> </a></p>
+          </td>
+          <td cellpadding="4" border="0" bordercolor="#D3D3D3" valign="top">
+            <p><a name="1038386">&nbsp;</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" bordercolor="#D3D3D3" valign="middle">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1037671">Simulation variables</a></strong></font>
+            </p>
+          </td>
+          <td cellpadding="4" border="0" bordercolor="#D3D3D3" valign="top">
+            <p><a name="1037673">&nbsp;</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a href="#1038239" title="Behavioral Simulation Functions" name="1037675"><font color="#0000ff"><u>DELTA()</u></font></a><a href="#1038239" title="Behavioral Simulation Functions"> </a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a href="#1037199" title="Behavioral Simulation Functions" name="1037677"><font color="#0000ff"><u>STATE()</u></font></a><a href="#1037199" title="Behavioral Simulation Functions"> </a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a href="#1038935" title="Behavioral Simulation Functions" name="1037679"><font color="#0000ff"><u>TIME()</u></font></a><a href="#1038935" title="Behavioral Simulation Functions"> </a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1037681">&nbsp;</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="middle">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1037683">Simulation functions</a></strong></font>
+            </p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1037685">&nbsp;</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a href="#1036976" title="Behavioral Simulation Functions" name="1037724"><font color="#0000ff"><u>BREAK()</u></font></a><a href="#1036976" title="Behavioral Simulation Functions"> </a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1037726">&nbsp;</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="middle">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1038773">System Variables</a></strong></font>
+            </p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1038775">&nbsp;</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a href="#1038791" title="Behavioral Simulation Functions" name="1038769"><font color="#0000ff"><u>System Variables</u></font></a><a href="#1038791" title="Behavioral Simulation Functions"> </a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1038771">&nbsp;</a></p>
+          </td>
+        </tr>
+      </table>
+      <h2><a name="1037837">ZERO()</a></h2>
+      <p><a name="1037851">&nbsp;</a></p>
+      <table summary="" border="0" cellpadding="4" cellspacing="0" bordercolor="#D3D3D3" width="648">
+        <caption>
+        <tr>
+          <td cellpadding="4" valign="top" width="152">
+            <p><a name="1037855"><font color="#000000"><strong>Purpose</strong></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top" width="496">
+            <p><a name="1037857">Evaluates the function, and returns the value 0.</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1037859"><font color="#000000"><strong>General form</strong></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <blockquote>
+              <font size="2" face="&quot;Microsoft Sans Serif&quot;" color="#000000"><a name="1037861">ZERO(expression)</a></font>
+            </blockquote>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1037864"><font color="#000000"><strong>Arguments</strong></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1037866"><font size="2" face="'Courier New'" color="#000000"><em>expression</em></font></a></p>
+            <blockquote><a name="1037868">This can be any arithmetic expression. The expression is </a>evaluated, its value ignored and the output is 0. </blockquote>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1037870"><font color="#000000"><strong>Examples</strong></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <blockquote>
+              <font size="2" face="&quot;Microsoft Sans Serif&quot;" color="#000000"><a name="1038493">E1 1 0 value = {ZERO(sin({PI}&#47;2))}</a></font>
+            </blockquote>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1037874"><font color="#000000"><strong>Comments</strong></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1037876">In the example above the voltage V(1) will always be </a><font size="2" face="'Courier New'" color="#000000">0</font>. </p>
+          </td>
+        </tr>
+      </table>
+      <h2><a name="1037930">ONE(expression)</a></h2>
+      <p align="left"><a name="1037984">&nbsp;</a></p>
+      <table summary="" border="0" cellpadding="4" cellspacing="0" bordercolor="#D3D3D3" width="648">
+        <caption>
+        <tr>
+          <td cellpadding="4" valign="top" width="152">
+            <p><a name="1037949"><font color="#000000"><strong>Purpose</strong></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top" width="496">
+            <p><a name="1037951">Evaluates the function, and returns the value 1.</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1037953"><font color="#000000"><strong>General form</strong></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <blockquote>
+              <font size="2" face="&quot;Microsoft Sans Serif&quot;" color="#000000"><a name="1037955">ONE(expression)</a></font>
+            </blockquote>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1037957"><font color="#000000"><strong>Arguments</strong></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1037959"><font size="2" face="'Courier New'" color="#000000"><em>expression</em></font></a></p>
+            <blockquote><a name="1037960">This can be any arithmetic expression. The expression is </a>evaluated, its value ignored and the output is 1. </blockquote>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1037962"><font color="#000000"><strong>Examples</strong></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <blockquote>
+              <font size="2" face="&quot;Microsoft Sans Serif&quot;" color="#000000"><a name="1037965">EE15 12 0 VALUE={ if ( V(14)&#62;0.7, ONE(PI), ZERO(PI)) }</a></font>
+            </blockquote>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1037967"><font color="#000000"><strong>Comments</strong></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1037969">In the example above, if V(14) is greater than 7, the V(12) is 1 volts, </a>else it is 0 volts.</p>
+          </td>
+        </tr>
+      </table>
+      <h2><a name="1037938">CEIL(arg)</a></h2>
+      <p align="left"><a name="1038120">&nbsp;</a></p>
+      <table summary="" border="0" cellpadding="4" cellspacing="0" bordercolor="#D3D3D3" width="648">
+        <caption>
+        <tr>
+          <td cellpadding="4" valign="top" width="152">
+            <p><a name="1038098"><font color="#000000"><strong>Purpose</strong></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top" width="496">
+            <p><a name="1038100">Returns an integer value equal to or greater than the value of the </a>argument passed to the CEIL function. </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1038102"><font color="#000000"><strong>General form</strong></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <blockquote>
+              <font size="2" face="&quot;Microsoft Sans Serif&quot;" color="#000000"><a name="1038104">CEIL(arg)</a></font>
+            </blockquote>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1038106"><font color="#000000"><strong>Arguments</strong></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1038108"><font size="2" face="'Courier New'" color="#000000"><em>arg</em></font></a></p>
+            <blockquote><a name="1038109">The argument passed to the CEIL function, can be a numeric </a>value or an expression that evaluates to a numeric value.</blockquote>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1038111"><font color="#000000"><strong>Examples</strong></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <blockquote>
+              <font size="2" face="&quot;Microsoft Sans Serif&quot;" color="#000000"><a name="1038320">G3 3 0 value = {CEIL(PI)}</a></font>
+            </blockquote>
+            <blockquote>
+              <font size="2" face="&quot;Microsoft Sans Serif&quot;" color="#000000"><a name="1038321">E1 1 0 value = {CEIL(5)}</a></font>
+            </blockquote>
+            <blockquote>
+              <font size="2" face="&quot;Microsoft Sans Serif&quot;" color="#000000"><a name="1038331">E1 1 0 value = {CEIL(5.4)}</a></font>
+            </blockquote>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1038117"><font color="#000000"><strong>Comments</strong></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1038487">If </a><font size="2" face="'Courier New'" color="#000000"><em>arg</em></font> is an integer, the return value is equal to the argument value. If <font size="2" face="'Courier New'" color="#000000"><em>arg</em></font> is a non&#45;integer value, the return value is the nearest integer greater than the argument value.</p>
+            <p><a name="1038312">In the first example, the value of the charge source will be 4. Similarly, </a>the value of V(1) in the second and third examples would be 5 and 6, respectively.</p>
+          </td>
+        </tr>
+      </table>
+      <h2><a name="1038153">FLOOR(arg)</a></h2>
+      <p align="left"><a name="1038235">&nbsp;</a></p>
+      <table summary="" border="0" cellpadding="4" cellspacing="0" bordercolor="#D3D3D3" width="648">
+        <caption>
+        <tr>
+          <td cellpadding="4" valign="top" width="152">
+            <p><a name="1038213"><font color="#000000"><strong>Purpose</strong></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top" width="496">
+            <p><a name="1038215">Returns an integer value. </a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1038217"><font color="#000000"><strong>General form</strong></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <blockquote>
+              <font size="2" face="&quot;Microsoft Sans Serif&quot;" color="#000000"><a name="1038219">FLOOR(arg)</a></font>
+            </blockquote>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1038221"><font color="#000000"><strong>Arguments</strong></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1038223"><font size="2" face="'Courier New'" color="#000000"><em>arg</em></font></a></p>
+            <blockquote><a name="1038555">The argument passed to the FLOOR function, can be a numeric </a>value or an expression that evaluates to a numeric value.</blockquote>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1038226"><font color="#000000"><strong>Examples</strong></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <blockquote>
+              <font size="2" face="&quot;Microsoft Sans Serif&quot;" color="#000000"><a name="1038228">E2 2 0 value = {FLOOR(PI)}</a></font>
+            </blockquote>
+            <blockquote>
+              <font size="2" face="&quot;Microsoft Sans Serif&quot;" color="#000000"><a name="1038562">G3 3 0 value = {FLOOR(5)}</a></font>
+            </blockquote>
+            <blockquote>
+              <font size="2" face="&quot;Microsoft Sans Serif&quot;" color="#000000"><a name="1038587">FLOOR(PI&#47;2) = 1</a></font>
+            </blockquote>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1038232"><font color="#000000"><strong>Comments</strong></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1038234">If </a><font size="2" face="'Courier New'" color="#000000"><em>arg</em></font> is an integer, the return value is equal to the argument value. If <font size="2" face="'Courier New'" color="#000000"><em>arg</em></font> is a non&#45;integer value, the return value is the nearest integer smaller than the argument value.</p>
+            <p><a name="1038573">In the first example, V(2) will be 3. Similarly, in the second example </a>the value of the charge source will be set to 5. </p>
+          </td>
+        </tr>
+      </table>
+      <h2><a name="1038243">INTQ(arg)</a></h2>
+      <p align="left"><a name="1038268">&nbsp;</a></p>
+      <table summary="" border="0" cellpadding="4" cellspacing="0" bordercolor="#D3D3D3" width="648">
+        <caption>
+        <tr>
+          <td cellpadding="4" valign="top" width="152">
+            <p><a name="1038246"><font color="#000000"><strong>Purpose</strong></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top" width="496">
+            <p><a name="1038248">Returns 1 if the argument is an integer, else returns 0</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1038250"><font color="#000000"><strong>General form</strong></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <blockquote>
+              <font size="2" face="&quot;Microsoft Sans Serif&quot;" color="#000000"><a name="1038252">INTQ(arg)</a></font>
+            </blockquote>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1038254"><font color="#000000"><strong>Arguments</strong></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1038256"><font size="2" face="'Courier New'" color="#000000"><em>arg</em></font></a></p>
+            <blockquote><a name="1038257">The argument passed to integer function, </a><font size="2" face="'Courier New'" color="#000000">INTQ</font>, can be a numeric value or an expression that evaluates to a numeric value.</blockquote>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1038259"><font color="#000000"><strong>Examples</strong></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <blockquote>
+              <font size="2" face="&quot;Microsoft Sans Serif&quot;" color="#000000"><a name="1038261">intq(PI)=0</a></font>
+            </blockquote>
+            <blockquote>
+              <font size="2" face="&quot;Microsoft Sans Serif&quot;" color="#000000"><a name="1038290">intq(5)=1</a></font>
+            </blockquote>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1038265"><font color="#000000"><strong>Comments</strong></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1038267">If </a><font size="2" face="'Courier New'" color="#000000"><em>arg</em></font> is an integer, the return value is one. If <font size="2" face="'Courier New'" color="#000000"><em>arg</em></font> is a non&#45;integer value, the return value is zero. </p>
+          </td>
+        </tr>
+      </table>
+      <h2><a name="1038239">DELTA()</a></h2>
+      <p align="left"><a name="1038932">&nbsp;</a></p>
+      <table summary="" border="0" cellpadding="4" cellspacing="0" bordercolor="#D3D3D3" width="648">
+        <caption>
+        <tr>
+          <td cellpadding="4" valign="top" width="152">
+            <p><a name="1038909"><font color="#000000"><strong>Purpose</strong></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top" width="496">
+            <p><a name="1038911">Returns the value of last three time steps taken by the simulator</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1038913"><font color="#000000"><strong>General form</strong></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <blockquote>
+              <font size="2" face="&quot;Microsoft Sans Serif&quot;" color="#000000"><a name="1038915">DELTA(n)</a></font>
+            </blockquote>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1038917"><font color="#000000"><strong>Arguments</strong></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1038919"><font size="2" face="'Courier New'" color="#000000"><em>n</em></font></a> </p>
+            <blockquote><a name="1038920">Valid values are 0, 1, 2, and 3. </a></blockquote>
+            <blockquote><a name="1038921">The argument </a><font size="2" face="'Courier New'" color="#000000">n</font> can also be an expression that evaluates to an integer value. If the evaluated value is greater than three, an error is generated. </blockquote>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1038923"><font color="#000000"><strong>Examples</strong></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <blockquote>
+              <font size="2" face="&quot;Microsoft Sans Serif&quot;" color="#000000"><a name="1038925">Exy 11 0 VALUE= {delta(1)}</a></font>
+            </blockquote>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1038927"><font color="#000000"><strong>Comments</strong></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1038929">If the value of </a><font size="2" face="'Courier New'" color="#000000">n</font> is 0, the result is same using the simulation variable <font size="2" face="'Courier New'" color="#000000">Delta</font>. </p>
+            <p><a name="1038930">At time </a><font size="2" face="'Courier New'" color="#000000">t=n</font>, </p>
+            <blockquote>
+              <font size="2" face="&quot;Microsoft Sans Serif&quot;" color="#000000"><a name="1038931">delta(1)= t</a><font color="#000000"><sub>n</sub></font>&#45; t<font color="#000000"><sub>n&#45;1</sub></font></font>
+            </blockquote>
+          </td>
+        </tr>
+      </table>
+      <h2><a name="1038935">TIME()</a></h2>
+      <p align="left"><a name="1038967">&nbsp;</a></p>
+      <table summary="" border="0" cellpadding="4" cellspacing="0" bordercolor="#D3D3D3" width="648">
+        <caption>
+        <tr>
+          <td cellpadding="4" valign="top" width="152">
+            <p><a name="1038938"><font color="#000000"><strong>Purpose</strong></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top" width="496">
+            <p><a name="1038940">Returns the time point value for last three simulation time&#45;points.</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1038942"><font color="#000000"><strong>General form</strong></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <blockquote>
+              <font size="2" face="&quot;Microsoft Sans Serif&quot;" color="#000000"><a name="1038944">time(n)</a></font>
+            </blockquote>
+            <blockquote>
+              <font size="2" face="&quot;Microsoft Sans Serif&quot;" color="#000000"><a name="1038945">&nbsp;</a></font>
+            </blockquote>
+            <blockquote>
+              <font size="2" face="&quot;Microsoft Sans Serif&quot;" color="#000000"><a name="1038946">where n = 0, 1, 2, 3</a></font>
+            </blockquote>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1038948"><font color="#000000"><strong>Arguments</strong></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1038950"><font size="2" face="'Courier New'" color="#000000"><em>n</em></font></a> </p>
+            <blockquote><a name="1038951">Valid values are 0, 1, 2, and 3. </a></blockquote>
+            <blockquote><a name="1038952">The argument </a><font size="2" face="'Courier New'" color="#000000">n</font> can also be an expression that evaluates to an integer value. If the evaluated value is greater than three, an error is generated. </blockquote>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1038954"><font color="#000000"><strong>Examples</strong></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <blockquote>
+              <font size="2" face="&quot;Microsoft Sans Serif&quot;" color="#000000"><a name="1038956">Exy 2 0 VALUE= {time(0)}</a></font>
+            </blockquote>
+            <blockquote>
+              <font size="2" face="&quot;Microsoft Sans Serif&quot;" color="#000000"><a name="1038957">Exy 11 0 VALUE= {2*time(1)}</a></font>
+            </blockquote>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1038959"><font color="#000000"><strong>Comments</strong></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1038961">For </a><font size="2" face="'Courier New'" color="#000000">n = 0</font>, the function returns the current simulation time&#45;point. This is same value that you get value by adding the simulation variable DELTA to the last simulation time&#45;point.</p>
+            <p><a name="1038962">If the value of </a><font size="2" face="'Courier New'" color="#000000">n</font> is 0, the result is same using the simulation variable <font size="2" face="'Courier New'" color="#000000">Time</font>.</p>
+            <p><a name="1038964">In the first example, voltage V(2) will be same as the current time. The </a>value of V(2) at different time is shown below.</p>
+            <blockquote>
+<blockquote>              <font size="2" face="&quot;Microsoft Sans Serif&quot;" color="#000000"><a name="1038965">t=0, V(2) =0</a><br>t=1, V(2) =1<br>t=0.73, V(2) =0.73</font></blockquote>
+            </blockquote>
+          </td>
+        </tr>
+      </table>
+      <h2><a name="1037199">STATE()</a></h2>
+      <p align="left"><a name="1037200">&nbsp;</a></p>
+      <table summary="" border="0" cellpadding="4" cellspacing="0" bordercolor="#D3D3D3" width="648">
+        <caption>
+        <tr>
+          <td cellpadding="4" valign="top" width="152">
+            <p><a name="1037207"><font color="#000000"><strong>Purpose</strong></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top" width="496">
+            <p><a name="1037209">Returns the history of the behavioral source up to last three states.</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1037211"><font color="#000000"><strong>General form</strong></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <blockquote>
+              <font size="2" face="&quot;Microsoft Sans Serif&quot;" color="#000000"><a name="1037213">STATE(n,source)</a></font>
+            </blockquote>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1037262"><font color="#000000"><strong>Arguments</strong></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1037287"><font size="2" face="'Courier New'" color="#000000"><em>n</em></font></a> </p>
+            <blockquote><a name="1037288">Valid values are 0, 1, 2, and 3. </a></blockquote>
+            <blockquote><a name="1037753">The argument </a><font size="2" face="'Courier New'" color="#000000">n</font> can also be an expression that evaluates to an integer value. If the evaluated valued is greater than three, an error is generated. And if the state were not mentioned, then the current state would be assumed.</blockquote>
+            <p><a name="1037289"><font size="2" face="'Courier New'" color="#000000"><em>&#60;source&#62;</em></font></a></p>
+            <blockquote><a name="1037300">A valid voltage, current, flux, or charge source</a></blockquote>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1037217"><font color="#000000"><strong>Examples</strong></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <blockquote>
+              <font size="2" face="&quot;Microsoft Sans Serif&quot;" color="#000000"><a name="1038666">Esin 5 0 value={sin(1e4*time)}</a></font>
+            </blockquote>
+            <blockquote>
+              <font size="2" face="&quot;Microsoft Sans Serif&quot;" color="#000000"><a name="1038667">Estate1 6 0 value={state(1,V(5))}</a></font>
+            </blockquote>
+            <blockquote>
+              <font size="2" face="&quot;Microsoft Sans Serif&quot;" color="#000000"><a name="1038668">Estate2 7 0 value={state(2,V(5))}</a></font>
+            </blockquote>
+            <blockquote>
+              <font size="2" face="&quot;Microsoft Sans Serif&quot;" color="#000000"><a name="1037257">Estate3 8 0 value={state(3,V(5))}</a></font>
+            </blockquote>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1037222"><font color="#000000"><strong>Comments</strong></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1037224">The output of the example statements is shown in the figure given </a>below.</p>
+            <p align="left"><a name="1038675"><img src="images/exstate.gif" width="440" height="312" alt=""></a></p>
+          </td>
+        </tr>
+      </table>
+      <h2><a name="1036976">BREAK()</a></h2>
+      <p align="left"><a name="1037341">&nbsp;</a></p>
+      <table summary="" border="0" cellpadding="4" cellspacing="0" bordercolor="#D3D3D3" width="648">
+        <caption>
+        <tr>
+          <td cellpadding="4" valign="top" width="152">
+            <p><a name="1037374"><font color="#000000"><strong>Purpose</strong></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top" width="496">
+            <p><a name="1037376">Schedules a break point at the specified time. </a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1037378"><font color="#000000"><strong>General form</strong></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <blockquote>
+              <font size="2" face="&quot;Microsoft Sans Serif&quot;" color="#000000"><a name="1037380">BREAK(time)</a></font>
+            </blockquote>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1037389"><font color="#000000"><strong>Example</strong></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <blockquote>
+              <font size="2" face="&quot;Microsoft Sans Serif&quot;" color="#000000"><a name="1037394">Exy 12 0 V= {BREAK(TIME+1E&#45;5)}</a></font>
+            </blockquote>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1037396"><font color="#000000"><strong>Comments</strong></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1038443">The scheduling would be deferred until the correct solution at current </a>time point. </p>
+            <p><a name="1038452">Use BREAK() to ensure that simulator calculates values at a specific </a>time point, defined by the value of the argument passed to the BREAK().</p>
+            <p><a name="1038450">In the example statement, simulator will calculate the output V at time </a>t, where <font size="2" face="'Courier New'" color="#000000">t=current_time + 10</font><font size="2" face="'Courier New'" color="#000000">&nbsp;</font><font size="2" face="'Courier New'" color="#000000">millisecond</font>.</p>
+          </td>
+        </tr>
+      </table>
+      <h2><a name="1038791">System Variables</a></h2>
+      <p><a href="#1038798" title="Behavioral Simulation Functions" name="1038864"><font color="#0000ff"><u>Table&nbsp;4&#45;1</u></font></a><a href="#1038798" title="Behavioral Simulation Functions"> </a>, lists the system variables supported by the PSpice engine. You can use these variables in expressions to be evaluated using PSpice engine. These variables cannot be used in the trace expressions in the Probe window. </p>
+      <p align="left"><a name="1038843">&nbsp;</a></p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="648">
+        <caption>
+          <p align="left">Table 4&#45;1&nbsp; <strong><a name="1038798"><font color="#3300ff"><strong>System variables</strong></font></a><font color="#3300ff"><strong>&nbsp;</strong></font></strong></p>
+        </caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="top" width="155">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1038802"><font color="#3300ff"><strong>This variable...</strong></font></a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="top" width="493">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1038804"><font color="#3300ff"><strong>Evaluates to this...</strong></font></a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1038806">TEMP</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1038808">Temperature values resulting from a temperature, parametric </a>temperature, or DC temperature sweep analysis. </p>
+            <p><a name="1038809">The default temperature, TNOM, is set in the </a><font color="#000000"><em>Options</em></font> tab of the <font color="#000000"><em>Simulation Settings</em></font> dialog box. TNOM defaults to 27<font face="symbol" color="#000000">&#176;</font>C.</p>
+            <p><font color="#000000"><strong>Note: </strong></font><a name="1038810">TEMP can only be used in expressions pertaining to analog </a>behavioral modeling and the propagation delay of digital models.</p>
+            <p><font color="#000000"><strong>Note: </strong></font><a name="1038812">If a passive or semiconductor device has an independent </a>temperature assignment, then TEMP does not represent that device's temperature. </p>
+            <p><a name="1038813">To find out more about customizing temperatures for passive or </a>semiconductor devices, <a href="01commands.html#1035996" title="Commands"><font color="#0000ff"><u>.MODEL&nbsp;(model definition)</u></font></a><a href="01commands.html#1035996" title="Commands"> </a>.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1038815">TIME</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1038817">Time values resulting from a transient analysis. If no transient </a>analysis is run, this variable is undefined.</p>
+            <p><font color="#000000"><strong>Note: </strong></font><a name="1038818">TIME can only be used in analog behavioral modeling </a>expressions.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1038820">RELTOL</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1038822">Relative tolerance of Voltage and current </a></p>
+            <p><a name="1038823">The value of this variable is as specified in the </a><font color="#000000"><em>Options</em></font> tab of the <font color="#000000"><em>Simulation Settings </em></font>dialog box.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1038825">ABSTOL</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1038827">Current tolerance</a></p>
+            <p><a name="1038828">Describes the best accuracy of currents in a simulation run. The </a>value of this variable is specified in the <font color="#000000"><em>Options</em></font> tab of the <font color="#000000"><em>Simulation Settings</em></font> dialog box.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1038830">VNTOL</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1038832">Voltage tolerance</a></p>
+            <p><a name="1038833">Describes the best accuracy of voltages in a simulation run.The </a>value of this variable is specified in the <font color="#000000"><em>Options</em></font> tab of the <font color="#000000"><em>Simulation Settings</em></font> dialog box.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1038835">CHGTOL</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1038837">Charge tolerance</a></p>
+            <p><a name="1039044">Describes the best accuracy of charges. The value of this variable is </a>specified in the <font color="#000000"><em>Options</em></font> tab of the <font color="#000000"><em>Simulation Settings</em></font> dialog box.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1038840">GMIN</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1039054">Indicates the minimum conductance used for any branch. The value </a>of this variable is specified in the <font color="#000000"><em>Options</em></font> tab of the <font color="#000000"><em>Simulation </em></font><font color="#000000"><em>Settings</em></font> dialog box.</p>
+          </td>
+        </tr>
+      </table>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="13.333333333333332">
+              <div>&nbsp;</div>
+            </td>
+            <td width="133.33333333333331">
+              <div>
+                <nobr>
+                  <img src="images/important.gif" alt="ParagraphBullet" border="0">
+                </nobr>
+              </div>
+            </td>
+            <td>
+              <font size="3"><a name="1039100">System variables covered in this section are reserved keywords for PSpice. You can </a>use these variables in your circuits file but can not redefine them as user&#45;defined variables. For example, you can not redefine these parameters in .PARAM or :&nbsp;PARAMS statements. An exception to this are the keywords GMIN, PI, and TEMP. These three variables can be declared within a .SUBCKT statement, to have a user defined value. Redefining GMIN, PI, and TEMP outside a .SUBCKT statement is not supported.</font>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <br>
+    <a href="#pagetop">Return to top of page</a>
+    <hr>
+    <hr align="left">
+    <div style="text-align: left;">
+      <!-- Begin Buttons -->
+      <table width="650" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                    </td>
+<td height="20" width="73">
+<a href="pspcrefTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<a href="pspcrefIX.html"><img src="../support/nav2_index.gif" border="0"></a>
+</td>
+          <td>
+            <a href="03digita.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+          </td>
+          <td>
+            <a href="05profilelibraries.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+          </td>
+          <td>
+            <a>
+<a href="pspcref.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+            </a>
+          </td>
+          <td height="20" width="61">
+            <img src="../support/nav2_black.gif">
+          </td>
+          <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+          </td>
+          <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+          </td>
+          <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+          </td>
+        </tr>
+      </table>
+      <!-- End Buttons -->
+    </div>
+    <br>
+    <font size="-1" >
+For support, see <a href="http://support.cadence.com" target="_blank">Cadence Online Support</a> service.</font>
+    <br>
+    <br>
+    <font size="-1" >
+      <i>Copyright &#169; 2011, <a href="http://www.cadence.com">Cadence Design Systems, Inc.</a></i>
+    </font>
+    <br>
+    <font size="-1" >
+All rights reserved.</font>
+    <br>
+    <br>
+  </body>
+</html>

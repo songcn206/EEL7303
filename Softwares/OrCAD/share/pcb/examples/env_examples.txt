@@ -1,0 +1,133 @@
+# Example mouse wheel and funckey assigments
+
+
+# MOUSE WHEEL CONTROL
+#	note default mouse wheel is to zoom in/out
+# Change active subclass when holding shift key and moving wheel up
+button Swheel_up subclass -+
+# When in etch edit change alt subclass when moving wheel while holding shift key
+button Swheel_down altsubclass -+
+
+# Roam vertically, while moving wheel hold control key 
+button Cwheel_up "roam y -$roamInc"
+button Cwheel_down "roam y $roamInc"
+
+# Roam horizontally while moving wheel hold shift & control key 
+button SCwheel_up "roam x -$roamInc"
+button SCwheel_down "roam x $roamInc"
+
+# MODIFIERS
+
+# With any function key or button feature the following modifiers are supported:
+#	S - shift key
+#	C - Control key
+#	A - Meta key
+#   See <Cdsroot>/tools/share/pcb/text/env for more info.
+#
+#   Normal keyboard keys (a-z) do not use the "S" modifier. The
+#   capital letter is sufficient. The control modifier for alpha-numeric
+#   is tilda, "~".
+#
+#   Some funckeys are duplicated.
+
+
+# FUNCKEY EXAMPLES
+
+# When in commands that support mirror, mirror object selected
+funckey m "pop mirror"
+# When in commands that support rotate, rotate object selected by 90 degress
+funckey r iangle 90
+
+#  If in add connect set line width to 25. Requires 16.01 ISR or newer.
+#  TIP: This shows a feature that appeared in a 16.01 ISR where you no longer
+#       need to provide a "setwindow" command before issuing a form command
+#       In 15.7 this would have been done as:
+#	    funckey w "setwindow formi.mini; form mini acon_line_width 25"
+#
+#  TIP: The best way to discover the form field names is to either record
+#       a script and change the field or issue the: scriptmode +echo
+#       command which echos to the Allegro status line the commands as
+#       you change the fields.
+funckey w form mini acon_line_width 25
+
+# If in add connect go into neck mode
+funckey n pop neck
+
+# Toggle the direction of dynamics. Works in many commands if adding a
+# trace or line.
+funckey t toggle
+
+# If in add connect, toggle the replace etch option. 
+#  TIP: This demostrates the use of the "toggle" option if the form field
+#       field is a checkbox. Normally for a checkbox you would supply a 
+#       "yes" or "no" value.
+funckey g form mini replace_etch toggle
+
+# If in add connect toggles through the bubble option
+#  TIP: With any form field that supports a drop down you can toggle through
+#      the drop items with the form_next (or form_prev) commands
+funckey b form_next mini bubble_space
+
+# If bus routing, toggle through spacings of 15, 20 and 30 between routes
+funckey u 'settoggle userspace 15 20 30; pop routespace user $userspace;echo routespace = $userspace'
+
+# If in add connect, Toggle linewidths of 15, 20 and 30
+funckey l 'settoggle linewidth 15 20 30; form mini acon_line_width $linewidth'
+# TIP: Both above funckeys examples demostrate the use of settoggle command with
+#     variable substitution. The settoggle command advances the environment
+#     variable, userspace, through a list of values (15, 20 and 30). The variable 
+#     is applied to the pop command with the current setting of the userspace
+#     environment variable. The echo command reports to the user the current
+#     setting applied to "pop routespace". Multiple commands are required to
+#     accomplish this so the ";" is used between each command. Since multiple
+#     commands are required you need to quote the entire command chain.
+#
+#     In pre-16.1 releases, you would need the settoggle method to change
+#     step through drop-downs any form dropdown field. The recommended way
+#     to do dropdowns now is to use form_next.
+
+
+# Similar to above mousewheel except using the keyboard to change 
+# active class and subclass.
+funckey + subclass -+
+funckey - subclass --
+funckey a altsubclass -+
+funckey s altsubclass --
+
+# Alternative way of chaning active class using the spacebar.
+#  TIP: The " " is the way to assign the spacebar as a funckey.
+funckey " " subclass -+
+
+# Assing numeric keys to change to a active subclass
+funckey 1 options subclass TOP
+funckey 2 options subclass SIGNAL_2
+funckey 3 options subclass SIGNAL_3
+funckey 4 options subclass SIGNAL_4
+funckey 5 options subclass SIGNAL_5
+funckey 6 options subclass SIGNAL_6
+funckey 7 options subclass SIGNAL_7
+funckey 8 options subclass BOTTOM
+
+
+#---------------------------------------------------------------
+# The examples below require 16.2 or newer.
+
+# Delete the object where the cursor is located.
+#  TIP: demostrates the "-cursor" option with the pick commands
+#       (in this case pick_to_grid). The "-cursor" option uses the current 
+#       location of the cursor as the pick.
+funckey d  "delete; pick_to_grid -cursor; done" 
+
+# Following 4 assigments snaps the current selected object to indicated object.
+#  TIP: Demostrates if no coordinate is provided to the prepopup command, it
+#       uses the current cursor location. You can actually provide the
+#       "-cursor" option to the prepopup command if you feel it will make
+#       its behavior clearer.
+funckey f "prepopup;pop dyn_option_select 'Snap pick to@:@Figure'"
+funckey i "prepopup;pop dyn_option_select 'Snap pick to@:@Intersection'" 
+funckey c "prepopup;pop dyn_option_select 'Snap pick to@:@Arc/Circle Center'"
+funckey v "prepopup;pop dyn_option_select 'Snap pick to@:@Via'"
+
+# In add connect, the following drops a bbdrill via at the current cursor
+# location using the space bar.
+funckey " " "pick_to_grid -cursor;pop bbdrill"

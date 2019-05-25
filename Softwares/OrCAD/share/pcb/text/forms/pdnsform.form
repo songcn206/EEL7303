@@ -1,0 +1,703 @@
+####################################################################################
+#       Cadence Design Systems                                                     #
+#                                                                                  #
+# (C) COPYRIGHT, Cadence Design Systems, Inc. 2010                                 #
+# All Rights Reserved                                                              #
+# Licensed Materials - Property of Cadence Design Systems                          #
+#                                                                                  #
+# No part of this file may be reproduced, stored in a retrieval system,            #
+# or transmitted in any form or by any means --- electronic, mechanical,           #
+# photocopying, recording, or otherwise --- without prior written permission       #
+# of Cadence Design Systems, Inc.                                                  #
+#                                                                                  #
+# WARRANTY:                                                                        #
+# Use all material in this file at your own risk.  Cadence Design Systems          #
+# makes no claims about any material contained in this file.                       #
+####################################################################################
+FILE_TYPE=FORM_DEFN VERSION=2
+
+    FORM
+    FIXED
+    PORT 136 60
+    HEADER "PDN Analysis"
+
+    ACTIVEFIELD Refresh
+    DEFAULT Exit
+
+    TILE
+
+    TABSET "TabSet"
+    FLOC 1 0
+    TSSIZE 135 42
+
+    TAB "Power and Ground"
+
+    GROUP "Analysis" "FlowTypeGroup"
+        GLOC 1 0
+        GSIZE 19 17
+    ENDGROUP
+    
+    FIELD StaticIRDrop
+        FLOC 2 3
+        CHECKLIST "Static IRDrop" "Flow"
+    ENDFIELD
+
+    FIELD SingleNode
+        FLOC 2 5
+        CHECKLIST "Single Node" "Flow"
+    ENDFIELD
+    
+    FIELD PowerIntegrity
+        FLOC 2 7
+        CHECKLIST "Power Integrity" "Flow"
+    ENDFIELD
+
+    FIELD ModelExtract
+        FLOC 2 9
+        CHECKLIST "Model Extraction" "Flow"
+    ENDFIELD
+
+    GROUP "Configure power/ground nets for analysis" "NetGroup"
+        GLOC 21 0
+        GSIZE 112 17
+    ENDGROUP
+
+    FIELD SimNetSel
+        FLOC 22 2
+        MENUBUTTON "Select DC Nets" 15 3
+    ENDFIELD
+
+    POPUP <MaxDCIRDropPopup>"Reset""Reset".
+    POPUP <VoltageRipplePopup>"Reset""Reset","1%""1%","2%""2%","3%""3%","4%""4%","5%""5%".
+    POPUP <MaxDeltaCurrentPopup>"Reset""Reset","Calculate""Calculate".
+    POPUP <TargetImpedancePopup>"Edit...""Edit".
+    POPUP <CurrentThreshPopup>"Reset""Reset".
+    POPUP <DensityThreshPopup>"Reset""Reset".
+    POPUP <NetGridHeadPopup>"""".
+    GRID NetGrid
+    FLOC 22 4
+    FSIZE 110 13
+    OPTIONS HLINES VLINES USERSIZE
+
+    GHEAD TOP
+        HEADSIZE 2
+        OPTIONS 3D
+        POP "NetGridHeadPopup"
+    ENDGHEAD
+    GHEAD SIDE
+        HEADSIZE 0
+    ENDGHEAD
+    ENDGRID
+
+    GROUP "Prerequisite Tasks" "GuideGroup"
+        GLOC 1 17
+        GSIZE 132 22
+    ENDGROUP
+
+    FIELD DCNetAssign
+      FLOC 115 19
+      MENUBUTTON "Identify DC Nets..." 17 3
+    ENDFIELD
+
+    FIELD CrossSection
+      FLOC 115 22
+      MENUBUTTON "Cross-Section..." 17 3
+    ENDFIELD
+
+    FIELD LibraryMgmt
+      FLOC 115 25
+      MENUBUTTON "Manage Library..." 17 3
+    ENDFIELD
+
+    FIELD ModelAssign
+      FLOC 115 28
+      MENUBUTTON "Model Assignment..." 17 3
+    ENDFIELD
+
+    TEXT "Perform the following mandatory tasks before you start PDN analysis:" "TextInfoGeneral1"
+        TLOC 2 19
+    ENDTEXT
+
+    TEXT "    1. Assign correct voltage to power and ground nets in the design. To do this, click 'Identify DC Nets'." "TextInfoGeneral2"
+        TLOC 2 21
+    ENDTEXT
+
+    TEXT "    2. Select the power and ground nets to be analyzed. To do this, click 'Select DC Nets'." "TextInfoGeneral3"
+        TLOC 2 23
+    ENDTEXT
+
+    TEXT "    3. Specify source (VRM) or sink (virtual) excitation port types in the Components and Ports tabbed page." "TextInfoGeneral4"
+        TLOC 2 25
+    ENDTEXT
+
+    TEXT "It is recommended that you also perform the following optional tasks for an accurate analysis:" "TextInfoGeneral5"
+        TLOC 2 28
+    ENDTEXT
+
+    TEXT "    1. Define cross-section with the requisite thickness, conductivities, dielectric constant, and loss tangent. To do this, click 'Cross-Section'." "TextInfoGeneral6"
+        TLOC 2 30
+    ENDTEXT
+
+    TEXT "    2. Configure library paths to include all the required models.  To do this, click 'Manage Library'." "TextInfoGeneral7"
+        TLOC 2 32
+    ENDTEXT
+
+    TEXT "    3. Assign proper models to all the related components.  To do this, click 'Model Assignment'." "TextInfoGeneral8"
+        TLOC 2 34
+    ENDTEXT
+
+    TEXT "    4. Define all pin/via padstacks with correct drill and regular/thermal/anti-pad parameters." "TextInfoGeneral9"
+        TLOC 2 36
+    ENDTEXT
+
+    ENDTAB
+
+
+    TAB "Decoupling Capacitors Management"
+
+
+    GROUP "Device" "DeviceInfoGroup"
+        GLOC 1 0
+        GSIZE 132 20
+    ENDGROUP
+
+    TEXT "PartNo Filter:" "TextPartNoFilter"
+        TLOC 2 2
+    ENDTEXT
+
+    FIELD DecapPartNoField
+        FLOC 12 2
+        STRFILLIN 12 25
+    ENDFIELD
+
+    TEXT "JEDEC Filter:" "TextJEDECFilter"
+        TLOC 27 2
+    ENDTEXT
+
+    FIELD DecapJedecField
+        FLOC 37 2
+        STRFILLIN 12 25
+    ENDFIELD
+
+    TEXT "Value Filter:" "TextValueFilter"
+        TLOC 52 2
+    ENDTEXT
+
+    FIELD DecapValueField
+        FLOC 61 2
+        STRFILLIN 12 25
+    ENDFIELD
+
+    FIELD Histogram
+        FLOC 122 2
+        MENUBUTTON "ESR Plot" 10 3
+    ENDFIELD
+
+    POPUP <LibraryFilePopup>"Import""LibraryFileImport","Export""LibraryFileExport".
+    FIELD LibraryFile
+        FLOC 108 2
+        MENUBUTTON "Import/Export" 10 3
+        POP "LibraryFilePopup"
+    ENDFIELD
+
+    POPUP <DecapPartNoGridPopup>"""".
+    POPUP <DecapPartNoGridHeadPopup>"""".
+    GRID DecapPartNoGrid
+    FLOC 1 4
+    FSIZE 131 16
+    OPTIONS HLINES VLINES USERSIZE
+    POP "DecapPartNoGridPopup"
+
+    GHEAD TOP
+        HEADSIZE 2
+        OPTIONS 3D
+        POP "DecapPartNoGridHeadPopup"
+    ENDGHEAD
+    GHEAD SIDE
+        HEADSIZE 0
+    ENDGHEAD
+    ENDGRID
+
+    GROUP "Capacitor" "CapacitorGroup"
+        GLOC 1 20
+        GSIZE 28 19
+    ENDGROUP
+
+    TEXT "Net Filter:"
+        TLOC 2 22
+    ENDTEXT
+
+    POPUP <DecapNetComBo>"""".
+    FIELD DecapNetField
+        FLOC 14 22
+        ENUMSET 11
+        POP "DecapNetComBo"
+    ENDFIELD
+
+    TEXT "Name Filter:" "TextRefDesFilter"
+        TLOC 2 24
+    ENDTEXT
+
+    FIELD DecapRefDesField
+        FLOC 14 24
+        STRFILLIN 12 256
+    ENDFIELD
+
+    POPUP <DecapRefdesListPopup>"""".
+    FIELD DecapRefdesList
+        FLOC 2 26
+        LIST "" 26 6
+        OPTIONS multiselect
+        POP "DecapRefdesListPopup"
+    ENDFIELD
+
+    POPUP <OptionsPopup>"Assign Model""ModelAssign","Graph Response""GraphResponse","Inactivate""Inactivate","Activate""Activate","Delete" "Delete".
+    FIELD Options
+        FLOC 18 37
+        MENUBUTTON "More" 10 3
+        POP "OptionsPopup"
+    ENDFIELD
+
+    GROUP "Model" "ModelInfoGroup"
+        GLOC 30 20
+        GSIZE 103 19
+    ENDGROUP
+
+    POPUP <DecapModelGridPopup>"""".
+    GRID DecapModelGrid
+    FLOC 30 22
+    FSIZE 102 17
+    OPTIONS HLINES VLINES USERSIZE
+    POP "DecapModelGridPopup"
+
+    GHEAD TOP
+        HEADSIZE 2
+        OPTIONS 3D
+    ENDGHEAD
+    GHEAD SIDE
+        HEADSIZE 0
+    ENDGHEAD
+    ENDGRID
+
+
+    ENDTAB
+
+
+    TAB "Components and Ports"
+    GROUP "Components" "CompGroup"
+        GLOC 1 0
+        GSIZE 39 39
+    ENDGROUP
+
+    TEXT "Net filter:" "netFilter"
+        TLOC 2 2
+    ENDTEXT
+
+    POPUP <PortNetPopup>"""".
+    FIELD PortNet
+        FLOC 10 2
+        STRFILLIN 11 128
+        POP "PortNetPopup"
+    ENDFIELD
+
+    TEXT "Name Filter:"
+        TLOC 2 5
+    ENDTEXT
+
+    FIELD CompNameFilter
+        FLOC 10 5
+        STRFILLIN 14 25
+    ENDFIELD
+
+    FIELD CompSelectAll
+        FLOC 28 2
+        MENUBUTTON "Select All" 11 3
+    ENDFIELD
+
+    FIELD CompDeselectAll
+        FLOC 28 5
+        MENUBUTTON "Deselect All" 11 3
+    ENDFIELD
+
+    FIELD CompNameList
+        FLOC 2 8
+        LIST "" 37 14
+        OPTIONS multiselect
+    ENDFIELD
+
+    FIELD ProfileEdit
+        FLOC 2 36
+        MENUBUTTON "Edit Profile" 10 3
+    ENDFIELD
+    
+    FIELD PortGenerate
+        FLOC 2 36
+        MENUBUTTON "Generate Port" 10 3
+    ENDFIELD
+
+    FIELD PortGroupEdit
+        FLOC 15 36
+        MENUBUTTON "Pin Group" 10 3
+    ENDFIELD
+
+    FIELD ReturnPath
+        FLOC 28 36
+        MENUBUTTON "Return Path" 10 3
+    ENDFIELD
+
+    GROUP "Ports" "PortGroup"
+        GLOC 41 0
+        GSIZE 92 39
+    ENDGROUP
+
+    POPUP <PortTypePopup>"Open""Open","Sink""Sink","Source""Source".
+    POPUP <PortSinkPopup>"""".
+    POPUP <PortSourcePopup>"""".
+    POPUP <PortGridHeadPopup>"""".
+    POPUP <PortGridPopup>"""".
+    GRID PortGrid
+    FLOC 42 2
+    FSIZE 90 36
+    OPTIONS HLINES VLINES USERSIZE
+
+    GHEAD TOP
+        HEADSIZE 2
+        OPTIONS 3D
+        POP "PortGridHeadPopup"
+    ENDGHEAD
+    GHEAD SIDE
+        HEADSIZE 0
+    ENDGHEAD
+    ENDGRID
+
+    POPUP <ExtrPortGridSelNet>"""".
+    POPUP <ExtrPortGridPosTerm>"Browse...""Browse","Pick Term...""Pick", "Global GND""Global GND".
+    GRID ExtrPortGrid
+    FLOC 42 2
+    FSIZE 90 33
+    OPTIONS HLINES VLINES USERSIZE
+
+    GHEAD TOP
+        HEADSIZE 2
+        OPTIONS 3D
+    ENDGHEAD
+    GHEAD SIDE
+        HEADSIZE 0
+    ENDGHEAD
+    ENDGRID
+
+    FIELD AddPort
+        TLOC 111 36
+        MENUBUTTON "Add Port" 10 3
+    ENDFIELD
+
+    FIELD DelPort
+        TLOC 122 36
+        MENUBUTTON "Del Port" 10 3
+    ENDFIELD
+    
+    FIELD DelAllPort
+        TLOC 42 36
+        MENUBUTTON "Delele ALL" 10 3
+    ENDFIELD
+
+    ENDTAB
+
+    TAB "Parameters Setting"
+
+    GROUP "Frequency Domain" "FrequencyDomainGroup"
+        GLOC 1 0
+        GSIZE 30 14
+    ENDGROUP
+
+    TEXT "Lower Frequency:" "LowerFreq"
+        TLOC 2 2
+    ENDTEXT
+
+    FIELD EditLowerFreq
+        FLOC 16 2
+        STRFILLIN 12 128
+    ENDFIELD
+
+    TEXT "Upper Frequency:" "UpperFreq"
+        TLOC 2 5
+    ENDTEXT
+
+    FIELD EditUpperFreq
+        FLOC 16 5
+        STRFILLIN 12 128
+    ENDFIELD
+
+    TEXT "Sweep Scale:""SweepScaleTitle"
+        TLOC 2 8
+    ENDTEXT
+
+    POPUP <SimSweepScalePop>"Linear""Linear","Log""Log".
+    FIELD SimSweepScale
+        FLOC 16 8
+        ENUMSET 11
+        POP "SimSweepScalePop"
+    ENDFIELD
+
+    TEXT "Sweep Num:""SweepNumTitle"
+        TLOC 2 11
+    ENDTEXT
+
+    FIELD SimSweepNum
+        FLOC 16 11
+        INTFILLIN 12 20
+        MIN 10
+        MAX 1000
+    ENDFIELD
+
+
+    GROUP "Shape Mesh Information --- Rectangle" "ShapeMeshInformationGroup"
+        GLOC 32 0
+        GSIZE 40 14
+    ENDGROUP
+
+    FIELD MeshRectModeFine
+        FLOC 33 3
+        CHECKLIST "Fine" "MeshRectMode"
+    ENDFIELD
+
+    FIELD MeshRectModeRegular
+        FLOC 42 3
+        CHECKLIST "Regular" "MeshRectMode"
+    ENDFIELD
+
+    FIELD MeshRectModeCoarse
+        FLOC 53 3
+        CHECKLIST "Coarse" "MeshRectMode"
+    ENDFIELD
+
+    FIELD  MeshRectModeCustom
+        FLOC 63 3
+        CHECKLIST "Custom" "MeshRectMode"
+    ENDFIELD
+
+    TEXT "X Size:" "MeshRectSizeXTitle"
+        TLOC 33 6
+    ENDTEXT
+
+    FIELD MeshRectSizeX
+        FLOC 40 6
+        STRFILLIN 10 25
+    ENDFIELD
+
+    TEXT "Y Size:" "MeshRectSizeYTitle"
+        TLOC 33 9
+    ENDTEXT
+
+    FIELD MeshRectSizeY
+        FLOC 40 9
+        STRFILLIN 10 25
+    ENDFIELD
+
+    GROUP "Model Extraction Parameters" "ModelExtraParamGroup"
+        GLOC 73 0
+        GSIZE 36 14
+    ENDGROUP
+
+    TEXT "Model Name:" "ModelName"
+        TLOC 74 2
+    ENDTEXT
+
+    FIELD EditModelName
+        FLOC 91 2
+        STRFILLIN 12 128
+    ENDFIELD
+
+    TEXT "Model Type:" "ModelType"
+        TLOC 74 5
+    ENDTEXT
+
+    POPUP <ComboModelTypePop>"S-Param""S-Param","Y-Param""Y-Param","Z-Param""Z-Param".
+    FIELD ComboModelType
+        FLOC 91 5
+        ENUMSET 11
+        POP "ComboModelTypePop"
+    ENDFIELD
+
+    TEXT "File Type:" "FileType"
+        TLOC 74 8
+    ENDTEXT
+
+    FIELD touchStoneCheck
+        FLOC 91 8
+        CHECKLIST "Touchstone Format"
+    ENDFIELD
+
+    TEXT "Reference Impedance:""ReferenceImpedance"
+        TLOC 74 11
+    ENDTEXT
+
+    FIELD EditRefImpedance
+        FLOC 91 11
+        STRFILLIN 12 128
+    ENDFIELD
+
+    FIELD ReportsPrint
+        FLOC 2 16
+        CHECKLIST "Print reports for pins on all components"
+    ENDFIELD
+    
+    FIELD ViaReportPrint
+        FLOC 2 19
+        CHECKLIST "Generate via IRDrop report"
+    ENDFIELD
+    
+    FIELD WaveFormsPrint
+        FLOC 2 19
+        CHECKLIST "Print waveforms for pins on all components"
+    ENDFIELD
+
+    FIELD RoutedIgnore
+        FLOC 2 22
+        CHECKLIST "Ignore routed traces in the design."
+    ENDFIELD
+    
+    FIELD VoidsIgnore
+        FLOC 2 22
+        CHECKLIST "Ignore shape/voids less than:"
+    ENDFIELD
+    
+    FIELD voidSize
+        FLOC 25 22
+        STRFILLIN 10 25
+    ENDFIELD
+
+    FIELD SkipAudit
+        FLOC 2 25
+        CHECKLIST "Skip audit before analysis."
+    ENDFIELD
+
+    FIELD SkipReport
+        FLOC 2 28
+        CHECKLIST "Skip report after analysis."
+    ENDFIELD
+
+    TEXT "Session name:"
+        TLOC 2 31
+    ENDTEXT
+
+    FIELD SessionName
+        FLOC 14 31
+        STRFILLIN 24 256
+    ENDFIELD
+
+    FIELD Preference
+        TLOC 62 31
+        MENUBUTTON "Preferences" 10 3
+    ENDFIELD
+
+    ENDTAB
+    ENDTABSET
+
+
+    GROUP "Help Info" "helpInfo"
+        GLOC 1 42
+        GSIZE 135 8
+    ENDGROUP
+
+    TEXT "Dynamic help information..." "dynamicHelp1"
+        FLOC 2 44
+        FSIZE 133 6
+    ENDTEXT
+
+    FIELD Hide
+        FLOC 1 51
+        MENUBUTTON "Hide" 10 3
+    ENDFIELD
+
+    FIELD Refresh
+        FLOC 12 51
+        MENUBUTTON "Refresh" 10 3
+    ENDFIELD
+
+    FIELD Analyze
+        FLOC 23 51
+        MENUBUTTON "Analyze" 10 3
+    ENDFIELD
+
+    FIELD Mesh
+        FLOC 34 51
+        MENUBUTTON "View Mesh" 10 3
+    ENDFIELD
+
+    FIELD Exit
+        FLOC 100 51
+        MENUBUTTON "Close" 10 3
+    ENDFIELD
+
+    POPUP <PortAdvancePopup>"Import Settings...""PortImport","Export Settings...""PortExport".
+    FIELD PortAdvance
+        FLOC 111 51
+        MENUBUTTON "PDN Settings" 14 3
+        POP "PortAdvancePopup"
+    ENDFIELD
+
+    FIELD Help
+        FLOC 126 51
+        MENUBUTTON "Help" 10 3
+    ENDFIELD
+
+    FLEXMODE EdgeGravity
+    FLEX TabSet 0 0 1 1
+
+    FLEX NetGroup        0   0   1   1
+    FLEX GuideGroup      0   1   1   0
+    FLEX NetGrid         0   0   1   1
+    FLEX CompGroup       0   0   0.3 1
+    FLEX PortGroup       0.3 0   0.7 1
+    FLEX PortNet         0   0   1   0
+    FLEX CompNameFilter  0   0   1   0
+    FLEX CompNameList    0   0   1   1
+    FLEX PortGroup       0.3 0   0.7 1
+    FLEX PortGrid        0   0   1   1
+    FLEX ExtrPortGrid    0   0   1   1
+
+    FLEX TextInfoGeneral1   0   1   0    0
+    FLEX TextInfoGeneral2   0   1   0    0
+    FLEX TextInfoGeneral3   0   1   0    0
+    FLEX TextInfoGeneral4   0   1   0    0
+    FLEX TextInfoGeneral5   0   1   0    0
+    FLEX TextInfoGeneral6   0   1   0    0
+    FLEX TextInfoGeneral7   0   1   0    0
+    FLEX TextInfoGeneral8   0   1   0    0
+    FLEX TextInfoGeneral9   0   1   0    0
+
+    FLEX DeviceInfoGroup       0   0   1   1
+    FLEX TextPartNoFilter      0   0   0   0
+    FLEX DecapPartNoField      0   0   0   0
+    FLEX TextJEDECFilter       0   0   0   0
+    FLEX DecapJedecField       0   0   0   0
+    FLEX TextValueFilter       0   0   0   0
+    FLEX DecapValueField       0   0   0   0
+    FLEX LibraryFileImport     0   0   0   0
+    FLEX LibraryFileExport     0   0   0   0
+    FLEX DecapPartNoGrid       0   0   1   1
+
+    FLEX RefDesGroup           1   0   0   1
+    FLEX DecapNetField         0   0   0   0
+    FLEX TextRefDesFilter      0   0   0   0
+    FLEX DecapRefDesField      0   0   0   0
+    FLEX DecapRefdesList       1   0   0   1
+    FLEX ModelInfoGroup        0   1   1   0
+    FLEX DecapModelGrid        0   1   1   0
+
+    FLEX ModelExtraParamGroup  0   0   0   0
+    FLEX Preference            0   1   0   0
+    FLEX ReportsPrint          0   1   0   0
+    FLEX ViaReportPrint        0   1   0   0
+    FLEX WaveFormsPrint        0   1   0   0
+    FLEX RoutedIgnore          0   1   0   0
+    FLEX VoidsIgnore           0   1   0   0
+    FLEX SkipAudit             0   1   0   0
+    FLEX SkipReport            0   1   0   0
+
+    FLEX helpInfo              0   1   1   0
+    FLEX dynamicHelp1          0   1   1   1
+
+    ENDTILE
+ENDFORM

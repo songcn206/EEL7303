@@ -1,0 +1,92 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 39 6
+HEADER "Route_Layer"
+
+TILE
+
+FIELD advance_filter
+FLOC 1 1
+CHECKLIST "Use advanced selection filtering"
+ENDFIELD
+
+FIELD reassign
+FLOC 1 3
+CHECKLIST "Reassign allowed"
+ENDFIELD
+
+FIELD assign_voltage
+FLOC 1 5
+CHECKLIST "Assign power and ground nets"
+ENDFIELD
+
+FIELD method
+FLOC 1 7
+CHECKLIST "Derive from physical"
+ENDFIELD
+
+TEXT "Assignment Type: "
+TLOC 1 10
+ENDTEXT
+
+FIELD fixed
+FLOC 4 12
+CHECKLIST "Fixed" "assignment"
+ENDFIELD
+
+# The following aren't currently supported by the router. 
+#FIELD preferred
+#FLOC 4 14
+#CHECKLIST "Preferred" "assignment"
+#ENDFIELD
+
+#FIELD avoid
+#FLOC 4 16
+#CHECKLIST "Avoid" "assignment"
+#ENDFIELD
+
+FIELD free
+# Use this placement line when above options back in.
+#FLOC 4 18
+FLOC 4 14
+CHECKLIST "Free" "assignment"
+ENDFIELD
+
+FIELD remove
+# Use this placement line when above options back in.
+#FLOC 4 20
+FLOC 4 16
+CHECKLIST "Remove" "assignment"
+ENDFIELD
+
+TEXT "Available Routing Layers: "
+# Use this placement line when above options back in.
+#TLOC 1 23
+TLOC 1 19
+ENDTEXT
+
+GRID layer_grid
+# Use this placement line when above options back in.
+#FLOC 4 25
+FLOC 4 21
+FSIZE  23 12
+OPTIONS VLINES HLINES USERSIZE
+ENDGRID
+
+TEXT "Number of selected pins:"
+TLOC  1 35
+FSIZE 14 4
+OPTIONS bold
+ENDTEXT
+
+FIELD num_selected
+FLOC 16 35
+INTFILLIN 4 7
+OPTIONS bold
+ENDFIELD
+
+ENDTILE
+
+ENDFORM
+

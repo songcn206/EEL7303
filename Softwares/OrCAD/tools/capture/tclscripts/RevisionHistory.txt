@@ -1,0 +1,514 @@
+What's New in TCL/TK samples
+============================
+
+16.6:
+		1) A new Tcl command is available for parsing lisp files
+
+			::orLispParser::parseLisp <filename>	
+			
+		2) A new TCL option has been added so that output of pstswp and genfeedformat are in zip format
+			SetOptionString orZipPackagedFiles  True
+			
+
+16.5 ISR 7:
+		  1) All NetGroup specific internal properties will not be shown in case user launches property
+		     Editor or Net properties dialog box. If user is interested to see those, he/she can enable
+			 that by using the following command.
+				
+				SetOptionString ShowNetgroupInternalProperties  True
+16.5 ISR 6:
+          1) A new TCL option is added to allow backannotating pin wapping information at pin instance 
+		         level rather than at pin occurrence level. The command to enable this is:
+				 
+				 SetOptionString SwapPinAtPinInst True
+
+16.5 ISR 5:
+          1) A new TCL option added to filter certain objects to be treated as blocakages
+             during AutoWire commands. The Tcl option name is CaptureAutoRouteBlockageFilter
+
+                 The valid values could be:
+                           None         : nothing is filtered
+                           GraphicOnly  : Only graphic objects like Text, arc, box etc will 
+                                          be filtered from treating them as blockages
+                           DisplayProps : All display properties will not be treated as blockages.
+                 User may set this option using TCL command SetOptionString. 
+                 Example:
+                        SetOptionString CaptureAutoRouteBlockageFilter { GraphicOnly DisplayProps CommentText }
+          2) A new TCL option is added to render route blocakges in the schematic during AutoWire
+             commands. The command to enable this is:
+
+                   SetOptionString EnableRouteBlockageDebugging True
+				   
+		   
+
+                 
+
+16.5 ISR 4:
+         1) Ability to annotate externally referenced design in instance mode, 
+              though it is not preferred mode of annotation.
+
+             The feature is  enabled under a TCL option and the if the parts
+             getting annotated have only once occurrence. Users need to set the 
+             TCL option AnnInstModeExternalDesign  as true using the command
+
+                  SetOptionBool AnnInstModeExternalDesign  1
+             Feature details:
+                a.   User will see a new check box in the annotate dialog 
+		     under 'Update Instances' radio button, if the TCL option 
+		     is set and user selects 'Update Instance' option, when the 
+                     preferred option is occurrence. It will not be visible if 
+                     'Update Instances' option is not selected or the TCL option 
+                     is not set or if preferred mode is instance. 
+
+                b.   On selecting the new check box, the parts in the externally
+                     referenced design will be annotated in instance mode if they have
+                     not more than one occurrence.
+                c.   This option will get saved in the project settings, but will
+                     come into play only if the TCL option was set.
+                d.   The annotate dialog will not show the new check box if the TCL option 
+                     is not set. So, it does not impact the normal Capture flow
+        2) A New Tcl command is introduced to get the MAC addressed of the machine. The command is:
+               GetMACAddresses
+		
+
+          
+16.5 ISR 3
+	1) Find window is now extensible. User can list as many as properties
+	   in tabs for this they should be Open Acessories->Cadence TCL/TK
+		Utilities->Utilities->Extended Preferences->Find
+		Window->Extensible Find Window (check this ON)
+	   Remark -
+		To include new propeties in Find Result Window open
+		%CDSROOT%/tools/Capture/tclScripts/capUtils/capFindUtil.tcl
+		Add the in the list or add the New tab name and create a new
+		list of properties here. This list we get read during Find
+		operation and new row for properties will get created for
+		added one
+       2) A New TCL command is introduced to get the path for the Capture.ini that the
+          tool is using. The comand is:
+               GetIniPath
+             
+
+16.3 ISR 41
+-----------
+	1) PDF Export will support printing in Design Variant Mode with
+	correct variant properties 
+
+16.3 ISR 32
+-----------
+	1) TCL callback hooks for various operations 
+        _cdnCheckPackageOnPartWindowClose :- On Part Window Close
+		
+16.3 ISR 028
+------------
+	New TCL options
+    ----------------
+	1) SelectObjectById 
+        Option availability -
+            Capture TCL shell - Yes 
+            (SelectObjectById DataBaseId [TRUE/FALSE])
+            Extended Preferences UI - No
+        Remarks - This option selects an object on the opened page based
+                  on the database ID. Second option is optional and
+                  used for crossProbing. By default it is true.
+				  
+	2) ZoomGridMin
+	Option availability -
+            Capture TCL shell - Yes 
+            (SetOptionString ZoomGridMin value)
+            Extended Preferences UI - No
+        Remarks - This option sets the minimum grid to be selected to
+	perform area zoom. By default it is not set.
+	SetOptionString ZoomGridMin 0 resets to default behaviour.
+	   
+
+16.3 ISR 027
+------------
+	New TCL options
+    ----------------
+    1) CISRegionalSetting 
+       Option availability -
+            Capture TCL shell - Yes 
+            (SetOptionString CISRegionalSetting TRUE/FALSE)
+            Extended Preferences UI - Yes
+			(Extended Preferences -> CIS -> Disable Regional Setting)
+        Remarks - This option sets the mode to disable the regional setting.
+		
+16.3 ISR 026
+------------
+	New TCL options
+    ----------------
+    1) ViewHBlockOnlyInPMTree 
+        Option availability -
+            Capture TCL shell - Yes 
+            (SetOptionString ViewHBlockOnlyInPMTree TRUE/FALSE)
+            Extended Preferences UI - No
+        Remarks - This option sets the mode to view only H-Block 
+		in the PM window Hierarchy tab.
+
+16.3 ISR 025
+16.4
+-----
+	New TCL options
+    ----------------
+    1) QueryStringMatch 
+        Option availability -
+            Capture TCL shell - Yes 
+            (SetOptionString QueryStringMatch TRUE/FALSE)
+            Extended Preferences UI - Yes 
+            (Extended Preferences -> CIS -> Query String Match)
+        Remarks - This option sets the mode to do string comparison when '=' operator
+		is selected for compare during CIS query. String comparison is not case sensitive.
+		
+	2) DisplayCisQuery
+		Option availability -
+            Capture TCL shell - Yes 
+            (SetOptionString DisplayCisQuery TRUE/FALSE)
+            Extended Preferences UI - No
+        Remarks - This option sets the mode to display the SQL query in the session log
+
+16.3 ISR 026
+------------
+	New TCL options
+    ----------------
+    1) ViewHBlockOnlyInPMTree 
+        Option availability -
+            Capture TCL shell - Yes 
+            (SetOptionString ViewHBlockOnlyInPMTree TRUE/FALSE)
+            Extended Preferences UI - No
+        Remarks - This option sets the mode to view only H-Block 
+		in the PM window Hierarchy tab.
+
+16.3 ISR 025
+------------
+    New TCL options
+    ----------------
+    1) QueryAllTables 
+        Option availability -
+            Capture TCL shell - Yes 
+            (SetOptionString QueryAllTables TRUE/FALSE)
+            Extended Preferences UI - Yes 
+            (Extended Preferences -> CIS -> Query All Configured Tables)
+        Remarks - This option sets the mode to query all the tables that
+		are configured in the DBC Configuration.
+        
+16.3 ISR 022
+-------------
+
+     New TCL interface
+    ----------------
+     - TCL interface for CIS (Groups and BOM Variant)
+     
+     Enhancement/Bug fixes
+    ------------------------
+    1) Output paper size selection in PDF export
+    2) CIS Dump TCL sample under custom samples folder
+
+
+16.3 ISR 021
+-------------
+    
+    New TCL options
+    ----------------
+    1) TCL interfaces for EDIF import / export in batch mode
+        - XMATIC_EDIF2CAP and XMATIC_CAP2EDIF
+
+    2) TCL callback hooks for various operations 
+        _cdnOrOnLibraryPreSave :- Before library save
+        _cdnOrOnLibraryPostSave  :- After library save
+        _cdnOrOnDesignPreSave :- Before design save
+        _cdnOrOnDesignPostSave :- After design save
+
+    3) DescendSchPage
+        Option availability -
+            Capture TCL shell - Yes 
+            (SetOptionString DescendSchPage ASK/FIRST_PAGE/DEFAULT)
+            Extended Preferences UI - Yes 
+            (Extended Preferences -> Schematic -> Schematic Descend)
+        Remarks - This option sets the mode for Schematic descend 
+        (for hierarchical parts) as ASK, FIRST_PAGE or DEFAULT
+
+    4) MarkersOnTop
+        Option availability -
+            Capture TCL shell - Yes 
+            (SetOptionString MarkersOnTop TRUE)
+            Extended Preferences UI - No
+        Remarks - This option sets the markers to be placed(drawn) on 
+        top on the page
+
+16.3 ISR 020
+-------------
+    
+    New TCL/TK applications in dashboard
+    ------------------------
+    1) Page customization (On Creation)
+
+
+16.3 ISR 019
+-------------
+
+    New TCL options
+    ----------------
+    1) ForceUpdateCache 
+        Option availability -
+            Capture TCL shell - Yes 
+            (SetOptionString ForceUpdateCache TRUE/DEFAULT)
+            Extended Preferences UI - Yes 
+            (Extended Preferences -> Design Cache -> Update Cache)
+        Remarks - This option sets the mode for "Update Cache" as 
+        forced even if library is older than the design cache
+
+    2) HeteroPackaging
+        Option availability -
+            Capture TCL shell - Yes 
+            (SetOptionString HeteroPackaging FirstMatch)
+            Extended Preferences UI - Yes 
+            (Extended Preferences -> Design Annotation -> 
+            Heterogeneous Parts Annotation)
+        Remarks - This option sets the mode for annotation to 
+        package the heterogenous parts with the "FirstMatch" option
+
+    3) EnablePageSortInAnnotation 
+        Option availability -
+            Capture TCL shell - Yes 
+            (SetOptionString EnablePageSortInAnnotation TRUE)
+            Extended Preferences UI - No
+        Remarks - This option sets the sorting of schematic pages 
+        according to their names instead of the creation time (the default) 
+        during annotation
+
+    4) ShowOnlyPageSizeSelection
+        Option availability -
+            Capture TCL shell - Yes 
+            (SetOptionBool ShowOnlyPageSizeSelection TRUE/FALSE)
+            Extended Preferences UI - No
+        Remarks - Setting this option to TRUE sets the mode where 
+        only page size slection tab is shown while setting schematic page 
+        properties
+
+
+16.3 ISR 017
+-------------
+
+    New TCL/TK applications in dashboard
+    ------------------------
+    1) Annotate H Block Page Number
+    2) Replace Path In Design Cache
+
+    Enhancement/Bug fixes
+    ------------------------
+    1) Flat nets update callback event handler sample 
+    2) Mouse click position picker sample
+
+    New TCL options
+    ----------------
+    1) TCL callback hooks for various operations 
+        _cdnOrPreConnect  :- before page connectivity evaluation
+        _cdnOrPostConnect :- after page connectivity evaluation
+
+16.3 ISR 016
+-------------
+
+    New TCL options
+    ----------------
+    1) TCL callback hooks for various operations
+        _cdnOrOnNewSchematicPagePreCreate :- On "New Page", 
+                            before the page is created
+        _cdnOrOnNewSchematicPage :-  On "New Page", after the 
+                                page is created
+        _cdnOrOnSchematicPageAttributeChange :- On page attribute 
+                                    (size etc.) change
+        
+        _cdnOrPropEditOnDBChange :-  On any Capture database 
+                            change through property editor
+
+        _cdnOrAtCaptureExit :- On Capture exit
+
+        _cdnOrPreReplaceInst :- On Replace cache/instance, before 
+                    the instance is replaced
+        _cdnOrPostReplaceInst :- On Replace cache/instance, after 
+                    the instance is replaced
+
+16.3 ISR 015
+-------------
+    
+    New TCL/TK applications in dashboard
+    ------------------------
+    1) Find and replace text
+    2) Enumerate all open libraries and designs
+    3) Check and correct library
+
+    Enhancement/Bug fixes
+    ------------------------
+    1) TCL based menus under Accessories in Variant mode
+    2) PDF export bug fixes
+    3) Fixed the transparent dialog issue for Windows7, 64-bit machines
+
+16.3 ISR 013 
+----------------
+
+    New TCL/TK applications in dashboard
+    ------------------------
+    1) PDF Export
+    2) Extended Preferences
+    3) Communication Server
+
+    Enhancement/Bug fixes
+    ------------------------
+    1) Communication server methods (server side + client side) sample
+    2) Customized BOM generation sample
+
+    New TCL options
+    ----------------
+    1) TCL callback hooks for various operations
+        _cdnOrSchViewCmdStart :- On any schematic command start
+        _cdnOrSchViewCmdComplete :- On any schematic command end
+        _cdnCapTclAddPageCustomMenu :- For adding custom TCL menu 
+                            under accessories for schematic page
+        _cdnCapTclAddDesignCustomMenu :- For adding custom TCL menu 
+                            under accessories for design
+
+    2) RotateInstPropInContext
+        Option availability -
+            Capture TCL shell - Yes 
+            (SetOptionBool RotateInstPropInContext TRUE/FALSE)
+            Extended Preferences UI - Yes 
+            (Extended Preferences -> Designs And Libraries -> 
+                        Context based instance properties)
+        Remarks -  Setting this option TRUE causes the rotation of 
+        instance properties along with the instance on the same axis
+
+    3) ViewerShowPinInfo
+        Option availability -
+            Capture TCL shell - Yes 
+            (SetOptionBool ViewerShowPinInfo TRUE/FALSE)
+            Extended Preferences UI - Yes 
+            (Extended Preferences -> Footprint viewer -> 
+                        Show pin information in viewer)
+        Remarks - Setting this option TRUE enables the mode to show 
+        the pin info in the footprint viewer
+
+    4) Journaling
+        Option availability -
+            Capture TCL shell - Yes 
+            (SetOptionBool Journaling TRUE/FALSE)
+            Extended Preferences UI - Yes 
+            (Extended Preferences -> Command Shell -> Journaling -> Enable)
+        Remarks - Setting this option TRUE enables the playback 
+        TCL commands (Journaling) recording
+
+    5) FlushImmediate
+        Option availability -
+            Capture TCL shell - Yes 
+            (SetOptionBool FlushImmediate TRUE/FALSE)
+            Extended Preferences UI - Yes 
+            (Extended Preferences -> Command Shell -> Journaling -> 
+                                        Flush Commands)
+        Remarks - Setting this option TRUE causes the playback TCL 
+        commands (Journaling) to be flushed immediately into the 
+        Journaling file on the disk. This is particularly useful in case of 
+        crash scenarios etc.
+
+    6) DrawPinArrows
+        Option availability -
+            Capture TCL shell - Yes 
+            (SetOptionBool DrawPinArrows TRUE/FALSE)
+            Extended Preferences UI - Yes 
+            (Extended Preferences -> Designs And Libraries -> 
+                    Draw arrows on part input pins)
+        Remarks - Setting this option TRUE draws the arrows on part input pins
+
+    7) EnableLegacyITC
+        Option availability -
+            Capture TCL shell - Yes 
+            (SetOptionBool EnableLegacyITC TRUE/FALSE)
+            Extended Preferences UI - Yes 
+            (Extended Preferences -> Designs And Libraries -> 
+            Enable communication with legacy tools)
+        Remarks - Setting this option TRUE enables the windows message 
+        based communication with legacy tools, such as layout. This has a 
+        negative performance impact on the tool's responsiveness
+
+    8) DragConnected
+        Option availability -
+            Capture TCL shell - Yes 
+            (SetOptionBool DragConnected TRUE/FALSE)
+            Extended Preferences UI - No
+        Remarks - Setting this option TRUE enables the mode of 
+        allowing connectivity changes to happen while dragging
+
+    9) CheckReadOnlyOnViewActivate
+        Option availability -
+            Capture TCL shell - Yes 
+            (SetOptionBool CheckReadOnlyOnViewActivate TRUE/FALSE)
+            Extended Preferences UI - Yes 
+            (Extended Preferences -> Designs And Libraries -> 
+                    Perform read-only check on tab switch)
+        Remarks - Setting this option FALSE (UI option is checkbox OFF) directs 
+        the tool to skip the permission checking on the library and design files 
+        on every tab switch. This has a positive performance impact on the tool's 
+        responsiveness specially in case of slow connections like VPN
+
+    10) BackAnnotatePinNumbersOnly
+        Option availability -
+            Capture TCL shell - Yes 
+            (SetOptionBool BackAnnotatePinNumbersOnly TRUE/FALSE)
+            Extended Preferences UI - Yes 
+            (Extended Preferences -> Designs And Libraries -> 
+                        Back annotate pin numbers only) 
+        Remarks - Setting this option TRUE ignores the pin name changes 
+        during back annotation
+
+    11) SaveAsUpperCaseDsnName
+        Option availability -
+            Capture TCL shell - Yes 
+            (SetOptionBool SaveAsUpperCaseDsnName TRUE/FALSE)
+            Extended Preferences UI - Yes 
+            (Extended Preferences -> Designs And Libraries -> 
+            Save design name as UPPERCASE)
+        Remarks - Setting this option TRUE saves the design and 
+        library with uppercase names
+
+    12 ) EnableStartPage
+        Option availability -
+            Capture TCL shell - Yes 
+            (SetOptionBool EnableStartPage TRUE/FALSE)
+            Extended Preferences UI - Yes 
+            (Extended Preferences -> Designs And Libraries -> 
+                            Load web page on startup)
+        Remarks - Setting this option TRUE directs the tool to load the 
+        web page at startup
+
+    13) EnableOverlappedPrinting
+        Option availability -
+            Capture TCL shell - Yes 
+            (SetOptionBool EnableOverlappedPrinting TRUE/FALSE)
+            Extended Preferences UI - Yes 
+            (Extended Preferences -> Designs And Libraries -> 
+                            Enable overlapped printing)
+        Remarks - Setting this option TRUE enables the mode of 
+        composite object being drawn twice (overlapped with each other). 
+        This gives a slightly thicker look while printing, but has other 
+        side effects, such as a text cannot be searched  properly in the 
+        printed soft copy
+    
+    14) AutoRefTracker
+        Option availability -
+            Capture TCL shell - Yes 
+            (SetOptionBool AutoRefTracker TRUE/FALSE)
+            Extended Preferences UI - No
+        Remarks - Setting this option TRUE enables the part placement tracker
+        to automatically shift to next device to avoid unwanted shifting of 
+        properties during heterogeneous part  placement
+
+    15) PlacePartToolTip
+        Option availability -
+            Capture TCL shell - Yes (PlacePartToolTip 0)
+            Extended Preferences UI - No
+        Remarks - Setting this option to 0 disables the tooltip in the 
+        Place Part window.    
+
+
+
+
+

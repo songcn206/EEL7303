@@ -1,0 +1,110 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+VARIABLE
+PORT 33 29
+HEADER ""
+
+POPUP <IPEGEOPOP>"Null""0","Circle""2","Square""5","Oblong""11",\
+"Rectangle""6","Shape""22".
+
+MESSAGE SHAPE_DIMS_FIXED 1 "Can't change dimensions of shape."
+MESSAGE SHAPE_OFFSET_FIXED 1 "Can't change offset of shape."
+MESSAGE NULL_PAD_GEO 1 "Null Pad Geometry."
+MESSAGE NO_SHAPE 1 "No shape in symbol: %s."
+MESSAGE MULTIPLE_ELEMS 1 "Invalid shape symbol: %s, multiple elements."
+MESSAGE SHP_NOT_FOUND 1 "Shape symbol not found: %s."
+MESSAGE SHP_ACCESS_ERR 1 "Error accessing shape %s: %d."
+MESSAGE FOUND 1 "Found: %s"
+
+TILE PAD_TILE
+TPANEL 1
+TEXT
+TLOC 1 1
+INFO info_pad_type 15
+ENDTEXT
+
+TEXT "Geometry:"
+TLOC 3 3
+ENDTEXT
+
+TEXT "Shape:"
+TLOC 3 5
+ENDTEXT
+
+TEXT "Flash:"
+TLOC 3 7
+ENDTEXT
+
+TEXT "Width:"
+TLOC 3 9
+ENDTEXT
+
+TEXT "Height:"
+TLOC 3 11
+ENDTEXT
+
+TEXT "Offset"
+TLOC 3 13
+ENDTEXT
+
+TEXT "X:"
+TLOC 10 13
+ENDTEXT
+
+TEXT "Y:"
+TLOC 10 15
+ENDTEXT
+
+FIELD geometry
+FLOC 13 3
+ENUMSET 10
+POP "IPEGEOPOP"
+ENDFIELD
+
+FIELD shapename
+FLOC 13 5
+STRFILLIN 16 20
+ENDFIELD
+
+FIELD flash
+FLOC 13 7
+STRFILLIN 16 20
+ENDFIELD
+
+FIELD width
+FLOC 13 9
+STRFILLIN 8 10
+ENDFIELD
+
+FIELD height
+FLOC 13 11
+STRFILLIN 8 10
+ENDFIELD
+
+FIELD x_offset
+FLOC 13 13
+STRFILLIN 8 10
+ENDFIELD
+
+FIELD y_offset
+FLOC 13 15
+STRFILLIN 8 10
+ENDFIELD
+
+ENDTILE
+
+TILE StdTile
+TPANEL 2
+FIELD done
+FLOC 1 1
+MENUBUTTON "Done" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 23 1
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

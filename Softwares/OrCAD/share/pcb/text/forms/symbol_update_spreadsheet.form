@@ -1,0 +1,108 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 38 35
+
+HEADER "Symbol Update from Spreadsheet"
+
+POPUP <worksheet_pop> "" "".
+POPUP <primary_pop> "" "".
+POPUP <secondary_pop> "" "".
+
+TILE
+
+TEXT "File name:"
+TLOC 1 2
+ENDTEXT
+FIELD report_name
+FLOC 13 2
+STRFILLIN 18 128
+ENDFIELD
+FIELD report_browse
+FLOC 33 2
+MENUBUTTON "..." 4 3
+ENDFIELD
+
+TEXT "File type:"
+TLOC 1 4
+ENDTEXT
+FIELD xml_input
+FLOC 13 4
+CHECKLIST "XML" "file_type"
+ENDFIELD
+FIELD txt_input
+FLOC 21 4
+CHECKLIST "TXT" "file_type"
+ENDFIELD
+FIELD csv_input
+FLOC 29 4
+CHECKLIST "CSV" "file_type"
+ENDFIELD
+
+TEXT "Worksheet:"
+TLOC 1 6
+ENDTEXT
+FIELD xml_worksheet
+FLOC 13 6
+ENUMSET 22
+POP "worksheet_pop"
+ENDFIELD
+
+TEXT "Primary text:"
+TLOC 1 9
+ENDTEXT
+FIELD primary_field
+FLOC 13 9
+ENUMSET 22
+POP "primary_pop"
+ENDFIELD
+
+TEXT "Secondary text:"
+TLOC 1 11
+ENDTEXT
+FIELD secondary_field
+FLOC 13 11
+ENUMSET 22
+POP "secondary_pop"
+ENDFIELD
+
+TEXT "Delimiter:"
+TLOC 1 13
+ENDTEXT
+FIELD delimiter
+FLOC 13 13
+STRFILLIN 23 128
+ENDFIELD
+
+FIELD has_labels
+FLOC 1 16
+CHECKLIST "Spreadsheet has row and column headers"
+ENDFIELD
+
+FIELD allow_net_create
+FLOC 1 19
+CHECKLIST "Create new nets defined in spreadsheet"
+ENDFIELD
+
+FIELD allow_net_deassign
+FLOC 1 21
+CHECKLIST "Allow deassignment of pins"
+ENDFIELD
+
+FIELD update
+FLOC 1 25
+MENUBUTTON "Update" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 11 25
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 28 25
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+ENDTILE
+ENDFORM

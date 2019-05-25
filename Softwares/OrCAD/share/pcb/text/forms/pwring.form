@@ -1,0 +1,648 @@
+#// #######################################################################
+#//        Cadence Design Systems
+#// 
+#//  (C) COPYRIGHT, Cadence Design Systems, Inc. 1993-2003
+#//  All Rights Reserved
+#//  Licensed Materials - Property of Cadence Design Systems
+#// 
+#//  No part of this file may be reproduced, stored in a retrieval system,
+#//  or transmitted in any form or by any means --- electronic, mechanical,
+#//  photocopying, recording, or otherwise --- without prior written 
+#//  permission of Cadence Design Systems, Inc.
+#// 
+#//  WARRANTY:
+#//  Use all material in this file at your own risk. Cadence Design Systems
+#//  makes no claims about any material contained in this file.
+#// #######################################################################
+
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM 
+FIXED
+PORT 62 46
+HEADER "Power/Ground Ring Wizard"
+
+POPUP <REFDES> "" "".
+POPUP <STACKUP> "" "".
+POPUP <CORNER_TYPE> "ARC" "ARC", "RIGHT ANGLE" "RIGHT", "CHAMFER" "CHAMFER".
+
+TILE
+
+TABSET "PwrRingWizard"
+FLOC 1 -2
+TSSIZE 60 47
+
+######################################
+######################################
+# First Tab: Number/Origin of rings. #
+######################################
+######################################
+
+TAB "Ring count & placement" Begin
+
+GROUP "Current Ring and Placement Selection"
+GLOC 2 0
+GSIZE 57 15
+ENDGROUP
+
+FIELD bitmap_begin
+THUMBNAIL pring2offset.bmp
+FLOC 4 2
+FSIZE 54 12
+ENDFIELD
+
+GROUP "Number of Rings"
+GLOC 2 15
+GSIZE 57 6
+ENDGROUP
+
+FIELD num_rings
+FLOC 4 18
+INTSLIDEBAR 5 5
+MIN 1
+MAX 12
+ENDFIELD
+
+GROUP "Place with respect to..."
+GLOC 2 21
+GSIZE 57 9
+ENDGROUP
+
+FIELD origin
+FLOC 4 23
+CHECKLIST "Origin point" "location"
+ENDFIELD
+
+FIELD edge_offset
+FLOC 4 25
+CHECKLIST "Specified distance from edge of die" "location"
+ENDFIELD
+
+FIELD pin_offset
+FLOC 4 27
+CHECKLIST "Specified distance from nearest die pin" "location"
+ENDFIELD
+
+GROUP "Basic configuration"
+GLOC 2 30
+GSIZE 57 15
+ENDGROUP
+
+FIELD die_flag
+FLOC 4 38
+CHECKLIST "Create first ring as die flag"
+ENDFIELD
+
+FIELD create_as_static
+FLOC 4 40
+CHECKLIST "Create ring(s)/flag as static shapes, not dynamic"
+ENDFIELD
+
+############################
+############################
+# Die Edge / Pin Placement #
+############################
+############################
+
+TEXT "Ref Des:"
+TLOC 4 33
+INFO refdes_label 10
+ENDTEXT
+
+FIELD refdes
+FLOC 19 33
+ENUMSET 32
+POP "REFDES"
+ENDFIELD
+
+TEXT "Distance D1:"
+TLOC 4 35
+INFO distance_label 10
+ENDTEXT
+ 
+FIELD distance
+FLOC 19 35
+STRFILLIN 33 30
+ENDFIELD
+
+FIELD group_with_die
+FLOC 4 42
+CHECKLIST "Group ring(s) and flag with die"
+ENDFIELD
+
+####################
+####################
+# Origin Placement #
+####################
+####################
+
+TEXT "Origin X:"
+TLOC 4 33
+OPTIONS RIGHT
+INFO originx_label 7
+ENDTEXT
+
+FIELD origin_x
+FLOC 13 33 
+STRFILLIN 15 30
+ENDFIELD
+
+TEXT "Y:"
+TLOC 31 33
+OPTIONS RIGHT
+INFO originy_label 7
+ENDTEXT
+
+FIELD origin_y
+FLOC 40 33
+STRFILLIN 15 30
+ENDFIELD
+
+TEXT "Delta DX:"
+TLOC 4 35
+OPTIONS RIGHT
+INFO width_label 7
+ENDTEXT
+
+FIELD origin_width
+FLOC 13 35
+STRFILLIN 15 30
+ENDFIELD
+ 
+TEXT "Delta DY:"
+TLOC 31 35
+OPTIONS RIGHT
+INFO height_label 7
+ENDTEXT
+ 
+FIELD origin_height
+FLOC 40 35
+STRFILLIN 15 30
+ENDFIELD
+
+ENDTAB
+
+##########################
+##########################
+# First ring definition. #
+##########################
+##########################
+
+TAB "First Ring / Die Flag Definition" First_Ring
+
+GROUP "Ring 1 Radius and Width"
+GLOC 2 0
+GSIZE 57 17
+INFO ring_spacing_first 10
+ENDGROUP
+
+FIELD bitmap_first_ring
+THUMBNAIL pring2offsetinner.bmp
+FLOC 4 2
+FSIZE 54 14
+ENDFIELD
+
+GROUP "Ring 1 Parameters"
+GLOC 2 17
+GSIZE 57 12
+INFO ring_params_first 10
+ENDGROUP
+
+TEXT "Layer:"
+TLOC 3 20
+ENDTEXT
+
+FIELD layer_first
+FLOC 14 20
+ENUMSET 14
+POP "STACKUP"
+ENDFIELD
+
+FIELD layer_list_first
+FLOC 32 20
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+TEXT "Corner Type:"
+TLOC 3 22
+ENDTEXT
+
+FIELD corner_first
+FLOC 14 22
+ENUMSET 14
+POP "CORNER_TYPE"
+ENDFIELD
+
+TEXT "Radius R1:"
+TLOC 3 24
+INFO corner_size_first 10
+ENDTEXT
+
+FIELD radius_first
+FLOC 14 24
+STRFILLIN 15 30
+ENDFIELD
+
+TEXT "Width W1:"
+TLOC 3 26
+INFO ring_width_first 10
+ENDTEXT
+
+FIELD width_first
+FLOC 14 26
+STRFILLIN 15 30
+ENDFIELD
+
+TEXT "Constraints for layer:"
+TLOC 32 22
+ENDTEXT
+
+TEXT ""
+TLOC 33 24
+INFO constraint1_message 10
+FSIZE 25 2
+ENDTEXT
+
+TEXT ""
+TLOC 33 26
+INFO constraint2_message 10
+FSIZE 25 2
+ENDTEXT
+
+GROUP "Optional Information"
+GLOC 2 29
+GSIZE 57 14
+ENDGROUP
+
+FIELD soldermask_first
+FLOC 3 32
+CHECKLIST "Create soldermask opening"
+ENDFIELD
+
+TEXT "Clearance:"
+TLOC 5 34
+ENDTEXT
+
+FIELD solder_clearance_first
+FLOC 14 34
+STRFILLIN 15 30
+ENDFIELD
+
+TEXT "Label:"
+TLOC 3 36
+ENDTEXT
+
+FIELD label_first
+FLOC 14 36
+STRFILLIN 15 18
+ENDFIELD
+
+TEXT "Net:"
+TLOC 3 38
+ENDTEXT
+
+FIELD netname_first
+FLOC 14 38
+STRFILLIN 15 255
+ENDFIELD
+
+FIELD netlist_first_browse
+FLOC 32 38
+MENUBUTTON "Browse ..." 7 3
+ENDFIELD
+
+TEXT "Note: If the net does not exist, it will be created."
+TLOC 14 40
+ENDTEXT
+
+ENDTAB
+
+########################
+########################
+# Even ring definition #
+########################
+########################
+
+TAB "Next Ring Definition" Even_Ring
+
+GROUP "Ring Spacing and Width"
+GLOC 2 0
+GSIZE 57 17
+INFO ring_spacing_even 10
+ENDGROUP
+
+FIELD bitmap_even_ring
+THUMBNAIL pring2outer.bmp
+FLOC 4 2
+FSIZE 54 14
+ENDFIELD
+
+GROUP "Ring Parameters"
+GLOC 2 17
+GSIZE 57 14
+INFO ring_param_even 10
+ENDGROUP
+
+TEXT "Layer:"
+TLOC 3 20
+ENDTEXT
+
+FIELD layer_even
+FLOC 14 20
+ENUMSET 14
+POP "STACKUP"
+ENDFIELD
+
+TEXT "Corner Type:"
+TLOC 3 22
+ENDTEXT
+
+FIELD corner_even
+FLOC 14 22
+ENUMSET 14
+POP "CORNER_TYPE"
+ENDFIELD
+
+TEXT "Distance Dx:"
+TLOC 3 24
+ENDTEXT
+
+FIELD gap_even
+FLOC 14 24
+STRFILLIN 15 30
+ENDFIELD
+
+TEXT "Radius Rx:"
+TLOC 3 26
+INFO corner_size_even 10
+ENDTEXT
+
+FIELD radius_even
+FLOC 14 26
+STRFILLIN 15 30
+ENDFIELD
+
+TEXT "Width Wx:"
+TLOC 3 28
+ENDTEXT
+
+FIELD width_even
+FLOC 14 28
+STRFILLIN 15 30
+ENDFIELD
+
+TEXT "Constraints for layer:"
+TLOC 32 22
+ENDTEXT
+
+TEXT ""
+TLOC 33 24
+INFO constraint3_message 10
+FSIZE 25 2
+ENDTEXT
+
+TEXT ""
+TLOC 33 26
+INFO constraint4_message 10
+FSIZE 25 2
+ENDTEXT
+
+GROUP "Optional Information"
+GLOC 2 31
+GSIZE 57 14
+ENDGROUP
+
+FIELD soldermask_even
+FLOC 3 34
+CHECKLIST "Create soldermask opening"
+ENDFIELD
+
+TEXT "Clearance:"
+TLOC 5 36
+ENDTEXT
+
+FIELD solder_clearance_even
+FLOC 14 36
+STRFILLIN 15 30
+ENDFIELD
+
+TEXT "Label:"
+TLOC 3 38
+ENDTEXT
+
+FIELD label_even
+FLOC 14 38
+STRFILLIN 15 18
+ENDFIELD
+
+TEXT "Net:"
+TLOC 3 40
+ENDTEXT
+
+FIELD netname_even
+FLOC 14 40
+STRFILLIN 15 255
+ENDFIELD
+
+FIELD netlist_even_browse
+FLOC 32 40
+MENUBUTTON "Browse ..." 7 3
+ENDFIELD
+
+TEXT "Note: If the net does not exist, it will be created."
+TLOC 14 42
+ENDTEXT
+
+ENDTAB
+
+########################
+########################
+# Odd  ring definition #
+########################
+########################
+
+TAB "Next Ring Definition" Odd_Ring
+
+GROUP "Ring Spacing and Width"
+GLOC 2 0
+GSIZE 57 17
+INFO ring_spacing_odd 10
+ENDGROUP
+
+FIELD bitmap_odd_ring
+THUMBNAIL pring2outer.bmp
+FLOC 4 2
+FSIZE 54 14
+ENDFIELD
+
+GROUP "Ring Parameters"
+GLOC 2 17
+GSIZE 57 14
+INFO ring_param_odd 10
+ENDGROUP
+
+TEXT "Layer:"
+TLOC 3 20
+ENDTEXT
+
+FIELD layer_odd
+FLOC 14 20
+ENUMSET 14
+POP "STACKUP"
+ENDFIELD
+
+TEXT "Corner Type:"
+TLOC 3 22
+ENDTEXT
+
+FIELD corner_odd
+FLOC 14 22
+ENUMSET 14
+POP "CORNER_TYPE"
+ENDFIELD
+
+TEXT "Distance Dx:"
+TLOC 3 24
+ENDTEXT
+
+FIELD gap_odd
+FLOC 14 24
+STRFILLIN 15 30
+ENDFIELD
+
+TEXT "Radius Rx:"
+TLOC 3 26
+INFO corner_size_odd 10
+ENDTEXT
+
+FIELD radius_odd
+FLOC 14 26
+STRFILLIN 15 30
+ENDFIELD
+
+TEXT "Width Wx:"
+TLOC 3 28
+ENDTEXT
+
+FIELD width_odd
+FLOC 14 28
+STRFILLIN 15 30
+ENDFIELD
+
+TEXT "Constraints for layer:"
+TLOC 32 22
+ENDTEXT
+
+TEXT ""
+TLOC 33 24
+INFO constraint5_message 10
+FSIZE 25 2
+ENDTEXT
+
+TEXT ""
+TLOC 33 26
+INFO constraint6_message 10
+FSIZE 25 2
+ENDTEXT
+
+GROUP "Optional Information"
+GLOC 2 31
+GSIZE 57 14
+ENDGROUP
+
+FIELD soldermask_odd
+FLOC 3 34
+CHECKLIST "Create soldermask opening"
+ENDFIELD
+
+TEXT "Clearance:"
+TLOC 5 36
+ENDTEXT
+
+FIELD solder_clearance_odd
+FLOC 14 36
+STRFILLIN 15 30
+ENDFIELD
+
+TEXT "Label:"
+TLOC 3 38
+ENDTEXT
+
+FIELD label_odd
+FLOC 14 38
+STRFILLIN 15 18
+ENDFIELD
+
+TEXT "Net:"
+TLOC 3 40
+ENDTEXT
+
+FIELD netname_odd
+FLOC 14 40
+STRFILLIN 15 255
+ENDFIELD
+
+FIELD netlist_odd_browse
+FLOC 32 40
+MENUBUTTON "Browse ..." 7 3
+ENDFIELD
+
+TEXT "Note: If the net does not exist, it will be created."
+TLOC 14 42
+ENDTEXT
+
+ENDTAB
+
+######################################################################
+
+TAB "Result Verification" End
+
+GROUP "Summary"
+GLOC 2 0
+GSIZE 57 29
+ENDGROUP
+
+TEXT "The specified ring(s) have been placed (temporarily) in the main window."
+TLOC 4 3
+FSIZE 51 4
+ENDTEXT
+
+TEXT "Please verify that all requirements have been met."
+TLOC 4 7
+FSIZE 51 2
+ENDTEXT
+
+TEXT "Total DRCs created..."
+TLOC 8 9
+INFO drc_message 20
+OPTIONS bold
+FSIZE 41 2
+ENDTEXT
+
+TEXT "Then choose one of the following options:"
+TLOC 4 12
+FSIZE 51 2
+ENDTEXT
+
+TEXT "To instantiate the ring(s) into the design and exit this wizard, press the [Finish] button."
+TLOC 8 15
+FSIZE 41 4
+ENDTEXT
+
+TEXT "To make changes to the ring(s), press the [Back] button."
+TLOC 8 19
+FSIZE 41 2
+ENDTEXT
+
+TEXT "To exit this wizard without creating the ring(s), press the [Cancel] button."
+TLOC 8 22
+FSIZE 41 4
+ENDTEXT
+
+ENDTAB
+
+ENDTABSET
+
+ENDTILE
+
+ENDFORM
+

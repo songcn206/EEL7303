@@ -1,0 +1,189 @@
+//------------------------------------------------------------------------
+//
+//	Cadence Design Systems
+//
+// (C) COPYRIGHT, Cadence Design Systems, Inc. 1997
+// All Rights Reserved
+// Licensed Materials - Property of Cadence Design Systems
+//
+// No part of this file may be reproduced, stored in a retrieval system,
+// or transmitted in any form or by any means --- electronic, mechanical,
+// photocopying, recording, or otherwise --- without prior written permission
+// of Cadence Design Systems, Inc.
+//
+// WARRANTY:
+// Use all material in this file at your own risk.  Cadence Design Systems 
+// makes no claims about any material contained in this file.
+//
+//------------------------------------------------------------------------
+
+// Loadable Menu File
+// *******************  ALLEGRO_PCB - BOARD  **********************
+
+
+viewlayout MENU DISCARDABLE
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&Open...",			"open"
+        POPUP "Recent &Designs"
+        BEGIN
+            MENUITEM "Recent File List",        "|mru"
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "&Save",			"save"
+        MENUITEM "Save &As...",			"save_as"
+        MENUITEM SEPARATOR
+        MENUITEM "PDF...",			"pdf out"
+	MENUITEM "Expor&t IPF...",		"create plot"
+	MENUITEM "&Export Annotations...",	"annotation out"
+	MENUITEM "&Import Annotations...",	"annotation in"
+        MENUITEM SEPARATOR
+        MENUITEM "&File Viewer...",		"viewlog -browse"
+        MENUITEM "&Plot...",			"plot"
+        MENUITEM "Plot Set&up...",		"plot setup"
+#ifndef __unix
+        MENUITEM "Plot Previe&w...",            "plot preview"
+#endif
+        MENUITEM SEPARATOR
+	MENUITEM "P&roperties...", 		"file_property"
+	MENUITEM "S&cript...",                  "script"
+	MENUITEM SEPARATOR
+        MENUITEM "E&xit",			"exit"
+    END
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "&Move",			"move"
+        MENUITEM "&Copy",			"copy"
+        MENUITEM "&Delete",			"delete"
+        MENUITEM SEPARATOR
+        MENUITEM "&Vertex",			"vertex"
+        MENUITEM "&Text",			"text edit"
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Zoom By Points",		"zoom points"
+        MENUITEM "Zoom &Fit",			"zoom fit"
+        MENUITEM "Zoom &In",			"zoom in"
+        MENUITEM "Zoom &Out",			"zoom out"
+        MENUITEM "Zoom &World",			"zoom world"
+        MENUITEM "Zoo&m Center",		"zoom center"
+        MENUITEM "Zoom Pre&vious",              "zoom previous"
+        MENUITEM SEPARATOR
+        MENUITEM "Color View &Save",         	"colorview create"
+        MENUITEM "Color View Restore &Last",	"colorview restore"	
+        MENUITEM SEPARATOR
+	MENUITEM "&Flip Design",                "flipdesign"
+        MENUITEM SEPARATOR
+        MENUITEM "&Refresh",			"redraw"
+      POPUP "Wi&ndows"
+      BEGIN
+         MENUITEM "Command",          "showhide text"
+         MENUITEM "World View",       "showhide view"
+         MENUITEM "Options",          "showhide options"
+         MENUITEM "Find",             "showhide find"
+         MENUITEM "Visibility",       "showhide vis"
+         MENUITEM "Show All",         "show allpanes"
+      END
+      MENUITEM "&Customize Toolbar...",             "display toolbar param"
+      MENUITEM "Reset UI to Cadence Default...", "reset dockwindows"
+    END
+    POPUP "&Add"
+    BEGIN
+        MENUITEM "&Line",			"add line"
+        MENUITEM "&Arc w/Radius",		"add rarc"
+        MENUITEM "&3pt Arc",			"add arc"
+        MENUITEM "&Circle",			"add circle"
+        MENUITEM "&Rectangle",			"add rect"
+        MENUITEM "&Text",			"add text"
+        MENUITEM "&UnFilled Shapes",		"add ufshape"
+	MENUITEM "L&eaders",         		"leader only"
+    END
+    POPUP "&Display"
+    BEGIN
+        MENUITEM "&Color/Visibility...",	"color192"
+        MENUITEM "&Layer Priority...",          "layer priority"
+        MENUITEM SEPARATOR
+	MENUITEM "S&tatus...",			"status"
+        MENUITEM "&Element",			"show element"
+	MENUITEM "&Measure",			"show measure"
+	MENUITEM "Constra&int",			"cns show"
+        MENUITEM "P&roperty...",                "show property"
+        MENUITEM SEPARATOR
+	MENUITEM "&Assign Color",               "assign color"
+        MENUITEM "&Highlight",			"hilight"
+        MENUITEM "&Dehighlight",		"dehilight"
+        MENUITEM SEPARATOR
+        POPUP "&Waive DRCs"
+        BEGIN
+            MENUITEM "&Show",             "show waived drcs"
+            MENUITEM "&Blank",            "blank waived drcs"
+        END
+        MENUITEM SEPARATOR
+        POPUP "&Show Rats"
+        BEGIN
+            MENUITEM "&All",			"rats all"
+            MENUITEM "&Components",		"rats component"
+            MENUITEM "&Net",			"rats net"
+        END
+        POPUP "&Blank Rats"
+        BEGIN
+            MENUITEM "&All",			"unrats all"
+            MENUITEM "&Components",		"unrats component"
+            MENUITEM "&Nets",			"unrats net"
+        END
+    END
+    POPUP "&Setup"
+    BEGIN
+        MENUITEM "Desi&gn Parameters...",        "prmed"
+        MENUITEM "&Embedded Layer Setup...",	"define embedded layer"
+        MENUITEM SEPARATOR
+	POPUP "Co&nstraints"
+	BEGIN
+	   MENUITEM "&Electrical...",	    "cmgr_elec"
+      	   MENUITEM "&Physical...",	  "cmgr_phys"
+	   MENUITEM "&Spacing...",	 "cmgr_spac"
+       MENUITEM "Sa&me Net Spacing...",       "cmgr_snspac"
+	   MENUITEM "D&FA Constraint Spreadsheet...", "dfa_spreadsheet"
+      	   MENUITEM "&Constraint Manager...",	    "cmgr"
+	END
+        MENUITEM SEPARATOR
+        MENUITEM "SI &Design Setup...",         "signal setup"
+        MENUITEM "SI Design &Audit...",         "signal audit"
+        MENUITEM SEPARATOR
+        MENUITEM "Datatip Customization...",      "custom datatips"
+        MENUITEM "U&ser Preferences...",        "enved"
+    END
+    POPUP "&Tools"
+    BEGIN
+        MENUITEM "Topology E&xtract",           "topology template"
+        MENUITEM SEPARATOR
+	MENUITEM "&Reports...",			"reports"
+        MENUITEM SEPARATOR
+	POPUP "Uti&lities"
+	BEGIN
+            MENUITEM "&File Manager...", 	"filemgr"
+            MENUITEM SEPARATOR
+            MENUITEM "&Env Variables...", 	"set"
+            MENUITEM "&Aliases/Function Keys...", "alias"
+            MENUITEM "&Keyboard Commands", 	"helpcmd"
+            MENUITEM "&OpenGL Status", 		"opengl report"
+            MENUITEM SEPARATOR
+            MENUITEM "&Licenses Used...", 	"license_use"
+            MENUITEM "&Stroke Editor...", 	"stroke editor"
+	END
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&Documentation",              "cdsdoc allegro allegrolaunch"
+        POPUP "&Web Resources"
+	BEGIN
+           MENUITEM "&Community",		"http http://www.cadence.com/community"
+           MENUITEM "&Online Support",		"http http://support.cadence.com"
+           MENUITEM "&Web Collaboration",	"http http://collaboration.cadence.com"
+           MENUITEM "&Education Services",	"http http://www.cadence.com/education"
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "&About...",			"about"
+    END
+END

@@ -1,0 +1,159 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM 
+FIXED
+PORT 52 12
+HEADER "Drill Legend"
+
+POPUP <UNITS_POP>"Mils""mils","Inch""inches","Microns""microns",\
+"Millimeter""millimeters","Centimeter""centimeters".
+
+TILE
+
+TEXT "Template file:"
+TLOC 1 2
+ENDTEXT
+
+FIELD filename
+FLOC 11 2
+STRFILLIN 28 1024
+ENDFIELD
+
+TEXT "Drill legend title:"
+TLOC 1 7
+ENDTEXT
+
+TEXT "By hole size"
+TLOC 4 18
+ENDTEXT
+
+TEXT "By plating status"
+TLOC 30 18
+ENDTEXT
+
+FIELD browse
+FLOC 43 1
+MENUBUTTON "Browse..." 3 3
+ENDFIELD
+
+FIELD library
+FLOC 43 4
+MENUBUTTON "Library..." 3 3
+ENDFIELD
+
+FIELD drill_title
+FLOC 17 7
+STRFILLIN 33 1024
+ENDFIELD
+
+#ifdef _backdrill_ok
+
+TEXT "Backdrill legend title:"
+TLOC 1 9
+ENDTEXT
+
+FIELD backdrill_title
+FLOC 17 9
+STRFILLIN 33 1024
+ENDFIELD
+#endif
+
+#ifdef _ALLEGRO_MINI_OK
+
+TEXT "Cavity legend title:"
+TLOC 1 11
+ENDTEXT
+
+FIELD cavity_title
+FLOC 17 11
+STRFILLIN 33 1024
+ENDFIELD
+
+#endif
+
+TEXT "Output unit:"
+TLOC 1 14
+ENDTEXT
+
+FIELD output_unit
+FLOC 17 14
+ENUMSET 12 
+POP "UNITS_POP"
+ENDFIELD
+
+FIELD ascending
+FLOC 4 20
+CHECKLIST "Ascending" "size_order"
+ENDFIELD
+
+FIELD platedf
+FLOC 30 20
+CHECKLIST "Plated first" "plate_order"
+ENDFIELD
+
+FIELD descending
+FLOC 4 22
+CHECKLIST "Descending" "size_order"
+ENDFIELD
+
+FIELD nplatedf
+FLOC 30 22
+CHECKLIST "Non-plated first" "plate_order"
+ENDFIELD
+
+FIELD layer_pair_legends
+FLOC 4 26
+CHECKLIST "Layer pair" "legends_group"
+ENDFIELD
+
+FIELD by_layer_legends
+FLOC 18 26 
+CHECKLIST "By layer"   "legends_group"
+ENDFIELD
+
+#ifdef _backdrill_ok
+FIELD backdrill_legends
+FLOC 4 29
+CHECKLIST "Include backdrill"
+ENDFIELD
+#endif
+
+#ifdef _ALLEGRO_MINI_OK
+FIELD cavity_legends
+FLOC 20 29
+CHECKLIST "Include Cavity"
+ENDFIELD
+#endif
+
+#FIELD dielectric_legends
+#FLOC 4 32
+#CHECKLIST "Dielectric"
+#ENDFIELD
+
+FIELD done
+FLOC 2 33
+MENUBUTTON "OK" 10 3
+ENDFIELD
+
+FIELD cancel
+FLOC 14 33
+MENUBUTTON "Cancel" 10 3
+ENDFIELD
+
+FIELD help
+FLOC 41 33
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+GROUP "Hole sorting method:"
+GLOC 1 16
+GSIZE 50 8 
+ENDGROUP
+
+GROUP "Legends:"
+GLOC 1 24
+GSIZE 50 7 
+ENDGROUP
+
+ENDTILE
+
+ENDFORM

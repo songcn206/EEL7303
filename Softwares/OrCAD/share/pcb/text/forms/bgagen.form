@@ -1,0 +1,780 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 52 55
+HEADER "BGA Generator"
+
+# NOTE: The following fields:
+#   WIDTH/HEIGHT
+#   HOR/VER PITCH
+#   ROWS/COLUMNS MATRIX
+# May be represented by either 
+#   A drop-box (JEDEC on)
+#   A string fillin (JEDEC off)
+# Both fields exist in the same places
+# but only one is visible at a time, depending
+# on the state of that JEDEC checkbox.
+
+
+POPUP <JEDECWIDTHPOPUP>"""".
+POPUP <JEDECHEIGHTPOPUP>"""".
+POPUP <JEDECHORPITCHPOPUP>"""".
+POPUP <JEDECVERPITCHPOPUP>"""".
+POPUP <JEDECROWSPOPUP>"""".
+POPUP <JEDECCOLUMNSPOPUP>"""".
+POPUP <PINNUMPOPUP>"""".
+POPUP <PADPOPUP>"""".
+POPUP <LAYERPOPUP>"""".
+POPUP <PINSTARTPOPUP>"""".
+POPUP <TEXTBLOCKPOPUP>"""".
+
+TILE
+
+TABSET "tab"
+FLOC 0 0 
+TSSIZE 52 51
+
+# Tab 1.
+# General Information
+# Symbol Name, Ref Des, Origin, and Dimensions.
+# In Die Gen, also includes the chip type and orientation.
+# Tab 1.
+
+TAB "General Information" General_Information
+
+GROUP "Identifiers"
+GLOC 5 0
+GSIZE 41 10
+ENDGROUP
+
+TEXT "Name:"
+TLOC 8 3
+ENDTEXT
+
+FIELD package_name
+FLOC 21 3
+STRFILLIN 22 255
+ENDFIELD
+
+TEXT "Ref Des:"
+TLOC 8 6
+ENDTEXT
+
+FIELD package_refDes
+FLOC 21 6
+STRFILLIN 22 128
+ENDFIELD
+
+GROUP "Origin"
+GLOC 5 10
+GSIZE 41 10
+ENDGROUP
+
+TEXT "X Coordinate:"
+TLOC 8 13
+ENDTEXT
+
+FIELD package_xcoord
+FLOC 21 13
+STRFILLIN 22 128
+ENDFIELD
+
+TEXT "Y Coordinate:"
+TLOC 8 16
+ENDTEXT
+
+FIELD package_ycoord
+FLOC 21 16
+STRFILLIN 22 128
+ENDFIELD
+
+
+GROUP "Placement"
+GLOC 5 20
+GSIZE 41 6
+ENDGROUP
+
+FIELD package_mirror
+FLOC 8 23
+CHECKLIST "Mirror placed symbol"
+ENDFIELD
+
+ENDTAB
+
+
+
+# Tab 2.
+# Pin Arrangement
+# Matrix type, grid size, stagger settings, pin pitch.
+# Tab 2.
+
+
+
+TAB "Pin Arrangement" Pin_Arrangement
+
+TEXT "Fix"
+TLOC 2 3
+INFO size_fix 4
+ENDFIELD
+
+FIELD package_size_fixed
+FLOC 2 5
+CHECKLIST ""
+ENDFIELD
+
+TEXT "Fix"
+TLOC 2 33
+INFO pitch_fix 4
+ENDFIELD
+
+FIELD package_pitch_fixed
+FLOC 2 35
+CHECKLIST ""
+ENDFIELD
+
+TEXT "Fix"
+TLOC 2 40
+INFO edge_fix 4
+ENDFIELD
+
+
+FIELD package_edge_fixed
+FLOC 2 42
+CHECKLIST ""
+ENDFIELD
+
+GROUP "Dimensions"
+GLOC 6 0
+GSIZE 41 9
+ENDGROUP
+
+FIELD package_jedec
+FLOC 9 2
+CHECKLIST "JEDEC Standard" "package_standards"
+ENDFIELD
+
+FIELD package_custom
+FLOC 24 2
+CHECKLIST "Custom" "package_standards"
+ENDFIELD
+
+FIELD package_predefined
+FLOC 33 2
+CHECKLIST "Predefined" "package_standards"
+ENDFIELD
+
+TEXT "Width:"
+TLOC 9 4
+ENDTEXT
+
+FIELD package_jedec_width
+FLOC 20 4
+ENUMSET 21
+POP "JEDECWIDTHPOPUP"
+ENDFIELD
+FIELD package_width
+FLOC 20 4
+STRFILLIN 22 128
+ENDFIELD
+
+TEXT "Height:"
+TLOC 9 6
+ENDTEXT
+
+FIELD package_jedec_height
+FLOC 20 6
+ENUMSET 21
+POP "JEDECHEIGHTPOPUP"
+ENDFIELD
+FIELD package_height
+FLOC 20 6
+STRFILLIN 22 128
+ENDFIELD
+
+
+
+GROUP "Arrangement"
+GLOC 6 9
+GSIZE 41 21
+ENDGROUP
+
+TEXT "Columns:"
+TLOC 7 11
+ENDTEXT
+
+FIELD jedec_pin_number_x
+FLOC 14 11
+ENUMSET 4
+POP "JEDECROWSPOPUP"
+ENDFIELD
+FIELD pin_number_x
+FLOC 14 11
+INTFILLIN 3 4
+ENDFIELD
+
+
+TEXT "Rows:"
+TLOC 21 11
+ENDTEXT
+
+FIELD jedec_pin_number_y
+FLOC 26 11
+ENUMSET 4
+POP "JEDECCOLUMNSPOPUP"
+ENDFIELD
+FIELD pin_number_y
+FLOC 26 11
+INTFILLIN 3 4
+ENDFIELD
+
+TEXT "= "
+TLOC 33 11
+ENDTEXT
+
+TEXT ""
+TLOC 36 11
+INFO pin_total 7
+ENDTEXT
+
+TEXT "Pins"
+TLOC 43 11
+ENDTEXT
+
+FIELD pin_arangmnt_graphic
+THUMBNAIL bgperimunstagnocore.bmp
+FLOC 28 16
+FSIZE 17 11
+ENDFIELD
+
+
+FIELD pin_full_matrix
+FLOC 7 14
+CHECKLIST "Full matrix" "pin_arrangement"
+ENDFIELD
+
+FIELD pin_full_stagger
+FLOC 10 16
+CHECKLIST "Stagger full"
+ENDFIELD
+
+FIELD pin_perimeter_matrix
+FLOC 7 18
+CHECKLIST "Perimeter matrix" "pin_arrangement"
+ENDFIELD
+
+TEXT "Outer rings:"
+TLOC 10 20
+ENDTEXT
+
+FIELD pin_perimeter_rows
+FLOC 22 20
+INTFILLIN 2 3
+ENDFIELD
+
+FIELD pin_perimeter_stagger
+FLOC 10 22
+CHECKLIST "Stagger outer"
+ENDFIELD
+
+TEXT "Core columns:"
+TLOC 10 24
+ENDTEXT
+
+FIELD pin_core_columns
+FLOC 22 24
+INTFILLIN 2 3
+ENDFIELD
+
+TEXT "Core rows:"
+TLOC 10 26
+ENDTEXT
+
+FIELD pin_core_rows
+FLOC 22 26
+INTFILLIN 2 3
+ENDFIELD
+
+FIELD pin_core_stagger
+FLOC 10 28
+CHECKLIST "Stagger core"
+ENDFIELD
+
+GROUP "Pin Spacing"
+GLOC 6 30
+GSIZE 41 18
+ENDGROUP
+
+GROUP "Pin Pitch"
+GLOC 7 32
+GSIZE 39 7
+ENDGROUP
+
+TEXT "Horizontal:"
+TLOC 9 34
+ENDTEXT
+
+FIELD jedec_hor_pin_pitch
+FLOC 17 34
+ENUMSET 8
+POP "JEDECHORPITCHPOPUP"
+ENDFIELD
+FIELD hor_pin_pitch
+FLOC 17 34
+STRFILLIN 8 128
+ENDFIELD
+
+TEXT "Core spacing:"
+TLOC 29 34
+ENDTEXT
+
+FIELD hor_core_multiplier
+FLOC 40 34
+INTFILLIN 2 2
+ENDFIELD
+
+TEXT "Vertical:"
+TLOC 9 36
+ENDTEXT
+
+FIELD jedec_ver_pin_pitch
+FLOC 17 36
+ENUMSET 8
+POP "JEDECVERPITCHPOPUP"
+ENDFIELD
+FIELD ver_pin_pitch
+FLOC 17 36
+STRFILLIN 8 128
+ENDFIELD
+
+TEXT "Core spacing:"
+TLOC 29 36
+ENDTEXT
+
+FIELD ver_core_multiplier
+FLOC 40 36
+INTFILLIN 2 2
+ENDFIELD
+
+GROUP "Edge Spacing"
+GLOC 7 39
+GSIZE 22 8
+ENDGROUP
+
+TEXT "Dx:"
+TLOC 9 41
+ENDTEXT
+
+TEXT ""
+TLOC 14 41
+INFO hor_edge_spacing 14
+ENDFIELD
+
+TEXT "Dy:"
+TLOC 9 43
+ENDTEXT
+
+TEXT ""
+TLOC 14 43
+INFO ver_edge_spacing 14
+ENDTEXT
+
+FIELD pin_spacing
+THUMBNAIL genspacing.bmp
+FLOC 31 40
+FSIZE 14 6
+ENDFIELD
+
+ENDTAB
+
+
+
+# Tab 3.
+# Pin Use Ratio
+# Information about the ratio of power:ground:signal pins in the perimeter
+# or full matrix (as chosen on the previous page).
+# Tab 3.
+
+
+
+TAB "Pin Use Ratios" Pin_Use_Ratio
+
+TEXT "The pin use ratio is used to set the percentage of total perimeter/full-matrix pins (as specified on the previous page) that should be reserved for power and ground."
+TLOC 5 0
+FSIZE 41 5
+ENDTEXT
+
+TEXT "If you selected a perimeter matrix with core area, all core pins are reserved for power and ground."
+TLOC 5 5
+FSIZE 41 5
+ENDTEXT
+
+GROUP "Power : Ground : Signal Distribution"
+GLOC 5 12
+GSIZE 41 16
+ENDGROUP
+
+TEXT "Power:"
+TLOC 8 15
+ENDTEXT
+ 
+FIELD power_ratio
+FLOC 19 15
+INTSLIDEBAR 5 5
+MIN 0
+MAX 1000
+ENDFIELD
+
+TEXT ""
+TLOC 33 15
+INFO num_power_pins 10
+ENDTEXT
+
+TEXT "Ground:"
+TLOC 8 18
+ENDTEXT
+
+FIELD ground_ratio
+FLOC 19 18
+INTSLIDEBAR 5 5
+MIN 0
+MAX 1000
+ENDFIELD
+
+TEXT ""
+TLOC 33 18
+INFO num_ground_pins 10
+ENDTEXT
+
+TEXT "Signal:"
+TLOC 8 21
+ENDTEXT
+ 
+FIELD signal_ratio
+FLOC 19 21
+INTSLIDEBAR 5 5
+MIN 1
+MAX 1000
+ENDFIELD
+
+TEXT ""
+TLOC 33 21
+INFO num_signal_pins 10
+ENDTEXT
+
+TEXT "Total"
+TLOC 8 24
+ENDTEXT
+
+TEXT ""
+TLOC 19 24
+INFO total_ratio 5
+ENDTEXT
+
+TEXT ""
+TLOC 33 24
+INFO num_total_pins 10
+ENDTEXT
+
+TEXT "The ratio you specify will be turned into a repeating pattern of pin uses. This pattern will start from the top left and proceed around the pin pattern in a clockwise spiral."
+TLOC 5 32
+FSIZE 41 7
+ENDTEXT
+
+TEXT "Because of this, if the ratio of pins you specify does not evenly divide into the total number of pins, the pin counts appearing above may be off by a small amount."
+TLOC 5 38
+FSIZE 41 5
+ENDTEXT
+
+TEXT "If power/ground nets are already established in this design, the generator will assist you by assigning all the power and ground pins to these nets."
+TLOC 5 43
+FSIZE 41 5
+ENDTEXT
+
+ENDTAB
+
+
+
+# Tab 4/5.
+# Padstack Information
+# Load/Create, size, layer, etc.
+# As Tab 4, it is either the single padstack for full matrix or the
+# padstack for outer rows in a perimeter matrix. As tab 5 it is the 
+# padstack for the core in a perimeter matrix (if core exists).
+# Tab 4/5.
+
+
+
+TAB "Padstack Information" Padstack_Information
+
+TEXT """"
+TLOC 18 0
+INFO padstack_edit 20
+ENDTEXT
+
+
+GROUP "Method"
+GLOC 5 2
+GSIZE 41 17
+ENDGROUP
+
+FIELD padstack_tab_graphic
+THUMBNAIL padstack.bmp
+FLOC 35 0
+FSIZE 12 12
+ENDFIELD
+
+FIELD pad_create
+FLOC 8 5
+CHECKLIST "New" "pad_method"
+ENDFIELD
+
+FIELD pad_load_database
+FLOC 8 8
+CHECKLIST "Available padstack" "pad_method"
+GSIZE 18 1
+ENDFIELD
+
+FIELD pad_database
+FLOC 11 10
+ENUMSET 18
+POP "PADPOPUP"
+ENDFIELD
+
+FIELD pad_load_disk
+FLOC 8 13
+CHECKLIST "Load from disk" "pad_method"
+ENDFIELD
+
+FIELD pad_file_name
+FLOC 11 15
+STRFILLIN 20 255
+ENDFIELD
+
+FIELD pad_file_button
+FLOC 33 15
+MENUBUTTON "Browse..." 6 3
+ENDFIELD
+
+GROUP "Specifications"
+GLOC 5 20
+GSIZE 41 19
+ENDGROUP
+
+TEXT "Name:"
+TLOC 8 23
+ENDTEXT
+
+FIELD pad_name
+FLOC 13 23
+STRFILLIN 24 255
+ENDFIELD
+
+TEXT "Layer:"
+TLOC 8 26
+ENDTEXT
+
+FIELD pad_Layer
+FLOC 13 26
+ENUMSET 24
+POP "LAYERPOPUP"
+ENDFIELD
+
+GROUP "Shape"
+GLOC 6 29
+GSIZE 15 8
+ENDGROUP
+
+FIELD pad_circle
+FLOC 8 32
+CHECKLIST "Circle" "pad_type"
+ENDFIELD
+
+FIELD pad_rect
+FLOC 8 34
+CHECKLIST "Rectangle" "pad_type"
+ENDFIELD
+
+GROUP "Dimensions"
+GLOC 23 29
+GSIZE 22 8
+ENDGROUP
+
+TEXT "Width:"
+TLOC 25 32
+ENDTEXT
+
+FIELD pad_width
+FLOC 31 32
+STRFILLIN 11 128
+ENDFIELD
+
+TEXT "Height:"
+TLOC 25 34
+ENDTEXT
+
+FIELD pad_height
+FLOC 31 34
+STRFILLIN 11 128
+ENDFIELD
+
+ENDTAB
+
+
+
+# Tab 6.
+# Pin Number Information
+# Labelling scheme, start position, padding, JEDEC conventions, etc.
+# Also include which sides -- if any -- pin numbers should be 
+# displayed on.
+# Tab 6.
+
+
+
+TAB "Pin Numbering" Pin_Numbering
+
+FIELD pin_number_graphic
+THUMBNAIL bgnmhrltvrtopleft.bmp
+FLOC 15 0
+FSIZE 22 14
+ENDFIELD
+
+GROUP "Pin Numbering"
+GLOC 5 14
+GSIZE 41 17
+ENDGROUP
+
+TEXT "Ordering:"
+TLOC 8 17
+ENDTEXT
+
+FIELD pin_label_scheme
+FLOC 16 17
+ENUMSET 20
+POP "PINNUMPOPUP"
+ENDFIELD
+
+TEXT "Start at:"
+TLOC 8 19
+ENDTEXT
+
+FIELD pin_label_start
+FLOC 16 19
+ENUMSET 20
+POP "PINSTARTPOPUP"
+ENDFIELD
+
+FIELD pin_letter_first
+FLOC 8 22
+CHECKLIST "Label with letters before numbers"
+ENDFIELD
+
+FIELD pin_jedec
+FLOC 8 24
+CHECKLIST "JEDEC standard."
+ENDFIELD
+
+FIELD pin_alpha_pad
+TLOC 8 26 
+CHECKLIST "Pad letter with A's."
+ENDFIELD
+
+FIELD pin_number_pad
+TLOC 8 28
+CHECKLIST "Pad number with zeros."
+ENDFIELD
+
+GROUP "Display Settings"
+GLOC 5 31
+GSIZE 41 15
+ENDGROUP
+
+FIELD pin_number_display
+TLOC 8 33
+CHECKLIST "Display pin numbers."
+ENDFIELD
+
+FIELD pin_number_left
+TLOC 13 35
+CHECKLIST "Left"
+ENDFIELD
+
+FIELD pin_number_right
+TLOC 13 37
+CHECKLIST "Right"
+ENDFIELD
+
+FIELD pin_number_top
+TLOC 23 35
+CHECKLIST "Top"
+ENDFIELD
+
+FIELD pin_number_bottom
+TLOC 23 37
+CHECKLIST "Bottom"
+ENDFIELD
+
+TEXT "Text Size:"
+TLOC 8 40
+ENDTEXT
+
+FIELD pin_text_block
+FLOC 16 40
+ENUMSET 15
+POP "TEXTBLOCKPOPUP"
+ENDFIELD
+
+TEXT "Distance from symbol edge:"
+TLOC 8 43
+ENDTEXT
+
+FIELD pin_text_edge_spacing
+FLOC 30 43
+STRFILLIN 12 128
+ENDFIELD
+
+ENDTAB
+
+
+
+# Tab 7.
+# Preview Tab
+# This tab will be presented now that all information is gathered.
+# User will be notified that generation is complete, at which point
+# s/he may view the results in the window and hit either finish
+# or go back and make changes.
+# Tab 7.
+
+
+
+TAB "Preview" Preview
+
+TEXT "The requested BGA has been previewed in the main window. Please verify that it meets all requirements."
+TLOC 5 12
+FSIZE 42 10
+ENDTEXT
+
+TEXT "To make changes to the BGA, press the Back button."
+TLOC 9 17
+FSIZE 33 10
+ENDTEXT
+
+TEXT "To instantiate the BGA into the design and exit the wizard, press the Finish button."
+TLOC 9 20
+FSIZE 33 10
+ENDTEXT
+
+TEXT "To exit the wizard without creating a BGA, press the Cancel button."
+TLOC 9 23
+FSIZE 33 10
+ENDTEXT
+
+
+
+ENDTAB
+
+ENDTABSET
+
+ENDTILE
+
+ENDFORM
+

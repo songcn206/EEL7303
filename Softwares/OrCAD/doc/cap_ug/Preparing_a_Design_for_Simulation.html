@@ -1,0 +1,3475 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>
+      Preparing a Design for Simulation
+    </title>
+    <meta name="Approver" content="Technical Publications" />
+    <meta name="Author" content="Technical Publications" />
+    <meta name="CreateDate" content="2012-10-10" />
+    <meta name="CreateTime" content="1349876208" />
+    <meta name="DataType" content="Manuals" />
+    <meta name="Description" content="UG" />
+    <meta name="DocTitle" content="OrCAD Capture User Guide" />
+    <meta name="DocType" content="User Guide" />
+    <meta name="FileTitle"
+    content="Preparing a Design for Simulation" />
+    <meta name="Keywords" content="" />
+    <meta name="FileType" content="Chapter" />
+    <meta name="Keyword" content="cap_ug" />
+    <meta name="Language" content="English" />
+    <meta name="ModifiedDate" content="2012-10-10" />
+    <meta name="ModifiedTime" content="1349876208" />
+    <meta name="NextFile"
+    content="Using%2BPartial%2BDesign%2BSimulation.html" />
+    <meta name="Group" content="" />
+    <meta name="Platform" content="All," />
+    <meta name="PrevFile"
+    content="Creating%2BProjects%2Bfor%2BSimulation.html" />
+    <meta name="Product"
+    content="Allegro Design Entry CIS,OrCAD Capture," />
+    <meta name="ProductFamily"
+    content="Silicon-Package-Board Co-Design,Silicon-Package-Board Co-Design," />
+    <meta name="ProductVersion" content="16.6" />
+    <meta name="RightsManagement"
+    content="Copyright 2011-2012 Cadence Design Systems Inc." />
+    <meta name="Title"
+    content="OrCAD Capture User Guide -- Preparing a Design for Simulation" />
+    <meta name="Version" content="16.6" />
+    <meta name="Renderer" content="WIKI" />
+    <meta name="SpaceKey" content="capug166" />
+    <link href="styles/site.css" rel="stylesheet"
+    type="text/css" />
+    <meta content="text/html; charset=UTF-8"
+    http-equiv="Content-Type" />
+  </head>
+  <body style="margin-left: 5%;background-color: #FFFFFF;">
+    <a xmlns:html="http://www.w3.org/1999/xhtml" id="pagetop"
+    name="pagetop"></a> <a
+    xmlns:html="http://www.w3.org/1999/xhtml" id="firstpage"
+    name="firstpage"></a> <!-- Begin Buttons -->
+     
+    <table xmlns:html="http://www.w3.org/1999/xhtml" border="0"
+    cellpadding="0" cellspacing="0" width="650">
+      <tbody>
+        <tr>
+          <td colspan="10" height="36" width="650">
+            <img height="34" src="../support/header_doc.gif"
+            width="650" />
+          </td>
+        </tr>
+        <tr>
+          <td height="20" width="59">
+            <a href="javascript:openLibrary()"><img
+            alt="View Library" border="0" height="20"
+            src="../support/nav2_library.gif" width="59" /></a>
+          </td>
+          <td height="20" width="73">
+            <a href="cap_ugTOC.html"><img alt="Table of Contents"
+            border="0" src="../support/nav2_toc.gif" /></a>
+          </td>
+          <td height="20" width="46">
+            <img alt="Index" border="0"
+            src="../support/nav2_index_b.gif" />
+          </td>
+          <td>
+            <a href="Creating_Projects_for_Simulation.html"><img
+            alt="Previous" border="0"
+            src="../support/nav2_previous.gif" /></a>
+          </td>
+          <td>
+            <a href="Using_Partial_Design_Simulation.html"><img
+            alt="Next" border="0"
+            src="../support/nav_next.gif" /></a>
+          </td>
+          <td height="20">
+            <a href="cap_ug.pdf"><img alt="Open PDF to print book"
+            border="0" height="20" src="../support/nav2_print.gif"
+            width="114" /></a>
+          </td>
+          <td height="20" width="61">
+            <img src="../support/nav2_black.gif" />
+          </td>
+          <td height="20" width="76">
+            <a href="/feedback.htm"><img alt="Email Comments"
+            border="0" height="20"
+            src="../support/nav2_feedback.gif" width="76" /></a>
+          </td>
+          <td height="20" width="43">
+            <a href="../cdsuser/help.html"><img
+            alt="Help Using Documentation" border="0" height="20"
+            src="../support/nav2_help.gif" width="43" /></a>
+          </td>
+          <td height="20" width="37">
+            <a href="/exitsearch.htm"><img
+            alt="Shut Down Cadence Documentation Server" border="0"
+            height="20" src="../support/nav2_exit.gif"
+            width="37" /></a>
+          </td>
+        </tr>
+      </tbody>
+    </table><!-- End Buttons -->
+    <hr xmlns:html="http://www.w3.org/1999/xhtml" />
+    <div id="main-header">
+      <a xmlns="" id="PreparingaDesignforSimulation"
+      name="PreparingaDesignforSimulation"></a> 
+      <h1 xmlns="" style=" margin: 4px 0 4px;">
+        <span>Preparing a Design for Simulation</span>
+      </h1>
+    </div>
+    <div class="wiki-content group" id="main-content">
+      <p>
+        A design that is targeted for simulation has:
+      </p>
+      <ul>
+        <li>
+          parts for which are simulation models available and
+          configured
+        </li>
+        <li>
+          sources of stimulus to the circuit
+        </li>
+      </ul>
+      <p>
+        &#160;When creating designs for both simulation and printed
+        circuit board layout, some of the parts you use are for
+        simulation only (simulation stimulus parts like voltage
+        sources), and some of the parts you use have simulation
+        models that only model some of the pins of a real device.
+      </p>
+      <p>
+        &#160;The parts that are to be used for simulation, but not
+        for board layout, have a SIMULATIONONLY property.
+      </p>
+      <p>
+        &#160;You can add this (or any) property to your own custom
+        parts to make them simulation-only.
+      </p>
+      <p class="confluence-link">
+        &#160;The remaining topics cover:
+      </p>
+      <div>
+        <ul>
+          <li>
+            <a
+            href="#PreparingaDesignforSimulation-AddingPSpiceandparametrizedlibrariesandparts">Adding
+            PSpice and parametrized libraries and parts</a>
+          </li>
+          <li>
+            <a
+            href="#PreparingaDesignforSimulation-Definingpartpropertiesneededforsimulation">Defining
+            part properties needed for simulation</a>
+          </li>
+          <li>
+            <a
+            href="#PreparingaDesignforSimulation-Guidelinesandbestpracticesforspecifyingvaluesforpartproperties">Guidelines
+            and best practices for specifying values for part
+            properties</a>
+          </li>
+          <li>
+            <a
+            href="#PreparingaDesignforSimulation-PlacingPSpiceGround0SymbolsforPSpiceSimulations">Placing
+            PSpice Ground 0 Symbols for PSpice Simulations</a>
+          </li>
+          <li>
+            <a
+            href="#PreparingaDesignforSimulation-UsingtheFLOATpropertyforunconnectedpins">Using
+            the FLOAT property for unconnected pins</a>
+          </li>
+          <li>
+            <a
+            href="#PreparingaDesignforSimulation-UsingGlobalParametersandExpressions">Using
+            Global Parameters and Expressions</a>
+          </li>
+          <li>
+            <a
+            href="#PreparingaDesignforSimulation-AssociatingPSpicemodeltoaCapturesymbol">Associating
+            PSpice model to a Capture symbol</a>
+          </li>
+          <li>
+            <a
+            href="#PreparingaDesignforSimulation-ImportingPSpiceSchematicProjectsinCapture">Importing
+            PSpice Schematic Projects in Capture</a>
+          </li>
+          <li>
+            <a
+            href="#PreparingaDesignforSimulation-DefiningStimuli">Defining
+            Stimuli</a>
+          </li>
+        </ul>
+      </div><br />
+      <br />
+       
+      <h2
+      id="PreparingaDesignforSimulation-AddingPSpiceandparametrizedlibrariesandparts">
+        Adding PSpice and parametrized libraries and parts
+      </h2>
+      <p>
+        &#160;
+      </p>
+      <p>
+        The PSpice part libraries (<code>.OLB</code> files) are
+        located in the <code>tools\capture\library\pspice</code>
+        directory, under your main installation directory. The
+        simulation model libraries (<code>.lib</code> files) are
+        located under the <code>tools\pspice\library</code>
+        directory.
+      </p>
+      <p>
+        &#160;If you wish to add more PSpice part libraries to your
+        design, you can do so by using the Place Part dialog box
+        (choose <em>Place</em> &#8211; <em>Part</em> or use the
+        Place Part toolbar button). Then add the library you need
+        by selecting it from the
+        <code>tools\capture\library\pspice</code> sub-directory.
+        The PSpice libraries located in the <code>pspice</code>
+        sub-directory include:
+      </p>
+      <ul>
+        <li>
+          vendor-supplied parts
+        </li>
+        <li>
+          passive parts
+        </li>
+        <li>
+          breakout parts
+        </li>
+        <li>
+          behavioral parts
+        </li>
+        <li>
+          special simulation-only parts
+        </li>
+      </ul>
+      <div class="panelMacro">
+        <table class="infoMacro">
+          <colgroup>
+            <col width="24" />
+            <col />
+          </colgroup>
+          <tr>
+            <td valign="top">
+              <img align="absmiddle" alt="" border="0" height="16"
+              src="images/icons/emoticons/information.png"
+              width="16" />
+            </td>
+            <td>
+              <p>
+                When you select a part in the Place Part dialog
+                box, the PSpice symbol (<img
+                class="confluence-embedded-image"
+                data-image-src="attachments/25041040/29982907.jpg"
+                src="attachments/25041040/29982907.jpg" />) appears
+                for a part that can be simulated.
+              </p>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <p>
+        At minimum, a part that you can simulate has these
+        properties:
+      </p>
+      <ul>
+        <li>
+          A simulation model to describe the part&#39;s electrical
+          behavior; the model can be:&#160;<br />
+           
+          <ul>
+            <li>
+              explicitly defined in a model library,
+            </li>
+            <li>
+              built into PSpice, or
+            </li>
+            <li>
+              built into the part (for some kinds of analog
+              behavioral parts).
+            </li>
+          </ul>
+        </li>
+        <li>
+          A part with modeled pins to form electrical connections
+          on your schematic.
+        </li>
+        <li>
+          A translation from the design part to the netlist
+          statement so that PSpice can read it in.
+        </li>
+      </ul>
+      <div class="panelMacro">
+        <table class="infoMacro">
+          <colgroup>
+            <col width="24" />
+            <col />
+          </colgroup>
+          <tr>
+            <td valign="top">
+              <img align="absmiddle" alt="" border="0" height="16"
+              src="images/icons/emoticons/information.png"
+              width="16" />
+            </td>
+            <td>
+              <p>
+                Not all parts in the libraries are set up for
+                simulation. For example, connectors are parts
+                destined only for board layout and do not have
+                these simulation properties. The libraries
+                contained in the pspice subfolder are the only ones
+                set up for simulation.
+              </p>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="panelMacro">
+        <table class="noteMacro">
+          <colgroup>
+            <col width="24" />
+            <col />
+          </colgroup>
+          <tr>
+            <td valign="top">
+              <img align="absmiddle" alt="" border="0" height="16"
+              src="images/icons/emoticons/warning.png"
+              width="16" />
+            </td>
+            <td>
+              <p>
+                You must use the 0 (zero) ground part in designs
+                intended to be simulated by PSpice. If you have
+                used other ground parts, you can rename them to 0
+                so that they will be accepted by PSpice. (See
+                Placing PSpice Ground 0 Symbols for PSpice
+                Simulations )
+              </p>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <h3
+      id="PreparingaDesignforSimulation-Specialsimulation-onlyparts">
+        Special simulation-only parts
+      </h3>
+      <p>
+        The PSpice part libraries also include special parts that
+        you can use only for simulation. These include:
+      </p>
+      <ul>
+        <li>
+          stimulus parts to generate input signals to the circuit
+          (see Defining Stimuli )
+        </li>
+        <li>
+          ground parts required by all analog and mixed-signal
+          circuits, which need reference to the ground
+        </li>
+        <li>
+          simulation control parts to do things like set bias
+          values
+        </li>
+        <li>
+          output control parts for generating tables and
+          line-printer plots to the PSpice output file
+        </li>
+      </ul>
+      <h3 id="PreparingaDesignforSimulation-Vendor-suppliedparts">
+        Vendor-supplied parts
+      </h3>
+      <p>
+        The PSpice libraries provide an extensive selection of
+        manufacturers&#39; analog and digital parts. Typically, the
+        library name reflects the kind of parts contained in the
+        library and the vendor that provided the models. For
+        example, MOTOR_RF.OLB and MOTOR_RF.LIB contain parts and
+        models, respectively, for Motorola-made RF bipolar
+        transistors.
+      </p>
+      <p>
+        Two types of libraries are provided with PSpice:
+      </p>
+      <ul>
+        <li>
+          Standard PSpice libraries
+        </li>
+        <li>
+          PSpice Advanced Analysis libraries
+        </li>
+      </ul>
+      <h4
+      id="PreparingaDesignforSimulation-StandardPSpicelibraries">
+        Standard PSpice libraries
+      </h4>
+      <p>
+        The standard PSpice libraries are installed in the
+        following locations in the installation directory:
+      </p>
+      <ul>
+        <li>
+          Capture symbols for standard PSpice libraries at
+          \tools\capture\library\pspice
+        </li>
+        <li>
+          Standard PSpice model libraries at \tools\psice\library\
+        </li>
+      </ul>
+      <div class="panelMacro">
+        <table class="tipMacro">
+          <colgroup>
+            <col width="24" />
+            <col />
+          </colgroup>
+          <tr>
+            <td valign="top">
+              <img align="absmiddle" alt="" border="0" height="16"
+              src="images/icons/emoticons/check.png" width="16" />
+            </td>
+            <td>
+              <p>
+                To find out more about each model library, read the
+                comments in the .LIB file header.
+              </p>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <h4
+      id="PreparingaDesignforSimulation-PSpiceAdvancedAnalysislibraries">
+        PSpice Advanced Analysis libraries
+      </h4>
+      <p>
+        The PSpice Advanced Analysis libraries contain over 4,300
+        analog parts. The Advanced Analysis libraries contain
+        parameterized and standard parts. The majority of the parts
+        are parameterized. The parametrized parts have tolerance,
+        distribution, optimizable and smoke parameters that are
+        required by the PSpice Advanced Analysis tools. Standard
+        parts in the Advanced Analysis libraries are similar to
+        parts in the standard PSpice libraries.
+      </p>
+      <p>
+        The parametrized parts are associated with template-based
+        PSpice models. An important advantage of using the
+        template-based PSpice models is that you can pass
+        simulation parameters as properties from the schematic
+        editor. For example, if a template-based model is
+        associated with a part, the simulation parameters that you
+        specify on an instance of the part in your design will be
+        passed to the model. There is no need to edit the model
+        itself to change a parameter value. This is unlike the
+        standard PSpice parts that are associated with device
+        characteristic curve-based PSpice models, where you need to
+        edit the model to change a simulation parameter. For more
+        information on template-based and device characteristic
+        curve-based PSpice models, see Chapter 4, &quot;Creating
+        and editing models&quot;, in the online PSpice User&#39;s
+        Guide.
+      </p>
+      <p>
+        Use parametrized parts from Advanced Analysis libraries if
+        you want to analyze the part with an Advanced Analysis
+        tool.
+      </p>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <th class="confluenceTh">
+                Advanced Analysis tool
+              </th>
+              <th class="confluenceTh">
+                Part Parameters
+              </th>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                Sensitivity
+              </td>
+              <td class="confluenceTd">
+                Tolerance parameters
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                Optimizer
+              </td>
+              <td class="confluenceTd">
+                Optimizable parameters
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                Smoke
+              </td>
+              <td class="confluenceTd">
+                Smoke parameters
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd" colspan="1">
+                Monte Carlo
+              </td>
+              <td class="confluenceTd" colspan="1">
+                Tolerance parameters, Distribution parameters
+                (default parameter value is Flat / Uniform)
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="panelMacro">
+        <table class="infoMacro">
+          <colgroup>
+            <col width="24" />
+            <col />
+          </colgroup>
+          <tr>
+            <td valign="top">
+              <img align="absmiddle" alt="" border="0" height="16"
+              src="images/icons/emoticons/information.png"
+              width="16" />
+            </td>
+            <td>
+              <p>
+                You can use a mixture of standard and parametrized
+                parts in your design, but Advanced Analysis is
+                performed on only the parameterized components.
+              </p>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <p>
+        The Advanced Analysis libraries are installed in the
+        following locations in the installation directory:
+      </p>
+      <ul>
+        <li>
+          Capture symbols for Advanced Analysis libraries at
+        </li>
+      </ul>
+      <p style="margin-left: 60.0px;">
+        <em>\tools\capture\library\pspice\advanls\</em>
+      </p>
+      <ul>
+        <li>
+          PSpice Advanced Analysis model libraries at
+        </li>
+      </ul>
+      <p style="margin-left: 60.0px;">
+        <em>\tools\pspice\library</em>
+      </p>
+      <p>
+        The parts in the Advanced Analysis libraries are listed in
+        the online PSpice Advanced Analysis Library List. For
+        information on finding parts using the online PSpice
+        Advanced Analysis Library List, see Finding the part that
+        you want. To find out more about each model library, read
+        the comments in the .lib file header.
+      </p>
+      <h4 id="PreparingaDesignforSimulation-Partnamingconventions">
+        Part naming conventions
+      </h4>
+      <p>
+        The part names in the PSpice libraries usually reflect the
+        manufacturers&#39; part names. If multiple vendors supply
+        the same part, each part name includes a suffix that
+        indicates the vendor that supplied the model.
+      </p>
+      <h4
+      id="PreparingaDesignforSimulation-Findingthepartthatyouwant">
+        Finding the part that you want
+      </h4>
+      <p>
+        If you are having trouble finding a part, you can search
+        the libraries for parts with similar names by using either:
+      </p>
+      <ul>
+        <li>
+          the search option in the Place Part dialog box in Capture
+          and restricting the parts list to those names that match
+          a specified wildcard text string, or
+        </li>
+        <li>
+          the online PSpice Library List or the PSpice Advanced
+          Analysis Library List and searching for the generic part
+          name using capabilities of the Adobe Acrobat Reader.
+        </li>
+      </ul>
+      <p>
+        <span style="color: rgb(0,0,0);"><strong>To find parts
+        using the parts browser</strong></span>
+      </p>
+      <ol>
+        <li>
+          In Capture, choose <em>Place</em> &#8211; <em>Part</em>.
+        </li>
+        <li>
+          <p>
+            In the Part Name field, type a text string with
+            wildcard characters that approximates the part name
+            that you want to find. Use this syntax:<br />
+             &lt;wildcard&gt;&lt;part_name_fragment&gt;&lt;wildcard&gt;<br />
+             where &lt;wildcard&gt; is one of the following:
+          </p>
+          <div class="table-wrap">
+            <table class="confluenceTable">
+              <tbody>
+                <tr>
+                  <td class="confluenceTd">
+                    *
+                  </td>
+                  <td class="confluenceTd">
+                    match zero or more characters
+                  </td>
+                </tr>
+                <tr>
+                  <td class="confluenceTd">
+                    ?
+                  </td>
+                  <td class="confluenceTd">
+                    match exactly one character
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            The parts browser displays only the matching part
+            names.
+          </p>
+          <div class="panelMacro">
+            <table class="infoMacro">
+              <colgroup>
+                <col width="24" />
+                <col />
+              </colgroup>
+              <tr>
+                <td valign="top">
+                  <img align="absmiddle" alt="" border="0"
+                  height="16"
+                  src="images/icons/emoticons/information.png"
+                  width="16" />
+                </td>
+                <td>
+                  <p>
+                    This method finds any part contained in the
+                    current part libraries configuration, including
+                    parts for user-defined models.
+                  </p>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </li>
+      </ol>
+      <p>
+        <span style="color: rgb(0,0,0);"><strong>To find parts
+        using the online PSpice Library List:</strong></span>
+      </p>
+      <p>
+        If you want to find out more about a part supplied in the
+        PSpice libraries, such as the name of the manufacturer or
+        whether you can simulate it, then search the online library
+        lists.
+      </p>
+      <p>
+        Separate library lists are provided for the standard PSpice
+        libraries and Advanced Analysis libraries. The parts in the
+        standard PSpice libraries are listed in the online PSpice
+        Library List. The parts in the Advanced Analysis libraries
+        are listed in the online PSpice Advanced Analysis Library
+        List.
+      </p>
+      <ol>
+        <li>
+          From the <em>Windows Start</em> menu, choose
+          <em>Cadence</em> and the release and then the Cadence
+          Help shortcut.<br />
+           The Cadence Help window appears.
+        </li>
+        <li>
+          Click the <em>PSpice</em> category to show the documents
+          in the category.
+        </li>
+        <li>
+          Double-click PSpice Library List or PSpice Advanced
+          Analysis Library List.<br />
+           This opens the library list. Click the PDF Viewer icon
+          on the Cadence Help toolbar if required.
+        </li>
+        <li>
+          Follow the instructions in the second page of the library
+          list to use the library list.
+        </li>
+      </ol>
+      <p>
+        &#160;
+      </p>
+      <div class="panelMacro">
+        <table class="tipMacro">
+          <colgroup>
+            <col width="24" />
+            <col />
+          </colgroup>
+          <tr>
+            <td valign="top">
+              <img align="absmiddle" alt="" border="0" height="16"
+              src="images/icons/emoticons/check.png" width="16" />
+            </td>
+            <td>
+              <p>
+                If you are unsure of the device type, you can scan
+                all of the device type lists using the Acrobat
+                search capability. The first time you do this, you
+                need to set up the across-list index. To find out
+                more, refer to the online Adobe Acrobat manuals.
+              </p>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <h3 id="PreparingaDesignforSimulation-Passiveparts">
+        Passive parts
+      </h3>
+      <p>
+        The PSpice libraries supply several basic parts based on
+        the passive device models built into PSpice. These are
+        summarized in the following table.
+      </p>
+      <p>
+        &#160;
+      </p>
+      <div class="panelMacro">
+        <table class="infoMacro">
+          <colgroup>
+            <col width="24" />
+            <col />
+          </colgroup>
+          <tr>
+            <td valign="top">
+              <img align="absmiddle" alt="" border="0" height="16"
+              src="images/icons/emoticons/information.png"
+              width="16" />
+            </td>
+            <td>
+              <p>
+                To find out more about how to use these parts and
+                define their properties, look up the corresponding
+                PSpice device letter in the Analog Devices chapter
+                in the online PSpice Reference Manual, and then see
+                the Capture Parts sections.
+              </p>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <th class="confluenceTh">
+                Available Parts
+              </th>
+              <th class="confluenceTh">
+                Device Type
+              </th>
+              <th class="confluenceTh">
+                PSpice Device Letter...
+              </th>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                C C_VAR
+              </td>
+              <td class="confluenceTd">
+                capacitor
+              </td>
+              <td class="confluenceTd">
+                C
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                L
+              </td>
+              <td class="confluenceTd">
+                inductor
+              </td>
+              <td class="confluenceTd">
+                L
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                R R_VAR
+              </td>
+              <td class="confluenceTd">
+                resistor
+              </td>
+              <td class="confluenceTd">
+                R
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd" colspan="1">
+                XFRM_LINEAR K_LINEAR
+              </td>
+              <td class="confluenceTd" colspan="1">
+                transformer
+              </td>
+              <td class="confluenceTd" colspan="1">
+                K and L
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd" colspan="1">
+                T
+              </td>
+              <td class="confluenceTd" colspan="1">
+                ideal transmission line
+              </td>
+              <td class="confluenceTd" colspan="1">
+                T
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd" colspan="1">
+                TLOSSY
+              </td>
+              <td class="confluenceTd" colspan="1">
+                Lossy transmission line
+              </td>
+              <td class="confluenceTd" colspan="1">
+                T
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd" colspan="1">
+                TnCOUPLED TnCOUPLEDX* KCOUPLEn*
+              </td>
+              <td class="confluenceTd" colspan="1">
+                coupled transmission line
+              </td>
+              <td class="confluenceTd" colspan="1">
+                T and K
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        *For these device types, the PSpice libraries supply
+        several parts. Refer to the online PSpice Reference Manual
+        for the available parts.
+      </p>
+      <h3 id="PreparingaDesignforSimulation-Breakoutparts">
+        Breakout parts
+      </h3>
+      <p>
+        The PSpice libraries supply passive and semiconductor parts
+        with default model definitions that define a basic set of
+        model parameters. This way, you can easily:
+      </p>
+      <ul>
+        <li>
+          assign device and lot tolerances to model parameters for
+          Monte Carlo and sensitivity/worst-case analyses
+        </li>
+        <li>
+          define temperature coefficients
+        </li>
+        <li>
+          define device-specific operating temperatures
+        </li>
+      </ul>
+      <p>
+        These are called breakout parts and are summarized in the
+        following table.
+      </p>
+      <p>
+        &#160;
+      </p>
+      <div class="panelMacro">
+        <table class="infoMacro">
+          <colgroup>
+            <col width="24" />
+            <col />
+          </colgroup>
+          <tr>
+            <td valign="top">
+              <img align="absmiddle" alt="" border="0" height="16"
+              src="images/icons/emoticons/information.png"
+              width="16" />
+            </td>
+            <td>
+              <p>
+                To find out more about how to use these parts and
+                define their properties, look up the corresponding
+                PSpice device letter in the Analog Devices chapter
+                in the online PSpice Reference Manual, and then see
+                the Capture Parts sections.
+              </p>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <th class="confluenceTh">
+                Breakout Part
+              </th>
+              <th class="confluenceTh">
+                Device Type
+              </th>
+              <th class="confluenceTh">
+                PSpice Device Letter
+              </th>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                BBREAK
+              </td>
+              <td class="confluenceTd">
+                GaAsFET
+              </td>
+              <td class="confluenceTd">
+                B
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                CBREAK
+              </td>
+              <td class="confluenceTd">
+                capacitor
+              </td>
+              <td class="confluenceTd">
+                C
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                DBREAKx
+              </td>
+              <td class="confluenceTd">
+                diode
+              </td>
+              <td class="confluenceTd">
+                D
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd" colspan="1">
+                JBREAKx*
+              </td>
+              <td class="confluenceTd" colspan="1">
+                JFET
+              </td>
+              <td class="confluenceTd" colspan="1">
+                J
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd" colspan="1">
+                KBREAK
+              </td>
+              <td class="confluenceTd" colspan="1">
+                inductor coupling
+              </td>
+              <td class="confluenceTd" colspan="1">
+                K
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd" colspan="1">
+                LBREAK
+              </td>
+              <td class="confluenceTd" colspan="1">
+                inductor
+              </td>
+              <td class="confluenceTd" colspan="1">
+                L
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd" colspan="1">
+                MBREAKx*
+              </td>
+              <td class="confluenceTd" colspan="1">
+                MOSFET
+              </td>
+              <td class="confluenceTd" colspan="1">
+                M
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd" colspan="1">
+                QBREAKx*
+              </td>
+              <td class="confluenceTd" colspan="1">
+                bipolar transistor
+              </td>
+              <td class="confluenceTd" colspan="1">
+                Q
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd" colspan="1">
+                RBREAK
+              </td>
+              <td class="confluenceTd" colspan="1">
+                resistor
+              </td>
+              <td class="confluenceTd" colspan="1">
+                R
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd" colspan="1">
+                SBREAK
+              </td>
+              <td class="confluenceTd" colspan="1">
+                voltage-controlled switch
+              </td>
+              <td class="confluenceTd" colspan="1">
+                S
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd" colspan="1">
+                TBREAK
+              </td>
+              <td class="confluenceTd" colspan="1">
+                transmission line
+              </td>
+              <td class="confluenceTd" colspan="1">
+                T
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd" colspan="1">
+                WBREAK
+              </td>
+              <td class="confluenceTd" colspan="1">
+                current-controlled switch
+              </td>
+              <td class="confluenceTd" colspan="1">
+                W
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd" colspan="1">
+                XFRM_NONLINEAR
+              </td>
+              <td class="confluenceTd" colspan="1">
+                transformer
+              </td>
+              <td class="confluenceTd" colspan="1">
+                K and L
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd" colspan="1">
+                ZBREAKN
+              </td>
+              <td class="confluenceTd" colspan="1">
+                IGBT
+              </td>
+              <td class="confluenceTd" colspan="1">
+                Z
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        *&#160;For this device type, the PSpice libraries supply
+        several breakout parts. Refer to the online PSpice
+        Reference Manual for the available parts.
+      </p>
+      <h3 id="PreparingaDesignforSimulation-Behavioralparts">
+        Behavioral parts
+      </h3>
+      <p>
+        Behavioral parts allow you to define how a block of
+        circuitry should work without having to define each
+        discrete component.
+      </p>
+      <h4 id="PreparingaDesignforSimulation-Analogbehavioralparts">
+        Analog behavioral parts
+      </h4>
+      <p>
+        These parts use analog behavioral modeling (ABM) to define
+        each part&#39;s behavior as a mathematical expression or
+        lookup table. The PSpice libraries provide ABM parts that
+        operate as math functions, limiters, Chebyshev filters,
+        integrators, differentiators, and others that you can
+        customize for specific expressions and lookup tables. You
+        can also create your own ABM parts.
+      </p>
+      <h4
+      id="PreparingaDesignforSimulation-Digitalbehavioralparts">
+        Digital behavioral parts
+      </h4>
+      <p>
+        These parts use special behavioral primitives to define
+        each part&#39;s functional and timing behavior. These
+        primitives are:
+      </p>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <td class="confluenceTd">
+                LOGICEXP
+              </td>
+              <td class="confluenceTd">
+                to define logic expressions
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                PINDLY
+              </td>
+              <td class="confluenceTd">
+                to define pin-to-pin delays
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                CONSTRAINT
+              </td>
+              <td class="confluenceTd">
+                to define constraint checks
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                &#160;
+              </td>
+              <td class="confluenceTd">
+                &#160;
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        Many of the digital parts provided in the PSpice libraries
+        are modeled using these primitives. You can also create
+        your own digital behavioral parts using these primitives.
+      </p>
+      <h2
+      id="PreparingaDesignforSimulation-Definingpartpropertiesneededforsimulation">
+        Defining part properties needed for simulation
+      </h2>
+      <p>
+        &#160;
+      </p>
+      <p>
+        If you want to use a part for simulation, then your part
+        should have the PSPICETEMPLATE property defined for it:
+      </p>
+      <p>
+        You can also add other simulation-specific properties for
+        digital parts: IO_LEVEL, MNTYMXDLY, and PSPICEDEFAULTNET.
+      </p>
+      <p>
+        Here are the things to check when editing part properties:
+      </p>
+      <ul>
+        <li>
+          Does the property specify the correct number of pins/
+          nodes?
+        </li>
+        <li>
+          Are the pins/ nodes in the specified property in the
+          proper order?
+        </li>
+        <li>
+          Do the pin/ node names in the property match the pin
+          names on the part?
+        </li>
+      </ul>
+      <p>
+        For examples of how to use the property, see PSPICETEMPLATE
+        examples.
+      </p>
+      <h3
+      id="PreparingaDesignforSimulation-Editingsimulationproperties">
+        Editing simulation properties
+      </h3>
+      <p>
+        To edit a property needed for simulation
+      </p>
+      <ol>
+        <li>
+          In the schematic page editor, select the part to edit.
+        </li>
+        <li>
+          From the Edit menu, choose Properties to display the
+          Parts spreadsheet of the Property Editor.
+        </li>
+        <li>
+          Click on the cell of the column you want to change, or
+          click the New button to add a property (and type the
+          property name in the Name field).
+        </li>
+        <li>
+          If needed, type a value in the Value text box.
+        </li>
+        <li>
+          Click Apply to update the design, then close the
+          spreadsheet.
+        </li>
+      </ol>
+      <h3
+      id="PreparingaDesignforSimulation-PSPICETEMPLATEproperty">
+        PSPICETEMPLATE property
+      </h3>
+      <p>
+        The PSPICETEMPLATE property defines the PSpice syntax for
+        the part&#39;s netlist entry. When creating a netlist,
+        Capture substitutes actual values from the circuit into the
+        appropriate places in the PSPICETEMPLATE syntax, then saves
+        the translated statement to the netlist file.
+      </p>
+      <p>
+        Any part that you want to simulate must have a defined
+        PSPICETEMPLATE property. These rules apply:
+      </p>
+      <ul>
+        <li>
+          The pin names specified in the PSPICETEMPLATE property
+          must match the pin names on the part.
+        </li>
+        <li>
+          The number and order of the pins listed in the
+          PSPICETEMPLATE property must match those for the
+          associated .MODEL or .SUBCKT definition referenced for
+          simulation.
+        </li>
+        <li>
+          The first character in a PSPICETEMPLATE must be a PSpice
+          device letter appropriate for the part (such as Q for a
+          bipolar transistor).
+        </li>
+      </ul>
+      <h4 id="PreparingaDesignforSimulation-PSPICETEMPLATEsyntax">
+        PSPICETEMPLATE syntax
+      </h4>
+      <p>
+        The PSPICETEMPLATE contains:
+      </p>
+      <ul>
+        <li>
+          regular characters that the schematic page editor
+          interprets verbatim, and
+        </li>
+        <li>
+          property names and control characters that the schematic
+          page editor translates.
+        </li>
+      </ul>
+      <p>
+        <span style="color: rgb(0,0,0);"><strong>Regular characters
+        in template</strong></span>
+      </p>
+      <p>
+        Regular characters include the following:
+      </p>
+      <ul>
+        <li>
+          alphanumerics
+        </li>
+        <li>
+          any keyboard part except the special syntactical parts
+          used with attributes (@ &amp; ? ~ #)
+        </li>
+        <li>
+          whitespace
+        </li>
+      </ul>
+      <p>
+        An identifier is a collection of regular characters of the
+        form:
+      </p>
+      <p>
+        alphabetic character [any other regular character]*.
+      </p>
+      <p>
+        <span style="color: rgb(0,0,0);"><strong>Property names in
+        templates</strong></span>
+      </p>
+      <p>
+        Property names are preceded by a special character as
+        follows:
+      </p>
+      <p>
+        [ @ | ? | ~ | # | &amp; ]&lt;identifier&gt;
+      </p>
+      <p>
+        The schematic page editor processes the property according
+        to the special character as shown in the following table.
+      </p>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <th class="confluenceTh">
+                Syntax*
+              </th>
+              <th class="confluenceTh">
+                &#160;Replacement
+              </th>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                @&lt;id&gt;
+              </td>
+              <td class="confluenceTd">
+                Value of &lt;id&gt;. Error if no &lt;id&gt;
+                property or if no value assigned.
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                &amp;&lt;id&gt;
+              </td>
+              <td class="confluenceTd">
+                Value of &lt;id&gt;, if &lt;id&gt; is defined.
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                ?&lt;id&gt;s...s
+              </td>
+              <td class="confluenceTd">
+                Text between s...s separators, if &lt;id&gt; is
+                defined.
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd" colspan="1">
+                ?&lt;id&gt;s...ss...s
+              </td>
+              <td class="confluenceTd" colspan="1">
+                Text between the first s...s separators, if
+                &lt;id&gt; is defined, else the second s...s
+                clause.
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd" colspan="1">
+                ~&lt;id&gt;s...s
+              </td>
+              <td class="confluenceTd" colspan="1">
+                Text between s...s separators, if &lt;id&gt; is
+                undefined.
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd" colspan="1">
+                ~&lt;id&gt; s...ss...s
+              </td>
+              <td class="confluenceTd" colspan="1">
+                Text between the first s...s separators, if
+                &lt;id&gt; is undefined, else the second s...s
+                clause.
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd" colspan="1">
+                #&lt;id&gt;s...s
+              </td>
+              <td class="confluenceTd" colspan="1">
+                Text between s...s separators, if &lt;id&gt; is
+                defined, but delete rest of template if &lt;id&gt;
+                is undefined.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        *s is a separator character.
+      </p>
+      <p>
+        Separator characters include commas (,), periods (.),
+        semi-colons (;), forward slashes (/), and vertical bars ( |
+        ). You must always use the same character to specify an
+        opening-closing pair of separators.
+      </p>
+      <p>
+        &#160;
+      </p>
+      <div class="panelMacro">
+        <table class="tipMacro">
+          <colgroup>
+            <col width="24" />
+            <col />
+          </colgroup>
+          <tr>
+            <td valign="top">
+              <img align="absmiddle" alt="" border="0" height="16"
+              src="images/icons/emoticons/check.png" width="16" />
+            </td>
+            <td>
+              <p>
+                You can use different separator characters to nest
+                conditional property clauses.
+              </p>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <p>
+        <span style="color: rgb(0,0,0);"><strong>The caret (^)
+        character in templates</strong></span>
+      </p>
+      <p>
+        The schematic page editor replaces the caret (^) character
+        with the complete hierarchical path to the device being
+        netlisted.
+      </p>
+      <p>
+        <span style="color: rgb(0,0,0);"><strong>The new line (\n)
+        character sequence in templates</strong></span>
+      </p>
+      <p>
+        The part editor replaces the new line (\n) character
+        sequence with a new line. Using newline character sequence
+        (\n), you can specify a multiline netlist entry from a
+        one-line template.
+      </p>
+      <p>
+        <span style="color: rgb(0,0,0);"><strong>The percentage (%)
+        character and pin names in templates</strong></span>
+      </p>
+      <p>
+        Pin names are denoted as follows:
+      </p>
+      <p style="margin-left: 30.0px;">
+        %&lt;pin name&gt;
+      </p>
+      <p style="margin-left: 30.0px;">
+        where pin name is one or more regular characters.
+      </p>
+      <p>
+        The schematic page editor replaces the %&lt;pin name&gt;
+        clause in the template with the name of the net connected
+        to that pin.
+      </p>
+      <p>
+        The end of the pin name is marked with a separator. To
+        avoid name conflicts in PSpice, the schematic page editor
+        translates the following characters contained in pin names.
+      </p>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <th class="confluenceTh">
+                Pin name character
+              </th>
+              <th class="confluenceTh">
+                Replacement
+              </th>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                &lt;
+              </td>
+              <td class="confluenceTd">
+                l (L)
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                &gt;
+              </td>
+              <td class="confluenceTd">
+                g
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                =
+              </td>
+              <td class="confluenceTd">
+                e
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd" colspan="1">
+                \XXX\
+              </td>
+              <td class="confluenceTd" colspan="1">
+                XXXbar
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="panelMacro">
+        <table class="noteMacro">
+          <colgroup>
+            <col width="24" />
+            <col />
+          </colgroup>
+          <tr>
+            <td valign="top">
+              <img align="absmiddle" alt="" border="0" height="16"
+              src="images/icons/emoticons/warning.png"
+              width="16" />
+            </td>
+            <td>
+              <p>
+                To include a literal percentage (%) character into
+                the netlist output, type the percentage symbol
+                twice (%%) in the template.
+              </p>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="panelMacro">
+        <table class="warningMacro">
+          <colgroup>
+            <col width="24" />
+            <col />
+          </colgroup>
+          <tr>
+            <td valign="top">
+              <img align="absmiddle" alt="" border="0" height="16"
+              src="images/icons/emoticons/forbidden.png"
+              width="16" />
+            </td>
+            <td>
+              <b>Recommended scheme for netlist templates</b><br />
+               
+              <p>
+                Templates for devices in the part library start
+                with a PSpice device letter, followed by the
+                hierarchical path, and then the reference
+                designator (REFDES) property. We recommend that you
+                adopt this scheme when defining your own netlist
+                templates.
+              </p>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <h4
+      id="PreparingaDesignforSimulation-PSPICETEMPLATEexamples">
+        PSPICETEMPLATE examples
+      </h4>
+      <p>
+        <span style="color: rgb(0,0,0);"><strong>Simple resistor
+        (R) template</strong></span>
+      </p>
+      <p>
+        The R part has two pins (1 and 2) and two required
+        properties, REFDES and VALUE.
+      </p>
+      <p>
+        The template for the resistor is:
+      </p>
+      <p style="margin-left: 30.0px;">
+        R^@REFDES %1 %2 @VALUE
+      </p>
+      <p>
+        A sample translation of the template is:
+      </p>
+      <p style="margin-left: 30.0px;">
+        R_R23 abc def 1k
+      </p>
+      <p style="margin-left: 30.0px;">
+        where REFDES equals R23, VALUE equals 1k, and R is
+        connected to nets abc and def.
+      </p>
+      <p>
+        <span style="color: rgb(0,0,0);"><strong>Voltage source
+        with optional AC and DC specifications (VAC)
+        template</strong></span>
+      </p>
+      <p>
+        The VAC part has two properties, AC and DC, and two pins, +
+        and -.
+      </p>
+      <p>
+        The template is:
+      </p>
+      <p style="margin-left: 30.0px;">
+        V^@REFDES %+ %- ?DC|DC=@DC| ?AC|AC=@AC|
+      </p>
+      <p>
+        A sample translation of the template is:
+      </p>
+      <p style="margin-left: 30.0px;">
+        V_V6 vp vm DC=5v
+      </p>
+      <p style="margin-left: 30.0px;">
+        where REFDES equals V6, VSRC is connected to nodes vp and
+        vm, DC is set to 5v, and AC is undefined.
+      </p>
+      <p>
+        Another sample translation of the template is:
+      </p>
+      <p style="margin-left: 30.0px;">
+        V_V6 vp vm DC=5v AC=1v
+      </p>
+      <p style="margin-left: 30.0px;">
+        where, in addition to the settings for the previous
+        translation, AC is set to 1v.
+      </p>
+      <p>
+        <span style="color: rgb(0,0,0);"><strong>Parameterized
+        subcircuit call (X) template</strong></span>
+      </p>
+      <p>
+        This example supposes a subcircuit Z that has two pins (a
+        and b) and a subcircuit parameter G, where G defaults to
+        1000 when no value is supplied.
+      </p>
+      <p>
+        To allow the parameter to be changed on the schematic page,
+        treat G as property in the template.
+      </p>
+      <p>
+        The template is:
+      </p>
+      <p style="margin-left: 30.0px;">
+        X^@REFDES %a %b Z PARAMS: ?G|G=@G|
+      </p>
+      <p style="margin-left: 30.0px;">
+        ~G|G=1000|
+      </p>
+      <p>
+        An equivalent template (using the if...else form) is:
+      </p>
+      <p style="margin-left: 30.0px;">
+        X^@REFDES %a %b Z PARAMS: ?G|G=@G||G=1000|
+      </p>
+      <p>
+        A sample translation of the template is:
+      </p>
+      <p style="margin-left: 30.0px;">
+        X_U33 101 102 Z PARAMS: G=1024
+      </p>
+      <p style="margin-left: 30.0px;">
+        where REFDES equals U33, G is set to 1024, and the
+        subcircuit connects to nets 101 and 102.
+      </p>
+      <p>
+        Another sample translation of the template is:
+      </p>
+      <p style="margin-left: 30.0px;">
+        X_U33 101 102 Z PARAMS: G=1000
+      </p>
+      <p style="margin-left: 30.0px;">
+        where the settings of the previous translation apply except
+        that G is undefined.
+      </p>
+      <p>
+        <span style="color: rgb(0,0,0);"><strong>Digital stimulus
+        parts with variable width pins template</strong></span>
+      </p>
+      <p>
+        For a digital stimulus device template (such as that for a
+        DIGSTIM part), a pin name can be preceded by an asterisk
+        (*) character. This signifies that the pin can be connected
+        to a bus and the width of the pin is set to be equal to the
+        width of the bus.
+      </p>
+      <p>
+        The template is:
+      </p>
+      <p style="margin-left: 30.0px;">
+        U^@REFDES STIM(%#PIN, 0) %*PIN
+      </p>
+      <p style="margin-left: 30.0px;">
+        \n+ STIMULUS=@STIMULUS
+      </p>
+      <p style="margin-left: 30.0px;">
+        where #PIN refers to a variable width pin.
+      </p>
+      <p>
+        A sample translation of the template is:
+      </p>
+      <p style="margin-left: 30.0px;">
+        U_U1 STIM(4,0) 5PIN1 %PIN2 %PIN3 %PIN4
+      </p>
+      <p style="margin-left: 30.0px;">
+        + STIMULUS=mystim
+      </p>
+      <p style="margin-left: 30.0px;">
+        where the stimulus is connected to a four-input bus,
+        a[0-3].
+      </p>
+      <p>
+        <span style="color: rgb(0,0,0);"><strong>Pin callout in
+        subcircuit templates</strong></span>
+      </p>
+      <p>
+        The number and sequence of pins named in a template for a
+        subcircuit must agree with the definition of the subcircuit
+        itself--that is, the node names listed in the .SUBCKT
+        statement, which heads the definition of a subcircuit.
+        These are the pinouts of the subcircuit.
+      </p>
+      <h3 id="PreparingaDesignforSimulation-IO_LEVELproperty">
+        IO_LEVEL property
+      </h3>
+      <p>
+        The IO_LEVEL property defines the level of interface
+        subcircuit model PSpice must use for a digital part that is
+        connected to an analog part.
+      </p>
+      <p>
+        If you are creating a digital part, you need to
+      </p>
+      <ol>
+        <li>
+          <p>
+            Add the IO_LEVEL property to the part and assign a
+            value shown in the table below.
+          </p>
+          <div class="table-wrap">
+            <table class="confluenceTable">
+              <tbody>
+                <tr>
+                  <th class="confluenceTh">
+                    Value
+                  </th>
+                  <th class="confluenceTh">
+                    Interface subcircuit (level)
+                  </th>
+                </tr>
+                <tr>
+                  <td class="confluenceTd">
+                    0
+                  </td>
+                  <td class="confluenceTd">
+                    circuit-wide default
+                  </td>
+                </tr>
+                <tr>
+                  <td class="confluenceTd">
+                    1
+                  </td>
+                  <td class="confluenceTd">
+                    AtoD1 and DtoA1
+                  </td>
+                </tr>
+                <tr>
+                  <td class="confluenceTd">
+                    2
+                  </td>
+                  <td class="confluenceTd">
+                    AtoD2 and DtoA2
+                  </td>
+                </tr>
+                <tr>
+                  <td class="confluenceTd" colspan="1">
+                    3
+                  </td>
+                  <td class="confluenceTd" colspan="1">
+                    AtoD3 and DtoA3
+                  </td>
+                </tr>
+                <tr>
+                  <td class="confluenceTd" colspan="1">
+                    4
+                  </td>
+                  <td class="confluenceTd" colspan="1">
+                    AtoD4 and DtoA4
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </li>
+        <li>
+          Use this property in the property definition (IO_LEVEL is
+          also a subcircuit parameter used in calls for digital
+          subcircuits).
+        </li>
+      </ol>
+      <h3 id="PreparingaDesignforSimulation-MNTYMXDLYproperty">
+        MNTYMXDLY property
+      </h3>
+      <p>
+        The MNTYMXDLY property defines the digital propagation
+        delay level that PSpice must use for a digital part.
+      </p>
+      <p>
+        If you are creating a digital part, you need to do the
+        following
+      </p>
+      <ol>
+        <li>
+          <p>
+            Add the MNTYMXDLY property to the part and assign a
+            value shown in the table below.
+          </p>
+          <div class="table-wrap">
+            <table class="confluenceTable">
+              <tbody>
+                <tr>
+                  <th class="confluenceTh">
+                    Value
+                  </th>
+                  <th class="confluenceTh">
+                    Propagation delay
+                  </th>
+                </tr>
+                <tr>
+                  <td class="confluenceTd">
+                    0
+                  </td>
+                  <td class="confluenceTd">
+                    circuit-wide default
+                  </td>
+                </tr>
+                <tr>
+                  <td class="confluenceTd">
+                    1
+                  </td>
+                  <td class="confluenceTd">
+                    minimum
+                  </td>
+                </tr>
+                <tr>
+                  <td class="confluenceTd">
+                    2
+                  </td>
+                  <td class="confluenceTd">
+                    typical
+                  </td>
+                </tr>
+                <tr>
+                  <td class="confluenceTd" colspan="1">
+                    3
+                  </td>
+                  <td class="confluenceTd" colspan="1">
+                    &#160;maximum
+                  </td>
+                </tr>
+                <tr>
+                  <td class="confluenceTd" colspan="1">
+                    4
+                  </td>
+                  <td class="confluenceTd" colspan="1">
+                    worst-case (min/max)
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </li>
+        <li>
+          Use this property in the property definition (MNTYMXDLY
+          is also a subcircuit parameter used in calls for digital
+          subcircuits).
+        </li>
+      </ol>
+      <h3
+      id="PreparingaDesignforSimulation-PSPICEDEFAULTNETproperty">
+        PSPICEDEFAULTNET property
+      </h3>
+      <p>
+        The PSPICEDEFAULTNET pin property defines the net name to
+        which a power or ground (invisible) pin is connected.
+      </p>
+      <p>
+        For example, if the power and ground pins on a digital part
+        are connected to the digital nets $G_DPWR and $G_DGND,
+        respectively, then the properties are defined as follows:
+      </p>
+      <p style="margin-left: 30.0px;">
+        PSPICEDEFAULTNET=$G_DPWR
+      </p>
+      <p style="margin-left: 30.0px;">
+        PSPICEDEFAULTNET=$G_DGND
+      </p>
+      <p>
+        If you are creating a digital part, you need to do the
+        following
+      </p>
+      <ol>
+        <li>
+          For each power pin, create a PSPICEDEFAULTNET property
+          and assign the name of the digital net to which the pin
+          is connected.
+        </li>
+        <li>
+          Use the appropriate pin name in the property definition.
+        </li>
+      </ol>
+      <h2
+      id="PreparingaDesignforSimulation-Guidelinesandbestpracticesforspecifyingvaluesforpartproperties">
+        Guidelines and best practices for specifying values for
+        part properties
+      </h2>
+      <p>
+        Note the following when specifying values for part
+        properties:
+      </p>
+      <ul>
+        <li>
+          Do not leave a space between the value and its unit, if
+          the unit is a scale symbol. For example, specify 5K
+          instead of 5 K.
+        </li>
+        <li>
+          For a listing of the scale symbols, see the section on
+          Numeric value conventions in the Before you begin chapter
+          of the online PSpice Reference Guide.
+        </li>
+        <li>
+          Do not use the European notation, where the decimal point
+          is omitted and replaced by the unit symbol, for
+          specifying values. For example, if you specify 3K3 (the
+          European notation for 3.3K), PSpice reads the value as
+          3K. Use 3.3K instead.
+        </li>
+        <li>
+          Specify tolerance values as percentages. If you specify
+          an absolute value, the tolerance value will be read as an
+          absolute number. For example, if you specify the value of
+          the POSTOL property as a percentage, say 10%, on a 10K
+          resistor, the distribution values will be taken in the
+          range of 10K?1K. If you specify the tolerance value as an
+          absolute number, say 10, the distribution values will be
+          taken in the range of 10K?10?
+        </li>
+      </ul>
+      <h2
+      id="PreparingaDesignforSimulation-PlacingPSpiceGround0SymbolsforPSpiceSimulations">
+        Placing PSpice Ground 0 Symbols for PSpice Simulations
+      </h2>
+      <p>
+        For PSpice analog simulation to run, your design must have
+        a PSpice ground (0) symbol. The CAPSYM.OLB, which is the
+        default library in Capture, includes the PSpice ground (0)
+        symbol. Use the 0 symbol to place a PSpice ground 0 symbol
+        in your design.
+      </p>
+      <p>
+        To select the 0 symbol:
+      </p>
+      <ol>
+        <li>
+          Choose Place &#8211; Ground (or use the Place Ground
+          toolbar button). The Place Ground dialog box appears.
+        </li>
+        <li>
+          <p>
+            Select the CAPSYM part library from the Libraries list
+            (if it is not already selected).
+          </p>
+          <div class="panelMacro">
+            <table class="infoMacro">
+              <colgroup>
+                <col width="24" />
+                <col />
+              </colgroup>
+              <tr>
+                <td valign="top">
+                  <img align="absmiddle" alt="" border="0"
+                  height="16"
+                  src="images/icons/emoticons/information.png"
+                  width="16" />
+                </td>
+                <td>
+                  <p>
+                    You can also place the 0 symbol from the Source
+                    part library. To do this, add the Source part
+                    library to the Libraries list using the Add
+                    Library button; SOURCE.OLB is located in the
+                    \TOOLS\CAPTURE\LIBRARY\PSPICE subdirectory
+                    under your installation directory.
+                  </p>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </li>
+        <li>
+          Select the 0 symbol (if not already selected).
+        </li>
+        <li>
+          <p>
+            Click OK to place the PSpice ground 0 symbol.
+          </p>
+          <div class="panelMacro">
+            <table class="tipMacro">
+              <colgroup>
+                <col width="24" />
+                <col />
+              </colgroup>
+              <tr>
+                <td valign="top">
+                  <img align="absmiddle" alt="" border="0"
+                  height="16"
+                  src="images/icons/emoticons/check.png"
+                  width="16" />
+                </td>
+                <td>
+                  <p>
+                    Alternatively, you can place any ground symbol,
+                    open the Property Editor, and change its name
+                    to 0.
+                  </p>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </li>
+      </ol>
+      <div class="panelMacro">
+        <table class="noteMacro">
+          <colgroup>
+            <col width="24" />
+            <col />
+          </colgroup>
+          <tr>
+            <td valign="top">
+              <img align="absmiddle" alt="" border="0" height="16"
+              src="images/icons/emoticons/warning.png"
+              width="16" />
+            </td>
+            <td>
+              <p>
+                While generating the PSpice netlist, if Capture
+                does not find a PSpice ground (0) symbol in your
+                design, then a warning message is flagged in the
+                Session Log. You may ignore the warning, if the
+                design will be used for running the digital PSpice
+                simulation. However, for running analog simulation,
+                the design must have at least one PSpice ground 0
+                symbol.
+              </p>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="panelMacro">
+        <table class="infoMacro">
+          <colgroup>
+            <col width="24" />
+            <col />
+          </colgroup>
+          <tr>
+            <td valign="top">
+              <img align="absmiddle" alt="" border="0" height="16"
+              src="images/icons/emoticons/information.png"
+              width="16" />
+            </td>
+            <td>
+              <p>
+                &#160;If you are starting a new analog PSpice
+                design, then it is recommended that you use the
+                PSpice project template, AnalogGNDSymbol.opj. This
+                project by default has the PSpice ground 0 symbol
+                needed for your analog designs.
+              </p>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <h2
+      id="PreparingaDesignforSimulation-UsingtheFLOATpropertyforunconnectedpins">
+        Using the FLOAT property for unconnected pins
+      </h2>
+      <p>
+        When preparing a circuit for simulation with PSpice, it is
+        important that all pins for all parts are connected
+        properly. If a pin is meant to remain unconnected
+        intentionally, you need to use the PSpice pin property
+        FLOAT, rather than a No Connect symbol. Otherwise, the
+        circuit may not netlist correctly for PSpice.
+      </p>
+      <p>
+        The pin property FLOAT may have one of the following three
+        values:
+      </p>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <th class="confluenceTh">
+                Value
+              </th>
+              <th class="confluenceTh">
+                Description
+              </th>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                Error
+              </td>
+              <td class="confluenceTd">
+                The pin will not netlist. An error message will be
+                returned when the PSpice simulation netlist is
+                generated. Use Error when you want to be reminded
+                that this pin is a &quot;no connect&quot; and
+                should be treated in a special way. Error is the
+                default value.
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                RtoGND
+              </td>
+              <td class="confluenceTd">
+                The pin is connected to a virtual resistor, whose
+                opposite pin is tied to GND. The resistor has a
+                value of 1/GMIN. This value allows the simulation
+                netlist to be created and allows PSpice to perform
+                the analysis. The virtual resistor will not be
+                processed as part of a layout netlist or appear in
+                a BOM.
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                UniqueNet
+              </td>
+              <td class="confluenceTd">
+                The pin, when left unconnected, is attached to a
+                unique node when the PSpice simulation netlist is
+                generated. Use UniqueNet when you want the pin to
+                remain unconnected but correspond to the Probe data
+                associated with its part.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        The FLOAT property can either be defined in the part editor
+        when creating a new part, or you can edit a pin on an
+        existing part using the property editor.
+      </p>
+      <p>
+        To define the FLOAT property using the property editor
+      </p>
+      <ol>
+        <li>
+          In Capture, double-click on the pin to open the property
+          editor spreadsheet.
+        </li>
+        <li>
+          Click on the Pins tab.
+        </li>
+        <li>
+          Click New Column and type FLOAT (upper case) in the Name
+          text box.
+        </li>
+        <li>
+          Type the property value you want to use, then click OK.
+        </li>
+        <li>
+          Click Apply or close the spreadsheet to have the changes
+          take effect.
+        </li>
+      </ol>
+      <h2
+      id="PreparingaDesignforSimulation-UsingGlobalParametersandExpressions">
+        Using Global Parameters and Expressions
+      </h2>
+      <p>
+        In addition to literal values, you can use global
+        parameters and expressions to represent numeric values in
+        your circuit design.
+      </p>
+      <h3 id="PreparingaDesignforSimulation-Globalparameters">
+        Global parameters
+      </h3>
+      <p>
+        A global parameter is like a programming variable that
+        represents a numeric value by name.
+      </p>
+      <p>
+        Once you have defined a parameter (declared its name and
+        given it a value), you can use it to represent circuit
+        values anywhere in the schematic; this applies to any
+        hierarchical level.
+      </p>
+      <p>
+        Some ways that you can use parameters are as follows:
+      </p>
+      <ul>
+        <li>
+          Apply the same value to multiple part instances.
+        </li>
+        <li>
+          Set up an analysis that sweeps a variable through a range
+          of values (for example, the DC sweep or parametric
+          analysis).
+        </li>
+      </ul>
+      <p>
+        When multiple parts are set to the same value, global
+        parameters provide a convenient way to change all their
+        values for &quot;what-if&quot; analyses.
+      </p>
+      <p>
+        For example, if two independent sources have a value
+        defined by the parameter VSUPPLY, then you can change both
+        sources to 10 volts by assigning the value once to VSUPPLY.
+      </p>
+      <h4
+      id="PreparingaDesignforSimulation-Declaringandusingaglobalparameter">
+        Declaring and using a global parameter
+      </h4>
+      <p>
+        To use a global parameter in your design, you need to:
+      </p>
+      <ul>
+        <li>
+          define the parameter using a PARAM part from SPECIAL.OLB.
+        </li>
+        <li>
+          use the parameter in place of a literal value somewhere
+          in your design.
+        </li>
+      </ul>
+      <p>
+        To declare a global parameter
+      </p>
+      <ol>
+        <li>
+          Place a PARAM part in your design.
+        </li>
+        <li>
+          Double-click the PARAM part to display the Parts
+          spreadsheet.
+        </li>
+        <li>
+          Do the following for each global parameter:
+        </li>
+      </ol>
+      <ul>
+        <li style="list-style-type: none;">
+          <ol>
+            <li>
+              Click New, then enter NAMEn in the Property Name
+              field, then click OK. This creates a new property for
+              the PARAM part, NAMEn in the spreadsheet.
+            </li>
+            <li>
+              Click on the cell below the NAMEn column and enter a
+              default value for the parameter.
+            </li>
+            <li>
+              <p>
+                While this cell is still selected, click Display.
+                In the Display format frame, select Name and Value,
+                then click OK.
+              </p>
+              <div class="panelMacro">
+                <table class="warningMacro">
+                  <colgroup>
+                    <col width="24" />
+                    <col />
+                  </colgroup>
+                  <tr>
+                    <td valign="top">
+                      <img align="absmiddle" alt="" border="0"
+                      height="16"
+                      src="images/icons/emoticons/forbidden.png"
+                      width="16" />
+                    </td>
+                    <td>
+                      <p>
+                        System variables have reserved parameter
+                        names. Do not use these parameter names
+                        when defining your own parameters.
+                      </p>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </li>
+            <li>
+              Click Apply to update all the changes to the PARAM
+              part, and then close the spreadsheet.
+            </li>
+          </ol>
+        </li>
+      </ul>
+      <p>
+        For example, to declare the global parameter VSUPPLY that
+        will set the value of an independent voltage source to 14
+        volts, place the PARAM part, and then create a new property
+        named VSUPPLY with a value of 14V.
+      </p>
+      <p>
+        To use the global parameter in your circuit
+      </p>
+      <ol>
+        <li>
+          Find the numeric value that you want to replace: a
+          component, model parameter, or other property value.
+        </li>
+        <li>
+          <p>
+            Replace the value with the name of the global parameter
+            using the following syntax:<br />
+             { global_parameter_name }<br />
+             The curly braces tell PSpice to evaluate the parameter
+            and use its value.
+          </p>
+          <div class="panelMacro">
+            <table class="warningMacro">
+              <colgroup>
+                <col width="24" />
+                <col />
+              </colgroup>
+              <tr>
+                <td valign="top">
+                  <img align="absmiddle" alt="" border="0"
+                  height="16"
+                  src="images/icons/emoticons/forbidden.png"
+                  width="16" />
+                </td>
+                <td>
+                  <p>
+                    To avoid errors, always include parameter
+                    variable name in curly braces when it is
+                    assigned to the parameter/property on the part.
+                  </p>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </li>
+      </ol>
+      <h3 id="PreparingaDesignforSimulation-Expressions">
+        Expressions
+      </h3>
+      <p>
+        An expression is a mathematical relationship that you can
+        use to define a numeric or Boolean (TRUE/FALSE) value.
+      </p>
+      <p>
+        PSpice evaluates the expression to a single value every
+        time:
+      </p>
+      <ul>
+        <li>
+          it reads in a new circuit
+        </li>
+        <li>
+          a parameter value used within an expression changes
+          during an analysis.
+        </li>
+      </ul>
+      <p>
+        An example of this would be a parameter that changes with
+        each step of a DC sweep or parametric analysis.
+      </p>
+      <h4 id="PreparingaDesignforSimulation-Specifyingexpressions">
+        Specifying expressions
+      </h4>
+      <p>
+        To use an expression in your circuit
+      </p>
+      <ol>
+        <li>
+          Find the numeric or boolean value you want to replace: a
+          component value, model parameter value, other property
+          value, or logic in an IF function test.
+        </li>
+        <li>
+          Replace the value with an expression using the following
+          syntax:<br />
+           { expression }<br />
+           where {expression} can contain any of the following:
+        </li>
+      </ol>
+      <ul>
+        <li style="list-style-type: none;">
+          <ul>
+            <li>
+              standard operators (listed in the table below)
+            </li>
+            <li>
+              built-in functions (listed in the PSpice User&#39;s
+              Guide)
+            </li>
+            <li>
+              user-defined functions
+            </li>
+            <li>
+              system variables (listed in the PSpice User&#39;s
+              Guide)
+            </li>
+            <li>
+              user-defined global parameters
+            </li>
+            <li>
+              literal operands
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <p>
+        The curly braces tell PSpice to evaluate the expression and
+        use its value.
+      </p>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <th class="confluenceTh">
+                Operator class
+              </th>
+              <th class="confluenceTh">
+                Operator
+              </th>
+              <th class="confluenceTh">
+                Operation
+              </th>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                arithmetic
+              </td>
+              <td class="confluenceTd">
+                &#160;
+              </td>
+              <td class="confluenceTd">
+                &#160;
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                &#160;
+              </td>
+              <td class="confluenceTd">
+                +
+              </td>
+              <td class="confluenceTd">
+                addition or string concatenation
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                &#160;
+              </td>
+              <td class="confluenceTd">
+                -
+              </td>
+              <td class="confluenceTd">
+                subtraction
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd" colspan="1">
+                &#160;
+              </td>
+              <td class="confluenceTd" colspan="1">
+                *
+              </td>
+              <td class="confluenceTd" colspan="1">
+                multiplication
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd" colspan="1">
+                &#160;
+              </td>
+              <td class="confluenceTd" colspan="1">
+                /
+              </td>
+              <td class="confluenceTd" colspan="1">
+                division
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd" colspan="1">
+                &#160;
+              </td>
+              <td class="confluenceTd" colspan="1">
+                **
+              </td>
+              <td class="confluenceTd" colspan="1">
+                exponentiation
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd" colspan="1">
+                logical
+              </td>
+              <td class="confluenceTd" colspan="1">
+                &#160;
+              </td>
+              <td class="confluenceTd" colspan="1">
+                &#160;
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd" colspan="1">
+                &#160;
+              </td>
+              <td class="confluenceTd" colspan="1">
+                ~
+              </td>
+              <td class="confluenceTd" colspan="1">
+                unary NOT
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd" colspan="1">
+                &#160;
+              </td>
+              <td class="confluenceTd" colspan="1">
+                |
+              </td>
+              <td class="confluenceTd" colspan="1">
+                boolean OR
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd" colspan="1">
+                &#160;
+              </td>
+              <td class="confluenceTd" colspan="1">
+                ^
+              </td>
+              <td class="confluenceTd" colspan="1">
+                boolean XOR
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd" colspan="1">
+                &#160;
+              </td>
+              <td class="confluenceTd" colspan="1">
+                &amp;
+              </td>
+              <td class="confluenceTd" colspan="1">
+                boolean AND
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd" colspan="1">
+                relational*
+              </td>
+              <td class="confluenceTd" colspan="1">
+                &#160;
+              </td>
+              <td class="confluenceTd" colspan="1">
+                &#160;
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd" colspan="1">
+                &#160;
+              </td>
+              <td class="confluenceTd" colspan="1">
+                ==
+              </td>
+              <td class="confluenceTd" colspan="1">
+                equality test
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd" colspan="1">
+                &#160;
+              </td>
+              <td class="confluenceTd" colspan="1">
+                !=
+              </td>
+              <td class="confluenceTd" colspan="1">
+                non-equality test
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd" colspan="1">
+                &#160;
+              </td>
+              <td class="confluenceTd" colspan="1">
+                &gt;
+              </td>
+              <td class="confluenceTd" colspan="1">
+                greater than test
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd" colspan="1">
+                &#160;
+              </td>
+              <td class="confluenceTd" colspan="1">
+                &gt;=
+              </td>
+              <td class="confluenceTd" colspan="1">
+                greater than or equal to test
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd" colspan="1">
+                &#160;
+              </td>
+              <td class="confluenceTd" colspan="1">
+                &lt;
+              </td>
+              <td class="confluenceTd" colspan="1">
+                less than test
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd" colspan="1">
+                &#160;
+              </td>
+              <td class="confluenceTd" colspan="1">
+                &lt;=
+              </td>
+              <td class="confluenceTd" colspan="1">
+                less than or equal to test
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        *Logical and relational operators are used within the IF()
+        function; for digital parts, logical operators are used in
+        Boolean expressions.
+      </p>
+      <p>
+        For lists of system variables and functions in arithmetic
+        expression, refer to your PSpice User&#39;s Guide.
+      </p>
+      <h2
+      id="PreparingaDesignforSimulation-AssociatingPSpicemodeltoaCapturesymbol">
+        Associating PSpice model to a Capture symbol
+      </h2>
+      <p>
+        You can associate a PSpice model to an existing Capture
+        symbol using the Model Import wizard.
+      </p>
+      <p>
+        To associate a PSpice model to an existing Capture symbol:
+      </p>
+      <ol>
+        <li>
+          Open the library (.OLB) containing the symbol for which
+          the PSpice model is required.
+        </li>
+        <li>
+          <p>
+            Choose Tools and choose the Associate PSpice Model
+            command.<br />
+             or<br />
+             From the library file pop-up menu, choose Associate
+            PSpice Model.<br />
+             The Model Import Wizard appears.<br />
+             <img class="confluence-embedded-image"
+            data-image-src="attachments/25041040/25362846.gif"
+            src="attachments/25041040/25362846.gif" />
+          </p>
+          <div class="panelMacro">
+            <table class="infoMacro">
+              <colgroup>
+                <col width="24" />
+                <col />
+              </colgroup>
+              <tr>
+                <td valign="top">
+                  <img align="absmiddle" alt="" border="0"
+                  height="16"
+                  src="images/icons/emoticons/information.png"
+                  width="16" />
+                </td>
+                <td>
+                  <p>
+                    If the symbol is open in Capture, the Associate
+                    PSpice Model command will appear disabled in
+                    the pop-up menu.
+                  </p>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="panelMacro">
+            <table class="noteMacro">
+              <colgroup>
+                <col width="24" />
+                <col />
+              </colgroup>
+              <tr>
+                <td valign="top">
+                  <img align="absmiddle" alt="" border="0"
+                  height="16"
+                  src="images/icons/emoticons/warning.png"
+                  width="16" />
+                </td>
+                <td>
+                  <p>
+                    If the selected symbol in the .OLB file has a
+                    Convert view, it will be ignored by the Model
+                    Import wizard. The PSpice model gets attached
+                    to the symbol in the normal view.
+                  </p>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="panelMacro">
+            <table class="warningMacro">
+              <colgroup>
+                <col width="24" />
+                <col />
+              </colgroup>
+              <tr>
+                <td valign="top">
+                  <img align="absmiddle" alt="" border="0"
+                  height="16"
+                  src="images/icons/emoticons/forbidden.png"
+                  width="16" />
+                </td>
+                <td>
+                  <p>
+                    If you are reusing any existing symbol, you
+                    might get an warning stating that the
+                    Implementation property is already defined.
+                    Ignore the warning and click OK.
+                  </p>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </li>
+        <li>
+          Specify the name and location of the library containing
+          the required PSpice model.<br />
+           You can either select the library from the Base Model
+          Library drop-down list box or can browse to the library
+          location.<br />
+           Once you have selected the .lib file, the Model Import
+          wizard lists the model, then matches the symbol, in the
+          Matching Model list box.
+        </li>
+        <li>
+          In the Select Matching page of the wizard, choose a model
+          from the Matching Models list box and click Next.
+        </li>
+        <li>
+          <p>
+            In the Define Pin Mapping page of the wizard, map each
+            of the model terminal to a Symbol pin. The pin names on
+            the selected symbol appear in the Symbol Pin drop-down
+            list box.<br />
+            <br />
+          </p>
+          <div class="panelMacro">
+            <table class="tipMacro">
+              <colgroup>
+                <col width="24" />
+                <col />
+              </colgroup>
+              <tr>
+                <td valign="top">
+                  <img align="absmiddle" alt="" border="0"
+                  height="16"
+                  src="images/icons/emoticons/check.png"
+                  width="16" />
+                </td>
+                <td>
+                  <p>
+                    For mapping you may want to view the model
+                    definition. For this use the View Model Text
+                    button at the bottom-left corner of the wizard.
+                  </p>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </li>
+        <li>
+          <p>
+            To complete attaching a PSpice model to the selected
+            symbol and to close the Model Import wizard, click
+            Finish.<br />
+             A message box appears indicating that the a PSpice
+            model is now attached to the selected symbol.<br />
+             <img class="confluence-embedded-image"
+            data-image-src="attachments/25041040/25362847.gif"
+            src="attachments/25041040/25362847.gif" />
+          </p>
+          <div class="panelMacro">
+            <table class="noteMacro">
+              <colgroup>
+                <col width="24" />
+                <col />
+              </colgroup>
+              <tr>
+                <td valign="top">
+                  <img align="absmiddle" alt="" border="0"
+                  height="16"
+                  src="images/icons/emoticons/warning.png"
+                  width="16" />
+                </td>
+                <td>
+                  <p>
+                    The procedure covered in this section can be
+                    used to attach PSpice models only to
+                    homogeneous part symbols.
+                  </p>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </li>
+      </ol>
+      <p>
+        When you use Model Import Wizard to attach a model to a
+        symbol, the following symbol properties are updated.
+      </p>
+      <ul>
+        <li>
+          Value of the IMPLEMENTATION TYPE property
+        </li>
+        <li>
+          Value of the IMPLEMENTATION property
+        </li>
+      </ul>
+      <div class="panelMacro">
+        <table class="noteMacro">
+          <colgroup>
+            <col width="24" />
+            <col />
+          </colgroup>
+          <tr>
+            <td valign="top">
+              <img align="absmiddle" alt="" border="0" height="16"
+              src="images/icons/emoticons/warning.png"
+              width="16" />
+            </td>
+            <td>
+              <p>
+                The value of the IMPLEMENTATION property attached
+                to the part symbol, should match the name of the
+                PSpice model as it appears in the .MODEL or .SUBCKT
+                definition.
+              </p>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <p style="margin-left: 30.0px;">
+        <img class="confluence-embedded-image"
+        data-image-src="attachments/25041040/25362848.gif"
+        src="attachments/25041040/25362848.gif" />
+      </p>
+      <ul>
+        <li>
+          Value of the property (not required for template-based
+          models).
+        </li>
+      </ul>
+      <h2
+      id="PreparingaDesignforSimulation-ImportingPSpiceSchematicProjectsinCapture">
+        Importing PSpice Schematic Projects in Capture
+      </h2>
+      <p>
+        You can import a MicroSim Schematics project to an OrCAD
+        Capture project.
+      </p>
+      <p>
+        To convert a Schematics project to Capture:
+      </p>
+      <ol>
+        <li>
+          In Capture, choose File - Import Design.
+        </li>
+        <li>
+          In the PSpice tab, select the source schematic (Open),
+          the destination project, (Save As) and the PSPICE.INI
+          (Schematic Configuration File) file for existing
+          settings.
+        </li>
+        <li>
+          &#160;Click OK to start the automated translation
+          utility.
+        </li>
+      </ol>
+      <div class="panelMacro">
+        <table class="infoMacro">
+          <colgroup>
+            <col width="24" />
+            <col />
+          </colgroup>
+          <tr>
+            <td valign="top">
+              <img align="absmiddle" alt="" border="0" height="16"
+              src="images/icons/emoticons/information.png"
+              width="16" />
+            </td>
+            <td>
+              <p>
+                For more detailed information about using the
+                Schematics-to-Capture Translator, see the online
+                guide Converting MicroSim Schematics Designs to
+                OrCAD Capture Designs (SCH2CAP.PDF) located in the
+                \doc directory of your OrCAD installation, or if
+                you installed the documentation to your hard disk,
+                you can access it by choosing Cadence Help from the
+                Cadence - Release &lt;version&gt; options of the
+                Start menu.
+              </p>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <h2 id="PreparingaDesignforSimulation-DefiningStimuli">
+        Defining Stimuli
+      </h2>
+      <p>
+        To simulate your circuit, you need to connect one or more
+        source parts that describe the input signal that the
+        circuit must respond to .
+      </p>
+      <p>
+        The PSpice libraries supply several source parts that are
+        described in the tables that follow. These parts depend on:
+      </p>
+      <ul>
+        <li>
+          the kind of analysis you are running,
+        </li>
+        <li>
+          whether you are connecting to the analog or digital
+          portion of your circuit, and
+        </li>
+        <li>
+          how you want to define the stimulus: using the Stimulus
+          Editor, using a file specification, or by defining part
+          property values.
+        </li>
+      </ul>
+      <h3 id="PreparingaDesignforSimulation-Analogstimuli">
+        Analog stimuli
+      </h3>
+      <p>
+        Analog stimuli include both voltage and current sources.
+        The following table shows the part names for voltage
+        sources.
+      </p>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <th class="confluenceTh">
+                Input
+              </th>
+              <th class="confluenceTh">
+                Part for voltage
+              </th>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                DC bias
+              </td>
+              <td class="confluenceTd">
+                VDC or VSRC
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                AC magnitude and phase
+              </td>
+              <td class="confluenceTd">
+                VAC or VSRC
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                exponential
+              </td>
+              <td class="confluenceTd">
+                VEXP or VSTIM
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                periodic pulse
+              </td>
+              <td class="confluenceTd">
+                VPULSE or VSTIM
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd" colspan="1">
+                piecewise-linear
+              </td>
+              <td class="confluenceTd" colspan="1">
+                VPWL or VSTIM
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd" colspan="1">
+                piecewise-linear that repeats forever
+              </td>
+              <td class="confluenceTd" colspan="1">
+                VPWL_RE_FOREVER or VPWL_F_RE_FOREVER
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd" colspan="1">
+                piecewise-linear that repeats n times
+              </td>
+              <td class="confluenceTd" colspan="1">
+                VPWL_N_TIMES or VPWL_F_N_TIMES*
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd" colspan="1">
+                frequency-modulated sine wave
+              </td>
+              <td class="confluenceTd" colspan="1">
+                VSFFM or VSTIM
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd" colspan="1">
+                sine wave
+              </td>
+              <td class="confluenceTd" colspan="1">
+                VSIN or VSTIM
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        *VPWL_F_RE_FOREVER and VPWL_F_N_TIMES are file-based parts;
+        the stimulus specification is saved in a file and adheres
+        to the PSpice netlist syntax.
+      </p>
+      <p>
+        To determine the part name for an equivalent current
+        source, in the table of voltage source parts, replace the
+        first V in the part name with I. For example, the current
+        source equivalent to VDC is IDC, to VAC is IAC, to VEXP is
+        IEXP, and so on.
+      </p>
+      <h4 id="PreparingaDesignforSimulation-UsingVSTIMandISTIM">
+        Using VSTIM and ISTIM
+      </h4>
+      <p>
+        You can use VSTIM and ISTIM parts to define any kind of
+        time-based input signals. To specify the input signal
+        itself, you need to use the Stimulus Editor.
+      </p>
+      <p>
+        <span style="color: rgb(0,0,0);"><strong>If you want to
+        specify multiple stimulus types</strong></span>
+      </p>
+      <p>
+        If you want to run more than one analysis type, including a
+        transient analysis, then you need to use either of the
+        following:
+      </p>
+      <ul>
+        <li>
+          time-based stimulus parts with AC and DC properties
+        </li>
+        <li>
+          VSRC or ISRC parts
+        </li>
+      </ul>
+      <p>
+        <span style="color: rgb(0,0,0);"><strong>Using time-based
+        stimulus parts with AC and DC properties</strong></span>
+      </p>
+      <p>
+        The time-based stimulus parts that you can use to define a
+        transient, DC, and/or AC input signal are listed below.
+      </p>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <td class="confluenceTd">
+                VEXP
+              </td>
+              <td class="confluenceTd">
+                IEXP
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                VPULSE
+              </td>
+              <td class="confluenceTd">
+                IPULSE
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                VPWL
+              </td>
+              <td class="confluenceTd">
+                IPWL
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                VPWL_F_RE_FOREVER
+              </td>
+              <td class="confluenceTd">
+                IPWL_F_RE_FOREVER
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd" colspan="1">
+                VPWL_F_N_TIMES
+              </td>
+              <td class="confluenceTd" colspan="1">
+                IPWL_F_N_TIMES
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd" colspan="1">
+                VPWL_RE_FOREVER
+              </td>
+              <td class="confluenceTd" colspan="1">
+                IPWL_RE_FOREVER
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd" colspan="1">
+                VPWL_RE_N_TIMES
+              </td>
+              <td class="confluenceTd" colspan="1">
+                IPWL_RE_N_TIMES
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd" colspan="1">
+                VSFFM
+              </td>
+              <td class="confluenceTd" colspan="1">
+                ISFFM
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd" colspan="1">
+                VSIN
+              </td>
+              <td class="confluenceTd" colspan="1">
+                ISIN
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        In addition to the transient properties, each of these
+        parts also has a DC and AC property. When you use one of
+        these parts, you must define all of the transient
+        properties. However, it is common to leave DC and/or AC
+        undefined (blank). When you give them a value, the syntax
+        you need to use is as follows.
+      </p>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <th class="confluenceTh">
+                Property
+              </th>
+              <th class="confluenceTh">
+                Syntax
+              </th>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                DC
+              </td>
+              <td class="confluenceTd">
+                DC_value[units]
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                AC
+              </td>
+              <td class="confluenceTd">
+                magnitude_value[units] [phase_value]
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="panelMacro">
+        <table class="infoMacro">
+          <colgroup>
+            <col width="24" />
+            <col />
+          </colgroup>
+          <tr>
+            <td valign="top">
+              <img align="absmiddle" alt="" border="0" height="16"
+              src="images/icons/emoticons/information.png"
+              width="16" />
+            </td>
+            <td>
+              <p>
+                For the meaning of transient source properties,
+                refer to the I/V (independent current and voltage
+                source) device type syntax in the Analog Devices
+                chapter in the online PSpice Reference Guide.
+              </p>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <h4 id="PreparingaDesignforSimulation-UsingVSRCorISRCparts">
+        Using VSRC or ISRC parts
+      </h4>
+      <p>
+        The VSRC and ISRC parts have one property for each analysis
+        type: DC, AC, and TRAN. You can set any or all of them
+        using PSpice netlist syntax. When you give them a value,
+        the syntax you need to use is as follows.
+      </p>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <th class="confluenceTh">
+                Property
+              </th>
+              <th class="confluenceTh">
+                Syntax
+              </th>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                DC
+              </td>
+              <td class="confluenceTd">
+                DC_value[units]
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                AC
+              </td>
+              <td class="confluenceTd">
+                magnitude_value[units] [phase_value]
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                TRAN
+              </td>
+              <td class="confluenceTd">
+                time-based_type (parameters)
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        where time-based_type is EXP, PULSE, PWL, SFFM, or SIN, and
+        the parameters depend on the time-based_type.
+      </p>
+      <div class="panelMacro">
+        <table class="infoMacro">
+          <colgroup>
+            <col width="24" />
+            <col />
+          </colgroup>
+          <tr>
+            <td valign="top">
+              <img align="absmiddle" alt="" border="0" height="16"
+              src="images/icons/emoticons/information.png"
+              width="16" />
+            </td>
+            <td>
+              <p>
+                If you are running only a transient analysis, it is
+                recommended that you use a VSTIM or ISTIM part if
+                you have the standard package, or one of the other
+                time-based source part that has properties specific
+                for a waveform shape.
+              </p>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <h3 id="PreparingaDesignforSimulation-Digitalstimuli">
+        Digital stimuli
+      </h3>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <th class="confluenceTh">
+                Input
+              </th>
+              <th class="confluenceTh">
+                Part
+              </th>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                For transient analyses
+              </td>
+              <td class="confluenceTd">
+                &#160;
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd" colspan="1">
+                DIGSTIMn
+              </td>
+              <td class="confluenceTd" colspan="1">
+                signal or bus (any width)
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                DIGCLOCK
+              </td>
+              <td class="confluenceTd">
+                clock signal
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                STIM1
+              </td>
+              <td class="confluenceTd">
+                1-bit signal
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd" colspan="1">
+                STIM4
+              </td>
+              <td class="confluenceTd" colspan="1">
+                4-bit bus
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd" colspan="1">
+                STIM8
+              </td>
+              <td class="confluenceTd" colspan="1">
+                8-bit bus
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd" colspan="1">
+                STIM16
+              </td>
+              <td class="confluenceTd" colspan="1">
+                16-bit bus
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd" colspan="1">
+                FILESTIMn
+              </td>
+              <td class="confluenceTd" colspan="1">
+                file-based signal or bus (any width)
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <hr xmlns:html="http://www.w3.org/1999/xhtml" />
+    <hr xmlns:html="http://www.w3.org/1999/xhtml" align="left" />
+    <div xmlns:html="http://www.w3.org/1999/xhtml"
+    style="text-align: left;">
+      <!-- Begin Buttons -->
+      <table border="0" cellpadding="0" cellspacing="0"
+      width="650">
+        <tbody>
+          <tr>
+            <td colspan="10" height="36" width="650">
+              <img height="34" src="../support/header_doc.gif"
+              width="650" />
+            </td>
+          </tr>
+          <tr>
+            <td height="20" width="59">
+              <a href="javascript:openLibrary()"><img
+              alt="View Library" border="0" height="20"
+              src="../support/nav2_library.gif" width="59" /></a>
+            </td>
+            <td height="20" width="73">
+              <a href="cap_ugTOC.html"><img alt="Table of Contents"
+              border="0" src="../support/nav2_toc.gif" /></a>
+            </td>
+            <td height="20" width="46">
+              <img alt="Index" border="0"
+              src="../support/nav2_index_b.gif" />
+            </td>
+            <td>
+              <a href="Creating_Projects_for_Simulation.html"><img
+              alt="Previous" border="0"
+              src="../support/nav2_previous.gif" /></a>
+            </td>
+            <td>
+              <a href="Using_Partial_Design_Simulation.html"><img
+              alt="Next" border="0"
+              src="../support/nav_next.gif" /></a>
+            </td>
+            <td height="20">
+              <a href="cap_ug.pdf"><img
+              alt="Open PDF to print book" border="0" height="20"
+              src="../support/nav2_print.gif" width="114" /></a>
+            </td>
+            <td height="20" width="61">
+              <img src="../support/nav2_black.gif" />
+            </td>
+            <td height="20" width="76">
+              <a href="/feedback.htm"><img alt="Email Comments"
+              border="0" height="20"
+              src="../support/nav2_feedback.gif" width="76" /></a>
+            </td>
+            <td height="20" width="43">
+              <a href="../cdsuser/help.html"><img
+              alt="Help Using Documentation" border="0" height="20"
+              src="../support/nav2_help.gif" width="43" /></a>
+            </td>
+            <td height="20" width="37">
+              <a href="/exitsearch.htm"><img
+              alt="Shut Down Cadence Documentation Server"
+              border="0" height="20" src="../support/nav2_exit.gif"
+              width="37" /></a>
+            </td>
+          </tr>
+        </tbody>
+      </table><!-- End Buttons -->
+    </div><br xmlns:html="http://www.w3.org/1999/xhtml" />
+     <font xmlns:html="http://www.w3.org/1999/xhtml" size="-1">For
+    support, see <a href="http://support.cadence.com"
+    target="_blank">Cadence Online Support</a> service.</font> <br
+    xmlns:html="http://www.w3.org/1999/xhtml" />
+     <br xmlns:html="http://www.w3.org/1999/xhtml" />
+     <font xmlns:html="http://www.w3.org/1999/xhtml"
+    size="-1"><i>Copyright &#169; 2012, <a
+    href="http://www.cadence.com">Cadence Design Systems,
+    Inc.</a></i></font> <br
+    xmlns:html="http://www.w3.org/1999/xhtml" />
+     <font xmlns:html="http://www.w3.org/1999/xhtml" size="-1">All
+    rights reserved.</font> <br
+    xmlns:html="http://www.w3.org/1999/xhtml" />
+     <br xmlns:html="http://www.w3.org/1999/xhtml" />
+  </body>
+</html>

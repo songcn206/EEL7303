@@ -1,0 +1,706 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 83 52
+HEADER "Dimensioning Parameters"
+
+#
+#   'General' tab popups ...
+#
+
+POPUP <DT_UNITSPOP>"Inches""2","Mils""1","Meters""6","Centimeters""4",\
+"Millimeters""3","Microns""5".
+
+# 
+#   'Dimension Lines' tab popups ...
+#
+
+POPUP <DL_TERM1POP>"Arrow""0","Bullet""1","Slash""2","None""3".
+
+POPUP <DL_ARROWTYPEPOP>"3 Point""0","4 Point""1","Open""2".
+
+POPUP <DL_ODDDIMPOP>"Horiz/Vert""0","Odd Axis""3".
+
+#
+#   'Extension Lines' tab popups ...
+#
+
+POPUP <EL_SUPPRESSPOP>"None""0","Top/Left""1","Bottom/Right""2","Both""3".
+
+#
+#   'Balloons' tab popups ...
+#
+
+POPUP <dim_bllntypepop>"Circle""100","Square""101","Triangle""102","Oblong""103","Rectangle""104","Square/Circle""105".
+
+
+
+
+TILE
+
+TABSET "DimensioningParametersTABS"
+FLOC 1 1
+TSSIZE 82 36
+
+TAB "General"
+
+TEXT "Units:"
+TLOC 2 13
+ENDTEXT
+
+FIELD ansi_standard
+FLOC 2 4
+CHECKLIST "ANSI" "STANDARDS_GROUP"
+ENDFIELD
+
+FIELD iso_standard
+FLOC 11 4
+CHECKLIST "ISO" "STANDARDS_GROUP"
+ENDFIELD
+
+FIELD bsi_standard
+FLOC 21 4
+CHECKLIST "BSI" "STANDARDS_GROUP"
+ENDFIELD
+
+FIELD jis_standard
+FLOC 2 6
+CHECKLIST "JIS" "STANDARDS_GROUP"
+ENDFIELD
+
+FIELD afnor_standard
+FLOC 11 6
+CHECKLIST "AFNOR " "STANDARDS_GROUP"
+ENDFIELD
+
+FIELD din_standard
+FLOC 21 6
+CHECKLIST "DIN" "STANDARDS_GROUP"
+ENDFIELD
+
+FIELD unit_inch
+FLOC 11 13
+CHECKLIST "Inches" "PARAMS_UNITSGROUP"
+ENDFIELD
+
+FIELD unit_metric
+FLOC 11 15
+CHECKLIST "Millimeters" "PARAMS_UNITSGROUP"
+ENDFIELD
+
+GROUP "Standard conformance"
+GLOC 1 1
+GSIZE 29 8
+ENDGROUP
+
+GROUP "Parameter editing"
+GLOC 1 10
+GSIZE 29 8
+ENDGROUP
+
+ENDTAB
+
+# --------------------------------------------------------------
+
+TAB "Text"
+
+GROUP "Primary dimensions"
+GLOC 40 0
+GSIZE 28 7
+ENDGROUP
+
+TEXT "Units:"
+TLOC 44 2
+ENDTEXT
+
+TEXT "Decimal places:"
+TLOC 44 4
+INFO INSTANCE_TEXT_13 30
+ENDTEXT
+
+TEXT "Diameter symbol location:"
+TLOC 5 14
+ENDTEXT
+
+TEXT "Units:"
+TLOC 44 13
+ENDTEXT
+
+TEXT "Radius symbol location:"
+TLOC 5 18
+ENDTEXT
+
+TEXT "Decimal places:"
+TLOC 44 15
+INFO INSTANCE_TEXT_14 30
+ENDTEXT
+
+TEXT "Location:"
+TLOC 44 18
+INFO INSTANCE_TEXT_12 30
+ENDTEXT
+
+TEXT "Special handling:"
+TLOC 5 22
+INFO INSTANCE_TEXT_10 30
+ENDTEXT
+
+TEXT "Scale factor:"
+TLOC 5 30
+INFO INSTANCE_TEXT_11 30
+ENDTEXT
+
+TEXT "Decimal places:"
+TLOC 44 30
+INFO INSTANCE_TEXT_15 30
+ENDTEXT
+
+FIELD units
+FLOC 52 2
+ENUMSET 12
+POP "DT_UNITSPOP"
+ENDFIELD
+
+FIELD accuracy
+FLOC 62 4
+INTSLIDEBAR 1 1
+MIN 0
+MAX 4
+ENDFIELD
+
+GROUP "General parameters"
+GLOC 1 0
+GSIZE 38 33
+ENDGROUP
+
+TEXT "Text block:"
+TLOC 5 2
+INFO INSTANCE_TEXT_09 30
+ENDTEXT
+
+FIELD text_block_text
+FLOC 16 2
+INTSLIDEBAR 2 2
+MIN 1
+MAX 64
+ENDFIELD
+
+TEXT "Place holder:"
+TLOC 5 4
+ENDTEXT
+
+FIELD place_period
+FLOC 16 4
+CHECKLIST "Period" "DT_POINT_GROUP"
+ENDFIELD
+
+FIELD place_comma
+FLOC 24 4
+CHECKLIST "Comma" "DT_POINT_GROUP"
+ENDFIELD
+
+FIELD leading_zero
+FLOC 2 6
+CHECKLIST "Use leading zero before decimal point"
+ENDFIELD
+
+FIELD trailing_zeros
+FLOC 2 8
+CHECKLIST "Use trailing zeros after decimal point"
+ENDFIELD
+
+FIELD diameter_symbol
+FLOC 2 12
+CHECKLIST "Use diameter symbol for linear dimension"
+ENDFIELD
+
+FIELD align_text
+FLOC 2 10
+CHECKLIST "Align text with dimension line"
+ENDFIELD
+
+FIELD dual_dimensions
+FLOC 41 10
+CHECKLIST "Use dual dimensions"
+ENDFIELD
+
+FIELD diameter_leading
+FLOC 24 14
+CHECKLIST "Leading" "DIAMLOCGROUP"
+ENDFIELD
+
+FIELD diameter_trailing
+FLOC 24 16
+CHECKLIST "Trailing" "DIAMLOCGROUP"
+ENDFIELD
+
+FIELD second_units
+FLOC 52 13
+ENUMSET 12
+POP "DT_UNITSPOP"
+ENDFIELD
+
+FIELD radius_leading
+FLOC 24 18
+CHECKLIST "Leading" "RADLOCGRP"
+ENDFIELD
+
+FIELD second_accuracy
+FLOC 62 15
+INTSLIDEBAR 1 1
+MIN 0
+MAX 4
+ENDFIELD
+
+FIELD radius_trailing
+FLOC 24 20
+CHECKLIST "Trailing" "RADLOCGRP"
+ENDFIELD
+
+FIELD second_right
+FLOC 52 18
+CHECKLIST "Right of primary" "DT_DDIMLOCGROUP"
+ENDFIELD
+
+FIELD special_none
+FLOC 24 22
+CHECKLIST "None" "DTSPECGROUP"
+ENDFIELD
+
+FIELD second_below
+FLOC 52 20
+CHECKLIST "Below primary" "DT_DDIMLOCGROUP"
+ENDFIELD
+
+FIELD special_reference
+FLOC 24 24
+CHECKLIST "Reference" "DTSPECGROUP"
+ENDFIELD
+
+FIELD special_nts
+FLOC 24 26
+CHECKLIST "NTS" "DTSPECGROUP"
+ENDFIELD
+
+FIELD special_basic
+FLOC 24 28
+CHECKLIST "Basic" "DTSPECGROUP"
+ENDFIELD
+
+FIELD scale
+FLOC 25 30
+REALFILLIN 6 6
+DECIMAL 4
+ENDFIELD
+
+FIELD atol_accuracy
+FLOC 62 30
+INTSLIDEBAR 1 1
+MIN 0
+MAX 4
+ENDFIELD
+
+GROUP "Secondary dimensions"
+GLOC 40 7 
+GSIZE 28 15
+ENDGROUP
+
+GROUP "Datum dimensions"
+GLOC 40 22
+GSIZE 28 6
+ENDGROUP
+
+FIELD plus_minus_values
+FLOC 41 25
+CHECKLIST "Use +/- dimension values"
+ENDFIELD
+
+GROUP "Angular dimensions"
+GLOC 40 28
+GSIZE 28 5
+ENDGROUP
+
+ENDTAB
+
+# --------------------------------------------------------------
+
+TAB "Lines"
+
+GROUP "Dimension lines"
+GLOC 1 1
+GSIZE 37 32
+ENDGROUP
+
+GROUP "Terminations"
+GLOC 2 3
+GSIZE 35 10
+ENDGROUP
+
+TEXT "Leader:"
+TLOC 6 5
+TGROUP "Terminations"
+ENDTEXT
+
+TEXT "Linear top/left:"
+TLOC 6 7
+TGROUP "Terminations"
+ENDTEXT
+
+TEXT "Linear bottom/right:"
+TLOC 6 9
+TGROUP "Terminations"
+ENDTEXT
+
+FIELD leader
+FLOC 23 5
+FGROUP "Terminations"
+ENUMSET 7
+POP "DL_TERM1POP"
+ENDFIELD
+
+FIELD linear_top
+FLOC 23 7
+FGROUP "Terminations"
+ENUMSET 7
+POP "DL_TERM1POP"
+ENDFIELD
+
+FIELD linear_bottom
+FLOC 23 9
+FGROUP "Terminations"
+ENUMSET 7
+POP "DL_TERM1POP"
+ENDFIELD
+
+FIELD fill
+FLOC 3 11
+FGROUP "Terminations"
+CHECKLIST "Fill"
+ENDFIELD
+
+GROUP "Arrows"
+GLOC 2 13
+GSIZE 35 10
+ENDGROUP
+
+TEXT "Head type:"
+TLOC 6 15
+TGROUP "Arrows"
+ENDTEXT
+
+TEXT "Head length:"
+TLOC 6 17
+TGROUP "Arrows"
+INFO INSTANCE_TEXT_01 30
+ENDTEXT
+
+TEXT "Head width:"
+TLOC 6 19
+TGROUP "Arrows"
+INFO INSTANCE_TEXT_02 30
+ENDTEXT
+
+FIELD arrow_type
+FLOC 23 15
+FGROUP "Arrows"
+ENUMSET 8
+POP "DL_ARROWTYPEPOP"
+ENDFIELD
+
+FIELD arrow_length
+FLOC 23 17
+FGROUP "Arrows"
+STRFILLIN 10 10
+ENDFIELD
+
+FIELD arrow_width
+FLOC 23 19
+FGROUP "Arrows"
+STRFILLIN 10 10
+ENDFIELD
+
+FIELD arrow_inside
+FLOC 3 21
+FGROUP "Arrows"
+CHECKLIST "Inside extension lines"
+ENDFIELD
+
+# ......
+
+TEXT "Bullet diameter:"
+TLOC 5 25
+INFO INSTANCE_TEXT_04 30
+ENDTEXT
+
+TEXT "Slash length:"
+TLOC 5 27
+INFO INSTANCE_TEXT_03 30
+ENDTEXT
+
+TEXT "Odd angle axis:"
+TLOC 5 29
+INFO INSTANCE_TEXT_05 30
+ENDTEXT
+
+FIELD bullet_diameter
+FLOC 23 25
+STRFILLIN 10 10
+ENDFIELD
+
+FIELD slash_length
+FLOC 23 27
+STRFILLIN 10 10
+ENDFIELD
+
+FIELD odd_angle
+FLOC 23 29
+ENUMSET 11
+POP "DL_ODDDIMPOP"
+ENDFIELD
+
+# ......
+
+GROUP "Extension lines"
+GLOC 40 1
+GSIZE 42 32
+ENDGROUP
+ 
+TEXT "Line suppression:"
+TLOC 41 5
+INFO INSTANCE_TEXT_08 30
+ENDTEXT
+
+TEXT "Offset distance from element:"
+TLOC 41 7
+INFO INSTANCE_TEXT_06 30
+ENDTEXT
+
+TEXT "Distance beyond dimension line:"
+TLOC 41 9
+INFO INSTANCE_TEXT_07 30
+ENDTEXT
+
+FIELD suppress
+FLOC 65 5
+ENUMSET 13
+POP "EL_SUPPRESSPOP"
+ENDFIELD
+
+FIELD offset
+FLOC 65 7
+STRFILLIN 10 10
+ENDFIELD
+
+FIELD extension
+FLOC 65 9
+STRFILLIN 10 10
+ENDFIELD
+
+ENDTAB
+
+# --------------------------------------------------------------
+
+TAB "Balloons"
+
+TEXT "Type:"
+TLOC 5 4
+INFO INSTANCE_TEXT_28 30
+ENDTEXT
+
+TEXT "Size:"
+TLOC 5 6
+INFO INSTANCE_TEXT_16 30
+ENDTEXT
+
+TEXT "Text block:"
+TLOC 5 8
+INFO INSTANCE_TEXT_17 30
+ENDTEXT
+
+TEXT "Next value:"
+TLOC 5 10
+INFO INSTANCE_TEXT_18 30
+ENDTEXT
+
+TEXT "Max characters:"
+TLOC 5 21
+INFO INSTANCE_TEXT_19 30
+ENDTEXT
+
+FIELD type
+FLOC 21 4
+ENUMSET 9
+POP "dim_bllntypepop"
+ENDFIELD
+
+FIELD size
+FLOC 21 6
+STRFILLIN 10 10
+ENDFIELD
+
+FIELD text_block_blln
+FLOC 21 8
+INTSLIDEBAR 2 2
+MIN 1
+MAX 64
+ENDFIELD
+
+FIELD value
+FLOC 21 10
+STRFILLIN 12 12
+ENDFIELD
+
+FIELD autoincr
+FLOC 2 12
+CHECKLIST "Auto-increment value"
+ENDFIELD
+
+FIELD autosize
+FLOC 2 19
+CHECKLIST "Auto-size"
+ENDFIELD
+
+FIELD max_character
+FLOC 21 21
+INTSLIDEBAR 2 2
+MIN 1
+MAX 12
+ENDFIELD
+
+GROUP "General"
+GLOC 1 1
+GSIZE 35 14
+ENDGROUP
+
+GROUP "Auto-size"
+GLOC 1 16
+GSIZE 35 8
+ENDGROUP
+
+ENDTAB
+
+# --------------------------------------------------------------
+
+TAB "Tolerancing"
+
+TEXT "Type:"
+TLOC 5 3 
+INFO INSTANCE_TEXT_20 30
+ENDTEXT
+
+TEXT "Coordinate tolerance:"
+TLOC 32 3 
+INFO INSTANCE_TEXT_21 30
+ENDTEXT
+
+TEXT "Upper:"
+TLOC 49 3 
+INFO INSTANCE_TEXT_22 30
+ENDTEXT
+
+TEXT "Lower:"
+TLOC 49 5 
+INFO INSTANCE_TEXT_23 30
+ENDTEXT
+
+TEXT "Location:"
+TLOC 5 7 
+INFO INSTANCE_TEXT_24 30
+ENDTEXT
+
+TEXT "Angular tolerance:"
+TLOC 32 7 
+INFO INSTANCE_TEXT_25 30
+ENDTEXT
+
+TEXT "Upper:"
+TLOC 49 7 
+INFO INSTANCE_TEXT_26 30
+ENDTEXT
+
+TEXT "Lower:"
+TLOC 49 9 
+INFO INSTANCE_TEXT_27 30
+ENDTEXT
+
+FIELD use_tolerancing
+FLOC 2 1
+CHECKLIST "Use tolerancing"
+ENDFIELD
+
+FIELD tolerance_plus_minus
+FLOC 12 3 
+CHECKLIST "Plus or minus" "DT_CTOLTYPGROUP"
+ENDFIELD
+
+FIELD upper_ctolerance
+FLOC 55 3 
+STRFILLIN 10 10
+ENDFIELD
+
+FIELD tolerance_limit
+FLOC 12 5 
+CHECKLIST "Limit" "DT_CTOLTYPGROUP"
+ENDFIELD
+
+FIELD lower_ctolerance
+FLOC 55 5 
+STRFILLIN 10 10
+ENDFIELD
+
+FIELD tolerance_right
+FLOC 12 7
+CHECKLIST "Right of dimension" "DT_CTOLLOCGROUP"
+ENDFIELD
+
+FIELD upper_atolerance
+FLOC 55 7 
+REALFILLIN 10 10
+DECIMAL 4
+ENDFIELD
+
+FIELD tolerance_below
+FLOC 12 9 
+CHECKLIST "Below dimension" "DT_CTOLLOCGROUP"
+ENDFIELD
+
+FIELD lower_atolerance
+FLOC 55 9 
+REALFILLIN 10 10
+DECIMAL 4
+ENDFIELD
+
+ENDTAB
+
+# --------------------------------------------------------------
+
+FIELD done
+FLOC 1 40
+MENUBUTTON "Done" 9 3
+ENDFIELD
+
+FIELD apply
+FLOC 20 40
+MENUBUTTON "Apply" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 30 40
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 74 40
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+TEXT
+TLOC 1 37
+INFO parameters_setting 80
+ENDTEXT
+
+ENDTABSET
+
+ENDTILE
+
+ENDFORM

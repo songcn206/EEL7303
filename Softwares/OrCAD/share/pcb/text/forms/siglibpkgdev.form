@@ -1,0 +1,605 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM fixed_font
+FIXED
+PORT 112 26
+HEADER "IBIS Device Model Editor"
+
+POPUP <measurepop> "<none>""0".
+POPUP <SetWireNumPOP> "<none>""0".
+POPUP <SigAssignPwrBusPOP> """".
+POPUP <SigAssignGndBusPOP> """".
+POPUP <BusNameFilterPOP> """".
+POPUP <BusAssignBusNamePOP> """".
+POPUP <BusPinuseFilterPOP> """".
+POPUP <SigPinuseFilterPOP> """".
+
+ACTIVEFIELD "Cancel"
+
+TILE
+
+TABSET "TABS"
+FLOC 1 1
+TSSIZE 110 48
+
+TAB "Edit Pins"
+
+TEXT "min"
+TLOC 74 4
+TGROUP "Estimated Pin Parasitics"
+ENDTEXT
+
+TEXT "typ"
+TLOC 87 4
+TGROUP "Estimated Pin Parasitics"
+ENDTEXT
+
+TEXT "max"
+TLOC 98 4
+TGROUP "Estimated Pin Parasitics"
+ENDTEXT
+
+TEXT "Model Name :"
+TLOC 3 5
+TGROUP "Model Info"
+ENDTEXT
+
+TEXT
+TLOC 19 5
+INFO ModelName 20
+TGROUP "Model Info"
+ENDTEXT
+
+TEXT "Resistance :"
+TLOC 55 6
+TGROUP "Estimated Pin Parasitics"
+ENDTEXT
+
+TEXT "Manufacturer :"
+TLOC 3 8
+TGROUP "Model Info"
+ENDTEXT
+
+TEXT "Capacitance :"
+TLOC 55 9
+TGROUP "Estimated Pin Parasitics"
+ENDTEXT
+
+TEXT "Package Model :"
+TLOC 3 11
+TGROUP "Model Info"
+ENDTEXT
+
+TEXT "Inductance :"
+TLOC 55 12
+TGROUP "Estimated Pin Parasitics"
+ENDTEXT
+
+TEXT "Pin"
+TLOC 4 18
+TGROUP "IBIS Pin Data"
+ENDTEXT
+
+TEXT "Signal"
+TLOC 10 18
+TGROUP "IBIS Pin Data"
+ENDTEXT
+
+TEXT "IOCell"
+TLOC 18 18
+TGROUP "IBIS Pin Data"
+ENDTEXT
+
+TEXT "Resistance"
+TLOC 54 18
+TGROUP "IBIS Pin Data"
+ENDTEXT
+
+TEXT "Capacitance"
+TLOC 65 18
+TGROUP "IBIS Pin Data"
+ENDTEXT
+
+TEXT "Inductance"
+TLOC 77 18
+TGROUP "IBIS Pin Data"
+ENDTEXT
+
+TEXT "DiffPair"
+TLOC 88 18
+TGROUP "IBIS Pin Data"
+ENDTEXT
+
+TEXT "Mate"
+TLOC 90 19
+TGROUP "IBIS Pin Data"
+ENDTEXT
+
+TEXT "Wire"
+TLOC 97 18
+TGROUP "IBIS Pin Data"
+ENDTEXT
+
+FIELD ResMin
+FLOC 70 6
+FGROUP "Estimated Pin Parasitics"
+STRFILLIN 8 8
+ENDFIELD
+
+FIELD ResTyp
+FLOC 82 6
+FGROUP "Estimated Pin Parasitics"
+STRFILLIN 8 8
+ENDFIELD
+
+FIELD ResMax
+FLOC 94 6
+FGROUP "Estimated Pin Parasitics"
+STRFILLIN 8 8
+ENDFIELD
+
+FIELD Manufacturer
+FLOC 19 8
+FGROUP "Model Info"
+STRFILLIN 17 80
+ENDFIELD
+
+FIELD CapMin
+FLOC 70 9
+FGROUP "Estimated Pin Parasitics"
+STRFILLIN 8 8
+ENDFIELD
+
+FIELD CapTyp
+FLOC 82 9
+FGROUP "Estimated Pin Parasitics"
+STRFILLIN 8 8
+ENDFIELD
+
+FIELD CapMax
+FLOC 94 9
+FGROUP "Estimated Pin Parasitics"
+STRFILLIN 8 8
+ENDFIELD
+
+FIELD PkgModelName
+FLOC 19 11
+FGROUP "Model Info"
+STRFILLIN 17 80
+ENDFIELD
+
+FIELD IndMin
+FLOC 70 12
+FGROUP "Estimated Pin Parasitics"
+STRFILLIN 8 8
+ENDFIELD
+
+FIELD IndTyp
+FLOC 82 12
+FGROUP "Estimated Pin Parasitics"
+STRFILLIN 8 8
+ENDFIELD
+
+FIELD IndMax
+FLOC 94 12
+FGROUP "Estimated Pin Parasitics"
+STRFILLIN 8 8
+ENDFIELD
+
+FIELD PinData
+FLOC 3 21
+FGROUP "IBIS Pin Data"
+LIST "" 102 11
+ENDFIELD
+
+    #ifdef sigxp
+    #else
+FIELD UpdatePinsFromComp
+FLOC 8 42
+MENUBUTTON "Update Pins From Component" 29 3
+ENDFIELD
+    #endif
+
+FIELD AddPin
+FLOC 39 42
+MENUBUTTON "Add Pin Data" 14 3
+ENDFIELD
+
+FIELD MeasureDelays
+FLOC 56 42
+MENUBUTTON "Measure Delays" 20 3
+POP "measurepop"
+ENDFIELD
+
+FIELD SetWireNums
+FLOC 79 42
+MENUBUTTON "Set WireNumbers" 20 3
+POP "SetWireNumPOP"
+ENDFIELD
+
+GROUP "Model Info"
+GLOC 1 1
+GSIZE 40 14
+ENDGROUP
+
+GROUP "Estimated Pin Parasitics"
+GLOC 54 1
+GSIZE 53 14
+ENDGROUP
+
+GROUP "IBIS Pin Data"
+GLOC 1 16
+GSIZE 106 29
+ENDGROUP
+
+ENDTAB
+
+TAB "Assign Power/Ground Pins"
+
+TEXT "Nets shown for component"
+TLOC 44 3
+ENDTEXT
+
+TEXT
+TLOC 70 3
+INFO BusDesignComp 20
+ENDTEXT
+
+FIELD BusAutoAssignment
+FLOC 86 3
+MENUBUTTON "Auto Assignment" 8 3
+ENDFIELD
+
+TEXT "Sort By:"
+TLOC 4 5
+ENDTEXT
+
+FIELD BusSort_PinNum
+FLOC 12 5
+CHECKLIST "Pin#" "BusSort"
+ENDFIELD
+
+FIELD BusSort_BusName
+FLOC 22 5
+CHECKLIST "Bus Name" "BusSort"
+ENDFIELD
+
+FIELD BusSort_Pinuse
+FLOC 41 5
+CHECKLIST "Pinuse" "BusSort"
+ENDFIELD
+
+FIELD BusSort_NetName
+FLOC 56 5
+CHECKLIST "Net Name" "BusSort"
+ENDFIELD
+
+FIELD BusSort_Voltage
+FLOC 84 5
+CHECKLIST "DC Voltage" "BusSort"
+ENDFIELD
+
+TEXT "Filters:"
+TLOC 4 7
+ENDTEXT
+
+FIELD BusPinNumFilter
+FLOC 13 7
+STRFILLIN 6 20
+ENDFIELD
+
+FIELD BusNameFilter
+FLOC 23 7
+STRFILLIN 12 20
+POP "BusNameFilterPOP"
+ENDFIELD
+
+FIELD BusPinuseFilter
+FLOC 42 7
+ENUMSET 9
+POP "BusPinuseFilterPOP"
+ENDFIELD
+
+FIELD BusNetNameFilter
+FLOC 57 7
+STRFILLIN 24 255
+ENDFIELD
+
+FIELD BusVoltageFilter
+FLOC 85 7
+STRFILLIN 9 20
+ENDFIELD
+
+FIELD BusAllPins
+FLOC 13 10
+LIST "" 90 8
+ENDFIELD
+
+FIELD BusSelectAll
+FLOC 15 26
+MENUBUTTON "Select All" 15 3
+ENDFIELD
+
+FIELD BusClearSelected
+FLOC 31 26
+MENUBUTTON "Deselect All" 15 3
+ENDFIELD
+
+FIELD BusDeselectOne
+FLOC 47 26
+MENUBUTTON "Deselect One" 15 3
+ENDFIELD
+
+FIELD BusSelectedPins
+FLOC 13 32
+LIST "" 38 7
+ENDFIELD
+
+TEXT "Bus Name:"
+TLOC 54 36
+ENDTEXT
+ 
+FIELD BusAssignBusName
+FLOC 64 36
+STRFILLIN 9 30 
+POP "BusAssignBusNamePOP"
+ENDFIELD
+
+FIELD BusAssignPwrBusName
+FLOC 80 34
+MENUBUTTON "Assign As Pwr Bus" 19 3
+ENDFIELD
+
+FIELD BusAssignGndBusName
+FLOC 80 36
+MENUBUTTON "Assign As Gnd Bus" 19 3
+ENDFIELD
+
+FIELD BusAssignNoBus
+FLOC 80 38
+MENUBUTTON "Deassign" 19 3
+ENDFIELD
+
+TEXT "Pin#"
+TLOC 16 30
+ENDTEXT
+
+TEXT "Bus Name"
+TLOC 23 30
+ENDTEXT
+
+GROUP "All Pins"
+GLOC 3 1
+GSIZE 102 24
+ENDGROUP
+
+GROUP "Selected Pins"
+GLOC 3 28
+GSIZE 102 17
+ENDGROUP
+
+ENDTAB
+
+TAB "Assign Signal Pins"
+
+TEXT "Nets shown for component"
+TLOC 40 3
+ENDTEXT
+
+TEXT
+TLOC 70 3
+INFO SigDesignComp 20
+ENDTEXT
+
+TEXT "Sort By:"
+TLOC 2 5
+ENDTEXT
+
+FIELD SigSort_PinNum
+FLOC 12 5
+CHECKLIST "Pin#" "SigSort"
+ENDFIELD
+
+FIELD SigSort_IOCell
+FLOC 21 5
+CHECKLIST "IOCell" "SigSort"
+ENDFIELD
+
+FIELD SigSort_PwrBus
+FLOC 40 5
+CHECKLIST "Pwr Bus" "SigSort"
+ENDFIELD
+
+FIELD SigSort_GndBus
+FLOC 55 5
+CHECKLIST "Gnd Bus" "SigSort"
+ENDFIELD
+
+FIELD SigSort_Pinuse
+FLOC 70 5
+CHECKLIST "Pinuse" "SigSort"
+ENDFIELD
+
+FIELD SigSort_NetName
+FLOC 83 5
+CHECKLIST "Net Name" "SigSort"
+ENDFIELD
+
+TEXT "Filters:"
+TLOC 2 7
+ENDTEXT
+
+FIELD SigPinNumFilter
+FLOC 13 7
+STRFILLIN 6 20
+ENDFIELD
+
+FIELD SigIOCellFilter
+FLOC 22 7
+STRFILLIN 16 40
+ENDFIELD
+
+FIELD SigPwrBusFilter
+FLOC 41 7
+STRFILLIN 9 20
+POP "SigAssignPwrBusPOP"
+ENDFIELD
+
+FIELD SigGndBusFilter
+FLOC 56 7
+STRFILLIN 9 20
+POP "SigAssignGndBusPOP"
+ENDFIELD
+
+FIELD SigPinuseFilter
+FLOC 71 7
+ENUMSET 9
+POP "SigPinuseFilterPOP"
+ENDFIELD
+
+FIELD SigNetNameFilter
+FLOC 84 7
+STRFILLIN 20 255
+ENDFIELD
+
+FIELD SigAllPins
+FLOC 11 10
+LIST "" 95 8
+ENDFIELD
+ 
+FIELD SigSelectAll
+FLOC 15 26
+MENUBUTTON "Select All" 15 3
+ENDFIELD
+
+FIELD SigClearSelected
+FLOC 31 26
+MENUBUTTON "Deselect All" 15 3
+ENDFIELD
+
+FIELD SigDeselectOne
+FLOC 47 26
+MENUBUTTON "Deselect One" 15 3
+ENDFIELD
+
+TEXT "Pin#"
+TLOC 12 30
+ENDTEXT
+
+TEXT "IOCell"
+TLOC 21 30
+ENDTEXT
+
+TEXT "Pwr Bus"
+TLOC 40 30
+ENDTEXT
+
+TEXT "Gnd Bus"
+TLOC 55 30
+ENDTEXT
+
+FIELD SigSelectedPins
+FLOC 11 32
+LIST "" 60 7
+ENDFIELD
+
+TEXT "IOCell:"
+TLOC 73 30
+ENDTEXT
+
+FIELD SigAssignIOCell
+FLOC 82 30
+STRFILLIN 15 80
+ENDFIELD
+
+FIELD SigIOCellBrowse
+FLOC 99 30
+MENUBUTTON "Browse" 8 3
+ENDFIELD
+
+FIELD SigDoAssignIOCell
+FLOC 82 32
+MENUBUTTON "Assign" 8 3
+ENDFIELD
+
+FIELD SigAssignNoIOCell
+FLOC 91 32
+MENUBUTTON "Deassign" 8 3
+ENDFIELD
+
+TEXT "Pwr Bus:"
+TLOC 73 35
+ENDTEXT
+
+FIELD SigAssignPwrBus
+FLOC 82 35
+ENUMSET 14
+POP "SigAssignPwrBusPOP"
+ENDFIELD
+
+FIELD SigDoAssignPwrBus
+FLOC 82 37
+MENUBUTTON "Assign" 8 3
+ENDFIELD
+
+FIELD SigAssignNoPwrBus
+FLOC 91 37
+MENUBUTTON "Deassign" 8 3
+ENDFIELD
+
+TEXT "Gnd Bus:"
+TLOC 73 40
+ENDTEXT
+
+FIELD SigAssignGndBus
+FLOC 82 40
+ENUMSET 14
+POP "SigAssignGndBusPOP"
+ENDFIELD
+
+FIELD SigDoAssignGndBus
+FLOC 82 42
+MENUBUTTON "Assign" 8 3
+ENDFIELD
+
+FIELD SigAssignNoGndBus
+FLOC 91 42
+MENUBUTTON "Deassign" 8 3
+ENDFIELD
+
+GROUP "All Pins"
+GLOC 1 1
+GSIZE 107 24
+ENDGROUP
+
+GROUP "Selected Pins"
+GLOC 1 28
+GSIZE 107 17
+ENDGROUP
+ 
+ENDTAB
+
+ENDTABSET
+
+FIELD OK
+FLOC 1 50
+MENUBUTTON "OK" 10 3
+ENDFIELD
+
+FIELD Cancel
+FLOC 12 50
+MENUBUTTON "Cancel" 10 3
+ENDFIELD
+
+FIELD DMLCheck
+FLOC 23 50
+MENUBUTTON "DML Check" 10 3
+ENDFIELD
+
+FIELD help
+FLOC 95 50
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

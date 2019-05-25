@@ -1,0 +1,84 @@
+####################################################################################
+#       Cadence Design Systems                                                     #
+#                                                                                  #
+# (C) COPYRIGHT, Cadence Design Systems, Inc. 2010                                 #
+# All Rights Reserved                                                              #
+# Licensed Materials - Property of Cadence Design Systems                          #
+#                                                                                  #
+# No part of this file may be reproduced, stored in a retrieval system,            #
+# or transmitted in any form or by any means --- electronic, mechanical,           #
+# photocopying, recording, or otherwise --- without prior written permission       #
+# of Cadence Design Systems, Inc.                                                  #
+#                                                                                  #
+# WARRANTY:                                                                        #
+# Use all material in this file at your own risk.  Cadence Design Systems          #
+# makes no claims about any material contained in this file.                       #
+####################################################################################
+FILE_TYPE=FORM_DEFN VERSION=2
+
+    FORM
+    FIXED
+    PORT 56 33
+    HEADER "Layer Management"
+
+    ACTIVEFIELD Done
+    DEFAULT Done
+
+    TILE
+
+    FIELD Done
+        FLOC 1 31
+        MENUBUTTON "OK" 10 3
+    ENDFIELD
+
+    FIELD Cancel
+        FLOC 12 31
+        MENUBUTTON "Cancel" 10 3
+    ENDFIELD
+
+    FIELD Apply
+        FLOC 23 31
+        MENUBUTTON "Apply" 10 3
+    ENDFIELD
+
+    FIELD Reset
+        FLOC 35 31
+        MENUBUTTON "Reset" 10 3
+    ENDFIELD
+
+    FIELD Help
+        FLOC 46 31
+        MENUBUTTON "Help" 10 3
+    ENDFIELD
+
+    GROUP "" "LayerGroup"
+        GLOC 1 0
+        GSIZE 55 30
+    ENDGROUP
+
+    TEXT "All shapes and paths in the selected layers will be ingored in simulation:"
+        TLOC 2 2
+    ENDTEXT
+
+    POPUP <LayerGridHeadPopup>"Select All""SelectAll","Unselect All""UnselectAll","Toggle All Conductors""ToggleConductor","Toggle All Planes""TogglePlane".
+    GRID LayerGrid
+    FLOC 2 4
+    FSIZE 53 26
+    OPTIONS HLINES VLINES USERSIZE
+
+    GHEAD TOP
+        HEADSIZE 2
+        OPTIONS 3D
+        POP "LayerGridHeadPopup"
+    ENDGHEAD
+    GHEAD SIDE
+        HEADSIZE 0
+    ENDGHEAD
+    ENDGRID
+
+    FLEXMODE EdgeGravity
+    FLEX LayerGroup   0   0   1   1
+    FLEX LayerGrid   0   0   1   1
+
+    ENDTILE
+ENDFORM

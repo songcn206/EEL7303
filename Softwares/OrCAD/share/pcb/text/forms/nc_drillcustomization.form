@@ -1,0 +1,139 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED    
+PORT 136 24
+HEADER "Drill Customization"      
+
+POPUP <figure_pop>"Null"       "0",\
+                  "Cross"      "4",\
+                  "Square"     "5",\
+                  "Hexagon X" "15",\
+                  "Hexagon Y" "16",\
+                  "Octagon"    "3",\
+                  "Diamond"    "7",\
+                  "Triangle"  "18",\
+                  "Oblong X"  "11",\
+                  "Oblong Y"  "12",\
+                  "Rectangle"  "6",\
+                  "Circle"     "2". 
+
+POPUP <right_mouse> "Dummy""Dummy".
+
+TILE
+
+TABSET "DrillCustomizationTABS"
+FLOC 1 1
+TSSIZE 134 36
+
+TAB "Drill/Slot Holes"
+
+GRID DrillGrid
+FLOC 1 1
+FSIZE 132 32
+OPTIONS HLINES VLINES USERSIZE
+POP "right_mouse"
+
+GHEAD TOP
+HEADSIZE 3
+OPTIONS 3D MULTI
+ENDGHEAD
+
+ENDGRID
+
+ENDTAB
+
+GROUP "" CONTROLS
+GLOC 1 36
+GSIZE 134 7 
+ENDGROUP
+
+TEXT "Total quantity:"
+TLOC 110 38
+TGROUP CONTROLS
+ENDFIELD
+
+TEXT
+TLOC 120 38
+INFO total_quantity 10
+OPTIONS right
+ENDTEXT
+
+FIELD validate
+FLOC 2 38 
+MENUBUTTON "Validate" 9 3
+FGROUP CONTROLS
+ENDFIELD
+
+FIELD merge
+FLOC 12 38
+MENUBUTTON "Merge" 9 3
+FGROUP CONTROLS
+ENDFIELD
+
+FIELD reset
+FLOC 22 38 
+MENUBUTTON "Reset to design" 15 3
+FGROUP CONTROLS
+ENDFIELD
+
+FIELD library
+FLOC 38 38 
+MENUBUTTON "Reset to library" 15 3
+FGROUP CONTROLS
+ENDFIELD
+
+FIELD auto_symbols
+FLOC 60 38
+MENUBUTTON "Auto generate symbols" 22 3
+FGROUP CONTROLS
+ENDFIELD
+
+FIELD writeFile
+FLOC 85 38
+MENUBUTTON "Write report file" 15 3
+FGROUP CONTROLS
+ENDFIELD
+
+FIELD csvFile
+FLOC 85 40
+CHECKLIST "CSV" "file"
+FGROUP CONTROLS
+ENDFIELD
+
+FIELD htmlFile
+FLOC 92 40
+CHECKLIST "HTML" "file"
+FGROUP CONTROLS
+ENDFIELD
+
+FIELD done
+FLOC 2 44
+MENUBUTTON "Done" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 12 44
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 22 44
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+FIELD report
+FLOC 38 44
+MENUBUTTON "Library drill report" 15 3
+FGROUP CONTROLS
+ENDFIELD
+
+ENDTABSET
+
+FLEXMODE edgegravity
+FLEX DrillCustomizationTABS 0 0 1 1
+FLEX DrillGrid 0 0 1 1
+FLEX CONTROLS 0 1 1 0
+
+ENDTILE
+
+ENDFORM

@@ -1,0 +1,50 @@
+
+Command line arguments for dxf2a 
+        Utility to translate mechanical data from DXF to Allegro.
+
+dxf2a [-uvagt[p|m|f]] <cnv> <dxf> <brd>
+
+    OPTIONAL ARGUMENTS
+        [-u]  Output units.  The Allegro unit of measure.
+              Valid args: MILS, INCHES, CM, MM, MICRONS
+              default:  MILS (new design, only)
+
+        [-v]  Original units.  The DXF unit of measure.
+              Valid args: MILS, INCHES, CM, MM, MICRONS             
+              default:  specified Allegro setting. 
+
+        [-a]  Accuracy.  Number of decimal places.
+              Valid args:  0 - 4 
+              primary default:  Value specified within DXF file.
+              secondary default: 1.
+
+        [-g]  Increment switch.  Import DXF data into an 
+              existing design, the <brd> argument.
+              default: off (new design).
+
+        [-t]  Text switch.  Use the existing or default text
+              blocks in the Allegro design.
+              default: off (create text blocks for each DXF text height)
+
+        [-p | -m | -f | -s]
+              Symbol file switch.
+              -p creates a .dra file of sympackage type.
+              -m creates a .dra file of symmechanical type.
+              -f creates a .dra file of symformat type.
+              -s creates a .dra file of symshape type.
+              default: off (create .brd file (.mcm if APD))
+
+        [-F]  Force Fill Shapes.  When enabled, shapes created from closed
+	      DXF polylines will be filled, if supported by the Allegro 
+	      class/subclass.  The width of the polyline must also be 0 for
+	      a shape to be created and filled.
+	      default: off (shapes are unfilled).
+
+    REQUIRED ARGUMENTS
+        <cnv>  Layer conversion file.  ASCII text file that specifies
+               the mapping of DXF layer to Allegro class/subclass.
+
+        <dxf>  DXF file in ASCII format.
+
+        <brd>  Name of design file to create or update (-g option).
+

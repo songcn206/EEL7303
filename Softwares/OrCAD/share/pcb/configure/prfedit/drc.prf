@@ -1,0 +1,113 @@
+#  $Header: /vobs/psd_backend_data/data/prefs/drc.prf /main/13 12-Sep-03.17:06:52 fxf $
+#------------------------------------------------------------------------------
+#			Allegro DRC Variables
+#------------------------------------------------------------------------------
+#
+# See User.prf for complete descriptions of fields in this file.
+
+
+SUMMARY:HELP=DRC Settings
+
+drc_diff_pair_overide:TYPE=LONG:EFF_ONNEXTCMD:MIN=0:\
+PARENT_L=obsolete:\
+HELP=Used only for diffpair 15.0 upreving for legacy designs. \
+In pre-15.0 releases, a 0 value suppresses line to line \
+drc's between 2 diff pair nets if the line to line spacing for \
+the etch layer is greater than the diff pair primary spacing. \
+In cases where the diff pair lines are routed diagonally, the actual \
+spacing is fractionally higher or lower than the required spacing. \
+Legal non-zero values are 100 (1 unit of accuracy) or 200 (2 units) \
+for tolerancing.
+
+drc_diff_pair_primary_separation_tolerance:TYPE=STRING:EFF_ONNEXTCMD:\
+PARENT_L=obsolete:\
+HELP=Used only for diffpair 15.0 upreving for legacy designs. \
+In pre-14.2 releases, set drc_diff_pair_primary_separation_tolerance \
+= <min>\:<max>. Both <min> and <max> are primary separation values with \
+optional units ("10 MIL\:20 MIL"). The max value is \
+added to the diff pair primary separation value when checking \
+an odd angle line. The min value is subtracted from the primary \
+separation value when doing a line to line spacing check between \
+diff pair lines.
+
+pre_12.0_delay_rule:TYPE=CHECK:EFF_ONRESTART:\
+PARENT_L=drc/delay:\
+HELP=The delay rule checker has changed in 12.0 and beyond. When delay is \
+added across a net in 12.0, the checker is checking the min delay value \
+against the shortest pin pair, and the max delay value against the longest \
+pin pair. In many cases, designers use the delay rule values as a length \
+checker and want the min and max delays to be a  tolerance across the \
+entire net as it did in rev 11.x.
+
+same_net_traps:TYPE=CHECK:EFF_ONRESTART:\
+PARENT_L=drc/general:\
+HELP=This variable causes DRC checking for small segment jogs. \
+This new spacing check is not intended for any angle data. It checks for \
+this geometry at angles divisible by 45 degrees.
+
+include_terminators:TYPE=CHECK:EFF_ONRESTART:\
+PARENT_L=drc/delay:\
+HELP=Setting this variable controls the delay rule checker. If \
+delay is to be checked across the entire net, this variable also \
+includes the terminator length in the calculation. The standard check \
+for delay across entire net does not include terminators.
+
+use_accurate_delay_calculation:TYPE=CHECK:EFF_ONNEXTCMD:\
+PARENT_L=drc/delay:\
+HELP=If set this variable causes a more accurate modeling to be done of \
+the power and ground shapes when computing impedance and delay. \
+Instead of modeling the planes as perfect shields with no holes or \
+cutouts, the actual outline of the shapes with all holes and cutouts \
+are considered. The performance of the impedance, propagation delay and \
+relative propagation delay constraint checks can possibly be slowed when this \
+more accurate calculator is used. Also, the Shield flag must be turned \
+off on every plane layer.
+
+cns_noviasort:TYPE=CHECK:EFF_ONNEXTCMD:\
+PARENT_L=obsolete:\
+HELP=Restores 13.6 no sorting behavior for the current via list in \
+constraint dialog Physical Rule Set Values.
+
+drc_fillet_samenet:TYPE=CHECK:EFF_ONNEXTCMD:\
+PARENT_L=obsolete:\
+HELP=Enables more conservative same net checking with respect to Fillets. \
+With this variable set more DRCs may be reported. The default is to not \
+consider a fillet touching a pad to be a DRC even if an adjacent same \
+net cline is below the line to line spacing value. This variable only \
+applies to the pre-16.2 cline based fillets.
+
+no_drc_progress_meter:TYPE=CHECK:EFF_ONNEXTCMD:\
+PARENT_L=drc/general:\
+HELP=Suppress the progress meter that is launched during the drc update \
+command.
+
+cns_single_thread:TYPE=CHECK:EFF_ONNEXTCMD:\
+PARENT_L=drc/general:\
+HELP=Restrict drcupdate and dbdoctor to a single thread of execution on \
+a multiple cpu system.  This variable has no effect on a single cpu system.
+
+CNS_VIA_MATCH_COUNT_ALL:\
+LABEL=via_match_count_all:\
+TYPE=CHECK:EFF_ONNEXTCMD:\
+PARENT_L=drc/general:\
+HELP=If set, enables matched via count constratint check on partially connected nets. 
+
+same_net_vias_shape_connect:TYPE=CHECK:EFF_ONNEXTCMD:\
+LABEL=same_net_vias_shape_connect:\
+TYPE=CHECK:EFF_ONNEXTCMD:\
+PARENT_L=drc/general:\
+HELP=If set, enables filtering of same-net vias sharing mutual shape connections. 
+
+dyn_phase_canvas_display:TYPE=CHECK:EFF_ONRESTART:\
+PARENT_L=drc/general:\
+HELP=This displays dynamic phase control delays as graphic text. Suggestion \
+is to leave this option off except when debugging nets with difficult dynamic \
+phase errors. Alternatively, you can set it as a teaching aid. When enabled, \
+the display can become very busy with a large number of phase text errors from \
+adjacent nets.
+
+wire_finger_same_profile:TYPE=CHECK:EFF_ONNEXTCMD:\
+LABEL=wire_finger_same_profile:\
+TYPE=CHECK:EFF_ONNEXTCMD:\
+PARENT_L=drc/general:\
+HELP=If set, restricts the wire-to-finger spacing constraint to fingers with wires of the same profile.

@@ -1,0 +1,25 @@
+Command line arguements for Allegro ipc356 output program
+
+ipc356_out [<args>] [<input brd>] [<output ipc>]
+
+   GENERIC
+   	<board>     - Allegro board file (assumes .brd with no extension)
+   	<ipc_file>  - IPC output filename (assumes .ipc with no extension)
+
+   GENERIC ARGUMENTS
+   	-t <TITLE>  - TITLE line
+   	-i <NUM>    - NUM ipc356 data; truncated to 5 characters
+   	-r <REV>    - Revision Level; truncated to 1 character
+   -f <header file> - user define header lines from a file (can be multiple lines)
+	-A          - output ipc356 'A' format (default is IPC-D-356)
+	-c          - ignore wirebond layers
+	-e          - export embedded components (skipped by default)
+
+NOTE: 
+   1) if any arguments (e.g. title) contain spaces then it should be quoted.
+   2) if options (e.g. title) are too long (>72) then they will be truncated.
+   3) generates a logfile with name ipc356_out.log
+
+
+Example: ipc356_out -t "My design" -i 120 -r D test.brd test
+

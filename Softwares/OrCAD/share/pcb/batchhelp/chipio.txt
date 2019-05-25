@@ -1,0 +1,54 @@
+
+Command line arguments for Chip I/O Planner
+	Primary purpose is creation and editing of planner databases
+    and tile definition files. Can also function as a symbol editor.
+
+chipio <args>
+	[-s <script>] 
+		- Play script on startup (default extension is .scr), last
+		  directory in allegro.ini is NOT used.
+		  Multiple -s options may be specified and they will
+		  be replayed in order on command line. Example
+			-s script1 -s script2 ... -s scriptN
+		  Up to 63 scripts are supported.
+	[-S <script>] 
+		- Play script on startup (default extension is .scr), last
+		  directory in allegro.ini is used unless -p or board
+		  name provided.
+		  Multiple -S options are permitted (see -s above). 
+	[-p <start directory>] 
+		- start in indicated directory (ignore ini file)
+	[-j|-o <journal file>]
+		- open journal file (default journal file is <prog>.jrl)
+
+
+        [-product <product name>]
+                - specifies the product to be run. The legal values for
+                  <product name> are shown below. This overrides any default 
+		  set in an ini file. 
+		  Use "-product help" for list of available products at your
+		  site or see below.
+
+	[-nographic|-nograph]
+		- run in pseudo non-graphic mode. On Unix requires an X 
+		  server but will typically not display any graphics.
+		  Suggest using the VNC server (http://www.realvnc.com)
+
+	[-mps<XXX>]
+		- These are not typically not required. See MPS
+		  on-line documents for full description.
+
+	[<chipio database>]
+		- start editing with this database (ignore ini file)
+		- default extensions .cio, .til, .dra, .mdd
+
+Notes:
+	If no scripts are specified on command line (-s or -S options)
+	and environment variable "script_startup" has a value then
+	we will replay a script in startup directory with name
+		<program>_<script_startup_value>.scr
+	Example for allegro if variable script_startup=foo then
+	script would be allegro_foo.scr
+
+License is one of the following:
+	Cadence_Chip_IO_Planner	(PX5000)

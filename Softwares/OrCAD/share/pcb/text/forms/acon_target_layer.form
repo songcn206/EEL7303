@@ -1,0 +1,63 @@
+FILE_TYPE=FORM_DEFN VERSION=3
+FORM toolwindow
+VARIABLE
+PORT 23 15
+
+HEADER "Add Via"
+
+TILE TOP
+TPANEL 1
+# Keep the TPANEL values at 1 for both Tiles, otherwise an ugly gap will
+# appear with this Top tile, which is intended to be off the form anyway.
+
+# Add a cancel button, but move it off the screen in a negative direction.
+# This is needed to allow scripting to work properly.
+# Even though there is no visible cancel button on the form, this is
+# the button that will appear in the script file if the user Xs out the form
+# (on Windows) or does File Close (on unix).
+# Set to y=-3, otherwise a number closer to zero will cause a piece of the
+# button to show.
+FIELD cancel
+FLOC 1 -3
+MENUBUTTON "Cancel" 7 3
+ENDFIELD
+
+#FIELD help
+#FLOC 9 0
+#MENUBUTTON "Help" 5 3
+#ENDFIELD
+
+ENDTILE
+
+TILE TARGET_LAYER_TILE
+TPANEL 1
+
+TEXT ""
+TLOC 0 0
+INFO layerset_text 2
+#OPTIONS BOLD
+ENDTEXT
+
+FIELD color
+FLOC 2 0
+COLOR 2 1
+OPTIONS value
+ENDFIELD
+
+# Using 12 as the the menubutton length allows the buttons to display the same
+# number of characters as the layer-names in the Visibility tab, though Setup
+# Cross-section actually allows for maximum length of 18 characters.
+
+FIELD layer
+FLOC 5 0
+MENUBUTTON "Layer" 12 3
+ENDFIELD
+
+FIELD non_preferred
+FLOC 18 0
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

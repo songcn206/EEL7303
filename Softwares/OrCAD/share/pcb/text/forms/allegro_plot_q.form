@@ -1,0 +1,107 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+VARIABLE
+PORT 89 18
+HEADER "Queue Status"
+
+
+POPUP <QPLOTTERNAMES>"QPLOTTERNAMES""QPLOTTERNAMES".
+
+MESSAGE GENERAL_MSG 1 "%s"
+
+TILE TOP
+TPANEL 0
+TEXT "Query plotter"
+TLOC 1 1
+ENDTEXT
+
+FIELD qCurrentPlotter
+FLOC 16 1
+ENUMSET 20
+POP "QPLOTTERNAMES"
+ENDFIELD
+
+TEXT "every"
+TLOC 40 1
+ENDTEXT
+
+FIELD qQuerySeconds
+FLOC 47 1
+INTFILLIN 2 2
+MIN 1
+ENDFIELD
+
+TEXT "seconds."
+TLOC 52 1
+ENDTEXT
+
+FIELD delete
+FLOC 1 3
+MENUBUTTON "Delete:" 9 3
+ENDFIELD
+
+FIELD delEntryValue
+FLOC 16 3
+STRFILLIN 20 20
+ENDFIELD
+
+TEXT
+TLOC 70 3
+INFO queryPingString 15
+ENDTEXT
+
+ENDTILE
+
+TILE INFO
+TPANEL 1
+TEXT
+TLOC 1 0
+INFO queueEntry 86
+ENDTEXT
+
+ENDTILE
+
+TILE EMPTY_INFO
+TPANEL 1
+
+TEXT "NO QUEUE DATA FOUND"
+TLOC 35 4
+ENDTEXT
+
+TEXT "Check the following conditions:"
+TLOC 5 10
+ENDTEXT
+
+TEXT "1. There is no query command specified for the current plotter"
+TLOC 10 12
+ENDTEXT
+
+TEXT "in the .cdsplotinit file."
+TLOC 13 14
+ENDTEXT
+
+TEXT "2. The specified query command is incorrect for the current plotter."
+TLOC 10 16
+ENDTEXT
+
+TEXT "3. The queue is not responding to the specified query command."
+TLOC 10 18
+ENDTEXT
+
+ENDTILE
+
+TILE StdTile
+TPANEL 2
+FIELD done
+FLOC 1 1
+MENUBUTTON "Done" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 13 1
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

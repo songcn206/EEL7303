@@ -1,0 +1,28 @@
+
+Command line arguments for bbvia
+	Generates blind and buried vias from a padstack template
+
+bbvia [options] <padstack> <startLayer> <endLayer> <oldDesign> [<newDesign>]
+
+  Options are:
+          -p <prefix>             add prefix to each B/B via name
+          -c <constaintSetName>   add vias to given constraint set
+				   may provide multiple -c options
+          -t                      use top pad from template as topmost pad
+          -a                      only create adjacent layer padstacks
+          -e                      only create external to internal padstacks
+          -w                      include wire bond layers
+	  -u			  Generate Uvias (default bbvias)
+          -s <n>                  only span <n> layers
+     <padstack>			padstack to use as template 
+     <startLayer>		start etch layer to use
+     <endLayer>			end etch layer to use
+     <oldDesign>		input design
+     <newDesign>		output design; if not given overwrites oldDesign
+
+Example:
+   bbvia -p PV -c DEFAULT -c 12MILRULE pad35cir TOP BOTTOM in
+	in board "in" generate all comboinations of bbvias between
+	TOP and bottom for constraint sets 12MILRULE and DEFAULT.
+	Prefix "PV" to all generated padstacks.
+

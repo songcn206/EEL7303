@@ -1,0 +1,104 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 40 14
+HEADER "Create Plating Bar"
+
+POPUP <class_popup> "" "".
+POPUP <subclass_popup> "" "".
+
+TILE
+
+FIELD pbar_plate_unused
+FLOC 2 1
+CHECKLIST "Plate unused package pins"
+ENDFIELD
+
+TEXT "Distance from package edge:"
+TLOC 2 3
+ENDTEXT
+
+FIELD pbar_length
+FLOC 5 5
+STRFILLIN 31 50
+ENDFIELD
+
+#ifdef ICP_PBAR_NEW_BETA
+
+TEXT "Plating bar width:"
+TLOC 2 7
+ENDTEXT
+
+FIELD pbar_width
+FLOC 5 9
+STRFILLIN 31 50
+ENDFIELD
+
+TEXT "Plating net:"
+TLOC 2 11
+ENDTEXT
+
+FIELD pbar_net
+FLOC 5 13
+STRFILLIN 31 50
+ENDFIELD
+
+TEXT "Plating tail spacing:"
+TLOC 2 15
+ENDTEXT
+
+FIELD pbar_tail_spacing
+FLOC 5 17
+STRFILLIN 31 50
+ENDFIELD
+
+#else
+
+TEXT "Layer for plating bar outline:"
+TLOC 2 7
+ENDTEXT
+
+FIELD pbar_class
+FLOC 5 9
+ENUMSET 30
+POP "class_popup"
+ENDFIELD
+
+FIELD pbar_subclass
+FLOC 5 11
+ENUMSET 30
+POP "subclass_popup"
+ENDFIELD
+
+#endif
+
+FIELD Create
+#ifdef ICP_PBAR_NEW_BETA
+FLOC 2 22
+#else
+FLOC 2 15
+#endif
+MENUBUTTON "Create" 10 3
+ENDFIELD
+ 
+FIELD cancel
+#ifdef ICP_PBAR_NEW_BETA
+FLOC 13 22
+#else
+FLOC 13 15
+#endif
+MENUBUTTON "Cancel" 10 3
+ENDFIELD
+ 
+FIELD help
+#ifdef ICP_PBAR_NEW_BETA
+FLOC 28 22
+#else
+FLOC 28 15
+#endif
+MENUBUTTON "Help" 10 3
+ENDFIELD
+ 
+ENDTILE
+
+ENDFORM

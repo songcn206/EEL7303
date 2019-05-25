@@ -1,0 +1,540 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
+<!--# 	Cadence Design Systems
+#  (c) 2012 Cadence Design Systems, Inc. All rights reserved.
+#  This work may not be copied, modified, re-published, uploaded, 
+#  executed, or distributed in any way, in any medium, whether in 
+#  whole or in part, without prior written permission from Cadence 
+#  Design Systems, Inc.
+#  -->
+	
+  <title>Bipolar Junction Transistor</title>
+  <link rel="stylesheet" type="text/css" href="../../../../basescripts/css/sheet.css" />
+
+
+  <script type="text/javascript" src="../../../../basescripts/scripts/OpenOpj.js"></script>
+  <script type="text/javascript">
+
+
+
+  </script>
+</head>
+
+
+
+<body style="width:99%;height:100%;" class="content">
+
+<h1><a class="Mheading" id="BJT">Bipolar Junction Transistors</a></h1>
+                                           
+<p class="para">This section discusses Bipolar Junction Transistors
+(BJT) and explains how to simulate various circuits based on&nbsp;BJT
+in OrCAD&reg; Capture-PSpice&reg;.&nbsp;</p>
+<p class="para">The transistor or BJT is a three-layer semiconductor
+device with two outer layers of same charge layers and a&nbsp;thin
+inner layer of a different charge.&nbsp;The layers are called emitter, base, and collector. The materials with excess electrons (negative charge) are called N type
+and materials with excess&nbsp;holes (positive charge) are called P type. If the base is of N type and the emitter and collector of P type, the BJT is a PNP type.  If the base is of P type and the emitter and collector of N type, the BJT is of NPN type. </p>
+
+<center>
+<p><img src="Images/BJT_sym.jpg" alt = ""/></p>
+</center>
+
+<center>
+<p class="imgcap"><i><a name="Figure_1._BJTs_symbols"></a>Figure 1. BJTs symbols</i></p>
+</center>
+
+<p class="para">The emitter layer is heavily doped, the base layer is
+only lightly doped, and the collector layer is also lightly but more
+than base. The outer layers, collector and emitter, have much greater
+width than the sandwiched p- or n- type base layer.&nbsp;</p>
+
+<p class="para"><b>Basic Working of a Transistor</b></p>
+
+<p class="para">The emitter-base junction of a transistor is forward
+biased, while the base-collector junction is reverse biased. In an NPN
+transistor due to forward biasing of the emitter-base junction, the
+electrons that are the majority carriers diffuse from the emitter to
+the base region. As the&nbsp; base region is very lightly doped and
+is&nbsp;small in width, the diffused electrons&nbsp;act as minority
+charge carriers; most of them cross the reverse biased junction of
+base-collector region&nbsp;resulting in heavy collector current. Only a
+few of the electrons diffused in the base region contribute to the base
+current.</p>
+
+<center>
+<p><img src="Images/BJT_bias.jpg" alt = "" class="tximage" id = "Figure_2._BJT_with_proper_biasing" /></p>
+</center>
+
+<center>
+<p class="imgcap"><i>Figure 2. BJT with proper biasing</i></p>
+</center>
+
+<center>
+<p style="text-align: left;" class="para">Applying Kirchhoff&rsquo;s law to the transistor shown in <a href="#Figure_2._BJT_with_proper_biasing"><span style="font-style: italic;">figure (2)</span></a>, as if it were a single node, gives:</p>
+<br />
+
+<center>
+<table width="100%">
+
+  <tbody>
+    <tr>
+      <td style="width: 97%;">
+      <center><img src="Images/eq_1.jpg" alt = "" /></center>
+      </td>
+      <td style="width: 3%;"><a name="equation1"></a>(1)</td>
+    </tr>
+  </tbody>
+</table>
+</center>
+
+ 
+<p style="text-align: left;" class="para">The emitter current (<span style="font-family: Courier New,Courier,monospace;">I</span><sub style="font-family: Courier New,Courier,monospace;">E</sub>) is a sum of the collector current (<span style="font-family: Courier New,Courier,monospace;">I</span><sub style="font-family: Courier New,Courier,monospace;">C</sub>) and the base current (<span style="font-family: Courier New,Courier,monospace;">I</span><sub style="font-family: Courier New,Courier,monospace;">B</sub>).</p>
+</center>
+
+
+<p class = "para">The remaining sections describe how to use OrCAD Capture and PSpice to
+observe the different configurations of a BJT and also the use of BJT
+as a switch and an amplifier.</p><br />
+<br />
+
+
+
+
+<table style="width: 100%;">
+  <tbody>
+    <tr>
+
+      <td style="width: 50%;">
+      <h1><a class="Mheading" id="A1">&nbsp;Common-Base (CB) Configuration</a></h1>
+      </td>
+      <td style="width: 50%;" align="right"><span style="text-decoration: underline;cursor : pointer" onclick="OpenOpjSim('BasicElectronics','BJT','Designfiles','BJT','commonbase','PAGE1','DC')"><img alt="click to view circuit" src="../../../../hybrid/Images/cap_icon.png" style="margin-top: 20px;" /></span></td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="para">To observe BJT characteristic curve in common-base configuration use the circuit shown in <a href="#Figure_3._BJT_in_common_base"><span style="font-style: italic;">figure (3)</span></a> below, here the emitter-base junction is forward biased and base-collector junction is reverse biased.</p>
+
+<center>
+<p><img id = "Figure_3._BJT_in_common_base" src="Images/BJT_cb_ckt.jpg" alt = "" class="tximage" style = "cursor : pointer" onclick="OpenOpjSim('BasicElectronics','BJT','Designfiles','BJT','commonbase','PAGE1','DC')"/></p>
+</center>
+
+<p class="imgcap"><i>Figure 3.  BJT in common base configuration</i></p>
+
+
+<p class="para">To observe input characteristic curve, which is between V<sub>EB</sub> and I<sub>E</sub>, voltage V2 has to be varied.&nbsp;The following simulation settings are made:</p>
+
+<ul class="para" >
+  <li>Select <span style="font-style: italic;">DC Sweep</span> analysis type.</li>
+
+  <li>Enter <span style="font-style: italic;">Voltage source</span> name as&nbsp;<span style="font-family: Courier New,Courier,monospace;">V2</span>.</li>
+
+  <li>With sweep type set to <span style="font-family: Courier New,Courier,monospace;">Linear</span>, enter the <span style="font-style: italic;">Start value</span> as <span style="font-family: Courier New,Courier,monospace;">0V</span>, the <span style="font-style: italic;">End value</span> as <span style="font-family: Courier New,Courier,monospace;">1V</span>, and &nbsp;the <span style="font-style: italic;">Increment</span> <span style="font-family: Courier New,Courier,monospace;">as</span> <span style="font-family: Courier New,Courier,monospace;">0.01V</span></li>
+</ul>
+
+<p class="para">Note that forward drop across emitter base junction is&nbsp;approximately <span style="font-family: Courier New,Courier,monospace;">0.6V</span>&nbsp;which
+is equivalent to the forward biased p-n junction&rsquo;s forward
+voltage drop. After the forward voltage drop, the emitter current
+reaches to the level of a few milliamperes.</p>
+
+
+<center>
+<p><img src="Images/BJT_cb_simout.jpg" alt = "" class="simout" /></p>
+</center>
+
+<p class="imgcap"><i><a name="Figure_4._Typical_input_characteristic"></a>Figure 4.  Typical input characteristic curve</i></p>
+
+
+<p class="para">The&nbsp;output characteristics of the BJT is a plot
+between the collector-base voltage versus the collector (output)
+current at different values of input (emitter) current. To observe the
+output characteristics, apply&nbsp;Kirchhoff&rsquo;s law&nbsp;to the input (base-emitter) loop of the circuit to get: </p>
+<br />
+
+<center>
+<table width="100%">
+
+  <tbody>
+    <tr>
+      <td style="width: 97%;">
+      <center><img src="Images/eq_2.jpg" alt = "" /></center>
+      </td>
+      <td style="width: 3%;"><a name="equation2"></a>(2)</td>
+    </tr>
+  </tbody>
+</table>
+</center>
+
+
+<p class="para">To view simulation for the output, select the&nbsp;<span style="font-style: italic;">commonbase-DC1</span> profile in the associated design example. Simulation settings are given below: </p>
+<ul  class="para">
+
+  <li>Select the <span style="font-style: italic;">DC Sweep</span> analysis type.</li>
+
+  <li>In primary sweep, enter <span style="font-style: italic;">Voltage source</span> name as&nbsp;<span style="font-family: Courier New,Courier,monospace;">V1</span>.</li>
+
+  <li>With sweep type set to <span style="font-family: Courier New,Courier,monospace;">Linear</span>, enter the <span style="font-style: italic;">Start value</span> as <span style="font-family: Courier New,Courier,monospace;">-1V</span>, the <span style="font-style: italic;">End value</span> as <span style="font-family: Courier New,Courier,monospace;">15V</span>, and the <span style="font-style: italic;">Increment</span>&nbsp;&nbsp;as <span style="font-family: Courier New,Courier,monospace;">2V</span></li>
+
+</ul>
+<p class = "para">Now to vary the emitter current,&nbsp;DC sweep the voltage source <span style="font-family: Courier New,Courier,monospace;">V2</span>:</p>
+<ul  class="para">
+
+  <li>Select the <span style="font-family: Courier New,Courier,monospace;">Secondary Sweep</span> option</li>
+
+
+  <li>Enter <span style="font-style: italic;">Voltage source</span> name as&nbsp;<span style="font-family: Courier New,Courier,monospace;">V2</span></li>
+  <li>With sweep type set to <span style="font-family: Courier New,Courier,monospace;">Linear</span>, enter the <span style="font-style: italic;">Start value</span> as <span style="font-family: Courier New,Courier,monospace;">0.5V</span>, the <span style="font-style: italic;">End value</span> as <span style="font-family: Courier New,Courier,monospace;">1V</span>, and <span style="font-style: italic;">Increment</span> as <span style="font-family: Courier New,Courier,monospace;">0.05V</span></li>
+</ul>
+
+<!--center>
+<table>
+
+<tr><td><img src="Images/BJT_out_char.jpg"  style = "height :300px; width : 400px "></td></tr>
+<tr><td><i>Figure 5.  Typical Output Characteristic curve</i></td></tr> 
+</table>
+</center-->
+<br />
+
+<center>
+<table>
+
+  <tbody>
+    <tr>
+      <td><img src="Images/BJT_cb_simout2.jpg" alt = "" class="simout" id = "Figure_5._Resultant_waveform"/></td>
+    </tr>
+
+    <tr>
+      <td><i>Figure 5.  Resultant waveform</i></td>
+    </tr>
+
+  </tbody>
+</table>
+</center>
+
+
+
+<p class="para">The resultant output characteristic curves obtained are shown in <a href="#Figure_5._Resultant_waveform"><span style="font-style: italic;">figure (5)</span></a> above. Note that even when <span style="font-family: Courier New,Courier,monospace;">I</span><sub style="font-family: Courier New,Courier,monospace;">B</sub> is zero, a small collector current flows, which is known as the Leakage current, with base-emitter terminal open.</p>
+
+<p class="para"> The ratio of collector the current (<span style="font-family: Courier New,Courier,monospace;">I</span><sub style="font-family: Courier New,Courier,monospace;">C</sub>) to the emitter current (<span style="font-family: Courier New,Courier,monospace;">I</span><sub style="font-family: Courier New,Courier,monospace;">E</sub>) is defined as the common base current gain (<img style="width: 18px; height: 18px;" alt="" src="Images/alpha.jpg" />).</p>
+
+<center>
+<table width="100%">
+
+  <tbody>
+    <tr>
+      <td style="width: 97%;">
+      <center><img src="Images/eq_3.jpg" alt = "" id = "equation3"/></center>
+      </td>
+      <td style="width: 3%;">(3)</td>
+    </tr>
+  </tbody>
+</table>
+</center>
+
+<br />
+
+<center><img src="Images/BJT_cb_crsr2.jpg" alt = "" id = "Figure_6._Cursor_window" /></center>
+
+<p class="imgcap"></p>
+<center><i>Figure 6. Cursor window</i></center>
+
+<p class="para">In the cursor window shown in <a href="#Figure_6._Cursor_window"><span style="font-style: italic;">figure (6)</span></a>,&nbsp; <span style="font-family: Courier New,Courier,monospace;">I</span><sub style="font-family: Courier New,Courier,monospace;">C</sub><span style="font-family: Courier New,Courier,monospace;"> = 1.0582m</span> and <span style="font-family: Courier New,Courier,monospace;">I</span><sub style="font-family: Courier New,Courier,monospace;">E</sub><span style="font-family: Courier New,Courier,monospace;"> = 1.0655m</span>. Using <a href="#equation3"><span style="font-style: italic;">equation (3)</span></a>, the base current gain is <span style="font-family: Courier New,Courier,monospace;">0.99314</span>. </p>
+
+<table style="width: 100%;">
+  <tbody>
+    <tr>
+
+
+
+
+
+
+      <td style="width: 50%;">
+      <h1><a class="Mheading" id="A2">Common-Emitter (CE) Configuration</a></h1>
+      </td>
+      <td style="width: 50%;" align="right"><span style="text-decoration: underline; cursor : pointer " onclick="OpenOpjSim('BasicElectronics','BJT','Designfiles','BJT','commonemitter','PAGE1','DC')"><img alt="click to view circuit" src="../../../../hybrid/Images/cap_icon.png" style="margin-top: 20px;" /></span></td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="para">To observe BJT characteristic curve in common-emitter
+configuration use the circuit shown below, with base-emitter forward
+biased and base-collector junction reverse biased.</p>
+
+<center>
+<p><img src="Images/BJT_ce_ckt.jpg" alt = "" class="tximage" style = "cursor : pointer" onclick="OpenOpjSim('BasicElectronics','BJT','Designfiles','BJT','commonemitter','PAGE1','DC')" /></p>
+</center>
+
+<p class="imgcap"><i><a name="Figure_7._BJT_in_common_emitter"></a>Figure 7.  BJT in common emitter configuration</i></p>
+
+
+<p class="para">To observe input characteristic curve, which is between VBE and IB, voltage V2 has to be varied.&nbsp;Simulation settings are given below:</p>
+
+
+<ul class="para" >
+  <li>Select <span style="font-style: italic;">DC Sweep</span> analysis type.</li>
+  <li>Enter <span style="font-style: italic;">Voltage source</span> name as&nbsp;<span style="font-family: Courier New,Courier,monospace;">V2</span>.</li>
+
+  <li>With sweep type set to <span style="font-style: italic;">Linear</span>, enter the <span style="font-style: italic;">Start value</span> as <span style="font-family: Courier New,Courier,monospace;">0V</span>, the <span style="font-style: italic;">End value</span> as <span style="font-family: Courier New,Courier,monospace;">1V</span>, and the <span style="font-style: italic;">Increment</span> as <span style="font-family: Courier New,Courier,monospace;">0.05V</span></li>
+
+
+</ul>
+<p class= "para">Note that forward-drop across the emitter-base junction is&nbsp;approximately <span style="font-family: Courier New,Courier,monospace;">0.6V</span>,
+which is equivalent to the forward biased p-n junction&rsquo;s forward
+voltage drop, and after that base current reaches to the level of
+milliamperes.</p>
+<center>
+<p><img src="Images/BJT_ce_simout.jpg" alt = "" class="simout" /></p>
+</center>
+
+<p class="imgcap"><i><a name="Figure_8._Typical_input_characteristic"></a>Figure 8.  Typical input characteristic curve</i></p>
+
+
+<p class="para">The&nbsp;output characteristics of the BJT is a plot between the
+collector-emitter voltage versus the collector (output) current at
+different values of input (emitter) current. To observe the output
+characteristics, apply Kirchhoff&rsquo;s law&nbsp;to the input (base-emitter) loop of the circuit to get:</p>
+<br />
+
+<center>
+<table width="100%">
+
+  <tbody>
+    <tr>
+      <td style="width: 97%;">
+      <center><img src="Images/eq_5.jpg" alt = "" /></center>
+      </td>
+      <td style="width: 3%;"><a name="equation4"></a>(4)</td>
+    </tr>
+  </tbody>
+</table>
+</center>
+
+
+<p class="para">To perform simulation for output, select the&nbsp;<span style="font-style: italic;">commonemmiter-DC1</span> profile in the design example. Simulation settings are given below: </p>
+
+<ul class="para" >
+  <li>Select <span style="font-style: italic;">Primary Sweep</span> and enter <span style="font-style: italic;">Voltage source</span> name as&nbsp;<span style="font-family: Courier New,Courier,monospace;">V1</span>.</li>
+
+  <li>With sweep type set to <span style="font-style: italic;">Linear</span>, enter the <span style="font-style: italic;">Start value</span> as -<span style="font-family: Courier New,Courier,monospace;">1V</span>, the <span style="font-style: italic;">End value</span> as <span style="font-family: Courier New,Courier,monospace;">20V</span>, and the <span style="font-style: italic;">Increment</span> as <span style="font-family: Courier New,Courier,monospace;">1V</span></li>
+
+  <li>Now to vary emitter current, one can DC sweep the voltage source V2,</li>
+
+  <li>Select <span style="font-style: italic;">Secondary Sweep</span></li>
+
+  <li>Enter <span style="font-style: italic;">Voltage source</span> name as&nbsp;<span style="font-family: Courier New,Courier,monospace;">V2</span>.</li>
+
+  <li>With sweep type set to<span style="font-style: italic;"> Linear</span>, enter the <span style="font-style: italic;">Start value</span> as <span style="font-family: Courier New,Courier,monospace;">0.5V</span>, the <span style="font-style: italic;">End value</span> as <span style="font-family: Courier New,Courier,monospace;">1V</span>, and <span style="font-style: italic;">Increment</span> as <span style="font-family: Courier New,Courier,monospace;">0.05V</span></li>
+</ul>
+
+<!--center>
+<table>
+
+<tr><td><img src="Images/BJT_out_char2.jpg"  style = "height :300px; width : 400px " /></td></tr>
+<tr><td><i>Figure 10. Typical Output Characteristic curve</i></td></tr>
+</table>
+</center-->
+<br />
+
+<center>
+<table>
+
+  <tbody>
+    <tr>
+      <td><img src="Images/BJT_ce_simout2.jpg" alt = "" class="simout" /></td>
+    </tr>
+
+    <tr>
+      <td><i><a name="Figure_9._simulation_output"></a>Figure 9. Simulation output</i></td>
+    </tr>
+
+  </tbody>
+</table>
+</center>
+
+<p class="para"> The ratio of the collector current (<span style="font-family: Courier New,Courier,monospace;">I</span><sub style="font-family: Courier New,Courier,monospace;">C</sub>) to the base current (<span style="font-family: Courier New,Courier,monospace;">I</span><sub style="font-family: Courier New,Courier,monospace;">B</sub>) is defined as the common-emitter current gain (<span style="font-family: Courier New,Courier,monospace;">&szlig;</span>).</p>
+
+<center>
+<table width="100%">
+
+  <tbody>
+    <tr>
+      <td style="width: 97%;">
+      <center><img src="Images/eq_4.jpg" alt = "" id = "equation5"/></center>
+      </td>
+      <td style="width: 3%;">(5)</td>
+    </tr>
+  </tbody>
+</table>
+</center>
+
+<center><img src="Images/BJT_ce_crsr2.jpg" alt = "" id = "Figure_10._Cursor_window"/></center>
+
+<center>
+<p class="imgcap"><i>Figure 10. Cursor window</i></p>
+</center>
+
+<p class="para">In the cursor window shown in&nbsp;<a style="font-style: italic;" href="#Figure_10._Cursor_window"></a><a href="#Figure_10._Cursor_window"><span style="font-style: italic;">figure (10)</span></a>, <span style="font-family: Courier New,Courier,monospace;">I</span><sub style="font-family: Courier New,Courier,monospace;">C</sub><span style="font-family: Courier New,Courier,monospace;"> = 44.76m</span> and  <span style="font-family: Courier New,Courier,monospace;">I</span><sub style="font-family: Courier New,Courier,monospace;">B</sub><span style="font-family: Courier New,Courier,monospace;">=250.67u</span>.&nbsp; Using <a href="#equation5"><span style="font-style: italic;">equation (5)</span></a>,&nbsp;the common-emitter current gain (<span style="font-family: Courier New,Courier,monospace;">&szlig;</span>) is <span style="font-family: Courier New,Courier,monospace;">178.56</span> </p>
+
+
+<table style="width: 100%;">
+  <tbody>
+    <tr>
+
+      <td style="width: 50%;">
+      <h1><a class="Mheading" id="A3">Emitter follower</a></h1>
+      </td>
+      <td style="width: 50%;" align="right"><span style="text-decoration: underline; cursor : pointer " onclick="OpenOpjSim('BasicElectronics','BJT','Designfiles','BJT','Emitterfollower','PAGE1','Tran')"><img alt="click to view circuit" src="../../../../hybrid/Images/cap_icon.png" style="margin-top: 20px;" /></span></td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="para">In the emitter-follower configuration, the output is taken from the emitter terminal of a transistor with a common collector terminal. To observe functioning of this configuration, use the circuit shown in <a href="#Figure_11._BJT_in_common_collector"><span style="font-style: italic;">figure (11)</span></a> below:</p>
+
+<center>
+<p><img src="Images/BJT_emtrflr_ckt.jpg" alt = "" class="tximage" id = "Figure_11._BJT_in_common_collector" style = "cursor : pointer" onclick="OpenOpjSim('BasicElectronics','BJT','Designfiles','BJT','Emitterfollower','PAGE1','Tran')"  /></p>
+</center>
+
+<center>
+<p class="imgcap"><i>Figure 11.  BJT in common collector configuration acting as an amplifier</i></p>
+</center>
+
+<center>
+<p><img src="Images/BJT_emtrflr_simout.jpg" alt = "" class="simout" /></p>
+</center>
+
+<center>
+<p class="imgcap"><i><a name="Figure_12._simulation_output"></a>Figure 12. Simulation output</i></p>
+</center>
+
+<center><img src="Images/BJT_emtrflr_crsr.jpg" alt = "" /></center>
+
+<center>
+<p class="imgcap"><i><a name="Figure_13._Cursor_window"></a>Figure 13. Cursor window</i></p>
+</center>
+
+<p class="para">In the emitter-follower configuration, as the voltage
+at the base begins to rise, the emitter-base depletion region starts to
+narrow until the base-emitter junction becomes forward-biased. Once
+forward-biased, the base-emitter (p-n) junction can&nbsp;be thought of
+as a conducting diode where the voltage at the base (anode) is greater
+than that at the emitter (cathode) by <span style="font-family: Courier New,Courier,monospace;">0.6 V</span>. In other words, the emitter follows the base.</p>
+ 
+
+
+
+
+
+
+
+
+
+<table style="width: 100%;">
+  <tbody>
+    <tr>
+
+      <td style="width: 50%;">
+      <h1><a class="Mheading" id="A4">BJT as Switch</a></h1>
+      </td>
+      <td style="width: 50%;" align="right"><span style="text-decoration: underline; cursor : pointer " onclick="OpenOpjSim('BasicElectronics','BJT','Designfiles','BJT','Switch','PAGE1','Tran')"><img alt="click to view circuit" src="../../../../hybrid/Images/cap_icon.png" style="margin-top: 20px;" /></span></td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="para">To observe transistor application as a switch following circuit&nbsp;with common emitter configuration as shown in <a href="#Figure_14._BJT_in_Common_emitter"><span style="font-style: italic;">figure (14)</span></a> can be used:</p>
+
+<center>
+<p><img src="Images/BJT_swtch_ckt.jpg" alt = "" id = "Figure_14._BJT_in_Common_emitter" class="tximage" style = "cursor: pointer" onclick="OpenOpjSim('BasicElectronics','BJT','Designfiles','BJT','Switch','PAGE1','Tran')" /></p>
+</center>
+
+<center>
+<p class="imgcap"><i>Figure 14.  BJT in Common emitter configuration to act as a switch</i></p>
+</center>
+
+<center>
+<p><img src="Images/BJT_swtch_simout.jpg" alt = "" id = "Figure_15._Simulation_Output" class="simout" /></p>
+</center>
+
+<center>
+<p class="imgcap"><i>Figure 15.  Simulation output</i></p>
+</center>
+
+<p class="para">As observed from the waveform shown in <a href="#Figure_15._Simulation_Output"><span style="font-style: italic;">figure (15)</span></a>, from <span style="font-family: Courier New,Courier,monospace;">0</span> to <span style="font-family: Courier New,Courier,monospace;">100ms</span>
+the BJT is in the saturation region because both base-emitter and
+base-collector junctions are forward-biased. In this condition, there
+is ideally a short between the collector and the emitter, and the
+collector current (<span style="font-family: Courier New,Courier,monospace;">I</span><sub style="font-family: Courier New,Courier,monospace;">C</sub>) has a finite value&nbsp;equal to <span style="font-family: Courier New,Courier,monospace;">97.7mA</span>. The circuit behaves as a closed switch with ON condition</p>
+ 
+<p class="para"> In the region <span style="font-family: Courier New,Courier,monospace;">100ms</span> to <span style="font-family: Courier New,Courier,monospace;">500ms</span>
+the BJT is in the cutoff region because the base-emitter junction has
+not been forward-biased. Ideally no current flows and the BJT behaves
+similar to an open switch, with OFF condition.</p>
+
+
+
+
+
+
+
+<table style="width: 100%;">
+  <tbody>
+    <tr>
+
+      <td style="width: 50%;">
+      <h1><a class="Mheading" id="A5">BJT as an amplifier</a></h1>
+      </td>
+      <td style="width: 50%;" align="right"><span style="text-decoration: underline; cursor : pointer " onclick="OpenOpjSim('BasicElectronics','BJT','Designfiles','BJT','Amplifier','PAGE1','Tran')"><img alt="click to view circuit" src="../../../../hybrid/Images/cap_icon.png" style="margin-top: 20px;" /></span></td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="para">To observe transistor application as an amplifier following circuit with common emitter configuration as shown in <a href="#Figure_16._BJT_in_Common_emitter"><span style="font-style: italic;">figure (16)</span></a> can be used:</p>
+
+<center>
+<p><img src="Images/BJT_amp_ckt.jpg" alt = "" id = "Figure_16._BJT_in_Common_emitter" class="tximage" style = "cursor : pointer" onclick="OpenOpjSim('BasicElectronics','BJT','Designfiles','BJT','Amplifier','PAGE1','Tran')" /></p>
+</center>
+
+<center>
+<p class="imgcap"><i>Figure 16.  BJT in Common emitter configuration to act as an amplifier</i></p>
+</center>
+
+<center>
+<p><img src="Images/BJT_amp_simout.jpg" alt = "" class="simout" /></p>
+</center>
+
+<center>
+<p class="imgcap"><i><a name="Figure_17._Simulation_Output"></a>Figure 17.  Simulation output</i></p>
+</center>
+
+
+<center><img src="Images/BJT_amp_crsr.jpg" alt = "" /></center>
+
+<center>
+<p class="imgcap"><i><a name="Figure_18._Cursor_window"></a>Figure 18. Cursor window</i></p>
+</center>
+
+<p class="para">As can be observed, the input&nbsp;voltage applied is <span style="font-family: Courier New,Courier,monospace;">39.92mV</span> peak-to-peak and the output obtained is 3.942V peak-to-peak. The input is amplified and the gain&nbsp; (<span style="font-family: Courier New,Courier,monospace;">V</span><sub style="font-family: Courier New,Courier,monospace;">OUT</sub><span style="font-family: Courier New,Courier,monospace;">/V</span><sub style="font-family: Courier New,Courier,monospace;">IN</sub>)&nbsp;is equal to <span style="font-family: Courier New,Courier,monospace;">100</span>. Also note that output is <span style="font-family: Courier New,Courier,monospace;">180degrees</span> out of phase w.r.t input.</p>
+
+<br />
+<br />
+
+<hr />
+<hr />
+
+
+
+    <br />
+
+    <font size="-1">
+      <i>Copyright &copy; 2012, <span style="color:blue;cursor:pointer" onclick="window.open('http://www.cadence.com')"><u>Cadence Design Systems, Inc.</u></span> </i>
+    </font>
+    <br />
+
+    <font size="-1">
+All rights reserved.</font>
+
+
+
+
+</body>
+</html>

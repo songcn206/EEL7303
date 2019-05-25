@@ -1,0 +1,208 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 121 100
+HEADER "Layout Cross Section"
+
+#  Note that like LsMaterials, LsTypes should be derived on the fly rather than
+#  hard-coded here.  The problem is that there is no structure in place to
+#  derive this on the fly.  For reference, the underlying structures are some
+#  symbolic constants in dba_layer.h and the hard-coded array
+#  utl_layer_type_string_table in utl_layparm.c.
+
+#  This list of types is not fully supported...  It is useful for
+#  testing the robustness of the code to handle unknown types.   -JAH
+# -------------------------------------------------------------------------
+
+POPUP <LsTypes>"""".
+POPUP <LsUsages>"""".
+POPUP <LsMaterials>"""".
+POPUP <LsCouplings>"""".
+POPUP <LsAddRemove>"""".
+POPUP <LsRefreshMaterials>"""".
+POPUP <LsFreqDepFiles>"""".
+POPUP <LsSelectLayerTypes>"ALL""ALL","CONDUCTOR""CONDUCTOR","DIELECTRIC""DIELECTRIC","PLANE""PLANE".
+POPUP <LsSelectMaterials>"ALL""ALL".
+POPUP <LsSelectFields> "Thickness""Thickness".
+POPUP <LsValuesToSet> """".
+
+MESSAGE READ_ONLY_MASTER 1 "Not editable with exported partitions."
+MESSAGE READ_ONLY_DPF 1 "Values not editable within design partition."
+
+TILE
+
+GROUP "" INFO
+GLOC 1 36
+GSIZE 20 7
+ENDGROUP
+
+GROUP "" INFO1
+GLOC 21 36
+GSIZE 78 7
+ENDGROUP
+
+GROUP "" INFO2
+GLOC 99 36
+GSIZE 22 7
+ENDGROUP
+
+
+# -------------------------------------------------
+#  The following section defines the layout of the
+#  area below the Grid Control above the buttons.
+# -------------------------------------------------
+
+TEXT "Total Thickness: "
+TLOC 4 38
+OPTIONS BOLD
+TGROUP INFO
+ENDTEXT
+
+TEXT
+TLOC 4 40
+OPTIONS BORDER CENTER
+INFO LsThickness 12
+TGROUP INFO
+ENDTEXT
+
+# -------------------------
+TEXT "Layer Type"
+TLOC 23 38
+OPTIONS BOLD
+TGROUP INFO1
+ENDTEXT
+
+FIELD SelectLayerType
+FLOC 23 40
+ENUMSET 11 1
+POP "LsSelectLayerTypes"
+OPTIONS dispatchsame
+TGROUP INFO1
+ENDFIELD
+
+# -------------------------
+TEXT "Material"
+TLOC 38 38
+OPTIONS BOLD
+TGROUP INFO1
+ENDTEXT
+
+FIELD SelectMaterial
+FLOC 38 40
+ENUMSET 11 1
+POP "LsSelectMaterials"
+TGROUP INFO1
+ENDFIELD
+
+# -------------------------
+TEXT "Field to Set"
+TLOC 53 38
+OPTIONS BOLD
+TGROUP INFO1
+ENDTEXT
+
+FIELD SelectField
+FLOC 53 40
+ENUMSET 11 1
+POP "LsSelectFields"
+TGROUP INFO1
+ENDFIELD
+
+# -------------------------
+TEXT "Value to Set"
+TLOC 67 38
+OPTIONS BOLD
+TGROUP INFO1
+ENDTEXT
+
+FIELD StringValueToSet
+FLOC 67 40
+STRFILLIN 16 20
+TGROUP INFO1
+ENDFIELD
+
+FIELD PopupValueToSet
+FLOC 67 40
+ENUMSET 16 1
+POP "LsValuesToSet"
+TGROUP INFO1
+ENDFIELD
+
+# -------------------------
+FIELD UpdateFields
+FLOC 86 40
+MENUBUTTON "Update Fields" 10 3
+TGROUP INFO1
+ENDFIELD
+
+# -------------------------
+FIELD ShowSingleImpedance
+FLOC 100 38
+CHECKLIST "Show Single Impedance"
+TGROUP INFO2
+ENDFIELD
+
+FIELD ShowDiffImpedance
+FLOC 100 40
+CHECKLIST "Show Diff Impedance"
+TGROUP INFO2
+ENDFIELD
+
+# -------------------------
+FIELD Done
+FLOC 2 44
+MENUBUTTON "Done" 10 3
+ENDFIELD
+
+FIELD Apply
+FLOC 14 44
+MENUBUTTON "Apply" 10 3
+ENDFIELD
+
+FIELD Cancel
+FLOC 26 44
+MENUBUTTON "Cancel" 10 3
+ENDFIELD
+
+# -------------------------
+# Reapply material values
+# -------------------------
+FIELD Refresh
+FLOC 50 44
+MENUBUTTON "Refresh Materials" 20 3
+POP "LsRefreshMaterials"
+ENDFIELD
+
+FIELD report
+FLOC 95 44
+MENUBUTTON "Report" 10 3
+ENDFIELD
+
+FIELD help
+FLOC 108 44
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+
+GRID LsGrid
+FLOC 1  2
+FSIZE 117 35
+OPTIONS HLINES VLINES USERSIZE
+POP "LsAddRemove"
+
+GHEAD TOP
+HEADSIZE 3
+OPTIONS 3D MULTI
+ENDGHEAD
+
+ENDGRID
+
+FLEXMODE EdgeGravity
+
+FLEX LsGrid 0 0 1 1
+FLEX INFO 0 1 0 0 
+FLEX INFO1 0 1 0 0 
+FLEX INFO2 1 1 0 0 
+
+ENDTILE
+ENDFORM

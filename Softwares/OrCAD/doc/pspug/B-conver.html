@@ -1,0 +1,1529 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN" "http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+<html xmlns="http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>PSpice User Guide -- Convergence and "time step too small errors"</title>
+<META NAME="Approver" CONTENT="Technical Publications">
+<META NAME="Author" CONTENT="Technical Publications">
+<META NAME="CreateDate" CONTENT="2012-08-31">
+<META NAME="CreateTime" CONTENT="1346413405">
+<META NAME="FileTitle" CONTENT="Convergence and "time step too small errors"">
+<META NAME="Language" CONTENT="English">
+<META NAME="ModifiedDate" CONTENT="2012-08-31">
+<META NAME="ModifiedTime" CONTENT="1346413405">
+<META NAME="Title" CONTENT="PSpice User Guide -- Convergence and "time step too small errors"">
+<META NAME="DataType" CONTENT="Manuals">
+<META NAME="Description" CONTENT="User guide for PSpice and AMS Simulator.">
+<META NAME="DocTitle" CONTENT="PSpice User Guide">
+<META NAME="DocType" CONTENT="User Guide">
+<META NAME="Keyword" CONTENT="pspug">
+<META NAME="Platform" CONTENT="ALL">
+<META NAME="Product" CONTENT="Allegro AMS Simulator, PSpice">
+<META NAME="ProductFamily" CONTENT="PCB Design, PCB Design">
+<META NAME="ProductVersion" CONTENT="16.6">
+<META NAME="RightsManagement" CONTENT="Copyright 2012 Cadence Design Systems Inc.">
+<META NAME="TopicTags" CONTENT="FALSE">
+<META NAME="Version" CONTENT="16.6">
+<META NAME="FileType"  CONTENT="Chapter">  </head>
+  <body style="margin-left: 5%;">
+    <a name="pagetop"></a>
+    <a name="firstpage"></a>
+    <!-- Begin Buttons -->
+    <table width="650" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td height="36" width="650" colspan="10">
+          <img src="../support/header_doc.gif" width="650" height="34">
+        </td>
+      </tr>
+      <tr>
+        <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                </td>
+<td height="20" width="73">
+<a href="pspugTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<a href="pspugIX.html"><img src="../support/nav2_index.gif" border="0"></a>
+</td>
+        <td>
+          <a href="A-init.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+        </td>
+        <td>
+          <a href="C-importmodel.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+        </td>
+        <td height="20">
+          <a>
+<a href="pspug.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+          </a>
+        </td>
+        <td height="20" width="61">
+          <img src="../support/nav2_black.gif">
+        </td>
+        <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+        </td>
+        <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+        </td>
+        <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+        </td>
+      </tr>
+    </table>
+    <!-- End Buttons -->
+    <p>
+    <hr>
+    <p>
+      <h3>
+        <center>
+          <font >
+            <div>PSpice&#174; User Guide</div>
+            <font >
+              <div>
+            </font>
+          </font>
+        </center>
+      </h3>
+      <br>
+    </p>
+    <div>
+      <h1>B<a name="1056156">&nbsp;</a></h1>
+      <h1><a name="1056164">C</a>onvergence and "time step too small errors"</h1>
+      <h2><a name="1048365">Appendix overview</a></h2>
+      <p><a name="1048366">This appendix discusses common errors and convergence problems </a>in PSpice.</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1048384" title="Convergence and “time step too small errors”" name="1048370"><font color="Blue"><u>Introduction</u></font></a><a href="#1048384" title="Convergence and “time step too small errors”"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1052010" title="Convergence and “time step too small errors”" name="1051983"><font color="Blue"><u>Diagnostics</u></font></a><a href="#1052010" title="Convergence and “time step too small errors”"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1049915" title="Convergence and “time step too small errors”" name="1048374"><font color="Blue"><u>Bias Point (DC) Convergence</u></font></a><a href="#1049915" title="Convergence and “time step too small errors”"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1052138" title="Convergence and “time step too small errors”" name="1048378"><font color="Blue"><u>DC Sweep Convergence</u></font></a><a href="#1052138" title="Convergence and “time step too small errors”"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1049149" title="Convergence and “time step too small errors”" name="1051473"><font color="Blue"><u>Transient Convergence</u></font></a><a href="#1049149" title="Convergence and “time step too small errors”"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <h2><a name="1048384">Introduction</a></h2>
+      <p><a name="1048385">In order to calculate the bias point, DC sweep and transient analysis </a>for analog devices PSpice must solve a set of nonlinear equations which describe the circuit&#39;s behavior. This is accomplished by using an iterative technique--the Newton&#45;Raphson algorithm--which starts by having an initial approximation to the solution and iteratively improves it until successive voltages and currents converge to the same result. </p>
+      <p><a name="1048386">In a few cases PSpice cannot find a solution to the nonlinear circuit </a>equations. This is generally called a "convergence problem" because the symptom is that the Newton&#45;Raphson repeating series cannot converge onto a consistent set of voltages and currents. The following discussion gives some background on the algorithms in PSpice and some guidelines for avoiding convergence problems.</p>
+      <p><a name="1048387">The transient analysis has the additional possibility of being unable </a>to continue because the time step required becomes too small from something in the circuit moving too fast. This is also discussed below.</p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1048388">The AC and noise analyses are linear and do not use an </a>iterative algorithm, so the following discussion does not apply to them. Digital devices are evaluated using boolean algebra; this discussion does not apply to them either.</p>
+      <h3><a name="1048390">Newton&#45;Raphson requirements</a></h3>
+      <p><a name="1048392">The Newton&#45;Raphson algorithm is</a> <font color="#000000"><em>guaranteed to converge to a </em></font><font color="#000000"><em>solution</em></font>. However, this guarantee has some conditions:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048393">The nonlinear equations must have a solution.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048394">The equations must be continuous.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048395">The algorithm needs the equations&#39; derivatives.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048396">The initial approximation must be close enough to the solution.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1048397">Each of these can be taken in order. Remember that the PSpice </a>algorithms are used in computer hardware that has finite precision and finite dynamic range that produce these limits:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048398">Voltages and currents in PSpice are limited to +&#47;&#45;1e10 volts and </a>amps.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048399">Derivatives in PSpice are limited to 1e14.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048400">The arithmetic used in PSpice is double precision and has 15 </a>digits of accuracy.</td>
+          </tr>
+        </table>
+      </div>
+      <h3><a name="1048401">Is there a solution?</a></h3>
+      <p><a name="1048402">Yes, for any physically realistic circuit. However, it is not difficult to set </a>up a circuit that has no solution within the limits of PSpice numerics. </p>
+      <p><a name="1049011">Consider, for example, a voltage source of one megavolt connected </a>to a resistor of one micro&#45;ohm. This circuit does not have a solution within the dynamic range of currents (+&#47;&#45; 1e10 amps). Here is another example:</p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048403">V1</a>&nbsp;&nbsp;&nbsp;&nbsp;1,&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;5v<br>D1&nbsp;&nbsp;&nbsp;&nbsp;1,&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;DMOD<br>.MODEL      DMOD(IS=1e&#45;16)</font></blockquote>
+      <p><a name="1048404">The problem here is that the diode model has no series resistance. </a>To find out more about the diode equations, refer to the <font color="#000000"><em>Analog </em></font><font color="#000000"><em>Devices</em></font> chapter in the online <font color="#000000"><em>PSpice Reference Guide</em></font>.</p>
+      <p><a name="1048405">It can be shown that the current through a diode is:</a></p>
+      <blockquote><a name="1048406">I = IS*e</a><font color="#000000"><sup>V&#47;(N*k*T&#47;q)</sup></font></blockquote>
+      <p><a name="1048407">N defaults to one and k*T at room temperature is about .025 volts. So, </a>in this example the current through the diode would be:</p>
+      <blockquote><a name="1048408">I = 1e&#45;16*e</a><font color="#000000"><sup>200</sup></font> = 7.22e70 amps</blockquote>
+      <p><a name="1048409">This circuit also does not have a solution within the limits of the </a>dynamic range of PSpice. In general, be careful of components without limits built into them. Extra care is needed when using the expressions for controlled sources (such as for behavioral modeling). It is easy to write expressions with very large values.</p>
+      <h3><a name="1048411">Are the equations continuous?</a></h3>
+      <p><a name="1048412">The device equations built into PSpice are continuous. The functions </a>available for behavioral modeling are also continuous (there are several functions, such as int(x), which cannot be added because of this). So, for physically realistic circuits the equations can also be continuous. Exceptions that come are usually from exceeding the limits of the numerics in PSpice. This example tries to approximate an ideal switch using the diode model:</p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048413">.MODEL DMOD(IS=1e&#45;16 N=1e&#45;6)</a></font></blockquote>
+      <p><a name="1048414">The current through this diode is:</a></p>
+      <blockquote><a name="1048415">I = 1e&#45;16*e</a><font color="#000000"><sup>V&#47;(N*.025)</sup></font> = 1e&#45;16*e<font color="#000000"><sup>V&#47;25e&#45;9</sup></font></blockquote>
+      <p><a name="1048416">Because the denominator in the exponential is so small, the current </a>I is essentially zero for V &#60; 0 and almost infinite for V&nbsp;&#62;&nbsp;0. Even if there are external components that limit the current, the "knee" of the diode&#39;s I&#45;V curve is so sharp that it is almost a discontinuity. </p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1048417">Avoid unrealistic model parameters. Behavioral modeling </a>expressions need extra care.</p>
+      <h4><a name="1048419">Are the derivatives correct?</a></h4>
+      <p><a name="1048420">The device equations built into PSpice include the derivatives, and </a>these are correct. Depending on the device, the physical meaning of the derivatives can be small&#45;signal conductance, transconductance or gain.</p>
+      <p><a name="1051749">Unrealistic model parameters can exceed the limit of </a><font size="2" face="'Courier New'" color="#000000">1e14</font>, but it requires some effort. The main thing to look at is the behavioral modeling expressions, especially those having denominators.</p>
+      <p><a name="1051814">Discontinuities in models characteristics and their derivatives cause:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1051815">Ambiguity in calculation of derivatives at point of discontinuity.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1051816">Conductance calculated in nth iteration cannot become a good </a>guess for next iteration.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1051817">Sudden switching of operating regions (example diode switching </a>from off to on) and hence false convergence.</td>
+          </tr>
+        </table>
+      </div>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1051818">Transient analysis convergence failures are usually due to </a>model discontinuities or unrealistic circuit, source, or parasitic modeling.</p>
+      <h3><a name="1051753">Is the initial approximation close enough?</a></h3>
+      <p><a name="1048425">Newton&#45;Raphson is guaranteed to converge only if the analysis is </a>started close to the answer. Also, there is no measurement that can tell how close is close enough.</p>
+      <p><a name="1048426">PSpice gets around this by making heavy use of continuity. Each </a>analysis starts from a known solution and uses a variable step size to find the next solution. If the next solution does not converge PSpice reduces the step size, falls back and tries again.</p>
+      <p><a name="1051875">Incorrect initial estimates can cause convergence failure or even </a>false convergence. Consider following scenarios:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1051895">Power electronic circuits may NOT require tight current&#47;voltage </a>tolerances. Setting the value of ABSTOL to 1u will help in the case of circuits that have currents that are larger than several amps. </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1051896">Unless the circuit conducts kilo&#45;Amperes of current, however, </a>setting ABSTOL to a value that is greater than 1u will cause more convergence problems than it will solve.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1051897">PSpice does not always converge when relaxed tolerances are </a>used. For example, setting the tolerance option, RELTOL, to a value which is greater than .01 can actually cause convergence problems</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1051898">Setting GMIN to a value between 1n and 10n will often solve </a>convergence problems. </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1052007">Setting GMIN to a value, which is greater than 10n, may cause </a>convergence problems.</td>
+          </tr>
+        </table>
+      </div>
+      <h2><a name="1052010">Diagnostics</a></h2>
+      <p><a name="1052011">If PSpice encounters a convergence problem it inserts into the output </a>file a message that looks like the following.</p>
+      <p align="left"><a name="1048701">&nbsp;</a></p>
+      <table summary="" border="0" cellpadding="4" cellspacing="0" bordercolor="#D3D3D3" width="649">
+        <caption>
+        <tr>
+          <td colspan="8" cellpadding="4" valign="top" width="648">
+            <p>
+              <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048816">ERROR &#45;&#45; Convergence problem in transient analysis at Time =  7.920E&#45;03</a></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="8" cellpadding="4" valign="top" width="648">
+            <p>
+              <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048832">Time step =  47.69E&#45;15, minimum allowable step size =  300.0E&#45;15</a></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="8" cellpadding="4" valign="top" width="648">
+            <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048848">These voltages failed to converge:</a></font></blockquote>
+            <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048849">&nbsp;&nbsp;&nbsp;&nbsp;</a>V(x2.23)  =         1230.23 &#47; &#45;68.4137<br>&nbsp;&nbsp;&nbsp;&nbsp;V(x2.25)  =        &#45;1211.94 &#47; 86.6888</font></blockquote>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="8" cellpadding="4" valign="top" width="648">
+            <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048865">These supply currents failed to converge:</a></font></blockquote>
+            <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048866">&nbsp;&nbsp;&nbsp;&nbsp;</a>I(X2.L1)   =        &#45;36.6259 &#47; 2.25682<br>&nbsp;&nbsp;&nbsp;&nbsp;I(X2.L2)   =        &#45;36.5838 &#47; 2.29898</font></blockquote>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="8" cellpadding="4" valign="top" width="648">
+            <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048882">These devices failed to converge:</a></font></blockquote>
+            <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048883">&nbsp;&nbsp;&nbsp;&nbsp;</a>X2.DCR3   X2.DCR4   x2.ktr    X2.Q1     X2.Q2 </font></blockquote>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="8" cellpadding="4" valign="top" width="648">
+            <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048899">Last node voltages tried were:</a></font></blockquote>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top" width="72">
+            <p>
+              <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048915">NODE</a></font>
+            </p>
+          </td>
+          <td cellpadding="4" valign="top" width="87">
+            <p>
+              <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048917">VOLTAGE</a></font>
+            </p>
+          </td>
+          <td cellpadding="4" valign="top" width="76">
+            <p>
+              <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048919">NODE</a></font>
+            </p>
+          </td>
+          <td cellpadding="4" valign="top" width="71">
+            <p>
+              <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048921">VOLTAGE</a></font>
+            </p>
+          </td>
+          <td cellpadding="4" valign="top" width="71">
+            <p>
+              <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048923">NODE</a></font>
+            </p>
+          </td>
+          <td cellpadding="4" valign="top" width="95">
+            <p>
+              <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048925">VOLTAGE</a></font>
+            </p>
+          </td>
+          <td cellpadding="4" valign="top" width="96">
+            <p>
+              <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048927">NODE</a></font>
+            </p>
+          </td>
+          <td cellpadding="4" valign="top" width="80">
+            <p>
+              <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048929">VOLTAGE</a></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p>
+              <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048931">(    1)</a></font>
+            </p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p>
+              <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048933">25.2000</a></font>
+            </p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p>
+              <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048935">(    3)</a></font>
+            </p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p>
+              <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048937">4.0000</a></font>
+            </p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p>
+              <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048939">(    4)</a></font>
+            </p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p>
+              <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048941">0.0000</a></font>
+            </p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p>
+              <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048943">(    6)</a></font>
+            </p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p>
+              <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048945">25.2030</a></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p>
+              <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048947">(x2.23)</a></font>
+            </p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p>
+              <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048949">1230.2000</a></font>
+            </p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p>
+              <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048951">(X2.24)</a></font>
+            </p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p>
+              <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048953">9.1441</a></font>
+            </p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p>
+              <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048955">(x2.25)</a></font>
+            </p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p>
+              <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048957">&#45;1211.9000</a></font>
+            </p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p>
+              <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048959">(X2.26)</a></font>
+            </p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p>
+              <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048961">256.9700</a></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p>
+              <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048963">(X2.28)</a></font>
+            </p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p>
+              <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048965">&#45;206.6100</a></font>
+            </p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p>
+              <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048967">(X2.29)</a></font>
+            </p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p>
+              <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048969">75.4870</a></font>
+            </p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p>
+              <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048971">(X2.30)</a></font>
+            </p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p>
+              <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048973">&#45;25.0780</a></font>
+            </p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p>
+              <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048975">(X2.31)</a></font>
+            </p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p>
+              <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048977">26.2810</a></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p>
+              <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048979">(X3.34)</a></font>
+            </p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p>
+              <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048981">1.771E&#45;06</a></font>
+            </p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p>
+              <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048983">(X3.35)</a></font>
+            </p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p>
+              <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048985">1.0881</a></font>
+            </p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p>
+              <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048987">(X3.36)</a></font>
+            </p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p>
+              <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048989">.4279</a></font>
+            </p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p>
+              <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048991">(X2.XU1.6)</a></font>
+            </p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p>
+              <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048993">1.2636</a></font>
+            </p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1048702">The message always includes the banner (</a><font size="2" face="'Courier New'" color="#000000">ERROR &#45;&#45; </font><font size="2" face="'Courier New'" color="#000000">convergence problem ...</font>) and the trailer (<font size="2" face="'Courier New'" color="#000000">Last node </font><font size="2" face="'Courier New'" color="#000000">voltages tried were ...</font>). It cannot include all three of the middle blocks.</p>
+      <p><a name="1048703">The </a><font size="2" face="'Courier New'" color="#000000">Last node voltages tried...</font> trailer shows the voltages tried at the last Newton&#45;Raphson iteration. If any of the nodes have unreasonable large values this is a clue that these nodes are related to the problem. "These voltages failed to converge" lists the specific nodes which did not settle onto consistent values. It also shows their values for the last two iterations. "These supply currents failed converge" does the same for currents through voltage sources and inductors. If any of the listed numbers are +&#47;&#45; 1e10 then that is an indication that the value is being clipped from an unreasonable value. Finally, "These devices failed to converge" shows devices whose terminal currents or core fluxes did not settle onto consistent values.</p>
+      <p><a name="1048704">The message gives a clue as to the part of the circuit which is causing </a>the problem. Looking at those devices and&#47;or nodes for the problems discussed above is recommended.</p>
+      <h2><a name="1049915">Bias Point (DC) Convergence</a></h2>
+      <p><a name="1050452">The hardest part of the whole process is getting started, that is, </a>finding the bias point. PSpice first tries with the power supplies set to 100%. A solution is not guaranteed, but most of the time the PSpice algorithm finds one. If not, then the power supplies are cut back to almost zero. They are cut to a level small enough that <font color="#000000"><em>all </em></font><font color="#000000"><em>nonlinearities are turned off</em></font>. When the circuit is linear a solution can be found (very near zero, of course). Then, PSpice works its way back up to 100% power supplies using a variable step size.</p>
+      <p><a name="1050454">Once a bias point is found, the transient analysis can be run. It starts </a>from a known solution (the bias point) and steps forward in time. The step size is variable and is reduced as needed to find further solutions.</p>
+      <p><a name="1051532">In case the circuit fails to converge, you should first check the circuit </a>topology and connectivity, followed by modelling of circuit components, and finally check if Pspice options are set properly.</p>
+      <h4><a name="1049035">Checking circuit topology and connectivity</a></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049036">Make sure that all of the circuit connections are valid. Check for </a>incorrect node numbering or dangling nodes. Also, verify component polarity. </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049319">Check for syntax mistakes. Make sure that you used the correct </a>PSPICE units (i.e. MEG for 1E6, not M, which means mili in simulations). </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049320">PSpice checks for the following conditions and provides </a>messages if they occur:</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.872">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.128319999999995">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049039">"Floating node&#34; or &#34;No DC path to ground&#34; messages:</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="69">
+              <div>&nbsp;</div>
+            </td>
+            <td width="31.872000000000003">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bss_bullet_sub_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049040">Make sure that there&#39;s a DC path from every node to </a>ground. </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="69">
+              <div>&nbsp;</div>
+            </td>
+            <td width="31.872000000000003">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bss_bullet_sub_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049041">Make sure that there are at least two connections at </a>every node. </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="69">
+              <div>&nbsp;</div>
+            </td>
+            <td width="31.872000000000003">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bss_bullet_sub_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049042">Make sure that capacitors and&#47;or current sources are </a>not connected in series. </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="69">
+              <div>&nbsp;</div>
+            </td>
+            <td width="31.872000000000003">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bss_bullet_sub_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049043">Make sure that no (groups of) nodes are isolated from </a>ground by current sources and&#47;or capacitors.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.872">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.128319999999995">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049044">&#34;Voltage source or inductor loop&#34; message:  </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="69">
+              <div>&nbsp;</div>
+            </td>
+            <td width="31.872000000000003">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bss_bullet_sub_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049045">Make sure that there are no loops of only inductors </a>and&#47;or voltage sources. </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049046">Place the ground (node 0) somewhere in the circuit. Be careful </a>when you use floating grounds (e.g. chassis ground); you may need to connect a large resistor from the floating node to ground. All nodes will be reported as floating if &#34;0 ground&#34; is not used.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049047">Make sure that voltage&#47;current generators use realistic values, </a>and verify that the syntax is correct. </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049048">Make sure that dependent source gains are correct, and that </a>E&#47;G element expressions are reasonable. Verify that division by zero or LOG(0) cannot occur. </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049049">Make sure that there are no unrealistic model parameters; </a>especially if you have manually entered the model into the netlist. </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049050">Avoid using digital components, unless really necessary. </a>Initialize the nodes with valid digital value to ensure the state is not ambiguous.</td>
+          </tr>
+        </table>
+      </div>
+      <h4><a name="1049052">Modelling circuit components</a></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049054">Semiconductors</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1049055">The first consideration for semiconductors is to avoid physically </a>unrealistic model parameters. As PSpice steps the power supplies up, it has to step carefully through the turn on transition for each device. In the diode example above, for the setting N=1e&#45;6, the knee of the I&#45;V curve would be too sharp for PSpice to maintain its continuity within the power supply step size limit of 1e&#45;6.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049057">Behavioral modeling expressions</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1049058"><font color="#000000"><strong>Range limits:</strong></font></a> Voltages and currents in PSpice are limited to the range +&#47;&#45; 1e10. Care must be taken that the output of expressions falls within this range. This is especially important when one is building an electrical analog of a mechanical, hydraulic or other type of system.</blockquote>
+      <blockquote><a name="1049067"><font color="#000000"><strong>Source limits:</strong></font></a> Another consideration is that the controlled sources must turn off when the supplies are almost 0 (.001%). There is special code in PSpice which &#34;squelches&#34; the controlled sources in a continuous way near 0 supplies. However, care should still be taken using expressions that have denominators. Take, for example, a constant power load:</blockquote>
+      <blockquote>
+<blockquote>        <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049069">GLOAD 3, 5 VALUE = {2Watts&#47;V(3,5)}</a></font></blockquote>
+      </blockquote>
+      <blockquote><a name="1049071">The first repeating series starts with V(3,5) = 0 and the current </a>through GLOAD would be infinite (actually, the code in PSpice which does the division clips the result to a finite value). The &#34;squelching&#34; code is required to be a smooth and well&#45;behaved function.</blockquote>
+      <blockquote><font color="#000000"><strong>Note: </strong></font><a name="1049073">The &#34;squelching&#34; code cannot be &#34;strong&#34; enough to </a>suppress dividing by 0.</blockquote>
+      <blockquote><a name="1049076">The result is that GLOAD does not turn off near 0 power </a>supplies. A better way is described in the application note Modeling Constant Power Loads. The &#34;squelching&#34; code is sufficient for turning off all expressions except those having denominators. In general, though, it is good practice to constrain expressions having the LIMIT function to keep results within physically realistic bounds.</blockquote>
+      <blockquote><a name="1049080"><font color="#000000"><strong>Example:</strong></font></a> A first approximation to an OPAMP that has an open loop gain of 100,000 is:</blockquote>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049082">VOPAMP 3, 5 VALUE = {V(in+,in&#45;)*1e5}</a></font></blockquote>
+      <blockquote><a name="1049083">This has the undesirable property that there is no limit on the </a>output.</blockquote>
+      <blockquote><a name="1049084">A better expression is:</a></blockquote>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049085">VOPAMP 3, 5 VALUE = + {LIMIT(V(in+,in&#45;)*1e5,15v,&#45;15v}</a></font></blockquote>
+      <blockquote>
+<blockquote>        <font color="#000000"><a name="1049086">where the output is limited to +&#47;&#45; 15 volts.</a></font></blockquote>
+      </blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049088">Unguarded p&#45;n junctions</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1049089">A second consideration is to avoid &#34;unguarded&#34; p&#45;n junctions (no </a>series resistance). </blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049091">No leakage resistance</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1049092">A third consideration is to avoid situations, which could have an </a>ideal current source pushing current into a reverse&#45;biased p&#45;n junction without a shunt resistance. p&#45;n junctions in PSpice have (almost) no leakage resistance and would cause the junction&#39;s voltage to go beyond 1e10 volts.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049094">Switches</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1049095">PSpice switches have gain in their transition region. If several </a>are cascaded then the cumulative gain can easily exceed the derivative limit of 1e14. This can happen when modeling simple logic gates using totem&#45;pole switches and there are several gates cascaded in series. Usually a cascade of two switches works but three or more can cause trouble.</blockquote>
+      <h4><a name="1049099">PSpice Options</a></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049100">Increase ITL1 to 400 in the .OPTIONS statement.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049101">Example: .OPTIONS ITL1=400</a></font></blockquote>
+      <blockquote><a name="1049102">This increases the number of DC iterations that PSpice will </a>perform before it gives up. In all but the most complex circuits, further increases in ITL1 won&#39;t typically aid convergence.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049104">Add .NODESETs</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049105">Example: .NODESET V(6)=0</a></font></blockquote>
+      <blockquote><a name="1049106">Use NODESETs to set node voltages to the nearest reasonable </a>guess at their DC values, particularly at nodes that are isolated by high impedances, and at nodes that are inputs to high gain devices. NODESETs do not &#34;fix&#34; the voltages at these nodes. They hold these voltages at the specified value while the rest of the circuit converges to a reasonably stable point, and then &#34;releases&#34; these voltages for a few more iterations to find the final, complete solution. Removing these voltages from the initial iterations, when voltages and currents are varying widely helps PSpice achieve convergence.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049108">STEPGMIN</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1049109">Specifying the circuit analysis option STEPGMIN enables this </a>(either using .OPTION STEPGMIN in the netlist, or by making the appropriate choice from the PSpice&#47;Edit Simulation Profile&#8230; menu command, Options tab). When enabled, the GMIN stepping algorithm is applied after the circuit fails to converge with the power supplies at 100 percent, and if GMIN stepping also fails, the supplies are then cut back to almost zero and then stepped up.</blockquote>
+      <blockquote><a name="1049113">GMIN stepping attempts to find a solution by starting the </a>repeating cycle with a large value of GMIN, initially 1.0e10 times the nominal value. If a solution is found at this setting it then reduces GMIN by a factor of 10, and tries again. This continues until either GMIN is back to the nominal value, or until PSpice fails to converge at one of the GMIN values on the way. In the latter case, GMIN is restored to the nominal value and the power supplies are stepped.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049122">Power supply stepping</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1052136">As previously discussed, PSpice uses a proprietary algorithm </a>which finds a continuous path from zero power supplies levels to 100%. It starts at almost zero (.001%) power supplies levels and works its way back up to the 100% levels. The minimum step size is 1e&#45;6 (.0001%). The first repeating series of the first step starts at zero for all voltages. So modeling expressions, especially those having denominators that include voltages should be checked carefully.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1052300">Set PREORDER in Simulation Profiles options</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1052304">This is important while editing schematic for marginally </a>convergent circuits. Setting PREORDER reduces dependency on the netlisting order thereby ensuring that the non convergence error does not occur because of the change in the netlisting order.</blockquote>
+      <h2><a name="1052138">DC Sweep Convergence</a></h2>
+      <p><a name="1052139">The DC sweep uses a hybrid approach. It uses the bias point </a>algorithm (varying the power supplies) to get started. For subsequent steps it uses the previous solution as the initial approximation. The sweep step is not variable, however. If a solution cannot be found at a step then the bias point algorithm is used for that step.</p>
+      <p><a name="1050675">The whole process relies heavily on continuity. It also requires that </a>the circuit be linear when the supplies are turned off.</p>
+      <h4><a name="1049130">Circuit topology and connectivity</a></h4>
+      <p><a name="1049131">This is same as in DC analysis. See </a><a href="#1049035" title="Convergence and “time step too small errors”"><font color="Blue"><u>Checking circuit topology and connectivity</u></font></a><a href="#1049035" title="Convergence and “time step too small errors”"></a>.</p>
+      <h4><a name="1049132">	</a>Modelling Checks</h4>
+      <p><a name="1049133">This is same as in DC analysis. </a><a href="#1049052" title="Convergence and “time step too small errors”"><font color="Blue"><u>Modelling circuit components</u></font></a><a href="#1049052" title="Convergence and “time step too small errors”"></a>.</p>
+      <h4><a name="1049134">PSpice Options</a></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049136">Set ITL2=100 in the .OPTIONS statement.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049137">Example: .OPTIONS ITL2=100</a></font></blockquote>
+      <blockquote><a name="1049138">This increases the number of DC iterations that PSpice will </a>attempt before it gives up.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049139">Increase or decrease the step values, which are used in the .DC </a>sweep.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1049140"><font color="#000000"><strong>Example: </strong></font></a></blockquote>
+      <blockquote><a name="1049611"><font size="2" face="'Courier New'" color="#000000">.DC VCC 0 1 .1</font></a> becomes <font size="2" face="'Courier New'" color="#000000">.DC VCC 0 1 .01</font></blockquote>
+      <blockquote><a name="1049142">Discontinuities in the PSpice models can cause convergence </a>problems. The use of larger steps may help to bypass the discontinuities, while the use of smaller steps may help PSpice find the intermediate answers, which will be used to find the point, which doesn&#39;t converge. In some cases, smaller steps can improve convergence, because they help PSpice find a &#34;path&#34; from the valid DC solution at one point to the valid solution at the next.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049143">Do not use the DC sweep analysis.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1049144"><font color="#000000"><strong>Example:</strong></font></a> </blockquote>
+      <blockquote>
+<blockquote>        <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049638">.DC VCC 0 5 .1</a></font></blockquote>
+      </blockquote>
+      <blockquote>
+<blockquote>        <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049145">VCC 1 0 </a></font></blockquote>
+      </blockquote>
+      <blockquote><a name="1049146">becomes</a></blockquote>
+      <blockquote>
+<blockquote>        <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049648">.TRAN .01 1</a></font></blockquote>
+      </blockquote>
+      <blockquote>
+<blockquote>        <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049147">VCC 1 0 PULSE 0 5 0 1</a></font></blockquote>
+      </blockquote>
+      <blockquote><a name="1049148">In many cases, it is preferable to use the transient analysis to </a>ramp the appropriate voltage and&#47;or current sources. The transient analysis tends to be more robust, and is sometimes faster.</blockquote>
+      <h2><a name="1049149">Transient Convergence</a></h2>
+      <p><a name="1050826">The transient analysis starts using a known solution &#45; the bias point. </a>It then uses the most recent solution as the first guess for each new time point. If necessary, the time step is cut back to keep the new time point close enough that the first guess allows the Newton&#45;Raphson repeating series to converge. The time step is also adjusted to keep the integration of charges and fluxes accurate enough.</p>
+      <p><a name="1050827">In theory the same considerations which were noted for the bias point </a>calculation apply to the transient analysis. However, in practice they show up during the bias point calculation first and, hence, are corrected before a transient analysis is run.</p>
+      <p><a name="1050828">The transient analysis can fail to complete if the time step gets too </a>small. This can have two different effects:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050829">The Newton&#45;Raphson iterations would not converge even for the </a>smallest time step size, or</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1050830">Something in the circuit is moving faster than can be </a>accommodated by the minimum step size.</td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1050831">The message PSpice puts into the output file specifies which </a>condition occurred.</p>
+      <h4><a name="1049150">Circuit topology and connectivity</a></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049152">Avoid using digital components, unless really necessary. </a>Initialize the nodes with valid digital value to ensure no ambiguous state. These can cause time&#45;step issues (time&#45;step may unnecessary go too small) and hence transient convergence issue.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049153">Use RC snubbers around diodes. </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049154">Add Capacitance for all semiconductor junctions (if no specific </a>value is known: CJO=3pF for diodes, CJC &amp; CJE=5pF for BJTs, CGS and CGD=5pF for JFETs and GaAsFETs, CGDO &amp; CGSO=5pF for MOSFETs if no specific value is known). </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049155">Add realistic circuit and element parasitics. </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049156">Look for waveforms that transition vertically (up or down) at the </a>point during which the analysis halts. These are the key nodes, which should be examined for problems.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049157">Increase the rise&#47;fall times of the PULSE sources; e.g. from 1f to </a>1u.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1049158"><font color="#000000"><strong>Example: </strong></font></a></blockquote>
+      <blockquote>
+<blockquote>        <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049701">VCC 1 0 PULSE 0 1 0 1f 1f </a></font></blockquote>
+      </blockquote>
+      <blockquote><a name="1049159">becomes</a></blockquote>
+      <blockquote>
+<blockquote>        <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049711">VCC 1 0 PULSE 0 1 0 1U 1U</a></font></blockquote>
+      </blockquote>
+      <blockquote><a name="1049724">An effort should be made to smooth strong non&#45;linearities. The </a>pulse times should be realistic, not ideal. If no rise or fall time values are given, or if 0 is specified, the rise and fall times will be set to the TSTEP value in the .TRAN statement (set in the Output File Options of the Time Domain (Transient) analysis settings in the simulation profile.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1052216">Ensure that there is no unreasonably large capacitor or inductor</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1049162">If the transient analysis fails at the first time point then usually </a>there is an unreasonably large capacitor or inductor. Usually this is due to a typographical error. Consider the following capacitor:</blockquote>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049163"> C 1 3, 0 1Ouf</a></font></blockquote>
+      <p><a name="1051303">&#34;</a><font size="2" face="'Courier New'" color="#000000">1O</font>&#34; (has the letter O) should have been &#34;<font size="2" face="'Courier New'" color="#000000">10</font>.&#34; This capacitor has a value of one farad, not 10 microfarads. An easy way to catch these is to use the LIST option (on the .OPTIONS command). </p>
+      <h4><em><a name="1051304">LIST</a></em></h4>
+      <p><a name="1051305">The LIST option can echo back all the devices into the output file </a><font color="#000000"><em>that </em></font><font color="#000000"><em>have their values in scientific notation</em></font>. </p>
+      <p><a name="1051306">That makes it easy to spot any unusual values. This kind of problem </a>does not show up during the bias point calculation because capacitors and inductors do not participate in the bias point.</p>
+      <p><a name="1051307">Similar comments apply to the parasitic capacitance parameters in </a>transistor (and diode) models. These are normally echoed to the output file (the NOMOD option suppresses the echo but the default is to echo). As in the LIST output, the model parameters are echoed in scientific notation making it easy to spot unusual values. A further diagnostic is to ask for the detailed operating bias point (.TRAN&#47;OP) information. </p>
+      <h4><em><a name="1051308">.TRAN&#47;OP</a>	</em></h4>
+      <p><a name="1049164">This lists the small&#45;signal parameters for each semiconductor device </a>including the calculated parasitic capacitances.</p>
+      <h4><a name="1049168">Realistically Model Circuit; add parasitics, especially </a>stray&#47;junction capacitance</h4>
+      <p><a name="1049169">The idea here is to smooth any strong non&#45;linearties or </a>discontinuities. This may be accomplished via the addition of capacitance to various nodes and verifying that all semiconductor junctions have capacitance. Other tips include:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049171">Bipolar transistors substrate junction</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1049172">The UC Berkeley SPICE contains an unfortunate convention for </a>the substrate node of bipolar transistors. The collector&#45;substrate p&#45;n junction has no DC component. If the capacitance model parameters are specified (e.g., CJS) then the junction has (voltage&#45;dependent) capacitance but no DC current. This can lead to a sneaky problem: if the junction is inadvertently forward&#45;biased it can create a very large capacitance. The capacitance goes as a power of the junction voltage. Normal junctions cannot sustain much forward voltage because a large current flows. The collector&#45;substrate junction is an exception because it has no DC current. If this happens it usually shows up at the first time step. It can be spotted turning on the detailed operating point information (.TRAN&#47;OP) and looking at the calculated value of CJS for bipolar transistors. The whole problem can be prevented by using the PSpice model parameter ISS. This parameter &#34;turns on&#34; the  DC current for the substrate junction.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049174">Parasitic capacitances</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1049175">It is important that switching times be nonzero. This is assured if </a>devices have parasitic capacitances. The semiconductor model libraries in PSpice have such capacitances. If switches and&#47;or controlled sources are used, then care should be taken to assure that no sections of circuitry can try to switch in zero time. In practice this means that if any positive feedback loops exist (such as a Schmidt trigger built out of switches) then such loops should include capacitances.</blockquote>
+      <blockquote><a name="1049179">Another way of saying all this is that during transient analysis the </a>circuit equations must be continuous over time (just as during the bias point calculation the equations must be continuous with the power supply level).</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049184">Inductors and transformers</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1049185">While the impedance of capacitors gets lower at high </a>frequencies (and small time steps) the impedance of inductors gets higher.</blockquote>
+      <blockquote><font color="#000000"><strong>Note: </strong></font><a name="1049186">The inductors in PSpice have an infinite bandwidth.</a></blockquote>
+      <blockquote><a name="1049187">Real inductors have a finite bandwidth due to eddy current </a>losses and&#47;or skin effect. At high frequencies the effective inductance drops.</blockquote>
+      <blockquote><a name="1049188">Another way to say this is that physical inductors have a </a>frequency at which their Q begins to roll off. The inductors in PSpice have no such limit. This can lead to very fast spikes as transistors (and diodes) connected to inductors turn on and off. The fast spikes, in turn, can force PSpice to take unrealistically small time steps.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1052222">It is recommended that all inductors have a parallel resistor </a>(series resistance is good for modeling DC effects but does not limit the inductor&#39;s bandwidth). The parallel resistor gives a good model for eddy current loss and limits the bandwidth of the inductor. The size of resistor should be set to be equal to the inductor&#39;s impedance at the frequency at which its Q begins to roll off. The value of this resistor can be calculated using the following formula:</td>
+          </tr>
+        </table>
+      </div>
+      <p>
+<blockquote><blockquote>        <font color="#000000"><a name="1052236"><img src="images/B-conver.29.1.1.png" width="161" height="24" alt=""></a></font></blockquote></blockquote>
+      </p>
+      <blockquote>
+<blockquote><blockquote>        <font color="#000000"><a name="1052235">where </a><font size="2" face="'Courier New'" color="#000000">f</font> is the roll&#45;off frequency.</font></blockquote></blockquote>
+      </blockquote>
+      <blockquote><a name="1049190">Adding parallel resistors limits the inductor impedance at high </a>frequencies. </blockquote>
+      <blockquote><a name="1049192"><font color="#000000"><strong>Example:</strong></font></a> </blockquote>
+      <blockquote><a name="1049815">A common one milli&#45;henry iron core inductor begins to roll off at </a>no less than 100KHz. A good resistor value to use in parallel is then R = 2*p*100e3*.001 = 628 ohms. Below the roll&#45;off frequency the inductor dominates; above it the resistor does. This keeps the width of spikes from becoming unreasonably narrow.</blockquote>
+      <h4><a name="1049195">PSpice options</a></h4>
+      <p><a name="1050849">TIME, the simulation time during transient analysis, is a double </a>precision variable which gives it about 15 digits of accuracy. The dynamic range is set to be 15 digits minus the number of digits of accuracy required by RELTOL. For a default value of RELTOL = .001 (.1% or 3 digits) this gives 15&#45;3 = 12 digits. This means that the minimum time step is the overall run time (TSTOP) divided by 1e12. The dynamic range is large but finite.</p>
+      <p><a name="1050850">It is possible to exceed this dynamic range in some circuits. Consider, </a>for example, a timer circuit which charges up a 100uF capacitor to provide a delay of 100 seconds. At a certain threshold a comparator turns on a power MOSFET. The overall simulation time is 100 seconds. For default RELTOL this gives us a minimum time step of 100 picoseconds. If the comparator and other circuitry has portions that switch in a nanosecond then PSpice needs steps of less than 100 picoseconds to calculate the transition accurately.</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049197">Set RELTOL=.01 in the .OPTIONS statement.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1049198"><font color="#000000"><strong>Example:</strong></font></a> </blockquote>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049864">.OPTIONS RELTOL=.01</a></font></blockquote>
+      <blockquote><a name="1049199">This option is encouraged for most simulations, since the </a>reduction of Reltol can increase the simulation speed by 10 to 50%. Only a minor loss in accuracy usually results. A useful recommendation is to set Reltol to .01 for initial simulations, and then reset it to its default value of .001 when you have the simulation running the way you like it and a more accurate answer is required. Setting Reltol to a value less than .001 is generally not required.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049202">Reduce the accuracy of ABSTOL&#47;VNTOL if current&#47;voltage </a>levels allow it.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1049203"><font color="#000000"><strong>Example:</strong></font></a> </blockquote>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049871">.OPTION ABSTOL=1N VNTOL=1M</a></font></blockquote>
+      <blockquote><a name="1049204">Abstol and Vntol should be set to about 8 orders of magnitude </a>below the level of the maximum voltage and current. The default values are Abstol=1pA and Vntol=1uV. These values are generally associated with IC designs.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049205">Increase ITL4, but to no more than 100, in the .OPTIONS </a>statement.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1049884"><font color="#000000"><strong>Example:</strong></font></a> </blockquote>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049206"> .OPTIONS ITL4=40</a></font></blockquote>
+      <blockquote><a name="1049207">This increases the number of transient iterations that PSpice will </a>attempt at each time point before it gives up. This is particularly effective at solving convergence problems when the simulation needs to cover a long time period, and fast transitions occur within the circuit during that time. Values greater than 100 won&#39;t usually bring convergence; unnecessarily large values can cause.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049208">Skipping the bias point</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1049209">The SKIPBP option for the transient analysis skips the bias point </a>calculation. In this case the transient analysis has no known solution to start from and, therefore, is not assured of converging at the first time point. Because of this, its use is not recommended. Its inclusion in PSpice is to maintain compatibility with UC Berkeley SPICE. SKIPBP has the same meaning as UIC in Berkeley SPICE. UIC is not needed in order to specify initial conditions.</blockquote>
+      <blockquote><a name="1049210">It should be used as a last resort if there is trouble getting the </a>transient analysis to start because the DC operating point can&#39;t be calculated. The initial guess for dc could be made from results of such transient analysis; and then transient analysis could be re&#45;run with operating point. You should add any applicable .IC and IC= initial conditions statements to assist in the initial stages of the transient analysis. Be careful when you set initial conditions, for a poor setting may cause convergence difficulties.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1052201">Increasing the ABSTOL and CHGTOL</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1052205">While modeling a mechanical system with an RC circuit, where </a>capacitors are in the order of Farad and current impulses is around 10x A, increase CHGTOL and ABSTOL by six order of magnitude. For example, change CHGTOL from <font size="2" face="'Courier New'" color="#000000">0.01e&#45;012</font> to<font size="2" face="'Courier New'" color="#000000">0.01e&#45;006</font>. Simulate the circuit and then start tightening the ABSTOL and CHGTOL values until a convergence error is generated. Once a convergence error is generated, you can revert one step to get the solution.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1052382">Set the DIGSTEPBACK option</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1052386">.OPTIONS DIGSTEPBACK</a></font></blockquote>
+      <p><a name="1052403">Setting this option might prove useful in cases where your have </a>convergence problems in a circuits with digital components and you are trying to converge using Solver&nbsp;1. </p>
+      <p><a name="1052479">Though setting DIGSTEPBACK option might work, it is </a>recommended that you should use solver&nbsp;0 simulation algorithm to obtain a solution.</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="13.333333333333332">
+              <div>&nbsp;</div>
+            </td>
+            <td width="133.33333333333331">
+              <div>
+                <nobr>
+                  <img src="images/tip.gif" alt="ParagraphBullet" border="0">
+                </nobr>
+              </div>
+            </td>
+            <td>
+              <font size="3"><a name="1052407">Solver</a>&nbsp;1 and Solver&nbsp;0 are two matrix solving algorithms used by PSpice. By default, Solver&nbsp;1 that has better convergence property, is used. But at times, for a circuit with convergence problems changing the simulation algorithm to Solver&nbsp;0 helps. To change the simulation algorithm from Solver&nbsp;1 to Solver&nbsp;0, open the circuit in the schematic editor. From the <font color="#000000"><em>PSpice</em></font> menu choose <font color="#000000"><em>Edit Simulation Profile</em></font>. In the <font color="#000000"><em>Simulation Settings</em></font> dialog box, select the <font color="#000000"><em>Options</em></font> tab. Select the <font color="#000000"><em>Advanced Options</em></font> button. In the <font color="#000000"><em>Advanced Analog Options</em></font> dialog box, change the <font color="#000000"><em>Simulation algorithm</em></font> from <font size="2" face="'Courier New'" color="#000000">default</font> to <font size="2" face="'Courier New'" color="#000000">0</font>.</font>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1049031">&nbsp;</a></p>
+    </div>
+    <br>
+    <a href="#pagetop">Return to top of page</a>
+    <hr>
+    <hr align="left">
+    <div style="text-align: left;">
+      <!-- Begin Buttons -->
+      <table width="650" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                    </td>
+<td height="20" width="73">
+<a href="pspugTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<a href="pspugIX.html"><img src="../support/nav2_index.gif" border="0"></a>
+</td>
+          <td>
+            <a href="A-init.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+          </td>
+          <td>
+            <a href="C-importmodel.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+          </td>
+          <td>
+            <a>
+<a href="pspug.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+            </a>
+          </td>
+          <td height="20" width="61">
+            <img src="../support/nav2_black.gif">
+          </td>
+          <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+          </td>
+          <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+          </td>
+          <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+          </td>
+        </tr>
+      </table>
+      <!-- End Buttons -->
+    </div>
+    <br>
+    <font size="-1" >
+For support, see <a href="http://support.cadence.com" target="_blank">Cadence Online Support</a> service.</font>
+    <br>
+    <br>
+    <font size="-1" >
+      <i>Copyright &#169; 2011, <a href="http://www.cadence.com">Cadence Design Systems, Inc.</a></i>
+    </font>
+    <br>
+    <font size="-1" >
+All rights reserved.</font>
+    <br>
+    <br>
+  </body>
+</html>

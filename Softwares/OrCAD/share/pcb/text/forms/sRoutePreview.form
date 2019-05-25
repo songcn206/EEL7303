@@ -1,0 +1,219 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 51 40
+HEADER "Route Feasibility"
+
+TILE
+
+TABSET "one"
+FLOC 1 1
+#ifdef CHIPIO
+TSSIZE 49 34
+#else
+TSSIZE 49 44
+#endif
+
+TAB "Routing"
+ 
+GRID layer_grid
+FLOC 2 2
+FSIZE  45 12
+OPTIONS HLINES VLINES USERSIZE
+GHEAD TOP 
+HEADSIZE 2
+OPTIONS 3D 
+ENDGHEAD
+ENDGRID
+
+GROUP "Default fanout via diameter"
+GLOC 2 14
+GSIZE 45 7
+ENDGROUP
+
+TEXT "Die:"
+TLOC 4 16
+ENDTEXT
+FIELD ic_via_diameter
+FLOC 12 16
+STRFILLIN 32 128
+ENDFIELD
+
+TEXT "Package:"
+TLOC 4 18
+ENDTEXT
+FIELD io_via_diameter
+FLOC 12 18
+STRFILLIN 32 128
+ENDFIELD
+
+# Don't want plating bar options in ChipIO. 
+# Should just default the options on the user's behalf.
+
+#ifdef CHIPIO
+
+GROUP "Command Options"
+GLOC 2 22
+GSIZE 45 8
+ENDGROUP
+
+FIELD display_log
+FLOC 4 25
+CHECKLIST "View log file"
+ENDFIELD
+
+FIELD route_as_wirebond
+FLOC 4 27
+CHECKLIST "Route as a wire bond design"
+ENDFIELD
+
+#else
+
+GROUP "Plating Bar Routes"
+GLOC 2 22
+GSIZE 45 10
+ENDGROUP
+
+FIELD plating_bar
+FLOC 4 25
+CHECKLIST "Create"
+ENDFIELD
+
+FIELD plate_unused_bga_pin
+FLOC 4 27
+CHECKLIST "Plate unused package pins"
+ENDFIELD
+
+TEXT "Distance from package edge:"
+TLOC 4 29
+ENDTEXT
+
+FIELD pbar_length
+FLOC 28 29
+STRFILLIN 16 128
+ENDFIELD
+
+GROUP "Command Options"
+GLOC 2 33
+GSIZE 45 8
+ENDGROUP
+
+FIELD display_log
+FLOC 4 36
+CHECKLIST "View log file"
+ENDFIELD
+
+FIELD route_as_wirebond
+FLOC 4 38
+CHECKLIST "Treat this as a wire bond design"
+ENDFIELD
+
+#endif
+
+ENDTAB
+
+TAB "Pin Swapping"
+
+GROUP "BGA pin swap settings"
+GLOC 2 1
+GSIZE 45 11
+ENDGROUP
+
+FIELD swap_io_no
+FLOC 4 4
+CHECKLIST "Not allowed" "swap_io"
+ENDFIELD
+
+FIELD swap_io_all
+FLOC 4 6 
+CHECKLIST "All pins" "swap_io"
+ENDFIELD
+
+FIELD swap_io_io
+FLOC 4 8
+CHECKLIST "Signal pins only" "swap_io"
+ENDFIELD
+
+TEXT "(Will not affect power or ground pins)"
+TLOC 20 8
+FSIZE 24 4
+ENDTEXT
+
+GROUP "Die pin swap settings"
+GLOC 2 13
+GSIZE 45 11
+ENDGROUP
+
+FIELD swap_ic_no
+FLOC 4 16
+CHECKLIST "Not allowed" "swap_ic"
+ENDFIELD
+
+FIELD swap_ic_all
+FLOC 4 18
+CHECKLIST "All pins" "swap_ic"
+ENDFIELD
+
+FIELD swap_ic_io
+FLOC 4 20
+CHECKLIST "Signal pins only" "swap_ic"
+ENDFIELD
+
+TEXT "(Will not affect power or ground pins)"
+TLOC 20 20
+FSIZE 24 4
+ENDTEXT
+
+ENDTAB
+
+ENDTABSET
+
+#ifdef CHIPIO
+
+FIELD route
+FLOC 1 36
+MENUBUTTON "Preview" 10 3
+ENDFIELD
+
+FIELD done
+FLOC 15 36
+MENUBUTTON "OK" 10 3
+ENDFIELD
+
+FIELD cancel
+FLOC 26 36
+MENUBUTTON "Cancel" 10 3
+ENDFIELD
+
+FIELD help
+FLOC 40 36
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+#else
+
+FIELD route
+FLOC 1 46
+MENUBUTTON "Preview" 10 3
+ENDFIELD
+
+FIELD done
+FLOC 15 46
+MENUBUTTON "OK" 10 3
+ENDFIELD
+
+FIELD cancel
+FLOC 26 46
+MENUBUTTON "Cancel" 10 3
+ENDFIELD
+
+FIELD help
+FLOC 40 46
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+#endif
+ 
+ENDTILE
+ENDFORM
+

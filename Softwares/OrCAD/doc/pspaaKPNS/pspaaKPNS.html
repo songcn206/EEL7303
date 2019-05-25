@@ -1,0 +1,301 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN" "http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+<html xmlns="http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>PSpice Advanced Analysis Known Problems and Solutions -- PSpice Advanced Analysis Known Problems and Solutions</title>
+<META NAME="Approver" CONTENT="Technical Publications">
+<META NAME="Author" CONTENT="Technical Publications">
+<META NAME="CreateDate" CONTENT="2012-09-11">
+<META NAME="CreateTime" CONTENT="1347369628">
+<META NAME="DataType" CONTENT="KP&S">
+<META NAME="Description" CONTENT="Describes known problems in Advanced Analysis and their solutions.">
+<META NAME="DocTitle" CONTENT="PSpice Advanced Analysis Known Problems and Solutions">
+<META NAME="DocType" CONTENT="Known Problems and Solutions">
+<META NAME="EdmsRelease" CONTENT="EDMS Windows-P015">
+<META NAME="FileTitle" CONTENT="PSpice Advanced Analysis Known Problems and Solutions">
+<META NAME="FileType" CONTENT="Chapter">
+<META NAME="Keyword" CONTENT="pspaaKPNS">
+<META NAME="Language" CONTENT="English">
+<META NAME="ModifiedDate" CONTENT="2012-09-11">
+<META NAME="ModifiedTime" CONTENT="1347369628">
+<META NAME="NextFile" CONTENT="">
+<META NAME="PageCount" CONTENT="4">
+<META NAME="Platform" CONTENT="ALL">
+<META NAME="PrevFile" CONTENT="pspaaKPNSTOC.html">
+<META NAME="Product" CONTENT="Allegro AMS Simulator, PSpice">
+<META NAME="ProductFamily" CONTENT="PCB Design, PCB Design">
+<META NAME="ProductVersion" CONTENT="16.6">
+<META NAME="RightsManagement" CONTENT="Copyright 19912012 Cadence Design Systems Inc.">
+<META NAME="Title" CONTENT="PSpice Advanced Analysis Known Problems and Solutions -- PSpice Advanced Analysis Known Problems and Solutions">
+<META NAME="TopicTags" CONTENT="FALSE">
+<META NAME="Version" CONTENT="16.6">
+  </head>
+  <body style="margin-left: 5%;">
+    <a name="pagetop"></a>
+    <a name="firstpage"></a>
+    <!-- Begin Buttons -->
+    <table width="650" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td height="36" width="650" colspan="10">
+          <img src="../support/header_doc.gif" width="650" height="34">
+        </td>
+      </tr>
+      <tr>
+        <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                </td>
+<td height="20" width="73">
+<a href="pspaaKPNSTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<img src="../support/nav2_index_b.gif" border="0">
+</td>
+        <td>
+          <a href="pspaaKPNSTOC.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+        </td>
+        <td height="20">
+          <img src="../support/nav2_next_b.gif" alt="Previous">
+        </td>
+        <td height="20">
+          <a>
+<a href="pspaaKPNS.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+          </a>
+        </td>
+        <td height="20" width="59">
+          <img src="../support/nav_next_b.gif" alt="Next" border="0">
+        </td>
+        <td height="20" width="61">
+          <img src="../support/nav2_black.gif">
+        </td>
+        <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+        </td>
+        <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+        </td>
+        <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+        </td>
+      </tr>
+    </table>
+    <!-- End Buttons -->
+    <p>
+    <hr>
+    <p>
+      <h3>
+        <center>
+          <font >
+            <div>PSpice Advanced Analysis Known Problems and Solutions</div>
+            <font >
+              <div>
+            </font>
+          </font>
+        </center>
+      </h3>
+      <br>
+    </p>
+    <div>
+      <h1><a name="1010592">PSpice Advanced Analysis Known </a>Problems and Solutions</h1>
+      <p><a name="1011678">This Known Problems and Solutions document describes important Cadence Change </a>Requests (CCRs) for Advanced Analysis and tells you how to solve or work around these problems. For information about CCRs that are fixed for this release, see Advanced Analysis<sup><a name="wwfootnote_inline_31" href="#31">1</a></sup> Product Notes.</p>
+      <p><a name="1011680"><strong>Important:</strong></a> Only known problems and solutions available at release time are available in this document. </p>
+      <h2><a name="1010753">Known Problems and Solutions in Advanced Analysis</a></h2>
+      <p><a name="1018064">This section lists the known problems in Advanced Analysis and tells you how to solve or work </a>around these problems.</p>
+      <p>
+        <font size="4"><strong><a name="1018484">CCR 153216: Incorrect plot is displayed if the outer sweep variable has a </a>single value</strong></font>
+      </p>
+      <p><a name="1018485"><strong>Description</strong></a>: In Parametric Plot analysis if the outer sweep variable has a single value, and it is set as X axis in the plot definition, the correct trace will not be displayed.</p>
+      <p><a name="1018486"><strong>Solution</strong></a>: To view the correct plot, turn off the performance analysis from PSpice UI. Then bring up the Add trace dialog, and select the variable defined as Y axis. Next, add the trace.</p>
+      <p>
+        <font size="4"><strong><a name="1018200">CCR 174349: Advanced Analysis tools do not run if the csdf option set.</a></strong></font>
+      </p>
+      <p><a name="1018212"><strong>Description</strong></a>: To evaluate expressions, Advanced Analysis tools such as Optimizer, Parametric Plotter, Monte Carlo, and Sensitivity use the data file after every run. Therefore, if the csdf option is set these tools are not able to run.</p>
+      <p><a name="1018234"><strong>Solution:</strong></a> Before running advanced analysis on the design, ensure that the <em>Save data in </em><em>the CSDF format (.CSD)</em> check box, in the Data Collection tab of the Simulation Settings dialog box is clear.</p>
+      <p>
+        <font size="4"><strong><a name="1010935">CCR 20199: Fewer data points in Advanced Analysis Optimizer .DAT file</a></strong></font>
+      </p>
+      <p><a name="1010621"><strong>Description: </strong></a>When running an optimization that uses an AC sweep, it is possible for the highest frequency data point to not be written to the .DAT file. As a consequence, a measurement that uses the last data point (highest frequency) will fail to be evaluated.</p>
+      <p><a name="1010622"><strong>Solution: </strong></a>Either specify more points (higher resolution) for the AC sweep or increase the highest frequency for the sweep, so that the measurement does not use the highest frequency point.</p>
+      <p>
+        <font size="4"><strong><a name="1011508">CCR 23833: Simulation server (Simsrvr) may crash if Advanced Analysis </a>is invoked during pause</strong></font>
+      </p>
+      <p><a name="1011537"><strong>Description: </strong></a>Advanced Analysis uses simulation profiles that are set up for the PSpice project. If you run one of these simulation profiles, the status of the simulation will be displayed in the PSpice Simulation Manger. If a simulation profile is Paused and then one of the Advanced Analysis tools is invoked, the Simulation server may crash.</p>
+      <p><a name="1011546"><strong>Solution: </strong></a>Before invoking Advanced Analysis, be sure to check that there are no paused simulations in the PSpice Simulation Manager for the circuit. To do this, go to the Windows system tray, which is located in the lower right corner of your computer screen. Double&#45;click the PSpice Simulation Manager icon (hover your mouse over the icon shaped like a yellow square to check the icon name). In the PSpice Simulation Manager window, right&#45;click on any paused simulations, and then choose Stop.</p>
+      <h2><a name="1017032">Known Problems and Solutions in Capture&#45;Advanced </a>Analysis and Design Entry HDL &#45;Advanced Analysis Flows</h2>
+      <p><a name="1017033">This section lists the important Cadence Change Requests (CCRs) in using Capture or </a>Design Entry HDL with Advanced Analysis and tells you how to solve or work around these problems.</p>
+      <p>
+        <font size="4"><strong><a name="1017778">CCR 32518: Smoke analysis: Need to change SOURCE_PACKAGE </a>property value to match IMPLEMENTATION property value if you edit smoke information in a part</strong></font>
+      </p>
+      <p><a name="1013995">If you edit the model for a part placed in your design and change its smoke parameters, you </a>must change the value of the <font size="2" face="'Courier New'">SOURCE_PACKAGE</font> property on the part to match the value of the <font size="2" face="'Courier New'">IMPLEMENTATION</font> property on the part.</p>
+      <p><a name="1013996">To change the value of the </a><font size="2" face="'Courier New'">SOURCE_PACKAGE</font> property on the part, do the following:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr><strong>	1.	</strong></nobr>
+              </div>
+            </td>
+            <td><a name="1013997">Select the part on the schematic page.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr><strong>	2.	</strong></nobr>
+              </div>
+            </td>
+            <td><a name="1013998">From the Edit menu, choose Part.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1013999">The part editor window appears.</a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr><strong>	3.	</strong></nobr>
+              </div>
+            </td>
+            <td><a name="1014000">From the Options menu, choose Package Properties.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1014001">The Edit Part Properties dialog box appears.</a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr><strong>	4.	</strong></nobr>
+              </div>
+            </td>
+            <td><a name="1014002">In the Name text box, enter the name of the model that is specified as the value of the </a><font size="2" face="'Courier New'">IMPLEMENTATION</font> property on the part.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr><strong>	5.	</strong></nobr>
+              </div>
+            </td>
+            <td><a name="1014003">Click OK.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr><strong>	6.	</strong></nobr>
+              </div>
+            </td>
+            <td><a name="1014004">From the File menu, choose Close.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr><strong>	7.	</strong></nobr>
+              </div>
+            </td>
+            <td><a name="1014005">Click Update All in the Save Part Instance message box that appears.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><strong>Note: </strong><a name="1014006">If the value of the </a><font size="2" face="'Courier New'">SOURCE_PACKAGE</font> property is not the same as the value of the <font size="2" face="'Courier New'">IMPLEMENTATION</font> property, the modified smoke information will not be used for smoke analysis. Instead, the smoke information from the part library will be used for smoke analysis.</p>
+      <p>
+        <font size="4"><strong><a name="1013661">CCR 32420: Changes in device parameters are not being recognized by </a>PSpice Advanced Analysis</strong></font>
+      </p>
+      <p><a name="1013662"><strong>Description:</strong></a> This problem occurs when you open a PSpice model from Capture and change its device parameters in Model Editor or change device parameters on a part instance in Capture. When you run PSpice Advanced Analysis, you will notice that the new parameters are not visible.</p>
+      <p><a name="1018559"><strong>Solution:</strong></a> From the PSpice menu in Capture, choose Create Netlist, then run Advanced Analysis.</p>
+      <hr>
+      <table width="100%" border="0" cellpadding="3" cellspacing="0" summary="">
+        <tr valign="baseline">
+          <td>
+            <p>
+              <font size="-1">
+                <a name="31" href="#wwfootnote_inline_31">1</a>
+              </font>
+            </p>
+          </td>
+          <td>
+            <p><a name="1018627">Depending on the license you will either access PSpice Advanced Analysis or AMS Simulator Advanced </a>Analysis.</p>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <br>
+    <a href="#pagetop">Return to top of page</a>
+    <hr>
+    <hr align="left">
+    <div style="text-align: left;">
+      <!-- Begin Buttons -->
+      <table width="650" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                    </td>
+<td height="20" width="73">
+<a href="pspaaKPNSTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<img src="../support/nav2_index_b.gif" border="0">
+</td>
+          <td>
+            <a href="pspaaKPNSTOC.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+          </td>
+          <td height="20">
+            <img src="../support/nav2_next_b.gif" alt="Previous">
+          </td>
+          <td>
+            <a>
+<a href="pspaaKPNS.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+            </a>
+          </td>
+          <td height="20" width="59">
+            <img src="../support/nav_next_b.gif" alt="Next" border="0">
+          </td>
+          <td height="20" width="61">
+            <img src="../support/nav2_black.gif">
+          </td>
+          <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+          </td>
+          <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+          </td>
+          <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+          </td>
+        </tr>
+      </table>
+      <!-- End Buttons -->
+    </div>
+    <br>
+    <font size="-1" >
+For support, see <a href="http://support.cadence.com" target="_blank">Cadence Online Support</a> service.</font>
+    <br>
+    <br>
+    <font size="-1" >
+      <i>Copyright &#169; 2011, <a href="http://www.cadence.com">Cadence Design Systems, Inc.</a></i>
+    </font>
+    <br>
+    <font size="-1" >
+All rights reserved.</font>
+    <br>
+    <br>
+  </body>
+</html>

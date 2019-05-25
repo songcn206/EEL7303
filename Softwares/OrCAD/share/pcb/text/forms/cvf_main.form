@@ -1,0 +1,524 @@
+# $Header: /vobs/psd_backend_data/data/cuiforms/cvf_main.form /main/24 28-May-04.14:18:29 fxf $
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM 
+VARIABLE
+PORT 94 16 
+HEADER "Color and Visibility"
+
+#ifdef _ALLEGRO_STUDIO
+POPUP <class_list>"Stack-Up""Stack-Up","Geometry""Geometry","Components""Components","Manufacturing""Manufacturing",\
+"Areas""Areas","Display""Display".
+#else 
+POPUP <class_list>"Stack-Up""Stack-Up","Geometry""Geometry","Components""Components","Manufacturing""Manufacturing",\
+"Areas""Areas","Analysis""Analysis","Display""Display".
+#endif
+
+POPUP <read_palette>"Read Database""READ_DATABASE","Read Global""READ_GLOBAL","Read Local""READ_LOCAL","Write Local""WRITE_LOCAL".
+
+POPUP <global_vis>"All Visible""ALL_VISIBLE","All Invisible""ALL INVISIBLE".
+ACTIVEFIELD "read_palette"
+
+TILE MAIN
+TPANEL 0
+
+TEXT "Group:"
+TLOC 1 1
+ENDTEXT
+
+FIELD class_list
+FLOC 7 1
+ENUMSET 15
+POP "class_list"
+ENDFIELD
+
+TEXT "Global visibility:"
+TLOC 58 1
+ENDTEXT
+
+FIELD global_vis
+FLOC 72 1
+ENUMSET 14
+POP "global_vis"
+ENDFIELD
+
+ENDTILE
+
+TILE MENU
+TPANEL 2
+
+FIELD ok
+FLOC 3  1
+MENUBUTTON "OK" 10 3
+ENDFIELD
+
+FIELD cancel
+FLOC 14  1
+MENUBUTTON "Cancel" 10 3
+ENDFIELD
+
+FIELD apply
+FLOC 28 1
+MENUBUTTON "Apply" 10 3
+ENDFIELD
+
+FIELD reset
+FLOC 39 1
+MENUBUTTON "Reset" 10 3
+ENDFIELD
+
+FIELD help
+FLOC 60 1
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+ENDTILE
+
+ 
+TILE ALL_SUBCLASSES_VIS
+TPANEL 0
+
+TEXT  
+TLOC 1 3
+INFO all_text 5
+OPTIONS bold prettyprint
+ENDTEXT
+
+
+TEXT    
+TLOC 16 1 
+INFO all_tile_name1 14
+OPTIONS center bold prettyprint 
+ENDTEXT  
+
+
+TEXT    
+TLOC 28 1 
+OPTIONS center bold prettyprint 
+INFO all_tile_name2 13
+ENDTEXT  
+
+ 
+TEXT     
+TLOC 39 1
+OPTIONS center bold prettyprint  
+INFO all_tile_name3 12
+ENDTEXT 
+
+ 
+TEXT     
+TLOC 51 1
+OPTIONS center bold prettyprint
+INFO all_tile_name4 13
+ENDTEXT 
+
+ 
+TEXT     
+TLOC 63 1
+OPTIONS center bold prettyprint 
+INFO all_tile_name5 16
+ENDTEXT 
+
+ 
+TEXT     
+TLOC 76 1
+OPTIONS center bold prettyprint 
+INFO all_tile_name6 12
+ENDTEXT 
+
+
+FIELD all_visible1
+FLOC 22 3
+CHECKLIST
+ENDFIELD
+
+FIELD all_visible2
+FLOC 34 3
+CHECKLIST
+ENDFIELD
+
+FIELD all_visible3
+FLOC 45 3
+CHECKLIST
+ENDFIELD
+
+FIELD all_visible4
+FLOC 56 3
+CHECKLIST
+ENDFIELD
+
+FIELD all_visible5
+FLOC 68 3
+CHECKLIST
+ENDFIELD
+
+FIELD all_visible6
+FLOC 81 3
+CHECKLIST
+ENDFIELD
+
+ENDTILE
+
+
+TILE SUBCLASS
+TPANEL 1
+
+TEXT
+TLOC 1 0
+OPTIONS prettyprint
+INFO subclass_name 20
+ENDTEXT
+
+ 
+FIELD Colorbox1
+FLOC 25 0
+COLOR 2 1
+OPTIONS value
+ENDFIELD
+
+FIELD colorbox2
+FLOC 37 0
+COLOR 2 1
+OPTIONS value
+ENDFIELD
+
+FIELD colorbox3
+FLOC 48 0 
+COLOR 2 1 
+OPTIONS value
+ENDFIELD
+
+FIELD colorbox4
+FLOC 59 0
+COLOR 2 1
+OPTIONS value
+ENDFIELD
+
+FIELD colorbox5
+FLOC 71 0
+COLOR 2 1
+OPTIONS value
+ENDFIELD
+
+FIELD colorbox6
+FLOC 84 0
+COLOR 2 1
+OPTIONS value
+ENDFIELD
+
+FIELD visible1
+FLOC 22 0
+CHECKLIST
+ENDFIELD
+
+FIELD visible2
+FLOC 34 0
+CHECKLIST
+ENDFIELD
+
+FIELD visible3
+FLOC 45 0
+CHECKLIST
+ENDFIELD
+
+FIELD visible4
+FLOC 56 0
+CHECKLIST
+ENDFIELD
+
+FIELD visible5
+FLOC 68 0
+CHECKLIST
+ENDFIELD
+
+FIELD visible6
+FLOC 81 0
+CHECKLIST
+ENDFIELD
+
+TEXT
+TLOC 48 0
+OPTIONS prettyprint
+INFO subclass_name2 21
+ENDTEXT
+
+
+ENDTILE
+ 
+
+TILE DISPLAY 
+TPANEL 1
+
+GROUP "Display"
+GLOC 1 0
+GSIZE 44 15
+ENDGROUP
+
+GROUP "Shadow mode"
+GLOC 48 0
+GSIZE 44 15
+ENDGROUP
+
+
+TEXT "Grids:"
+TLOC 2 2
+FGROUP "Display"
+ENDTEXT
+
+TEXT "Ratsnest:"
+TLOC 2 4
+FGROUP "Display"
+ENDTEXT
+
+TEXT "Temporary highlight:"
+TLOC 2 6
+FGROUP "Display"
+ENDTEXT
+
+TEXT "Permanent highlight:"
+TLOC 2 8
+FGROUP "Display"
+ENDTEXT
+
+TEXT "Waived DRC:"
+TLOC 2 10
+FGROUP "Display"
+ENDTEXT
+
+TEXT "Background:"
+TLOC 2 12
+FGROUP "Display"
+ENDTEXT
+
+FIELD grid_col
+FLOC 26 2
+FGROUP "Display"
+COLOR 2 1
+ENDFIELD
+
+FIELD ratsnest_col
+FLOC 26 4
+FGROUP "Display"
+COLOR 2 1
+ENDFIELD
+
+FIELD hilite_col
+FLOC 26 6
+FGROUP "Display"
+COLOR 2 1
+ENDFIELD
+
+FIELD perm_hilite_col
+FLOC 26 8
+FGROUP "Display"
+COLOR 2 1
+ENDFIELD
+
+FIELD waived_drc_col
+FLOC 26 10
+FGROUP "Display"
+COLOR 2 1
+ENDFIELD
+
+FIELD bkgnd_col
+FLOC 25 12
+FGROUP "Display"
+COLOR 4 1
+ENDFIELD
+
+TEXT "Dim"
+FGROUP "Shadow mode"
+TLOC 61 4
+ENDTEXT
+
+TEXT "Bright"
+TLOC 85 4
+FGROUP "Shadow mode"
+ENDTEXT
+
+TEXT "Brightness:"
+TLOC 50 4
+FGROUP "Shadow mode"
+ENDTEXT
+
+TEXT  
+TLOC 53 6
+FGROUP "Shadow mode"
+INFO shadow_factor 4
+ENDTEXT
+
+FIELD shadow_on
+FLOC 50 2
+FGROUP "Shadow mode"
+CHECKLIST "On " "sh"
+ENDFIELD
+
+FIELD shadow_off
+FLOC 56 2
+FGROUP "Shadow mode"
+CHECKLIST "Off " "sh"
+ENDFIELD
+
+FIELD shadow_bright
+FLOC 60 6
+FGROUP "Shadow mode"
+TRACKBAR 30 6
+MIN 0
+MAX 100
+ENDFIELD
+
+FIELD dim_active_layer
+FLOC 50 10
+CHECKLIST "Dim active layer"
+ENDFIELD
+
+
+ENDTILE
+
+
+TILE PALETTE
+TPANEL 2
+FIELD color1
+FLOC 22 3
+COLOR 4 1
+ENDFIELD
+
+FIELD color2
+FLOC 26 3
+COLOR 4 1
+ENDFIELD
+
+FIELD color3
+FLOC 30 3
+COLOR 4 1
+ENDFIELD
+
+FIELD color4
+FLOC 34 3
+COLOR 4 1
+ENDFIELD
+
+FIELD color5
+FLOC 38 3
+COLOR 4 1
+ENDFIELD
+
+FIELD color6
+FLOC 42 3
+COLOR 4 1
+ENDFIELD
+
+FIELD color7
+FLOC 46 3
+COLOR 4 1
+ENDFIELD
+
+FIELD color8
+FLOC 50 3
+COLOR 4 1
+ENDFIELD
+
+FIELD color9
+FLOC 54 3
+COLOR 4 1
+ENDFIELD
+
+FIELD color10
+FLOC 58 3
+COLOR 4 1
+ENDFIELD
+
+FIELD color11
+FLOC 62 3
+COLOR 4 1
+ENDFIELD
+
+FIELD color12
+FLOC 66 3
+COLOR 4 1
+ENDFIELD
+
+FIELD read_palette
+FLOC 2 4
+ENUMSET 14
+POP "read_palette"
+ENDFIELD
+
+FIELD activ_color
+FLOC 72 3
+COLOR 6 2
+ENDFIELD
+
+FIELD modify
+FLOC 80 4
+MENUBUTTON "Modify..." 10 3
+ENDFIELD
+
+FIELD color13
+FLOC 22 5
+COLOR 4 1
+ENDFIELD
+
+FIELD color14
+FLOC 26 5
+COLOR 4 1
+ENDFIELD
+
+FIELD color15
+FLOC 30 5
+COLOR 4 1
+ENDFIELD
+
+FIELD color16
+FLOC 34 5
+COLOR 4 1
+ENDFIELD
+
+FIELD color17
+FLOC 38 5
+COLOR 4 1
+ENDFIELD
+
+FIELD color18
+FLOC 42 5
+COLOR 4 1
+ENDFIELD
+
+FIELD color19
+FLOC 46 5
+COLOR 4 1
+ENDFIELD
+
+FIELD color20
+FLOC 50 5
+COLOR 4 1
+ENDFIELD
+
+FIELD color21
+FLOC 54 5
+COLOR 4 1
+ENDFIELD
+
+FIELD color22
+FLOC 58 5
+COLOR 4 1
+ENDFIELD
+
+FIELD color23
+FLOC 62 5
+COLOR 4 1
+ENDFIELD
+
+FIELD color24
+FLOC 66 5
+COLOR 4 1
+ENDFIELD
+
+GROUP "Palette"
+GLOC 1 1
+GSIZE 92 6
+ENDGROUP
+
+ENDTILE
+
+
+ENDFORM

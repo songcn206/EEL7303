@@ -1,0 +1,109 @@
+####################################################################################
+#       Cadence Design Systems                                                     #
+#                                                                                  #
+# (C) COPYRIGHT, Cadence Design Systems, Inc. 2010                                 #
+# All Rights Reserved                                                              #
+# Licensed Materials - Property of Cadence Design Systems                          #
+#                                                                                  #
+# No part of this file may be reproduced, stored in a retrieval system,            #
+# or transmitted in any form or by any means --- electronic, mechanical,           #
+# photocopying, recording, or otherwise --- without prior written permission       #
+# of Cadence Design Systems, Inc.                                                  #
+#                                                                                  #
+# WARRANTY:                                                                        #
+# Use all material in this file at your own risk.  Cadence Design Systems          #
+# makes no claims about any material contained in this file.                       #
+####################################################################################
+FILE_TYPE=FORM_DEFN VERSION=2
+    FORM
+    FIXED
+    PORT 72 19
+    HEADER "Power/Ground Nets Selection"
+
+    DEFAULT Cancel
+    ACTIVEFIELD AvailNetList
+
+    TILE
+    FIELD Done
+      FLOC 1 20
+      MENUBUTTON "Done" 10 3
+    ENDFIELD
+
+    FIELD Cancel
+      FLOC 12 20
+      MENUBUTTON "Cancel" 10 3
+    ENDFIELD
+
+    FIELD DCNet
+      FLOC 35 20
+      MENUBUTTON "Identify DC Nets..." 15 3
+    ENDFIELD
+
+    FIELD Reset
+      FLOC 51 20
+      MENUBUTTON "Reset" 10 3
+    ENDFIELD
+
+    FIELD Help
+      FLOC 62 20
+      MENUBUTTON "Help" 10 3
+    ENDFIELD
+
+    TEXT "Select power and ground nets for simulation simultaneously."
+      TLOC 2 1
+    ENDTEXT
+
+    GROUP "Available power/ground nets: " "AvailGroup"
+        GLOC 1 3
+        GSIZE 31 16
+    ENDGROUP
+
+    FIELD AvailNetList
+        FLOC 2 5
+        LIST "" 29 7
+        OPTIONS multiselect
+    ENDFIELD
+
+    GROUP "Selected power/ground nets:" "SelGroup"
+        GLOC 41 3
+        GSIZE 31 16
+    ENDGROUP
+
+    FIELD SelNetList
+        FLOC 42 5
+        LIST "" 29 7
+        OPTIONS multiselect
+    ENDFIELD
+
+    FIELD SelectAll
+      FLOC 33 6
+      MENUBUTTON "-->>" 7 3
+    ENDFIELD
+
+    FIELD Select
+      FLOC 33 9
+      MENUBUTTON "--->" 7 3
+    ENDFIELD
+
+    FIELD Remove
+      FLOC 33 13
+      MENUBUTTON "<---" 7 3
+    ENDFIELD
+
+    FIELD RemoveAll
+      FLOC 33 16
+      MENUBUTTON "<<--" 7 3
+    ENDFIELD
+
+    FLEXMODE EdgeGravity
+    FLEX AvailGroup    0   0 0.5 1
+    FLEX SelGroup      0.5 0 0.5 1
+    FLEX AvailNetList  0   0 1   1
+    FLEX SelNetList    0   0 1   1
+    FLEX Select        0.5 0 0   0
+    FLEX SelectAll     0.5 0 0   0
+    FLEX Remove        0.5 1 0   0
+    FLEX RemoveAll     0.5 1 0   0
+
+    ENDTILE
+ENDFORM

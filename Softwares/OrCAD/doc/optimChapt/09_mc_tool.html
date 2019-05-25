@@ -1,0 +1,2039 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN" "http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+<html xmlns="http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>PSpice Advanced Analysis Help -- The Monte Carlo Tool</title>
+<META NAME="Approver" CONTENT="Technical Publications">
+<META NAME="Author" CONTENT="Technical Publications">
+<META NAME="CreateDate" CONTENT="2012-09-07">
+<META NAME="CreateTime" CONTENT="1346997939">
+<META NAME="DataType" CONTENT="Manuals">
+<META NAME="Description" CONTENT="PSpice Advanced Analysis Online Help.">
+<META NAME="DocTitle" CONTENT="PSpice Advanced Analysis Help">
+<META NAME="DocType" CONTENT="Reference">
+<META NAME="EdmsRelease" CONTENT="EDMS Windows-P015">
+<META NAME="FileTitle" CONTENT="The Monte Carlo Tool">
+<META NAME="FileType" CONTENT="Chapter">
+<META NAME="Keyword" CONTENT="optimChapt">
+<META NAME="Language" CONTENT="English">
+<META NAME="ModifiedDate" CONTENT="2012-09-07">
+<META NAME="ModifiedTime" CONTENT="1346997939">
+<META NAME="NextFile" CONTENT="10_param_plot.html">
+<META NAME="PageCount" CONTENT="24">
+<META NAME="Platform" CONTENT="ALL">
+<META NAME="PrevFile" CONTENT="08_smoke_tool.html">
+<META NAME="Product" CONTENT="Allegro AMS Simulator, PSpice">
+<META NAME="ProductFamily" CONTENT="PCB Design, PCB Design">
+<META NAME="ProductVersion" CONTENT="16.5">
+<META NAME="RightsManagement" CONTENT="Copyright 19912011 Cadence Design Systems Inc.">
+<META NAME="Title" CONTENT="PSpice Advanced Analysis Help -- The Monte Carlo Tool">
+<META NAME="TopicTags" CONTENT="FALSE">
+<META NAME="Version" CONTENT="16.5">
+  </head>
+  <body style="margin-left: 5%;">
+    <a name="pagetop"></a>
+    <a name="firstpage"></a>
+    <!-- Begin Buttons -->
+    <table width="650" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td height="36" width="650" colspan="10">
+          <img src="../support/header_doc.gif" width="650" height="34">
+        </td>
+      </tr>
+      <tr>
+        <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                </td>
+<td height="20" width="73">
+<a href="optimChaptTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<a href="optimChaptIX.html"><img src="../support/nav2_index.gif" border="0"></a>
+</td>
+        <td>
+          <a href="08_smoke_tool.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+        </td>
+        <td>
+          <a href="10_param_plot.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+        </td>
+        <td height="20">
+          <a>
+<a href="optimChapt.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+          </a>
+        </td>
+        <td height="20" width="61">
+          <img src="../support/nav2_black.gif">
+        </td>
+        <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+        </td>
+        <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+        </td>
+        <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+        </td>
+      </tr>
+    </table>
+    <!-- End Buttons -->
+    <p>
+    <hr>
+    <p>
+      <h3>
+        <center>
+          <font >
+            <div>PSpice Advanced Analysis Help</div>
+            <font >
+              <div>
+            </font>
+          </font>
+        </center>
+      </h3>
+      <br>
+    </p>
+    <div>
+      <h2><a name="1046166">The Monte Carlo Tool</a></h2>
+      <p><a name="1046291">Monte Carlo analysis is available with the following products:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="64.032">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bss_bullet_sub_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046292">PSpice<sup><a name="wwfootnote_inline_143" href="#143">1</a></sup> Advanced Optimizer Option</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="64.032">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bss_bullet_sub_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046293">PSpice Advanced Analysis</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1046295">Monte Carlo predicts the behavior of a circuit statistically when part values are varied within </a>their tolerance range. Monte Carlo also calculates yield, which can be used for mass manufacturing predictions.</p>
+      <p><a name="1046296">Use Monte Carlo for:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046297">Calculating yield based on your specs</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046298">Integrating measurements with graphical displays</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046299">Displaying results in a probability distribution function (PDF) graph</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046300">Displaying results in a cumulative distribution function (CDF) graph</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046301">Calculating statistical data</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046302">Displaying measurement values for every Monte Carlo run</a></td>
+          </tr>
+        </table>
+      </div>
+      <h4><a name="1046305">Monte Carlo strategy</a></h4>
+      <p><a name="1046307">Monte Carlo requires:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046308">Circuit components that are Advanced Analysis&#45;ready</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046313">A circuit schematic and working</a> PSpice simulation</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046314">Measurements set up in</a> PSpice</td>
+          </tr>
+        </table>
+      </div>
+      <h4><a name="1046320">Plan Ahead</a></h4>
+      <h4><em><a name="1046321"><font color="#000000"><strong>Setting options</strong></font></a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046322">Start with enough runs to provide statistically meaningful results.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046323">Specify a larger number of runs for a more accurate graph of performance distribution. </a>This more closely simulates the effects of mass production.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046324">Start with a different random seed value if you want different results.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046325">Set the graph bin number to show the level of detail you want. Higher bin numbers show </a>more detail, but need more runs to be useful.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046326">If you are planning an analysis of thousands of runs on a complex circuit, you can turn </a>off the simulation data storage option to conserve disk space. However, at this setting, the simulation will run slower.<br>To turn off data storage:</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046327">From the Advance Analysis menu select </a><br>Edit &#47; Profile Settings&#47; Simulation</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046328">From the Monte Carlo field, select </a><font color="#000000"><strong>Save None</strong></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote>
+<blockquote>        <font color="#000000"><a name="1046329"><font color="#000000">The simulation data will be overwritten by each new run. Only the last run's data will </font></a><font color="#000000">be saved.</font></font></blockquote>
+      </blockquote>
+      <h4><em><a name="1046330"><font color="#000000"><strong>Importing measurements</strong></font></a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046331">Find the most sensitive measurements in Sensitivity and perform Monte Carlo analysis </a>on those measurements only. Limiting Monte Carlo to only important measurements saves run time.</td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1048625">You can see the following for more information:</a></p>
+      <p align="left"><a name="1046349">&nbsp;</a></p>
+      <table summary="" cellpadding="4" width="648">
+        <caption>
+        <tr>
+          <td cellpadding="4" valign="top" width="348">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1046336">&nbsp;</a></strong></font>
+            </p>
+          </td>
+          <td cellpadding="4" valign="top" width="300">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1046338">&nbsp;</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1046340">Parameterized components</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p>
+              <u><a name="1046342"><font color="#0000ff"><u>Preparing your design for Advanced Analysis</u></font></a></u>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1046345">Creating measurement expressions</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p>
+              <u><a name="1046348"><font color="#0000ff"><u>Composing measurement expressions</u></font></a></u>
+            </p>
+          </td>
+        </tr>
+      </table>
+      <h3><a name="1046364">Setting up Monte Carlo in your schematic editor</a></h3>
+      <p><a name="1046365">Starting out:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046367">Have a working circuit in schematic editor<sup><a name="wwfootnote_inline_144" href="#144">2</a></sup>. </a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1046370">The simulations can be Time Domain (transient), DC Sweep, and AC Sweep&#47;Noise </a>analyses.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046371">The circuit components you want to include in the data need to be Advanced Analysis&#45;</a>ready, with the tolerances of the circuit components specified. </td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1048641">To set up Monte Carlo:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1046387">From your schematic editor, open your circuit.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>2	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1046388">Run</a> a PSpice simulation.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><font color="#000000"><strong>Note: </strong></font><a name="1046389"> Advanced Analysis Monte Carlo does not use </a>PSpice Monte Carlo settings.</blockquote>
+      <blockquote><font color="#000000"><strong>Note: </strong></font><a name="1046390">You can run Advanced Analysis Monte Carlo on more than one simulation profile </a>at once. However, if you have a multi&#45;run analysis set up in PSpice (for example, a parametric sweep or a temperature sweep), Advanced Analysis Monte Carlo will reduce the simulation profile to one run before starting the Advanced Analysis Monte Carlo calculations. For temperature sweeps, the first temperature value in the list will be used for the Advanced Analysis Monte Carlo calculations.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>3	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1046391">Check your key waveforms in</a> PSpice and make sure they are what you expect.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>4	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1046392">Test your measurements and make sure they have the results you expect.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1046393">For information on circuit layout and simulation setup, see your schematic editor and PSpice </a>user guides.</p>
+      <p><a name="1048647">You can see the following for more information:</a></p>
+      <p align="left"><a name="1046416">&nbsp;</a></p>
+      <table summary="" border="0" cellpadding="4" cellspacing="0" bordercolor="#D3D3D3" width="648">
+        <caption>
+        <tr>
+          <td cellpadding="4" valign="top" width="348">
+            <p><a name="1046402">Components and tolerances</a></p>
+          </td>
+          <td cellpadding="4" valign="top" width="300">
+            <p>
+              <u><a name="1046404"><font color="#0000ff"><u>Preparing your design for Advanced Analysis</u></font></a></u>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1046407">Creating measurement expressions</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p>
+              <u><a name="1046410"><font color="#0000ff"><u>Composing measurement expressions</u></font></a></u>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1046412">Checking measurement expressions in</a> PSpice</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p>
+              <u><a name="1046415"><font color="#0000ff"><u>Viewing results of measurements</u></font></a></u>
+            </p>
+          </td>
+        </tr>
+      </table>
+      <h3><a name="1046421">Setting up Monte Carlo in Advanced Analysis</a></h3>
+      <p><a name="1046445">To set Monte Carlo in Advanced Analysis:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	1.	</nobr>
+              </div>
+            </td>
+            <td><a name="1048661">Open Monte Carlo</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	2.	</nobr>
+              </div>
+            </td>
+            <td><a name="1048662">Import measurements into Monte Carlo</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	3.	</nobr>
+              </div>
+            </td>
+            <td><a name="1048663">Set Monte Carlo options</a></td>
+          </tr>
+        </table>
+      </div>
+      <h4><a name="1046449">Opening Monte Carlo</a></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/arrwrite.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048852">From the schematic editor </a><font color="#000000"><strong>PSpice</strong></font> menu, select <font color="#000000"><strong>Advanced Analysis</strong></font> &#47; <font color="#000000"><strong>Monte Carlo</strong></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048853">The Advanced Analysis Monte Carlo tool opens.</a></blockquote>
+      <p align="left"><a name="1048901"><img src="images/09_mc_tool.11.1.1.png" width="676" height="463" alt=""></a></p>
+      <h4><a name="1046464">Importing measurements into Monte Carlo</a></h4>
+      <p><a name="1048972">To import measurements:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1046473">In the Statistical Information table, click on the row containing the text "Click here to </a>import a measurement created within PSpice."</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1046475">The </a><font color="#000000"><strong>Import Measurement(s)</strong></font> dialog box appears.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>2	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1046476">Select the measurements you want to include.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1049012">Here is an example:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048978">In the Statistical Information table, click on the row containing the text "Click here to </a>import a measurement created within PSpice."</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048979">The </a><font color="#000000"><strong>Import Measurement(s) </strong></font>dialog box appears.</blockquote>
+      <blockquote>	<a name="1048983"><img src="images/allimportmeas.gif" width="454" height="290" alt=""></a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>2	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048984">Select the four measurements:</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048985">Max(DB(V(Load)))</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048986">Bandwidth(V(Load),3)</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048987">Min(10*Log10(V(inoise)*V(inoise)&#47;8.28e&#45;19))</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048988">Max(V(onoise))</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>3	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048989">Click </a><font color="#000000"><strong>OK</strong></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <p align="left"><a name="1049009"><img src="images/09_mc_tool.11.1.3.png" width="438" height="332" alt=""></a></p>
+      <h4><a name="ps_mc"></a><a name="ps_mc"></a><a name="1046485">Setting Monte Carlo options</a></h4>
+      <p><a name="1046494">From the Advanced Analysis </a><font color="#000000"><strong>Edit </strong></font>menu, select<font color="#000000"><strong> Profile Settings</strong></font>, click the <font color="#000000"><strong>Monte Carlo</strong></font> tab, and enter the following Monte Carlo options:</p>
+      <p><a name="1050037"><img src="images/montecarlo_ps.gif" width="481" height="450" alt=""></a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046496">Number of runs</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1046497">This is the number of times the selected simulation profiles will be run. For each run, </a>component parameters with tolerances will be randomly varied. Run number one uses nominal component parameter values. The maximum number of runs is primarily limited by the amount of available memory.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046499">Starting run number</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1046500">The default starting run number is one. This is the nominal run. If the random seed value </a>is kept constant, then you can change the starting run number in order to duplicate a partial Monte Carlo simulation. You can use this to isolate specific random results which are of particular interest, without having to run an entire Monte Carlo simulation again.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046502">Random seed value</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1046503">The random number generator uses this value to produce a sequence of random </a>numbers. Change the seed in order to produce a unique random sequence for each Monte Carlo simulation. If the seed and device properties are not changed, then the same sequence of random numbers will be generated each time a Monte Carlo analysis is done. You can use this procedure to reproduce a random simulation.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046505">Number of bins</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1046506">This value determines the number of divisions in the histogram. A typical value is one </a>tenth of the number of runs. The minimum value is one and the maximum value is determined by the amount of available memory. It is recommended that this value be less than 10,000.</blockquote>
+      <p><a name="1049062">Here is an example:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1049036">From the Advanced Analysis </a><font color="#000000"><em>Edit</em></font><font color="#000000"><strong> </strong></font>menu, choose <font color="#000000"><em>Profile Settings</em></font>, click the <font color="#000000"><em>Monte </em></font><font color="#000000"><em>Carlo</em></font> tab, and enter the values in the dialog box.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>2	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1049059">Click </a><font color="#000000"><em>OK</em></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <h3><a name="1046510">Starting a Monte Carlo run</a></h3>
+      <p><a name="1048711">Monte Carlo calculates a nominal value for each measurement using the original parameter </a>values.</p>
+      <p><a name="1048712">After the nominal runs, Monte Carlo randomly calculates the value of each variable parameter </a>based on its tolerance and a flat (uniform) distribution function. For each profile, Monte Carlo uses the calculated parameter values, evaluates the measurements, and saves the measurement values.</p>
+      <p><a name="1048707">Monte Carlo repeats the calculations for the specified number of runs, then calculates and </a>displays statistical data for each measurement.</p>
+      <p><a name="1048719">To start a Monte Carlo run:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/arrwrite.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046522">Click <img src="images/runIcon.gif" width="12" height="17" alt="">on the top toolbar.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1046523">The Monte Carlo analysis begins. The messages in the output window tell you the status </a>of the analysis. </blockquote>
+      <p><a name="1049080">Here is an example:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1049089">Click <img src="images/runIcon.gif" width="12" height="17" alt="">.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p align="left"><a name="1049101"><img src="images/09_mc_tool.11.1.7.png" width="450" height="149" alt=""></a></p>
+      <blockquote><a name="1049102">The Monte Carlo analysis begins. The messages in the output window give you the </a>status.</blockquote>
+      <blockquote><a name="1049103">Monte Carlo calculates a nominal value for each measurement using the original </a>parameter values.</blockquote>
+      <blockquote><a name="1049104">After the nominal runs, Monte Carlo randomly calculates the value of each variable </a>parameter based on its tolerance and a flat (uniform) distribution function. For each profile, Monte Carlo uses the calculated parameter values, evaluates the measurements, and saves the measurement values.</blockquote>
+      <blockquote><a name="1049105">Monte Carlo repeats the above calculations for the specified number of runs, then </a>calculates and displays statistical data for each measurement.</blockquote>
+      <blockquote><a name="1049106">Ten bins of measurement data are displayed on the graph.</a></blockquote>
+      <p align="left"><a name="1049126"><img src="images/09_mc_tool.11.1.8.png" width="672" height="545" alt=""></a></p>
+      <h4><a name="1046535"><font color="#000000"><strong>Controlling Monte Carlo run</strong></font></a></h4>
+      <p><a name="1046536">The Monte Carlo analysis can only be run if tolerances are specified for the component </a>parameters. In case you want to prevent running these analysis on a component, you can do so by using the TOL_ON_OFF property. </p>
+      <p><a name="1046537">In the schematic design, attach the TOL_ON_OFF property to the device instance for which </a>you do not want to perform the Sensitivity and MonteCarlo analysis. Set the value of the TOL_ON_OFF property to OFF. When you set the property value as OFF, the tolerances attached to the component parameters will be ignored and therefore, the component parameters will not be available for analysis.</p>
+      <h3><a name="1046543">Reviewing Monte Carlo data</a></h3>
+      <p><a name="1048738">You can review Monte Carlo results on two graphs and two tables:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046575">Probability density function (PDF) graph</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046576">Cumulative distribution function (CDF) graph</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046577">Statistical Information table, in the </a><font color="#000000"><strong>Statistics</strong></font> tab</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049927">Raw Measurements table, in the </a><font color="#000000"><strong>Raw Meas</strong></font> tab</td>
+          </tr>
+        </table>
+      </div>
+      <h4><a name="review_stat_info"></a><a name="1049928">Reviewing the Statistical Information Table</a></h4>
+      <p><a name="1049929">For each run, Monte Carlo randomly varies parameter values within tolerance and calculates </a>a single measurement value. After all the runs are done, Monte Carlo uses the run results to perform statistical analyses. </p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1046595">Click the</a><font color="#000000"><strong> Statistics</strong></font> tab to bring the table to the foreground.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>2	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1046596">Select a measurement row in the Statistical Information table.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1046597">A black arrow appears in the left column and the row is highlighted. The data in the graph </a>corresponds to the selected measurement only.</blockquote>
+      <p align="left"><a name="1049174"><img src="images/09_mc_tool.11.1.9.png" width="678" height="301" alt=""></a></p>
+      <p><a name="1049135">&nbsp;</a></p>
+      <p><a name="1046599">You can review results reported for each measurement:</a></p>
+      <p align="left"><a name="1049900">&nbsp;</a></p>
+<ul>      <table summary="" border="1" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF" width="610">
+        <caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="top" width="156">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1049856"><font color="#3300ff"><strong>Column heading...</strong></font></a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="top" width="453">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1049858"><font color="#3300ff"><strong>Means...</strong></font></a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1049861">Cursor Min</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1049863">Measurement value at the cursor minimum location.</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049866">Cursor Max</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049868">Measurement value at the cursor maximum location.</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049871">Yield (in percent)</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049873">The number of runs that meet measurement specifications </a>(represented by the cursors) versus the total number of runs in the analysis. Used to estimate mass manufacturing production efficiency.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049876">Mean</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049878">The average measurement value based on all run values. See </a>Raw Measurement table for run values.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049881">Std Dev</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049883">Standard deviation. The statistically accepted meaning for </a>standard deviation.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049886">3 Sigma (in percent)</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049888">The number of measurement run values that fall within the </a>range of plus or minus 3 Sigma from the mean </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049891">6 Sigma (in percent)</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049893">The number of measurement run values that fall within the </a>range of plus or minus 6 Sigma from the mean</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1049897">Median</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1049899">The measurement value that occurs in the middle of the sorted </a>list of run values. See Raw Measurement table for run values</p>
+          </td>
+        </tr>
+      </table></ul>
+      <h4><a name="review_pdf_graph"></a><a name="1049901">Reviewing the pdf graph</a></h4>
+      <p><a name="1049902">A PDF graph is a way to display a probability distribution. It displays the range of </a>measurement values along the x&#45;axis and the number of runs with those measurement values along the y&#45;axis.</p>
+      <p><a name="1046665">To review a PDF graph:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1046666">Select a measurement row in the Statistical Information table.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>2	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1046667">If the PDF graph is not already displayed, right click the graph and select </a><font color="#000000"><strong>PDF Graph</strong></font> from the pop&#45;up menu.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1046668">The corresponding PDF graph will display all measurement values based on the Monte </a>Carlo runs.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>3	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1046669">Right click the graph to select zoom setting, another graph type, and y&#45;axis units.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1046670">A pop&#45;up menu appears.</a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046671">Select </a><font color="#000000"><strong>Zoom In</strong></font> to focus on a small range of values.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046672">Select </a><font color="#000000"><strong>CDF Graph </strong></font>to toggle from the default PDF graph to the CDF graph.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046673">Select </a><font color="#000000"><strong>Percent Y&#45;axis</strong></font> to toggle from the default absolute y&#45;axis Number of Runs to <font color="#000000"><strong>Percent of Runs</strong></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>4	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1046674">To change the number of bins on the x&#45;axis: </a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1046675">From the </a><font color="#000000"><strong>Edit</strong></font> menu, select <font color="#000000"><strong>Profile Settings</strong></font>, click the <font color="#000000"><strong>Monte Carlo</strong></font> tab, and typing a new number in the <font color="#000000"><strong>Number of Bins</strong></font> text box.</blockquote>
+      <blockquote><a name="1046676">If you want more bars on the graph, specify more bins--up to a maximum of the total </a>number of runs. Higher bin numbers show more detail, but require more runs to be useful.</blockquote>
+      <blockquote><a name="1049198">&nbsp;</a></blockquote>
+      <p><a name="1049205">The PDF graph is a bar chart. The x&#45;axis shows the measurement values calculated for all </a>the Monte Carlo runs. </p>
+      <p><a name="1049206">The y&#45;axis shows the number of runs with measurement results between the x&#45;axis bin </a>ranges. The statistical display for this measurement's probability density function is shown on the PDF graph. </p>
+      <p align="left"><a name="1049218"><img src="images/09_mc_tool.11.1.10.png" width="676" height="256" alt=""></a></p>
+      <p align="left"><a name="1049241"><img src="images/09_mc_tool.11.1.11.png" width="674" height="283" alt=""></a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1049242">Right click on the graph and select </a><font color="#000000"><strong>Percent Y&#45;axis </strong></font>from the pop&#45;up menu.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1049243">The Y&#45;axis units changes from </a><font color="#000000"><strong>Number of Runs </strong></font>to <font color="#000000"><strong>Percent of Runs</strong></font>.</blockquote>
+      <blockquote>	<a name="1049251"><img src="images/09_mc_tool.11.1.12.png" width="676" height="168" alt=""></a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>2	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1049252">From the </a><font color="#000000"><strong>Edit</strong></font> menu, select <font color="#000000"><strong>Profile Settings</strong></font>, click the <font color="#000000"><strong>Monte Carlo</strong></font> tab, select the <font color="#000000"><strong>Number of Bins</strong></font> text box and type the number 20 in place of 10.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1049253">Notice the higher level of detail on the PDF graph. </a></blockquote>
+      <blockquote>	<a name="1049261"><img src="images/09_mc_tool.11.1.13.png" width="673" height="200" alt=""></a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>3	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1049262">Right click on the graph and from the pop&#45;up menu select </a><font color="#000000"><strong>Zoom In</strong></font> to view a specific range.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>4	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1049263">Select </a><font color="#000000"><strong>Zoom Fit</strong></font> to show the entire graph with cursors. </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>5	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1049264">Click the </a><font color="#000000"><strong>Max</strong></font> cursor to select it (it turns red when selected), then click the mouse in a new location on the x&#45;axis.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1049265">The cursor's location changes and the max value and yield numbers are updated in the </a>Statistical Information table.</blockquote>
+      <blockquote><font color="#000000"><strong>Note: </strong></font><a name="1049266">Moving the cursor does not update the rest of the statistical results for this new </a>min &#47; max range. Use <font color="#000000"><strong>Restrict Calculation Range</strong></font> to recalculate the rest of the statistical results for this min &#47; max range.</blockquote>
+      <p><a name="1049199">&nbsp;</a></p>
+      <h4><a name="1046679">Reviewing the cdf graph</a></h4>
+      <p><a name="1046683">The CDF graph is another way to display a probability distribution. In mathematical terms, the </a>CDF is the integral of the PDF.</p>
+      <p><a name="1046694">To review a CDF graph:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1046695">Select a measurement row in the Statistical Information table.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>2	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1046696">If the CDF graph is not already displayed, right click on the PDF graph and select </a><font color="#000000"><strong>CDF </strong></font><font color="#000000"><strong>Graph</strong></font> from the pop&#45;up menu.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1046697">The statistical display for the cumulative distribution function is shown on the CDF graph. </a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>3	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1046698">Right click the graph to select zoom setting and y&#45;axis units.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1046699">A pop&#45;up menu will appear.</a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046700">Select </a><font color="#000000"><strong>Zoom In</strong></font> to focus on a small range of values.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046701">Select </a><font color="#000000"><strong>PDF Graph </strong></font>to toggle from the current CDF graph to the default PDF graph.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046702">Select </a><font color="#000000"><strong>Percent Y&#45;axis</strong></font> to toggle from the default absolute y&#45;axis Number of Runs to <font color="#000000"><strong>Percent of Runs</strong></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>4	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1046703">Change the number of bins on the x&#45;axis by going to the </a><font color="#000000"><strong>Edit</strong></font> menu, selecting <font color="#000000"><strong>Profile </strong></font><font color="#000000"><strong>Settings</strong></font>, clicking the <font color="#000000"><strong>Monte Carlo</strong></font> tab, and typing a new number in the <font color="#000000"><strong>Number of </strong></font><font color="#000000"><strong>Bins</strong></font> text box.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046704">If you want more bars on the graph, specify more bins, up to a maximum of the total </a>number of runs. Higher bin numbers show more detail, but require more runs to be useful.</td>
+          </tr>
+        </table>
+      </div>
+      <h4><em><a name="1046706">Working with cursors</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/arrwrite.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046710">To change a cursor location on the graph, click the cursor to select it and click the mouse </a>in a new spot on the graph. A selected cursor appears red.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1046711">The cursor's location on the graph changes, and the measurement min or max values in </a>the Statistical Information table are updated. A new calculated yield displays.</blockquote>
+      <p><a name="1049280">The CDF graph is a cumulative stair&#45;step plot.</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1049281">Select the </a><font color="#000000"><strong>Max(DB(V(Load)))</strong></font> measurement in the Statistical Information table.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>2	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1049282">Right click on the PDF graph and select </a><font color="#000000"><strong>CDF Graph </strong></font>from the pop&#45;up menu.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote>	<a name="1049290"><img src="images/09_mc_tool.11.1.14.png" width="674" height="196" alt=""></a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>3	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1049291">Right click on the graph and select </a><font color="#000000"><strong>Zoom In</strong></font> to view a specific range.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>4	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1049292">Click the </a><font color="#000000"><strong>Max</strong></font> cursor to select the cursor.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1049293">The Max cursor turns red.</a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>5	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1049294">Click the mouse at 10 on the x&#45;axis.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1049295">The cursor moves to the new position on the x&#45;axis.</a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>6	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1049296">Click the </a><font color="#000000"><strong>Min</strong></font> cursor and click the mouse at 9 on the x&#45;axis.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1049297">When you change the cursor location the min, max, and yield values are updated on the </a>Statistical Information table. </blockquote>
+      <blockquote>	<a name="1049310"><img src="images/09_mc_tool.11.1.15.png" width="674" height="239" alt=""></a></blockquote>
+      <h4><em><a name="1049316"><font color="#3300ff"><strong>Restricting the calculation range</strong></font></a></em></h4>
+      <p><a name="1049317">To quickly view statistical results for a different min &#47; max range, use the </a><font color="#000000"><strong>Restrict </strong></font><font color="#000000"><strong>Calculation Range </strong></font>command.</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1049318">Set the graph cursors at </a><font color="#000000"><strong>Min</strong></font> = 9 and <font color="#000000"><strong>Max</strong></font> = 10.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1049319">Or:</a></blockquote>
+      <blockquote><a name="1049320">Edit the min or max values in the Statistical Information table.</a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>2	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1049321">Right click in the table or on the graph and select </a><font color="#000000"><strong>Restrict Calculation Range</strong></font> from the pop&#45;up menu.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote>	<a name="1049342"><img src="images/09_mc_tool.11.1.16.png" width="448" height="473" alt=""></a></blockquote>
+      <blockquote><a name="1049343">Monte Carlo recalculates the statistics and only includes the restricted range of values.</a></blockquote>
+      <blockquote>	<a name="1049372"><img src="images/09_mc_tool.11.1.17.png" width="674" height="307" alt=""></a></blockquote>
+      <h4><em><a name="1046712">Restricting calculation range</a></em></h4>
+      <p><a name="1046715">To restrict the statistical calculations displayed in the Statistical Information table to the range </a>of samples within the cursor minimum and maximum range, set the cursors in their new locations and select the restrict calculation range command from the right click pop&#45;up menus.</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1046716">Change cursors to new locations. </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>2	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1046721">Right click in the graph or in the Statistical Information table and select </a><font color="#000000"><strong>Restrict </strong></font><font color="#000000"><strong>Calculation Range </strong></font>from the pop&#45;up menu.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1046722">The cross&#45;hatched range of values that appears on the graph is the restricted range.</a></blockquote>
+      <h4><a name="review_raw_data"></a><a name="1046727">Reviewing the Raw Measurements table</a></h4>
+      <p><a name="1046729">The Raw Measurements table is a read&#45;only table that has a one&#45;to&#45;one relationship with the </a>Statistical Information table. For every measurement row on the Raw Measurements table, there is a corresponding measurement row on the Statistical Information table. The run values in the Raw Measurements table are used to calculate the yield and statistical values in the Statistical Information table.</p>
+      <p><a name="1049533">&nbsp;</a></p>
+      <p><a name="1049568"><img src="images/09_mc_tool.11.1.18.png" width="673" height="333" alt=""></a></p>
+      <p><a name="1046741">To review a Raw Measurements table:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1046742">Click the </a><font color="#000000"><strong>Raw Meas </strong></font>tab.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1046743">The Raw Measurements table appears. </a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>2	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1046744">Select a row and double click the far left row header.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1046745">The row of data is sorted in ascending or descending order.</a></blockquote>
+      <blockquote><font color="#000000"><strong>Note: </strong></font><a name="1046746">Copy and paste the row of data to an external program if you want to further </a>manipulate the data. Use the <font color="#000000"><strong>Edit</strong></font> menu or the right click pop&#45;up menu copy and paste commands.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>3	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1046747">From the </a><font color="#000000"><strong>View</strong></font> menu, select <font color="#000000"><strong>Log File</strong></font> &#47; <font color="#000000"><strong>Monte Carlo</strong></font> to view the component parameter values for each run.</td>
+          </tr>
+        </table>
+      </div>
+      <h3><a name="1046751">Controlling Monte Carlo</a></h3>
+      <p><a name="1048777">The following sections explain how to fine&#45;tune the process if you do not achieve your goals </a>in the first Monte Carlo analysis.</p>
+      <h4><a name="1046782">Pausing, stopping, and starting Monte Carlo</a></h4>
+      <p align="left"><a name="1049614"><img src="images/09_mc_tool.11.1.19.png" width="451" height="104" alt=""></a></p>
+      <p align="left"><a name="1049640"><img src="images/09_mc_tool.11.1.20.png" width="668" height="535" alt=""></a></p>
+      <h4><em><a name="1046791">Pausing and resuming</a></em></h4>
+      <p><a name="1046792">To review preliminary results on a large number of runs:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/arrwrite.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046797">Click <img src="images/pauseIcon.gif" width="13" height="12" alt=""> on the top toolbar when the output window indicates approximately Monte Carlo </a>run 50.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1046798">The analysis stops at the next interruptible point, available data is displayed and the last </a>completed run number appears in the output window.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1046806">Click the depressed <img src="images/pauseIcon.gif" width="13" height="12" alt=""> or <img src="images/runIcon.gif" width="12" height="17" alt=""> to resume calculations.</a></td>
+          </tr>
+        </table>
+      </div>
+      <h4><em><a name="1046807">Stopping</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/arrwrite.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046811">Click <img src="images/stop.gif" width="14" height="12" alt=""> on the top toolbar.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1046813">If a Monte Carlo analysis has been stopped, you cannot resume the analysis.</a></blockquote>
+      <h4><em><a name="1046814">Starting</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/arrwrite.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046818"> Click <img src="images/runIcon.gif" width="12" height="17" alt=""> to start or restart.</a></td>
+          </tr>
+        </table>
+      </div>
+      <h4><a name="1046822">Changing components or parameters in Monte Carlo</a></h4>
+      <p><a name="1046831">If you do not get the results you want, you can return to the schematic editor and change </a>circuit parameters.</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1046832">Try a different component for the circuit or change the tolerance parameter on an existing </a>component.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>2	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1046833">Rerun the</a> PSpice simulation and check the results.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>3	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1046834">Rerun Monte Carlo using the settings saved from the prior analysis.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>4	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1046835">Review the results.</a></td>
+          </tr>
+        </table>
+      </div>
+      <h4><a name="1046838">Controlling measurements in Monte Carlo</a></h4>
+      <p><a name="1046840">If you do not get the results you want and your design specifications are flexible, you can add, </a>edit, delete or disable a measurement and rerun Monte Carlo analysis:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/arrwrite.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046854">To exclude a measurement from the next optimization run, click the <img src="images/checkIcon.gif" width="16" height="16" alt=""> in the Statistical </a>Information table, which removes the check mark.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/arrwrite.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046859">To edit a measurement, click on the measurement you want to edit, then click <img src="images/tripledotIcon.gif" width="15" height="12" alt="">.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/arrwrite.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046864">To edit a measurement specification Min or Max, click the minimum or maximum cursor </a>on the graph (the selected cursor turns red), then click the mouse in the spot you want.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1046865">The new value will display in the </a><font color="#000000"><strong>Cursor Min </strong></font>or <font color="#000000"><strong>Cursor Max</strong></font> column in the Statistical Information table.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/arrwrite.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046867">To add a new measurement, click on the row that reads "Click here to import a </a>measurement..."</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/arrwrite.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1046872">To export a new measurement to Optimizer or Monte Carlo, select the measurement and </a>right click on the row containing the text "Click here to import a measurement created within PSpice." </td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1046873">Select </a><font color="#000000"><strong>Send To</strong></font> from the pop&#45;up menu.</blockquote>
+      <p align="left"><a name="1049696"><img src="images/09_mc_tool.11.1.28.png" width="673" height="300" alt=""></a></p>
+      <p><a name="1048839">You can see the following for more information:</a></p>
+      <p align="left"><a name="1049399">&nbsp;</a></p>
+      <table summary="" cellpadding="4" width="648">
+        <caption>
+        <tr>
+          <td cellpadding="4" valign="top" width="348">
+            <p><a name="1049385">How to make your own measurement </a>expressions in PSpice</p>
+          </td>
+          <td cellpadding="4" valign="top" width="300">
+            <p>
+              <u><a name="1049388"><font color="#0000ff"><u>Creating measurement expressions</u></font></a></u>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049390">Checking measurement expressions in</a> PSpice</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p>
+              <u><a name="1049393"><font color="#0000ff"><u>Viewing results of measurements</u></font></a></u>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049395">Creating measurements in Advanced Analysis</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p>
+              <u><a name="1049397"><font color="#0000ff"><u>Creating measurements in Advanced Analysis</u></font></a></u>
+            </p>
+          </td>
+        </tr>
+      </table>
+      <h3><a name="1047456">Storing simulation data</a></h3>
+      <p><a name="1049736">The simulation data will be overwritten by each new run. Only the last run's data will be saved. </a>If you are planning an analysis of thousands of runs on a complex circuit, you can turn off the simulation data storage option to conserve disk space.</p>
+      <p><a name="1047458">To turn off data storage:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1047459">From the Advance Analysis menu select </a><font color="#000000"><em>Edit &#47; Profile Settings&#47; Simulation</em></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>2	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1047460">From the Monte Carlo field, select </a><font color="#000000"><strong>Save None</strong></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1049716">The simulation data will be overwritten by each new run. Only the last run's data will be </a>saved.</blockquote>
+      <p><a name="1049718">Here is an example:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1049719">From the Advance Analysis menu select </a><font color="#000000"><em>Edit &#47; Profile Settings&#47; Simulation</em></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote>	<a name="1049725"><img src="images/09_mc_tool.11.1.29.png" width="271" height="512" alt=""></a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="0.03167999999999911">
+              <div>&nbsp;</div>
+            </td>
+            <td width="29.95" align="right">
+              <div>
+                <nobr><font color="#000000"><strong>2	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1047471">From the Monte Carlo field, select </a><font color="#3300ff"><strong>Save None</strong></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1046167">&nbsp;</a></p>
+      <p><a name="1045204">&nbsp;</a></p>
+      <hr>
+      <table width="100%" border="0" cellpadding="3" cellspacing="0" summary="">
+        <tr valign="baseline">
+          <td>
+            <p>
+              <font size="-1">
+                <a name="143" href="#wwfootnote_inline_143">1</a>
+              </font>
+            </p>
+          </td>
+          <td>
+            <p><a name="1049997">Depending on the licesne and installation, either PSpice or AMS Simulator is installed. However, all </a>information about PSpice provided in this manual is also true for AMS Simulator.</p>
+          </td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellpadding="3" cellspacing="0" summary="">
+        <tr valign="baseline">
+          <td>
+            <p>
+              <font size="-1">
+                <a name="144" href="#wwfootnote_inline_144">2</a>
+              </font>
+            </p>
+          </td>
+          <td>
+            <p><a name="1050027">Schematic editor in this manual refers to either OrCAD Capture or Design Entry HDL.</a></p>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <br>
+    <a href="#pagetop">Return to top of page</a>
+    <hr>
+    <hr align="left">
+    <div style="text-align: left;">
+      <!-- Begin Buttons -->
+      <table width="650" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                    </td>
+<td height="20" width="73">
+<a href="optimChaptTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<a href="optimChaptIX.html"><img src="../support/nav2_index.gif" border="0"></a>
+</td>
+          <td>
+            <a href="08_smoke_tool.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+          </td>
+          <td>
+            <a href="10_param_plot.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+          </td>
+          <td>
+            <a>
+<a href="optimChapt.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+            </a>
+          </td>
+          <td height="20" width="61">
+            <img src="../support/nav2_black.gif">
+          </td>
+          <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+          </td>
+          <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+          </td>
+          <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+          </td>
+        </tr>
+      </table>
+      <!-- End Buttons -->
+    </div>
+    <br>
+    <font size="-1" >
+For support, see <a href="http://support.cadence.com" target="_blank">Cadence Online Support</a> service.</font>
+    <br>
+    <br>
+    <font size="-1" >
+      <i>Copyright &#169; 2011, <a href="http://www.cadence.com">Cadence Design Systems, Inc.</a></i>
+    </font>
+    <br>
+    <font size="-1" >
+All rights reserved.</font>
+    <br>
+    <br>
+  </body>
+</html>

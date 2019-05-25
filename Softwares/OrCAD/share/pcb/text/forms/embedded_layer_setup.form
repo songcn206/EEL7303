@@ -1,0 +1,207 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM 
+FIXED
+PORT 96 80
+HEADER "Embedded Layer Setup"
+
+POPUP <embedded_layer_setup_status>"Not Embedded""0","Body Up""1","Body Down""2","Protruding Allowed""3".
+POPUP <embedded_layer_setup_attach>" ""0","Direct Attach""1","Indirect Attach""2".
+
+POPUP <right_mouse> "Default""Default".
+POPUP <select_popup> "Select All""Select All".
+
+MESSAGE ILLEGAL_DB_VALUE 1 "Illegal value"
+MESSAGE VALUE_MUST_BE_GE_ZERO 1 "Value cannot be negative"
+MESSAGE embedded_layer_setup_ready 0 "Ready."
+MESSAGE embedded_layer_setup_apply 0 "Use the Apply button to save changes."
+MESSAGE embedded_layer_setup_too_much_embedded_layers 0 "The number of defined embedded etch layers exceeds the maximum value."
+MESSAGE comp_exists_on_non_embedded_layer 0 "Embedded components found on non_embedded layer."
+
+TILE
+
+GRID embedded_layer_setup_grid
+FLOC 1 0
+FSIZE 74 30
+OPTIONS HLINES VLINES USERSIZE
+POP "right_mouse"
+
+GHEAD TOP
+HEADSIZE 2
+OPTIONS 3D MULTI
+ENDGHEAD
+
+ENDGRID
+
+FIELD LAYER_STACKUP_DRAWING
+THUMBNAIL
+FLOC 77 1
+FSIZE 23 48
+ENDFIELD
+
+
+GROUP "Embedded Global Parameters" "grp_emb_globals"
+GLOC 1 29
+GSIZE 74 18
+ENDGROUP
+
+
+TEXT "1. Package height buffer:"
+TLOC 2 31
+INFO package_height_buffer_label
+ENDTEXT
+
+FIELD package_height_buffer
+FLOC 31 31
+STRFILLIN 14 100
+ENDFIELD
+
+FIELD package_height_buffer_btn
+FLOC 47 31
+MENUBUTTON "?" 3 3
+ENDFIELD
+
+
+
+TEXT "2. Minimum cavity gap for merging:"
+TLOC 2 33
+INFO min_cavity_gap_label
+ENDTEXT
+
+FIELD min_cavity_gap
+FLOC 31 33
+STRFILLIN 14 100
+ENDFIELD
+
+FIELD min_cavity_gap_btn
+FLOC 47 33
+MENUBUTTON "?" 3 3
+ENDFIELD
+
+
+
+TEXT "3. Placebound to via keepout expansion:"
+TLOC 2 35
+INFO placebound2viakeepout_gap_label
+ENDTEXT
+
+FIELD placebound2viakeepout_gap
+FLOC 31 35
+STRFILLIN 14 100
+ENDFIELD
+
+FIELD placebound2viakeepout_gap_btn
+FLOC 47 35
+MENUBUTTON "?" 3 3
+ENDFIELD
+
+TEXT "4. Package to cavity spacing:"
+TLOC 2 37
+INFO pkg2cavity_spacing_label
+ENDTEXT
+
+FIELD pkg2cavity_spacing
+FLOC 31 37
+STRFILLIN 14 100
+ENDFIELD
+
+FIELD pkg2cavity_spacing_btn
+FLOC 47 37
+MENUBUTTON "?" 3 3
+ENDFIELD
+
+
+
+TEXT "5. Via connect height:"
+TLOC 2 39
+INFO via_connect_height_label
+ENDTEXT
+
+FIELD via_connect_height
+FLOC 31 39
+STRFILLIN 14 100
+ENDFIELD
+
+FIELD via_connect_height_btn
+FLOC 47 39
+MENUBUTTON "?" 3 3
+ENDFIELD
+
+
+
+TEXT "6. Default via connect padstack:"
+TLOC 2 41
+INFO default_via_connect_padstack_label
+ENDTEXT
+
+FIELD default_via_connect_padstack
+FLOC 31 41
+STRFILLIN 14 100
+ENDFIELD
+
+FIELD default_via_connect_padstack_btn
+FLOC 47 41
+MENUBUTTON "?" 3 3
+ENDFIELD
+
+FIELD padstack_browse
+FLOC 51 41
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+
+
+TEXT "7. Cavity to route keepout expansion:"
+TLOC 2 43
+INFO cavity2rtkeepout_gap_label
+ENDTEXT
+
+FIELD cavity2rtkeepout_gap
+FLOC 31 43
+STRFILLIN 14 100
+ENDFIELD
+
+FIELD cavity2rtkeepout_gap_btn
+FLOC 47 43
+MENUBUTTON "?" 3 3
+ENDFIELD
+
+
+
+FIELD GLOBAL_DRAWING
+THUMBNAIL
+FLOC 54 31
+FSIZE 20 15
+ENDFIELD
+
+
+FIELD embedded_layer_setup_ok
+FLOC 35 48
+MENUBUTTON "Done" 8 3
+ENDFIELD
+
+FIELD embedded_layer_setup_cancel
+FLOC 44 48
+MENUBUTTON "Cancel" 8 3
+ENDFIELD
+
+FIELD embedded_layer_setup_apply
+FLOC 53 48
+MENUBUTTON "Apply" 8 3
+ENDFIELD
+
+FIELD help
+FLOC 62 48
+MENUBUTTON "Help" 8 3
+ENDFIELD
+
+FLEXMODE edgegravity
+FLEX embedded_layer_setup_grid  0   0   1 1
+FLEX LAYER_STACKUP_DRAWING 1 0 1 1
+FLEX embedded_layer_setup_apply 0 1 0 0
+FLEX help 0 1 0 0
+
+ENDTILE
+
+ENDFORM
+
+

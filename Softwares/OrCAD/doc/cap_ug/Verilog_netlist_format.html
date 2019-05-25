@@ -1,0 +1,786 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>
+      Verilog netlist format
+    </title>
+    <meta name="Approver" content="Technical Publications" />
+    <meta name="Author" content="Technical Publications" />
+    <meta name="CreateDate" content="2012-10-10" />
+    <meta name="CreateTime" content="1349876215" />
+    <meta name="DataType" content="Manuals" />
+    <meta name="Description" content="UG" />
+    <meta name="DocTitle" content="OrCAD Capture User Guide" />
+    <meta name="DocType" content="User Guide" />
+    <meta name="FileTitle" content="Verilog netlist format" />
+    <meta name="Keywords" content="" />
+    <meta name="FileType" content="Chapter" />
+    <meta name="Keyword" content="cap_ug" />
+    <meta name="Language" content="English" />
+    <meta name="ModifiedDate" content="2012-10-10" />
+    <meta name="ModifiedTime" content="1349876215" />
+    <meta name="NextFile" content="VHDL%2Bnetlist%2Bformat.html" />
+    <meta name="Group" content="" />
+    <meta name="Platform" content="All," />
+    <meta name="PrevFile"
+    content="Vectron%2Bnetlist%2Bformat.html" />
+    <meta name="Product"
+    content="Allegro Design Entry CIS,OrCAD Capture," />
+    <meta name="ProductFamily"
+    content="Silicon-Package-Board Co-Design,Silicon-Package-Board Co-Design," />
+    <meta name="ProductVersion" content="16.6" />
+    <meta name="RightsManagement"
+    content="Copyright 2011-2012 Cadence Design Systems Inc." />
+    <meta name="Title"
+    content="OrCAD Capture User Guide -- Verilog netlist format" />
+    <meta name="Version" content="16.6" />
+    <meta name="Renderer" content="WIKI" />
+    <meta name="SpaceKey" content="capug166" />
+    <link href="styles/site.css" rel="stylesheet"
+    type="text/css" />
+    <meta content="text/html; charset=UTF-8"
+    http-equiv="Content-Type" />
+  </head>
+  <body style="margin-left: 5%;background-color: #FFFFFF;">
+    <a xmlns:html="http://www.w3.org/1999/xhtml" id="pagetop"
+    name="pagetop"></a> <a
+    xmlns:html="http://www.w3.org/1999/xhtml" id="firstpage"
+    name="firstpage"></a> <!-- Begin Buttons -->
+     
+    <table xmlns:html="http://www.w3.org/1999/xhtml" border="0"
+    cellpadding="0" cellspacing="0" width="650">
+      <tbody>
+        <tr>
+          <td colspan="10" height="36" width="650">
+            <img height="34" src="../support/header_doc.gif"
+            width="650" />
+          </td>
+        </tr>
+        <tr>
+          <td height="20" width="59">
+            <a href="javascript:openLibrary()"><img
+            alt="View Library" border="0" height="20"
+            src="../support/nav2_library.gif" width="59" /></a>
+          </td>
+          <td height="20" width="73">
+            <a href="cap_ugTOC.html"><img alt="Table of Contents"
+            border="0" src="../support/nav2_toc.gif" /></a>
+          </td>
+          <td height="20" width="46">
+            <img alt="Index" border="0"
+            src="../support/nav2_index_b.gif" />
+          </td>
+          <td>
+            <a href="Vectron_netlist_format.html"><img
+            alt="Previous" border="0"
+            src="../support/nav2_previous.gif" /></a>
+          </td>
+          <td>
+            <a href="VHDL_netlist_format.html"><img alt="Next"
+            border="0" src="../support/nav_next.gif" /></a>
+          </td>
+          <td height="20">
+            <a href="cap_ug.pdf"><img alt="Open PDF to print book"
+            border="0" height="20" src="../support/nav2_print.gif"
+            width="114" /></a>
+          </td>
+          <td height="20" width="61">
+            <img src="../support/nav2_black.gif" />
+          </td>
+          <td height="20" width="76">
+            <a href="/feedback.htm"><img alt="Email Comments"
+            border="0" height="20"
+            src="../support/nav2_feedback.gif" width="76" /></a>
+          </td>
+          <td height="20" width="43">
+            <a href="../cdsuser/help.html"><img
+            alt="Help Using Documentation" border="0" height="20"
+            src="../support/nav2_help.gif" width="43" /></a>
+          </td>
+          <td height="20" width="37">
+            <a href="/exitsearch.htm"><img
+            alt="Shut Down Cadence Documentation Server" border="0"
+            height="20" src="../support/nav2_exit.gif"
+            width="37" /></a>
+          </td>
+        </tr>
+      </tbody>
+    </table><!-- End Buttons -->
+    <hr xmlns:html="http://www.w3.org/1999/xhtml" />
+    <div id="main-header">
+      <a xmlns="" id="Verilognetlistformat"
+      name="Verilognetlistformat"></a> 
+      <h1 xmlns="" style=" margin: 4px 0 4px;">
+        <span>Verilog netlist format</span>
+      </h1>
+    </div>
+    <div class="wiki-content group" id="main-content">
+      <p>
+        <span class="confluence-anchor-link"
+        id="Verilognetlistformat-1156259"></span><br />
+         <span class="confluence-anchor-link"
+        id="Verilognetlistformat-1127936"></span> Verilog netlists
+        have the following characteristics:
+      </p>
+      <ul>
+        <li>
+          <span class="confluence-anchor-link"
+          id="Verilognetlistformat-1127937"></span> Part
+          identifiers, module identifiers, reference strings, node
+          identifiers, and pin numbers are not checked for length.
+        </li>
+        <li>
+          <span class="confluence-anchor-link"
+          id="Verilognetlistformat-1127938"></span> Part
+          identifiers, module identifiers, reference strings, node
+          identifiers, and pin numbers must begin with a letter.
+        </li>
+        <li>
+          <span class="confluence-anchor-link"
+          id="Verilognetlistformat-1127939"></span> Part
+          identifiers, module identifiers, reference strings, node
+          identifiers, and pin numbers must all be unique. That is,
+          none of these can share a name.
+        </li>
+        <li>
+          <span class="confluence-anchor-link"
+          id="Verilognetlistformat-1127940"></span> Legal
+          characters for part identifiers, module identifiers,
+          reference strings, node identifiers, and pin numbers are
+          limited to:
+        </li>
+      </ul>
+      <div class="preformatted panel" style="border-width: 1px;">
+        <div class="preformattedContent panelContent">
+<pre>
+A..Z a..z 0..9
+</pre>
+        </div>
+      </div>
+      <p>
+        <span class="confluence-anchor-link"
+        id="Verilognetlistformat-1127942"></span> If there are
+        illegal characters in a part identifier, module identifier,
+        reference string, node identifier, or pin number, the
+        netlister converts them to legal Verilog names. This
+        conversion uses the backslash character (\) to escape
+        otherwise illegal characters. For spaces, the conversion
+        uses the ASCII equivalent (#20).<br />
+         <span class="confluence-anchor-link"
+        id="Verilognetlistformat-1127943"></span> Consider these
+        examples:
+      </p>
+      <p>
+        <span class="confluence-anchor-link"
+        id="Verilognetlistformat-1128107"></span> &#160;
+      </p>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <span class="confluence-anchor-link"
+                  id="Verilognetlistformat-1128113"></span>
+                  <strong>This string....</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <span class="confluence-anchor-link"
+                  id="Verilognetlistformat-1128115"></span>
+                  <strong>converts to this...</strong>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <span class="confluence-anchor-link"
+                  id="Verilognetlistformat-1128225"></span> ____<br
+                  class="atl-forced-newline" />
+                   RAS
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <span class="confluence-anchor-link"
+                  id="Verilognetlistformat-1128227"></span>
+                  &#160;<br class="atl-forced-newline" />
+                   \R\A\S\
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <span class="confluence-anchor-link"
+                  id="Verilognetlistformat-1128229"></span>
+                  &#160;<br class="atl-forced-newline" />
+                   A B
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <span class="confluence-anchor-link"
+                  id="Verilognetlistformat-1128231"></span>
+                  &#160;<br class="atl-forced-newline" />
+                   \A#20B
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <span class="confluence-anchor-link"
+                  id="Verilognetlistformat-1128233"></span>
+                  &#160;<br class="atl-forced-newline" />
+                   AggB
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <span class="confluence-anchor-link"
+                  id="Verilognetlistformat-1128235"></span>
+                  &#160;<br class="atl-forced-newline" />
+                   \A#20#20B
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <span class="confluence-anchor-link"
+                  id="Verilognetlistformat-1128237"></span>
+                  &#160;<br class="atl-forced-newline" />
+                   A#B
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <span class="confluence-anchor-link"
+                  id="Verilognetlistformat-1128239"></span>
+                  &#160;<br class="atl-forced-newline" />
+                   \A#B
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <span class="confluence-anchor-link"
+                  id="Verilognetlistformat-1128241"></span>
+                  &#160;<br class="atl-forced-newline" />
+                   A#20B
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <span class="confluence-anchor-link"
+                  id="Verilognetlistformat-1128243"></span>
+                  &#160;<br class="atl-forced-newline" />
+                   \A#2320B
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <span class="confluence-anchor-link"
+                  id="Verilognetlistformat-1128245"></span>
+                  &#160;<br class="atl-forced-newline" />
+                   A#23B
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <span class="confluence-anchor-link"
+                  id="Verilognetlistformat-1128247"></span>
+                  &#160;<br class="atl-forced-newline" />
+                   \A#2323B
+                </p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        <span class="confluence-anchor-link"
+        id="Verilognetlistformat-1128300"></span> For more
+        information, see the Verilog netlist example.
+      </p>
+      <p>
+        Note: <span class="confluence-anchor-link"
+        id="Verilognetlistformat-1128326"></span> In cases where a
+        net name is different from a port name, Capture uses
+        aliases to associate the two. That is, if a wire with one
+        net name is connected to a port with a different name,
+        Capture creates an alias to associate the two components to
+        the same net.<br class="atl-forced-newline" />
+        <br class="atl-forced-newline" />
+         The alias takes either of the following forms:<br
+        class="atl-forced-newline" />
+        <br class="atl-forced-newline" />
+         alias_bit alias_inst1(NetName, PortName)<br
+        class="atl-forced-newline" />
+         alias_vector alias_inst1(NetName, PortName)<br
+        class="atl-forced-newline" />
+        <br class="atl-forced-newline" />
+         Where:<br class="atl-forced-newline" />
+        <br class="atl-forced-newline" />
+         <strong>NetName</strong> is the name assigned to the
+        net.<br class="atl-forced-newline" />
+         <strong>PortName</strong> is the name assigned to the
+        port.<br class="atl-forced-newline" />
+        <br class="atl-forced-newline" />
+         If these aliases are used, they will appear at the
+        beginning of the netlist.
+      </p>
+      <h5
+      id="Verilognetlistformat-1128321AssigningaVerilogparametertoacomponentinstance">
+        <span class="confluence-anchor-link"
+        id="Verilognetlistformat-1128321"></span> <em>Assigning a
+        Verilog parameter to a component instance</em>
+      </h5>
+      <p>
+        <span class="confluence-anchor-link"
+        id="Verilognetlistformat-1127994"></span> Identifiers for
+        parts, modules, part references, nodes, pins, and nets must
+        not conflict with any Verilog reserved word. See Verilog
+        reserved words for a list of reserved words.<br />
+         <span class="confluence-anchor-link"
+        id="Verilognetlistformat-1127998"></span> You can specify
+        Verilog parameters on component instances as properties,
+        using this method:
+      </p>
+      <ol>
+        <li>
+          <span class="confluence-anchor-link"
+          id="Verilognetlistformat-1127999"></span> Assign the
+          property Vlog_param to the component, using the following
+          syntax:
+        </li>
+      </ol>
+      <div class="preformatted panel" style="border-width: 1px;">
+        <div class="preformattedContent panelContent">
+<pre>
+Vlog_Param = Parameter_name:Parameter_type
+</pre>
+        </div>
+      </div>
+      <p>
+        <span class="confluence-anchor-link"
+        id="Verilognetlistformat-1128001"></span> Where:<br
+        class="atl-forced-newline" />
+        <br class="atl-forced-newline" />
+         <strong>Parameter_name</strong> is the name of the
+        parameter to be specified in the netlist.<br
+        class="atl-forced-newline" />
+         <strong>Parameter_type</strong> is the type of the
+        parameter (for example, &quot;integer,&quot; or
+        &quot;string&quot;).
+      </p>
+      <p>
+        Note: <span class="confluence-anchor-link"
+        id="Verilognetlistformat-1128395"></span> You can specify
+        multiple Verilog parameters on a component instance, as
+        well, by using the following format:<br
+        class="atl-forced-newline" />
+        <br class="atl-forced-newline" />
+         Vlog_ParamXX = Parameter_name:Parameter_type<br
+        class="atl-forced-newline" />
+        <br class="atl-forced-newline" />
+         Where:<br class="atl-forced-newline" />
+        <br class="atl-forced-newline" />
+         <strong>XX</strong> is an integer that is unique to the
+        parameter being defined.
+      </p>
+      <ol>
+        <li>
+          <span class="confluence-anchor-link"
+          id="Verilognetlistformat-1128013"></span> Assign a value
+          to the declared parameter:
+        </li>
+      </ol>
+      <p>
+        Note: <span class="confluence-anchor-link"
+        id="Verilognetlistformat-1128014"></span> Parameter_name =
+        Parameter_value<br class="atl-forced-newline" />
+        <br class="atl-forced-newline" />
+         Where:<br class="atl-forced-newline" />
+        <br class="atl-forced-newline" />
+         Parameter_name is the name of the parameter to be
+        specified in the netlist.<br class="atl-forced-newline" />
+         Parameter_value is the value of the parameter.
+      </p>
+      <p>
+        <span class="confluence-anchor-link"
+        id="Verilognetlistformat-1128016"></span> The parameter
+        will appear in the netlist as:
+      </p>
+      <div class="preformatted panel" style="border-width: 1px;">
+        <div class="preformattedContent panelContent">
+<pre>
+\7400 U7(
+&#160; .A_A( IN1 ) ,
+&#160; .B_A( IN2 ) ,
+&#160; .Y_A( OUT ) ,
+&#160; .VCC( VCC ) ,
+&#160; .GND( GND )
+) ;
+defparam U7.Parameter_name = Parameter_value;
+</pre>
+        </div>
+      </div>
+      <p>
+        <span class="confluence-anchor-link"
+        id="Verilognetlistformat-1128018"></span> If the parameter
+        value is a string, the netlister encloses it in quotes
+        (&quot;&quot;) in the netlist. If a parameter does not have
+        a value, the netlister will report an error.
+      </p>
+      <h5
+      id="Verilognetlistformat-1128019Supportofglobalsignalsandcreationofglobalmodule">
+        <span class="confluence-anchor-link"
+        id="Verilognetlistformat-1128019"></span> <em>Support of
+        global signals and creation of global module</em>
+      </h5>
+      <p>
+        <span class="confluence-anchor-link"
+        id="Verilognetlistformat-1128020"></span> The Verilog
+        netlister connects to global signals using the global
+        module &quot;glbl&quot;. This distinguishes global signals
+        from local signals. For example:
+      </p>
+      <div class="preformatted panel" style="border-width: 1px;">
+        <div class="preformattedContent panelContent">
+<pre>
+//Verilog global signals module
+module glbl() ;
+wire global;
+...
+endmodule
+
+module schematic1() ;
+...
+wire global; //local alias for the global signal &quot;global&quot;
+assign global = glbl.global;
+...
+ls04 i1(
+.a(global),
+...);
+...
+endmodule
+</pre>
+        </div>
+      </div>
+      <p>
+        <span class="confluence-anchor-link"
+        id="Verilognetlistformat-1128025"></span> By default, only
+        power signals are considered global. Capture inserts the
+        global module at the top of the Verilog netlist.<br />
+         <span class="confluence-anchor-link"
+        id="Verilognetlistformat-1128026"></span> If your design is
+        a PSpice A/DV design, Capture places the connections to the
+        global signals under `ifdef VAN. This is so that the normal
+        Verilog simulation will not get affected. For example:
+      </p>
+      <div class="preformatted panel" style="border-width: 1px;">
+        <div class="preformattedContent panelContent">
+<pre>
+`ifdef VAN
+module glbl;
+wire global;
+...
+endmodule
+`endif
+module schematic1;
+...
+`ifdef VAN
+wire global; //local alias for the global signal &quot;global&quot;
+assign global = glbl.global;
+`endif
+...
+ls04 i1(
+`ifdef VAN
+.a(glbl.global),
+`else
+.a(global),
+`endif
+...);
+...
+Endmodule
+</pre>
+        </div>
+      </div>
+      <p>
+        <span class="confluence-anchor-link"
+        id="Verilognetlistformat-1128492"></span> Verilog netlists
+        normally have a .V file extension.
+      </p>
+      <h5
+      id="Verilognetlistformat-1128555ExampleVerilognetlistwithpowerpinsincluded">
+        <span class="confluence-anchor-link"
+        id="Verilognetlistformat-1128555"></span> <em>Example
+        Verilog netlist with power pins included</em>
+      </h5>
+      <div class="preformatted panel" style="border-width: 1px;">
+        <div class="preformattedContent panelContent">
+<pre>
+`timescale 1ns/1ps
+module alias_vector (a, a);
+parameter size = 1;
+inout [size-1:0] a;
+endmodule
+module alias_bit (a, a);
+inout a;
+endmodule
+module glbl;
+&#160; wire VCC;
+&#160; wire GND;
+endmodule
+module HALFADD ( X, Y, CARRY, SUM);
+input X;
+input Y;
+output CARRY;
+output SUM;
+// SIGNALS
+wire VCC;
+assign VCC = glbl.VCC;
+wire GND;
+assign GND = glbl.GND;
+wire N00032;
+wire X_BAR;
+wire N00034;
+wire N5056796111;
+// GATE INSTANCES
+\74LS32 U1(
+&#160; .I0_B( N00032 ) ,
+&#160; .I1_B( N00034 ) ,
+&#160; .O_B( SUM )
+&#160;) ;
+\74LS08 U2(
+&#160; .I0_A( X ) ,
+&#160; .I1_A( N5056796111 ) ,
+&#160; .O_A( N00032 ) ,
+&#160; .VCC( VCC ) ,
+&#160; .GND( GND ) ,
+&#160; .I0_B( Y ) ,
+&#160; .I1_B( X_BAR ) ,
+&#160; .O_B( N00034 ) ,
+&#160; .I0_C( Y ) ,
+&#160; .I1_C( X ) ,
+&#160; .O_C( CARRY )
+) ;
+\74LS04 U3(
+&#160; .I_A( X ) ,
+&#160; .O_A( X_BAR ) ,
+&#160; .VCC( VCC ) ,
+&#160; .GND( GND ) ,
+&#160; .I_B( Y ) ,
+&#160; .O_B( N5056796111 ) ) ;
+endmodule
+module FULLADD ( SUM, X, Y, CARRY_OUT, CARRY_IN);
+output SUM;
+input X;
+input Y;
+output CARRY_OUT;
+input CARRY_IN;
+// SIGNALS
+wire VCC;
+assign VCC = glbl.VCC;
+wire GND;
+assign GND = glbl.GND;
+wire N00011;
+wire N00013;
+wire N00023;
+// GATE INSTANCES
+\74LS32 U1(
+&#160; .I0_A( N00013 ) ,
+&#160; .I1_A( N00023 ) ,
+&#160; .O_A( CARRY_OUT ) ,
+&#160; .VCC( VCC ) ,
+&#160; .GND( GND )
+&#160;) ;
+HALFADD HALFADD_A (
+&#160; .X( CARRY_IN ) ,
+&#160; .Y( N00011 ) ,
+&#160; .CARRY( N00013 ) ,
+&#160; .SUM( SUM )
+&#160;) ;
+HALFADD HALFADD_B (
+&#160; .X( X ) ,
+&#160; .Y( Y ) ,
+&#160; .CARRY( N00023 ) ,
+&#160; .SUM( N00011 )
+&#160;) ;
+endmodule
+</pre>
+        </div>
+      </div>
+      <h5
+      id="Verilognetlistformat-1128645ExampleVerilognetlistwithoutpowerpinsincluded">
+        <span class="confluence-anchor-link"
+        id="Verilognetlistformat-1128645"></span> <em>Example
+        Verilog netlist without power pins included</em>
+      </h5>
+      <div class="preformatted panel" style="border-width: 1px;">
+        <div class="preformattedContent panelContent">
+<pre>
+`timescale 1ns/1ps
+module alias_vector (a, a);
+parameter size = 1;
+inout [size-1:0] a;
+endmodule
+module alias_bit (a, a);
+inout a;
+endmodule
+module glbl;
+endmodule
+module HALFADD ( X, Y, CARRY, SUM);
+input X;
+input Y;
+output CARRY;
+output SUM;
+// SIGNALS
+wire N00032;
+wire X_BAR;
+wire N00034;
+wire N5056796111;
+// GATE INSTANCES
+\74LS32 U1(
+&#160; .I0_B( N00032 ) ,
+&#160; .I1_B( N00034 ) ,
+&#160; .O_B( SUM )
+) ;
+\74LS08 U2(
+&#160; .I0_A( X ) ,
+&#160; .I1_A( N5056796111 ) ,
+&#160; .O_A( N00032 ) ,
+&#160; .I0_B( Y ) ,
+&#160; .I1_B( X_BAR ) ,
+&#160; .O_B( N00034 ) ,
+&#160; .I0_C( Y ) ,
+&#160; .I1_C( X ) ,
+&#160; .O_C( CARRY )
+&#160;) ;
+\74LS04 U3(
+&#160; .I_A( X ) ,
+&#160; .O_A( X_BAR ) ,
+&#160; .I_B( Y ) ,
+&#160; .O_B( N5056796111 )
+&#160;) ;
+endmodule
+module FULLADD ( SUM, X, Y, CARRY_OUT, CARRY_IN);
+output SUM;
+input X;
+input Y;
+output CARRY_OUT;
+input CARRY_IN;
+// SIGNALS
+wire N00011;
+wire N00013;
+wire N00023;
+// GATE INSTANCES
+\74LS32 U1(
+&#160; .I0_A( N00013 ) ,
+&#160; .I1_A( N00023 ) ,
+&#160; .O_A( CARRY_OUT )
+&#160;) ;
+HALFADD HALFADD_A (
+&#160; .X( CARRY_IN ) ,
+&#160; .Y( N00011 ) ,
+&#160; .CARRY( N00013 ) ,
+&#160; .SUM( SUM )
+&#160;) ;
+HALFADD HALFADD_B (
+&#160; .X( X ) ,
+&#160; .Y( Y ) ,
+&#160; .CARRY( N00023 ) ,
+&#160; .SUM( N00011 )
+&#160;) ;
+endmodule
+</pre>
+        </div>
+      </div>
+    </div>
+    <hr xmlns:html="http://www.w3.org/1999/xhtml" />
+    <hr xmlns:html="http://www.w3.org/1999/xhtml" align="left" />
+    <div xmlns:html="http://www.w3.org/1999/xhtml"
+    style="text-align: left;">
+      <!-- Begin Buttons -->
+      <table border="0" cellpadding="0" cellspacing="0"
+      width="650">
+        <tbody>
+          <tr>
+            <td colspan="10" height="36" width="650">
+              <img height="34" src="../support/header_doc.gif"
+              width="650" />
+            </td>
+          </tr>
+          <tr>
+            <td height="20" width="59">
+              <a href="javascript:openLibrary()"><img
+              alt="View Library" border="0" height="20"
+              src="../support/nav2_library.gif" width="59" /></a>
+            </td>
+            <td height="20" width="73">
+              <a href="cap_ugTOC.html"><img alt="Table of Contents"
+              border="0" src="../support/nav2_toc.gif" /></a>
+            </td>
+            <td height="20" width="46">
+              <img alt="Index" border="0"
+              src="../support/nav2_index_b.gif" />
+            </td>
+            <td>
+              <a href="Vectron_netlist_format.html"><img
+              alt="Previous" border="0"
+              src="../support/nav2_previous.gif" /></a>
+            </td>
+            <td>
+              <a href="VHDL_netlist_format.html"><img alt="Next"
+              border="0" src="../support/nav_next.gif" /></a>
+            </td>
+            <td height="20">
+              <a href="cap_ug.pdf"><img
+              alt="Open PDF to print book" border="0" height="20"
+              src="../support/nav2_print.gif" width="114" /></a>
+            </td>
+            <td height="20" width="61">
+              <img src="../support/nav2_black.gif" />
+            </td>
+            <td height="20" width="76">
+              <a href="/feedback.htm"><img alt="Email Comments"
+              border="0" height="20"
+              src="../support/nav2_feedback.gif" width="76" /></a>
+            </td>
+            <td height="20" width="43">
+              <a href="../cdsuser/help.html"><img
+              alt="Help Using Documentation" border="0" height="20"
+              src="../support/nav2_help.gif" width="43" /></a>
+            </td>
+            <td height="20" width="37">
+              <a href="/exitsearch.htm"><img
+              alt="Shut Down Cadence Documentation Server"
+              border="0" height="20" src="../support/nav2_exit.gif"
+              width="37" /></a>
+            </td>
+          </tr>
+        </tbody>
+      </table><!-- End Buttons -->
+    </div><br xmlns:html="http://www.w3.org/1999/xhtml" />
+     <font xmlns:html="http://www.w3.org/1999/xhtml" size="-1">For
+    support, see <a href="http://support.cadence.com"
+    target="_blank">Cadence Online Support</a> service.</font> <br
+    xmlns:html="http://www.w3.org/1999/xhtml" />
+     <br xmlns:html="http://www.w3.org/1999/xhtml" />
+     <font xmlns:html="http://www.w3.org/1999/xhtml"
+    size="-1"><i>Copyright &#169; 2012, <a
+    href="http://www.cadence.com">Cadence Design Systems,
+    Inc.</a></i></font> <br
+    xmlns:html="http://www.w3.org/1999/xhtml" />
+     <font xmlns:html="http://www.w3.org/1999/xhtml" size="-1">All
+    rights reserved.</font> <br
+    xmlns:html="http://www.w3.org/1999/xhtml" />
+     <br xmlns:html="http://www.w3.org/1999/xhtml" />
+  </body>
+</html>

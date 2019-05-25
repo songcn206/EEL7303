@@ -1,0 +1,364 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM AUTOGREYTEXT
+FIXED
+PORT 58 41
+HEADER "Power Integrity Control"
+
+MESSAGE badentry 0 "%s"
+
+TILE
+
+TABSET "TABS"
+FLOC 1 1
+TSSIZE 57 31
+
+TAB "Standard"
+
+GROUP "Target Impedance"
+  GLOC 1 1
+  GSIZE 54 7
+ENDGROUP
+
+TEXT "Corner frequency:"
+  TLOC 2 3
+  TGROUP "Target Impedance"
+ENDTEXT
+
+FIELD DeCap_TI_CornerFrequency
+  FLOC 20 3
+  STRFILLIN 12 12
+  FGROUP "Target Impedance"
+ENDFIELD 
+
+TEXT "Slope (dB/Decade):"
+  TLOC 2 5
+  TGROUP "Target Impedance"
+ENDTEXT
+
+FIELD DeCap_TI_Slope
+  FLOC 20 5
+  STRFILLIN 12 12
+  FGROUP "Target Impedance"
+ENDFIELD 
+
+FIELD DeCap_TI_Plot
+  FLOC 36 5
+  MENUBUTTON "Plot" 6 3
+  FGROUP "Target Impedance"
+ENDFIELD
+
+GROUP "Plane Listing Preferences"
+  GLOC 1 8 
+  GSIZE 54 7
+ENDGROUP
+
+TEXT "Min. plane/board area:"
+  TLOC 2 10
+  TGROUP "Plane Listing Preferences"
+ENDTEXT
+
+POPUP <decapMSARList>"1.0%""1","5.0%""5","10.0%""10",\
+                     "25.0%""25","50.0%""50","75.0""75","90.0%""90".
+
+FIELD DeCap_MinShapeAreaRatio
+  FLOC 20 10
+  STRFILLIN 12 12
+  POP "decapMSARList"
+  FGROUP "Plane Listing Preferences"
+ENDFIELD 
+
+FIELD DeCap_IncludeConductorShapes
+  FLOC 2 12
+  CHECKLIST "Include planes on conductor layers"
+  FGROUP "Plane Listing Preferences"
+ENDFIELD 
+
+ENDTAB
+
+TAB "Simulation"
+
+GROUP "Grid Size and Frequency Analysis Range"
+  GLOC 1 1 
+  GSIZE 54 9
+ENDGROUP
+
+TEXT "MultiNode grid size:"
+  TLOC 2 3
+  TGROUP "Grid Size and Frequency Anaysis Range"
+ENDTEXT
+
+POPUP <multnodesize>"8x4""8x4","8x6""8x6","8x8""8x8",\
+                    "16x8""16x8","16x12""16x12","16x16""16x16",\
+                    "32x8""32x8","32x12""32x12","32x24""32x24","32x32""32x32".
+
+FIELD DeCap_MultiNodeGridSize
+  FLOC 17 3
+  STRFILLIN 7 9
+  POP "multnodesize"
+  FGROUP "Grid Size and Frequency Anaysis Range"
+ENDFIELD 
+
+TEXT "Adaptive Level:"
+  TLOC 32 3
+  TGROUP "Grid Size and Frequency Anaysis Range"
+ENDTEXT
+
+POPUP <adaptivelevel>"Open""Open","Low""Low","Med""Med","High""High","1""1","2""2","4""4","8""8","12""12","16""16","32""32".
+FIELD DeCap_AdaptiveLevel
+  FLOC 44 3
+  STRFILLIN 5.5 4
+  POP "adaptivelevel"
+  FGROUP "Grid Size and Frequency Anaysis Range"
+ENDFIELD 
+
+TEXT "Upper analysis limit:"
+  TLOC 2 5
+  TGROUP "Grid Size and Frequency Anaysis Range"
+ENDTEXT
+
+FIELD DeCap_UpperAnalysisLimit
+  FLOC 17 5
+  STRFILLIN 10 12
+  FGROUP "Grid Size and Frequency Anaysis Range"
+ENDFIELD 
+
+FIELD DeCap_PreviewOnly
+  FLOC 32 5
+  CHECKLIST "Preview Only" "Preview Only"
+  FGROUP "Grid Size and Frequency Anaysis Range"
+ENDFIELD 
+
+TEXT "Lower analysis limit:"
+  TLOC 2 7
+  TGROUP "Grid Size & Frequency Anaysis Range"
+ENDTEXT
+
+FIELD DeCap_LowerAnalysisLimit
+  FLOC 17 7
+  STRFILLIN 10 12
+  FGROUP "Grid Size and Frequency Anaysis Range"
+ENDFIELD 
+
+FIELD DeCap_PreviewExecute
+  FLOC 32 7
+  CHECKLIST "Preview/Execute ?" "Preview/Execute ?"
+  FGROUP "Grid Size and Frequency Anaysis Range"
+ENDFIELD 
+
+GROUP "Simulation"
+  GLOC 1 10
+  GSIZE 54 13
+ENDGROUP
+
+#TEXT "Simulator:"
+#  TLOC 2 12
+#  TGROUP "Simulator"
+#ENDTEXT
+
+#POPUP <decapsims>"Spectre""Spectre".
+
+#FIELD DeCap_Simulator
+#  FLOC 20 12
+#  STRFILLIN 12 12
+#  POP "decapsims"
+#  FGROUP "Simulator"
+#ENDFIELD
+
+TEXT "Voltage Supply:"
+  TLOC 2 12
+  FGROUP "Simulator"
+ENDTEXT
+
+FIELD DeCap_SimulationVoltage
+  FLOC 14 12
+  STRFILLIN 13 10
+  FGROUP "Simulator Preferences and Conditions"
+ENDFIELD
+
+
+TEXT "Temperature:"
+  TLOC 32 12
+  FGROUP "Simulator Preferences and Conditions"
+ENDTEXT
+
+FIELD DeCap_SimulationTemperature
+  FLOC 42 12
+  STRFILLIN 11 10
+  FGROUP "Simulator Preferences and Conditions"
+ENDFIELD
+
+FIELD DeCap_TimeDomain
+  FLOC 2 16
+  CHECKLIST "Time-Domain Voltage Ripple Display""Time-Domain Voltage Ripple Display"
+  FGROUP "Simulator Preferences and Conditions"
+ENDFIELD 
+
+FIELD DeCap_FrequencyDomain
+  FLOC 2 14
+  CHECKLIST "Frequency-Domain Impedance Display""Frequency-Domain Impedance Display"
+  FGROUP "Simulator Preferences and Conditions"
+ENDFIELD 
+
+FIELD DeCap_TrapizodialPulse
+  FLOC 6 20
+  CHECKLIST "Trapezoidal Noise Current Pulse""Trapezoidal Noise Current Pulse"
+  FGROUP "Simulator Preferences and Conditions"
+ENDFIELD 
+
+FIELD DeCap_GaussionPulse
+  FLOC 6 18
+  CHECKLIST "Gaussian Noise Current Pulse""Gaussian Noise Current Pulse"
+  FGROUP "Simulator Preferences and Conditions"
+ENDFIELD
+
+TEXT "Fastest Tr/Tf:" DeCap_TrapizodialPulseTimeText
+  TLOC 34 20
+  FGROUP "Simulator Preferences and Conditions"
+ENDTEXT
+
+FIELD DeCap_TrapizodialPulseTime
+  FLOC 46 20
+  STRFILLIN 7 12
+  FGROUP "Simulator Preferences and Conditions"
+ENDFIELD
+
+TEXT "Gaussian Width:" DeCap_GaussionPulseTimeText
+  TLOC 34 18
+  FGROUP "Simulator Preferences and Conditions"
+ENDTEXT
+
+FIELD DeCap_GaussionPulseTime
+  FLOC 46 18
+  STRFILLIN 7 12
+  FGROUP "Simulator Preferences and Conditions"
+ENDFIELD
+
+
+
+
+GROUP "Multiplane Connector"
+  GLOC 1 23
+  GSIZE 54 5
+ENDGROUP
+
+TEXT "Resistance:"
+  TLOC 2 25
+  FGROUP "Multiplane Connector"
+ENDTEXT
+
+FIELD DeCap_MultiPlaneConn_Res
+  FLOC 12 25
+  STRFILLIN 15 10
+  FGROUP "Multiplane Connector"
+ENDFIELD
+
+TEXT "Inductance:"
+  TLOC 32 25
+  FGROUP "Multiplane Connector"
+ENDTEXT
+
+FIELD DeCap_MultiPlaneConn_Ind
+  FLOC 42 25
+  STRFILLIN 11 10
+  FGROUP "Multiplane Connector"
+ENDFIELD
+
+ENDTAB
+
+TAB "Mounted Inductance"
+
+GROUP "Component Mounted Inductance"
+  GLOC  1 1
+  GSIZE 54 13
+ENDGROUP
+
+FIELD DeCap_LI_CalcOnPlace
+  FLOC 2 3
+  CHECKLIST "Calculate on placement"
+  FGROUP "Component Mounted Inductance"
+ENDFIELD 
+
+FIELD DeCap_LI_CalcOnSim
+  FLOC 2 5
+  CHECKLIST "Calculate all on MultiNode simulation *"
+  FGROUP "Component Mounted Inductance"
+ENDFIELD 
+
+FIELD DeCap_LI_CalcOnSimReport
+  FLOC 40 5
+  MENUBUTTON "Preview report" 10 2
+  FGROUP "Component Mounted Inductance"
+ENDFIELD 
+
+FIELD DeCap_LI_CalcUndoneOnSim
+  FLOC 2 7
+  CHECKLIST "Calculate undone on MultiNode simulation *"
+  FGROUP "Component Mounted Inductance"
+ENDFIELD 
+
+FIELD DeCap_LI_CalcUndoneOnSimReport
+  FLOC 40 7
+  MENUBUTTON "Preview report" 10 2
+  FGROUP "Component Mounted Inductance"
+ENDFIELD 
+
+FIELD DeCap_LI_GroupCalcMethod
+  FLOC 2 9
+  CHECKLIST "Use common route configuration calculations *"
+  FGROUP "Component Mounted Inductance"
+ENDFIELD 
+
+TEXT "Default mounted inductance:"
+  TLOC 2 11
+  TGROUP "Component Mounted Inductance"
+ENDTEXT
+
+TEXT "Default Mounted Inductance:"
+  TLOC 2 11
+  TGROUP "Component Mounted Inductance"
+ENDTEXT
+
+FIELD DeCap_MountedInd_Default
+  FLOC 24 11
+  STRFILLIN 12 24
+  FGROUP "Component Mounted Inductance"
+ENDFIELD 
+
+TEXT "* Item not included in Preferences"
+  TLOC 1 14
+  TGROUP "Component Mounted Inductance"
+ENDTEXT
+
+ENDTAB
+
+ENDTABSET
+
+FIELD DeCap_SaveToPrefs
+  FLOC 1 33
+  MENUBUTTON "Save Preference settings" 22 3
+ENDFIELD
+  
+FIELD DeCap_RestoreFromPrefs
+  FLOC 36 33
+  MENUBUTTON "Recall Preference settings" 22 3
+ENDFIELD
+
+FIELD OK
+  FLOC 2 36
+  MENUBUTTON "OK" 10 3
+ENDFIELD
+
+FIELD Cancel
+  FLOC 16 36
+  MENUBUTTON "Cancel" 10 3
+ENDFIELD
+
+FIELD Help
+  FLOC 47 36
+  MENUBUTTON "Help" 10 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM
+

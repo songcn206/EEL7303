@@ -1,0 +1,309 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM 
+FIXED
+PORT 68 26
+HEADER "Dimension Text"
+
+POPUP <DT_UNITSPOP>"Inches""2","Mils""1","Meters""6","Centimeters""4",\
+"Millimeters""3","Microns""5".
+
+
+TILE
+GROUP "Primary dimensions"
+GLOC 40 0
+GSIZE 28 9
+ENDGROUP
+
+TEXT "Units:"
+TLOC 44 4
+ENDTEXT
+
+TEXT "Decimal places:"
+TLOC 44 6
+ENDTEXT
+
+TEXT "Diameter symbol location:"
+TLOC 5 14
+ENDTEXT
+
+TEXT "Units:"
+TLOC 44 16
+ENDTEXT
+
+TEXT "Radius symbol location:"
+TLOC 5 18
+ENDTEXT
+
+TEXT "Decimal places:"
+TLOC 44 18
+ENDTEXT
+
+TEXT "Location:"
+TLOC 44 21
+ENDTEXT
+
+TEXT "Special handling:"
+TLOC 5 22
+ENDTEXT
+
+TEXT "Scale factor:"
+TLOC 5 30
+ENDTEXT
+
+TEXT "Decimal places:"
+TLOC 44 30
+ENDTEXT
+
+TEXT "Type:"
+TLOC 5 39
+ENDTEXT
+
+TEXT "Coordinate tolerance:"
+TLOC 32 39
+ENDTEXT
+
+TEXT "Upper:"
+TLOC 49 39
+ENDTEXT
+
+TEXT "Lower:"
+TLOC 49 41
+ENDTEXT
+
+TEXT "Location:"
+TLOC 5 43
+ENDTEXT
+
+TEXT "Angular tolerance:"
+TLOC 32 43
+ENDTEXT
+
+TEXT "Upper:"
+TLOC 49 43
+ENDTEXT
+
+TEXT "Lower:"
+TLOC 49 45
+ENDTEXT
+
+FIELD units
+FLOC 52 4
+ENUMSET 12
+POP "DT_UNITSPOP"
+ENDFIELD
+
+FIELD accuracy
+FLOC 59 6
+INTSLIDEBAR 1 1
+MIN 0
+MAX 4
+ENDFIELD
+
+GROUP "General parameters"
+GLOC 1 0
+GSIZE 38 33
+ENDGROUP
+
+TEXT "Text block:"
+TLOC 5 2
+ENDTEXT
+
+FIELD text_block
+FLOC 16 2
+INTSLIDEBAR 2 2
+MIN 1
+MAX 64
+ENDFIELD
+
+TEXT "Place holder:"
+TLOC 5 4
+ENDTEXT
+
+FIELD place_period
+FLOC 16 4
+CHECKLIST "Period" "DT_POINT_GROUP"
+ENDFIELD
+
+FIELD place_comma
+FLOC 24 4
+CHECKLIST "Comma" "DT_POINT_GROUP"
+ENDFIELD
+
+FIELD leading_zero
+FLOC 2 6
+CHECKLIST "Use leading zero before decimal point"
+ENDFIELD
+
+FIELD trailing_zeros
+FLOC 2 8
+CHECKLIST "Use trailing zeros after decimal point"
+ENDFIELD
+
+FIELD diameter_symbol
+FLOC 2 12
+CHECKLIST "Use diameter symbol for linear dimension"
+ENDFIELD
+
+FIELD align_text
+FLOC 2 10
+CHECKLIST "Align text with dimension line"
+ENDFIELD
+
+FIELD dual_dimensions
+FLOC 41 13
+CHECKLIST "Use Dual Dimensions"
+ENDFIELD
+
+FIELD diameter_leading
+FLOC 24 14
+CHECKLIST "Leading" "DIAMLOCGROUP"
+ENDFIELD
+
+FIELD diameter_trailing
+FLOC 24 16
+CHECKLIST "Trailing" "DIAMLOCGROUP"
+ENDFIELD
+
+FIELD second_units
+FLOC 52 16
+ENUMSET 12
+POP "DT_UNITSPOP"
+ENDFIELD
+
+FIELD radius_leading
+FLOC 24 18
+CHECKLIST "Leading" "RADLOCGRP"
+ENDFIELD
+
+FIELD second_accuracy
+FLOC 59 18
+INTSLIDEBAR 1 1
+MIN 0
+MAX 4
+ENDFIELD
+
+FIELD radius_trailing
+FLOC 24 20
+CHECKLIST "Trailing" "RADLOCGRP"
+ENDFIELD
+
+FIELD second_right
+FLOC 52 21
+CHECKLIST "Right of Primary" "DT_DDIMLOCGROUP"
+ENDFIELD
+
+FIELD special_none
+FLOC 24 22
+CHECKLIST "None" "DTSPECGROUP"
+ENDFIELD
+
+FIELD second_below
+FLOC 52 23
+CHECKLIST "Below Primary" "DT_DDIMLOCGROUP"
+ENDFIELD
+
+FIELD special_reference
+FLOC 24 24
+CHECKLIST "Reference" "DTSPECGROUP"
+ENDFIELD
+
+FIELD special_nts
+FLOC 24 26
+CHECKLIST "NTS" "DTSPECGROUP"
+ENDFIELD
+
+FIELD special_basic
+FLOC 24 28
+CHECKLIST "Basic" "DTSPECGROUP"
+ENDFIELD
+
+FIELD scale
+FLOC 25 30
+REALFILLIN 6 6
+DECIMAL 4
+ENDFIELD
+
+FIELD atol_accuracy
+FLOC 59 30
+INTSLIDEBAR 1 1
+MIN 0
+MAX 4
+ENDFIELD
+
+FIELD use_tolerancing
+FLOC 2 37
+CHECKLIST "Use tolerancing"
+ENDFIELD
+
+FIELD tolerance_plus_minus
+FLOC 12 39
+CHECKLIST "Plus or minus" "DT_CTOLTYPGROUP"
+ENDFIELD
+
+FIELD upper_ctolerance
+FLOC 55 39
+REALFILLIN 10 10
+DECIMAL 4
+ENDFIELD
+
+FIELD tolerance_limit
+FLOC 12 41
+CHECKLIST "Limit" "DT_CTOLTYPGROUP"
+ENDFIELD
+
+FIELD lower_ctolerance
+FLOC 55 41
+REALFILLIN 10 10
+DECIMAL 4
+ENDFIELD
+
+FIELD tolerance_right
+FLOC 12 43
+CHECKLIST "Right of dimension" "DT_CTOLLOCGROUP"
+ENDFIELD
+
+FIELD upper_atolerance
+FLOC 55 43
+REALFILLIN 10 10
+DECIMAL 4
+ENDFIELD
+
+FIELD tolerance_below
+FLOC 12 45
+CHECKLIST "Below dimension" "DT_CTOLLOCGROUP"
+ENDFIELD
+
+FIELD lower_atolerance
+FLOC 55 45
+REALFILLIN 10 10
+DECIMAL 4
+ENDFIELD
+
+FIELD done
+FLOC 2 49
+MENUBUTTON "OK" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 58 49
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+GROUP "Secondary dimensions"
+GLOC 40 10
+GSIZE 28 16
+ENDGROUP
+
+GROUP "Angular dimensions"
+GLOC 40 27
+GSIZE 28 6
+ENDGROUP
+
+GROUP "Dimensional tolerancing"
+GLOC 1 34
+GSIZE 67 14
+ENDGROUP
+
+ENDTILE
+
+ENDFORM

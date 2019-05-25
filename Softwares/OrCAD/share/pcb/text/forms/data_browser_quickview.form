@@ -1,0 +1,100 @@
+# $Header: /vobs/psd_backend_data/data/forms-core/data_browser_quickview.form /main/5 22-Jan-04.10:07:27 fxf $
+# Allegro data browser with quickview panel
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM 
+FIXED
+PORT 65 10
+HEADER "Physical Data Browser"
+
+POPUP <filter_pop>"*""*".
+
+MESSAGE INELIGIBLE_XPROBE 1 "Cross-probe selection not applicable."
+
+TILE
+TEXT "Total elements:"
+TLOC 1 24
+ENDTEXT
+
+TEXT
+TLOC 14 24
+INFO total 8
+ENDTEXT
+
+FIELD filter
+FLOC 1 1
+STRFILLIN 21 128
+POP "filter_pop"
+ENDFIELD
+
+FIELD qvprevwnd
+THUMBNAIL
+FLOC 42 5
+FSIZE 20 14
+ENDFIELD
+
+FIELD qvpropwnd
+FLOC 42 5
+STRFILLIN 8190 8190
+INFO_ONLY
+FSIZE 20 14
+ENDFIELD
+
+FIELD prevbtn
+FLOC 43 20
+CHECKLIST "Graphics" "quick"
+ENDFIELD
+
+FIELD propbtn
+FLOC 54 20
+CHECKLIST "Text" "quick"
+ENDFIELD
+
+GROUP "Quickview"
+FLOC 40 2
+FSIZE 24 21
+ENDGROUP
+
+FIELD done
+FLOC 28 4
+MENUBUTTON "OK" 10 3
+ENDFIELD
+
+FIELD cancel
+FLOC 28 7
+MENUBUTTON "Cancel" 10 3
+ENDFIELD
+
+FIELD help
+FLOC 28 12
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+FIELD database
+FLOC 28 18
+CHECKLIST "Database"
+ENDFIELD
+
+FIELD available
+FLOC 1 4
+LIST "" 26 10
+OPTIONS longstrings
+ENDFIELD
+
+FIELD library
+FLOC 28 20
+CHECKLIST "Library"
+ENDFIELD
+
+FLEXMODE edgegravityone
+FLEX available 0 0 1 1
+FLEX done 1 0 0 0
+FLEX cancel 1 0 0 0
+FLEX help 1 0 0 0
+FLEX database 1 0 0 0
+FLEX library 1 0 0 0
+FLEX qvprevwnd 1 0 0 0
+FLEX qvpropwnd 1 0 0 0
+
+ENDTILE
+
+ENDFORM

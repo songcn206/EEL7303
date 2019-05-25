@@ -1,0 +1,72 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 52 40
+HEADER "PNC Interface"
+
+
+TILE
+
+TEXT "Parasitic Parameter status: "
+TLOC 2 1
+ENDTEXT
+TEXT "NOT ACTIVE"
+FLOC 25 1
+INFO pp_status 30
+ENDTEXT
+
+TEXT "Select one of the following options:"
+TLOC 2 4
+ENDTEXT
+
+FIELD activate_pp_mode
+FLOC 5 6 
+CHECKLIST "Start Parasitic Parameters for Signal Integrity Analysis" "mode" 
+ENDFIELD 
+ 
+FIELD deactivate_pp_mode
+FLOC 5 8
+CHECKLIST "Stop Parasitic Parameters" "mode" 
+ENDFIELD 
+ 
+FIELD setup_param_mode
+FLOC 5 10 
+CHECKLIST "Set parameters for model creation" "mode" 
+ENDFIELD 
+ 
+FIELD extract_only_mode
+FLOC 5 12
+CHECKLIST "Extract design data only" "mode"
+ENDFIELD
+
+FIELD launch_tpa_mode
+FLOC 5  14
+CHECKLIST "Launch Turbo Package Analyzer" "mode" 
+ENDFIELD 
+ 
+{
+FIELD interactive_mode
+FLOC 5 16
+CHECKLIST "Create model interactively" "mode" 
+ENDFIELD 
+}
+ 
+FIELD apply
+FLOC 2 20
+MENUBUTTON "OK" 10 3
+ENDFIELD
+
+FIELD close
+FLOC 13 20
+MENUBUTTON "Close" 10 3
+ENDFIELD
+
+FIELD help  
+FLOC 38 20
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM
+

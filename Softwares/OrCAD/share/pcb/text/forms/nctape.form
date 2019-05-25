@@ -1,0 +1,47 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 26 5
+HEADER "NC TAPE"
+
+MESSAGE negscale 0 "Negative scale factors are not allowed."
+MESSAGE nerror 0 "A problem occurred - please check the logfile (using Viewlog)."
+MESSAGE ndone 0 "NCTape complete."
+MESSAGE ndemo 0 "Cannot Run in Demo Mode."
+
+ACTIVEFIELD "cancel"
+TILE
+
+TEXT "Scale Factor:"
+TLOC 1 2
+ENDTEXT
+
+FIELD scale
+FLOC 2 4
+REALFILLIN 8 8
+DECIMAL 4
+ENDFIELD
+
+FIELD execute
+FLOC 1 7
+MENUBUTTON "Generate" 9 3
+ENDFIELD
+
+
+FIELD cancel
+FLOC 16 1
+MENUBUTTON "Close" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 16 7
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+FIELD viewlog
+FLOC 16 4
+MENUBUTTON "View Log" 9 3
+ENDFIELD
+
+ENDTILE
+ENDFORM

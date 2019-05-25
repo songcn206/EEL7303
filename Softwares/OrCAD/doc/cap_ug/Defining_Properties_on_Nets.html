@@ -1,0 +1,1966 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>
+      Defining Properties on Nets
+    </title>
+    <meta name="Approver" content="Technical Publications" />
+    <meta name="Author" content="Technical Publications" />
+    <meta name="CreateDate" content="2012-10-10" />
+    <meta name="CreateTime" content="1349876209" />
+    <meta name="DataType" content="Manuals" />
+    <meta name="Description" content="UG" />
+    <meta name="DocTitle" content="OrCAD Capture User Guide" />
+    <meta name="DocType" content="User Guide" />
+    <meta name="FileTitle" content="Defining Properties on Nets" />
+    <meta name="Keywords" content="" />
+    <meta name="FileType" content="Chapter" />
+    <meta name="Keyword" content="cap_ug" />
+    <meta name="Language" content="English" />
+    <meta name="ModifiedDate" content="2012-10-10" />
+    <meta name="ModifiedTime" content="1349876209" />
+    <meta name="NextFile"
+    content="Properties%2Bon%2BPower%2BPins.html" />
+    <meta name="Group" content="" />
+    <meta name="Platform" content="All," />
+    <meta name="PrevFile"
+    content="Instance-Level%2BProperties%2Bfor%2BPhysical%2BDesign.html" />
+    <meta name="Product"
+    content="Allegro Design Entry CIS,OrCAD Capture," />
+    <meta name="ProductFamily"
+    content="Silicon-Package-Board Co-Design,Silicon-Package-Board Co-Design," />
+    <meta name="ProductVersion" content="16.6" />
+    <meta name="RightsManagement"
+    content="Copyright 2011-2012 Cadence Design Systems Inc." />
+    <meta name="Title"
+    content="OrCAD Capture User Guide -- Defining Properties on Nets" />
+    <meta name="Version" content="16.6" />
+    <meta name="Renderer" content="WIKI" />
+    <meta name="SpaceKey" content="capug166" />
+    <link href="styles/site.css" rel="stylesheet"
+    type="text/css" />
+    <meta content="text/html; charset=UTF-8"
+    http-equiv="Content-Type" />
+  </head>
+  <body style="margin-left: 5%;background-color: #FFFFFF;">
+    <a xmlns:html="http://www.w3.org/1999/xhtml" id="pagetop"
+    name="pagetop"></a> <a
+    xmlns:html="http://www.w3.org/1999/xhtml" id="firstpage"
+    name="firstpage"></a> <!-- Begin Buttons -->
+     
+    <table xmlns:html="http://www.w3.org/1999/xhtml" border="0"
+    cellpadding="0" cellspacing="0" width="650">
+      <tbody>
+        <tr>
+          <td colspan="10" height="36" width="650">
+            <img height="34" src="../support/header_doc.gif"
+            width="650" />
+          </td>
+        </tr>
+        <tr>
+          <td height="20" width="59">
+            <a href="javascript:openLibrary()"><img
+            alt="View Library" border="0" height="20"
+            src="../support/nav2_library.gif" width="59" /></a>
+          </td>
+          <td height="20" width="73">
+            <a href="cap_ugTOC.html"><img alt="Table of Contents"
+            border="0" src="../support/nav2_toc.gif" /></a>
+          </td>
+          <td height="20" width="46">
+            <img alt="Index" border="0"
+            src="../support/nav2_index_b.gif" />
+          </td>
+          <td>
+            <a
+            href="Instance-Level_Properties_for_Physical_Design.html"><img
+             alt="Previous" border="0"
+            src="../support/nav2_previous.gif" /></a>
+          </td>
+          <td>
+            <a href="Properties_on_Power_Pins.html"><img alt="Next"
+            border="0" src="../support/nav_next.gif" /></a>
+          </td>
+          <td height="20">
+            <a href="cap_ug.pdf"><img alt="Open PDF to print book"
+            border="0" height="20" src="../support/nav2_print.gif"
+            width="114" /></a>
+          </td>
+          <td height="20" width="61">
+            <img src="../support/nav2_black.gif" />
+          </td>
+          <td height="20" width="76">
+            <a href="/feedback.htm"><img alt="Email Comments"
+            border="0" height="20"
+            src="../support/nav2_feedback.gif" width="76" /></a>
+          </td>
+          <td height="20" width="43">
+            <a href="../cdsuser/help.html"><img
+            alt="Help Using Documentation" border="0" height="20"
+            src="../support/nav2_help.gif" width="43" /></a>
+          </td>
+          <td height="20" width="37">
+            <a href="/exitsearch.htm"><img
+            alt="Shut Down Cadence Documentation Server" border="0"
+            height="20" src="../support/nav2_exit.gif"
+            width="37" /></a>
+          </td>
+        </tr>
+      </tbody>
+    </table><!-- End Buttons -->
+    <hr xmlns:html="http://www.w3.org/1999/xhtml" />
+    <div id="main-header">
+      <a xmlns="" id="DefiningPropertiesonNets"
+      name="DefiningPropertiesonNets"></a> 
+      <h1 xmlns="" style=" margin: 4px 0 4px;">
+        <span>Defining Properties on Nets</span>
+      </h1>
+    </div>
+    <div class="wiki-content group" id="main-content">
+      <p>
+        <span class="confluence-anchor-link">&#160;</span>While
+        designing a schematic in Capture, you can specify
+        high-speed constraints as net properties and take them
+        through a complete front-to-back flow. As net properties
+        are passed to the physical netlist generated by Capture,
+        these constraints are also passed to the PCB Editor. In PCB
+        Editor, you can modify these constraints by launching
+        Constraint Manager. Following figure shows the flow of
+        signal properties.<br />
+         <span class="confluence-anchor-link">&#160;</span> <img
+        class="confluence-embedded-image confluence-external-resource"
+         data-image-src="http://sj-rdwiki:8081/download/attachments/29854892/ua3112.png?version=1&amp;modificationDate=1346335274000"
+         src="http://sj-rdwiki:8081/download/attachments/29854892/ua3112.png?version=1&amp;modificationDate=1346335274000" />
+      </p>
+      <div class="panelMacro">
+        <p>
+          &#160;
+        </p>
+        <div class="table-wrap">
+          <table class="confluenceTable">
+            <colgroup>
+              <col />
+              <col />
+            </colgroup>
+            <tbody>
+              <tr>
+                <td class="confluenceTd">
+                  <img
+                  class="confluence-embedded-image confluence-external-resource"
+                   data-image-src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                   height="16"
+                  src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                   width="16" />
+                </td>
+                <td class="confluenceTd">
+                  <p>
+                    To enable cross-probing between OrCAD Capture
+                    and Constraint Manager, enable highlighting in
+                    PCB Editor. When you highlight a component in
+                    PCB Editor, PCB Editor sends cross-probing
+                    messages to OrCAD Capture. You can disable
+                    cross-probing messages in Capture by
+                    deselecting Enable Intertool Communication
+                    under Intertool Communication in the
+                    Miscellaneous tab of the Preferences dialog b
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          &#160;
+        </p>
+      </div>
+      <p>
+        <br />
+         <span class="confluence-anchor-link">&#160;</span>To view
+        the list of high speed signal properties supported by
+        Capture:
+      </p>
+      <ul>
+        <li>
+          Launch Property Editor, and from the <em>Filter by:</em>
+          drop-down list, select
+          <em>Allegro_SignalFlow_Routing</em>.
+        </li>
+      </ul>
+      <p>
+        <span class="confluence-anchor-link">&#160;</span>The
+        properties are listed in the Flat Nets tab.<br />
+         <span class="confluence-anchor-link">&#160;</span> <img
+        class="confluence-embedded-image confluence-external-resource"
+         data-image-src="http://sj-rdwiki:8081/download/attachments/29854892/signal_flow.gif?version=1&amp;modificationDate=1346335358000"
+         src="http://sj-rdwiki:8081/download/attachments/29854892/signal_flow.gif?version=1&amp;modificationDate=1346335358000" /><br
+         class="atl-forced-newline" />
+         <span class="confluence-anchor-link">&#160;</span>For more
+        information about the function of signal properties, see
+        the Cadence <em>Allegro Platform Properties Reference</em>
+        documentation.
+      </p>
+      <div class="panelMacro">
+        <p>
+          &#160;
+        </p>
+        <div class="table-wrap">
+          <table class="confluenceTable">
+            <colgroup>
+              <col />
+              <col />
+            </colgroup>
+            <tbody>
+              <tr>
+                <td class="confluenceTd">
+                  <img
+                  class="confluence-embedded-image confluence-external-resource"
+                   data-image-src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                   height="16"
+                  src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                   width="16" />
+                </td>
+                <td class="confluenceTd">
+                  <p>
+                    Use the Schematic Nets tab to display the net
+                    properties on schematic. Adding or modifying
+                    high-speed signal properties is supported using
+                    the Flat nets tab of the Property Editor.
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          &#160;
+        </p>
+      </div>
+      <h3 id="DefiningPropertiesonNets-&#160;SignalPropertyFlow">
+        <span class="confluence-anchor-link">&#160;</span>Signal
+        Property Flow
+      </h3>
+      <p>
+        <span class="confluence-anchor-link">&#160;</span>This
+        section lists the top-level design tasks to be performed
+        for a design that has high-speed signal properties defined
+        as net properties.
+      </p>
+      <ol>
+        <li>
+          Make a schematic.
+        </li>
+        <li>
+          Select the net on which high-speed signal properties are
+          to be assigned.
+        </li>
+        <li>
+          Assign one or more of the following signal
+          properties.<br />
+          <br />
+           
+          <ul>
+            <li>
+              <a class="external-link"
+              href="http://sj-rdwiki:8081/display/capug166/Physical+Layout+in+PCB+Editor#PhysicalLayoutinPCBEditor-1350530"
+               rel="nofollow">PROPAGATION_DELAY</a>
+            </li>
+            <li class="confluence-link">
+              <a class="external-link"
+              href="http://sj-rdwiki:8081/display/capug166/Physical+Layout+in+PCB+Editor#PhysicalLayoutinPCBEditor-1350820"
+               rel="nofollow">RATSNEST_SCHEDULE</a>
+            </li>
+            <li>
+              <a class="external-link"
+              href="http://sj-rdwiki:8081/display/capug166/Physical+Layout+in+PCB+Editor#PhysicalLayoutinPCBEditor-1347681"
+               rel="nofollow">RELATIVE_PROPAGATION_DELAY</a>
+            </li>
+            <li>
+              <a class="external-link"
+              href="http://sj-rdwiki:8081/display/capug166/Physical+Layout+in+PCB+Editor#PhysicalLayoutinPCBEditor-1347683"
+               rel="nofollow">DIFFERENTIAL_PAIR</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          (Optional) Import properties.<br />
+           If you have properties recorded in a text file in a
+          previous session in the Property Editor, you can import
+          those properties.
+        </li>
+        <li>
+          (Optional) Update properties<br />
+           If you have a large design and want to avoid manual
+          property assignment, you can update properties using the
+          update property text file.
+        </li>
+        <li>
+          Export properties<br />
+           It is a good practice to export properties to a text
+          file. These files can be used for archival purpose and as
+          backup in the unlikely event of accidental data
+          corruption or deletion.
+        </li>
+        <li>
+          Perform a design rule check on the design.
+        </li>
+        <li>
+          Netlist the design.
+        </li>
+        <li>
+          Open PCB Design Editor and launch Constraint
+          Manager.<br />
+           
+          <ol>
+            <li>
+              Open the board file in the PCB Editor.
+            </li>
+            <li>
+              Click <em>Setup - Electrical Constraint
+              Spreadsheet</em> to open the Constraint Manager.
+            </li>
+            <li>
+              Expand the <em>Routing</em> spreadsheet.
+            </li>
+            <li>
+              Select the <em>Min/Max Propagation Delays</em> tab to
+              view the PROPAGATION_DELAY property or the Relative
+              Propagation delay tab to view the
+              RELATIVE_PROPAGATION_DELAY property.
+            </li>
+            <li>
+              Select the <em>Wiring</em> tab to view the
+              RATSNEST_SCHEDULE property. This property appears in
+              the <em>Schedule</em> column in the <em>Topology</em>
+              section.
+            </li>
+          </ol>
+        </li>
+        <li>
+          Backannotate property changes.<br />
+           If you make any signal property changes in Constraint
+          Manager, you need to backannotate those changes to
+          Capture.<br />
+           
+          <ol>
+            <li>
+              Open the board file in the PCB Editor and open the
+              Constraint Manager.
+            </li>
+            <li>
+              Make the desired property changes in Constraint
+              Manager.
+            </li>
+            <li>
+              In Capture, select <em>Tools - Back
+              Annotate.</em><br />
+               The Backannotate dialog box appears.
+            </li>
+            <li>
+              Select the Allegro tab, set different backannotation
+              options and click <em>OK</em>.<br />
+               The Progress window reports the details of
+              backannotation.
+            </li>
+            <li>
+              Open the Property Editor and verify any changes.
+            </li>
+          </ol>
+        </li>
+      </ol>
+      <h3
+      id="DefiningPropertiesonNets-&#160;Limitationsofthesignalpropertyflow">
+        <span
+        class="confluence-anchor-link">&#160;</span>Limitations of
+        the signal property flow
+      </h3>
+      <p>
+        <span class="confluence-anchor-link">&#160;</span>The
+        signal property flow has the following limitations:
+      </p>
+      <ul>
+        <li>
+          You cannot define extended nets.
+        </li>
+        <li>
+          You cannot use multi match group power.
+        </li>
+      </ul>
+      <h3 id="DefiningPropertiesonNets-&#160;PROPAGATION_DELAY">
+        <span
+        class="confluence-anchor-link">&#160;</span>PROPAGATION_DELAY
+      </h3>
+      <p>
+        <span class="confluence-anchor-link">&#160;</span>This
+        property defines the minimum and maximum propagation delay
+        constraint between any pair of pins in a net. By assigning
+        this property to nets, you can make the router restrict the
+        length of interconnect to meet timing margin. This property
+        often is best applied to a common clock sourced designed
+        bus.<br />
+         <span class="confluence-anchor-link">&#160;</span>To
+        specify the propagation delay on a net, launch Property
+        Editor and select the filter to display the signal flow
+        properties. To edit or specify the value for the
+        propagation delay, select the Flat Nets tab, and perform
+        the following steps.
+      </p>
+      <ol>
+        <li>
+          Select the grid corresponding to the PROPAGATION_DELAY
+          property.
+        </li>
+        <li>
+          <p>
+            Choose <em>Edit - Invoke UI</em> or press the CTRL+U
+            shortcut keys.<br />
+             The Propagation Delay dialog box appears.
+          </p>
+          <div class="panelMacro">
+            <p>
+              &#160;
+            </p>
+            <div class="table-wrap">
+              <table class="confluenceTable">
+                <colgroup>
+                  <col />
+                  <col />
+                </colgroup>
+                <tbody>
+                  <tr>
+                    <td class="confluenceTd">
+                      <img
+                      class="confluence-embedded-image confluence-external-resource"
+                       data-image-src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                       height="16"
+                      src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                       width="16" />
+                    </td>
+                    <td class="confluenceTd">
+                      <p>
+                        Alternatively, you can right-click on the
+                        grid corresponding to the PROPAGATION_DELAY
+                        property and from the pop-up menu, select
+                        the Invoke UI command.
+                      </p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </li>
+        <li>
+          To specify the pin-pair, select one of the following
+          options in the <em>Pin Pair</em> field.<br />
+           
+          <ul>
+            <li>
+              Longest/Shortest pin-pair(L:S)--To apply minimum
+              delay to the shortest pin-pair and maximum delay to
+              the longest pin-pair.
+            </li>
+            <li>
+              Longest/Shortest Driver/Receiver(D:R)--To apply
+              minimum delay to the shortest driver/receiver
+              pin-pair and maximum delay to the longest
+              driver/receiver pin-pair.
+            </li>
+            <li>
+              All Drivers/All Receivers(AD:AR)--To apply Min/Max
+              constraints to all driver/receiver pin-pairs.
+            </li>
+          </ul>
+        </li>
+        <li>
+          To create a new pin-pair, click the <em>Add Pin Pair</em>
+          () button or press the ALT+A shortcut keys.<br />
+           <span style="color: rgb(0,51,0);"><a
+          class="external-link"
+          href="http://sj-rdwiki:8081/display/capug166/Physical+Layout+in+PCB+Editor"
+           rel="nofollow"><span
+          style="color: rgb(0,51,0);">&#160;</span></a> <span
+          style="color: rgb(51,51,51);">The Create Pin Pairs dialog
+          box</span></span> appears. Select the first pin for the
+          pin-pair, then select the second pin, and click
+          <em>OK.</em><br />
+           A pin-pair is created. The new pin-pair appears as a row
+          in the Propagation Delay dialog box. You can define
+          constraints for it<br />
+           You can use the following methods to select multiple
+          consecutive pins in the Create Pin Pairs dialog
+          box:<br />
+           
+          <ul>
+            <li>
+              Using Shift+Down Arrow keys
+            </li>
+            <li>
+              Using Shift+Left mouse button click
+            </li>
+            <li>
+              Dragging the mouse pointer diagonally across the pins
+              appearing in the combo box to select them<br />
+               Similarly, you can use the CTRL+Left mouse button
+              click to select multiple nonconsecutive pins in the
+              Create Pin Pairs dialog box.
+            </li>
+          </ul>
+        </li>
+        <li>
+          Enter a value specifying the minimum allowable
+          propagation delay/length for the pin-pairs in the
+          <em>Min</em> field.
+        </li>
+        <li>
+          To specify the unit for minimum constraint, select one of
+          the following options in the <em>Min Rule</em>
+          field:<br />
+           
+          <ul>
+            <li>
+              DELAY in ns
+            </li>
+            <li>
+              %MANHATAN
+            </li>
+            <li>
+              LENGTH in mills (mils), micron (um), millimeter (mm),
+              centimeter (cm), and inches (in)
+            </li>
+          </ul>
+        </li>
+        <li>
+          Enter a value specifying the maximum allowable
+          propagation delay/length for the pin-pairs in the
+          <em>Max</em> field.
+        </li>
+        <li>
+          Specify the unit for the maximum constraint by selecting
+          unit value in the <em>Max Rule</em> field.
+        </li>
+        <li>
+          Click OK <em>in the Propagation Delay dialog box.</em>
+          The PROPAGATION_DELAY property is seeded in the
+          PROPAGATION_DELAY grid for the corresponding column.
+        </li>
+        <li>
+          Click the Apply button in the Property Editor to apply
+          the PROPAGATION_DELAY property on the nets. Moreover, if
+          you have manually entered the PROPAGATION_DELAY syntax,
+          then Capture performs syntax validation and appends any
+          syntax violations to the Session Log.&#160;
+        </li>
+      </ol>
+      <div class="panelMacro">
+        <p>
+          &#160;
+        </p>
+        <div class="table-wrap">
+          <table class="confluenceTable">
+            <colgroup>
+              <col />
+              <col />
+            </colgroup>
+            <tbody>
+              <tr>
+                <td class="confluenceTd">
+                  <img
+                  class="confluence-embedded-image confluence-external-resource"
+                   data-image-src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                   height="16"
+                  src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                   width="16" />
+                </td>
+                <td class="confluenceTd">
+                  <p>
+                    To delete an existing pin-pair, select the
+                    left-most cell of the pin-pair row and click
+                    the <em>Delete Pin Pair</em> () button or press
+                    the ALT+D shortcut keys.
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          &#160;
+        </p>
+      </div>
+      <p>
+        <span style="color: rgb(0,0,0);"><span
+        class="confluence-link unresolved"><span
+        style="color: rgb(0,0,0);"><span
+        class="confluence-link"><span
+        style="color: rgb(0,0,0);">You can use
+        the</span></span></span></span> <a class="external-link"
+        href="http://sj-rdwiki:8081/display/capug166/Physical+Layout+in+PCB+Editor"
+         rel="nofollow"><span
+        style="color: rgb(0,0,0);">&#160;</span></a></span> User
+        Properties dialog box to assign the PROPAGATION_DELAY
+        property to all the bits of a bus at the same time. Make
+        sure that you use the correct syntax for specifying a value
+        for the PROPAGATION_DELAY property. The syntax is:
+      </p>
+<pre>
+&lt;Pin_pair&gt;:&lt;min_value&gt;:&lt;max_value&gt;
+</pre>
+      <p>
+        The pin-pairs can only be:
+      </p>
+      <ul>
+        <li>
+          L:S
+        </li>
+        <li>
+          D:R
+        </li>
+        <li>
+          AD:AR
+        </li>
+      </ul>
+      <p>
+        You can also manually enter values in the grids
+        corresponding to the PROPAGATION_DELAY property. After you
+        enter a value in the PROPAGATION_DELAY property grid and
+        click the Apply button, Capture performs syntax validation
+        and if there is a syntax violation, the property is not
+        applied and the details of the violation are appended to
+        the Session Log.
+      </p>
+      <p>
+        You can populate multiple consecutive or nonconsecutive
+        grids of the PROPAGATION_DELAY property at the same time.
+        To do this, select the grids you want to populate and press
+        the CTRL+E shortcut keys. The Edit Property Values dialog
+        box appears. Specify the value that you want to be
+        populated across all the selected grids in the dialog box.
+        You can also use the shortcut keys CTRL+C and CTRL+V to
+        perform standard copy/paste operations in the
+        PROPAGATION_DELAY property grids.
+      </p>
+      <h3 id="DefiningPropertiesonNets-RATSNEST_SCHEDULE">
+        RATSNEST_SCHEDULE
+      </h3>
+      <p>
+        <span class="confluence-anchor-link">&#160;</span>This
+        property specifies the type of ratsnest calculation that
+        Constraint Manager performs on the net.<br />
+         <span class="confluence-anchor-link">&#160;</span>By using
+        the RATSNEST_SCHEDULE property, you can meet a balance
+        between time margin and noise margin. Based on your design
+        need, you can define the configuration as MIN_TREE,
+        MIN_DAISY_CHAIN, SOURCE_LOAD_DAISY_CHAIN, FAR_END_CLUSTER
+        or STAR. This property useful in defining the placement of
+        receiver or driver in multi-drop buses and asynchronous
+        signals.<br />
+         <span class="confluence-anchor-link">&#160;</span>To
+        specify the RATSNEST_SCHEDULE property:
+      </p>
+      <ol>
+        <li>
+          Select the grid corresponding to the RATSNEST_SCHEDULE
+          property.
+        </li>
+        <li>
+          From the drop-down list, select any of the following
+          values:<br />
+           
+          <ul>
+            <li>
+              MIN_TREE--Indicates that the net rat should be
+              displayed with the minimum spanning tree algorithm.
+              Selecting this option can lead to formation of Ts at
+              pins.
+            </li>
+            <li>
+              MIN_DAISY_CHAIN--Indicates that a minimum length
+              daisy-chain schedule is formed.
+            </li>
+            <li>
+              SOURCE_LOAD_DAISY_CHAIN--Indicates that a
+              source-to-load ECL daisy-chain schedule is used.
+            </li>
+            <li>
+              FAR_END_CLUSTER--Automatically places a single Tpoint
+              in a schedule at a calculated location.
+            </li>
+            <li>
+              STAR--Specifies a ratsnest similar to FAR_END_CLUSTER
+              without the Tpoint added.
+            </li>
+          </ul>
+        </li>
+      </ol>
+      <h3
+      id="DefiningPropertiesonNets-&#160;RELATIVE_PROPAGATION_DELAY">
+        <span
+        class="confluence-anchor-link">&#160;</span>RELATIVE_PROPAGATION_DELAY
+      </h3>
+      <p>
+        <span class="confluence-anchor-link">&#160;</span>This
+        property is an electrical constraint attached to pin-pairs
+        on a net. It specifies a group of pin-pairs that are
+        required to have interconnect propagation delays matching a
+        specified delta (offset) and tolerance with respect to the
+        target pin pair. A RELATIVE_PROPAGATION_DELAY group has a
+        pin-pair against which all other pin-pairs in the group are
+        compared. You can apply the RELATIVE_PROPAGATION_DELAY
+        property to a source synchronous bus design, such as DDR
+        interfaces.<br />
+         <span class="confluence-anchor-link">&#160;</span>To
+        specify RELATIVE_PROPAGATION_DELAY property on a net,
+        perform the following steps.
+      </p>
+      <ol>
+        <li>
+          In the <em>Flat Nets</em> tab of the Property Editor,
+          select the grid corresponding to the
+          RELATIVE_PROPAGATION_DELAY property.
+        </li>
+        <li>
+          <p>
+            Select the Edit menu and choose the Invoke UI
+            command.<br />
+             The Relative Propagation Delay dialog box appears.
+          </p>
+          <div class="panelMacro">
+            <p>
+              &#160;
+            </p>
+            <div class="table-wrap">
+              <table class="confluenceTable">
+                <colgroup>
+                  <col />
+                  <col />
+                </colgroup>
+                <tbody>
+                  <tr>
+                    <td class="confluenceTd">
+                      <img
+                      class="confluence-embedded-image confluence-external-resource"
+                       data-image-src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                       height="16"
+                      src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                       width="16" />
+                    </td>
+                    <td class="confluenceTd">
+                      <p>
+                        Alternatively, you can right-click on the
+                        grid corresponding to the
+                        RELATIVE_PROPAGATION_DELAY property and
+                        select the Invoke UI command from the
+                        pop-up menu or press the CTRL+U shortcut
+                        keys.
+                      </p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </li>
+        <li>
+          To specify the pin-pair, select one of the following
+          options in the <em>Pin Pair</em> field.<br />
+           
+          <ul>
+            <li>
+              Longest/Shortest pin-pair--To apply minimum delay to
+              the shortest pin-pair and maximum delay to the
+              longest pin-pair.
+            </li>
+            <li>
+              Longest/Shortest Driver/Receiver--To apply minimum
+              delay to the shortest driver/receiver pin-pair and
+              maximum delay to the longest driver/receiver
+              pin-pair.
+            </li>
+            <li>
+              All Drivers/All Receivers--To apply Min/Max
+              constraints to all driver/receiver pin-pairs.
+            </li>
+          </ul>
+        </li>
+        <li>
+          Select the scope as global or local. Select the scope as
+          global to define the RELATIVE_PROPAGATION_DELAY property
+          between different nets of same match group. Select the
+          scope as local to define the RELATIVE_PROPAGATION_DELAY
+          property between different pin-pairs of same net.
+        </li>
+        <li>
+          Enter the relative value from the target net that all
+          nets in the group should match in the <em>Delta</em>
+          field.
+        </li>
+        <li>
+          To specify the unit for delta, select <em>Delay</em> in
+          ns or <em>Length</em> in mills (mils), micron (um),
+          millimeter (mm), centimeter (cm), and inches (in) in the
+          <em>Delta Units</em> field.
+        </li>
+        <li>
+          Enter a value that specifies the maximum allowable
+          propagation delay/length for the pin-pairs in the
+          <em>Tolerance</em> field.
+        </li>
+        <li>
+          To specify the unit for Tolerance, select one of the
+          following options in the <em>Tol. Units</em> field:<br />
+           
+          <ul>
+            <li>
+              %
+            </li>
+            <li>
+              DELAY (ns)
+            </li>
+            <li>
+              LENGTH (mils, mm, cm, in)
+            </li>
+          </ul>
+        </li>
+        <li>
+          To create a new pin-pair, click the <em>Add Pin Pair</em>
+          () button or press the ALT+A shortcut keys.<br />
+           The Create Pin Pairs dialog box appears.
+        </li>
+        <li>
+          Select the first pin for the pin-pair, then select the
+          second pin, and click <em>OK.</em><br />
+           A pin-pair is created. The new pin-pair appears as a row
+          in the Propagation Delay dialog box. You can define
+          constraints for it.<br />
+           You can use the following methods to select multiple
+          consecutive pins in the Create Pin Pairs dialog
+          box:<br />
+           
+          <ul>
+            <li>
+              Using Shift+Down Arrow keys
+            </li>
+            <li>
+              Using Shift+click
+            </li>
+            <li>
+              Dragging the mouse pointer diagonally across the pins
+              appearing in the combo box to select them
+            </li>
+          </ul>Similarly, you can use the Ctrl+click to select
+          multiple nonconsecutive pins in the Create Pin Pairs
+          dialog box.
+        </li>
+        <li>
+          To delete an existing pin-pair, select the pin-pair row
+          by clicking its left-most cell, and click the <em>Delete
+          Pin Pair</em> () button or press the ALT+D shortcut keys.
+        </li>
+        <li>
+          To set a pin-pair as the target net, select the pin-pair
+          row and click the <em>Set Target</em> () button or press
+          the ALT+S shortcut keys.<br />
+           Target Pin Pair name is displayed and the Delta and
+          Tolerance fields for the target pin-pair is set
+          to&#39;0&#39;.
+        </li>
+        <li>
+          To delete the target status from a pin-pair, select the
+          pin-pair row and click the <em>Delete Target</em> ()
+          button or press the ALT+T shortcut keys.
+        </li>
+        <li>
+          To change the match group:<br />
+           
+          <ul>
+            <li>
+              Select a group from the list box.
+            </li>
+            <li>
+              Type a new match group name.
+            </li>
+          </ul>
+          <div class="panelMacro">
+            <p>
+              &#160;
+            </p>
+            <div class="table-wrap">
+              <table class="confluenceTable">
+                <colgroup>
+                  <col />
+                  <col />
+                </colgroup>
+                <tbody>
+                  <tr>
+                    <td class="confluenceTd">
+                      <img
+                      class="confluence-embedded-image confluence-external-resource"
+                       data-image-src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                       height="16"
+                      src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                       width="16" />
+                    </td>
+                    <td class="confluenceTd">
+                      <p>
+                        Based on the match group selected, all nets
+                        contained in it will display in the
+                        <em>Nets Attached</em> box.
+                      </p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </li>
+        <li>
+          Click OK <em>in the Relative Propagation Delay dialog
+          box.</em> The RELATIVE_PROPAGATION_DELAY property is
+          seeded in the RELATIVE_PROPAGATION_DELAY grid for the
+          corresponding column.
+        </li>
+        <li>
+          Click the Apply button in the Property Editor to apply
+          the RELATIVE_PROPAGATION_DELAY property on the nets.
+          Moreover, if you have manually entered the
+          RELATIVE_PROPAGATION_DELAY syntax, then Capture performs
+          syntax validation and appends any syntax violations to
+          the Session Log.
+        </li>
+      </ol>
+      <p>
+        You can use the User Properties dialog box to assign the
+        RELATIVE_PROPAGATION_DELAY property to all the bits of a
+        bus at the same time. Make sure that you use the correct
+        syntax for specifying a value for the
+        RELATIVE_PROPAGATION_DELAY property. The syntax is:<br />
+         For the target pin-pair:
+      </p>
+<pre>
+&lt;match_group&gt;:&lt;scope&gt;:&lt;pin-pair&gt;::
+</pre>
+      <p>
+        where &lt;pin-pair&gt; has the following syntax:<br />
+         &lt;pin1&gt;:&lt;pin2&gt;<br />
+         valid values of &lt;scope&gt; are L for local and G for
+        global.<br />
+         &#160;<br />
+         For non-target pin-pairs:
+      </p>
+<pre>
+&lt;match_group&gt;:&lt;scope&gt;:&lt;pin-pair&gt;:&lt;delta&gt;:&lt;tolerance&gt;
+</pre>
+      <p>
+        The pin-pairs can only be:
+      </p>
+      <ul>
+        <li>
+          AD:AR
+        </li>
+        <li>
+          L:S
+        </li>
+        <li>
+          D:R
+        </li>
+      </ul>
+      <p>
+        <span class="confluence-anchor-link">&#160;</span>You can
+        also manually enter values in the grids corresponding to
+        the RELATIVE_PROPAGATION_DELAY property, and click
+        <em>Apply</em>. When you select the Apply button, Capture
+        performs syntax validation and if there is a syntax
+        violation, the property is not applied and the details of
+        the violation are appended to the Session Log.<br />
+         <span class="confluence-anchor-link">&#160;</span>You can
+        use the shortcut keys CTRL+C and CTRL+V to perform standard
+        copy/paste operations in the RELATIVE_PROPAGATION_DELAY
+        property grids.
+      </p>
+      <div class="panelMacro">
+        <p>
+          &#160;
+        </p>
+        <div class="table-wrap">
+          <table class="confluenceTable">
+            <colgroup>
+              <col />
+              <col />
+            </colgroup>
+            <tbody>
+              <tr>
+                <td class="confluenceTd">
+                  <img
+                  class="confluence-embedded-image confluence-external-resource"
+                   data-image-src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                   height="16"
+                  src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                   width="16" />
+                </td>
+                <td class="confluenceTd">
+                  <p>
+                    You can populate multiple consecutive or
+                    nonconsecutive grids of the
+                    RELATIVE_PROPAGATION_DELAY property at the same
+                    time. To do this, select the grids you want to
+                    populate and press the CTRL+E shortcut keys.
+                    The Edit Property Values dialog box appears.
+                    Specify the value that you want to be populated
+                    across all the selected grids in the dialog
+                    box.
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          &#160;
+        </p>
+      </div>
+      <h3 id="DefiningPropertiesonNets-&#160;DIFFERENTIAL_PAIR">
+        <span
+        class="confluence-anchor-link">&#160;</span>DIFFERENTIAL_PAIR
+      </h3>
+      <p>
+        <span class="confluence-anchor-link">&#160;</span>This
+        property represents a pair of flat nets that will be routed
+        in a way that the signals passing through them are opposite
+        in sign with respect to the same reference. This ensures
+        that any electromagnetic noise in the circuit is cancelled
+        out.
+      </p>
+      <h4
+      id="DefiningPropertiesonNets-&#160;CreatingDifferentialPairsusingPropertyEditor">
+        <span class="confluence-anchor-link">&#160;</span>Creating
+        Differential Pairs using Property Editor
+      </h4>
+      <p>
+        <span class="confluence-anchor-link">&#160;</span>To
+        specify the DIFFERENTIAL_PAIR property for flat nets:
+      </p>
+      <ol>
+        <li>
+          Right-click the design in the project manager and select
+          Edit Object Properties. The Property Editor window
+          appears.
+        </li>
+        <li>
+          Click the Flat Nets tab at the bottom in the Property
+          Editor window.
+        </li>
+        <li>
+          Select the first flat net for which you want to create a
+          differential pair.
+        </li>
+        <li>
+          Select the grid corresponding to the DIFFERENTIAL_PAIR
+          property and specify a name for the differential pair.
+        </li>
+        <li>
+          Select the second flat net for which you want to create a
+          differential pair.
+        </li>
+        <li>
+          Specify the same differential pair name you specified for
+          the first net.
+        </li>
+        <li>
+          Click the Apply button. A differential pair between both
+          the nets is created.
+        </li>
+      </ol>
+      <div class="panelMacro">
+        <p>
+          &#160;
+        </p>
+        <div class="table-wrap">
+          <table class="confluenceTable">
+            <colgroup>
+              <col />
+              <col />
+            </colgroup>
+            <tbody>
+              <tr>
+                <td class="confluenceTd">
+                  <img
+                  class="confluence-embedded-image confluence-external-resource"
+                   data-image-src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                   height="16"
+                  src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                   width="16" />
+                </td>
+                <td class="confluenceTd">
+                  <p>
+                    For more information about the
+                    DIFFERENTIAL_PAIR property, see Cadence
+                    document <em>Allegro Platform Properties
+                    Reference</em>
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          &#160;
+        </p>
+      </div>
+      <h4
+      id="DefiningPropertiesonNets-&#160;CreateDifferentialPairCommand">
+        &#160;Create Differential Pair Command
+      </h4>
+      <p>
+        <span class="confluence-anchor-link">&#160;</span>In
+        addition to creating a differential pair using the
+        DIFFERENTIAL_PAIR property in the property editor, you can
+        use the&#160;<u><span class="confluence-link unresolved"
+        style="color: rgb(51,51,51);">&#160;</span></u> Create
+        Differential Pair command to create a differential pair
+        between two flat nets in your design. You can also modify
+        or delete a differential pair from your design.
+      </p>
+      <ol>
+        <li>
+          In the project manager, click the design file (.dsn) or a
+          schematic page file.
+        </li>
+        <li>
+          <span style="color: rgb(51,51,51);"><a
+          class="external-link"
+          href="http://sj-rdwiki:8081/display/capug166/Physical+Layout+in+PCB+Editor"
+           rel="nofollow"><span
+          style="color: rgb(51,51,51);">Select the Tools menu and
+          choose the Create Differential Pair command. The Create
+          Differential Pair dialog box appears.</span></a></span>
+        </li>
+        <li>
+          <p>
+            Ensure that the Net option is selected from the
+            drop-down list. All the flat nets in the design are
+            listed in All Nets column in a sorted order (all net
+            names starting with a numeric character will be
+            displayed first and then all net names starting with an
+            alphabet).
+          </p>
+          <div class="panelMacro">
+            <p>
+              &#160;
+            </p>
+            <div class="table-wrap">
+              <table class="confluenceTable">
+                <colgroup>
+                  <col />
+                  <col />
+                </colgroup>
+                <tbody>
+                  <tr>
+                    <td class="confluenceTd">
+                      <img
+                      class="confluence-embedded-image confluence-external-resource"
+                       data-image-src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                       height="16"
+                      src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                       width="16" />
+                    </td>
+                    <td class="confluenceTd">
+                      <p>
+                        To view nets of a particular type, specify
+                        the initial letters of the net in the
+                        Filter text box. All the nets of that
+                        particular type will appear in the All Nets
+                        column. For example, if you want to view
+                        all nets starting with the letter
+                        &quot;A&quot;, then enter &quot;A&quot; in
+                        the Filter text box. All the nets starting
+                        with letter &quot;A&quot; will appear in
+                        the All Nets column.
+                      </p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </li>
+        <li>
+          Select a net from the All Nets column and click the
+          button or double-click the net. The selected net appears
+          in the Selections column.
+        </li>
+        <li>
+          Repeat step 4 for the second net to be included in the
+          differential pair.<br />
+           To remove a net from the Selections column, double-click
+          on the net name or select a net and click the
+          button.<br />
+           Once two nets are available in the Selections list-box,
+          the Create button is enabled.
+        </li>
+        <li>
+          Specify a name for the differential pair in the Diff Pair
+          Name text box.
+        </li>
+        <li>
+          <p>
+            Click the Create button. The differential pair is
+            created between the selected nets. The differential
+            pair name appears in the Selections column adjacent to
+            the net name.
+          </p>
+          <div class="panelMacro">
+            <p>
+              &#160;
+            </p>
+            <div class="table-wrap">
+              <table class="confluenceTable">
+                <colgroup>
+                  <col />
+                  <col />
+                </colgroup>
+                <tbody>
+                  <tr>
+                    <td class="confluenceTd">
+                      <img
+                      class="confluence-embedded-image confluence-external-resource"
+                       data-image-src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                       height="16"
+                      src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                       width="16" />
+                    </td>
+                    <td class="confluenceTd">
+                      <p>
+                        If the selected nets are not of the same
+                        type (for example, a power net and a
+                        non-power net) or they differ in the total
+                        number of pins in each selected net, then a
+                        message appears asking you to confirm the
+                        creation of a differential pair between the
+                        selected nets.
+                      </p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </li>
+        <li>
+          Click the Close button to close the Create Differential
+          Pair dialog box.
+        </li>
+      </ol>
+      <p>
+        For steps on how to create a differential pair using the
+        property editor, see <a class="external-link"
+        href="http://sj-rdwiki:8081/display/capug166/Physical+Layout+in+PCB+Editor#PhysicalLayoutinPCBEditor-1352411"
+         rel="nofollow">Creating Differential Pairs using Property
+        Editor</a>.
+      </p>
+      <div class="panelMacro">
+        <p>
+          &#160;
+        </p>
+        <div class="table-wrap">
+          <table class="confluenceTable">
+            <colgroup>
+              <col />
+              <col />
+            </colgroup>
+            <tbody>
+              <tr>
+                <td class="confluenceTd">
+                  <img
+                  class="confluence-embedded-image confluence-external-resource"
+                   data-image-src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                   height="16"
+                  src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                   width="16" />
+                </td>
+                <td class="confluenceTd">
+                  <ul>
+                    <li>
+                      The DIFFERENTIAL_PAIR property column is
+                      automatically updated with the differential
+                      pairs you create using the Create
+                      Differential Pair dialog box.
+                    </li>
+                    <li>
+                      An Auto Differential pair can also be created
+                      for a bus. To do so, you need to put
+                      <em>n</em> &amp; <em>p</em> as prefix and the
+                      Auto command creates differential pairs for
+                      all bits in the bus.
+                    </li>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          &#160;
+        </p>
+      </div>
+      <h5
+      id="DefiningPropertiesonNets-&#160;Toviewadifferentialpair">
+        <span class="confluence-anchor-link">&#160;</span> <em>To
+        view a differential pair</em>
+      </h5>
+      <ol>
+        <li>
+          <p>
+            <span class="confluence-link unresolved"><span
+            style="text-decoration: underline;">&#160;</span></span>
+            In the Create Differential Pair dialog box, select the
+            Differential Pair option from the drop-down list. All
+            the differential pairs you created in your design
+            appear in Diff Pairs column.
+          </p>
+          <div class="panelMacro">
+            <p>
+              &#160;
+            </p>
+            <div class="table-wrap">
+              <table class="confluenceTable">
+                <colgroup>
+                  <col />
+                  <col />
+                </colgroup>
+                <tbody>
+                  <tr>
+                    <td class="confluenceTd">
+                      <img
+                      class="confluence-embedded-image confluence-external-resource"
+                       data-image-src="http://sj-rdwiki:8081/images/icons/emoticons/information.png"
+                       height="16"
+                      src="http://sj-rdwiki:8081/images/icons/emoticons/information.png"
+                       width="16" />
+                    </td>
+                    <td class="confluenceTd">
+                      <p>
+                        To view differential pairs of a particular
+                        type, specify the initial letters of the
+                        differential pairs in the Filter text box.
+                        All the differential pairs of that
+                        particular type will appear in the Diff
+                        Pairs column. For example, if you want to
+                        view all differential pairs starting with
+                        the letter &quot;DP&quot;, then enter
+                        &quot;DP&quot; in the Filter text box. All
+                        the differential pairs starting with letter
+                        &quot;DP&quot; will appear in the Diff
+                        Pairs column.
+                      </p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </li>
+        <li>
+          <p>
+            Select a differential pair from the Diff Pairs column
+            and click the (&gt;) button or double-click the
+            differential pair. The Selections column will display
+            the name of the two nets associated with the selected
+            differential pair.
+          </p>
+          <div class="panelMacro">
+            <p>
+              &#160;
+            </p>
+            <div class="table-wrap">
+              <table class="confluenceTable">
+                <colgroup>
+                  <col />
+                  <col />
+                </colgroup>
+                <tbody>
+                  <tr>
+                    <td class="confluenceTd">
+                      <img
+                      class="confluence-embedded-image confluence-external-resource"
+                       data-image-src="http://sj-rdwiki:8081/images/icons/emoticons/information.png"
+                       height="16"
+                      src="http://sj-rdwiki:8081/images/icons/emoticons/information.png"
+                       width="16" />
+                    </td>
+                    <td class="confluenceTd">
+                      <p>
+                        You can use the CTRL or SHIFT keys to move
+                        multiple differential pairs to the
+                        Selections column and view the nets
+                        associated with the selected differential
+                        pairs.
+                      </p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </li>
+        <li>
+          <span style="color: rgb(51,51,51);"><a
+          class="external-link"
+          href="http://sj-rdwiki:8081/display/capug166/Physical+Layout+in+PCB+Editor"
+           rel="nofollow"><span style="color: rgb(51,51,51);">Click
+          the Close button to close the Create Differential
+          Pair</span></a></span> <span
+          style="color: rgb(51,51,51);"><a class="external-link"
+          href="http://sj-rdwiki:8081/display/capug166/Physical+Layout+in+PCB+Editor"
+           rel="nofollow"><span
+          style="color: rgb(51,51,51);">dial</span></a></span>
+          <span style="color: rgb(51,51,51);"><a
+          class="external-link"
+          href="http://sj-rdwiki:8081/display/capug166/Physical+Layout+in+PCB+Editor"
+           rel="nofollow"><span
+          style="color: rgb(51,51,51);">og</span></a></span> <span
+          style="color: rgb(51,51,51);"><a class="external-link"
+          href="http://sj-rdwiki:8081/display/capug166/Physical+Layout+in+PCB+Editor"
+           rel="nofollow"><span
+          style="color: rgb(51,51,51);">box.</span></a></span>
+        </li>
+      </ol>
+      <p>
+        &#160;
+      </p>
+      <h5 id="DefiningPropertiesonNets-Tomodifyadifferentialpair">
+        <em>To modify a differential pair</em>
+      </h5>
+      <ol>
+        <li>
+          <span class="confluence-link unresolved"><span
+          style="text-decoration: underline;">&#160;</span></span>
+          In the Create Differential Pair dialog box, select the
+          Differential Pair option from the drop-down list. All the
+          differential pairs you created in your design appear in
+          Diff Pairs column.
+        </li>
+        <li>
+          <p>
+            Select the differential pair you want to modify from
+            the Diff Pairs column and click the ( &gt; ) button or
+            double-click the differential pair. The selected
+            differential pair along with the associated nets
+            appears in the Selections column.
+          </p>
+          <div class="panelMacro">
+            <p>
+              &#160;
+            </p>
+            <div class="table-wrap">
+              <table class="confluenceTable">
+                <colgroup>
+                  <col />
+                  <col />
+                </colgroup>
+                <tbody>
+                  <tr>
+                    <td class="confluenceTd">
+                      <img
+                      class="confluence-embedded-image confluence-external-resource"
+                       data-image-src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                       height="16"
+                      src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                       width="16" />
+                    </td>
+                    <td class="confluenceTd">
+                      <p>
+                        In case, you select a wrong differential
+                        pair for modification and want to revert
+                        back, double-click the differential pair in
+                        the Selections column. The differential
+                        pair is removed from the Selections column,
+                        but is available in your design.
+                      </p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </li>
+        <li>
+          Specify a new name for the differential pair in the Diff
+          Pair Name text box.
+        </li>
+        <li>
+          Click the Modify button. The new differential pair name
+          is assigned to the selected nets.
+        </li>
+        <li>
+          Click the Close button to close the Create Differential
+          Pair dialog box.
+        </li>
+      </ol>
+      <h5 id="DefiningPropertiesonNets-Todeleteadifferentialpair">
+        <em>To delete a differential pair</em>
+      </h5>
+      <ol>
+        <li>
+          In the Create Differential Pair dialog box<span
+          class="confluence-link unresolved"><span
+          style="text-decoration: underline;">&#160;</span></span>
+          , select the Differential Pair option from the drop-down
+          list. All the differential pairs you created in your
+          design appear in Diff Pairs column.
+        </li>
+        <li>
+          <p>
+            Select the differential pair you want to delete from
+            the Diff Pairs grid and click the ( &gt; ) button. The
+            selected differential pair along with the associated
+            nets appear in the Selections column.
+          </p>
+          <div class="panelMacro">
+            <p>
+              &#160;
+            </p>
+            <div class="table-wrap">
+              <table class="confluenceTable">
+                <colgroup>
+                  <col />
+                  <col />
+                </colgroup>
+                <tbody>
+                  <tr>
+                    <td class="confluenceTd">
+                      <img
+                      class="confluence-embedded-image confluence-external-resource"
+                       data-image-src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                       height="16"
+                      src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                       width="16" />
+                    </td>
+                    <td class="confluenceTd">
+                      <p>
+                        If you accidentally selected the wrong
+                        differential pair for deletion and want to
+                        revert back, double-click the nets in the
+                        Selections column. The differential pair is
+                        removed from the Selections column, but is
+                        available in your design.
+                      </p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </li>
+        <li>
+          <p>
+            Click the Delete button. The differential pair set on
+            the selected nets is deleted.
+          </p>
+          <div class="panelMacro">
+            <p>
+              &#160;
+            </p>
+            <div class="table-wrap">
+              <table class="confluenceTable">
+                <colgroup>
+                  <col />
+                  <col />
+                </colgroup>
+                <tbody>
+                  <tr>
+                    <td class="confluenceTd">
+                      <img
+                      class="confluence-embedded-image confluence-external-resource"
+                       data-image-src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                       height="16"
+                      src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                       width="16" />
+                    </td>
+                    <td class="confluenceTd">
+                      <p>
+                        When you click the Delete button, the
+                        differential pair is deleted from the
+                        Selections column and the Diff Pairs
+                        column.
+                      </p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </li>
+        <li>
+          Click the Close button to close the Create Differential
+          Pair dialog box.
+        </li>
+      </ol>
+      <p>
+        &#160;
+      </p>
+      <h4
+      id="DefiningPropertiesonNets-&#160;Creatingdifferentialpairsbetweenmultiplepairsofflatnetssimultaneously">
+        <span class="confluence-anchor-link">&#160;</span>Creating
+        differential pairs between multiple pairs of flat nets
+        simultaneously
+      </h4>
+      <p>
+        Instead of creating differential pairs between two nets
+        individually, you can quickly create differential pair
+        between multiple pairs of flat nets simultaneously.
+      </p>
+      <h4
+      id="DefiningPropertiesonNets-&#160;Tocreatemultipledifferentialpairssimultaneously">
+        <span class="confluence-anchor-link">&#160;</span> <em>To
+        create multiple differential pairs simultaneously</em>
+      </h4>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>1.</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <span
+                  class="confluence-anchor-link">&#160;</span>In
+                  the Create Differential Pair dialog box, click
+                  the Auto Setup button. The Differential Pair
+                  Automatic Setup dialog box appears displaying all
+                  the flats nets and the corresponding differential
+                  pairs in the All Nets column.
+                </p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="panelMacro">
+        <div class="table-wrap">
+          <table class="confluenceTable">
+            <colgroup>
+              <col />
+              <col />
+            </colgroup>
+            <tbody>
+              <tr>
+                <td class="confluenceTd">
+                  <img
+                  class="confluence-embedded-image confluence-external-resource"
+                   data-image-src="http://sj-rdwiki:8081/images/icons/emoticons/check.png"
+                   height="16"
+                  src="http://sj-rdwiki:8081/images/icons/emoticons/check.png"
+                   width="16" />
+                </td>
+                <td class="confluenceTd">
+                  <p>
+                    To view nets of a particular type, specify the
+                    initial letters of the net in the Filter text
+                    box. All the nets of that particular type will
+                    appear in the All Nets column. For example, if
+                    you want to view all nets starting with the
+                    letter &quot;A&quot;, then enter &quot;A&quot;
+                    in the Filter text box. All the nets starting
+                    with letter &quot;A&quot; will appear in the
+                    All Nets column.
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>2.</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <span
+                  class="confluence-anchor-link">&#160;</span>Specify
+                  a string (numeric or alphabet) that you want to
+                  precede the differential pair name. For example,
+                  if you specify &quot;A&quot; in the Prefix text
+                  box, then all the differential pair names that
+                  will be created will be preceded with
+                  &quot;A&quot;.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>3.</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <span
+                  class="confluence-anchor-link">&#160;</span>Specify
+                  the last digit of the first net name in the +
+                  Filter text box. For example, all net names
+                  ending with 1.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>4.</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <span
+                  class="confluence-anchor-link">&#160;</span>Specify
+                  the last digit of the second net name in the -
+                  Filter text box. For example, all net names
+                  ending with 4.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>5.</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <span
+                  class="confluence-anchor-link">&#160;</span>Click
+                  anywhere inside the Differential Pair Automatic
+                  Setup dialog box
+                </p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-left: 30.0px;">
+        Capture displays a list of all differential pairs that can
+        be created between all the nets that qualify the criteria
+        set in the + Filter and - Filter text boxes. Also, the
+        Differential Pair Name is preceded with the prefix
+        specified in the Prefix text box.<br />
+         The +Net and -Net grid displays the two nets associated
+        with a differential pair.
+      </p>
+      <div class="panelMacro">
+        <p>
+          &#160;
+        </p>
+        <div class="table-wrap">
+          <table class="confluenceTable">
+            <colgroup>
+              <col />
+              <col />
+            </colgroup>
+            <tbody>
+              <tr>
+                <td class="confluenceTd">
+                  <img
+                  class="confluence-embedded-image confluence-external-resource"
+                   data-image-src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                   height="16"
+                  src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                   width="16" />
+                </td>
+                <td class="confluenceTd">
+                  <p>
+                    If you do not want a specific differential pair
+                    to be created, select the row containing the
+                    differential pair and click the Remove button
+                    or double-click the row containing the
+                    differential pair. The selected row disappears.
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          &#160;
+        </p>
+      </div>
+      <div class="panelMacro">
+        <p>
+          &#160;
+        </p>
+        <div class="table-wrap">
+          <table class="confluenceTable">
+            <colgroup>
+              <col />
+              <col />
+            </colgroup>
+            <tbody>
+              <tr>
+                <td class="confluenceTd">
+                  <img
+                  class="confluence-embedded-image confluence-external-resource"
+                   data-image-src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                   height="16"
+                  src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                   width="16" />
+                </td>
+                <td class="confluenceTd">
+                  <p>
+                    If the nets forming a differential pair are of
+                    the type DP+ and DP-, the name of the
+                    differential pair is set to DP. For other pairs
+                    of nets, the name of the differential pair is
+                    of the type DP
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>6.</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  Click the Create button. All the differential
+                  pairs displayed in the Selections column are
+                  created. For information on how to view the
+                  differential pairs, see <a class="external-link"
+                  href="http://sj-rdwiki:8081/display/capug166/Physical+Layout+in+PCB+Editor#PhysicalLayoutinPCBEditor-1351988"
+                   rel="nofollow">&quot;To view a differential
+                  pair&quot;</a>.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd" colspan="1">
+                <strong>7.</strong>
+              </td>
+              <td class="confluenceTd" colspan="1">
+                Click the Close button to close the Differential
+                Pair Automatic Setup dialog box and go back to the
+                Create Differential Pair dialog box.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h3 id="DefiningPropertiesonNets-&#160;TheVoltageProperty">
+        <span class="confluence-anchor-link">&#160;</span>The
+        Voltage Property
+      </h3>
+      <p>
+        <span class="confluence-anchor-link">&#160;</span>Besides
+        the high-speed signal properties, another commonly used
+        property assigned on a design net is the Voltage
+        property.<br />
+         <span class="confluence-anchor-link">&#160;</span>When
+        assigned on a part as an instance-level property, is not
+        transferred to the PCB Editor netlist. Only when the
+        Voltage property is applied to a flat net, it is passed to
+        PCB Editor netlist as an electrical constraint.<br />
+         <span class="confluence-anchor-link">&#160;</span>The
+        Voltage value assigned should be a numeric value. For
+        example if you specify the value as 10mV, the non-numeric
+        part is ignored. By default the property value is in volts.
+        Therefore, say you need to specify the value of the Voltage
+        property as 3mV, the value you need to enter is 0.003 and
+        not 3mV.
+      </p>
+    </div>
+    <hr xmlns:html="http://www.w3.org/1999/xhtml" />
+    <hr xmlns:html="http://www.w3.org/1999/xhtml" align="left" />
+    <div xmlns:html="http://www.w3.org/1999/xhtml"
+    style="text-align: left;">
+      <!-- Begin Buttons -->
+      <table border="0" cellpadding="0" cellspacing="0"
+      width="650">
+        <tbody>
+          <tr>
+            <td colspan="10" height="36" width="650">
+              <img height="34" src="../support/header_doc.gif"
+              width="650" />
+            </td>
+          </tr>
+          <tr>
+            <td height="20" width="59">
+              <a href="javascript:openLibrary()"><img
+              alt="View Library" border="0" height="20"
+              src="../support/nav2_library.gif" width="59" /></a>
+            </td>
+            <td height="20" width="73">
+              <a href="cap_ugTOC.html"><img alt="Table of Contents"
+              border="0" src="../support/nav2_toc.gif" /></a>
+            </td>
+            <td height="20" width="46">
+              <img alt="Index" border="0"
+              src="../support/nav2_index_b.gif" />
+            </td>
+            <td>
+              <a
+              href="Instance-Level_Properties_for_Physical_Design.html"><img
+               alt="Previous" border="0"
+              src="../support/nav2_previous.gif" /></a>
+            </td>
+            <td>
+              <a href="Properties_on_Power_Pins.html"><img
+              alt="Next" border="0"
+              src="../support/nav_next.gif" /></a>
+            </td>
+            <td height="20">
+              <a href="cap_ug.pdf"><img
+              alt="Open PDF to print book" border="0" height="20"
+              src="../support/nav2_print.gif" width="114" /></a>
+            </td>
+            <td height="20" width="61">
+              <img src="../support/nav2_black.gif" />
+            </td>
+            <td height="20" width="76">
+              <a href="/feedback.htm"><img alt="Email Comments"
+              border="0" height="20"
+              src="../support/nav2_feedback.gif" width="76" /></a>
+            </td>
+            <td height="20" width="43">
+              <a href="../cdsuser/help.html"><img
+              alt="Help Using Documentation" border="0" height="20"
+              src="../support/nav2_help.gif" width="43" /></a>
+            </td>
+            <td height="20" width="37">
+              <a href="/exitsearch.htm"><img
+              alt="Shut Down Cadence Documentation Server"
+              border="0" height="20" src="../support/nav2_exit.gif"
+              width="37" /></a>
+            </td>
+          </tr>
+        </tbody>
+      </table><!-- End Buttons -->
+    </div><br xmlns:html="http://www.w3.org/1999/xhtml" />
+     <font xmlns:html="http://www.w3.org/1999/xhtml" size="-1">For
+    support, see <a href="http://support.cadence.com"
+    target="_blank">Cadence Online Support</a> service.</font> <br
+    xmlns:html="http://www.w3.org/1999/xhtml" />
+     <br xmlns:html="http://www.w3.org/1999/xhtml" />
+     <font xmlns:html="http://www.w3.org/1999/xhtml"
+    size="-1"><i>Copyright &#169; 2012, <a
+    href="http://www.cadence.com">Cadence Design Systems,
+    Inc.</a></i></font> <br
+    xmlns:html="http://www.w3.org/1999/xhtml" />
+     <font xmlns:html="http://www.w3.org/1999/xhtml" size="-1">All
+    rights reserved.</font> <br
+    xmlns:html="http://www.w3.org/1999/xhtml" />
+     <br xmlns:html="http://www.w3.org/1999/xhtml" />
+  </body>
+</html>

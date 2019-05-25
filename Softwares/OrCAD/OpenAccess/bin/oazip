@@ -1,0 +1,53 @@
+#!/bin/sh
+# *****************************************************************************
+# *****************************************************************************
+# oazip
+#
+# This script is wrapper for oazip.  You can set the following options
+# depending on how you would like to use oazip.
+#
+# Mode:
+# The default use is to run the optimized mode.  To specify debug mode
+# for all programs, you should set the OA_MODE environment variable to 'dbg'.
+#
+# To set the mode to 'dbg' on an individual program you should
+# set the BINARYNAME_MODE environment variable to 'dbg'.
+#
+# Bit:
+# The default use is to run 32bit code.  To specify 64bit for all
+# programs, set the OA_BIT environment variable to '64'.
+#
+# To specify the bit as '64' for a specific program, you should
+# set the BINARYNAME_BIT environment variable to '64'.
+#
+# *****************************************************************************
+# Except as specified in the OpenAccess terms of use of Cadence or Silicon
+# Integration Initiative, this material may not be copied, modified,
+# re-published, uploaded, executed, or distributed in any way, in any medium,
+# in whole or in part, without prior written permission from Cadence.
+#
+#                Copyright 2002-2011 Cadence Design Systems, Inc.
+#                           All Rights Reserved.
+#
+# $Author: icftcm $
+# $Revision: #1 $
+# $Date: 2011/06/14 $
+# $State: Exp $
+#
+# *****************************************************************************
+# *****************************************************************************
+
+
+
+PROGRAM=oazip
+INSTALL_ROOT=`dirname $0`
+unset cdpath
+INSTALL_ROOT=`cd $INSTALL_ROOT/..;pwd`
+
+BIT=${OA_BIT:-32}
+BIT=${OAZIP_BIT:-$BIT}
+
+MODE=${OA_MODE:-opt}
+MODE=${OAZIP_MODE:-$MODE}
+
+exec $INSTALL_ROOT/bin/runExe $PROGRAM $INSTALL_ROOT $BIT $MODE $ARGS "$@"

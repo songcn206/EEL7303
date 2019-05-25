@@ -1,0 +1,1754 @@
+################################################################################
+# $Header: $
+#
+# This file specifies the format of signoise reports.  A report is defined by
+# all keywords found until the "END" keyword is encountered.  Any keywords after
+# an "END" are considered the beinning of another report.  Anything after a "#"
+# character is a comment.  All whitespace is ignored.
+################################################################################
+
+
+################################################################################
+### Standard Delay Report
+################################################################################
+NAME    "Delay"
+VERSION 1.0
+TITLE   "Standard Delay Report"
+
+HEADER
+
+FOREACH FTSMode
+  TABLE
+  TABLE_TITLE
+    PRINT "Delays ("
+    PRINT DlyUnits
+    PRINT ") ("
+    PRINT FTSMode
+    PRINT " FTSMode),"
+    PRINT " Preferred Measurement Location: "
+    PRINT MeasLoc
+  TABLE_TITLE_END
+  SORT    PropDly
+  COLUMNS XNet Drvr Rcvr PropDly SwitchRise SwitchFall SettleRise SettleFall
+  ROWS    Rcvr
+  TABEND
+
+  PRINTLN ""
+
+  TABLE
+  TABLE_TITLE
+    PRINT "Monotonicity  ("
+    PRINT FTSMode
+    PRINT " FTSMode),"
+    PRINT " Preferred Measurement Location: "
+    PRINT MeasLoc
+  TABLE_TITLE_END
+  COLUMNS XNet Rcvr FirstIncRise FirstIncFall MonotonicRise MonotonicFall
+          GlitchRise GlitchFall
+  ROWS    Rcvr
+  TABEND
+
+  PRINTLN ""
+LOOPEND
+
+
+FOREACH XNet
+  FOREACH FTSMode
+    TABLE
+    TABLE_TITLE
+      PRINT "XNet Pins for XNet `"
+      PRINT XNet
+      PRINT "` ("
+      PRINT FTSMode
+      PRINT " FTSMode)"
+    TABLE_TITLE_END
+    COLUMNS Pin Net Device IOModel Pinuse RiseDly FallDly JTemp DiffPairMate
+    ROWS    Pin
+    TABEND
+
+    PRINTLN ""
+  LOOPEND
+LOOPEND
+
+FOREACH FTSMode
+  TABLE
+  TABLE_TITLE
+    PRINT "Driver I/O Characteristics ("
+    PRINT FTSMode
+    PRINT " FTSMode) RiseSlew/FallSlew in ("
+    PRINT NoiseVUnits
+    PRINT "/"
+    PRINT DlyUnits
+    PRINT ")"
+  TABLE_TITLE_END
+  SHOW_TABLE_UNITS
+  COLUMNS Drvr IOModel Volmax Vohmin RiseSlew FallSlew
+  ROWS    Drvr
+  TABEND
+
+  PRINTLN ""
+LOOPEND
+
+TABLE
+TABLE_TITLE
+  PRINT "Load I/O Characteristics:"
+TABLE_TITLE_END
+SHOW_TABLE_UNITS
+COLUMNS Rcvr IOModel Vilmax Vihmin
+ROWS    Rcvr
+TABEND
+
+PRINTLN ""
+
+TABLE
+TABLE_TITLE
+  PRINT "Stimulus Data Per Xnet"
+TABLE_TITLE_END
+SORT    XNet
+COLUMNS XNet ClockFrequency ClockDutyCycle CycleCount Offset Jitter BitPattern
+ROWS    XNet
+TABEND
+
+PRINTLN ""
+
+PRINTLN "*********************************************************************"
+PRINTLN "Simulation Preferences"
+PRINTLN "---------------------------------------------------------------------"
+PRINTLN "  Variable                   Value"
+PRINTLN "  ------------------------   ---------------"
+PRINT   "  Percent Manhattan          "
+PRINTLN MhtPercent
+PRINT   "  Default Impedance          "
+PRINTLN DefImp
+PRINT   "  Default Prop Velocity      "
+PRINTLN DefPropVel
+PRINT   "  Geometry Window            "
+PRINTLN GeomWin
+PRINT   "  Minimum Coupled Length     "
+PRINTLN MinCoupledLength
+PRINT   "  Min Neighbor Capacitance   "
+PRINTLN MinNeighborCap
+PRINT   "  Cutoff Frequency           "
+PRINTLN CutoffFreq
+PRINT   "  Pulse Clock Frequency      "
+PRINTLN ClockFrequency
+PRINT   "  Pulse Duty Cycle           "
+PRINTLN ClockDutyCycle
+PRINT   "  Pulse Step Offset          "
+PRINTLN Offset
+PRINT   "  Reflection Simulation Type "
+PRINTLN ReflSimType
+PRINT   "  Pulse Cycle Count          "
+PRINTLN CycleCount
+PRINT   "  Simulator Used             "
+PRINTLN SelectedSimulator
+PRINTLN ""
+
+
+PRINTLN "*********************************************************************"
+PRINTLN "Number of Simulations Performed"
+PRINTLN "---------------------------------------------------------------------"
+PRINT   "  Total Simulations:         "
+PRINTLN TotalSimCount
+PRINTLN "---------------------------------------------------------------------"
+PRINTLN ""
+
+ABBREVS
+PRINTLN ""
+
+PRINTLN "*********************************************************************"
+PRINTLN "Net name syntax"
+PRINTLN "---------------------------------------------------------------------"
+PRINTLN "   Net:  <design name> <net name>"
+PRINTLN "  XNet:  <number of nets> <design name> <first net name>"
+PRINTLN "---------------------------------------------------------------------"
+
+END
+
+################################################################################
+### Standard Ringing Report
+################################################################################
+NAME    "Ringing"
+VERSION 1.0
+TITLE   "Standard Ringing Report Sorted By Worst Noise Margin"
+
+HEADER
+
+FOREACH FTSMode
+  TABLE
+  TABLE_TITLE
+    PRINT "Distortion ("
+    PRINT NoiseVUnits
+    PRINT ") ("
+    PRINT FTSMode
+    PRINT " FTSMode),"
+    PRINT " Preferred Measurement Location: "
+    PRINT MeasLoc
+  TABLE_TITLE_END
+  SORT              MinNM
+  INVISIBLE_COLUMNS MinNM
+  COLUMNS XNet Drvr Rcvr NMHigh NMLow OShootHigh OShootLow MinNM
+  ROWS    Rcvr
+  TABEND
+  PRINTLN ""
+LOOPEND
+
+FOREACH FTSMode
+  TABLE
+  TABLE_TITLE
+    PRINT "Driver I/O Characteristics ("
+    PRINT FTSMode
+    PRINT " FTSMode) RiseSlew/FallSlew in ("
+    PRINT NoiseVUnits
+    PRINT "/"
+    PRINT DlyUnits
+    PRINT ")"
+  TABLE_TITLE_END
+  SHOW_TABLE_UNITS
+  COLUMNS Drvr Device IOModel Volmax Vohmin RiseSlew FallSlew JTemp DiffPairMate
+  ROWS    Drvr
+  TABEND
+  PRINTLN ""
+LOOPEND
+
+TABLE
+TABLE_TITLE
+  PRINT "Load I/O Characteristics"
+TABLE_TITLE_END
+SHOW_TABLE_UNITS
+COLUMNS Rcvr Device IOModel Vilmax Vihmin DiffPairMate
+ROWS    Rcvr
+TABEND
+
+PRINTLN ""
+
+TABLE
+TABLE_TITLE
+  PRINT "Stimulus Data Per Xnet"
+TABLE_TITLE_END
+SORT    XNet
+COLUMNS XNet ClockFrequency ClockDutyCycle CycleCount Offset Jitter BitPattern
+ROWS    XNet
+TABEND
+
+PRINTLN ""
+
+PRINTLN "*********************************************************************"
+PRINTLN "Simulation Preferences"
+PRINTLN "---------------------------------------------------------------------"
+PRINTLN "  Variable                   Value"
+PRINTLN "  ------------------------   ---------------"
+PRINT   "  Percent Manhattan          "
+PRINTLN MhtPercent
+PRINT   "  Default Impedance          "
+PRINTLN DefImp
+PRINT   "  Default Prop Velocity      "
+PRINTLN DefPropVel
+PRINT   "  Geometry Window            "
+PRINTLN GeomWin
+PRINT   "  Minimum Coupled Length     "
+PRINTLN MinCoupledLength
+PRINT   "  Min Neighbor Capacitance   "
+PRINTLN MinNeighborCap
+PRINT   "  Cutoff Frequency           "
+PRINTLN CutoffFreq
+PRINT   "  Pulse Clock Frequency      "
+PRINTLN ClockFrequency
+PRINT   "  Pulse Duty Cycle           "
+PRINTLN ClockDutyCycle
+PRINT   "  Pulse Step Offset          "
+PRINTLN Offset
+PRINT   "  Reflection Simulation Type "
+PRINTLN ReflSimType
+PRINT   "  Pulse Cycle Count          "
+PRINTLN CycleCount
+PRINT   "  Simulator Used             "
+PRINTLN SelectedSimulator
+PRINTLN ""
+
+
+PRINTLN "*********************************************************************"
+PRINTLN "Number of Simulations Performed"
+PRINTLN "---------------------------------------------------------------------"
+PRINT   "  Total Simulations:         "
+PRINTLN TotalSimCount
+PRINTLN "---------------------------------------------------------------------"
+PRINTLN ""
+
+ABBREVS
+PRINTLN ""
+
+PRINTLN "*********************************************************************"
+PRINTLN "Net name syntax"
+PRINTLN "---------------------------------------------------------------------"
+PRINTLN "   Net:  <design name> <net name>"
+PRINTLN "  XNet:  <number of nets> <design name> <first net name>"
+PRINTLN "---------------------------------------------------------------------"
+
+END
+
+
+################################################################################
+### Standard SSN Report
+################################################################################
+NAME    "SSN"
+VERSION 1.0
+TITLE   "Standard SSN Report"
+
+HEADER
+
+FOREACH XNet
+  FOREACH FTSMode
+    TABLE
+    TABLE_TITLE
+      PRINT "Simultaneous Switching Noise ("
+      PRINT NoiseVUnits
+      PRINT ") for XNet `"
+      PRINT XNet
+      PRINT "` ("
+      PRINT FTSMode
+      PRINT " FTSMode)"
+    TABLE_TITLE_END
+    SORT    SSNRise
+    COLUMNS Drvr Net PowerBus SSNRise GroundBus SSNFall
+    ROWS    Drvr
+    TABEND
+    PRINTLN ""
+  LOOPEND
+LOOPEND
+
+FOREACH FTSMode
+  TABLE
+  TABLE_TITLE
+    PRINT "Driver I/O Characteristics ("
+    PRINT FTSMode
+    PRINT " FTSMode) RiseSlew/FallSlew in ("
+    PRINT NoiseVUnits
+    PRINT "/"
+    PRINT DlyUnits
+    PRINT ")"
+  TABLE_TITLE_END
+  SHOW_TABLE_UNITS
+  COLUMNS Drvr IOModel Volmax Vohmin RiseSlew FallSlew
+  ROWS    Drvr
+  TABEND
+  PRINTLN ""
+LOOPEND
+
+TABLE
+TABLE_TITLE
+  PRINT "Load I/O Characteristics"
+TABLE_TITLE_END
+SHOW_TABLE_UNITS
+COLUMNS Rcvr IOModel Vilmax Vihmin
+ROWS    Rcvr
+TABEND
+
+PRINTLN ""
+
+TABLE
+TABLE_TITLE
+  PRINT "Stimulus Data Per Xnet"
+TABLE_TITLE_END
+SORT    XNet
+COLUMNS XNet ClockFrequency ClockDutyCycle CycleCount
+ROWS    XNet
+TABEND
+
+PRINTLN ""
+
+PRINTLN "*********************************************************************"
+PRINTLN "Simulation Preferences"
+PRINTLN "---------------------------------------------------------------------"
+PRINTLN "  Variable                   Value"
+PRINTLN "  ------------------------   ---------------"
+PRINT   "  Percent Manhattan          "
+PRINTLN MhtPercent
+PRINT   "  Default Impedance          "
+PRINTLN DefImp
+PRINT   "  Default Prop Velocity      "
+PRINTLN DefPropVel
+PRINT   "  Geometry Window            "
+PRINTLN GeomWin
+PRINT   "  Minimum Coupled Length     "
+PRINTLN MinCoupledLength
+PRINT   "  Min Neighbor Capacitance   "
+PRINTLN MinNeighborCap
+PRINT   "  Cutoff Frequency           "
+PRINTLN CutoffFreq
+PRINT   "  Pulse Clock Frequency      "
+PRINTLN ClockFrequency
+PRINT   "  Pulse Duty Cycle           "
+PRINTLN ClockDutyCycle
+PRINT   "  Pulse Step Offset          "
+PRINTLN Offset
+PRINT   "  Reflection Simulation Type "
+PRINTLN ReflSimType
+PRINT   "  Pulse Cycle Count          "
+PRINTLN CycleCount
+PRINT   "  Simulator Used             "
+PRINTLN SelectedSimulator
+PRINTLN ""
+
+
+PRINTLN "*********************************************************************"
+PRINTLN "Number of Simulations Performed"
+PRINTLN "---------------------------------------------------------------------"
+PRINT   "  Total Simulations:         "
+PRINTLN TotalSimCount
+PRINTLN "---------------------------------------------------------------------"
+PRINTLN ""
+
+ABBREVS
+PRINTLN ""
+
+
+PRINTLN "*********************************************************************"
+PRINTLN "Net name syntax"
+PRINTLN "---------------------------------------------------------------------"
+PRINTLN "   Net:  <design name> <net name>"
+PRINTLN "  XNet:  <number of nets> <design name> <first net name>"
+PRINTLN "---------------------------------------------------------------------"
+
+END
+
+
+
+################################################################################
+### Comprehensive Report for Source Synchronous Bus
+################################################################################
+NAME    "ComprehensiveForSourceSyncBus"
+VERSION 1.0
+TITLE   "Standard Comprehensive Report for Source Synchronous Bus"
+
+HEADER
+
+FOREACH FTSMode
+  TABLE
+  TABLE_TITLE
+    PRINT "Setup/Hold Times Worst Case Results: "
+    PRINT "Delays in "
+    PRINT DlyUnits
+    PRINT ", SlewRate in (V/ns), "
+    PRINT FTSMode 
+    PRINT " FTSMode,"
+    PRINT " Preferred Measurement Location: "
+    PRINT MeasLoc
+  TABLE_TITLE_END
+  COLUMNS XNet StrobeXNet Drvr Rcvr StrobePin DataBitState SetupMargin  HoldMargin SetupTime  SetupCycle  SetupSwitch SetupSettle SetupDataSlew  SetupClkSlew  SetupDerVal  SetupRequirement  Tvb  HoldTime HoldCycle HoldSwitch HoldSettle HoldDataSlew  HoldClkSlew  HoldDerVal HoldRequirement  Tva
+ROWS    Rcvr
+  TABEND
+
+  PRINTLN ""
+
+LOOPEND
+
+FOREACH FTSMode
+  TABLE
+  TABLE_TITLE
+    PRINT "Distortion Worst Case Results in "
+    PRINT NoiseVUnits
+    PRINT ", "
+    PRINT FTSMode
+    PRINT " FTSMode "
+  TABLE_TITLE_END
+COLUMNS XNet StrobeXNet Drvr Rcvr RcvrMode StrobePin NMHigh NMHighCycle NMLow NMLowCycle OShootHigh OShootHighCycle OShootLow OShootLowCycle MonotonicRise  MonotonicFall
+  ROWS    Rcvr
+  TABEND
+
+  PRINTLN ""
+
+LOOPEND
+
+FOREACH FTSMode
+  TABLE
+  TABLE_TITLE
+    PRINT "Driver I/O Characteristics per Data Xnet:"
+    PRINT FTSMode
+    PRINT " FTSMode, RiseSlew/FallSlew in ("
+    PRINT NoiseVUnits
+    PRINT "/"
+    PRINT DlyUnits
+    PRINT ")"
+  TABLE_TITLE_END
+  SHOW_TABLE_UNITS
+  COLUMNS Drvr IOModel XNet Volmax Vohmin RiseSlew FallSlew PropDly RiseDly FallDly
+  ROWS    Drvr
+  TABEND
+
+  PRINTLN ""
+LOOPEND
+
+FOREACH FTSMode
+  TABLE
+  TABLE_TITLE
+    PRINT "Driver I/O Characteristics Per Strobe/Clock Xnet in "
+    PRINT DlyUnits
+    PRINT ", "
+    PRINT FTSMode
+    PRINT " FTSMode "
+  TABLE_TITLE_END
+  COLUMNS XNet Drvr Rcvr PropDly RiseDly FallDly DifferentialDelay
+  ROWS    StrobePin
+  TABEND
+
+  PRINTLN ""
+
+LOOPEND
+
+FOREACH FTSMode
+  TABLE
+  TABLE_TITLE
+    PRINT "Load I/O Characteristics: "
+    PRINT FTSMode
+    PRINT " FTSMode"
+  TABLE_TITLE_END
+  SHOW_TABLE_UNITS
+  COLUMNS Rcvr IOModel XNet Vilmax Vihmin Vildcmax Vilacmax Vihdcmin Vihacmin
+  ROWS    Rcvr
+  TABEND
+
+  PRINTLN ""
+LOOPEND
+
+TABLE
+TABLE_TITLE
+  PRINT "Stimulus Data Per Data Xnet"
+TABLE_TITLE_END
+SORT    XNet
+COLUMNS XNet ControllerOffset AlternateOffset BitPattern
+ROWS    XNet
+TABEND
+
+PRINTLN ""
+
+TABLE
+TABLE_TITLE
+  PRINT "Stimulus Data Per Strobe/Clock Xnet"
+TABLE_TITLE_END
+SORT    StrobeXNet
+COLUMNS StrobeXNet ClockFrequency ClockDutyCycle ControllerOffset AlternateOffset Jitter BitPattern
+ROWS    StrobeXNet
+TABEND
+
+PRINTLN ""
+
+
+PRINTLN "**************************************************************************"
+PRINTLN "NOTE: If the AC/DC input thresholds are missing from a rcvr model,"
+PRINTLN "then the Vilmax and Vihmin are used to measure the Setup/Hold times."
+PRINTLN "**************************************************************************"
+PRINTLN ""
+
+PRINTLN "*********************************************************************"
+PRINTLN "Bus Information"
+PRINTLN "*********************************************************************"
+PRINT   "Name:                   "
+PRINTLN BusName
+PRINT   "Direction:              "
+PRINTLN BusDirection
+PRINT   "Controller RefDes:      "
+PRINTLN BusControllerName
+PRINT   "Switch On:              "
+PRINTLN BusActiveEdge
+PRINT   "Derating Table:         "
+PRINTLN DeratingTable
+PRINTLN ""
+
+PRINTLN "*********************************************************************"
+PRINTLN "Global Parameters"
+PRINTLN "*********************************************************************"
+PRINT   "Clock Frequency:            "
+PRINTLN ClockFrequency
+PRINT   "Clock Duty Cycle:           "
+PRINTLN ClockDutyCycle
+PRINT   "Offset:                     "
+PRINTLN Offset
+PRINT   "Geometry Window:            "
+PRINTLN GeomWin
+
+PRINTLN ""
+
+
+PRINTLN "*********************************************************************"
+PRINTLN "Number of Simulations Performed"
+PRINTLN "---------------------------------------------------------------------"
+PRINT   "  Total Simulations:         "
+PRINTLN TotalSimCount
+PRINTLN "---------------------------------------------------------------------"
+PRINTLN ""
+
+PRINTLN "*********************************************************************"
+PRINTLN "Net name syntax"
+PRINTLN "---------------------------------------------------------------------"
+PRINTLN "   Net:  <design name> <net name>"
+PRINTLN "  XNet:  <number of nets> <design name> <first net name>"
+PRINTLN "---------------------------------------------------------------------"
+
+END
+
+################################################################################
+### Reflection Report for Source Synchronous Bus
+################################################################################
+NAME    "ReflectionForSourceSyncBus"
+VERSION 1.0
+TITLE   "Standard Reflection Report for Source Synchronous Bus"
+
+HEADER
+
+FOREACH FTSMode
+  TABLE
+  TABLE_TITLE
+    PRINT "Setup/Hold Times Worst Case Results: "
+    PRINT "Delays in "
+    PRINT DlyUnits
+    PRINT ", SlewRate in (V/ns), "
+    PRINT FTSMode
+    PRINT " FTSMode,"
+    PRINT " Preferred Measurement Location: "
+    PRINT MeasLoc
+  TABLE_TITLE_END
+  COLUMNS XNet StrobeXNet Drvr Rcvr StrobePin DataBitState SetupMargin  HoldMargin SetupTime  SetupCycle  SetupSwitch SetupSettle SetupDataSlew  SetupClkSlew  SetupDerVal  SetupRequirement  Tvb HoldTime HoldCycle HoldSwitch HoldSettle HoldDataSlew  HoldClkSlew  HoldDerVal HoldRequirement   Tva 
+ROWS    Rcvr
+  TABEND
+
+  PRINTLN ""
+
+LOOPEND
+
+FOREACH FTSMode
+  TABLE
+  TABLE_TITLE 
+    PRINT "Distortion Worst Case Results in "
+    PRINT NoiseVUnits
+    PRINT ", "
+    PRINT FTSMode 
+    PRINT " FTSMode "
+  TABLE_TITLE_END
+  COLUMNS XNet StrobeXNet Drvr Rcvr RcvrMode StrobePin NMHigh NMHighCycle NMLow NMLowCycle OShootHigh OShootHighCycle OShootLow OShootLowCycle MonotonicRise  MonotonicFall
+  ROWS    Rcvr
+  TABEND
+
+  PRINTLN ""
+
+LOOPEND
+
+
+FOREACH FTSMode
+  TABLE
+  TABLE_TITLE
+    PRINT "Driver I/O Characteristics per Data Xnet: "
+    PRINT FTSMode
+    PRINT " FTSMode, RiseSlew/FallSlew in ("
+    PRINT NoiseVUnits
+    PRINT "/"
+    PRINT DlyUnits
+    PRINT ")"
+  TABLE_TITLE_END
+  SHOW_TABLE_UNITS
+  COLUMNS Drvr IOModel XNet Volmax Vohmin RiseSlew FallSlew PropDly RiseDly FallDly
+  ROWS    Drvr
+  TABEND
+
+  PRINTLN ""
+LOOPEND
+
+FOREACH FTSMode
+  TABLE
+  TABLE_TITLE
+    PRINT "Driver I/O Characteristics Per Strobe/Clock Xnet in "
+    PRINT DlyUnits
+    PRINT ", "
+    PRINT FTSMode
+    PRINT " FTSMode "
+  TABLE_TITLE_END
+  COLUMNS XNet Drvr Rcvr PropDly RiseDly FallDly DifferentialDelay
+  ROWS    StrobePin
+  TABEND
+
+  PRINTLN ""
+
+LOOPEND
+
+FOREACH FTSMode
+  TABLE
+  TABLE_TITLE
+    PRINT "Load I/O Characteristics: "
+    PRINT FTSMode
+    PRINT " FTSMode" 
+  TABLE_TITLE_END
+  SHOW_TABLE_UNITS
+  COLUMNS Rcvr IOModel XNet Vilmax Vihmin Vildcmax Vilacmax Vihdcmin Vihacmin 
+  ROWS    Rcvr
+  TABEND
+
+  PRINTLN ""
+LOOPEND
+
+TABLE
+TABLE_TITLE
+  PRINT "Stimulus Data Per Data Xnet"
+TABLE_TITLE_END
+SORT    XNet
+COLUMNS XNet ControllerOffset AlternateOffset BitPattern 
+ROWS    XNet
+TABEND
+
+PRINTLN ""
+
+TABLE
+TABLE_TITLE
+  PRINT "Stimulus Data Per Strobe/Clock Xnet"
+TABLE_TITLE_END
+SORT    StrobeXNet
+COLUMNS StrobeXNet ClockFrequency ClockDutyCycle ControllerOffset AlternateOffset Jitter BitPattern 
+ROWS    StrobeXNet
+TABEND
+
+PRINTLN ""
+
+
+PRINTLN "**************************************************************************"
+PRINTLN "NOTE: If the AC/DC input thresholds are missing from a rcvr model,"
+PRINTLN "then the Vilmax and Vihmin are used to measure the Setup/Hold times."
+PRINTLN "**************************************************************************"
+PRINTLN ""
+
+PRINTLN "*********************************************************************"
+PRINTLN "Bus Information"
+PRINTLN "*********************************************************************"
+PRINT   "Name:                   "
+PRINTLN BusName
+PRINT   "Direction:              "
+PRINTLN BusDirection
+PRINT   "Controller RefDes:      "
+PRINTLN BusControllerName 
+PRINT   "Switch On:              "
+PRINTLN BusActiveEdge
+PRINT   "Derating Table:         "
+PRINTLN DeratingTable
+PRINTLN ""
+
+PRINTLN "*********************************************************************"
+PRINTLN "Global Parameters"
+PRINTLN "*********************************************************************"
+PRINT   "Clock Frequency:            "
+PRINTLN ClockFrequency
+PRINT   "Clock Duty Cycle:           "
+PRINTLN ClockDutyCycle
+PRINT   "Offset:                     "
+PRINTLN Offset
+PRINT   "Cycle Count:                "
+PRINTLN CycleCount
+PRINTLN ""
+
+PRINTLN "*********************************************************************"
+PRINTLN "Simulation Preferences"
+PRINTLN "---------------------------------------------------------------------"
+PRINTLN "  Variable                   Value"
+PRINTLN "  ------------------------   ---------------"
+PRINT   "  Percent Manhattan          "
+PRINTLN MhtPercent
+PRINT   "  Default Impedance          "
+PRINTLN DefImp
+PRINT   "  Default Prop Velocity      "
+PRINTLN DefPropVel
+PRINT   "  Geometry Window            "
+PRINTLN GeomWin
+PRINT   "  Minimum Coupled Length     "
+PRINTLN MinCoupledLength
+PRINT   "  Min Neighbor Capacitance   "
+PRINTLN MinNeighborCap
+PRINT   "  Cutoff Frequency           "
+PRINTLN CutoffFreq
+PRINT   "  Pulse Clock Frequency      "
+PRINTLN ClockFrequency
+PRINT   "  Pulse Duty Cycle           "
+PRINTLN ClockDutyCycle
+PRINT   "  Pulse Step Offset          "
+PRINTLN Offset
+PRINT   "  Reflection Simulation Type "
+PRINTLN ReflSimType
+PRINT   "  Pulse Cycle Count          "
+PRINTLN CycleCount
+PRINT   "  Simulator Used             "
+PRINTLN SelectedSimulator
+PRINTLN ""
+
+
+PRINTLN "*********************************************************************"
+PRINTLN "Number of Simulations Performed"
+PRINTLN "---------------------------------------------------------------------"
+PRINT   "  Total Simulations:         "
+PRINTLN TotalSimCount
+PRINTLN "---------------------------------------------------------------------"
+PRINTLN ""
+
+
+END
+
+################################################################################
+### Reflection Summary Report
+################################################################################
+NAME    "ReflectionSummary"
+VERSION 1.0
+TITLE   "Standard Reflection Summary Sorted By Worst Settle Delay"
+
+HEADER
+
+FOREACH FTSMode
+  TABLE
+  TABLE_TITLE
+    PRINT "Delays ("
+    PRINT DlyUnits
+    PRINT "), Distortion ("
+    PRINT NoiseVUnits
+    PRINT "), ("
+    PRINT FTSMode
+    PRINT " FTSMode),"
+    PRINT " Preferred Measurement Location: "
+    PRINT MeasLoc
+  TABLE_TITLE_END
+  INVISIBLE_COLUMNS MaxSettleDly
+  SORT    MaxSettleDly
+  COLUMNS XNet Drvr Rcvr NMHigh NMLow OShootHigh OShootLow
+          SwitchRise SwitchFall SettleRise SettleFall Monotonic Glitch MaxSettleDly
+  ROWS    Rcvr
+  TABEND
+
+  PRINTLN ""
+
+LOOPEND
+
+TABLE
+TABLE_TITLE
+  PRINT "Stimulus Data Per Xnet"
+TABLE_TITLE_END
+SORT    XNet
+COLUMNS XNet ClockFrequency ClockDutyCycle CycleCount Offset Jitter BitPattern
+ROWS    XNet
+TABEND
+
+PRINTLN ""
+
+
+PRINTLN "*********************************************************************"
+PRINTLN "Simulation Preferences"
+PRINTLN "---------------------------------------------------------------------"
+PRINTLN "  Variable                   Value"
+PRINTLN "  ------------------------   ---------------"
+PRINT   "  Percent Manhattan          "
+PRINTLN MhtPercent
+PRINT   "  Default Impedance          "
+PRINTLN DefImp
+PRINT   "  Default Prop Velocity      "
+PRINTLN DefPropVel
+PRINT   "  Geometry Window            "
+PRINTLN GeomWin
+PRINT   "  Minimum Coupled Length     "
+PRINTLN MinCoupledLength
+PRINT   "  Min Neighbor Capacitance   "
+PRINTLN MinNeighborCap
+PRINT   "  Cutoff Frequency           "
+PRINTLN CutoffFreq
+PRINT   "  Pulse Clock Frequency      "
+PRINTLN ClockFrequency
+PRINT   "  Pulse Duty Cycle           "
+PRINTLN ClockDutyCycle
+PRINT   "  Pulse Step Offset          "
+PRINTLN Offset
+PRINT   "  Reflection Simulation Type "
+PRINTLN ReflSimType
+PRINT   "  Pulse Cycle Count          "
+PRINTLN CycleCount
+PRINT   "  Simulator Used             "
+PRINTLN SelectedSimulator
+PRINTLN ""
+
+PRINTLN "*********************************************************************"
+PRINTLN "Number of Simulations Performed"
+PRINTLN "---------------------------------------------------------------------"
+PRINT   "  Total Simulations:         "
+PRINTLN TotalSimCount
+PRINTLN "---------------------------------------------------------------------"
+PRINTLN ""
+
+END
+
+
+################################################################################
+### Xtalk Summary Report(s)
+################################################################################
+NAME    "XtalkSummaryAllNeighbors"
+VERSION 1.0
+TITLE   "Standard Crosstalk Summary Report Sorted By Worst Case Crosstalk"
+
+HEADER
+
+FOREACH FTSMode
+  TABLE
+  TABLE_TITLE
+    PRINT "All Neighbors Crosstalk ("
+    PRINT NoiseVUnits
+    PRINT ") ("
+    PRINT FTSMode
+    PRINT " FTSMode)"
+  TABLE_TITLE_END
+  INVISIBLE_COLUMNS MaxXtalk
+  COLUMN_TITLES "Victim XNet" "Victim Drvr"
+  SORT    MaxXtalk
+  COLUMNS XNet Drvr HSOddXtalk HSEvenXtalk LSOddXtalk LSEvenXtalk MaxXtalk
+  ROWS    Drvr
+  TABEND
+  PRINTLN ""
+LOOPEND
+
+TABLE
+TABLE_TITLE
+  PRINT "Stimulus Data Per Xnet"
+TABLE_TITLE_END
+SORT    XNet
+COLUMNS XNet ClockFrequency ClockDutyCycle CycleCount
+ROWS    XNet
+TABEND
+
+PRINTLN ""
+
+PRINTLN "*********************************************************************"
+PRINTLN "Simulation Preferences"
+PRINTLN "---------------------------------------------------------------------"
+PRINTLN "  Variable                   Value"
+PRINTLN "  ------------------------   ---------------"
+PRINT   "  Percent Manhattan          "
+PRINTLN MhtPercent
+PRINT   "  Default Impedance          "
+PRINTLN DefImp
+PRINT   "  Default Prop Velocity      "
+PRINTLN DefPropVel
+PRINT   "  Geometry Window            "
+PRINTLN GeomWin
+PRINT   "  Minimum Coupled Length     "
+PRINTLN MinCoupledLength
+PRINT   "  Min Neighbor Capacitance   "
+PRINTLN MinNeighborCap
+PRINT   "  Cutoff Frequency           "
+PRINTLN CutoffFreq
+PRINT   "  Pulse Clock Frequency      "
+PRINTLN ClockFrequency
+PRINT   "  Pulse Duty Cycle           "
+PRINTLN ClockDutyCycle
+PRINT   "  Pulse Step Offset          "
+PRINTLN Offset
+PRINT   "  Reflection Simulation Type "
+PRINTLN ReflSimType
+PRINT   "  Pulse Cycle Count          "
+PRINTLN CycleCount
+PRINT   "  Simulator Used             "
+PRINTLN SelectedSimulator
+PRINTLN ""
+
+
+PRINTLN "*********************************************************************"
+PRINTLN "Number of Simulations Performed"
+PRINTLN "---------------------------------------------------------------------"
+PRINT   "  Total Simulations:         "
+PRINTLN TotalSimCount
+PRINTLN "---------------------------------------------------------------------"
+PRINTLN ""
+
+END
+
+################################################################################
+################################################################################
+NAME    "XtalkSummaryEachNeighbor"
+VERSION 1.0
+TITLE   "Standard Crosstalk Summary Report Sorted By Worst Case Crosstalk"
+
+HEADER
+
+FOREACH FTSMode
+  TABLE
+  TABLE_TITLE
+    PRINT "Single Neighbor Crosstalk ("
+    PRINT NoiseVUnits
+    PRINT ") ("
+    PRINT FTSMode
+    PRINT " FTSMode)"
+  TABLE_TITLE_END
+  GROUP XNet
+  SORT MaxXtalk
+  INVISIBLE_COLUMNS MaxXtalk
+  COLUMN_TITLES "Victim XNet" "Victim Drvr" "DEFAULT" "DEFAULT" "DEFAULT"
+                "DEFAULT" "Aggr XNet" "Aggr Drvr"
+  COLUMNS XNet Drvr HSOddXtalk HSEvenXtalk LSOddXtalk LSEvenXtalk
+          NXNet NDrvr MaxXtalk
+  ROWS    NDrvr
+  TABEND
+
+  PRINTLN ""
+LOOPEND
+
+TABLE
+TABLE_TITLE
+  PRINT "Stimulus Data Per Xnet"
+TABLE_TITLE_END
+SORT    XNet
+COLUMNS XNet ClockFrequency ClockDutyCycle CycleCount
+ROWS    XNet
+TABEND
+
+PRINTLN ""
+
+PRINTLN "*********************************************************************"
+PRINTLN "Simulation Preferences"
+PRINTLN "---------------------------------------------------------------------"
+PRINTLN "  Variable                   Value"
+PRINTLN "  ------------------------   ---------------"
+PRINT   "  Percent Manhattan          "
+PRINTLN MhtPercent
+PRINT   "  Default Impedance          "
+PRINTLN DefImp
+PRINT   "  Default Prop Velocity      "
+PRINTLN DefPropVel
+PRINT   "  Geometry Window            "
+PRINTLN GeomWin
+PRINT   "  Minimum Coupled Length     "
+PRINTLN MinCoupledLength
+PRINT   "  Min Neighbor Capacitance   "
+PRINTLN MinNeighborCap
+PRINT   "  Cutoff Frequency           "
+PRINTLN CutoffFreq
+PRINT   "  Pulse Clock Frequency      "
+PRINTLN ClockFrequency
+PRINT   "  Pulse Duty Cycle           "
+PRINTLN ClockDutyCycle
+PRINT   "  Pulse Step Offset          "
+PRINTLN Offset
+PRINT   "  Reflection Simulation Type "
+PRINTLN ReflSimType
+PRINT   "  Pulse Cycle Count          "
+PRINTLN CycleCount
+PRINT   "  Simulator Used             "
+PRINTLN SelectedSimulator
+PRINTLN ""
+
+
+PRINTLN "*********************************************************************"
+PRINTLN "Number of Simulations Performed"
+PRINTLN "---------------------------------------------------------------------"
+PRINT   "  Total Simulations:         "
+PRINTLN TotalSimCount
+PRINTLN "---------------------------------------------------------------------"
+PRINTLN ""
+
+END
+
+################################################################################
+################################################################################
+NAME    "XtalkSummaryGroup"
+VERSION 1.0
+TITLE   "Standard Crosstalk Summary Report Sorted By Worst Case Crosstalk"
+
+HEADER
+
+FOREACH FTSMode
+  TABLE
+  TABLE_TITLE
+    PRINT "Timing Windows Neighbor Group Crosstalk ("
+    PRINT NoiseVUnits
+    PRINT ") ("
+    PRINT FTSMode
+    PRINT " FTSMode)"
+  TABLE_TITLE_END
+  INVISIBLE_COLUMNS MaxXtalk
+  COLUMN_TITLES "Victim XNet" "Victim Drvr"
+  SORT    MaxXtalk
+  COLUMNS XNet Drvr HSOddXtalk HSEvenXtalk LSOddXtalk LSEvenXtalk Group MaxXtalk
+  ROWS    Group
+  TABEND
+  PRINTLN ""
+LOOPEND
+
+TABLE
+TABLE_TITLE
+  PRINT "Stimulus Data Per Xnet"
+TABLE_TITLE_END
+SORT    XNet
+COLUMNS XNet ClockFrequency ClockDutyCycle CycleCount
+ROWS    XNet
+TABEND
+
+PRINTLN ""
+
+PRINTLN "*********************************************************************"
+PRINTLN "Simulation Preferences"
+PRINTLN "---------------------------------------------------------------------"
+PRINTLN "  Variable                   Value"
+PRINTLN "  ------------------------   ---------------"
+PRINT   "  Percent Manhattan          "
+PRINTLN MhtPercent
+PRINT   "  Default Impedance          "
+PRINTLN DefImp
+PRINT   "  Default Prop Velocity      "
+PRINTLN DefPropVel
+PRINT   "  Geometry Window            "
+PRINTLN GeomWin
+PRINT   "  Minimum Coupled Length     "
+PRINTLN MinCoupledLength
+PRINT   "  Min Neighbor Capacitance   "
+PRINTLN MinNeighborCap
+PRINT   "  Cutoff Frequency           "
+PRINTLN CutoffFreq
+PRINT   "  Pulse Clock Frequency      "
+PRINTLN ClockFrequency
+PRINT   "  Pulse Duty Cycle           "
+PRINTLN ClockDutyCycle
+PRINT   "  Pulse Step Offset          "
+PRINTLN Offset
+PRINT   "  Reflection Simulation Type "
+PRINTLN ReflSimType
+PRINT   "  Pulse Cycle Count          "
+PRINTLN CycleCount
+PRINT   "  Simulator Used             "
+PRINTLN SelectedSimulator
+PRINTLN ""
+
+
+PRINTLN "*********************************************************************"
+PRINTLN "Number of Simulations Performed"
+PRINTLN "---------------------------------------------------------------------"
+PRINT   "  Total Simulations:         "
+PRINTLN TotalSimCount
+PRINTLN "---------------------------------------------------------------------"
+PRINTLN ""
+
+END
+
+
+################################################################################
+### Xtalk Report(s)
+################################################################################
+NAME    "XtalkAllNeighbors"
+VERSION 1.0
+TITLE   "Standard Crosstalk Report Sorted By Worst Case Crosstalk"
+
+HEADER
+
+FOREACH FTSMode
+  TABLE
+  TABLE_TITLE
+    PRINT "All Neighbors Crosstalk at Receivers ("
+    PRINT NoiseVUnits
+    PRINT ") ("
+    PRINT FTSMode
+    PRINT " FTSMode)"
+  TABLE_TITLE_END
+  INVISIBLE_COLUMNS MaxXtalk
+  COLUMN_TITLES "Victim XNet" "Victim Drvr" "Victim Rcvr"
+  SORT    MaxXtalk
+  COLUMNS XNet Drvr Rcvr HSOddXtalk HSEvenXtalk LSOddXtalk LSEvenXtalk MaxXtalk
+  ROWS    Rcvr
+  TABEND
+  PRINTLN ""
+LOOPEND
+
+FOREACH FTSMode
+  TABLE
+  TABLE_TITLE
+    PRINT "Driver I/O Characteristics ("
+    PRINT FTSMode
+    PRINT " FTSMode) RiseSlew/FallSlew in ("
+    PRINT NoiseVUnits
+    PRINT "/"
+    PRINT DlyUnits
+    PRINT ")"
+  TABLE_TITLE_END
+  SHOW_TABLE_UNITS
+  COLUMNS Drvr Device IOModel Volmax Vohmin RiseSlew FallSlew JTemp DiffPairMate
+  ROWS    Drvr
+  TABEND
+  PRINTLN ""
+LOOPEND
+
+TABLE
+TABLE_TITLE
+  PRINT "Load I/O Characteristics:"
+TABLE_TITLE_END
+SHOW_TABLE_UNITS
+COLUMNS Rcvr Device IOModel Vilmax Vihmin DiffPairMate
+ROWS    Rcvr
+TABEND
+
+PRINTLN ""
+
+TABLE
+TABLE_TITLE
+  PRINT "Stimulus Data Per Xnet"
+TABLE_TITLE_END
+SORT    XNet
+COLUMNS XNet ClockFrequency ClockDutyCycle CycleCount
+ROWS    XNet
+TABEND
+
+PRINTLN ""
+
+PRINTLN "*********************************************************************"
+PRINTLN "Simulation Preferences"
+PRINTLN "---------------------------------------------------------------------"
+PRINTLN "  Variable                   Value"
+PRINTLN "  ------------------------   ---------------"
+PRINT   "  Percent Manhattan          "
+PRINTLN MhtPercent
+PRINT   "  Default Impedance          "
+PRINTLN DefImp
+PRINT   "  Default Prop Velocity      "
+PRINTLN DefPropVel
+PRINT   "  Geometry Window            "
+PRINTLN GeomWin
+PRINT   "  Minimum Coupled Length     "
+PRINTLN MinCoupledLength
+PRINT   "  Min Neighbor Capacitance   "
+PRINTLN MinNeighborCap
+PRINT   "  Cutoff Frequency           "
+PRINTLN CutoffFreq
+PRINT   "  Pulse Clock Frequency      "
+PRINTLN ClockFrequency
+PRINT   "  Pulse Duty Cycle           "
+PRINTLN ClockDutyCycle
+PRINT   "  Pulse Step Offset          "
+PRINTLN Offset
+PRINT   "  Reflection Simulation Type "
+PRINTLN ReflSimType
+PRINT   "  Pulse Cycle Count          "
+PRINTLN CycleCount
+PRINT   "  Simulator Used             "
+PRINTLN SelectedSimulator
+PRINTLN ""
+
+
+PRINTLN "*********************************************************************"
+PRINTLN "Number of Simulations Performed"
+PRINTLN "---------------------------------------------------------------------"
+PRINT   "  Total Simulations:         "
+PRINTLN TotalSimCount
+PRINTLN "---------------------------------------------------------------------"
+PRINTLN ""
+
+ABBREVS
+PRINTLN ""
+
+PRINTLN "*********************************************************************"
+PRINTLN "Net name syntax"
+PRINTLN "---------------------------------------------------------------------"
+PRINTLN "   Net:  <design name> <net name>"
+PRINTLN "  XNet:  <number of nets> <design name> <first net name>"
+PRINTLN "---------------------------------------------------------------------"
+
+END
+
+
+################################################################################
+################################################################################
+NAME    "XtalkEachNeighbor"
+VERSION 1.0
+TITLE   "Standard Crosstalk Report Sorted By Worst Case Crosstalk"
+
+HEADER
+
+FOREACH FTSMode
+  TABLE
+  TABLE_TITLE
+    PRINT "Single Neighbor Crosstalk at Receivers ("
+    PRINT NoiseVUnits
+    PRINT ") ("
+    PRINT FTSMode
+    PRINT " FTSMode)"
+  TABLE_TITLE_END
+  INVISIBLE_COLUMNS MaxXtalk
+  COLUMN_TITLES "Victim XNet" "Victim Drvr" "Victim Rcvr" "DEFAULT" "DEFAULT"
+                "DEFAULT" "DEFAULT" "Aggr XNet" "Aggr Drvr"
+  COLUMNS XNet Drvr Rcvr HSOddXtalk HSEvenXtalk LSOddXtalk LSEvenXtalk
+          NXNet NDrvr MaxXtalk
+  ROWS    NDrvr
+  GROUP   XNet
+  SORT    MaxXtalk
+  TABEND
+
+  PRINTLN ""
+LOOPEND
+
+FOREACH FTSMode
+  TABLE
+  TABLE_TITLE
+    PRINT "Driver I/O Characteristics ("
+    PRINT FTSMode
+    PRINT " FTSMode) RiseSlew/FallSlew in ("
+    PRINT NoiseVUnits
+    PRINT "/"
+    PRINT DlyUnits
+    PRINT ")"
+  TABLE_TITLE_END
+  SHOW_TABLE_UNITS
+  COLUMNS Drvr Device IOModel Volmax Vohmin RiseSlew FallSlew JTemp DiffPairMate
+  ROWS    Drvr
+  TABEND
+
+  PRINTLN ""
+LOOPEND
+
+TABLE
+TABLE_TITLE
+  PRINT "Load I/O Characteristics:"
+TABLE_TITLE_END
+SHOW_TABLE_UNITS
+COLUMNS Rcvr Device IOModel Vilmax Vihmin DiffPairMate
+ROWS    Rcvr
+TABEND
+
+PRINTLN ""
+
+TABLE
+TABLE_TITLE
+  PRINT "Stimulus Data Per Xnet"
+TABLE_TITLE_END
+SORT    XNet
+COLUMNS XNet ClockFrequency ClockDutyCycle CycleCount
+ROWS    XNet
+TABEND
+
+PRINTLN ""
+
+PRINTLN "*********************************************************************"
+PRINTLN "Simulation Preferences"
+PRINTLN "---------------------------------------------------------------------"
+PRINTLN "  Variable                   Value"
+PRINTLN "  ------------------------   ---------------"
+PRINT   "  Percent Manhattan          "
+PRINTLN MhtPercent
+PRINT   "  Default Impedance          "
+PRINTLN DefImp
+PRINT   "  Default Prop Velocity      "
+PRINTLN DefPropVel
+PRINT   "  Geometry Window            "
+PRINTLN GeomWin
+PRINT   "  Minimum Coupled Length     "
+PRINTLN MinCoupledLength
+PRINT   "  Min Neighbor Capacitance   "
+PRINTLN MinNeighborCap
+PRINT   "  Cutoff Frequency           "
+PRINTLN CutoffFreq
+PRINT   "  Pulse Clock Frequency      "
+PRINTLN ClockFrequency
+PRINT   "  Pulse Duty Cycle           "
+PRINTLN ClockDutyCycle
+PRINT   "  Pulse Step Offset          "
+PRINTLN Offset
+PRINT   "  Reflection Simulation Type "
+PRINTLN ReflSimType
+PRINT   "  Pulse Cycle Count          "
+PRINTLN CycleCount
+PRINT   "  Simulator Used             "
+PRINTLN SelectedSimulator
+PRINTLN ""
+
+
+PRINTLN "*********************************************************************"
+PRINTLN "Number of Simulations Performed"
+PRINTLN "---------------------------------------------------------------------"
+PRINT   "  Total Simulations:         "
+PRINTLN TotalSimCount
+PRINTLN "---------------------------------------------------------------------"
+PRINTLN ""
+
+ABBREVS
+PRINTLN ""
+
+PRINTLN "*********************************************************************"
+PRINTLN "Net name syntax"
+PRINTLN "---------------------------------------------------------------------"
+PRINTLN "   Net:  <design name> <net name>"
+PRINTLN "  XNet:  <number of nets> <design name> <first net name>"
+PRINTLN "---------------------------------------------------------------------"
+
+END
+
+
+################################################################################
+################################################################################
+NAME    "XtalkGroup"
+VERSION 1.0
+TITLE   "Standard Crosstalk Report Sorted By Worst Case Crosstalk"
+
+HEADER
+
+FOREACH FTSMode
+  TABLE
+  TABLE_TITLE
+    PRINT "Timing Windows Neighbor Group Crosstalk at Receivers ("
+    PRINT NoiseVUnits
+    PRINT ") ("
+    PRINT FTSMode
+    PRINT " FTSMode)"
+  TABLE_TITLE_END
+  INVISIBLE_COLUMNS MaxXtalk
+  COLUMN_TITLES "Victim XNet" "Victim Drvr" "Victim Rcvr"
+  COLUMNS XNet Drvr Rcvr HSOddXtalk HSEvenXtalk LSOddXtalk LSEvenXtalk
+          Group MaxXtalk
+  ROWS    Group
+  SORT    MaxXtalk
+  TABEND
+
+  PRINTLN ""
+LOOPEND
+
+FOREACH FTSMode
+  TABLE
+  TABLE_TITLE
+    PRINT "Driver I/O Characteristics ("
+    PRINT FTSMode
+    PRINT " FTSMode) RiseSlew/FallSlew in ("
+    PRINT NoiseVUnits
+    PRINT "/"
+    PRINT DlyUnits
+    PRINT ")"
+  TABLE_TITLE_END
+  SHOW_TABLE_UNITS
+  COLUMNS Drvr Device IOModel Volmax Vohmin RiseSlew FallSlew JTemp DiffPairMate
+  ROWS    Drvr
+  TABEND
+
+  PRINTLN ""
+LOOPEND
+
+TABLE
+TABLE_TITLE
+  PRINT "Load I/O Characteristics:"
+TABLE_TITLE_END
+SHOW_TABLE_UNITS
+COLUMNS Rcvr Device IOModel Vilmax Vihmin DiffPairMate
+ROWS    Rcvr
+TABEND
+
+PRINTLN ""
+
+TABLE
+TABLE_TITLE
+  PRINT "Stimulus Data Per Xnet"
+TABLE_TITLE_END
+SORT    XNet
+COLUMNS XNet ClockFrequency ClockDutyCycle CycleCount
+ROWS    XNet
+TABEND
+
+PRINTLN ""
+
+PRINTLN "*********************************************************************"
+PRINTLN "Simulation Preferences"
+PRINTLN "---------------------------------------------------------------------"
+PRINTLN "  Variable                   Value"
+PRINTLN "  ------------------------   ---------------"
+PRINT   "  Percent Manhattan          "
+PRINTLN MhtPercent
+PRINT   "  Default Impedance          "
+PRINTLN DefImp
+PRINT   "  Default Prop Velocity      "
+PRINTLN DefPropVel
+PRINT   "  Geometry Window            "
+PRINTLN GeomWin
+PRINT   "  Minimum Coupled Length     "
+PRINTLN MinCoupledLength
+PRINT   "  Min Neighbor Capacitance   "
+PRINTLN MinNeighborCap
+PRINT   "  Cutoff Frequency           "
+PRINTLN CutoffFreq
+PRINT   "  Pulse Clock Frequency      "
+PRINTLN ClockFrequency
+PRINT   "  Pulse Duty Cycle           "
+PRINTLN ClockDutyCycle
+PRINT   "  Pulse Step Offset          "
+PRINTLN Offset
+PRINT   "  Reflection Simulation Type "
+PRINTLN ReflSimType
+PRINT   "  Pulse Cycle Count          "
+PRINTLN CycleCount
+PRINT   "  Simulator Used             "
+PRINTLN SelectedSimulator
+PRINTLN ""
+
+
+PRINTLN "*********************************************************************"
+PRINTLN "Number of Simulations Performed"
+PRINTLN "---------------------------------------------------------------------"
+PRINT   "  Total Simulations:         "
+PRINTLN TotalSimCount
+PRINTLN "---------------------------------------------------------------------"
+PRINTLN ""
+
+ABBREVS
+PRINTLN ""
+
+PRINTLN "*********************************************************************"
+PRINTLN "Net name syntax"
+PRINTLN "---------------------------------------------------------------------"
+PRINTLN "   Net:  <design name> <net name>"
+PRINTLN "  XNet:  <number of nets> <design name> <first net name>"
+PRINTLN "---------------------------------------------------------------------"
+
+END
+
+
+###########################################################################
+### Standard Parasitics Report
+###########################################################################
+NAME    "Parasitics"
+VERSION 1.0
+TITLE   "Standard Parasitics Report"
+
+HEADER
+
+### First output the total parasitics for each XNet.
+###
+TABLE
+TABLE_TITLE
+  PRINT "XNet Parasitics"
+TABLE_TITLE_END
+SORT     XNet
+COLUMNS  XNet MinImpedance MaxImpedance Capacitance Inductance Resistance 
+ROWS     XNet
+TABEND
+
+PRINTLN ""
+
+### Next output the parasitics for each Net on each XNet.
+###
+FOREACH XNet
+  TABLE
+  TABLE_TITLE
+    PRINT "Net Parasitics for XNet '"
+    PRINT XNet
+    PRINT "'"
+  TABLE_TITLE_END
+  COLUMNS  Net MinImpedance MaxImpedance Capacitance Inductance Resistance 
+  ROWS     Net
+  SORT     Net
+  TABEND
+
+  PRINTLN ""
+LOOPEND
+
+
+PRINTLN "*********************************************************************"
+PRINTLN "Number of Simulations Performed"
+PRINTLN "---------------------------------------------------------------------"
+PRINT   "  Total Simulations:         "
+PRINTLN TotalSimCount
+PRINTLN "---------------------------------------------------------------------"
+PRINTLN ""
+
+PRINTLN "******************************************************************"
+PRINTLN "Net capacitance is interconnect self capacitance including traces"
+PRINTLN "and vias"
+PRINTLN "Net inductance and resistance for 2 pins net only, otherwise"
+PRINTLN "Not Applicable (NA)"
+PRINTLN "******************************************************************"
+
+END
+
+
+################################################################################
+### Standard Segment Crosstalk Report(s)
+################################################################################
+NAME    "SegmentXtalkAllNeighbors"
+VERSION 1.0
+TITLE   "Standard Segment Crosstalk Report"
+
+HEADER
+
+### Output the total RSS estimated crosstalk for each XNet.
+###
+TABLE
+TABLE_TITLE
+  PRINT "All Neighbor Segment Crosstalk RSS ("
+  PRINT NoiseVUnits
+  PRINT ")"
+TABLE_TITLE_END
+COLUMNS XNet EstXtalk
+ROWS    XNet
+SORT    EstXtalk
+TABEND
+
+PRINTLN ""
+
+PRINTLN "*********************************************************************"
+PRINTLN "Report Preferences"
+PRINTLN "---------------------------------------------------------------------"
+PRINTLN "  Variable                   Value"
+PRINTLN "  ------------------------   ---------------"
+PRINT   "  Same Net Xtalk Enabled     "
+PRINTLN SameNetXtalkEnabled
+PRINTLN ""
+PRINTLN ""
+
+
+PRINTLN "*********************************************************************"
+PRINTLN "Number of Simulations Performed"
+PRINTLN "---------------------------------------------------------------------"
+PRINT   "  Total Simulations:         "
+PRINTLN TotalSimCount
+PRINTLN "---------------------------------------------------------------------"
+PRINTLN ""
+
+END
+
+################################################################################
+################################################################################
+NAME    "SegmentXtalkEachNeighbor"
+VERSION 1.0
+TITLE   "Standard Segment Crosstalk Report"
+
+HEADER
+
+### First output the total estimated crosstalk for each XNet.
+###
+TABLE
+TABLE_TITLE
+  PRINT "Segment Crosstalk ("
+  PRINT NoiseVUnits
+  PRINT ")"
+TABLE_TITLE_END
+COLUMN_TITLES "Victim" "DEFAULT" "Layer:Layer" "DEFAULT" "DEFAULT" "DEFAULT" "SegXtalk"
+COLUMNS       XNet Aggressor Layers XYCoord Gap Length EstXtalk
+ROWS          Segment
+GROUP         XNet Aggressor 
+SORT          EstXtalk 
+TABEND
+PRINTLN ""
+PRINTLN ""
+
+
+PRINTLN "*********************************************************************"
+PRINTLN "Number of Simulations Performed"
+PRINTLN "---------------------------------------------------------------------"
+PRINT   "  Total Simulations:         "
+PRINTLN TotalSimCount
+PRINTLN "---------------------------------------------------------------------"
+PRINTLN ""
+
+END
+
+################################################################################
+################################################################################
+NAME    "XtalkEstimatedGroup"
+VERSION 1.0
+TITLE   "Standard Estimated Crosstalk Report"
+
+HEADER
+
+### First output the total estimated crosstalk for each XNet.
+###
+TABLE
+TABLE_TITLE
+  PRINT "Timing Windows Neighbor Group Estimated Crosstalk ("
+  PRINT NoiseVUnits
+  PRINT ")"
+TABLE_TITLE_END
+COLUMN_TITLES "Victim" "DEFAULT" "DEFAULT"
+COLUMNS       XNet EstXtalk
+ROWS          XNet
+SORT          EstXtalk
+TABEND
+PRINTLN ""
+PRINTLN ""
+
+PRINTLN "*********************************************************************"
+PRINTLN "Number of Simulations Performed"
+PRINTLN "---------------------------------------------------------------------"
+PRINT   "  Total Simulations:         "
+PRINTLN TotalSimCount
+PRINTLN "---------------------------------------------------------------------"
+PRINTLN ""
+
+END
+
+
+################################################################################
+### Single Net EMI Summary Report
+################################################################################
+NAME    "SingleNetEMISummary"
+VERSION 1.0
+TITLE   "Single Net Emissions Report"
+ 
+HEADER
+ 
+FOREACH FTSMode
+  TABLE
+  TABLE_TITLE
+    PRINT "Voltage ("
+    PRINT VoltUnits
+    PRINT "), Time ("
+    PRINT DlyUnits
+    PRINT "), Emission ("
+    PRINT "dBuV/m"
+    PRINT "), ("
+    PRINT FTSMode
+    PRINT " FTSMode)"
+  TABLE_TITLE_END
+  SORT    XNet
+  COLUMNS XNet Drvr ClockFrequency VoltageSwing RiseTime PeakEmission PeakFrequency
+	  EMIStatus
+  ROWS    Drvr
+  TABEND
+
+  PRINTLN ""
+ 
+LOOPEND
+
+TABLE
+TABLE_TITLE
+  PRINT "Stimulus Data Per Xnet"
+TABLE_TITLE_END
+SORT    XNet
+COLUMNS XNet ClockFrequency ClockDutyCycle
+ROWS    XNet
+TABEND
+
+PRINTLN ""
+
+PRINTLN "*********************************************************************"
+PRINTLN "Simulation Preferences"
+PRINTLN "---------------------------------------------------------------------"
+PRINTLN "  Variable                   Value"
+PRINTLN "  ------------------------   ---------------"
+PRINT   "  Pulse Clock Frequency      "
+PRINTLN ClockFrequency
+PRINT   "  Pulse Duty Cycle           "
+PRINTLN ClockDutyCycle
+PRINT   "  Pulse Step Offset          "
+PRINTLN Offset
+PRINT   "  Pulse Cycle Count          "
+PRINTLN CycleCount
+PRINT   "  EMI Regulation             "
+PRINTLN EMISRegulationOptions
+PRINT   "  Design Margin              "
+PRINTLN EMISDesignMargin
+PRINT   "  Analysis Distance          "
+PRINTLN EMISAnalysisDistance
+PRINT   "  PlaneShielding             "
+PRINTLN EMISPlaneShielding
+PRINT   "  Emulate OATS               "
+PRINTLN EMISOATSEmulate
+PRINTLN ""
+PRINTLN ""
+
+
+PRINTLN "*********************************************************************"
+PRINTLN "Number of Simulations Performed"
+PRINTLN "---------------------------------------------------------------------"
+PRINT   "  Total Simulations:         "
+PRINTLN TotalSimCount
+PRINTLN "---------------------------------------------------------------------"
+PRINTLN ""
+
+END
+
+

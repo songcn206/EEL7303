@@ -1,0 +1,161 @@
+####################################################################################
+#       Cadence Design Systems                                                     #
+#                                                                                  #
+# (C) COPYRIGHT, Cadence Design Systems, Inc. 2010                                 #
+# All Rights Reserved                                                              #
+# Licensed Materials - Property of Cadence Design Systems                          #
+#                                                                                  #
+# No part of this file may be reproduced, stored in a retrieval system,            #
+# or transmitted in any form or by any means --- electronic, mechanical,           #
+# photocopying, recording, or otherwise --- without prior written permission       #
+# of Cadence Design Systems, Inc.                                                  #
+#                                                                                  #
+# WARRANTY:                                                                        #
+# Use all material in this file at your own risk.  Cadence Design Systems          #
+# makes no claims about any material contained in this file.                       #
+####################################################################################
+FILE_TYPE=FORM_DEFN VERSION=2
+
+    FORM
+    FIXED
+    PORT 29 22
+    HEADER "IRDrop display"
+
+    TILE
+
+    FIELD GeneralTab
+        FLOC 1 0
+        CHECKLIST "General" "DisplayTab"
+    ENDFIELD
+
+    FIELD ColorLegendTab
+        FLOC 11 0
+        CHECKLIST "Color Legend" "DisplayTab"
+    ENDFIELD
+
+    TEXT "Analysis:" "SimModeTitle"
+        TLOC 1 3
+    ENDTEXT
+    TEXT
+        TLOC 11 3
+        INFO SimMode 28
+    ENDTEXT
+
+    TEXT "Mesh mode:" "MeshModeTitle"
+        TLOC 1 5
+    ENDTEXT
+
+    TEXT
+        TLOC 11 5
+        INFO MeshRectMode 28
+    ENDTEXT
+
+    TEXT "X size:" "MeshRectSizeXTitle"
+        TLOC 1 7
+    ENDTEXT
+
+    TEXT
+        TLOC 11 7
+        INFO MeshRectSizeX 28
+    ENDTEXT
+
+    TEXT "Y yize:" "MeshRectSizeYTitle"
+        TLOC 1 9
+    ENDTEXT
+
+    TEXT
+        TLOC 11 9
+        INFO MeshRectSizeY 28
+    ENDTEXT
+
+    TEXT "Shape:" "ShapeTitle"
+        TLOC 1 11
+    ENDTEXT
+
+    TEXT
+        TLOC 11 11
+        INFO MeshExactMode 28
+    ENDTEXT
+
+    TEXT "Review:" "ReviewTitle"
+        TLOC 1 16
+    ENDTEXT
+
+    POPUP <ReviewLayerPopIRDrop>"""".
+    FIELD ReviewLayer
+        FLOC 11 16
+        ENUMSET 15
+        OPTIONS prettyprint ownerdrawn
+        POP "ReviewLayerPopIRDrop"
+    ENDFIELD
+
+    FIELD VisEtch
+        FLOC 11 19
+        CHECKLIST "Etch"
+    ENDFIELD
+
+    FIELD VisVia
+        FLOC 17 19
+        CHECKLIST "Via"
+    ENDFIELD
+
+    FIELD VisPin
+        FLOC 23 19
+        CHECKLIST "Pin"
+    ENDFIELD
+
+    TEXT "Net:" "NetInfoTitle"
+        TLOC 1 22
+    ENDTEXT
+
+    TEXT
+        TLOC 11 22
+        INFO NetInfo 28
+    ENDTEXT
+
+    TEXT "Value:         " "ValueTitle"
+        TLOC 1 25
+    ENDTEXT
+
+    TEXT
+        TLOC 16 25
+        INFO Value 256
+    ENDTEXT
+
+    TEXT "Relative Voltage:" "RefValueTitle"
+        TLOC 1 27
+    ENDTEXT
+
+    TEXT
+        TLOC 16 27
+        INFO RefValue 256
+    ENDTEXT
+
+    TEXT "Time:" "TimeTitle"
+        TLOC 1 29
+    ENDTEXT
+
+    TEXT
+        TLOC 16 29
+        INFO Time 256
+    ENDTEXT
+
+    FIELD Custom
+        FLOC 1 3
+        MENUBUTTON "Custom" 10 3
+    ENDFIELD
+
+    GRID LegendGrid
+    FLOC 1 5
+    FSIZE 25 26
+    OPTIONS HLINES VLINES
+
+    GHEAD TOP
+        HEADSIZE 0
+    ENDGHEAD
+    GHEAD SIDE
+        HEADSIZE 0
+    ENDGHEAD
+    ENDGRID
+    ENDTILE
+ENDFORM

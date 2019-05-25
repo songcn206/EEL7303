@@ -1,0 +1,2307 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN" "http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+<html xmlns="http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>PSpice User Guide -- Analog behavioral modeling</title>
+<META NAME="Approver" CONTENT="Technical Publications">
+<META NAME="Author" CONTENT="Technical Publications">
+<META NAME="CreateDate" CONTENT="2012-08-31">
+<META NAME="CreateTime" CONTENT="1346413404">
+<META NAME="DataType" CONTENT="Manuals">
+<META NAME="Description" CONTENT="User guide for PSpice and AMS Simulator.">
+<META NAME="DocTitle" CONTENT="PSpice User Guide">
+<META NAME="DocType" CONTENT="User Guide">
+<META NAME="EdmsRelease" CONTENT="EDMS Windows-P015">
+<META NAME="FileTitle" CONTENT="Analog behavioral modeling">
+<META NAME="FileType" CONTENT="Chapter">
+<META NAME="Keyword" CONTENT="pspug">
+<META NAME="Language" CONTENT="English">
+<META NAME="ModifiedDate" CONTENT="2012-08-31">
+<META NAME="ModifiedTime" CONTENT="1346413404">
+<META NAME="NextFile" CONTENT="07digmod.html">
+<META NAME="PageCount" CONTENT="54">
+<META NAME="Platform" CONTENT="ALL">
+<META NAME="PrevFile" CONTENT="05part.html">
+<META NAME="Product" CONTENT="Allegro AMS Simulator, PSpice">
+<META NAME="ProductFamily" CONTENT="PCB Design, PCB Design">
+<META NAME="ProductVersion" CONTENT="16.6">
+<META NAME="RightsManagement" CONTENT="Copyright 2012 Cadence Design Systems Inc.">
+<META NAME="Title" CONTENT="PSpice User Guide -- Analog behavioral modeling">
+<META NAME="TopicTags" CONTENT="FALSE">
+<META NAME="Version" CONTENT="16.6">
+  </head>
+  <body style="margin-left: 5%;">
+    <a name="pagetop"></a>
+    <a name="firstpage"></a>
+    <!-- Begin Buttons -->
+    <table width="650" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td height="36" width="650" colspan="10">
+          <img src="../support/header_doc.gif" width="650" height="34">
+        </td>
+      </tr>
+      <tr>
+        <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                </td>
+<td height="20" width="73">
+<a href="pspugTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<a href="pspugIX.html"><img src="../support/nav2_index.gif" border="0"></a>
+</td>
+        <td>
+          <a href="05part.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+        </td>
+        <td>
+          <a href="07digmod.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+        </td>
+        <td height="20">
+          <a>
+<a href="pspug.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+          </a>
+        </td>
+        <td height="20" width="61">
+          <img src="../support/nav2_black.gif">
+        </td>
+        <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+        </td>
+        <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+        </td>
+        <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+        </td>
+      </tr>
+    </table>
+    <!-- End Buttons -->
+    <p>
+    <hr>
+    <p>
+      <h3>
+        <center>
+          <font >
+            <div>PSpice&#174; User Guide</div>
+            <font >
+              <div>
+            </font>
+          </font>
+        </center>
+      </h3>
+      <br>
+    </p>
+    <div>
+      <h1>6<a name="1058060">&nbsp;</a></h1>
+      <h1><a name="1058062">Analog behavioral modeling</a></h1>
+      <h2><a name="1048365">Chapter overview</a></h2>
+      <p><a name="1048367">This chapter describes how to use the Analog Behavioral Modeling </a>(ABM) feature of PSpice<sup><a name="wwfootnote_inline_141" href="#141">1</a></sup>. This chapter includes the following sections:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1048402" title="Analog behavioral modeling" name="1048371"><font color="Blue"><u>Overview of analog behavioral modeling</u></font></a><a href="#1048402" title="Analog behavioral modeling"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1048420" title="Analog behavioral modeling" name="1048375"><font color="Blue"><u>The ABM part library file</u></font></a><a href="#1048420" title="Analog behavioral modeling"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1048433" title="Analog behavioral modeling" name="1048379"><font color="Blue"><u>Placing and specifying ABM parts</u></font></a><a href="#1048433" title="Analog behavioral modeling"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1048451" title="Analog behavioral modeling" name="1048383"><font color="Blue"><u>ABM part templates</u></font></a><a href="#1048451" title="Analog behavioral modeling"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1048462" title="Analog behavioral modeling" name="1048387"><font color="Blue"><u>Control system parts</u></font></a><a href="#1048462" title="Analog behavioral modeling"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1049460" title="Analog behavioral modeling" name="1048391"><font color="Blue"><u>PSpice&#45;equivalent parts</u></font></a><a href="#1049460" title="Analog behavioral modeling"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1049841" title="Analog behavioral modeling" name="1048395"><font color="Blue"><u>Cautions and recommendations for simulation and analysis</u></font></a><a href="#1049841" title="Analog behavioral modeling"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1049906" title="Analog behavioral modeling" name="1048399"><font color="Blue"><u>Basic controlled sources</u></font></a><a href="#1049906" title="Analog behavioral modeling"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <h2><a name="1048402">Overview of analog behavioral modeling</a></h2>
+      <p><a name="1048403">You can use the Analog Behavioral Modeling (ABM) feature of </a>PSpice to make flexible descriptions of electronic components in terms of a transfer function or lookup table. In other words, a mathematical relationship is used to model a circuit segment, so you do not need to design the segment component by component.</p>
+      <p><a name="1048404">The part library contains several ABM parts that are classified as </a>either control system parts or as PSpice&#45;equivalent parts. See <a href="#1049906" title="Analog behavioral modeling"><font color="Blue"><u>Basic controlled sources</u></font></a><a href="#1049906" title="Analog behavioral modeling"></a> for an introduction to these parts, how to use them, and the difference between parts with general&#45;purpose application and parts with special&#45;purpose application.</p>
+      <p><a name="1048408">Control system parts are defined with the reference voltage preset to </a>ground so that each controlling input and output are represented by a single pin in the part. These are described in <a href="#1048462" title="Analog behavioral modeling"><font color="Blue"><u>Control system parts</u></font></a><a href="#1048462" title="Analog behavioral modeling"></a>.</p>
+      <p><a name="1048412">PSpice&#45;equivalent parts reflect the structure of the PSpice E and G </a>device types, which respond to a differential input and have double&#45;ended output. These are described in <a href="#1049460" title="Analog behavioral modeling"><font color="Blue"><u>PSpice&#45;equivalent parts</u></font></a><a href="#1049460" title="Analog behavioral modeling"></a>.</p>
+      <p><a name="1054978">You can also use the Device Equations Developer's Kit for modeling </a>of this type, but we recommend using the ABM feature wherever possible. With the Device Equations Developer's Kit, the PSpice source code is actually modified. While this is more flexible and produces faster results, it is also much more difficult to use and to troubleshoot. Also, any changes you make using the Device Equations Developer's Kit must be made to all new PSpice updates you install. </p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1054982">The Device Equations Developer's Kit is available to qualified </a>customers only. Please contact PSpice Customer Support for qualification criteria.</p>
+      <p><a name="1048417">Device models made with ABM can be used for most cases, are </a>much easier to create, and are compatible with PSpice updates.</p>
+      <h2><a name="1048420">The ABM part library file</a></h2>
+      <p><a name="1048421">The ABM part library contains the ABM components. This library </a>contains two sections.</p>
+      <p><a name="1048422">The first section has parts that you can quickly connect to form </a>control system types of circuits. These components have names like SUM, GAIN, LAPLACE, and HIPASS.</p>
+      <p><a name="1048423">The second section contains parts that are useful for more traditional </a>controlled source forms of schematic parts. These PSpice&#45;equivalent parts have names like EVALUE and GFREQ and are based on extensions to traditional PSpice E and G device types.</p>
+      <p><a name="1048424">Implement ABM components by using PSpice primitives; there is no </a>corresponding <font size="2" face="'Courier New'" color="#000000">ABM.LIB</font> model library. A few components generate multi&#45;line netlist entries, but most are implemented as single PSpice E or G device declarations. See <a href="#1048451" title="Analog behavioral modeling"><font color="Blue"><u>ABM part templates</u></font></a><a href="#1048451" title="Analog behavioral modeling"></a> for a description of PSPICETEMPLATE properties and their role in generating netlist declarations. See <a href="#1049596" title="Analog behavioral modeling"><font color="Blue"><u>Implementation of PSpice&#45;equivalent parts</u></font></a><a href="#1049596" title="Analog behavioral modeling"></a> for more information about PSpice E and G syntax.</p>
+      <h2><a name="1048433">Placing and specifying ABM parts</a></h2>
+      <p><a name="1048434">Place and connect ABM parts the same way you place other parts. </a>After you place an ABM part, you can edit the instance properties to customize the operational behavior of the part. This is equivalent to defining an ABM expression describing how inputs are transformed into outputs. The following sections describe the rules for specifying ABM expressions.</p>
+      <h3><a name="1048435">Net names and device names in ABM expressions</a></h3>
+      <p><a name="1048436">In ABM expressions, refer to signals by name. This is also </a>considerably more convenient than having to connect a wire from a pin on an ABM component to a point carrying the voltage of interest.</p>
+      <p><a name="1048437">If you used an expression such as V(2), then the referenced net (2 in </a>this case) is interpreted as the name of a local or global net. A local net is a labeled wire or bus segment in a hierarchical schematic, or a labeled offpage connector. A global net is a labeled wire or bus segment at the top level, or a global connector. </p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1048438">The name of an interface port does not extend to any </a>connected nets. To refer to a signal originating at an interface port, connect the port to an offpage connector of the desired name.</p>
+      <p><a name="1048439">OrCAD Capture recognizes these constructs in ABM expressions:</a></p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048440">V(&#60;</a><font color="#000000"><em>net name&#62;</em></font>)<br>V(&#60;<font color="#000000"><em>net name&#62;</em></font>,&#60;<font color="#000000"><em>net name&#62;</em></font>)<br>I(&#60;<font color="#000000"><em>vdevice&#62;</em></font>)</font></blockquote>
+      <p><a name="1048441">When one of these is recognized, Capture searches for &#60;</a><font color="#000000"><em>net</em></font><font color="#000000"><em>&nbsp;</em></font><font color="#000000"><em>name&#62;</em></font> or &#60;<font color="#000000"><em>vdevice&#62;</em></font> in the net name space or the device name space, respectively. Names are searched for first at the hierarchical level of the part being netlisted. If not found there, then the set of global names is searched. If the fragment is not found, then a warning is issued but Capture still outputs the resulting netlist. When a match is found, the original fragment is replaced by the fully qualified name of the net or device.</p>
+      <p><a name="1048442">For example, suppose we have a hierarchical part U1. Inside the </a>schematic representing U1 we have an ABM expression including the term V(Reference). If "Reference" is the name of a local net, then the fragment written to the netlist will be translated to V(U1_Reference). If "Reference" is the name of a global net, the corresponding netlist fragment will be V(Reference).</p>
+      <p><a name="1048443">Names of voltage sources are treated similarly. For example, an </a>expression including the term I(Vsense) will be output as I(V_U1_Vsense) if the voltage source exists locally, and as I(V_Vsense) if the voltage source exists at the top level.</p>
+      <h3><a name="1048444">Forcing the use of a global definition </a></h3>
+      <p><a name="1048445">If a net name exists both at the local hierarchical level and at the top </a>level, the search mechanism used by Capture will find the local definition. You can override this, and force Capture to use the global definition, by prefixing the name with a single quote (&#39;) character.</p>
+      <p><a name="1048446">For example, suppose there is a net called Reference both inside </a>hierarchical part U1 and at the top level. Then, the ABM fragment V(Reference) will result in V(U1_Reference) in the netlist, while the fragment V(&#39;Reference) will produce V(Reference).</p>
+      <h2><a name="1048451">ABM part templates</a></h2>
+      <p><a name="1048452">For most ABM parts, a single PSpice "E" or "G" device declaration is </a>output to the netlist per part instance. The PSPICETEMPLATE property in these cases is straightforward. For example the LOG part defines an expression variant of the E device with its output being the natural logarithm of the voltage between the input pin and ground:</p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048453">E&#94;@REFDES %out 0 VALUE { LOG(V(%in)) }</a></font></blockquote>
+      <p><a name="1048454">The fragment E&#94;@REFDES is standard. The "E" specifies a </a>PSpice&nbsp;A&#47;D controlled voltage source (E device); %in and %out are the input and output pins, respectively; VALUE is the keyword specifying the type of ABM device; and the expression inside the curly braces defines the logarithm of the input voltage.</p>
+      <p><a name="1048455">Several ABM parts produce more than one primitive PSpice</a>&nbsp;A&#47;D device per part instance. In this case, the PSPICETEMPLATE property may be quite complicated. An example is the DIFFER (differentiator) part. This is implemented as a capacitor in series with a current sensor together with an E device which outputs a voltage proportional to the current through the capacitor.</p>
+      <p><a name="1048456">The template has several unusual features: it gives rise to three </a>primitives in the PSpice&nbsp;A&#47;D netlist, and it creates a local node for the connection of the capacitor and its current&#45;sensing V device.</p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048457">C&#94;@REFDES %in $$U&#94;@REFDES 1\n</a><br>V&#94;@REFDES $$U&#94;@REFDES 0 0v\n<br>E&#94;@REFDES %out 0 VALUE {@GAIN * I(V&#94;@REFDES)}</font></blockquote>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1048458">For clarity, the template is shown on three lines although the </a>actual template is a single line.</p>
+      <p><a name="1048459">The fragments C&#94;@REFDES, V&#94;@REFDES, and E&#94;@REFDES </a>create a uniquely named capacitor, current sensing V device, and E device, respectively. The fragment $$U&#94;@REFDES creates a name suitable for use as a local node. The E device generates an output proportional to the current through the local V device.</p>
+      <h2><a name="1048462">Control system parts</a></h2>
+      <p><a name="1048463">Control system parts have single&#45;pin inputs and outputs. The </a>reference for input and output voltages is analog ground (0) from the SOURCE.OLB library. An enhancement to PSpice means these components can be connected together with no need for dummy load or input resistors.</p>
+      <p><a name="1048467">Table </a><a href="#1048474" title="Analog behavioral modeling"><font color="#0000ff"><u>6&#45;1</u></font></a> lists the control system parts, grouped by function. Also listed are characteristic properties that may be set. In the sections that follow, each part and its properties are described in more detail.</p>
+      <p align="left"><a name="1048823">&nbsp;</a></p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="420">
+        <caption>
+          <p align="left"><font color="#000000"><strong>Table 6&#45;1&nbsp; </strong></font><strong><a name="1048474">Control system parts</a>&nbsp;</strong></p>
+        </caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="96">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048482">Category</a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="96">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048484">Part </a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="120">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048486">Description</a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="108">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048488">Properties</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="5" cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1048490">Basic </a>components</p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048494">CONST</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048496">constant</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048498">VALUE</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048503">SUM</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048505">adder</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048507">&nbsp;</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048512">MULT</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048514">multiplier</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048516">&nbsp;</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048521">GAIN</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048523">gain block</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048525">GAIN</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1048530">DIFF</a></p>
+          </td>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1048532">subtractor</a></p>
+          </td>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1048534">&nbsp;</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="3" cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1048537">Limiters</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048540">LIMIT</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048542">hard limiter</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048544">LO, HI</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048549">GLIMIT</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048551">limiter with gain</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048553">LO, HI, GAIN</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1048558">SOFTLIM</a></p>
+          </td>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1048560">soft (tanh) </a>limiter</p>
+          </td>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1048562">LO, HI, GAIN</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="4" cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1048565">Chebyshev </a>filters</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048568">LOPASS</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048570">lowpass filter</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048572">FP, FS, </a>RIPPLE, STOP</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048577">HIPASS</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048579">highpass filter</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048581">FP, FS, </a>RIPPLE, STOP</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048586">BANDPASS</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048588">bandpass filter</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048590">F0, F1, F2, </a>F3, RIPPLE, STOP</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1048595">BANDREJ</a></p>
+          </td>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1048597">band reject </a>(notch) filter</p>
+          </td>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1048599">F0, F1, F2, </a>F3, RIPPLE, STOP</p>
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="2" cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1048601">Integrator </a>and<br>differentiator</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048605">INTEG</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048607">integrator</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048609">GAIN, IC</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1048614">DIFFER</a></p>
+          </td>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1048616">differentiator</a></p>
+          </td>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1048618">GAIN</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="2" cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1048620">Table </a>look&#45;ups</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048624">TABLE</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048626">lookup table</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048628">ROW1...ROW</a>5</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1048633">FTABLE</a></p>
+          </td>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1048635">frequency </a>lookup table</p>
+          </td>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1048637">ROW1...ROW</a>5</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1048639">Laplace </a>transform</p>
+          </td>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1048643">LAPLACE</a></p>
+          </td>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1048645">Laplace </a>expression</p>
+          </td>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1048647">NUM, </a>DENOM</p>
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="12" cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1048649">Math </a>functions<br>(where `x' is the input)</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048653">ABS</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048655">|x|</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048657">&nbsp;</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048662">SQRT</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048664">x</a><font color="#000000"><sup>1&#47;2</sup></font></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048666">&nbsp;</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048671">PWR</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048673">|x|</a><font color="#000000"><sup>EXP</sup></font></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048675">EXP</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048680">PWRS</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048682">x</a><font color="#000000"><sup>EXP</sup></font></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048684">EXP</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048689">LOG</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048691"><font color="#000000"><em>ln</em></font></a>(x)</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048693">&nbsp;</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048698">LOG10</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048700"><font color="#000000"><em>log</em></font></a>(x)</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048702">&nbsp;</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048707">EXP</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048709"><font color="#000000"><em>e</em></font></a><font color="#000000"><sup>x</sup></font><font color="#000000"><em> </em></font></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048711">&nbsp;</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048716">SIN</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048718"><font color="#000000"><em>sin</em></font></a>(x)</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048720">&nbsp;</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048725">COS</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048727"><font color="#000000"><em>cos</em></font></a>(x)</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048729">&nbsp;</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048734">TAN</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048736"><font color="#000000"><em>tan</em></font></a>(x)</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048738">&nbsp;</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048743">ATAN</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048745"><font color="#000000"><em>tan</em></font></a><font color="#000000"><sup>&#45;1</sup></font><font color="#000000"><em> </em></font>(x)</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048747">&nbsp;</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1048752">ARCTAN</a></p>
+          </td>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1048754"><font color="#000000"><em>tan</em></font></a><font color="#000000"><sup>&#45;1</sup></font><font color="#000000"><em> </em></font>(x)</p>
+          </td>
+          <td cellpadding="4" border="2" bordercolor="#000000" valign="top">
+            <p><a name="1048756">&nbsp;</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="8" cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048758">Expression </a>functions</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048762">ABM</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048764">no inputs, V out</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048766">EXP1...EXP4</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048770">ABM1</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048772">1 input, V out</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048774">EXP1...EXP4</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048778">ABM2</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048780">2 inputs, V out</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048782">EXP1...EXP4</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048786">ABM3</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048788">3 inputs, V out</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048790">EXP1...EXP4</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048794">ABM&#47;I</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048796">no input, I out</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048798">EXP1...EXP4</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048802">ABM1&#47;I</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048804">1 input, I out</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048806">EXP1...EXP4</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048810">ABM2&#47;I</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048812">2 inputs, I out</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048814">EXP1...EXP4</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048818">ABM3&#47;I</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048820">3 inputs, I out</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1048822">EXP1...EXP4</a></p>
+          </td>
+        </tr>
+      </table>
+      <h3><a name="1048826">Basic components</a></h3>
+      <p><a name="1048827">The basic components provide fundamental functions and in many </a>cases, do not require specifying property values. These parts are described below.</p>
+      <h4><em><a name="1048829">CONST</a></em></h4>
+      <p align="left"><a name="1048835">&nbsp;</a></p>
+      <table summary="" border="0" cellpadding="4" cellspacing="0" bordercolor="#D3D3D3" width="363">
+        <caption>
+        <tr>
+          <td cellpadding="4" valign="top" width="72">
+            <p><a name="1048832">VALUE</a></p>
+          </td>
+          <td cellpadding="4" valign="top" width="290">
+            <p><a name="1048834">constant value</a></p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1048836">The CONST part outputs the voltage specified by the VALUE </a>property. This part provides no inputs and one output.</p>
+      <h4><em><a name="1048838">SUM</a></em></h4>
+      <p><a name="1048839">The SUM part evaluates the voltages of the two input sources, adds </a>the two inputs together, then outputs the sum. This part provides two inputs and one output.</p>
+      <h4><em><a name="1048841">MULT</a></em></h4>
+      <p><a name="1048842">The MULT part evaluates the voltages of the two input sources, </a>multiplies the two together, then outputs the product. This part provides two inputs and one output.</p>
+      <h4><em><a name="1048844">GAIN</a></em></h4>
+      <p align="left"><a name="1048850">&nbsp;</a></p>
+      <table summary="" border="0" cellpadding="4" cellspacing="0" bordercolor="#D3D3D3" width="363">
+        <caption>
+        <tr>
+          <td cellpadding="4" valign="top" width="72">
+            <p><a name="1048847">GAIN</a></p>
+          </td>
+          <td cellpadding="4" valign="top" width="290">
+            <p><a name="1048849">constant gain value</a></p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1048851">The GAIN part multiplies the input by the constant specified by the </a>GAIN property, then outputs the result. This part provides one input and one output.</p>
+      <h4><em><a name="1048853">DIFF</a></em></h4>
+      <p><a name="1048854">The DIFF part evaluates the voltage difference between two inputs, </a>then outputs the result. This part provides two inputs and one output.</p>
+      <h3><a name="1048856">Limiters</a></h3>
+      <p><a name="1048857">The Limiters can be used to restrict an output to values between a </a>set of specified ranges. These parts are described below.</p>
+      <h4><em><a name="1048859">LIMIT</a></em></h4>
+      <p align="left"><a name="1048869">&nbsp;</a></p>
+      <table summary="" border="0" cellpadding="4" cellspacing="0" bordercolor="#D3D3D3" width="363">
+        <caption>
+        <tr>
+          <td cellpadding="4" valign="top" width="72">
+            <p><a name="1048862">HI</a></p>
+          </td>
+          <td cellpadding="4" valign="top" width="290">
+            <p><a name="1048864">upper limit value</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048866">LO</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048868">lower limit value</a></p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1048870">The LIMIT part constrains the output voltage to a value between an </a>upper limit (set with the HI property) and a lower limit (set with the LO property). This part takes one input and provides one output.</p>
+      <h4><em><a name="1048872">GLIMIT</a></em></h4>
+      <p align="left"><a name="1048886">&nbsp;</a></p>
+      <table summary="" border="0" cellpadding="4" cellspacing="0" bordercolor="#D3D3D3" width="363">
+        <caption>
+        <tr>
+          <td cellpadding="4" valign="top" width="72">
+            <p><a name="1048875">HI</a></p>
+          </td>
+          <td cellpadding="4" valign="top" width="290">
+            <p><a name="1048877">upper limit value</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048879">LO</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048881">lower limit value</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048883">GAIN</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048885">constant gain value</a></p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1048887">The GLIMIT part functions as a one&#45;line opamp. The gain is applied </a>to the input voltage, then the output is constrained to the limits set by the LO and HI properties. This part takes one input and provides one output.</p>
+      <h4><em><a name="1048889">SOFTLIMIT</a></em></h4>
+      <p align="left"><a name="1048907">&nbsp;</a></p>
+      <table summary="" border="0" cellpadding="4" cellspacing="0" bordercolor="#D3D3D3" width="363">
+        <caption>
+        <tr>
+          <td cellpadding="4" valign="top" width="72">
+            <p><a name="1048892">HI</a></p>
+          </td>
+          <td cellpadding="4" valign="top" width="290">
+            <p><a name="1048894">upper limit value</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048896">LO</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048898">lower limit value</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048900">GAIN</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048902">constant gain value</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048904">A, B, V, </a>TANH</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048906">internal variables used to define the </a>limiting function</p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1048908">The SOFTLIMIT part provides a limiting function much like the LIMIT </a>device, except that it uses a continuous curve limiting function, rather than a discontinuous limiting function. This part takes one input and provides one output.</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="13.333333333333332">
+              <div>&nbsp;</div>
+            </td>
+            <td width="133.33333333333331">
+              <div>
+                <nobr>
+                  <img src="images/caution.gif" alt="ParagraphBullet" border="0">
+                </nobr>
+              </div>
+            </td>
+            <td>
+              <strong><em><a name="1058424">Besides the limiters listed above, the ABM.OLB </a>consists of a legacy part, HILO. This part is in the library for backward compatibility and should not be used in your designs.</em></strong>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <h3><a name="1048910">Chebyshev filters</a></h3>
+      <p><a name="1048911">The Chebyshev filters allow filtering of the signal based on a set of </a>frequency characteristics. The output of a Chebyshev filter depends upon the analysis being performed.</p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1048912">PSpice computes the impulse response of each Chebyshev </a>filter used in a transient analysis during circuit read&#45;in. This may require considerable computing time. A message is displayed on your screen indicating that the computation is in progress.</p>
+      <p><a name="1048913">For DC and bias point, the output is simply the DC response of the </a>filter. For AC analysis, the output for each frequency is the filter response at that frequency. For transient analysis, the output is then the convolution of the past values of the input with the impulse response of the filter. These rules follow the standard method of using Fourier transforms.</p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1048914">To obtain a listing of the filter Laplace coefficients for each </a>stage, choose Setup from the Analysis menu, click on Options, and enable LIST in the Options dialog box.</p>
+      <p><a name="1048917">We recommend looking at one or more of the references cited in </a><a href="#1049737" title="Analog behavioral modeling"><font color="Blue"><u>Frequency&#45;domain device models</u></font></a><a href="#1049737" title="Analog behavioral modeling"> </a>, as well as some of the following references on analog filter design:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048919">Ghavsi, M.S. &amp; Laker, K.R., </a><font color="#000000"><em>Modern Filter Design</em></font>, Prentice&#45;Hall, 1981.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048920">Gregorian, R. &amp; Temes, G., </a><font color="#000000"><em>Analog MOS Integrated Circuits</em></font>, Wiley&#45;Interscience, 1986.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048921">Johnson, David E., </a><font color="#000000"><em>Introduction to Filter Theory</em></font>, Prentice&#45;Hall, 1976.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048922">Lindquist, Claude S., </a><font color="#000000"><em>Active Network Design with Signal </em></font><font color="#000000"><em>Filtering Applications</em></font>, Steward &amp; Sons, 1977.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048923">Stephenson, F.W. (ed), </a><font color="#000000"><em>RC Active Filter Design Handbook</em></font>, Wiley, 1985.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048924">Van Valkenburg, M.E., </a><font color="#000000"><em>Analog Filter Design</em></font>, Holt, Rinehart &amp; Winston, 1982.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048925">Williams, A.B.,</a> <font color="#000000"><em>Electronic Filter Design Handbook</em></font>, McGraw&#45;Hill, 1981.</td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1048926">Each of the Chebyshev filter parts is described in the following pages.</a></p>
+      <h4><em><a name="1048928">LOPASS</a></em></h4>
+      <p align="left"><a name="1048946">&nbsp;</a></p>
+      <table summary="" border="0" cellpadding="4" cellspacing="0" bordercolor="#D3D3D3" width="363">
+        <caption>
+        <tr>
+          <td cellpadding="4" valign="top" width="72">
+            <p><a name="1048931">FS</a></p>
+          </td>
+          <td cellpadding="4" valign="top" width="290">
+            <p><a name="1048933">stop band frequency</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048935">FP</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048937">pass band frequency</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048939">RIPPLE</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048941">pass band ripple in dB</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048943">STOP</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048945">stop band attenuation in dB</a></p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1048947">The LOPASS part is characterized by two cutoff frequencies that </a>delineate the boundaries of the filter pass band and stop band. The attenuation values, RIPPLE and STOP, define the maximum allowable attenuation in the pass band, and the minimum required attenuation in the stop band, respectively. The LOPASS part provides one input and one output.</p>
+      <p><a name="1048952">Figure </a><a href="#1051151" title="Analog behavioral modeling"><font color="#0000ff"><u>6&#45;1</u></font></a> shows an example of a LOPASS filter device. The filter provides a pass band cutoff of 800 Hz and a stop band cutoff of 1.2 kHz. The pass band ripple is 0.1 dB and the minimum stop band attenuation is 50 dB. </p>
+      <p align="left"><a name="1051056"><img src="images/06abm.11.1.1.png" width="238" height="113" alt=""></a></p>
+      <p><font color="#000000"><strong>Figure 6&#45;1&nbsp; </strong></font><strong><a name="1051151">LOPASS filter part</a>&nbsp;example</strong></p>
+      <p><a name="1051148">Assuming that the input to the filter is the voltage at net 10 and output </a>is a voltage between nets 5 and 0, this will produce a PSpice netlist declaration like this:</p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048959">ELOWPASS 5 0 CHEBYSHEV {V(10)} LP (800Hz 1.2kHz) .1dB 50dB</a></font></blockquote>
+      <h4><em><a name="1048961">HIPASS</a></em></h4>
+      <p align="left"><a name="1048979">&nbsp;</a></p>
+      <table summary="" border="0" cellpadding="4" cellspacing="0" bordercolor="#D3D3D3" width="363">
+        <caption>
+        <tr>
+          <td cellpadding="4" valign="top" width="72">
+            <p><a name="1048964">FS</a></p>
+          </td>
+          <td cellpadding="4" valign="top" width="290">
+            <p><a name="1048966">stop band frequency</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048968">FP</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048970">pass band frequency</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048972">RIPPLE</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048974">pass band ripple in dB</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048976">STOP</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048978">stop band attenuation in dB</a></p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1048980">The HIPASS part is characterized by two cutoff frequencies that </a>delineate the boundaries of the filter pass band and stop band. The attenuation values, RIPPLE and STOP, define the maximum allowable attenuation in the pass band, and the minimum required attenuation in the stop band, respectively. The HIPASS part provides one input and one output.</p>
+      <p><a name="1048984">Figure </a><a href="#1051475" title="Analog behavioral modeling"><font color="#0000ff"><u>6&#45;2</u></font></a> shows an example of a HIPASS filter device. This is a high pass filter with the pass band above 1.2 kHz and the stop band below 800 Hz. </p>
+      <p align="left"><a name="1051382"><img src="images/06abm.11.1.2.png" width="225" height="100" alt=""></a></p>
+      <p><font color="#000000"><strong>Figure 6&#45;2&nbsp; </strong></font><strong><a name="1051475">HIPASS filter part example</a></strong></p>
+      <p><a name="1051472">Again, the pass band ripple is 0.1 dB and the minimum stop band </a>attenuation is 50 dB. This will produce a PSpice netlist declaration like this:</p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048991">EHIGHPASS 5 0 CHEBYSHEV {V(10)} HP (1.2kHz 800Hz) .1dB </a>50dB</font></blockquote>
+      <h4><em><a name="1048993">BANDPASS</a></em></h4>
+      <p align="left"><a name="1049007">&nbsp;</a></p>
+      <table summary="" border="0" cellpadding="4" cellspacing="0" bordercolor="#D3D3D3" width="363">
+        <caption>
+        <tr>
+          <td cellpadding="4" valign="top" width="72">
+            <p><a name="1048996">RIPPLE</a></p>
+          </td>
+          <td cellpadding="4" valign="top" width="290">
+            <p><a name="1048998">pass band ripple in dB</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049000">STOP</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049002">stop band attenuation in dB</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049004">F0, F1, </a>F2, F3</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049006">cutoff frequencies</a></p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1049008">The BANDPASS part is characterized by four cutoff frequencies. The </a>attenuation values, RIPPLE and STOP, define the maximum allowable attenuation in the pass band, and the minimum required attenuation in the stop band, respectively. The BANDPASS part provides one input and one output.</p>
+      <p><a name="1049012">Figure </a><a href="#1051799" title="Analog behavioral modeling"><font color="#0000ff"><u>6&#45;3</u></font></a> shows an example of a BANDPASS filter device. This is a band pass filter with the pass band between 1.2 kHz and 2 kHz, and stop bands below 800 Hz and above 3 kHz. </p>
+      <p align="left"><a name="1051706"><img src="images/06abm.11.1.3.png" width="225" height="113" alt=""></a></p>
+      <p><font color="#000000"><strong>Figure 6&#45;3&nbsp; </strong></font><strong><a name="1051799">BANDPASS filter part example</a></strong></p>
+      <p><a name="1051796">The pass band ripple is 0.1 dB and the minimum stop band </a>attenuation is 50 dB. This will produce a PSpice&nbsp;A&#47;D netlist declaration like this:</p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049019">EBANDPASS 5 0 CHEBYSHEV </a><br>+ {V(10)} BP (800 1.2kHz 2kHz 3kHz) .1dB 50dB</font></blockquote>
+      <h4><em><a name="1049021">BANDREJ</a></em></h4>
+      <p align="left"><a name="1049035">&nbsp;</a></p>
+      <table summary="" border="0" cellpadding="4" cellspacing="0" bordercolor="#D3D3D3" width="363">
+        <caption>
+        <tr>
+          <td cellpadding="4" valign="top" width="72">
+            <p><a name="1049024">RIPPLE</a></p>
+          </td>
+          <td cellpadding="4" valign="top" width="290">
+            <p><a name="1049026">is the pass band ripple in dB</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049028">STOP</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049030">is the stop band attenuation in dB</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049032">F0, F1, </a>F2, F3</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049034">are the cutoff frequencies</a></p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1049036">The BANDREJ part is characterized by four cutoff frequencies. The </a>attenuation values, RIPPLE and STOP, define the maximum allowable attenuation in the pass band, and the minimum required attenuation in the stop band, respectively. The BANDREJ part provides one input and one output.</p>
+      <p><a name="1049041">Figure </a><a href="#1049046" title="Analog behavioral modeling"><font color="#0000ff"><u>6&#45;4</u></font></a> shows an example of a BANDREJ filter device. This is a band reject (or "notch") filter with the stop band between 1.2 kHz and 2 kHz, and pass bands below 800 Hz and above 3 kHz.</p>
+      <p align="left"><a name="1052030"><img src="images/06abm.11.1.4.png" width="225" height="113" alt=""></a></p>
+      <p><font color="#000000"><strong>Figure 6&#45;4&nbsp; </strong></font><strong><a name="1049046">BANDREJ filter part example</a></strong></p>
+      <p><a name="1049047">The pass band ripple is 0.1 dB and the minimum stop band </a>attenuation is 50 dB. This will produce a PSpice netlist declaration like this:</p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049048">EBREJ 5 0 CHEBYSHEV {V(10)} BR (800Hz 1.2kHz 3kHz 2kHz) </a>.1dB 50dB</font></blockquote>
+      <h3><a name="1049050">Integrator and differentiator </a></h3>
+      <p><a name="1049051">The integrator and differentiator parts are described below.</a></p>
+      <h4><em><a name="1049053">INTEG</a></em></h4>
+      <p align="left"><a name="1049063">&nbsp;</a></p>
+      <table summary="" border="0" cellpadding="4" cellspacing="0" bordercolor="#D3D3D3" width="363">
+        <caption>
+        <tr>
+          <td cellpadding="4" valign="top" width="72">
+            <p><a name="1049056">IC</a></p>
+          </td>
+          <td cellpadding="4" valign="top" width="290">
+            <p><a name="1049058">initial condition of the integrator output</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049060">GAIN</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049062">gain value</a></p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1049064">The INTEG part implements a simple integrator. A current source&#47;</a> capacitor implementation is used to provide support for setting the initial condition.</p>
+      <h4><em><a name="1049066">DIFFER</a></em></h4>
+      <p align="left"><a name="1049072">&nbsp;</a></p>
+      <table summary="" border="0" cellpadding="4" cellspacing="0" bordercolor="#D3D3D3" width="363">
+        <caption>
+        <tr>
+          <td cellpadding="4" valign="top" width="72">
+            <p><a name="1049069">GAIN</a></p>
+          </td>
+          <td cellpadding="4" valign="top" width="290">
+            <p><a name="1049071">gain value</a></p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1049073">The DIFFER part implements a simple differentiator. A voltage </a>source&#47; capacitor implementation is used. The DIFFER part provides one input and one output.</p>
+      <h3><a name="1049076">Table look&#45;up parts</a></h3>
+      <p><a name="1049077">TABLE and FTABLE parts provide a lookup table that is used to </a>correlate an input and an output based on a set of data points. These parts are described below and on the following pages.</p>
+      <h4><em><a name="1049079">TABLE</a></em></h4>
+      <p align="left"><a name="1049086">&nbsp;</a></p>
+      <table summary="" border="0" cellpadding="4" cellspacing="0" bordercolor="#D3D3D3" width="363">
+        <caption>
+        <tr>
+          <td cellpadding="4" valign="top" width="72">
+            <p><a name="1049082">ROW</a><font color="#000000"><em>n</em></font></p>
+          </td>
+          <td cellpadding="4" valign="top" width="290">
+            <p><a name="1049084">is an (input, output) pair; by default, up </a>to five triplets are allowed where <font color="#000000"><em>n</em></font>=1, 2, 3, 4, or 5</p>
+            <p><a name="1049085">If more than five values are required, </a>the part can be customized through the part editor. Insert additional row variables into the template using the same form as the first five, and add ROW<font color="#000000"><em>n</em></font> properties as needed to the list of properties.</p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1049087">The TABLE part allows the response to be defined by a table of one </a>to five values. Each row contains an input and a corresponding output value. Linear interpolation is performed between entries.</p>
+      <p><a name="1049088">For values outside the table's range, the device's output is a constant </a>with a value equal to the entry with the smallest (or largest) input. This characteristic can be used to impose an upper and lower limit on the output. The TABLE part provides one input and one output.</p>
+      <h4><em><a name="1049090">FTABLE</a></em></h4>
+      <p align="left"><a name="1049113">&nbsp;</a></p>
+      <table summary="" border="0" cellpadding="4" cellspacing="0" bordercolor="#D3D3D3" width="380">
+        <caption>
+        <tr>
+          <td cellpadding="4" valign="top" width="120">
+            <p><a name="1049093">ROW</a><font color="#000000"><em>n</em></font></p>
+          </td>
+          <td cellpadding="4" valign="top" width="260">
+            <p><a name="1049095">either an (input frequency, </a>magnitude, phase) triplet, or an (input frequency, real part, imaginary part) triplet describing a complex value; by default, up to five triplets are allowed where n=1, 2, 3, 4, or 5</p>
+            <p><a name="1049096">If more than five values are </a>required, the part can be customized through the part editor. Insert additional row variables into the template using the same form as the first five, and add ROW<font color="#000000"><em>n</em></font> properties as needed to the list of properties.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049098">DELAY</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049100">group delay increment; defaults to 0 </a>if left blank</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049102">R_I</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049104"> table type; if left blank, the </a>frequency table is interpreted in the (input frequency, magnitude, phase) format; if defined with any value (such as YES), the table is interpreted in the (input frequency, real part, imaginary part) format</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049106">MAGUNITS</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049108">units for magnitude where the value </a>can be DB (decibels) or MAG (raw magnitude); defaults to DB if left blank</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049110">PHASEUNITS</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049112">units for phase where the value can </a>be DEG (degrees) or RAD (radians); defaults to DEG if left blank</p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1049114">The FTABLE part is described by a table of frequency responses in </a>either the magnitude&#47; phase domain (R_I= ) or complex number domain (R_I=YES). The entire table is read in and converted to magnitude in dB and phase in degrees.</p>
+      <p><a name="1049115">Interpolation is performed between entries. Magnitude is interpolated </a>logarithmically; phase is interpolated linearly. For frequencies outside the table's range, 0 (zero) magnitude is used. This characteristic can be used to impose an upper and lower limit on the output.</p>
+      <p><a name="1049117">The DELAY property increases the group delay of the frequency </a>table by the specified amount. The delay term is particularly useful when a frequency table device generates a non&#45;causality warning message during a transient analysis. The warning message issues a delay value that can be assigned to the part's DELAY property for subsequent runs, without otherwise altering the table.</p>
+      <p><a name="1049118">The output of the part depends on the analysis being done. For DC </a>and bias point, the output is the zero frequency magnitude times the input voltage. For AC analysis, the input voltage is linearized around the bias point (similar to EVALUE and GVALUE parts, <a href="#1049625" title="Analog behavioral modeling"><font color="Blue"><u>Modeling mathematical or instantaneous relationships</u></font></a><a href="#1049625" title="Analog behavioral modeling"> </a>). The output for each frequency is then the input times the gain, times the value of the table at that frequency.</p>
+      <p><a name="1049122">For transient analysis, the voltage is evaluated at each time point. </a>The output is then the convolution of the past values with the impulse response of the frequency response. These rules follow the standard method of using Fourier transforms. We recommend looking at one or more of the references cited in<font color="#ff0000"> </font><a href="#1049737" title="Analog behavioral modeling"><font color="Blue"><u>Frequency&#45;domain device models</u></font></a><a href="#1049737" title="Analog behavioral modeling"></a> for more information. </p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1049126">The table's frequencies must be in order from lowest to </a>highest. The TABLE part provides one input and one output.</p>
+      <h4><em><a name="1049128">Example</a></em></h4>
+      <p><a name="1049129">A device, ELOFILT, is used as a frequency filter. The input to the </a>frequency response is the voltage at net 10. The output is a voltage across nets 5 and 0. The table describes a low pass filter with a response of 1 (0 dB) for frequencies below 5 kilohertz and a response of 0.001 (&#45;60 dB) for frequencies above 6 kilohertz. The phase lags linearly with frequency. This is the same as a constant time delay. The delay is necessary so that the impulse response is causal. That is, so that the impulse response does not have any significant components before time zero. The FTABLE part in Figure <font color="#0000ff"><u>6&#45;5</u></font> could be used.</p>
+      <p align="left"><a name="1052527"><img src="images/06abm.11.1.5.png" width="215" height="194" alt=""></a></p>
+      <p><a name="1049138">This part is characterized by the following properties:</a></p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049139">ROW1 = 0Hz</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;0<br>ROW2 = 5kHz&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&#45;5760<br>ROW3 = 6kHz&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#45;60&nbsp;&nbsp;&nbsp;&nbsp;&#45;6912<br>DELAY =<br>R_I =<br>MAGUNITS =<br>PHASEUNITS = </font></blockquote>
+      <p><a name="1049140">Since R_I, MAGUNITS, and PHASEUNITS are undefined, each table </a>entry is interpreted as containing frequency, magnitude value in dB, and phase values in degrees. Delay defaults to 0.</p>
+      <p><a name="1049141">This produces a PSpice netlist declaration like this:</a></p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049142">ELOFILT 5 0 FREQ {V(10)}</a><br>+0Hz&nbsp;&nbsp;&nbsp;&nbsp; 0 0<br>+5kHz &nbsp;&nbsp;&nbsp;&nbsp;0 &#45;5760<br>+6kHz&nbsp;&nbsp;&nbsp;&nbsp; &#45;60 &#45;6912</font></blockquote>
+      <p><a name="1049143">Since constant group delay is calculated from the values for a given </a>table entry as:</p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049144"><font color="#000000"><em>group delay</em></font></a> = <font color="#000000"><em>phase</em></font> &#47; <font color="#000000"><em>360</em></font> &#47; <font color="#000000"><em>frequency </em></font></font></blockquote>
+      <p><a name="1049145">An equivalent FTABLE instance could be defined using the DELAY </a>property. For this example, the group delay is 3.2 msec (6912 &#47; 360 &#47; 6k = 5760 &#47; 360 &#47; 6k = 3.2m). Equivalent property assignments are:</p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049146">ROW1 = 0Hz</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;0<br>ROW2 = 5kHz&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;0<br>ROW3 = 6kHz&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#45;60&nbsp;&nbsp;&nbsp;&nbsp;0<br>DELAY = 3.2ms<br>R_I = <br>MAGUNITS = <br>PHASEUNITS = </font></blockquote>
+      <p><a name="1049147">This produces a PSpice netlist declaration like this:</a></p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049148">ELOFILT 5 0 FREQ {V(10)}</a><br>+0Hz 0 0<br>+5kHz 0 0<br>+6kHz &#45;60 0<br>+DELAY=3.2ms</font></blockquote>
+      <h3><a name="1049150">Laplace transform part</a></h3>
+      <p><a name="1049151">The LAPLACE part specifies a Laplace transform which is used to </a>determine an output for each input value. </p>
+      <h4><em><a name="1049153">LAPLACE</a></em></h4>
+      <p align="left"><a name="1049163">&nbsp;</a></p>
+      <table summary="" border="0" cellpadding="4" cellspacing="0" bordercolor="#D3D3D3" width="348">
+        <caption>
+        <tr>
+          <td cellpadding="4" valign="top" width="103">
+            <p><a name="1049156">NUM</a></p>
+          </td>
+          <td cellpadding="4" valign="top" width="245">
+            <p><a name="1049158">numerator of the Laplace </a>expression</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049160">DENOM</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049162">denominator of the Laplace </a>expression</p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1049164">The LAPLACE part uses a Laplace transform description. The input </a>to the transform is a voltage. The numerator and denominator of the Laplace transform function are specified as properties for the part.</p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1049165">Voltages, currents, and TIME may not appear in a Laplace </a>transform specification. </p>
+      <p><a name="1049166">The output of the part depends on the type of analysis being done. </a>For DC and bias point, the output is the zero frequency gain times the value of the input. The zero frequency gain is the value of the Laplace transform with s=0. For AC analysis, the output is then the input times the gain times the value of the Laplace transform. The value of the Laplace transform at a frequency is calculated by substituting j&#183;<font face="symbol" color="#000000">ω</font> for s, where <font face="symbol" color="#000000">ω</font> is 2<font face="symbol" color="#000000">π</font>&#183;frequency. For transient analysis, the output is the convolution of the input waveform with the impulse response of the transform. These rules follow the standard method of using Laplace transforms.</p>
+      <h4><em><a name="1049168">Example one</a></em></h4>
+      <p><a name="1049169">The input to the Laplace transform is the voltage at net 10. The output </a>is a voltage and is applied between nets 5 and 0. For DC, the output is simply equal to the input, since the gain at s=0 is 1. The transform, 1&#47;(1+.001&#183;s), describes a simple, lossy integrator with a time constant of 1 millisecond. This can be implemented with an RC pair that has a time constant of 1 millisecond.</p>
+      <p><a name="1049170">For AC analysis, the gain is found by substituting j&#183;</a><font face="symbol" color="#000000">ω</font> for s. This gives a flat response out to a corner frequency of 1000&#47;(2<font face="symbol" color="#000000">π</font>) = 159 hertz and a roll&#45;off of 6 dB per octave after 159 Hz. There is also a phase shift centered around 159 Hz. In other words, the gain has both a real and an imaginary component. For transient analysis, the output is the convolution of the input waveform with the impulse response of 1&#47;(1+.001&#183;s). The impulse response is a decaying exponential with a time constant of 1 millisecond. This means that the output is the "lossy integral" of the input, where the loss has a time constant of 1 millisecond. The LAPLACE part shown in Figure <a href="#1049178" title="Analog behavioral modeling"><font color="#0000ff"><u>6&#45;6</u></font></a> could be used for this purpose.</p>
+      <p align="left"><a name="1052723"><img src="images/06abm.11.1.6.png" width="163" height="113" alt=""></a></p>
+      <p><font color="#000000"><strong>Figure 6&#45;6&nbsp; </strong></font><strong><a name="1049178">LAPLACE part</a></strong></p>
+      <p><a name="1049179">The transfer function is the Laplace transform (1&#47;[1+.001*s]). This </a>LAPLACE part is characterized by the following properties:</p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049180">NUM = 1</a><br>DENOM = 1 + .001*s</font></blockquote>
+      <p><a name="1049184">The gain and phase characteristics are shown in Figure </a><a href="#1049190" title="Analog behavioral modeling"><font color="#0000ff"><u>6&#45;7</u></font></a>.</p>
+      <p align="left"><a name="1052731"><img src="images/06abm.11.1.7.png" width="638" height="474" alt=""></a></p>
+      <p><font color="#000000"><strong>Figure 6&#45;7&nbsp; </strong></font><strong><a name="1049190">Viewing gain and phase characteristics of a lossy </a>integrator.</strong></p>
+      <p><a name="1049191">This produces a PSpice</a>&nbsp;netlist declaration like this: </p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049192">ERC</a>&nbsp;&nbsp;&nbsp;&nbsp;5 0 LAPLACE {V(10)} = {1&#47;(1+.001*s)}</font></blockquote>
+      <h4><em><a name="1049193">Example two</a></em></h4>
+      <p><a name="1049194">The input is V(10). The output is a current applied between nets 5 </a>and 0. The Laplace transform describes a lossy transmission line. R, L, and C are the resistance, inductance, and capacitance of the line per unit length. </p>
+      <p><a name="1049195">If R is small, the characteristic impedance of such a line is </a>Z&nbsp;=&nbsp;((R&nbsp;+&nbsp;j&#183;<font face="symbol" color="#000000">ω</font>&#183;L)&#47;(j&#183;<font face="symbol" color="#000000">ω</font>&#183;C))<font color="#000000"><sup>1&#47;2</sup></font>, the delay per unit length is ­(L&nbsp;C)<font color="#000000"><sup>1&#47;2</sup></font>, and the loss in dB per unit length is 23&#183;R&#47;Z. This could be represented by the device in Figure <a href="#1049203" title="Analog behavioral modeling"><font color="#0000ff"><u>6&#45;8</u></font></a>.</p>
+      <p align="left"><a name="1052740"><img src="images/06abm.11.1.8.png" width="250" height="100" alt=""></a></p>
+      <p><font color="#000000"><strong>Figure 6&#45;8&nbsp; </strong></font><strong><a name="1049203">LAPLACE part</a></strong></p>
+      <p><a name="1049204">The parameters R, L, and C can be defined in a .PARAM statement </a>contained in a model file. (Refer to the online <font color="#000000"><em>PSpice Reference </em></font><font color="#000000"><em>Guide</em></font> for more information about using .PARAM statements.) More useful, however, is for R, L, and C to be arguments passed into a subcircuit. This part has the following characteristics:</p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049205">NUM = EXP(&#45;SQRT(C*s*(R+L*s)))</a><br>DENOM = 1</font></blockquote>
+      <p><a name="1049206">This produces a PSpice netlist declaration like this: </a></p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049207">GLOSSY 5 0 LAPLACE {V(10)} = {exp(&#45;sqrt(C*s*(R + L*s)))}</a></font></blockquote>
+      <p><a name="1049208">The Laplace transform parts are, however, an inefficient way, in both </a>computer time and memory, to implement a delay. For ideal delays we recommend using the transmission line part instead.</p>
+      <h3><a name="1049212">Math functions</a></h3>
+      <p><a name="1049216">The ABM math function parts are shown in Table </a><a href="#1052751" title="Analog behavioral modeling"><font color="#0000ff"><u>6&#45;2</u></font></a>. Math function parts are based on the PSpice "E" device type. Each provides one or more inputs, and a mathematical function which is applied to the input. The result is output on the output net.</p>
+      <p align="left"><a name="1049279">&nbsp;</a></p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="432">
+        <caption>
+          <p align="left"><font color="#000000"><strong>Table 6&#45;2&nbsp; </strong></font><strong><a name="1052751">ABM math function parts</a></strong></p>
+        </caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="111">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1049220">For this </a>device...</strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="321">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1049222">Output is the...</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1049225">ABS</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1049227">absolute value of the input</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049230">SQRT</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049232">square root of the input</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049235">PWR</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049237">result of raising the absolute value of the </a>input to the power specified by EXP</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049240">PWRS</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049242">result of raising the (signed) input value to </a>the power specified by EXP</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049245">LOG</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049247">LOG of the input</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049250">LOG10</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049252">LOG</a><font color="#000000"><sub>10</sub></font> of the input</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049255">EXP</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049257">result of </a><font color="#000000"><em>e </em></font>raised to the power specified by the input value (<font color="#000000"><em>e</em></font><font color="#000000"><sup>x</sup></font><font color="#000000"><em> </em></font>where x is the input)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049260">SIN</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049262"><font color="#000000"><em>sin</em></font></a> of the input (where the input is in radians)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049265">COS</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049267"><font color="#000000"><em>cos</em></font></a> of the input (where the input is in radians)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049270">TAN</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049272"><font color="#000000"><em>tan</em></font></a> of the input (where the input is in radians)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1049275">ATAN,</a><br>ARCTAN</p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1049278"><font color="#000000"><em>tan</em></font></a><font color="#000000"><sup>&#45;1</sup></font><font color="#000000"><em> </em></font>of the input (where the output is in radians)</p>
+          </td>
+        </tr>
+      </table>
+      <h3><a name="1049281">ABM expression parts </a></h3>
+      <p><a name="1049285">The expression parts are shown in Table </a><a href="#1053168" title="Analog behavioral modeling"><font color="#0000ff"><u>6&#45;3</u></font></a>. These parts can be customized to perform a variety of functions depending on your requirements. Each of these parts has a set of four expression <font color="#000000"><em>building block</em></font> properties of the form:</p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049286">EXP</a><font color="#000000"><em>n</em></font></font></blockquote>
+      <p><a name="1049287">where </a><font color="#000000"><em>n</em></font> = 1, 2, 3, or 4.</p>
+      <p><a name="1049288">During netlist generation, the complete expression is formed by </a>concatenating the building block expressions in numeric order, thus defining the transfer function. Hence, the first expression fragment should be assigned to the EXP1 property, the second fragment to EXP2, and so on.</p>
+      <p><a name="1049289">Expression properties can be defined using a combination of </a>arithmetic operators and input designators. You may use any of the standard PSpice arithmetic operators (see <a href="03prepar.html#1051781" title="Preparing a design for simulation"><font color="Blue"><u>Table&nbsp;3&#45;3</u></font></a><a href="03prepar.html#1051781" title="Preparing a design for simulation"> </a>) within an expression statement. You may also use the EXP<font color="#000000"><em>n</em></font> properties as variables to represent nets or constants.</p>
+      <p align="left"><a name="1049350">&nbsp;</a></p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="372">
+        <caption>
+          <p align="left"><font color="#000000"><strong>Table 6&#45;3&nbsp; </strong></font><strong><a name="1053168">ABM</a> expression parts</strong></p>
+        </caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="144">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1049296">Part</a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="115">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1049298">Inputs</a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="113">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1049300">Output</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1049303">ABM</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1049305">none</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1049307">V</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049309">ABM1</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049311">1</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049313">V</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049315">ABM2</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049317">2</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049319">V</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049321">ABM3</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049323">3</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049325">V</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049327">ABM&#47;I</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049329">none</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049331">I</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049333">ABM1&#47;I</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049335">1</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049337">I</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049339">ABM2&#47;I</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049341">2</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049343">I</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1049345">ABM3&#47;I</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1049347">3</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1049349">I</a></p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1049351">The following examples illustrate a variety of ABM expression part </a>applications.</p>
+      <h4><em><a name="1049353">Example one</a></em></h4>
+      <p><a name="1049354">Suppose you want to set an output voltage on net 4 to 5 volts times </a>the square root of the voltage between nets 3 and 2. You could use an ABM2 part (which takes two inputs and provides a voltage output) to define a part like the one shown in Figure <a href="#1049362" title="Analog behavioral modeling"><font color="#0000ff"><u>6&#45;9</u></font></a>.</p>
+      <p align="left"><a name="1053186"><img src="images/06abm.11.1.9.png" width="350" height="120" alt=""></a></p>
+      <p><font color="#000000"><strong>Figure 6&#45;9&nbsp; </strong></font><strong><a name="1049362">ABM expression part example one.</a></strong></p>
+      <p><a name="1049363">In this example of an ABM device, the output voltage is set to 5 volts </a>times the square root of the voltage between net&nbsp;3 and net&nbsp;2. The property settings for this part are as follows:</p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049364">EXP1 = 5V *</a><br>EXP2 = SQRT(V(%IN2,%IN1))</font></blockquote>
+      <p><a name="1049365">This will produce a PSpice netlist declaration like this: </a></p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049366">ESQROOT 4 0 VALUE = {5V*SQRT(V(3,2))}</a></font></blockquote>
+      <h4><em><a name="1049367">Example two</a></em></h4>
+      <p><a name="1049368">GPSK is an oscillator for a PSK (Phase Shift Keyed) modulator. </a>Current is pumped from net 11 through the source to net 6. Its value is a sine wave with an amplitude of 15 mA and a frequency of 10 kHz. The voltage at net 3 can shift the phase of GPSK by 1 radian&#47; volt. Note the use of the TIME parameter in the EXP2 expression. This is the PSpice&nbsp;A&#47;D internal sweep variable used in transient analysis. For any analysis other than transient, TIME = 0. This could be represented with an ABM1&#47;I part (single input, current output) like the one shown in Figure <a href="#1049376" title="Analog behavioral modeling"><font color="#0000ff"><u>6&#45;10</u></font></a>.</p>
+      <p align="left"><a name="1053194"><img src="images/06abm.11.1.10.png" width="338" height="117" alt=""></a></p>
+      <p><font color="#000000"><strong>Figure 6&#45;10&nbsp; </strong></font><strong><a name="1049376">ABM expression part example</a>&nbsp;two.</strong></p>
+      <p><a name="1049377">This part is characterized by the following properties:</a></p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049378">EXP1 = 15ma * SIN(</a><br>EXP2 = 6.28*10kHz*TIME<br>EXP3 = + V(%IN))</font></blockquote>
+      <p><a name="1049379">This produces a PSpice netlist declaration like this: </a></p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049380">GPSK   11 6 VALUE = {15MA*SIN(6.28*10kHz*TIME+V(3))}</a></font></blockquote>
+      <h4><em><a name="1049381">Example three</a></em></h4>
+      <p><a name="1049382">A device, EPWR, computes the instantaneous power by multiplying </a>the voltage across nets 5 and 4 by the current through VSENSE. Sources are controlled by expressions which may contain voltages or currents or both. The ABM2 part (two inputs, voltage output) in Figure <a href="#1049390" title="Analog behavioral modeling"><font color="#0000ff"><u>6&#45;11</u></font></a> could represent this.</p>
+      <p align="left"><a name="1053204"><img src="images/06abm.11.1.11.png" width="338" height="113" alt=""></a></p>
+      <p><font color="#000000"><strong>Figure 6&#45;11&nbsp; </strong></font><strong><a name="1049390">ABM expression part example</a>&nbsp;three.</strong></p>
+      <p><a name="1049391">This part is characterized by the following properties:</a></p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049392">EXP1 = V(%IN2,%IN1) *</a><br>EXP2 = I(VSENSE)</font></blockquote>
+      <p><a name="1049393">This produces a PSpice netlist declaration like this: </a></p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049394">EPWR    3 0 VALUE = {V(5,4)*I(VSENSE)}</a></font></blockquote>
+      <h4><em><a name="1049395">Example four</a></em></h4>
+      <p><a name="1049396">The output of a component, GRATIO, is a current whose value (in </a>amps) is equal to the ratio of the voltages at nets 13 and 2. If V(2) = 0, the output depends upon V(13) as follows: </p>
+      <blockquote><a name="1049397">if V(13) = 0, output = 0 </a><br>if V(13) &#62; 0, output = MAXREAL <br>if V(13) &#60; 0, output = &#45;MAXREAL </blockquote>
+      <p><a name="1049398">where MAXREAL is a PSpice internal constant representing a very </a>large number (on the order of 1e30). In general, the result of evaluating an expression is limited to MAXREAL. This is modeled with an ABM2&#47;I (two input, current output) part like this one in <a href="#1049406" title="Analog behavioral modeling"><font color="#0000ff"><u>6&#45;12</u></font></a>.</p>
+      <p align="left"><a name="1053418"><img src="images/06abm.11.1.12.png" width="325" height="112" alt=""></a></p>
+      <p><font color="#000000"><strong>Figure 6&#45;12&nbsp; </strong></font><strong><a name="1049406">ABM expression part example</a>&nbsp;four.</strong></p>
+      <p><a name="1049407">This part is characterized by the following properties: </a></p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049408">EXP1 = V(%IN2)&#47;V(%IN1)</a></font></blockquote>
+      <p><a name="1049409">Note that output of GRATIO can be used as part of the controlling </a>function. This produces a PSpice netlist declaration like this:</p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1058182">GRATIO 2 3 VALUE = {V(13)&#47;V(2)} </a></font></blockquote>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1058183">Letting a current approach &#177;1e30 will almost certainly cause </a>convergence problems. To avoid this, use the limit function on the ratio to keep the current within reasonable limits. </p>
+      <h3><a name="1049414">An instantaneous device example: modeling a triode</a></h3>
+      <p><a name="1049415">This section provides an example of using various ABM parts to </a>model a triode vacuum tube. The schematic of the triode subcircuit is shown in Figure <a href="#1049423" title="Analog behavioral modeling"><font color="#0000ff"><u>6&#45;13</u></font></a>. </p>
+      <p align="left"><a name="1053632"><img src="images/06abm.11.1.13.png" width="675" height="307" alt=""></a></p>
+      <p><font color="#000000"><strong>Figure 6&#45;13&nbsp; </strong></font><strong><a name="1049423">Triode circuit.</a></strong></p>
+      <p><a name="1049424">Assumptions: In its main operating region, the triode's current is </a>proportional to the 3&#47;2 power of a linear combination of the grid and anode voltages: </p>
+      <blockquote><a name="1049425">ianode = k</a><font color="#000000"><sub>0</sub></font>*(v<font color="#000000"><sub>g</sub></font> + k<font color="#000000"><sub>1</sub></font>*va)<font color="#000000"><sup>1.5</sup></font> </blockquote>
+      <p><a name="1049426">For a typical triode, k</a><font color="#000000"><sub>0</sub></font> = 200e&#45;6 and k<font color="#000000"><sub>1</sub></font> = 0.12.</p>
+      <p><a name="1049427">Looking at the upper left&#45;hand portion of the schematic, notice the a </a>general&#45;purpose ABM part used to take the input voltages from anode, grid, and cathode. Assume the following associations: </p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049428">V(anode) is associated with V(%IN1) </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049429">V(grid) is associated with V(%IN2) </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049430">V(cathode) is associated with V(%IN3) </a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1049431">The expression property EXP1 then represents V(grid, cathode) and </a>the expression property EXP2 represents 0.12[V(anode, cathode)]. When the template substitution is performed, the resulting VALUE is equivalent to the following: </p>
+      <blockquote><a name="1049432">V = V(grid, cathode) + 0.12*V(anode, cathode)</a></blockquote>
+      <p><a name="1049433">The part would be defined with the following characteristics:</a></p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049434">EXP1 = V(%IN2,%IN3)+</a><br>EXP2 = 0.12*V(%IN1,%IN3)</font></blockquote>
+      <p><a name="1049435">This works for the main operating region but does not model the case </a>in which the current stays 0 when combined grid and anode voltages go negative. We can accommodate that situation as follows by adding the LIMIT part with the following characteristics:</p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049436">HI = 1E3</a><br>LO = 0</font></blockquote>
+      <p><a name="1049437">This part instance, LIMIT1, converts all negative values of v</a><font color="#000000"><sub>g</sub></font>+.12*v<font color="#000000"><sub>a</sub></font> to 0 and leaves all positive values (up to 1 kV) alone. For a more realistic model, we could have used TABLE to correctly model how the tube turns off at 0 or at small negative grid voltages.</p>
+      <p><a name="1049438">We also need to make sure that the current becomes zero when the </a>anode alone goes negative. To do this, we can use a DIFF device, (immediately below the ABM3 device) to monitor the difference between V(anode) and V(cathode), and output the difference to the TABLE part. The table translates all values at or below zero to zero, and all values greater than or equal to 30 to one. All values between 0 and 30 are linearly interpolated. The properties for the TABLE part are as follows:</p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049439">ROW1 = 0</a>&nbsp;&nbsp;&nbsp;&nbsp;0<br>ROW2 = 30&nbsp;&nbsp;&nbsp;&nbsp;1</font></blockquote>
+      <p><a name="1049440">The TABLE part is a simple one, and ensures that only a zero value </a>is output to the multiplier for negative anode voltages.</p>
+      <p><a name="1049441">The output from the TABLE part and the LIMIT part are combined at </a>the MULT multiplier part. The output of the MULT part is the product of the two input voltages. This value is then raised to the 3&#47;2 or 1.5 power using the PWR part. The exponential property of the PWR part is defined as follows:</p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049442">EXP = 1.5</a></font></blockquote>
+      <p><a name="1049443">The last major component is an ABM expression component to take </a>an input voltage and convert it into a current. The relevant ABM1&#47;I part property looks like this:</p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049444">EXP1 = 200E&#45;6 * V(%IN)</a></font></blockquote>
+      <p><a name="1049445">A final step in the model is to add device parasitics. For example, a </a>resistor can be used to give a finite output impedance. Capacitances between the grid, cathode, and anode are also needed. The lower part of the schematic in Figure <a href="#1049423" title="Analog behavioral modeling"><font color="#0000ff"><u>6&#45;13</u></font></a> shows a possible method for incorporating these effects. To complete the example, one could add a circuit which produces the family of I&#45;V curves (shown in Figure <a href="#1049456" title="Analog behavioral modeling"><font color="#0000ff"><u>6&#45;14</u></font></a>).</p>
+      <p align="left"><a name="1053846"><img src="images/06abm.11.1.14.png" width="588" height="405" alt=""></a></p>
+      <p><font color="#000000"><strong>Figure 6&#45;14&nbsp; </strong></font><strong><a name="1049456">Triode subcircuit producing a family of I&#45;V curves.</a></strong></p>
+      <h2><a name="1049460">PSpice&#45;equivalent parts</a></h2>
+      <p><a name="1049461">PSpice&#45;equivalent parts respond to a differential input and have </a>double&#45;ended output. These parts reflect the structure of PSpice&nbsp;E and G devices, thus having two pins for each controlling input and the output in the part. Table <a href="#1053903" title="Analog behavioral modeling"><font color="#0000ff"><u>6&#45;4</u></font></a> summarizes the PSpice&#45;equivalent parts available in the part library.</p>
+      <p align="left"><a name="1049588">&nbsp;</a></p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="432">
+        <caption>
+          <p align="left"><font color="#000000"><strong>Table 6&#45;4&nbsp; </strong></font><strong><a name="1053903">PSpice&#45;equivalent parts</a></strong></p>
+        </caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="108">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1049469">Category</a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="103">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1049471">Part </a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="131">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1049473">Description</a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="90">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1049475">Properties</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="6" cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1049477">Mathematical </a>expression</p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1049481">EVALUE</a></p>
+          </td>
+          <td rowspan="2" cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1049483">general purpose</a></p>
+          </td>
+          <td rowspan="2" cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1049485">EXPR</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049490">GVALUE</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049499">ESUM</a></p>
+          </td>
+          <td rowspan="4" cellpadding="4" valign="top">
+            <p><a name="1049501">special purpose</a></p>
+          </td>
+          <td rowspan="4" cellpadding="4" valign="top">
+            <p><a name="1049503">(none)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049508">GSUM</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049517">EMULT</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049526">GMULT</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="2" cellpadding="4" valign="top">
+            <p><a name="1049533">Table look&#45;up</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049536">ETABLE</a></p>
+          </td>
+          <td rowspan="2" cellpadding="4" valign="top">
+            <p><a name="1049538">general purpose</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049540">EXPR</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049545">GTABLE</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049549">TABLE</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="2" cellpadding="4" valign="top">
+            <p><a name="1049551">Frequency </a>table look&#45;up</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049555">EFREQ</a></p>
+          </td>
+          <td rowspan="2" cellpadding="4" valign="top">
+            <p><a name="1049557">general purpose</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049559">EXPR</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049564">GFREQ</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049568">TABLE</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="2" cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1049570">Laplace </a>transform</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049573">ELAPLACE</a></p>
+          </td>
+          <td rowspan="2" cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1049576">general purpose</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049578">EXPR</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1049582">GLAPLACE</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1049587">XFORM</a></p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1049589">PSpice&#45;equivalent ABM parts can be classified as either E or G </a>device types. The E part type provides a voltage output, and the G device type provides a current output. </p>
+      <p><a name="1049590">The device's transfer function can contain any mixture of voltages </a>and currents as inputs. Hence, there is no longer a division between voltage&#45;controlled and current&#45;controlled parts. Rather the part type is dictated only by the output requirements. If a voltage output is required, use an E part type. If a current output is necessary, use a G part type.</p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1049591">There are no equivalent "F" or "H" part types in the part library </a>because PSpice "F" and "H" devices do not support the ABM extensions.</p>
+      <p><a name="1049592">Each E or G part type in the </a><font size="2" face="'Courier New'" color="#000000">ABM.OLB</font> part file is defined by a template that provides the specifics of the transfer function. Other properties in the model definition can be edited to customize the transfer function. By default, the template cannot be modified directly choosing Properties from the Edit menu in Capture. Rather, the values for other properties (such as the expressions used in the template) are usually edited, then these values are substituted into the template. However, the part editor can be used to modify the template or designate the template as modifiable from within Capture. This way, custom parts can be created for special&#45;purpose application.</p>
+      <h3><a name="1049596">Implementation of PSpice&#45;equivalent parts</a></h3>
+      <p><a name="1049597">Although you generally use Capture to place and specify </a>PSpice&#45;equivalent ABM parts, it is useful to know the PSpice command syntax for "E" and "G" devices. This is especially true when creating custom ABM parts since part templates must adhere to PSpice syntax.</p>
+      <p><a name="1049600">The general forms for PSpice "E" and "G" extensions are:</a></p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049601">E &#60;</a><em>name&#62;</em> &#60;<em>connecting</em><em>&nbsp;</em><em>nodes</em>&#62; &#60;<em>ABM</em><em>&nbsp;</em><em>keyword&#62;</em> &#60;<em>ABM</em><em>&nbsp;</em><em>function&#62;</em></font></blockquote>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049602">G &#60;</a><em>name&#62;</em> &#60;<em>connecting</em><em>&nbsp;</em><em>nodes</em>&#62; &#60;<em>ABM</em><em>&nbsp;</em><em>keyword&#62;</em> &#60;<em>ABM</em><em>&nbsp;</em><em>function&#62;</em></font></blockquote>
+      <p><a name="1049621">where</a></p>
+      <p align="left"><a name="1053923">&nbsp;</a></p>
+      <table summary="" border="0" cellpadding="4" cellspacing="0" bordercolor="#D3D3D3" width="432">
+        <caption>
+        <tr>
+          <td cellpadding="4" valign="top" width="109">
+            <p><a name="1049605">&#60;</a><font color="#000000"><em>name</em></font>&#62;</p>
+          </td>
+          <td cellpadding="4" valign="top" width="323">
+            <p><a name="1049607">is the device name appended to the E or G </a>device type character</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049609">&#60;</a><font color="#000000"><em>connecting </em></font><font color="#000000"><em>nodes</em></font>&#62;<br></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049611">specifies the &#60;(+ </a><font color="#000000"><em>node name</em></font>, <font color="#000000"><em>&#45; node </em></font><font color="#000000"><em>name</em></font>)&#62; pair between which the device is connected</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049613">&#60;</a><font color="#000000"><em>ABM </em></font><font color="#000000"><em>keyword</em></font>&#62;</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049615">specifies the form of the transfer function to </a>be used, as one of:</p>
+            <p><a name="1049616">VALUE</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arithmetic expression<br>TABLE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lookup table<br>LAPLACE  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Laplace transform<br>FREQ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frequency response table<br>CHEBYSHEV&nbsp;&nbsp;&nbsp;Chebyshev filter characteristics</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049618">&#60;</a><font color="#000000"><em>ABM </em></font><font color="#000000"><em>function</em></font>&#62;</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049620">specifies the transfer function as a formula or </a>lookup table as required by the specified &#60;<font color="#000000"><em>ABM</em></font><font color="#000000"><em>&nbsp;</em></font><font color="#000000"><em>keyword</em></font>&#62;</p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1049622">Refer to the online </a><font color="#000000"><em>PSpice Reference Guide</em></font> for detailed information.</p>
+      <h3><a name="1049625">Modeling mathematical or instantaneous relationships</a> </h3>
+      <p><a name="1049626">The instantaneous models (using VALUE and TABLE extensions to </a>PSpice "E" and "G" devices in the part templates) enforce a direct response to the input at each moment in time. For example, the output might be equal to the square root of the input at every point in time. Such a device has no memory, or, a flat frequency response. These techniques can be used to model both linear and nonlinear responses.</p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1049627">For AC analysis, a nonlinear device is first linearized around </a>the bias point, and then the linear equivalent is used.</p>
+      <h4><a name="1049631">EVALUE and GVALUE parts</a></h4>
+      <p><a name="1049632">The EVALUE and GVALUE parts allow an instantaneous transfer </a>function to be written as a mathematical expression in standard notation. These parts take the input signal, perform the function specified by the EXPR property on the signal, and output the result on the output pins.</p>
+      <p><a name="1049633">In controlled sources, EXPR may contain constants and parameters </a>as well as voltages, currents, or time. Voltages may be either the voltage at a net, such as V(5), or the voltage across two nets, such as V(4,5). Currents must be the current through a voltage source (V device), for example, I(VSENSE). Voltage sources with a value of 0 are handy for sensing current for use in these expressions.</p>
+      <p><a name="1049634">Functions may be used in expressions, along with arithmetic </a>operators (+, &#45;, *, and &#47;) and parentheses. Available built&#45;in functions are summarized in <a href="03prepar.html#1052267" title="Preparing a design for simulation"><font color="Blue"><u>Table&nbsp;3&#45;4</u></font></a><a href="03prepar.html#1052267" title="Preparing a design for simulation"></a>.</p>
+      <p><a name="1049638">The EVALUE and GVALUE parts are defined, in part, by the following </a>properties (default values are shown):</p>
+      <blockquote><a name="1049640">&nbsp;</a>&nbsp;&nbsp;EVALUE</blockquote>
+      <blockquote>
+<blockquote>        <font color="#000000"><a name="1049641">EXPR</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;V(%IN+, %IN&#45;)</font></blockquote>
+      </blockquote>
+      <blockquote><a name="1049643">&nbsp;</a>&nbsp;&nbsp;GVALUE</blockquote>
+      <blockquote>
+<blockquote>        <font color="#000000"><a name="1049644">EXPR</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;V(%IN+, %IN&#45;)</font></blockquote>
+      </blockquote>
+      <p><a name="1049645">Sources are controlled by expressions which may contain voltages, </a>currents, or both. The following examples illustrate customized EVALUE and GVALUE parts.</p>
+      <h4><em><a name="1049647">Example 1</a></em></h4>
+      <p><a name="1049651">In the example of an EVALUE device shown in Figure </a><a href="#1049656" title="Analog behavioral modeling"><font color="#0000ff"><u>6&#45;15</u></font></a>, the output voltage is set to 5 volts times the square root of the voltage between pins %IN+ and %IN&#45;.</p>
+      <p align="left"><a name="1053924"><img src="images/06abm.11.1.15.png" width="263" height="146" alt=""></a></p>
+      <p><font color="#000000"><strong>Figure 6&#45;15&nbsp; </strong></font><strong><a name="1049656">EVALUE part example.</a></strong></p>
+      <p><a name="1049657">The property settings for this device are as follows:</a></p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049658">EXPR = 5v * SQRT(V(%IN+,%IN&#45;))</a></font></blockquote>
+      <h4><em><a name="1049660">Example 2</a></em></h4>
+      <p><a name="1049664">Consider the device in Figure </a><a href="#1049669" title="Analog behavioral modeling"><font color="#0000ff"><u>6&#45;16</u></font></a>. This device could be used as an oscillator for a PSK (Phase Shift Keyed) modulator.</p>
+      <p align="left"><a name="1053944"><img src="images/06abm.11.1.16.png" width="413" height="138" alt=""></a></p>
+      <p><font color="#000000"><strong>Figure 6&#45;16&nbsp; </strong></font><strong><a name="1049669">GVALUE part example.</a></strong></p>
+      <p><a name="1049670">A current through a source is a sine wave with an amplitude of 15 mA </a>and a frequency of 10 kHz. The voltage at the input pin can shift the phase by 1 radian&#47;volt. Note the use of the TIME parameter in this expression. This is the PSpice internal sweep variable used in transient analyses. For any analysis other than transient, TIME = 0. The relevant property settings for this device are shown below:</p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049671">EXPR = 15ma*SIN(6.28*10kHz*TIME+V(%IN+,%IN&#45;))</a></font></blockquote>
+      <h4><a name="1049677">EMULT, GMULT, ESUM, and GSUM</a></h4>
+      <p><a name="1049678">The EMULT and GMULT parts provide output which is based on the </a>product of two input sources. The ESUM and GSUM parts provide output which is based on the sum of two input sources. The complete transfer function may also include other mathematical expressions.</p>
+      <h4><em><a name="1049680">Example 1</a></em></h4>
+      <p><a name="1049684">Consider the device in Figure </a><a href="#1049689" title="Analog behavioral modeling"><font color="#0000ff"><u>6&#45;17</u></font></a>. This device computes the instantaneous power through resistor VSENSE by multiplying the current through VSENSE (converted to voltage by H1) by the voltage across VSENSE.</p>
+      <p align="left"><a name="1053968"><img src="images/06abm.11.1.17.png" width="313" height="212" alt=""></a></p>
+      <p><font color="#000000"><strong>Figure 6&#45;17&nbsp; </strong></font><strong><a name="1049689">EMULT part example.</a></strong></p>
+      <p><a name="1049690">This device's behavior is built&#45;in to the PSPICETEMPLATE property </a>as follows (appears on one line):</p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049691">TEMPLATE=E&#94;@REFDES %OUT+ %OUT&#45; VALUE {V(%IN1+,%IN1&#45;)</a><br>&nbsp;&nbsp;&nbsp;&nbsp;*V(%IN2+,%IN2&#45;)}</font></blockquote>
+      <p><a name="1049693">You can use the part editor to change the characteristics of the </a>template to accommodate additional mathematical functions, or to change the nature of the transfer function itself. For example, you may want to create a voltage divider, rather than a multiplier. This is illustrated in the following example.</p>
+      <h4><em><a name="1049694">Example 2</a></em></h4>
+      <p><a name="1049698">Consider the device in Figure </a><a href="#1049703" title="Analog behavioral modeling"><font color="#0000ff"><u>6&#45;18</u></font></a>.</p>
+      <p align="left"><a name="1053983"><img src="images/06abm.11.1.18.png" width="663" height="225" alt=""></a></p>
+      <p><font color="#000000"><strong>Figure 6&#45;18&nbsp; </strong></font><strong><a name="1049703">GMULT part example.</a></strong></p>
+      <p><a name="1049705">With this device, the output is a current is equal to the ratio of the </a>voltages at input pins 1 and input pins 2. If V(%IN2+, %IN2&#45;) = 0, the output depends upon V(%IN1+, %IN1&#45;) as follows:</p>
+      <blockquote><a name="1049706">if V(%IN1+, %IN1&#45;) = 0, output = 0</a><br>if V(%IN1+, %IN1&#45;) &#62; 0, output = MAXREAL<br>if V(%IN1+, %IN1&#45;) &#60; 0, output = &#45;MAXREAL</blockquote>
+      <p><a name="1049707">where MAXREAL is a PSpice internal constant representing a very </a>large number (on the order of 1e30). In general, the result of evaluating an expression is limited to MAXREAL. Note that the output of the part can also be used as part of the controlling function. </p>
+      <p><a name="1049708">To create this device, you would first make a new part, GDIV, based </a>on the GMULT part. Edit the GDIV template to divide the two input values rather than multiply them. </p>
+      <h3><a name="1049712">Lookup tables (ETABLE and GTABLE)</a></h3>
+      <p><a name="1049713">The ETABLE and GTABLE parts use a transfer function described by </a>a table. These device models are well suited for use with measured data.</p>
+      <p><a name="1049714">The ETABLE and GTABLE parts are defined in part by the following </a>properties (default values are shown):</p>
+      <blockquote><a name="1049716">ETABLE</a></blockquote>
+      <blockquote>
+<blockquote>        <font color="#000000"><a name="1049717">TABLE</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(&#45;15, &#45;15), (15,15)<br>EXPR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;V(%IN+, %IN&#45;)</font></blockquote>
+      </blockquote>
+      <blockquote><a name="1049719">GTABLE</a></blockquote>
+      <blockquote>
+<blockquote>        <font color="#000000"><a name="1049720">TABLE</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(&#45;15, &#45;15), (15,15)<br>EXPR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;V(%IN+, %IN&#45;)</font></blockquote>
+      </blockquote>
+      <p><a name="1049721">First, EXPR is evaluated, and that value is used to look up an entry </a>in the table. EXPR is a function of the input (current or voltage) and follows the same rules as for VALUE expressions.</p>
+      <p><a name="1049722">The table consists of pairs of values, the first of which is an input, and </a>the second of which is the corresponding output. Linear interpolation is performed between entries. For values of EXPR outside the table's range, the device's output is a constant with a value equal to the entry with the smallest (or largest) input. This characteristic can be used to impose an upper and lower limit on the output.</p>
+      <p><a name="1049723">An example of a table declaration (using the TABLE property) would </a>be the following:</p>
+      <p>
+        <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049724">TABLE =</a></font>
+      </p>
+      <p>
+        <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049725">+ (0, 0) (.02, 2.690E&#45;03) (.04, 4.102E&#45;03) (.06, 4.621E&#45;03)</a></font>
+      </p>
+      <p>
+        <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049726">+ (.08, 4.460E&#45;03) (.10, 3.860E&#45;03) (.12, 3.079E&#45;03) (.14,</a><br>+ 2.327E&#45;03)</font>
+      </p>
+      <p>
+        <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049727">+ (.16, 1.726E&#45;03) (.18, 1.308E&#45;03) (.20, 1.042E&#45;03) (.22,</a><br>+ 8.734E&#45;04)</font>
+      </p>
+      <p>
+        <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049728">+ (.24, 7.544E&#45;04) (.26, 6.566E&#45;04) (.28, 5.718E&#45;04) (.30,</a><br>+ 5.013E&#45;04)</font>
+      </p>
+      <p>
+        <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049729">+ (.32, 4.464E&#45;04) (.34, 4.053E&#45;04) (.36, 3.781E&#45;04) (.38,</a><br>+ 3.744E&#45;04)</font>
+      </p>
+      <p>
+        <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049730">+ (.40, 4.127E&#45;04) (.42, 5.053E&#45;04) (.44, 6.380E&#45;04) (.46,</a><br>+ 7.935E&#45;04)</font>
+      </p>
+      <p>
+        <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049731">+ (.48, 1.139E&#45;03) (.50, 2.605E&#45;03) (.52, 8.259E&#45;03) (.54,</a><br>+ 2.609E&#45;02)</font>
+      </p>
+      <p>
+        <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049732">+ (.56, 7.418E&#45;02) (.58, 1.895E&#45;01) (.60, 4.426E&#45;01)</a></font>
+      </p>
+      <h3><a name="1049737">Frequency&#45;domain device models</a></h3>
+      <p><a name="1049738">Frequency&#45;domain models (ELAPLACE, GLAPLACE, EFREQ, and </a>GFREQ) are characterized by output that depends on the current input as well as the input history. The relationship is therefore non&#45;instantaneous. For example, the output may be equal to the integral of the input over time. In other words, the response depends upon frequency.</p>
+      <p><a name="1049739">During AC analysis, the frequency response determines the complex </a>gain at each frequency. During DC analysis and bias point calculation, the gain is the zero&#45;frequency response. During transient analysis, the output of the device is the convolution of the input and the impulse response of the device.</p>
+      <p><a name="1049740">Moving back and forth between the time and frequency&#45;domains can </a>cause surprising results. Often the results are quite different than what one would intuitively expect. For this reason, we strongly recommend familiarity with a reference on Fourier and Laplace transforms. A good one is:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049741">R. Bracewell, </a>The Fourier Transform and Its Applications, McGraw&#45;Hill, Revised Second Edition (1986)</td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1049742">We also recommend familiarity with the use of transforms in </a>analyzing linear systems.   Some references on this subject:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049743">W. H. Chen, </a>The Analysis of Linear Systems, McGraw&#45;Hill (1962)</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049744">J. A. Aseltine, </a>Transform Method in Linear System Analysis, McGraw&#45;Hill (1958)</td>
+          </tr>
+        </table>
+      </div>
+      <h3><a name="1049749">Laplace transforms (LAPLACE)</a></h3>
+      <p><a name="1049750">The ELAPLACE and GLAPLACE parts allow a transfer function to be </a>described by a Laplace transform function. The ELAPLACE and GLAPLACE parts are defined, in part, by the following properties (default values are shown):</p>
+      <blockquote><a name="1049751">ELAPLACE</a></blockquote>
+      <blockquote>
+<blockquote>        <font color="#000000"><a name="1049752">EXPR</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;V(%IN+, %IN&#45;)<br>XFORM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&#47;s</font></blockquote>
+      </blockquote>
+      <blockquote><a name="1049753">GLAPLACE</a></blockquote>
+      <blockquote>
+<blockquote>        <font color="#000000"><a name="1049754">EXPR</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;V(%IN+, %IN&#45;)<br>XFORM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&#47;s</font></blockquote>
+      </blockquote>
+      <p><a name="1049755">The LAPLACE parts use a Laplace transform description. The input </a>to the transform is the value of EXPR, where EXPR follows the same rules as for VALUE expressions (see <a href="#1049631" title="Analog behavioral modeling"><font color="Blue"><u>EVALUE and GVALUE parts</u></font></a><a href="#1049631" title="Analog behavioral modeling"> </a>). XFORM is an expression in the Laplace variable, s. It follows the rules for standard expressions as described for VALUE expressions with the addition of the s variable.</p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1049759">Voltages, currents, and TIME cannot appear in a Laplace </a>transform.</p>
+      <p><a name="1049760">The output of the device depends on the type of analysis being done. </a>For DC and bias point, the output is simply the zero frequency gain times the value of EXPR. The zero frequency gain is the value of XFORM with s = 0. For AC analysis, EXPR is linearized around the bias point (similar to the VALUE parts). The output is then the input times the gain of EXPR times the value of XFORM. The value of XFORM at a frequency is calculated by substituting j&#183;w for s, where w is 2p&#183;frequency. For transient analysis, the value of EXPR is evaluated at each time point. The output is then the convolution of the past values of EXPR with the impulse response of XFORM. These rules follow the standard method of using Laplace transforms. We recommend looking at one or more of the references cited in <a href="#1049737" title="Analog behavioral modeling"><font color="Blue"><u>Frequency&#45;domain device models</u></font></a><a href="#1049737" title="Analog behavioral modeling"></a> for more information.</p>
+      <h4><em><a name="1049765">Example</a></em></h4>
+      <p><a name="1049766">The input to the Laplace transform is the voltage across the input </a>pins, or V(%IN+, %IN&#45;). The EXPR property may be edited to include constants or functions, as with other parts. The transform, 1&#47;(1+.001&#183;s), describes a simple, lossy integrator with a time constant of 1 millisecond. This can be implemented with an RC pair that has a time constant of 1 millisecond.</p>
+      <p><a name="1049767">Using the part editor, you would define the XFORM and EXPR </a>properties as follows:</p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049768">XFORM = 1&#47;(1+.001*s)</a><br>EXPR = V(%IN+, %IN&#45;)</font></blockquote>
+      <p><a name="1049769">The default template remains (appears on one line):</a></p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049770">TEMPLATE= E&#94;@REFDES %OUT+ %OUT&#45; LAPLACE {@EXPR}= (@XFORM)</a></font></blockquote>
+      <p><a name="1049771">After netlist substitution of the template, the resulting transfer function </a>would become:</p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049772">V(%OUT+, %OUT&#45;) = LAPLACE {V(%IN+, %IN&#45;)}= (1&#47;1+.001*s))</a></font></blockquote>
+      <p><a name="1049773">The output is a voltage and is applied between pins %OUT+ and </a>%OUT&#45;. For DC, the output is simply equal to the input, since the gain at s = 0 is 1.</p>
+      <p><a name="1049774">For AC analysis, the gain is found by substituting j&#183;</a><font face="symbol" color="#000000">ω</font> for s. This gives a flat response out to a corner frequency of 1000&#47;(2π) = 159 Hz and a roll&#45;off of 6 dB per octave after 159 Hz. There is also a phase shift centered around 159 Hz. In other words, the gain has both a real and an imaginary component. The gain and phase characteristic is the same as that shown for the equivalent control system part example using the LAPLACE part (see <a href="#1049190" title="Analog behavioral modeling"><font color="Blue"><u>Figure&nbsp;6&#45;7</u></font></a><a href="#1049190" title="Analog behavioral modeling"> </a>).</p>
+      <p><a name="1049778">For transient analysis, the output is the convolution of the input </a>waveform with the impulse response of 1&#47;(1+.001&#183;s). The impulse response is a decaying exponential with a time constant of 1 millisecond. This means that the output is the "lossy integral" of the input, where the loss has a time constant of 1 millisecond.</p>
+      <p><a name="1049779">This will produce a PSpice</a>&nbsp;A&#47;D netlist declaration similar to:</p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049780">ERC 5 0 LAPLACE {V(10)} = {1&#47;(1+.001*s)}</a></font></blockquote>
+      <h3><a name="1049785">Frequency response tables (EFREQ and GFREQ)</a></h3>
+      <p><a name="1049786">The EFREQ and GFREQ parts are described by a table of frequency </a>responses in either the magnitude&#47;phase domain or complex number domain. The entire table is read in and converted to magnitude in dB and phase in degrees. Interpolation is performed between entries. Phase is interpolated linearly; magnitude is interpolated logarithmically. For frequencies outside the table's range, 0 (zero) magnitude is used.</p>
+      <p><a name="1049787">EFREQ and GFREQ properties are defined as follows:</a></p>
+      <p align="left"><a name="1049813">&nbsp;</a></p>
+      <table summary="" border="0" cellpadding="4" cellspacing="0" bordercolor="#D3D3D3" width="424">
+        <caption>
+        <tr>
+          <td cellpadding="4" valign="top" width="127">
+            <p><a name="1049790">EXPR</a></p>
+          </td>
+          <td cellpadding="4" valign="top" width="296">
+            <p><a name="1049792">value used for table lookup; defaults to </a>V(%IN+, %IN&#45;) if left blank.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049794">TABLE</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049796">series of either (input frequency, </a>magnitude, phase) triplets, or (input frequency, real part, imaginary part) triplets describing a complex value; defaults to (0,0,0) (1Meg,&#45;10,90) if left blank.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049798">DELAY</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049800">group delay increment; defaults to 0 if left </a>blank.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049802">R_I</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049804">table type; if left blank, the frequency </a>table is interpreted in the (input frequency, magnitude, phase) format; if defined with any value (such as YES), the table is interpreted in the (input frequency, real part, imaginary part) format.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049806">MAGUNITS</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049808">units for magnitude where the value can </a>be DB (decibels) or MAG (raw magnitude); defaults to DB if left blank.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049810">PHASEUNITS</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1049812">units for phase where the value can be </a>DEG (degrees) or RAD (radians); defaults to DEG if left blank.</p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1049814">The DELAY property increases the group delay of the frequency </a>table by the specified amount. The delay term is particularly useful when an EFREQ or GFREQ device generates a non&#45;causality warning message during a transient analysis. The warning message issues a delay value that can be assigned to the part's DELAY property for subsequent runs, without otherwise altering the table.</p>
+      <p><a name="1049815">The output of the device depends on the analysis being done. For DC </a>and bias point, the output is simply the zero frequency magnitude times the value of EXPR. For AC analysis, EXPR is linearized around the bias point (similar to EVALUE and GVALUE parts). The output for each frequency is then the input times the gain of EXPR times the value of the table at that frequency. For transient analysis, the value of EXPR is evaluated at each time point. The output is then the convolution of the past values of EXPR with the impulse response of the frequency response. These rules follow the standard method of using Fourier transforms. We recommend looking at one or more of the references cited in <a href="#1049737" title="Analog behavioral modeling"><font color="Blue"><u>Frequency&#45;domain device models</u></font></a><a href="#1049737" title="Analog behavioral modeling"></a> for more information.</p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1049819">The table's frequencies must be in order from lowest to </a>highest.</p>
+      <p><a name="1049823">Figure </a><a href="#1049828" title="Analog behavioral modeling"><font color="#0000ff"><u>6&#45;19</u></font></a> shows an EFREQ device used as a low pass filter. </p>
+      <p align="left"><a name="1054028"><img src="images/06abm.11.1.19.png" width="163" height="184" alt=""></a></p>
+      <p><font color="#000000"><strong>Figure 6&#45;19&nbsp; </strong></font><strong><a name="1049828">EFREQ part example.</a></strong></p>
+      <p><a name="1049829">The input to the frequency response is the voltage across the input </a>pins. The table describes a low pass filter with a response of 1 (0 dB) for frequencies below 5 kilohertz and a response of .001 (&#45;60 dB) for frequencies above 6 kilohertz. The output is a voltage across the output pins.</p>
+      <p><a name="1049830">This part is defined by the following properties: </a></p>
+      <p>
+        <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049831">TABLE = (0, 0, 0) (5kHz, 0, &#45;5760) (6kHz, &#45;60, &#45;6912)</a><br>DELAY = <br>R_I =<br>MAGUNITS =<br>PHASEUNITS =</font>
+      </p>
+      <p><a name="1049832">Since R_I, MAGUNITS, and PHASEUNITS are undefined, each table </a>entry is interpreted as containing frequency, magnitude value in dB, and phase values in degrees. Delay defaults to 0.</p>
+      <p><a name="1049833">The phase lags linearly with frequency meaning that this table </a>exhibits a constant time (group) delay. The delay is necessary so that the impulse response is causal. That is, so that the impulse response does not have any significant components before time zero.</p>
+      <p><a name="1049834">The constant group delay is calculated from the values for a given </a>table entry as follows:</p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049835"><font color="#000000"><em>group delay</em></font></a> = <font color="#000000"><em>phase</em></font> &#47; <font color="#000000"><em>360</em></font> &#47; <font color="#000000"><em>frequency</em></font></font></blockquote>
+      <p><a name="1049836">For this example, the group delay is 3.2 msec </a><br>(6912 &#47; 360 &#47; 6k = 5760 &#47; 360 &#47; 6k = 3.2m). An alternative specification for this table could be:</p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049837">TABLE = (0, 0, 0) (5kHz, 0, 0) (6kHz, &#45;60, 0)</a><br>DELAY = 3.2ms<br>R_I =<br>MAGUNITS =<br>PHASEUNITS =</font></blockquote>
+      <p><a name="1049838">This produces a PSpice netlist declaration like this:</a></p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049839">ELOWPASS 5 0 FREQ {V(10)} = (0,0,0) (5kHz,0,0) (6kHz&#45;60,0)</a><br>+ DELAY = 3.2ms</font></blockquote>
+      <h2><a name="1049841">Cautions and recommendations for </a>simulation and analysis</h2>
+      <h3><a name="1049844">Instantaneous device modeling </a></h3>
+      <p><a name="1049845">During AC analysis, nonlinear transfer functions are handled the </a>same way as other nonlinear parts: each function is linearized around the bias point and the resulting small&#45;signal equivalent is used.</p>
+      <p><a name="1049849">Consider the voltage multiplier (mixer) shown in Figure </a><a href="#1049854" title="Analog behavioral modeling"><font color="#0000ff"><u>6&#45;20</u></font></a>.</p>
+      <p align="left"><a name="1054086"><img src="images/06abm.11.1.20.png" width="225" height="177" alt=""></a></p>
+      <p><font color="#000000"><strong>Figure 6&#45;20&nbsp; </strong></font><strong><a name="1049854">Voltage multiplier circuit (mixer).</a></strong></p>
+      <p><a name="1049855">This circuit has the following characteristics: </a></p>
+      <blockquote><a name="1049856">Vin1:</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DC=0v   AC=1v<br>Vin2:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DC=0v   AC=1v </blockquote>
+      <p><a name="1049857">where the output on net 3 is V(1)*V(2).</a></p>
+      <p><a name="1049858">During AC analysis, V(3) = 0 due to the 0 volts bias point voltage on </a>nets 1, 2, and 3. The small&#45;signal equivalent therefore has 0 gain (the derivative of V(1)*V(2) with respect to both V(1) and V(2) is 0 when V(1)=V(2)=0).   So, the output of the mixer during AC analysis will be 0 regardless of the AC values of V(1) and V(2).</p>
+      <p><a name="1049859">Another way of looking at this is that a mixer is a nonlinear device and </a>AC analysis is a linear analysis. The output of the mixer has 0 amplitude at the fundamental. (Output is nonzero at DC and twice the input frequency, but these are not included in a linear analysis.) </p>
+      <p><a name="1049860">If you need to analyze nonlinear functions, such as a mixer, use </a>transient analysis. Transient analysis solves the full, nonlinear circuit equations. It also allows you to use input waveforms with different frequencies (for example, VIN1 could be 90 MHz and VIN2 could be 89.8 MHz). AC analysis does not have this flexibility, but in return it uses much less computer time.</p>
+      <h3><a name="1049862">Frequency&#45;domain parts</a></h3>
+      <p><a name="1049863">Some caution is in order when moving between frequency and time </a>domains. This section discusses several points that are involved in the implementation of frequency&#45;domain parts. These discussions all involve the transient analysis, since both the DC and AC analyses are straightforward.</p>
+      <p><a name="1049864">The first point is that there are limits on the maximum values and on </a>the resolution of both time and frequency. These are related: the frequency resolution is the inverse of the maximum time and vice versa. The maximum time is the length of the transient analysis, TSTOP. Therefore, the frequency resolution is 1&#47;TSTOP.</p>
+      <h3><a name="1049866">Laplace transforms</a></h3>
+      <p><a name="1049867">For Laplace transforms, PSpice starts off with initial bounds on the </a>frequency resolution and the maximum frequency determined by the transient analysis parameters as follows. The frequency resolution is initially set below the theoretical limit to (.25&#47;TSTOP) and is then made as large as possible without inducing sampling errors. The maximum frequency has an initial upper bound of (1&#47;(RELTOL*TMAX)), where TMAX is the transient analysis Step Ceiling value, and RELTOL is the relative accuracy of all calculated voltages and currents. If a Step Ceiling value is not specified, PSpice uses the Transient Analysis Print Step, TSTEP, instead.</p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1049868">TSTOP, TMAX, and TSTEP values are configured using </a>Transient on the Setup menu. The RELTOL property is set using Options on the Setup menu.</p>
+      <p><a name="1049869">PSpice then attempts to reduce the maximum frequency by </a>searching for the frequency at which the response has fallen to RELTOL times the maximum response. For instance, for the transform:</p>
+      <blockquote><a name="1049870">1&#47;(1+</a><font color="#000000"><em>s</em></font>)</blockquote>
+      <p><a name="1049871">the maximum response, 1.0, is at s = j&#183;</a><font face="symbol" color="#000000">ω</font> = 0 (DC). The cutoff frequency used when RELTOL=.001, is approximately 1000&#47;(2π) = 159 Hz. At 159 Hz, the response is down to .001 (down by 60 db). Since some transforms do not have such a limit, there is also a limit of 10&#47;RELTOL times the frequency resolution, or 10&#47;(RELTOL&#183;TSTOP). For example, consider the transform:</p>
+      <blockquote><a name="1049872"><font color="#000000"><em>e</em></font></a><font color="#000000"><sup>&#45;0.001&#183;s</sup></font><font color="#000000"><em> </em></font></blockquote>
+      <p><a name="1049873">This is an ideal delay of 1 millisecond and has no frequency cutoff. If </a>TSTOP = 10 milliseconds and RELTOL=.001, then PSpice imposes a frequency cutoff of 10 MHz. Since the time resolution is the inverse of the maximum frequency, this is equivalent to saying that the delay cannot resolve changes in the input at a rate faster than .1 microseconds. In general, the time resolution will be limited to RELTOL&#183;TSTOP&#47;10.</p>
+      <p><a name="1049874">A final computational consideration for Laplace parts is that the </a>impulse response is determined by means of an FFT on the Laplace expression. The FFT is limited to 8192 points to keep it tractable, and this places an additional limit on the maximum frequency, which may not be greater than 8192 times the frequency resolution.</p>
+      <p><a name="1049875">If your circuit contains many Laplace parts which can be combined </a>into a more complex single device, it is generally preferable to do this. This saves computation and memory since there are fewer impulse responses. It also reduces the number of opportunities for numerical artifacts that might reduce the accuracy of your transient analyses.</p>
+      <p><a name="1049876">Laplace transforms can contain poles in the left half&#45;plane. Such </a>poles will cause an impulse response that increases with time instead of decaying. Since the transient analysis is always for a finite time span, PSpice does not have a problem calculating the transient (or DC) response. However, such poles will make the actual device oscillate.</p>
+      <h4><a name="1049878">Non&#45;causality and Laplace transforms</a></h4>
+      <p><a name="1049879">PSpice applies an inverse FFT to the Laplace expression to obtain </a>an impulse response, and then convolves the impulse response with the dependent source input to obtain the output. Some common impulse responses are inherently non&#45;causal. This means that the convolution must be applied to both past and future samples of the input in order to properly represent the inverse of the Laplace expression.</p>
+      <p><a name="1049880">For example, the expression {S} corresponds to differentiation in the </a>time domain. The impulse response for {S} is an impulse pair separated by an infinitesimal distance in time. The impulses have opposite signs, and are situated one in the infinitesimal past, the other in the infinitesimal future. In other words, convolution with this corresponds to applying a finite&#45;divided difference in the time domain.</p>
+      <p><a name="1049881">The problem with this for PSpice is that the simulator only has the </a>present and past values of the simulated input, so it can only apply half of the impulse pair during convolution. This will obviously not result in time&#45;domain differentiation. PSpice can detect, but not fix this condition, and issues a non&#45;causality warning message when it occurs. The message tells what percentage of the impulse response is non&#45;causal, and how much delay would need to be added to slide the non&#45;causal part into a causal region. {S} is theoretically 50% non&#45;causal. Non&#45;causality on the order of 1% or less is usually not critical to the simulation results.</p>
+      <p><a name="1049882">You can delay {S} to keep it causal, but the separation between the </a>impulses is infinitesimal. This means that a very small time step is needed. For this reason, it is usually better to use a macromodel to implement differentiation.</p>
+      <p><a name="1049883">Here are some guidelines:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049884">In the case of a Laplace device (ELAPLACE), multiply the </a>Laplace expression by <font color="#000000"><em>e</em></font> to the <br>(&#45;<font color="#000000"><em>s</em></font><font color="#0f2bff"> ∗ </font>&#60;the suggested delay&#62;).</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049885">In the case of a frequency table (EFREQ or GFREQ), do either </a>of the following:</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.872">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.128319999999995">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049886">Specify the table with</a><br><font size="2" face="'Courier New'" color="#000000">DELAY</font><font size="2" face="'Courier New'" color="#000000">=&#60;the suggested delay&#62;</font>.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.872">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.128319999999995">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049887">Compute the delay by adding a phase shift.</a></td>
+          </tr>
+        </table>
+      </div>
+      <h4><a name="1049889">Chebyshev filters</a></h4>
+      <p><a name="1049890">All of the considerations given above for Laplace parts also apply to </a>Chebyshev filter parts. However, PSpice&nbsp;A&#47;D also attempts to deal directly with inaccuracies due to sampling by applying Nyquist criteria based on the highest filter cutoff frequency. This is done by checking the value of TMAX. If TMAX is not specified it is assigned a value, or if it is specified, it may be reduced. </p>
+      <p><a name="1049891">For low pass and band pass filters, TMAX is set to (0.5&#47;FS), where </a>FS is the stop band cutoff in the case of a low pass filter, or the upper stop band cutoff in the case of a band pass filter.</p>
+      <p><a name="1049892">For high pass and band reject filters, there is no clear way to apply </a>the Nyquist criterion directly, so an additional factor of two is thrown in as a safety margin. Thus, TMAX is set to (0.25&#47;FP), where FP is the pass band cutoff for the high pass case or the upper pass band cutoff for the band reject case. It may be necessary to set TMAX to something smaller if the filter input has significant frequency content above these limits.</p>
+      <h4><a name="1049894">Frequency tables</a></h4>
+      <p><a name="1049895">For frequency response tables, the maximum frequency is twice the </a>highest value. It will be reduced to 10&#47;(RELTOL⋅TSTOP) or 8192 times the frequency resolution if either value is smaller.</p>
+      <p><a name="1049896">The frequency resolution for frequency response tables is taken to be </a>either the smallest frequency increment in the table or the fastest rate of phase change, whichever is least. PSpice then checks to see if it can be loosened without inducing sampling errors.</p>
+      <h3><a name="1049898">Trading off computer resources for accuracy</a></h3>
+      <p><a name="1049899">There is a significant trade&#45;off between accuracy and computation </a>time for parts modeled in the frequency domain. The amount of computer time and memory scale approximately inversely to RELTOL. Therefore, if you can use RELTOL=.01 instead of the default .001, you will be ahead. However, this will not adversely affect the impulse response. You may also wish to vary TMAX and TSTOP, since these also come into play.</p>
+      <p><a name="1049901">Since the trade&#45;off issues are fairly complex, it is advisable to first </a>simulate a small test circuit containing only the frequency&#45;domain device, and then after proper validation, proceed to incorporate it in your larger design. The PSpice defaults will be appropriate most of the time if accuracy is your main concern, but it is still worth checking.</p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1049902">Do not set RELTOL to a value above 0.01. This can seriously </a>compromise the accuracy of your simulation.</p>
+      <h2><a name="1049906">Basic controlled sources</a></h2>
+      <p><a name="1049907">As with basic SPICE, PSpice has basic controlled sources derived </a>from the standard SPICE E, F, G, and H devices. Table <a href="#1057791" title="Analog behavioral modeling"><font color="#0000ff"><u>6&#45;5</u></font></a> summarizes the linear controlled source types provided in the standard part library. </p>
+      <p><a name="1057787">&nbsp;</a></p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="401">
+        <caption>
+          <p align="left"><font color="#000000"><strong>Table 6&#45;5&nbsp; </strong></font><strong><a name="1057791">Basic controlled sources in ANALOG.OLB</a></strong></p>
+        </caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="300">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1057795">Device type</a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="101">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1057797">Part name</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1057799">Controlled Voltage Source</a></p>
+            <p><a name="1057817">(PSpice</a>&nbsp;A&#47;D E device)</p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1057801">E</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1057803">Current&#45;Controlled Current Source</a></p>
+            <p><a name="1057835">(PSpice</a>&nbsp;A&#47;D F device)</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1057805">F</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1057854">Controlled Current Source</a></p>
+            <p><a name="1057863">(PSpice</a>&nbsp;A&#47;D G device)</p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1057856">G</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1057850">Current&#45;Controlled Voltage Source</a></p>
+            <p><a name="1057888">(PSpice</a>&nbsp;A&#47;D H device)</p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1057852">H</a></p>
+          </td>
+        </tr>
+      </table>
+      <h3><a name="1049955">Creating custom ABM parts</a></h3>
+      <p><a name="1049956">Create a custom part when you need a controlled source that is not </a>provided in the special purpose set or that is more elaborate than you can build with the general purpose parts (with multiple controlling inputs, for example). Refer to your <font color="#000000"><em>OrCAD Capture User's Guide</em></font> for a description of how to create a custom part.</p>
+      <p><a name="1049957">The transfer function can be built into the part two different ways:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049958">directly in the PSPICETEMPLATE definition.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049959">by defining the part's EXPR and related properties (if any).</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1049960">The PSpice syntax for declaring E and G devices can help you form </a>a PSPICETEMPLATE definition. Refer to the online <font color="#000000"><em>PSpice </em></font><font color="#000000"><em>Reference Guide</em></font> for more information about E and G devices.</p>
+      <hr>
+      <table width="100%" border="0" cellpadding="3" cellspacing="0" summary="">
+        <tr valign="baseline">
+          <td>
+            <p>
+              <font size="-1">
+                <a name="141" href="#wwfootnote_inline_141">1</a>
+              </font>
+            </p>
+          </td>
+          <td>
+            <p><a name="1061219">Depending on the license available, you will access either PSpice or AMS </a>Simulator.</p>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <br>
+    <a href="#pagetop">Return to top of page</a>
+    <hr>
+    <hr align="left">
+    <div style="text-align: left;">
+      <!-- Begin Buttons -->
+      <table width="650" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                    </td>
+<td height="20" width="73">
+<a href="pspugTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<a href="pspugIX.html"><img src="../support/nav2_index.gif" border="0"></a>
+</td>
+          <td>
+            <a href="05part.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+          </td>
+          <td>
+            <a href="07digmod.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+          </td>
+          <td>
+            <a>
+<a href="pspug.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+            </a>
+          </td>
+          <td height="20" width="61">
+            <img src="../support/nav2_black.gif">
+          </td>
+          <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+          </td>
+          <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+          </td>
+          <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+          </td>
+        </tr>
+      </table>
+      <!-- End Buttons -->
+    </div>
+    <br>
+    <font size="-1" >
+For support, see <a href="http://support.cadence.com" target="_blank">Cadence Online Support</a> service.</font>
+    <br>
+    <br>
+    <font size="-1" >
+      <i>Copyright &#169; 2011, <a href="http://www.cadence.com">Cadence Design Systems, Inc.</a></i>
+    </font>
+    <br>
+    <font size="-1" >
+All rights reserved.</font>
+    <br>
+    <br>
+  </body>
+</html>

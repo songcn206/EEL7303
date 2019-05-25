@@ -1,0 +1,52 @@
+  
+Extracta:
+    Obtains flattened infomation from a design from information
+    contained in the cmdfile. See documentation for command
+    file (cmdfile) syntax.
+
+extracta [args] [<drawing>] [<cmdfile>] [<outfile>...]
+
+With no arguments prompts for files.
+
+ARGUMENTS and SWITCHES:
+    -c - dump interior of cross hatch shapes as individual lines
+    -d - dump all field names. This makes the file names unused, the
+         output goes to the log (extract.log) file. (1)
+    -k - do not generate errors in cmdfile has illegal field names
+    -m - do not rename the outermost etch layers to TOP/BOTTOM, but instead 
+         use the layer names in the design (for non-board designs only).
+    -q - quiet mode - suppress info status messages.
+    -r - reuse the log file (delete before execution).
+    -l <logfile> - logfile name. Overrides default logfile name and location.
+	 If you wish to write in current directory and ignore ads_sdlog 
+	 option use:  ./<logfile name>
+	 Default is extract.log and location is controlled by ads_sdlog
+	 environment variable.
+    -s - short output (only A record)
+    -w - don't include the date in output file
+    -z - in non-net views generate a unique net name for items on dummy net
+    -A - list all database attachments in the design (1) 
+	 This option supports no other options: 
+	     extracta -A [<drawing>]
+    -a <name> - extract named attachment to file <name>.dat. Multiple 
+		attachments can be obtained by placing multiple -a <name>
+		options on command line (1).
+	 This option supports no other options: 
+	     extracta -a <attachmentName1> ...  [<drawing>]
+
+   <drawing> - name of allegro database
+   <cmdfile> - name of extract command file. Uses TEXTPATH to locate
+                file if relative path is given
+   <outfile>... - name of output file. If multiple views are given
+               in the cmdfile then one output file is needed for
+               each file. If no outfile files are given then
+               output is dumped to stdout. A maximum of 24 files is 
+	       supported.
+
+Extract status infomation contained in extract.log
+
+Notes:
+   1) this option cannot be used with any other command options.
+    
+
+

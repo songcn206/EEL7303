@@ -1,0 +1,68 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 40 10
+HEADER "Refresh Padstacks"
+
+ACTIVEFIELD "cancel"
+DEFAULT execute
+
+MESSAGE nfile 3 "You must enter a list file first."
+MESSAGE nerror 3 "A problem occurred - please check the logfile."
+MESSAGE ndone 0 "Padstacks refreshed."
+MESSAGE ndemo 2 "Cannot Run in Demo Mode."
+
+
+TILE
+TEXT "Padstacks to refresh:"
+TLOC 1 2
+ENDTEXT
+
+FIELD all_padstacks
+FLOC 2 	 4
+CHECKLIST "Refresh all padstacks" rf
+ENDFIELD
+
+FIELD padstack_list
+FLOC 2 6
+CHECKLIST "Padstack list" rf
+ENDFIELD
+
+FIELD listfile
+FLOC 4 9
+STRFILLIN 26 127
+ENDFIELD
+
+FIELD browse
+FLOC 33 9
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+FIELD reset_drill_data
+FLOC 2 12
+CHECKLIST "Reset customizable drill data"
+ENDFIELD
+
+FIELD execute
+FLOC 2 15
+MENUBUTTON "Refresh" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 16 15
+MENUBUTTON "Close" 9 3
+ENDFIELD
+
+FIELD viewlog
+FLOC 27 4
+MENUBUTTON "View Log..." 9 3
+ENDFIELD
+
+FIELD help
+FLOC 31 15
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

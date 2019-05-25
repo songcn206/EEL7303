@@ -1,0 +1,270 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+VARIABLE
+PORT 60 15
+HEADER "Define Property"
+
+POPUP <data_type> "STRING""20","INTEGER""18","REAL""19","DESIGN_UNITS""17",\
+"BOOLEAN""16","ALTITUDE""1","CAPACITANCE""2","DISTANCE""3",\
+"ELEC_CONDUCTIVITY""4","FAILURE_RATE""5","LAYER_THICKNESS""6","IMPEDANCE""7",\
+"INDUCTANCE""8","PROP_DELAY""9","RESISTANCE""10","TEMPERATURE""11",\
+"THERM_CONDUCTANCE""12","THERM_CONDUCTIVITY""13","VOLTAGE""14","NOISE_VOLTAGE""24",\
+"VELOCITY""15".
+
+MESSAGE minmorethanmax 0 "Min range value %f cannot be greater than max range value."
+MESSAGE maxlessthanmin 0 "Max range value %f cannot be less than min range value."
+MESSAGE noelemtypes    0 "Property is not defined for any element types."
+MESSAGE nodatatype     0 "Property does not have a data type."
+
+TILE buttons
+TPANEL 2
+
+FIELD apply
+FLOC 1 1
+MENUBUTTON "Apply" 9 3
+ENDFIELD
+
+FIELD reset
+FLOC 12 1
+MENUBUTTON "Reset" 9 3
+ENDFIELD
+
+TEXT
+TLOC 23 1 
+INFO prop_in_use 45
+ENDTEXT
+
+ENDTILE
+
+TILE header
+TPANEL 0
+TEXT "Property definition"
+TLOC 17 1
+ENDTEXT
+
+TEXT "Name:"
+TLOC 1 3
+ENDTEXT
+
+TEXT
+TLOC 7 3 
+INFO prop_name 31
+ENDTEXT
+
+TEXT "Status:"
+TLOC 39 3
+ENDTEXT
+
+TEXT 
+TLOC 47 3
+INFO prop_status 10
+ENDTEXT
+ENDTILE
+
+TILE data_elements
+TPANEL 1
+GROUP "Data Elements"
+GLOC 1 1
+GSIZE 56 11
+ENDGROUP
+
+FIELD nets_elem
+FLOC 2 3
+CHECKLIST "Nets"
+ENDFIELD
+
+FIELD refdes_elem
+FLOC 13 3
+CHECKLIST "Comps"
+ENDFIELD
+
+FIELD funcdes_elem
+FLOC 26 3
+CHECKLIST "Funcs"
+ENDFIELD
+
+FIELD pins_elem
+FLOC 38 3
+CHECKLIST "Pins"
+ENDFIELD
+
+FIELD vias_elem
+FLOC 48 3
+CHECKLIST "Vias"
+ENDFIELD
+
+FIELD shapes_elem
+FLOC 2 5
+CHECKLIST "Shapes"
+ENDFIELD
+
+FIELD symbols_elem
+FLOC 13 5
+CHECKLIST "Symbols"
+ENDFIELD
+
+FIELD clines_elem
+FLOC 26 5
+CHECKLIST "Clines"
+ENDFIELD
+
+FIELD lines_elem
+FLOC 38 5
+CHECKLIST "Lines"
+ENDFIELD
+
+#ifdef ALLOW_DRC_PROPERTIES
+FIELD drc_errors_elem
+FLOC 48 5
+CHECKLIST "DRC"
+ENDFIELD
+#endif
+
+FIELD figures_elem
+FLOC 2 7
+CHECKLIST "Figures"
+ENDFIELD
+
+FIELD voids_elem
+FLOC 13 7
+CHECKLIST "Voids"
+ENDFIELD
+
+FIELD layout_elem
+FLOC 26 7
+CHECKLIST "Layout"
+ENDFIELD
+
+FIELD comp_def_elem
+FLOC 38 7
+CHECKLIST "Comp Def"
+ENDFIELD
+
+FIELD pin_def_elem
+FLOC 2 9
+CHECKLIST "Pin Def"
+ENDFIELD
+
+FIELD func_def_elem
+FLOC 13 9
+CHECKLIST "Func Def"
+ENDFIELD
+ENDTILE
+
+TILE symbd_elements
+TPANEL 1
+GROUP "Data elements"
+GLOC 1 1
+GSIZE 56 11
+ENDGROUP
+
+FIELD nets_elem
+FLOC 2 3
+CHECKLIST "Nets"
+ENDFIELD
+
+FIELD refdes_elem
+FLOC 13 3
+CHECKLIST "Comps"
+ENDFIELD
+
+FIELD funcdes_elem
+FLOC 26 3
+CHECKLIST "Funcs"
+ENDFIELD
+
+FIELD pins_elem
+FLOC 38 3
+CHECKLIST "Pins"
+ENDFIELD
+
+FIELD vias_elem
+FLOC 48 3
+CHECKLIST "Vias"
+ENDFIELD
+
+FIELD shapes_elem
+FLOC 2 5
+CHECKLIST "Shapes"
+ENDFIELD
+
+FIELD symbols_elem
+FLOC 13 5
+CHECKLIST "Symbols"
+ENDFIELD
+
+FIELD clines_elem
+FLOC 26 5
+CHECKLIST "Clines"
+ENDFIELD
+
+FIELD lines_elem
+FLOC 38 5
+CHECKLIST "Lines"
+ENDFIELD
+
+#ifdef BADIDEA
+FIELD drc_errors_elem
+FLOC 48 5
+CHECKLIST "DRC"
+ENDFIELD
+#endif
+
+FIELD figures_elem
+FLOC 2 7
+CHECKLIST "Figures"
+ENDFIELD
+
+FIELD voids_elem
+FLOC 13 7
+CHECKLIST "Voids"
+ENDFIELD
+
+ENDTILE
+
+TILE data_type
+TPANEL 1
+TEXT "Data Type:"
+TLOC 1 1
+ENDTEXT
+
+FIELD data_type
+FLOC 12 1
+ENUMSET 20
+POP "data_type"
+ENDFIELD
+
+ENDTILE
+
+TILE range
+TPANEL 1
+TEXT "Range:"
+TLOC 1 2
+ENDTEXT
+
+TEXT "-"
+TLOC 25 2
+ENDTEXT
+
+FIELD low_range_val
+FLOC 12 2
+REALFILLIN 10 10
+ENDFIELD
+
+FIELD high_range_val
+FLOC 27 2
+REALFILLIN 10 10
+ENDFIELD
+
+TEXT "Units:"
+TLOC 1 6
+ENDTEXT
+
+FIELD units
+FLOC 12 6
+STRFILLIN 20 31
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

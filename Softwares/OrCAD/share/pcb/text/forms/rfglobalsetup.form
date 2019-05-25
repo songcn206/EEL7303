@@ -1,0 +1,335 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM AUTOGREYTEXT 
+FIXED
+PORT 30 49
+HEADER "RF PCB Settings"
+
+POPUP <modes>"Default layers & groundings""0","Default physical dimensions""1","Miscellaneous""2","Customize""3".
+POPUP <mactlayers>"""".
+POPUP <mgndlayers>"""".
+POPUP <sactlayers>"""".
+POPUP <sgndlayers1>"""".
+POPUP <sgndlayers2>"""".
+POPUP <scactlayers>"""".
+POPUP <scsndlayers>"""".
+POPUP <scgndlayers1>"""".
+POPUP <scgndlayers2>"""".
+POPUP <cpwactlayers>"""".
+POPUP <cpwgndlayers>"""".
+POPUP <linelock>"Off""0","45""45","90""90".
+POPUP <mbendmode>"bendmode""bendmode".
+POPUP <sbendmode>"bendmode""bendmode".
+POPUP <frequnits>"Hz""1","KHz""1000","MHz""1000000","GHz""1000000000".
+POPUP <refdesopts>"All RF Component Text Off""0","RF Trace Component Text Off""1","All RF Component Text On""2".
+POPUP <routingmodes>"Single Segment Mode""0","Multi-Segment Mode""1".
+
+TILE
+
+TEXT "Parameter set:"
+TLOC 1 1
+ENDTEXT
+
+FIELD mode
+FLOC 3 3
+ENUMSET 21
+POP "modes"
+ENDFIELD
+
+GROUP "Microstrip" microstriplabel
+GLOC 1 5
+GSIZE 29 7
+ENDGROUP
+
+TEXT "Conductor:" mclabel
+TLOC 2 7 
+ENDTEXT
+
+FIELD mactive_subclass
+FLOC 10 7
+ENUMSET 16
+POP "mactlayers"
+ENDFIELD
+
+TEXT "Ground:" mglabel
+TLOC 2 9
+ENDTEXT
+
+FIELD mground_subclass
+FLOC 10 9
+ENUMSET 16
+POP "mgndlayers"
+ENDFIELD
+
+GROUP "Stripline" striplinelabel
+GLOC 1 12
+GSIZE 29 9
+ENDGROUP
+
+TEXT "Ground above:" sgalabel
+TLOC 2 14
+ENDTEXT
+
+FIELD sground1_subclass
+FLOC 13 14
+ENUMSET 13
+POP "sgndlayers1"
+ENDFIELD
+
+TEXT "Conductor:" sclabel
+TLOC 2 16
+ENDTEXT
+
+FIELD sactive_subclass
+FLOC 10 16
+ENUMSET 16
+POP "sactlayers"
+ENDFIELD
+
+TEXT "Ground below:" sgblabel
+TLOC 2 18
+ENDTEXT
+
+FIELD sground2_subclass
+FLOC 13 18
+ENUMSET 13
+POP "sgndlayers2"
+ENDFIELD
+
+GROUP "Broadside/offset coupled striplines" cstriplinelabel
+GLOC 1 21
+GSIZE 29 11
+ENDGROUP
+
+TEXT "Ground above:" csgalabel
+TLOC 2 23
+ENDTEXT
+
+FIELD scground1_subclass
+FLOC 13 23
+ENUMSET 13
+POP "scgndlayers1"
+ENDFIELD
+
+TEXT "Conductor:" csclabel
+TLOC 2 25
+ENDTEXT
+
+FIELD scactive_subclass
+FLOC 10 25
+ENUMSET 16
+POP "scactlayers"
+ENDFIELD
+
+TEXT "Secondary:" csslabel
+TLOC 2 27
+ENDTEXT
+
+FIELD scsecond_subclass
+FLOC 10 27
+ENUMSET 16
+POP "scsndlayers"
+ENDFIELD
+
+TEXT "Ground below:" csgblabel
+TLOC 2 29
+ENDTEXT
+
+FIELD scground2_subclass
+FLOC 13 29
+ENUMSET 13
+POP "scgndlayers2"
+ENDFIELD
+
+GROUP "Coplanar waveguide" waveguidelabel
+GLOC 1 32
+GSIZE 29 7
+ENDGROUP
+
+TEXT "Conductor:" cwclabel
+TLOC 2 34
+ENDTEXT
+
+FIELD cpwactive_subclass
+FLOC 10 34
+ENUMSET 16
+POP "cpwactlayers"
+ENDFIELD
+
+TEXT "Lower ground:" cwglabel
+TLOC 2 36
+ENDTEXT
+
+FIELD cpwground_subclass
+FLOC 13 36
+ENUMSET 13
+POP "cpwgndlayers"
+ENDFIELD
+
+GROUP "Conductor dimensions" cdlabel
+GLOC 1 5
+GSIZE 29 9
+ENDGROUP
+
+TEXT "Conductor width:" widthlabel
+TLOC 2 7
+ENDTEXT
+
+FIELD width
+FLOC 15 7
+REALFILLIN 12 32
+ENDFIELD
+
+TEXT "Curve radius:" radiuslabel
+TLOC 2 9
+ENDTEXT
+
+FIELD radius
+FLOC 15 9
+REALFILLIN 12 32
+ENDFIELD
+
+TEXT "Miter fraction:" miterlabel
+TLOC 2 11
+ENDTEXT
+
+FIELD miterfraction
+FLOC 15 11
+REALFILLIN 10 32
+MIN 0.0
+MAX 1.0
+ENDFIELD
+
+GROUP "Default line lock" linelocklabel
+GLOC 1 14
+GSIZE 29 5
+ENDGROUP
+
+TEXT "Line lock:" locklabel
+TLOC 2 16
+ENDTEXT
+
+FIELD linelock
+FLOC 14 16
+ENUMSET 12
+POP "linelock"
+ENDFIELD
+
+GROUP "Bend modes" bendlabel
+GLOC 1 19
+GSIZE 29 7
+ENDGROUP
+
+TEXT "Microstrip:" mbendlabel
+TLOC 2 21
+ENDTEXT
+
+FIELD mbend
+FLOC 12 21
+ENUMSET 14
+POP "mbendmode"
+ENDFIELD
+
+TEXT "Stripline:" sbendlabel
+TLOC 2 23
+ENDTEXT
+
+FIELD sbend
+FLOC 12 23
+ENUMSET 14
+POP "sbendmode"
+ENDFIELD
+
+GROUP "Working frequency" frequencylabel
+GLOC 1 5
+GSIZE 29 5
+ENDGROUP
+
+FIELD frequency
+FLOC 2 7
+REALFILLIN 16 16
+MIN 0.0
+ENDFIELD
+
+FIELD frequnit
+FLOC 20 7
+ENUMSET 6
+POP "frequnits"
+ENDFIELD
+
+GROUP "RF component display" displaylabel
+GLOC 1 10
+GSIZE 29 7
+ENDGROUP
+
+FIELD refdesdisplay
+FLOC 2 12
+ENUMSET 24
+POP "refdesopts"
+ENDFIELD	
+
+FIELD listTraceDefinition
+FLOC 2 14
+MENUBUTTON "Display RF traces" 20 3
+ENDFIELD			
+
+GROUP "RF routing mode" routelabel
+GLOC 1 17
+GSIZE 29 5
+ENDGROUP
+
+FIELD routingmode
+FLOC 2 19
+ENUMSET 24
+POP "routingmodes"
+ENDFIELD
+
+GROUP "RF component diagram" diagramlabel
+GLOC 1 22
+GSIZE 29 4
+ENDGROUP
+
+FIELD description
+FLOC 2 24
+CHECKLIST "Show RF component diagram"
+ENDFIELD	
+
+GROUP "Project file" projectlabel
+GLOC 1 26
+GSIZE 29 5
+ENDGROUP
+
+FIELD project
+FLOC 2 28
+STRFILLIN 22 256
+ENDFIELD
+
+FIELD projectbrowser
+FLOC 26 28
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+FIELD apply
+FLOC 1 41
+MENUBUTTON "Apply" 9 3
+ENDFIELD
+
+GROUP "Float Forms" floatform
+GLOC 1 6
+GSIZE 29 32
+ENDGROUP
+
+FIELD floatformlist
+FLOC 2 8
+TREEVIEW 27 14
+ENDFIELD
+
+FLEXMODE EdgeGravity
+FLEX floatform	0 0 1 1
+FLEX floatformlist	0 0 1 1
+FLEX diagramlabel	0 0 1 1
+FLEX microstriplabel 0 0 1 0
+
+ENDTILE
+
+ENDFORM
+

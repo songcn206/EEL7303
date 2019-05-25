@@ -1,0 +1,85 @@
+FILE_TYPE=FORM_DEFN VERSION=1
+FORM autogreytext
+FIXED
+PORT 29 13
+
+HEADER "Convert Corner"
+POPUP <boolean>"Yes""0","No""1".
+POPUP <corner_type_vals>"Arc""1","45""2","90""3".
+POPUP <corner_min_length_dbrep_vals>"0""0".
+POPUP <corner_max_length_dbrep_vals>"0""0".
+POPUP <corner_min_radius_dbrep_vals>"0""0".
+POPUP <corner_max_radius_dbrep_vals>"0""0".
+
+TILE CONVERT_CORNER_MINI
+
+TEXT "Convert Type:"
+FLOC 1 1
+ENDFIELD
+
+FIELD convert_type
+FLOC 17 1
+ENUMSET 5
+POP "corner_type_vals"
+ENDFIELD
+
+TEXT "Allow in cns areas:" region_exclusion_label
+TLOC 1 3
+ENDTEXT
+
+FIELD region_exclusion
+FLOC 17 3
+ENUMSET 5
+POP boolean
+ENDFIELD
+
+TEXT "Preferred Radius Size:"
+FLOC 1 6 
+ENDFIELD
+
+TEXT "Min Radius Size:"
+FLOC 1 8
+ENDFIELD
+
+
+TEXT "Preferred Corner Size:"
+FLOC 1 12 
+ENDFIELD
+
+TEXT "Min Corner Size:"
+FLOC 1 14
+ENDFIELD
+
+FIELD corner_max_radius
+FLOC 17 6
+STRFILLIN 8 10
+POP "corner_max_radius_dbrep_vals"
+ENDFIELD
+
+FIELD corner_min_radius
+FLOC 17 8
+STRFILLIN 8 10
+POP "corner_min_radius_dbrep_vals"
+ENDFIELD
+
+FIELD corner_max_length
+FLOC 17 12
+STRFILLIN 8 10
+POP "corner_max_length_dbrep_vals"
+ENDFIELD
+
+FIELD corner_min_length
+FLOC 17 14
+STRFILLIN 8 10
+POP "corner_min_length_dbrep_vals"
+ENDFIELD
+
+FIELD allow_drc_errors
+FLOC 1 16
+CHECKLIST "Allow DRCs"
+ENDFIELD
+
+
+ENDTILE
+
+ENDFORM

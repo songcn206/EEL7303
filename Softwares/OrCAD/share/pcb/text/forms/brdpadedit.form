@@ -1,0 +1,202 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+VARIABLE
+PORT 60 28 23
+HEADER "Edit Pad Stack"
+
+MESSAGE OPEN_FAILED 1 "Failed to open pad editing port."
+MESSAGE HOLE_SIZE_WARNING 1 "WARNING: Hole size larger than smallest pad"
+MESSAGE OPEN_LOG_ERR 1 "Cannot open padstack error log"
+MESSAGE WORKING 1 "Working..."
+MESSAGE CANT_WRITE 1 "Unable to write into the file. Pick Cancel to exit."
+MESSAGE NOT_WRITABLE 1 "File not writable. Pick Cancel to exit."
+MESSAGE CREATE_FAILED 1 "Failed to create filename. Pick Cancel to exit."
+MESSAGE SAVED_NAME 1 "Saved to file: %s."
+MESSAGE SAVE_ERROR 1 "Save Error: %d."
+MESSAGE ARCHIVE_FAILED 1 "Save Failed."
+MESSAGE POS_NUM_ONLY 1 "Only positive numerical sizes allowed"
+MESSAGE PAD_EXISTS 1 "Pad %s already exists in database."
+MESSAGE BAD_NEW_NAME 1 "Bad name for new pad: %s"
+MESSAGE OPEN_NEW_PAD 1 "Creating new padstack %s"
+MESSAGE OPEN_OLD_PAD 1 "Opening existing padstack %s"
+MESSAGE CPT_OFF_ALL_PADS 1 "Pad stack origin outside all pads"
+MESSAGE CHECKOK 1 "Pad stack has no problems"
+MESSAGE PSE_EDIT_SELECT 1 "Select layer(s) to Edit"
+MESSAGE PSE_COPY_SELECT 1 "Select layer to Copy from"
+MESSAGE PSE_COPY_FROM 1 "Copying from: %s"
+MESSAGE PSE_COPYTO_SELECT 1 "Select layer(s) to Copy to, then Apply"
+MESSAGE NO_SHAPE 1 "No shape in symbol: %s."
+MESSAGE MULTIPLE_ELEMS 1 "Invalid shape symbol: %s, multiple elements."
+MESSAGE SHP_NOT_FOUND 1 "Shape symbol not found: %s."
+MESSAGE SHP_ACCESS_ERR 1 "Error accessing shape %s: %d."
+
+TILE PAD_NAME_TILE
+TPANEL 0
+TEXT "Padstack Name:"
+TLOC 2 1
+ENDTEXT
+
+FIELD padname
+FLOC 18 1
+STRFILLIN 18 255
+ENDFIELD
+
+FIELD through_hole
+FLOC 2 7
+FGROUP "Type"
+CHECKLIST "Through" "PSETYPGRP"
+ENDFIELD
+
+FIELD blind_buried
+FLOC 15 7
+FGROUP "Type"
+CHECKLIST "Blind/Buried" "PSETYPGRP"
+ENDFIELD
+
+FIELD inner_layer_fixed
+FLOC 35 7
+FGROUP "Internal Pads"
+CHECKLIST "Fixed" "PSEFXDOPT"
+ENDFIELD
+
+FIELD inner_layer_opt
+FLOC 45 7
+FGROUP "Internal Pads"
+CHECKLIST "Optional" "PSEFXDOPT"
+ENDFIELD
+
+GROUP "Type"
+GLOC 1 4
+GSIZE 31 5
+ENDGROUP
+
+GROUP "Internal Pads"
+GLOC 33 4
+GSIZE 24 5
+ENDGROUP
+
+ENDTILE
+
+TILE NE_SUBCLASS_TILE
+TPANEL 1
+TEXT
+TLOC 4 0
+INFO fromto 1
+ENDTEXT
+
+TEXT
+TLOC 6 0
+INFO ne_subclass_name 18
+ENDTEXT
+
+TEXT
+TLOC 25 0
+INFO summary 24
+ENDTEXT
+
+FIELD select_pad
+FLOC 1 0
+CHECKLIST " "
+ENDFIELD
+
+FIELD edit_pad
+FLOC 50 0
+MENUBUTTON "..." 5 2
+ENDFIELD
+
+ENDTILE
+
+TILE NC_TILE
+TPANEL 1
+TEXT "NCDRILL"
+TLOC 6 0
+ENDTEXT
+
+TEXT
+TLOC 25 0
+INFO summary 24
+ENDTEXT
+
+FIELD ncdrill
+FLOC 50 0
+MENUBUTTON "..." 5 2
+ENDFIELD
+
+ENDTILE
+
+TILE StdTile
+TPANEL 2
+FIELD done
+FLOC 1 1
+MENUBUTTON "Done" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 11 1
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD check
+FLOC 22 1
+MENUBUTTON "Check" 9 3
+ENDFIELD
+
+FIELD archive
+FLOC 32 1
+MENUBUTTON "Archive" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 50 1
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+ENDTILE
+
+TILE LAYER_NAME_TILE
+TPANEL 0
+TEXT "Select"
+TLOC 1 2
+ENDTEXT
+
+TEXT "Edit"
+TLOC 50 2
+ENDTEXT
+
+TEXT "Layer:"
+TLOC 1 4
+ENDTEXT
+
+TEXT "Layer:"
+TLOC 50 4
+ENDTEXT
+
+FIELD copy_command
+FLOC 16 3
+FGROUP "Pad Layer Commands"
+CHECKLIST "Copy" "commands"
+ENDFIELD
+
+FIELD apply_button
+FLOC 26 3
+FGROUP "Pad Layer Commands"
+MENUBUTTON "Apply Copy" 15 3
+ENDFIELD
+
+GROUP "Pad Layer Commands"
+GLOC 13 0
+GSIZE 30 6
+ENDGROUP
+
+ENDTILE
+
+TILE BLANK_TILE
+TPANEL 1
+TEXT
+TLOC 0 0
+INFO always_empty_field 1
+ENDTEXT
+
+ENDTILE
+
+ENDFORM

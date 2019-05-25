@@ -1,0 +1,1111 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 83 13
+HEADER "Package Symbol Wizard"
+
+POPUP <PACKTYPEPOPUP> "DIP" "DIP", "SIP" "SIP", "SOIC" "SOIC",  "PGA" "PGA",  "QFP" "QFP"
+POPUP <UNITTYPES> "Mils" "mils", "Inch" "inches", "Micron" "microns", "Millimeter" "millimeters", "Centimeter" "centimeters"
+POPUP <DIPWIDTHPOPUP> "" ""
+POPUP <SOPWIDTHPOPUP> "" ""
+POPUP <ZIPWIDTHPOPUP> "" ""
+
+POPUP <DIP_E> "" ""
+POPUP <SOP_E> "" ""
+POPUP <QFP_E> "" ""
+POPUP <TH_DISCRETE_E1> "" ""
+POPUP <SMD_DISCRETE_E1> "" ""
+POPUP <SIP_E> "" ""
+POPUP <ZIP_E> "" ""
+
+
+POPUP <PGA_EH> "" "" 
+POPUP <PGA_EV> "" "" 
+POPUP <REF_DES> "U*" "U*", "R*" "R*", "C*" "C*", "J*" "J*" 
+
+POPUP <PINNUMPOPUP>""""
+
+TILE
+
+TABSET "tab"
+FLOC -2 -2
+TSSIZE 85 30
+
+
+TAB "Package Type" Package_Selection
+
+FIELD pselect_image
+THUMBNAIL intro.bmp
+FLOC 1 0
+FSIZE 32 28
+ENDFIELD
+
+TEXT "Start by choosing the type of package you want to create."
+FLOC 34 1
+ENDTEXT
+
+FIELD sym_image
+THUMBNAIL pga0.bmp
+FLOC 57 7
+FSIZE 19 15
+ENDFIELD 
+
+TEXT "Package Type:"
+FLOC 34 5
+ENDTEXT
+
+FIELD dip
+FLOC 36 7
+CHECKLIST "DIP" "package_type"
+ENDFIELD 
+ 
+FIELD soic
+FLOC 36 9
+CHECKLIST "SOIC" "package_type"
+ENDFIELD
+
+FIELD plcc
+FLOC 36 11
+CHECKLIST "PLCC/QFP" "package_type"
+ENDFIELD 
+ 
+FIELD bga
+FLOC 36 13
+CHECKLIST "PGA/BGA" "package_type"
+ENDFIELD 
+ 
+FIELD rca_th
+FLOC 36 15
+CHECKLIST "TH DISCRETE" "package_type"
+ENDFIELD 
+ 
+FIELD rca_smd
+FLOC 36 17
+CHECKLIST "SMD DISCRETE" "package_type"
+ENDFIELD 
+ 
+FIELD sip
+FLOC 36 19
+CHECKLIST "SIP" "package_type"
+ENDFIELD
+
+FIELD zip
+FLOC 36 21
+CHECKLIST "ZIP" "package_type"
+ENDFIELD 
+
+ENDTAB
+
+TAB "Template" Template_Selection
+
+FIELD template_image
+THUMBNAIL intro.bmp
+FLOC 1 0
+FSIZE 32 28
+ENDFIELD
+
+TEXT "Templates are used to set initial symbol parameters. You can use the default Allegro template or your own custom template drawing file." 
+FLOC 34 1
+FSIZE 46 3
+ENDTEXT
+
+TEXT "You can customize a template by adding information to a symbol drawing. Do not add information to the PACKAGE GEOMETRY, MANUFACTURING, PIN, and ETCH classes because it will interfere with the symbol generation process."
+FLOC 34 5
+FSIZE 46 7
+ENDTEXT
+
+TEXT "Template drawing file:"
+FLOC 34 12
+ENDTEXT
+
+FIELD no_custom_template
+FLOC 35 14
+CHECKLIST "Default Cadence supplied template" "template"
+ENDFIELD
+
+FIELD use_custom_template
+FLOC 35 16
+CHECKLIST "Custom template:" "template"
+ENDFIELD
+
+FIELD custom_template
+FLOC 52 16
+STRFILLIN 21 80  
+ENDFIELD 
+ 
+FIELD template_browse
+FLOC 75 16
+MENUBUTTON "..." 3 3
+ENDFIELD 
+
+TEXT "You must click the Load Template button before proceeding to the next page"
+FLOC 52 20
+FSIZE 31 3
+ENDFIELD
+
+FIELD load_template
+FLOC 35 20
+MENUBUTTON "Load Template" 10 3
+ENDFIELD
+
+ENDTAB
+
+TAB "General Parameters" General_Setup
+
+FIELD gsetup_image
+THUMBNAIL intro.bmp
+FLOC 1 0
+FSIZE 32 28
+ENDFIELD 
+
+TEXT "For data that you enter in this wizard, you can use units that are different from the units used to create the package symbol."
+
+FLOC 34 1
+FSIZE 46 4
+ENDTEXT
+
+TEXT "Units used to enter dimensions in this wizard:"
+FLOC 34 5
+ENDTEXT
+
+FIELD pack_units
+FLOC 34 7
+ENUMSET 9
+POP "UNITTYPES"
+ENDFIELD
+
+TEXT "Accuracy:"
+FLOC 48 7
+ENDTEXT
+      
+FIELD pack_precision
+FLOC 56 7
+INTSLIDEBAR 2 1
+MIN 0
+MAX 4
+ENDFIELD
+
+TEXT "Units used to create package symbol:"
+FLOC 34 10
+ENDTEXT
+
+FIELD pack_units_create
+FLOC 34 12
+ENUMSET 9
+POP "UNITTYPES"
+ENDFIELD
+      
+TEXT "Accuracy:"
+FLOC 48 12
+ENDTEXT 
+ 
+FIELD pack_precision_create
+FLOC 56 12
+INTSLIDEBAR 2 1
+MIN 0 
+MAX 4 
+ENDFIELD
+
+TEXT "Reference designator prefix:"
+FLOC 34 17
+ENDTEXT
+
+FIELD ref_des
+FLOC 34 19
+STRFILLIN 7 9
+POP "REF_DES"
+ENDFIELD
+
+ENDTAB
+
+TAB "DIP Parameters" DIP_Setup
+
+FIELD dip_image
+THUMBNAIL dip.bmp
+FLOC 1 0
+FSIZE 32 28
+ENDFIELD
+
+TEXT "Number of pins (N):"
+FLOC 34 3
+ENDTEXT
+ 
+FIELD dip_pin_count
+FLOC 54 3
+INTSLIDEBAR 4 4
+MIN 1 
+MAX 9999
+ENDFIELD
+
+TEXT "Lead pitch (e):"
+FLOC 34 7
+ENDTEXT
+ 
+FIELD dip_e
+FLOC 54 7
+REALFILLIN 10 10
+POP "DIP_E"
+ENDFIELD
+
+TEXT "mils"
+FLOC 70 7
+INFO dip_e_units 6
+ENDFIELD
+
+TEXT "Terminal row spacing (e1):"
+FLOC 34 10
+ENDTEXT
+ 
+FIELD dip_e1
+FLOC 54 10
+REALFILLIN 10 10
+POP "DIPWIDTHPOPUP"
+ENDFIELD
+
+TEXT "mils"
+FLOC 70 10 
+INFO dip_e1_units 6 
+ENDFIELD
+ 
+TEXT "Package width (E):"
+FLOC 34 15
+ENDTEXT
+ 
+FIELD dip_width
+FLOC 54 15
+REALFILLIN 13 13
+ENDFIELD
+
+TEXT "mils"
+FLOC 70 15 
+INFO dip_width_units 6 
+ENDFIELD
+ 
+TEXT "Package length (D):"
+FLOC 34 18
+ENDTEXT
+ 
+FIELD dip_len
+FLOC 54 18
+REALFILLIN 13 13
+ENDFIELD
+
+TEXT "mils"
+FLOC 70 18 
+INFO dip_len_units 6 
+ENDFIELD
+ 
+
+ENDTAB
+
+TAB "SOIC Parameters" SOIC_Setup
+
+FIELD sop_image
+THUMBNAIL soic.bmp
+FLOC 1 0
+FSIZE 32 28
+ENDFIELD
+
+TEXT "Number of pins (N):"
+FLOC 34 3
+ENDTEXT
+
+FIELD sop_pin_count
+FLOC 54 3
+INTSLIDEBAR 4 4
+MIN 1
+MAX 9999
+ENDFIELD
+
+TEXT "Lead pitch (e):"
+FLOC 34 7
+ENDTEXT
+ 
+FIELD sop_e
+FLOC 54 7   
+REALFILLIN 10 10
+POP "SOP_E"
+ENDFIELD   
+
+TEXT "mils"
+FLOC 70 7 
+INFO sop_e_units 6 
+ENDFIELD 
+ 
+TEXT "Terminal row spacing (e1):"
+FLOC 34 10
+ENDTEXT
+
+FIELD sop_e1
+FLOC 54 10
+REALFILLIN 10 10
+POP "SOPWIDTHPOPUP"
+ENDFIELD
+
+TEXT "mils"
+FLOC 70 10 
+INFO sop_e1_units 6 
+ENDFIELD 
+ 
+TEXT "Package width (E):"
+FLOC 34 15
+ENDTEXT
+
+FIELD sop_width
+FLOC 54 15
+REALFILLIN 13 13
+ENDFIELD
+
+TEXT "mils"
+FLOC 70 15 
+INFO sop_width_units 6
+ENDFIELD 
+ 
+TEXT "Package length (D):"
+FLOC 34 18
+ENDTEXT
+
+FIELD sop_len
+FLOC 54 18
+REALFILLIN 13 13
+ENDFIELD
+
+TEXT "mils" 
+FLOC 70 18  
+INFO sop_len_units 6
+ENDFIELD  
+  
+
+ENDTAB
+
+
+TAB "PLCC/QFP Pin Layout" QFP_Setup_1
+ 
+FIELD qfp_1_image
+THUMBNAIL qfp_1.bmp
+FLOC 1 0
+FSIZE 32 28
+ENDFIELD
+
+GROUP "Pin count for this package"
+GLOC 34 1
+GSIZE 45 12
+ENDGROUP
+ 
+TEXT "Vertical pin count (Nv):"
+FLOC 40 4
+FGROUP "Pin count for this package"
+ENDTEXT
+ 
+FIELD qfp_pin_count_v
+FLOC 60 4
+FGROUP "Pin count for this package"
+INTSLIDEBAR 4 4 
+MIN 1 
+MAX 9999
+ENDFIELD
+ 
+TEXT "Horizontal pin count (Nh):"
+FLOC 40 7
+FGROUP "Pin count for this package"
+ENDTEXT
+
+FIELD qfp_pin_count_h
+FLOC 60 7
+FGROUP "Pin count for this package"
+INTSLIDEBAR 4 4
+MIN 1
+MAX 9999
+ENDFIELD
+ 
+TEXT "Total number of Pins:"
+FLOC 40 10
+FGROUP "Pin count for this package"
+ENDFIELD
+
+TEXT "44"
+FLOC 60 10
+FGROUP "Pin count for this package"
+INFO qfp_pin_count 5
+ENDFIELD
+
+TEXT "Location of pin 1:"
+FLOC 34 15
+ENDTEXT
+
+FIELD qfp_pin1_corner
+FLOC 38 17
+CHECKLIST "Top left corner" "qfp_pin1"
+ENDFIELD
+
+FIELD qfp_pin1_middle
+FLOC 38 19
+CHECKLIST "Middle of the top row" "qfp_pin1"
+ENDFIELD
+
+
+TEXT "Lead pitch (e):"
+FLOC 34 23
+ENDTEXT
+
+FIELD qfp_e
+FLOC 54 23
+REALFILLIN 10 10
+POP "QFP_E"
+ENDFIELD
+ 
+TEXT "mils" 
+FLOC 70 23  
+INFO qfp_e_units 6
+ENDFIELD  
+  
+ENDTAB
+
+
+TAB "PLCC/QFP Parameters" QFP_Setup_2
+ 
+FIELD qfp_2_image
+THUMBNAIL qfp_2.bmp
+FLOC 1 0
+FSIZE 32 28
+ENDFIELD
+
+TEXT "Terminal column spacing (e1):"
+FLOC 34 5
+ENDTEXT
+ 
+FIELD qfp_e1
+FLOC 56 5
+REALFILLIN 10 10
+ENDFIELD  
+ 
+TEXT "mils"
+FLOC 70 5
+INFO qfp_e1_units 6
+ENDFIELD  
+ 
+TEXT "Terminal row spacing (e2):"
+FLOC 34 8
+ENDTEXT  
+ 
+FIELD qfp_e2
+FLOC 56 8
+REALFILLIN 10 10
+ENDFIELD
+ 
+TEXT "mils"
+FLOC 70 8
+INFO qfp_e2_units 6
+ENDFIELD
+ 
+TEXT "Package width (E):"
+FLOC 34 13
+ENDTEXT
+ 
+FIELD qfp_width
+FLOC 56 13
+REALFILLIN 10 10
+ENDFIELD
+ 
+TEXT "mils"
+FLOC 70 13
+INFO qfp_width_units 6
+ENDFIELD
+ 
+TEXT "Package length (D):"
+FLOC 34 16
+ENDTEXT
+ 
+FIELD qfp_len
+FLOC 56 16
+REALFILLIN 10 10
+ENDFIELD
+ 
+TEXT "mils"
+FLOC 70 16
+INFO qfp_len_units 6
+ENDFIELD
+
+ENDTAB   
+
+TAB "Pin/Ball Grid Array Pin Layout" BGA_Setup_1
+
+FIELD pga_1_image
+THUMBNAIL pga_1.bmp
+FLOC 1 0
+FSIZE 32 28
+ENDFIELD
+
+TEXT "Enter the maximum matrix size for this package"
+FLOC 34 1
+ENDTEXT
+ 
+TEXT "Vertical pin count (MD):"
+FLOC 36 3
+ENDTEXT
+ 
+FIELD bga_MD
+FLOC 58 3
+INTSLIDEBAR 4 4
+MIN 1
+MAX 9999
+ENDFIELD
+ 
+TEXT "Horizontal pin count (ME):"
+FLOC 36 5
+ENDTEXT
+ 
+FIELD bga_ME
+FLOC 58 5
+INTSLIDEBAR 4 4
+MIN 1
+MAX 9999
+ENDFIELD
+
+
+TEXT "The pin arrangement in a PGA/BGA is obtained by removing some of the pins from a fully populated matrix."
+FLOC 34 10
+FSIZE 48 4
+ENDTEXT
+
+GROUP "Arrangement for pins in this matrix"
+GLOC 34 14
+GSIZE 47 12
+ENDGROUP
+
+FIELD pin_grid
+FLOC 36 16 
+FGROUP "Arrangement for pins in this matrix"
+CHECKLIST "Full matrix" "pin_arangement"
+ENDFIELD 
+ 
+FIELD pin_circumference
+FLOC 36 18 
+FGROUP "Arrangement for pins in this matrix"
+CHECKLIST "Perimeter matrix" "pin_arangement"
+ENDFIELD 
+ 
+TEXT "Outer rows:"
+TLOC 44 20 
+FGROUP "Arrangement for pins in this matrix"
+ENDTEXT
+ 
+FIELD pin_circ_outer_levels
+FLOC 58 20
+FGROUP "Arrangement for pins in this matrix"
+INTSLIDEBAR 4 4
+MIN 1
+MAX 9999
+ENDFIELD
+
+TEXT "Core rows:"
+TLOC 44 22
+FGROUP "Arrangement for pins in this matrix"
+ENDTEXT
+ 
+FIELD pin_circ_inner_levels
+FLOC 58 22
+FGROUP "Arrangement for pins in this matrix"
+INTSLIDEBAR 4 4
+MIN 0
+MAX 9999
+ENDFIELD
+ 
+FIELD pin_staggered
+FLOC 36 24
+FGROUP "Arrangement for pins in this matrix"
+CHECKLIST "Staggered pins"
+ENDFIELD
+
+
+TEXT "Total number of pins:"
+FLOC 34 26
+ENDFIELD
+
+TEXT "225"
+TLOC 58 26
+INFO pin_total 5
+ENDTEXT  
+
+ENDTAB
+
+TAB "Pin/Ball Grid Array Pin Layout (continued)" BGA_Setup_2
+
+FIELD pga_2_image
+THUMBNAIL pga_2.bmp
+FLOC 1 0 
+FSIZE 32 28
+ENDFIELD 
+
+
+TEXT "Pin numbering scheme:"
+FLOC 36 1
+ENDTEXT
+
+FIELD pin_numbering_field
+FLOC 36 3
+ENUMSET 20
+POP "PINNUMPOPUP"
+ENDFIELD
+
+FIELD pin_number_graphic
+THUMBNAIL bgagenrightdown.bmp
+FLOC 40 5
+FSIZE 14 14
+ENDFIELD
+
+FIELD pin_jedec
+FLOC 36 20
+CHECKLIST "JEDEC standard"
+ENDFIELD
+
+FIELD pin_number_zero_pad
+TLOC 36 22
+CHECKLIST "Pad number with zeros"
+ENDFIELD
+
+ENDTAB
+
+TAB "Pin/Ball Grid Array Parameters" BGA_Setup_3
+ 
+FIELD pga_3_image
+THUMBNAIL pga_3.bmp
+FLOC 1 0
+FSIZE 32 28
+ENDFIELD
+
+ 
+GROUP "Lead pitch"
+GLOC 34 2
+GSIZE 45 8
+ENDGROUP
+
+TEXT "Vertical columns (ev):"
+FLOC 36 4
+ENDTEXT
+
+FIELD pga_ev
+FLOC 54 4
+REALFILLIN 10 10
+POP "PGA_EV"
+ENDFIELD
+
+TEXT "mils"
+FLOC 70 4
+INFO pga_ev_units 6
+ENDFIELD
+ 
+TEXT "Horizontal rows (eh):"
+FLOC 36 7
+ENDTEXT  
+ 
+FIELD pga_eh
+FLOC 54 7 
+REALFILLIN 10 10
+POP "PGA_EH"
+ENDFIELD 
+
+TEXT "mils"
+FLOC 70 7
+INFO pga_eh_units 6
+ENDFIELD
+ 
+TEXT "Package width (E):"
+FLOC 34 13
+ENDTEXT
+ 
+FIELD pga_width
+FLOC 54 13
+REALFILLIN 13 13
+ENDFIELD
+ 
+TEXT "mils"
+FLOC 70 13
+INFO pga_width_units 6
+ENDFIELD
+ 
+TEXT "Package length (D):"
+FLOC 34 16
+ENDTEXT
+ 
+FIELD pga_len
+FLOC 54 16
+REALFILLIN 13 13
+ENDFIELD
+ 
+TEXT "mils"
+FLOC 70 16
+INFO pga_len_units 6
+ENDFIELD
+ 
+ENDTAB
+
+TAB "TH Discrete Parameters" TH_DISCRETE_Setup
+ 
+FIELD th_discrete_image
+THUMBNAIL th_discrete.bmp
+FLOC 1 0
+FSIZE 32 28
+ENDFIELD
+
+TEXT "Terminal pin spacing (e1):"
+FLOC 34 3
+ENDTEXT
+
+FIELD th_discrete_e1
+FLOC 54 3
+REALFILLIN 10 10
+POP "TH_DISCRETE_E1"
+ENDFIELD
+
+TEXT "mils"
+FLOC 70 3
+INFO th_discrete_e1_units 6
+ENDFIELD
+
+TEXT "Package width (E):"
+FLOC 34 8
+ENDTEXT
+
+FIELD th_discrete_width
+FLOC 54 8
+REALFILLIN 13 13
+ENDFIELD
+
+TEXT "mils"
+FLOC 70 8
+INFO th_discrete_width_units 6
+ENDFIELD
+
+TEXT "Package length (D):"
+FLOC 34 11
+ENDTEXT
+
+FIELD th_discrete_len
+FLOC 54 11
+REALFILLIN 13 13
+ENDFIELD
+
+TEXT "mils"
+FLOC 70 11
+INFO th_discrete_len_units 6
+ENDFIELD
+
+ENDTAB
+
+TAB "Surface Mount Discrete Parameters" SMD_DISCRETE_Setup
+
+FIELD smd_discrete_image
+THUMBNAIL smd_discrete.bmp
+FLOC 1 0
+FSIZE 32 28
+ENDFIELD
+
+TEXT "Terminal pin spacing (e1):"
+FLOC 34 3
+ENDTEXT
+
+FIELD smd_discrete_e1
+FLOC 54 3
+REALFILLIN 10 10
+POP "SMD_DISCRETE_E1"
+ENDFIELD
+       
+TEXT "mils"
+FLOC 70 3
+INFO smd_discrete_e1_units 6
+ENDFIELD
+       
+TEXT "Package width (E):"
+FLOC 34 8
+ENDTEXT
+       
+FIELD smd_discrete_width
+FLOC 54 8
+REALFILLIN 13 13
+ENDFIELD
+       
+TEXT "mils"
+FLOC 70 8
+INFO smd_discrete_width_units 6
+ENDFIELD
+       
+TEXT "Package length (D):"
+FLOC 34 11
+ENDTEXT
+       
+FIELD smd_discrete_len
+FLOC 54 11
+REALFILLIN 13 13
+ENDFIELD
+       
+TEXT "mils"
+FLOC 70 11
+INFO smd_discrete_len_units 6
+ENDFIELD
+       
+ENDTAB 
+
+TAB "SIP Parameters" SIP_Setup
+ 
+FIELD sip_image
+THUMBNAIL sip.bmp
+FLOC 1 0
+FSIZE 32 28
+ENDFIELD
+ 
+TEXT "Number of pins (N):"
+FLOC 34 3
+ENDTEXT
+
+FIELD sip_pin_count
+FLOC 54 3
+INTSLIDEBAR 4 4
+MIN 1
+MAX 9999
+ENDFIELD
+ 
+TEXT "Lead pitch (e):"
+FLOC 34 7
+ENDTEXT
+
+FIELD sip_e
+FLOC 54 7
+REALFILLIN 10 10
+POP "SIP_E"
+ENDFIELD
+ 
+TEXT "mils"
+FLOC 70 7
+INFO sip_e_units 6
+ENDFIELD
+ 
+TEXT "Package width (E):"
+FLOC 34 11
+ENDTEXT
+
+FIELD sip_width
+FLOC 54 11
+REALFILLIN 13 13
+ENDFIELD
+
+TEXT "mils"
+FLOC 70 11
+INFO sip_width_units 6
+ENDFIELD
+
+TEXT "Package length (D):"
+FLOC 34 14
+ENDTEXT
+
+FIELD sip_len
+FLOC 54 14
+REALFILLIN 13 13
+ENDFIELD
+
+TEXT "mils"
+FLOC 70 14
+INFO sip_len_units 6
+ENDFIELD
+
+ENDTAB
+
+TAB "ZIP Parameters" ZIP_Setup
+ 
+FIELD zip_image
+THUMBNAIL zip.bmp
+FLOC 1 0
+FSIZE 32 28
+ENDFIELD
+ 
+TEXT "Number of pins (N):"
+FLOC 34 3
+ENDTEXT
+ 
+FIELD zip_pin_count
+FLOC 54 3
+INTSLIDEBAR 4 4
+MIN 1
+MAX 9999
+ENDFIELD
+
+TEXT "Lead pitch (e):"
+FLOC 34 7
+ENDTEXT
+
+FIELD zip_e
+FLOC 54 7
+REALFILLIN 10 10
+POP "ZIP_E"
+ENDFIELD
+
+TEXT "mils"
+FLOC 70 7
+INFO zip_e_units 6
+ENDFIELD
+ 
+TEXT "Terminal row spacing (e1):"
+FLOC 34 10
+ENDTEXT
+
+FIELD zip_e1
+FLOC 54 10
+REALFILLIN 10 10
+POP "ZIPWIDTHPOPUP"
+ENDFIELD
+ 
+TEXT "mils"
+FLOC 70 10
+INFO zip_e1_units 6
+ENDFIELD
+
+TEXT "Package width (E):"
+FLOC 34 14
+ENDTEXT  
+ 
+FIELD zip_width
+FLOC 54 14
+REALFILLIN 13 13
+ENDFIELD 
+ 
+TEXT "mils"
+FLOC 70 14
+INFO zip_width_units 6
+ENDFIELD 
+ 
+TEXT "Package length (D):"
+FLOC 34 17
+ENDTEXT  
+ 
+FIELD zip_len
+FLOC 54 17
+REALFILLIN 13 13
+ENDFIELD 
+ 
+TEXT "mils"
+FLOC 70 17
+INFO zip_len_units 6
+ENDFIELD
+ 
+ENDTAB   
+
+TAB "Padstacks" Padstack_Specifications
+
+FIELD padsatck_image
+THUMBNAIL intro.bmp
+FLOC 1 0
+FSIZE 32 28
+ENDFIELD
+
+TEXT "Specify the padstacks to be used for symbol pins. You can choose a different padstack for pin 1."
+FLOC 34 3
+FSIZE 45 5
+ENDTEXT
+
+TEXT "Default padstack to use for symbol pins:"
+FLOC 34 8
+ENDTEXT
+ 
+FIELD default_padstack
+FLOC 34 10
+STRFILLIN 24 255
+ENDFIELD 
+ 
+FIELD default_pad_browse 
+FLOC 60 10
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+TEXT "Padstack to use for pin 1:"
+FLOC 34 14
+ENDTEXT
+ 
+FIELD pin1_padstack
+FLOC 34 16
+STRFILLIN 24 255
+ENDFIELD 
+ 
+FIELD pin1_pad_browse
+FLOC 60 16
+MENUBUTTON "..." 3 3
+ENDFIELD 
+
+ENDTAB
+
+TAB "Symbol Compilation" Compiled_Symbol_Generation
+ 
+FIELD comp_symbol_image
+THUMBNAIL intro.bmp
+FLOC 1 0
+FSIZE 32 28
+ENDFIELD
+
+TEXT "Select the location of symbol origin:"
+FLOC 34 1
+ENDTEXT
+
+FIELD origin_at_body_center
+FLOC 36 4
+CHECKLIST "Center of symbol body" "symbol_origin"
+ENDFIELD
+
+FIELD origin_at_pin1
+FLOC 36 6
+CHECKLIST "Pin 1 of symbol" "symbol_origin"
+ENDFIELD
+
+TEXT "Select whether or not you want the Package Wizard to generate a compiled symbol (.psm) for you."
+FLOC 34 11
+FSIZE 45 4
+ENDTEXT
+
+FIELD gen_symbol
+FLOC 36 15
+CHECKLIST "Create a compiled symbol" "gensym"
+ENDFIELD
+
+FIELD dont_gen_sym
+FLOC 36 17
+CHECKLIST "Do not create a compiled symbol" "gensym"
+ENDFIELD
+
+ENDTAB
+
+TAB "Summary" Last_page_Summary
+
+FIELD lastp_image
+THUMBNAIL intro.bmp
+FLOC 1 0
+FSIZE 32 28
+ENDFIELD
+
+TEXT "The Package Wizard creates the following files in your current directory, overwriting any exisiting files with the same name."
+FLOC 34 1
+INFO summary_text 1
+FSIZE 45 5
+ENDTEXT
+
+FIELD gen_files
+FLOC 38 8
+LIST "" 16 4
+OPTIONS sort
+ENDFIELD
+
+TEXT "Press the Finish button to create and load the package symbol in the layout editor."
+FLOC 34 16
+FSIZE 45 4
+ENDTEXT
+
+TEXT "Remember to generate a compiled symbol file (.psm) if you make additional changes to the symbol drawing."
+FLOC 34 21
+FSIZE 45 4
+ENDTEXT
+
+ENDTAB
+
+ENDTABSET
+
+ENDTILE
+
+ENDFORM
+

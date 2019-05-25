@@ -1,0 +1,50 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 39 6
+HEADER "Modify_Driver"
+
+POPUP <PLACEATTR_POPUP> "Keep Current" "0", "COVER" "1", "FIXED" "2", "PLACED" "3".
+
+TILE
+
+TEXT "MODIFY DRIVER"
+TLOC 8 1
+ENDTEXT
+
+TEXT "Driver:"
+TLOC 1 3
+ENDTEXT
+TEXT "Insert Name Here"
+TLOC 6 3
+INFO driver_refdes 20 20
+ENDTEXT
+
+TEXT "Placement Attribute:"
+TLOC 1 5
+ENDTEXT
+TEXT "Insert Attr Here"
+TLOC 1 7
+INFO driver_placeattr_current 20 20
+ENDTEXT
+
+FIELD driver_placeattr_new
+FLOC 12 7
+ENUMSET 10
+POP "PLACEATTR_POPUP"
+ENDFIELD
+
+FIELD driver_apply
+FLOC 3 11
+MENUBUTTON "Apply" 10 3
+ENDFIELD
+
+FIELD driver_cancel
+FLOC 15 11
+MENUBUTTON "Cancel" 10 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM
+

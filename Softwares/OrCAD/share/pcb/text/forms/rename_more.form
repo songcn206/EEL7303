@@ -1,0 +1,293 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM 
+FIXED
+PORT 91 22
+HEADER "Rename Ref Des Set Up"
+
+POPUP <First_side>"Top Layer""Top Layer","Bottom Layer""Bottom Layer".
+
+POPUP <Direction>"Horizontal""Horizontal","Vertical""Vertical".
+
+POPUP <Refdes_no>"1""1","2""2","3""3","4""4","5""5".
+
+POPUP <Naming_convention>"Grid Based""Grid Based","Sequential""Sequential".
+
+POPUP <origins>"Pin 1""Pin 1","Body Center""Body Center","Symbol Origin""Symbol Origin".
+
+POPUP <sides>"TOP""TOP","BOTTOM""BOTTOM","BOTH""BOTH".
+
+POPUP <left_right1>"""".
+POPUP <left_right2>"""".
+
+POPUP <up_down1>"""".
+POPUP <up_down2>"""".
+
+MESSAGE BAD_REFDES_PREFIX 1 "Error in refdes prefix - can only be '*', uppercase string, or a blank"
+MESSAGE NON_ALPHA_NUM 1 "Character(s) not alpha or numeric"
+MESSAGE PRESERVE_PREFIX_UNSETABLE 1 "Can be set only for Sequential naming and '*' RefDes Prefix"
+
+TILE
+TEXT "Layer:"
+TLOC 2 3
+TGROUP "Layer Options"
+ENDTEXT
+
+TEXT "RefDes Prefix:"
+TLOC 47 2
+TGROUP "Reference Designator Format"
+ENDTEXT
+
+TEXT "Starting Layer:"
+TLOC 2 6
+TGROUP "Layer Options"
+ENDTEXT
+
+TEXT "Top Layer Identifier:"
+TLOC 47 5
+TGROUP "Reference Designator Format"
+ENDTEXT
+
+TEXT "Component Origin:"
+TLOC 2 9
+ENDTEXT
+
+TEXT "Bottom Layer Identifier:"
+TLOC 47 8
+TGROUP "Reference Designator Format"
+ENDTEXT
+
+TEXT "Skip Character(s):"
+TLOC 47 11
+TGROUP "Reference Designator Format"
+ENDTEXT
+
+TEXT "Renaming Method:"
+TLOC 47 14
+TGROUP "Reference Designator Format"
+ENDTEXT
+
+TEXT "First Direction:"
+TLOC 2 17
+TGROUP "Directions for Top Layer"
+ENDTEXT
+
+TEXT "Ordering:"
+TLOC 2 19
+TGROUP "Directions for Top Layer"
+ENDTEXT
+
+TEXT "then"
+TLOC 21 21
+ENDTEXT
+
+TEXT "Refdes Digits:"
+TLOC 47 23
+TGROUP "Sequential Renaming"
+ENDTEXT
+
+TEXT "1st Direction Designation:"
+TLOC 47 30
+TGROUP "Grid Based Renaming"
+ENDTEXT
+
+TEXT "First Direction:"
+TLOC 2 31
+TGROUP "Directions for Bottom Layer"
+ENDTEXT
+
+TEXT "Ordering:"
+TLOC 2 33
+TGROUP "Directions for Bottom Layer"
+ENDTEXT
+
+TEXT "2nd Direction Designation:"
+TLOC 47 33
+TGROUP "Grid Based Renaming"
+ENDTEXT
+
+TEXT "then"
+TLOC 21 35
+TGROUP "Directions for Bottom Layer"
+ENDTEXT
+
+TEXT "Suffix:"
+TLOC 47 36
+ENDTEXT
+
+FIELD layer_side
+FLOC 20 3
+FGROUP "Layer Options"
+STRFILLIN 13 13
+POP "sides"
+ENDFIELD
+
+FIELD refdes_prefix
+FLOC 72 2
+FGROUP "Reference Designator Format"
+STRFILLIN 10 10
+ENDFIELD
+
+FIELD first_side
+FLOC 20 6
+FGROUP "Layer Options"
+STRFILLIN 13 13
+POP "First_side"
+ENDFIELD
+
+FIELD top_comp_des
+FLOC 72 5
+FGROUP "Reference Designator Format"
+STRFILLIN 1 1
+ENDFIELD
+
+FIELD component_origin
+FLOC 20 9
+FGROUP "Layer Options"
+STRFILLIN 13 13
+POP "origins"
+ENDFIELD
+
+FIELD bottom_comp_des
+FLOC 72 8
+FGROUP "Reference Designator Format"
+STRFILLIN 1 1
+ENDFIELD
+
+FIELD skip_characters
+FLOC 72 11
+FGROUP "Reference Designator Format"
+STRFILLIN 10 10
+ENDFIELD
+
+FIELD preserve_prefix
+FLOC 47 17
+CHECKLIST "Preserve current prefixes"
+FGROUP "Reference Designator Format"
+ENDFIELD
+
+FIELD naming_convention
+FLOC 72 14
+STRFILLIN 10 10
+POP "Naming_convention"
+ENDFIELD
+
+FIELD top_direction
+FLOC 19 17
+FGROUP "Directions for Top Layer"
+STRFILLIN 10 10
+POP "Direction"
+ENDFIELD
+
+FIELD top_first
+FLOC 2 21
+FGROUP "Directions for Top Layer"
+STRFILLIN 13 13
+POP "left_right1"
+ENDFIELD
+
+FIELD top_second
+FLOC 26 21
+FGROUP "Directions for Top Layer"
+STRFILLIN 13 13
+POP "up_down2"
+ENDFIELD
+
+FIELD refdes_no
+FLOC 62 23
+FGROUP "Sequential Renaming"
+STRFILLIN 3 3
+POP "Refdes_no"
+ENDFIELD
+
+FIELD first_dir_des
+FLOC 74 30
+FGROUP "Grid Based Renaming"
+STRFILLIN 10 10
+ENDFIELD
+
+FIELD bottom_direction
+FLOC 19 31
+FGROUP "Directions for Bottom Layer"
+STRFILLIN 10 10
+POP "Direction"
+ENDFIELD
+
+FIELD second_dir_des
+FLOC 74 33
+FGROUP "Grid Based Renaming"
+STRFILLIN 10 10
+ENDFIELD
+
+FIELD bottom_first
+FLOC 2 35
+FGROUP "Directions for Bottom Layer"
+STRFILLIN 13 13
+POP "left_right2"
+ENDFIELD
+
+FIELD bottom_second
+FLOC 26 35
+FGROUP "Directions for Bottom Layer"
+STRFILLIN 13 13
+POP "up_down1"
+ENDFIELD
+
+FIELD first_suf_chars
+FLOC 74 36
+FGROUP "Grid Based Renaming"
+STRFILLIN 10 10
+ENDFIELD
+
+FIELD Close
+FLOC 1 40
+MENUBUTTON "Close" 9 3
+ENDFIELD
+
+FIELD Cancel
+FLOC 13 40
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD Reset
+FLOC 26 40
+MENUBUTTON "Reset" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 80 40
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+GROUP "Layer Options"
+GLOC 1 0
+GSIZE 44 12
+ENDGROUP
+
+GROUP "Reference Designator Format"
+GLOC 46 0
+GSIZE 43 19
+ENDGROUP
+
+GROUP "Directions for Top Layer"
+GLOC 1 14
+GSIZE 44 11
+ENDGROUP
+
+GROUP "Sequential Renaming"
+GLOC 46 20
+GSIZE 43 6
+ENDGROUP
+
+GROUP "Grid Based Renaming"
+GLOC 46 27
+GSIZE 43 12
+ENDGROUP
+
+GROUP "Directions for Bottom Layer"
+GLOC 1 28
+GSIZE 44 11
+ENDGROUP
+
+ENDTILE
+
+ENDFORM

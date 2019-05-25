@@ -1,0 +1,665 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>
+      Working with Tag Files
+    </title>
+    <meta name="Approver" content="Technical Publications" />
+    <meta name="Author" content="Technical Publications" />
+    <meta name="CreateDate" content="2012-08-23" />
+    <meta name="CreateTime" content="1345712492" />
+    <meta name="DataType" content="Manuals" />
+    <meta name="Description"
+    content="Describes the functions and features of Cadence Help" />
+    <meta name="DocTitle" content="Cadence Help User Guide" />
+    <meta name="DocType" content="User Guide" />
+    <meta name="FileTitle" content="Working with Tag Files" />
+    <meta name="Keywords" content="test,t3" />
+    <meta name="FileType" content="Chapter" />
+    <meta name="Keyword" content="cdnshelp" />
+    <meta name="Language" content="English" />
+    <meta name="ModifiedDate" content="2012-08-23" />
+    <meta name="ModifiedTime" content="1345712492" />
+    <meta name="NextFile"
+    content="Cadence%2BHelp%2BKnown%2BProblems%2Band%2BSolutions.html" />
+    <meta name="Order" content="" />
+    <meta name="Group" content="" />
+    <meta name="Platform" content="All," />
+    <meta name="PrevFile"
+    content="Viewing%2BMultimedia%2BFlash%2BFiles.html" />
+    <meta name="Product" content="CadenceHelp," />
+    <meta name="ProductFamily" content="Cadence Shared Tools," />
+    <meta name="ProductVersion" content="2.0" />
+    <meta name="RightsManagement"
+    content="Copyright 2011-2012 Cadence Design Systems Inc." />
+    <meta name="Title"
+    content="Cadence Help User Guide -- Working with Tag Files" />
+    <meta name="Version" content="2.0" />
+    <meta name="Renderer" content="WIKI" />
+    <meta name="SpaceKey" content="cdnshelp20" />
+    <link href="styles/site.css" rel="stylesheet"
+    type="text/css" />
+    <meta content="text/html; charset=UTF-8"
+    http-equiv="Content-Type" />
+  </head>
+  <body style="margin-left: 5%;background-color: #FFFFFF;">
+    <a xmlns:html="http://www.w3.org/1999/xhtml" id="pagetop"
+    name="pagetop"></a> <a
+    xmlns:html="http://www.w3.org/1999/xhtml" id="firstpage"
+    name="firstpage"></a> <!-- Begin Buttons -->
+     
+    <table xmlns:html="http://www.w3.org/1999/xhtml" border="0"
+    cellpadding="0" cellspacing="0" width="650">
+      <tbody>
+        <tr>
+          <td colspan="10" height="36" width="650">
+            <img height="34" src="../support/header_doc.gif"
+            width="650" />
+          </td>
+        </tr>
+        <tr>
+          <td height="20" width="59">
+            <a href="javascript:openLibrary()"><img
+            alt="View Library" border="0" height="20"
+            src="../support/nav2_library.gif" width="59" /></a>
+          </td>
+          <td height="20" width="73">
+            <a href="cdnshelpTOC.html"><img alt="Table of Contents"
+            border="0" src="../support/nav2_toc.gif" /></a>
+          </td>
+          <td height="20" width="46">
+            <img alt="Index" border="0"
+            src="../support/nav2_index_b.gif" />
+          </td>
+          <td>
+            <a href="Viewing_Multimedia_Flash_Files.html"><img
+            alt="Previous" border="0"
+            src="../support/nav2_previous.gif" /></a>
+          </td>
+          <td>
+            <a
+            href="Cadence_Help_Known_Problems_and_Solutions.html"><img
+             alt="Next" border="0"
+            src="../support/nav_next.gif" /></a>
+          </td>
+          <td height="20">
+            <a href="cdnshelp.pdf"><img
+            alt="Open PDF to print book" border="0" height="20"
+            src="../support/nav2_print.gif" width="114" /></a>
+          </td>
+          <td height="20" width="61">
+            <img src="../support/nav2_black.gif" />
+          </td>
+          <td height="20" width="76">
+            <a href="/feedback.htm"><img alt="Email Comments"
+            border="0" height="20"
+            src="../support/nav2_feedback.gif" width="76" /></a>
+          </td>
+          <td height="20" width="43">
+            <a href="../cdsuser/help.html"><img
+            alt="Help Using Documentation" border="0" height="20"
+            src="../support/nav2_help.gif" width="43" /></a>
+          </td>
+          <td height="20" width="37">
+            <a href="/exitsearch.htm"><img
+            alt="Shut Down Cadence Documentation Server" border="0"
+            height="20" src="../support/nav2_exit.gif"
+            width="37" /></a>
+          </td>
+        </tr>
+      </tbody>
+    </table><!-- End Buttons -->
+    <hr xmlns:html="http://www.w3.org/1999/xhtml" />
+    <div id="main-header">
+      <a xmlns="" id="WorkingwithTagFiles"
+      name="WorkingwithTagFiles"></a> 
+      <h1 xmlns="" style=" margin: 4px 0 4px;">
+        <span>Working with Tag Files</span>
+      </h1>
+    </div>
+    <div class="wiki-content group" id="main-content">
+      <p>
+        Applications that display help in Cadence Help use a .tgf
+        file to identify which file to open depending on the Help
+        button that is clicked. The <code>.tgf</code> file points
+        to documents. You need to modify the <code>.tgf</code> file
+        and your documents so you can point a Help button to your
+        custom documents. Each line of a <code>.tgf</code> file
+        lists the following:<br />
+         <code>tagname docpath linkname filetype [version]</code>
+      </p>
+      <ul>
+        <li>
+          <code>tagname</code> is a string output by the Cadence
+          application when the user clicks a particular
+          <em>Help</em> button.
+        </li>
+        <li>
+          <code>docpath</code> is the path to and the name of the
+          file to open when the <em>Help</em> button is clicked.
+        </li>
+        <li>
+          If the path begins with a forward slash (<code>/</code>),
+          it is an absolute path.
+        </li>
+        <li>
+          If the path begins with the dollar symbol
+          (<code>$</code>), Cadence Help looks for the document at
+          the following locations sequentially:<br />
+           <code>install_dir/doc/name</code><br />
+           <code>install_dir/local/doc/name</code><br />
+           <code>$HOME/doc/name</code>
+        </li>
+      </ul>
+      <p>
+        Cadence Help looks for a matching
+        <code>name/nameTOC.html</code> file with a specific HTML
+        <code>META</code> value to make certain that the directory
+        name includes a Cadence Help manual.
+      </p>
+      <ul>
+        <li>
+          If the path does not have a slash or dollar symbol, it is
+          relative to the <code>doc/</code> <code>manualdir</code>
+          path containing this <code>.tgf</code> file.
+        </li>
+        <li>
+          <code>linkname</code> is the text of the HTML <code>&lt;A
+          NAME&gt;</code> anchor to which Cadence Help jumps. In
+          HTML, the syntax of an <code>&lt;A NAME&gt;</code> anchor
+          is as follows:<br />
+           <code>&lt;a name=&quot;uniqueID&quot;&gt;text to be
+          marked with anchor&lt;/a&gt;</code><br />
+           where uniqueID is any text string that identifies this
+          part of the HTML.
+        </li>
+        <li>
+          <code>filetype</code> gives the file format of the
+          document. Valid file types:<br />
+           HTML (for HTML files used by Cadence Help)
+        </li>
+        <li>
+          <p>
+            <code>version</code> is an optional version string.
+            This is only included if the same tag file is used when
+            two forms for this application pass identical tagnames
+            but different version strings.<br />
+             For non-DFII products, the tag file usually begins
+            with a DEFAULT line. If the requested filename is not
+            found, the <code>DEFAULT</code> entry will be used.
+          </p>
+        </li>
+      </ul>
+      <p>
+        A sample tag file:
+      </p>
+      <p>
+        DEFAULT myBookTOC.html NULL HTML<br />
+         CreatePinForm chap1.html &quot;createpin&quot; HTML<br />
+         CloseCell $dfref/chap3.html &quot;closecell&quot; HTML
+        4.6<br />
+         User Guide $cdnshelp/cdnshelpTOC.html NULL MENU
+      </p>
+      <ul>
+        <li>
+          The first line lists a default document file
+          (<code>myBookTOC.html</code>, a table of contents file)
+          that is opened if the Cadence tool passes a string that
+          is not listed in this tagfile. Its path is the same as
+          the tag file&#8217;s directory.
+        </li>
+        <li>
+          If the application passes the tagname
+          <code>CreatePinForm</code>, Cadence Help opens the file
+          <code>chap1.html</code> in the tag file&#8217;s
+          directory, then jumps to the <code>&lt;A NAME&gt;</code>
+          anchor with the string <code>createpin</code>.
+        </li>
+        <li>
+          If the application passes the tagname
+          <code>CloseCell</code> with version number
+          <code>4.6</code>, Cadence Help opens the file
+          <code>chap3.html</code> in the directory
+          <code>~/doc/dfref</code>, or <code>local/doc/</code>
+          <code>dfref</code>, or <code>doc/dfref</code> in that
+          order. Cadence Help jumps to the <code>&lt;A
+          NAME&gt;</code> anchor with the string
+          <code>CloseCell</code>.
+        </li>
+        <li>
+          If the application passes the tagname User Guide, Cadence
+          Help opens the TOC file for itself, which lists all the
+          documents so the user can pick one.
+        </li>
+      </ul>
+      <h4
+      id="WorkingwithTagFiles-Determiningwhetheryourapplicationhasatagfile">
+        Determining whether your application has a tag file
+      </h4>
+      <p>
+        Different families of Cadence applications have different
+        methods for identifying their help tag file. For most
+        applications, the help tag file is in the same directory as
+        the document. To find the help tag file, look in the
+        document&#8217;s directory for a file named
+        <code>manualname.tgf</code>.<br />
+         For example, the tag file for the Library Manager document
+        is<br />
+         <code>doc/libManager/libManager.tgf</code><br />
+         For most (but not all) Design Framework II&#174;
+        applications, the help tag file will be named<br />
+         <code>doc/helpAppID/helpAppID.tgf</code><br />
+         The <code>helpAppID</code> is usually different from the
+        document directory name, and in most cases the
+        <code>doc/helpAppID</code> directory contains only the help
+        tag file. The document itself is in another directory.
+      </p>
+      <h4
+      id="WorkingwithTagFiles-HowCadenceapplicationsfindtagfiles">
+        How Cadence applications find tag files
+      </h4>
+      <p>
+        A few Design Framework II applications and all other
+        Cadence applications that use a tag file find it by doing
+        the following:
+      </p>
+      <p>
+        The application searches for the document directory (or a
+        subdirectory containing that directory) in your doc
+        hierarchy, in the following order:
+      </p>
+      <ul>
+        <li>
+          <code>install_dir/doc</code>
+        </li>
+        <li>
+          <code>install_dir/local/doc</code>
+        </li>
+        <li>
+          <code>$HOME/doc</code> or <code>%userprofile%\doc</code>
+          (Windows)
+        </li>
+      </ul>
+      <p>
+        Most Design Framework II applications find their help tag
+        file by doing the following:
+      </p>
+      <ol>
+        <li>
+          The application determines which help application ID, and
+          therefore which tag file, to search first.
+        </li>
+        <li>
+          The application searches for the
+          <code>helpAppID/helpAppID.tgf</code>file in the following
+          order:<br />
+           
+          <ul>
+            <li>
+              <code>install_dir/doc</code>
+            </li>
+            <li>
+              <code>install_dir/local/doc</code>
+            </li>
+            <li>
+              <code>$HOME/doc</code> or
+              <code>%userprofile%\doc</code>(Windows)
+            </li>
+          </ul>
+        </li>
+        <li>
+          If there is a match, the appropriate document page is
+          displayed. If there is no match, the application
+          continues to the next help application ID in the
+          list.<br />
+           DFII applications can be either a sub-application of a
+          schematic or layout editor tool; or they can be an editor
+          tool; or they can be part of the software framework
+          itself. DFII help searches for help tags beginning with
+          the most specific possible tag file and moving towards
+          the default tag file, dfii.tgf. The list of application
+          IDs to search is generally:
+        </li>
+      </ol>
+      <ul>
+        <li>
+          <code>sub_application.tgf</code> : Information specific
+          to the application.
+        </li>
+        <li>
+          <code>root_application.tgf</code> : Information that is
+          general for all applications under the current schematic
+          or layout editor.
+        </li>
+        <li>
+          <code>dfii.tgf</code> : Information that is general to
+          all DFII tools.
+        </li>
+      </ul>
+      <h4 id="WorkingwithTagFiles-Modifyingadocumentandtagfile">
+        Modifying a document and tag file
+      </h4>
+      <p>
+        If you change a pointer in a .tgf to jump to a different
+        anchor in the modified Cadence document or to a file you
+        added to the Cadence hierarchy, you must:
+      </p>
+      <ul>
+        <li>
+          Add or change HTML anchors in the help files
+        </li>
+        <li>
+          Find the help symbol used by the form or window to locate
+          help files
+        </li>
+        <li>
+          Edit the .tgf pointer file that maps help symbols to HTML
+          anchors
+        </li>
+      </ul>
+      <p>
+        The next sections describe these steps.
+      </p>
+      <h5 id="WorkingwithTagFiles-AddingorchangingHTMLanchors">
+        <em>Adding or changing HTML anchors</em>
+      </h5>
+      <p>
+        Cadence applications find a page in a help document by
+        looking for an &lt;A NAME&gt; element, called
+        &quot;anchor&quot;, in the HTML file.<br />
+         If you create a new help file, add a new section, or
+        change a section and remove the existing &lt;A NAME&gt;
+        element, you must place an &lt;A NAME&gt; anchor on each
+        section that you want to open from a Help button.<br />
+         You may use any HTML editing program, including a text
+        editor such as vi, to edit the HTML file and add, change,
+        or move anchor elements. The syntax of an anchor is:<br />
+         <code>&lt;A NAME=&quot;uniqueID&quot;&gt;Text at beginning
+        of section you want to jump</code>
+        <code>to&lt;/a&gt;</code><br />
+         where <code>uniqueID</code> is any text string unique to
+        this NAME element.
+      </p>
+      <h5
+      id="WorkingwithTagFiles-Findingtheformorwindowhelpsymbol">
+        <em>Finding the form or window help symbol</em>
+      </h5>
+      <p>
+        The .tgf files map application help symbols to specific
+        help filenames. Clicking on a Help button in that
+        application passes the help symbol to a program that uses
+        the tgf to look up the appropriate help file.<br />
+         For all non-DFII and a few DFII applications, there is no
+        specific mechanism for determining what help symbol is used
+        for a specific window or form. You may want to look through
+        the tag file (<code>.tgf</code>) for the document used by
+        that application to see which files are called. You may be
+        able to tell, by looking at the section where an anchor is
+        placed, which form or window jumps to that page. Then you
+        can look for that document file and anchor name in the
+        <code>.tgf</code> file.<br />
+         If you have a DF II application, you may also use the
+        following steps to determine what help symbols and .tgf
+        files are used by a specific form or window.
+      </p>
+      <ol>
+        <li>
+          Open the form or window whose help you want to customize.
+        </li>
+        <li>
+          Type the following in the Command Interpreter Window
+          (CIW):<br />
+           <code>helpDebug=t</code>
+        </li>
+        <li>
+          Click the form or window <em>Help</em> button.
+        </li>
+        <li>
+          <p>
+            You see a report similar to this:<br />
+             <code>hiHelp: help symbol =
+            &quot;WidgetEditor&quot;</code> <code>Application ID
+            =</code> <code>&quot;cadenceTool&quot;</code><br />
+             <code>...hihelpLookupTag: appIDlist = (string)
+            &quot;cadenceTool&quot; tagName</code> <code>= (string)
+            &quot;WidgetEditor&quot; objType = (symbol) form
+            objName =</code> <code>(symbol) helpSymbol quickHelpTag
+            = (list) nil concatTagName =</code> <code>(list)
+            nilSearching for help symbol...Calling
+            hiiObShowTag,</code> <code>toolList =
+            (&quot;cadenceTool&quot; &quot;DFII&quot;), tagName
+            =</code> <code>&quot;WidgetEditor&quot;calling
+            obShowTag with tool &quot;icctranslator&quot;,
+            tag</code> <code>&quot;WidgetEditor&quot; (version
+            &quot;&quot;)tag &quot;WidgetEditor&quot; found,
+            document was</code> <code>displayed.&quot;hiiObShowTag
+            call succeeded&quot;</code><br />
+             Note: If the output you see is different, your product
+            does not use <code>hiHelp()</code> to access online
+            help.<br />
+             In this example, <code>WidgetEditor</code> is the form
+            help symbol. The tag file you must edit in this example
+            is
+            <code>/install_dir/doc/cadenceTool/cadenceTool.tgf</code>.
+            (The debug output in the CIW does not show the filename
+            so you must deduce the name from the application ID.)
+          </p>
+          <div class="panelMacro">
+            <table class="noteMacro">
+              <colgroup>
+                <col width="24" />
+                <col />
+              </colgroup>
+              <tr>
+                <td valign="top">
+                  <img align="absmiddle" alt="" border="0"
+                  height="16"
+                  src="images/icons/emoticons/warning.png"
+                  width="16" />
+                </td>
+                <td>
+                  <p>
+                    If <code>helpDebug()</code> never finds the
+                    symbol, you can edit any one of the tag files
+                    it searched and add the missing help symbol.
+                  </p>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </li>
+      </ol>
+      <h5 id="WorkingwithTagFiles-Editingthetgffile">
+        <em>Editing the .tgf file</em>
+      </h5>
+      <p>
+        After you have created any new help files or sections and
+        added <code>&lt;A NAME&gt;</code> anchors to those pages,
+        you must edit the .tgf with your changed anchor and/or
+        filenames.
+      </p>
+      <ol>
+        <li>
+          <p>
+            Make a copy of the original <code>.tgf</code> file in
+            your local hierarchy.<br />
+             For example: you edited a copy of
+            <code>doc/productA/chap1.html</code> in your
+            <code>local/doc/</code> <code>productA</code>
+            directory. This product uses a <code>.tgf</code> file.
+            You would copy:<br />
+             <code>cp doc/productA/productA.tgf
+            local/doc/productA/productA.tgf</code>
+          </p>
+          <div class="panelMacro">
+            <table class="noteMacro">
+              <colgroup>
+                <col width="24" />
+                <col />
+              </colgroup>
+              <tr>
+                <td valign="top">
+                  <img align="absmiddle" alt="" border="0"
+                  height="16"
+                  src="images/icons/emoticons/warning.png"
+                  width="16" />
+                </td>
+                <td>
+                  <p>
+                    For some DFII products, the <code>.tgf</code>
+                    file will not be in the document directory but
+                    rather in a separate directory matching the
+                    help application ID.
+                  </p>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </li>
+        <li>
+          Use a text editor such as vi to edit your copy of the
+          <code>.tgf</code>file to point to your changed
+          files.<br />
+           
+          <ul>
+            <li>
+              If you moved the document to /local and you changed
+              the document&#8217;s directory name, change any
+              pointers to the document&#8217;s files to begin with
+              <code>$cdsLocalDoc/</code> <code>newDocDir</code>.
+            </li>
+            <li>
+              If you moved the document to your <code>$HOME</code>
+              and you changed the document&#8217;s directory name,
+              change any pointers to the files to begin with
+              <code>$cdsHomeDoc/</code> <code>newDocDir</code>.
+            </li>
+            <li>
+              If you modified the name of a file or the <code>&lt;A
+              NAME&gt;</code> anchors in a file, change the entries
+              in the <code>.tgf</code> to refer to the changed
+              filename or anchor string. Look for the help symbol
+              name you found as described in Finding the form or
+              window help symbol, and change the filename and/or
+              anchor text for that help symbol as appropriate.
+            </li>
+          </ul>
+        </li>
+      </ol>
+      <h5
+      id="WorkingwithTagFiles-Missingorinvalidentriesinthetgffile">
+        <em>Missing or invalid entries in the .tgf file</em>
+      </h5>
+      <p>
+        If the entry in the <code>.tgf</code> cannot be found or
+        does not exist, Cadence Help will launch the
+        <code>manualname.xml</code> file that it finds in the
+        document directory. This will load the Documentation
+        Browser of Cadence Help for that document.
+      </p>
+      <div class="panelMacro">
+        <table class="noteMacro">
+          <colgroup>
+            <col width="24" />
+            <col />
+          </colgroup>
+          <tr>
+            <td valign="top">
+              <img align="absmiddle" alt="" border="0" height="16"
+              src="images/icons/emoticons/warning.png"
+              width="16" />
+            </td>
+            <td>
+              <p>
+                This will only occur if a DEFAULT tag is found in
+                the .tgf file and it points to the manualname.xml
+                file.
+              </p>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <hr xmlns:html="http://www.w3.org/1999/xhtml" />
+    <hr xmlns:html="http://www.w3.org/1999/xhtml" align="left" />
+    <div xmlns:html="http://www.w3.org/1999/xhtml"
+    style="text-align: left;">
+      <!-- Begin Buttons -->
+      <table border="0" cellpadding="0" cellspacing="0"
+      width="650">
+        <tbody>
+          <tr>
+            <td colspan="10" height="36" width="650">
+              <img height="34" src="../support/header_doc.gif"
+              width="650" />
+            </td>
+          </tr>
+          <tr>
+            <td height="20" width="59">
+              <a href="javascript:openLibrary()"><img
+              alt="View Library" border="0" height="20"
+              src="../support/nav2_library.gif" width="59" /></a>
+            </td>
+            <td height="20" width="73">
+              <a href="cdnshelpTOC.html"><img
+              alt="Table of Contents" border="0"
+              src="../support/nav2_toc.gif" /></a>
+            </td>
+            <td height="20" width="46">
+              <img alt="Index" border="0"
+              src="../support/nav2_index_b.gif" />
+            </td>
+            <td>
+              <a href="Viewing_Multimedia_Flash_Files.html"><img
+              alt="Previous" border="0"
+              src="../support/nav2_previous.gif" /></a>
+            </td>
+            <td>
+              <a
+              href="Cadence_Help_Known_Problems_and_Solutions.html"><img
+               alt="Next" border="0"
+              src="../support/nav_next.gif" /></a>
+            </td>
+            <td height="20">
+              <a href="cdnshelp.pdf"><img
+              alt="Open PDF to print book" border="0" height="20"
+              src="../support/nav2_print.gif" width="114" /></a>
+            </td>
+            <td height="20" width="61">
+              <img src="../support/nav2_black.gif" />
+            </td>
+            <td height="20" width="76">
+              <a href="/feedback.htm"><img alt="Email Comments"
+              border="0" height="20"
+              src="../support/nav2_feedback.gif" width="76" /></a>
+            </td>
+            <td height="20" width="43">
+              <a href="../cdsuser/help.html"><img
+              alt="Help Using Documentation" border="0" height="20"
+              src="../support/nav2_help.gif" width="43" /></a>
+            </td>
+            <td height="20" width="37">
+              <a href="/exitsearch.htm"><img
+              alt="Shut Down Cadence Documentation Server"
+              border="0" height="20" src="../support/nav2_exit.gif"
+              width="37" /></a>
+            </td>
+          </tr>
+        </tbody>
+      </table><!-- End Buttons -->
+    </div><br xmlns:html="http://www.w3.org/1999/xhtml" />
+     <font xmlns:html="http://www.w3.org/1999/xhtml" size="-1">For
+    support, see <a href="http://support.cadence.com"
+    target="_blank">Cadence Online Support</a> service.</font> <br
+    xmlns:html="http://www.w3.org/1999/xhtml" />
+     <br xmlns:html="http://www.w3.org/1999/xhtml" />
+     <font xmlns:html="http://www.w3.org/1999/xhtml"
+    size="-1"><i>Copyright &#169; 2012, <a
+    href="http://www.cadence.com">Cadence Design Systems,
+    Inc.</a></i></font> <br
+    xmlns:html="http://www.w3.org/1999/xhtml" />
+     <font xmlns:html="http://www.w3.org/1999/xhtml" size="-1">All
+    rights reserved.</font> <br
+    xmlns:html="http://www.w3.org/1999/xhtml" />
+     <br xmlns:html="http://www.w3.org/1999/xhtml" />
+  </body>
+</html>

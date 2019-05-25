@@ -1,0 +1,2528 @@
+# $Header: /vobs/psd_backend_data/data/forms-core/mini.form /main/99 2010-08-24T16:38:42-04 rez $
+#
+# Commands requiring new ministatus status entries should not
+#	add them to this file. Instead see "gdoc msm" to use
+#	seperate files.
+#
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM autogreytext
+VARIABLE
+#ifdef ACON_MINI_BBDRILL_OPTION
+PORT 29 14
+#else
+PORT 29 13
+#endif
+
+HEADER "Options"
+
+POPUP <class>"class""class".
+POPUP <subclass>"subclass""subclass".
+POPUP <wire_subclass>"""".
+POPUP <pad_subclass>"""".
+POPUP <bond_pad_list>"""".
+POPUP <rotate>"0""0.000","45""45.000","90""90.000","135""135.000",\
+"180""180.000","225""225.000","270""270.000","315""315.000".
+POPUP <linelock>"Off""0","45""45","90""90".
+POPUP <lockmode>"Line""1","Arc""0".
+POPUP <tile_bubble_space>"Off""0","Snap to Grid""1","Minimum DRC""2".
+POPUP <pop_step>"1""1".
+POPUP <just_popup>"Left""1","Right""2","Center""3".
+POPUP <rectpolar>"Rectangular""0","Polar""1".
+POPUP <polar_direct>"Ccw""0","Cw""1".
+POPUP <x_dir>"Right""0","Left""1".
+POPUP <y_dir>"Up""0","Down""1".
+POPUP <cp_origin>"Symbol""0","Body Center""1","User Pick""2","Sym Pin #""3".
+POPUP <axis>"X""1","Y""2","Both""5".
+POPUP <rot_type>"Absolute""0","Incremental""1".
+POPUP <rot_point>"Sym Origin""0","Body Center""1","User Pick""2","Sym Pin #""3".
+POPUP <slide_corner>"90""0","45""1","Arc""2","Off""3".
+POPUP <justification>"Left""1","Right""2","Center""3".
+POPUP <route_type>"Manual""0","To cursor""1","To pick""2".
+POPUP <grp_route_type>"To cursor""1","To pick""2".
+POPUP <line_font_type>"Solid""0","Hidden""1","Phantom""2","Dotted""3","Center""4".
+POPUP <shape>"padshape""padshape"
+POPUP <type>"Regular""0","Thermal""1","Antipad""2".
+POPUP <pedit_subclass>"subclass""subclass".
+POPUP <purgep>"All""0","Derived""1".
+POPUP <via_list>"""".
+POPUP <hlt_mode_p>"Hilite""0","Custom""1".
+POPUP <hlt_pattern_mode>"Solid""0", "Selected Pattern""2".
+
+# BASIC DEFAULT TILE -- WHAT YOU SEE IN IDLE MODE
+TILE DFLT
+TPANEL 1
+TEXT "Active Class and Subclass:"
+TLOC 1 1
+ENDTEXT
+
+FIELD class
+FLOC 5 4
+ENUMSET 19
+OPTIONS prettyprint
+POP "class"
+ENDFIELD
+
+FIELD subcolor
+FLOC 2 7
+COLOR 2 1
+OPTIONS colorchooser
+ENDFIELD
+
+FIELD subclass
+FLOC 5 7
+ENUMSET 19
+OPTIONS prettyprint ownerdrawn
+POP "subclass"
+ENDFIELD
+
+FIELD dim_active_layer
+FLOC 1 10
+CHECKLIST "Dim active layer"
+ENDFIELD
+
+FIELD dim_hlt_objs
+FLOC 1 12
+CHECKLIST "Dim color assignments"
+ENDFIELD
+
+FIELD dim_custom_objs
+FLOC 1 14
+CHECKLIST "Dim custom objects"
+ENDFIELD
+
+ENDTILE
+
+TILE GroupsUI
+
+TEXT "Group"
+TLOC 2 3
+ENDTEXT
+ 
+FIELD GROUPNAME
+FLOC 7 3
+STRFILLIN 18 100
+ENDFIELD
+ 
+FIELD GROUPLIST
+FLOC 2 6
+LIST "" 25 8
+ENDFIELD
+ 
+FIELD DISBAND
+FLOC 2 22
+MENUBUTTON "Disband" 25 4
+ENDFIELD
+ 
+ENDTILE
+ 
+
+TILE WBOND
+TPANEL 1
+TEXT "Wire"
+TLOC 24 1
+ENDTEXT
+ 
+TEXT
+TLOC 24 3
+INFO pad_subclass_label 5
+ENDTEXT
+
+TEXT
+TLOC 1 6
+INFO bond_pad_label 10
+ENDTEXT
+
+TEXT "Min bond length:"
+TLOC 1 15
+ENDTEXT
+
+TEXT
+TLOC 18 15
+INFO min_bond_len 12
+ENDTEXT
+
+TEXT "Max bond length:"
+TLOC 1 17
+ENDTEXT
+
+TEXT
+TLOC 18 17
+INFO max_bond_len 12
+ENDTEXT
+
+TEXT "Wire width:" 
+TLOC 1 19
+ENDTEXT
+
+FIELD wire_subcolor
+FLOC 1 1
+INFO_ONLY
+COLOR 2 1
+ENDFIELD
+
+FIELD wire_subclass
+FLOC 4 1
+ENUMSET 17
+POP "wire_subclass"
+ENDFIELD
+
+FIELD pad_subcolor
+FLOC 1 3
+INFO_ONLY
+COLOR 2 1
+ENDFIELD
+
+FIELD pad_subclass
+FLOC 4 3
+ENUMSET 17
+POP "pad_subclass"
+ENDFIELD
+
+FIELD bond_pad_list
+FLOC 12 6
+ENUMSET 13
+POP "bond_pad_list"
+ENDFIELD
+
+FIELD align_pad
+FLOC 1 9
+CHECKLIST "Align bond finger with wire"
+ENDFIELD
+
+FIELD unused_pins
+FLOC 1 11
+CHECKLIST "Allow unused pins"
+ENDFIELD
+
+FIELD wire_only
+FLOC 1 13
+CHECKLIST "Add wire only"
+ENDFIELD
+
+FIELD line_width
+FLOC 18 19
+REALFILLIN 7 7
+DECIMAL 5
+ENDFIELD
+
+ENDTILE
+
+TILE ACON
+TPANEL 1
+TEXT "Act"
+TLOC 24 1
+ENDTEXT
+
+TEXT "Alt"
+TLOC 24 3
+ENDTEXT
+
+FIELD active_subcolor
+FLOC 1 1
+INFO_ONLY
+COLOR 2 1
+ENDFIELD
+
+FIELD active_subclass
+FLOC 4 1
+ENUMSET 17
+POP "subclass"
+ENDFIELD
+
+FIELD alt_subcolor
+FLOC 1 3
+INFO_ONLY
+COLOR 2 1
+ENDFIELD
+
+FIELD alt_subclass
+FLOC 4 3
+ENUMSET 17
+POP "subclass"
+ENDFIELD
+
+#ifdef ACON_MINI_BBDRILL_OPTION
+TEXT "Via"
+TLOC 24 5
+ENDTEXT
+
+FIELD padstack_list
+FLOC 1 5
+ENUMSET 20
+POP "via_list"
+ENDFIELD
+
+FIELD allow_bbvia
+FLOC 1 7
+CHECKLIST "Allow B/B vias"
+ENDFIELD
+
+TEXT "Line lock:"
+TLOC 1 9
+ENDTEXT
+
+FIELD lock_mode
+FLOC 14 9
+ENUMSET 4
+POP "lockmode"
+ENDFIELD
+
+FIELD lock_direction
+FLOC 22 9
+ENUMSET 3
+POP "linelock"
+ENDFIELD
+
+#else
+
+TEXT "Via"
+TLOC 24 5
+ENDTEXT
+
+FIELD padstack_list
+FLOC 1 5
+ENUMSET 20
+POP "via_list"
+ENDFIELD
+
+TEXT "Line lock:"
+TLOC 1 7
+ENDTEXT
+
+FIELD lock_mode
+FLOC 14 7
+ENUMSET 4
+POP "lockmode"
+ENDFIELD
+
+FIELD lock_direction
+FLOC 22 7
+ENUMSET 3
+POP "linelock"
+ENDFIELD
+
+#endif
+
+ENDTILE
+
+TILE NOWIDTH
+TEXT
+TLOC 1 0
+INFO no_width 20
+ENDTEXT
+
+TEXT "Route type:"
+TLOC 1 2
+ENDTEXT
+
+FIELD grp_route_type
+FLOC 14 2
+ENUMSET 9
+POP "grp_route_type"
+ENDFIELD
+
+ENDTILE
+
+TILE LINEWIDTH
+
+TEXT "Line width:"
+TLOC 1 0
+ENDTEXT
+
+TEXT "Route type:"
+TLOC 1 2
+ENDTEXT
+
+FIELD line_width
+FLOC 14 0
+REALFILLIN 7 7
+DECIMAL 5
+ENDFIELD
+
+FIELD route_type
+FLOC 14 2
+ENUMSET 9
+POP "route_type"
+ENDFIELD
+
+ENDTILE
+
+TILE ACON2
+TPANEL 1
+
+TEXT "Bubble space:" bubble_space_title
+TLOC 1 0
+ENDTEXT
+
+FIELD bubble_space
+FLOC 14 0
+ENUMSET 11
+POP "tile_bubble_space"
+ENDFIELD
+
+FIELD gridless
+FLOC 16 2
+CHECKLIST "Gridless"
+ENDFIELD
+
+FIELD allow_errors
+FLOC 1 2
+CHECKLIST "Allow DRCs"
+ENDFIELD
+
+
+ENDTILE
+
+TILE NO45
+TEXT
+TLOC 1 0
+INFO min_max_text 20
+ENDTEXT
+
+ENDTILE
+
+TILE MAX45
+TEXT "Max 45 len:"
+TLOC 1 0
+ENDTEXT
+
+FIELD max_45_len
+FLOC 14 0
+REALFILLIN 7 7
+DECIMAL 5
+ENDFIELD
+
+ENDTILE
+
+TILE MAXARC
+TEXT "Max arc rad:"
+TLOC 1 0
+ENDTEXT
+
+FIELD max_arc_rad
+FLOC 14 0
+REALFILLIN 7 7
+DECIMAL 5
+ENDFIELD
+
+ENDTILE
+
+TILE MIN45
+TEXT "Inside 45 len:"
+TLOC 1 0
+ENDTEXT
+
+FIELD min_45_len
+FLOC 17 0
+REALFILLIN 7 7
+DECIMAL 5
+ENDFIELD
+
+ENDTILE
+
+TILE MINARC
+TEXT "Inside arc rad:"
+TLOC 1 0
+ENDTEXT
+
+FIELD min_arc_rad
+FLOC 17 0
+REALFILLIN 7 7
+DECIMAL 5
+ENDFIELD
+
+ENDTILE
+
+TILE ONETRACE
+TEXT "Net name:"
+TLOC 1 0
+ENDTEXT
+
+TEXT
+TLOC 11 0
+INFO netname 32
+ENDTEXT
+
+FIELD snap_cpt
+FLOC 1 2
+CHECKLIST "Snap to connect point"
+ENDFIELD
+
+FIELD replace_etch
+FLOC 1 4
+    #ifdef APD || ALLEGRO_MCM || SIP
+CHECKLIST "Replace conductor"
+    #else
+CHECKLIST "Replace etch"
+    #endif
+ENDFIELD
+
+#ifdef APD || ALLEGRO_MCM || SIP
+FIELD auto_pin_assign
+FLOC 1 6
+CHECKLIST "Auto assign unused pins"
+ENDFIELD
+
+#endif
+
+ENDTILE
+
+TILE PNTSOFFGRID
+TEXT "Gridded option unavailable."
+TLOC 1 0
+ENDTEXT
+
+TEXT "The elements are off grid."
+TLOC 1 2
+ENDTEXT
+
+ENDTILE
+
+TILE GRIDNOTUNIFORM
+TEXT "Gridded option unavailable."
+TLOC 1 0
+ENDTEXT
+
+TEXT "The grid is not uniform."
+TLOC 1 2
+ENDTEXT
+
+ENDTILE
+
+TILE ARC
+TPANEL 1
+TEXT "Active Class and Subclass:"
+TLOC 1 1
+ENDTEXT
+
+TEXT "Line width:"
+TLOC 1 12
+ENDTEXT
+
+TEXT "Line font:"
+TLOC 1 14
+ENDTEXT
+
+FIELD class
+FLOC 5 4
+ENUMSET 19
+OPTIONS prettyprint
+POP "class"
+ENDFIELD
+
+FIELD subcolor
+FLOC 2 7
+COLOR 2 1
+OPTIONS colorchooser
+ENDFIELD
+
+FIELD subclass
+FLOC 5 7
+ENUMSET 19
+OPTIONS prettyprint ownerdrawn
+POP "subclass"
+ENDFIELD
+
+FIELD line_width
+FLOC 13 12
+REALFILLIN 9 9
+DECIMAL 5
+ENDFIELD
+
+FIELD line_font_id
+FLOC 13 14
+ENUMSET 8
+POP "line_font_type"
+ENDFIELD
+
+ENDTILE
+
+TILE PADCHANGE
+TPANEL 1
+
+TEXT
+TLOC 1 1
+INFO pad_header 20
+OPTIONS underline
+ENDTEXT
+
+TEXT "Geometry:"
+TLOC 1 5
+ENDTEXT
+
+TEXT "Width:"
+TLOC 1 9
+ENDTEXT
+
+TEXT "Height:"
+TLOC 1 13
+ENDTEXT
+
+TEXT "Layer:"
+TLOC 1 17
+ENDTEXT
+
+TEXT "Pad type:"
+TLOC 1 21
+ENDTEXT
+ 
+FIELD pad_shape
+FLOC 12 5
+ENUMSET 8
+POP "shape"
+ENDFIELD
+ 
+FIELD pad_width
+FLOC 12 9
+STRFILLIN 8 8
+ENDFIELD
+ 
+FIELD pad_height
+FLOC 12 13
+STRFILLIN 8 8
+ENDFIELD
+ 
+FIELD padedit_subclass
+FLOC 12 17
+ENUMSET  14
+POP "pedit_subclass"
+ENDFIELD
+ 
+FIELD pad_type
+FLOC 12 21
+ENUMSET 6
+POP "type"
+ENDFIELD
+ 
+FIELD change_subcolor
+FLOC 9 17
+INFO_ONLY
+COLOR 2 1
+ENDFIELD
+ 
+ENDTILE
+
+TILE PADEDIT
+TPANEL 1
+
+GROUP "Edit"
+GLOC 1 0
+GSIZE 27 5
+ENDGROUP
+
+FIELD instbox
+FLOC 2 2
+CHECKLIST "Instance" "radio"
+ENDFIELD
+
+FIELD defbox
+FLOC 15 2
+CHECKLIST "Definition" "radio"
+ENDFIELD
+
+FIELD padlist
+FLOC 1 5
+LIST "" 27 5
+OPTIONS longstrings
+ENDFIELD
+
+FIELD display_derived
+FLOC 1 13
+CHECKLIST "Include Derived Padstacks"
+ENDFIELD
+
+
+TEXT "Name:"
+TLOC 1 16
+ENDTEXT
+
+FIELD pad_stack_name
+FLOC 10 16
+STRFILLIN 16 255
+ENDFIELD
+
+TEXT "Symbol:"
+TLOC 1 18
+ENDTEXT
+
+FIELD symbolname
+FLOC 10 18
+STRFILLIN 16 255
+ENDFIELD
+
+TEXT "Pin:"
+TLOC 1 20
+ENDTEXT
+
+FIELD pin_number
+FLOC 10 20
+STRFILLIN 16 20
+ENDFIELD
+
+TEXT "Refdes:"
+TLOC 1 22
+ENDTEXT
+
+FIELD refdes
+FLOC 10 22
+STRFILLIN 16 20
+ENDFIELD
+
+TEXT "New name:"
+TLOC 1 24
+ENDTEXT
+
+FIELD new_name
+FLOC 10 24
+STRFILLIN 16 255
+ENDFIELD
+
+FIELD purge
+FLOC 1 27
+MENUBUTTON "Purge" 7 3
+POP "purgep"
+ENDFIELD
+
+FIELD pad_stack_edit
+FLOC 12 27
+MENUBUTTON "Edit..." 7 3
+ENDFIELD
+
+FIELD pmreset
+FLOC 21 27
+MENUBUTTON "Reset" 5 3
+ENDFIELD
+
+ENDTILE
+
+TILE CHG
+TPANEL 1
+TEXT "Class:"
+TLOC 1 1
+ENDTEXT
+
+TEXT "New subclass:"
+TLOC 1 3
+ENDTEXT
+
+TEXT "Act via:"
+TLOC 4 9
+ENDTEXT
+
+TEXT "Line width:"
+TLOC 4 11
+ENDTEXT
+
+TEXT "Text block:"
+TLOC 4 13
+ENDTEXT
+
+TEXT "Text just:"
+TLOC 4 15
+ENDTEXT
+
+FIELD change_class
+FLOC 7 1
+ENUMSET 18
+OPTIONS prettyprint
+POP "class"
+ENDFIELD
+
+FIELD apply_subclass
+FLOC 1 5
+CHECKLIST ""
+ENDFIELD
+
+FIELD change_subcolor
+FLOC 4 5
+COLOR 2 1
+OPTIONS colorchooser
+ENDFIELD
+
+FIELD change_subclass
+FLOC 7 5
+ENUMSET 18
+OPTIONS prettyprint ownerdrawn
+POP "subclass"
+ENDFIELD
+
+FIELD vianame
+FLOC 11 9
+STRFILLIN 10 255
+ENDFIELD
+
+FIELD via_browse
+FLOC 23 9
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+FIELD apply_width
+FLOC 1 11
+CHECKLIST ""
+ENDFIELD
+
+FIELD line_width
+FLOC 16 11
+REALFILLIN 7 7
+DECIMAL 5
+ENDFIELD
+
+FIELD apply_size
+FLOC 1 13
+CHECKLIST ""
+ENDFIELD
+
+FIELD text_block
+FLOC 16 13
+INTSLIDEBAR 2 2
+MIN 1
+MAX 64
+ENDFIELD
+
+FIELD apply_justification
+FLOC 1 15
+CHECKLIST ""
+ENDFIELD
+
+FIELD text_justification
+FLOC 16 15
+ENUMSET 6
+POP "just_popup"
+ENDFIELD
+
+ENDTILE
+
+TILE CHMF
+TPANEL 1
+TEXT "First:"
+TLOC 5 4
+ENDTEXT
+
+TEXT "Second:"
+TLOC 4 6
+ENDTEXT
+
+TEXT "Chamfer angle:"
+TLOC 1 10
+ENDTEXT
+
+FIELD trim_seg1
+FLOC 12 4
+REALFILLIN 7 7
+DECIMAL 5
+ENDFIELD
+
+FIELD trim_seg2
+FLOC 12 6
+REALFILLIN 7 7
+DECIMAL 5
+ENDFIELD
+
+FIELD angle
+FLOC 16 10
+REALFILLIN 7 7
+POP "rotate"
+DECIMAL 3
+ENDFIELD
+
+GROUP "Trim Segments"
+GLOC 1 1
+GSIZE 27 8
+ENDGROUP
+
+ENDTILE
+
+TILE COPY_RECT_OR_POLAR
+TPANEL 1
+TEXT "Copy mode:"
+TLOC 1 1
+ENDTEXT
+
+FIELD rect_or_polar
+FLOC 12 1
+ENUMSET 11
+POP "rectpolar"
+ENDFIELD
+
+ENDTILE
+
+TILE COPY_POLAR
+TPANEL 1
+TEXT "Direction:"
+TLOC 1 1
+ENDTEXT
+
+TEXT "Copies:"
+TLOC 1 3
+ENDTEXT
+
+TEXT "Angle:"
+TLOC 1 5
+ENDTEXT
+
+FIELD polar_direct
+FLOC 14 1
+ENUMSET 4
+POP "polar_direct"
+ENDFIELD
+
+FIELD copy_count
+FLOC 14 3
+INTFILLIN 4 4
+MIN 0
+MAX 9999
+ENDFIELD
+
+FIELD angle
+FLOC 14 5
+REALFILLIN 7 7
+POP "rotate"
+DECIMAL 3
+ENDFIELD
+
+ENDTILE
+
+TILE COPY_RECT
+TPANEL 1
+TEXT "Qty"
+TLOC 4 1
+ENDTEXT
+
+TEXT "Spacing"
+TLOC 11 1
+ENDTEXT
+
+TEXT "Order"
+TLOC 20 1
+ENDTEXT
+
+TEXT "X:"
+TLOC 1 3
+ENDTEXT
+
+TEXT "Y:"
+TLOC 1 5
+ENDTEXT
+
+TEXT "Angle:"
+TLOC 1 8
+ENDTEXT
+
+FIELD y_count
+FLOC 4 3
+INTFILLIN 3 4
+MIN 1
+MAX 9999
+ENDFIELD
+
+FIELD x_spacing
+FLOC 10 3
+REALFILLIN 7 7
+REALMIN 0.000000
+DECIMAL 3
+ENDFIELD
+
+FIELD x_direction
+FLOC 20 3
+ENUMSET 5
+POP "x_dir"
+ENDFIELD
+
+FIELD x_count
+FLOC 4 5
+INTFILLIN 3 4
+MIN 1
+MAX 9999
+ENDFIELD
+
+FIELD y_spacing
+FLOC 10 5
+REALFILLIN 7 7
+REALMIN 0.000000
+DECIMAL 3
+ENDFIELD
+
+FIELD y_direction
+FLOC 20 5
+ENUMSET 5
+POP "y_dir"
+ENDFIELD
+
+FIELD angle
+FLOC 14 8
+REALFILLIN 7 7
+POP "rotate"
+DECIMAL 3
+ENDFIELD
+
+ENDTILE
+
+TILE COPY_ORIGIN
+TPANEL 1
+TEXT "Copy origin:"
+TLOC 1 1
+ENDTEXT
+
+FIELD copy_origin
+FLOC 14 1
+ENUMSET 11
+POP "cp_origin"
+ENDFIELD
+
+FIELD copy_retain_via_net
+FLOC 2 4
+CHECKLIST "Retain net of vias"
+ENDFIELD
+
+
+ENDTILE
+
+TILE COPY_SYM
+TPANEL 1
+TEXT "Symbol pin #:"
+TLOC 1 0
+ENDTEXT
+
+FIELD sympin_num
+FLOC 15 0
+STRFILLIN 7 32
+ENDFIELD
+
+ENDTILE
+
+TILE DATM
+TPANEL 1
+TEXT "Active Class and Subclass:"
+TLOC 1 1
+ENDTEXT
+
+TEXT "Dimension Environment mode:"
+TLOC 2 11
+ENDTEXT
+
+TEXT 
+TLOC 5 13
+INFO dimension_edit_mode 40
+ENDTEXT
+
+TEXT "Value:"
+TLOC 2 16
+ENDTEXT
+
+TEXT "Text:" 
+TLOC 2 19
+ENDTEXT
+
+TEXT "Dimension axis:"
+TLOC 2 22
+ENDTEXT
+
+TEXT "Datum location"
+TLOC 2 25
+ENDTEXT
+
+TEXT "X:"
+TLOC 17 25
+ENDTEXT
+
+TEXT
+TLOC 20 25
+INFO datumx 8
+ENDTEXT
+
+TEXT "Y:"
+TLOC 17 27
+ENDTEXT
+
+TEXT
+TLOC 20 27
+INFO datumy 8
+ENDTEXT
+
+FIELD class
+FLOC 5 4
+ENUMSET 19
+OPTIONS prettyprint
+POP "class"
+ENDFIELD
+
+FIELD subcolor
+FLOC 2 7
+COLOR 2 1
+OPTIONS colorchooser
+ENDFIELD
+
+FIELD subclass
+FLOC 5 7
+ENUMSET 19
+OPTIONS prettyprint ownerdrawn
+POP "subclass"
+ENDFIELD
+
+FIELD dim_value
+FLOC 7 16
+STRFILLIN 11 11
+ENDFIELD
+
+FIELD dim_text 
+FLOC 7 19
+STRFILLIN 11 1024
+ENDFIELD
+
+FIELD dim_text_tips
+FLOC 20 19
+MENUBUTTON "?" 3 2
+ENDFIELD
+
+FIELD datum_axis
+FLOC 20 22
+ENUMSET 4
+POP "axis"
+ENDFIELD
+
+ENDTILE
+
+TILE DEL
+TPANEL 1
+FIELD ripup
+FLOC 2 1
+    #ifdef APD || ALLEGRO_MCM || SIP
+CHECKLIST "Ripup conductor"
+    #else
+CHECKLIST "Ripup etch"
+    #endif
+ENDFIELD
+
+FIELD delete_symbol_etch
+FLOC 4 7
+    #ifdef APD || ALLEGRO_MCM || SIP
+CHECKLIST "Symbol conductor"
+    #else
+CHECKLIST "Symbol etch"
+    #endif
+ENDFIELD
+
+FIELD delete_net_clines
+FLOC 4 9
+CHECKLIST "Clines"
+ENDFIELD
+
+FIELD delete_net_frects
+FLOC 4 11
+CHECKLIST "Filled rects"
+ENDFIELD
+
+FIELD delete_net_shapes
+FLOC 4 13
+CHECKLIST "Shapes"
+ENDFIELD
+
+FIELD delete_net_vias
+FLOC 4 15
+CHECKLIST "Vias"
+ENDFIELD
+
+GROUP "Delete Net Options"
+GLOC 2 4
+GSIZE 25 14
+ENDGROUP
+
+ENDTILE
+
+TILE DIM
+TPANEL 1
+TEXT "Active Class and Subclass:"
+TLOC 1 1
+ENDTEXT
+
+TEXT "Dimension Environment mode:"
+TLOC 2 11
+ENDTEXT
+
+TEXT
+TLOC 5 13
+INFO dimension_edit_mode 40
+ENDTEXT
+
+TEXT "Value:"
+TLOC 2 16
+ENDTEXT
+
+TEXT "Text:" 
+TLOC 2 19
+ENDTEXT
+
+FIELD class
+FLOC 5 4
+ENUMSET 19
+OPTIONS prettyprint
+POP "class"
+ENDFIELD
+
+FIELD subcolor
+FLOC 2 7
+COLOR 2 1
+OPTIONS colorchooser
+ENDFIELD
+
+FIELD subclass
+FLOC 5 7
+ENUMSET 19
+OPTIONS prettyprint ownerdrawn
+POP "subclass"
+ENDFIELD
+
+FIELD dim_value
+FLOC 7 16
+STRFILLIN 11 11
+ENDFIELD
+
+FIELD dim_text 
+FLOC 7 19
+STRFILLIN 11 1024
+ENDFIELD
+
+FIELD dim_text_tips
+FLOC 20 19
+MENUBUTTON "?" 3 2
+ENDFIELD
+
+ENDTILE
+
+TILE DIM_BALLOON
+TPANEL 1
+TEXT "Active Class and Subclass:"
+TLOC 1 1
+ENDTEXT
+
+TEXT "Dimension Environment mode:"
+TLOC 2 11
+ENDTEXT
+
+TEXT
+TLOC 5 13
+INFO dimension_edit_mode 40
+ENDTEXT
+
+TEXT "Value:"
+TLOC 2 16
+ENDTEXT
+
+FIELD class
+FLOC 5 4
+ENUMSET 19
+OPTIONS prettyprint
+POP "class"
+ENDFIELD
+
+FIELD subcolor
+FLOC 2 7
+COLOR 2 1
+OPTIONS colorchooser
+ENDFIELD
+
+FIELD subclass
+FLOC 5 7
+ENUMSET 19
+OPTIONS prettyprint ownerdrawn
+POP "subclass"
+ENDFIELD
+
+FIELD dim_value
+FLOC 9 16
+STRFILLIN 11 11
+ENDFIELD
+
+ENDTILE
+
+TILE DIM_LEADER
+TPANEL 1
+TEXT "Active Class and Subclass:"
+TLOC 1 1
+ENDTEXT
+
+TEXT "Dimension Environment mode:"
+TLOC 2 11
+ENDTEXT
+
+TEXT
+TLOC 5 13
+INFO dimension_edit_mode 40
+ENDTEXT
+
+TEXT "Text:"
+TLOC 2 19
+ENDTEXT
+
+FIELD class
+FLOC 5 4
+ENUMSET 19
+OPTIONS prettyprint
+POP "class"
+ENDFIELD
+
+FIELD subcolor
+FLOC 2 7
+COLOR 2 1
+OPTIONS colorchooser
+ENDFIELD
+
+FIELD subclass
+FLOC 5 7
+ENUMSET 19
+OPTIONS prettyprint ownerdrawn
+POP "subclass"
+ENDFIELD
+
+FIELD dim_text
+FLOC 7 19
+STRFILLIN 11 1024
+ENDFIELD
+
+FIELD dim_text_tips
+FLOC 20 19
+MENUBUTTON "?" 3 2
+ENDFIELD
+
+ENDTILE
+
+TILE DIMGENERIC
+TPANEL 1
+TEXT "Active Class and Subclass:"
+TLOC 1 1
+ENDTEXT
+
+TEXT "Dimension Environment mode:"
+TLOC 2 11
+ENDTEXT
+
+TEXT
+TLOC 5 13
+INFO dimension_edit_mode 40
+ENDTEXT
+
+FIELD class
+FLOC 5 4
+ENUMSET 19
+OPTIONS prettyprint
+POP "class"
+ENDFIELD
+
+FIELD subcolor
+FLOC 2 7
+COLOR 2 1
+OPTIONS colorchooser
+ENDFIELD
+
+FIELD subclass
+FLOC 5 7
+ENUMSET 19
+OPTIONS prettyprint ownerdrawn
+POP "subclass"
+ENDFIELD
+
+ENDTILE
+
+TILE FILL
+TPANEL 1
+TEXT "Radius:"
+TLOC 1 2
+ENDTEXT
+
+FIELD radius
+FLOC 9 2
+REALFILLIN 7 7
+DECIMAL 5
+ENDFIELD
+
+ENDTILE
+
+TILE LINE
+TPANEL 1
+TEXT "Active Class and Subclass:"
+TLOC 1 1
+ENDTEXT
+
+TEXT "Line lock:"
+TLOC 1 12
+ENDTEXT
+
+TEXT "Line width:"
+TLOC 1 15
+ENDTEXT
+
+TEXT "Line font:"
+TLOC 1 18
+ENDTEXT
+
+FIELD class
+FLOC 5 4
+ENUMSET 19
+OPTIONS prettyprint
+POP "class"
+ENDFIELD
+
+FIELD subcolor
+FLOC 2 7
+COLOR 2 1
+OPTIONS colorchooser
+ENDFIELD
+
+FIELD subclass
+FLOC 5 7
+ENUMSET 19
+OPTIONS prettyprint ownerdrawn
+POP "subclass"
+ENDFIELD
+
+FIELD lock_mode
+FLOC 13 12
+ENUMSET 4
+POP "lockmode"
+ENDFIELD
+
+FIELD lock_direction
+FLOC 20 12
+ENUMSET 4
+POP "linelock"
+ENDFIELD
+
+FIELD line_width
+FLOC 13 15
+REALFILLIN 9 9
+DECIMAL 5
+ENDFIELD
+
+FIELD line_font_id
+FLOC 13 18
+ENUMSET 8
+POP "line_font_type"
+ENDFIELD
+
+ENDTILE
+
+TILE RARC
+TPANEL 1
+TEXT "Active Class and Subclass:"
+TLOC 1 1
+ENDTEXT
+
+TEXT "Line width:"
+TLOC 1 12
+ENDTEXT
+
+TEXT "Lock angle:"
+TLOC 1 14
+ENDTEXT
+
+TEXT "Line font:"
+TLOC 1 16
+ENDTEXT
+
+FIELD class
+FLOC 5 4
+ENUMSET 19
+OPTIONS prettyprint
+POP "class"
+ENDFIELD
+
+FIELD subcolor
+FLOC 2 7
+COLOR 2 1
+OPTIONS colorchooser
+ENDFIELD
+
+FIELD subclass
+FLOC 5 7
+ENUMSET 19
+OPTIONS prettyprint ownerdrawn
+POP "subclass"
+ENDFIELD
+
+FIELD line_width
+FLOC 14 12
+REALFILLIN 9 9
+DECIMAL 5
+ENDFIELD
+
+FIELD lock_angle
+FLOC 14 14
+REALFILLIN 7 7
+POP "rotate"
+DECIMAL 3
+ENDFIELD
+
+FIELD line_font_id
+FLOC 14 16
+ENUMSET 8
+POP "line_font_type"
+ENDFIELD
+
+ENDTILE
+
+TILE REF
+TPANEL 1
+TEXT "Refdes:"
+TLOC 1 2
+ENDTEXT
+
+TEXT "Refdes increment:"
+TLOC 1 5
+ENDTEXT
+
+FIELD refdes
+FLOC 9 2
+STRFILLIN 14 32
+ENDFIELD
+
+FIELD refdes_browse
+FLOC 25 2
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+FIELD increment
+FLOC 19 5
+INTFILLIN 4 18
+MIN 1
+MAX 32765
+ENDFIELD
+
+ENDTILE
+
+TILE ROT_ETCH
+TPANEL 1
+TEXT "Rotation:"
+TLOC 1 8
+ENDTEXT
+
+TEXT "Type:"
+TLOC 3 10
+ENDTEXT
+
+TEXT "Angle:"
+TLOC 2 12
+ENDTEXT
+
+FIELD ripup
+FLOC 1 1
+    #ifdef APD || ALLEGRO_MCM || SIP
+CHECKLIST "Ripup conductor"
+    #else
+CHECKLIST "Ripup etch"
+    #endif
+ENDFIELD
+
+FIELD stretch
+FLOC 1 4
+CHECKLIST "Stretch etch"
+ENDFIELD
+
+FIELD rotate_type
+FLOC 10 10
+ENUMSET 11
+POP "rot_type"
+ENDFIELD
+
+FIELD angle
+FLOC 10 12
+REALFILLIN 7 7
+POP "rotate"
+DECIMAL 3
+ENDFIELD
+
+ENDTILE
+
+TILE ROT_PNT
+TPANEL 1
+TEXT "Point:"
+TLOC 3 0
+ENDTEXT
+
+FIELD rotate_point
+FLOC 10 0
+ENUMSET 13
+POP "rot_point"
+ENDFIELD
+
+ENDTILE
+
+TILE ROT
+TPANEL 1
+TEXT "Symbol pin #:"
+TLOC 2 0
+ENDTEXT
+
+FIELD sympin_num
+FLOC 16 0
+STRFILLIN 8 32
+ENDFIELD
+
+ENDTILE
+
+TILE SYM
+TPANEL 1
+TEXT "Active Class and Subclass:"
+TLOC 1 1
+ENDTEXT
+
+TEXT "Rotate:"
+TLOC 5 13
+ENDTEXT
+
+FIELD class
+FLOC 5 4
+ENUMSET 19
+OPTIONS prettyprint
+POP "class"
+ENDFIELD
+
+FIELD subcolor
+FLOC 2 7
+COLOR 2 1
+OPTIONS colorchooser
+ENDFIELD
+
+FIELD subclass
+FLOC 5 7
+ENUMSET 19
+OPTIONS prettyprint ownerdrawn
+POP "subclass"
+ENDFIELD
+
+FIELD mirror
+FLOC 2 11
+CHECKLIST "Mirror"
+ENDFIELD
+
+FIELD angle
+FLOC 13 13
+REALFILLIN 7 7
+POP "rotate"
+DECIMAL 3
+ENDFIELD
+
+ENDTILE
+
+TILE TEXT
+TPANEL 1
+TEXT "Active Class and Subclass:"
+TLOC 1 1
+ENDTEXT
+
+TEXT "Marker size:"
+TLOC 5 11
+ENDTEXT
+
+TEXT "Rotate:"
+TLOC 5 13
+ENDTEXT
+
+TEXT "Text block:"
+TLOC 5 15
+ENDTEXT
+
+TEXT "Text just:"
+TLOC 5 17
+ENDTEXT
+
+FIELD class
+FLOC 5 3
+ENUMSET 19
+OPTIONS prettyprint
+POP "class"
+ENDFIELD
+
+FIELD subcolor
+FLOC 2 6
+COLOR 2 1
+OPTIONS colorchooser
+ENDFIELD
+
+FIELD subclass
+FLOC 5 6
+ENUMSET 19
+OPTIONS prettyprint ownerdrawn
+POP "subclass"
+ENDFIELD
+
+FIELD mirror
+FLOC 2 9
+CHECKLIST "Mirror"
+ENDFIELD
+
+FIELD text_marker_size
+FLOC 18 11
+REALFILLIN 7 7
+DECIMAL 5
+ENDFIELD
+
+FIELD angle
+FLOC 18 13
+REALFILLIN 6 7
+POP "rotate"
+DECIMAL 3
+ENDFIELD
+
+FIELD text_block
+FLOC 18 15
+INTSLIDEBAR 2 2
+MIN 1
+MAX 64
+ENDFIELD
+
+FIELD text_justification
+FLOC 18 17
+ENUMSET 6
+POP "justification"
+ENDFIELD
+
+ENDTILE
+
+TILE PERM_HIGHLIGHT
+TPANEL 1
+
+##define _REZ_TEST_DISABLE 1
+##ifdef _REZ_TEST_DISABLE
+
+TEXT "Selected pattern"
+TLOC 6 1
+ENDTEXT
+
+FIELD hlt_active_bitmap
+FLOC 2 1
+MENUBUTTON "" 3 3
+BITMAP cvf_square.bmp
+ENDFIELD
+
+FIELD bitmap1
+FLOC 6 4
+MENUBUTTON "" 3 3
+BITMAP cvf_square.bmp
+ENDFIELD
+
+FIELD bitmap2
+FLOC 10 4
+MENUBUTTON "" 3 3
+BITMAP cvf_slantleftpat.bmp
+ENDFIELD
+
+FIELD bitmap3
+FLOC 14 4
+MENUBUTTON "" 3 3
+BITMAP cvf_slantrightpat.bmp
+ENDFIELD
+
+FIELD bitmap4
+FLOC 18 4
+MENUBUTTON "" 3 3
+BITMAP cvf_horizpat.bmp
+ENDFIELD
+
+FIELD bitmap5
+FLOC 6 7
+MENUBUTTON "" 3 3
+BITMAP cvf_vertpat.bmp
+ENDFIELD
+
+FIELD bitmap6
+FLOC 10 7
+MENUBUTTON "" 3 3
+BITMAP cvf_peakpat.bmp
+ENDFIELD
+
+FIELD bitmap7
+FLOC 14 7
+MENUBUTTON "" 3 3
+BITMAP cvf_pluspat.bmp
+ENDFIELD
+
+FIELD bitmap8
+FLOC 18 7
+MENUBUTTON "" 3 3
+BITMAP cvf_horizdashpat.bmp
+ENDFIELD
+
+FIELD bitmap9
+FLOC 6 10
+MENUBUTTON "" 3 3
+BITMAP cvf_vertdashpat.bmp
+ENDFIELD
+
+FIELD bitmap10
+FLOC 10 10
+MENUBUTTON "" 3 3
+BITMAP cvf_diaghatchpat.bmp
+ENDFIELD
+ 
+FIELD bitmap11
+FLOC 14 10
+MENUBUTTON "" 3 3
+BITMAP cvf_orthohatchpat.bmp
+ENDFIELD
+ 
+FIELD bitmap12
+FLOC 18 10
+MENUBUTTON "" 3 3
+BITMAP cvf_checkpat_1.bmp
+ENDFIELD
+ 
+FIELD bitmap13
+FLOC 6 13
+MENUBUTTON "" 3 3
+BITMAP cvf_checkpat_2.bmp
+ENDFIELD
+ 
+FIELD bitmap14
+FLOC 10 13
+MENUBUTTON "" 3 3
+BITMAP cvf_diamond.bmp
+ENDFIELD
+ 
+FIELD bitmap15
+FLOC 14 13
+MENUBUTTON "" 3 3
+BITMAP cvf_diamondpat.bmp
+ENDFIELD
+
+FIELD bitmap16
+FLOC 18 13
+MENUBUTTON "" 3 3
+BITMAP cvf_plaidpat.bmp
+ENDFIELD
+
+##endif
+
+ENDTILE
+
+TILE PERM_CUSTOM_COLOR
+TPANEL 1
+
+FIELD perm_hilite_color 
+FLOC 1 1 
+INFO_ONLY 
+COLOR 2 1 
+ENDFIELD
+
+TEXT "Selected color"
+TLOC 4 1
+ENDTEXT
+
+FIELD color1
+FLOC 2 4
+COLOR 2 1
+ENDFIELD
+
+FIELD color2
+FLOC 5 4
+COLOR 2 1
+ENDFIELD
+
+FIELD color3
+FLOC 8 4
+COLOR 2 1
+ENDFIELD
+
+FIELD color4
+FLOC 11 4
+COLOR 2 1
+ENDFIELD
+
+FIELD color5
+FLOC 14 4
+COLOR 2 1
+ENDFIELD
+
+FIELD color6
+FLOC 17 4
+COLOR 2 1
+ENDFIELD
+
+FIELD color7
+FLOC 20 4
+COLOR 2 1
+ENDFIELD
+
+FIELD color8
+FLOC 23 4
+COLOR 2 1
+ENDFIELD
+
+FIELD color9
+FLOC 2 7
+COLOR 2 1
+ENDFIELD
+
+FIELD color10
+FLOC 5 7
+COLOR 2 1
+ENDFIELD
+
+FIELD color11
+FLOC 8 7
+COLOR 2 1
+ENDFIELD
+ 
+FIELD color12
+FLOC 11 7
+COLOR 2 1
+ENDFIELD
+ 
+FIELD color13
+FLOC 14 7
+COLOR 2 1
+ENDFIELD
+ 
+FIELD color14
+FLOC 17 7
+COLOR 2 1
+ENDFIELD
+ 
+FIELD color15
+FLOC 20 7
+COLOR 2 1
+ENDFIELD
+ 
+FIELD color16
+FLOC 23 7
+COLOR 2 1
+ENDFIELD
+ 
+FIELD color17
+FLOC 2 10
+COLOR 2 1
+ENDFIELD
+ 
+FIELD color18
+FLOC 5 10
+COLOR 2 1
+ENDFIELD
+ 
+FIELD color19
+FLOC 8 10
+COLOR 2 1
+ENDFIELD
+ 
+FIELD color20
+FLOC 11 10
+COLOR 2 1
+ENDFIELD
+ 
+FIELD color21
+FLOC 14 10
+COLOR 2 1
+ENDFIELD
+ 
+FIELD color22
+FLOC 17 10
+COLOR 2 1
+ENDFIELD
+
+FIELD color23
+FLOC 20 10
+COLOR 2 1
+ENDFIELD
+ 
+FIELD color24
+FLOC 23 10
+COLOR 2 1
+ENDFIELD
+ 
+FIELD color25
+FLOC 2 13
+COLOR 2 1
+ENDFIELD
+ 
+FIELD color26
+FLOC 5 13
+COLOR 2 1
+ENDFIELD
+ 
+FIELD color27
+FLOC 8 13
+COLOR 2 1
+ENDFIELD
+ 
+FIELD color28
+FLOC 11 13
+COLOR 2 1
+ENDFIELD
+ 
+FIELD color29
+FLOC 14 13
+COLOR 2 1
+ENDFIELD
+ 
+FIELD color30
+FLOC 17 13
+COLOR 2 1
+ENDFIELD
+ 
+FIELD color31
+FLOC 20 13
+COLOR 2 1
+ENDFIELD
+ 
+FIELD color32
+FLOC 23 13
+COLOR 2 1
+ENDFIELD
+
+FIELD color_choose
+FLOC 2 16
+MENUBUTTON "More colors ..." 15 3
+ENDFIELD
+
+TEXT "Hilight Pattern:"
+TLOC 1 20
+ENDTEXT
+
+FIELD hlt_candicane_state
+FLOC 12 20
+ENUMSET 12
+POP "hlt_pattern_mode"
+ENDFIELD
+
+FIELD hlt_active_bitmap
+FLOC 2 23
+MENUBUTTON "" 3 3
+BITMAP cvf_square.bmp
+ENDFIELD
+
+TEXT "Selected pattern"
+TLOC 6 23
+ENDTEXT
+
+
+FIELD bitmap1
+FLOC 6 26
+MENUBUTTON "" 3 3
+BITMAP cvf_square.bmp
+ENDFIELD
+
+FIELD bitmap2
+FLOC 10 26
+MENUBUTTON "" 3 3
+BITMAP cvf_slantleftpat.bmp
+ENDFIELD
+
+FIELD bitmap3
+FLOC 14 26
+MENUBUTTON "" 3 3
+BITMAP cvf_slantrightpat.bmp
+ENDFIELD
+
+FIELD bitmap4
+FLOC 18 26
+MENUBUTTON "" 3 3
+BITMAP cvf_horizpat.bmp
+ENDFIELD
+
+FIELD bitmap5
+FLOC 6 29
+MENUBUTTON "" 3 3
+BITMAP cvf_vertpat.bmp
+ENDFIELD
+
+FIELD bitmap6
+FLOC 10 29
+MENUBUTTON "" 3 3
+BITMAP cvf_peakpat.bmp
+ENDFIELD
+
+FIELD bitmap7
+FLOC 14 29
+MENUBUTTON "" 3 3
+BITMAP cvf_pluspat.bmp
+ENDFIELD
+
+FIELD bitmap8
+FLOC 18 29
+MENUBUTTON "" 3 3
+BITMAP cvf_horizdashpat.bmp
+ENDFIELD
+
+FIELD bitmap9
+FLOC 6 32
+MENUBUTTON "" 3 3
+BITMAP cvf_vertdashpat.bmp
+ENDFIELD
+
+FIELD bitmap10
+FLOC 10 32
+MENUBUTTON "" 3 3
+BITMAP cvf_diaghatchpat.bmp
+ENDFIELD
+ 
+FIELD bitmap11
+FLOC 14 32
+MENUBUTTON "" 3 3
+BITMAP cvf_orthohatchpat.bmp
+ENDFIELD
+ 
+FIELD bitmap12
+FLOC 18 32
+MENUBUTTON "" 3 3
+BITMAP cvf_checkpat_1.bmp
+ENDFIELD
+ 
+FIELD bitmap13
+FLOC 6 35
+MENUBUTTON "" 3 3
+BITMAP cvf_checkpat_2.bmp
+ENDFIELD
+ 
+FIELD bitmap14
+FLOC 10 35
+MENUBUTTON "" 3 3
+BITMAP cvf_diamond.bmp
+ENDFIELD
+ 
+FIELD bitmap15
+FLOC 14 35
+MENUBUTTON "" 3 3
+BITMAP cvf_diamondpat.bmp
+ENDFIELD
+
+FIELD bitmap16
+FLOC 18 35
+MENUBUTTON "" 3 3
+BITMAP cvf_plaidpat.bmp
+ENDFIELD
+
+ENDTILE
+
+TILE DEHIGHLIGHT
+TPANEL 1
+TEXT "Active Class and Subclass:"
+TLOC 1 1
+ENDTEXT
+
+FIELD class
+FLOC 5 4
+ENUMSET 19
+OPTIONS prettyprint
+POP "class"
+ENDFIELD
+
+FIELD subcolor
+FLOC 2 7
+COLOR 2 1
+OPTIONS colorchooser
+ENDFIELD
+
+FIELD subclass
+FLOC 5 7
+ENUMSET 19
+OPTIONS prettyprint ownerdrawn
+POP "subclass"
+ENDFIELD
+
+FIELD dehl_retain_color
+FLOC 1 11
+CHECKLIST "Retain objects custom color"
+ENDFIELD
+
+GROUP "Dehighlight all"
+GLOC 5 13
+GSIZE 20 14
+ENDGROUP
+
+FIELD net
+FLOC 9 16
+MENUBUTTON "Nets" 11 2
+ENDFIELD
+
+FIELD symbol
+FLOC 9 18
+MENUBUTTON "Symbols" 11 2
+ENDFIELD
+
+FIELD func
+FLOC 9 20
+MENUBUTTON "Functions" 11 2
+ENDFIELD
+
+FIELD pins
+FLOC 9 22
+MENUBUTTON "Pins" 11 2
+ENDFIELD
+
+FIELD dhlt_all
+FLOC 9 24
+MENUBUTTON "All" 11 2
+ENDFIELD
+
+ENDTILE
+
+TILE EDIT_P_BOUND
+TPANEL 1
+TEXT "Active Class and Subclass:"
+TLOC 1 1
+ENDTEXT
+
+TEXT "Line lock:"
+TLOC 1 10
+ENDTEXT
+
+TEXT "Grid:"
+TLOC 6 13
+ENDTEXT
+
+TEXT "Separator:"
+TLOC 1 16
+ENDTEXT
+
+FIELD class
+FLOC 4 4
+ENUMSET 19
+OPTIONS prettyprint
+POP "class"
+ENDFIELD
+
+FIELD subcolor
+FLOC 1 7
+COLOR 2 1
+OPTIONS colorchooser
+ENDFIELD
+
+FIELD subclass
+FLOC 4 7
+ENUMSET 19
+OPTIONS prettyprint ownerdrawn
+POP "subclass"
+ENDFIELD
+
+FIELD lock_mode
+FLOC 13 10
+ENUMSET 4
+POP "lockmode"
+ENDFIELD
+
+FIELD lock_direction
+FLOC 20 10
+ENUMSET 3
+POP "linelock"
+ENDFIELD
+
+FIELD epb_grid
+FLOC 13 13
+REALFILLIN 7 7
+DECIMAL 5
+ENDFIELD
+
+FIELD epb_separator
+FLOC 13 16
+STRFILLIN 2 1
+ENDFIELD
+
+ENDTILE
+
+TILE MIRROR_GEOM
+TPANEL 1
+
+TEXT "Mirror type:"
+TLOC 1 1
+ENDTEXT
+
+FIELD mirror_on_mode
+FLOC 3 3
+CHECKLIST "Standard mirror" "mirror_type"
+ENDFIELD
+
+FIELD mirror_geom_mode
+FLOC 3 5
+CHECKLIST "Mirror geometry" "mirror_type"
+ENDFIELD
+
+ENDTILE
+
+TILE MLF
+TPANEL 1
+TEXT "Active Class and Subclass:"
+TLOC 1 1
+ENDTEXT
+
+TEXT "Line font:"
+TLOC 1 12
+ENDTEXT
+
+FIELD class
+FLOC 5 4
+ENUMSET 19
+OPTIONS prettyprint
+POP "class"
+ENDFIELD
+
+FIELD subcolor
+FLOC 2 7
+COLOR 2 1
+OPTIONS colorchooser
+ENDFIELD
+
+FIELD subclass
+FLOC 5 7
+ENUMSET 19
+OPTIONS prettyprint ownerdrawn
+POP "subclass"
+ENDFIELD
+
+FIELD line_font_id
+FLOC 13 12
+ENUMSET 8
+POP "line_font_type"
+ENDFIELD
+
+ENDTILE
+
+TILE RECT
+TPANEL 1
+TEXT "Active Class and Subclass:"
+TLOC 1 1
+ENDTEXT
+
+TEXT "Line font:"
+TLOC 1 12
+ENDTEXT
+
+FIELD class
+FLOC 5 4
+ENUMSET 19
+OPTIONS prettyprint
+POP "class"
+ENDFIELD
+
+FIELD subcolor
+FLOC 2 7
+COLOR 2 1
+OPTIONS colorchooser
+ENDFIELD
+
+FIELD subclass
+FLOC 5 7
+ENUMSET 19
+OPTIONS prettyprint ownerdrawn
+POP "subclass"
+ENDFIELD
+
+FIELD line_font_id
+FLOC 13 12
+ENUMSET 8
+POP "line_font_type"
+ENDFIELD
+
+ENDTILE
+
+
+TILE ADD_PIN
+TPANEL 1
+
+FIELD pintype_connect
+FLOC 1 0
+CHECKLIST "Connect" "PinType"
+ENDFIELD
+
+FIELD pintype_mechanical
+FLOC 13 0
+CHECKLIST "Mechanical" "PinType"
+ENDFIELD
+
+TEXT "Padstack:"
+TLOC 1 2
+ENDTEXT
+
+FIELD pad_name
+FLOC 12 2
+STRFILLIN 9 255
+ENDFIELD
+
+FIELD pad_browse
+FLOC 23 2
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+TEXT "Copy mode:"
+TLOC 1 4
+ENDTEXT
+
+FIELD rect_or_polar
+FLOC 12 4
+ENUMSET 13
+POP "rectpolar"
+ENDFIELD
+
+TEXT
+TLOC 4 7
+INFO pin_label_qty 4
+ENDTEXT
+
+TEXT
+TLOC 10 7
+INFO pin_label_spacing 8
+ENDTEXT
+
+TEXT
+TLOC 20 7
+INFO pin_label_order 6
+ENDTEXT
+
+TEXT
+TLOC 1 9
+INFO pin_label_x 2
+ENDTEXT
+
+TEXT
+TLOC 1 11
+INFO pin_label_y 2
+ENDTEXT
+
+FIELD x_count
+FLOC 4 9
+INTFILLIN 3 4
+MIN 1
+MAX 9999
+ENDFIELD
+
+FIELD x_spacing
+FLOC 10 9
+REALFILLIN 7 12
+REALMIN 0
+DECIMAL 3
+ENDFIELD
+
+FIELD x_direction
+FLOC 20 9
+ENUMSET 5
+POP "x_dir"
+ENDFIELD
+ 
+FIELD y_count
+FLOC 4 11
+INTFILLIN 3 4
+MIN 1
+MAX 9999
+ENDFIELD
+ 
+FIELD y_spacing
+FLOC 10 11
+REALFILLIN 7 12
+REALMIN 0
+DECIMAL 3
+ENDFIELD
+
+FIELD y_direction
+FLOC 20 11
+ENUMSET 5
+POP "y_dir"
+ENDFIELD
+
+TEXT
+TLOC 1 7
+INFO pin_label_copies 10
+ENDTEXT
+
+TEXT
+TLOC 1 9
+INFO pin_label_angle_inc 10
+ENDTEXT
+
+TEXT
+TLOC 1 11
+INFO pin_label_rot_mode 10
+ENDTEXT
+ 
+FIELD copy_count
+FLOC 10 7
+INTFILLIN 4 4
+MIN 1
+MAX 9999
+ENDFIELD
+
+FIELD angle
+FLOC 10 9
+REALFILLIN 5 7
+POP "rotate"
+DECIMAL 3
+ENDFIELD
+
+FIELD polar_direct
+FLOC 21 9
+ENUMSET 4
+POP "polar_direct"
+ENDFIELD
+
+FIELD rotate_type
+FLOC 10 11
+ENUMSET 13
+POP "rot_type"
+ENDFIELD
+
+TEXT "Rotation:"
+TLOC 1 14
+ENDTEXT
+ 
+FIELD rotate_pin
+FLOC 10 14
+REALFILLIN 7 7
+POP "rotate"
+DECIMAL 3
+ENDFIELD
+
+TEXT
+TLOC 1 17
+INFO pin_label_pin_num 6
+ENDTEXT
+
+TEXT
+TLOC 18 17
+INFO pin_label_inc 4
+ENDTEXT
+
+TEXT
+TLOC 1 21
+INFO pin_label_offset_x 9
+ENDTEXT
+
+TEXT
+TLOC 18 21
+INFO pin_label_offset_y 2
+ENDTEXT
+
+FIELD next_pin_number
+FLOC 10 17
+STRFILLIN 5 32
+ENDFIELD
+
+FIELD increment
+FLOC 22 17
+INTFILLIN 3 3
+MIN 1
+MAX 32765
+ENDFIELD
+
+TEXT
+TLOC 1 19
+INFO pin_label_text_block 11
+ENDTEXT
+
+FIELD text_block
+FLOC 10 19
+INTSLIDEBAR 2 2
+MIN 1
+MAX 64
+ENDFIELD
+ 
+FIELD offsetx
+FLOC 10 21
+REALFILLIN 6 12
+DECIMAL 3
+ENDFIELD
+ 
+FIELD offsety
+FLOC 20 21
+REALFILLIN 6 12
+DECIMAL 3
+ENDFIELD
+ 
+ENDTILE
+
+ENDFORM

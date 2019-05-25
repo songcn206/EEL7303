@@ -1,0 +1,288 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 84 20
+HEADER "Meander Trace"
+
+POPUP <actlayers>"""".
+POPUP <gndlayers1>"""".
+POPUP <gndlayers2>"""".
+POPUP <rotate>"0""0.000","45""45.000","90""90.000".
+POPUP <bendmode>"None""0","Mitered""1","Curved""2".
+POPUP <frequnits>"Hz""1","KHz""1000","MHz""1000000","GHz""1000000000".
+
+TILE MMEANDER
+
+TABSET "tab"
+OPTIONS tabsetDispatch
+FLOC 1 1
+FSIZE 30 46
+
+TAB "Parameters"
+TEXT "Ground 1:"
+TLOC 1 1
+ENDTEXT
+
+FIELD ground1_subclass
+FLOC 10 1
+ENUMSET 15
+POP "gndlayers1"
+ENDFIELD
+
+TEXT "Layer:"
+TLOC 1 3
+ENDTEXT
+
+FIELD active_subclass
+FLOC 10 3
+ENUMSET 15
+POP "actlayers"
+ENDFIELD
+
+TEXT "Ground 2:"
+TLOC 1 5
+ENDTEXT
+
+FIELD ground2_subclass
+FLOC 10 5
+ENUMSET 15
+POP "gndlayers2"
+ENDFIELD
+
+TEXT "Legs:"
+TLOC 1 7
+ENDTEXT
+
+FIELD legnumber
+FLOC 8 7
+INTFILLIN 10 10
+MIN 2
+ENDFIELD
+
+TEXT "Line Width:"
+TLOC 1 9
+ENDTEXT
+
+FIELD swidth
+FLOC 11 9
+REALFILLIN 10 10
+ENDFIELD
+
+TEXT swidthlabel
+TLOC 23 9
+INFO swidthunits
+ENDTEXT
+
+TEXT "Leg Spacing:"
+TLOC 1 11
+ENDTEXT
+
+FIELD spacing
+FLOC 11 11
+REALFILLIN 10 10
+ENDFIELD
+
+TEXT spacinglabel
+TLOC 23 11
+INFO spacingunits
+ENDTEXT
+
+TEXT "First Spacing:"
+TLOC 1 13
+ENDTEXT
+
+FIELD firstlength
+FLOC 11 13
+REALFILLIN 10 10
+ENDFIELD
+
+TEXT firstlengthlabel
+TLOC 23 13
+INFO firstlengthunits
+ENDTEXT
+
+TEXT "Last Spacing:"
+TLOC 1 15
+ENDTEXT
+
+FIELD lastlength
+FLOC 11 15
+REALFILLIN 10 10
+ENDFIELD
+
+TEXT lastlengthlabel
+TLOC 23 15
+INFO lastlengthunits
+ENDTEXT
+
+TEXT "Leg Length:"
+TLOC 1 17
+ENDTEXT
+
+FIELD leglength
+FLOC 11 17
+REALFILLIN 10 10
+ENDFIELD
+
+TEXT leglengthlabel
+TLOC 23 17
+INFO leglengthunits
+ENDTEXT
+
+TEXT "Bend Mode:"
+TLOC 1 19
+ENDTEXT
+
+FIELD bend_mode
+FLOC 11 19
+ENUMSET 14
+POP "bendmode"
+ENDFIELD
+
+TEXT "Miter Fraction:"
+TLOC 1 21
+ENDTEXT
+
+FIELD miterfraction
+FLOC 13 21
+REALFILLIN 10 10
+ENDFIELD
+
+TEXT "Bend Angle:"
+TLOC 1 23
+ENDTEXT
+
+FIELD bendangle
+FLOC 11 23
+REALFILLIN 10 10
+ENDFIELD
+
+TEXT "Bend Radius:"
+TLOC 1 25
+ENDTEXT
+
+FIELD bendradius
+FLOC 11 25
+REALFILLIN 10 10
+ENDFIELD
+
+TEXT bendradiuslabel
+TLOC 23 25
+INFO bendradiusunits
+ENDTEXT
+
+TEXT "Rotation Lock:"
+TLOC 1 27
+ENDTEXT
+
+FIELD angle
+FLOC 14 27
+REALFILLIN 7 7
+POP "rotate"
+DECIMAL 3
+ENDFIELD
+
+TEXT "Physical Length:"
+TLOC 1 29
+ENDTEXT
+
+TEXT
+FLOC 1 31
+INFO physicallength 12
+ENDTEXT
+
+TEXT physicallengthlabel
+TLOC 14 31
+INFO physicallengthunits
+ENDTEXT
+
+TEXT "Working Frequency:"
+TLOC 1 33
+ENDTEXT
+
+FIELD frequency
+FLOC 1 35
+REALFILLIN 10 10
+REALMIN 0.0
+DECIMAL 10
+ENDFIELD
+
+FIELD frequnit
+FLOC 13 35
+ENUMSET 6
+POP "frequnits"
+ENDFIELD
+
+TEXT "Electrical Length:"
+TLOC 1 37
+ENDTEXT
+
+TEXT
+FLOC 1 39
+INFO electricallength 12
+ENDTEXT
+
+TEXT
+TLOC 14 39
+INFO electricallengthunits 6
+ENDTEXT
+
+FIELD newtrace
+FLOC 1 41
+CHECKLIST "New trace after insertion"
+ENDFIELD
+
+ENDTAB
+
+TAB "Nets"
+TEXT "Pin 1 Net:"
+TLOC 1 1
+ENDTEXT
+
+TEXT
+TLOC 10 1
+INFO pin1netname 12
+ENDTEXT
+
+FIELD pin1netname_list
+FLOC 24 1
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+TEXT "Pin 2 Net:"
+TLOC 1 3
+ENDTEXT
+
+TEXT
+TLOC 10 3
+INFO pin2netname 12
+ENDTEXT
+
+FIELD pin2netname_list
+FLOC 24 3
+MENUBUTTON "..." 3 3
+ENDFIELD
+ENDTAB
+ENDTABSET
+
+FIELD onhelp
+FLOC 1 48
+MENUBUTTON "Help" 14 3
+ENDFIELD
+
+FIELD help
+FLOC 22 48
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+FIELD graphic
+THUMBNAIL rfpcbmeander.bmp
+OPTIONS STRETCH
+FLOC 32 12
+FSIZE 48 22
+ENDFIELD
+
+ENDTILE
+
+ENDFORM
+

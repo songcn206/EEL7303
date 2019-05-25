@@ -1,0 +1,62 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM autogrey
+FIXED
+PORT 83 12
+HEADER "Plot"
+
+POPUP <fpRatsPrinterList>"""".
+
+TILE
+
+FIELD printToFile
+FLOC 3 3 
+CHECKLIST "Print to file:" "printTo"
+ENDFIELD
+
+FIELD filePrintFileName
+FLOC 18 3 
+STRFILLIN 60 1000
+ENDFIELD
+
+FIELD printToPrn
+FLOC 3 5 
+CHECKLIST "Printer name:" "printTo"
+ENDFIELD
+
+FIELD filePrintPrnName
+FLOC 18 5 
+STRFILLIN 57 80
+POP "fpRatsPrinterList"
+ENDFIELD
+
+GROUP "Destination:"
+GLOC 1 1
+GSIZE 80 7
+ENDGROUP
+
+FIELD Done
+FLOC 2 10 
+MENUBUTTON "Done" 10 3
+ENDFIELD
+
+FIELD Cancel
+FLOC 14 10 
+MENUBUTTON "Cancel" 10 3
+ENDFIELD
+
+FIELD help
+FLOC 25 10 
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+   #ifdef sigxp
+   #else
+FIELD Pennum
+FLOC 64 10
+MENUBUTTON "Pen Numbers ..." 17 3
+ENDFIELD
+   #endif
+
+ENDTILE
+
+ENDFORM

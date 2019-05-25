@@ -1,0 +1,100 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 43 10
+HEADER "Export Libraries"
+
+
+MESSAGE nexec 1 "First, you must choose an element."
+MESSAGE nerror 3 "A problem occurred, please check logfile (using Viewlog)."
+MESSAGE ndone 0 "Libraries created."
+MESSAGE ndemo 1 "Cannot run in demo mode."
+
+ACTIVEFIELD "mechanical"
+
+TILE
+TEXT "Select elements:"
+TLOC 1 1
+ENDTEXT
+
+FIELD all
+FLOC 2 6
+MENUBUTTON "All" 5 3
+ENDFIELD
+
+FIELD none
+FLOC 2 9
+MENUBUTTON "None" 5 3
+ENDFIELD
+
+FIELD mechanical
+FLOC 8 3
+CHECKLIST "Mechanical symbols"
+ENDFIELD
+
+FIELD package
+FLOC 8 5
+    #ifdef APD || SIP
+CHECKLIST "Part symbols"
+    #else
+CHECKLIST "Package symbols"
+    #endif
+ENDFIELD
+
+FIELD format
+FLOC 8 7
+CHECKLIST "Format symbols"
+ENDFIELD
+
+FIELD shape
+FLOC 8 9
+CHECKLIST "Shape and flash symbols"
+ENDFIELD
+
+FIELD device
+FLOC 8 11
+CHECKLIST "Device files"
+ENDFIELD
+
+FIELD pad
+FLOC 8 13
+CHECKLIST "Padstacks"
+ENDFIELD
+
+FIELD nodepend
+FLOC 4 15
+CHECKLIST "No library dependencies"
+ENDFIELD
+
+TEXT "Export to directory:"
+TLOC 1 17
+ENDTEXT
+
+FIELD destination
+FLOC 1 19
+STRFILLIN 32 256
+ENDFIELD
+
+FIELD browse_export
+FLOC 36 19
+MENUBUTTON "..." 4 3
+ENDFIELD
+
+FIELD execute
+FLOC 31 1
+MENUBUTTON "Export" 9 4
+ENDFIELD
+
+FIELD cancel
+FLOC 31 5
+MENUBUTTON "Close" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 31 13
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

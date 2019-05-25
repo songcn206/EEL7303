@@ -1,0 +1,226 @@
+#!/bin/ksh
+#
+# cdsRemshServer [-clientPlat=<cdsPlat>] [-clientHost=<host>] \
+#    [-cdsPath=<hier>[:<hier> ...]] <filePath> [<arg> ...]
+#
+# IF the -cdsPath flag is specified THEN
+#     cdsRemshServer will attempt to resolve the filePath relative to the
+#       top of a suitable Cadence hierarchy, where suitable
+#       means exists and is of the appropriate architecture.
+#     IF filePath is not found within a suitable CDS hierarchy, THEN
+#         an error message will be printed to stderr
+#     ELSE
+#         the path created by prepending the CDS hierarchy path to
+#	     the filePath will be executed.
+# ELSE
+#     filePath will be executed as specified.
+#
+#----------------------------------------------------------------
+# This program is normally run using something like
+#    cat cdsRemshServer.ksh |\
+#        remsh remHost ksh -s -- -cdsPath=<instDir> tools/bin/progName progArgs
+#----------------------------------------------------------------
+#
+
+
+# Print either "tools" or "tools.<plat>" for provided cdsHierPath
+# On failure, print nothing to stdout and return non-zero.
+# Usage:   GetCdsToolsName <cdsInstDir>
+# The implementation uses the gctn prefix (derived from routine name)
+GetCdsToolsName ()
+{
+    # run cds_plat script to obtain native platform
+    gctnScrPlat=$(ls -d "$1"/tools* 2>/dev/null | while read toolsPath; do
+        if [ -x "$toolsPath/bin/cds_plat" ]; then
+	    platOrErr=$("$toolsPath/bin/cds_plat" 2>/dev/null) && {
+		echo "$platOrErr"		# got platform (not error)
+		cat - >/dev/null		# drain the pipe to exit loop
+	    }
+	fi
+    done
+    )
+    test "X$gctnScrPlat" = "X" && return 1	# failure
+
+    gctnDatPlat=''				# platform from cds_plat.dat
+    if [ -r "$1/tools/bin/cds_plat.dat" ]; then
+	gctnDatPlat=`cat "$1/tools/bin/cds_plat.dat"`
+	if [ "$gctnDatPlat" = "$gctnScrPlat" ]; then
+	    echo "tools"
+	    return 0
+        fi
+    fi
+    if [ -r "$1/tools.$gctnScrPlat/bin" ]; then
+        echo "tools.$gctnScrPlat"
+	return 0
+    elif [ -r "$1/tools/bin" -a "X$gctnDatPlat" = "X" ]; then
+	echo "tools"
+	return 0
+    fi
+    return 1					# failure
+}
+
+
+# Usage: GetCdsHierPaths [-tools] maybeCdsHierPath_01:maybeCdsHierPath_02:...
+# Print newline-separated list of Cadence hierarchies. If the -tools
+# flag is provided, append preferred tools directory to hierarchies.
+# Foreach <cdsHier> in srchPath
+#    if <cdsHier> corresponds to native architecture
+#        print resolved <cdsHier> to stdout
+GetCdsHierPaths ()
+{
+    if [ "X$1" = "X-tools" ]
+    then addToolsDir=true; shift
+    else addToolsDir=false
+    fi
+    srchPath="$1"
+    origIFS="$IFS"; IFS=:
+    set $srchPath
+    IFS="$origIFS"
+
+    while [ $# -gt 0 ]; do
+	# Efficiently exclude non-Cadence hierarchies
+        if [ ! -r "$1/share/cdssetup" ]; then
+	    shift
+	    continue
+        fi
+
+	toolsName=$(GetCdsToolsName "$1") || {
+	    shift
+	    continue
+        }
+
+	tryCdsRoot="$1/$toolsName/bin/cds_root"
+	#echo test -x "$tryCdsRoot" 1>&2
+	if [ -x "$tryCdsRoot" ]; then
+	    if resolved=$("$tryCdsRoot" "$tryCdsRoot" 2>/dev/null) ; then
+	        if [ "$addToolsDir" = true ]
+		then echo "$resolved/$toolsName"
+		else echo "$resolved"
+		fi
+	    else
+		# If we created a core file, remove it.
+		# This will most likely arise if cds_root is the wrong
+		# executable format.
+		# Unfortunately, ulimit -c is not portable (2001/09)
+		test -r core -a ! -d core &&
+		    file core 2>/dev/null | grep cds_root >/dev/null &&
+		    rm -f core
+	    fi
+	fi
+	shift
+    done
+}
+
+# Input:
+#   ${cdsPath}   if empty, no cds hiers specified
+#   ${hierPaths} if empty, ${cdsPath} does not contain hier for platform
+#   ${hierPath}  if empty, prog not found in ${hierPaths}
+PrintErrMessage ()
+{
+    hname=$(uname -n)
+    if [ "X${cdsPath}" = "X" ]; then
+        echo "Error: $progName: The '${exePath}' program was not found on host '${hname}' using:"
+	echo "    PATH='${PATH}'"
+	echo "Perhaps an additional directory should be added to the search path during shell initialization."
+    elif [ "X${hierPaths}" = "X" ]; then
+        echo "Error: $progName: A Cadence installation for the required platform was not found on host '${hname}' in:"
+	echo "$cdsPath" | sed 's/^/    /'
+	echo "Use the same filepath to the Cadence installation on all hosts to simplify configuration."
+    elif [ "X${hierPath}" = "X" ]; then
+        echo "Error: $progName: The '${hierSubPath}' program was not found on host '${hname}' in:"
+        echo "$hierPaths" | sed 's/^/    /'
+	echo "Use the same filepath to the Cadence installation on all hosts to simplify configuration."
+    else	# unanticipated error
+        echo "Error: $progName: The '${exePath}' program could not be started on host '${hname}'"
+    fi
+}
+
+
+#================================================================
+# Main
+#================================================================
+progName='cdsRemshServer'
+progVers='01'
+
+# Save the original PATH and restore just prior to exec'ing program.
+# Use a standard PATH to find the programs used by this script.
+origPath="$PATH"
+PATH="/bin:/usr/bin:/usr/ucb"
+
+clntPlat=''
+clntHost=''
+cdsPath=''
+debugLvl=0
+
+while [ $# -gt 0 ]; do
+    case "X$1" in
+    X-version)
+	echo "${progName}-${progVers}"
+	exit 0
+	;;
+    X-debug)
+	debugLvl=1
+	;;
+    X-clientPlat=*)
+	clntPlat=$(echo "X$1" | sed 's/[^=]*=//')
+	;;
+    X-clientHost=*)
+	clntHost=$(echo "X$1" | sed 's/[^=]*=//')
+	;;
+    X-cdsPath=*)
+	cdsPath=$(echo "X$1" | sed 's/[^=]*=//')
+	;;
+    X-*)
+        # Use "-flag=flagValue" single argument, rather than
+	# "-flag flagValue" double argument, so that we know
+	# to only ignore a single argument.
+	test $debugLvl != 0 &&
+	    echo "$progName: Ignoring unrecognized flag: $1" 1>&2
+	;;
+    *)
+	break	# while loop
+	;;
+    esac
+    shift
+done
+exePath="$1"; shift
+hierPaths=''
+hierSubPath=''
+hierPath=''
+if [ "X$cdsPath" != "X" ]; then
+    case "$exePath" in
+    tools/*)	# if exePath starts with tools/, consider tools.<plat>/
+	hierPaths=$(GetCdsHierPaths -tools "$cdsPath")
+        hierSubPath=$(echo $exePath | sed 's@^tools/@@')
+	;;
+    *)
+	hierPaths=$(GetCdsHierPaths "$cdsPath")
+        hierSubPath="$exePath"
+	;;
+    esac
+    if [ "X$hierPaths" != "X" ]; then
+        hierPath=$(echo "$hierPaths" | while read tryPath; do
+	    if [ -x "$tryPath/$hierSubPath" -a ! -d "$tryPath/$hierSubPath" ]
+	    then
+	        echo "$tryPath"
+	        # drain the pipe to exit loop without "broken pipe" warning
+	        cat - >/dev/null
+	    fi
+        done
+        )
+    fi
+
+    # If we found hierPath, use it. Otherwise attempt to resolve using $PATH
+    if [ "X$hierPath" != "X" ]
+    then exePath="$hierPath/$hierSubPath"
+    else exePath=$(echo "$exePath" | sed 's@.*/@@')
+    fi
+fi
+
+PATH="$origPath"
+if whence "$exePath" 1>/dev/null 2>&1; then
+    exec "$exePath"  ${1+"$@"}
+    # only reached if exec failed
+fi
+PrintErrMessage 1>&2
+exit 1

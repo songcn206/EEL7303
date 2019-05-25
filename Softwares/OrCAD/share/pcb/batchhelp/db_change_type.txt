@@ -1,0 +1,25 @@
+
+Command line arguments for db_change_type. 
+    Utility to convert an allegro database format file from one of the
+    major layout database types to another. For example, this utility
+    may be used to convert an APD "MCM" format database into a "SIP"
+    database for use in the Cadence System in Package layout tools.
+
+db_change_type [-dD] <input_db> <output_db>
+
+    OPTIONAL ARGUMENTS
+        [-d]  Perform batch DRC on final version.
+
+        [-D]  Run in debug mode, print but don't execute
+
+    REQUIRED ARGUMENTS
+        <input_db>  Name of the design file to be converted. 
+                    Currently, must be of BRD, MCM, or SIP format.
+
+        <output_db> Name of the new design file to be created. 
+                    The new database type will be based on the file
+                    extension specified for the output database.
+                      "<file_name>.brd" -> Allegro PCB BRD format
+                      "<file_name>.mcm" -> Allegro APD MCM format
+                      "<file_name>.sip" -> Cadence SiP SIP format
+

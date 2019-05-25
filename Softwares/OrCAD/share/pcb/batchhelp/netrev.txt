@@ -1,0 +1,104 @@
+
+Command line arguments for netrev
+	Inputs Cadence netlist files into Allegro (pst files)
+
+	By default netrev runs in HDL mode.
+
+netrev [<args>] [<input brd>] [<output brd>]
+
+    GENERIC ARGUMENTS
+	[-e]
+	    Normally netrev reports missing Allegro footprints as warnings. 
+	    This switch makes this an error. Used for library development.
+	[-i <directory>] 
+	    Optional flag indicating where to find the .pst files. If the 
+	    given project file uses the -proj option, netrev looks in the 
+            directory specified by the "view_packager global directive in 
+	    the project file. If no project file is specified, netrev 
+	    looks in the current working directory. The -i argument 
+	    overrides the project file. 
+	[-n] 
+	    generate new board (input board name specifies new board name)
+	[-t] 
+	    Generate xml file for design compare. xml file name is 
+	    u_sch.xml. This is based on the contents of the pst files.
+	[-x] 
+	     Rip up connecting etch when ripping up components during an ECO. 
+             See -r for ripup options.
+	[-r 1|2|3] 
+	     Rip up options available when rip up is enabled (-x):
+                 1 = Delete the first etch-segment only.
+                 2 = Retain bondwires for wirebonded components, but delete
+                     connecting etch beyond the bondfingers.
+                 3 = Both 1 and 2, retain bondwires and delete the first
+                     etch segment beyond the bondfingers.
+	[-y 1|2|3|4|5]
+	     Symbol placement code that indicates how symbols are 
+	     replaced if ripped up during an ECO: 
+                 1 = Always replace the symbol (default mode). 
+                 2 = Replace the symbol only if it is the same symbol as 
+                     was there originally. 
+                 3 = Never replace the symbol. 
+                 4 = Do not rip up the symbol; instead, deassign it. 
+		     (This has the effect of turning it into a non-logic
+            	     bearing component.) 	
+                 5 = Replace symbol even if there is change in component 
+		     and symbol definitions, if the pins match.
+	[-u]
+	     create schematic user-defined properties in Allegro. Default
+	     is to not create property definitions for those properties
+	     not already defined in the design.
+	[-z] 
+	     Ignore fixed property. This allows the program to replace
+	     symbols, ripup etch, etc. event if they are fixed in the board
+	[-f <file>]
+		if specified, constraint difference report will be written in
+		DD format (i.e. to be shown by firefox-based viewer) to this
+		file 
+	[-v]
+		Launch constraint difference report viewer to show differences in
+		DD format (navigable). Report will be written to temporary file.
+
+    SCALD ONLY
+	[-g]
+	     packager files are SCALD based
+	[-s <schematic path>] 
+	     The path to the schematic directory
+
+    HDL ONLY
+	[-l]	
+	    Prevents changing to the pstDirectory if running with the
+	    -proj option
+	[-proj <project file>] 
+	    The HDL project file -- typically with a cpm extension
+	[-u]	
+	    Allows property definitions to be created from the netlist. 
+
+    ConceptHDL Flow ONLY (not applicable if running with Capture)
+	[-o] 
+	    Overwrite current electrical constraints if in Constraint Manager
+	    Enabled flow. Default mode (no -o) is to import changes only. 
+	    If not in Constraint Manager flow this option is ignored.
+
+    GENERIC
+	[<input board>] 
+		- start editing with this database (ignore ini file)
+		- default extensions .brd, .mcm, .dra, .mdd
+	[<output board>] 
+		- output allegro database. If none is provided the
+		  input database is overwritten.
+
+    OBSOLETE Options (kept for backwards compatibility but ignored)
+	[-5] 
+	    Indicates HDL mode. As of 16.0 this is the default mode.
+	[-c]  Composer logic mode. Used if .pst files were generated from 
+	     Composer.
+	[-p <layout path>] Path to the input board
+	[-d]  Turn on dependency management.
+	[-m] 
+	    Migration mode, used only if migrating a SCALD design to HDL. 
+	    When -m is actived, netrev attempts to migrate a SCALD design 
+	    to HDL using .pst files. The layout must match the schematic 
+	    for migration to be successful. If design changes are found, 
+	    the process stops with an error. 
+	     

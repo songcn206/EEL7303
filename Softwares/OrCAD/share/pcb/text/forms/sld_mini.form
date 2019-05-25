@@ -1,0 +1,158 @@
+# $Header: /vobs/psd_backend_data/data/forms-core/sld_mini.form /main/29 2012-02-08T11:13:40-05 etatara $
+
+
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM autogreytext
+FIXED
+PORT 29 13
+
+HEADER "Slide Options"
+
+POPUP <subclass>"subclass""subclass".
+POPUP <sld_vertex_action>"Line Corner""1","Arc Corner""2","Move""3","None""0".
+POPUP <sld_bubble_space>"Off""0","Hug only""5","Hug preferred""3","Shove preferred""4".
+POPUP <sld_corners>"90""0","45""1","Arc""2","Off""3".
+POPUP <sld_shove_vias>"Off""0","Minimal""1","Full""2".
+#ifdef APD || SIP
+POPUP <sld_smooth_level>"Off""0","Minimal""1","Full""2","Super""3".
+#else
+POPUP <sld_smooth_level>"Off""0","Minimal""1","Full""2".
+#endif
+POPUP <sld_max_45_len>"""".
+POPUP <sld_min_corner_size>"""".
+POPUP <sld_min_arc_radius>"""".
+
+TILE SLD_MINI
+
+#ifdef APD || ALLEGRO_MCM || SIP
+TEXT "Active conductor subclass:"
+#else
+TEXT "Active etch subclass:"
+#endif
+TLOC 1 1
+ENDTEXT
+
+FIELD subcolor
+FLOC 1 3
+COLOR 2 1
+OPTIONS colorchooser
+ENDFIELD
+ 
+FIELD subclass
+FLOC 4 3
+ENUMSET 19
+OPTIONS prettyprint ownerdrawn
+POP "subclass"
+ENDFIELD
+ 
+FIELD net_mode
+THUMBNAIL
+FLOC 1 6
+FSIZE 2 2
+ENDFIELD
+
+TEXT "Net:"
+TLOC 4 6
+ENDTEXT
+
+TEXT
+TLOC 11 6
+INFO netname 32
+OPTIONS prettyprint
+ENDTEXT
+
+#TEXT "Corners:"
+#TLOC 1 8
+#ENDTEXT
+
+#FIELD corners
+#FLOC 12 8
+#ENUMSET 6
+#POP "slide_corner"
+#ENDFIELD
+ 
+#TEXT
+#TLOC 1 10
+#INFO min_max_text 20
+#ENDTEXT
+
+#FIELD max_45_len
+#FLOC 12 10
+#REALFILLIN 7 7
+#POP "corner_vals"
+#DECIMAL 5
+#ENDFIELD
+
+#FIELD max_arc_rad
+#FLOC 12 10
+#REALFILLIN 7 7
+#DECIMAL 5
+#ENDFIELD
+
+# Note: Bubble title is s/w controlled in msm_sldsetmini (sld_msm.c)
+#TEXT "Bubble:" bubble_space_title
+#TLOC 1 12
+#ENDTEXT
+ 
+#FIELD bubble_space
+#FLOC 12 12
+#ENUMSET 13
+#POP "bubble_space"
+#ENDFIELD
+
+#TEXT "Shove vias:"
+#FLOC 5 14
+#ENDFIELD
+
+#FIELD shove_vias
+#FLOC 15 14
+#ENUMSET 10
+#POP "shove_vias"
+#ENDFIELD
+
+#FIELD clip_dangling
+#FLOC 5 16
+#CHECKLIST "Clip dangling clines"
+#ENDFIELD
+
+#TEXT "Smooth:"
+#TLOC 1 18
+#ENDFIELD
+
+#FIELD smooth_level
+#FLOC 12 18
+#ENUMSET 9
+#POP "smooth_level"
+#ENDFIELD
+
+#FIELD allow_errors
+#FLOC 1 20
+#CHECKLIST "Allow DRCs"
+#ENDFIELD
+
+#FIELD gridless
+#FLOC 1 22
+#CHECKLIST "Gridless"
+#ENDFIELD
+
+#FIELD add_at_max
+#FLOC 1 24
+#CHECKLIST "Add at max"
+#ENDFIELD
+
+#FIELD slide_vias
+#FLOC 1 26
+#CHECKLIST "Vias with segments"
+#ENDFIELD
+
+#FIELD slide_ts
+#FLOC 1 28
+#CHECKLIST "Ts with segments"
+#ENDFIELD
+
+
+
+ENDTILE
+
+ENDFORM
+

@@ -1,0 +1,526 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 71 80
+HEADER "Artwork Control Form"
+
+POPUP <AWROTPOP> "0""0","90""2","180""4","270""6".
+POPUP <FILMPOP> "Add""1","Cut""2","Copy""3","Save""4","Match Display""5","Display""6".
+MESSAGE nerror 3 "A problem occurred - please check the logfile."
+MESSAGE nwarn 2 "Artwork generated with warnings.
+MESSAGE ndone 0 "Plot generated."
+MESSAGE norec 2 "No film records selected."
+MESSAGE NEG 2 "Full Contact Thermals on neg film only."
+MESSAGE ALREADY_EDITING 1 "Already editing film."
+MESSAGE NOSAVE 3 "Can't open file %s."
+MESSAGE SIZE_TOO_LARGE 2 "Film size too large for format"
+MESSAGE SIZE_TOO_SMALL 2 "Film size must be greater than zero"
+MESSAGE CHANGE_UNITS_INCHES 2 "Output units updated to Inches"
+MESSAGE CANT_SAVE 3 "Cannot save parameters in that file name"
+MESSAGE NEED_G_CODES 2 "Current plotter type requires G codes"
+MESSAGE NAME_WRONG 2 "File name must end in 'art_param.txt'"
+MESSAGE NO_FILE 1 "No file found, loading defaults."
+MESSAGE FILE 1 "Read: %s."
+MESSAGE OPEN_FAILED 2 "Failed to open file, loading defaults."
+MESSAGE lrec 2 "Board must contain at least one film record."
+MESSAGE noundo 2 "No undo"
+MESSAGE BAD_RECORD 1 "Film record %s already on board."
+MESSAGE LONG_RECORD 3 "Film record name too long (max is 19)."
+MESSAGE recload 1 "Film record %s loaded."
+MESSAGE norecload 3 "Unable to load film record %s."
+MESSAGE BADFILM 3 "Illegal char(s) in film name."
+MESSAGE LEADDASH 3 "Film name does not support a leading '-'."
+MESSAGE DIR 3 "No directory component in name."
+MESSAGE NO_DUP21 "Film names can't be duplicated."
+MESSAGE NO_DEL 3 "Cannot delete last subclass."
+MESSAGE NO_GEN 3 "Cannot generate film record %s--illegal char(s) in name."
+MESSAGE dbdoctor-1 1 "Checking database, please wait..."
+MESSAGE dbdoctor-2 1 "Database ok."
+MESSAGE fsetup 1 "Saved film setup file: %s.txt"
+
+TILE 
+
+TABSET "tab_selector"
+FLOC 2 1
+TSSIZE 68 43
+
+TAB "Film Control"
+
+TEXT "Film name:"
+TLOC 38 2
+ENDTEXT
+
+TEXT
+TLOC 52 2
+INFO name 15
+ENDTEXT
+
+TEXT "Rotation:"
+TLOC 38 4
+ENDTEXT
+
+TEXT "Offset   X:"
+TLOC 38 7
+ENDTEXT
+
+TEXT " Y:"
+TLOC 43 9
+ENDTEXT
+
+TEXT "Undefined line width:"
+TLOC 38 13
+ENDTEXT
+
+TEXT "Shape bounding box:"
+TLOC 38 15
+ENDTEXT
+
+TEXT "Plot mode:"
+TLOC 38 18
+ENDTEXT
+
+FIELD rotation
+FLOC 52 4
+ENUMSET 4
+POP "AWROTPOP"
+ENDFIELD
+
+FIELD x_offset
+FLOC 52 7
+STRFILLIN 10 10
+ENDFIELD
+
+FIELD y_offset
+FLOC 52 9
+STRFILLIN 10 10
+ENDFIELD
+
+FIELD positive
+FLOC 54 18
+CHECKLIST "Positive" "AWMODEGROUP"
+ENDFIELD
+
+FIELD negative
+FLOC 54 20
+CHECKLIST "Negative" "AWMODEGROUP"
+ENDFIELD
+
+FIELD undefined_line_width
+FLOC 54 13
+STRFILLIN 8 10
+ENDFIELD
+
+FIELD shape_bounding_box
+FLOC 54 15
+STRFILLIN 8 10
+ENDFIELD
+
+FIELD mirror
+FLOC 37 22
+CHECKLIST "Film mirrored"
+ENDFIELD
+
+FIELD full_contact
+FLOC 37 24
+CHECKLIST "Full contact thermal-reliefs"
+ENDFIELD
+
+FIELD suppress_unconnect
+FLOC 37 26
+CHECKLIST "Suppress unconnected pads"
+ENDFIELD
+
+FIELD draw_missing_apts
+FLOC 37 28
+CHECKLIST "Draw missing pad apertures"
+ENDFIELD
+
+FIELD use_aperture_rot
+FLOC 37 30
+CHECKLIST "Use aperture rotation"
+ENDFIELD
+
+FIELD suppress_shape_fill
+FLOC 37 32
+CHECKLIST "Suppress shape fill"
+ENDFIELD
+
+FIELD pad
+FLOC 37 34
+CHECKLIST "Vector based pad behavior"
+ENDFIELD
+
+FIELD holes_only
+FLOC 37 36
+CHECKLIST "Draw holes only"
+ENDFIELD
+
+#FIELD holes_in_pads
+#FLOC 37 38
+#CHECKLIST "Draw holes in pads"
+#ENDFIELD
+
+FIELD domain_setting
+FLOC 3 3
+MENUBUTTON "Domain Selection" 9 3
+ENDFIELD
+
+FIELD missing_films
+FLOC 17 3
+MENUBUTTON "Create Missing Films" 9 3
+ENDFIELD
+
+FIELD filmTree
+FLOC 3 5
+TREEVIEW 28 10
+POP "FILMPOP"
+ENDFIELD
+
+FIELD select_all
+FLOC 3 26
+MENUBUTTON "Select all" 9 3
+ENDFIELD
+
+FIELD load
+FLOC 13 26
+MENUBUTTON "Add..." 9 3
+ENDFIELD
+
+FIELD replace
+FLOC 23 26
+MENUBUTTON "Replace..." 9 3
+ENDFIELD
+
+FIELD database_check
+FLOC 4 29
+CHECKLIST "Check database before artwork"
+ENDFIELD
+
+FIELD shape_update
+FLOC 4 31
+MENUBUTTON "Dynamic shapes need updating" 14 3
+ENDFIELD
+
+#ifndef ARTFILM_IPCPDF
+
+FIELD create
+FLOC 10 34
+MENUBUTTON "Create Artwork" 9 4
+ENDFIELD
+
+#endif
+
+GROUP "Film options"
+GLOC 36 0
+GSIZE 30 40
+ENDGROUP
+
+GROUP "Available films" "grp_af"
+GLOC 1 0
+GSIZE 33 40
+ENDGROUP
+
+ENDTAB
+ 
+TAB "General Parameters"
+
+#------------------------------------
+GROUP "Device type"
+GLOC 1 1
+GSIZE 22 13
+ENDGROUP
+
+FIELD gerber_6x00
+FLOC 2 3
+CHECKLIST "Gerber 6x00" "AWDEVTYPGRP"
+ENDFIELD
+
+FIELD gerber_4x00
+FLOC 2 5
+CHECKLIST "Gerber 4x00" "AWDEVTYPGRP"
+ENDFIELD
+
+FIELD gerber_rs274x
+FLOC 2 7
+CHECKLIST "Gerber RS274X" "AWDEVTYPGRP"
+ENDFIELD
+
+FIELD barco_dpf
+FLOC 2 9
+CHECKLIST "Barco DPF" "AWDEVTYPGRP"
+ENDFIELD
+
+FIELD mda
+FLOC 2 11
+CHECKLIST "MDA" "AWDEVTYPGRP"
+ENDFIELD
+
+#------------------------------------
+GROUP "Output units" grp_output_units
+GLOC 1 14
+GSIZE 22 9
+ENDGROUP
+
+FIELD units_english
+FLOC 2 16
+CHECKLIST "Inches" "AWUNITSGRP"
+ENDFIELD
+
+FIELD units_metric
+FLOC 2 18
+CHECKLIST "Millimeters" "AWUNITSGRP"
+ENDFIELD
+
+FIELD units_mils
+FLOC 2 20
+CHECKLIST "Mils" "AWUNITSGRP"
+ENDFIELD
+
+#------------------------------------
+GROUP "Coordinate type" grp_coord
+GLOC 1 23
+GSIZE 22 7
+ENDGROUP
+
+FIELD coords_absolute
+FLOC 2 25
+CHECKLIST "Absolute" "AWCOORDTYPE"
+ENDFIELD
+
+FIELD coords_incremental
+FLOC 2 27
+CHECKLIST "Incremental" "AWCOORDTYPE"
+ENDFIELD
+
+TEXT
+TLOC 2 26
+INFO coord_not_applic 15
+ENDTEXT
+
+#------------------------------------
+GROUP "Error action"
+GLOC 24 1
+GSIZE 19 8
+ENDGROUP
+
+FIELD error_abort_film
+FLOC 26 4
+CHECKLIST "Abort film" "AWABORTGRP"
+ENDFIELD
+
+FIELD error_abort_all
+FLOC 26 6
+CHECKLIST "Abort all" "AWABORTGRP"
+ENDFIELD
+
+#------------------------------------
+GROUP "Format"
+GLOC 24 9
+GSIZE 19 7
+ENDGROUP
+
+TEXT "Integer places:"
+TLOC 26 11
+ENDTEXT
+
+TEXT "Decimal places:"
+TLOC 26 13
+ENDTEXT
+
+FIELD format_int_places
+FLOC 39 11
+INTFILLIN 1 1
+MIN 0
+MAX 5
+ENDFIELD
+
+FIELD format_dec_places
+FLOC 39 13
+INTFILLIN 1 1
+MIN 0
+MAX 5
+ENDFIELD
+
+#------------------------------------
+GROUP "Output options" grp_output_opts
+GLOC 24 16
+GSIZE 19 7
+ENDGROUP
+
+FIELD optimize
+FLOC 26 18
+CHECKLIST "Optimize data"
+ENDFIELD
+
+FIELD use_g_codes
+FLOC 26 20
+CHECKLIST "Use 'G' codes"
+ENDFIELD
+
+TEXT
+TLOC 26 19
+INFO outopt_not_applic 15
+ENDTEXT
+
+#------------------------------------
+GROUP "Global film filename affixes" grp_filmname
+GLOC 24 23
+GSIZE 41 7
+ENDGROUP
+
+TEXT "Prefix:"
+TLOC 26 25
+ENDTEXT
+
+TEXT "Suffix:"
+TLOC 26 27
+ENDTEXT
+
+FIELD filename_prefix
+FLOC 34 25
+STRFILLIN 25 128
+ENDFIELD
+
+FIELD filename_suffix
+FLOC 34 27
+STRFILLIN 25 128
+ENDFIELD
+
+#------------------------------------
+GROUP "Film size limits" grp_size
+GLOC 44 1
+GSIZE 21 8
+ENDGROUP
+
+TEXT "Max X:"
+TLOC 45 4
+ENDTEXT
+
+TEXT "Max Y:"
+TLOC 45 6
+ENDTEXT
+
+FIELD film_max_x
+FLOC 52 4
+STRFILLIN 10 10
+ENDFIELD
+
+FIELD film_max_y
+FLOC 52 6
+STRFILLIN 10 10
+ENDFIELD
+
+#------------------------------------
+GROUP "Suppress" grp_suppress
+GLOC 44 9
+GSIZE 21 14
+ENDGROUP
+
+FIELD suppress_lead_zeroes
+FLOC 46 12
+CHECKLIST "Leading zeroes"
+ENDFIELD
+
+FIELD suppress_trail_zeroes
+FLOC 46 14
+CHECKLIST "Trailing zeroes"
+ENDFIELD
+
+FIELD suppress_equals
+FLOC 46 16
+CHECKLIST "Equal coordinates"
+ENDFIELD
+
+TEXT
+TLOC 46 14
+INFO supp_not_applic 15
+ENDTEXT
+
+#------------------------------------
+FIELD undef_apt_cont
+FLOC 2 33
+CHECKLIST "Continue with undefined apertures"
+ENDFIELD
+
+TEXT
+TLOC 2 33
+INFO max_aperture_msg 20
+ENDTEXT
+
+FIELD max_apertures
+FLOC 24 33
+INTFILLIN 3 3
+MIN 0
+MAX 32000
+ENDFIELD
+
+TEXT "Scale factor for output:" scale_msg
+TLOC 38 33
+ENDTEXT
+
+FIELD scale
+FLOC 56 33
+REALFILLIN 8 8
+REALMIN 0.000100
+REALMAX 1000.000000
+DECIMAL 4
+ENDFIELD
+
+ENDTAB
+
+ENDTABSET
+
+FIELD ok
+FLOC 3 45
+MENUBUTTON "OK" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 15 45
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+#ifndef ARTFILM_IPCPDF
+
+FIELD apertures
+FLOC 27 45
+MENUBUTTON "Apertures..." 9 3 
+ENDFIELD
+
+FIELD viewlog
+FLOC 40 45
+MENUBUTTON "Viewlog..." 9 3 
+ENDFIELD
+
+#endif
+
+FIELD help
+FLOC 61 45
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+FLEXMODE EdgeGravityOne
+FLEX tab_selector 0 0 1 1
+FLEX grp_af 0 0 1 1
+FLEX filmtree 0 0 1 1
+FLEX select_all 0 1 0 0
+FLEX load 0 1 0 0
+FLEX replace 0 1 0 0
+FLEX database_check 0 1 0 0
+FLEX shape_update 0 1 0 0
+FLEX create 0 1 0 0
+
+FLEX grp_size 0 0 0 0
+FLEX grp_filmname 0 0 0 0
+FLEX grp_suppress 0 0 0 0
+FLEX grp_output_units 0 0 0 0
+FLEX grp_output_opts 0 0 0 0
+FLEX grp_coord 0 0 0 0
+FLEX max_aperture_msg 0 0 0 0
+FLEX max_apertures 0 0 0 0
+FLEX scale 0 0 0 0
+FLEX scale_msg 0 0 0 0
+
+ENDTILE
+
+ENDFORM

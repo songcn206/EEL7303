@@ -1,0 +1,257 @@
+FILE_TYPEt=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 52 51
+HEADER "Offset Via Generator"
+
+POPUP <PADPOPUP>"""".
+
+POPUP <LAYERPOPUP>"""".
+
+ACTIVEFIELD "ov_angle_45"
+
+TILE
+TABSET "tab_selector"
+FLOC 1 1
+TSSIZE 50 50
+
+TAB "Pattern"
+
+GROUP "Create options"
+GLOC 2 16
+GSIZE 45 17
+ENDGROUP
+
+FIELD ov_assigned_pins
+FLOC 5 18
+CHECKLIST "Create offset vias/fillets for assigned pins only"
+ENDFIELD
+
+FIELD ov_filet_only
+FLOC 5 20
+CHECKLIST "Generate fillet lines to existing vias where possible"
+ENDFIELD
+
+FIELD ov_add_via_at_pin
+FLOC 5 22
+CHECKLIST "Add via at pin location"
+ENDFIELD
+
+TEXT "Pitch:"
+TLOC 8 24
+ENDTEXT
+FIELD ov_spacing
+FLOC 13 24
+STRFILLIN 10 16
+ENDFIELD
+
+FIELD ov_create_filet
+FLOC 5 26
+CHECKLIST "Create fillets"
+FSIZE 16 2
+ENDFIELD
+
+FIELD ov_shape_filet
+FLOC 8 28
+CHECKLIST "Shape-based fillets"
+FSIZE 16 2
+ENDFIELD
+
+TEXT "Non-fillet line width:"
+TLOC 8 30
+ENDTEXT
+FIELD ov_line_width
+FLOC 23 30
+STRFILLIN 10 16
+ENDFIELD
+
+
+GROUP "Orientation"
+GLOC 2 33
+GSIZE 45 14
+ENDGROUP
+
+TEXT "Focus"
+TLOC 3 35
+ENDTEXT
+
+TEXT "Angle"
+TLOC 17 35
+ENDTEXT
+
+TEXT "Direction"
+TLOC 31 35
+ENDTEXT
+
+
+FIELD ov_focuslist
+FLOC 3 37
+FGROUP "Available Focuses"
+LIST "" 14 5
+ENDFIELD
+
+FIELD ov_anglelist
+FLOC 17 37
+FGROUP "Available Angles"
+LIST "" 14 5
+ENDFIELD
+
+FIELD ov_directionlist
+FLOC 31 37
+FGROUP "Available Directions"
+LIST "" 13 5
+ENDFIELD
+
+
+FIELD pin_graphic
+THUMBNAIL ovvariableinward.bmp
+FLOC 2 0
+FSIZE 28 16
+ENDFIELD
+
+FIELD pitch_graphic
+THUMBNAIL ovpitch.bmp
+FLOC 29 0
+FSIZE 20 16
+ENDFIELD
+
+ENDTAB
+
+TAB "Padstack"
+
+GROUP "Method"
+GLOC 2 0
+GSIZE 45 13
+ENDGROUP
+
+FIELD pad_create
+FLOC 5 2
+CHECKLIST "New" "pad_method"
+ENDFIELD
+
+FIELD pad_load_database
+FLOC 5 4
+CHECKLIST "Available Padstack" "pad_method"
+GSIZE 18 1
+ENDFIELD
+
+FIELD pad_database
+FLOC 24 4
+ENUMSET 18
+POP "PADPOPUP"
+ENDFIELD
+
+FIELD pad_load_disk
+FLOC 5 7
+CHECKLIST "Load from Disk" "pad_method"
+ENDFIELD
+
+FIELD pad_file_name
+FLOC 8 9
+STRFILLIN 25 255
+ENDFIELD
+
+FIELD pad_file_button
+FLOC 35 9
+MENUBUTTON "Browse..." 6 3
+ENDFIELD
+
+GROUP "Specifications"
+GLOC 2 13
+GSIZE 45 18
+ENDGROUP
+
+TEXT "Name:"
+TLOC 5 16
+ENDTEXT
+
+FIELD pad_name
+FLOC 14 16
+STRFILLIN 24 255
+ENDFIELD
+
+TEXT "To Layer:"
+TLOC 5 18
+ENDTEXT
+
+FIELD pad_Layer
+FLOC 14 18
+ENUMSET 24
+POP "LAYERPOPUP"
+ENDFIELD
+
+TEXT "From Layer:"
+TLOC 5 20
+ENDTEXT
+
+TEXT ""
+FLOC 14 20
+INFO pad_Through_Layer 24 50
+ENDTEXT
+
+GROUP "Shape"
+GLOC 3 22
+GSIZE 19 8
+ENDGROUP
+
+FIELD pad_circle
+FLOC 5 25
+CHECKLIST "Circle" "pad_type"
+ENDFIELD
+
+FIELD pad_rect
+FLOC 5 27
+CHECKLIST "Rectangle" "pad_type"
+ENDFIELD
+
+GROUP "Dimensions"
+GLOC 23 22
+GSIZE 23 8
+ENDGROUP
+
+TEXT "Width:"
+TLOC 25 25
+ENDTEXT
+
+TEXT "Height:"
+TLOC 25 27
+ENDTEXT
+
+FIELD pad_width
+FLOC 31 25
+STRFILLIN 12 16
+ENDFIELD
+
+FIELD pad_height
+FLOC 31 27
+STRFILLIN 12 16
+ENDFIELD
+
+ENDTAB
+
+ENDTABSET
+
+FIELD done
+FLOC 1 52
+MENUBUTTON "OK" 9 3
+ENDFIELD
+
+FIELD Cancel
+FLOC 12 52
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD Apply
+FLOC 23 52
+MENUBUTTON "Apply" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 40 52
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM
+

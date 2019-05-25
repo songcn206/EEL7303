@@ -1,0 +1,84 @@
+#  $Header: /vobs/psd_backend_data/data/prefs/browser.prf /main/10 12-May-06.15:16:12 fxf $
+#------------------------------------------------------------------------------
+#		Allegro browser Environment Variables
+#------------------------------------------------------------------------------
+#
+# See User.prf for complete descriptions of fields in this file.
+
+PARENT:PARENT_L=ui/browse
+
+SUMMARY:HELP=Browser Settings
+
+nolast_file:TYPE=CHECK:EFF_ONRESTART:\
+HELP=If set, Allegro based products when started with no command line \
+arguments do not use the master.tag in the current working directory \
+to determine the initial board to open. If starts with unnamed.brd. \
+This (with variable nolast_directory) restores old 12.0 behavior.
+
+nolast_directory:TYPE=CHECK:EFF_ONRESTART:\
+HELP=If set, Allegro base products do not use the last directory \
+stored in the ~/pcbenv/allegro.ini. This means allegro, with no \
+command line arguments, opens in the current working directory. This \
+(with variable nolast_file) restores old 12.0 behavior.
+
+nolast_file:TYPE=CHECK:EFF_ONRESTART:\
+HELP=If set, Allegro based products when started with no command line \
+arguments do not use the master.tag in the current working directory \
+to determine the initial board to open. If starts with unnamed.brd. \
+This (with variable nolast_directory) restores old 12.0 behavior.
+
+browser_nodircheck:TYPE=CHECK:EFF_ONNEXTCMD:\
+HELP=This causes all browsers to have the change directory checkbox \
+initialy unset. By default, the main file browsers (e.g. File->Open) \
+have the checkbox initially set while secondary file browsers \
+(e.g. scripts) have it initially unset.
+
+browser_win31:TYPE=CHECK:EFF_ONNEXTCMD:\
+HELP=Applies to pre-16.0 Allegro. \
+When Set the windows 3.1 file browser is used. The new browser \
+lists all directories and files in one section and supports preview for \
+certain file types. When set, \
+2 sections exist; 1 containing directories to filter, and the other \
+containing the file data. Use browser_type variable for post 15.x Allegro.
+
+browser_type:TYPE=ENUM:POPUP=win2000,nt,win31:DEFAULT=xp:EFF_ONNEXTCMD:\
+HELP=Replaces browser_win31 variable. Controls file and directory browser \
+appearance. Default (win2000) is a browser with the place bar. Nt \
+eliminates the place bar (15.x browser compatibility). The win31 setting \
+uses an old 2 pane Windows 3.1 browser. Unix currently does not support the \
+place bar browser.
+
+browser_nosticky:TYPE=CHECK:EFF_ONNEXTCMD:\
+HELP=When set, file browser always opens to the current working directory. \
+If not set, file browser is opened to the directory that was selected the \
+last time it was invoked and a file was opened.
+
+old_scriptbrowser:TYPE=CHECK:EFF_ONNEXTCMD:\
+HELP=When set, uses a file browser for replaying scripts. \
+If not set, uses an Allegro data browser, which supports SCRIPTPATH. \
+This restores 13.6 behavior.
+
+padlib_filebrowser:TYPE=CHECK:EFF_ONNEXTCMD:\
+HELP=If set, the padeditlib command (Tools->Padstack->Modify Library Padstack) \
+uses the file browser instead of a library path browser. 
+
+clip_filebrowser:TYPE=CHECK:EFF_ONNEXTCMD:\
+HELP=If set, the clpcopy command uses the file browser instead \
+of the library path browser. This restores 13.6 behavior.
+
+filemgr_windows:TYPE=STRING:EFF_ONNEXTCMD:\
+HELP=Applies only to Windows for the filemgr command. \
+Default is explorer.\
+You can substitute a 3rd party explorer \
+replacement or use arguments to change the default explorer appearance. \
+For example to enable an alternative two pane explorer \
+set\: explorer /e,/root,%s or default explorer\: explorer %s \
+where the %s allows the substition of the directory name.
+
+filemgr_unix:TYPE=STRING:EFF_ONNEXTCMD:\
+HELP=Applies to UNIX platforms for the filemgr command. \
+Default is GNOME's nautilus. You can substitute a 3rd party file manager \
+replacement or use arguments to change default file manager appearance. \
+Alternatively use the CDE file manager, dtfile. For example \
+to use the CDE browser set\: dtfile %s \
+where the %s allows the substition of the directory name.

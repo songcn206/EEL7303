@@ -1,0 +1,5 @@
+package ifneeded orCapTclAppRegistry 1.0 [list source [file join $dir orCapTclAppRegistry.tle]]
+package ifneeded orPrmDboGeom 16.6 [list source [file join $dir orPrmDboGeom.tle]]
+package ifneeded orPrmDboHierStreamer 16.6 [list source [file join $dir orPrmDboHierStreamer.tle]]
+package ifneeded orPrmDboStreamer 16.6 [list source [file join $dir orPrmDboStreamer.tle]]
+package ifneeded orPrmFieldMap 1.0 [list source [file join $dir orPrmFieldMap.tle]]

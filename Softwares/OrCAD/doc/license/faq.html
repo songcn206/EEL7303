@@ -1,0 +1,349 @@
+
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=">
+<meta name="GENERATOR" content="Quadralay WebWorks Publisher AutoMap 6.0.7">
+<meta name="TEMPLATEBASE" content="CadencePubs7">
+<meta name="LASTUPDATED" content="Fri Mar 04 16:07:03 2005">
+
+<script src="/Cookies.js"></script>
+
+<!-- Begin Feedback Script -->
+<script>
+setCookie("DocumentTitle", "Cadence License Manager");
+setCookie("Chapter", "Troubleshooting - Basic ");
+setCookie("Keyword", "license");
+setCookie("Version", "Product Version 10.1.3");
+</script>
+<!-- End Feedback Script -->
+
+<title>Cadence License Manager -- D. Troubleshooting - Basic </title>
+<META NAME="CreateTime" CONTENT="1109932633">
+<META NAME="CreateDate" CONTENT="2005-03-04">
+<META NAME="Title" CONTENT="Cadence License Manager -- D. Troubleshooting - Basic ">
+<META NAME="DocTitle" CONTENT="Cadence License Manager">
+<META NAME="DocType" CONTENT="Manual">
+<META NAME="DataType" CONTENT="Manuals">
+<META NAME="FileTitle" CONTENT="D. Troubleshooting - Basic ">
+<META NAME="NextFile" CONTENT="appd.html">
+<META NAME="PrevFile" CONTENT="appc_old.html">
+<META NAME="FileType" CONTENT="Chapter">
+<META NAME="PageCount" CONTENT="6">
+<META NAME="Version" CONTENT="10.1.3">
+<META NAME="ModifiedTime" CONTENT="1109932633">
+<META NAME="ModifiedDate" CONTENT="2005-03-04">
+<META NAME="Author" CONTENT="Technical Publications">
+<META NAME="Keyword" CONTENT="license">
+<META NAME="ProductFamily" CONTENT="Cadence Shared Tools">
+<META NAME="Product" CONTENT="Install and License">
+<META NAME="Language" CONTENT="English">
+<META NAME="RightsManagement" CONTENT="Copyright 1990-2005 Cadence Design Systems Inc.">
+<META NAME="Description" CONTENT="Describes the Cadence licensing process.">
+<META NAME="Platform" CONTENT="ALL">
+<META NAME="Approver" CONTENT="Technical Publications">
+<META NAME="ProductVersion" CONTENT="10.1.3">
+</head>
+
+<body bgcolor="#ffffff">
+<a name="firstpage"></a>
+<a name="pagetop"></a>
+
+<p>
+<!-- Begin Buttons -->
+<table border="0" cellpadding="0" cellspacing="0" width="650">
+<tr>
+  <td height="36" width="650" colspan="10"><img src="../support/header_doc.gif" WIDTH="650" HEIGHT="36"></td>
+</tr>
+<tr>
+  <td height="20" width="59"><a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a></td>
+  <td height="20" width="73"><a href="licenseTOC.html"><img src="../support/nav2_toc.gif" border="0" alt="View Table Of Contents" height="20" width="73"></a></td>
+  <td height="20" width="46"><a href="licenseIX.html"><img src="../support/nav2_index.gif" border="0" alt="View Index for This Manual" height="20" width="46"></a></td>
+  <td height="20" width="83"><a href="appc_old.html"><img src="../support/nav2_previous.gif" border="0" alt="View Previous Chapter in Book" height="20" width="83"></a></td>
+  <td height="20" width="59"><a href="appd.html"><img src="../support/nav2_next.gif" border="0" alt="View Next Chapter in Book" height="20" width="59"></a></td>
+  <td height="20" width="114"><a href="license.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a></td>
+  <td height="20" width="61"><a href="/search.htm"><img src="../support/nav2_search.gif" border="0"  alt="Search Cadence Library" height="20" width="61"></a></td>
+  <td height="20" width="76"><a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a></td>
+  <td height="20" width="43"><a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a></td>
+  <td height="20" width="37"><a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a></td>
+</tr>
+</table>
+<!-- End Buttons -->
+<p>
+<p>
+<hr>
+<p>
+<h3><center>Cadence License Manager&#0044; Product Version 10.1.3</center></h3><br>
+<p>
+
+
+<blockquote>
+
+  
+<div align="right">
+<h1 align="left">
+  <a name="108871"> </a>D</h1>
+</div>
+
+<hr>
+<h1>
+  <a name="108873"> </a>Troubleshooting - Basic </h1>
+
+
+
+
+
+
+<p>
+  <a name="756782"> </a>This appendix contains some frequently asked questions about troubleshooting licensing. </p>
+
+
+
+
+<h4>
+  <a name="757810"> </a>Q. How should my network topology be?</h4>
+
+
+<p>
+  <a name="757839"> </a><strong>Ans</strong>: You should not have an overly congested network or one with too much delay. Both of these can cause "heartbeat" and other failures.</p>
+
+
+<p>
+  <a name="757892"> </a><strong>Q. Should my license server be a dedicated machine?</strong></p>
+
+
+<p>
+  <a name="757907"> </a><strong>Ans: </strong>For maximum performance, and on sites with a large number of users, the license server should be a DEDICATED machine.</p>
+
+
+<p>
+  <a name="757923"> </a><strong>Q. Can license files be combined?</strong></p>
+
+
+<p>
+  <a name="757949"> </a>Ans: While it is technically possible to combine FLEXlm-based license files, there are a few disadvantages to this approach: </p>
+
+<ul>
+  <a name="757954"></a><li><p>There is a performance degradation associated with large license files. </p>
+
+  <a name="757957"></a><li><p>It makes debugging difficult as it is difficult to trace the origin of the problem.</p>
+</ul>
+<p>
+  <a name="757924"> </a>Therefore, it is suggested that you maintain separate license files for each daemon and run multiple <code>lmgrd</code> daemons (one for each vendor daemon). </p>
+
+
+<p>
+  <a name="757986"> </a><strong>Q. Why are some FEATURES in the license file rejected when the server is started? </strong></p>
+
+
+<p>
+  <a name="758025"> </a><strong>Ans: </strong>The license server accepts only valid FEATURE lines. A FEATURE line is considered valid when:</p>
+
+<ul>
+  <a name="758031"></a><li><p>the start_date is less than the date the server is started or re-read</p>
+
+  <a name="758047"></a><li><p>date has not expired </p>
+
+  <a name="758026"></a><li><p>the 20-character encryption code is valid</p>
+</ul>
+<p>
+  <a name="758776"> </a><strong>Q. Are duplicated FEATURE lines allowed?</strong></p>
+
+
+<p>
+  <a name="758777"> </a><strong>Ans:</strong> Cadence allows multiple lines for a FEATURE that has the start date already enabled. However, the behavior is different for temporary and permanent keys.</p>
+
+<ul>
+  <a name="758074"></a><li><p>All temporary keys are allowed.</p>
+
+  <a name="758078"></a><li><p>All permanent keys with the same start date are allowed.</p>
+
+  <a name="758079"></a><li><p>If there are multiple sets of permanent keys having different start dates, only the set with the latest enabled start_date is allowed. </p>
+</ul>
+<p>
+  <a name="758117"> </a><strong>Q: What does the UNSUPPORTED line in the log file mean?</strong></p>
+
+
+<p>
+  <a name="758124"> </a><strong>Ans:</strong> It is very important that the FEATURE lines be consistent in both the application client and the license server versions of the license file (which may be different for a variety of reasons). The UNSUPPORTED line in the log file is most likely due to a mis-match in these two license files. Usually, a license if available is granted. </p>
+
+
+<p>
+<strong>Note:&nbsp;</strong>
+<a name="758089"> </a>It is possible that an UNSUPPORTED line in the log file is immediately followed by an OUT line.
+</p>
+
+<p>
+  <a name="758163"> </a><strong>Q. The server is fine. What else could be causing the problem?</strong></p>
+
+
+<p>
+  <a name="758207"> </a><strong>Ans:</strong> It is possible that the license server is fine, but the application is causing the problem. You can access the internal testability code of the application. This code appends information representing version, search path, actions, run times, results, and other diagnostics to a specified file. </p>
+
+
+<p>
+  <a name="758176"> </a>To access this testability code, execute the following at the command prompt (in UNIX): </p>
+
+
+<a name="758164"></a><dl><code>
+<dt>setenv   CDS_LIC_QA_TesT    /tmp/client_debug_log.out
+</code></dl>
+
+<p>
+  <a name="758236"> </a><strong>Q. How can I reclaim a license if it has been lying idle for some time?</strong></p>
+
+
+<p>
+  <a name="758237"> </a><strong>Ans:</strong> You can use the TIMEOUT option in the options file to reclaim the license when the product has been idle for sometime.</p>
+
+
+<p>
+  <a name="758254"> </a><strong>Q: What configurations are supported with the fault-tolerant server setup? </strong></p>
+
+
+<p>
+  <a name="758252"> </a><strong>Ans:</strong> Only homogeneous platforms of the same OS release are supported. For example, all three servers in a fault-tolerant configuration must be Sun/SunOS 4.1.3 machines. </p>
+
+
+<p>
+  <a name="758287"> </a><strong>Q: I have a license file with both node-locked and floating licenses. Why are the reservations I specified in the options file not working correctly?</strong></p>
+
+
+<p>
+  <a name="758493"> </a><strong>Ans</strong>: Normally, the node-locked lines appear first in the license file because they should be given out before any floating licenses. This is important to avoid the situation where locked nodes take all the floating licenses and other machines fail to get any of the licenses. The drawback with this setup is that if the node-locked lines appear in the license file first, those are the lines on which the server applies the specified reservation (or other options). Any option you specify will only be applied to the first line of the FEATURE in the license file. However, what is required is that options should be applied to the floating licenses, and not the node-locked licenses. This is not an unresolvable problem, because the options are applied by the license server, and licenses are checked out as requested by the clients. You need to do have the server machine use a modified license file in which the floating lines appear first and node-locked lines last, and have the clients use the normal file that has the node-locked lines first and the floating lines last. This results in the server applying any options to the floating lines (since those appear first in its version of the license file), and clients correctly checking out the node-locked licenses first (if they are the locked node). </p>
+
+
+
+
+<h4>
+  <a name="758494"> </a><strong>Q. What do I do to make a standalone machine work as a license server? (Applicable for Linux and Windows)</strong></h4>
+
+
+<p>
+  <a name="758495"> </a><strong>Ans</strong>: The first thing to check is whether you can <code>ping</code> the machine that is supposed to be the server. If not, then that is the first thing to correct. Even in a single machine configuration, licenses require a working TCP/IP infrastructure, implying working hardware, name mapping, IP addresses, and so on.</p>
+
+
+<p>
+  <a name="758368"> </a>First, ensure that the hardware is enabled. The hardware solution is to make a simple loop back plug (one that routes the transmit to the receive). The Ethernet will interpret this as being connected. </p>
+
+
+  <a name="758377"> </a><h4>
+<img src="images/faqx1.png" border="0">
+Ethernet twisted pair loopback plug</h4>
+
+
+<p>
+  <a name="758027"> </a>From looking at a diagram of a crossover cable, you can see which pin is which:</p>
+
+
+  <a name="758404"> </a><h4>
+<img src="images/ch5a7.gif">
+Straight-through and Crossover Cable Pinouts</h4>
+
+
+<p>
+  <a name="758418"> </a>If you do not fix this, you will see the <code>lmhostid</code> command returning a null value or "<code>FFFFFFFFFFFF</code>" for the host ID of the machine. See the example below where the <code>lmhostid</code> was run with attaching the loopback plug.</p>
+
+
+<p>
+  <a name="758431"> </a><code>The FLEXlm host ID of this machine is ""</code> </p>
+
+
+<p>
+  <a name="758866"> </a>After the loopback plug was attached, <code>lmhostid</code> returned the following:</p>
+
+
+<p>
+  <a name="758867"> </a><code>The FLEXlm host ID of this machine is "0010a48977a0"</code></p>
+
+
+<p>
+  <a name="758419"> </a>There is a software alternative as well. On Windows, there is a registry hack. You can find the information in the Microsoft knowledge base. However, it is recomended that you use the hardware solution.</p>
+
+
+<p>
+  <a name="758420"> </a>On Linux, open the<code> /etc/modules.conf</code> file and find out which module (or driver) is aliased to the <code>eth0</code> interface. It might be something like an <code>eepro100</code>. Edit your <code>/etc/init.d/network</code> script and insert the equivalent of the following line just after the <code>"start)"</code> line:</p>
+
+
+<p>
+  <a name="758465"> </a><code>sbin/insmod eepro100</code></p>
+
+
+<p>
+  <a name="758466"> </a>This will load the module for your ethernet device regardless of whether you are connected to a working network.</p>
+
+
+<p>
+  <a name="758421"> </a>Once the connectivity between the hardware and the OS is established, you have to make sure that the name resolution happens correctly. Since by default, there should be a <code>host</code> file that maps the IP addresses to the names, and <code>localhost</code> is a default name that should always be mapped, you can use that as the <code>hostname</code> for the license file (and the setting of the ENV variables to find the server).</p>
+
+
+<p>
+  <a name="758413"> </a>If you do not want to use localhost, then make sure that the <code>/etc/hosts</code> file on Linux (and the <code>hosts</code> file on Windows) has the information required to add the name of your machine to the loopback (127.0.0.1) address mapping. </p>
+
+
+<p>
+  <a name="758484"> </a>Finally, set the <code><em>CDS_LIC_FILE</code></em> environment variable to <code>5280@127.0.0.1 </code>or <code>5280@localhost</code>.</p>
+
+
+  <a name="758390"> </a><table border="0"><tr><td valign="top"><img src="../support/important.gif"></td><td>More information on troubleshooting is available at:</td></table>
+
+<ul>
+  <a name="757884"></a><li><p>Troubleshooting -Detailed Appendix </p>
+
+  <a name="757885"></a><li><p>The Licensing and Installation FAQ in SourceLink</p>
+</ul>
+<p>
+  <a name="757878"> </a></p>
+
+
+  
+
+</blockquote>
+
+<br>
+<a href="#pagetop">Return to top of page</a>
+<hr>
+<p>
+<!-- Begin Buttons -->
+<table border="0" cellpadding="0" cellspacing="0" width="650">
+<tr>
+  <td height="20" width="59"><a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a></td>
+  <td height="20" width="73"><a href="licenseTOC.html"><img src="../support/nav2_toc.gif" border="0" alt="View Table Of Contents" height="20" width="73"></a></td>
+  <td height="20" width="46"><a href="licenseIX.html"><img src="../support/nav2_index.gif" border="0" alt="View Index for This Manual" height="20" width="46"></a></td>
+  <td height="20" width="83"><a href="appc_old.html"><img src="../support/nav2_previous.gif" border="0" alt="View Previous Chapter in Book" height="20" width="83"></a></td>
+  <td height="20" width="59"><a href="appd.html"><img src="../support/nav2_next.gif" border="0" alt="View Next Chapter in Book" height="20" width="59"></a></td>
+  <td height="20" width="114"><a href="license.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a></td>
+  <td height="20" width="61"><a href="/search.htm"><img src="../support/nav2_search.gif" border="0"  alt="Search Cadence Library" height="20" width="61"></a></td>
+  <td height="20" width="76"><a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a></td>
+  <td height="20" width="43"><a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a></td>
+  <td height="20" width="37"><a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a></td>
+</tr>
+</table>
+<!-- End Buttons -->
+<p>
+<p>
+
+
+<!-- NOTES; -->
+
+<!-- /address -->
+<p>
+<br>
+<font size="-1">
+For support, see <a href=http://www.cadence.com/support>http://www.cadence.com/support</a>
+or try Cadence's <a href=http://sourcelink.cadence.com target=_blank>SourceLink</a> service.
+<br><br>
+<i>Copyright &#169; 2004, <a href=http://www.cadence.com>Cadence Design Systems, Inc.</a></i> 
+<br>
+All rights reserved.
+<br>
+<a href="titlecopy.html">Legal notices and trademark attributions</a>
+<br>
+<!-- This file was created with Quadralay WebWorks Publisher AutoMap 6.0.7 -->
+<!-- -->
+<!-- Last updated: Fri Mar 04 16:07:03 2005 -->
+</font>
+</body>
+</html>
+
+

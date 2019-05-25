@@ -1,0 +1,188 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 100 37
+HEADER "Wire Profile Editor"
+
+TILE
+
+POPUP <profile_popup>     """".
+POPUP <material_popup>    """".
+POPUP <dir_popup>         "Forward Bond""FORWARD", "Reverse Bond""REVERSE".
+POPUP <edit_popup>        "Insert""INSERT", "Remove""REMOVE".
+POPUP <libs_popup>        "Browse...""BROWSE".
+
+GROUP " Profiles in Use / Available "
+GLOC 1 1
+GSIZE 98 7
+ENDGROUP
+
+TEXT "Active Profile: "
+TLOC 3 3
+ENDTEXT
+
+FIELD active_profile
+FLOC 16 3
+ENUMSET 39
+POP "profile_popup"
+ENDFIELD
+
+FIELD add_profile
+FLOC 59 3
+MENUBUTTON "Add" 9 3
+ENDFIELD
+
+FIELD copy_profile
+FLOC 69 3
+MENUBUTTON "Copy" 9 3
+ENDFIELD
+
+FIELD del_profile
+FLOC 79 3
+MENUBUTTON "Delete" 9 3
+ENDFIELD
+
+FIELD rename_profile
+FLOC 89 3
+MENUBUTTON "Rename" 9 3
+ENDFIELD
+
+TEXT "Master Definitions: "
+TLOC 3 5
+ENDTEXT
+
+FIELD tech_file
+FLOC 16 5
+ENUMSET 39
+POP "libs_popup"
+ENDFIELD
+
+FIELD tech_save
+FLOC 59 5
+MENUBUTTON "Save..." 12 3
+ENDFIELD
+
+FIELD purge
+FLOC 73 5
+MENUBUTTON "Purge Unused Profiles" 25 3
+ENDFIELD
+
+GROUP " Definition "
+GLOC 1 8
+GSIZE 98 18
+ENDGROUP
+
+TEXT "Direction:"
+TLOC 3 10
+ENDTEXT
+FIELD direction
+FLOC 11 10
+ENUMSET 12
+POP "dir_popup"
+ENDFIELD
+
+TEXT "Material:"
+TLOC 29 10
+ENDTEXT
+FIELD material
+FLOC 36 10
+ENUMSET 12
+POP "material_popup"
+ENDFIELD
+
+TEXT "Diameter:"
+TLOC 53 10
+ENDTEXT
+FIELD diameter
+FLOC 61 10
+STRFILLIN 12 255
+ENDFIELD
+
+FIELD refresh_profile
+FLOC 79 10
+MENUBUTTON "Refresh from Master" 18 3
+ENDFIELD
+
+GRID grid
+FLOC 3 13
+FSIZE 94 13
+OPTIONS HLINES VLINES USERSIZE
+POP "edit_popup"
+GHEAD SIDE
+OPTIONS 3D
+HEADSIZE 10
+POP "edit_popup"
+ENDGHEAD
+GHEAD TOP
+OPTIONS 3D
+HEADSIZE 2
+POP "edit_popup"
+ENDGHEAD
+ENDGRID
+
+GROUP " Example "
+GLOC 1 26
+GSIZE 98 20
+ENDGROUP
+
+TEXT "Sample Start Height:"
+TLOC 3 28
+ENDTEXT
+FIELD drawing_height
+FLOC 18 28
+STRFILLIN 15 25
+ENDFIELD
+
+TEXT "Sample Length:"
+TLOC 3 30
+ENDTEXT
+FIELD drawing_length
+FLOC 18 30
+STRFILLIN 15 25
+ENDFIELD
+
+FIELD drawing_top_view
+FLOC 3 32
+CHECKLIST "Top View"
+ENDFIELD
+
+TEXT "Profile Certified By:"
+TLOC 55 30
+INFO vendor_certified 20
+ENDTEXT
+
+FIELD vendor
+THUMBNAIL "wbProfileKNSLogo.bmp"
+FLOC 70 29
+FSIZE 27 4
+OPTIONS stretch
+ENDFIELD
+
+FIELD drawing
+THUMBNAIL
+FLOC 3 34
+FSIZE 94 11
+ENDFIELD
+
+FIELD done
+FLOC 1 47
+MENUBUTTON "OK" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 12 47
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD apply
+FLOC 25 47
+MENUBUTTON "Apply" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 90 47
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+ENDTILE
+ENDFORM

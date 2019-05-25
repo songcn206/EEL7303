@@ -1,0 +1,203 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 50 26
+HEADER "NC Parameters"
+
+MESSAGE CANNOT_SAVE 1 "Cannot save parameters in that file name"
+MESSAGE IMPROPER_NAME 1 "File name must end in 'nc_param.txt'"
+
+TILE
+
+TEXT "Parameter file:"
+TLOC 4 2
+ENDTEXT
+
+FIELD parameter_filename
+FLOC 16 2 
+STRFILLIN 20 1024
+ENDFIELD
+
+FIELD browse
+FLOC 40 2
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+GROUP "Output file:"
+GLOC 1 4
+GSIZE 49 14
+ENDGROUP
+
+TEXT "Header:"
+TLOC 4 7
+TGROUP "Output file:"
+ENDTEXT
+
+FIELD tape_header
+FLOC 16 7 
+FGROUP "Output file:"
+STRFILLIN 1024 1024
+FSIZE 30 5
+ENDFIELD
+
+TEXT "Leader:"
+TLOC 4 13
+TGROUP "Output file:"
+ENDTEXT
+
+FIELD tape_leader
+FLOC 16 13
+FGROUP "Output file:"
+INTFILLIN 2 2
+MIN 0
+MAX 99
+ENDFIELD
+
+TEXT "Code:"
+TLOC 4 15
+TGROUP "Output file:"
+ENDTEXT
+
+FIELD ascii_code
+FLOC 16 15
+FGROUP "Output file:"
+CHECKLIST "ASCII" "code_group"
+ENDFIELD
+
+FIELD eia_code
+FLOC 29 15
+FGROUP "Output file:"
+CHECKLIST "EIA" "code_group"
+ENDFIELD
+
+GROUP "Excellon format:"
+GLOC 1 19
+GSIZE 49 20 
+ENDGROUP
+
+TEXT "Format:"
+TLOC 4 22
+TGROUP "Excellon format:"
+ENDTEXT
+
+FIELD integer_places
+FLOC 16 22
+FGROUP "Excellon format:"
+INTFILLIN 1 1
+MIN 1
+MAX 9
+ENDFIELD
+
+TEXT "."
+TLOC 20 22
+TGROUP "Excellon format:"
+ENDTEXT
+
+FIELD decimal_places
+FLOC 22 22
+FGROUP "Excellon format:"
+INTFILLIN 1 1
+MIN 1
+MAX 9
+ENDFIELD
+
+TEXT "Offset X:"
+TLOC 4 24
+TGROUP "Excellon format:"
+ENDTEXT
+
+FIELD x_offset
+FLOC 16 24
+FGROUP "Excellon format:"
+REALFILLIN 10 10
+DECIMAL 2
+ENDFIELD
+
+TEXT "Y:"
+TLOC 30 24
+TGROUP "Excellon format:"
+ENDTEXT
+
+FIELD y_offset
+FLOC 34 24
+FGROUP "Excellon format:"
+REALFILLIN 10 10
+DECIMAL 2
+ENDFIELD
+
+TEXT "Coordinates:"
+TLOC 4 26
+TGROUP "Excellon format:"
+ENDTEXT
+
+FIELD absolute_coords
+FLOC 16 26
+FGROUP "Excellon format:"
+CHECKLIST "Absolute" "coordinate_group"
+ENDFIELD
+
+FIELD incremental_coords
+FLOC 29 26
+FGROUP "Excellon format:"
+CHECKLIST "Incremental" "coordinate_group"
+ENDFIELD
+
+TEXT "Output units:"
+TLOC 4 28
+TGROUP "Excellon format:"
+ENDTEXT
+
+FIELD english_units
+FLOC 16 28
+FGROUP "Excellon format:"
+CHECKLIST "English" "units_group"
+ENDFIELD
+
+FIELD metric_units
+FLOC 29 28
+FGROUP "Excellon format:"
+CHECKLIST "Metric" "units_group"
+ENDFIELD
+
+FIELD suppress_lead_zeroes
+FLOC 2 30
+FGROUP "Excellon format:"
+CHECKLIST "Leading zero suppression"
+ENDFIELD
+
+FIELD suppress_trail_zeroes
+FLOC 2 32
+FGROUP "Excellon format:"
+CHECKLIST "Trailing zero suppression"
+ENDFIELD
+
+FIELD suppress_equal
+FLOC 2 34
+FGROUP "Excellon format:"
+CHECKLIST "Equal coordinate suppression"
+ENDFIELD
+
+FIELD enhanced_format
+FLOC 2 36
+FGROUP "Excellon format:"
+CHECKLIST "Enhanced Excellon format"      
+ENDFIELD
+
+FIELD Done
+FLOC 2 40
+MENUBUTTON "Close" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 12 40
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 41 40
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

@@ -1,0 +1,515 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 39 6
+HEADER "Pin Settings"
+
+POPUP <ROTATION_POPUP> "Automatic" "0", "Maintain" "5", "North" "1", "West" "2", "South" "3", "East" "4".
+POPUP <PADSTACK_POPUP> "DIE_PAD" "DIE_PAD".
+POPUP <BUMP_MACRO_POPUP> "BUMP" "BUMP".
+POPUP <PINUSE_POPUP>   "BI" "BI".
+POPUP <NET_POPUP>      "Vdd" "VDD".
+POPUP <PATTERN_POPUP>  "Array" "ARRAY", "Single" "SINGLE", "Ring" "RING", "Text File" "TEXT", "Spreadsheet" "XML".
+POPUP <ORIGIN_POPUP>   "Cursor Center" "CENTER", "Cursor Lower-Left" "LOWERLEFT", "Comp Center" "COMP_CENTER", "Comp Lower-Left" "COMP_LL".
+
+TILE
+
+#####################################
+# Configuration modes (add pin only)
+#####################################
+
+FIELD pin_config
+FLOC 1 1
+CHECKLIST "Pin configuration" "add_mode"
+ENDFIELD
+
+FIELD pin_pattern_config
+FLOC 16 1
+CHECKLIST "Pattern definition" "add_mode"
+ENDFIELD
+
+#####################################
+# Pin Config fields (all modes)
+#####################################
+
+FIELD pin_replace
+FLOC 1 4
+CHECKLIST "Replace existing pins"
+ENDFIELD
+
+FIELD pin_ripup
+FLOC 1 6
+CHECKLIST "Rip up routing"
+ENDFIELD
+
+FIELD pin_stretch
+FLOC 1 8
+CHECKLIST "Stretch routing"
+ENDFIELD
+
+TEXT "Number:"
+TLOC 1 11
+INFO pin_number_label 10
+ENDTEXT
+FIELD pin_number
+FLOC 10 11
+STRFILLIN 16 256
+ENDFIELD
+
+TEXT "Name:"
+TLOC 1 13
+INFO pin_name_label 10
+ENDTEXT
+FIELD pin_name
+FLOC 10 13
+STRFILLIN 16 256
+ENDFIELD
+
+TEXT "Pin use:"
+TLOC 1 16
+INFO pin_use_label 10
+ENDTEXT
+FIELD pin_use
+FLOC 10 16
+ENUMSET 15
+POP "PINUSE_POPUP"
+ENDFIELD
+
+TEXT "Swap code:"
+TLOC 1 18
+INFO pin_swap_label 10
+ENDTEXT
+FIELD pin_swap
+FLOC 10 18
+STRFILLIN 16 23
+ENDFIELD
+
+FIELD pin_codesign_net_sync
+FLOC 1 21
+CHECKLIST "Auto select related net"
+ENDFIELD
+
+TEXT "Net:"
+TLOC 1 23
+INFO pin_net_label 10
+ENDTEXT
+FIELD pin_net
+FLOC 10 23
+STRFILLIN 13 23
+ENDFIELD
+FIELD pin_net_browse
+FLOC 25 23
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+TEXT "IC Net:"
+TLOC 1 25
+INFO pin_codesign_net_label
+ENDTEXT
+FIELD pin_codesign_net
+FLOC 10 25
+STRFILLIN 13 23
+ENDFIELD
+FIELD pin_codesign_net_browse
+FLOC 25 25
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+TEXT "Rotation:"
+TLOC 1 28
+INFO pin_rot_label 10
+ENDTEXT
+FIELD pin_rot
+FLOC 10 28
+ENUMSET 15
+POP "ROTATION_POPUP"
+ENDFIELD
+
+TEXT "Padstack:"
+TLOC 1 30
+INFO pin_pad_label 10
+ENDTEXT
+FIELD pin_pad
+FLOC 10 30
+ENUMSET 12
+POP "PADSTACK_POPUP"
+ENDFIELD
+FIELD pin_pad_browse
+FLOC 25 30
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+TEXT "LEF Macro:"
+TLOC 1 32
+INFO pin_macro_label 10
+ENDTEXT
+FIELD pin_macro
+FLOC 10 32
+ENUMSET 12
+POP "BUMP_MACRO_POPUP"
+ENDFIELD
+
+TEXT "Grid:"
+TLOC 1 34
+INFO pin_grid_label 10
+ENDTEXT
+TEXT "None"
+TLOC 10 34
+INFO pin_grid 20 40
+ENDTEXT
+
+FIELD pin_apply
+FLOC 1 37
+MENUBUTTON "Apply changes" 20 3
+ENDFIELD
+
+TEXT "X offset:"
+TLOC 1 40
+INFO pin_offset_x_label 10
+ENDTEXT
+FIELD pin_offset_x
+FLOC 10 40
+STRFILLIN 15 100
+ENDFIELD
+
+TEXT "Y offset:"
+TLOC 1 42
+INFO pin_offset_y_label 10
+ENDTEXT
+FIELD pin_offset_y
+FLOC 10 42
+STRFILLIN 15 100
+ENDFIELD
+
+#####################################
+# Pattern Config fields (add only)
+#####################################
+
+# Common fields.
+
+FIELD pattern_add_group
+FLOC 1 4
+CHECKLIST "Add pins to user group"
+ENDFIELD
+FIELD pattern_group
+FLOC 3 6
+STRFILLIN 23 23
+ENDFIELD
+
+TEXT "Pattern style:"
+TLOC 1 9
+INFO pattern_style_label 10
+ENDTEXT
+FIELD pattern_style
+FLOC 11 9
+ENUMSET 14
+POP "PATTERN_POPUP"
+ENDFIELD
+
+TEXT "Pattern origin:"
+TLOC 1 11
+INFO pattern_origin_label 10
+ENDTEXT
+FIELD pattern_origin
+FLOC 11 11
+ENUMSET 14
+POP "ORIGIN_POPUP"
+ENDFIELD
+
+TEXT "X offset:"
+TLOC 1 13
+INFO pattern_offset_x_label 10
+ENDTEXT
+FIELD pattern_offset_x
+FLOC 11 13
+STRFILLIN 15 100
+ENDFIELD
+
+TEXT "Y offset:"
+TLOC 1 15
+INFO pattern_offset_y_label 10
+ENDTEXT
+FIELD pattern_offset_y
+FLOC 11 15
+STRFILLIN 15 100
+ENDFIELD
+
+TEXT "Pin count:"
+TLOC 1 18
+INFO pattern_pin_count_label 10
+ENDTEXT
+TEXT "1"
+TLOC 11 18
+INFO pattern_pin_count 10
+ENDFIELD
+
+# Single pattern.
+
+TEXT "Single pin pattern allows for placement of pins either by pick or by window. When windowing, the area will be filled with pins at the pitch specified for the grid in that area."
+TLOC 1 21
+INFO single_text_label 1024 1024
+FSIZE 25 20
+ENDTEXT
+
+# Text file pattern.
+
+TEXT "File name:"
+TLOC 1 21
+INFO txt_file_label 10
+ENDTEXT
+FIELD txt_file
+FLOC 3 23
+STRFILLIN 19 1024
+ENDFIELD
+FIELD txt_file_browse
+FLOC 24 23
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+TEXT "Pin pitch:"
+TLOC 1 26
+INFO txt_pitch_label 20 20
+ENDTEXT
+TEXT "Horizontal:"
+TLOC 3 28
+INFO txt_pitch_x_label 20 20
+ENDTEXT
+FIELD txt_pitch_x
+FLOC 15 28
+STRFILLIN 11 23
+ENDFIELD
+TEXT "Vertical:"
+TLOC 3 30
+INFO txt_pitch_y_label 20 20
+ENDTEXT
+FIELD txt_pitch_y
+FLOC 15 30
+STRFILLIN 11 23
+ENDFIELD
+TEXT "Diagonal:"
+TLOC 3 32
+INFO txt_pitch_diag_label 20 20
+ENDTEXT
+FIELD txt_pitch_diag
+FLOC 15 32
+STRFILLIN 11 23
+ENDFIELD
+
+# XML file pattern.
+
+TEXT "File name:"
+TLOC 1 21
+INFO xml_file_label 10
+ENDTEXT
+FIELD xml_file
+FLOC 3 23
+STRFILLIN 19 1024
+ENDFIELD
+FIELD xml_file_browse
+FLOC 24 23
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+TEXT "Pin pitch:"
+TLOC 1 26
+INFO xml_pitch_label 20 20
+ENDTEXT
+TEXT "Horizontal:"
+TLOC 3 28
+INFO xml_pitch_x_label 20 20
+ENDTEXT
+FIELD xml_pitch_x
+FLOC 15 28
+STRFILLIN 11 23
+ENDFIELD
+TEXT "Vertical:"
+TLOC 3 30
+INFO xml_pitch_y_label 20 20
+ENDTEXT
+FIELD xml_pitch_y
+FLOC 15 30
+STRFILLIN 11 23
+ENDFIELD
+TEXT "Diagonal:"
+TLOC 3 32
+INFO xml_pitch_diag_label 20 20
+ENDTEXT
+FIELD xml_pitch_diag
+FLOC 15 32
+STRFILLIN 11 23
+ENDFIELD
+
+# Array-based patterns.
+
+TEXT "Array size (in pins):"
+TLOC 1 21
+INFO array_size_label 20 20
+ENDTEXT
+TEXT "Horizontal:"
+TLOC 3 23
+INFO array_width_label 6 6
+ENDTEXT
+FIELD array_width
+FLOC 15 23
+STRFILLIN 11 23
+ENDFIELD
+TEXT "Vertical:"
+TLOC 3 25
+INFO array_height_label 7 7
+ENDTEXT
+FIELD array_height
+FLOC 15 25
+STRFILLIN 11 23
+ENDFIELD
+
+TEXT "Array pin pitch:"
+TLOC 1 27
+INFO array_pitch_label 20 20
+ENDTEXT
+TEXT "Horizontal:"
+TLOC 3 29
+INFO array_pitch_x_label 20 20
+ENDTEXT
+FIELD array_pitch_x
+FLOC 15 29
+STRFILLIN 11 23
+ENDFIELD
+TEXT "Increase by:"
+TLOC 5 31
+INFO array_pitch_x_amount_label 20 20
+ENDTEXT
+FIELD array_pitch_x_amount
+FLOC 15 31
+STRFILLIN 11 23
+ENDFIELD
+TEXT "After every:"
+TLOC 5 33
+INFO array_pitch_x_pins_label 20 20
+ENDTEXT
+FIELD array_pitch_x_pins
+FLOC 15 33
+STRFILLIN 11 23
+ENDFIELD
+TEXT "Vertical:"
+TLOC 3 35
+INFO array_pitch_y_label 20 20
+ENDTEXT
+FIELD array_pitch_y
+FLOC 15 35
+STRFILLIN 11 23
+ENDFIELD
+TEXT "Increase by:"
+TLOC 5 37
+INFO array_pitch_y_amount_label 20 20
+ENDTEXT
+FIELD array_pitch_y_amount
+FLOC 15 37
+STRFILLIN 11 23
+ENDFIELD
+TEXT "After every:"
+TLOC 5 39
+INFO array_pitch_y_pins_label 20 20
+ENDTEXT
+FIELD array_pitch_y_pins
+FLOC 15 39
+STRFILLIN 11 23
+ENDFIELD
+TEXT "Diagonal:"
+TLOC 3 41
+INFO array_pitch_diag_label 20 20
+ENDTEXT
+FIELD array_pitch_diag
+FLOC 15 41
+STRFILLIN 11 23
+ENDFIELD
+
+FIELD array_stagger
+FLOC 1 44
+CHECKLIST "Stagger pins"
+ENDFIELD
+
+TEXT "Step count:"
+TLOC 3 46
+INFO array_stagger_count_label 20 20
+ENDTEXT
+FIELD array_stagger_count
+FLOC 15 46
+STRFILLIN 11 23
+ENDFIELD
+
+FIELD array_start_stagger
+FLOC 3 48
+CHECKLIST "Start with staggered position"
+ENDFIELD
+
+# Ring-based patterns.
+
+TEXT "Outer ring size (in pins):"
+TLOC 1 21
+INFO ring_size_label 20 20
+ENDTEXT
+TEXT "Horizontal:"
+TLOC 3 23
+INFO ring_width_label 6 6
+ENDTEXT
+FIELD ring_width
+FLOC 15 23
+STRFILLIN 11 23
+ENDFIELD
+TEXT "Vertical:"
+TLOC 3 25
+INFO ring_height_label 7 7
+ENDTEXT
+FIELD ring_height
+FLOC 15 25
+STRFILLIN 11 23
+ENDFIELD
+
+TEXT "Ring count:"
+TLOC 1 28
+INFO ring_count_label 20 20
+ENDTEXT
+FIELD ring_count
+FLOC 15 28
+STRFILLIN 11 23
+ENDFIELD
+
+TEXT "Pin pitch:"
+TLOC 1 31
+INFO ring_pin_pitch_label 20 20
+ENDTEXT
+FIELD ring_pin_pitch
+FLOC 15 31
+STRFILLIN 11 23
+ENDFIELD
+TEXT "Ring pitch:"
+TLOC 1 33
+INFO ring_ring_pitch_label 20 20
+ENDTEXT
+FIELD ring_ring_pitch
+FLOC 15 33
+STRFILLIN 11 23
+ENDFIELD
+TEXT "Diagonal pitch:"
+TLOC 1 35
+INFO ring_pitch_diag_label 20 20
+ENDTEXT
+FIELD ring_pitch_diag
+FLOC 15 35
+STRFILLIN 11 23
+ENDFIELD
+
+FIELD ring_stagger
+FLOC 1 38
+CHECKLIST "Stagger pins"
+ENDFIELD
+
+FIELD ring_exclude_corners
+FLOC 1 40
+CHECKLIST "Exclude corners pins"
+ENDFIELD
+
+ENDTILE
+
+ENDFORM
+

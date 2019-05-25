@@ -1,0 +1,154 @@
+####################################################################################
+#       Cadence Design Systems                                                     #
+#                                                                                  #
+# (C) COPYRIGHT, Cadence Design Systems, Inc. 2010                                 #
+# All Rights Reserved                                                              #
+# Licensed Materials - Property of Cadence Design Systems                          #
+#                                                                                  #
+# No part of this file may be reproduced, stored in a retrieval system,            #
+# or transmitted in any form or by any means --- electronic, mechanical,           #
+# photocopying, recording, or otherwise --- without prior written permission       #
+# of Cadence Design Systems, Inc.                                                  #
+#                                                                                  #
+# WARRANTY:                                                                        #
+# Use all material in this file at your own risk.  Cadence Design Systems          #
+# makes no claims about any material contained in this file.                       #
+####################################################################################
+FILE_TYPE=FORM_DEFN VERSION=2
+    FORM
+    FIXED
+    PORT 82 42
+    HEADER "Decoupling Capacitor Library Management"
+
+    ACTIVEFIELD PowerNet
+    DEFAULT Done
+
+    TILE
+
+    FIELD Done
+        FLOC 1 35
+        MENUBUTTON "Done" 10 3
+    ENDFIELD
+
+    FIELD Cancel
+        FLOC 12 35
+        MENUBUTTON "Cancel" 10 3
+    ENDFIELD
+
+    FIELD Apply
+        FLOC 23 35
+        MENUBUTTON "Apply" 10 3
+    ENDFIELD
+
+    FIELD Reset
+        FLOC 34 35
+        MENUBUTTON "Reset" 10 3
+    ENDFIELD
+
+    #FIELD AutoSel
+    #    FLOC 60 35
+    #    MENUBUTTON "Auto Sel" 10 3
+    #ENDFIELD
+
+    FIELD Help
+        FLOC 71 35
+        MENUBUTTON "Help" 10 3
+    ENDFIELD
+
+    TEXT "Power net:"
+        TLOC 1 1
+    ENDTEXT
+
+    POPUP <PowerNetPop>"""".
+    FIELD PowerNet
+        FLOC 10 1
+        STRFILLIN 46 256
+        POP "PowerNetPop"
+    ENDFIELD
+
+    GROUP "Select decoupling capacitor libraries" "LibraryGroup"
+        GLOC 1 3
+        GSIZE 44 31
+    ENDGROUP
+
+    POPUP <LibraryTreePop>"Clear All""Clear All","Edit""Edit","Graph Response""Graph Response","Graph All Checked""Graph All Checked","Component Browse...""Component Browse...".
+    FIELD LibraryTree
+        FLOC 2 5
+        TREEVIEW 42 14
+        POP "LibraryTreePop"
+    ENDFIELD
+
+    GROUP "Log-ESR VS Log-Freq" "GraphGroup"
+        GLOC 46 3
+        GSIZE 35 19
+    ENDGROUP
+
+    FIELD LibraryBitmap
+        THUMBNAIL
+        FLOC 47 5
+        FSIZE 33 15
+    ENDFIELD
+
+    TEXT
+        FLOC 47 20
+        INFO ResFreqMin 7
+    ENDTEXT
+
+    TEXT
+        FLOC 72 20
+        OPTIONS RIGHT
+        INFO ResFreqMax 7
+    ENDTEXT
+
+    GROUP "Details of selected decoupling capacitor" "InfoGroup"
+        GLOC 46 22
+        GSIZE 35 12
+    ENDGROUP
+
+    TEXT "Effective capacitance:"
+        TLOC 47 24
+    ENDTEXT
+
+    TEXT
+        TLOC 64 24
+        INFO Capacitance 15
+    ENDTEXT
+
+    TEXT "Effective ESR:"
+        TLOC 47 26
+    ENDTEXT
+
+    TEXT
+        TLOC 64 26
+        INFO ESR 15
+    ENDTEXT
+
+    TEXT "Mon. inductance:"
+        TLOC 47 28
+    ENDTEXT
+
+    TEXT
+        TLOC 64 28
+        INFO MountInduct 15
+    ENDTEXT
+
+    TEXT "Frequency:"
+        TLOC 47 30
+    ENDTEXT
+
+    TEXT
+        TLOC 64 30
+        INFO ResonantFreq 15
+    ENDTEXT
+
+    FLEXMODE EdgeGravity
+    FLEX PowerNet        0   0   1 0
+    FLEX LibraryGroup    0   0 0.5 1
+    FLEX LibraryTree     0   0   1 1
+    FLEX GraphGroup      0.5 0 0.5 1
+    FLEX LibraryBitmap   0   0   1 1
+    FLEX InfoGroup       0.5 1 0.5 0
+
+    ENDTILE
+
+ENDFORM

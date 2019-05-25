@@ -1,0 +1,416 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 52 40
+HEADER "Parasitic Parameters"
+
+POPUP <PLANE> "Ignore" "ignore",\
+	      "Top Layer" "inf_ground_top",\
+	      "Internal Layer" "inf_ground_middle",\
+	      "Bottom Layer" "inf_ground_bottom".
+
+POPUP <UNITS> "mil" "mil", "inch" "inch", "cm" "cm", "micron" "micron".
+POPUP <DECOMP_LEVEL> "Lowest (1 filament)" "lowest",\
+		     "Low (12 filaments)" "low",\
+		     "Normal (24 filaments)" "normal",\
+		     "High (48 filaments)" "high".
+
+POPUP <SURFACE_MODEL> "Top" "top", "Bottom" "bottom", "Middle" "middle",\
+			"All" "all".
+
+
+TILE
+
+TABSET "one"
+FLOC 1 1
+TSSIZE 51 25
+
+TAB "General"
+
+GROUP "Parameters from Analysis Preferences"
+GLOC 2 0
+GSIZE 46 8
+ENDGROUP
+
+TEXT "Frequency:"
+TLOC 4 2
+ENDTEXT
+
+FIELD frequency
+FLOC 32 2
+STRFILLIN 10 20
+ENDFIELD
+
+TEXT "Geometry window:"
+TLOC 4 4
+ENDTEXT
+
+FIELD geometry_window
+FLOC 32 4
+STRFILLIN 10 20
+ENDFIELD
+
+TEXT "Additional clip area in X,Y:"
+TLOC 2 9
+ENDTEXT
+
+FIELD additional_clip_area
+FLOC 32 9
+INTFILLIN 10 20
+MIN 0
+ENDFIELD
+ 
+TEXT "%"
+TLOC 44 9
+ENDTEXT
+ 
+TEXT "Conductors per partition:  **"
+TLOC 2 12
+ENDTEXT
+FIELD cond_per_partition
+
+FLOC 32 12
+INTFILLIN 10 20
+MIN 1
+ENDFIELD
+
+TEXT "**"
+TLOC 4 14
+ENDTEXT
+
+TEXT "This parameter is applicable to the 'Coupled Line Package Model for the entire package' option only."
+TLOC 6 14
+FSIZE 35 5
+ENDTEXT
+
+ENDTAB
+ 
+TAB "Package Pin/Ball"
+
+TEXT "Note: The Solder Ball (or Pin) of a Package is modeled as a cylinder."
+TLOC 2 2
+FSIZE 46 3
+ENDTEXT
+
+TEXT "Diameter:"
+TLOC 10 6
+ENDTEXT
+
+FIELD solder_ball_diameter
+FLOC 20 6
+STRFILLIN 10 20
+ENDFIELD
+
+TEXT "Height:"
+TLOC 10 8
+ENDTEXT
+
+FIELD solder_ball_height
+FLOC 20 8
+STRFILLIN 10 20
+ENDFIELD
+
+ENDTAB
+
+TAB "Bond Wire"
+
+TEXT "Diameter:"
+TLOC 2 1
+ENDTEXT
+
+FIELD bondwire_diameter
+FLOC 18 1
+STRFILLIN 10 20
+ENDFIELD
+
+GROUP "Wire Profile"
+GLOC 2 3
+GSIZE 46 17
+ENDGROUP
+
+FIELD bitmap_bw3d
+THUMBNAIL bondwire3d.bmp
+FLOC 4 6
+FSIZE 26 10
+ENDFIELD
+
+TEXT "Default values:"
+TLOC 30 6
+ENDTEXT
+
+TEXT "D = 0.33 (a fraction of L, measured from Die Pad)"
+TLOC 30 8
+FSIZE 17 5
+ENDTEXT
+
+TEXT "H = 0.25 X L"
+TLOC 30 12
+ENDTEXT
+
+TEXT "(Data is in the BOND_WIRE property attached to each wire. Format = D1 H1 D2 H2 ...)"
+TLOC 4 16
+FSIZE 40 3
+ENDTEXT
+
+ENDTAB
+
+ 
+TAB "PC Board"
+ 
+TEXT "Information about the Board on which this Package will be mounted:"
+TLOC 2 1
+FSIZE 45 3
+ENDTEXT
+ 
+TEXT "Board Ground Plane:"
+TLOC 5 5
+ENDTEXT
+ 
+FIELD pcb_model
+FLOC 29 5
+ENUMSET 12
+POP "PLANE"
+ENDFIELD
+ 
+TEXT "Board Thickness:"
+TLOC 5 8
+ENDTEXT
+ 
+FIELD pcb_thickness
+FLOC 18 8
+REALFILLIN 6 6
+DECIMAL 10
+ENDFIELD
+
+TEXT "Unit:"
+TLOC 31 8
+ENDTEXT
+ 
+FIELD unit
+FLOC 35 8
+ENUMSET 6
+POP "UNITS"
+ENDFIELD
+ 
+TEXT "Board Dielectric Constant:"
+TLOC 5 11
+ENDTEXT
+FIELD pcb_dielectric
+FLOC 29 11
+REALFILLIN 13 13
+DECIMAL 2
+ENDFIELD
+ 
+TEXT "Board Loss Tangent:"
+TLOC 5 13
+ENDTEXT
+ 
+FIELD pcb_loss_tangent
+FLOC 29 13
+REALFILLIN 13 13
+DECIMAL 5
+ENDFIELD
+ 
+ENDTAB
+ 
+
+TAB "Inductance Model"
+
+TEXT "** ATW (Average Trace Width):"
+TLOC 3 6
+ENDTEXT
+TEXT
+FLOC 35 6
+INFO typical_trace_width_1 15
+ENDTEXT
+
+TEXT "Trace segment length:"
+TLOC 2 1
+FSIZE 13 3
+ENDTEXT
+FIELD default_segment_length
+FLOC 17 2
+CHECKLIST "3  x  ATW **" "seg_length"
+ENDFIELD
+FIELD segment_length
+FLOC 32 2
+CHECKLIST "" "seg_length"
+ENDFIELD
+FIELD segment_length_value
+FLOC 35 2
+STRFILLIN 10 20
+ENDFIELD
+
+TEXT "Plane cell size:"
+TLOC 2 4
+ENDTEXT
+FIELD default_plane_cell_size
+FLOC 17 4
+CHECKLIST "6  x  ATW **" "plane_cell"
+ENDFIELD
+FIELD plane_cell
+FLOC 32 4
+CHECKLIST "" "plane_cell"
+ENDFIELD
+FIELD plane_cell_size
+FLOC 35 4
+STRFILLIN 10 20
+ENDFIELD
+ 
+TEXT "Decomposition Level:"
+TLOC 2 10
+ENDTEXT
+FIELD decomp_level
+FLOC 27 10
+ENUMSET 17
+POP "DECOMP_LEVEL"
+ENDFIELD
+ 
+TEXT "Calculation method:"
+TLOC 2 13
+ENDTEXT
+FIELD quick_calc_method
+FLOC 27 13
+CHECKLIST "Quick" "ind_calc_method"
+ENDFIELD
+FIELD normal_calc_method
+FLOC 38 13
+CHECKLIST "Normal" "ind_calc_method"
+ENDFIELD
+ 
+ENDTAB
+
+
+TAB "Capacitance Model"
+
+TEXT "** ATW (Average Trace Width):"
+TLOC 3 7
+ENDTEXT
+TEXT
+FLOC 35 7
+INFO typical_trace_width_2 15
+ENDTEXT
+
+TEXT "Trace boundary element length:"
+TLOC 2 1
+FSIZE 15 3
+ENDTEXT
+FIELD default_cap_be_length
+FLOC 17 2
+CHECKLIST "3  x  ATW **" "cap_be_length"
+ENDFIELD
+FIELD cap_be_length
+FLOC 32 2
+CHECKLIST "" "cap_be_length"
+ENDFIELD
+FIELD cap_be_length_value
+FLOC 35 2
+STRFILLIN 10 20
+ENDFIELD
+
+TEXT "Plane boundary element size:"
+TLOC 2 4
+FSIZE 15 3
+ENDTEXT
+FIELD default_plane_be_size
+FLOC 17 5
+CHECKLIST "6  x  ATW **" "plane_boundary"
+ENDFIELD
+FIELD plane_be_size
+FLOC 32 5
+CHECKLIST "" "plane_boundary"
+ENDFIELD
+FIELD plane_be_size_value
+FLOC 35 5
+STRFILLIN 10 20
+ENDFIELD
+ 
+TEXT "Trace boundary surface:"
+TLOC 2 10
+ENDTEXT
+FIELD trace_surface_model
+FLOC 27 10
+ENUMSET 17
+POP "SURFACE_MODEL"
+ENDFIELD
+ 
+TEXT "Plane boundary surface:"
+TLOC 2 13
+ENDTEXT
+FIELD plane_surface_model
+FLOC 27 13
+ENUMSET 17
+POP "SURFACE_MODEL"
+ENDFIELD
+
+ENDTAB
+
+
+TAB "Power/Ground"
+
+TEXT "Power/Ground plane mesh type:"
+TLOC 2 1
+FSIZE 20 3
+ENDTEXT
+FIELD uniform_mesh
+FLOC 22 2
+CHECKLIST "Uniform" "mesh"
+ENDFIELD
+FIELD non_uniform_mesh
+FLOC 34 2
+CHECKLIST "Non-Uniform" "mesh"
+ENDFIELD
+
+TEXT "Power/Ground Planes:"
+TLOC 2 5
+ENDTEXT
+
+FIELD plane_ignore_all
+FLOC 22 5
+CHECKLIST "Ignore all" "planes"
+ENDFIELD
+FIELD plane_ignore_holes
+FLOC 22 7
+CHECKLIST "Include planes but ignore voids" "planes"
+ENDFIELD
+FIELD plane_include_all
+FLOC 22 9
+CHECKLIST "Include all" "planes"
+ENDFIELD
+
+FIELD include_plane
+FLOC 2 12
+CHECKLIST "Include Power/Ground Traces"
+ENDFIELD
+
+ENDTAB
+
+
+{
+FIELD include_wirebond
+FLOC 2 1
+CHECKLIST "Include wirebond"
+ENDFIELD
+}
+
+ENDTABSET
+
+FIELD apply  
+FLOC 1 27
+MENUBUTTON "OK" 10 3
+ENDFIELD
+
+FIELD cancel
+FLOC 12 27
+MENUBUTTON "Cancel" 10 3
+ENDFIELD
+
+FIELD help  
+FLOC 38 27
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM
+

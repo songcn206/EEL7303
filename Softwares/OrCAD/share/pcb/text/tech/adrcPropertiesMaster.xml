@@ -1,0 +1,927 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE adrcProperties SYSTEM "cdnadrc.dtd">
+<!--====                                              ====-->
+<!--====  Cadence PSB Extensible Markup Language      ====-->
+<!--====           Prototype Version 1.1              ====-->
+<!--====        (adrcPropertiesMaster.xml)            ====-->
+<!--====                                              ====-->
+<!--====         ADRC Properties Master file          ====-->
+<!--
+This file documents all the rules, their properties and constraints.
+Rules can be of type adrcWireRule, adrcDieRule, adrcOpticalRule,
+adrcDieFlagRule or adrcMiscRule.
+The structure of a rule is name, (optional scope) and one or more subrules.
+A subrule has one or more constraints and optional properties.
+A constraint or property has a name and value.
+Default unit of measurement for length is in microns.
+For exact definition, please see the DTD file.
+-->
+<adrcProperties>
+
+    <adrcWireRule>
+    
+        <!-- WireToComponentSpacing rule: See Section 3.19 of PRS -->
+        <adrcRule>
+            <adrcName>WireToComponentSpacing</adrcName>
+            <adrcSubrule>
+                <!-- Min. spacing between a wire and component outline -->
+                <adrcConstraint>
+                    <adrcName>spacing</adrcName>
+                    <adrcValue>50</adrcValue>
+                </adrcConstraint>
+                <!-- wire profile -->
+                <adrcProperty>
+                    <adrcName>wireProfile</adrcName>
+                    <adrcValue>PROFILE_A</adrcValue>
+                </adrcProperty>
+            </adrcSubrule>
+        </adrcRule>
+        
+        <!-- WireAngleToBondFingerPad rule: See Section 3.12 of PRS -->
+        <adrcRule>
+            <adrcName>WireAngleToBondFingerPad</adrcName>
+            <adrcSubrule>
+                <!-- Max. angle between wire and bond finger axis in degrees -->
+                <adrcConstraint>
+                    <adrcName>maxAngle</adrcName>
+                    <adrcValue>75</adrcValue>
+                </adrcConstraint>
+                <!-- wire profile -->
+                <adrcProperty>
+                    <adrcName>wireProfile</adrcName>
+                    <adrcValue>PROFILE_A</adrcValue>
+                </adrcProperty>
+            </adrcSubrule>
+        </adrcRule>
+        
+        <!-- WireMaximumAngleToDieEdge rule: See Section 3.11 of PRS -->
+        <adrcRule>
+            <adrcName>WireMaximumAngleToDieEdge</adrcName>
+            <adrcSubrule>
+                <!-- Max. angle between wire and orthogonal to die edge in degrees -->
+                <adrcConstraint>
+                    <adrcName>maxAngle</adrcName>
+                    <adrcValue>75</adrcValue>
+                </adrcConstraint>
+                <!-- wire profile -->
+                <adrcProperty>
+                    <adrcName>wireProfile</adrcName>
+                    <adrcValue>PROFILE_A</adrcValue>
+                </adrcProperty>
+            </adrcSubrule>
+        </adrcRule>
+        
+        <!-- WireLengthDieToBondFinger rule: See Section 3.7 of PRS -->
+        <adrcRule>
+            <adrcName>WireLengthDieToBondFinger</adrcName>
+            <adrcSubrule>
+                <!-- min wire length in um -->
+                <adrcConstraint>
+                    <adrcName>minWireLength</adrcName>
+                    <adrcValue>200</adrcValue>
+                </adrcConstraint>
+                <!-- max wire length in um -->
+                <adrcConstraint>
+                    <adrcName>maxWireLength</adrcName>
+                    <adrcValue>500</adrcValue>
+                </adrcConstraint>
+                <!-- wire diameter in um -->
+                <adrcProperty>
+                    <adrcName>wireDiameter</adrcName>
+                    <adrcValue>25</adrcValue>
+                </adrcProperty>
+                <!-- wire material -->
+                <adrcProperty>
+                    <adrcName>wireMaterial</adrcName>
+                    <adrcValue>GOLD</adrcValue>
+                </adrcProperty>
+                <!-- wire profile -->
+                <adrcProperty>
+                    <adrcName>wireProfile</adrcName>
+                    <adrcValue>PROFILE_A</adrcValue>
+                </adrcProperty>
+            </adrcSubrule>
+        </adrcRule>
+
+        <!-- WireLengthDieToDie rule: See Section 3.8 of PRS -->
+        <!-- Exact same structure as WireLength rule -->
+        <adrcRule>
+            <adrcName>WireLengthDieToDie</adrcName>
+            <adrcSubrule>
+                <!-- min wire length in um -->
+                <adrcConstraint>
+                    <adrcName>minWireLength</adrcName>
+                    <adrcValue>200</adrcValue>
+                </adrcConstraint>
+                <!-- max wire length in um -->
+                <adrcConstraint>
+                    <adrcName>maxWireLength</adrcName>
+                    <adrcValue>500</adrcValue>
+                </adrcConstraint>
+                <!-- wire diameter in um -->
+                <adrcProperty>
+                    <adrcName>wireDiameter</adrcName>
+                    <adrcValue>25</adrcValue>
+                </adrcProperty>
+                <!-- wire material -->
+                <adrcProperty>
+                    <adrcName>wireMaterial</adrcName>
+                    <adrcValue>GOLD</adrcValue>
+                </adrcProperty>
+                <!-- wire profile -->
+                <adrcProperty>
+                    <adrcName>wireProfile</adrcName>
+                    <adrcValue>PROFILE_A</adrcValue>
+                </adrcProperty>
+            </adrcSubrule>
+        </adrcRule>
+
+        <!-- WireLengthOverParentDie rule: See Section 3.9 of PRS -->
+        <adrcRule>
+            <adrcName>WireLengthOverParentDie</adrcName>
+            <adrcSubrule>
+                <!-- max wire length in um -->
+                <adrcConstraint>
+                    <adrcName>maxWireLength</adrcName>
+                    <adrcValue>50</adrcValue>
+                </adrcConstraint>
+                <!-- wire diameter in um -->
+                <adrcProperty>
+                    <adrcName>wireDiameter</adrcName>
+                    <adrcValue>25</adrcValue>
+                </adrcProperty>
+                <!-- wire material -->
+                <adrcProperty>
+                    <adrcName>wireMaterial</adrcName>
+                    <adrcValue>GOLD</adrcValue>
+                </adrcProperty>
+                <!-- wire profile -->
+                <adrcProperty>
+                    <adrcName>wireProfile</adrcName>
+                    <adrcValue>PROFILE_A</adrcValue>
+                </adrcProperty>
+                <!-- die height from the substrate -->
+                <adrcProperty>
+                    <adrcName>dieHeight</adrcName>
+                    <adrcValue>20</adrcValue>
+                </adrcProperty>
+            </adrcSubrule>
+            <adrcSubrule>
+                <!-- max wire length in percentage -->
+                <adrcConstraint>
+                    <adrcName>maxPercent</adrcName>
+                    <adrcValue>10</adrcValue>
+                </adrcConstraint>
+            </adrcSubrule>
+        </adrcRule>
+
+        <!-- WireLengthOverLowerDieStackMember rule: See Section 3.10 of PRS -->
+        <!-- Exactly similar structure to WireLengthOverDie -->
+        <adrcRule>
+            <adrcName>WireLengthOverLowerDieStackMember</adrcName>
+            <adrcSubrule>
+                <!-- max wire length in um -->
+                <adrcConstraint>
+                    <adrcName>maxWireLength</adrcName>
+                    <adrcValue>50</adrcValue>
+                </adrcConstraint>
+                <!-- wire diameter in um -->
+                <adrcProperty>
+                    <adrcName>wireDiameter</adrcName>
+                    <adrcValue>25</adrcValue>
+                </adrcProperty>
+                <!-- wire material -->
+                <adrcProperty>
+                    <adrcName>wireMaterial</adrcName>
+                    <adrcValue>GOLD</adrcValue>
+                </adrcProperty>
+                <!-- die height from the substrate -->
+                <adrcProperty>
+                    <adrcName>dieHeight</adrcName>
+                    <adrcValue>20</adrcValue>
+                </adrcProperty>
+                <!-- wire profile -->
+                <adrcProperty>
+                    <adrcName>wireProfile</adrcName>
+                    <adrcValue>PROFILE_A</adrcValue>
+                </adrcProperty>
+            </adrcSubrule>
+            <adrcSubrule>
+                <!-- max wire length in percentage -->
+                <adrcConstraint>
+                    <adrcName>maxPercent</adrcName>
+                    <adrcValue>10</adrcValue>
+                </adrcConstraint>
+            </adrcSubrule>
+        </adrcRule>
+
+        <!-- WireToBondFingerSpacing rule: See Section 3.14 of PRS -->
+        <adrcRule>
+            <adrcName>WireToBondFingerSpacing</adrcName>
+            <adrcSubrule>
+                <!-- Min. spacing between a wire and bond finger in um -->
+                <adrcConstraint>
+                    <adrcName>spacing</adrcName>
+                    <adrcValue>50</adrcValue>
+                </adrcConstraint>
+                <!-- wire profile -->
+                <adrcProperty>
+                    <adrcName>wireProfile</adrcName>
+                    <adrcValue>PROFILE_A</adrcValue>
+                </adrcProperty>
+                <!-- other wire profile -->
+                <adrcProperty>
+                    <adrcName>otherWireProfile</adrcName>
+                    <adrcValue>PROFILE_B</adrcValue>
+                </adrcProperty>
+            </adrcSubrule>
+        </adrcRule>
+
+        <!-- WireToDiePadSpacing rule -->
+        <adrcRule>
+            <adrcName>WireToDiePadSpacing</adrcName>
+            <adrcSubrule>
+                <!-- Min. spacing between a wire and die pad in um -->
+                <adrcConstraint>
+                    <adrcName>spacing</adrcName>
+                    <adrcValue>50</adrcValue>
+                </adrcConstraint>
+                <!-- wire profile -->
+                <adrcProperty>
+                    <adrcName>wireProfile</adrcName>
+                    <adrcValue>PROFILE_A</adrcValue>
+                </adrcProperty>
+            </adrcSubrule>
+        </adrcRule>
+
+        <!-- WireToWireSpacing rule: See Section 3.13 of PRS -->
+        <adrcRule>
+            <adrcName>WireToWireSpacing</adrcName>
+            <!-- if you want to use adrcScope, use it here:
+                 <adrcScope>sameTierOnly</adrcScope>
+                 do not use it together with defining wire profile and other wire profile -->
+            <adrcSubrule>
+                <!-- Min. spacing between two wires in um -->
+                <adrcConstraint>
+                    <adrcName>spacing</adrcName>
+                    <adrcValue>50</adrcValue>
+                </adrcConstraint>
+                <!-- wire diameter in um -->
+                <adrcProperty>
+                    <adrcName>wireDiameter</adrcName>
+                    <adrcValue>25</adrcValue>
+                </adrcProperty>
+                <!-- wire material -->
+                <adrcProperty>
+                    <adrcName>wireMaterial</adrcName>
+                    <adrcValue>GOLD</adrcValue>
+                </adrcProperty>
+                <!-- wire profile -->
+                <adrcProperty>
+                    <adrcName>wireProfile</adrcName>
+                    <adrcValue>PROFILE1</adrcValue>
+                </adrcProperty>
+                <!-- other wire profile -->
+                <adrcProperty>
+                    <adrcName>otherWireProfile</adrcName>
+                    <adrcValue>PROFILE2</adrcValue>
+                </adrcProperty>
+            </adrcSubrule>
+        </adrcRule>
+         <!-- WireSubstrateEndToSoldermaskSpacing rule -->
+        <adrcRule>
+            <adrcName>WireSubstrateEndToSoldermaskSpacing</adrcName>
+            <adrcSubrule>
+                <adrcConstraint>
+                    <adrcName>solderMaskSpacing</adrcName>
+                    <adrcValue>50</adrcValue>
+                </adrcConstraint>
+                <adrcConstraint>
+                    <adrcName>bondFingerSpacing</adrcName>
+                    <adrcValue>50</adrcValue>
+                </adrcConstraint>
+                <adrcConstraint>
+                    <adrcName>powerRingSpacing</adrcName>
+                    <adrcValue>50</adrcValue>
+                </adrcConstraint>
+            </adrcSubrule>
+        </adrcRule>
+    </adrcWireRule>
+
+    <adrcDieRule>
+        <!-- DieToConnectedBondFingerSpacing rule -->
+        <adrcRule>
+            <adrcName>DieToConnectedBondFingerSpacing</adrcName>
+            <adrcSubrule>
+                <!-- min. spacing... -->
+                <adrcConstraint>
+                    <adrcName>spacing</adrcName>
+                    <adrcValue>50</adrcValue>
+                </adrcConstraint>
+            </adrcSubrule>
+        </adrcRule>
+
+        <!-- DieToBondFingerSpacing rule: See Section 3.5 of PRS -->
+        <adrcRule>
+            <adrcName>DieToBondFingerSpacing</adrcName>
+            <adrcSubrule>
+                <!-- min. spacing from die to bond finger in um -->
+                <adrcConstraint>
+                    <adrcName>spacing</adrcName>
+                    <adrcValue>50</adrcValue>
+                </adrcConstraint>
+            </adrcSubrule>
+        </adrcRule>
+
+        <!-- DietoDieSpacingUnconnectedDies rule: See Section 3.4 of PRS -->
+        <adrcRule>
+            <adrcName>DietoDieSpacingUnconnectedDies</adrcName>
+            <adrcSubrule>
+                <!-- minimum spacing from die to die in um -->
+                <adrcConstraint>
+                    <adrcName>spacing</adrcName>
+                    <adrcValue>50</adrcValue>
+                </adrcConstraint>
+            </adrcSubrule>
+        </adrcRule>
+        
+        <!-- DiePadToUpperDieSpacing rule: See Section 3.3 of PRS -->
+        <adrcRule>
+            <adrcName>DiePadToUpperDieSpacing</adrcName>
+            <adrcSubrule>
+                <!-- minimum spacing from die pad to upper die in um -->
+                <adrcConstraint>
+                    <adrcName>spacing</adrcName>
+                    <adrcValue>50</adrcValue>
+                </adrcConstraint>
+            </adrcSubrule>
+        </adrcRule>
+        
+        <!-- DieOverhang rule: See Section 3.1 of PRS -->
+        <adrcRule>
+            <adrcName>DieOverhang</adrcName>
+            <adrcSubrule>
+                <!-- overhang in x direction in um -->
+                <adrcConstraint>
+                    <adrcName>xOverlap</adrcName>
+                    <adrcValue>50</adrcValue>
+                </adrcConstraint>
+                <!-- overhang in y direction in um -->
+                <adrcConstraint>
+                    <adrcName>yOverlap</adrcName>
+                    <adrcValue>50</adrcValue>
+                </adrcConstraint>
+                <!-- thickness of top die in um -->
+                <adrcProperty>
+                    <adrcName>dieThickness</adrcName>
+                    <adrcValue>100</adrcValue>
+                </adrcProperty>
+            </adrcSubrule>
+            <adrcSubrule>
+                <!-- overhang in x direction in um -->
+                <adrcConstraint>
+                    <adrcName>xOverlap</adrcName>
+                    <adrcValue>60</adrcValue>
+                </adrcConstraint>
+                <!-- overhang in y direction in um -->
+                <adrcConstraint>
+                    <adrcName>yOverlap</adrcName>
+                    <adrcValue>60</adrcValue>
+                </adrcConstraint>
+            </adrcSubrule>
+        </adrcRule>
+        
+        <!-- DiePadToLowerDieOverhang rule: See Section 3.2 of PRS -->
+        <adrcRule>
+            <adrcName>DiePadToLowerDieOverhang</adrcName>
+            <adrcSubrule>
+                <!-- allowed overlap of upper die-->
+                <adrcConstraint>
+                    <adrcName>overlap</adrcName>
+                    <adrcValue>100</adrcValue>
+                </adrcConstraint>
+                <!-- upper die thickness -->
+                <adrcProperty>
+                    <adrcName>dieThickness</adrcName>
+                    <adrcValue>250</adrcValue>
+                </adrcProperty>
+                <!-- wire diameter -->
+                <adrcProperty>
+                    <adrcName>wireDiameter</adrcName>
+                    <adrcValue>25</adrcValue>
+                </adrcProperty>
+                <!-- wire material -->
+                <adrcProperty>
+                    <adrcName>wireMaterial</adrcName>
+                    <adrcValue>GOLD</adrcValue>
+                </adrcProperty>
+            </adrcSubrule>
+        </adrcRule>
+        
+        <!-- DieToDieSpacingConnectedDies rule: See Section 3.6 of PRS -->
+        <adrcRule>
+            <adrcName>DieToDieSpacingConnectedDies</adrcName>
+            <adrcSubrule>
+                <!-- min. spacing of die to die in um (where bonds exist) -->
+                <adrcConstraint>
+                    <adrcName>spacing</adrcName>
+                    <adrcValue>50</adrcValue>
+                </adrcConstraint>
+            </adrcSubrule>
+        </adrcRule>
+        
+        <!-- DieStackToDieStackSpacing rule: See Section 3.23 of PRS -->
+        <adrcRule>
+            <adrcName>DieStackToDieStackSpacing</adrcName>
+            <adrcSubrule>
+                <!-- min. spacing of die stack to die stack -->
+                <adrcConstraint>
+                    <adrcName>spacing</adrcName>
+                    <adrcValue>50</adrcValue>
+                </adrcConstraint>
+            </adrcSubrule>
+        </adrcRule>
+        
+        <!-- DieToPackageEdgeSpacing rule -->
+        <adrcRule>
+            <adrcName>DieToPackageEdgeSpacing</adrcName>
+            <adrcSubrule>
+                <!-- min. spacing of die to package edge -->
+                <adrcConstraint>
+                    <adrcName>spacing</adrcName>
+                    <adrcValue>50</adrcValue>
+                </adrcConstraint>
+            </adrcSubrule>
+        </adrcRule>
+    </adrcDieRule>
+    
+    <adrcOpticalRule>
+
+        <!-- WireToWireOpticalShortDieToDie rule: See Section 3.16 of PRS -->
+        <adrcRule>
+            <adrcName>WireToWireOpticalShortDieToDie</adrcName>
+            <adrcSubrule>
+                <!-- min wire length in um -->
+                <adrcConstraint>
+                    <adrcName>minWireLength</adrcName>
+                    <adrcValue>200</adrcValue>
+                </adrcConstraint>
+                <!-- max wire length in um -->
+                <adrcConstraint>
+                    <adrcName>maxWireLength</adrcName>
+                    <adrcValue>500</adrcValue>
+                </adrcConstraint>
+            </adrcSubrule>
+            <!-- Note that wire length can be expressed as absolute or percentage -->
+             <adrcSubrule>
+                <!-- min wire length in um -->
+                <adrcConstraint>
+                    <adrcName>minPercentLength</adrcName>
+                    <adrcValue>200</adrcValue>
+                </adrcConstraint>
+                <!-- max wire length in um -->
+                <adrcConstraint>
+                    <adrcName>maxPercentLength</adrcName>
+                    <adrcValue>500</adrcValue>
+                </adrcConstraint>
+            </adrcSubrule>
+        </adrcRule>
+
+        <!-- WireToWireOpticalShortDieToSubstrate rule: See Section 3.15 of PRS -->
+        <adrcRule>
+            <adrcName>WireToWireOpticalShortDieToSubstrate</adrcName>
+            <adrcSubrule>
+                <!-- min wire length in um -->
+                <adrcConstraint>
+                    <adrcName>minWireLength</adrcName>
+                    <adrcValue>200</adrcValue>
+                </adrcConstraint>
+                <!-- max wire length in um -->
+                <adrcConstraint>
+                    <adrcName>maxWireLength</adrcName>
+                    <adrcValue>500</adrcValue>
+                </adrcConstraint>
+            </adrcSubrule>
+            <!-- Note that wire length can be expressed as absolute or percentage -->
+             <adrcSubrule>
+                <!-- min wire length in um -->
+                <adrcConstraint>
+                    <adrcName>minPercentLength</adrcName>
+                    <adrcValue>200</adrcValue>
+                </adrcConstraint>
+                <!-- max wire length in um -->
+                <adrcConstraint>
+                    <adrcName>maxPercentLength</adrcName>
+                    <adrcValue>500</adrcValue>
+                </adrcConstraint>
+            </adrcSubrule>
+        </adrcRule>
+
+        <!-- WireToBondfingerOpticalShort rule: See Section 3.18 of PRS -->
+        <adrcRule>
+            <adrcName>WireToBondfingerOpticalShort</adrcName>
+            <adrcSubrule>
+                <!-- min wire length in um -->
+                <adrcConstraint>
+                    <adrcName>minWireLength</adrcName>
+                    <adrcValue>200</adrcValue>
+                </adrcConstraint>
+                <!-- max wire length in um -->
+                <adrcConstraint>
+                    <adrcName>maxWireLength</adrcName>
+                    <adrcValue>500</adrcValue>
+                </adrcConstraint>
+            </adrcSubrule>
+            <!-- Note that wire length can be expressed as absolute or percentage -->
+             <adrcSubrule>
+                <!-- min wire length in um -->
+                <adrcConstraint>
+                    <adrcName>minPercentLength</adrcName>
+                    <adrcValue>200</adrcValue>
+                </adrcConstraint>
+                <!-- max wire length in um -->
+                <adrcConstraint>
+                    <adrcName>maxPercentLength</adrcName>
+                    <adrcValue>500</adrcValue>
+                </adrcConstraint>
+            </adrcSubrule>
+        </adrcRule>
+
+        <!-- WireToDiePadOpticalShort rule: See Section 3.17 of PRS -->
+        <adrcRule>
+            <adrcName>WireToDiePadOpticalShort</adrcName>
+            <adrcSubrule>
+                <!-- min wire length in um -->
+                <adrcConstraint>
+                    <adrcName>minWireLength</adrcName>
+                    <adrcValue>200</adrcValue>
+                </adrcConstraint>
+                <!-- max wire length in um -->
+                <adrcConstraint>
+                    <adrcName>maxWireLength</adrcName>
+                    <adrcValue>500</adrcValue>
+                </adrcConstraint>
+            </adrcSubrule>
+            <!-- Note that wire length can be expressed as absolute or percentage -->
+             <adrcSubrule>
+                <!-- min wire length in um -->
+                <adrcConstraint>
+                    <adrcName>minPercentLength</adrcName>
+                    <adrcValue>200</adrcValue>
+                </adrcConstraint>
+                <!-- max wire length in um -->
+                <adrcConstraint>
+                    <adrcName>maxPercentLength</adrcName>
+                    <adrcValue>500</adrcValue>
+                </adrcConstraint>
+            </adrcSubrule>
+        </adrcRule>
+    
+    </adrcOpticalRule>
+    
+    <adrcDieFlagRule>
+
+        <!-- DieFlagToDiscreteComponentPadSpacing rule: See Section 3.21 of PRS -->
+        <adrcRule>
+            <adrcName>DieFlagToDiscreteComponentPadSpacing</adrcName>
+            <adrcSubrule>
+                <!-- Min. spacing between die flag and component pad -->
+                <adrcConstraint>
+                    <adrcName>spacing</adrcName>
+                    <adrcValue>50</adrcValue>
+                </adrcConstraint>
+            </adrcSubrule>
+        </adrcRule>
+
+        <!-- DieFlagToBondFingerSpacing rule -->
+        <adrcRule>
+            <adrcName>DieFlagToBondFingerSpacing</adrcName>
+            <adrcSubrule>
+                <!-- Min. spacing between die flag and bond finger -->
+                <adrcConstraint>
+                    <adrcName>spacing</adrcName>
+                    <adrcValue>50</adrcValue>
+                </adrcConstraint>
+            </adrcSubrule>
+        </adrcRule>
+
+        <!-- DieFlagToDieFlagSpacing rule: See Section 3.22 of PRS -->
+        <adrcRule>
+            <adrcName>DieFlagToDieFlagSpacing</adrcName>
+            <adrcSubrule>
+                <!-- Min. spacing between die flags -->
+                <adrcConstraint>
+                    <adrcName>spacing</adrcName>
+                    <adrcValue>50</adrcValue>
+                </adrcConstraint>
+            </adrcSubrule>
+        </adrcRule>
+
+        <!-- DieFlagToPackageEdgeSpacing rule -->
+        <adrcRule>
+            <adrcName>DieFlagToPackageEdgeSpacing</adrcName>
+            <adrcSubrule>
+                <!-- Min. spacing between die flag and package edge -->
+                <adrcConstraint>
+                    <adrcName>spacing</adrcName>
+                    <adrcValue>50</adrcValue>
+                </adrcConstraint>
+            </adrcSubrule>
+        </adrcRule>
+    
+    </adrcDieFlagRule>
+    
+    <adrcMiscRule>
+
+        <!-- DiscreteComponentPadToBondFingerSpacing rule: See Section 3.20 of PRS -->
+        <adrcRule>
+            <adrcName>DiscreteComponentPadToBondFingerSpacing</adrcName>
+            <adrcSubrule>
+                <!-- Min. spacing between bond finger and component pad -->
+                <adrcConstraint>
+                    <adrcName>spacing</adrcName>
+                    <adrcValue>50</adrcValue>
+                </adrcConstraint>
+            </adrcSubrule>
+        </adrcRule>
+
+        <!-- DegassingVoidOverlap rule -->
+        <adrcRule>
+            <adrcName>DegassingVoidOverlap</adrcName>
+            <adrcSubrule>
+                <!-- Min. spacing between degassing voids. Use 0 for overlap only -->
+                <adrcConstraint>
+                    <adrcName>spacing</adrcName>
+                    <adrcValue>0</adrcValue>
+                </adrcConstraint>
+            </adrcSubrule>
+        </adrcRule>
+
+        <!-- ViaToViaSpacingSameNet rule -->
+        <adrcRule>
+            <adrcName>ViaToViaSpacingSameNet</adrcName>
+            <adrcSubrule>
+                <adrcConstraint>
+                    <adrcName>padSpacing</adrcName>
+                    <adrcValue>50</adrcValue>
+                </adrcConstraint>
+                <adrcConstraint>
+                    <adrcName>drillSpacing</adrcName>
+                    <adrcValue>50</adrcValue>
+                </adrcConstraint>
+            </adrcSubrule>
+        </adrcRule>
+        
+         <!-- DiePadPitch rule -->
+        <adrcRule>
+            <adrcName>DiePadPitch</adrcName>
+            <adrcSubrule>
+                <adrcConstraint>
+                    <adrcName>spacing</adrcName>
+                    <adrcValue>50</adrcValue>
+                </adrcConstraint>
+             </adrcSubrule>
+        </adrcRule>
+        
+         <!-- TombstoneCheck rule -->
+        <adrcRule>
+            <adrcName>TombstoneCheck</adrcName>
+            <adrcSubrule>
+                <adrcConstraint>
+                    <adrcName>tolerance</adrcName>
+                    <adrcValue>50</adrcValue>
+                </adrcConstraint>
+             </adrcSubrule>
+        </adrcRule>
+        
+         <!-- TraceExtensionFromBondPad rule -->
+        <adrcRule>
+            <adrcName>TraceExtensionFromBondPad</adrcName>
+            <adrcSubrule>
+                <adrcConstraint>
+                    <adrcName>maxLength</adrcName>
+                    <adrcValue>50</adrcValue>
+                </adrcConstraint>
+                <adrcConstraint>
+                    <adrcName>angle</adrcName>
+                    <adrcValue>10</adrcValue>
+                </adrcConstraint>
+             </adrcSubrule>
+        </adrcRule>
+        
+          <!-- TraceMinimumAngleToShape rule -->
+        <adrcRule>
+            <adrcName>TraceMinimumAngleToShape</adrcName>
+            <adrcSubrule>
+                 <adrcConstraint>
+                    <adrcName>angle</adrcName>
+                    <adrcValue>90</adrcValue>
+                </adrcConstraint>
+             </adrcSubrule>
+        </adrcRule>
+        
+          <!-- TraceMinimumAngleToPad rule -->
+        <adrcRule>
+            <adrcName>TraceMinimumAngleToPad</adrcName>
+              <!-- use next line if you want to ignore bond fingers -->
+            <adrcScope>ignoreBondFingers</adrcScope>
+            <adrcSubrule>
+                 <adrcConstraint>
+                    <adrcName>angle</adrcName>
+                    <adrcValue>90</adrcValue>
+                </adrcConstraint>
+             </adrcSubrule>
+        </adrcRule>
+        
+          <!-- TraceMinimumAngleToTrace rule -->
+        <adrcRule>
+            <adrcName>TraceMinimumAngleToTrace</adrcName>
+            <adrcSubrule>
+                 <adrcConstraint>
+                    <adrcName>angle</adrcName>
+                    <adrcValue>90</adrcValue>
+                </adrcConstraint>
+             </adrcSubrule>
+        </adrcRule>
+        
+         <adrcRule>
+            <adrcName>MinimumClineSegment</adrcName>
+            <adrcSubrule>
+                 <adrcConstraint>
+                    <adrcName>length</adrcName>
+                    <adrcValue>85</adrcValue>
+                </adrcConstraint>
+             </adrcSubrule>
+        </adrcRule>
+        
+    </adrcMiscRule>
+        
+       
+  
+    <adrcDieStackRule>
+
+        <!-- DieStackHeight rule: See Section 5.7 of PRS -->
+        <adrcRule>
+            <adrcName>DieStackHeight</adrcName>
+            <adrcSubrule>
+                <!-- Max. die stack height -->
+                <adrcConstraint>
+                    <adrcName>topHeight</adrcName>
+                    <adrcValue>300</adrcValue>
+                </adrcConstraint>
+                <adrcConstraint>
+                    <adrcName>bottomHeight</adrcName>
+                    <adrcValue>300</adrcValue>
+                </adrcConstraint>
+            </adrcSubrule>
+        </adrcRule>
+
+        <!-- CenterToCenterDelta rule -->
+        <adrcRule>
+            <adrcName>CenterToCenterDelta</adrcName>
+            <adrcSubrule>
+                <!-- Max spacing between centers of members of die stack -->
+                <adrcConstraint>
+                    <adrcName>deltaDieExtents</adrcName>
+                    <adrcValue>50</adrcValue>
+                </adrcConstraint>
+            </adrcSubrule>
+            <adrcSubrule>
+                <!-- Max spacing between centers of members of die stack center calculated based on pin locations -->
+                <adrcConstraint>
+                    <adrcName>deltaPinExtents</adrcName>
+                    <adrcValue>100</adrcValue>
+                </adrcConstraint>
+            </adrcSubrule>
+        </adrcRule>
+     </adrcDieStackRule>
+     
+      <adrcPackageSubstrateRule>
+
+        <!-- ConductorToPackageSubstrateEdgeSpacing rule: See Section 5.2 of PRS -->
+        <adrcRule>
+            <adrcName>ConductorToPackageSubstrateEdgeSpacing</adrcName>
+            <adrcSubrule>
+                <!-- Min. spacing between any conductor on substrate layer and package substrate edge -->
+                <adrcConstraint>
+                    <adrcName>spacing</adrcName>
+                    <adrcValue>50</adrcValue>
+                </adrcConstraint>
+            </adrcSubrule>
+        </adrcRule>
+
+        <!-- ViaToPackageSubstrateEdgeSpacing rule: See Section 5.3 of PRS -->
+        <adrcRule>
+            <adrcName>ViaToPackageSubstrateEdgeSpacing</adrcName>
+            <adrcSubrule>
+                <!-- Min. spacing between any via( not including bond fingers) and package substrate edge -->
+                <adrcConstraint>
+                    <adrcName>spacing</adrcName>
+                    <adrcValue>50</adrcValue>
+                </adrcConstraint>
+            </adrcSubrule>
+        </adrcRule>
+
+        <!-- BondFingerToPackageSubstrateEdgeSpacing rule: See Section 5.4 of PRS -->
+        <adrcRule>
+            <adrcName>BondFingerToPackageSubstrateEdgeSpacing</adrcName>
+            <adrcSubrule>
+                <!-- Min. spacing between any bond finger and package substrate edge -->
+                <adrcConstraint>
+                    <adrcName>spacing</adrcName>
+                    <adrcValue>50</adrcValue>
+                </adrcConstraint>
+            </adrcSubrule>
+        </adrcRule>
+        
+        <!-- SoldermaskToPackageSubstrateEdgeSpacing rule: See Section 5.4 of PRS -->
+        <adrcRule>
+            <adrcName>SoldermaskToPackageSubstrateEdgeSpacing</adrcName>
+            <adrcSubrule>
+                <!-- Min. spacing between any soldermask and package substrate edge -->
+                <adrcConstraint>
+                    <adrcName>spacing</adrcName>
+                    <adrcValue>50</adrcValue>
+                </adrcConstraint>
+            </adrcSubrule>
+        </adrcRule>
+        
+         <!-- SoldermaskToSoldermaskSpacing rule: See Section 5.13 of PRS -->
+        <adrcRule>
+            <adrcName>SoldermaskToSoldermaskSpacing</adrcName>
+            <adrcSubrule>
+                <!-- Min. spacing between any 2 soldermasks -->
+                <adrcConstraint>
+                    <adrcName>spacing</adrcName>
+                    <adrcValue>50</adrcValue>
+                </adrcConstraint>
+            </adrcSubrule>
+        </adrcRule>
+         <!-- DiscreteComponentToPackageEdgeSpacing rule -->
+        <adrcRule>
+            <adrcName>DiscreteComponentToPackageEdgeSpacing</adrcName>
+            <adrcSubrule>
+                <adrcConstraint>
+                    <adrcName>spacing</adrcName>
+                    <adrcValue>300</adrcValue>
+                </adrcConstraint>
+             </adrcSubrule>
+        </adrcRule>
+        <!-- MinimumShapeCheck rule -->
+        <adrcRule>
+            <adrcName>MinimumShapeCheck</adrcName>
+            <adrcSubrule>
+                <adrcConstraint>
+                    <adrcName>minRequiredSize</adrcName>
+                    <adrcValue>100</adrcValue>
+                </adrcConstraint>
+             </adrcSubrule>
+        </adrcRule>
+        <!-- MinimumVoidCheck rule -->
+        <adrcRule>
+            <adrcName>MinimumVoidCheck</adrcName>
+            <adrcSubrule>
+                <adrcConstraint>
+                    <adrcName>minRequiredSize</adrcName>
+                    <adrcValue>100</adrcValue>
+                </adrcConstraint>
+             </adrcSubrule>
+        </adrcRule>
+         <adrcRule>
+            <adrcName>AnyMetalToAnyMetalSpacing</adrcName>
+             <!-- use next line if you want to check metal on all the layers, -->
+             <!-- omit it if you want only top and bottom conductor layers to be checked -->
+            <adrcScope>checkAllLayers</adrcScope>
+            <adrcSubrule>
+                <adrcConstraint>
+                    <adrcName>spacingSameNet</adrcName>
+                    <adrcValue>100</adrcValue>
+                </adrcConstraint>
+                <adrcConstraint>
+                    <adrcName>spacingDifferentNet</adrcName>
+                    <adrcValue>200</adrcValue>
+                </adrcConstraint>
+             </adrcSubrule>
+        </adrcRule>
+        <adrcRule>
+            <adrcName>SolderMaskToDieEdgeSpacing</adrcName>
+            <!-- use next line if you want to ignore solder masks that are under the die -->
+            <adrcScope>ignoreSolderMasksUnderDie</adrcScope>
+            <adrcSubrule>
+                <adrcConstraint>
+                    <adrcName>spacing</adrcName>
+                    <adrcValue>100</adrcValue>
+                </adrcConstraint>
+             </adrcSubrule>
+        </adrcRule>
+         <adrcRule>
+            <adrcName>ExposedMetalToExposedMetalSpacing</adrcName>
+            <adrcSubrule>
+                <adrcConstraint>
+                    <adrcName>spacing</adrcName>
+                    <adrcValue>100</adrcValue>
+                </adrcConstraint>
+             </adrcSubrule>
+        </adrcRule>
+      </adrcPackageSubstrateRule>
+</adrcProperties>

@@ -1,0 +1,205 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM fixed_font
+FIXED 
+PORT 82 23
+HEADER "Channel Analysis: Channel Sim Setup"
+POPUP <StdDataRateValues> """".
+POPUP <StdNoofBits> """".
+POPUP <StdNoofTaps> """".
+POPUP <StdEncodingOptions> """".
+POPUP <StdJitterOptions> """".
+POPUP <SnapshotInt> """".
+POPUP <PRBSValues> """".
+
+ACTIVEFIELD "Cancel"
+
+TILE
+
+FIELD SetupTDA
+FLOC 2 2
+MENUBUTTON "Intro./TDA Setup" 20 3
+ENDFIELD
+
+TEXT "-->"
+TLOC 22 2
+ENDTEXT
+
+FIELD Characterize
+FLOC 26 2
+MENUBUTTON "Characterize" 17 3
+ENDFIELD
+
+TEXT "-->"
+TLOC 42 2
+ENDTEXT
+
+FIELD GigasimSetup
+FLOC 46 2
+MENUBUTTON "Channel Sim" 17 3
+ENDFIELD
+
+TEXT "-->"
+TLOC 62 2
+ENDTEXT
+
+FIELD ResultsBrowser
+FLOC 66 2
+MENUBUTTON "Results Browser" 17 3
+ENDFIELD
+
+FIELD changigasiminfo
+THUMBNAIL CA_helpform_gigasim.bmp 
+FLOC 2 6
+FSIZE 77 26
+ENDFIELD
+
+GROUP "Channel Analysis: Channel Sim Information"
+GLOC 1 4
+GSIZE 80 27
+ENDGROUP
+
+#**********************************************
+
+GROUP "Channel Sim Setup"
+GLOC 1 31
+GSIZE 80 24
+ENDGROUP
+
+TEXT "Data Rate:"
+TLOC 3 33
+ENDTEXT
+
+FIELD DataRateValue
+FLOC 23 33
+STRFILLIN 12 15
+POP "StdDataRateValues"
+ENDFIELD
+
+TEXT "# of Bits:"
+TLOC 45 33
+ENDTEXT
+
+FIELD NoofBits
+FLOC 60 33
+STRFILLIN 12 15
+POP "StdNoofBits"
+ENDFIELD
+
+TEXT "No. of Snapshots:"
+TLOC 3 35
+ENDTEXT
+
+FIELD SnapshotInterval
+FLOC 23 35
+STRFILLIN 15 20
+ENDFIELD
+
+TEXT "# of Taps:"
+TLOC 45 35
+ENDTEXT
+
+FIELD NoofTaps
+FLOC 60 35
+ENUMSET 15
+POP "StdNoofTaps"
+ENDFIELD
+
+GROUP "Stimulus Settings"
+GLOC 3 37
+GSIZE 76 13
+ENDGROUP
+
+TEXT "Encoding:"
+TLOC 5 39
+ENDTEXT
+
+FIELD Encoding
+FLOC 23 39
+ENUMSET 15
+POP "StdEncodingOptions"
+ENDFIELD
+
+TEXT "Jitter (% UI):"
+TLOC 45 39
+ENDTEXT
+
+FIELD Jitter
+FLOC 60 39
+ENUMSET 15
+POP "StdJitterOptions"
+ENDFIELD
+
+FIELD PRBS
+FLOC 5 41
+CHECKLIST "PRBS:" "EncodingandJitter"
+FGROUP ""
+ENDFIELD
+
+TEXT "PRBS Value:"
+TLOC 13 43
+ENDTEXT
+
+FIELD PRBSValue
+FLOC 34 43
+ENUMSET 15
+POP "PRBSValues"
+ENDFIELD
+
+FIELD ReadFromFile
+FLOC 5 45
+CHECKLIST "Read Bit Pattern From File" "EncodingandJitter"
+FGROUP ""
+ENDFIELD
+
+TEXT "Filename:"
+TLOC 13 47
+ENDTEXT
+
+FIELD EncJitterFileName
+FLOC 34 47
+STRFILLIN 30 80
+ENDFIELD
+
+FIELD BrowseFiles
+FLOC 67 47
+MENUBUTTON "Browse" 10 3
+ENDFIELD
+
+TEXT "Results Dir.:"
+TLOC 2 51
+ENDTEXT
+
+TEXT
+TLOC 17 51
+INFO ResultsDir 60
+ENDTEXT
+
+TEXT "Char. Dir.:"
+TLOC 2 53
+ENDTEXT
+
+TEXT
+TLOC 17 53
+INFO CharDirName 60
+ENDTEXT
+
+FIELD BacktoChar
+FLOC 2 56
+MENUBUTTON "<-Characterization Setup" 25 3
+ENDFIELD
+
+FIELD Cancel
+FLOC 38 56
+MENUBUTTON "Cancel" 10 3
+ENDFIELD
+
+FIELD ToResults
+FLOC 58 56
+MENUBUTTON "Run Channel Sim->" 25 3
+ENDFIELD
+
+
+ENDTILE
+
+ENDFORM
+

@@ -1,0 +1,2997 @@
+# $Header: /vobs/psd_backend_data/data/forms-core/prmedit.form /main/84 10-Aug-12.14:09:09 abhay $ 
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 94 53
+HEADER "Design Parameter Editor"
+
+
+POPUP <layer_mode>"Alternate Subclass""0","Working Layers""1".
+POPUP <linelock>"Off""0","45""45","90""90".
+POPUP <lockmode>"Line""1","Arc""0".
+POPUP <bubble_space>"Off""0","Hug only""5","Hug preferred""3","Shove preferred""4".
+POPUP <smooth1_level>"Off""0","Minimal""1","Full""2".
+POPUP <smooth2_level>"Off""0","Minimal""1","Full""2","Super""3".
+POPUP <corner_mode>"Min""0","Fixed""1".
+POPUP <slide_corner>"90""0","45""1","Arc""2","Off""3".
+POPUP <slide_mincornersize>"""".
+POPUP <slide_minarcradius>"""".
+POPUP <slide_vertexaction>"Line Corner""1","Arc Corner""2","Move""3".
+POPUP <dtun_gap_vals>"3x width""0"
+POPUP <dtun_corner_vals>"1x width""0"
+POPUP <dtun_corner>"90""0","45""1","FullArc""3".
+POPUP <smooth_corner>"90""0","45""1","Any angle""2", "Arc""3".
+POPUP <pad_entry>"Rectangular""0","All""1","None""2".
+POPUP <corner_vals>"""".
+POPUP <width_vals>"""".
+POPUP <uu>"Mils""1","Inch""2","Microns""5","Millimeter""3","Centimeter""4".
+POPUP <text>"Left""1","Center""3","Right""2".
+POPUP <ang>"0""0","45""45","90""90","135""135","180""180","225""225","270""270","315""315".
+POPUP <rgeo>"Jogged""0","Straight""1".
+POPUP <rpts>"Closest endpoint""0","Pin to pin""1".
+POPUP <size>"Other""5".
+POPUP <TEXT_POP>"a""a".
+POPUP <route_type>"Manual""0","To cursor""1","To pick""2".
+{Non-committed IFP functionality removed for Beta
+POPUP <elong_corner>"90""0","45""1","FullArc""3".
+ Replace with alternative that does not have FullArc }
+POPUP <elong_corner>"90""0","45""1".
+POPUP <elong_corner_size_vals>"1x width""0".
+POPUP <elong_gap_vals>"3x width""0".
+POPUP <elong_min_amplitude_vals>"3x width""0".
+POPUP <elong_max_amplitude_vals>"3x width""0".
+POPUP <space_bundle_min_pop>"0""1".
+POPUP <space_bundle_max_pop>"0""1".
+POPUP <space_other_min_pop>"0""1".
+POPUP <space_other_max_pop>"0""1".
+POPUP <ifp_layer>"0""0".
+POPUP <pin_pop>"0""0".
+POPUP <angle_vals>"0""0".
+
+# Convert Corner command related popups
+
+POPUP <cc_boolean>"Yes""0","No""1".
+POPUP <corner_type_vals>"Arc""1","45""2","90""3".
+POPUP <corner_min_length_dbrep_vals>"0""0".
+POPUP <corner_max_length_dbrep_vals>"0""0".
+POPUP <corner_min_radius_dbrep_vals>"0""0".
+POPUP <corner_max_radius_dbrep_vals>"0""0".
+
+
+
+# ADT command related popups
+# Note that pop-ups are shared if pop-up names are shared
+
+POPUP <boolean>"Yes""1","No""0".
+POPUP <adt_pattern>"Accordion""2","Trombone""1".
+POPUP <elong_corner_45_only>"45""1".
+POPUP <adt_ac_elong_gap_vals>"3x width""0".
+POPUP <adt_ac_elong_min_amplitude_vals>"3x width""0".
+POPUP <adt_ac_elong_max_amplitude_vals>"3x width""0".
+POPUP <adt_ac_elong_corner_size_vals>"1x width""0".
+POPUP <adt_tr_elong_gap_vals>"3x width""0".
+POPUP <adt_tr_elong_min_amplitude_vals>"3x width""0".
+POPUP <adt_tr_elong_corner_size_vals>"1x width""0".
+
+# AIBT popups
+POPUP <aibt_layer_pop>"Top_Cond""Top_Cond".
+POPUP <aibt_direction_pop>"Closest Side""1","North""2","South""3","East""4","West""5","North-East""6","North-West""7","South-East""8","South-West""9".
+POPUP <aibt_distance_pop>"""".
+
+#AIPT popups
+POPUP <aipt_location_pop>"Any""1","High Pin Component""2","Low Pin Component""3","Auto""4".
+POPUP <aipt_height_vals_pop>"""".
+POPUP <aipt_length_vals_pop>"""".
+
+POPUP <grid_pop>"Horizontal""0","Vertical""1","No preference""2".
+    #ifdef APD || SIP
+POPUP <PTYPE>"Part""1","Mechanical""2","Format""3","Shape""4","Flash""7".
+    #else
+POPUP <PTYPE>"Package""1","Mechanical""2","Format""3","Shape""4","Flash""7".
+    #endif
+
+POPUP <net_name_intensity>"Low""1","Default""0","High""2".
+
+
+MESSAGE mustarc 3 "Lock fields must be set to Arc and not be Off."
+MESSAGE must45 3 "Lock fields must be set to Line and 45."
+
+
+MESSAGE START 1 "No changes made until 'OK'."
+MESSAGE W_ZERO 1 "Drawing width is zero."
+MESSAGE H_ZERO 1 "Drawing height is zero."
+MESSAGE ZERO_DIM 1 "Zero diminsion not supported."
+MESSAGE W_2_LARGE 1 "Drawing width is too large for this accuracy."
+MESSAGE H_2_LARGE 1 "Drawing height is too large for this accuracy."
+MESSAGE W_2_SMALL 1 "Drawing width is too small."
+MESSAGE H_2_SMALL 1 "Drawing height is too small."
+MESSAGE VALUE_2_LARGE 1 "Value(s) would be too large to process."
+MESSAGE REDUCE_LX 1 "Can't reduce lower X extent."
+MESSAGE REDUCE_LY 1 "Can't reduce lower Y extent."
+MESSAGE REDUCE_UX 1 "Can't reduce upper X extent."
+MESSAGE REDUCE_UY 1 "Can't reduce upper Y extent."
+MESSAGE NOT_DURING_INTER 1 "Not editable while in interactive command."
+MESSAGE PROCESS_OR_CLEAR 1 "Please process current changes or clear the form."
+MESSAGE DRC_PROBLEM 1 "Problem running batch drc."
+MESSAGE CHG_ORIGIN 1 "Change origin error."
+MESSAGE CHG_SIZE 1 "Change drawing size error."
+MESSAGE AFFECTS_DB 3 "Change may cause round-off; run dbcheck."
+MESSAGE LIMIT_B 1 "Exceeds minimum allowed %s coordinate."
+MESSAGE LIMIT_T 1 "Exceeds maximum allowed %s coordinate."
+MESSAGE WORK 1 "Working..."
+MESSAGE SYM_TYPE 1 "Set symbol type then press 'OK'."
+MESSAGE NOT_ACTIVE_SHAPE 1 "Not editable while a SHAPE is active."
+MESSAGE READ_ONLY_MASTER 1 "Not editable with exported partitions."
+MESSAGE READ_ONLY_DPF 1 "Not editable within design partition."
+MESSAGE ORIGNMOVE 1 "Design Origin moved."
+MESSAGE CHG_LONG_NAME_SIZE 3 "Size cannot be decreased."
+
+TILE
+
+TABSET "tab_selector"
+FLOC 2 1
+TSSIZE 91 54
+
+#ifdef PRME_DISPLAY_TAB
+TAB "Display"
+
+GROUP "Command parameters" 
+FLOC 1 0
+FSIZE 88 40
+ENDFIELD
+
+GROUP "Display"
+FLOC 5 2
+FSIZE 38 20
+ENDFIELD
+
+GROUP "Parameter description"
+FLOC 1 40
+FSIZE 88 9
+ENDFIELD
+
+TEXT
+FLOC 2 42
+INFO view_info_string 1
+FSIZE 83 7
+ENDFIELD
+
+TEXT "Connect point size:" view_cpt_text
+TLOC 7 6
+ENDFIELD
+
+FIELD cpoint_size
+FLOC 25 6
+REALFILLIN 14 20
+DECIMAL 0
+ENDFIELD
+
+TEXT "DRC marker size:" view_drc_text
+TLOC 7 8
+ENDFIELD
+
+FIELD drc_marker_size
+FLOC 25 8
+REALFILLIN 14 20
+DECIMAL 0
+ENDFIELD
+
+TEXT "Rat T (Virtual pin) size:" view_ratt_text
+TLOC 7 10
+ENDFIELD
+
+FIELD rat_t_size
+FLOC 25 10
+REALFILLIN 14 20
+DECIMAL 0
+ENDFIELD
+
+TEXT "Max rband count:" view_rband_text
+TLOC 7 12
+ENDFIELD
+
+FIELD max_rubberband
+FLOC 25 12
+INTFILLIN 14 20
+MIN 0
+MAX 500
+ENDFIELD
+
+TEXT "Ratsnest geometry:" view_rgeo_text
+TLOC 7 14
+ENDFIELD
+
+FIELD ratsnest_display 
+FLOC 25 14
+ENUMSET 13
+POP "rgeo"
+ENDFIELD
+
+TEXT "Ratsnest points:" view_rpts_text
+TLOC 7 16
+ENDFIELD
+
+FIELD ratsnest_distance
+FLOC 25 16
+ENUMSET 13
+POP "rpts"
+ENDFIELD
+
+GROUP "Display net names (OpenGL only)"
+FLOC 5 22
+FSIZE 38 16
+ENDFIELD
+
+FIELD display_embed_net_names
+FLOC 7 26
+CHECKLIST "Clines"
+ENDFIELD
+
+FIELD display_embed_shape_net_names
+FLOC 7 28
+CHECKLIST "Shapes"
+ENDFIELD
+
+FIELD display_embed_pin_net_names
+FLOC 7 30
+CHECKLIST "Pins"
+ENDFIELD
+
+#Enable these when functionality is in place
+#TEXT "Brightness:" view_rpts_text
+#TLOC 25 24
+#ENDFIELD
+
+#FIELD embed_net_names_intensity
+#FLOC 25 26
+#ENUMSET 13
+#POP "net_name_intensity"
+#ENDFIELD
+
+#FIELD embed_shape_net_names_intensity
+#FLOC 25 28
+#ENUMSET 13
+#POP "net_name_intensity"
+#ENDFIELD
+
+#FIELD embed_pin_net_names_intensity
+#FLOC 25 30
+#ENUMSET 13
+#POP "net_name_intensity"
+#ENDFIELD
+
+GROUP "Enhanced display modes"
+FLOC 47 2
+FSIZE 38 31
+ENDFIELD
+
+FIELD display_plated_holes
+FLOC 49 6
+CHECKLIST "Display plated holes"
+ENDFIELD
+
+FIELD display_non_plated_holes
+FLOC 49 8
+CHECKLIST "Display non-plated holes"
+ENDFIELD
+
+FIELD display_padless_holes
+FLOC 49 10
+CHECKLIST "Display padless holes"
+ENDFIELD
+
+FIELD display_connect_points
+FLOC 49 12
+CHECKLIST "Display connect points"
+ENDFIELD
+
+FIELD display_enhance
+FLOC 49 14
+CHECKLIST "Filled pads"
+ENDFIELD
+
+FIELD display_endcaps
+FLOC 49 16
+CHECKLIST "Connect line endcaps"
+ENDFIELD
+
+FIELD display_thermal
+FLOC 49 18
+CHECKLIST "Thermal pads"
+ENDFIELD
+
+FIELD display_fat_rats
+FLOC 49 20
+CHECKLIST "Bus rats"
+ENDFIELD
+
+FIELD waived_drc_on
+FLOC 49 22
+CHECKLIST "Waived DRCs"
+ENDFIELD
+
+FIELD via_labels
+FLOC 49 24
+CHECKLIST "Via Labels"
+ENDFIELD
+
+FIELD display_org
+FLOC 49 26
+CHECKLIST "Display Origin"
+ENDFIELD
+
+FIELD dp_driver_pins
+FLOC 49 28
+CHECKLIST "Diffpair Driver Pins"
+ENDFIELD
+
+GROUP "Grids"
+FLOC 47 33
+FSIZE 38 5
+ENDFIELD
+
+FIELD display_grid
+FLOC  49 35
+CHECKLIST "Grids on"
+ENDFIELD
+
+TEXT "Setup Grids"
+TLOC 67 35
+ENDFIELD
+
+FIELD view_grids_button
+FLOC 78 35
+MENUBUTTON "..." 5 3
+ENDFIELD
+
+ENDTAB
+#endif
+
+#ifdef PRME_DESIGN_TAB
+TAB "Design"
+
+GROUP "Command parameters" 
+FLOC 1 0
+FSIZE 88 42
+ENDFIELD
+
+GROUP "Size"
+FLOC 5 2
+FSIZE 39 12
+ENDFIELD
+
+GROUP "Parameter description"
+FLOC 1 42
+FSIZE 88 9
+ENDFIELD
+
+TEXT
+FLOC 2 44
+INFO design_info_string 1
+FSIZE 83 7
+ENDFIELD
+
+TEXT "User Units:" size_uu_text
+TLOC 7 5
+ENDFIELD
+
+FIELD units
+FLOC 20 5
+ENUMSET 10
+POP "uu"
+ENDFIELD
+
+TEXT "Size:" size_sz_text
+TLOC 7 7
+ENDTEXT
+
+FIELD size
+FLOC 20 7
+ENUMSET 10
+POP "size"
+ENDFIELD
+
+TEXT "Accuracy:" size_acc_text
+TLOC 7 9
+ENDTEXT
+
+FIELD accuracy
+FLOC 20 9
+INTSLIDEBAR 2 2
+MIN 0
+MAX 5
+ENDFIELD
+
+TEXT "(decimal places)"
+TLOC 30 9
+ENDTEXT
+
+TEXT "Long Name Size:" size_long_text
+TLOC 7 11
+ENDTEXT
+
+FIELD long_name_size
+FLOC 20 11
+INTFILLIN 3 3
+MIN 32
+MAX 255
+ENDFIELD
+
+GROUP "Extents"
+FLOC 5 15
+FSIZE 39 9
+ENDFIELD
+
+TEXT "Left X:" size_lx_text
+TLOC 7 18
+ENDTEXT
+
+FIELD x
+FLOC 12 18
+REALFILLIN 10 20
+DECIMAL 0
+ENDFIELD
+
+TEXT "Lower Y:" size_ly_text
+TLOC 24 18
+ENDTEXT
+
+FIELD y
+FLOC 31 18
+REALFILLIN 10 20
+DECIMAL 0
+ENDFIELD
+
+TEXT "Width:" size_wd_text
+TLOC 7 20
+ENDTEXT
+
+FIELD width
+FLOC 12 20
+REALFILLIN 10 20
+DECIMAL 0
+ENDFIELD
+
+TEXT "Height:" size_ht_text
+TLOC 24 20
+ENDTEXT
+
+FIELD height
+FLOC 31 20
+REALFILLIN 10 20
+DECIMAL 0
+ENDFIELD
+
+GROUP "Move origin"
+FLOC 5 25
+FSIZE 39 7
+ENDFIELD
+
+TEXT "X:" move_xorg_text
+FLOC 7 28
+ENDFIELD 
+
+FIELD move_x
+FLOC 12 28
+REALFILLIN 10 20
+ENDFIELD
+
+TEXT " Y:" move_yorg_text
+FLOC 28 28
+ENDFIELD 
+
+FIELD move_y
+FLOC 31 28
+REALFILLIN 10 20
+ENDFIELD
+
+GROUP "Line lock" 
+FLOC 47 2
+FSIZE 38 16
+ENDFIELD
+
+TEXT "Lock direction:" ll_dir_text
+TLOC 49 5
+ENDTEXT
+
+FIELD lock_direction
+FLOC 67 5
+ENUMSET 4
+POP "linelock"
+ENDFIELD
+
+TEXT "Lock mode:" ll_mode_text
+TLOC 49 7
+ENDTEXT
+
+FIELD lock_mode
+FLOC 67 7
+ENUMSET 4
+POP "lockmode"
+ENDFIELD
+
+TEXT "Minimum radius:" ll_rad_text
+TLOC 49 9
+ENDTEXT
+
+FIELD min_radius
+FLOC 67 9
+REALFILLIN 9 20
+DECIMAL 0
+ENDFIELD
+
+FIELD fixed_45
+FLOC 49 11
+CHECKLIST "Fixed 45 Length:"
+ENDFIELD
+
+FIELD length_45
+FLOC 67 11
+REALFILLIN 9 20
+DECIMAL 0
+ENDFIELD
+
+FIELD fixed_radius
+FLOC 49 13
+CHECKLIST "Fixed radius:"
+ENDFIELD
+
+FIELD length_radius
+FLOC 67 13
+REALFILLIN 9 20
+DECIMAL 0
+ENDFIELD
+
+FIELD lock_tangent
+FLOC 49 15
+CHECKLIST "Tangent"
+ENDFIELD
+
+GROUP "Symbol"
+FLOC 47 19
+FSIZE 38 10
+ENDFIELD
+
+TEXT "Angle:"
+TLOC 49 22
+ENDTEXT
+
+FIELD symbol_angle
+FLOC 55 22
+REALFILLIN 6 20
+DECIMAL 3
+POP "ang"
+ENDFIELD
+
+FIELD symbol_mirror
+FLOC 68 22
+CHECKLIST "Mirror"
+ENDFIELD
+
+TEXT "Default symbol height:"
+TLOC 49 25
+ENDTEXT
+
+FIELD drc_height
+FLOC 68 25
+REALFILLIN 7 7
+ENDFIELD
+
+GROUP "Drawing type"
+FLOC 5 33
+FSIZE 39 7
+ENDFIELD
+
+TEXT "Type:"
+TLOC 7 36
+ENDFIELD
+
+FIELD type
+FLOC 13 36
+ENUMSET 12
+POP "PTYPE"
+ENDFIELD
+
+TEXT
+TLOC 28 36
+INFO symbol 6
+ENDTEXT
+
+FIELD jumper
+FLOC 35 36
+CHECKLIST "Jumper"
+ENDFIELD
+
+ENDTAB
+#endif
+
+#ifdef PRME_TXT_TAB
+TAB "Text"
+
+GROUP "Size"
+FLOC 5 2
+FSIZE 38 13
+ENDFIELD
+
+GROUP "Parameter description"
+FLOC 1 42
+FSIZE 88 9
+ENDFIELD
+
+TEXT
+FLOC 2 44
+INFO text_info_string 1
+FSIZE 83 7
+ENDFIELD
+
+TEXT "Justification:" text_just_text
+TLOC 7 5
+ENDTEXT
+
+FIELD text_justification
+FLOC 27 5
+ENUMSET 7
+POP "text"
+ENDFIELD
+
+TEXT "Parameter block:" text_block_text
+TLOC 7 7
+ENDTEXT
+
+FIELD text_block
+FLOC 27 7
+INTSLIDEBAR 2 2
+MIN 1
+MAX 64
+ENDFIELD
+
+TEXT "Text marker size:" text_marker_text
+TLOC 7 9
+ENDTEXT
+
+FIELD text_marker_size
+FLOC 27 9
+REALFILLIN 7 20
+DECIMAL 0
+ENDFIELD
+
+TEXT "Setup Text Sizes" text_setup_button_text
+TLOC 7 12
+ENDTEXT
+
+FIELD text_setup_button
+FLOC 27 12 
+MENUBUTTON "..." 5 3
+ENDFIELD
+
+#ifdef specctraquest 
+GROUP "Special SI text sizes"
+GLOC 5 15
+GSIZE 38 10
+ENDFIELD
+
+TEXT "Refdes:"
+TLOC 7 18
+ENDTEXT
+
+TEXT "Room name:"
+TLOC 7 20
+ENDTEXT
+
+TEXT "Notes:"
+TLOC 7 22
+ENDTEXT
+
+FIELD reftext
+FLOC 27 18
+ENUMSET 12
+POP "TEXT_POP"
+ENDFIELD
+
+FIELD roomtext
+FLOC 27 20
+ENUMSET 12
+POP "TEXT_POP"
+ENDFIELD
+
+FIELD notetext
+FLOC 27 22
+ENUMSET 12
+POP "TEXT_POP"
+ENDFIELD
+
+#endif
+
+ENDTAB
+#endif	 PRME_TXT_TAB
+
+#ifdef PRME_SHAPES_TAB
+TAB "Shapes"
+
+GROUP "Command parameters" 
+FLOC 1 0
+FSIZE 88 48
+ENDFIELD
+
+#ifndef _SYMBOL
+GROUP "Dynamic shape"
+FLOC 3 3
+FSIZE 80 14
+ENDFIELD
+
+TEXT dynshp_string
+FLOC 5 6
+INFO dynshp_info_string
+FSIZE 73 7
+ENDFIELD
+
+FIELD dynshp_button
+FLOC 5 13
+MENUBUTTON "Edit global dynamic shape parameters..." 6 3
+ENDFIELD 
+#endif
+
+GROUP "Static shape"
+FLOC 3 18
+FSIZE 80 14
+ENDFIELD
+
+TEXT stshp_string
+FLOC 5 21
+INFO stshp_info_string
+FSIZE 73 7
+ENDFIELD
+
+FIELD stshp_button
+FLOC 5 28
+MENUBUTTON "Edit static shape parameters..." 6 3
+ENDFIELD 
+
+#ifdef !ALLEGRO_PARTITION && !_SYMBOL
+GROUP "Split plane"
+FLOC 3 33
+FSIZE 80 13
+ENDFIELD
+
+TEXT split_string
+FLOC 5 36
+INFO split_info_string 1
+FSIZE 73 7
+ENDFIELD
+
+FIELD split_button
+FLOC 5 42
+MENUBUTTON "Edit split plane parameters..." 6 3
+ENDFIELD 
+#endif
+
+ENDTAB
+#endif PRME_SHAPES_TAB
+
+#ifdef  PRME_FLOW_TAB
+TAB "Flow Planning"
+
+GROUP "Category"
+FLOC 1 0
+FSIZE 28 40
+ENDFIELD
+
+FIELD ifp_treelist
+FLOC 2 3
+TREEVIEW 24 17
+ENDFIELD
+
+FIELD ifp_clear_override
+FLOC 77 38
+MENUBUTTON "Reset" 9 3
+ENDFIELD
+
+GROUP "Command parameters" ifp_command
+FLOC 31 0
+FSIZE 58 40
+ENDFIELD
+
+GROUP "Parameter description"
+FLOC 1 40
+FSIZE 88 9
+ENDFIELD
+
+TEXT
+FLOC 2 42
+INFO ifp_info_string 1
+FSIZE 83 7
+ENDFIELD
+
+GROUP "Bundle naming" bundle_naming
+#FLOC 34 2
+FLOC 34 3
+FSIZE 51 8
+ENDFIELD
+
+TEXT "Bundle name prefix:" bundle_name_prefix_label
+TLOC 37 6
+ENDTEXT
+
+FIELD bundle_name_prefix
+FLOC 56 6
+STRFILLIN 6 20
+ENDFIELD
+
+FIELD bundle_name_prompt
+FLOC 37 8
+CHECKLIST "Prompt for name"
+ENDFIELD
+
+GROUP "Display controls" display_controls
+GLOC 34 11
+GSIZE 51 12
+ENDFIELD
+
+TEXT "Bundle:" bundle_label
+TLOC 37 14
+ENDTEXT
+
+FIELD bundle_invis
+FLOC 56 14
+CHECKLIST "Off" "bundle_visibility"
+ENDFIELD
+
+FIELD bundle_vis
+FLOC 67 14
+CHECKLIST "On" "bundle_visibility"
+ENDFIELD
+
+TEXT "Expanded Rakes:" exp_rakes_label
+TLOC 39 16
+ENDTEXT
+
+FIELD exp_rakes_invis
+FLOC 56 16
+CHECKLIST "Off" "exp_rakes_visibility"
+ENDFIELD
+
+FIELD exp_rakes_vis
+FLOC 67 16
+CHECKLIST "On" "exp_rakes_visibility"
+ENDFIELD
+
+TEXT "Plan:" plan_label
+TLOC 37 18
+ENDTEXT
+
+FIELD plan_d_invis
+FLOC 56 18
+CHECKLIST "Off" "plan_d_visibility"
+ENDFIELD
+
+FIELD plan_d_vis
+FLOC 67 18
+CHECKLIST "On" "plan_d_visibility"
+ENDFIELD
+
+TEXT "Ratsnests:" rats_label
+TLOC 37 20
+ENDTEXT
+
+FIELD rats_invis
+FLOC 56 20
+CHECKLIST "Off" "rats_visibility"
+ENDFIELD
+
+FIELD rats_vis
+FLOC 67 20
+CHECKLIST "On" "rats_visibility"
+ENDFIELD
+
+TEXT "Minimum Rat Count:" min_rat_count_label
+TLOC 33 3
+ENDTEXT
+
+FIELD min_rat_count
+FLOC 57 3
+INTFILLIN 8 8
+MIN 1
+ENDFIELD
+
+TEXT "Pin proximity" pin_proximity_label
+TLOC 33 5
+ENDTEXT
+
+FIELD pin_proximity
+FLOC 57 5
+STRFILLIN 5 20
+POP pin_pop
+ENDFIELD
+
+FIELD same_bus
+FLOC 33 15
+CHECKLIST "Members must be in the same Bus"
+ENDFIELD
+
+TEXT "Members must go to the same component at:" members_label
+TLOC 33 8
+ENDTEXT
+
+FIELD one_end_check
+FLOC 38 10
+CHECKLIST "One end" "members"
+ENDFIELD
+
+FIELD both_end_check
+FLOC 38 12
+CHECKLIST "Both ends" "members"
+ENDFIELD
+
+{ Non-committed IFP functionality removed for Beta.
+FIELD neither_end_check
+FLOC 38 10
+CHECKLIST "Neither end" "members"
+ENDFIELD
+
+FIELD same_match_group
+FLOC 33 17
+CHECKLIST "Members must be in the same matched group"
+ENDFIELD
+
+FIELD same_layer_set
+FLOC 33 19
+CHECKLIST "Members must have the same layer set constraint"
+ENDFIELD
+}
+
+TEXT "Flow Line relative width:" flow_line_label
+TLOC 33 3
+ENDTEXT
+
+FIELD flow_line_width_factor
+FLOC 57 3
+INTSLIDEBAR 3 3
+MIN 1
+MAX 300
+ENDFIELD
+
+TEXT "%" flow_line_width_percent
+TLOC 65 3
+ENDTEXT
+
+TEXT "Flow Via relative size:" flow_via_label
+TLOC 33 5
+ENDTEXT
+
+FIELD flow_via_width_factor
+FLOC 57 5
+INTSLIDEBAR 3 5
+MIN 1
+MAX 300
+ENDFIELD
+
+TEXT "%" flow_via_width_percent
+TLOC 65 5
+ENDTEXT
+
+#ifdef _ALLEGRO_PCB_GXL || _ALLEGRO_GRE_ALL || _ALLEGRO_GRE_PLAN
+GROUP "Router plan" router_plan
+FLOC 33 7
+FSIZE 54 9
+ENDFIELD
+
+TEXT "Auto plan visibilty:" auto_planvis_label
+TLOC 34 10
+ENDTEXT
+
+FIELD auto_planvis_off
+FLOC 56 10
+CHECKLIST "Off" "auto_planvis"
+ENDFIELD
+
+FIELD auto_planvis_on
+FLOC 65 10
+CHECKLIST "On" "auto_planvis"
+ENDFIELD
+
+TEXT "Random Logic plan visibilty:" rl_planvis_label
+TLOC 34 12
+ENDTEXT
+
+FIELD rl_planvis_off
+FLOC 56 12
+CHECKLIST "Off" "randomlogic_planvis"
+ENDFIELD
+
+FIELD rl_planvis_on
+FLOC 65 12
+CHECKLIST "On" "randomlogic_planvis"
+ENDFIELD
+
+FIELD flow_copy_when_split
+FLOC 33 17
+CHECKLIST "Copy flow when split bundle"
+ENDFIELD
+
+#endif {_ALLEGRO_PCB_GXL || _ALLEGRO_GRE_ALL || _ALLEGRO_GRE_PLAN}
+
+GROUP "Termination control" termination_control
+FLOC 34 3
+FSIZE 51 28
+ENDFIELD
+
+GROUP "Physical and Spacing errors" p_and_s_errors
+FLOC 36 5
+FSIZE 45 10
+ENDFIELD
+
+FIELD plan_stop_unroutes
+FLOC 38 8
+CHECKLIST "Unroutes"
+ENDFIELD
+
+{Non-committed IFP functionality removed for Drop3.
+FIELD plan_stop_crossovers
+FLOC 38 10
+CHECKLIST "Crossover Errors"
+ENDFIELD
+
+FIELD plan_stop_spacing
+FLOC 38 12
+CHECKLIST "Spacing Errors"
+ENDFIELD
+
+GROUP "Electrical errors:" elec_errors
+FLOC 36 15
+FSIZE 45 12
+ENDFIELD
+
+FIELD plan_stop_timing
+FLOC 38 18
+CHECKLIST "Delay"
+ENDFIELD
+
+FIELD plan_stop_xtalk
+FLOC 38 20
+CHECKLIST "Crosstalk"
+ENDFIELD
+
+FIELD plan_stop_diffpair
+FLOC 38 22
+CHECKLIST "Differential Pair"
+ENDFIELD
+
+FIELD plan_stop_other
+FLOC 38 24
+CHECKLIST "Other"
+ENDFIELD
+
+FIELD plan_stop_intent
+FLOC 36 28
+CHECKLIST "Design Intent Errors"
+ENDFIELD
+}
+
+GROUP "Physical" physical
+#FLOC 34 2
+FLOC 35 2 
+FSIZE 50 10
+ENDFIELD
+
+FIELD pad_entry
+FLOC 37 5
+CHECKLIST "Pad Entry"
+ENDFIELD
+
+FIELD extra_clearance
+FLOC 37 7
+CHECKLIST "Extra Physical Clearance"
+ENDFIELD
+
+{Non-committed IFP functionality removed for Beta.
+GROUP "Electrical" electrical
+FLOC 35 13
+FSIZE 50 10
+ENDFIELD
+
+FIELD center_timing
+FLOC 37 16
+CHECKLIST "Center on Delay Constraints"
+ENDFIELD
+
+FIELD reduce_crosstalk
+FLOC 37 18
+CHECKLIST "Reduce Crosstalk"
+ENDFIELD
+}
+
+TEXT "Etch Shapes:" etch_shapes_label
+TLOC 34 2
+ENDTEXT
+
+FIELD etch_shapes_ignore_all
+FLOC 46 2
+CHECKLIST "Route thru" "etch_shapes"
+ENDFIELD
+
+FIELD etch_shapes_ignore_none
+FLOC 60 2
+CHECKLIST "Route around" "etch_shapes"
+ENDFIELD
+
+GROUP "Elongation control" bndl_elongation_control
+FLOC 34 4
+FSIZE 51 21
+ENDFIELD
+
+TEXT "Allow in constraint areas:" bndl_elong_cns_area_label
+TLOC 35 6
+ENDTEXT
+
+FIELD bndl_elong_cns_area_ok
+FLOC 66 6
+ENUMSET 8
+POP boolean
+ENDFIELD
+
+TEXT "Tuning Pattern:" bndl_elong_pattern_label
+TLOC 35 8
+ENDTEXT
+
+FIELD bndl_tuning_pattern
+FLOC 66 8
+ENUMSET 8
+POP adt_pattern
+ENDFIELD
+
+FIELD bndl_elong_pattern_thumb
+THUMBNAIL dtun_acc.bmp
+FLOC 78 8
+FSIZE 4 2
+ENDFIELD
+
+{
+TEXT "Allow in constraint areas:" elong_cns_area_label
+TLOC 35 6
+ENDTEXT
+
+FIELD elong_cns_area_ok
+FLOC 66 6
+CHECKLIST "Yes" "elong_cns_area"
+ENDFIELD
+
+FIELD elong_cns_area_not_ok
+FLOC 75 6
+CHECKLIST "No" "elong_cns_area"
+ENDFIELD
+
+TEXT "Disable compression during Plan Accurate:" elong_pack_label
+TLOC 35 20
+ENDTEXT
+
+FIELD elong_no_pack
+FLOC 66 20
+CHECKLIST "Yes" "elong_pack_checklist"
+ENDFIELD
+
+FIELD elong_pack
+FLOC 75 20
+CHECKLIST "No" "elong_pack_checklist"
+ENDFIELD
+}
+{Non-committed IFP functionality removed for Beta.
+TEXT "Location:" elong_location_label
+TLOC 35 17
+ENDTEXT
+
+FIELD elong_source
+FLOC 46 17
+CHECKLIST "Source" "elong_location"
+ENDFIELD
+
+FIELD elong_middle
+FLOC 55 17
+CHECKLIST "Middle" "elong_location"
+ENDFIELD
+
+FIELD elong_load
+FLOC 64 17
+CHECKLIST "Load" "elong_location"
+ENDFIELD
+
+FIELD elong_anywhere
+FLOC 72 17
+CHECKLIST "Anywhere" "elong_location"
+ENDFIELD
+
+#elong_under_comp field stolen to use for elong_in_cns_area
+TEXT "Allow under components:" elong_comp_label
+TLOC 35 19
+ENDTEXT
+
+FIELD elong_comp_ok
+FLOC 55 19
+CHECKLIST "Yes" "elong_under_comp"
+ENDFIELD
+
+FIELD elong_comp_not_ok
+FLOC 64 19
+CHECKLIST "No" "elong_under_comp"
+ENDFIELD
+}
+
+GROUP "Accordion" bndl_accordion_control
+GLOC 35 11
+GSIZE 24 13
+ENDFIELD
+
+TEXT "Gap:" bndl_ac_gap_label
+TLOC 36 13
+ENDTEXT
+
+FIELD bndl_ac_elong_gap
+FLOC 48 13
+STRFILLIN 5 20
+POP elong_gap_vals
+ENDFIELD
+
+TEXT "Min Amplitude:" bndl_ac_min_amp_label
+TLOC 36 15
+ENDTEXT
+
+FIELD bndl_ac_elong_min_amplitude
+FLOC 48 15
+STRFILLIN 5 20
+POP elong_min_amplitude_vals
+ENDFIELD
+
+TEXT "Max Amplitude:" bndl_ac_max_amp_label
+TLOC 36 17
+ENDTEXT
+
+FIELD bndl_ac_elong_max_amplitude
+FLOC 48 17
+STRFILLIN 5 20
+POP elong_max_amplitude_vals
+ENDFIELD
+
+TEXT "Corner Type:" bndl_ac_corner_type_label
+TLOC 36 19
+ENDTEXT
+
+FIELD bndl_ac_elong_corner_type
+FLOC 48 19
+ENUMSET 7
+POP "elong_corner"
+ENDFIELD
+
+TEXT "Miter Size:" bndl_ac_corner_size_label
+TLOC 36 21
+ENDTEXT
+
+FIELD bndl_ac_elong_corner_size
+FLOC 48 21 
+STRFILLIN 5 20
+POP elong_corner_size_vals
+ENDFIELD
+
+
+
+GROUP "Trombone" bndl_trombone_control
+GLOC 60 11
+GSIZE 24 13
+ENDFIELD
+
+
+
+TEXT "Gap:" bndl_tr_gap_label
+TLOC 61 13
+ENDTEXT
+
+FIELD bndl_tr_elong_gap
+FLOC 73 13
+STRFILLIN 5 20
+POP elong_gap_vals
+ENDFIELD
+
+TEXT "Min Amplitude:" bndl_tr_min_amp_label
+TLOC 61 15
+ENDTEXT
+
+FIELD bndl_tr_elong_min_amplitude
+FLOC 73 15
+STRFILLIN 5 20
+POP elong_min_amplitude_vals
+ENDFIELD
+
+TEXT "Max Levels:" bndl_tr_max_levels_label
+TLOC 61 17
+ENDTEXT
+
+FIELD bndl_tr_elong_max_levels
+FLOC 73 17
+INTSLIDEBAR 5 3
+MIN 1
+MAX 9999
+ENDFIELD
+
+TEXT "Corner Type:" bndl_tr_corner_type_label
+TLOC 61 19
+ENDTEXT
+
+FIELD bndl_tr_elong_corner_type
+FLOC 73 19
+ENUMSET 7
+POP "elong_corner"
+ENDFIELD
+
+TEXT "Miter Size:" bndl_tr_corner_size_label
+TLOC 61 21
+ENDTEXT
+
+FIELD bndl_tr_elong_corner_size
+FLOC 73 21 
+STRFILLIN 5 20
+POP elong_corner_size_vals
+ENDFIELD
+
+
+{
+FIELD elong_trombone_thumb
+THUMBNAIL dtun_trom.bmp
+FLOC 36 8
+FSIZE 3 2
+ENDFIELD
+
+FIELD elong_trombone
+FLOC 40 8
+CHECKLIST "Trombone" "elong_pattern"
+ENDFIELD
+
+FIELD elong_accordion_thumb
+THUMBNAIL dtun_acc.bmp
+FLOC 36 10
+FSIZE 3 2
+ENDFIELD
+
+FIELD elong_accordion
+FLOC 40 10
+CHECKLIST "Accordion" "elong_pattern"
+ENDFIELD
+
+FIELD elong_sawtooth_thumb
+THUMBNAIL dtun_saw.bmp
+FLOC 36 12
+FSIZE 3 2
+ENDFIELD
+
+FIELD elong_sawtooth
+FLOC 40 12
+CHECKLIST "Sawtooth" "elong_pattern"
+ENDFIELD
+}
+{Non-committed IFP functionality removed for Beta.
+FIELD elong_meander
+FLOC 40 12
+CHECKLIST "Meander" "elong_pattern"
+ENDFIELD
+}
+
+
+GROUP "Bundle controls" spacing_controls
+FLOC 34 25
+FSIZE 51 12
+ENDFIELD
+
+TEXT "Space Within Bundle:" space_bundle_label
+TLOC 35 28
+ENDTEXT
+
+FIELD space_bundle_off
+FLOC 52 28
+CHECKLIST "Default" "packing"
+ENDFIELD
+
+FIELD space_bundle_on
+FLOC 65 28
+CHECKLIST "Min DRC" "packing"
+ENDFIELD
+
+{Non-committed IFP functionality removed for Beta.
+TEXT "Min" min_label
+TLOC 67 24
+ENDTEXT
+
+TEXT "Max" max_label
+TLOC 77 24
+ENDTEXT
+
+FIELD space_bundle_on
+FLOC 52 26
+CHECKLIST "Min DRC plus" "packing"
+ENDFIELD
+
+FIELD space_bundle_min
+FLOC 66 26
+STRFILLIN 4 10
+POP space_bundle_min_pop
+ENDFIELD
+
+FIELD space_bundle_max
+FLOC 75 26
+STRFILLIN 4 10
+POP space_bundle_max_pop
+ENDFIELD
+
+TEXT "Space to Others:" space_other_label
+TLOC 35 28
+ENDTEXT
+
+FIELD space_other_off
+FLOC 52 28
+CHECKLIST "Default" "interbundle_packing"
+ENDFIELD
+
+FIELD space_other_on
+FLOC 52 30
+CHECKLIST "Min DRC plus" "interbundle_packing"
+ENDFIELD
+
+FIELD space_other_min
+FLOC 66 30
+STRFILLIN 4 10
+POP space_other_min_pop
+ENDFIELD
+
+FIELD space_other_max
+FLOC 75 30
+STRFILLIN 4 10
+POP space_other_max_pop
+ENDFIELD
+}
+
+{ use these field name when the time comes although the location might move
+TEXT "Perform Diff Pair Static Phase Adjustment:" static_phase_label
+TLOC 35 31
+ENDTEXT
+
+FIELD static_phase_on
+FLOC 65 31
+CHECKLIST "Yes" "static_phase_checklist"
+ENDFIELD
+
+FIELD static_phase_off
+FLOC 74 31
+CHECKLIST "No" "static_phase_checklist"
+ENDFIELD
+}
+
+TEXT "Max Transitions:" max_trans_label
+TLOC 35 33
+ENDTEXT
+
+FIELD max_trans_nolimit
+FLOC 52 33
+CHECKLIST "Unlimited" "max_trans"
+ENDFIELD
+
+FIELD max_trans_limit
+FLOC 65 33
+CHECKLIST "Limit to" "max_trans"
+ENDFIELD
+
+FIELD max_trans_value
+FLOC 74 33
+INTFILLIN 7 8
+MIN 0
+ENDFIELD
+
+TEXT "Layer Matching:" layer_match_label
+TLOC 35 35
+ENDTEXT
+
+FIELD layer_match_off
+FLOC 52 35
+CHECKLIST "Off" "layer_matching"
+ENDFIELD
+
+FIELD layer_match_on
+FLOC 65 35
+CHECKLIST "Route on same layer" "layer_matching"
+ENDFIELD
+
+{Non-committed IFP functionality removed for Beta
+TEXT "Layer enable applies to:" layer_enable_label 
+TLOC 34 26
+ENDTEXT
+
+FIELD layer_random
+FLOC 53 26
+CHECKLIST "Random Logic" "layer_appl"
+ENDFIELD
+
+FIELD layer_bundles
+FLOC 53 28
+CHECKLIST "Bundles" "layer_appl"
+ENDFIELD
+
+FIELD layer_all
+FLOC 53 30
+CHECKLIST "All" "layer_appl"
+ENDFIELD
+}
+
+GRID layer_usage_grid
+FLOC 34 3
+FSIZE 51 34
+OPTIONS HLINES VLINES USERSIZE
+POP "ifp_layer"
+
+GHEAD TOP
+HEADSIZE 2
+OPTIONS 3D MULTI
+ENDGHEAD
+
+ENDGRID
+ENDTAB
+#endif
+
+#ifdef PRME_EE_TAB
+TAB "Route"
+
+GROUP "Commands"
+FLOC 1 0
+FSIZE 28 42
+ENDFIELD
+
+FIELD ee_treelist
+FLOC 2 3
+TREEVIEW 24 17
+ENDFIELD
+
+GROUP "Command parameters" ee_command
+FLOC 31 0
+FSIZE 58 42
+ENDFIELD
+
+GROUP "Parameter description"
+FLOC 1 42
+FSIZE 88 9
+ENDFIELD
+
+TEXT
+FLOC 2 44
+INFO ee_info_string 1
+FSIZE 83 7
+ENDFIELD
+
+# parameters for Create Fanout
+TEXT create_fanout_str
+FLOC 33 5
+INFO create_fanout_info_string 1
+FSIZE 45 7
+ENDFIELD
+
+FIELD create_fanout_button
+FLOC 33 11
+MENUBUTTON "Create Fanout Parameters..." 6 3
+ENDFIELD
+# end parameters for Create Fanout
+
+# parameters for Gloss
+TEXT gloss_str
+FLOC 33 5
+INFO gloss_info_string 1
+FSIZE 45 7
+ENDFIELD
+
+FIELD gloss_button
+FLOC 33 12
+MENUBUTTON "View glossing applications..." 6 3
+ENDFIELD 
+# end parameters for Gloss
+
+# parameters for TimingEnvironment
+
+#TEXT "Fake Start:" tenv_fake_start
+#TLOC 35 37
+#ENDTEXT
+
+#if the following GLOC is at 3 rather than 4 or more the Show button
+# display gets broken
+GROUP "Display control" tenv_display_control_group
+GLOC 35 4
+GSIZE 40 21
+ENDFIELD
+
+TEXT "Style:" tenv_style_label
+TLOC 38 6
+ENDTEXT
+
+FIELD tenv_style_solid
+FLOC 43 6
+CHECKLIST "Solid" "tenv_ds"
+ENDFIELD
+
+FIELD tenv_style_candycane
+FLOC 51 6
+CHECKLIST "Striped" "tenv_ds"
+ENDFIELD
+
+TEXT "Colors:" tenv_colors_label
+TLOC 38 8
+ENDTEXT
+
+FIELD tenv_good_color_chooser
+FLOC 40 10
+COLOR 2 1
+OPTIONS colorchooser
+ENDFIELD
+
+TEXT "Satisfies required timing" tenv_good_color_label
+TLOC 43 10
+ENDTEXT
+
+FIELD tenv_short_color_chooser
+FLOC 40 12
+COLOR 2 1
+OPTIONS colorchooser
+ENDFIELD
+
+TEXT "Shorter than than required value" tenv_short_color_label
+TLOC 43 12
+ENDTEXT
+
+FIELD tenv_short1_color_chooser
+FLOC 44 14
+COLOR 2 1
+OPTIONS colorchooser
+ENDFIELD
+
+TEXT "A small amount shorter" tenv_short1_color_label
+TLOC 47 14
+ENDTEXT
+
+FIELD tenv_long_color_chooser
+FLOC 40 16
+COLOR 2 1
+OPTIONS colorchooser
+ENDFIELD
+
+TEXT "Longer than required value" tenv_long_color_label
+TLOC 43 16
+ENDTEXT
+
+FIELD tenv_long1_color_chooser
+FLOC 44 18
+COLOR 2 1
+OPTIONS colorchooser
+ENDFIELD
+
+TEXT "A small amount longer" tenv_long1_color_label
+TLOC 47 18
+ENDTEXT
+
+FIELD tenv_target_pattern_chooser
+FLOC 62 21
+MENUBUTTON "" 2 2
+BITMAP cvf_square.bmp
+ENDFIELD
+
+TEXT "Pattern for Relative Delay targets:" tenv_target_pattern_label
+TLOC 38 21
+ENDTEXT
+
+#TEXT "Fake End:" tenv_fake_end
+#TLOC 35 39
+#ENDTEXT
+
+# end parameters for TimingEnvironment
+
+# parameters for Auto Delay Tune
+
+TEXT "Override bundle level parameters:" adt_override_bundle_params
+TLOC 35 4
+ENDTEXT
+
+FIELD adt_elong_bundle_prop_ok
+FLOC 66 4
+ENUMSET 8
+POP boolean
+ENDFIELD
+
+TEXT "Allow in constraint areas:" adt_elong_cns_area_label
+TLOC 35 6
+ENDTEXT
+
+FIELD adt_elong_cns_area_ok
+FLOC 66 6
+ENUMSET 8
+POP boolean
+ENDFIELD
+
+TEXT "Tuning Pattern:" adt_elong_pattern_label
+TLOC 35 8
+ENDTEXT
+
+FIELD adt_elong_tuning_pattern
+FLOC 66 8
+ENUMSET 8
+POP adt_pattern
+ENDFIELD
+
+FIELD adt_elong_pattern_thumb
+THUMBNAIL dtun_acc.bmp
+FLOC 78 8
+FSIZE 4 2
+ENDFIELD
+
+GROUP "Accordion" adt_accordion_group
+GLOC 34 10
+GSIZE 54 12
+ENDFIELD
+
+FIELD adt_elong_accordion_thumb
+THUMBNAIL dtun_acc.bmp
+FLOC 36 12
+FSIZE 4 2
+ENDFIELD
+
+TEXT "Gap:" adt_ac_gap_label
+TLOC 61 15
+ENDTEXT
+
+FIELD adt_ac_elong_gap
+FLOC 73 15
+STRFILLIN 5 20
+POP adt_ac_elong_gap_vals
+ENDFIELD
+
+TEXT "Min Amplitude:" adt_ac_min_amp_label
+TLOC 36 17
+ENDTEXT
+
+FIELD adt_ac_elong_min_amplitude
+FLOC 48 17
+STRFILLIN 5 20
+POP adt_ac_elong_min_amplitude_vals
+ENDFIELD
+
+TEXT "Max Amplitude:" adt_ac_max_amp_label
+TLOC 61 17
+ENDTEXT
+
+FIELD adt_ac_elong_max_amplitude
+FLOC 73 17
+STRFILLIN 5 20
+POP adt_ac_elong_max_amplitude_vals
+ENDFIELD
+
+TEXT "Corner Type:" adt_ac_corner_type_label
+TLOC 36 19
+ENDTEXT
+
+FIELD adt_ac_elong_corner_type
+FLOC 48 19
+ENUMSET 7
+POP "elong_corner_45_only"
+ENDFIELD
+
+TEXT "Miter Size:" adt_ac_corner_size_label
+TLOC 61 19
+ENDTEXT
+
+FIELD adt_ac_elong_corner_size
+FLOC 73 19
+STRFILLIN 5 20
+POP adt_ac_elong_corner_size_vals
+ENDFIELD
+
+GROUP "Trombone" adt_trombone_group
+GLOC 34 23
+GSIZE 54 12
+ENDFIELD
+
+FIELD adt_elong_trombone_thumb
+THUMBNAIL dtun_trom.bmp
+FLOC 36 25
+FSIZE 4 2
+ENDFIELD
+
+TEXT "Max Levels:" adt_tr_max_levels_label
+TLOC 61 30
+ENDTEXT
+
+FIELD adt_tr_max_levels
+FLOC 73 30
+INTSLIDEBAR 5 3
+MIN 1
+MAX 9999
+ENDFIELD
+
+TEXT "Gap:" adt_tr_gap_label
+TLOC 61 28
+ENDTEXT
+
+FIELD adt_tr_elong_gap
+FLOC 73 28
+STRFILLIN 5 20
+POP adt_tr_elong_gap_vals
+ENDFIELD
+
+TEXT "Min Amplitude:" adt_tr_min_amp_label
+TLOC 36 30
+ENDTEXT
+
+FIELD adt_tr_elong_min_amplitude
+FLOC 48 30
+STRFILLIN 5 20
+POP adt_tr_elong_min_amplitude_vals
+ENDFIELD
+
+TEXT "Corner Type:" adt_tr_corner_type_label
+TLOC 36 32
+ENDTEXT
+
+FIELD adt_tr_elong_corner_type
+FLOC 48 32
+ENUMSET 7
+POP "elong_corner_45_only"
+ENDFIELD
+
+TEXT "Miter Size:" adt_tr_corner_size_label
+TLOC 61 32
+ENDTEXT
+
+FIELD adt_tr_elong_corner_size
+FLOC 73 32
+STRFILLIN 5 20
+POP adt_tr_elong_corner_size_vals
+ENDFIELD
+
+# end parameters for Auto Delay Tune
+
+# parameters for AIBT (Breakout)
+
+TEXT "Override bundle level parameters:" aibt_override_bundle_params_label
+TLOC 35 4
+ENDTEXT
+
+FIELD aibt_bundle_prop_ok
+FLOC 66 4
+ENUMSET 8
+POP boolean
+ENDFIELD
+
+TEXT "Ripup Existing:" aibt_ripup_existing_label
+TLOC 35 6
+ENDTEXT
+
+FIELD aibt_ripup_existing
+FLOC 66 6
+ENUMSET 8
+POP boolean
+ENDFIELD
+
+TEXT "Allow Bundle Routes to Intermix:" aibt_intermix_bundle_routes_label
+TLOC 35 8
+ENDTEXT
+
+FIELD aibt_intermix_bundle_routes
+FLOC 66 8
+ENUMSET 8
+POP boolean
+ENDFIELD
+
+TEXT "Breakout Direction:" aibt_direction_label
+TLOC 35 12
+ENDTEXT
+
+FIELD aibt_direction
+FLOC 66 12
+ENUMSET 12
+POP "aibt_direction_pop"
+ENDFIELD
+
+TEXT "Breakout Layer:" aibt_layer_label
+TLOC 35 14
+ENDTEXT
+
+FIELD aibt_layer
+FLOC 66 14
+ENUMSET 12
+OPTIONS prettyprint ownerdrawn
+POP "aibt_layer_pop"
+ENDFIELD
+
+
+TEXT "Breakout Distance:" aibt_distance_label
+TLOC 35 16
+ENDTEXT
+
+FIELD aibt_distance
+FLOC 66 16
+STRFILLIN 10 20
+POP "aibt_distance_pop"
+ENDFIELD
+
+
+# end parameters for  AIBT (Breakout)
+
+
+
+# parameters for AIPT (Phase tuning)
+
+
+TEXT "Compensation Location" aipt_compensation_location_label
+TLOC 35 4
+ENDTEXT
+
+FIELD aipt_compensation_location
+FLOC 66 4
+ENUMSET 15
+POP "aipt_location_pop"
+ENDFIELD
+
+GROUP "Compensation Techniques" aipt_compensation_techniques
+GLOC 34 7
+GSIZE 54 22
+ENDFIELD
+
+#ifdef AIPT_OPTION1
+
+TEXT "Modify Gather/Pad Entry" aipt_modify_gather_padentry_label
+TLOC 36 10
+ENDTEXT
+
+FIELD aipt_modify_gather_padentry
+FLOC 66 10
+ENUMSET 8
+POP boolean
+ENDFIELD
+
+#endif
+
+
+TEXT "Allow Pad Entry Shortening" aipt_pad_entry_shortening_label
+TLOC 36 10
+ENDTEXT
+
+FIELD aipt_pad_entry_shortening
+FLOC 66 10
+ENUMSET 8
+POP boolean
+ENDFIELD
+
+
+TEXT "Allow Pad Entry Lengthening" aipt_pad_entry_lengthening_label
+TLOC 36 12
+ENDTEXT
+
+FIELD aipt_pad_entry_lengthening
+FLOC 66 12
+ENUMSET 8
+POP boolean
+ENDFIELD
+
+
+TEXT "Allow off-angle lines" aipt_allow_off_angle_label
+TLOC 40 14
+ENDTEXT
+
+FIELD aipt_allow_off_angle
+FLOC 66 14
+ENUMSET 8
+POP boolean
+ENDFIELD
+
+
+TEXT "Allow gather movement" aipt_allow_gather_movement_label
+TLOC 40 16
+ENDTEXT
+
+FIELD aipt_allow_gather_movement
+FLOC 66 16
+ENUMSET 8
+POP boolean
+ENDFIELD
+
+
+TEXT "Uncoupled Bump Creation" aipt_uncoupled_bump_creation_label
+TLOC 36 20
+ENDTEXT
+
+FIELD aipt_uncoupled_bump_creation
+FLOC 66 20
+ENUMSET 8
+POP boolean
+ENDFIELD
+
+
+TEXT "Height:" aipt_bump_height_label
+TLOC 40 22
+ENDTEXT
+
+FIELD aipt_bump_height
+FLOC 66 22
+STRFILLIN 5 20
+POP aipt_height_vals_pop
+ENDFIELD
+
+
+TEXT "Length:" aipt_bump_length_label
+TLOC 40 24
+ENDTEXT
+
+FIELD aipt_bump_length
+FLOC 66 24
+STRFILLIN 5 20
+POP aipt_length_vals_pop
+ENDFIELD
+
+
+# end parameters for  AIPT (Phase tuning)
+
+# parameters for Convert Corner
+
+TEXT "Convert Type:" cc_type_label
+FLOC 35 4
+ENDFIELD
+
+FIELD cc_convert_type
+FLOC 66 4
+ENUMSET 5
+POP "corner_type_vals"
+ENDFIELD
+
+TEXT "Allow in cns areas:" cc_region_exclusion_label
+TLOC 35 6
+ENDTEXT
+
+FIELD cc_region_exclusion
+FLOC 66 6
+ENUMSET 5
+POP cc_boolean
+ENDFIELD
+
+TEXT "Preferred Radius Size:" cc_preferred_radius_size_label
+FLOC 35 9 
+ENDFIELD
+
+TEXT "Min Radius Size:" cc_min_radius_size_label
+FLOC 35 11 
+ENDFIELD
+
+
+TEXT "Preferred Corner Size:" cc_preferred_corner_size_label
+FLOC 35 15 
+ENDFIELD
+
+TEXT "Min Corner Size:"  cc_min_corner_size_label
+FLOC 35 17
+ENDFIELD
+
+FIELD cc_corner_max_radius
+FLOC 66 9
+STRFILLIN 8 8
+POP "corner_max_radius_dbrep_vals"
+ENDFIELD
+
+FIELD cc_corner_min_radius
+FLOC 66 11
+STRFILLIN 8 8
+POP "corner_min_radius_dbrep_vals"
+ENDFIELD
+
+FIELD cc_corner_max_length
+FLOC 66 15
+STRFILLIN 8 8
+POP "corner_max_length_dbrep_vals"
+ENDFIELD
+
+FIELD cc_corner_min_length
+FLOC 66 17
+STRFILLIN 8 8
+POP "corner_min_length_dbrep_vals"
+ENDFIELD
+
+FIELD cc_allow_drc_errors
+FLOC 35 19
+CHECKLIST "Allow DRCs"
+ENDFIELD
+
+# end parameters for Convert Corner
+
+
+# common parameters for add connect, delay tune, edit vertex, and Slide
+FIELD show_button
+FLOC 33 3 
+MENUBUTTON "Show" 6 3
+ENDFIELD
+
+GROUP "" show_group
+FLOC 32 1
+FSIZE 8 40
+ENDFIELD
+
+TEXT "Parameter" param_str
+TLOC 43 3
+OPTIONS bold
+ENDFIELD
+
+TEXT "Value" val_str
+TLOC 65 3
+OPTIONS bold
+ENDFIELD
+
+FIELD ee_restore
+FLOC 78 39
+MENUBUTTON "Reset" 10 3
+ENDFIELD
+# end parameters for add connect, delay tune, edit vertex, and Slide
+
+# parameters for Add Connect
+TEXT "Layer mode" acon_layer_mode_label
+TLOC 43 5
+ENDTEXT
+
+FIELD acon_layer_mode
+FLOC 60 5
+ENUMSET 14
+POP "layer_mode"
+ENDFIELD
+
+FIELD acon_linelock_check
+FLOC 35 7
+CHECKLIST
+ENDFIELD
+
+TEXT "Line lock" acon_linelock_label
+TLOC 43 7
+ENDTEXT
+
+FIELD acon_lockmode
+FLOC 60 7
+ENUMSET 13
+POP "lockmode"
+ENDFIELD
+
+FIELD acon_linelock
+FLOC 77 7
+ENUMSET 8
+POP "linelock"
+ENDFIELD
+
+FIELD acon_offset_angle_check
+FLOC 35 9
+CHECKLIST
+ENDFIELD
+
+TEXT "Route Offset" acon_offset_label
+TLOC 43 9
+ENDTEXT
+
+FIELD acon_offset_ena
+FLOC 60 9
+CHECKLIST
+ENDFIELD
+
+FIELD acon_offset_angle
+FLOC 64 9
+REALFILLIN 10 20
+DECIMAL 2
+POP "angle_vals"
+ENDFIELD
+
+FIELD acon_corner_check
+FLOC 35 11
+CHECKLIST
+ENDFIELD
+
+TEXT "Miter/Radius" acon_corner_label
+TLOC 43 11
+ENDTEXT
+
+FIELD acon_corner_vals
+FLOC 60 11
+STRFILLIN 11 20
+POP "corner_vals"
+ENDFIELD
+
+FIELD acon_corner_mode
+FLOC 77 11
+ENUMSET 8
+POP "corner_mode"
+ENDFIELD
+
+FIELD acon_linewidth_check
+FLOC 35 13
+CHECKLIST
+ENDFIELD
+
+TEXT "Line width" acon_linewidth_label
+TLOC 43 13
+ENDTEXT
+
+TEXT "Neck width" acon_neckwidth_label
+TLOC 43 13
+ENDTEXT
+
+FIELD acon_width_vals
+FLOC 60 13
+STRFILLIN 11 20
+POP "width_vals"
+ENDFIELD
+
+TEXT
+TLOC 60 13
+INFO acon_neck_width 7
+ENDTEXT
+
+FIELD acon_style_check
+FLOC 35 16
+CHECKLIST
+ENDFIELD
+
+GROUP "Style" acon_style_group
+FLOC 41 15
+FSIZE 47 13
+ENDFIELD
+
+TEXT "Bubble" acon_bubble_label
+TLOC 43 17
+ENDTEXT
+
+FIELD acon_bubble_space
+FLOC 60 17
+ENUMSET 13
+POP "bubble_space"
+ENDFIELD
+
+TEXT "Shove vias" acon_shove_label
+TLOC 45 19
+ENDTEXT
+
+FIELD acon_shove_vias
+FLOC 60 19
+ENUMSET 13
+POP "smooth1_level"
+ENDFIELD
+
+TEXT "Gridless" acon_gridless_label
+TLOC 45 21
+ENDTEXT
+
+FIELD acon_gridless_val
+FLOC 60 21
+CHECKLIST 
+ENDFIELD
+
+TEXT "Clip dangling clines" acon_clip_label
+TLOC 45 23
+ENDTEXT
+
+FIELD acon_clip_dangling
+FLOC 60 23
+CHECKLIST
+ENDFIELD
+
+TEXT "Smooth" acon_smooth_label
+TLOC 45 25
+ENDTEXT
+
+FIELD acon_smooth_level
+FLOC 60 25
+ENUMSET 13
+  #ifdef APD || SIP
+POP "smooth2_level"
+  #else
+POP "smooth1_level"
+  #endif
+ENDFIELD
+
+FIELD acon_snap_check
+FLOC 35 29
+CHECKLIST
+ENDFIELD
+
+TEXT "Snap to connect point" acon_snap_label
+TLOC 43 29
+ENDTEXT
+
+FIELD acon_snap_cpt
+FLOC 60 29
+CHECKLIST
+ENDFIELD
+
+FIELD acon_replace_check
+FLOC 35 31
+CHECKLIST
+ENDFIELD
+
+#ifdef APD_SIP_MCM
+TEXT "Replace conductor" acon_replace_label
+#else
+TEXT "Replace etch" acon_replace_label
+#endif
+
+TLOC 43 31
+ENDTEXT
+
+FIELD acon_replace_etch
+FLOC 60 31
+CHECKLIST
+ENDFIELD
+
+#ifdef APD_SIP_MCM
+FIELD acon_auto_check
+FLOC 35 33
+CHECKLIST 
+ENDFIELD
+
+FIELD acon_auto_assign
+FLOC 43 33
+CHECKLIST "Auto assign unused pins" 
+ENDFIELD
+#endif	APD_SIP_MCM
+
+FIELD acon_route_check
+#ifdef APD_SIP_MCM
+FLOC 35 35
+#else 
+FLOC 35 33
+#endif
+CHECKLIST
+ENDFIELD
+
+TEXT "Route type"  acon_route_label
+#ifdef APD_SIP_MCM
+TLOC 43 35
+#else 
+TLOC 43 33
+#endif
+INFO acon_route_label 12
+ENDTEXT
+
+FIELD acon_route_type
+#ifdef APD_SIP_MCM
+FLOC 60 35
+#else
+FLOC 60 33
+#endif
+ENUMSET 13
+POP "route_type"
+ENDFIELD
+
+FIELD acon_minmax_check
+#ifdef APD_SIP_MCM
+FLOC 35 37
+#else 
+FLOC 35 35
+#endif
+CHECKLIST
+ENDFIELD
+
+TEXT 
+#ifdef APD_SIP_MCM
+TLOC 43 37
+#else 
+TLOC 43 35
+#endif
+INFO acon_minmax_label 20
+ENDTEXT
+
+FIELD acon_max45_len
+#ifdef APD_SIP_MCM
+FLOC 60 37
+#else
+FLOC 60 35
+#endif
+REALFILLIN 14 7
+DECIMAL 5
+ENDFIELD
+
+FIELD acon_maxarc_rad
+#ifdef APD_SIP_MCM
+FLOC 60 37
+#else
+FLOC 60 35
+#endif
+REALFILLIN 14 7
+DECIMAL 5
+ENDFIELD
+
+FIELD acon_min45_len
+#ifdef APD_SIP_MCM
+FLOC 60 37
+#else 
+FLOC 60 35
+#endif
+REALFILLIN 14 7
+DECIMAL 5
+ENDFIELD
+
+FIELD acon_minarc_rad
+#ifdef APD_SIP_MCM
+FLOC 60 37
+#else
+FLOC 60 35
+#endif
+REALFILLIN 14 7
+DECIMAL 5
+ENDFIELD
+
+FIELD acon_drc_check
+#ifdef APD_SIP_MCM
+FLOC 35 39
+#else
+FLOC 35 37
+#endif
+CHECKLIST
+ENDFIELD
+
+TEXT "Allow DRCs"  acon_drc_label
+#ifdef APD_SIP_MCM
+TLOC 43 39
+#else
+TLOC 43 37
+#endif
+ENDFIELD
+
+FIELD acon_all_drc
+#ifdef APD_SIP_MCM
+FLOC 60 39
+#else
+FLOC 60 37
+#endif
+CHECKLIST
+ENDFIELD
+# end parameters for Add connect
+
+# parameters for Delay Tune
+FIELD dtun_style_check
+FLOC 35 5
+CHECKLIST 
+ENDFIELD
+
+GROUP "Style" dtun_style_group
+FLOC 41 4
+FSIZE 47 17
+ENDFIELD
+
+TEXT "Accordion" dtun_accordion_label
+TLOC 43 6
+ENDTEXT
+
+FIELD dtun_accordion_thumb
+THUMBNAIL
+FLOC 52 6
+FSIZE 3 2
+ENDFIELD
+
+FIELD dtun_accordion_style
+FLOC 65 6
+CHECKLIST "" "aaa"
+ENDFIELD
+
+TEXT "Sawtooth" dtun_sawtooth_label
+TLOC 43 8
+ENDTEXT
+
+FIELD dtun_sawtooth_thumb
+THUMBNAIL
+FLOC 52 8
+FSIZE 3 2
+ENDFIELD
+
+FIELD dtun_sawtooth_style
+FLOC 65 8
+CHECKLIST "" "aaa"
+ENDFIELD
+
+TEXT "Trombone" dtun_trombone_label
+TLOC 43 10
+ENDTEXT
+
+FIELD dtun_trombone_thumb
+THUMBNAIL
+FLOC 52 10
+FSIZE 3 2
+ENDFIELD
+
+FIELD dtun_trombone_style
+FLOC 65 10
+CHECKLIST "" "aaa"
+ENDFIELD
+
+TEXT "Centered" dtun_center_label
+TLOC 43 12
+ENDTEXT
+
+FIELD dtun_center
+FLOC 65 12
+CHECKLIST
+ENDFIELD
+
+TEXT "Gap" dtun_gap_label
+TLOC 43 14
+ENDTEXT
+
+FIELD dtun_gap
+FLOC 65 14
+STRFILLIN 11 20
+POP "dtun_gap_vals"
+ENDFIELD
+
+TEXT "Corners" dtun_corner_label
+TLOC 43 16
+ENDTEXT
+
+FIELD dtun_corner
+FLOC 65 16
+ENUMSET 13
+POP "dtun_corner"
+ENDFIELD
+
+TEXT "Miter size" dtun_miter_label
+TLOC 43 18 
+ENDTEXT
+
+FIELD dtun_miter
+FLOC 65 18
+ENUMSET 13
+STRFILLIN 11 20
+POP "dtun_corner_vals"
+ENDFIELD
+
+FIELD dtun_drc_check
+FLOC 35 22
+CHECKLIST
+ENDFIELD
+
+TEXT "Allow DRCs" dtun_drc_label
+TLOC 43 22
+ENDTEXT
+
+FIELD dtun_all_drc
+FLOC 65 22
+CHECKLIST
+ENDFIELD
+# end parameters Delay Tune
+
+# parameters for Edit Vertex
+FIELD vtx_style_check
+FLOC 35 6
+CHECKLIST
+ENDFIELD
+
+GROUP "Style" vtx_style_group
+FLOC 41 5
+FSIZE 47 11
+ENDFIELD
+
+TEXT "Bubble" vtx_bubble_label
+FLOC 43 7
+ENDTEXT
+
+FIELD vtx_bubble
+FLOC 65 7
+ENUMSET 13
+POP "bubble_space"
+ENDFIELD
+
+TEXT "Shove vias" vtx_shv_label
+FLOC 45 9
+ENDTEXT
+
+FIELD vtx_shv_vias
+FLOC 65 9
+ENUMSET 13
+POP "smooth1_level"
+ENDFIELD
+
+TEXT "Clip dangling connect lines" vtx_clip_label
+FLOC 45 11
+ENDTEXT
+
+FIELD vtx_clip_dangling
+FLOC 65 11
+CHECKLIST
+ENDFIELD
+
+TEXT "Smooth" vtx_smooth_label
+FLOC 45 13
+ENDTEXT
+
+FIELD vtx_smooth
+FLOC 65 13
+ENUMSET 13
+POP "smooth1_level"
+ENDFIELD
+
+FIELD vtx_drc_check
+FLOC 35 17
+CHECKLIST
+ENDFIELD
+
+TEXT "Allow DRCs" vtx_drc_label
+FLOC 43 17
+ENDTEXT
+
+FIELD vtx_all_drc
+FLOC 65 17
+CHECKLIST
+ENDFIELD
+
+FIELD vtx_gridless_check
+FLOC 35 19
+CHECKLIST
+ENDFIELD
+
+TEXT "Allow gridless" vtx_gridless_label
+FLOC 43 19
+ENDTEXT
+
+FIELD vtx_gridless_val
+FLOC 65 19
+CHECKLIST
+ENDFIELD
+
+# end parameters Edit Vertex
+
+# parameters for Slide
+
+FIELD sld_mincornersize_check
+FLOC 35 5
+CHECKLIST
+ENDFIELD
+
+TEXT "Min Corner Size" sld_mincornersize_label
+TLOC 43 5
+ENDTEXT
+
+FIELD sld_mincornersize_vals
+FLOC 65 5
+STRFILLIN 11 20
+POP "slide_mincornersize"
+ENDFIELD
+
+FIELD sld_minarcradius_check
+FLOC 35 7
+CHECKLIST
+ENDFIELD
+
+TEXT "Min Arc Radius" sld_minarcradius_label
+TLOC 43 7
+ENDTEXT
+
+FIELD sld_minarcradius_vals
+FLOC 65 7
+STRFILLIN 11 20
+POP "slide_minarcradius"
+ENDFIELD
+
+FIELD sld_vertexaction_check
+FLOC 35 9
+CHECKLIST
+ENDFIELD
+
+TEXT "Vertex Action" sld_vertexaction_label
+TLOC 43 9
+ENDTEXT
+
+FIELD sld_vertexaction_vals
+FLOC 65 9
+ENUMSET 13
+POP "slide_vertexaction"
+ENDFIELD
+
+FIELD sld_corner_check
+FLOC 35 7
+CHECKLIST
+ENDFIELD
+
+TEXT "Corners" sld_corner_label
+TLOC 43 7
+ENDTEXT
+
+FIELD sld_corner_vals
+FLOC 65 7
+ENUMSET 13
+POP "slide_corner"
+ENDFIELD
+
+FIELD sld_max45_check
+FLOC 35 9
+CHECKLIST
+ENDFIELD
+
+TEXT 
+TLOC 43 9
+INFO min_max_text 20
+ENDTEXT
+
+FIELD sld_max45_vals
+FLOC 65 9
+REALFILLIN 11 7
+POP "corner_vals"
+DECIMAL 5
+ENDFIELD
+
+FIELD sld_maxarc
+FLOC 65 9
+REALFILLIN 14 7
+DECIMAL 5
+ENDFIELD
+
+GROUP "Style" sld_style_group
+FLOC 41 11
+FSIZE 47 11
+ENDFIELD
+
+FIELD sld_style_check
+FLOC 35 12
+CHECKLIST
+ENDFIELD
+
+TEXT "Bubble" sld_bubble_label
+TLOC 43 13
+ENDTEXT
+
+FIELD sld_bubble_space
+FLOC 65 13
+ENUMSET 13
+POP "bubble_space"
+ENDFIELD
+
+TEXT "Shove vias" sld_shv_label
+TLOC 45 15
+ENDTEXT
+
+FIELD sld_shv_vias
+FLOC 65 15
+ENUMSET 13
+POP "smooth1_level"
+ENDFIELD
+
+TEXT "Clip dangling connect lines" sld_clip_label
+TLOC 45 17
+ENDTEXT
+
+FIELD sld_clip_dangling
+FLOC 65 17
+CHECKLIST
+ENDFIELD
+
+TEXT "Smooth" sld_smooth_label
+TLOC 45 19
+ENDTEXT
+
+FIELD sld_smooth_level
+FLOC 65 19
+ENUMSET 13
+  #ifdef APD || SIP
+POP "smooth2_level"
+  #else
+POP "smooth1_level"
+  #endif
+ENDFIELD
+
+FIELD sld_drc_check
+FLOC 35 23
+CHECKLIST
+ENDFIELD
+
+TEXT "Allow DRCs" sld_drc_label
+TLOC 43 23
+ENDTEXT
+
+FIELD sld_all_drc
+FLOC 65 23
+CHECKLIST
+ENDFIELD
+
+FIELD sld_gridless_check
+FLOC 35 25
+CHECKLIST
+ENDFIELD
+
+TEXT "Gridless" sld_gridless_label
+TLOC 43 25
+ENDTEXT
+
+FIELD sld_gridless_val
+FLOC 65 25
+CHECKLIST
+ENDFIELD
+
+FIELD sld_add_check
+FLOC 35 27
+CHECKLIST
+ENDFIELD
+
+# start of new slide fields overlapping old slide fields
+FIELD sld_autojoin_check
+FLOC 35 27
+CHECKLIST
+ENDFIELD
+
+TEXT "Auto Join" sld_autojoin_label
+TLOC 43 27
+ENDTEXT
+
+FIELD sld_autojoin_val
+FLOC 65 27
+CHECKLIST
+ENDFIELD
+
+FIELD sld_extendselection_check
+FLOC 35 29
+CHECKLIST
+ENDFIELD
+
+TEXT "Extend Selection" sld_extendselection_label
+TLOC 43 29
+ENDTEXT
+
+FIELD sld_extendselection_val
+FLOC 65 29
+CHECKLIST
+ENDFIELD
+
+# end of new slide fields overlapping old slide fields
+
+TEXT "Add at max" sld_add_label
+TLOC 43 27
+ENDTEXT
+
+FIELD sld_add
+FLOC 65 27
+CHECKLIST
+ENDFIELD
+
+FIELD sld_viasegs_check
+FLOC 35 29
+CHECKLIST
+ENDFIELD
+
+TEXT "Vias with segments" sld_viasegs_label
+TLOC 43 29
+ENDTEXT
+
+FIELD sld_viasegs
+FLOC 65 29
+CHECKLIST
+ENDFIELD
+
+FIELD sld_tsegs_check
+FLOC 35 31
+CHECKLIST
+ENDFIELD
+
+TEXT "Ts with segments" sld_tsegs_label
+TLOC 43 31
+ENDTEXT
+
+FIELD sld_tsegs
+FLOC 65 31
+CHECKLIST
+ENDFIELD
+
+FIELD sld_arcsegs_check
+FLOC 35 33
+CHECKLIST
+ENDFIELD
+
+TEXT "Arcs with segments" sld_arcsegs_label
+TLOC 43 33
+ENDTEXT
+
+FIELD sld_arcsegs
+FLOC 65 33
+CHECKLIST
+ENDFIELD
+# end parameters Slide
+
+ENDTAB
+#endif PRME_EE_TAB
+
+#ifdef PRME_MANF_TAB
+TAB "Mfg Applications"
+
+GROUP "Command parameters" command
+FLOC 1 0
+FSIZE 88 48
+ENDFIELD
+
+GROUP "Testprep"
+FLOC 3 3
+FSIZE 80 10
+ENDFIELD
+
+TEXT test_string
+FLOC 5 6
+INFO test_info_string
+FSIZE 73 7
+ENDFIELD
+
+FIELD testprep_button
+FLOC 5 10
+MENUBUTTON "Edit testprep parameters..." 6 3
+ENDFIELD 
+
+GROUP "Thieving"
+FLOC 3 14
+FSIZE 80 11
+ENDFIELD
+
+TEXT thv_string
+FLOC 5 17
+INFO thv_info_string 1
+FSIZE 73 7
+ENDFIELD
+
+FIELD thieving_button
+FLOC 5 22
+MENUBUTTON "Edit thieving parameters..." 6 3
+ENDFIELD 
+
+#ifndef ALLEGRO_PARTITION
+GROUP "Silkscreen"
+FLOC 3 26
+FSIZE 80 10
+ENDFIELD
+
+TEXT silk_string
+FLOC 5 29
+INFO silk_info_string 1
+FSIZE 73 7
+ENDFIELD
+
+FIELD silkscreen_button
+FLOC 5 33
+MENUBUTTON "Edit silkscreen parameters..." 6 3
+ENDFIELD 
+
+GROUP "Drafting"
+FLOC 3 37
+FSIZE 80 10
+ENDFIELD
+
+TEXT draft_string
+FLOC 5 40
+INFO draft_info_string 1
+FSIZE 73 7
+ENDFIELD
+
+FIELD draft_button
+FLOC 5 44
+MENUBUTTON "Edit drafting parameters..." 6 3
+ENDFIELD 
+#endif ALLEGRO_PARTITION
+
+ENDTAB
+#endif PRME_MANF_TAB
+
+ENDTABSET
+
+FIELD done
+FLOC 2 56
+MENUBUTTON "OK" 10 3
+ENDFIELD
+
+FIELD cancel
+FLOC 13 56
+MENUBUTTON "Cancel" 10 3
+ENDFIELD
+
+FIELD apply
+FLOC 24 56
+MENUBUTTON "Apply" 10 3
+ENDFIELD
+
+FIELD help
+FLOC 84 56
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM
+
+

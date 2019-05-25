@@ -1,0 +1,208 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 68 95
+HEADER "STEP Package Mapping"
+
+POPUP <VIEW_NAME_POPUP>"South""South", "North""North","East""East","West""West","Top""Top","Bottom""Bottom","SW Isometric""SW Isometric", "SE Isometric""SE Isometric", "NE Isometric""NE Isometric", "NW Isometric""NW Isometric".
+
+MESSAGE 3dmap_ready 0 "Ready."
+MESSAGE 3dmap_none_pkg 0 "No package selected."
+MESSAGE 3dmap_none_stp 0 "No step model selected."
+MESSAGE 3dmap_apply 0 "Use the Apply button to save changes."
+
+TILE
+
+#--------------------
+TEXT "Mapping Object: "
+TLOC 1 1
+ENDTEXT
+
+TEXT ""
+TLOC 13 1
+INFO map_info 1024
+ENDTEXT
+
+#--------------------
+TEXT "Name filter:"
+TLOC 2 6
+ENDTEXT
+
+FIELD namefilter_pkg
+FLOC 10 6
+STRFILLIN 13 255
+ENDFIELD
+
+FIELD pkglist
+FLOC 2 8
+LIST "" 30 8
+OPTIONS alphanumsort
+ENDFIELD
+#--------------------
+FIELD arrow
+FLOC 14 24
+MENUBUTTON "\/" 2 4
+ENDFIELD
+#--------------------
+TEXT "Name filter:"
+TLOC 2 30
+ENDTEXT
+
+FIELD namefilter_stp
+FLOC 10 30
+STRFILLIN 13 255
+ENDFIELD
+
+FIELD folder_step
+FLOC 26 30
+MENUBUTTON "Path" 6 3
+ENDFIELD
+
+
+FIELD stplist
+FLOC 2 32
+LIST "" 30 8
+OPTIONS alphanumsort
+ENDFIELD
+#--------------------
+TEXT "Offset X:"
+TLOC 2 51
+ENDTEXT
+
+FIELD offset_x
+FLOC 10 51
+STRFILLIN 10 255
+ENDFIELD
+
+TEXT "Y:"
+TLOC 22 51
+ENDTEXT
+
+FIELD offset_y
+FLOC 24 51
+STRFILLIN 10 255
+ENDFIELD
+
+TEXT "Z:"
+TLOC 36 51
+ENDTEXT
+
+FIELD offset_z
+FLOC 38 51
+STRFILLIN 10 255
+ENDFIELD
+
+TEXT "(Mils)"
+TLOC 50 51
+INFO length_unit_info 16
+ENDTEXT
+
+#---
+
+TEXT "Rotation X:"
+TLOC 2 53
+ENDTEXT
+
+FIELD rotation_x
+FLOC 10 53
+STRFILLIN 10 255
+ENDFIELD
+
+TEXT "Y:"
+TLOC 22 53
+ENDTEXT
+
+FIELD rotation_y
+FLOC 24 53
+STRFILLIN 10 255
+ENDFIELD
+
+TEXT "Z:"
+TLOC 36 53
+ENDTEXT
+
+FIELD rotation_z
+FLOC 38 53
+STRFILLIN 10 255
+ENDFIELD
+
+TEXT "(Degree)"
+TLOC 50 53
+INFO degree_unit_info 16
+ENDTEXT
+
+#-------------------
+
+FIELD view_area
+THUMBNAIL
+FLOC 34 3
+FSIZE 34 43
+ENDFIELD
+
+FIELD overlay
+FLOC 34 47
+CHECKLIST "Overlay"
+ENDFIELD
+
+TEXT "View:"
+TLOC 43 47
+ENDTEXT
+
+FIELD view_orientation
+FLOC 47 47
+ENUMSET 10
+POP "VIEW_NAME_POPUP"
+ENDFIELD
+
+FIELD color_code
+FLOC 61 47
+MENUBUTTON "Color" 3 3
+ENDFIELD
+
+#-------------------
+
+FIELD browse_load
+FLOC 1 57
+MENUBUTTON "Load..." 10 3
+ENDFIELD
+
+FIELD browse_saveas
+FLOC 12 57
+MENUBUTTON "Save As..." 10 3
+ENDFIELD
+
+FIELD done
+FLOC 42 57
+MENUBUTTON "Close" 10 3
+ENDFIELD
+
+FIELD save_current
+FLOC 23 57
+MENUBUTTON "Save Current Mapping" 10 3
+ENDFIELD
+
+FIELD help
+FLOC 58 57
+MENUBUTTON "Help" 10 3
+ENDFIELD
+#--------------------
+
+GROUP "Available Packages" g1
+FLOC 1 3
+FSIZE 32 21
+ENDGROUP
+
+GROUP "Available STEP Models" g2
+FLOC 1 27
+FSIZE 32 21
+ENDGROUP
+
+GROUP "Transformation of STEP Model" g3
+FLOC 1 49
+FSIZE 67 7
+ENDGROUP
+#--------------------
+
+ENDTILE
+
+ENDFORM

@@ -1,0 +1,97 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM fixed_font
+FIXED
+PORT 70 18
+HEADER "Set Advanced Measurement Parameters"
+
+POPUP <GlitchTypePop>"placeholder""0".
+#POPUP <crossVoltageTypePop>"placeholder""0".
+
+TILE
+
+TABSET "TABS"
+FLOC 1 1
+TSSIZE 69 14
+
+#GROUP "Glitch Control"
+#GLOC 1 0
+#GSIZE 69 9 
+#ENDGROUP
+
+TAB "Glitch Tolerance"
+
+TEXT "Glitch Tolerance:"
+TLOC 3 1
+ENDTEXT
+
+FIELD glitchTolerance
+FLOC 26 1
+STRFILLIN 9 15
+ENDFIELD
+
+TEXT "%"
+TLOC 37 1
+ENDFIELD
+
+TEXT "Note: Tolerance is related with each"
+TLOC 3 3
+ENDTEXT
+
+TEXT "IOCell. If the actual glitch is "
+TLOC 3 4
+ENDTEXT
+
+TEXT "wider than Tolerance, it will be"
+TLOC 3 5
+ENDTEXT
+
+TEXT "reported as a glitch violation"
+TLOC 3 6
+ENDTEXT
+
+FIELD glitchWaveform
+THUMBNAIL glitchImage.bmp
+FLOC 40 1 
+FSIZE  28 6 
+ENDFIELD
+
+ENDTAB
+
+TAB "Eye Diagram"
+
+GRID EyeDiagramParamGrid
+FLOC 0 0
+FSIZE 67 12
+OPTIONS HLINES VLINES USERSIZE
+GHEAD TOP
+HEADSIZE 2
+OPTIONS 3D
+ENDGHEAD
+GHEAD SIDE
+OPTIONS NUMBER 3D
+HEADSIZE 4
+ENDGHEAD
+ENDGRID
+
+ENDTAB
+
+FIELD Ok
+FLOC 2 16
+MENUBUTTON "OK" 10 3
+ENDFIELD
+
+FIELD Cancel
+FLOC 20 16
+MENUBUTTON "Cancel" 10 3
+ENDFIELD
+
+FIELD help
+FLOC 48 16
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+ENDTABSET
+
+ENDTILE
+
+ENDFORM

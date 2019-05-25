@@ -1,0 +1,141 @@
+#  $Header: /vobs/psd_backend_data/data/prefs/ui.prf /main/32 2012-04-30T15:40:58-04 fxf $
+#------------------------------------------------------------------------------
+#			User Interface Variables
+#------------------------------------------------------------------------------
+#
+# See User.prf for complete descriptions of fields in this file.
+
+
+PARENT:PARENT_L=ui/general
+
+SUMMARY:HELP=User Interface Settings
+
+pcb_cursor:TYPE=ENUM:POPUP=infinite,cross:DEFAULT=cross:EFF_IMMEDIATE:\
+PARENT_L=display/cursor:\
+HELP=If set, Allegro displays the desired cursor type.\
+Default value is 'cross'.
+
+pcb_cursor_angle:TYPE=LONG:MIN=0:MAX=89:EFF_IMMEDIATE:\
+PARENT_L=display/cursor:\
+HELP=Applies only to infinite cursor (see pcb_cursor variable). \
+By default, infinite cross-hair is shown orthogonal. This variable \
+specifies angle for infinite cursor. Values are between 0 \
+and 90.
+
+infinite_cursor_bug_nt:TYPE=CHECK:EFF_IMMEDIATE:\
+PARENT_L=display/cursor:\
+HELP=Infinite cursor may leave graphics artifacts on the screen in OpenGL \
+with some GPUs or graphics drivers. This problem occurs when the Windows 7 \
+Aero theme is enabled. \
+If set, this variable will likely eliminate the problem.
+
+noconfirm:TYPE=CHECK:EFF_ONNEXTCMD:\
+PARENT_L=ui/script:\
+HELP=If set Allegro does not prompt you to confirm certain actions. This \
+variable should be used only with scripts.
+
+noabout:TYPE=CHECK:EFF_ONRESTART:\
+PARENT_L=ui/general:\
+HELP=Suppresses splash screen on startup.
+
+readme_never:TYPE=CHECK:EFF_ONRESTART:\
+PARENT_L=ui/general:\
+HELP=If set, the Allegro README is suppressed on Allegro start-up. As of \
+15.0 this is obsolete.
+
+noformscriptbutton:TYPE=CHECK:EFF_ONNEXTCMD:\
+PARENT_L=ui/script:\
+HELP=When set, print to script for a form containing add/reset buttons can \
+include add and reset as commands. Replay of the script updates \
+values and then perform RESET. With the variable set, script record \
+does not record the form buttons.
+
+script_keepformopen:TYPE=CHECK:EFF_ONNEXTCMD:\
+PARENT_L=ui/script:\
+HELP=When set, will keep script dialog open across script replay. \
+Default is to close form during replay.
+
+script_startup:TYPE=STRING:EFF_ONRESTART:\
+PARENT_L=ui/script:\
+HELP=Script name used on startup. We will prepend the program name \
+to the name provided (<program>_<name>), and lookup the filename using \
+SCRIPTPATH. No warning is issued if script cannot be found. \
+More flexibility can obtained by using the "-s <script>" option when \
+starting the program. \
+Example\: "script_startup = foo" results in our looking for allegro_foo.scr \
+when starting allegro and pad_designer_foo.scr with pad_designer.
+
+fontfixedface:TYPE=STRING:EFF_ONRESTART:\
+PARENT_L=ui/fonts:\
+HELP=Fixed font name used in forms using fixed fonts. Default is "courier".
+
+fontface:TYPE=STRING:EFF_ONRESTART:\
+PARENT_L=ui/fonts:\
+HELP=Font name used in forms. Default is "MS Sans Serif".
+
+fontsize:TYPE=LONG:EFF_ONRESTART:\
+PARENT_L=ui/fonts:\
+HELP=Font size used in forms. Default is -12 for Unix and -9 for Windows NT.
+
+fontweight:TYPE=LONG:MIN=0:EFF_ONRESTART:\
+PARENT_L=ui/fonts:\
+HELP=Font weight used in forms. Default is 400.
+
+text_nocompact:TYPE=CHECK:EFF_IMMEDIATE:\
+PARENT_L=ui/general:\
+HELP=Hides the compact button in the define text dialog. This variable should be \
+set at the CDS_SITE level if you do not want your users compacting the text blocks.
+
+report_height:TYPE=LONG:MIN=20:MAX=70:EFF_IMMEDIATE:\
+PARENT_L=ui/general:\
+HELP=Height of text window used in report command. Legal values are 20 to 70 lines.
+
+recentFileList:TYPE=LONG:MIN=0:MAX=20:EFF_IMMEDIATE:\
+PARENT_L=ui/general:\
+HELP=Controls maximum number of files available in the File, Recently Used Design \
+list. Default is 10.
+
+resizable_status_bar:TYPE=CHECK:EFF_ONRESTART:\
+PARENT_L=ui/general:\
+HELP=Enable resizable status bar panes.
+
+allegro_noghosting:TYPE=CHECK:EFF_ONRESTART:\
+PARENT_L=ui/general:\
+HELP=If you experience problems on Vista or Windows 7 with Allegro \
+showing a \"Not Responding\" message when running scripts or Skill programs then \
+set this variable. On other Operating Systems this option is ignored.
+
+allegro_html:TYPE=CHECK:EFF_IMMEDIATE:\
+PARENT_L=ui/html:\
+HELP=The default uses a html viewing for text windows. Unsetting this variable \
+restores the older non-html viewing window.
+
+browser_text_size:TYPE=ENUM:EFF_IMMEDIATE:\
+PARENT_L=ui/html:\
+POPUP=smallest,small,medium,large,largest:DEFAULT=medium:\
+HELP=Controls the default font size used in the html text browser windows. Default is medium.
+
+http_newwindow:TYPE=CHECK:EFF_IMMEDIATE:\
+PARENT_L=ui/html:\
+HELP=For UNIX, opens a new html window in the current virtual desktop \
+By default, we will reuse an existing netscape window even if it is in a \
+different virtual desktop then the Allegro program.
+
+http_netscape:TYPE=CHECK:EFF_IMMEDIATE:\
+PARENT_L=ui/html:\
+HELP=For UNIX, alternative name of a html viewer. By default, we use \
+the program netscape. Alternative browser must support the netscape \
+-remote and -openURL command line arguments and netscape-remote X protocol. \
+Allegro has been verified with Netscape 7 and Mozilla 1.4.
+
+allegro_history:TYPE=LONG:MIN=0:MAX=1000:EFF_IMMEDIATE:\
+PARENT_L=ui/general:\
+HELP=Controls command history length for both Allegro command line and \
+the telskill development window. Default is 200. A value of 0 disables history.
+
+allegro_savehist:TYPE=LONG:MIN=0:MAX=1000:EFF_IMMEDIATE:\
+PARENT_L=ui/general:\
+HELP=Controls if history buffers should be saved to <HOME>/pcbenv on exit. \
+The value asks Allegro to store the user's last N commands in a file which is read \
+into the history buffer next time the program is run. Default is off.
+

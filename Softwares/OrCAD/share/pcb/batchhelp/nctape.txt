@@ -1,0 +1,43 @@
+
+NC Tape Generator
+	nctape [<args>] [<design>]
+
+   Arguments
+	[-b]   - enable backdrill. Design must be set-up for backdrilling
+	[-l]   - enable drill by layer. Output drill multiple drill files
+		 for each layer of design (example <brd>-bl-1-2.drl, <brd>-bl-2-3.drl)
+	[-n <outfile>] - if present will override nc_param.txt TAPE-FILE
+			parameter used in generating base .drl name
+			and output directory
+	[-o]   - reduce drill head travel path to increase efficiency
+	[-q]   - suppress verbose messages (this is the default)
+	[-s <scale>]   - Scales (x y) locations. All x/y locations in
+			drill file will be multiplied by this scale value.
+	[-v]   - enable verbose messages
+
+   <design> - design file to generate
+
+
+   Other notes
+	- Expects to find "nc_param.txt" file via in NCDPATH which controls
+	  additional tape out settings.
+	- Generates one or more drl extension files with the following
+	  name convention:
+	     <name>-<l1>-<l2>-<type><plate><-len>.drl
+		where
+		  name - basename of FILE parameter in "nc_param.txt" 
+		  l1     - number of drill start layer
+		  l2     - number of drill end layer
+		  type   - either laser, plasma, punch or other (from
+				padstack definition)
+		  plate  - if non-plated add "-np"
+		  len    - adds -len<number> if need to break up single
+			   file into multiple files due to exceeding file LENGTH
+			   specified in nc_param.txt
+	  Example a 6 layer board call with "TAPE-FILE of "/home/xyz/u.drl" 
+	  would have drill files of following names output to /home/xyz directory:
+		u-1-6-laser-np.drl
+		u-1-6-plasma.drl
+		etc.
+			   
+		  

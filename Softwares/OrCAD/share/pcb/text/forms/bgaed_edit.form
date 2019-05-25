@@ -1,0 +1,196 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 33 62
+HEADER "BGA Editor"
+
+TILE
+
+
+
+GROUP "Location Information"
+FLOC 1 0
+FSIZE 32 9
+ENDGROUP
+
+TEXT "Location:"
+TLOC 3 2
+ENDTEXT
+TEXT "Padstack:"
+TLOC 3 4
+ENDTEXT
+TEXT "Net:"
+TLOC 3 6
+ENDTEXT
+
+TEXT ""
+TLOC 11 2
+INFO pin_loc_display 20
+ENDTEXT
+TEXT ""
+TLOC 11 4
+INFO pin_pad_display 20
+ENDTEXT
+TEXT ""
+TLOC 11 6
+INFO pin_net_display 20
+ENDTEXT
+
+
+
+GROUP "Pin Use Statistics"
+FLOC 1 9
+FSIZE 32 7
+ENDGROUP
+
+TEXT "Power:"
+TLOC 3 11
+ENDTEXT
+TEXT "Ground:"
+TLOC 3 13
+ENDTEXT
+TEXT "Signal:"
+TLOC 17 11
+ENDTEXT
+TEXT "Unspec:"
+TLOC 17 13
+ENDTEXT
+
+TEXT ""
+TLOC 10 11
+INFO power_display 6
+ENDTEXT
+TEXT ""
+TLOC 10 13
+INFO ground_display 6
+ENDTEXT
+TEXT ""
+TLOC 24 11
+INFO signal_display 6
+ENDTEXT
+TEXT ""
+TLOC 24 13
+INFO unspec_display 6
+ENDTEXT
+
+
+
+GROUP "Pin Action"
+FLOC 1 16
+FSIZE 32 11
+ENDGROUP
+
+FIELD add_pins
+FLOC 2 18
+CHECKLIST "Add" "mode"
+ENDFIELD
+
+FIELD delete_pins
+FLOC 2 20
+CHECKLIST "Delete" "mode"
+ENDFIELD
+
+FIELD modify_pins
+FLOC 2 22
+CHECKLIST "Modify" "mode"
+ENDFIELD
+
+FIELD copy_pins
+FLOC 18 18
+CHECKLIST "Copy" "mode"
+ENDFIELD
+
+FIELD move_pins
+FLOC 18 20
+CHECKLIST "Move" "mode"
+ENDFIELD
+
+FIELD swap_pins
+FLOC 18 22
+CHECKLIST "Swap" "mode"
+ENDFIELD
+
+FIELD replace_pins
+FLOC 5 24
+CHECKLIST "Replace existing pins"
+ENDFIELD
+
+# Disabled until we figure out how far back to go.
+#FIELD delete_etch
+#FLOC 5 24
+#CHECKLIST "Delete attached conductor"
+#ENDFIELD
+
+
+
+GROUP "Pin Attributes"
+FLOC 1 27
+FSIZE 32 28
+ENDGROUP
+
+GROUP "Padstack"
+GLOC 2 29
+GSIZE 30 5
+ENDGROUP
+
+FIELD padstack_name
+FLOC 3 31
+STRFILLIN 15 255
+ENDFIELD
+
+FIELD browse_padstack
+FLOC 20 31
+MENUBUTTON "Browse" 10 3
+ENDFIELD
+
+GROUP "Pin Use"
+GLOC 2 34
+GSIZE 30 10
+ENDGROUP
+
+FIELD pin_use
+FLOC 4 36
+FGROUP "Pin Use"
+LIST "" 25 4
+ENDFIELD
+
+GROUP "Net"
+GLOC 2 44
+GSIZE 30 10
+ENDGROUP
+
+FIELD net_name
+FLOC 4 46
+FGROUP "Net"
+LIST "" 25 4
+ENDFIELD
+
+
+FIELD apply
+FLOC 12 56
+MENUBUTTON "Apply" 10 3
+ENDFIELD
+
+FIELD help
+FLOC 23 56
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+FIELD back
+FLOC 1 59
+MENUBUTTON "<Back" 10 3
+ENDFIELD
+
+FIELD done
+FLOC 12 59
+MENUBUTTON "OK" 10 3
+ENDFIELD
+
+FIELD Cancel
+FLOC 23 59
+MENUBUTTON "Cancel" 10 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

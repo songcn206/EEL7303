@@ -1,0 +1,123 @@
+FILE_TYPEt=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 80 36
+HEADER "Text Wizard, Step 3. Pin/Net info."
+
+POPUP <HEADER_POPUP>"""".
+
+TILE
+
+TEXT "Identify the data specified by each column in the file as shown below. Right click on a column header to get a list of choices. Set the ignore flag for any rows which do not contain relevant information."
+TLOC 3 1
+FSIZE 74 8
+ENDTEXT
+
+#ifdef NET_LIST_IN
+
+TEXT "Empty net name indicates:
+TLOC 3 5
+ENDTEXT 
+
+FIELD multi_line_nets
+FLOC 25 5
+CHECKLIST "Continuation of previous net" "continue"
+ENDFIELD
+
+FIELD dummy_nets
+FLOC 25 7
+CHECKLIST "Dummy net assignment" "continue"
+ENDFIELD
+
+FIELD disallow_empty_net
+FLOC 25 9
+CHECKLIST "Error (Blank net names not allowed)" "continue"
+ENDFIELD
+
+FIELD update_shapes
+FLOC 3 11
+CHECKLIST "Update connected shapes"
+ENDFIELD
+
+FIELD update_pbar
+FLOC 25 11
+CHECKLIST "Update plating bar pins"
+ENDFIELD
+
+GRID grid
+FLOC 3 14
+FSIZE 75 18
+OPTIONS HLINES VLINES USERSIZE 
+
+#endif
+
+#ifdef BONDWIRE_LIST_IN
+
+FIELD wire_allow_assignment
+FLOC 3 5
+CHECKLIST "Allow assignment of dummy net objects to real nets"
+ENDFIELD
+
+GRID grid
+FLOC 3 7
+FSIZE 75 24
+OPTIONS HLINES VLINES USERSIZE 
+
+#endif
+
+#ifndef BONDWIRE_LIST_IN || NET_LIST_IN
+
+#ifdef ICP_TEXT_WIZARD_PAD_OFFSET
+FIELD pin_adjust_offset
+FLOC 3 5
+CHECKLIST "Adjust pin locations to compensate for pad offset"
+ENDFIELD
+#endif
+
+GRID grid
+FLOC 3 7
+FSIZE 75 24
+OPTIONS HLINES VLINES USERSIZE 
+
+#endif
+
+GHEAD TOP 
+HEADSIZE 2
+OPTIONS 3D 
+POP "HEADER_POPUP"
+ENDGHEAD
+
+GHEAD SIDE
+OPTIONS 3D NUMBER 
+HEADSIZE 4
+ENDGHEAD
+
+ENDGRID
+
+FIELD back
+FLOC 3 33
+MENUBUTTON "<Back" 9 3
+ENDFIELD
+
+FIELD next
+FLOC 13 33
+MENUBUTTON "Next>" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 24 33
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 69 33
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+FLEXMODE StandButtons
+FLEX grid 0 0 1 1
+
+ENDTILE
+
+ENDFORM
+

@@ -1,0 +1,647 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN" "http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+<html xmlns="http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>PSpice User Guide -- Digital worst&#45;case timing analysis</title>
+<META NAME="Approver" CONTENT="Technical Publications">
+<META NAME="Author" CONTENT="Technical Publications">
+<META NAME="CreateDate" CONTENT="2012-08-31">
+<META NAME="CreateTime" CONTENT="1346413404">
+<META NAME="DataType" CONTENT="Manuals">
+<META NAME="Description" CONTENT="User guide for PSpice and AMS Simulator.">
+<META NAME="DocTitle" CONTENT="PSpice User Guide">
+<META NAME="DocType" CONTENT="User Guide">
+<META NAME="EdmsRelease" CONTENT="EDMS Windows-P015">
+<META NAME="FileTitle" CONTENT="Digital worst&#45;case timing analysis">
+<META NAME="FileType" CONTENT="Chapter">
+<META NAME="Keyword" CONTENT="pspug">
+<META NAME="Language" CONTENT="English">
+<META NAME="ModifiedDate" CONTENT="2012-08-31">
+<META NAME="ModifiedTime" CONTENT="1346413404">
+<META NAME="NextFile" CONTENT="P4view.html">
+<META NAME="PageCount" CONTENT="16">
+<META NAME="Platform" CONTENT="ALL">
+<META NAME="PrevFile" CONTENT="15mix-ad.html">
+<META NAME="Product" CONTENT="Allegro AMS Simulator, PSpice">
+<META NAME="ProductFamily" CONTENT="PCB Design, PCB Design">
+<META NAME="ProductVersion" CONTENT="16.6">
+<META NAME="RightsManagement" CONTENT="Copyright 2012 Cadence Design Systems Inc.">
+<META NAME="Title" CONTENT="PSpice User Guide -- Digital worst&#45;case timing analysis">
+<META NAME="TopicTags" CONTENT="FALSE">
+<META NAME="Version" CONTENT="16.6">
+  </head>
+  <body style="margin-left: 5%;">
+    <a name="pagetop"></a>
+    <a name="firstpage"></a>
+    <!-- Begin Buttons -->
+    <table width="650" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td height="36" width="650" colspan="10">
+          <img src="../support/header_doc.gif" width="650" height="34">
+        </td>
+      </tr>
+      <tr>
+        <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                </td>
+<td height="20" width="73">
+<a href="pspugTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<a href="pspugIX.html"><img src="../support/nav2_index.gif" border="0"></a>
+</td>
+        <td>
+          <a href="15mix-ad.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+        </td>
+        <td>
+          <a href="P4view.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+        </td>
+        <td height="20">
+          <a>
+<a href="pspug.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+          </a>
+        </td>
+        <td height="20" width="61">
+          <img src="../support/nav2_black.gif">
+        </td>
+        <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+        </td>
+        <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+        </td>
+        <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+        </td>
+      </tr>
+    </table>
+    <!-- End Buttons -->
+    <p>
+    <hr>
+    <p>
+      <h3>
+        <center>
+          <font >
+            <div>PSpice&#174; User Guide</div>
+            <font >
+              <div>
+            </font>
+          </font>
+        </center>
+      </h3>
+      <br>
+    </p>
+    <div>
+      <h1>16<a name="1054531">&nbsp;</a></h1>
+      <h1><a name="1048362">Digital worst&#45;case timing </a>analysis</h1>
+      <p><a name="1048363">This chapter deals with worst&#45;case timing analysis and includes the </a>following sections:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1048412" title="Digital worst-case timing analysis" name="1048367"><font color="Blue"><u>Digital worst&#45;case timing</u></font></a><a href="#1048412" title="Digital worst-case timing analysis"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1048429" title="Digital worst-case timing analysis" name="1048371"><font color="Blue"><u>Starting digital worst&#45;case timing analysis</u></font></a><a href="#1048429" title="Digital worst-case timing analysis"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1048448" title="Digital worst-case timing analysis" name="1048375"><font color="Blue"><u>Simulator representation of timing ambiguity</u></font></a><a href="#1048448" title="Digital worst-case timing analysis"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1048492" title="Digital worst-case timing analysis" name="1048379"><font color="Blue"><u>Propagation of timing ambiguity</u></font></a><a href="#1048492" title="Digital worst-case timing analysis"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1048577" title="Digital worst-case timing analysis" name="1048383"><font color="Blue"><u>Identification of timing hazards</u></font></a><a href="#1048577" title="Digital worst-case timing analysis"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1048603" title="Digital worst-case timing analysis" name="1048387"><font color="Blue"><u>Convergence hazard</u></font></a><a href="#1048603" title="Digital worst-case timing analysis"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1048640" title="Digital worst-case timing analysis" name="1048391"><font color="Blue"><u>Critical hazard</u></font></a><a href="#1048640" title="Digital worst-case timing analysis"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1048684" title="Digital worst-case timing analysis" name="1048395"><font color="Blue"><u>Cumulative ambiguity hazard</u></font></a><a href="#1048684" title="Digital worst-case timing analysis"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1048834" title="Digital worst-case timing analysis" name="1048399"><font color="Blue"><u>Reconvergence hazard</u></font></a><a href="#1048834" title="Digital worst-case timing analysis"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1048946" title="Digital worst-case timing analysis" name="1048403"><font color="Blue"><u>Glitch suppression due to inertial delay</u></font></a><a href="#1048946" title="Digital worst-case timing analysis"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1049029" title="Digital worst-case timing analysis" name="1048407"><font color="Blue"><u>Methodology</u></font></a><a href="#1049029" title="Digital worst-case timing analysis"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1048408">This entire chapter describes features that are not included in </a>PSpice.</p>
+      <h2><a name="1048412">Digital worst&#45;case timing</a></h2>
+      <p><a name="1048414">Manufacturers of electronic components generally specify </a>component parameters (such as propagation delays in the case of logic devices) as having tolerances. These are expressed as either an operating range, or as a spread around a typical operating point. The designer then has some indication of how much deviation from typical one might expect for any of these particular component delay values.</p>
+      <p><a name="1048415">Realizing that any two (or more) instances of a particular type of </a>component may have propagation delay values anywhere within the published range, designers are faced with the problem of ensuring that their products are fully functional when they are built with combinations of components having delay specifications that fall (perhaps randomly) anywhere within this range.</p>
+      <p><a name="1048416">Historically, this has been done by making simulation runs using </a>minimum (MIN), typical (TYP), and maximum (MAX) delays, and verifying that the product design is functional at these extremes. But, while this is useful to some extent, it does not uncover circuit design problems that occur only with certain combinations of slow and fast parts. True digital worst&#45;case simulation, as provided by PSpice&nbsp;A&#47;D, does just that.</p>
+      <p><a name="1048417">Other tools called timing verifiers are sometimes used in the design </a>process to identify problems that are indigenous to circuit definition. They yield analyses that are inherently pattern&#45;independent and often pessimistic in that they tend to find more problems than will truly exist. In fact, they do not consider the actual usage of the circuit under an applied stimulus.</p>
+      <p><a name="1048418">PSpice</a>&nbsp;A&#47;D does not provide this type of static timing verification. Digital worst&#45;case timing simulation, as provided by PSpice&nbsp;A&#47;D, is a pattern&#45;dependent mechanism that allows a designer to locate timing problems subject to the constraints of a specific applied stimulus.</p>
+      <h3><a name="1048421">Digital worst&#45;case analysis compared to analog </a>worst&#45;case analysis</h3>
+      <p><a name="1048423">Digital worst&#45;case timing simulation is different from analog </a>worst&#45;case analysis in several ways. Analog worst&#45;case analysis is implemented as a sensitivity analysis for each parameter which has a tolerance, followed by a projected worst&#45;case simulation with each parameter set to its minimum or maximum value. This type of analysis is general since any type of variation caused by any type of parameter tolerance can be studied. But it is time consuming since a separate simulation is required for each parameter. This does not always produce true worst&#45;case results, since the algorithm assumes that the sensitivity is monotonic over the tolerance range.</p>
+      <p><a name="1048424">The techniques used for digital worst&#45;case timing simulation are not </a>compatible with analog worst&#45;case analysis. It is therefore not possible to do combined analog&#47; digital worst&#45;case analysis and simulation and get the correct results. PSpice&nbsp;A&#47;D allows digital worst&#45;case simulation of mixed&#45;signal and all&#45;digital circuits; any analog sections are simulated with nominal values.</p>
+      <p><a name="1048427">Systems containing embedded analog&#45;within&#45;digital sections do not </a>give accurate worst&#45;case results; they may be optimistic or pessimistic. This is because analog simulation can not model a signal that will change voltage at an unknown point within some time interval.</p>
+      <h2><a name="1048429">Starting digital worst&#45;case timing analysis</a></h2>
+      <h4><em><a name="1048431">To set up a digital worst&#45;case timing analysis:</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048432">In the Simulation Settings dialog box, click the Options tab.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048436">See </a><a href="08start.html#1048556" title="08start.html"><font color="Blue"><u>Setting up analyses</u></font></a><a href="08start.html#1048556" title="08start.html"></a> for a description of the Simulation Settings dialog box.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048437">Under Category, select Gate&#45;level Simulation.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048438">In the Timing Mode frame, check Worst&#45;case (min&#47;max)</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048439">In the Initialize all flip&#45;flops drop&#45;down list, select X.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048440">Set the Default I&#47;O level for A&#47;D interfaces to 1.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	6.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048441">Click OK.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	7.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048444">Start the simulation as described in </a><a href="08start.html#1049006" title="08start.html"><font color="Blue"><u>Starting a simulation</u></font></a><a href="08start.html#1049006" title="08start.html"></a>.</td>
+          </tr>
+        </table>
+      </div>
+      <h2><a name="1048448">Simulator representation of timing </a>ambiguity</h2>
+      <p><a name="1048449">PSpice</a>&nbsp;A&#47;D uses the five&#45;valued state representation {0,1,R,F,X}, where R and F represent rising and falling transitions, respectively. Any R or F transitions can be thought of as ambiguity regions. Although the starting and final states are known (example: R is a 0 → 1 transition), the exact time of the transition is not known, except to say that it occurs somewhere within the <font color="#000000"><em>ambiguity region</em></font>. The ambiguity region is the time interval between the earliest and the latest time that a transition could occur.</p>
+      <p><a name="1048452">Timing ambiguities propagate through digital devices via whatever </a>paths are sensitized to the specific transitions involved.   This is normal logic behavior. The delay values (MIN, TYP, or MAX) skew the propagation of such signals by whatever amount of propagation delay is associated with each primitive instance.</p>
+      <p><a name="1048453">When worst&#45;case (MIN&#47;MAX) timing operation is selected, both the </a>MIN and the MAX delay values are used to compute the duration of the timing ambiguity result that represents a primitive's output change.</p>
+      <p><a name="1048455">For example, consider the model of a BUF device in the following </a>figure.</p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048456">U5 BUF $G_DPWR $G_DGND IN1 OUT1 ; BUFFER model</a><br>+ T_BUF IO_STD<br><br>.MODEL T_BUF UGATE (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; BUF timing model<br>+ TPLHMN=15ns TPLHTY=25ns TPLHMX=40ns<br>+ TPHLMN=12ns TPHLTY=20ns TPHLMX=35ns)</font></blockquote>
+      <p align="left"><a name="1048488"><img src="images/16digwct.22.1.1.png" width="388" height="63" alt=""></a></p>
+      <p><font color="#000000"><strong>Figure 16&#45;1&nbsp; </strong></font><strong><a name="1048489">Timing ambiguity example one.</a></strong></p>
+      <p><a name="1048490">The application of the instantaneous 0&#45;1 transition at 5nsec in this </a>example produces a corresponding output result. Given the delay specifications in the timing model, the output edge occurs at a MIN of 15nsec later and a MAX of 40nsec later. The region of ambiguity for the output response is from 20 to 45nsec (from TPLHMN and TPLHMX values). Similar calculations apply to a 1&#45;0 transition at the input, using TPHLMN and TPHLMX values.</p>
+      <h2><a name="1048492">Propagation of timing ambiguity</a></h2>
+      <p><a name="1048493">As signals propagate through the circuit, ambiguity is contributed by </a>each primitive having a nonzero MIN&#47;MAX delay spread. Consider the following example that uses the delay values of the previous BUF model.</p>
+      <p align="left"><a name="1048518"><img src="images/16digwct.22.1.2.png" width="388" height="66" alt=""></a></p>
+      <p><font color="#000000"><strong>Figure 16&#45;2&nbsp; </strong></font><strong><a name="1048519">Timing ambiguity example two.</a></strong></p>
+      <p><a name="1048520">This accumulation of ambiguity may have adverse effects on proper </a>circuit operation. In the following example, consider ambiguity on the data input to a flip&#45;flop.</p>
+      <p align="left"><a name="1048543"><img src="images/16digwct.22.1.3.png" width="388" height="45" alt=""></a></p>
+      <p><font color="#000000"><strong>Figure 16&#45;3&nbsp; </strong></font><strong><a name="1048544">Timing ambiguity example three.</a></strong></p>
+      <p><a name="1048545">The simulator must predict an X output, because it is not known with </a>any certainty when the data input actually made the 0&#45;1 transition. If the cumulative ambiguity present in the data signal had been less, the 1 state would be latched up correctly.</p>
+      <p><a name="1048549">Figure </a><a href="#1048575" title="Digital worst-case timing analysis"><font color="#0000ff"><u>16&#45;4</u></font></a> illustrates the case of unambiguous data change (settled before the clock could transition) being latched up by a clock signal with some ambiguity. The Q output will change, but the time of its transition is a function of both the clock's ambiguity and that contributed by the flip&#45;flop MIN&#47;MAX delays.</p>
+      <p align="left"><a name="1048573"><img src="images/16digwct.22.1.4.png" width="388" height="43" alt=""></a></p>
+      <p><font color="#000000"><strong>Figure 16&#45;4&nbsp; </strong></font><strong><a name="1048575">Timing ambiguity example four.</a></strong></p>
+      <h2><a name="1048577">Identification of timing hazards</a></h2>
+      <p><a name="1048579"><font color="#000000"><em>Timing hazard</em></font></a> is the term applied to situations where the response of a device cannot be properly predicted because of uncertainty in the arrival times of signals applied to its inputs.</p>
+      <p><a name="1048583">For example, Figure </a><a href="#1048599" title="Digital worst-case timing analysis"><font color="#0000ff"><u>16&#45;5</u></font></a> below shows the following signal transitions (0&#45;1, 1&#45;0) being applied to the AND gate.</p>
+      <p align="left"><a name="1048597"><img src="images/16digwct.22.1.5.png" width="388" height="39" alt=""></a></p>
+      <p><font color="#000000"><strong>Figure 16&#45;5&nbsp; </strong></font><strong><a name="1048599">Timing hazard example.</a></strong></p>
+      <p><a name="1048600">The state of the output does not (and should not) change, since at no </a>time do both input states qualify the gate, and the arrival times of the transitions are known.</p>
+      <h3><a name="1048603">Convergence hazard</a></h3>
+      <p><a name="1048604">In cases where there are ambiguities associated with the signal </a>transitions 0&#45;R&#45;1 and 1&#45;F&#45;0--which have a certain amount of overlap--it is no longer certain which of the transitions happens first. </p>
+      <p><a name="1048605">The output could pulse (0&#45;1&#45;0) at some point because the input </a>states may qualify the gate. On the other hand, the output could remain stable at the 0&nbsp;state. This is called a <font color="#000000"><em>convergence hazard</em></font> because the reason for the glitch occurrence is the convergence of the conflicting ambiguities at two primitive inputs.</p>
+      <p><a name="1048606">Gate primitives (including LOGICEXP primitives) that are presented </a>with simultaneous opposing R and F levels may produce a pulse of the form 0&#45;R&#45;0 or 1&#45;F&#45;1.</p>
+      <p><a name="1048608">For example, a two&#45;input AND gate with the inputs shown in Figure </a><a href="#1048634" title="Digital worst-case timing analysis"><font color="#0000ff"><u>16&#45;6</u></font></a> below, produces the output shown.</p>
+      <p align="left"><a name="1048632"><img src="images/16digwct.22.1.6.png" width="388" height="37" alt=""></a></p>
+      <p><font color="#000000"><strong>Figure 16&#45;6&nbsp; </strong></font><strong><a name="1048634">Convergence hazard example.</a></strong></p>
+      <p><a name="1048635">This output (0&#45;R&#45;0) should be interpreted as </a><font color="#000000"><em>a possible single </em></font><font color="#000000"><em>pulse, no longer than the duration of the R level</em></font>. </p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1048636">Other types of primitives, such as flip&#45;flops, may produce an X </a>instead of an R&#45;0 or F&#45;1 in response to a convergence hazard.</p>
+      <p><a name="1048637">The actual device's output may or may not change, depending on the </a>transition times of the inputs.</p>
+      <h3><a name="1048640">Critical hazard</a></h3>
+      <p><a name="1048641">It is important to note that the glitch predicted could propagate </a>through the circuit and may cause incorrect operation. If the glitch from a timing hazard becomes latched up in an internal state (such as flip&#45;flop or ram), or if it causes an incorrect state to be latched up, it is called a <font color="#000000"><em>critical hazard</em></font> because it definitely causes incorrect operation.</p>
+      <p><a name="1048645">Otherwise, the hazard may pose no problem. Figure </a><a href="#1048680" title="Digital worst-case timing analysis"><font color="#0000ff"><u>16&#45;7</u></font></a> below shows the same case as above, driving the data input to a latch.</p>
+      <p align="left"><a name="1048677"><img src="images/16digwct.22.1.7.png" width="388" height="40" alt=""></a></p>
+      <p><font color="#000000"><strong>Figure 16&#45;7&nbsp; </strong></font><strong><a name="1048680">Critical hazard example.</a></strong></p>
+      <p><a name="1048681">As long as the glitch always occurs well before the leading edge of </a>the clock input, it will not cause a problem.</p>
+      <h3><a name="1048684">Cumulative ambiguity hazard</a></h3>
+      <p><a name="1048685">In worst&#45;case mode, simple signal propagation through the network </a>will result in a buildup of ambiguity along the paths between synchronization points. See <a href="#1048946" title="Digital worst-case timing analysis"><font color="Blue"><u>Glitch suppression due to inertial delay</u></font></a><a href="#1048946" title="Digital worst-case timing analysis"></a>. The cumulative ambiguity is illustrated in Figure <a href="#1048736" title="Digital worst-case timing analysis"><font color="#0000ff"><u>16&#45;8</u></font></a>.</p>
+      <p align="left"><a name="1048733"><img src="images/16digwct.22.1.8.png" width="388" height="75" alt=""></a></p>
+      <p><font color="#000000"><strong>Figure 16&#45;8&nbsp; </strong></font><strong><a name="1048736">Cumulative ambiguity hazard example one.</a></strong></p>
+      <p><a name="1048737">The rising and falling transitions applied to the input of the buffer have </a>a 1nsec ambiguity. The delay specifications of the buffer indicate that an additional 2nsec of ambiguity is added to each edge as they propagate through the device. Notice that the duration of the stable state 1 has diminished due to the accumulation of ambiguity.</p>
+      <p><a name="1048741">Figure </a><a href="#1048786" title="Digital worst-case timing analysis"><font color="#0000ff"><u>16&#45;9</u></font></a> shows the effects of additional cumulative ambiguity.</p>
+      <p align="left"><a name="1048784"><img src="images/16digwct.22.1.9.png" width="385" height="82" alt=""></a></p>
+      <p><font color="#000000"><strong>Figure 16&#45;9&nbsp; </strong></font><strong><a name="1048786">Cumulative ambiguity hazard example two.</a></strong></p>
+      <p><a name="1048787">The X result is predicted here because the ambiguity of the rising </a>edge propagating through the device has increased to the point where it will overlap the later falling edge ambiguity. Specifically, the rising edge should occur between 3nsec and 12nsec; but, the subsequent falling edge applied to the input predicts that the output starts to fall at 10nsec. This situation is called a <font color="#000000"><em>cumulative </em></font><font color="#000000"><em>ambiguity hazard</em></font>.</p>
+      <p><a name="1048788">Another cause of cumulative ambiguity hazard involves circuits with </a>asynchronous feedback. The simulation of such circuits under worst&#45;case timing constraints yields an overly pessimistic result due to the unbounded accumulation of ambiguity in the feedback path. A simple example of this effect is shown in Figure <a href="#1048828" title="Digital worst-case timing analysis"><font color="#0000ff"><u>16&#45;10</u></font></a>.</p>
+      <p align="left"><a name="1048826"><img src="images/16digwct.22.1.10.png" width="388" height="66" alt=""></a></p>
+      <p><font color="#000000"><strong>Figure 16&#45;10&nbsp; </strong></font><strong><a name="1048828">Cumulative ambiguity hazard example three.</a></strong></p>
+      <p><a name="1048829">Due to the accumulation of ambiguity in the loop, the output signal </a>will eventually become X, because the ambiguities of the rising and falling edges overlap. However, in the hardware implementation of this circuit, a continuous phase shift with respect to absolute time is what will actually occur (assuming normal deviations of the rise and fall delays from the nominal values).</p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1048831">If this signal were used to clock another circuit, it would </a>become the reference and the effects of the phase shift could be ignored. You can do this by setting the NAND gate's model parameter, MNTYMXDLY=2 to utilize typical delay values for that one gate only (all other devices continue to operate in worst&#45;case mode).</p>
+      <h3><a name="1048834">Reconvergence hazard</a></h3>
+      <p><a name="1048835">PSpice</a>&nbsp;A&#47;D recognizes situations where signals having a common origin reconverge on the inputs of a single device. In Figure <a href="#1048902" title="Digital worst-case timing analysis"><font color="#0000ff"><u>16&#45;11</u></font></a>, the relative timing relationship between the two paths (U2, U3) is important. </p>
+      <p align="left"><a name="1048900"><img src="images/16digwct.22.1.11.png" width="385" height="194" alt=""></a></p>
+      <p><font color="#000000"><strong>Figure 16&#45;11&nbsp; </strong></font><strong><a name="1048902">Reconvergence hazard example one.</a></strong></p>
+      <p><a name="1048903">Given the delay values shown, it is impossible for the clock to change </a>before the data input, since the MAX delay of the U2 path is smaller than the MIN delay of the U3 path. In other words, the overlap of the two ambiguity regions could not actually occur. </p>
+      <p><a name="1048904">PSpice</a>&nbsp;A&#47;D recognizes this type of situation and does not produce the overly pessimistic result of latching an X state into the Q&#45;output of U4. This factors out the 15 nsec of common ambiguity attributed to U1 from the U2 and U3 signals (see Figure <a href="#1048926" title="Digital worst-case timing analysis"><font color="#0000ff"><u>16&#45;12</u></font></a>).</p>
+      <p align="left"><a name="1048924"><img src="images/16digwct.22.1.12.png" width="388" height="75" alt=""></a></p>
+      <p><font color="#000000"><strong>Figure 16&#45;12&nbsp; </strong></font><strong><a name="1048926">Reconvergence hazard example two.</a></strong></p>
+      <p><a name="1048930">The result in Figure </a><a href="#1048926" title="Digital worst-case timing analysis"><font color="#0000ff"><u>16&#45;12</u></font></a> does not represent what is actually propagated at U2 and U3, but is a computation to determine that U2 must be stable at the earliest time U3 might change. This is why an X level should not be latched.</p>
+      <p><a name="1048931">In the event that discounting the common ambiguity does not </a>preclude latching the X (or, in the case of simple gates, predicting a glitch), the situation is called a <font color="#000000"><em>reconvergence</em></font> <font color="#000000"><em>hazard</em></font>. This is the same as a convergence hazard with the conflicting signal ambiguities having a common origin.</p>
+      <p><a name="1048932">To use digital worst&#45;case simulation effectively, find the areas of the </a>circuit where signal timing is most critical and use constraint checkers where appropriate. These devices identify specific timing violations, taking into account the actual signal ambiguities (resulting from the elements' MIN&#47;MAX delay characteristics). See the online <font color="#000000"><em>PSpice </em></font><font color="#000000"><em>Reference Guide</em></font> for more information about digital primitives. </p>
+      <p><a name="1048935">The most common areas of concern include:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048936">data&#47;clock signal relationships</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048937">clock pulse&#45;widths</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048938">bus arbitration timing</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1048939">Signal ambiguities that converge (or reconverge) on wired nets or </a>buses with multiple drivers may also produce hazards in a manner similar to the behavior of logic gates. In such cases, PSpice&nbsp;A&#47;D factors out any common ambiguity before reporting the existence of a hazard condition.</p>
+      <p><a name="1048940">The use of constraint checkers to validate signal behavior and </a>interaction in these areas of your design identifies timing problems early in the design process. Otherwise, a timing&#45;related failure is only identifiable when the circuit does not produce the expected simulation results. See <a href="#1049029" title="Digital worst-case timing analysis"><font color="Blue"><u>Methodology</u></font></a><a href="#1049029" title="Digital worst-case timing analysis"></a> for information on digital worst&#45;case timing simulation methodology.</p>
+      <h2><a name="1048946">Glitch suppression due to inertial delay</a></h2>
+      <p><a name="1048947">Signal propagation through digital primitives is performed by the </a>simulator subject to constraints such as the primitive's function, delay parameter values, and the frequency of the applied stimulus. These constraints are applied both in the context of a normal, well&#45;behaved stimulus, and a stimulus that represents timing hazards. </p>
+      <p><a name="1048948">Timing hazards may not necessarily result in the prediction of an X </a>or glitch output from a primitive; these are due to the delay characteristics of the primitive, which PSpice&nbsp;A&#47;D models using the concept of inertial delay.</p>
+      <p><a name="1048949">A device presented with a combination of rising and falling input </a>transitions (assuming no other dominant inputs) produces a glitch due to the uncertainty of the arrival times of the transitions (see Figure <a href="#1048958" title="Digital worst-case timing analysis"><font color="#0000ff"><u>16&#45;13</u></font></a>).</p>
+      <p align="left"><a name="1049482"><img src="images/16digwct.22.1.13.png" width="538" height="128" alt=""></a></p>
+      <p><font color="#000000"><strong>Figure 16&#45;13&nbsp; </strong></font><strong><a name="1048958">Glitch suppression example one.</a></strong></p>
+      <p><a name="1048959">However, when the duration of the conflicting input stimulus is less </a>than the inertial delay of the device, the X result is automatically suppressed by the simulator because it would be overly pessimistic (see Figure <font color="#0000ff"><u>16&#45;14</u></font>).</p>
+      <p align="left"><a name="1049490"><img src="images/16digwct.22.1.14.png" width="613" height="180" alt=""></a></p>
+      <p><a name="1048970">In the analysis of reconvergent fanout cases (where common </a>ambiguity is recognized), it is possible that conflicting signal ambiguities may still overlap at the inputs to a primitive, even after factoring out the commonality. In such cases, where the amount of overlap is less than the inertial delay of the device, the prediction of a glitch is also suppressed by the simulator (see Figure <font color="#0000ff"><u>16&#45;15</u></font>).</p>
+      <p align="left"><a name="1049502"><img src="images/16digwct.22.1.15.png" width="388" height="174" alt=""></a></p>
+      <p><a name="1049025">In this case, factoring out the 15nsec common ambiguity still results </a>in a 5nsec overlap of conflicting states. The glitch is suppressed, however, because 5nsec is less than TPLHMX&#45;TPLHMN (the computed inertial delay value of the AND gate, 6nsec).</p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1049026">Glitch suppression can be overridden by setting the </a>pulse&#45;width rejection threshold parameter (TPWRT) in the device's I&#47;O Model.</p>
+      <h2><a name="1049029">Methodology</a></h2>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1049030">This is not intended to be a comprehensive discussion of the </a>application of digital worst&#45;case timing simulation in the design process. Rather, it is a suggested starting point for understanding the results of your simulation.</p>
+      <p><a name="1049031">Combining component tolerances and the circuit design's functional </a>response to a specific stimulus presents a challenge. You must make sure that all the finished circuits will operate properly. Well&#45;designed systems have a high degree of immunity from the effects of varying combinations of individual component tolerances.</p>
+      <p><a name="1049032">Digital worst&#45;case timing simulation can help identify design </a>problems, depending upon the nature of the stimulus applied to the design. You can use the simulation of signal propagation through the network to observe the timing relationships among various devices and make adjustments to the design.</p>
+      <p><a name="1049033">Digital worst&#45;case timing simulation does not yield such results </a>without an applied stimulus; it is not a static timing analysis tool. The level of confidence that you establish for your design's timing&#45;dependent characteristics is directly a function of the applied stimulus.</p>
+      <p><a name="1049034">Generally, the most productive way to define a stimulus is to use </a>functional testing: a stimulus designed to operate the design in a normal manner, exercising all of the important features in combination with a practical set of data. For example, if you were designing a digital ADDER circuit, you would probably want to ensure that no timing race conditions existed in the carry logic.</p>
+      <p><a name="1049035">Your timing simulation methodology should include these key steps:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049036">Accurate specification of device delay characteristics.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049037">Functional specification of circuit behavior, including all "don't </a>care" states or conditions.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049038">A set of stimuli designed to verify the operation of all functions of </a>the design.</td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1049039">One common design verification strategy is stepwise identification of </a>the sections of the design that are to be exercised by particular subsets of the stimulus, followed by verification of the response against the functional specification. </p>
+      <p><a name="1049040">Complete this phase using normal (not digital worst&#45;case) simulation, </a>with typical delays selected for the elements. The crucial metric here is the state response of the design. Note that (with rare exception) this response consists of defined states and does not include X's.</p>
+      <p><a name="1049041">The second phase of design verification is to use digital worst&#45;case </a>simulation, reapplying the functionally correct stimulus, and comparing the resulting state response to that obtained during normal simulation. For example, in the case of a convergence or reconvergence hazard, look for conflicting rise&#47;fall inputs. In the case of cumulative ambiguity, look for successive ambiguity regions merging within two edges forming a pulse. Investigate differences at primary observation points (such as circuit outputs and internal state variables)--particularly those due to X states (such as critical hazards)--to determine their cause. </p>
+      <p><a name="1049044">Starting at those points, use the waveform analyzer and the circuit </a>schematic to trace back through the network. Continue until you find the reason for the hazard.</p>
+      <p><a name="1049045">After you identify the appropriate paths and know the relative timing </a>of the paths, you can do either of the following:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049046">Modify the stimulus (in the case of a simple convergence </a>hazard) to rearrange the relative timing of the signals involved.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><font color="#000000"><strong>Note: </strong></font><a name="1049047">Modifying the stimulus is not generally effective for </a>reconvergent hazards, because the problem is between the source of the reconvergent fanout and the location of the hazard. In this case, discounting the common ambiguity did not preclude the hazard.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049048">Change one or both of the path delays to rearrange the relative </a>timing, by adding or removing logic, or by substituting component types with components that have different delay characteristics.</td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1049049">In the case of the cumulative ambiguity hazard, the most likely </a>solution is to shorten the path involved. You can do this in either of two ways:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049050">Add a synchronization point to the logic, such as a flip&#45;flop--or </a>gating the questionable signal with a clock (having well&#45;controlled ambiguity)--before its ambiguity can grow to unmanageable duration.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049051">Substitute faster components in the path, so that the buildup of </a>ambiguity happens more slowly.</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <br>
+    <a href="#pagetop">Return to top of page</a>
+    <hr>
+    <hr align="left">
+    <div style="text-align: left;">
+      <!-- Begin Buttons -->
+      <table width="650" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                    </td>
+<td height="20" width="73">
+<a href="pspugTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<a href="pspugIX.html"><img src="../support/nav2_index.gif" border="0"></a>
+</td>
+          <td>
+            <a href="15mix-ad.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+          </td>
+          <td>
+            <a href="P4view.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+          </td>
+          <td>
+            <a>
+<a href="pspug.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+            </a>
+          </td>
+          <td height="20" width="61">
+            <img src="../support/nav2_black.gif">
+          </td>
+          <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+          </td>
+          <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+          </td>
+          <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+          </td>
+        </tr>
+      </table>
+      <!-- End Buttons -->
+    </div>
+    <br>
+    <font size="-1" >
+For support, see <a href="http://support.cadence.com" target="_blank">Cadence Online Support</a> service.</font>
+    <br>
+    <br>
+    <font size="-1" >
+      <i>Copyright &#169; 2011, <a href="http://www.cadence.com">Cadence Design Systems, Inc.</a></i>
+    </font>
+    <br>
+    <font size="-1" >
+All rights reserved.</font>
+    <br>
+    <br>
+  </body>
+</html>

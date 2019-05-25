@@ -1,0 +1,84 @@
+# Form for csvpin_io command
+
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM 
+FIXED
+PORT 53 8
+
+
+#ifdef _pin_in
+HEADER "CSV Pin In"
+#else
+HEADER "CSV Pin Out"
+#endif
+
+MESSAGE save 0 "CSV file saved."
+MESSAGE import 0 "Loaded %d pins"
+MESSAGE import_warn 2 "Loaded %d pins, couldn't import %d pins."
+MESSAGE badsave 3 "Error in saving csv file."
+MESSAGE badread 3 "Error in reading csv file."
+
+TILE
+
+TEXT "CSV file:"
+TLOC 2 2
+ENDTEXT
+
+FIELD filename
+FLOC 10 2
+STRFILLIN 34 1024
+ENDFIELD
+
+FIELD browse
+FLOC 47 2
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+#ifdef _pin_in
+TEXT "Text block:"
+TLOC 4 5
+ENDTEXT
+
+FIELD text_block
+FLOC 13 5
+INTSLIDEBAR 2 2
+MIN 1
+MAX 64
+ENDFIELD
+
+FIELD delete_pins
+FLOC 22 5
+CHECKLIST "Delete existing pins" 
+ENDFIELD
+#else
+
+FIELD text_location
+FLOC 4 5
+CHECKLIST "Include pin text location" 
+ENDFIELD
+
+#endif
+
+FIELD execute
+FLOC 2 9
+#ifdef _pin_in
+MENUBUTTON "Import" 10 3
+#else
+MENUBUTTON "Export" 10 3
+#endif
+ENDFIELD
+
+FIELD close
+FLOC 15 9
+MENUBUTTON "Close" 10 3
+ENDFIELD
+
+FIELD help
+FLOC 41 9
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM
+

@@ -1,0 +1,856 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 45 67
+HEADER "ICPKGSE Edit Form"
+
+# Do not change the rotation constants without changing them in icpkgse_symbol_editor.h as well.
+POPUP <ROTATION_POPUP> "Automatic" "0", "Keep Current" "5", "North" "1", "West" "2", "South" "3", "East" "4".
+POPUP <PINUSE_POPUP> "" "".
+POPUP <MIRROR_POPUP> "No" "0", "Yes" "1", "No change" "2"
+POPUP <SCHEME_POPUP> "" "".
+POPUP <START_POPUP> "" "".
+POPUP <TEXT_BLOCK_POPUP> "" "".
+POPUP <DRIVER_LIBRARY_POPUP> "" "".
+POPUP <DRVTIL_QTY_POPUP> "Add more" "add", "Remove some" "remove".
+POPUP <PIN_MACRO_POPUP> "" "".
+POPUP <PIN_PNET_POPUP> "" "".
+POPUP <PIN_INET_POPUP> "" "".
+
+TILE
+
+TABSET "One"
+FLOC 2 0
+TSSIZE 42 51
+
+#ifdef ICPKGSE_PINS
+TAB "Pins" pins_tab
+    GROUP "Action"
+    FLOC 2 0
+    FSIZE 38 9
+    ENDGROUP
+
+    FIELD pin_add
+    FLOC 4 2
+    CHECKLIST "Add" "pin_mode"
+    ENDFIELD
+
+    FIELD pin_delete
+    FLOC 4 4
+    CHECKLIST "Delete" "pin_mode"
+    ENDFIELD
+
+    FIELD pin_copy
+    FLOC 15 2
+    CHECKLIST "Copy" "pin_mode"
+    ENDFIELD
+
+    FIELD pin_move
+    FLOC 15 4
+    CHECKLIST "Move" "pin_mode"
+    ENDFIELD
+
+    FIELD pin_modify
+    FLOC 26 2
+    CHECKLIST "Modify" "pin_mode"
+    ENDFIELD
+
+    FIELD pin_modify_assign
+    FLOC 26 2
+    CHECKLIST "Modify/Assign" "pin_mode"
+    ENDFIELD
+
+    FIELD pin_swap
+    FLOC 26 4
+    CHECKLIST "Swap" "pin_mode"
+    ENDFIELD
+
+    FIELD pin_swap_package
+    FLOC 6 6
+    CHECKLIST "Swap Package Nets"
+    ENDFIELD
+    
+    FIELD pin_swap_ic
+    FLOC 24 6
+    CHECKLIST "Swap IC Nets"
+    ENDFIELD
+
+    FIELD pin_ripup
+    FLOC 4 6
+    CHECKLIST "Rip up routing"
+    ENDFIELD
+
+    FIELD pin_replace
+    FLOC 4 6
+    CHECKLIST "Replace existing pins"
+    ENDFIELD
+
+    FIELD pin_stretch
+    FLOC 25 6
+    CHECKLIST "Stretch routing"
+    ENDFIELD
+
+    GROUP "Attributes"
+    FLOC 2 9
+    FSIZE 38 27
+    ENDGROUP
+
+    GROUP "Padstack"
+    GLOC 4 11
+    GSIZE 34 9
+    ENDGROUP
+
+    TEXT "Name:"
+    TLOC 6 13
+    INFO pin_padstack_label 5
+    ENDTEXT
+    FIELD pin_padstack_name
+    FLOC 15 13
+    STRFILLIN 17 256
+    ENDFIELD
+
+    FIELD pin_browse_padstack
+    FLOC 34 13
+    MENUBUTTON "..." 3 3
+    ENDFIELD
+
+    TEXT "Orientation:"
+    TLOC 6 15
+    INFO pin_rot_label 9
+    ENDTEXT
+    FIELD pin_rot_side
+    FLOC 15 15
+    ENUMSET 19
+    POP "ROTATION_POPUP"
+    ENDFIELD
+
+    TEXT "LEF Macro:"
+    TLOC 6 17
+    INFO pin_macro_label 10
+    ENDTEXT
+    FIELD pin_macro_name
+    FLOC 15 17
+    ENUMSET 19
+    POP "PIN_MACRO_POPUP"
+    ENDFIELD
+
+    GROUP "Nets"
+    GLOC 4 20
+    GSIZE 34 9
+    ENDGROUP
+
+    FIELD pin_pnet_inet_auto_sel
+    FLOC 6 22
+    CHECKLIST "Pkg<-->IC Auto Select"
+    ENDFIELD
+    
+    TEXT "1-1 Match"
+    FLOC 30 22
+    INFO pin_pnet_match_label_yes 9
+    ENDTEXT
+    
+    TEXT "No 1-1 Match"
+    FLOC 27 22
+    INFO pin_pnet_match_label_no 12
+    ENDTEXT
+    
+    TEXT "Package:"
+    TLOC 6 24
+    INFO pin_pnet_label 8
+    ENDTEXT
+    FIELD pin_pnet_name
+    FLOC 14 24
+    ENUMSET 20
+    POP "PIN_PNET_POPUP"
+    ENDFIELD
+
+    TEXT "IC:"
+    TLOC 6 26
+    INFO pin_inet_label 3
+    ENDTEXT
+    FIELD pin_inet_name
+    FLOC  14 26
+    ENUMSET 20
+    POP "PIN_INET_POPUP"
+    ENDFIELD
+
+    FIELD pin_net_name
+    FLOC 6 22
+    LIST "" 30 3
+    ENDFIELD
+
+    TEXT "Pin Use:" 8
+    TLOC 4 29
+    INFO pin_use_label
+    ENDTEXT
+    FIELD pin_use
+    FLOC 14 29
+    ENUMSET 22
+    POP "PINUSE_POPUP"
+    ENDFIELD
+
+    TEXT "Swap Code:"
+    TLOC 4 31
+    INFO pin_swap_label
+    ENDTEXT
+    FIELD pin_swap_code
+    FLOC 14 31
+    STRFILLIN 23 200
+    ENDFIELD
+
+    TEXT "Pin Name:"
+    TLOC 4 33
+    INFO pin_logic_label
+    ENDTEXT
+    FIELD pin_logic_name
+    FLOC 14 33
+    STRFILLIN 23 23
+    ENDFIELD
+   
+    GROUP "Pin Counts"
+    FLOC 2 36
+    FSIZE 38 7
+    ENDGROUP
+
+    TEXT "Power:"
+    TLOC 4 38
+    ENDTEXT
+    TEXT "0"
+    TLOC 12 38
+    INFO pin_power_count 6
+    ENDTEXT
+
+    TEXT "Ground:"
+    TLOC 4 40
+    ENDTEXT
+    TEXT "0"
+    TLOC 12 40
+    INFO pin_ground_count 6
+    ENDTEXT
+
+    TEXT "Signal:"
+    TLOC 21 38
+    ENDTEXT
+    TEXT "0"
+    TLOC 29 38
+    INFO pin_signal_count 6
+    ENDTEXT
+
+    TEXT "Unused:"
+    TLOC 21 40
+    ENDTEXT
+    TEXT "0"
+    TLOC 29 40
+    INFO pin_other_count 6
+    ENDTEXT
+
+    TEXT "Rats to show:"
+    TLOC 2 44
+    INFO pin_label_rats 12 12
+    ENDTEXT
+
+    FIELD pin_no_rats
+    FLOC 13 44
+    MENUBUTTON "None" 6 3
+    ENDFIELD
+
+    FIELD pin_all_rats
+    FLOC 20 44
+    MENUBUTTON "All" 6 3
+    ENDFIELD
+
+    FIELD pin_ic_rats
+    FLOC 27 44
+    MENUBUTTON "IC" 6 3
+    ENDFIELD
+
+    FIELD pin_pkg_rats
+    FLOC 34 44
+    MENUBUTTON "Pkg" 6 3
+    ENDFIELD
+
+    FIELD pin_apply
+    FLOC 2 46
+    MENUBUTTON "Apply Changes" 38 3
+    ENDFIELD
+
+ENDTAB
+#endif
+
+#ifdef ICPKGSE_GRIDS
+TAB "Grids" grids_tab
+    GROUP "Action"
+    FLOC 2 0
+    FSIZE 38 7
+    ENDGROUP
+
+    FIELD grid_add
+    FLOC 4 2
+    CHECKLIST "Add" "grid_mode"
+    ENDFIELD
+
+    FIELD grid_delete
+    FLOC 4 4
+    CHECKLIST "Delete" "grid_mode"
+    ENDFIELD
+
+    FIELD grid_modify
+    FLOC 21 2
+    CHECKLIST "Modify" "grid_mode"
+    ENDFIELD
+
+    FIELD grid_copy
+    FLOC 21 4
+    CHECKLIST "Copy" "grid_mode"
+    ENDFIELD
+
+    GROUP "Attributes"
+    FLOC 2 7
+    FSIZE 38 9
+    ENDGROUP
+
+    TEXT "Name:"
+    TLOC 4 9
+    ENDTEXT
+    FIELD grid_name
+    FLOC 16 9
+    STRFILLIN 21 20
+    ENDFIELD
+
+    TEXT "Priority:"
+    TLOC 4 11
+    ENDTEXT
+    FIELD grid_priority
+    FLOC 16 11
+    STRFILLIN 21 20
+    ENDFIELD
+
+    TEXT "Lock:"
+    TLOC 4 13
+    ENDTEXT
+
+    FIELD grid_keepout_pins
+    FLOC 16 13
+    CHECKLIST "Pins"
+    ENDFIELD
+
+    FIELD grid_keepout_drivers
+    FLOC 23 13
+    CHECKLIST "Drivers"
+    ENDFIELD
+
+    GROUP "Pitch Settings"
+    FLOC 2 16
+    FSIZE 38 11
+    ENDGROUP
+ 
+    FIELD grid_staggered
+    FLOC 4 18
+    CHECKLIST "Staggered pin configuration"
+    ENDFIELD
+
+    TEXT "Pitch"
+    TLOC 4 20
+    ENDTEXT
+    
+    FIELD grid_hpitch_active
+    FLOC 10 20
+    CHECKLIST "X:"
+    ENDFIELD
+    FIELD grid_hpitch
+    FLOC 15 20
+    STRFILLIN 7 24
+    ENDFIELD
+
+    FIELD grid_vpitch_active
+    FLOC 25 20
+    CHECKLIST "Y:"
+    ENDFIELD
+    FIELD grid_vpitch
+    FLOC 29 20
+    STRFILLIN 8 24
+    ENDFIELD
+
+    TEXT "Edge inset X:"
+    TLOC 4 22
+    ENDTEXT
+    FIELD grid_base_x_offset
+    FLOC 15 22
+    STRFILLIN 7 24
+    ENDFIELD
+
+    TEXT "Y:"
+    TLOC 27 22
+    ENDTEXT
+    FIELD grid_base_y_offset
+    FLOC 29 22
+    STRFILLIN 8 24
+    ENDFIELD
+
+    TEXT "Inset from:"
+    TLOC 4 24
+    ENDTEXT
+    FIELD grid_offset_start
+    FLOC 15 24
+    ENUMSET 21
+    POP "START_POPUP"
+    ENDFIELD
+
+
+    GROUP "Pin Numbering"
+    FLOC 2 27
+    FSIZE 38 18
+    ENDGROUP
+
+    TEXT "Scheme:"
+    TLOC 4 29
+    ENDTEXT
+    FIELD grid_scheme
+    FLOC 12 29
+    ENUMSET 24
+    POP "SCHEME_POPUP"
+    ENDFIELD
+
+    TEXT "First pin:"
+    TLOC 4 31
+    ENDTEXT
+    FIELD grid_start
+    FLOC 12 31
+    ENUMSET 24
+    POP "START_POPUP"
+    ENDFIELD
+
+    TEXT "Prefix:"
+    TLOC 4 33
+    ENDTEXT
+    FIELD grid_prefix
+    FLOC 12 33
+    STRFILLIN 5 10
+    ENDFIELD
+
+    TEXT "Start at:"
+    TLOC 21 33
+    ENDTEXT
+    FIELD grid_pin_num_start
+    FLOC 28 33
+    STRFILLIN 9 20
+    ENDFIELD
+
+    FIELD grid_pad_letters
+    FLOC 4 35
+    CHECKLIST "Pad letters (A's)"
+    ENDFIELD
+
+    FIELD grid_pad_numbers
+    FLOC 21 35
+    CHECKLIST "Pad numbers (0's)"
+    ENDFIELD
+
+    FIELD grid_letter_first
+    FLOC 4 37
+    CHECKLIST "Label with letters before numbers"
+    ENDFIELD
+
+    FIELD grid_jedec
+    FLOC 4 39
+    CHECKLIST "Omit letters as per JEDEC standard"
+    ENDFIELD
+
+    FIELD grid_noskip_spaces
+    FLOC 4 41
+    CHECKLIST "Label unused grid positions"
+    ENDFIELD
+
+    FIELD grid_noskip_stagger
+    FLOC 4 43
+    CHECKLIST "Reserve labels for non-staggered positions"
+    ENDFIELD
+
+    FIELD grid_apply
+    FLOC 2 46
+    MENUBUTTON "Apply Changes" 38 3
+    ENDFIELD
+
+ENDTAB
+#endif
+
+#ifdef ICPKGSE_BOUNDARY
+TAB "Boundary" boundary_tab
+    GROUP "Placement"
+    GLOC 2 0
+    GSIZE 38 17
+    ENDGROUP
+
+    GROUP "Extents"
+    GLOC 4 2
+    GSIZE 34 11
+    ENDGROUP
+
+    TEXT "Lower left X:"
+    TLOC 6 4
+    ENDTEXT
+    FIELD boundary_llx
+    FLOC 16 4
+    STRFILLIN 19 100
+    ENDFIELD
+
+    TEXT "Lower left Y:"
+    TLOC 6 6
+    ENDTEXT
+    FIELD boundary_lly
+    FLOC 16 6
+    STRFILLIN 19 100
+    ENDFIELD
+
+    TEXT "Upper right X:"
+    TLOC 6 8
+    ENDTEXT
+    FIELD boundary_urx
+    FLOC 16 8
+    STRFILLIN 19 100
+    ENDFIELD
+
+    TEXT "Upper right Y:"
+    TLOC 6 10
+    ENDTEXT
+    FIELD boundary_ury
+    FLOC 16 10
+    STRFILLIN 19 100
+    ENDFIELD
+    
+    FIELD boundary_select_new
+    FLOC 4 14
+    MENUBUTTON "Select new outline shape" 34 3
+    ENDFIELD
+
+    GROUP "Text"
+    GLOC 2 17
+    GSIZE 38 23
+    ENDGROUP
+
+    FIELD text_pins
+    TLOC 4 19
+    CHECKLIST "Enable text labels for individual pins."
+    ENDFIELD
+
+    TEXT "Offset X:"
+    TLOC 4 21
+    ENDTEXT
+    FIELD text_pins_offset_x
+    FLOC 16 21
+    STRFILLIN 21 128
+    ENDFIELD
+
+    TEXT "Offset Y:"
+    TLOC 4 23
+    ENDTEXT
+    FIELD text_pins_offset_y
+    FLOC 16 23
+    STRFILLIN 21 128
+    ENDFIELD
+
+    TEXT "Text Size:"
+    TLOC 4 25
+    ENDTEXT
+    FIELD text_pins_block
+    FLOC 16 25
+    ENUMSET 20
+    POP "TEXT_BLOCK_POPUP"
+    ENDFIELD
+
+    FIELD text_border
+    TLOC 4 29
+    CHECKLIST "Enable border numbers."
+    ENDFIELD
+
+    FIELD text_left
+    TLOC 6 31
+    CHECKLIST "Left"
+    ENDFIELD
+
+    FIELD text_right
+    TLOC 6 33
+    CHECKLIST "Right"
+    ENDFIELD
+
+    FIELD text_top
+    TLOC 21 31
+    CHECKLIST "Top"
+    ENDFIELD
+
+    FIELD text_bottom
+    TLOC 21 33
+    CHECKLIST "Bottom"
+    ENDFIELD
+
+    TEXT "Offset:"
+    TLOC 4 35
+    ENDTEXT
+    FIELD text_border_offset
+    FLOC 16 35
+    STRFILLIN 21 128
+    ENDFIELD
+
+    TEXT "Text Size:"
+    TLOC 4 37
+    ENDTEXT
+    FIELD text_border_block
+    FLOC 16 37
+    ENUMSET 20
+    POP "TEXT_BLOCK_POPUP"
+    ENDFIELD
+
+    GROUP "Name"
+    GLOC 2 40
+    GSIZE 38 5
+    ENDGROUP
+
+    TEXT "Symbol Name:"
+    TLOC 4 42
+    ENDTEXT
+    FIELD boundary_name
+    FLOC 16 42
+    STRFILLIN 21 32
+    ENDFIELD
+
+    FIELD boundary_apply
+    FLOC 2 46
+    MENUBUTTON "Apply Changes" 38 3
+    ENDFIELD
+
+ENDTAB
+#endif
+
+#ifdef ICPKGSE_DRIVERS
+TAB "Drivers" drivers_tab
+    GROUP "Action"
+    FLOC 2 0
+    FSIZE 38 14
+    ENDGROUP
+
+## First column of actions: Add, Delete, Place, Unplace
+
+    FIELD driver_add
+    FLOC 4 2
+    CHECKLIST "Add" "driver_mode"
+    ENDFIELD
+
+    FIELD driver_delete
+    FLOC 4 4
+    CHECKLIST "Delete" "driver_mode"
+    ENDFIELD
+
+    FIELD driver_place
+    FLOC 4 6
+    CHECKLIST "Place" "driver_mode"
+    ENDFIELD
+
+    FIELD driver_unplace
+    FLOC 4 8
+    CHECKLIST "Unplace" "driver_mode"
+    ENDFIELD
+
+## Second column of actions: Copy, Move, Swap, Resync
+
+    FIELD driver_copy
+    FLOC 15 2
+    CHECKLIST "Copy" "driver_mode"
+    ENDFIELD
+
+    FIELD driver_move
+    FLOC 15 4
+    CHECKLIST "Move" "driver_mode"
+    ENDFIELD
+
+    FIELD driver_swap
+    FLOC 15 6
+    CHECKLIST "Swap" "driver_mode"
+    ENDFIELD
+
+##    FIELD driver_resync
+##    FLOC 15 8
+##    CHECKLIST "Resync IOP" "driver_mode"
+##    ENDFIELD
+
+## Third column of actions: Align, Refresh, Replace, and Spreadsheet
+
+    FIELD driver_align
+    FLOC 26 2
+    CHECKLIST "Align" "driver_mode"
+    ENDFIELD
+
+    FIELD driver_replace
+    FLOC 26 4
+    CHECKLIST "Replace" "driver_mode"
+    ENDFIELD
+
+    FIELD driver_refresh
+    FLOC 26 6
+    CHECKLIST "Refresh" "driver_mode"
+    ENDFIELD
+
+    FIELD driver_spreadsheet
+    FLOC 26 8
+    CHECKLIST "Spreadsheet" "driver_mode"
+    ENDFIELD
+
+# Remove action message and instead write
+# comments/instructions to the console
+#
+#    TEXT ""
+#    TLOC 4 8
+#    INFO driver_action_message 35 35
+#    ENDTEXT
+
+    FIELD driver_unplace_exist
+    FLOC 4 11
+    CHECKLIST "Unplace existing drivers on copy/move"
+    ENDFIELD
+
+    GROUP "Available Drivers"
+    FLOC 2 14
+    FSIZE 38 19
+    ENDGROUP
+
+    TEXT "Current LEF library:"
+    TLOC 4 16
+    ENDTEXT
+    FIELD driver_library
+    FLOC 19 16
+    ENUMSET 17
+    POP "DRIVER_LIBRARY_POPUP"
+    ENDFIELD
+
+    FIELD driver_tree
+    FLOC 4 19
+    TREEVIEW 34 7
+    POP "DRVTIL_QTY_POPUP"
+    ENDFIELD
+
+    GROUP "Driver Data"
+    FLOC 2 33
+    FSIZE 38 10
+    ENDGROUP
+
+    TEXT "Mirror driver:"
+    TLOC 4 35
+    ENDTEXT
+    FIELD driver_mirror
+    FLOC 18 35
+    ENUMSET 18
+    POP "MIRROR_POPUP"
+    ENDFIELD
+
+    TEXT "Orientation:"
+    TLOC 4 37
+    ENDTEXT
+    FIELD driver_orientation
+    FLOC 18 37
+    ENUMSET 18
+    POP "ROTATION_POPUP"
+    ENDFIELD
+
+    TEXT "Name:"
+    TLOC 4 39
+    ENDTEXT
+    TEXT ""
+    TLOC 18 39
+    INFO driver_name 20 20
+    ENDTEXT
+
+    TEXT "Width x Height:"
+    TLOC 4 41
+    ENDTEXT
+    TEXT ""
+    TLOC 18 41
+    INFO driver_width 20 20
+    ENDTEXT
+
+    TEXT "Rats to show:"
+    TLOC 2 44
+    INFO driver_label_rats 12 12
+    ENDTEXT
+
+    FIELD driver_no_rats
+    FLOC 13 44
+    MENUBUTTON "None" 6 3
+    ENDFIELD
+
+    FIELD driver_all_rats
+    FLOC 20 44
+    MENUBUTTON "All" 6 3
+    ENDFIELD
+
+    FIELD driver_ic_rats
+    FLOC 27 44
+    MENUBUTTON "IC" 6 3
+    ENDFIELD
+
+    FIELD driver_pkg_rats
+    FLOC 34 44
+    MENUBUTTON "Pkg" 6 3
+    ENDFIELD
+    
+    FIELD driver_apply
+    FLOC 2 46
+    MENUBUTTON "Apply Changes" 38 3
+    ENDFIELD
+
+ENDTAB
+#endif
+
+ENDTABSET
+
+FIELD show_hud
+FLOC 2 52
+MENUBUTTON "Item Info" 10 3
+ENDFIELD
+
+FIELD snap_grid
+FLOC 13 52
+MENUBUTTON "Snap On" 10 3
+ENDFIELD
+
+FIELD no_snap_grid
+FLOC 13 52
+MENUBUTTON "Snap Off" 10 3
+ENDFIELD
+
+FIELD back
+FLOC 2 54
+MENUBUTTON "<Back" 10 3
+ENDFIELD
+
+FIELD next
+FLOC 13 54
+MENUBUTTON "Next>" 10 3
+ENDFIELD
+
+FIELD refdes_on
+FLOC 24 52
+MENUBUTTON "Refdes On" 10 3
+ENDFIELD
+
+FIELD refdes_off
+FLOC 24 52
+MENUBUTTON "Refdes Off" 10 3
+ENDFIELD
+
+FIELD resync
+FLOC 24 54
+MENUBUTTON "Resync" 10 3
+ENDFIELD
+
+FIELD cancel
+FLOC 35 54
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 35 52
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

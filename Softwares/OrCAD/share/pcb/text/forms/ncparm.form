@@ -1,0 +1,283 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 52 26
+HEADER "NC Drill/Tape"
+
+POPUP <tape_units_pop>"Feet""1","Meters""2".
+
+MESSAGE CANNOT_SAVE 1 "Cannot save parameters in that file name"
+MESSAGE IMPROPER_NAME 1 "File name must end in 'nc_param.txt'"
+
+TILE
+TEXT "File Name:"
+TLOC 5 4
+TGROUP "Paper Tape"
+ENDTEXT
+
+TEXT "Header:"
+TLOC 5 6
+TGROUP "Paper Tape"
+ENDTEXT
+
+TEXT "Leader:"
+TLOC 5 8
+TGROUP "Paper Tape"
+ENDTEXT
+
+TEXT "Length:"
+TLOC 5 10
+TGROUP "Paper Tape"
+ENDTEXT
+
+TEXT "Code:"
+TLOC 5 12
+TGROUP "Paper Tape"
+ENDTEXT
+
+TEXT "File Name:"
+TLOC 5 21
+TGROUP "Drill"
+ENDTEXT
+
+TEXT "Format:"
+TLOC 5 23
+TGROUP "Drill"
+ENDTEXT
+
+TEXT "."
+TLOC 20 23
+TGROUP "Drill"
+ENDTEXT
+
+TEXT "Offset X:"
+TLOC 5 25
+TGROUP "Drill"
+ENDTEXT
+
+TEXT "Y:"
+TLOC 30 25
+TGROUP "Drill"
+ENDTEXT
+
+TEXT "Route Feedrate:"
+TLOC 5 27
+TGROUP "Drill"
+ENDTEXT
+
+TEXT "Coordinates:"
+TLOC 5 29
+TGROUP "Drill"
+ENDTEXT
+
+TEXT "Output Units:"
+TLOC 5 31
+TGROUP "Drill"
+ENDTEXT
+
+TEXT "Tool Sequence:"
+TLOC 5 33
+TGROUP "Drill"
+ENDTEXT
+
+FIELD tape_name
+FLOC 16 4
+FGROUP "Paper Tape"
+STRFILLIN 20 40
+ENDFIELD
+
+FIELD tape_header
+FLOC 16 6
+FGROUP "Paper Tape"
+STRFILLIN 20 42
+ENDFIELD
+
+FIELD tape_leader
+FLOC 16 8
+FGROUP "Paper Tape"
+INTFILLIN 2 2
+MIN 0
+MAX 99
+ENDFIELD
+
+FIELD tape_length
+FLOC 16 10
+FGROUP "Paper Tape"
+INTFILLIN 4 4
+MIN 0
+MAX 32765
+ENDFIELD
+
+FIELD tape_units
+FLOC 23 10
+FGROUP "Paper Tape"
+ENUMSET 6
+POP "tape_units_pop"
+ENDFIELD
+
+FIELD ascii_code
+FLOC 16 12
+FGROUP "Paper Tape"
+CHECKLIST "ASCII" "code_group"
+ENDFIELD
+
+FIELD eia_code
+FLOC 29 12
+FGROUP "Paper Tape"
+CHECKLIST "EIA" "code_group"
+ENDFIELD
+
+FIELD separate_tapes
+FLOC 2 14
+FGROUP "Paper Tape"
+CHECKLIST "Separate plated/non-plated"
+ENDFIELD
+
+FIELD parameter_filename
+FLOC 16 21
+FGROUP "Drill"
+STRFILLIN 20 40
+ENDFIELD
+
+FIELD integer_places
+FLOC 16 23
+FGROUP "Drill"
+INTFILLIN 1 1
+MIN 1
+MAX 9
+ENDFIELD
+
+FIELD decimal_places
+FLOC 22 23
+FGROUP "Drill"
+INTFILLIN 1 1
+MIN 1
+MAX 9
+ENDFIELD
+
+FIELD x_offset
+FLOC 16 25
+FGROUP "Drill"
+REALFILLIN 10 10
+DECIMAL 2
+ENDFIELD
+
+FIELD y_offset
+FLOC 34 25
+FGROUP "Drill"
+REALFILLIN 10 10
+DECIMAL 2
+ENDFIELD
+
+FIELD feed_rate
+FLOC 21 27
+FGROUP "Drill"
+INTFILLIN 3 3
+MIN 1
+ENDFIELD
+
+FIELD absolute_coords
+FLOC 20 29
+FGROUP "Drill"
+CHECKLIST "Absolute" "coordinate_group"
+ENDFIELD
+
+FIELD incremental_coords
+FLOC 35 29
+FGROUP "Drill"
+CHECKLIST "Incremental" "coordinate_group"
+ENDFIELD
+
+FIELD english_units
+FLOC 20 31
+FGROUP "Drill"
+CHECKLIST "English" "units_group"
+ENDFIELD
+
+FIELD metric_units
+FLOC 35 31
+FGROUP "Drill"
+CHECKLIST "Metric" "units_group"
+ENDFIELD
+
+FIELD increasing_order
+FLOC 20 33
+FGROUP "Drill"
+CHECKLIST "Increasing" "order_group"
+ENDFIELD
+
+FIELD decreasing_order
+FLOC 35 33
+FGROUP "Drill"
+CHECKLIST "Decreasing" "order_group"
+ENDFIELD
+
+FIELD repeat_codes
+FLOC 2 35
+FGROUP "Drill"
+CHECKLIST "Repeat Codes"
+ENDFIELD
+
+FIELD suppress_lead_zeroes
+FLOC 2 37
+FGROUP "Drill"
+CHECKLIST "Leading Zero Suppression"
+ENDFIELD
+
+FIELD suppress_trail_zeroes
+FLOC 2 39
+FGROUP "Drill"
+CHECKLIST "Trailing Zero Suppression"
+ENDFIELD
+
+FIELD suppress_equal
+FLOC 2 41
+FGROUP "Drill"
+CHECKLIST "Equal Coord Suppression"
+ENDFIELD
+
+FIELD auto_tool_select
+FLOC 2 43
+FGROUP "Drill"
+CHECKLIST "Auto Tool Select"
+ENDFIELD
+
+FIELD pattern_for_dips
+FLOC 2 45
+FGROUP "Drill"
+CHECKLIST "Pattern for Dips"
+ENDFIELD
+
+FIELD Done
+FLOC 1 49
+MENUBUTTON "Done" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 11 49
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD reset
+FLOC 22 49
+MENUBUTTON "Reset" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 41 49
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+GROUP "Paper Tape"
+GLOC 1 1
+GSIZE 49 16
+ENDGROUP
+
+GROUP "Drill"
+GLOC 1 18
+GSIZE 49 30
+ENDGROUP
+
+ENDTILE
+
+ENDFORM

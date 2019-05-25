@@ -1,0 +1,126 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 43 19
+HEADER "Padstack Selection"
+
+POPUP <PURGEP>"All""0","Derived""1".
+
+MESSAGE MUSTCLOSE 1 "Must close padedit form before next edit."
+MESSAGE FILENAME 1 "%s"
+MESSAGE NEW_PAD 1 "New Pad ..."
+MESSAGE PAD_NOT_IN_DB 1 "Pad %s not in database."
+MESSAGE PAD_SYM_PIN_MISMATCH 1 "Pad %s not on %s pin %s"
+MESSAGE NO_LIBRARY_PAD 1 "Pad %s not in library."
+MESSAGE NET_WALK_NOVIA 1 "Walking nets: Error in getting via record."
+MESSAGE NET_WALK_RVIA 1 "Error in replacing via record: %d"
+MESSAGE GET_PIN_ERROR 1 "Walking nets: Error in getting std pin record."
+MESSAGE REP_PIN_ERROR 1 "Error in replacing std pin record: %d"
+MESSAGE GET_SFX_ERROR 1 "Walking symbols: Error in getting sfx pin record."
+MESSAGE REP_SFX_ERROR 1 "Error in replacing sfx pin record: %d"
+MESSAGE GET_ESFX_ERROR 1 "Walking symbols: Error in getting esfx pin record."
+MESSAGE REP_ESFX_ERROR 1 "Error in replacing esfx pin record: %d"
+MESSAGE REP_PAD_ERROR 1 "Error in replacing pad_stack record: %d"
+MESSAGE BAD_OLD_NAME 1 "Bad name for old pad: %s"
+MESSAGE BAD_NEW_NAME 1 "Bad name for new pad: %s"
+MESSAGE BAD_SYM_NAME 1 "Bad symbol name."
+MESSAGE BAD_PIN_NUM 1 "Bad pin number."
+MESSAGE DONE_FROM_DB 1 "Done. Used existing pad on design."
+MESSAGE DONE_FROM_LIB 1 "Done. New pad loaded from library."
+MESSAGE NONE_UPDATED 1 "No padstacks updated, check parameters."
+MESSAGE WILD_WHEN_SAME 1 "Symbol and Pin must be '*' when replace = old."
+MESSAGE NO_SYMBOL 1 "Symbol %s not in database."
+MESSAGE NO_REFDES 1 "Ref Des %s not in database."
+MESSAGE NO_PAD_ON_SYM 1 "No pins on %s contain pad %s"
+MESSAGE NO_PIN_W_PAD 1 "Pin %s w/pad %s not on %s"
+MESSAGE GET_PAD_REC_ERR 1 "Error encountered obtaining padstack record."
+MESSAGE PAD_EXISTS 1 "Pad %s already exists in database."
+MESSAGE OPEN_PAD_ERR 1 "Unable to open padstack record, out of memory"
+MESSAGE NO_MOD_MSG 1 "No modification allowed with editing form open"
+MESSAGE NOT_LIB_PAD 1 "File not padstack"
+MESSAGE NONE_CHANGED 1 "No padstacks changed, Error : %d"
+MESSAGE MULTI_PADS_SPECIFIED 1 "More than one pad stack specified"
+MESSAGE NO_PAD_SPECIFIED 1 "No pad stack is specified"
+MESSAGE NONE2PURGE_D 1 "No unused derived padstacks"
+MESSAGE NONE2PURGE 1 "No unused padstacks"
+
+TILE
+TEXT "Name:"
+TLOC 4 20
+TGROUP "Available Padstacks"
+ENDTEXT
+
+TEXT "Symbol:"
+TLOC 2 24
+ENDTEXT
+
+TEXT "Pin:"
+TLOC 2 26
+ENDTEXT
+
+TEXT "Ref Des:"
+TLOC 2 28
+ENDTEXT
+
+FIELD padlist
+FLOC 4 4
+FGROUP "Available Padstacks"
+LIST "" 33 7
+ENDFIELD
+
+FIELD display_derived
+FLOC 4 18
+FGROUP "Available Padstacks"
+CHECKLIST "Include Derived Padstacks"
+ENDFIELD
+
+FIELD name
+FLOC 11 20
+FGROUP "Available Padstacks"
+STRFILLIN 26 255
+ENDFIELD
+
+FIELD symbolname
+FLOC 11 24
+STRFILLIN 26 255
+ENDFIELD
+
+FIELD pin_number
+FLOC 11 26
+STRFILLIN 26 40
+ENDFIELD
+
+FIELD refdes
+FLOC 11 28
+STRFILLIN 26 40
+ENDFIELD
+
+FIELD purge
+FLOC 12 31
+MENUBUTTON "Purge" 9 3
+POP "PURGEP"
+ENDFIELD
+
+FIELD done
+FLOC 2 34
+MENUBUTTON "Done" 9 3
+ENDFIELD
+
+FIELD reset
+FLOC 12 34
+MENUBUTTON "Reset" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 31 34
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+GROUP "Available Padstacks"
+GLOC 2 1
+GSIZE 39 22
+ENDGROUP
+
+ENDTILE
+
+ENDFORM

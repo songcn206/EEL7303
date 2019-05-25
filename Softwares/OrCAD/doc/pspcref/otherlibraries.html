@@ -1,0 +1,225 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN" "http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+<html xmlns="http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>PSpice Reference Guide -- Appendix A: Battery Models</title>
+<META NAME="Approver" CONTENT="Technical Publications">
+<META NAME="Author" CONTENT="Technical Publications">
+<META NAME="CreateDate" CONTENT="2012-06-02">
+<META NAME="CreateTime" CONTENT="1338639123">
+<META NAME="DataType" CONTENT="Manuals">
+<META NAME="Description" CONTENT="This manual contains the reference material needed when working with circuit analysis in PSpice. This manual also details the command description, start-up option definitions, and lists the devices supported in analog and digital libraries.">
+<META NAME="DocTitle" CONTENT="PSpice Reference Guide">
+<META NAME="DocType" CONTENT="Reference">
+<META NAME="EdmsRelease" CONTENT="EDMS Windows-P015">
+<META NAME="FileTitle" CONTENT="Appendix A: Battery Models">
+<META NAME="FileType" CONTENT="Chapter">
+<META NAME="Keyword" CONTENT="pspcref">
+<META NAME="Language" CONTENT="English">
+<META NAME="ModifiedDate" CONTENT="2012-06-02">
+<META NAME="ModifiedTime" CONTENT="1338639123">
+<META NAME="NextFile" CONTENT="pspcrefIX.html">
+<META NAME="PageCount" CONTENT="4">
+<META NAME="Platform" CONTENT="ALL">
+<META NAME="PrevFile" CONTENT="glossary.html">
+<META NAME="Product" CONTENT="Allegro AMS Simulator, PSpice">
+<META NAME="ProductFamily" CONTENT="PCB Design, PCB Design">
+<META NAME="ProductVersion" CONTENT="16.6">
+<META NAME="RightsManagement" CONTENT="Copyright 19912012 Cadence Design Systems Inc.">
+<META NAME="Title" CONTENT="PSpice Reference Guide -- Appendix A: Battery Models">
+<META NAME="TopicTags" CONTENT="FALSE">
+<META NAME="Version" CONTENT="16.6">
+  </head>
+  <body style="margin-left: 5%;">
+    <a name="pagetop"></a>
+    <a name="firstpage"></a>
+    <!-- Begin Buttons -->
+    <table width="650" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td height="36" width="650" colspan="10">
+          <img src="../support/header_doc.gif" width="650" height="34">
+        </td>
+      </tr>
+      <tr>
+        <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                </td>
+<td height="20" width="73">
+<a href="pspcrefTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<a href="pspcrefIX.html"><img src="../support/nav2_index.gif" border="0"></a>
+</td>
+        <td>
+          <a href="glossary.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+        </td>
+        <td>
+          <a href="pspcrefIX.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+        </td>
+        <td height="20">
+          <a>
+<a href="pspcref.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+          </a>
+        </td>
+        <td height="20" width="61">
+          <img src="../support/nav2_black.gif">
+        </td>
+        <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+        </td>
+        <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+        </td>
+        <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+        </td>
+      </tr>
+    </table>
+    <!-- End Buttons -->
+    <p>
+    <hr>
+    <p>
+      <h3>
+        <center>
+          <font >
+            <div>PSpice A&#47;D Reference Guide</div>
+            <font >
+              <div>
+            </font>
+          </font>
+        </center>
+      </h3>
+      <br>
+    </p>
+    <div>
+      <h1>A<a name="1065082">&nbsp;</a></h1>
+      <h1><a name="1065083">Appendix A: Battery Models</a></h1>
+      <h2><a name="1065093">Battery Model</a></h2>
+      <p align="left"><a name="1065138">&nbsp;</a></p>
+      <table summary="" border="0" cellpadding="4" cellspacing="0" bordercolor="#D3D3D3" width="638">
+        <caption>
+        <tr>
+          <td cellpadding="4" valign="top" width="110">
+            <p><a name="1065096"><font color="#000000"><strong>General </strong></font></a><font color="#000000"><strong>form</strong></font></p>
+          </td>
+          <td cellpadding="4" valign="top" width="527">
+            <blockquote>
+              <font size="2" face="Courier" color="#000000"><a name="1065098"><font color="#000000">.X awbflooded_cell PARAMS VOC=</font></a><font size="2" face="'Courier New'" color="#000000"><em>&#60;value&#62;</em></font> AH=<font size="2" face="'Courier New'" color="#000000"><em>&#60;value&#62;</em></font> SOC=<font size="2" face="'Courier New'" color="#000000"><em>&#60;value&#62;</em></font></font>
+            </blockquote>
+            <blockquote>
+              <font size="2" face="Courier" color="#000000"><a name="1065099"><font color="#000000">.X awbvalve_regulated_cell PARAMS VOC=</font></a><font size="2" face="'Courier New'" color="#000000"><em>&#60;value&#62;</em></font> AH=<font size="2" face="'Courier New'" color="#000000"><em>&#60;value&#62;</em></font> SOC=<font size="2" face="'Courier New'" color="#000000"><em>&#60;value&#62;</em></font></font>
+            </blockquote>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1065101"><font color="#000000"><strong>Examples</strong></font></a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <blockquote>
+              <font size="2" face="Courier" color="#000000"><a name="1065103"><font color="#000000">.X awbflooded_cell PARAMS VOC=</font></a><font size="2" face="'Courier New'" color="#000000"><em>5</em></font> AH=<font size="2" face="'Courier New'" color="#000000"><em>15</em></font> SOC=<font size="2" face="'Courier New'" color="#000000"><em>0.8</em></font></font>
+            </blockquote>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" cellpadding="4" valign="top">
+            <p><a name="1065105"><font color="#000000"><strong>Arguments and options</strong></font></a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1065109">&nbsp;</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1065111"><font size="2" face="'Courier New'" color="#000000">awbflooded_cell</font></a></p>
+            <p><a name="1065112">PSpice model for modelling the flooded cell batteries. In the flooded cells </a>batteries since the gases created during charging are vented to the atmosphere, distilled water must be added occasionally to bring the electrolyte back to its required level. </p>
+            <p><a name="1065113">Example: 12&#45;V automobile battery.</a></p>
+            <p><a name="1065114">awbvalve_regulated_cell</a></p>
+            <p><a name="1065115">PSpice model for modelling the valve regulated batteries.</a></p>
+            <p><a name="1065116"><font size="2" face="'Courier New'" color="#000000">VOC</font></a></p>
+            <p><a name="1065117">Indicates the open circuit voltage. This is the voltage across the two </a>terminals of the battery when the battery is not connected to a circuit.</p>
+            <p><a name="1065118"><font size="2" face="'Courier New'" color="#000000">AH</font></a></p>
+            <p><a name="1065119">It is the ampere hour of the battery. This is the amount of time for which a </a>battery operates without having to recharge it. For example, if a battery is marked <font color="#000000"><em>300Ah</em></font> then it is assumed that the battery can supply 20A current for 15 hours or 10A current for 30 hrs. </p>
+            <blockquote><font color="#000000"><strong>Note: </strong></font><a name="1065120">An ampere hour (Ah) indicates the amount of energy charge in </a>a battery that will allow one ampere of current to flow for one hour.</blockquote>
+            <p><a name="1065121"><font size="2" face="'Courier New'" color="#000000">SOC</font></a></p>
+            <p><a name="1065122">Indicates the state of charge in a a battery. For a completely charged </a>battery, SOC is 100% and for a fully discharged battery, SOC is 0%.<br><br><br></p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" cellpadding="4" valign="top">
+            <p><a name="1065124"><font color="#000000"><strong>Capture Parts</strong></font></a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1065128">&nbsp;</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p align="left"><a name="1065133"><img src="images/flooded_battery.gif" width="230" height="121" alt=""></a></p>
+            <p align="left"><a name="1065137"><img src="images/leadacid_battery.gif" width="263" height="149" alt=""></a></p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1065073">&nbsp;</a></p>
+    </div>
+    <br>
+    <a href="#pagetop">Return to top of page</a>
+    <hr>
+    <hr align="left">
+    <div style="text-align: left;">
+      <!-- Begin Buttons -->
+      <table width="650" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                    </td>
+<td height="20" width="73">
+<a href="pspcrefTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<a href="pspcrefIX.html"><img src="../support/nav2_index.gif" border="0"></a>
+</td>
+          <td>
+            <a href="glossary.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+          </td>
+          <td>
+            <a href="pspcrefIX.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+          </td>
+          <td>
+            <a>
+<a href="pspcref.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+            </a>
+          </td>
+          <td height="20" width="61">
+            <img src="../support/nav2_black.gif">
+          </td>
+          <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+          </td>
+          <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+          </td>
+          <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+          </td>
+        </tr>
+      </table>
+      <!-- End Buttons -->
+    </div>
+    <br>
+    <font size="-1" >
+For support, see <a href="http://support.cadence.com" target="_blank">Cadence Online Support</a> service.</font>
+    <br>
+    <br>
+    <font size="-1" >
+      <i>Copyright &#169; 2011, <a href="http://www.cadence.com">Cadence Design Systems, Inc.</a></i>
+    </font>
+    <br>
+    <font size="-1" >
+All rights reserved.</font>
+    <br>
+    <br>
+  </body>
+</html>

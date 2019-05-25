@@ -1,0 +1,118 @@
+####################################################################################
+#       Cadence Design Systems                                                     #
+#                                                                                  #
+# (C) COPYRIGHT, Cadence Design Systems, Inc. 2011                                 #
+# All Rights Reserved                                                              #
+# Licensed Materials - Property of Cadence Design Systems                          #
+#                                                                                  #
+# No part of this file may be reproduced, stored in a retrieval system,            #
+# or transmitted in any form or by any means --- electronic, mechanical,           #
+# photocopying, recording, or otherwise --- without prior written permission       #
+# of Cadence Design Systems, Inc.                                                  #
+#                                                                                  #
+# WARRANTY:                                                                        #
+# Use all material in this file at your own risk.  Cadence Design Systems          #
+# makes no claims about any material contained in this file.                       #
+####################################################################################
+FILE_TYPE=FORM_DEFN VERSION=2
+
+    FORM
+    FIXED
+    PORT 132 80
+    HEADER "Devices Import"
+
+    ACTIVEFIELD Refresh
+    DEFAULT Exit
+
+    TILE
+
+    GROUP "Device" "PartTableInfoList"
+        GLOC 1 0
+        GSIZE 131 43
+    ENDGROUP
+
+    TEXT "PartNo Filter:" "TextPartNoFilter"
+        TLOC 2 2
+    ENDTEXT
+
+    #POPUP <DecapPartNoPopup>"""".
+    FIELD DecapPartNoFilter
+        FLOC 12 2
+        STRFILLIN 14 25
+        #POP "DecapPartNoPopup"
+    ENDFIELD
+
+    TEXT "JEDEC Filter:" "TextJEDECFilter"
+        TLOC 30 2
+    ENDTEXT
+
+    #POPUP <JEDECFilterPopup>"""".
+    FIELD JEDECFilter
+        FLOC 40 2
+        STRFILLIN 14 25
+        #POP "JEDECFilterPopup"
+    ENDFIELD
+
+    TEXT "Value Filter:" "TextValueFilter"
+        TLOC 58 2
+    ENDTEXT
+
+    #POPUP <ValueFilterPopup>"""".
+    FIELD ValueFilter
+        FLOC 67 2
+        STRFILLIN 14 25
+        #POP "ValueFilterPopup"
+    ENDFIELD
+
+    POPUP <PartTableInfoGridHeadPopup>"""".
+    GRID PartTableInfoGrid
+    FLOC 2 5
+    FSIZE 129 34
+    OPTIONS HLINES VLINES USERSIZE
+
+    GHEAD TOP
+        HEADSIZE 2
+        OPTIONS 3D
+        POP "PartTableInfoGridHeadPopup"
+    ENDGHEAD
+    GHEAD SIDE
+        HEADSIZE 0
+    ENDGHEAD
+    ENDGRID
+
+    TEXT "File Name:" "TextFileName"
+        TLOC 2 40
+    ENDTEXT
+
+    FIELD ImportFileName
+        FLOC 10 40
+        STRFILLIN 72 128
+    ENDFIELD
+
+    FIELD Import
+    FLOC 84 40
+    MENUBUTTON "Load..." 10 3
+    ENDFIELD
+
+    FIELD View
+    FLOC 121 40
+    MENUBUTTON "View Map" 10 3
+    ENDFIELD
+
+    FIELD Done
+        FLOC 1 44
+        MENUBUTTON "Done" 10 3
+    ENDFIELD
+
+    FIELD Cancel
+        FLOC 12 44
+        MENUBUTTON "Cancel" 10 3
+    ENDFIELD
+
+    FIELD Help
+        FLOC 121 44
+        MENUBUTTON "Help" 10 3
+    ENDFIELD
+
+    ENDTILE
+ENDFORM

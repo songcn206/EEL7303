@@ -1,0 +1,67 @@
+
+Command line arguments for Allegro
+	Permits creation and editing of PCB board designs. Can
+	also edit symbols.
+
+allegro <args> [<allegro database>]
+	[-s|-S <script>] 
+		- Play script on startup (default extension is .scr), last
+		  directory in allegro.ini is NOT used.
+		  Multiple -s options may be specified and they will
+		  be replayed in order on command line. Example
+			-s script1 -s script2 ... -s scriptN
+		  Up to 63 scripts are supported.
+	[-p <start directory>] 
+		- start in indicated directory (ignore ini file)
+	[-j|-o <journal file>]
+		- open journal file (default journal file is <prog>.jrl)
+
+	[-proj <cpm file>]
+		- read the HDL indicated cpm file on startup. Initial
+		  starting directory and board are present in cpm file.
+
+        [-product <product name>]
+                - specifies the product to be run. Use "-product help" 
+		  for list of available products and options.
+	[-option <option name>]
+                - specifies the options to be run. Used with the product
+		  option to specify the product and option required.
+		  The option may be specified multiple times.
+		  Use "-product help" for list of available product & options.
+
+	[-sq]    - invoke Allegro with filtered set of SI licenses.
+		  Default is to show all available Allegro licenses.
+	[-orcad] - invoke Allegro with a filtered set of OrCAD based licenses.
+		  Licenses that are shared between Cadence and OrCAD are not shown.
+
+	[-gxl|-expert|-designer|-pcb]
+		- specifies a legacy program tier of allegro to be run. This
+                  overrides any default set in an ini file.
+
+	[-nographic|-nograph]
+		- run in pseudo non-graphic mode. On Unix requires an X 
+		  server but will typically not display any graphics.
+		  Suggest using the VNC server (http://www.realvnc.com)
+
+	[-safe]
+		- run without user or site configuration files and settings
+		  see <cdsroot>/share/pcb/batchhelp/safe.txt
+	[-noopengl]
+		- disable openGL
+
+	[-mps<XXX>]
+		- These are not typically not required. See MPS
+		  on-line documents for full description.
+
+	[<allegro design>]
+		- start editing with this database (ignore ini file)
+		- default extensions .brd, .dpf, .dra, .mdd
+
+Notes:
+	If no scripts are specified on command line (-s or -S options)
+	and environment variable "script_startup" has a value then
+	we will replay a script in startup directory with name
+		<program>_<script_startup_value>.scr
+	Example for allegro if variable script_startup=foo then
+	script would be allegro_foo.scr
+

@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://diff3rptViewer/skin/default/skin.css" type="text/css"?>
+
+<!-- window size is enough to open full screen -->
+<window id="save-dlg" width="1000" height="200" title="Export report" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" onload="saveDlg.Initialize();">
+
+    <script type="application/javascript" src="chrome://jslib/content/jslib.js"/>
+    <script type="application/javascript" src="chrome://jslib/content/io/fileUtils.js"/>
+    <script type="application/javascript" src="chrome://jslib/content/io/dir.js"/>
+    <script type="application/javascript" src="chrome://jslib/content/io/file.js"/>
+    <script type="application/javascript" src="chrome://diff3rptViewer/content/save.js"/>
+
+    <commandset>
+        <command id="cmd-OK" disabled="true" oncommand="document.helper.OnOK();"/>
+        <command id="cmd-cancel" oncommand="document.helper.OnCancel();"/>
+    </commandset>
+
+    <keyset id="keyset">
+        <key keycode="VK_RETURN" command="cmd-OK"/>
+        <key keycode="VK_ESCAPE" command="cmd-cancel"/>
+    </keyset>
+
+    <box orient="horizontal" flex="1">
+        <label value="Report export location" control="tb-dir"/>
+        <textbox id="tb-dir" onchange="document.helper.OnDirChg();" flex="1"/>
+        <button id="btn-dir-browse" oncommand="document.helper.OnBrowse();"  label="..."/>
+    </box>
+    <box orient="horizontal" flex="1">
+        <label value="Report folder name" control="tb-name"/>
+        <textbox id="tb-name" oninput="document.helper.OnNameChg();" flex="1"/>
+    </box>
+    <box orient="horizontal" flex="1">
+        <button id="ok-btn" flex="1" label="OK" command="cmd-OK"/>
+        <button id="cancel-btn" label="Cancel" command="cmd-cancel" flex="1"/>
+    </box>
+</window>

@@ -1,0 +1,68 @@
+
+This Product Chooser dialog supports the ability to choose the product and its
+options. By default, only the products and options available in your 
+license files are shown.
+
+This also goes by the name:
+   - toolswap which is the Allegro command name
+   - Change Editor
+This dialog appears on tool launch and from the File->Change Editor (toolswap 
+command). 
+
+If you select the "Use as Default" option, the program will use your selections 
+as the default product choices the next time the tool is run. This improves 
+tool startup performance.
+
+Tool options are enabled if the Product selected supports options.
+
+When the Product Chooser dialog is invoked while the tool is running, it shows
+the currently selected product and options.
+
+Allegro PCB migration notes:
+    - PCB Designer was called PCB Design Performance option L in 16.3.
+    - PCB Designer with both the High-speed and Miniaturization options
+      gives you the same amount of functionality as PCB XL in 16.3.
+
+IMPROVING STARTUP PERFORMANCE:
+Any of the following may be used to improve startup performance:
+- Select the "Use as Default" option.
+- Create a shortcut with the product and option selections on the tool's command 
+  line (see below).
+- Set the environment variable allegro_license_caching (default in 16.6).
+- Set the environment variable "all_license_choices". This shows all available 
+  products even if you do not have a license.
+- Set the environment variale "license_nolegacy". This removes any product with
+  Legacy in its name.
+
+LICENSE CACHING:
+If licensing caching is enabled (the default in 16.6), a checkbox appears
+"Reset license cache" which allows resetting this cache. Unsetting the env 
+variable, "allegro_license_caching", disables license caching.
+
+License caching can improve program startup performance by storing the
+license availability in a file in the user's pcbenv directory. The filename 
+encodes both the program name and release number. This cache file only needs
+to be reset if your administrator adds new product types to your Cadence 
+license server or you switch servers. The cache does NOT need to be updated 
+if the total number of licenses for a product is increased or decreased.
+
+TIP: The message you are presented when editing a design saved under a different 
+license can be suppressed by setting the db_tier_nomsg environment variable.
+
+COMMAND LINE SUPPORT:
+You can control the product and options used on tool launch by command line 
+options. Example to use Allegro PCB tool with the Allegro PCB Editor product and
+the Design Partition and High-Speed options use:
+    allegro -product Allegro_performance -option Allegro_PCB_Partitioning -option Allegro_PCB_HighSpeed_Option
+
+USER DEFINED PRODUCTS:
+Users or CAD adminstrators can add new items to the product list via the 
+User Defined Packages feature. For more information see:
+	<cdsroot>/share/local/pcb/license_packages_template.txt
+
+PRODUCTS AND OPTIONS NAMES:
+The following tool command line options can be used to select the product and 
+options. Only a single product option can be used but multiple options can
+be specified.
+
+

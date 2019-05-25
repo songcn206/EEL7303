@@ -1,0 +1,517 @@
+BFILE_TYPE=FORM_DEFN VERSION=2
+FORM fixed_font
+FIXED
+PORT 60 45
+HEADER "Analysis Preferences"
+
+POPUP <voltpop>"mV""mV","V""V".
+
+POPUP <resipop>"mOhm""mOhm","Ohm""Ohm".
+
+POPUP <capapop>"pF""pF","nF""nF","uF""uF".
+
+POPUP <indupop>"pH""pH","nH""nH","uH""uH".
+
+POPUP <timepop>"ns""ns","us""us","ms""ms","s""s".
+
+POPUP <distpop>"um""um","mm""mm","m""m".
+
+POPUP <thickpop>"mil""mil","in""in","um""um","mm""mm","cm""cm".
+
+POPUP <BuffDelayPOP>"From Library""From Library".
+
+POPUP <DlyThreshPOP>"Input Thresholds""Input Thresholds","Vmeas""Vmeas".
+
+TILE
+
+TABSET "TABS"
+FLOC 1 1
+TSSIZE 58 43
+
+TAB "DevicesModels"
+
+TEXT "Pin Use:"
+TLOC 2 6
+TGROUP "Default IOCell Models"
+ENDTEXT
+
+TEXT "Default Model"
+TLOC 23 6
+TGROUP "Default IOCell Models"
+ENDTEXT
+
+TEXT "IN"
+TLOC 2 8
+TGROUP "Default IOCell Models"
+ENDTEXT
+
+TEXT "OUT"
+TLOC 2 10
+TGROUP "Default IOCell Models"
+ENDTEXT
+
+TEXT "BI"
+TLOC 2 12
+TGROUP "Default IOCell Models"
+ENDTEXT
+
+TEXT "TRI"
+TLOC 2 14
+TGROUP "Default IOCell Models"
+ENDTEXT
+
+TEXT "OCL"
+TLOC 2 16
+TGROUP "Default IOCell Models"
+ENDTEXT
+
+TEXT "OCA"
+TLOC 2 18
+TGROUP "Default IOCell Models"
+ENDTEXT
+
+TEXT "Buffer Delays"
+TLOC 2 28
+TGROUP "Buffer Delay Selection"
+ENDTEXT
+
+FIELD UseDefaultsForMissingComps
+FLOC 2 3
+CHECKLIST "Use Defaults For Missing Component Models"
+ENDFIELD
+
+FIELD DefaultINModel
+FLOC 12 8
+STRFILLIN 38 40
+FGROUP "Default IOCell Models"
+ENDFIELD
+
+FIELD DefaultOUTModel
+FLOC 12 10
+STRFILLIN 38 40
+FGROUP "Default IOCell Models"
+ENDFIELD
+
+FIELD DefaultBIModel
+FLOC 12 12
+STRFILLIN 38 40
+FGROUP "Default IOCell Models"
+ENDFIELD
+
+FIELD DefaultTRIModel
+FLOC 12 14
+STRFILLIN 38 40
+FGROUP "Default IOCell Models"
+ENDFIELD
+
+FIELD DefaultOCLModel
+FLOC 12 16
+STRFILLIN 38 40
+FGROUP "Default IOCell Models"
+ENDFIELD
+
+FIELD DefaultOCAModel
+FLOC 12 18
+STRFILLIN 38 40
+FGROUP "Default IOCell Models"
+ENDFIELD
+
+FIELD BrowseModels
+FLOC 19 22
+MENUBUTTON "Browse Models..." 22 3
+FGROUP "Default IOCell Models"
+ENDFIELD
+
+FIELD DefaultBufferDelay
+FLOC 19 28
+ENUMSET 19
+FGROUP "Buffer Delay Selection"
+POP "BuffDelayPOP"
+ENDFIELD
+
+GROUP "Default IOCell Models"
+GLOC 1 0
+GSIZE 54 26
+ENDGROUP
+
+GROUP "Buffer Delay Selection"
+GLOC 1 26
+GSIZE 54 5
+ENDGROUP
+
+ENDTAB
+
+TAB "InterconnectModels"
+
+TEXT "Percent Manhattan"
+TLOC 2 2
+TGROUP "Unrouted Interconnect Models"
+ENDTEXT
+
+TEXT "Default Impedance"
+TLOC 2 4
+TGROUP "Unrouted Interconnect Models"
+ENDTEXT
+
+TEXT "Default Prop Velocity"
+TLOC 2 6
+TGROUP "Unrouted Interconnect Models"
+ENDTEXT
+
+TEXT "Cutoff Frequency"
+TLOC 2 11
+TGROUP "Routed Interconnect Models"
+ENDTEXT
+
+TEXT "Shape Mesh Size"
+TLOC 2 13
+TGROUP "Routed Interconnect Models"
+ENDFIELD
+
+TEXT "Geometry Window"
+TLOC 2 15
+TGROUP "Routed Interconnect Models"
+ENDFIELD
+
+TEXT "Min Coupled Length"
+TLOC 2 17
+TGROUP "Routed Interconnect Models"
+ENDFIELD
+
+FIELD PercentManhattan
+FLOC 30 2
+FGROUP "Unrouted Interconnect Models"
+STRFILLIN 20 20
+ENDFIELD
+
+FIELD DefaultImpedance
+FLOC 30 4
+FGROUP "Unrouted Interconnect Models"
+STRFILLIN 20 20
+ENDFIELD
+
+FIELD DefaultPropVelocity
+FLOC 30 6
+FGROUP "Unrouted Interconnect Models"
+STRFILLIN 20 20
+ENDFIELD
+
+FIELD CutoffFrequency
+FLOC 30 11
+FGROUP "Routed Interconnect Models"
+STRFILLIN 20 20
+ENDFIELD
+
+FIELD ShapeMeshSize
+FLOC 30 13
+FGROUP "Routed Interconnect Models"
+STRFILLIN 20 20
+ENDFIELD
+
+FIELD ViaModelOptions
+FLOC 15 21
+FGROUP "Routed Interconnect Models"
+MENUBUTTON "Via Modeling Setup..." 25 3
+ENDFIELD
+
+FIELD GeometryWindow
+FLOC 30 15
+FGROUP "Routed Interconnect Models"
+STRFILLIN 20 20
+ENDFIELD
+
+FIELD MinCoupledLength
+FLOC 30 17
+FGROUP "Routed Interconnect Models"
+STRFILLIN 20 20
+ENDFIELD
+
+    #ifdef APD || ALLEGRO_MCM || SIP
+FIELD UsePNCModel
+FLOC 3 35
+CHECKLIST "Use models from Parasitic Parameters"
+ENDFIELD
+   #endif
+
+GROUP "Unrouted Interconnect Models"
+GLOC 1 0
+GSIZE 53 9
+ENDGROUP
+
+GROUP "Routed Interconnect Models"
+GLOC 1 9
+GSIZE 53 11 
+ENDGROUP
+
+    #ifdef APD || ALLEGRO_MCM || SIP
+GROUP "3-D Modeling"
+GLOC 1 33
+GSIZE 53 4
+ENDGROUP
+    #endif
+
+ENDTAB
+
+TAB "Simulation"
+
+POPUP <ResTimePop>"none" "none"
+
+TEXT "Pulse cycle count"
+TLOC 2 3
+TGROUP ""
+ENDTEXT
+
+TEXT "Pulse Switching Frequency"
+TLOC 2 5
+TGROUP ""
+ENDTEXT
+
+TEXT "Pulse Duty Cycle"
+TLOC 2 7
+TGROUP ""
+ENDTEXT
+
+TEXT "Pulse/Step Offset"
+TLOC 2 9
+TGROUP ""
+ENDTEXT
+
+FIELD PulseCycleCount
+FLOC 30 3
+STRFILLIN 12 20
+FGROUP ""
+ENDFIELD
+
+FIELD PulseClockFrequency
+FLOC 30 5
+STRFILLIN 12 20
+FGROUP ""
+ENDFIELD
+
+FIELD PulseDutyCycle
+FLOC 30 7
+STRFILLIN 12 20
+FGROUP ""
+ENDFIELD
+
+FIELD PulseStepOffset
+FLOC 30 9
+STRFILLIN 12 20
+FGROUP ""
+ENDFIELD
+
+FIELD FixedDuration
+FLOC 2 11
+CHECKLIST "Fixed Duration"
+FGROUP ""
+ENDFIELD
+
+FIELD FixedDurationTime
+FLOC 30 11
+STRFILLIN 12 20
+FGROUP ""
+ENDFIELD
+
+TEXT "Waveform Resolution (Time)"
+TLOC 2 13
+TGROUP ""
+ENDTEXT
+
+FIELD WaveResolutionTime
+FLOC 30 13
+STRFILLIN 15 20
+POP "ResTimePop"
+ENDFIELD
+
+FIELD SourceSample
+FLOC 2 18
+CHECKLIST "Report Source Sampling Data"
+FGROUP ""
+ENDFIELD
+
+TEXT "Measure Delays At"
+TLOC 2 15
+TGROUP ""
+ENDTEXT
+
+FIELD DelayThresholds
+FLOC 30 15
+STRFILLIN 15 20
+POP "DlyThreshPOP"
+ENDFIELD
+
+FIELD FTSDefs
+FLOC 19 22
+MENUBUTTON "Fast/Typical/Slow Definitions..." 34 3
+ENDFIELD
+
+GROUP ""
+GLOC 1 0 
+GSIZE 54 27
+ENDGROUP
+
+ENDTAB
+
+TAB "Units"
+
+TEXT "Design Voltage Units"
+TLOC 2 3
+TGROUP ""
+ENDTEXT
+
+TEXT "Noise Voltage Units"
+TLOC 2 5
+TGROUP ""
+ENDTEXT
+
+TEXT "Design Resistance Units"
+TLOC 2 7
+TGROUP ""
+ENDTEXT
+
+TEXT "Parasitic Resistance Units"
+TLOC 2 9
+TGROUP ""
+ENDTEXT
+
+TEXT "Design Capacitance Units"
+TLOC 2 11
+TGROUP ""
+ENDTEXT
+
+TEXT "Parasitic Capacitance Units"
+TLOC 2 13
+TGROUP ""
+ENDTEXT
+
+TEXT "Parasitic Inductance Units"
+TLOC 2 15
+TGROUP ""
+ENDTEXT
+
+TEXT "Delay Time Units"
+TLOC 2 17
+TGROUP ""
+ENDTEXT
+
+TEXT "Length Units"
+TLOC 2 19
+TGROUP ""
+ENDTEXT
+
+TEXT "Spacing Units"
+TLOC 2 21
+TGROUP ""
+ENDTEXT
+
+TEXT "Etch Thickness Units"
+TLOC 2 23
+TGROUP ""
+ENDTEXT
+
+FIELD DesignVoltageUnits
+FLOC 30 3
+ENUMSET 22
+POP "voltpop"
+FGROUP ""
+ENDFIELD
+
+FIELD NoiseVoltageUnits
+FLOC 30 5
+ENUMSET 22
+POP "voltpop"
+FGROUP ""
+ENDFIELD
+
+FIELD DesignResistanceUnits
+FLOC 30 7
+ENUMSET 22
+POP "resipop"
+FGROUP ""
+ENDFIELD
+
+FIELD ParasiticResistanceUnits
+FLOC 30 9
+ENUMSET 22
+POP "resipop"
+FGROUP ""
+ENDFIELD
+
+FIELD DesignCapacitanceUnits
+FLOC 30 11
+ENUMSET 22
+POP "capapop"
+FGROUP ""
+ENDFIELD
+
+FIELD ParasiticCapacitanceUnits
+FLOC 30 13
+ENUMSET 22
+POP "capapop"
+FGROUP ""
+ENDFIELD
+
+FIELD ParasiticInductanceUnits
+FLOC 30 15
+ENUMSET 22
+POP "indupop"
+FGROUP ""
+ENDFIELD
+
+FIELD DelayTimeUnits
+FLOC 30 17
+ENUMSET 22
+POP "timepop"
+FGROUP ""
+ENDFIELD
+
+FIELD LengthUnits
+FLOC 30 19
+ENUMSET 22
+POP "distpop"
+FGROUP ""
+ENDFIELD
+
+FIELD SpacingUnits
+FLOC 30 21
+ENUMSET 22
+POP "distpop"
+FGROUP ""
+ENDFIELD
+
+FIELD EtchThicknessUnits
+FLOC 30 23
+ENUMSET 22
+POP "thickpop"
+FGROUP ""
+ENDFIELD
+
+
+GROUP ""
+GLOC 1 0 
+GSIZE 54 29
+ENDGROUP
+
+ENDTAB
+
+ENDTABSET
+
+FIELD OK
+FLOC 2 45
+MENUBUTTON "OK" 11 3
+ENDFIELD
+
+FIELD Cancel
+FLOC 14 45
+MENUBUTTON "Cancel" 11 3
+ENDFIELD
+
+
+FIELD help
+FLOC 48 45
+MENUBUTTON "Help" 11 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

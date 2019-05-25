@@ -1,0 +1,80 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 34 6
+HEADER "Auto Pin Use Assignment"
+
+POPUP <SOURCE_POPUP> """".
+POPUP <DEST_POPUP> """".
+POPUP <PINUSE_POPUP> """".
+
+TILE
+
+FIELD advance_filter
+FLOC 1 1
+CHECKLIST "Use advanced selection filtering"
+ENDFIELD
+
+TEXT "Source: "
+TLOC 1 4
+ENDTEXT
+
+FIELD source_type
+FLOC 11 4
+ENUMSET 19
+POP "SOURCE_POPUP"
+ENDFIELD
+
+TEXT "Destination: "
+TLOC 1 6
+ENDTEXT
+
+FIELD dest_type
+FLOC 11 6
+ENUMSET 19
+POP "DEST_POPUP"
+ENDFIELD
+
+FIELD mod_inst_pins
+FLOC 1 10
+CHECKLIST "Override pin use on selected instance only"
+ENDFIELD
+
+FIELD power_ground_assign
+FLOC 1 12
+CHECKLIST "Assign power and ground pin uses"
+ENDFIELD
+
+FIELD reassign
+FLOC 1 14
+CHECKLIST "Reassignment allowed (non-unspecified)"
+ENDFIELD
+
+GRID pinuse_grid
+FLOC 1 17
+FSIZE  32 19
+OPTIONS VLINES HLINES
+GHEAD TOP 
+HEADSIZE 2
+OPTIONS 3D
+ENDGHEAD
+ENDGRID
+
+FIELD done
+FLOC 1 37
+MENUBUTTON "Ok" 10 3
+ENDFIELD
+
+FIELD cancel
+FLOC 12 37
+MENUBUTTON "Cancel" 10 3
+ENDFIELD
+
+FIELD help
+FLOC 23 37
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

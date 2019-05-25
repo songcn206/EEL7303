@@ -1,0 +1,110 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM 
+FIXED
+PORT 37 30
+HEADER "DFA Classification Editor"
+
+POPUP <POPUP_TREE>"Cut selected items""1","Paste to class""2","Undo""3","Delete class""4".
+
+MESSAGE usepopup 0 "Popup cut/paste changes class assignment."
+MESSAGE loadingsyms 0 "Loading library symbols, please wait."
+MESSAGE usedfa_dlg 0 "Use dfa_dlg program to update library symbols."
+
+TILE
+
+TEXT "Class/Symbol Instance Selector:"
+TLOC 2 1
+ENDTEXT
+
+FIELD tree
+FLOC 2 3
+TREEVIEW 35 11
+POP "POPUP_TREE"
+OPTIONS prettyprint
+ENDFIELD
+
+GROUP "Class (Dfa_Dev_Class property) assignment"
+GLOC 2 24
+GSIZE 35 7
+ENDGROUP
+
+TEXT "New class name: "
+TLOC 4 26
+ENDTEXT
+
+FIELD group_name
+FLOC 6 28
+STRFILLIN 24 32
+ENDFIELD
+
+GROUP "List construction"
+GLOC 2 31
+GSIZE 35 8
+ENDGROUP
+
+TEXT "Display symbols from:"
+TLOC 4 33
+ENDTEXT
+
+FIELD database
+FLOC 6 35
+CHECKLIST "Database"
+ENDFIELD
+
+FIELD library
+FLOC 6 37
+CHECKLIST "Library"
+ENDFIELD
+
+TEXT
+TLOC 19 35
+INFO prog_stat 12
+OPTIONS center
+ENDTEXT
+
+FIELD lib_progress
+FLOC 14 37
+CHECKLIST "Library"
+PROGRESS 21 3
+ENDFIELD
+
+#ifdef 0 disable for now
+
+GROUP "Destination directory:"
+GLOC 2 39
+GSIZE 35 6
+ENDGROUP
+
+FIELD destination
+FLOC 3 42
+STRFILLIN 28 256
+ENDFIELD
+
+FIELD dest_browse
+FLOC 33 42
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+#endif
+
+FIELD update
+#FLOC 2 46
+FLOC 2 41
+MENUBUTTON "Update" 10 3
+ENDFIELD
+
+FIELD close
+#FLOC 14 46
+FLOC 14 41
+MENUBUTTON "Close" 10 3
+ENDFIELD
+
+FIELD help
+#FLOC 26 46
+FLOC 26 41
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

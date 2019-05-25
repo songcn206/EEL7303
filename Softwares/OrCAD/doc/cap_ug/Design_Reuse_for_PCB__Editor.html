@@ -1,0 +1,956 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>
+      Design Reuse for PCB Editor
+    </title>
+    <meta name="Approver" content="Technical Publications" />
+    <meta name="Author" content="Technical Publications" />
+    <meta name="CreateDate" content="2012-10-10" />
+    <meta name="CreateTime" content="1349876210" />
+    <meta name="DataType" content="Manuals" />
+    <meta name="Description" content="UG" />
+    <meta name="DocTitle" content="OrCAD Capture User Guide" />
+    <meta name="DocType" content="User Guide" />
+    <meta name="FileTitle" content="Design Reuse for PCB Editor" />
+    <meta name="Keywords" content="" />
+    <meta name="FileType" content="Chapter" />
+    <meta name="Keyword" content="cap_ug" />
+    <meta name="Language" content="English" />
+    <meta name="ModifiedDate" content="2012-10-10" />
+    <meta name="ModifiedTime" content="1349876210" />
+    <meta name="NextFile"
+    content="Running%2BDesign%2BRules%2BCheck%2B-%2BPhysical%2BRules.html" />
+    <meta name="Group" content="" />
+    <meta name="Platform" content="All," />
+    <meta name="PrevFile"
+    content="Physical%2BLayout%2Bof%2Ba%2BSimulation%2BDesign.html" />
+    <meta name="Product"
+    content="Allegro Design Entry CIS,OrCAD Capture," />
+    <meta name="ProductFamily"
+    content="Silicon-Package-Board Co-Design,Silicon-Package-Board Co-Design," />
+    <meta name="ProductVersion" content="16.6" />
+    <meta name="RightsManagement"
+    content="Copyright 2011-2012 Cadence Design Systems Inc." />
+    <meta name="Title"
+    content="OrCAD Capture User Guide -- Design Reuse for PCB Editor" />
+    <meta name="Version" content="16.6" />
+    <meta name="Renderer" content="WIKI" />
+    <meta name="SpaceKey" content="capug166" />
+    <link href="styles/site.css" rel="stylesheet"
+    type="text/css" />
+    <meta content="text/html; charset=UTF-8"
+    http-equiv="Content-Type" />
+  </head>
+  <body style="margin-left: 5%;background-color: #FFFFFF;">
+    <a xmlns:html="http://www.w3.org/1999/xhtml" id="pagetop"
+    name="pagetop"></a> <a
+    xmlns:html="http://www.w3.org/1999/xhtml" id="firstpage"
+    name="firstpage"></a> <!-- Begin Buttons -->
+     
+    <table xmlns:html="http://www.w3.org/1999/xhtml" border="0"
+    cellpadding="0" cellspacing="0" width="650">
+      <tbody>
+        <tr>
+          <td colspan="10" height="36" width="650">
+            <img height="34" src="../support/header_doc.gif"
+            width="650" />
+          </td>
+        </tr>
+        <tr>
+          <td height="20" width="59">
+            <a href="javascript:openLibrary()"><img
+            alt="View Library" border="0" height="20"
+            src="../support/nav2_library.gif" width="59" /></a>
+          </td>
+          <td height="20" width="73">
+            <a href="cap_ugTOC.html"><img alt="Table of Contents"
+            border="0" src="../support/nav2_toc.gif" /></a>
+          </td>
+          <td height="20" width="46">
+            <img alt="Index" border="0"
+            src="../support/nav2_index_b.gif" />
+          </td>
+          <td>
+            <a
+            href="Physical_Layout_of_a_Simulation_Design.html"><img
+            alt="Previous" border="0"
+            src="../support/nav2_previous.gif" /></a>
+          </td>
+          <td>
+            <a
+            href="Running_Design_Rules_Check_-_Physical_Rules.html"><img
+             alt="Next" border="0"
+            src="../support/nav_next.gif" /></a>
+          </td>
+          <td height="20">
+            <a href="cap_ug.pdf"><img alt="Open PDF to print book"
+            border="0" height="20" src="../support/nav2_print.gif"
+            width="114" /></a>
+          </td>
+          <td height="20" width="61">
+            <img src="../support/nav2_black.gif" />
+          </td>
+          <td height="20" width="76">
+            <a href="/feedback.htm"><img alt="Email Comments"
+            border="0" height="20"
+            src="../support/nav2_feedback.gif" width="76" /></a>
+          </td>
+          <td height="20" width="43">
+            <a href="../cdsuser/help.html"><img
+            alt="Help Using Documentation" border="0" height="20"
+            src="../support/nav2_help.gif" width="43" /></a>
+          </td>
+          <td height="20" width="37">
+            <a href="/exitsearch.htm"><img
+            alt="Shut Down Cadence Documentation Server" border="0"
+            height="20" src="../support/nav2_exit.gif"
+            width="37" /></a>
+          </td>
+        </tr>
+      </tbody>
+    </table><!-- End Buttons -->
+    <hr xmlns:html="http://www.w3.org/1999/xhtml" />
+    <div id="main-header">
+      <a xmlns="" id="DesignReuseforPCBEditor"
+      name="DesignReuseforPCBEditor"></a> 
+      <h1 xmlns="" style=" margin: 4px 0 4px;">
+        <span>Design Reuse for PCB Editor</span>
+      </h1>
+    </div>
+    <div class="wiki-content group" id="main-content">
+      <p>
+        Design reuse is the capability of defining and using design
+        modules, both in the Capture and PCB Editor layout
+        environments, that are compatible between both of these PCB
+        design tools. You can create modules for reuse in your
+        design in either the Capture schematic or in PCB Editor for
+        physical layout part of the design process.<br />
+         Design reuse enables you to reuse packaging and annotation
+        information from your schematic when you route your PCB (in
+        the form of a PCB Editor .BRD file).<br />
+         You can use the annotation information for particular
+        schematic, whether internal to the design, or as an
+        external reference, multiple times in your PCB Editor
+        design, and all the part references and packaging
+        information will be duplicated correctly with each
+        occurrence of the reuse design in the .BRD file.
+      </p>
+      <p>
+        Consider this example:
+      </p>
+      <p>
+        <br />
+         <img
+        class="confluence-embedded-image confluence-external-resource"
+         data-image-src="http://sj-rdwiki:8081/download/attachments/29854892/image1.png?version=1&amp;modificationDate=1347368645463"
+         src="http://sj-rdwiki:8081/download/attachments/29854892/image1.png?version=1&amp;modificationDate=1347368645463" /><br
+         class="atl-forced-newline" />
+         Suppose a design consists of multiple occurrences of two
+        schematics:
+      </p>
+      <ul>
+        <li>
+          Schematic A is an internal schematic (that is, a
+          schematic that is part of the design, and appears in the
+          project manager as a folder)
+        </li>
+        <li>
+          Schematic B is an external design (a schematic that is
+          referenced by the design but that is not part of the
+          design)
+        </li>
+      </ul>
+      <p>
+        <span class="confluence-anchor-link">&#160;</span>Schematic
+        A has three occurrences in the design: A1, A2, and A3.
+        Schematic B has one occurrence, B1. If you specify each of
+        these schematics as &quot;reuse schematics,&quot; when
+        Capture annotates the design, packaging information is
+        assigned to parts in the design such that part packaging is
+        contained within each occurrence of the reuse
+        schematic.<br />
+         <span class="confluence-anchor-link">&#160;</span>So, in
+        this example, when you annotate the design in Capture, no
+        parts in A1 would share packaging with parts from A2 or A3,
+        etcetera.<br />
+         <span class="confluence-anchor-link">&#160;</span>In PCB
+        Editor, the source of a design reuse module is the Capture
+        netlist. This netlist contains a set of <span
+        class="confluence-link">Reuse properties</span> that are
+        used to identify and group each of the packages within the
+        module. After placing and routing the board in PCB Editor,
+        you can save the design as a reuse module by creating an
+        <span style="color: rgb(51,51,51);">MDD</span> file
+      </p>
+      <h5
+      id="DesignReuseforPCBEditor-&#160;Multi-levelreusedesigns">
+        <span class="confluence-anchor-link">&#160;</span>
+        <em>Multi-level reuse designs</em>
+      </h5>
+      <p>
+        When creating a multi-level schematic design in which you
+        embed successive levels of reuse modules, you must take
+        care to ensure you preserve the reuse design. In general,
+        modifying properties from the root level of a design is not
+        a problem unless the property causes a component change at
+        a lower level.
+      </p>
+      <p>
+        For example, say you have a three-level design called
+        HIGH.DSN. HIGH.DSN references MID.DSN which is a reuse
+        module, and MID.DSN references LOW.DSN which is also a
+        reuse module.
+      </p>
+      <p>
+        If you want to make design modifications that will result
+        in changes in connectivity then you must edit lower-level
+        designs first before you can see the changes reflected at
+        higher levels. Occurrence properties however, may be
+        changed at any level in a referenced schematic without
+        modifying the source design. Consider the following two
+        design scenarios. The first is a component change but the
+        second only changes occurrence properties.
+      </p>
+      <p>
+        <strong>Scenario A</strong>--Modifying LOW.DSN by adding a
+        series terminating resistor
+      </p>
+      <ol>
+        <li>
+          First, open the LOW.DSN design and make the change.
+          Afterward, netlist the design to PCB Editor and update
+          the PCB Editor board and reuse module from within PCB
+          Editor.
+        </li>
+        <li>
+          Open MID.DSN and, again, netlist the revised design with
+          connectivity changes to PCB Editor. In PCB Editor, read
+          in the revised LOW physical module and update the MID
+          board and physical module.
+        </li>
+        <li>
+          Open HIGH.DSN and generate the netlist for PCB Editor.
+          Once the design is in PCB Editor, refresh the instances
+          of the MID reuse module.
+        </li>
+      </ol>
+      <p>
+        <strong>Scenario B</strong>--Changing a Reference
+        Designator in LOW.DSN from U1_1 to U444
+      </p>
+      <p style="margin-left: 30.0px;">
+        In this case, all you have to do is modify the higher-level
+        occurrence tree for the component that is located in
+        LOW.DSN. The next time you take the netlist from HIGH.DSN
+        into PCB Editor the individual component will get its
+        Reference Designator updated.
+      </p>
+      <div class="panelMacro">
+        <p>
+          &#160;
+        </p>
+        <div class="table-wrap">
+          <table class="confluenceTable">
+            <colgroup>
+              <col />
+              <col />
+            </colgroup>
+            <tbody>
+              <tr>
+                <td class="confluenceTd">
+                  <img
+                  class="confluence-embedded-image confluence-external-resource"
+                   data-image-src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                   height="16"
+                  src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                   width="16" />
+                </td>
+                <td class="confluenceTd">
+                  <ul>
+                    <li>
+                      Except for occurrence properties, the
+                      schematics of externally-referenced libraries
+                      and designs should not be edited. You should
+                      view them as read-only designs. Trying to
+                      edit and save these designs from within your
+                      schematic, can introduce errors such as
+                      duplicate reference designators and other
+                      problems.
+                    </li>
+                    <li>
+                      When saving schematics with
+                      externally-referenced libraries or designs,
+                      occurrence properties are saved but altered
+                      instance values are not. If you want to
+                      change externally-referenced libraries or
+                      designs you should first close the
+                      referencing design. Then, open the referenced
+                      library or design, make the necessary
+                      changes, and save and close the referenced
+                      library or design. At this point, you can
+                      reopen the original design and reference the
+                      modified design.
+                    </li>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          &#160;
+        </p>
+      </div>
+      <h3 id="DesignReuseforPCBEditor-&#160;CreatingaReuseDesign">
+        <span class="confluence-anchor-link">&#160;</span>Creating
+        a Reuse Design
+      </h3>
+      <h4 id="DesignReuseforPCBEditor-&#160;Tocreateareusedesign">
+        <span class="confluence-anchor-link">&#160;</span> <em>To
+        create a reuse design</em>
+      </h4>
+      <ol>
+        <li>
+          In Capture, create the schematic that will become your
+          reuse design.<br />
+           You can use the project wizard to set up your schematic
+          and build the design from scratch or use library
+          components.
+        </li>
+        <li>
+          Perform a design rules check (DRC) by selecting the .DSN
+          file in the project manager, then choosing the Design
+          Rules Check command from the Tools menu. This action
+          checks for disconnected nets, no connects, off-grid
+          objects, packaging problems, duplicate part references
+          and other types of errors.
+        </li>
+        <li>
+          <p>
+            Annotate the design by choosing the <em>Annotate</em>
+            command from the Tools menu. Select the Packaging tab
+            of the Annotate dialog box and check appropriate
+            options.<br />
+             If you do not plan to make any design changes in PCB
+            Editor that would affect the netlist, skip to <span
+            class="confluence-link">step&#160;7</span>. Otherwise,
+            proceed to the next step.
+          </p>
+          <div class="panelMacro">
+            <p>
+              &#160;
+            </p>
+            <div class="table-wrap">
+              <table class="confluenceTable">
+                <colgroup>
+                  <col />
+                  <col />
+                </colgroup>
+                <tbody>
+                  <tr>
+                    <td class="confluenceTd">
+                      <img
+                      class="confluence-embedded-image confluence-external-resource"
+                       data-image-src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                       height="16"
+                      src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                       width="16" />
+                    </td>
+                    <td class="confluenceTd">
+                      <p>
+                        In <span
+                        class="confluence-link">step&#160;7</span>,
+                        there are two options you can check in the
+                        PCB Editor reuse tab, that are, Generate
+                        Reuse Modules and Renumber Design for Using
+                        Reuse Modules. By checking both of these
+                        options, you can generate a reuse design
+                        and annotate it at the same time, saving
+                        yourself extra steps.
+                      </p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </li>
+        <li>
+          Generate an PCB Editor netlist by choosing the <em>Create
+          Netlist</em> <span style="color: rgb(51,51,51);">command
+          from the Tools menu, select the PCB Editor tab</span> in
+          the Create Netlist dialog box. Complete the appropriate
+          options in the dialog box. Either enable the Create or
+          Update PCB Editor Board (Netrev) option to open a .BRD
+          design in PCB Editor during netlisting or import the
+          netlist into PCB Editor by choosing the Import Logic
+          command in PCB Editor.
+        </li>
+        <li>
+          In PCB Editor, place and route the physical design, then
+          export the design logic to Capture.
+        </li>
+        <li>
+          In Capture, back annotate design changes from PCB Editor
+          by selecting the .DSN file and choosing the <em>Back
+          Annotate</em> command from the Tools menu. The
+          Backannotate dialog appears. Select the appropriate
+          options in the PCB Editor tab of the Backannotate dialog
+          box.
+        </li>
+        <li>
+          From the Tools menu, choose the <em>Annotate</em>
+          command. In the PCB Editor reuse tab of the Annotate
+          dialog enable the <em>Generate Reuse Module</em> option
+          to create a reuse module from the design.<br />
+           This step adds a unique REUSE_ID property for each
+          package. You can view these properties in the Property
+          Editor window.
+        </li>
+        <li>
+          <p>
+            Netlist the design to PCB Editor, and create an .MDD
+            reuse module in PCB Editor from the schematic reuse
+            design.<br />
+             You complete the module creation in PCB Editor by
+            selecting the Create Module command from the Tools
+            menu. You are prompted to select the extents of the
+            module and pick an origin. By doing so, you have
+            designated an PCB Editor Module Definition File (.MDD).
+          </p>
+          <div class="panelMacro">
+            <p>
+              &#160;
+            </p>
+            <div class="table-wrap">
+              <table class="confluenceTable">
+                <colgroup>
+                  <col />
+                  <col />
+                </colgroup>
+                <tbody>
+                  <tr>
+                    <td class="confluenceTd">
+                      <img
+                      class="confluence-embedded-image confluence-external-resource"
+                       data-image-src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                       height="16"
+                      src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                       width="16" />
+                    </td>
+                    <td class="confluenceTd">
+                      <p>
+                        See the PCB Editor online Help
+                        documentation for how to create a physical
+                        design reuse module in PCB Editor from a
+                        placed-and-routed board.
+                      </p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </li>
+        <li>
+          <p>
+            Repeat steps 1 through 8, as necessary, for multiple
+            levels of design in a design reuse hierarchy.
+          </p>
+        </li>
+        <li>
+          <p>
+            Use the reuse module in a Capture design, either as a
+            library part or as a hierarchical block.
+          </p>
+        </li>
+      </ol>
+      <div class="panelMacro">
+        <p>
+          &#160;
+        </p>
+        <div class="table-wrap">
+          <table class="confluenceTable">
+            <colgroup>
+              <col />
+              <col />
+            </colgroup>
+            <tbody>
+              <tr>
+                <td class="confluenceTd">
+                  <img
+                  class="confluence-embedded-image confluence-external-resource"
+                   data-image-src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                   height="16"
+                  src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                   width="16" />
+                </td>
+                <td class="confluenceTd">
+                  <ul>
+                    <li>
+                      When creating design reuse modules, it is a
+                      good idea to avoid making multiple-page
+                      schematics (with off-page connectors). When
+                      trying to descend the hierarchy of a
+                      referenced design, such as a reuse module,
+                      you cannot choose which page gets
+                      opened<strong>.</strong>
+                    </li>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          &#160;
+        </p>
+      </div>
+      <h4 id="DesignReuseforPCBEditor-&#160;Reuseproperties">
+        <span class="confluence-anchor-link">&#160;</span>Reuse
+        properties
+      </h4>
+      <p>
+        <span class="confluence-anchor-link">&#160;</span>Capture
+        assigns reuse properties to identify and distinguish the
+        reuse parts used in simple hierarchical and complex
+        hierarchical designs. These properties ensure that part
+        packaging is preserved and references are renumbered in
+        such a way that they do not conflict with each other.<br />
+         <span class="confluence-anchor-link">&#160;</span>&#160;
+      </p>
+      <div class="table-wrap">
+        <table class="confluenceTable">
+          <tbody>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <strong>Capture Assigned Reuse
+                  Properties</strong>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <strong>Description</strong>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <span
+                  class="confluence-anchor-link">&#160;</span>
+                  <span
+                  style="color: rgb(0,51,102);"><strong>REUSE_ID</strong></span>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <span
+                  class="confluence-anchor-link">&#160;</span>This
+                  property is added to every part in a reuse
+                  design. Within a reuse design there are as many
+                  values of this property as there are packages so
+                  that each package has a unique REUSE_ID. All
+                  parts in a package have the same REUSE_ID value.
+                  Capture assigns these property values when you
+                  enable the Generate Reuse Module in the PCB
+                  Editor reuse tab of the Annotate dialog box.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <span
+                  class="confluence-anchor-link">&#160;</span>
+                  <span
+                  style="color: rgb(0,51,102);"><strong>REUSE_PID</strong></span>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <span
+                  class="confluence-anchor-link">&#160;</span>If a
+                  reuse module contains another reuse module as
+                  part of its <span
+                  style="color: rgb(51,51,51);">external
+                  design</span>, then the netlister assigns a
+                  REUSE_PID value to every component in each
+                  package of the external design. The value of the
+                  REUSE_PID is the same as the value of the
+                  component&#39;s previous REUSE_ID. A new REUSE_ID
+                  value is then assigned to each module. This way,
+                  <span
+                  style="color: rgb(51,51,51);">occurrences</span>
+                  of the same module will have different REUSE_IDs
+                  on them, but the same REUSE_PIDs for
+                  corresponding components. Using REUSE_IDs, makes
+                  it possible for Capture to propagate changes to
+                  lower levels of a reuse module.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <span
+                  class="confluence-anchor-link">&#160;</span>
+                  <span
+                  style="color: rgb(0,51,102);"><strong>REUSE_NAME</strong></span>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <span
+                  class="confluence-anchor-link">&#160;</span>The
+                  default value of the REUSE_NAME property,
+                  assigned by the netlister, is a concatenation of
+                  the design name and the schematic name coupled by
+                  an underscore character. Here is an example:<br
+                  class="atl-forced-newline" />
+                   <span
+                  class="confluence-anchor-link">&#160;</span>testmodule_schematic1<br
+                   class="atl-forced-newline" />
+                   <span
+                  class="confluence-anchor-link">&#160;</span>The
+                  REUSE_NAME property is propagated down throughout
+                  the design hierarchy to all parts below.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <span
+                  class="confluence-anchor-link">&#160;</span>
+                  <span
+                  style="color: rgb(0,51,102);"><strong>REUSE_INSTANCE</strong></span>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <span
+                  class="confluence-anchor-link">&#160;</span>This
+                  value is computed by the netlister and added to
+                  the netlist. The value of this property is unique
+                  for each usage, or instance, of a reuse module. A
+                  design may have one REUSE_NAME value but many
+                  REUSE_INSTANCE values.<br
+                  class="atl-forced-newline" />
+                   <span
+                  class="confluence-anchor-link">&#160;</span>The
+                  REUSE_INSTANCE property is obtained from the name
+                  of the referencing hierarchical part. If a
+                  REUSE_INSTANCE property is not present, it is
+                  created as follows:<br
+                  class="atl-forced-newline" />
+                   <span
+                  class="confluence-anchor-link">&#160;</span>&lt;
+                  REUSE_NAME &gt;_&lt;document ID of the
+                  referencing hierarchical part&gt;<br
+                  class="atl-forced-newline" />
+                   <span
+                  class="confluence-anchor-link">&#160;</span>Like
+                  the REUSE_NAME property, the REUSE_INSTANCE
+                  property is propagated down throughout the design
+                  hierarchy to all parts below.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="confluenceTd">
+                <p>
+                  <span
+                  class="confluence-anchor-link">&#160;</span>
+                  <span
+                  style="color: rgb(0,51,102);"><strong>REUSE_MODULE</strong></span>
+                </p>
+              </td>
+              <td class="confluenceTd">
+                <p>
+                  <span
+                  class="confluence-anchor-link">&#160;</span>PCB
+                  Editor assigns this property as a unique name to
+                  identify a physical reuse module. The property
+                  corresponds to placed and routed board in PCB
+                  Editor (.BRD file) which has been saved as an
+                  .MDD file. If this property is user-defined in
+                  Capture, it specifies the reuse module to use in
+                  PCB Editor.
+                </p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h3 id="DesignReuseforPCBEditor-&#160;UsingaReuseDesign">
+        <span class="confluence-anchor-link">&#160;</span>Using a
+        Reuse Design
+      </h3>
+      <p>
+        Once you have generated a reuse module in Capture, you can
+        use it in one of two ways, either by:
+      </p>
+      <ul>
+        <li>
+          Placing the module as an external design schematic (.DSN
+          file) using the <span style="color: rgb(51,51,51);">Place
+          Hierarchical Block dialog box;<span
+          style="text-decoration: underline;"><br />
+          </span></span>
+        </li>
+      </ul>
+      <p style="margin-left: 60.0px;">
+        or
+      </p>
+      <ul>
+        <li>
+          Placing the module as a library part (.OLB file) using
+          the Place part dialog box if the part was created with
+          the <span style="color: rgb(51,51,51);">Generate Part
+          command</span> in Capture.
+        </li>
+      </ul>
+      <p>
+        You can use a design reuse module either as an .OLB part
+        from a library or as an external .DSN design, placed as a
+        hierarchical block.
+      </p>
+      <h4
+      id="DesignReuseforPCBEditor-&#160;ReuseModuleasaLibraryPart">
+        <span class="confluence-anchor-link">&#160;</span>Reuse
+        Module as a Library Part
+      </h4>
+      <p>
+        The steps to place a reuse design that was created as
+        library part, in your design, are:
+      </p>
+      <ol>
+        <li>
+          From the Place menu, choose the Part command. The Place
+          Part dialog box appears.
+        </li>
+        <li>
+          Locate and select the .OLB part previously saved as a
+          reuse design. For more information, see <span
+          style="color: rgb(51,51,51);">Searching for a part in the
+          libraries</span>.
+        </li>
+        <li>
+          Click OK. An image of the part is attached to the mouse
+          pointer.
+        </li>
+        <li>
+          Move the part image and click the left mouse button to
+          place the part.
+        </li>
+        <li>
+          For each instance property<span
+          style="color: rgb(51,51,51);">&#160;</span> of the part
+          you want to place, repeat step 4.
+        </li>
+        <li>
+          Press the ESC key or select another tool to dismiss the
+          part attached to the mouse pointer.
+        </li>
+      </ol>
+      <h5 id="DesignReuseforPCBEditor-&#160;PlacementGuidelines">
+        <span class="confluence-anchor-link">&#160;</span>
+        <em>Placement Guidelines</em>
+      </h5>
+      <ul>
+        <li>
+          When you place a part off-grid, it remains off-grid
+          through any cut-and-paste and drag-and-drop operations.
+        </li>
+        <li>
+          If you place parts so that two pins meet end to end, the
+          pins are connected. OrCAD recommends that you connect the
+          pins of the parts using a wire, and avoid placing parts
+          so that two pins meet end to end. This is because, parts
+          with direct pin to pin connections produce a system
+          generated net name to establish the connection. Using
+          system-generated net names is not recommended as:<br />
+           
+          <ul>
+            <li>
+              Capture does not support overriding system generated
+              net names with user-specified net names.
+            </li>
+            <li>
+              Searching for the system generated net name can be
+              difficult if you are not aware of the pin to pin
+              connection.
+            </li>
+            <li>
+              If you move the parts after creating the netlist, the
+              system generated net name might change. This may
+              cause net name conflicts when you run backannotation.
+            </li>
+          </ul>
+        </li>
+        <li>
+          OrCAD recommends that you do not connect a power symbol
+          directly to a power pin. Connect the power symbol to the
+          power pin using a wire.
+        </li>
+        <li>
+          You can place a part in the middle of a wire segment
+          without redrawing the wire by placing the part over the
+          wire such that two pins on the part connect with the wire
+          segment. Then click the left mouse button over the part
+          with the TAB key pressed until just the overlapping wire
+          segment is selected. Finally, delete the wire segment.
+        </li>
+      </ul>
+      <h4
+      id="DesignReuseforPCBEditor-&#160;ReuseModuleasHierarchicalBlock">
+        <span class="confluence-anchor-link">&#160;</span>Reuse
+        Module as Hierarchical Block
+      </h4>
+      <p>
+        To place a reuse module as a hierarchical block:
+      </p>
+      <ol>
+        <li>
+          In Capture, place a hierarchical block on a schematic
+          page by choosing the <em>Hierarchical Block</em> command
+          from the Place menu. Reference the reuse module as an
+          external design.
+        </li>
+        <li>
+          Annotate the design by choosing the <em>Annotate</em>
+          command from the Tools menu.
+        </li>
+        <li>
+          Select the PCB Editor Reuse tab and enable the Renumber
+          Design For Reuse Modules option. Complete the other
+          options in the PCB Editor Reuse tab, then click OK.
+        </li>
+      </ol>
+      <div class="panelMacro">
+        <p>
+          &#160;
+        </p>
+        <div class="table-wrap">
+          <table class="confluenceTable">
+            <colgroup>
+              <col />
+              <col />
+            </colgroup>
+            <tbody>
+              <tr>
+                <td class="confluenceTd">
+                  <img
+                  class="confluence-embedded-image confluence-external-resource"
+                   data-image-src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                   height="16"
+                  src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                   width="16" />
+                </td>
+                <td class="confluenceTd">
+                  <p>
+                    After placing the reuse module, if you want to
+                    synchronize your Capture schematic with its
+                    corresponding PCB Editor .MDD equivalent, you
+                    must regenerate an PCB Editor netlist from
+                    Capture. In PCB Editor, you can either update
+                    the PCB Editor board or re-import the netlist
+                    onto the PCB Editor board. This action ensures
+                    the reuse properties are incorporated into the
+                    physical reuse module. The module can now be
+                    used in any schematic or physical design as a
+                    reuse module.
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <hr xmlns:html="http://www.w3.org/1999/xhtml" />
+    <hr xmlns:html="http://www.w3.org/1999/xhtml" align="left" />
+    <div xmlns:html="http://www.w3.org/1999/xhtml"
+    style="text-align: left;">
+      <!-- Begin Buttons -->
+      <table border="0" cellpadding="0" cellspacing="0"
+      width="650">
+        <tbody>
+          <tr>
+            <td colspan="10" height="36" width="650">
+              <img height="34" src="../support/header_doc.gif"
+              width="650" />
+            </td>
+          </tr>
+          <tr>
+            <td height="20" width="59">
+              <a href="javascript:openLibrary()"><img
+              alt="View Library" border="0" height="20"
+              src="../support/nav2_library.gif" width="59" /></a>
+            </td>
+            <td height="20" width="73">
+              <a href="cap_ugTOC.html"><img alt="Table of Contents"
+              border="0" src="../support/nav2_toc.gif" /></a>
+            </td>
+            <td height="20" width="46">
+              <img alt="Index" border="0"
+              src="../support/nav2_index_b.gif" />
+            </td>
+            <td>
+              <a
+              href="Physical_Layout_of_a_Simulation_Design.html"><img
+               alt="Previous" border="0"
+              src="../support/nav2_previous.gif" /></a>
+            </td>
+            <td>
+              <a
+              href="Running_Design_Rules_Check_-_Physical_Rules.html"><img
+               alt="Next" border="0"
+              src="../support/nav_next.gif" /></a>
+            </td>
+            <td height="20">
+              <a href="cap_ug.pdf"><img
+              alt="Open PDF to print book" border="0" height="20"
+              src="../support/nav2_print.gif" width="114" /></a>
+            </td>
+            <td height="20" width="61">
+              <img src="../support/nav2_black.gif" />
+            </td>
+            <td height="20" width="76">
+              <a href="/feedback.htm"><img alt="Email Comments"
+              border="0" height="20"
+              src="../support/nav2_feedback.gif" width="76" /></a>
+            </td>
+            <td height="20" width="43">
+              <a href="../cdsuser/help.html"><img
+              alt="Help Using Documentation" border="0" height="20"
+              src="../support/nav2_help.gif" width="43" /></a>
+            </td>
+            <td height="20" width="37">
+              <a href="/exitsearch.htm"><img
+              alt="Shut Down Cadence Documentation Server"
+              border="0" height="20" src="../support/nav2_exit.gif"
+              width="37" /></a>
+            </td>
+          </tr>
+        </tbody>
+      </table><!-- End Buttons -->
+    </div><br xmlns:html="http://www.w3.org/1999/xhtml" />
+     <font xmlns:html="http://www.w3.org/1999/xhtml" size="-1">For
+    support, see <a href="http://support.cadence.com"
+    target="_blank">Cadence Online Support</a> service.</font> <br
+    xmlns:html="http://www.w3.org/1999/xhtml" />
+     <br xmlns:html="http://www.w3.org/1999/xhtml" />
+     <font xmlns:html="http://www.w3.org/1999/xhtml"
+    size="-1"><i>Copyright &#169; 2012, <a
+    href="http://www.cadence.com">Cadence Design Systems,
+    Inc.</a></i></font> <br
+    xmlns:html="http://www.w3.org/1999/xhtml" />
+     <font xmlns:html="http://www.w3.org/1999/xhtml" size="-1">All
+    rights reserved.</font> <br
+    xmlns:html="http://www.w3.org/1999/xhtml" />
+     <br xmlns:html="http://www.w3.org/1999/xhtml" />
+  </body>
+</html>

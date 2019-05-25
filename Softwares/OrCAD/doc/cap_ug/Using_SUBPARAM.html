@@ -1,0 +1,345 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>
+      Using SUBPARAM
+    </title>
+    <meta name="Approver" content="Technical Publications" />
+    <meta name="Author" content="Technical Publications" />
+    <meta name="CreateDate" content="2012-10-10" />
+    <meta name="CreateTime" content="1349876208" />
+    <meta name="DataType" content="Manuals" />
+    <meta name="Description" content="UG" />
+    <meta name="DocTitle" content="OrCAD Capture User Guide" />
+    <meta name="DocType" content="User Guide" />
+    <meta name="FileTitle" content="Using SUBPARAM" />
+    <meta name="Keywords" content="" />
+    <meta name="FileType" content="Chapter" />
+    <meta name="Keyword" content="cap_ug" />
+    <meta name="Language" content="English" />
+    <meta name="ModifiedDate" content="2012-10-10" />
+    <meta name="ModifiedTime" content="1349876208" />
+    <meta name="NextFile"
+    content="Specifying%2Ban%2BAlternate%2BNetlist%2BTemplate.html" />
+    <meta name="Group" content="" />
+    <meta name="Platform" content="All," />
+    <meta name="PrevFile"
+    content="Creating%2BSubcircuit%2BNetlists.html" />
+    <meta name="Product"
+    content="Allegro Design Entry CIS,OrCAD Capture," />
+    <meta name="ProductFamily"
+    content="Silicon-Package-Board Co-Design,Silicon-Package-Board Co-Design," />
+    <meta name="ProductVersion" content="16.6" />
+    <meta name="RightsManagement"
+    content="Copyright 2011-2012 Cadence Design Systems Inc." />
+    <meta name="Title"
+    content="OrCAD Capture User Guide -- Using SUBPARAM" />
+    <meta name="Version" content="16.6" />
+    <meta name="Renderer" content="WIKI" />
+    <meta name="SpaceKey" content="capug166" />
+    <link href="styles/site.css" rel="stylesheet"
+    type="text/css" />
+    <meta content="text/html; charset=UTF-8"
+    http-equiv="Content-Type" />
+  </head>
+  <body style="margin-left: 5%;background-color: #FFFFFF;">
+    <a xmlns:html="http://www.w3.org/1999/xhtml" id="pagetop"
+    name="pagetop"></a> <a
+    xmlns:html="http://www.w3.org/1999/xhtml" id="firstpage"
+    name="firstpage"></a> <!-- Begin Buttons -->
+     
+    <table xmlns:html="http://www.w3.org/1999/xhtml" border="0"
+    cellpadding="0" cellspacing="0" width="650">
+      <tbody>
+        <tr>
+          <td colspan="10" height="36" width="650">
+            <img height="34" src="../support/header_doc.gif"
+            width="650" />
+          </td>
+        </tr>
+        <tr>
+          <td height="20" width="59">
+            <a href="javascript:openLibrary()"><img
+            alt="View Library" border="0" height="20"
+            src="../support/nav2_library.gif" width="59" /></a>
+          </td>
+          <td height="20" width="73">
+            <a href="cap_ugTOC.html"><img alt="Table of Contents"
+            border="0" src="../support/nav2_toc.gif" /></a>
+          </td>
+          <td height="20" width="46">
+            <img alt="Index" border="0"
+            src="../support/nav2_index_b.gif" />
+          </td>
+          <td>
+            <a href="Creating_Subcircuit_Netlists.html"><img
+            alt="Previous" border="0"
+            src="../support/nav2_previous.gif" /></a>
+          </td>
+          <td>
+            <a
+            href="Specifying_an_Alternate_Netlist_Template.html"><img
+             alt="Next" border="0"
+            src="../support/nav_next.gif" /></a>
+          </td>
+          <td height="20">
+            <a href="cap_ug.pdf"><img alt="Open PDF to print book"
+            border="0" height="20" src="../support/nav2_print.gif"
+            width="114" /></a>
+          </td>
+          <td height="20" width="61">
+            <img src="../support/nav2_black.gif" />
+          </td>
+          <td height="20" width="76">
+            <a href="/feedback.htm"><img alt="Email Comments"
+            border="0" height="20"
+            src="../support/nav2_feedback.gif" width="76" /></a>
+          </td>
+          <td height="20" width="43">
+            <a href="../cdsuser/help.html"><img
+            alt="Help Using Documentation" border="0" height="20"
+            src="../support/nav2_help.gif" width="43" /></a>
+          </td>
+          <td height="20" width="37">
+            <a href="/exitsearch.htm"><img
+            alt="Shut Down Cadence Documentation Server" border="0"
+            height="20" src="../support/nav2_exit.gif"
+            width="37" /></a>
+          </td>
+        </tr>
+      </tbody>
+    </table><!-- End Buttons -->
+    <hr xmlns:html="http://www.w3.org/1999/xhtml" />
+    <div id="main-header">
+      <a xmlns="" id="UsingSUBPARAM" name="UsingSUBPARAM"></a> 
+      <h1 xmlns="" style=" margin: 4px 0 4px;">
+        <span>Using SUBPARAM</span>
+      </h1>
+    </div>
+    <div class="wiki-content group" id="main-content">
+      <p>
+        You can pass parameters from the top-level schematic to a
+        subcircuit schematic using the SUBPARAM part. This allows
+        you to explicitly define the properties and default values
+        to be used during netlisting and simulation.<br />
+         Any part in the subcircuit (child) schematic can reference
+        the properties in its PSPICETEMPLATE. The PSpice subcircuit
+        mechanism supports parameterizing:
+      </p>
+      <ul>
+        <li>
+          constants specified on device statements
+        </li>
+        <li>
+          model parameters
+        </li>
+        <li>
+          expressions consisting of constants
+        </li>
+        <li>
+          parameters
+        </li>
+        <li>
+          functions
+        </li>
+      </ul>
+      <p>
+        <strong><em>To set up parameter passing to a subcircuit
+        using SUBPARAM</em></strong>
+      </p>
+      <ol>
+        <li>
+          Make the subcircuit your active schematic page in the
+          Capture schematic page editor.
+        </li>
+        <li>
+          From the <em>Place</em> menu, choose the <em>Part</em>
+          command.
+        </li>
+        <li>
+          Select the part SUBPARAM from the PSpice library
+          SPECIAL.OLB and place it on the subcircuit.
+        </li>
+        <li>
+          With the SUBPARAM part still selected, from the
+          <em>Edit</em> menu, choose <em>Properties</em>.<br />
+           The property editor appears.<br />
+           In the spreadsheet, on an instance-by-instance basis,
+          define the names and default values for the properties
+          that can be changed.
+        </li>
+        <li>
+          To view property names and values at the same time,
+          select a property cell, and click the <em>Display</em>
+          button.
+        </li>
+        <li>
+          The <a class="message-url"
+          href="../cap_ref/dialog_box_descriptions_d.html#display_properties_dialog_box">Display
+          Properties dialog box</a> displays.
+        </li>
+        <li>
+          Check Name and Value format for Display Format, then
+          click <em>OK</em>.<br />
+           In the top-level schematic, use the property editor to
+          edit the properties of the hierarchical part or block
+          that references the subcircuit (child) schematic so they
+          match the properties you defined in Step 5.
+        </li>
+      </ol>
+      <h4 id="UsingSUBPARAM-Example">
+        Example
+      </h4>
+      <p>
+        This fourth-order Chebyshev filter schematic illustrates
+        how the SUPARAM part may be used to pass design parameters
+        from a top-level (parent) schematic to a subcircuit (child)
+        schematic in a hierarchical design.<br />
+         In the top-level schematic, you explicitly define the
+        parameter values you want to pass to a subcircuit. In this
+        case, the parameters and their corresponding values for the
+        U2 subcircuit are Rin = 110 and Rfeedback = 22.1k.
+      </p>
+      <p>
+        <img class="confluence-embedded-image"
+        data-image-src="attachments/7998709/8194416.gif"
+        height="232" src="attachments/7998709/8194416.gif"
+        title="SUBPARAM01.gif" width="457" />
+      </p>
+      <p>
+        Descending into the hierarchy of the U2 subcircuit, you see
+        the Rin and Rfeedback parameters listed with their
+        corresponding default values of 100 and 20k, respectively,
+        in the SUBPARAM part (under SUBPARAMETERS).
+      </p>
+      <p>
+        <img class="confluence-embedded-image"
+        data-image-src="attachments/7998709/8194417.gif"
+        height="373" src="attachments/7998709/8194417.gif"
+        title="SUBPARAM02.gif" width="572" />
+      </p>
+      <p>
+        Notice the Rin and Rfeedback values are preceded with @
+        symbols, indicating that these parameters are substituted
+        with values passed down from the top-level schematic.<br />
+         Here is the hierarchical netlist generated in Capture for
+        this design:
+      </p>
+      <div class="preformatted panel" style="border-width: 1px;">
+        <div class="preformattedContent panelContent">
+<pre>
+* source HISTO
+V_V1 N00023 0 AC 1v
+X_U1 N00023 N00030 OneStage PARAMS: RIN=93.1 RFEEDBACK=18.2k
+X_U2 N00030 OUT OneStage PARAMS: RIN=110 RFEEDBACK=22.1k
+.SUBCKT OneStage IN OUT PARAMS: RIN=100 RFEEDBACK=20k
+V_V2 V- 0 -15v
+R_R2 IN N00024 R_R2 6.34k
+.model R_R2 RES R=1 DEV=1%
+R_R1 N00034 OUT R_R1 {Rfeedback}
+.model R_R1 RES R=1 DEV=1%
+R_R3 0 N00024 R_R3 {Rin}
+.model R_R3 RES R=1 DEV=1%
+C_C1 N00024 OUT C_C1 10n
+.model C_C1 CAP C=1 DEV=5%
+C_C2 N00024 N00034 C_C2 10n
+.model C_C2 CAP C=1 DEV=5%
+X_U1A 0 N00034 N00594 V- OUT LT1013/LT
+V_V1 N00594 0 15v
+.ENDS
+</pre>
+        </div>
+      </div>
+      <p>
+        Here, the U2 and U1 subcircuits are referenced in the
+        source (top-level) circuit as X_U1 and X_U2 with the
+        explicit values defined for the parameters that are passed
+        to from the top-level. A .SUBCKT models both the U1 and U2
+        subcircuits and the default parameters are listed as
+        placeholders. When PSpice simulates the design, the
+        parameters passed from the top-level circuit are the ones
+        used in the subcircuits.
+      </p>
+    </div>
+    <hr xmlns:html="http://www.w3.org/1999/xhtml" />
+    <hr xmlns:html="http://www.w3.org/1999/xhtml" align="left" />
+    <div xmlns:html="http://www.w3.org/1999/xhtml"
+    style="text-align: left;">
+      <!-- Begin Buttons -->
+      <table border="0" cellpadding="0" cellspacing="0"
+      width="650">
+        <tbody>
+          <tr>
+            <td colspan="10" height="36" width="650">
+              <img height="34" src="../support/header_doc.gif"
+              width="650" />
+            </td>
+          </tr>
+          <tr>
+            <td height="20" width="59">
+              <a href="javascript:openLibrary()"><img
+              alt="View Library" border="0" height="20"
+              src="../support/nav2_library.gif" width="59" /></a>
+            </td>
+            <td height="20" width="73">
+              <a href="cap_ugTOC.html"><img alt="Table of Contents"
+              border="0" src="../support/nav2_toc.gif" /></a>
+            </td>
+            <td height="20" width="46">
+              <img alt="Index" border="0"
+              src="../support/nav2_index_b.gif" />
+            </td>
+            <td>
+              <a href="Creating_Subcircuit_Netlists.html"><img
+              alt="Previous" border="0"
+              src="../support/nav2_previous.gif" /></a>
+            </td>
+            <td>
+              <a
+              href="Specifying_an_Alternate_Netlist_Template.html"><img
+               alt="Next" border="0"
+              src="../support/nav_next.gif" /></a>
+            </td>
+            <td height="20">
+              <a href="cap_ug.pdf"><img
+              alt="Open PDF to print book" border="0" height="20"
+              src="../support/nav2_print.gif" width="114" /></a>
+            </td>
+            <td height="20" width="61">
+              <img src="../support/nav2_black.gif" />
+            </td>
+            <td height="20" width="76">
+              <a href="/feedback.htm"><img alt="Email Comments"
+              border="0" height="20"
+              src="../support/nav2_feedback.gif" width="76" /></a>
+            </td>
+            <td height="20" width="43">
+              <a href="../cdsuser/help.html"><img
+              alt="Help Using Documentation" border="0" height="20"
+              src="../support/nav2_help.gif" width="43" /></a>
+            </td>
+            <td height="20" width="37">
+              <a href="/exitsearch.htm"><img
+              alt="Shut Down Cadence Documentation Server"
+              border="0" height="20" src="../support/nav2_exit.gif"
+              width="37" /></a>
+            </td>
+          </tr>
+        </tbody>
+      </table><!-- End Buttons -->
+    </div><br xmlns:html="http://www.w3.org/1999/xhtml" />
+     <font xmlns:html="http://www.w3.org/1999/xhtml" size="-1">For
+    support, see <a href="http://support.cadence.com"
+    target="_blank">Cadence Online Support</a> service.</font> <br
+    xmlns:html="http://www.w3.org/1999/xhtml" />
+     <br xmlns:html="http://www.w3.org/1999/xhtml" />
+     <font xmlns:html="http://www.w3.org/1999/xhtml"
+    size="-1"><i>Copyright &#169; 2012, <a
+    href="http://www.cadence.com">Cadence Design Systems,
+    Inc.</a></i></font> <br
+    xmlns:html="http://www.w3.org/1999/xhtml" />
+     <font xmlns:html="http://www.w3.org/1999/xhtml" size="-1">All
+    rights reserved.</font> <br
+    xmlns:html="http://www.w3.org/1999/xhtml" />
+     <br xmlns:html="http://www.w3.org/1999/xhtml" />
+  </body>
+</html>

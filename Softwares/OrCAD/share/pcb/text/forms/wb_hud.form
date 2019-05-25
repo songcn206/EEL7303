@@ -1,0 +1,61 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM TOOLWINDOW NOFOCUS
+FIXED
+#ifdef WB_HUD_SHOW_NUM_UPDATES
+PORT 66 9
+#endif
+#ifndef WB_HUD_SHOW_NUM_UPDATES
+PORT 66 7
+#endif
+HEADER "Wire Bond Status"
+
+TILE
+
+TEXT "Max wire length:"
+TLOC 1 1
+INFO field_1_name 15
+ENDTEXT
+TEXT ""
+TLOC 14 1
+INFO field_1_val 50 256
+ENDTEXT
+
+TEXT "Min wire length:"
+TLOC 1 3
+INFO field_2_name 15
+ENDTEXT
+TEXT ""
+TLOC 14 3
+INFO field_2_val 50 256
+ENDTEXT
+
+TEXT "Max wire angle:"
+TLOC 1 5
+INFO field_3_name 15
+ENDTEXT
+TEXT ""
+TLOC 14 5
+INFO field_3_val 50 256
+ENDTEXT
+
+#ifdef WB_HUD_SHOW_NUM_UPDATES
+TEXT "Update frequency:"
+TLOC 1 7
+ENDTEXT
+TEXT ""
+TLOC 14 7
+INFO num_updates 20 256
+ENDTEXT
+#endif
+
+FLEXMODE EdgeGravity
+FLEX field_1_name 0 0 0 0
+FLEX field_2_name 0 0 0 0
+FLEX field_3_name 0 0 0 0
+FLEX field_1_val  0 0 0 0
+FLEX field_2_val  0 0 0 0
+FLEX field_3_val  0 0 0 0
+
+ENDTILE
+ENDFORM
+

@@ -1,0 +1,394 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN" "http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+<html xmlns="http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>PSpice User Guide -- Setting initial state</title>
+<META NAME="Approver" CONTENT="Technical Publications">
+<META NAME="Author" CONTENT="Technical Publications">
+<META NAME="CreateDate" CONTENT="2012-08-31">
+<META NAME="CreateTime" CONTENT="1346413405">
+<META NAME="FileTitle" CONTENT="Setting initial state">
+<META NAME="Language" CONTENT="English">
+<META NAME="ModifiedDate" CONTENT="2012-08-31">
+<META NAME="ModifiedTime" CONTENT="1346413405">
+<META NAME="Title" CONTENT="PSpice User Guide -- Setting initial state">
+<META NAME="DataType" CONTENT="Manuals">
+<META NAME="Description" CONTENT="User guide for PSpice and AMS Simulator.">
+<META NAME="DocTitle" CONTENT="PSpice User Guide">
+<META NAME="DocType" CONTENT="User Guide">
+<META NAME="Keyword" CONTENT="pspug">
+<META NAME="Platform" CONTENT="ALL">
+<META NAME="Product" CONTENT="Allegro AMS Simulator, PSpice">
+<META NAME="ProductFamily" CONTENT="PCB Design, PCB Design">
+<META NAME="ProductVersion" CONTENT="16.6">
+<META NAME="RightsManagement" CONTENT="Copyright 2012 Cadence Design Systems Inc.">
+<META NAME="TopicTags" CONTENT="FALSE">
+<META NAME="Version" CONTENT="16.6">
+<META NAME="FileType"  CONTENT="Chapter">  </head>
+  <body style="margin-left: 5%;">
+    <a name="pagetop"></a>
+    <a name="firstpage"></a>
+    <!-- Begin Buttons -->
+    <table width="650" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td height="36" width="650" colspan="10">
+          <img src="../support/header_doc.gif" width="650" height="34">
+        </td>
+      </tr>
+      <tr>
+        <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                </td>
+<td height="20" width="73">
+<a href="pspugTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<a href="pspugIX.html"><img src="../support/nav2_index.gif" border="0"></a>
+</td>
+        <td>
+          <a href="20bias_point_display.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+        </td>
+        <td>
+          <a href="B-conver.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+        </td>
+        <td height="20">
+          <a>
+<a href="pspug.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+          </a>
+        </td>
+        <td height="20" width="61">
+          <img src="../support/nav2_black.gif">
+        </td>
+        <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+        </td>
+        <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+        </td>
+        <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+        </td>
+      </tr>
+    </table>
+    <!-- End Buttons -->
+    <p>
+    <hr>
+    <p>
+      <h3>
+        <center>
+          <font >
+            <div>PSpice&#174; User Guide</div>
+            <font >
+              <div>
+            </font>
+          </font>
+        </center>
+      </h3>
+      <br>
+    </p>
+    <div>
+      <h1>A<a name="1051011">&nbsp;</a></h1>
+      <h1><a name="1051013">Setting initial state</a></h1>
+      <h2><a name="1048364">Appendix overview</a></h2>
+      <p><a name="1048365">This appendix includes the following sections:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1048380" title="Setting initial state" name="1048369"><font color="Blue"><u>Save and load bias point</u></font></a><a href="#1048380" title="Setting initial state"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1048413" title="Setting initial state" name="1048373"><font color="Blue"><u>Setpoints</u></font></a><a href="#1048413" title="Setting initial state"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1048447" title="Setting initial state" name="1048377"><font color="Blue"><u>Setting initial conditions</u></font></a><a href="#1048447" title="Setting initial state"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <h2><a name="1048380">Save and load bias point</a></h2>
+      <p><a name="1048381">Save Bias Point and Load Bias Point are used to save and restore </a>bias point calculations in successive PSpice simulations. </p>
+      <p><a name="1048383">Saving and restoring bias point calculations can decrease simulation </a>times when large circuits are run multiple times and can aid convergence. If the circuit uses high gain components, or if the circuit's behavior is nonlinear around the bias point, this feature is not useful.</p>
+      <p><a name="1048384">Save&#47;Load Bias Point affect the following types of analyses: </a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048385">transient</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048386">DC</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048387">AC</a></td>
+          </tr>
+        </table>
+      </div>
+      <h3><a name="1048388">Save bias point</a></h3>
+      <p><a name="1048389">Save bias point is a simulation control function that allows you to save </a>the bias point data from one simulation for use as initial conditions in subsequent simulations. Once bias point data is saved to a file, you can use the load bias point function to use the data for another simulation.</p>
+      <h4><em><a name="1048390">To use save bias point</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048391">In the Simulation Settings dialog box, click the Analysis tab.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048395">See </a><a href="08start.html#1048556" title="08start.html"><font color="Blue"><u>Setting up analyses</u></font></a><a href="08start.html#1048556" title="08start.html"></a> for a description of the Analysis Setup dialog box.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048396">Under Options, select Save Bias Point.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048397">Complete the Save Bias Point dialog box. </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048398">Click OK.</a></td>
+          </tr>
+        </table>
+      </div>
+      <h3><a name="1048399">Load bias point</a></h3>
+      <p><a name="1048400">Load bias point is a simulation control function that allows you to set </a>the bias point as an initial condition. A common reason for giving PSpice initial conditions is to select one out of two or more stable operating points (set or reset for a flip&#45;flop, for example).</p>
+      <h4><em><a name="1048401">To use load bias point</a></em></h4>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	1.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048402">Run a simulation using the Save Bias Point option in the </a>Simulation Settings dialog box.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1048406">See </a><a href="08start.html#1048556" title="08start.html"><font color="Blue"><u>Setting up analyses</u></font></a><a href="08start.html#1048556" title="08start.html"></a> for a description of the Analysis Setup dialog box.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	2.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048407">Before running another simulation, click the Analysis tab in the </a>Simulation Settings dialog box.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	3.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048408">Under Options, select Load Bias Point.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	4.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048409">Specify a bias point file to load. Include the path if the file is not </a>located in your working directory, or use the Browse button to find the file. </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="28.8" align="center">
+              <div>
+                <nobr><font color="#000000"><strong>	5.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1048410">Click OK.</a></td>
+          </tr>
+        </table>
+      </div>
+      <h2><a name="1048413">Setpoints</a></h2>
+      <p><a name="1048414">Pseudo&#45;components that specify initial conditions are called </a>setpoints. These apply to the analog portion of your circuit.</p>
+      <p align="left"><a name="1048492"><img src="images/A-init.28.1.1.png" width="675" height="145" alt=""></a></p>
+      <p><font color="#000000"><strong>Figure A&#45;1&nbsp; </strong></font><strong><a name="1048419">Setpoints.</a></strong></p>
+      <p><a name="1048424">The example in Figure </a><a href="#1048419" title="Setting initial state"><font color="#0000ff"><u>A&#45;1</u></font></a> includes the following:</p>
+      <p align="left"><a name="1048435">&nbsp;</a></p>
+      <table summary="" border="0" cellpadding="4" cellspacing="0" bordercolor="#D3D3D3" width="363">
+        <caption>
+        <tr>
+          <td cellpadding="4" valign="top" width="96">
+            <p><a name="1048428">IC1</a></p>
+          </td>
+          <td cellpadding="4" valign="top" width="266">
+            <p><a name="1048430">a one&#45;pin symbol that allows you to </a>set the initial condition on a net for both small&#45;signal and transient bias points</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048432">IC2</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1048434">a two&#45;pin symbol that allows you to </a>set initial condition between two nets</p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1048436">Using IC symbols sets the initial conditions for the bias point only. It </a>does not affect the DC sweep. If your circuit design contains both an IC symbol and a NODESET symbol for the same net, the NODESET symbol is ignored.</p>
+      <p><a name="1048437">To specify the initial condition, edit the value of the VALUE property </a>to the desired initial condition. PSpice attaches a voltage source with a 0.0002 ohm series resistance to each net to which an IC symbol is connected. The voltages are clamped this way for the entire bias point calculation.</p>
+      <p><a name="1048439">NODESET1 is a one&#45;pin symbol which helps calculate the bias point </a>by providing a initial guess for some net. NODESET2 is a two&#45;pin symbol which helps calculate the bias point between two nets. Some or all of the circuit's nets may be given an initial guess. NODESET symbols are effective for the bias point (both small&#45;signal and transient bias points) and for the first step of the DC sweep. It has no effect during the rest of the DC sweep or during the transient analysis itself.</p>
+      <p><a name="1048440">Unlike the IC pseudo&#45;components, NODESET provides only an initial </a>guess for some net voltages. It does not clamp those nodes to the specified voltages. However, by providing an initial guess, NODESET symbols may be used to break the tie (in a flip&#45;flop, for instance) and make it come up in a desired state. To guess at the bias point, enter the initial guess in the Value text box for the VALUE property. PSpice&nbsp;A&#47;D attaches a voltage source with a 0.0002 ohm series resistance to each net to which an IC symbol is connected.</p>
+      <p><a name="1048441">These pseudo&#45;components are netlisted as PSpice</a>&nbsp;A&#47;D .IC and .NODESET commands. Refer to these commands in the online <font color="#000000"><em>PSpice Reference Guide</em></font> for more information. Setpoints can be created for inductor currents and capacitor voltages using the IC property described in <a href="#1048447" title="Setting initial state"><font color="Blue"><u>Setting initial conditions</u></font></a><a href="#1048447" title="Setting initial state"></a>.</p>
+      <h2><a name="1048447">Setting initial conditions</a></h2>
+      <p><a name="1048448">The IC property allows initial conditions to be set on capacitors and </a>inductors. These conditions are applied during all bias point calculations. However, if you select the Skip Initial Transient Solution check box in the Transient Analysis Setup dialog box, the bias point calculation is skipped and the simulation proceeds directly with transient analysis at TIME=0. Devices with the IC property defined start with the specified voltage or current value; however, all other such devices have an initial voltage or current of 0. </p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1048449">Skipping the bias point calculation can make the transient </a>analysis subject to convergence problems.</p>
+      <p><a name="1048450">Applying an IC property for a capacitor has the same effect as </a>applying one of the pseudo&#45;components IC1 or IC2 across its nodes. PSpice attaches a voltage source with a 0.002 ohm series resistance in parallel with the capacitor. The IC property allows the user to associate the initial condition with a device, while the IC1 and IC2 pseudo&#45;components allow the association to be with a node or node pair. See <a href="#1048413" title="Setting initial state"><font color="Blue"><u>Setpoints</u></font></a><a href="#1048413" title="Setting initial state"></a> for more information about IC1 and IC2.</p>
+      <p><a name="1048454">In the case of initial currents through inductors, the association is only </a>with a device, and so there are no corresponding pseudo&#45;components. The internal implementation is analogous to the capacitor. PSpice attaches a current source with a 1 Gohm parallel resistance in series with the inductor. </p>
+    </div>
+    <br>
+    <a href="#pagetop">Return to top of page</a>
+    <hr>
+    <hr align="left">
+    <div style="text-align: left;">
+      <!-- Begin Buttons -->
+      <table width="650" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                    </td>
+<td height="20" width="73">
+<a href="pspugTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<a href="pspugIX.html"><img src="../support/nav2_index.gif" border="0"></a>
+</td>
+          <td>
+            <a href="20bias_point_display.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+          </td>
+          <td>
+            <a href="B-conver.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+          </td>
+          <td>
+            <a>
+<a href="pspug.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+            </a>
+          </td>
+          <td height="20" width="61">
+            <img src="../support/nav2_black.gif">
+          </td>
+          <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+          </td>
+          <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+          </td>
+          <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+          </td>
+        </tr>
+      </table>
+      <!-- End Buttons -->
+    </div>
+    <br>
+    <font size="-1" >
+For support, see <a href="http://support.cadence.com" target="_blank">Cadence Online Support</a> service.</font>
+    <br>
+    <br>
+    <font size="-1" >
+      <i>Copyright &#169; 2011, <a href="http://www.cadence.com">Cadence Design Systems, Inc.</a></i>
+    </font>
+    <br>
+    <font size="-1" >
+All rights reserved.</font>
+    <br>
+    <br>
+  </body>
+</html>

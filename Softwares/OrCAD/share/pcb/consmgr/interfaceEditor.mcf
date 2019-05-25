@@ -1,0 +1,302 @@
+; $Header: interfaceDefinition.mcf,v 1.9 02/04/20 01:18:39 putnam $
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;    Cadence Design Systems
+;
+; (C) COPYRIGHT, Cadence Design Systems, Inc. 2001-2002
+; All Rights Reserved
+; Licensed Materials - Property of Cadence Design Systems
+;
+; No part of this file may be reproduced, stored in a retrieval system,
+; or transmitted in any form or by any means --- electronic, mechanical,
+; photocopying, recording, or otherwise --- without prior written permission
+; of Cadence Design Systems, Inc.
+;
+; WARRANTY:
+; Use all material in this file at your own risk.  Cadence Design Systems
+; makes no claims about any material contained in this file.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;
+; NEXT HELP TAG = 110/205
+;
+(MaestroConfigurationFile
+  (MaestroConfigurationHeader
+    (Version 3)
+  )
+  (WorkbookDefinitions
+    (GridConfigurationVersion
+      ( 16.1 )
+    )
+    (EnumValueMappings
+      (EnumAttribute EDGE_SENS
+        (EnumConversion "RISING" "Rising")
+        (EnumConversion "FALLING" "Falling")
+        (EnumConversion "BOTH" "Both")
+        (EnumConversion "NEITHER" "Neither")
+      )
+      (EnumAttribute FIRST_INCIDENT
+        (EnumConversion "RISING" "Rising")
+        (EnumConversion "FALLING" "Falling")
+        (EnumConversion "BOTH" "Both")
+        (EnumConversion "NEITHER" "Neither")
+      )
+      (EnumAttribute PROPAGATION_DELAY_PATH_TYPE
+        (EnumConversion "L:S" "Longest/Shortest Pin Pair")
+        (EnumConversion "D:R" "Longest/Shortest Driver/Receiver")
+        (EnumConversion "AD:AR" "All Drivers/All Receivers")
+      )
+      (EnumAttribute RELATIVE_PROPAGATION_DELAY_PATH_TYPE
+        (EnumConversion "L:S" "Longest Pin Pair")
+        (EnumConversion "D:R" "Longest Driver/Receiver")
+        (EnumConversion "AD:AR" "All Drivers/All Receivers")
+      )
+      (EnumAttribute RATSNEST_SCHEDULE
+        (EnumConversion "MIN_TREE" "Minimum Spanning Tree")
+        (EnumConversion "MIN_DAISY_CHAIN" "Daisy-chain")
+        (EnumConversion "SOURCE_LOAD_DAISY_CHAIN" "Source-load Daisy-chain")
+        (EnumConversion "STAR" "Star")
+        (EnumConversion "FAR_END_CLUSTER" "Far-end Cluster")
+      )
+      (EnumAttribute TOPOLOGY_TEMPLATE_MAPPING_MODE
+        (EnumConversion "PINUSE" "Pinuse")
+        (EnumConversion "REFDES" "Refdes")
+        (EnumConversion "PINUSE_REFDES" "Pinuse and Refdes")
+      )
+      (EnumAttribute NET_SCHEDULE
+        (EnumConversion "VERIFY" "Yes")
+        (EnumConversion "DO_NOT_VERIFY" "No")
+      )
+      (EnumAttribute RELATIVE_PROPAGATION_DELAY_SCOPE
+        (EnumConversion "L" "Local")
+        (EnumConversion "G" "Global")
+        (EnumConversion "B" "Bus")
+        (EnumConversion "C" "Class")
+        (EnumConversion "N" "Net Group")
+      )
+      (EnumAttribute DIFFP_GATHER_CONTROL
+        (EnumConversion "IGNORE" "Ignore")
+        (EnumConversion "INCLUDE" "Include")
+      )
+      (EnumAttribute DIFFP_PHASE_CONTROL
+        (EnumConversion "STATIC" "Static")
+        (EnumConversion "DYNAMIC" "Dynamic")
+      )
+      (EnumAttribute SHIELD_TYPE
+        (EnumConversion "PARALLEL" "Parallel")
+        (EnumConversion "TANDEM" "Tandem")
+        (EnumConversion "COAX" "Coax")
+      )
+    )        
+    (Width 9)
+    (Domain "Interfaces"
+      (HelpTag 101)   
+      (EnableObject "Design")
+      (Column "Type" (Width 6))
+      (Column "S" (Width 2))
+      (ColumnHeader "Objects" (Height 2)
+        (Column "Type" (Width 6))
+        (Column "S" (Width 2))
+        (Column "Name" (Width 2)(SortState 0))
+      )
+      (StartEnv CDS_IBD_PROTO)                                                          
+      (ObjectType "Electrical Constraint Set"
+        (HelpTag 1)
+        (EnableObject "Design")
+        (EnableObject "ECSet")
+        (DisableObject "ElectricalNetClass")
+        (Workbook "Signal Integrity"
+          (HelpTag 2)
+          (EnableTier "XLOrBetter")
+		  (EnableOption "HighSpeed")
+          (Worksheet "Reflection/Edge Distortions"
+            (HelpTag 3)
+            (ColumnHeader "Reflection"
+              (Column "Overshoot" (Attribute MAX_OVERSHOOT) (Width 12))
+              (Column "Min Noise Margin" (Attribute MIN_NOISE_MARGIN) (Width 12))
+            )
+            (ColumnHeader "Edge Distortions"
+              (Column "Edge Sensitivity" (Attribute EDGE_SENS) (Width 9))
+              (Column "First Incident Switch" (Attribute FIRST_INCIDENT) (Width 9))
+            )
+          )
+          (Worksheet "Xtalk/SSN"
+            (HelpTag 4)
+            (ColumnHeader "Xtalk"
+              (Column "Active Xtalk Window" (Attribute XTALK_ACTIVE_TIME) (Width 12))
+              (Column "Sensitive Xtalk Window" (Attribute XTALK_SENSITIVE_TIME) (Width 13))
+              (Column "Max Xtalk" (Attribute MAX_XTALK) (Width 12))
+              (Column "Max Peak Xtalk" (Attribute MAX_PEAK_XTALK) (Width 12))
+            )
+            (Column "Max SSN" (Attribute MAX_SSN) (Width 12))
+          )
+        )
+        (Workbook "Timing"
+          (HelpTag 5)
+          (EnableTier "XLOrBetter")
+		  (EnableOption "HighSpeed")
+          (Worksheet "Switch/Settle Delays"
+            (HelpTag 6)
+            (EnableObject "ECSetPinPair")
+            (EnableDrvrRcvrOnly "Yes")
+            (Column "Min First Switch" (Attribute MIN_FIRST_SWITCH) (Width 12))
+            (Column "Max Final Settle" (Attribute MAX_FINAL_SETTLE) (Width 12))
+          )
+        )
+        (Workbook "Routing"
+          (HelpTag 7)
+          (Worksheet "Wiring"
+            (HelpTag 8)
+            (EnableTier "AllegroBase")
+            (ColumnHeader "Topology"
+              (Column "Mapping Mode" (Attribute TOPOLOGY_TEMPLATE_MAPPING_MODE) (Width 14))
+              (Column "Verify Schedule" (Attribute NET_SCHEDULE) (Width 8))
+              (Column "Schedule" (Attribute RATSNEST_SCHEDULE) (Width 12))
+            )
+            (Column "Stub Length" (Attribute STUB_LENGTH) (Width 9))
+            (Column "Max Exposed Length" (Attribute MAX_EXPOSED_LENGTH) (Width 9))
+            (Column "Max Parallel" (Attribute MAX_PARALLEL) (Width 12))
+            (Column "Layer Sets" (Attribute LAYERSET_GROUP) (Width 12))
+          )
+          (Worksheet "Vias"
+            (HelpTag 310)
+            (EnableTier "AllegroBase")
+            (Column "Max Via Count" (Attribute MAX_VIA_COUNT) (Width 9))
+            (Column "Match Vias" (Attribute MATCH_VIA_COUNT) (Width 9))
+          )
+          (Worksheet "Impedance"
+            (HelpTag 9)
+            (EnableTier "AllegroBase")
+            (EnableObject "ECSetPinPair")
+            (ColumnHeader "Single-line Impedance"
+              (Column "Target" (Attribute IMPEDANCE_RULE) (Width 12))
+              (Column "Tolerance" (Attribute IMPEDANCE_RULE_TOL) (Width 12))
+            )
+          )
+          (Worksheet "Min/Max Propagation Delays"
+            (HelpTag 10)
+            (EnableTier "AllegroBase")
+            (EnableObject "ECSetPinPair")
+            (Column "Pin Pairs" (Attribute PROPAGATION_DELAY_PATH_TYPE) (Width 18))
+            (Column "Min Delay" (Attribute PROPAGATION_DELAY_MIN) (Width 9))
+            (Column "Max Delay" (Attribute PROPAGATION_DELAY_MAX) (Width 9))
+          )
+          (Worksheet "Total Etch Length"
+            (HelpTag 31)
+            (EnableTier "AllegroBase")
+			(EnableOption "TotalEtch")           
+            (Column "Minimum Total Etch" (Attribute TOTAL_ETCH_LENGTH_MIN) (Width 15))
+            (Column "Maximum Total Etch" (Attribute TOTAL_ETCH_LENGTH_MAX) (Width 15))
+          )
+          (Worksheet "Differential Pair"
+            (HelpTag 32)
+            (ColumnHeader "Uncoupled Length"
+              (Column "Gather Control" (Attribute DIFFP_GATHER_CONTROL) (Width 14))
+              (Column "Max" (Attribute DIFFP_UNCOUPLED_LENGTH) (Width 12))
+            )
+            (StartEnv "CM_OLD_DP_PHASE_CONTROL")            
+            (ColumnHeader "Phase Tolerance"
+              (EnableTier "AllegroBase")
+              (Column "Check" (Attribute DIFFP_PHASE_CONTROL) (Width 10) (EnableTier "XLOrBetter")(EnableOption "HighSpeed"))
+              (Column "Tolerance" (Attribute DIFFP_PHASE_TOL) (Width 10))
+            )
+            (EndEnv "CM_OLD_DP_PHASE_CONTROL")              
+            (StartEnv NOT "CM_OLD_DP_PHASE_CONTROL")
+            (Column "Static Phase Tolerance" (Attribute DIFFP_PHASE_TOL) (Width 10) (EnableTier "AllegroBase"))
+            (EndEnv NOT "CM_OLD_DP_PHASE_CONTROL")              
+            (ColumnHeader "Dynamic Phase"
+              (EnableTier "XLOrBetter")
+              (EnableOption "HighSpeed")
+              (Column "Max Length" (Attribute DIFFP_PHASE_MAX_LENGTH) (Width 10))
+              (Column "Tolerance" (Attribute DIFFP_PHASE_TOL_DYNAMIC) (Width 10))
+            )            
+            (Column "Min Line Spacing" (Attribute DIFFP_MIN_SPACE) (Width 12))
+            (ColumnHeader "Coupling Parameters"
+              (Column "Primary Gap" (Attribute DIFFP_PRIMARY_GAP) (Width 12))
+              (Column "Primary Width" (Attribute MIN_LINE_WIDTH) (Width 12))
+              (Column "Neck Gap" (Attribute DIFFP_NECK_GAP) (Width 9))
+              (Column "Neck Width" (Attribute MIN_NECK_WIDTH) (Width 9))
+              (Column "(+)Tolerance" (Attribute DIFFP_COUPLED_PLUS) (Width 12))
+              (Column "(-)Tolerance" (Attribute DIFFP_COUPLED_MINUS) (Width 12))
+            )
+          )
+          (Worksheet "Relative Propagation Delay"
+            (HelpTag 11)
+            (EnableTier "AllegroBase")
+            (EnableObject "ECSetMatchGroup")
+            (EnableObject "ECSetPinPair")
+            (Column "Pin Pairs" (Attribute RELATIVE_PROPAGATION_DELAY_PATH_TYPE) (Width 18) (AlternateQuery MULTI_GROUP))
+            (Column "Scope" (Attribute RELATIVE_PROPAGATION_DELAY_SCOPE) (Width 9) (AlternateQuery MULTI_GROUP))
+            (Column "Delta:Tolerance" (Attribute RELATIVE_PROPAGATION_DELAY) (Width 20) (AlternateQuery MULTI_GROUP))
+          )
+        )
+      )    
+      (EndEnv CDS_IBD_PROTO)                                                                  
+      (ObjectType "Interface"
+        (HelpTag 102)   
+        (EnableObject "NetInterface")
+        (EnableObject "NetGroup")        
+        (EnableObject "Net")
+        (EnableObject "XNet")
+        (EnableObject "DiffPair")
+        (EnableObject "Bus")    
+        (DisableDisplay "NetGroup")        
+        (DisableDisplay "Net")
+        (DisableDisplay "XNet")
+        (DisableDisplay "DiffPair")
+        (DisableDisplay "Bus")
+        (Workbook "Define"
+          (HelpTag 107)          
+          (Worksheet "Define"
+            (HelpTag 108)      
+            (AlwaysShowChildren "Yes")                                
+            (Column "Description" (Attribute CDS_IBD_DESC) (Width 15))
+            (Column "Qualifier" (Attribute CDS_IBD_QUALIFIER) (Width 10))
+            (ColumnHeader "Configuration Settings"
+                (Column "Presence" (Attribute CDS_IBD_MASTER_PRESENCE) (Width 10))
+                (Column "Allowable Sizes" (Attribute CDS_IBD_MASTER_ALLOWABLE_SIZES) (Width 15))
+            )                                  
+          )
+        )
+        (Workbook "Parameters"
+          (HelpTag 109)             
+          (AlwaysShowChildren "Yes")               
+          (Worksheet "Electrical Properties"
+            (HelpTag 110)
+            (AlwaysShowChildren "Yes")                                            
+            (StartEnv CDS_IBD_PROTO)                                                    
+            (Column "Referenced Electrical CSet" (Attribute "ELECTRICAL_CONSTRAINT_SET") (Width 13) )
+            (EndEnv CDS_IBD_PROTO)                                                    
+            (ColumnHeader "Simulation Defaults"                     
+                (Column "Frequency" (Attribute PULSE_PARAM_FREQ) (Width 10))
+                (Column "Period" (Attribute PULSE_PARAM_PERIOD) (Width 10))
+                (Column "Duty Cycle" (Attribute  PULSE_PARAM_DUTY_CYCLE) (Width 10))
+                (Column "Jitter" (Attribute PULSE_PARAM_JITTER) (Width 10))
+                (Column "Cycle to Measure" (Attribute PULSE_PARAM_MEASURE_CYCLE) (Width 10))
+                (Column "Offset" (Attribute "PULSE_PARAM_COFF") (Width 10))
+                (Column "Bit Pattern" (Attribute "PULSE_PARAM_BPAT") (Width 10))
+            )
+          )
+          (Worksheet "Net Classes"
+            (HelpTag 110)
+            (EnableObject "ElectricalNetClass")
+            (EnableObject "PhysicalNetClass")
+            (EnableObject "SpacingNetClass")
+            (AlwaysShowChildren "Yes")                                            
+            (Column "Electrical Net Class" (Attribute PARENT_CLASS) (AlternateQuery PARENT_REF=ElectricalNetClass) (Width 17))
+            (Column "Physical Net Class" (Attribute PARENT_CLASS) (AlternateQuery PARENT_REF=PhysicalNetClass) (Width 17))
+            (Column "Spacing Net Class" (Attribute PARENT_CLASS) (AlternateQuery PARENT_REF=SpacingNetClass) (Width 17))
+          )                            
+          (Worksheet "Timing"
+            (HelpTag 111)   
+            (AlwaysShowChildren "Yes")                                                 
+            (ColumnHeader "Associated Strobe/Clock"
+              (Column "Name" (Attribute CLOCK_NET) (Width 9))
+              (Column "Period" (Attribute PULSE_PARAM_PERIOD) (Width 6) (AlternateQuery CLOCK))
+              (Column "Jitter" (Attribute PULSE_PARAM_JITTER) (Width 6) (AlternateQuery CLOCK))
+            )
+          )
+        )              
+      )
+    )
+  )
+)

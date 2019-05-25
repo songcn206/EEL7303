@@ -1,0 +1,102 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 80 30
+HEADER "Report Parallelism"
+
+MESSAGE illegal_value 3 "illegal value: %s"
+MESSAGE file_not_exist 3 "file does not exist: %s"
+MESSAGE layers_wrong 3 "top layer must be above bottom layer"
+
+POPUP <layersPopup> "" "".
+
+TILE
+
+TEXT "Max Line to Line Separation:"
+TLOC 3 2
+ENDTEXT
+
+FIELD fpMaxSeparation
+FLOC 35 2
+STRFILLIN 26 31
+ENDFIELD
+
+TEXT "Min Net to Net Parallel Length:"
+TLOC 3 4
+ENDTEXT
+
+FIELD fpMinNetNetLength
+FLOC 35 4
+STRFILLIN 26 31
+ENDFIELD
+
+TEXT "Min Net to All Parallel Length:"
+TLOC 3 6
+ENDTEXT
+
+FIELD fpMinNetAllLength
+FLOC 35 6
+STRFILLIN 26 31
+ENDFIELD
+
+TEXT "List of Nets File:"
+TLOC 3 8
+ENDTEXT
+
+FIELD fpNetsFile
+FLOC 35 8
+STRFILLIN 26 512
+ENDFIELD
+
+FIELD fpFileBrowse
+FLOC 65 8
+MENUBUTTON "Browse" 12 3
+ENDFIELD
+
+TEXT "Range of Layers to Consider"
+TLOC 3 10
+ENDTEXT
+
+TEXT "Top-Most Layer:"
+TLOC 8 12
+ENDTEXT
+
+FIELD fpTopLayer
+FLOC 35 12
+ENUMSET 26
+POP "layersPopup"
+ENDFIELD
+
+TEXT "Bottom-Most Layer:"
+TLOC 8 14
+ENDTEXT
+
+FIELD fpBottomLayer
+FLOC 35 14
+ENUMSET 26
+POP "layersPopup"
+ENDFIELD
+
+FIELD Done
+FLOC 2 18
+MENUBUTTON "Done" 10 3
+ENDFIELD
+ 
+FIELD Cancel
+FLOC 34 18
+MENUBUTTON "Cancel" 10 3
+ENDFIELD
+
+FIELD help
+FLOC 68 18
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+GROUP ""
+GLOC 1 0
+GSIZE 79 17
+ENDGROUP
+
+ENDTILE
+
+ENDFORM

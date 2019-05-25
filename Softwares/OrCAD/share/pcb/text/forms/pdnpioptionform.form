@@ -1,0 +1,159 @@
+####################################################################################
+#       Cadence Design Systems                                                     #
+#                                                                                  #
+# (C) COPYRIGHT, Cadence Design Systems, Inc. 2008                                 #
+# All Rights Reserved                                                              #
+# Licensed Materials - Property of Cadence Design Systems                          #
+#                                                                                  #
+# No part of this file may be reproduced, stored in a retrieval system,            #
+# or transmitted in any form or by any means --- electronic, mechanical,           #
+# photocopying, recording, or otherwise --- without prior written permission       #
+# of Cadence Design Systems, Inc.                                                  #
+#                                                                                  #
+# WARRANTY:                                                                        #
+# Use all material in this file at your own risk.  Cadence Design Systems          #
+# makes no claims about any material contained in this file.                       #
+####################################################################################
+FILE_TYPE=FORM_DEFN VERSION=2
+
+    FORM
+    FIXED
+    PORT 68 8
+    HEADER "Power Integrity Simulation Option Parameters"
+
+    ACTIVEFIELD "Done"
+    DEFAULT Done
+
+    TILE
+
+    FIELD Done
+        FLOC 1 21
+        MENUBUTTON "OK" 10 3
+    ENDFIELD
+
+    FIELD Cancel
+        FLOC 12 21
+        MENUBUTTON "Cancel" 10 3
+    ENDFIELD
+
+    FIELD Help
+        FLOC 58 21
+        MENUBUTTON "Help" 10 3
+    ENDFIELD
+
+    GROUP "Simulation Type"
+        GLOC 1 0
+        GSIZE 40 10
+    ENDGROUP
+
+    FIELD FreqDomain
+        FLOC 2 3
+        CHECKLIST "Impedance analysis in frequency domain." "SimType"
+    ENDFIELD
+
+    FIELD TimeDomain
+        FLOC 2 5
+        CHECKLIST "Voltage ripple analysis in time domain." "SimType"
+    ENDFIELD
+
+    FIELD ExtractOnly
+        FLOC 2 7
+        CHECKLIST "DML model extraction only." "SimType"
+    ENDFIELD
+
+    GROUP "Simulation Parameters""ParamGroup"
+        GLOC 42 0
+        GSIZE 26 10
+    ENDGROUP
+
+    TEXT "Duration Time:""DurationTimeTitle"
+        TLOC 43 3
+    ENDTEXT
+
+    FIELD DurationTime
+        FLOC 56 3
+        STRFILLIN 10 20
+    ENDFIELD
+
+    TEXT "Resolution Time:""ResolutionTimeTitle"
+        TLOC 43 5
+    ENDTEXT
+
+    POPUP <ResolutionTimePop>"none""none".
+    FIELD ResolutionTime
+        FLOC 56 5
+        STRFILLIN 7 20
+        POP "ResolutionTimePop"
+    ENDFIELD
+
+    TEXT "Lower Frequency:""LowerFrequencyTitle"
+        TLOC 43 3
+    ENDTEXT
+
+    FIELD LowerFrequency
+        FLOC 56 3
+        STRFILLIN 10 20
+    ENDFIELD
+
+    TEXT "Upper Frequency:""UpperFrequencyTitle"
+        TLOC 43 5
+    ENDTEXT
+
+    FIELD UpperFrequency
+        FLOC 56 5
+        STRFILLIN 10 20
+    ENDFIELD
+
+    TEXT "Sweep Scale:""SweepScaleTitle"
+        TLOC 43 7
+    ENDTEXT
+
+    POPUP <SweepScalePop>"Linear""Linear","Log""Log".
+    FIELD SweepScale
+        FLOC 56 7
+        ENUMSET 9
+        POP "SweepScalePop"
+    ENDFIELD
+
+    GROUP "DML Model Option"
+        GLOC 1 10
+        GSIZE 67 10
+    ENDGROUP
+
+    FIELD ReuseFlag
+        FLOC 2 12
+        CHECKLIST "Reuse previously extracted dml model."
+    ENDFIELD
+
+    TEXT
+        TLOC 2 15
+        INFO DMLPathTitle 40
+    ENDTEXT
+
+    TEXT "Mode Type:"
+        TLOC 42 12
+    ENDTEXT
+
+    POPUP <ModelTypeList>"DML Wideband""subckt_lump","Narrow Band""subckt_nb","S Parameter""subckt_sparam".
+    FIELD ModelType
+        FLOC 51 12
+        ENUMSET 13
+        POP "ModelTypeList"
+    ENDFIELD
+
+    TEXT "Path:"
+        TLOC 2 17
+    ENDTEXT
+
+    FIELD DMLFilePath
+        FLOC 6 17
+        STRFILLIN 49 256
+    ENDFIELD
+
+    FIELD DMLFileBrowser
+        FLOC 57 17
+        MENUBUTTON "Browse..." 10 3
+    ENDFIELD
+
+    ENDTILE
+ENDFORM

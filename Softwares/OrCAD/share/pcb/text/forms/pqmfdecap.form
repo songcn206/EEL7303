@@ -1,0 +1,223 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM 
+FIXED
+PORT 102 62
+HEADER "Power Integrity Design & Analysis"
+
+POPUP <pglobal>"Place""Place",\
+               "Edit""SignalModel",\
+               "Component List""ComponentList",\
+               "Graph Response""GraphResponse",\
+               "Show/Hide Effect Area""ShowEffectArea".
+POPUP <pwrpair>"VCC GND 5V""1".
+POPUP <ripper>"5%""5".
+POPUP <multnodesize>"8x8""8".
+
+TILE
+
+GRID DecapGrid
+ 
+  FLOC 2 19
+  FSIZE 98 25
+  OPTIONS HLINES VLINES USERSIZE 
+  POP "pglobal"
+ 
+  GHEAD TOP 
+    HEADSIZE 3
+    OPTIONS 3D MULTI
+  ENDGHEAD
+
+  GHEAD SIDE
+    OPTIONS 3D NUMBER 
+    HEADSIZE 5
+  ENDGHEAD
+
+ENDGRID
+
+TEXT "Power plane pair:"
+  TLOC 1 1
+  TGROUP ""                 
+ENDTEXT
+
+FIELD PowerPlanePair
+  FLOC 14 1
+  ENUMSET 67
+  POP "pwrpair"
+  FGROUP ""                 
+ENDFIELD 
+
+GROUP "Analysis Conditions" AnalysisGroup
+  GLOC 1 3
+  GSIZE 42 13
+ENDGROUP
+
+TEXT "Plane 1:"
+  TLOC 2 5
+  TGROUP "Analysis Conditions"
+ENDTEXT
+
+TEXT
+  TLOC 17 5 
+  INFO PlaneLayerNet1 28 
+  TGROUP "Analysis Conditions"
+ENDTEXT
+
+TEXT "Plane 2:"
+  TLOC 2 7
+  TGROUP "Analysis Conditions"
+ENDTEXT
+
+TEXT
+  TLOC 17 7
+  INFO PlaneLayerNet2 28 
+  TGROUP "Analysis Conditions"
+ENDTEXT
+
+TEXT "Ripple tolerance:"
+  TLOC 2 9
+  TGROUP "Analysis Conditions"
+ENDTEXT
+
+FIELD RippleTolerance
+  FLOC 17 9
+  STRFILLIN 20 20
+  POP "ripper"
+  FGROUP "Analysis Conditions"
+ENDFIELD 
+
+TEXT "Max. delta current:"
+  TLOC 2 11
+  TGROUP "Analysis Conditions"
+ENDTEXT
+
+FIELD MaxDeltaCurrent
+  FLOC 17 11
+  STRFILLIN 21 21
+  FGROUP "Analysis Conditions"
+ENDFIELD 
+
+TEXT "Target impedance:"
+  TLOC 2 14
+  TGROUP "Analysis Conditions"
+ENDTEXT
+
+TEXT
+  TLOC 17 14
+  INFO TargetImpedance 20
+  TGROUP "Analysis Conditions"
+ENDTEXT
+
+GROUP "Mouse Button Action Description" MouseDescGroup
+  GLOC 45 3
+  GSIZE 40 13
+ENDGROUP
+
+TEXT
+  TLOC 46 5
+  INFO MBADescription 40
+  FSIZE 40 12 
+  TGROUP "Mouse Button Action Description"
+ENDTEXT
+
+FIELD Wizard
+  FLOC 86 4
+  MENUBUTTON "Setup Wizard" 14 2
+ENDFIELD
+
+FIELD ControlPrefs
+  FLOC 86 6
+  MENUBUTTON "Control" 14 2
+ENDFIELD
+
+FIELD VRMEdit
+  FLOC 86 8
+  MENUBUTTON "VRM Edit" 14 2
+ENDFIELD
+
+FIELD CapLib
+  FLOC 86 10
+  MENUBUTTON "Cap. Libraries" 14 2
+ENDFIELD
+
+GROUP "Decoupling Capacitors" DecapsGroup
+  GLOC 1 16
+  GSIZE 100 29
+ENDGROUP
+
+FIELD MultiPlanePairSim
+  FLOC 1 46
+  CHECKLIST "Multiple Plane Pair Simulation"
+ENDFIELD
+
+FIELD MultiPlanePairList
+  FLOC 28 46
+  MENUBUTTON "List" 5 3
+ENDFIELD
+
+FIELD SingleNodeSim
+  FLOC 1 49
+  MENUBUTTON "Single Node Simulation" 22 4
+ENDFIELD
+
+FIELD MultiNodeSim
+  FLOC 26 49
+  MENUBUTTON "Multi Node Simulation" 22 4
+ENDFIELD
+
+FIELD Report
+  FLOC 51 49
+  MENUBUTTON "Report" 22 4
+ENDFIELD
+
+FIELD OK
+  FLOC 2 54
+  MENUBUTTON "OK" 10 3
+ENDFIELD
+
+FIELD Apply
+  FLOC 16 54
+  MENUBUTTON "Apply" 10 3
+ENDFIELD
+
+FIELD Cancel
+  FLOC 30 54
+  MENUBUTTON "Cancel" 10 3
+ENDFIELD
+
+FIELD Help
+  FLOC 90 54
+  MENUBUTTON "Help" 10 3
+ENDFIELD
+
+FLEXMODE EdgeGravity
+
+# Format FLEX fx fy fw fh          
+FLEX PowerPlanePair   0 0 1 0
+
+FLEX AnalysisGroup    0 0 1 0
+FLEX PlaneLayerNet1   0 0 1 0
+FLEX PlaneLayerNet2   0 0 1 0
+FLEX RippleTolerance  0 0 1 0
+FLEX TargetImpedance  0 0 1 0
+FLEX MaxDeltaCurrent  0 0 1 0
+
+FLEX MouseDescGroup   1 0 0 0
+FLEX MBADescription   1 0 0 0
+
+FLEX DecapsGroup     0 0 1 1
+FLEX DecapGrid       0 0 1 1
+
+FLEX MultiPlanePairSim  0 1 0 0
+FLEX MultiPlanePairList 0 1 0 0
+FLEX MultiNodeSim       0 1 0 0
+FLEX SingleNodeSim      0 1 0 0
+FLEX Report             0 1 0 0
+
+FLEX OK      0 1 0 0
+FLEX Apply   0 1 0 0
+FLEX Cancel  0 1 0 0
+FLEX Help    0 1 0 0
+
+ENDTILE
+
+ENDFORM

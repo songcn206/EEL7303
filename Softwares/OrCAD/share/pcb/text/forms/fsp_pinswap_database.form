@@ -1,0 +1,57 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM 
+FIXED
+PORT 66 15
+HEADER "FSP Pinswap"
+
+POPUP <license>"Allegro ASIC Prototyping with FPGAs""0","Allegro 4 FPGA System Planner Option""1","Allegro 2 FPGA System Planner Option""2","Allegro FPGA System Planner - L""3".
+
+MESSAGE pinswap_database_select_licence 1 "Please select an FSP license to use."
+MESSAGE pinswap_database_read_only 1 "Specified FSP database is read only."
+MESSAGE pinswap_database_not_found 1 "Specified FSP database does not exist."
+
+TILE
+
+TEXT "Enter FSP database location"
+TLOC 2 1
+ENDTEXT
+
+FIELD fsp_database_str
+FLOC 2 3
+STRFILLIN 50 1024
+ENDFIELD
+
+FIELD browse
+FLOC 55 3
+MENUBUTTON "Browse..." 10 3
+ENDFIELD
+
+TEXT "Select FSP license option"
+TLOC 2 6
+ENDTEXT
+
+FIELD fsp_license_str
+FLOC 2 8
+ENUMSET 50
+POP "license"
+ENDFIELD
+
+FIELD ok
+FLOC 16 11
+MENUBUTTON "OK" 10 3
+ENDFIELD
+
+FIELD cancel
+FLOC 28 11
+MENUBUTTON "Cancel" 10 3
+ENDFIELD
+
+FIELD help
+FLOC 40 11
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM
+

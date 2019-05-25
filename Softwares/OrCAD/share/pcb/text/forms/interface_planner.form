@@ -1,0 +1,63 @@
+#
+# Interface Planner Form for the Thoreau project (System Level Interface Planning)
+#
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 85 14
+HEADER "Interface Planner"
+
+POPUP <component_pop>"""0".
+
+POPUP <actionPOP>"Assign""ASSIGN", "Unassign""UNASSIGN", "Unassign all" "UNASSIGNALL".
+
+TILE
+
+TEXT "Component"
+TLOC 2 0
+ENDTEXT
+
+FIELD component
+FLOC 2 2
+STRFILLIN 10 255
+POP "component_pop"
+ENDFIELD
+
+GRID interfaceDefs
+FLOC 2 5
+FSIZE 83 40
+POP "actionPop"
+OPTIONS HLINES VLINES USERSIZE 
+
+GHEAD TOP 
+HEADSIZE 2
+OPTIONS 3D 
+ENDGHEAD
+
+ENDGRID
+
+FIELD ok
+FLOC 2 45
+MENUBUTTON "OK" 9 3
+ENDFIELD
+
+FIELD apply
+FLOC 12 45
+MENUBUTTON "Apply" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 22 45
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 75 45
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+FLEXMODE Edgegravity
+FLEX interfaceDefs 0 0 1 0.5
+ENDTILE
+
+ENDFORM

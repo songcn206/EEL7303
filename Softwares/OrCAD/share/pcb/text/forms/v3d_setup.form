@@ -1,0 +1,445 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM 
+FIXED
+PORT 74 56
+HEADER "3D Viewer Design Configuration"
+
+POPUP <DSU_VIS>"All Visible""ON","All Invisible""OFF".
+POPUP <DSU_TYPE>"DIE""DIE","SPACER""SPACER".
+POPUP <DSU_SIDE>"Add""ADD","Delete""DELETE","Up""UP","Down""DOWN".
+POPUP <OBJ_TYPE>"Bond Wire""WIRE","Bond Finger""FINGER","Shape""SHAPE","CLine""CLINE","Symbol""SYMBOL".
+POPUP <DRC_TYPE>"Sphere""SPHERE","Cube""CUBE".
+POPUP <CODESIGN_DETAIL>"Do Not Generate""NONE","Components Only""COMPONENTS","Detailed""DETAIL".
+POPUP <TRIM_MODE>"Design""NONE", "Window""WINDOW", "Net""NET".
+POPUP <COLOR_LIST> """".
+POPUP <DSU_NAME>"""".
+POPUP <RULE_TYPE>"Spacing""SPACING".
+POPUP <RULE_NAMES>"""".
+POPUP <OBJ_NET>"""".
+POPUP <OBJ_LAYER1>"""".
+POPUP <OBJ_LAYER2>"""".
+
+TILE
+
+TABSET "tab"
+FLOC 2 1
+FSIZE 72 38
+
+TAB "3D Layer Stackup"
+
+GRID dsu_grid
+FLOC 1 1
+FSIZE 69 24
+OPTIONS HLINES VLINES
+GHEAD TOP 
+HEADSIZE 2
+POP "DSU_VIS"
+OPTIONS 3D MULTI
+ENDGHEAD
+GHEAD SIDE
+OPTIONS 3D NUMBER 
+HEADSIZE 5
+POP "DSU_SIDE"
+ENDGHEAD
+ENDGRID
+
+TEXT "* Only checked layers will be passed to the 3D Viewer."
+TLOC 8 26
+ENDTEXT
+
+TEXT "+ If your design contains cavities, you must enable rendering of dielectrics on the options page in order to see the cavity outlines themselves as holes in the dielectric layers."
+TLOC 8 28
+FSIZE 60 9
+ENDTEXT
+
+ENDTAB
+
+#ifdef VIEW_3D_DRC
+TAB "DRC Rules"
+
+GROUP "DRC Rule"
+GLOC 1 0
+GSIZE 69 26
+ENDGROUP
+
+TEXT "Name:"
+TLOC 3 2
+ENDTEXT
+FIELD rule_name
+FLOC 12 2
+ENUMSET 18
+POP "RULE_NAMES"
+ENDFIELD
+
+FIELD add_rule
+FLOC 37 2
+MENUBUTTON "Add" 14 3
+ENDFIELD
+
+FIELD del_rule
+FLOC 53 2
+MENUBUTTON "Delete" 14 3
+ENDFIELD
+
+TEXT "Type:"
+TLOC 3 4
+ENDTEXT
+FIELD rule_type
+FLOC 12 4
+ENUMSET 18
+POP "RULE_TYPE"
+ENDFIELD
+
+TEXT "Value:"
+TLOC 3 6
+ENDTEXT
+FIELD rule_value
+FLOC 12 6
+STRFILLIN 19 20
+ENDFIELD
+
+GROUP "Object 1"
+GLOC 3 8
+GSIZE 30 9
+ENDGROUP
+
+TEXT "Type:"
+TLOC 5 10
+ENDTEXT
+FIELD obj_type_1
+FLOC 14 10
+ENUMSET 15
+POP "OBJ_TYPE"
+ENDFIELD
+
+TEXT "Layer:"
+TLOC 5 12
+ENDTEXT
+FIELD obj_lay_1
+FLOC 14 12
+ENUMSET 15
+POP "OBJ_LAYER1"
+ENDFIELD
+
+TEXT "Net:"
+TLOC 5 14
+ENDTEXT
+FIELD obj_net_1
+FLOC 14 14
+ENUMSET 15
+POP "OBJ_NET"
+ENDFIELD
+
+GROUP "Object 2"
+GLOC 37 8
+GSIZE 30 9
+ENDGROUP
+
+TEXT "Type:"
+TLOC 39 10
+ENDTEXT
+FIELD obj_type_2
+FLOC 48 10
+ENUMSET 15
+POP "OBJ_TYPE"
+ENDFIELD
+
+TEXT "Layer:"
+TLOC 39 12
+ENDTEXT
+FIELD obj_lay_2
+FLOC 48 12
+ENUMSET 15
+POP "OBJ_LAYER2"
+ENDFIELD
+
+TEXT "Net:"
+TLOC 39 14
+ENDTEXT
+FIELD obj_net_2
+FLOC 48 14
+ENUMSET 15
+POP "OBJ_NET"
+ENDFIELD
+
+GROUP "Marker"
+GLOC 3 18
+GSIZE 65 7
+ENDGROUP
+
+TEXT "Shape:"
+TLOC 5 20
+ENDTEXT
+FIELD drc_type
+FLOC 14 20
+ENUMSET 15
+POP "DRC_TYPE"
+ENDFIELD
+
+TEXT "Size:"
+TLOC 5 22
+ENDTEXT
+FIELD drc_size
+FLOC 14 22
+STRFILLIN 16 20
+ENDFIELD
+
+TEXT "Color:"
+TLOC 37 20
+ENDTEXT
+FIELD drc_color
+FLOC 49 20
+ENUMSET 15
+OPTIONS prettyprint ownerdrawn
+POP "COLOR_LIST"
+ENDFIELD
+
+TEXT "Transparency:"
+TLOC 37 22
+ENDTEXT
+FIELD drc_trans
+FLOC 49 22
+LONGFILLIN 16 3
+MIN 0
+MAX 255
+ENDFIELD
+
+FIELD save_rules
+FLOC 1 27
+MENUBUTTON "Save Rules..." 15 3
+ENDFIELD
+
+FIELD load_rules
+FLOC 17 27
+MENUBUTTON "Load Rules..." 15 3
+ENDFIELD
+
+FIELD clear_rules
+FLOC 33 27
+MENUBUTTON "Clear Rules" 15 3
+ENDFIELD
+
+FIELD clear_drcs
+FLOC 50 27
+MENUBUTTON "Clear DRC Markers" 20 3
+ENDFIELD
+
+ENDTAB
+#endif
+
+TAB "Options"
+
+GROUP "Rendering/Coloring"
+GLOC 1 0
+GSIZE 40 35
+ENDGROUP
+
+TEXT "Symbol Transparency:"
+TLOC 3 2
+ENDTEXT
+FIELD symbol_transparency
+FLOC 20 2
+LONGFILLIN 16 3
+MIN 0
+MAX 255
+ENDFIELD
+
+FIELD model_solder
+FLOC 3 4
+CHECKLIST "Render solder masks"
+ENDFIELD
+
+TEXT "Thickness:"
+TLOC 5 6
+ENDTEXT
+FIELD solder_thickness
+FLOC 20 6
+STRFILLIN 17 20
+ENDFIELD
+
+FIELD model_cap 
+FLOC 3 8
+CHECKLIST "Rending molding cap"
+ENDFIELD
+
+TEXT "Height:"
+TLOC 5 10
+ENDTEXT
+FIELD package_cap_height
+FLOC 20 10
+STRFILLIN 16 20
+ENDFIELD
+
+FIELD model_dielectrics
+FLOC 3 12
+CHECKLIST "Render dielectric layers"
+ENDFIELD
+
+TEXT "Transparency:"
+TLOC 5 14
+ENDTEXT
+FIELD diel_transparency
+FLOC 20 14
+LONGFILLIN 16 3
+MIN 0
+MAX 255
+ENDFIELD
+
+FIELD model_balls
+FLOC 3 16
+CHECKLIST "Render solder ball spheres"
+ENDFIELD
+
+TEXT "Ball diameter:"
+TLOC 5 18
+ENDTEXT
+FIELD ball_dia
+FLOC 20 18
+STRFILLIN 17 20
+ENDFIELD
+
+TEXT "Ball color:"
+TLOC 5 20
+ENDTEXT
+FIELD ball_color
+FLOC 20 20
+ENUMSET 16
+OPTIONS prettyprint ownerdrawn
+POP "COLOR_LIST"
+ENDFIELD
+
+TEXT "Default wire diameter:"
+TLOC 3 22
+ENDTEXT
+FIELD wire_dia
+FLOC 20 22
+STRFILLIN 17 20
+ENDFIELD
+
+TEXT "Rat diameter:"
+TLOC 3 24
+ENDTEXT
+FIELD rat_dia
+FLOC 20 24
+STRFILLIN 17 20
+ENDFIELD
+
+TEXT "Z-Axis scaling factor:"
+TLOC 3 26
+ENDTEXT
+FIELD scale_factor
+FLOC 20 26
+REALFILLIN 17 3
+MIN 1.0
+MAX 10.0
+ENDFIELD
+
+TEXT "Background:"
+TLOC 3 29
+ENDTEXT
+FIELD bg_color
+FLOC 20 29
+ENUMSET 16
+OPTIONS prettyprint ownerdrawn
+POP "COLOR_LIST"
+ENDFIELD
+
+FIELD bg_custom
+FLOC 5 31
+CHECKLIST "Custom Color:"
+ENDFIELD
+FIELD bg_custom_string
+FLOC 20 31
+STRFILLIN 17 20
+ENDFIELD
+
+GROUP "File Management"
+GLOC 42 0
+GSIZE 28 8
+ENDGROUP
+
+FIELD custom_file
+FLOC 44 2
+CHECKLIST "Save as stand-alone view"
+ENDFIELD
+
+FIELD custom_file_name
+FLOC 46 4
+STRFILLIN 17 1024
+ENDFIELD
+
+FIELD custom_file_browse
+FLOC 65 4
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+GROUP "Performance Options"
+GLOC 42 9
+GSIZE 28 26
+ENDGROUP
+
+TEXT "Arc resolution [4-32]:"
+TLOC 44 12
+ENDTEXT
+FIELD arc_res
+FLOC 60 12
+LONGFILLIN 6 3
+MIN 4
+MAX 32
+ENDFIELD
+
+TEXT "Trim to:"
+TLOC 44 15
+ENDTEXT
+FIELD slice_mode
+FLOC 52 15
+ENUMSET 14
+POP "TRIM_MODE"
+ENDFIELD
+TEXT "Clearance:"
+TLOC 44 17
+ENDTEXT
+FIELD slice_clearance
+FLOC 52 17
+STRFILLIN 15 1024
+ENDFIELD
+
+#ifdef _SIP_CODESIGN_PACKAGE_BETA
+TEXT "Codesign detail level:"
+TLOC 44 22
+ENDTEXT
+FIELD codesign_level
+FLOC 46 24
+ENUMSET 16
+POP "CODESIGN_DETAIL"
+ENDFIELD
+#endif
+
+#ifdef 3D_VIEW_BOARD_BETA
+FIELD view_as_board
+FLOC 44 27
+CHECKLIST "Draw design as a PCB"
+ENDFIELD
+#endif
+
+ENDTAB
+ENDTABSET
+
+FIELD view
+FLOC 2 40
+MENUBUTTON "View" 10 3
+ENDFIELD
+
+FIELD close
+FLOC 13 40
+MENUBUTTON "Close" 10 3
+ENDFIELD
+
+FIELD help
+FLOC 64 40
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

@@ -1,0 +1,999 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 83 13
+HEADER "Board Wizard"
+
+POPUP <UNITTYPES> "Mils" "mils", "Inch" "inches", "Micron" "microns", "Millimeter" "millimeters", "Centimeter" "centimeters"
+POPUP <BOARDSIZES> "A" "A", "B" "B", "C" "C", "D" "D"
+POPUP <LAYERPOP> "Add" "Add", "Cut" "Cut"
+POPUP <LAYERTYPES> "Routing layer" "Routing layer", "Power plane" "Power plane"
+
+TILE
+
+TABSET "BoardWizard"
+FLOC 0 0
+TSSIZE 85 31
+
+TAB "Introduction" Introduction
+
+FIELD pselect_image
+THUMBNAIL bw_intro.bmp
+FLOC 1 0
+FSIZE 32 28
+ENDFIELD
+
+TEXT "This wizard helps you to get started with a board design."
+FLOC 34 1
+ENDTEXT
+
+TEXT "Using this wizard, you can define the following:"
+FLOC 34 3
+ENDTEXT
+
+TEXT "- Drawing units, size, and origin"
+FLOC 37 5
+ENDTEXT
+
+TEXT "- Board outline"
+FLOC 37 7
+ENDTEXT
+
+
+TEXT "- Grid spacing"
+FLOC 37 9
+ENDTEXT
+
+TEXT "- Board cross-section"
+FLOC 37 11
+ENDTEXT
+
+
+TEXT "- Initial constraints"
+FLOC 37 13
+ENDTEXT
+
+
+TEXT "This wizard also generates route keepin, place keepin, and artwork film definitions."
+FLOC 34 16
+FSIZE 46 4
+ENDTEXT
+ 
+TEXT "You also can import custom templates, parameter files, and technology files that contain Allegro data and parameters. The initial board that you create with this wizard can be modified by using the interactive commands in the Allegro Editor."
+FLOC 34 20
+FSIZE 46 6
+ENDTEXT
+
+ENDTAB
+
+TAB "Template" Template_Selection
+
+FIELD template_image
+THUMBNAIL bw_template.bmp
+FLOC 1 0
+FSIZE 32 28
+ENDFIELD
+
+TEXT "You can use board templates to import initial board parameters and custom data."
+FLOC 34 1
+FSIZE 46 3
+ENDTEXT
+
+TEXT "For more information on how to create a board template file please see Allegro Online Documentation."
+FLOC 34 6
+FSIZE 46 4
+ENDTEXT
+
+TEXT "Do you have a board template that you would like to import in this board?"
+FLOC 34 12
+FSIZE 46 3
+ENDTEXT
+
+FIELD no_custom_template
+FLOC 35 15
+CHECKLIST "No" "template"
+ENDFIELD
+
+FIELD use_custom_template
+FLOC 35 17
+CHECKLIST "Yes" "template"
+ENDFIELD
+
+FIELD custom_template
+FLOC 42 17
+STRFILLIN 26 80
+ENDFIELD
+
+FIELD template_browse
+FLOC 70 17
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+TEXT "You must click the Load Template button before proceeding to the next page"
+FLOC 52 71
+FSIZE 31 3
+ENDFIELD
+
+FIELD load_template
+FLOC 35 71
+MENUBUTTON "Load Template" 10 3
+ENDFIELD
+
+TEXT ""
+FLOC 34 25
+INFO loaded_template 46
+ENDFIELD
+
+ENDTAB
+
+TAB "Layer Tech File" ipsd_techfile1
+
+FIELD template_image
+THUMBNAIL bw_tech.bmp
+FLOC 1 0
+FSIZE 32 28
+ENDFIELD
+
+TEXT "Layer tech file is used to import cross-section details of the board."
+FLOC 34 2
+FSIZE 46 4
+ENDTEXT
+
+TEXT "Specify a layer tech file for the board."
+FLOC 34 13
+ENDFIELD
+
+TEXT "Techfile:"
+FLOC 34 15
+ENDFIELD
+
+FIELD layer_techfile_name
+FLOC 42 15
+STRFILLIN 26 80
+ENDFIELD
+
+FIELD layer_techfile_browse
+FLOC 70 15
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+TEXT "Note:Parameters that are imported from a tech file will override parameters imported from a template."
+FLOC 34 18
+FSIZE 46 3
+ENDTEXT
+
+ENDTAB
+
+TAB "Spacing Tech File" ipsd_techfile2
+
+FIELD template_image
+THUMBNAIL bw_tech.bmp
+FLOC 1 0
+FSIZE 32 28
+ENDFIELD
+
+TEXT "Spacing tech file is used to import spacing constraints and various other board parameters."
+FLOC 34 2
+FSIZE 46 4
+ENDTEXT
+
+TEXT "Specify a spacing tech file for the board."
+FLOC 34 13
+ENDFIELD
+
+TEXT "Techfile:"
+FLOC 34 15
+ENDFIELD
+
+FIELD spacing_techfile_name
+FLOC 42 15
+STRFILLIN 26 80
+ENDFIELD
+
+FIELD spacing_techfile_browse
+FLOC 70 15
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+TEXT "Note:Parameters that are imported from a tech file will override parameters imported from a template."
+FLOC 34 18
+FSIZE 46 3
+ENDTEXT
+
+ENDTAB
+
+TAB "Tech File / Parameter file" tech_file
+
+FIELD template_image
+THUMBNAIL bw_tech.bmp
+FLOC 1 0
+FSIZE 32 28
+ENDFIELD
+
+TEXT "Tech files and parameter files are used to import various board parameters including cross-section details and constraints."
+FLOC 34 2
+FSIZE 46 4
+ENDTEXT
+
+TEXT "Do you have a tech file that you would like to import in this board?"
+FLOC 34 6
+ENDFIELD
+
+FIELD no_tech_file
+FLOC 35 8
+CHECKLIST "No" "techfile"
+ENDFIELD
+
+FIELD use_tech_file
+FLOC 35 10
+CHECKLIST "Yes" "techfile"
+ENDFIELD
+
+FIELD techfile_name
+FLOC 42 10
+STRFILLIN 26 80
+ENDFIELD
+
+FIELD techfile_browse
+FLOC 70 10
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+FIELD import_techfile
+FLOC 36 77
+MENUBUTTON "Import Tech File" 16 3
+ENDFIELD
+
+TEXT "Do you have a parameter file you would like to import in this board?"
+FLOC 34 15
+ENDFIELD
+
+FIELD no_parm_file
+FLOC 35 17
+CHECKLIST "No" "parmfile"
+ENDFIELD
+
+FIELD use_parm_file
+FLOC 35 19
+CHECKLIST "Yes" "parmfile"
+ENDFIELD
+
+FIELD parmfile_name
+FLOC 42 19
+STRFILLIN 26 80
+ENDFIELD
+
+FIELD parmfile_browse
+FLOC 70 19
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+FIELD import_parmfile
+FLOC 36 78
+MENUBUTTON "Import Parm File" 16 3
+ENDFIELD
+
+TEXT "Note:Parameters that are imported from a tech file will override parameters imported from a template."
+FLOC 34 23
+FSIZE 46 3
+ENDTEXT
+
+TEXT "No tech file is imported as yet."
+FLOC 36 72
+INFO loaded_techfile 44
+ENDFIELD
+
+ENDTAB
+
+TAB "Board Symbol" Board_symbol
+
+FIELD template_image
+THUMBNAIL bw_symbol.bmp
+FLOC 1 0
+FSIZE 32 28
+ENDFIELD
+
+TEXT "Board Symbols are used to import board outline and other board related information."
+FLOC 34 2
+FSIZE 46 4
+ENDTEXT
+
+TEXT "Do you have a board symbol that you would like to import in this board?"
+FLOC 34 12
+FSIZE 46 3
+ENDFIELD
+
+FIELD no_board_sym
+FLOC 35 15
+CHECKLIST "No" "boardsymbl"
+ENDFIELD
+
+FIELD use_board_sym
+FLOC 35 17
+CHECKLIST "Yes" "boardsymbl"
+ENDFIELD
+
+FIELD b_sym_name
+FLOC 42 17
+STRFILLIN 26 255
+ENDFIELD
+
+FIELD b_sym_browse
+FLOC 70 17
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+FIELD import_b_sym
+FLOC 36 77
+MENUBUTTON "Import Board Symbol" 20 3
+ENDFIELD
+
+TEXT "No board symbol is imported as yet."
+FLOC 36 72
+INFO loaded_techfile 44
+ENDFIELD
+
+ENDTAB
+
+TAB "Import Default Data" Load_Default
+
+FIELD template_image
+THUMBNAIL bw_load.bmp
+FLOC 1 0
+FSIZE 32 28
+ENDFIELD
+
+TEXT "You have selected to import data from one or more of the following files:"
+FLOC 34 1
+ENDTEXT
+
+TEXT "Template file"
+FLOC 38 3
+ENDTEXT
+
+TEXT "Tech file / Parameter file"
+FLOC 38 5
+ENDTEXT
+
+TEXT "Board symbol file"
+FLOC 38 7
+ENDTEXT
+
+TEXT "If you import these files now, the wizard lets you modify some parameter values that are set by one or more of these files. If you do not import these files now, the wizard imports the data from the selected files when you click Finish at the end."
+FLOC 34 10
+FSIZE 46 8
+ENDTEXT
+
+TEXT "What would you like to do?
+FLOC 34 19
+ENDTEXT
+
+FIELD import_files
+FLOC 36 21
+CHECKLIST "Import default parameter data now." "load_files"
+ENDFIELD
+
+FIELD donot_import_files
+FLOC 36 23
+CHECKLIST "Import the parameter data at the end of the wizard." "load_files"
+ENDFIELD
+
+ENDTAB
+
+TAB "General Parameters" General_Setup
+
+FIELD template_image
+THUMBNAIL bw_param.bmp
+FLOC 1 0
+FSIZE 32 28
+ENDFIELD
+
+TEXT "Select the units for the board drawing."
+FLOC 34 2
+ENDFIELD
+
+TEXT "Units:"
+FLOC 34 4
+ENDFIELD
+
+FIELD board_units
+FLOC 42 4
+ENUMSET 9
+POP "UNITTYPES"
+ENDFIELD
+
+TEXT "Accuracy:"
+FLOC 34 6
+ENDFIELD
+
+TEXT "2"
+TLOC 42 6
+INFO board_accuracy 2
+ENDFIELD
+
+TEXT "Select the drawing size for the board drawing."
+FLOC 34 9
+ENDFIELD
+
+TEXT "Size:"
+FLOC 34 11
+ENDFIELD
+
+FIELD board_size
+FLOC 42 11
+ENUMSET 4
+POP "BOARDSIZES"
+ENDFIELD
+
+TEXT "Specify the location of the origin for this drawing."
+FLOC 34 15 
+ENDFIELD
+
+FIELD lower_left
+FLOC 36 17
+CHECKLIST "At the lower left corner of the drawing." "board_origin"
+ENDFIELD 
+ 
+FIELD board_center
+FLOC 36 19
+CHECKLIST "At the center of the drawing." "board_origin"
+ENDFIELD
+
+FIELD template_center
+FLOC 36 21
+CHECKLIST "As is defined by the loaded data." "board_origin"
+ENDFIELD
+
+ENDTAB
+
+TAB "General Parameters (Continued)" General_Setup_cont
+
+FIELD template_image
+THUMBNAIL bw_param.bmp
+FLOC 1 0
+FSIZE 32 28
+ENDFIELD
+
+TEXT "Specify the grid spacing for etch and non-etch layers."
+FLOC 34 1
+ENDTEXT
+
+
+TEXT "Grid spacing:"
+FLOC 36 3
+ENDTEXT
+
+FIELD grid_spacing
+FLOC 49 3
+REALFILLIN 8 8
+REALMIN 0.000
+ENDFIELD
+
+TEXT "mils"
+FLOC 60 3
+INFO grid_units 8
+ENDFIELD
+
+TEXT "Specify the number of etch layers (including power planes) that you want to have on the board."
+FLOC 34 7
+FSIZE 46 3
+ENDFIELD
+
+TEXT "Etch layer count:"
+FLOC 36 10
+ENDTEXT
+
+FIELD etch_layer_count
+FLOC 49 10
+INTSLIDEBAR 4 4
+MIN 2
+MAX 128
+ENDFIELD
+
+TEXT "Do you want the default definitions of artwork films for these layers to be generated?"
+FLOC 34 14
+FSIZE 46 3
+ENDFIELD
+
+FIELD generate_art_films
+FLOC 36 17
+CHECKLIST "Generate default artwork films." "art_films"
+ENDFIELD
+
+FIELD dont_generate_art_films
+FLOC 36 19
+CHECKLIST "Don't generate artwork films." "art_films"
+ENDFIELD
+
+ENDTAB
+
+TAB "Etch Cross-section details" etch_cross_section_details_cont
+
+FIELD template_image
+THUMBNAIL bw_xsect.bmp
+FLOC 1 0
+FSIZE 32 28
+ENDFIELD
+
+TEXT "Define etch layer names and their properties."
+FLOC 34 1
+ENDFIELD
+
+GRID etch_layer_details
+
+FLOC 34 4
+FSIZE 43 19
+OPTIONS HLINES VLINES USERSIZE
+
+GHEAD TOP
+HEADSIZE 2
+OPTIONS 3D MULTI
+ENDGHEAD
+
+ENDGRID
+
+FIELD negative_artwork
+FLOC 34 24
+CHECKLIST "Generate negative layers for Power planes."
+ENDFIELD
+
+ENDTAB
+
+TAB "Spacing Constraints" spacing_constraints
+
+FIELD template_image
+THUMBNAIL bw_constraint.bmp
+FLOC 1 0
+FSIZE 32 28
+ENDFIELD
+
+TEXT "Define the following spacing constraints for the board."
+FLOC 34 2
+FSIZE 46 4
+ENDFIELD
+
+TEXT "Minimum Line width :"
+FLOC 36 5
+ENDFIELD
+
+FIELD min_line_width
+FLOC 58 5
+REALFILLIN 10 10
+REALMIN 0.000
+ENDFIELD
+
+TEXT "mils"
+FLOC 71 5
+INFO min_line_width_units 8
+ENDFIELD
+
+TEXT "Minimum Line to Line spacing :"
+FLOC 36 8
+ENDFIELD
+
+FIELD line_to_line
+FLOC 58 8
+REALFILLIN 10 10
+REALMIN 0.000
+ENDFIELD
+
+TEXT "mils"
+FLOC 71 8
+INFO line_line_units 8
+ENDFIELD
+
+TEXT "Minimum Line to Pad spacing :"
+FLOC 36 11
+ENDFIELD
+
+FIELD line_to_pad
+FLOC 58 11
+REALFILLIN 10 10
+REALMIN 0.000
+ENDFIELD
+
+TEXT "mils"
+FLOC 71 11 
+INFO line_pad_units 8
+ENDFIELD
+
+TEXT "Minimum Pad to Pad spacing :"
+FLOC 36 14
+ENDFIELD
+
+FIELD pad_to_pad
+FLOC 58 14
+REALFILLIN 10 10
+REALMIN 0.000
+ENDFIELD
+
+TEXT "mils"
+FLOC 71 14
+INFO pad_pad_units 8
+ENDFIELD
+
+
+TEXT "Specify the padstack for the default via for this board."
+FLOC 34 19
+ENDFIELD
+
+TEXT "Default via padstack:"
+FLOC 36 22
+ENDTEXT
+
+FIELD def_via_padstack
+FLOC 53 22
+STRFILLIN 15 255
+ENDFIELD
+ 
+FIELD def_via_browse
+FLOC 70 22
+MENUBUTTON "..." 3 3
+ENDFIELD
+
+ENDTAB
+
+
+TAB "Keepins" Template_Options
+
+FIELD template_image
+THUMBNAIL bw_toption.bmp
+FLOC 1 0
+FSIZE 32 28
+ENDFIELD
+
+TEXT "You can create Route Keepin and Package Keepin data that correspond to the closed polygon shape on the BOARD GEOMETRY/OUTLINE subclass."
+FLOC 34 2
+FSIZE 46 3
+ENDTEXT
+
+TEXT "Specify the Route keepin distance from the board edge."
+FLOC 34 7
+ENDTEXT
+
+TEXT "Route keepin distance:"
+FLOC 36 9
+ENDTEXT
+
+FIELD bs_route_keepin_distance
+FLOC 55 9
+REALFILLIN 14 14
+REALMIN 0.000
+ENDFIELD
+
+TEXT "mils"
+FLOC 72 9
+INFO bs_r_k_in_units 8
+ENDFIELD
+
+TEXT "Specify the Package keepin distance from the board edge."
+FLOC 34 13
+ENDTEXT
+
+TEXT "Package keepin distance:"
+FLOC 36 15
+ENDTEXT
+
+FIELD bs_package_keepin_distance
+FLOC 55 15
+REALFILLIN 14 14
+REALMIN 0.000
+ENDFIELD
+
+TEXT "mils"
+FLOC 72 15
+INFO bs_p_k_in_units 8
+ENDFIELD
+
+ENDTAB
+
+TAB "Board Outline" Board_Selection
+
+FIELD pselect_image
+THUMBNAIL bw_outline.bmp
+FLOC 1 0
+FSIZE 32 28
+ENDFIELD
+
+TEXT "Define the board outline for the board."
+FLOC 34 1
+ENDTEXT
+
+
+FIELD circular_board
+FLOC 36 4
+CHECKLIST "Circular board" "board_type"
+ENDFIELD
+
+FIELD rectangular_board
+FLOC 36 6
+CHECKLIST "Rectangular board" "board_type"
+ENDFIELD
+
+FIELD vme_board
+FLOC 36 60
+CHECKLIST "Outline of the standard VME board" "board_type"
+ENDFIELD
+
+FIELD pci_board
+FLOC 36 62
+CHECKLIST "Outline of the standard PCI board" "board_type"
+ENDFIELD 
+ 
+FIELD dxf_board
+FLOC 36 64
+CHECKLIST "Import board outline from DXF file." "board_type"
+ENDFIELD
+
+ENDTAB
+
+TAB "Circular Board Parameters" Circular_Board_parameters
+
+FIELD template_image
+THUMBNAIL bw_circl.bmp
+FLOC 1 0
+FSIZE 32 28
+ENDFIELD
+
+TEXT "Specify the diameter for the circular board outline."
+FLOC 34 1
+ENDTEXT
+
+TEXT "Diameter (D):"
+FLOC 36 3
+ENDTEXT
+
+FIELD cb_outline_diameter
+FLOC 55 3
+REALFILLIN 14 14
+REALMIN 0.000
+ENDFIELD
+
+TEXT "mils"
+FLOC 72 3
+INFO cb_diameter_units 8
+ENDFIELD
+
+TEXT "Specify the Route keepin distance from the board edge."
+FLOC 34 7
+ENDTEXT
+
+TEXT "Route keepin distance:"
+FLOC 36 9
+ENDTEXT
+
+FIELD cb_route_keepin_distance
+FLOC 55 9
+REALFILLIN 14 14
+REALMIN 0.000
+ENDFIELD
+
+TEXT "mils"
+FLOC 72 9
+INFO cb_r_k_in_units 8
+ENDFIELD
+
+TEXT "Specify the Package keepin distance from the board edge."
+FLOC 34 13
+ENDTEXT
+
+TEXT "Package keepin distance:"
+FLOC 36 15
+ENDTEXT
+
+FIELD cb_package_keepin_distance
+FLOC 55 15
+REALFILLIN 14 14
+REALMIN 0.000
+ENDFIELD
+
+TEXT "mils"
+FLOC 72 15
+INFO cb_p_k_in_units 8
+ENDFIELD
+
+ENDTAB
+
+TAB "Rectangular Board Parameters" Rectangular_Board_parameters
+
+FIELD template_image
+THUMBNAIL bw_rect.bmp
+FLOC 1 0
+FSIZE 32 28
+ENDFIELD
+
+TEXT "Specify the width and height for the rectangular board outline."
+FLOC 34 1
+ENDTEXT
+
+TEXT "Width (W):"
+FLOC 36 3
+ENDTEXT
+
+
+FIELD rb_outline_width
+FLOC 55 3
+REALFILLIN 14 14
+REALMIN 0.000
+ENDFIELD
+
+TEXT "mils"
+FLOC 72 3
+INFO rb_width_units 8
+ENDFIELD
+
+TEXT "Height (H):"
+FLOC 36 5
+ENDTEXT
+
+FIELD rb_outline_height
+FLOC 55 5
+REALFILLIN 14 14
+REALMIN 0.000
+ENDFIELD
+
+TEXT "mils"
+FLOC 72 5
+INFO rb_length_units 8
+ENDFIELD
+
+TEXT "Will this board have a corner cutoff?"
+FLOC 34 9
+ENDTEXT
+
+FIELD rb_corner_cutoff
+FLOC 36 11
+CHECKLIST "Corner cutoff"
+ENDFIELD
+
+TEXT "Cut length (C):"
+FLOC 38 13
+ENDTEXT
+
+FIELD rb_outline_cut
+FLOC 55 13
+REALFILLIN 14 14
+REALMIN 0.000
+ENDFIELD
+
+TEXT "mils"
+FLOC 72 13
+INFO rb_cutoff_units 8
+ENDFIELD
+
+
+TEXT "Specify the Route keepin distance from the board edge."
+FLOC 34 17
+ENDTEXT
+
+TEXT "Route keepin distance:"
+FLOC 36 19
+ENDTEXT
+
+FIELD rb_route_keepin_distance
+FLOC 55 19
+REALFILLIN 14 14
+REALMIN 0.000
+ENDFIELD
+
+TEXT "mils"
+FLOC 72 19
+INFO rb_r_k_in_units 8
+ENDFIELD
+
+TEXT "Specify the Package keepin distance from the board edge."
+FLOC 34 23
+ENDTEXT
+
+TEXT "Package keepin distance:"
+FLOC 36 25
+ENDTEXT
+
+FIELD rb_package_keepin_distance
+FLOC 55 25
+REALFILLIN 14 14
+REALMIN 0.000
+ENDFIELD
+
+TEXT "mils"
+FLOC 72 25
+INFO rb_p_k_in_units 8
+ENDFIELD
+
+ENDTAB
+
+TAB "DXF Board Parameters" DXF_Board_parameters
+
+FIELD template_image
+THUMBNAIL intro.bmp
+FLOC 1 0
+FSIZE 32 28
+ENDFIELD
+
+TEXT "Specify if you would also like to import following keepins from the DXF file."
+FLOC 34 1
+ENDTEXT
+
+FIELD db_import_route_keepin
+FLOC 36 3
+CHECKLIST "Import route keepin from the DXF file"
+ENDFIELD
+
+FIELD db_import_route_keepout
+FLOC 36 5
+CHECKLIST "Import route keepout from the DXF file"
+ENDFIELD
+
+FIELD db_import_package_keepin
+FLOC 36 7
+CHECKLIST "Import package keepin from the DXF file"
+ENDFIELD
+
+FIELD db_import_package_keepout
+FLOC 36 9
+CHECKLIST "Import package keepout from the DXF file"
+ENDFIELD
+
+
+TEXT "Specify the Route keepin distance from the board edge."
+FLOC 34 14
+ENDTEXT
+
+TEXT "Route keepin distance:"
+FLOC 36 16
+ENDTEXT
+
+FIELD db_route_keepin_distance
+FLOC 55 16
+REALFILLIN 14 14
+REALMIN 0.000
+ENDFIELD
+
+TEXT "Specify the Package keepin distance from the board edge."
+FLOC 34 20
+ENDTEXT
+
+TEXT "Package keepin distance:"
+FLOC 36 22
+ENDTEXT
+
+FIELD db_package_keepin_distance
+FLOC 55 22
+REALFILLIN 14 14
+REALMIN 0.000
+ENDFIELD
+
+ENDTAB
+
+TAB "Summary" Summary
+
+FIELD template_image
+THUMBNAIL bw_finish.bmp
+FLOC 1 0
+FSIZE 32 28
+ENDFIELD
+
+TEXT "The Board Wizard will create following file in your current directory, overwriting any existing files with the same name.
+FLOC 34 1
+FSIZE 46 7
+ENDTEXT
+
+FIELD gen_files
+FLOC 38 8
+LIST "" 16 4
+OPTIONS sort
+ENDFIELD
+
+TEXT "Press the Finish button to create and load the board drawing in the layout editor."
+FLOC 34 17
+FSIZE 46 7
+ENDTEXT
+
+ENDTAB
+
+ENDTABSET
+
+ENDTILE
+
+ENDFORM
+

@@ -1,0 +1,78 @@
+        <html xmlns="http://www.w3.org/1999/xhtml">
+
+
+<head>
+<title>inductor htm testing</title>
+        <!-- Enable IE9 Standards mode -->
+        <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+        
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252"/>
+<script type="text/javascript" src="..\..\basescripts\Orvaluechk.js"></script>
+<script type="text/javascript" src="../../../../../../share/orJSLibs/jQuery/jquery-1.7.1.min.js"> </script>
+<script type="text/javascript" src="..\..\basescripts\\modelAppCommon.js"></script>
+<script type="text/javascript" src="scripts\inductor.js"></script>
+<link rel="stylesheet" type="text/css" href=".\css\style.css" />
+
+</head>
+<script language="javascript1.2" type="text/javascript">
+
+
+</script>
+<body lang="EN-US" onload= "StartUp()"> 
+<!--Goal is to have command line ability to load a specific transformer page
+To load "A" transformer user can call "LoadTransformerGui" function with name of tranformer
+ -->
+
+
+<table class="top">
+<tr><td><div style="text-align: center;"><h2>PSpice Modeling Application: Non Ideal RF Inductors </h2></div>
+</td></tr>
+</table>
+
+
+
+
+
+<form id="IND" action="" class="param" style="display:block"  >
+<table class="main_top" >
+<tr><td>This device would model a Non Ideal RF Inductor which exhibits resonance. You need to define Inductance, internal DC Resistance, Q Factor, Self Resonant frequency and Tolerance. Each of the parameters can be obtained directly from the inductor datasheet. This model includes an additional resistance in parallel, which on selection is included in parallel to capacitor of basic inductor model. This model doesnot include core model.  </td></tr></table>
+<table class="main_top_img" >
+<tr><td> <img alt="Forward Converter Transformer"  width="300" height="175" id="Img3" src=".\Images\basic_ind_sch.png" /></td></tr>
+</table>
+   <table class="main_mid" >
+   
+   
+        <tr><th align ="right" style="width: 343px" >Parameter Name </th><th align="center" > Parameter value</th></tr>
+        <tr><td class ="paramt_n" style="width: 343px">Model Name </td><td class ="paramt_v"><input type="text" name="Name" onblur="namecheck(this.value)" /></td></tr>
+        <tr><td class ="paramt_n" style="width: 343px">Inductance (L_IND) </td><td class ="paramt_v"><input type="text" name="ind" onblur="verify_value(this.value,this.name,0,undefined)" /></td></tr>
+        <tr><td class ="paramt_n" style="width: 343px">DC Resistance (RDC)</td><td class ="paramt_v"><input type="text" name="rdc" onblur="verify_value(this.value,this.name,0,undefined)"/></td></tr>
+        <!--tr><td class ="paramt_n" style="width: 343px">Q Factor (Q)</td><td class ="paramt_v"><input type="text" name="qfac" onblur="verify_value(this.value,this.name,0,undefined)"/></td></tr-->
+        <tr><td class ="paramt_n" style="width: 343px">Self Resonant Frequency (SRF)</td><td class ="paramt_v"><input type="text" name="srf" onblur="verify_value(this.value,this.name,0,undefined)"/></td></tr>
+        <tr><td class ="paramt_n" style="width: 343px"><input type="radio" name="RESET" id="WOR" onclick ="Set_Input('XX',0,'./Images/basic_ind_sch.png','XX_V')" checked = "checked"/>Without Parallel Resistance</td><td class ="paramt_v"><input type="radio" name="RESET" id="WR"  onclick ="Set_Input('XX',1,'./Images/ind_par_sch.png','XX_V')"/> With Parallel Resistance</td></tr>
+        <tr id="XX" style="display:none"><td class ="paramt_n" style="width: 343px">Parallel Resistance (RES) </td><td class ="paramt_v"><input type="text" id = "XX_V" name="res" onblur="verify_value(this.value,this.name,1,undefined)" style = "display : none "/></td></tr>
+        
+    </table>
+</form>
+
+
+<form id = "subckt" action="" style="display:none" class="txt">
+<table class="main_mid2">
+<tr><td><textarea id="subckt_textarea"  readonly="readonly" rows="14" cols="44"> Transformer Model</textarea> </td></tr>
+</table>
+</form>
+
+<table class="main_bottom">
+<tr><td ><input type="Button" class="gm" id = "gmod" name= "gm1" value="Place" onclick="Gen_Model_ind(this.name)"  style="display:inline"/></td>
+<td><input type="BUTTON" class="cc" id = "bc" name= "Close" value="Close"   onclick="Close_View()" /></td>
+<td><input type="BUTTON" class="rs" id = "rs" name= "RESET" value="RESET" onclick="window.location.reload()"  style="display:inline"/></td>
+
+<!--<td class="button"><input type="Button" class="pp" id = "ppart" name= "pp1" value="Place Part" onclick="Place_Part(this.name)"  style="display:none"/></td> -->
+
+</tr>
+</table>
+
+
+</body>
+</html>
+
+

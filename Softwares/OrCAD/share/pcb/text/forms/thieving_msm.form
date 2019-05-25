@@ -1,0 +1,159 @@
+# $Header: /vobs/psd_backend_data/data/forms-core/thieving_msm.form /main/4 2005-03-29T16:31:02-05 fxf $
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 39 6
+HEADER "Thieving"          
+
+POPUP <THIEVINGSTYLEPOP>"Circle""0","Rectangle""1","Line""2".
+POPUP <THIEVINGOUTLINEPOP>"Shape""0","Rectangle""1".
+
+
+TILE
+
+TEXT "Active Class and Subclass:"
+TLOC 1 1
+ENDTEXT
+
+FIELD class
+FLOC 5 3
+ENUMSET 19
+OPTIONS prettyprint
+POP "class"
+ENDFIELD
+
+FIELD subcolor
+FLOC 2 5
+COLOR 2 1
+ENDFIELD
+
+FIELD subclass
+FLOC 5 5
+ENUMSET 19
+OPTIONS prettyprint ownerdrawn
+POP "subclass"
+ENDFIELD
+
+TEXT "Line lock:"
+TLOC 1 8
+ENDTEXT
+
+FIELD lock_mode
+FLOC 13 8
+ENUMSET 4
+POP "lockmode"
+ENDFIELD
+
+FIELD lock_direction
+FLOC 21 8
+ENUMSET 3
+POP "linelock"
+ENDFIELD
+
+TEXT "Thieving style:"
+TLOC 1 11
+ENDTEXT
+
+FIELD thieving_style
+FLOC 15 11
+ENUMSET 9 
+POP "THIEVINGSTYLEPOP"
+ENDFIELD
+
+TEXT "Thieving outline:"
+TLOC 1 13
+ENDTEXT
+
+FIELD thieving_outline
+FLOC 15 13
+ENUMSET 9
+POP "THIEVINGOUTLINEPOP"
+ENDFIELD
+
+TEXT "Size X:"
+TLOC 1 15
+ENDTEXT
+
+FIELD size_x
+FLOC 15 15
+STRFILLIN 10 10
+ENDFIELD
+
+TEXT "Size Y:"
+TLOC 1 17
+ENDTEXT
+
+FIELD size_y
+FLOC 15 17
+STRFILLIN 10 10
+ENDFIELD
+
+TEXT "Clearance:"
+TLOC 1 19
+ENDTEXT
+
+FIELD clearance
+FLOC 15 19
+STRFILLIN 10 10
+ENDFIELD
+
+TEXT "Spacing X:"
+TLOC 1 21
+ENDTEXT
+
+FIELD spacing_x
+FLOC 15 21
+STRFILLIN 10 10
+ENDFIELD
+
+TEXT "Spacing Y:"
+TLOC 1 23
+ENDTEXT
+
+FIELD spacing_y
+FLOC 15 23
+STRFILLIN 10 10
+ENDFIELD
+
+FIELD border
+FLOC 1 25
+CHECKLIST "Border width:"
+ENDFIELD
+
+FIELD border_width
+FLOC 15 25
+STRFILLIN 10 10
+ENDFIELD
+
+FIELD staggered_pattern
+FLOC 1 27
+CHECKLIST "Staggered pattern"
+ENDFIELD
+
+FIELD clip_rki
+FLOC 1 29
+CHECKLIST "Clip to Route Keepin"
+ENDFIELD
+
+FIELD all_etch_layers
+FLOC 1 31
+#ifdef APD || ALLEGRO_MCM || SIP
+CHECKLIST "All conductor layers"
+#else
+CHECKLIST "All etch layers"
+#endif
+ENDFIELD
+
+FIELD all_soldermask_layers
+FLOC 1 33
+CHECKLIST "All soldermask layers"
+ENDFIELD
+
+FIELD offset_layers
+FLOC 1 35
+CHECKLIST "Offset layers"
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

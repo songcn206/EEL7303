@@ -1,0 +1,110 @@
+
+technology thick
+
+root_drawing test                { name of the root_drawing                }
+use sample.wrk                     { directory where the drawings are        }
+
+units mil
+{ Dimensions }
+  grid 5                         { put things on a 5 Mil grid              }
+  min_length 30                  { min for length = 40 mils                }
+  min_width 30                   { min for width = 40 mils                 }
+  trimming laser 2 0.4 10 50     { layer=laser w=2 st=0.4 sp=10 min perc=30}
+
+{ Resistor controls : }
+temp 50degrees                   { operate the device at 50 degree         }
+
+{ RESISTOR ink description : FRONT of SUBSTRATE }
+resistor_base substrate          { following are resistors on substrate    }
+   resistor_pads top 15 5       { pad layer=top over=15 enc=5 }
+   allegro_route_keepout_subclass bonding 5    { route keepout on layer bonding }
+   allegro_route_keepout_subclass top 5        { route keepout on layer top  }
+
+   { resistor command format :
+        resistor - keyword
+        |        subclass name
+        |        |        ohms/sq
+        |        |        |       power
+        |        |        |       |     current density (mA)
+        |        |        |       |     |   Ptol (%)
+        |        |        |       |     |   |   V Grad
+        |        |        |       |     |   |   |   tophat_Ptol (%)     
+        |        |        |       |     |   |   |   |                      
+        |        |        |       |     |   |   |   |                      }
+        resistor r1       10      50mW  1   25  0   25   
+        resistor r2       100     50mW  1   25  0   25   
+        resistor r3       1000    50mW  1   25  0   25   
+        resistor r4       10k     50mW  1   25  0   25   
+        
+
+{ RESISTOR ink description : BACK of SUBSTRATE }
+resistor_base back               { following are resistors on substrate    }
+   resistor_pads bottom 15 5     { pad layer=bottom over=15 enc=5 }
+ 
+   { resistor command format :
+        resistor - keyword
+        |        subclass name
+        |        |        ohms/sq
+        |        |        |       power
+        |        |        |       |     current density (mA)
+        |        |        |       |     |   Ptol (%)
+        |        |        |       |     |   |   V Grad
+        |        |        |       |     |   |   |   tophat_Ptol (%)
+        |        |        |       |     |   |   |   |
+        |        |        |       |     |   |   |   |                      }
+        resistor r3       1100    50mW  1   25  0   25   
+        resistor r4       11k     50mW  1   25  0   25   
+ 
+
+{
+allegro_execution allegro_layout { either _layout or _interactive          }
+}
+
+
+{ ========================================================================
+  =============== Additional commands ==================================== }
+
+{ OUTPUT CONTROL :                  					   }
+max_errors 100                   { program stops if more than 100 errors   }
+oversights on                    { we want to display oversights           }
+warnings on                      { we want to display warnings             }
+
+resistor_loops loops.script      { name of GED loops script                }
+resistor_table resistor.tab      { name of resistor table                  }
+part_table_file resistor.ptb     { use property part table                 }
+
+
+{ DIRECTIVES for controlling ALLEGRO :					   }
+allegro_solutions valid          { all valid solutions must be generated   }
+allegro_pad_shaped off           { padstacks are generated                 }
+{
+allegro_route_keepout_all 20     { if allowed, use ROUTE KEEPOUT ALL       }
+}
+allegro_pad_subclass pastemask 5 { additional etch data on top of shaped pads }
+allegro_pad_subclass soldermask -5
+allegro_dummy_padstack 'pinres.pad'  { dummy padstack name for etched pads }
+
+
+{ Directives for controlling RESISTOR generation			   }
+default_base substrate
+default_backside_base back
+default_trim L_CUT               { enforce L_CUT on all rect resistors with
+                                   no trim_property specified              }
+{
+default_shape RECT               { only want rectangular resistors         }
+}
+default_orientation HORIZ 
+area_optimization on 
+ink_optimization on              { don't want to use as few inks as possible}
+resolution 100                   { using standard led unit                 }
+number_of_squares 0.2 5          { number of square must be > 0.2 and < 5  }
+power_coef 1                     { power multiplied by 1 before computation }
+power_derating 0.625mW 125       { power derating starting at 125 degrees  }
+power_units mm                   { power is given in Watt per square mm    }
+tophat_number_of_squares 4 15    { number of square must be > 4 and < 15   }
+tophat_min_width 20              { min for width tophat = 20 mils          }
+{
+tophat_leg_length 50             { min tophat legs = 50% of width          }
+}
+trim_check on
+

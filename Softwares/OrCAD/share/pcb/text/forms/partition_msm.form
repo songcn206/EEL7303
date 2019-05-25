@@ -1,0 +1,89 @@
+# Options for partition command
+#
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 39 8
+HEADER "Partition"
+
+POPUP <layer_pop>" "" ".
+
+POPUP <prtn_lock_stat>"Inactive""0","Exported""1","Active""2","Master""3","Imported""4","Retracted""5".
+
+POPUP <prtn_prog_stat>"New""0","In Progress""1","Complete""2".
+
+MESSAGE layer_selection_warning 0 "Warning: Stop layer should be greater than start layer."
+
+TILE
+
+GROUP "Partition Data"
+GLOC 1 0
+GSIZE 27 23
+ENDGROUP
+
+GRID partition_grid
+FLOC 2 2
+FSIZE 25 15
+OPTIONS HLINES VLINES USERSIZE
+ENDGRID
+
+FIELD prtn_notes
+FLOC 2 17
+MENUBUTTON "Notes ..." 10 3
+ENDFIELD
+
+FIELD prtn_view_next
+FLOC 13 17
+MENUBUTTON "View Next" 10 3
+ENDFIELD
+
+FIELD prtn_apply
+FLOC 2 20
+MENUBUTTON "Apply" 10 3
+ENDFIELD
+
+FIELD prtn_reset
+FLOC 13 20
+MENUBUTTON "Reset" 10 3
+ENDFIELD
+
+GROUP "Partition Commands"
+GLOC 1 23
+GSIZE 27 19
+ENDGROUP
+
+FIELD prtn_preview
+FLOC 2 26 
+MENUBUTTON "Preview" 10 3
+ENDFIELD
+
+FIELD prtn_refresh
+FLOC 13 26
+MENUBUTTON "Refresh" 10 3
+ENDFIELD
+
+FIELD prtn_view_all
+FLOC 2 29
+MENUBUTTON "Workflow Manager ..." 10 3
+ENDFIELD
+
+TEXT
+TLOC 2 32
+INFO line_lock_text 12
+ENDTEXT
+
+FIELD lock_mode
+FLOC 11 32
+ENUMSET 4
+POP "lockmode"
+ENDFIELD
+
+FIELD lock_direction
+FLOC 19 32
+ENUMSET 3
+POP "linelock"
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

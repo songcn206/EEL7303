@@ -1,0 +1,96 @@
+
+    Command line arguments for ipc2581_out. 
+        Utility to export data from Allegro to IPC2581 format.
+
+    ipc2581_out [-ufdblRnpstcgeyzDOIMS] [-g <attr_file>] [-o <output_file>] <brd>
+
+    OPTIONAL ARGUMENTS:
+
+        [-u]  Output units.  The Allegro unit of measure.
+              Valid args: INCH, MILLIMETER, MICRON
+              default: INCH(INCH/MILS), MILLIMETER(METER/MILLIM/CENTIM), 
+                       MICRON(MICRON).
+        
+        [-o]  Output file name.              
+              default: <drawing>_ipc2581         
+
+        [-f]  Version. IPC2581 format revision to write. 
+              Valid args: 1.00, 1.01(v1.00 with Amendment 1), 1.02(IPC2581-A)
+              default: 1.02         
+
+        [-g]  Property configuration file.  ASCII text file that specifies
+              the property name for component and net.
+              below is the format:
+               
+               Component/DFA_DEV_CLASS_UD
+               Component/DFA_DEV_TYPE
+               Net/DIFFP_PHASE_TOL_DYNAMIC
+               Net/MAX_VIA_COUNT 
+
+        [-d]  Device descriptions.
+              default: off            
+
+        [-b]  Bill of Material (BOM)
+              default: off          
+
+        [-l]  Layer stackup
+              default: off
+
+        [-R]  Drill layers.              
+              default: off
+
+        [-n]  Net list.              
+              default: off          
+
+        [-p]  Component package.              
+              default: off
+
+        [-s]  Source tool.              
+              default: "CadenceTool" 
+
+        [-t]  Deivce land pattern.              
+              default: off
+
+        [-c]  Component descriptions.              
+              default: off 
+
+        [-D]  Documentation layers.              
+              Default: off 
+
+        [-O]  Outer copper layers.              
+              Default: off 
+
+        [-I]  Inner layers.              
+              Default: off 
+
+        [-M]  Miscellaneous image layers.              
+              Default: off 
+
+        [-S]  SolderMask/SolderPaste Legend Layers.  
+              Default: off             
+
+        [-e]  Export vector text.              
+              default: off  
+
+        [-y]  Export cross section data only.              
+              default: off                                                    
+
+        [-z]  Zip file.              
+              default: off                                                    
+
+    REQUIRED ARGUMENTS:          
+
+        <brd>  Name of the design file.
+
+    Example 1: Generate IPC2581 file "test.cvg" which contains Allegro objects 
+               on outer copper layers, inner layers, documentation layers, 
+               miscellaneous layers, and solderMask/solderPaste layers, 
+               which are defined via the UI "Layer Mapping Edit":
+
+                   ipc2581_out test.brd -o test -O -I -D -M -S
+
+    Example 2: Generate IPC2581 file "test.cvg" which contains net list, 
+               package, and component description with output units MILLIMETER:
+
+                  ipc2581_out test.brd -o test -n -p -c -u MILLIMETER    
+

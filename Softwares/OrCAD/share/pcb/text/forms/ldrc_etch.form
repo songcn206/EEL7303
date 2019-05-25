@@ -1,0 +1,72 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 38 8
+    #ifdef APD || ALLEGRO_MCM || SIP
+HEADER "Net Layer DRC Conductor Rules"
+    #else
+HEADER "Net Layer DRC Etch Rules"
+    #endif
+
+
+
+TILE
+TEXT "Net Layer Rule:"
+TLOC 4 1
+ENDTEXT
+
+TEXT
+TLOC 20 1
+INFO rule_name 18
+ENDTEXT
+
+TEXT "Subclass:"
+TLOC 4 3
+ENDTEXT
+
+TEXT
+TLOC 20 3
+INFO rule_layer 18
+ENDTEXT
+
+TEXT "Neck Width:"
+TLOC 4 5
+ENDTEXT
+
+TEXT "Minimum Line Width:"
+TLOC 4 7
+ENDTEXT
+
+TEXT ""
+INFO neck_width 8
+FLOC 16 5
+ENDFIELD
+
+FIELD min_line_width
+FLOC 24 7
+REALFILLIN 10 10
+DECIMAL 2
+ENDFIELD
+
+FIELD route_on_layer
+FLOC 1 9
+    #ifdef APD || ALLEGRO_MCM || SIP
+CHECKLIST "Allow Conductor on Layer"
+    #else
+CHECKLIST "Allow Etch on Layer"
+    #endif
+ENDFIELD
+
+FIELD done
+FLOC 1 12
+MENUBUTTON "Done" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 11 12
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

@@ -1,0 +1,2814 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN" "http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+<html xmlns="http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>PSpice Help -- Using performance analysis and measurements</title>
+<META NAME="Approver" CONTENT="Technical Publications">
+<META NAME="Author" CONTENT="Technical Publications">
+<META NAME="CreateDate" CONTENT="2012-09-04">
+<META NAME="CreateTime" CONTENT="1346762598">
+<META NAME="DataType" CONTENT="Manuals">
+<META NAME="Description" CONTENT="PSpice A/D simulates analog-only and mixed circuits. The analog and digital algorithms are built into the same program to enable circuit simulation with tightly-coupled feedback loops between analog and digital sections without performance degradation.">
+<META NAME="DocTitle" CONTENT="PSpice Help">
+<META NAME="DocType" CONTENT="Reference">
+<META NAME="EdmsRelease" CONTENT="EDMS Windows-P015">
+<META NAME="FileTitle" CONTENT="Using performance analysis and measurements">
+<META NAME="Keywords" CONTENT="">
+<META NAME="FileType" CONTENT="Chapter">
+<META NAME="Keyword" CONTENT="psphlp">
+<META NAME="Language" CONTENT="English">
+<META NAME="ModifiedDate" CONTENT="2012-09-04">
+<META NAME="ModifiedTime" CONTENT="1346762598">
+<META NAME="NextFile" CONTENT="06_options.html">
+<META NAME="PageCount" CONTENT="26">
+<META NAME="Platform" CONTENT="ALL">
+<META NAME="PrevFile" CONTENT="traces.html">
+<META NAME="Product" CONTENT="Allegro AMS Simulator, PSpice">
+<META NAME="ProductFamily" CONTENT="PCB Design, PCB Design">
+<META NAME="ProductVersion" CONTENT="16.6">
+<META NAME="Syntax" CONTENT="*#Arg1#*The first argument used in the measurement definition.,*#Desc#*The measurement description.,1| search_commands_and_marked_points_for_expression_1;,2| search_commands_and_marked_points_for_expression_2;,MPAVG(p1, p2,[<.fraction>]),MPAVG(x1, x5, .2),Measurement_name (1, [2, ...., n][, subarg1, subarg2, ..., subargm]) = Marked_point_expression,Risetime_NoOvershoot(v(out)),Search    [direction]    [/start_point/]    [#consecutive_points#]    [(range_x[,range_y])],[direction],[for]         [repeat:]      <condition>,n| search_commands_and_marked_points_for_expression_n;,{,}">
+<META NAME="RightsManagement" CONTENT="Copyright 19912012 Cadence Design Systems Inc.">
+<META NAME="Title" CONTENT="PSpice Help -- Using performance analysis and measurements">
+<META NAME="TopicTags" CONTENT="TRUE">
+<META NAME="Version" CONTENT="16.6">
+  </head>
+  <body style="margin-left: 5%;">
+    <a name="pagetop"></a>
+    <a name="firstpage"></a>
+    <!-- Begin Buttons -->
+    <table width="650" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td height="36" width="650" colspan="10">
+          <img src="../support/header_doc.gif" width="650" height="34">
+        </td>
+      </tr>
+      <tr>
+        <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                </td>
+<td height="20" width="73">
+<a href="psphlpTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<img src="../support/nav2_index_b.gif" border="0">
+</td>
+        <td>
+          <a href="traces.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+        </td>
+        <td>
+          <a href="06_options.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+        </td>
+        <td height="20">
+          <a>
+<a href="psphlp.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+          </a>
+        </td>
+        <td height="20" width="61">
+          <img src="../support/nav2_black.gif">
+        </td>
+        <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+        </td>
+        <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+        </td>
+        <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+        </td>
+      </tr>
+    </table>
+    <!-- End Buttons -->
+    <p>
+    <hr>
+    <p>
+      <h3>
+        <center>
+          <font >
+            <div>PSpice Help </div>
+            <font >
+              <div>
+            </font>
+          </font>
+        </center>
+      </h3>
+      <br>
+    </p>
+    <div>
+      <h1><a name="1055124">Using performance analysis and </a>measurements</h1>
+      <!-- [TOPIC_START_OPEN]type=cmdref
+[TOPIC_START_ATTR]text=Using Performance Analysis 
+[TOPIC_START_ATTR]description=
+[TOPIC_START_ATTR]keyword=
+[TOPIC_START_CLOSE] -->
+      <h2><a name="1057511">Using Performance Analysis </a></h2>
+      <p><a name="performance_analysis"></a><a name="performance_analysis"></a><a name="performance_analysis"></a><a name="1052624">Performance Analysis allows you to add traces that show how a derived value changes </a>between simulation runs. The derived value is calculated for each run based on the measurement expression you specify when you add each trace.</p>
+      <p><a name="1053501">To prepare for using Performance Analysis</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	1.	</nobr>
+              </div>
+            </td>
+            <td><a name="1053502">Have multiple sections of data in the Probe data file. You can also append data files </a>together in PSpice , which will treat them as separate sections. Enabling a parametric analysis, a temperature analysis with multiple temperatures, or a Monte Carlo analysis causes the simulator to do multiple simulations of the circuit. Each simulation creates one section of data.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	2.	</nobr>
+              </div>
+            </td>
+            <td><a name="1053503">Create measurement definitions you want to use and bring them into PSpice . Do one of </a>the following:</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	a.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1053504">Use the pre&#45;defined measurement definitions in the file PSpice .PRB.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	b.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1052629">Create measurement definitions in a .PRB file, using an ASCII text editor like </a>Notepad. Save the file with a .PRB extension. Load the file into PSpice as a global file. </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	c.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1052630">Create new or edit existing measurement definitions while running Probe: from the </a>Trace menu, select Measurements, then select New or Edit. </td>
+          </tr>
+        </table>
+      </div>
+<!-- [TOPIC_END] -->
+      <!-- [TOPIC_START_OPEN]type=cmdref
+[TOPIC_START_ATTR]text=Using Measurement Expressions
+[TOPIC_START_ATTR]description=
+[TOPIC_START_ATTR]keyword=
+[TOPIC_START_CLOSE] -->
+      <h2><a name="1052633">Using Measurement Expressions</a></h2>
+      <p><a name="1052635">Measurement expressions evaluate the characteristics of a waveform. A measurement </a>expression is made by choosing the waveform and the waveform calculation you want to evaluate.</p>
+      <p><a name="1052636">The waveform calculation is defined by a measurement definition such as rise time, bandpass </a>bandwidth, minimum value, and maximum value.</p>
+      <p><a name="1052637">For example, if you want to measure the risetime of your circuit output voltage, use the </a>following expression:</p>
+      <dl>
+        <font size="2" face="'Courier New'" color="#000000"><a name="1052638">Risetime_NoOvershoot(v(out))</a></font>
+      </dl>
+      <p><a name="1052639">Measurement strategy</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1052640">Start with a circuit created in Capture and a working PSpice simulation.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1052641">Decide what you want to measure.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1052642">Select the measurement definition that matches the waveform characteristics you want </a>to measure.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1052643">Insert the output variable (whose waveform you want to measure) into the measurement </a>definition, to form a measurement expression.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1052644">Test the measurement expression.</a></td>
+          </tr>
+        </table>
+      </div>
+<!-- [TOPIC_END] -->
+      <!-- [TOPIC_START_OPEN]type=cmdref
+[TOPIC_START_ATTR]text=Composing Measurement Expressions
+[TOPIC_START_ATTR]description=
+[TOPIC_START_ATTR]keyword=
+[TOPIC_START_CLOSE] -->
+      <h2><a name="measurement"></a><a name="1052647">Composing Measurement Expressions</a></h2>
+      <p><a name="1052649">These steps show you how to create a measurement expression in PSpice . Measurement </a>expressions created in PSpice can be imported into Advanced Analysis.</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	1.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052650">Work in the Simulation Results view in PSpice . In the side toolbar, click on <img src="images/viewsim.gif" width="26" height="26" alt="">.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	2.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052651">From the Trace menu in PSpice , select Measurements.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1052652">The Measurements dialog box appears.</a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	3.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052653">Select the measurement definition you want to evaluate.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	4.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052654">Click Eval (evaluate).</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1052655">The Arguments for Measurement Evaluation dialog box appears.</a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	5.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052656">Click the Name of trace to search button.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1052657">The Traces for Measurement Arguments dialog box appears.</a></blockquote>
+      <blockquote><font color="#000000"><strong>Note: </strong></font><a name="1052658">You will only be using the Simulation Output Variables list on the left side. Ignore </a>the Functions or Macros list. </blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	6.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052659">Uncheck the output types you don't need (if you want to simplify the list).</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	7.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052660">Click on the output variable you want to evaluate.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1052661">The output variable appears in the Trace Expression field.</a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	8.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052662">Click OK.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1052663">The Arguments for Measurement Evaluation dialog box reappears with the output </a>variable you chose in the Name of trace to search field.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	9.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052664">Click OK.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1052665">Your new measurement expression is evaluated and displayed graphically in the PSpice </a>window.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	10.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052666">Click OK in the Display Measurement Evaluation pop&#45;up box to continue working in </a>PSpice .</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1052667">Your new measurement expression is saved, but it no longer displays in the window. The </a>only way to get another graphical display is to redo these steps. </blockquote>
+      <p><a name="1052668">You can see the numerical evaluation of your measurement expression by following the steps </a>in the topic Viewing Measurement Results.</p>
+      <p><a name="1052669">See the topic </a><a href="#1052672" title="Using performance analysis and measurements"><font color="#0000ff"><u>Measurement Expression Example</u></font></a> for an example.</p>
+<!-- [TOPIC_END] -->
+      <!-- [TOPIC_START_OPEN]type=cmdref
+[TOPIC_START_ATTR]text=Measurement Expression Example
+[TOPIC_START_ATTR]description=
+[TOPIC_START_ATTR]keyword=
+[TOPIC_START_CLOSE] -->
+      <h2><a name="1052672">Measurement Expression Example</a></h2>
+      <p><a name="1052673">These steps show you an example of creating a measurement expression in PSpice .</a></p>
+      <p><a name="1052674"> Work in the Simulation Results view in PSpice . In the side toolbar, click on <img src="images/viewsim.gif" width="26" height="26" alt="">.</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	1.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052675">Choose Trace &#45; Measurements.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1052677">The Measurements dialog box appears.</a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	2.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052679">Select the measurement definition you want to evaluate.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	3.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052680">Click Eval (evaluate).</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1052681">The Arguments for Measurement Evaluation dialog box appears.</a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	4.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052683">Click the Name of trace to search button.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1052684">The Traces for Measurement Arguments dialog box appears.</a></blockquote>
+      <blockquote><font color="#000000"><strong>Note: </strong></font><a name="1052685">You will only be using the Simulation Output Variables list on the left side. Ignore </a>the Functions or Macros list. </blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	5.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052687">Uncheck the output types you don't need (if you want to simplify the list).</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	6.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052688">Click on the output variable you want to evaluate.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1052689">The output variable appears in the Trace Expression field.</a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	7.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052691">Click OK.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1052692">The Arguments for Measurement Evaluation dialog box reappears with the output </a>variable you chose in the Name of trace to search field.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	8.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052694">Click OK.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1052695">Your new measurement expression is evaluated and displayed graphically in the PSpice </a>window.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	9.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052697">Click OK in the Display Measurement Evaluation pop&#45;up box to continue working in </a>PSpice .</td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1052699">Your new measurement expression is saved, but it no longer displays in the window. The only </a>way to get another graphical display is to redo these steps. </p>
+      <p><a name="1052700">You can see the numerical evaluation of your measurement expression by following the steps </a>in the topic Viewing Measurement Results.</p>
+<!-- [TOPIC_END] -->
+      <!-- [TOPIC_START_OPEN]type=cmdref
+[TOPIC_START_ATTR]text=Viewing Measurement Results
+[TOPIC_START_ATTR]description=
+[TOPIC_START_ATTR]keyword=
+[TOPIC_START_CLOSE] -->
+      <h2><a name="1052703">Viewing Measurement Results</a></h2>
+      <p><a name="1052704">To view the results of measurement expressions you have previously composed:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	1.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052705">From the View menu in PSpice , select Measurement Results.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1052706">The Measurement Results table displays below the plot window.</a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	2.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052707">Click the box in the Evaluate column.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1052708">The PSpice calculation for your measurement expression appears in the Value cloumn.</a></blockquote>
+      <p><a name="1052709">See the topic </a><a href="#1052711" title="Using performance analysis and measurements"><font color="#0000ff"><u>Measurement Results Example</u></font></a> for an example.</p>
+<!-- [TOPIC_END] -->
+      <!-- [TOPIC_START_OPEN]type=cmdref
+[TOPIC_START_ATTR]text=Evaluating a measurement
+[TOPIC_START_ATTR]description=
+[TOPIC_START_ATTR]keyword=
+[TOPIC_START_CLOSE] -->
+      <h2><a name="define_analog"></a><a name="1058615">Evaluating a measurement</a></h2>
+      <p><a name="1058616">After simulating a circuit, you can add new measurements in the Measurement Results </a>window, and evaluate them. To add a measurement for evaluation:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	1.	</nobr>
+              </div>
+            </td>
+            <td><a name="1058618">From the </a><font color="#000000"><em>Trace</em></font> menu in PSpice, choose <font color="#000000"><em>Evaluate Measurement</em></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1058620">The </a><font color="#000000"><em>Evaluate Measurement</em></font> dialog box displays, with <font color="#000000"><em>Measurements</em></font> selected in the <font color="#000000"><em>Functions or Macros</em></font> drop&#45;down list box.</blockquote>
+      <blockquote><font color="#000000"><strong>Note: </strong></font><a name="1058622">Alternatively, the Evaluate Measurement dialog box can be invoked using the </a><font color="#000000"><em>Evaluate Measurement</em></font> icon from the toolbar.</blockquote>
+      <p><a name="1058623">&nbsp;</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	1.	</nobr>
+              </div>
+            </td>
+            <td><a name="1058624">Select the measurement that you want to evaluate by clicking one of the entries in the </a><font color="#000000"><em>Measurements</em></font> list. </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	2.	</nobr>
+              </div>
+            </td>
+            <td><a name="1058626">From the </a><font color="#000000"><em>Simulation Output Variables</em></font> list, click the variable to be passed as a parameter to the selected measurement, and click <font color="#000000"><em>OK</em></font>.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1058628">The new measurement gets added in the </a><font color="#000000"><em>Measurement Results</em></font> table displayed below the plot window.</blockquote>
+      <blockquote><a name="1058630">The PSpice calculation for your measurement expression appears in the </a><font color="#000000"><em>Value</em></font> column.</blockquote>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1058632">To view information about measurements provided by PSpice, see </a><a href="#1052720" title="Using performance analysis and measurements"><font color="#0000ff"><u>Measurement Definitions Included with PSpice</u></font></a>.</p>
+      <p><a name="1058613">To view information on how to create new measurements, see </a><a href="#measurement" title="Using performance analysis and measurements"><font color="#0000ff"><u>Composing Measurement Expressions</u></font></a>.</p>
+<!-- [TOPIC_END] -->
+      <!-- [TOPIC_START_OPEN]type=cmdref
+[TOPIC_START_ATTR]text=Measurement Results Example
+[TOPIC_START_ATTR]description=
+[TOPIC_START_ATTR]keyword=
+[TOPIC_START_CLOSE] -->
+      <h2><a name="1052711">Measurement Results Example</a></h2>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	1.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052712">Choose View &#45; Measurement Results.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1052713">The Measurement Results table displays below the plot window.</a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	2.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052715">Click the box in the Evaluate column.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1052716">A checkmark appears in the Evaluate column check box and the PSpice calculation for </a>your measurement expression appears in the Value column.</blockquote>
+<!-- [TOPIC_END] -->
+      <!-- [TOPIC_START_OPEN]type=cmdref
+[TOPIC_START_ATTR]text=Measurement Definitions Included with PSpice A&#47;D
+[TOPIC_START_ATTR]description=
+[TOPIC_START_ATTR]keyword=
+[TOPIC_START_CLOSE] -->
+      <h2><a name="1052720">Measurement Definitions Included with PSpice </a></h2>
+      <table summary="" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF" width="648">
+        <caption>
+        <tr>
+          <td cellpadding="4" border="0" valign="top" >
+            <p><a name="1053785"><font color="#000000">Definition</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top" >
+            <p><a name="1053787">Finds the. . .</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053789"><font color="#000000">Bandwidth</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053791">Bandwidth of a waveform (you choose dB level)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053793"><font color="#000000">Bandwidth_Bandpass_</font></a><font color="#000000">3dB</font></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053795">Bandwidth (3dB level) of a waveform </a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053797"><font color="#000000">Bandwidth_Bandpass_</font></a><font color="#000000">3dB_XRange</font></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053799">Bandwidth (3dB level) of a waveform over a specified X&#45;range</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053801"><font color="#000000">CenterFrequency</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053803">Center frequency (dB level) of a waveform</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053805"><font color="#000000">CenterFrequency_XRa</font></a><font color="#000000">nge</font></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053807">Center frequency (dB level) of a waveform over a specified X&#45;</a>range</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053809"><font color="#000000">ConversionGain</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053811">Ratio of the maximum value of the first waveform to the </a>maximum value of the second waveform</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053813"><font color="#000000">ConversionGain_XRan</font></a><font color="#000000">ge</font></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053815">Ratio of the maximum value of the first waveform to the </a>maximum value of the second waveform over a specified X&#45;range</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053817"><font color="#000000">Cutoff_Highpass_3dB</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053819">High pass bandwidth (for the given dB level)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053821"><font color="#000000">Cutoff_Highpass_3dB</font></a><font color="#000000">_XRange</font></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053823">High pass bandwidth (for the given dB level)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053825"><font color="#000000">Cutoff_Lowpass_3dB</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053827">Low pass bandwidth (for the given dB level) </a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053829"><font color="#000000">Cutoff_Lowpass_3dB_</font></a><font color="#000000">XRange</font></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053831">Low pass bandwidth (for the given dB level) over a specified </a>range</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053833"><font color="#000000">DutyCycle</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053835">Duty cycle of the first pulse&#47;period</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053837"><font color="#000000">DutyCycle_XRange</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053839">Duty cycle of the first pulse&#47;period over a range</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053841"><font color="#000000">Falltime_NoOvershoo</font></a><font color="#000000">t</font></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053843">Falltime with no overshoot.</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053845"><font color="#000000">Falltime_StepRespon</font></a><font color="#000000">se</font></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053847">Falltime of a negative&#45;going step response curve</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053849"><font color="#000000">Falltime_StepRespon</font></a><font color="#000000">se_XRange</font></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053851">Falltime of a negative&#45;going step response curve over a </a>specified range</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053853"><font color="#000000">GainMargin</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053855">Gain (dB level) at the first 180&#45;degree out&#45;of&#45;phase mark </a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053857"><font color="#000000">Max</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053859">Maximum value of the waveform</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053861"><font color="#000000">Max_XRange</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053863">Maximum value of the waveform within the specified range of X </a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053865"><font color="#000000">Min</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053867">Minimum value of the waveform</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053869"><font color="#000000">Min_XRange</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053871">Minimum value of the waveform within the specified range of X</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053873"><font color="#000000">NthPeak</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053875">Value of a waveform at its nth peak</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053877"><font color="#000000">Overshoot</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053879">Overshoot of a step response curve</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053881"><font color="#000000">Overshoot_XRange</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053883">Overshoot of a step response curve over a specified range</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053885"><font color="#000000">Peak</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053887">Value of a waveform at its nth peak</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053889"><font color="#000000">Period</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053891">Period of a time domain signal</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053893"><font color="#000000">Period_XRange</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053895">Period of a time domain signal over a specified range</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053897"><font color="#000000">PhaseMargin</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053899">Phase margin</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053901"><font color="#000000">PowerDissipation_mW</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053903">Total power dissipation in milli&#45;watts during the final period of </a>time (can be used to calculate total power dissipation, if the first waveform is the integral of V(load)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053905"><font color="#000000">Pulsewidth</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053907">Width of the first pulse</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053909"><font color="#000000">Pulsewidth_XRange</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053911">Width of the first pulse at a specified range</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053913"><font color="#000000">Q_Bandpass</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053915">Calculates Q (center frequency &#47; bandwidth) of a bandpass </a>response at the specified dB point </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053917"><font color="#000000">Q_Bandpass_XRange</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053919">Calculates Q (center frequency &#47; bandwidth) of a bandpass </a>response at the specified dB point and the specified range</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053921"><font color="#000000">Risetime_NoOvershoo</font></a><font color="#000000">t</font></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053923">Risetime of a step response curve with no overshoot</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053925"><font color="#000000">Risetime_StepRespon</font></a><font color="#000000">se</font></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053927">Risetime of a step response curve</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053929"><font color="#000000">Risetime_StepRespon</font></a><font color="#000000">se_XRange</font></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053931">Risetime of a step response curve at a specified range</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053933"><font color="#000000">SettlingTime</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053935">Time from &#60;begin_x&#62; to the time it takes a step response to </a>settle within a specified band</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053937"><font color="#000000">SettlingTime_XRange</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053939">Time from &#60;begin_x&#62; to the time it takes a step response to </a>settle within a specified band and within a specified range</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053941"><font color="#000000">SlewRate_Fall</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053943">Slew rate of a negative&#45;going step response curve</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053945"><font color="#000000">SlewRate_Fall_XRang</font></a><font color="#000000">e</font></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053947">Slew rate of a negative&#45;going step response curve over an X&#45;</a>range</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053949"><font color="#000000">SlewRate_Rise</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053951">Slew rate of a positive&#45;going step response curve</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053953"><font color="#000000">SlewRate_Rise_XRang</font></a><font color="#000000">e</font></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053955">Slew rate of a positive&#45;going step response curve over an X&#45;</a>range</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053957"><font color="#000000">Swing_XRange</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053959">Difference between the maximum and minimum values of the </a>waveform within the specified range</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053961"><font color="#000000">XatNthY</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053963">Value of X corresponding to the nth occurrence of the given </a>Y_value, for the specified waveform</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053965"><font color="#000000">XatNthY_NegativeSlo</font></a><font color="#000000">pe</font></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053967">Value of X corresponding to the nth negative slope crossing of </a>the given Y_value, for the specified waveform</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053969"><font color="#000000">XatNthY_PercentYRan</font></a><font color="#000000">ge</font></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053971">Value of X corresponding to the nth occurrence of the waveform </a>crossing the given percentage of its full Y&#45;axis range; specifically, nth occurrence of Y=Ymin+(Ymax&#45;Ymin)*Y_pct&#47;100</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053973"><font color="#000000">XatNthY_Positive </font></a><font color="#000000">Slope</font></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053975">Value of X corresponding to the nth positive slope crossing of </a>the given Y_value, for the specified waveform</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053977"><font color="#000000">YatFirstX</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053979">Value of the waveform at the beginning of the X_value range</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053981"><font color="#000000">YatLastX</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053983">Value of the waveform at the end of the X_value range</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053985"><font color="#000000">YatX</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053987">Value of the waveform at the given X_value</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053989"><font color="#000000">YatX_PercentXRange</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053991">Value of the waveform at the given percentage of the X&#45;axis </a>range</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053993"><font color="#000000">ZeroCross</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053995">X&#45;value where the Y&#45;value first crosses zero</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053997"><font color="#000000">ZeroCross_XRange</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1053999">X&#45;value where the Y&#45;value first crosses zero at the specified </a>range</p>
+          </td>
+        </tr>
+      </table>
+<!-- [TOPIC_END] -->
+      <!-- [TOPIC_START_OPEN]type=cmdref
+[TOPIC_START_ATTR]text=Creating Custom Measurement Definitions
+[TOPIC_START_ATTR]description=
+[TOPIC_START_ATTR]keyword=
+[TOPIC_START_CLOSE] -->
+      <h2><a name="1052778">Creating Custom Measurement Definitions</a></h2>
+      <p><a name="1052780">Measurement definitions establish rules to locate interesting points and compute values for a </a>waveform. In order to do this, a measurement definition needs:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1052781">A measurement definition name</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1052782">A marked point expression</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1052783">These are the calculations that computer the final point on the waveform.</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1052784">One or more search commands</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1052785">These commands specify how to search for the interesting points.</a></p>
+      <p><a name="1052786">Strategy</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	1.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052787">Decide what you want to measure.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	2.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052788">Examine the waveforms you have and choose which points on the waveform are needed </a>to calculate the measured value.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	3.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052789">Compose the search commands to find and mark the desired points.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	4.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052790">Use the marked points in the Marked Point Expressions to calculate the final value for </a>the waveforms.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	5.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052791">Test the search commands and measurements.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1052792">An easy way to create a new definition:</a></p>
+      <p><a name="1052793">Choose Trace&#45; Measurements to open the Measurements dialog box, then:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1052794">Select the definition most similar to your needs</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1052795">Click Copy and follow the prompts to rename and edit.</a></td>
+          </tr>
+        </table>
+      </div>
+<!-- [TOPIC_END] -->
+      <!-- [TOPIC_START_OPEN]type=cmdref
+[TOPIC_START_ATTR]text=Composing a New Measurement Definition
+[TOPIC_START_ATTR]description=
+[TOPIC_START_ATTR]keyword=
+[TOPIC_START_CLOSE] -->
+      <h2><a name="new_measurement"></a><a name="1052798">Composing a New Measurement Definition</a></h2>
+      <p><a name="1052800">These steps show you how to create a measurement definition in PSpice . Measurement </a>definitions can be directly evaluated or used as part of measurement expressions.</p>
+      <p><a name="1052801">Work in the Simulation Results view in PSpice . In the side toolbar, click on <img src="images/viewsim.gif" width="26" height="26" alt="">.</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	1.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052802">From the PSpice Trace menu, choose Measurements.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1052803">The Measurements dialog box appears.</a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	2.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052804">Click New to start with the basic template definition, or click Copy to start your new </a>measurement definition using an existing definition.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1052805">The New Measurement dialog box or the Copy Measurement dialog box appears.</a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	3.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052806">Type a name for the new measurement in the New Measurement name field. All </a>measurement definitions must have unique names.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	4.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052807">Make sure local file is selected.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1052808">This stores the new measurement in a .PRB file local to the design.</a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	5.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052809">Click OK.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1052810">The Edit New Measurement dialog box appears. If you have copied a measurement </a>definition, you will need to click Edit on the Measurements dialog box.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	6.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052811">Type in the marked point expression.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	7.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052812">Type in any comments you want.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	8.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052813">Type in the search command function.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1052814">Your new measurement definition is now listed in the Measurements dialog box.</a></p>
+      <p><a name="1052815">See the topic Measurement Definition Example for an example.</a></p>
+<!-- [TOPIC_END] -->
+      <!-- [TOPIC_START_OPEN]type=cmdref
+[TOPIC_START_ATTR]text=Managing Measurements
+[TOPIC_START_ATTR]description=
+[TOPIC_START_ATTR]keyword=
+[TOPIC_START_CLOSE] -->
+      <h2><a name="1052818">Managing Measurements</a></h2>
+      <p><a name="1052820">You can use this dialog to evaluate measurement expressions or to create, edit, or delete </a>existing measurements definitions.</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1052821">New allows you to compose a new measurement definition.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1052822">Copy allows you to copy an existing measurement definition. This is a good way to start </a>when you want to create a new measurement definition.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1052823">View allows you to see the marked point expression, search function, and comments of </a>the selected measurement definition.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1052824">Edit allows you to modify the selected measurement definition.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1052825">Delete allows you to remove the selected measurement definition. Once it has been </a>deleted, you cannot undelete it.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1052826">Eval allows you to evaluate a measurement expression using the selected measurement </a>definition.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1052827">Load allows you to load a different .PRB file with different measurement definitions. The </a>load command on this Measurements dialog box will only load the measurement definitions from the .PRB file. Macros and displays will not be included.</td>
+          </tr>
+        </table>
+      </div>
+<!-- [TOPIC_END] -->
+      <!-- [TOPIC_START_OPEN]type=cmdref
+[TOPIC_START_ATTR]text=Copying a Measurement Defintion
+[TOPIC_START_ATTR]description=
+[TOPIC_START_ATTR]keyword=
+[TOPIC_START_CLOSE] -->
+      <h2><a name="copy_measurement"></a><a name="1052830">Copying a Measurement Definition</a></h2>
+      <p><a name="1052832">Copying a measurement definition allows you to modify an existing measurement definition </a>without losing the original definition.</p>
+      <p><a name="1052833">Work in the Simulation Results view in PSpice . In the side toolbar, click on <img src="images/viewsim.gif" width="26" height="26" alt="">.</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	1.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052834">Choose Trace &#45; Measurements.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1052835">The Measurements dialog box appears.</a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	2.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052836">Select a measurement from the list and click Copy.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1052837">The Copy Measurement dialog box appears.</a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	3.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052838">Type a name for the new measurement definition in the New Measurement name field. </a>All measurement definitions must have unique names.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	4.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052839">Make sure local file is selected.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1052840">This stores the new measurement in a .PRB file local to the design.</a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	5.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052841">Click OK.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1052842">To edit your new measurement definition, click Edit on the Measurements dialog box. See </a>Editing a Measurement Definition for more information.</p>
+<!-- [TOPIC_END] -->
+      <!-- [TOPIC_START_OPEN]type=cmdref
+[TOPIC_START_ATTR]text=Editing a Measurement Definition
+[TOPIC_START_ATTR]description=
+[TOPIC_START_ATTR]keyword=
+[TOPIC_START_CLOSE] -->
+      <h2><a name="edit_measurement"></a><a name="1052845">Editing a Measurement Definition</a></h2>
+      <p><a name="1052847">Editing a measurement definition allows you to change the result it will evaluate. </a></p>
+      <p><a name="1052848">Work in the Simulation Results view in PSpice . In the side toolbar, click on <img src="images/viewsim.gif" width="26" height="26" alt="">.</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	1.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052849">Choose Trace &#45; Measurements.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1052850">The Measurements dialog box appears.</a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	2.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052851">Select a measurement from the list and click Edit.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1052852">The Edit Measurement dialog box appears.</a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	3.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052853">Edit the marked point expression as needed.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	4.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052854">Edit the comments as needed.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	5.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052855">Edit the search command function as needed.</a></td>
+          </tr>
+        </table>
+      </div>
+      <h3><a name="1052858">Measurement Definition Example</a></h3>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	1.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052859">From the PSpice Trace menu, choose Measurements.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1052860">The Measurements dialog box appears.</a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	2.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052862">Click New.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1052863">The New Measurement dialog box appears.</a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	3.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052865">Type a name for the new measurement in the New Measurement name field.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	4.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052866">Make sure local file is selected.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1052867">This stores the new measurement in a .prb file local to the design.</a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	5.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052868">Click OK.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1052869">The Edit New Measurement dialog box appears.</a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	6.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052871">Type in the marked point expression.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1052872"><font size="2" face="'Courier New'" color="#000000">Point707(1) = y1</font></a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	7.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052873">Type in any comments you want.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1052874"><font size="2" face="'Courier New'" color="#000000">*</font></a></blockquote>
+      <blockquote><a name="1052875"><font size="2" face="'Courier New'" color="#000000">#Desc# Find the .707 value of the trace.</font></a></blockquote>
+      <blockquote><a name="1052876"><font size="2" face="'Courier New'" color="#000000">*</font></a></blockquote>
+      <blockquote><a name="1052877"><font size="2" face="'Courier New'" color="#000000">#Arg1# Name of trace to search</font></a></blockquote>
+      <blockquote><a name="1052878"><font size="2" face="'Courier New'" color="#000000">*</font></a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	8.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052880">Type in the search function.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1052881"><font size="2" face="'Courier New'" color="#000000">{</font></a></blockquote>
+      <blockquote><a name="1052882"><font size="2" face="'Courier New'" color="#000000">1|Search forward level(70.7%, p) !1;</font></a></blockquote>
+      <blockquote><a name="1052883"><font size="2" face="'Courier New'" color="#000000">}</font></a></blockquote>
+      <blockquote><font color="#000000"><strong>Note: </strong></font><a name="1052884">The search function is enclosed within curly braces. </a></blockquote>
+      <blockquote><a name="1052885">Always place a semi&#45;colon at the end of the last search function.</a></blockquote>
+      <blockquote><a name="1052886">You now have your edited measurement definition.</a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	9.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052888">Click OK to save your edits.</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1052889">Your new measurement definition is now listed in the Measurements dialog box.</a></p>
+      <h3><a name="1052892">Measurement Definition Syntax</a></h3>
+      <p><a name="1052894">Measurement definitions have the following structure and syntax:</a></p>
+      <dl>
+        <font size="2" face="'Courier New'" color="#000000"><a name="1052895">Measurement_name (1, [2, &#8230;., n][, subarg1, subarg2, &#8230;, subargm]) = </a>Marked_point_expression</font>
+      </dl>
+      <dl>
+        <font size="2" face="'Courier New'" color="#000000"><a name="1052897">{</a></font>
+      </dl>
+      <dl>
+        <font size="2" face="'Courier New'" color="#000000"><a name="1052898">1| search_commands_and_marked_points_for_expression_1;</a></font>
+      </dl>
+      <dl>
+        <font size="2" face="'Courier New'" color="#000000"><a name="1052899">2| search_commands_and_marked_points_for_expression_2;</a></font>
+      </dl>
+      <dl>
+        <font size="2" face="'Courier New'" color="#000000"><a name="1052900">&nbsp;</a></font>
+      </dl>
+      <dl>
+        <font size="2" face="'Courier New'" color="#000000"><a name="1052901">n| search_commands_and_marked_points_for_expression_n;</a></font>
+      </dl>
+      <dl>
+        <font size="2" face="'Courier New'" color="#000000"><a name="1052902">}</a></font>
+      </dl>
+      <p><a name="1052903">For examples of syntax, check out the existing measurement definitions in PSpice . </a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	1.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052904">From the Trace menu in PSpice , choose Measurements.</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1052905">The Measurement dialog box appears.</a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	2.	</nobr>
+              </div>
+            </td>
+            <td><a name="1052906">Highlight an existing measurement definition, for example Risetime_NoOvershoot, and </a>select View to examine the syntax.</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1052907">The View Measurement dialog box appears.</a></blockquote>
+      <p><a name="1052909">The name of the measurement is Risetime_NoOvershoot. Risetime_NoOvershoot takes 1 </a>argument, a trace name (as seen from the comments).</p>
+      <p><a name="1052910">The first search function searches forward (positive x direction) from the point on the trace </a>where the waveform crosses the 10% point in a positive direction. That point's X and Y coordinates will be marked and saved as point 1.</p>
+      <p><a name="1052911">The second search function searches forward in the positive direction for the point on the </a>trace where the waveform crosses the 90% mark. That point's X and Y coordinates will be marked and saved as point 2. </p>
+      <p><a name="1052912">The marked point expression is x2&#45;x1. This means the measurement calculates the X value </a>of point 2 minus the X value of point 1 and returns that number. </p>
+      <h3><a name="1052915">Measurement Name Syntax</a></h3>
+      <p><a name="1052916">Names can contain any alphanumeric character (A&#45;Z, 0&#45;9) or an underscore _, up to 50 </a>characters in length. The first character should be an upper or lower case letter. </p>
+      <p><a name="1052917">Examples of valid function names: Bandwidth, CenterFreq, delay_time, DBLevel1.</a></p>
+      <p><a name="1052918">&nbsp;</a></p>
+      <h3><a name="1052920">Marked Point Expression Syntax</a></h3>
+      <p><a name="1052921">A marked point expression calculates a single value, which is the value of the measurement, </a>based on the X and Y coordinates of one or more marked points on a curve. The marked points are found by the search command. </p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1052922">All the arithmetic operators (+, &#45;, *, &#47;, () ) and all the functions that apply to a single point </a>(for example, ABS(), SGN(), SIN(), SQRT() ) can be used in marked point expressions. </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1052923">The result of the expression is one number (a real value).</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1052924">Marked point expression differ from a regular expression in the following ways:</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1052925">Marked point coordinate values (for example, x1, y3), are used instead of simulation </a>output variables (v(4), ic(Q1) ).</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1052926">Multiple&#45;point functions such as d(), s(), AVG(), RMS(), MIN(), and MAX() cannot be </a>used.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1052927">Complex functions such as M(), P(), R(), IMG(), and G() cannot be used.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1052928">One additional function called MPAVG can also be used. It is used to find the average Y </a>value between 2 marked points. The format is:</td>
+          </tr>
+        </table>
+      </div>
+      <dl>
+        <font size="2" face="'Courier New'" color="#000000"><a name="1052929">MPAVG(p1, p2,[&#60;.fraction&#62;])</a></font>
+      </dl>
+      <p><a name="1052930">where p1 and p2 are marked X points and fraction (expressed in decimal form) specifies the </a>range. The range specified by [&#60;.fraction&#62;] is centered on the midpoint of the total range. The default value is 1.</p>
+      <p><a name="1052931">An example:</a></p>
+      <p><a name="1052932">The marked point expression</a></p>
+      <dl>
+        <font size="2" face="'Courier New'" color="#000000"><a name="1052933">MPAVG(x1, x5, .2)</a></font>
+      </dl>
+      <p><a name="1052934">Will find the halfway point between x1 and x5 and will calculate the average Y value based </a>on the 20 percent of the range that is centered on the halfway point. </p>
+      <h3><a name="1052937">Comments Syntax</a></h3>
+      <p><a name="1052938">A comment line always starts with an asterisk. Special comment lines include the following </a>examples:</p>
+      <dl>
+        <font size="2" face="'Courier New'" color="#000000"><a name="1052939">*#Desc#*</a>&nbsp;&nbsp;&nbsp;&nbsp;The measurement description.</font>
+      </dl>
+      <dl>
+        <font size="2" face="'Courier New'" color="#000000"><a name="1052940">*#Arg1#*</a>&nbsp;&nbsp;&nbsp;&nbsp;The first argument used in the measurement definition.</font>
+      </dl>
+      <p><a name="1052941">These comment lines will be used in dialog boxes, such as the Arguments for Measurement </a>Evaluation box. </p>
+      <h3><a name="1052945">Search Command Syntax</a></h3>
+      <p><a name="1052946">Search commands can be used to find a particular point along a trace based on </a>characteristics of that trace. Search commands can be used for two purposes:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1052947">To position the cursor at a specific place along a trace.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1052948">As part of a measurement definition&#60;definition&#62;, where the point found by the search can </a>be used as a marked point.</td>
+          </tr>
+        </table>
+      </div>
+      <dl>
+        <font size="2" face="'Courier New'" color="#000000"><a name="1052950">Search    [direction]    [&#47;start_point&#47;]    [#consecutive_points#]    </a>[(range_x[,range_y])]</font>
+      </dl>
+      <dl>
+        <font size="2" face="'Courier New'" color="#000000"><a name="1052951">[for]         [repeat:]      &#60;condition&#62;</a></font>
+      </dl>
+      <p><a name="1052952">Brackets indicate optional arguments.</a></p>
+      <p><a name="1052953">You can use uppercase or lowercase characters, because searches are case independent.</a></p>
+      <dl>
+        <font size="2" face="'Courier New'" color="#000000"><a name="1052954">[direction]</a></font>
+      </dl>
+      <p><a name="1052955">The direction of the search. The search begins at the origin of the curve.</a></p>
+      <table summary="" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF" width="648">
+        <caption>
+        <tr>
+          <td cellpadding="4" border="0" valign="top" >
+            <p><a name="1054429"><font color="#000000">forward</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top" >
+            <p><a name="1054431">Search forward on the trace</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1054433"><font color="#000000">backward</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1054435">Search backwards on the trace</a></p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1052958"><font size="2" face="'Courier New'" color="#000000">[Forward]</font></a> searches in the normal X expression direction, which may appear as backwards on the plot if the X axis has been reversed with a user&#45;defined range.</p>
+      <p><a name="1052959">Forward is the default direction.</a></p>
+      <p><a name="1052960"><font size="2" face="'Courier New'" color="#000000">[&#47;start_point&#47;]</font></a></p>
+      <p><a name="1052961">The starting point to begin a search. The current point is the default.</a></p>
+      <table summary="" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF" width="648">
+        <caption>
+        <tr>
+          <td cellpadding="4" border="0" valign="top" >
+            <p><a name="1054444"><font color="#000000">Use this</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top" >
+            <p><a name="1054446">To start the search at this&#8230;</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1054448"><font color="#000000">&#94;</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1054450">The first point in the search range</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1054452"><font color="#000000">Begin</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1054454">The first point in the search range</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1054456"><font color="#000000">$</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1054458">The last point in the search range</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1054460"><font color="#000000">End</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1054462">The last point in the search range</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1054464"><font color="#000000">xn</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1054466">A marked point number or an expression of marked points. </a></p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1052968">For example:</a></p>
+      <p><a name="1052969"><font size="2" face="'Courier New'" color="#000000">X1</font></a></p>
+      <p><a name="1052970"><font size="2" face="'Courier New'" color="#000000">(x1 -  (x2 - x1) &#47; 2)</font></a></p>
+      <p><a name="1052971"><font size="2" face="'Courier New'" color="#000000">[#consecutive_points#]</font></a></p>
+      <p><a name="1052972">Defines the number of consecutive points required for a condition to be met. Usage varies for </a>individual conditions; the default is 1. </p>
+      <p><a name="1052973">A peak is a data point with one neighboring data point on both sides that has a lower Y value </a>than the data point.</p>
+      <p><a name="1052974">If </a><font size="2" face="'Courier New'" color="#000000">[#consecutive_point#]</font> is 2 and &#60;condition&#62; is PEak, then the peak searched for is a data point with two neighboring data points on both sides with lower Y values than the marked data point.</p>
+      <p><a name="1052975"><font size="2" face="'Courier New'" color="#000000">[(range_x[,range_y])]</font></a></p>
+      <p><a name="1052976">Specifies the range of values to confine the search.</a></p>
+      <p><a name="1052977">The range can be specified as floating&#45;point values, as a percent of the full range, as marked </a>points, or as an expression of marked points. The default range is all points available.</p>
+      <p><a name="1052978">Some examples:</a></p>
+      <table summary="" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF" width="648">
+        <caption>
+        <tr>
+          <td cellpadding="4" border="0" valign="top" >
+            <p><a name="1054478"><font color="#000000">This range&#8230;</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top" >
+            <p><a name="1054480">Means this&#8230;</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1054482"><font color="#000000">(1n,200n)</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1054484">X range limited from 1e&#45;9 to 200e&#45;9, Y range defaults to full </a>range</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1054486"><font color="#000000">(1.5,20e&#45;9,0,1m)</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1054488">Both X and Y ranges are limited</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1054490"><font color="#000000">(5m,1,10%,90%)</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1054492">Both X and Y ranges are limited</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1054494"><font color="#000000">(0%,100%,1,3)</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1054496">Full X range, limited Y range</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1054498"><font color="#000000">(,,1,3)</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1054500">Full X range, limited Y range</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1054502"><font color="#000000">(,30n)</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1054504">X range limited only on upper end</a></p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1052986"><font size="2" face="'Courier New'" color="#000000">[for] [repeat:] &#60;condition&#62;</font></a></p>
+      <p><a name="1052987">Specifies which occurrence of &#60;condition&#62; to find.</a></p>
+      <p><a name="1052988">If repeat is greater than the number of found instances of </a><font size="2" face="'Courier New'" color="#000000">&#60;condition&#62;</font>, then the last <font size="2" face="'Courier New'" color="#000000">&#60;condition&#62;</font> found is used.</p>
+      <p><a name="1052989">For example, the argument:</a></p>
+      <p><a name="1052990"><font size="2" face="'Courier New'" color="#000000">2:LEvel</font></a></p>
+      <p><a name="1052991">would find the second level crossing.</a></p>
+      <p><a name="1052992">The </a><font size="2" face="'Courier New'" color="#000000">&#60;condition&#62;</font> must be exactly one of the following:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1052993"><font size="2" face="'Courier New'" color="#000000">LEvel(value[,posneg])</font></a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1052994"><font size="2" face="'Courier New'" color="#000000">SLope[(posneg)]</font></a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1052995"><font size="2" face="'Courier New'" color="#000000">PEak</font></a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1052996"><font size="2" face="'Courier New'" color="#000000">TRough</font></a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1052997"><font size="2" face="'Courier New'" color="#000000">MAx</font></a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1052998"><font size="2" face="'Courier New'" color="#000000">MIn</font></a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1052999"><font size="2" face="'Courier New'" color="#000000">POint</font></a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1053000"><font size="2" face="'Courier New'" color="#000000">XValue(value)</font></a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1053001">Each </a><font size="2" face="'Courier New'" color="#000000">&#60;condition&#62;</font> requires just the first <font size="2" face="'Courier New'" color="#000000">2</font> characters of the word. For example, you can shorten<font size="2" face="'Courier New'" color="#000000"> LEvel</font> to <font size="2" face="'Courier New'" color="#000000">LE</font>.</p>
+      <p><a name="1053002">If a </a><font size="2" face="'Courier New'" color="#000000">&#60;condition&#62;</font> is not found, then either the cursor is not moved or the measurement definition is not evaluated.</p>
+      <p><a name="1053003"><font size="2" face="'Courier New'" color="#000000">LEvel(value[,posneg])</font></a></p>
+      <p><a name="1053004"><font size="2" face="'Courier New'" color="#000000">&#60;value&#62;</font></a> can take any of the following forms:</p>
+      <table summary="" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF" width="466">
+        <caption>
+        <tr>
+          <td cellpadding="4" border="0" valign="top" >
+            <p><a name="1054715"><font color="#000000">Value Form</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top" >
+            <p><a name="1054717">Example</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1054719"><font color="#000000">A floating number</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1054721">1e5 100n 1</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1054723"><font color="#000000">A percentage of </font></a><font color="#000000">full range</font></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1054725">50%</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1054727"><font color="#000000">A marked point Or </font></a><font color="#000000">an expression of </font><font color="#000000">marked points</font></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1054729">X1 Y1 (x1&#45;x2)&#47;2</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1054731"><font color="#000000">A value relative to </font></a><font color="#000000">startvalue</font></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1054733"><font size="2" face="'Courier New'" color="#000000">.&#45;3</font></a> (startvalue -3) </p>
+            <p><a name="1054748"><font size="2" face="'Courier New'" color="#000000">.+3</font></a> (startvalue +3)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1054735"><font color="#000000">A db value relative </font></a><font color="#000000">to startvalue</font></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1054737"><font size="2" face="'Courier New'" color="#000000">.&#45;3db</font></a> (3db above startvalue)</p>
+            <p><a name="1054739"><font size="2" face="'Courier New'" color="#000000">.+3db</font></a> (3db below startvalue) </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1054741"><font color="#000000">A value relative to </font></a><font color="#000000">max or min</font></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1054743"><font size="2" face="'Courier New'" color="#000000">Max&#45;3</font></a> (maxrng -3) </p>
+            <p><a name="1054769"><font size="2" face="'Courier New'" color="#000000">Min+3</font></a> (minrng +3)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1054745"><font color="#000000">A db value relative </font></a><font color="#000000">to max or min</font></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1054747"><font size="2" face="'Courier New'" color="#000000">Max&#45;3db</font></a> (3db below maxrng) </p>
+            <p><a name="1054776"><font size="2" face="'Courier New'" color="#000000">Min+3db</font></a> (3db above maxrng)</p>
+          </td>
+        </tr>
+      </table>
+      <h4><a name="1053023">Decimal point ( . )</a></h4>
+      <p><a name="1053024">A decimal point ( . ) represents the Y value of the last point found using a search on the </a>current trace expression of the measurement definition. If this is the first search command, then it represents the Y value of the start point of the search.</p>
+      <h4><a name="1053025">[,posneg]</a></h4>
+      <p><a name="1053026">Finds the next Y value crossing at the specified level. This can be between real data points, </a>in which case an interpolated artificial point is created.</p>
+      <p><a name="1053027">At least [#consecutive_points#]&#45;1 points following the level crossing point must be on the </a>same side of the level crossing for the first point to count as the level crossing.</p>
+      <p><a name="1053028">[,posneg] can be Positive (P), Negative (P), or Both (B). The default is Both.</a></p>
+      <h4><a name="1053029">SLope[(posneg)]</a></h4>
+      <p><a name="1053030">Finds the next maximum slope (positive or negative as specified) in the specified direction. </a></p>
+      <p><a name="1053031">[(posneg)] refers to the slope going Positive (P), Negative (N), or Both (B). If more than the </a>next [#consecutive_points#] points have zero or opposite slope, the Slope function does not look any further for the maximum slope.</p>
+      <p><a name="1053032">Positive slope means increasing Y value for increasing indices of the X expression.</a></p>
+      <p><a name="1053033">The point found is an artificial point halfway between the two data points defining the </a>maximum slope.</p>
+      <p><a name="1053034">The default [(posneg)] is Positive.</a></p>
+      <h4><a name="1053035">PEak</a></h4>
+      <p><a name="1053036">Finds the nearest peak. At least [#consecutive_points#] points on each side of the peak must </a>have Y values less than the peak Y value.</p>
+      <h4><a name="1053037">TRough</a></h4>
+      <p><a name="1053038">Finds nearest negative peak. At least [#consecutive_points#] points on each side of the </a>trough must have Y values greater than the trough Y value.</p>
+      <h4><a name="1053039">MAx</a></h4>
+      <p><a name="1053040">Finds the greatest Y value for all points in the specified X range. If more than one maximum </a>exists (same Y values), then the nearest one is found. </p>
+      <p><a name="1053041">MAx is not affected by [direction], [#consecutive_points#], or [repeat:].</a></p>
+      <h4><a name="1053042">MIn</a></h4>
+      <p><a name="1053043">Finds the minimum Y value for all points in the specified X range. </a></p>
+      <p><a name="1053044">MIn is not affected by [direction], [#consecutive_points#], or [repeat:].</a></p>
+      <h4><a name="1053045">POint</a></h4>
+      <p><a name="1053046">Finds the next data point in the given direction.</a></p>
+      <h4><a name="1053047">XValue(value)</a></h4>
+      <p><a name="1053048">Finds the first point on the curve that has the specified X axis value. </a></p>
+      <p><a name="1053049">The &#60;(value)&#62; is a floating&#45;point value or percent of full range </a></p>
+      <p><a name="1053050">XValue is not affected by [direction], [#consecutive_points#], [(range_x [,range_y])], or </a>[repeat:].</p>
+      <p><a name="1054840">&#60;(value)&#62; can take any of the following forms:</a></p>
+      <table summary="" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF" width="648">
+        <caption>
+        <tr>
+          <td cellpadding="4" border="0" valign="top" >
+            <p><a name="1054849"><font color="#000000">Value Form</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top" >
+            <p><a name="1054851">Example</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1054853"><font color="#000000">A floating number</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1054855">1e5 100n 1</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1054857"><font color="#000000">A percentage of </font></a><font color="#000000">full range</font></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1054859">50%</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1054861"><font color="#000000">A marked point Or </font></a><font color="#000000">an expression of </font><font color="#000000">marked points</font></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1054863">X1 </a></p>
+            <p><a name="1054880">Y1</a></p>
+            <p><a name="1054881">(x1&#45;x2)&#47;2</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1054865"><font color="#000000">A value relative to </font></a><font color="#000000">startvalue</font></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1054867"><font size="2" face="'Courier New'" color="#000000">.&#45;3</font></a> (startvalue -3)</p>
+            <p><a name="1054883"><font size="2" face="'Courier New'" color="#000000">.+3</font></a> (startvalue +3)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1054869"><font color="#000000">A db value relative </font></a><font color="#000000">to startvalue</font></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1054871"><font size="2" face="'Courier New'" color="#000000">.&#45;3db</font></a> (3db below startvalue)</p>
+            <p><a name="1054890"><font size="2" face="'Courier New'" color="#000000">.+3db</font></a> (3db above startvalue)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1054873"><font color="#000000">A value relative to </font></a><font color="#000000">max or min</font></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1054875"><font size="2" face="'Courier New'" color="#000000">Max&#45;3</font></a> (maxrng -3)</p>
+            <p><a name="1054897"><font size="2" face="'Courier New'" color="#000000">Min+3</font></a> (minrng +3)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1054877"><font color="#000000">A db value relative </font></a><font color="#000000">to max or min</font></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1054879"><font size="2" face="'Courier New'" color="#000000">Max&#45;3db</font></a> (3db below maxrng)</p>
+            <p><a name="1054904"><font size="2" face="'Courier New'" color="#000000">Min+3db</font></a> (3db above maxrng)</p>
+          </td>
+        </tr>
+      </table>
+      <h4><a name="1059892">ForceDBArg1</a></h4>
+      <p><a name="1059893">Converts a non&#45;DB trace to a dB trace. Used in measurement functions such as </a>Bandwidth_Bandpass_3dB and Cutoff_Highpass_3dB.</p>
+      <h3><a name="1053073">Limiting a Measurement Expression to a Specific Range of Data</a></h3>
+      <p><a name="1053075">You can restrict the data that measurement expressions apply to. </a></p>
+      <p><a name="1053076">To limit the data </a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	1.	</nobr>
+              </div>
+            </td>
+            <td><a name="1053077">From the Plot menu, select Axis Settings. </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	2.	</nobr>
+              </div>
+            </td>
+            <td><a name="1053078">Click the X Axis tab</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	3.	</nobr>
+              </div>
+            </td>
+            <td><a name="1053079">Select User Defined in the Data Range frame and enter the desired start and finish </a>values. </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	4.	</nobr>
+              </div>
+            </td>
+            <td><a name="1053080">Click OK. </a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1053081">All measurement expressions used are applied to the data range you specified. </a></p>
+      <h3><a name="1055000">Control Elements in Dialog Boxes</a></h3>
+      <h4><a name="1053083">Help</a></h4>
+      <p><a name="1053084">Click to display Help. </a></p>
+      <h4><a name="1053086">Close</a></h4>
+      <p><a name="1053087">Click to close the measurement dialog box. </a></p>
+      <h4><a name="1053089">Measurement Function Expression</a></h4>
+      <p><a name="1053090">Type the measurement function argument. </a></p>
+      <h4><a name="1053092">Name of Trace to Search Frame</a></h4>
+      <p><a name="1053093">Type any other measurement arguments needed to complete the expression. </a></p>
+      <h4><a name="1053095">Box</a></h4>
+      <p><a name="1053096">Type your changes in this box. </a></p>
+      <h4><a name="1053098">This Measurement Function is Saved in the File</a></h4>
+      <p><a name="1053099">The location of the measurement function on your system. </a></p>
+      <h4><a name="1053101">New Measurement Function Name</a></h4>
+      <p><a name="1053102">Type the new name of the copied measurement function. </a></p>
+      <h4><a name="1053104">File to Keep Measurement Function in</a></h4>
+      <p><a name="1053105">Click to select the location of the copied measurement function. </a></p>
+      <h4><a name="1053107">List</a></h4>
+      <p><a name="1053108">The available sections are listed. Click to select. </a></p>
+      <h4><a name="1053110">All</a></h4>
+      <p><a name="1053111">Click to select all of the listed sections. </a></p>
+      <h4><a name="1053113">None</a></h4>
+      <p><a name="1053114">Click to select none of the listed sections. </a></p>
+      <p><a name="1053115"> </a></p>
+      <h4><a name="1053116">expression arguments (1, 2, &#8230;, n )</a></h4>
+      <p><a name="1053117">These are placeholders for the Probe trace expressions that search commands are applied </a>to. The number that identifies the expression argument (e.g., 1) corresponds to the search command labeled with the same number below.</p>
+      <p><a name="1053118">When a measurement definition is used in the Add Trace dialog box, expression arguments </a>are replaced with regular Probe trace expressions. For example, for the measurement definition</p>
+      <h4><a name="1053119">GainMargin (1,2) </a></h4>
+      <p><a name="1053120">You need to specify two trace expressions in the Trace Expression text box, e.g.,</a></p>
+      <p><a name="1053121"><font size="2" face="'Courier New'" color="#000000">GainMargin (Vp(Out), VdB(Out)).</font></a></p>
+      <h4><a name="1053123">substitution arguments (subarg1, subarg2, &#8230;, subargm)</a></h4>
+      <p><a name="1053124">These are optional arguments that follow the expression arguments. </a></p>
+      <p><a name="1053125">In a measurement definition, these arguments are text strings, which can have any </a>alphanumeric character or underscore (_) but cannot start with a number. </p>
+      <p><a name="1053126">For example, in the measurement definition </a></p>
+      <p><a name="1053127"><font size="2" face="'Courier New'" color="#000000">bandwidth (1, db_level) = x2 &#45;x1</font></a></p>
+      <p><a name="1053128"><font size="2" face="'Courier New'" color="#000000">db_level</font></a> is the substitution argument. This measurement definition finds the db_level bandwidth of a signal. </p>
+      <p><a name="1053129">When a measurement definition is used in the Add Trace dialog box, the values of these </a>arguments are specified by replacing them with numbers, which are substituted into any of the measurement definition&#39;s search commands that contain the subargument text. </p>
+      <p><a name="1053130">Example</a></p>
+      <p><a name="1053131"><font size="2" face="'Courier New'" color="#000000">bandwidth (VdB(out),3) </font></a></p>
+      <p><a name="1050732">&nbsp;</a></p>
+      <p><a name="1050730">&nbsp;</a></p>
+<!-- [TOPIC_END] -->
+      <!-- [TOPIC_START_OPEN]type=cmdref
+[TOPIC_START_ATTR]text=Introducing the Performance Analysis Wizard 
+[TOPIC_START_ATTR]description=
+[TOPIC_START_ATTR]keyword=
+[TOPIC_START_CLOSE] -->
+      <h2><a name="perform_analysis"></a><a name="1055248">Introducing the Performance Analysis Wizard </a></h2>
+      <p><a name="1055249">The Performance Analysis wizard helps you complete the information necessary to generate </a>a Performance Analysis trace. Just type or select the information as you go.</p>
+      <p><a name="1055250">To start the Performance Analysis wizard, choose </a><font color="#000000"><em>Performance Analysis</em></font> from the <font color="#000000"><em>Trace</em></font> menu.</p>
+      <p><a name="1055251">While you are in the wizard, a button bar is displayed at the bottom of every screen. </a></p>
+      <p><a name="1055252"><img src="images/wizardbtn.gif" width="337" height="29" alt=""></a></p>
+      <p><a name="1055323">The following table describes the buttons.</a></p>
+      <table summary="" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF" width="648">
+        <caption>
+        <tr>
+          <td cellpadding="4" border="0" valign="top" >
+            <p><a name="1055364"><font color="#000000">Cancel</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top" >
+            <p><a name="1055366">Cancel the Wizard and return to PSpice . </a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1055368"><font color="#000000">Back</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1055370">Go back one Wizard screen. </a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1055372"><font color="#000000">Next</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1055374">Go forward one Wizard screen. </a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1055376"><font color="#000000">Finish</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1055378">Leave the Wizard and see the Performance Analysis.</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1055380"><font color="#000000">Help</font></a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1055382">Click to go to the Wizard help system.</a></p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1055321">The Performance Analysis wizard has four steps: </a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	1.	</nobr>
+              </div>
+            </td>
+            <td><a name="1055254">Introducing the Performance Analysis wizard </a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1055255">Contains information about the wizard process </a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	2.	</nobr>
+              </div>
+            </td>
+            <td><a name="1055256">Selecting a measurement</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1055257">Helps you select from the available, defined, measurements. </a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	3.	</nobr>
+              </div>
+            </td>
+            <td><a name="1055258">Selecting measurement arguments </a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1055259">Allows you to specify the arguments for the measurement. </a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	4.	</nobr>
+              </div>
+            </td>
+            <td><a name="1055260">Testing the measurement</a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1055261">Shows you the results of your measurement with the current arguments. You can </a>redefine the arguments if the results are not what you expected. </blockquote>
+      <p><a name="1055262">When you are done with the Performance Analysis wizard, your trace is shown in </a>Performance Analysis mode. </p>
+      <p><a name="1055263">The Performance Analysis wizard creates simple Performance Analysis traces. If you need a </a>Performance Analysis trace that is an expression of several measurements, you can add that trace manually. </p>
+<!-- [TOPIC_END] -->
+      <!-- [TOPIC_START_OPEN]type=cmdref
+[TOPIC_START_ATTR]text=Selecting a Measurement
+[TOPIC_START_ATTR]description=
+[TOPIC_START_ATTR]keyword=
+[TOPIC_START_CLOSE] -->
+      <h2><a name="select_meas"></a><a name="1055265">Selecting a Measurement</a></h2>
+      <p><a name="1055267">The second step of the wizard helps you select a measurement definition. </a></p>
+      <p><a name="1055268">To create a Performance Analysis trace, select the measurement definition you want. This </a>measurement definition determines the characteristic that is extracted from each PSpice run and is plotted versus the variable that changes between simulation runs.</p>
+      <p><a name="1055269">To find more information about each measurement definition listed, click a name in the list on </a>the left side of the dialog box. If included in the .PRB file, an explanation about the selected measurement definition appears on the right side of the dialog box. </p>
+      <p><a name="1055270">If the measurement definition you want is not listed, you can edit an existing measurement </a>definition or create a new one to meet your needs. </p>
+      <p><a name="1055271">To edit or create a new measurement definition, click the </a><font color="#000000"><em>Measurements </em></font>button. </p>
+<!-- [TOPIC_END] -->
+      <!-- [TOPIC_START_OPEN]type=cmdref
+[TOPIC_START_ATTR]text=Selecting Measurement Arguments
+[TOPIC_START_ATTR]description=
+[TOPIC_START_ATTR]keyword=
+[TOPIC_START_CLOSE] -->
+      <h2><a name="meas_arg"></a><a name="1055273">Selecting Measurement Arguments</a></h2>
+      <p><a name="1055274">The third step of the wizard helps you fill in the measurement expression arguments.</a></p>
+      <p><a name="1055275">Measurement expressions can have 2 types of arguments:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1055398">Expression arguments </a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1055277">Every measurement expression must have at least one expression argument, but can </a>have more.</blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1055278">Substitution arguments </a></td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1055279">A measurement expression can have 0 or more substitution arguments.</a></blockquote>
+      <p><a name="1055280">To specify the Measurement Expression argument</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	1.	</nobr>
+              </div>
+            </td>
+            <td><a name="1055281">Do one of the following:</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1055282">Click the toolbar button{bmc BM18.SHG}. To change the listed traces, check or </a>uncheck the output types. To select a trace, double&#45;click a name in the Simulation Output Variables list. The name is copied to the appropriate argument box in the wizard. </td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1055283">or</a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1055284">In the Name of Trace to Search box, type the name of the trace you want to evaluate. </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	2.	</nobr>
+              </div>
+            </td>
+            <td><a name="1055285">Depending on the measurement definition selected in the previous step, type the rest of </a>the information in the boxes, or click the toolbar buttons to select the information. </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="29.95" align="right">
+              <div>
+                <nobr>	3.	</nobr>
+              </div>
+            </td>
+            <td><a name="1055286">When you are done, click </a><font color="#000000"><em>Next</em></font>. </td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1055287"> </a></p>
+<!-- [TOPIC_END] -->
+      <!-- [TOPIC_START_OPEN]type=cmdref
+[TOPIC_START_ATTR]text=Testing the Measurement
+[TOPIC_START_ATTR]description=
+[TOPIC_START_ATTR]keyword=
+[TOPIC_START_CLOSE] -->
+      <h2><a name="test_meas"></a><a name="1055459">Testing the Measurement</a></h2>
+      <p><a name="1055460">The final step of the wizard views the plotted measurement. If the value of this measurement </a>is not correct, or if the marked points are not on the right places on the trace, do one of the following:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1055290">Return to Step 2 and select or create a more appropriate measurement definition for </a>your data</td>
+          </tr>
+        </table>
+      </div>
+      <blockquote><a name="1055291">or</a></blockquote>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>&nbsp;</div>
+            </td>
+            <td width="32.00064" align="right">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/bs_bullet_sub.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1055245">Return to Step 3 and change the measurement expression arguments. You might </a>have chosen the wrong expression argument or arguments.</td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1056506">&nbsp;</a></p>
+      <p><a name="1056509">&nbsp;</a></p>
+      <p><a name="1056507">&nbsp;</a></p>
+      <p><a name="1056508">&nbsp;</a></p>
+      <p><a name="1057663">&nbsp;</a></p>
+      <p><a name="1058291">&nbsp;</a></p>
+<!-- [TOPIC_END] -->
+      <p><a name="1059019">&nbsp;</a></p>
+    </div>
+    <br>
+    <a href="#pagetop">Return to top of page</a>
+    <hr>
+    <hr align="left">
+    <div style="text-align: left;">
+      <!-- Begin Buttons -->
+      <table width="650" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                    </td>
+<td height="20" width="73">
+<a href="psphlpTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<img src="../support/nav2_index_b.gif" border="0">
+</td>
+          <td>
+            <a href="traces.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+          </td>
+          <td>
+            <a href="06_options.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+          </td>
+          <td>
+            <a>
+<a href="psphlp.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+            </a>
+          </td>
+          <td height="20" width="61">
+            <img src="../support/nav2_black.gif">
+          </td>
+          <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+          </td>
+          <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+          </td>
+          <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+          </td>
+        </tr>
+      </table>
+      <!-- End Buttons -->
+    </div>
+    <br>
+    <font size="-1" >
+For support, see <a href="http://support.cadence.com" target="_blank">Cadence Online Support</a> service.</font>
+    <br>
+    <br>
+    <font size="-1" >
+      <i>Copyright &#169; 2011, <a href="http://www.cadence.com">Cadence Design Systems, Inc.</a></i>
+    </font>
+    <br>
+    <font size="-1" >
+All rights reserved.</font>
+    <br>
+    <br>
+  </body>
+</html>

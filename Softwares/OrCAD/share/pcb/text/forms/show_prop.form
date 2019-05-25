@@ -1,0 +1,196 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 74 16
+HEADER "Show Property"
+
+POPUP <SORTBY>"Element""1","Property""2".
+
+POPUP <FILTERP>"defined in sp_main.c""0".
+
+POPUP <SUBCLASSP>"""0".
+
+MESSAGE invalprop 0 "Unknown property: %s."
+MESSAGE nopropselect 0 "Property has not been selected."
+MESSAGE badvalue 0 "'%s' - illegal value."
+MESSAGE bool_expected 0 " "
+MESSAGE string_expected 0 "Value is a string."
+MESSAGE enum_expected 0 "Value is a string."
+MESSAGE num_expected 0 "Value is numeric."
+MESSAGE numrng_expected 0 "Value range: %.*f-%.*f %s"
+MESSAGE numgre_expected 0 "Value range: > %.*f %s"
+MESSAGE numles_expected 0 "Value range: < %.*f %s"
+MESSAGE text_created 0 "Added %d text instance(s)."
+MESSAGE text_deleted 0 "Deleted %d text instance(s)."
+
+TILE
+
+TABSET "tabs"
+FLOC 1 1
+TSSIZE 73 31
+
+TAB "Information"
+
+GROUP "Available Properties"
+GLOC 3 1
+GSIZE 34 24
+ENDGROUP
+
+FIELD proplist
+FLOC 4 4
+LIST "" 31 9
+OPTIONS sort prettyprint
+ENDFIELD
+
+FIELD filter
+FLOC 14 22
+MENUBUTTON "Filter" 11 2
+POP "FILTERP"
+ENDFIELD
+
+TEXT "Name:"
+TLOC 39 5
+ENDTEXT
+
+FIELD name
+FLOC 46 5
+STRFILLIN 22 31
+ENDFIELD
+
+TEXT "Value:"
+TLOC 39 8
+ENDTEXT
+
+FIELD value
+FLOC 46 8
+STRFILLIN 22 512
+ENDFIELD
+
+TEXT "Type:"
+TLOC 39 11
+ENDTEXT
+
+TEXT
+TLOC 46 11
+INFO type 25
+ENDTEXT
+
+TEXT "Sort by:"
+TLOC 39 14
+ENDTEXT
+
+FIELD sortmethod
+FLOC 46 14
+ENUMSET 9
+POP "SORTBY"
+ENDFIELD
+
+FIELD show
+FLOC 44 19
+MENUBUTTON "Show Val" 10 3
+ENDFIELD
+
+FIELD show_def
+FLOC 55 19
+MENUBUTTON "Show Def" 10 3
+ENDFIELD
+
+FIELD reset
+FLOC 50 22
+MENUBUTTON "Reset" 9 3
+ENDFIELD
+
+ENDTAB
+
+TAB "Graphics"
+
+GROUP "Available Properties"
+GLOC 1 1
+GSIZE 34 24
+ENDGROUP
+
+FIELD proplist2
+FLOC 3 4
+LIST "" 30 9
+OPTIONS sort prettyprint
+ENDFIELD
+
+FIELD filter2
+FLOC 13 22
+MENUBUTTON "Filter" 12 2
+POP "FILTERP"
+ENDFIELD
+
+GROUP "Selected Properties"
+GLOC 37 1
+GSIZE 34 24
+ENDGROUP
+
+FIELD showprops
+FLOC 39 4
+LIST "" 30 6
+OPTIONS sort
+ENDFIELD
+
+TEXT "Subclass:"
+TLOC 40 16
+ENDTEXT
+
+FIELD subclass
+FLOC 48 16
+STRFILLIN 16 31
+POP "SUBCLASSP"
+ENDFIELD
+
+TEXT "Text block:"
+TLOC 40 19
+ENDTEXT
+
+FIELD text_block
+FLOC 48 19
+INTSLIDEBAR 2 2
+MIN 1
+MAX 64
+ENDFIELD
+
+FIELD propname
+FLOC 56 19
+CHECKLIST "Property Name"
+ENDFIELD
+
+FIELD clear
+FLOC 40 22
+MENUBUTTON "Reset" 9 3
+ENDFIELD
+
+FIELD create
+FLOC 50 22
+MENUBUTTON "Create" 9 3
+ENDFIELD
+
+FIELD delete
+FLOC 60 22
+MENUBUTTON "Delete" 9 3
+ENDFIELD
+
+TEXT "Assigning property text to a subclass will delete any existing text on that layer."
+TLOC 4 26
+ENDTEXT
+
+ENDTAB
+
+ENDTABSET
+
+FIELD done
+FLOC 3 33
+MENUBUTTON "Done" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 64 33
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

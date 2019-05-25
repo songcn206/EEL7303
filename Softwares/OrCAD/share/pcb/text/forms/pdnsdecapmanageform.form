@@ -1,0 +1,99 @@
+####################################################################################
+#       Cadence Design Systems                                                     #
+#                                                                                  #
+# (C) COPYRIGHT, Cadence Design Systems, Inc. 2010                                 #
+# All Rights Reserved                                                              #
+# Licensed Materials - Property of Cadence Design Systems                          #
+#                                                                                  #
+# No part of this file may be reproduced, stored in a retrieval system,            #
+# or transmitted in any form or by any means --- electronic, mechanical,           #
+# photocopying, recording, or otherwise --- without prior written permission       #
+# of Cadence Design Systems, Inc.                                                  #
+#                                                                                  #
+# WARRANTY:                                                                        #
+# Use all material in this file at your own risk.  Cadence Design Systems          #
+# makes no claims about any material contained in this file.                       #
+####################################################################################
+FILE_TYPE=FORM_DEFN VERSION=2
+
+    FORM
+    FIXED
+    PORT 132 80
+    HEADER "Decoupling Capacitance"
+
+    ACTIVEFIELD "Done"
+    DEFAULT Done
+
+    TILE
+
+    FIELD Done
+        FLOC 1 48
+        MENUBUTTON "Close" 10 3
+    ENDFIELD
+    
+    FIELD DecapSave
+        FLOC 89 48
+        MENUBUTTON "Save..." 10 3
+    ENDFIELD
+    
+    FIELD DecapZoom
+        FLOC 100 48
+        MENUBUTTON "Zoom" 10 3
+    ENDFIELD
+
+    FIELD Refresh
+        FLOC 111 48
+        MENUBUTTON "Refresh" 10 3
+    ENDFIELD
+
+    FIELD Help
+        FLOC 122 48
+        MENUBUTTON "Help" 10 3
+    ENDFIELD
+
+    GROUP "" "DecapGroup"
+        GLOC 1 0
+        GSIZE 131 46
+    ENDGROUP
+    
+    TEXT "Refdes Filter:" "TextRefdesFilter"
+        TLOC 2 2
+    ENDTEXT
+    
+    FIELD RefdesFilter
+        FLOC 12 2
+        STRFILLIN 15 25
+    ENDFIELD
+
+    TEXT "Model Filter:" "TextModelFilter"
+        TLOC 32 2
+    ENDTEXT
+
+    FIELD ModelFilter
+        FLOC 41 2
+        STRFILLIN 15 25
+    ENDFIELD
+
+    POPUP <DecapGridHeadPopup>"""".
+    GRID DecapGrid
+    FLOC 2 4
+    FSIZE 129 41
+    OPTIONS HLINES VLINES USERSIZE
+
+    GHEAD TOP
+        HEADSIZE 2
+        OPTIONS 3D
+        POP "DecapGridHeadPopup"
+    ENDGHEAD
+    GHEAD SIDE
+        HEADSIZE 0
+    ENDGHEAD
+    ENDGRID
+
+  
+    FLEXMODE EdgeGravity
+    FLEX DecapGroup   0   0   1   1
+    FLEX DecapGrid   0   0   1   1
+
+    ENDTILE
+ENDFORM

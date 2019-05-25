@@ -1,0 +1,1419 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN" "http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+<html xmlns="http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>Magnetic Parts Editor User Guide -- Designing DC Inductors</title>
+<META NAME="Approver" CONTENT="Technical Publications">
+<META NAME="Author" CONTENT="Technical Publications">
+<META NAME="CreateDate" CONTENT="2012-09-11">
+<META NAME="CreateTime" CONTENT="1347374216">
+<META NAME="DataType" CONTENT="Manuals">
+<META NAME="Description" CONTENT="Magnetic Parts Editor provides you with a fast and intutive method for designing transformers and DC Inductors for switch mode power supplies.">
+<META NAME="DocTitle" CONTENT="Magnetic Parts Editor User Guide">
+<META NAME="DocType" CONTENT="User Guide">
+<META NAME="EdmsRelease" CONTENT="EDMS Windows-P015">
+<META NAME="FileTitle" CONTENT="Designing DC Inductors">
+<META NAME="FileType" CONTENT="Chapter">
+<META NAME="Keyword" CONTENT="magpeug">
+<META NAME="Language" CONTENT="English">
+<META NAME="ModifiedDate" CONTENT="2012-09-11">
+<META NAME="ModifiedTime" CONTENT="1347374216">
+<META NAME="NextFile" CONTENT="chap06.html">
+<META NAME="PageCount" CONTENT="28">
+<META NAME="Platform" CONTENT="ALL">
+<META NAME="PrevFile" CONTENT="chap04a.html">
+<META NAME="Product" CONTENT="Allegro AMS Simulator, PSpice">
+<META NAME="ProductFamily" CONTENT="PCB Design, PCB Design">
+<META NAME="ProductVersion" CONTENT="16.6">
+<META NAME="RightsManagement" CONTENT="Copyright 19912012 Cadence Design Systems Inc.">
+<META NAME="Title" CONTENT="Magnetic Parts Editor User Guide -- Designing DC Inductors">
+<META NAME="TopicTags" CONTENT="FALSE">
+<META NAME="Version" CONTENT="16.6">
+  </head>
+  <body style="margin-left: 5%;">
+    <a name="pagetop"></a>
+    <a name="firstpage"></a>
+    <!-- Begin Buttons -->
+    <table width="650" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td height="36" width="650" colspan="10">
+          <img src="../support/header_doc.gif" width="650" height="34">
+        </td>
+      </tr>
+      <tr>
+        <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                </td>
+<td height="20" width="73">
+<a href="magpeugTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<a href="magpeugIX.html"><img src="../support/nav2_index.gif" border="0"></a>
+</td>
+        <td>
+          <a href="chap04a.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+        </td>
+        <td>
+          <a href="chap06.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+        </td>
+        <td height="20">
+          <a>
+<a href="magpeug.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+          </a>
+        </td>
+        <td height="20" width="61">
+          <img src="../support/nav2_black.gif">
+        </td>
+        <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+        </td>
+        <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+        </td>
+        <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+        </td>
+      </tr>
+    </table>
+    <!-- End Buttons -->
+    <p>
+    <hr>
+    <p>
+      <h3>
+        <center>
+          <font >
+            <div>Magnetic Parts Editor User Guide</div>
+            <font >
+              <div>
+            </font>
+          </font>
+        </center>
+      </h3>
+      <br>
+    </p>
+    <div>
+      <h1>5<a name="1052707">&nbsp;</a></h1>
+      <h1><a name="1064500">Designing DC Inductors</a></h1>
+      <p><a name="1064532">This chapter describes the process for designing DC </a>inductors. DC inductors are different from transformers in the sense that they have only one winding.</p>
+      <p><a name="1064914">You can use Magnetic Parts Editor to design a DC inductor </a>that operates in the continuous conduction mode. The steps for designing a DC inductor using Magnetic Parts Editor are:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1064949">Provide input specifications</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>2	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1074063">Select a core.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>3	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1064950">Calculate number of turns required to achieve the </a>required inductance.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>4	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1064951">Calculate air gap.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>5	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1078503">Calculate fringing flux coefficient.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>6	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1078454">Ensure that the peak flux density is less than the </a>saturation flux density.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>7	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1064952">Design winding layout.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>8	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1064954">Calculate performance parameters, such as copper loss, </a>core loss, and efficiency.</td>
+          </tr>
+        </table>
+      </div>
+      <h2><a name="1064916">Selecting a core</a></h2>
+      <p><a name="1065068">To select a core for the DC inductor, Magnetic Parts Editor </a>uses the value of window area product (W<font color="#000000"><sub>a</sub></font>A<font color="#000000"><sub>e</sub></font>). For a DC inductor, W<font color="#000000"><sub>a</sub></font>A<font color="#000000"><sub>e</sub></font> is calculated using the equation given below.</p>
+      <p><font color="#3300ff"><strong>(5&#45;1) </strong></font><a name="1064574"><img src="images/chap05.8.1.1.png" width="225" height="64" alt=""> cm</a><font color="#000000"><sup>4</sup></font></p>
+      <blockquote><a name="1064575">where</a></blockquote>
+      <blockquote>	<a name="1064605">&nbsp;</a></blockquote>
+<ul>      <table summary="" cellpadding="16" cellspacing="0" bgcolor="#FFFFFF" width="398">
+        <caption>
+        <tr>
+          <td cellpadding="16" valign="top" width="76">
+            <p><a name="1064578">L</a></p>
+          </td>
+          <td cellpadding="16" valign="top" width="321">
+            <p><a name="1064580">Required Inductance in H (user input)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="16" valign="top">
+            <p><a name="1064582">I</a><font color="#000000"><sub>pk</sub></font></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1064584">Peak current</a></p>
+            <p><a name="1064585">Calculated using </a><a href="#1064610" title="Designing DC Inductors"><font color="#0000ff"><u>Equation&nbsp;5&#45;2</u></font></a><a href="#1064610" title="Designing DC Inductors"> </a>.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="16" valign="top">
+            <p><a name="1064590">I</a><font color="#000000"><sub>rms</sub></font></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1064592">RMS current</a></p>
+            <p><a name="1066911">Calculated using </a><a href="#1066831" title="Designing DC Inductors"><font color="#0000ff"><u>Equation&nbsp;5&#45;3</u></font></a><a href="#1066831" title="Designing DC Inductors"> </a>.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="16" valign="top">
+            <p><a name="1064594">J</a></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1064596">Current density in Amp per cm</a><font color="#000000"><sup>2</sup></font></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="16" valign="top">
+            <p><a name="1064598">B</a></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1064600">0.75 B</a><font color="#000000"><sub>sat</sub></font></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="16" valign="top">
+            <p><a name="1064602">K</a></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1064604">0.5</a></p>
+          </td>
+        </tr>
+      </table></ul>
+      <p><font color="#3300ff"><strong>(5&#45;2) </strong></font><a name="1064610"><img src="images/chap05.8.1.2.png" width="128" height="55" alt=""> amp</a></p>
+      <p><font color="#3300ff"><strong>(5&#45;3) </strong></font><a name="1066831"><img src="images/chap05.8.1.3.png" width="169" height="45" alt=""> amp</a></p>
+      <blockquote><a name="1064772">where</a></blockquote>
+      <blockquote>	<a name="1064802">&nbsp;</a></blockquote>
+<ul>      <table summary="" cellpadding="16" cellspacing="0" bgcolor="#FFFFFF" width="401">
+        <caption>
+        <tr>
+          <td cellpadding="16" valign="top" width="65">
+            <p><a name="1064779">I</a><font color="#000000"><sub>dc</sub></font></p>
+          </td>
+          <td cellpadding="16" valign="top" width="335">
+            <p><a name="1064781">DC current through the inductor (user input)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="16" valign="top">
+            <p><a name="1064787">I</a><font color="#000000"><sub>ac</sub></font></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1064789">AC current through the inductor (user input)</a></p>
+          </td>
+        </tr>
+      </table></ul>
+      <h2><a name="1064611">Winding turns</a></h2>
+      <p><a name="1068173">In a DC inductor, the number of turns in the winding is directly </a>proportional to the required inductance. The minimum number of turns required to achieve the desired inductance is calculated using the equation given below.</p>
+      <p><font color="#3300ff"><strong>(5&#45;4) </strong></font><a name="1068178"><img src="images/chap05.8.1.4.png" width="141" height="71" alt=""></a></p>
+      <blockquote><a name="1068179">where</a></blockquote>
+      <blockquote>	<a name="1065284">&nbsp;</a></blockquote>
+<ul>      <table summary="" cellpadding="16" cellspacing="0" bgcolor="#FFFFFF" width="400">
+        <caption>
+        <tr>
+          <td cellpadding="16" valign="top" width="52">
+            <p><a name="1065352">L</a></p>
+          </td>
+          <td cellpadding="16" valign="top" width="347">
+            <p><a name="1065354">Required inductance (user input)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="16" valign="top">
+            <p><a name="1065377">I</a><font color="#000000"><sub>pk</sub></font></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1065379">Peak current</a></p>
+            <p><a name="1065383">calculated using </a><a href="#1064610" title="Designing DC Inductors"><font color="#0000ff"><u>Equation&nbsp;5&#45;2</u></font></a><a href="#1064610" title="Designing DC Inductors"> </a>.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="16" valign="top">
+            <p><a name="1065393">B</a></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1065395">Operating flux density</a></p>
+            <p><a name="1065417">By default, it is set to </a><font size="2" face="'Courier New'" color="#000000">0.75 *B</font><font color="#000000"><sub>sat</sub></font>.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="16" valign="top">
+            <p><a name="1065277">A</a><font color="#000000"><sub>e</sub></font></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1065279">Core cross&#45;section area in </a><font size="2" face="'Courier New'" color="#000000">cm</font><font color="#000000"><sup>2</sup></font></p>
+            <p><a name="1065416">(read from the Magnetic Parts Editor database)</a></p>
+          </td>
+        </tr>
+      </table></ul>
+      <h2><a name="1064619">Gap Length</a></h2>
+      <p><a name="1065460">Using Magnetic Parts Editor you design DC Inductor operating </a>in the continuous induction mode. In continuous induction mode, the length of the air gap is calculated using the equation given below.</p>
+      <p><font color="#3300ff"><strong>(5&#45;5) </strong></font><a name="1065767"><img src="images/chap05.8.1.5.png" width="252" height="64" alt=""> cm</a></p>
+      <blockquote><a name="1065768">where</a></blockquote>
+      <blockquote>	<a name="1065786">&nbsp;</a></blockquote>
+<ul>      <table summary="" cellpadding="16" cellspacing="0" bgcolor="#FFFFFF" width="399">
+        <caption>
+        <tr>
+          <td cellpadding="16" valign="top" width="52">
+            <p><a name="1065771">N</a></p>
+          </td>
+          <td cellpadding="16" valign="top" width="346">
+            <p><a name="1065773">Number of turns in the primary winding </a></p>
+            <p><a name="1065777">(calculated using </a><a href="#1068178" title="Designing DC Inductors"><font color="#0000ff"><u>Equation&nbsp;5&#45;4</u></font></a><a href="#1068178" title="Designing DC Inductors"> </a>)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="16" valign="top">
+            <p><a name="1065779">A</a><font color="#000000"><sub>e</sub></font></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1065781">Core cross&#45;section area in </a><font size="2" face="'Courier New'" color="#000000">cm</font><font color="#000000"><sup>2</sup></font></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="16" valign="top">
+            <p><a name="1065783">L</a></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1065785">Required Inductance</a>&nbsp;&nbsp;&nbsp;&nbsp;(user input)</p>
+          </td>
+        </tr>
+      </table></ul>
+      <h3><a name="1066532">Fringing flux</a></h3>
+      <p><a name="1078894">While designing a magnetic part with an air gap, you need to </a>account for the stray flux associated with the air gap. Stray flux is due to the energy stored in a fringing field outside the air gap. Because of this fringing field, the effective gap area is larger than the core center&#45;pole area. To avoid design errors, you need to analyze the effect of the increased area on various design parameters. The effect of fringing flux on the inductor design is accommodated using an electrical parameter called fringing flux coefficient (FFC). In Magnetic Parts Editor, FFC for a DC inductor is calculated using the equation given below.</p>
+      <p><font color="#3300ff"><strong>(5&#45;6) </strong></font><a name="1065698"><img src="images/chap05.8.1.6.png" width="202" height="66" alt=""></a></p>
+      <blockquote><a name="1065699">where</a></blockquote>
+      <blockquote>	<a name="1065719">&nbsp;</a></blockquote>
+<ul>      <table summary="" cellpadding="16" cellspacing="0" bgcolor="#FFFFFF" width="399">
+        <caption>
+        <tr>
+          <td cellpadding="16" valign="top" width="52">
+            <p><a name="1065702">L</a><font color="#000000"><sub>g</sub></font></p>
+          </td>
+          <td cellpadding="16" valign="top" width="346">
+            <p><a name="1065704">Gap length</a></p>
+            <p><a name="1065708">(calculated using </a><a href="#1065767" title="Designing DC Inductors"><font color="#0000ff"><u>Equation&nbsp;5&#45;5</u></font></a><a href="#1065767" title="Designing DC Inductors"> </a>)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="16" valign="top">
+            <p><a name="1065710">A</a><font color="#000000"><sub>e</sub></font></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1065712">Core cross&#45;section area in </a><font size="2" face="'Courier New'" color="#000000">cm</font><font color="#000000"><sup>2 </sup></font>(read from the database)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="16" valign="top">
+            <p><a name="1065715">G</a></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1065717">bobbin window height (read from the </a>database)</p>
+          </td>
+        </tr>
+      </table></ul>
+      <p><a name="1066482">To accommodate the change in inductance due to an increase </a>in the effective air gap area, the number of turns in the inductor winding is changed. The modified number of turns is calculated using the equation given below.</p>
+      <p><font color="#3300ff"><strong>(5&#45;7) </strong></font><a name="1066121"><img src="images/chap05.8.1.7.png" width="186" height="66" alt=""></a></p>
+      <blockquote><a name="1066129">where</a></blockquote>
+      <blockquote>	<a name="1066133">&nbsp;</a></blockquote>
+<ul>      <table summary="" cellpadding="16" cellspacing="0" bgcolor="#FFFFFF" width="399">
+        <caption>
+        <tr>
+          <td cellpadding="16" valign="top" width="52">
+            <p><a name="1066183">L</a><font color="#000000"><sub>g</sub></font></p>
+          </td>
+          <td cellpadding="16" valign="top" width="346">
+            <p><a name="1066185">Length of the air gap, calculated using </a><a href="#1065767" title="Designing DC Inductors"><font color="#0000ff"><u>Equation&nbsp;5&#45;5</u></font></a><a href="#1065767" title="Designing DC Inductors"> </a>.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="16" valign="top">
+            <p><a name="1066179">L</a></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1066181">Required Inductance</a><br>(Input value)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="16" valign="top">
+            <p><a name="1066187"><font face="symbol" color="#000000">μ</font></a><font color="#000000"><sub>0</sub></font></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1066189">Permeability constant, </a><font size="2" face="'Courier New'" color="#000000">4</font><font face="symbol" color="#000000">π</font><font size="2" face="'Courier New'" color="#000000">*10</font><font color="#000000"><sup>&#45;7</sup></font> (Henry&#47;meter) </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="16" valign="top">
+            <p><a name="1066222">A</a><font color="#000000"><sub>e</sub></font></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1066224">Core cross&#45;section area in </a><font size="2" face="'Courier New'" color="#000000">cm</font><font color="#000000"><sup>2</sup></font></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="16" valign="top">
+            <p><a name="1066196">FFC</a></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1066198">Fringing Flux Coefficient, calculated using </a><a href="#1065698" title="Designing DC Inductors"><font color="#0000ff"><u>Equation&nbsp;5&#45;6</u></font></a><a href="#1065698" title="Designing DC Inductors"> </a>.</p>
+          </td>
+        </tr>
+      </table></ul>
+      <h2><a name="1066566">Selecting Winding wire</a></h2>
+      <p><a name="1066570">The procedure for selecting a wire gauge for the inductor </a>winding is same as the procedure for selecting transformer winding wire.</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1066573">Calculate required cross&#45;section area </a><font size="2" face="'Courier New'" color="#000000">(I</font><font size="2" face="'Courier New'" color="#000000"><sub>rms</sub></font><font size="2" face="'Courier New'" color="#000000"> &#47;J)</font></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>2	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1066581">Select a wire from the database.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>3	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1066585">Check for skin effect. </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	a.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1066586">Calculate skin depth (d) using </a><a href="chap02a.html#1062434" title="Electrical Parameters"><font color="#0000ff"><u>Equation&nbsp;2&#45;45</u></font></a><a href="chap02a.html#1062434" title="Electrical Parameters"> </a>.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	b.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1066629">Verify that the diameter of the selected wire is less </a>than twice the skin depth (<font size="2" face="'Courier New'" color="#000000">2d</font>).</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="37"
+              <div>&nbsp;</div>
+            </td>
+            <td width="26" align="left">
+              <div>
+                <nobr><font color="#000000"><strong>	c.	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1066654">If diameter of the selected wire (without insulation) is </a>greater than 2d, select a different wire that satisfies the 2d criteria.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>4	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1074213">Calculate the number of strands required to achieve the </a>required cross&#45;section area. See <a href="chap02a.html#1062860" title="Electrical Parameters"><font color="#0000ff"><u>Equation&nbsp;2&#45;47</u></font></a><a href="chap02a.html#1062860" title="Electrical Parameters"> </a>.</td>
+          </tr>
+        </table>
+      </div>
+      <h2><a name="1074217">Winding Layout</a></h2>
+      <p><a name="1074218">To design the winding layout for a DC inductor, following steps </a>are performed.</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>1	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1073030">Calculate end insulation.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>2	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1073062">Calculate available winding height, H</a><font color="#000000"><sub>wdg.</sub></font></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>3	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1073074">Calculate number of turns per layers.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>4	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1073081">Calculate number of layers required.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr><font color="#3300ff"><strong>5	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1073086">Calculate inter layer insulation.</a></td>
+          </tr>
+        </table>
+      </div>
+      <h3><a name="1064647">End insulation</a></h3>
+      <p><a name="1072426">To calculate end insulation, first calculate maximum voltage </a>and then decide the thickness of the insulation material required to withstand the maximum voltage.</p>
+      <h4><a name="1072431">Calculating peak voltage</a></h4>
+      <p><a name="1072480">For DC inductors, maximum voltage is calculated using the </a>equation given below.</p>
+      <p><font color="#3300ff"><strong>(5&#45;8) </strong></font><a name="1064651"><img src="images/chap05.8.1.8.png" width="161" height="25" alt=""> volts</a></p>
+      <blockquote><a name="1066353">where</a></blockquote>
+      <blockquote>	<a name="1066381">&nbsp;</a></blockquote>
+<ul>      <table summary="" cellpadding="16" cellspacing="0" bgcolor="#FFFFFF" width="399">
+        <caption>
+        <tr>
+          <td cellpadding="16" valign="top" width="52">
+            <p><a name="1066356">I</a><font color="#000000"><sub>pk</sub></font></p>
+          </td>
+          <td cellpadding="16" valign="top" width="346">
+            <p><a name="1066358">Peak current through the winding, calculated </a>using <a href="#1064610" title="Designing DC Inductors"><font color="#0000ff"><u>Equation&nbsp;5&#45;2</u></font></a><a href="#1064610" title="Designing DC Inductors"> </a>.</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="16" valign="top">
+            <p><a name="1066363">L</a></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1066365">Required Inductance</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(user input)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="16" valign="top">
+            <p><a name="1066375">f</a></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1066377">Operating frequency</a></p>
+          </td>
+        </tr>
+      </table></ul>
+      <h4><a name="1072456">Calculating insulation thickness</a></h4>
+      <p><a name="1072620">The insulation thickness is calculated using </a><a href="chap03a.html#1067443" title="Winding Layout"><font color="#0000ff"><u>Equation&nbsp;3&#45;5</u></font></a><a href="chap03a.html#1067443" title="Winding Layout"> </a>.</p>
+      <p><a name="1072625"><img src="images/chap05.8.1.9.png" width="310" height="50" alt=""></a></p>
+      <h3><a name="1072419">Interlayer insulation</a></h3>
+      <p><a name="1072610">Interlayer insulation is the insulation required between two </a>consecutive winding layers. To calculate the required insulation thickness, you first calculate maximum voltage different between two winding layers.</p>
+      <h4><a name="1072986">Calculating layer voltage</a></h4>
+      <p><font color="#3300ff"><strong>(5&#45;9) </strong></font><a name="1072604"><img src="images/chap05.8.1.10.png" width="240" height="55" alt=""></a></p>
+      <blockquote><a name="1072877">where</a></blockquote>
+      <blockquote>	<a name="1072912">&nbsp;</a></blockquote>
+<ul>      <table summary="" cellpadding="16" cellspacing="0" bgcolor="#FFFFFF" width="614">
+        <caption>
+        <tr>
+          <td cellpadding="16" valign="top" width="173">
+            <p><a name="1072938">V</a><font color="#000000"><sub>peak</sub></font></p>
+          </td>
+          <td cellpadding="16" valign="top" width="441">
+            <p><a name="1072940">Maximum voltage, calculated using </a><a href="#1064651" title="Designing DC Inductors"><font color="#0000ff"><u>Equation&nbsp;5&#45;8</u></font></a><a href="#1064651" title="Designing DC Inductors"> </a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="16" valign="top">
+            <p><a name="1072942">Number of layers</a></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1072944">Number of winding layers</a></p>
+          </td>
+        </tr>
+      </table></ul>
+      <h4><a name="1072983">Calculating insulation thickness</a></h4>
+      <p><font color="#3300ff"><strong>(5&#45;10) </strong></font><a name="1073000"><br></a><img src="images/chap05.8.1.11.png" width="389" height="62" alt=""></p>
+      <h2><a name="1074950">Performance parameters</a></h2>
+      <p><a name="1080748">This section covers the procedure involves for calculating the </a>copper loss and the core loss in a DC inductor.</p>
+      <h3><a name="1074951">Copper Loss</a></h3>
+      <p><a name="1074952">Copper loss is calculated using the equation given below.</a></p>
+      <p><font color="#3300ff"><strong>(5&#45;11) </strong></font><a name="1074964"><img src="images/chap05.8.1.12.png" width="134" height="40" alt=""></a></p>
+      <p><a name="1074965">where</a></p>
+      <blockquote>	<a name="1074983">&nbsp;</a></blockquote>
+<ul>      <table summary="" cellpadding="16" cellspacing="0" bgcolor="#FFFFFF" width="401">
+        <caption>
+        <tr>
+          <td cellpadding="16" valign="top" width="39">
+            <p><a name="1074968">I</a></p>
+          </td>
+          <td cellpadding="16" valign="top" width="362">
+            <p><a name="1074970">current through the inductor</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="16" valign="top">
+            <p><a name="1074972">R</a></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1074974">wInding Resistance</a></p>
+          </td>
+        </tr>
+      </table></ul>
+      <p><a name="1074958">Winding resistance R, is calculated as</a></p>
+      <p><font color="#3300ff"><strong>(5&#45;12) </strong></font><a name="1075047"><img src="images/chap05.8.1.13.png" width="71" height="48" alt=""></a></p>
+      <blockquote><a name="1075048">where</a></blockquote>
+      <blockquote>	<a name="1075062">&nbsp;</a></blockquote>
+<ul>      <table summary="" cellpadding="16" cellspacing="0" bgcolor="#FFFFFF" width="400">
+        <caption>
+        <tr>
+          <td cellpadding="16" valign="top" width="39">
+            <p><a name="1075051"><font face="symbol" color="#000000">ζ</font></a></p>
+          </td>
+          <td cellpadding="16" valign="top" width="361">
+            <p><a name="1075053">Resistivity of the winding material</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="16" valign="top">
+            <p><a name="1075055">L</a></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1075057">Length of the winding wire</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="16" valign="top">
+            <p><a name="1075059">A</a></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1075061">cross&#45;section area of the wire (without insulation)</a></p>
+          </td>
+        </tr>
+      </table></ul>
+      <h3><a name="1074953">Core Loss</a></h3>
+      <p><a name="1074904">The core loss in a DC Inductor depends on the AC flux density. </a></p>
+      <h4><em><a name="1064657">Calculating B</a><font color="#000000"><sub>ac</sub></font></em></h4>
+      <p><font color="#3300ff"><strong>(5&#45;13) </strong></font><a name="1074241"><img src="images/chap05.8.1.14.png" width="322" height="95" alt=""></a></p>
+      <blockquote><a name="1074245">where</a></blockquote>
+      <blockquote>	<a name="1074286">&nbsp;</a></blockquote>
+<ul>      <table summary="" cellpadding="16" cellspacing="0" bgcolor="#FFFFFF" width="399">
+        <caption>
+        <tr>
+          <td cellpadding="16" valign="top" width="52">
+            <p><a name="1074248">N</a><font color="#000000"><sub>m</sub></font></p>
+          </td>
+          <td cellpadding="16" valign="top" width="346">
+            <p><a name="1074250">Number of turns in the primary winding </a></p>
+            <p><a name="1074254">(calculated using </a><a href="#1066121" title="Designing DC Inductors"><font color="#0000ff"><u>Equation&nbsp;5&#45;7</u></font></a><a href="#1066121" title="Designing DC Inductors"> </a>)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="16" valign="top">
+            <p><a name="1074261">L</a><font color="#000000"><sub>g</sub></font></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1074570">gap length in </a><font size="2" face="'Courier New'" color="#000000">cm</font></p>
+            <p><a name="1074267">(calculated using </a><a href="#1065767" title="Designing DC Inductors"><font color="#0000ff"><u>Equation&nbsp;5&#45;5</u></font></a><a href="#1065767" title="Designing DC Inductors"> </a>.)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="16" valign="top">
+            <p><a name="1074269">FFC</a></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1074271">Fringing flux coefficient</a></p>
+            <p><a name="1074275">(calculated using </a><a href="#1065698" title="Designing DC Inductors"><font color="#0000ff"><u>Equation&nbsp;5&#45;6</u></font></a><a href="#1065698" title="Designing DC Inductors"> </a>.)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="16" valign="top">
+            <p><a name="1074277">MPL</a></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1074279">Magnetic path length in </a><font size="2" face="'Courier New'" color="#000000">cm</font></p>
+            <p><a name="1074280">(read from the database)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="16" valign="top">
+            <p><a name="1074282"><font face="symbol" color="#000000">μ</font></a><font color="#000000"><sub>i</sub></font></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1074284">initial permeability of the core material</a></p>
+            <p><a name="1074285">(read from the database)</a></p>
+          </td>
+        </tr>
+      </table></ul>
+      <h4><em><a name="1075134">Calculating Core loss</a></em></h4>
+      <p><a name="1075233">Core loss in a DC Inductor is calculated using the equations </a>given below.</p>
+      <p><a name="1075208">&nbsp;</a></p>
+      <table summary="" cellpadding="2" cellspacing="0" width="430">
+        <caption>
+        <tr>
+          <td cellpadding="2" valign="middle" width="42">
+            <p><font color="#3300ff"><strong>(5&#45;14) </strong></font><a name="1075194">&nbsp;</a></p>
+          </td>
+          <td cellpadding="2" valign="top" width="387">
+            <p><a name="1075200"><img src="images/chap05.8.1.15.png" width="358" height="24" alt=""></a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="2" valign="middle">
+            <p><font color="#3300ff"><strong>(5&#45;15) </strong></font><a name="1075202">&nbsp;</a></p>
+          </td>
+          <td cellpadding="2" valign="top">
+            <p><a name="1075207"><img src="images/chap05.8.1.16.png" width="392" height="40" alt=""></a></p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1075209">where</a></p>
+      <p align="left"><a name="1075135">&nbsp;</a></p>
+      <table summary="" border="0" cellpadding="4" cellspacing="0" bordercolor="#D3D3D3" width="434">
+        <caption>
+        <tr>
+          <td cellpadding="4" valign="top" width="50">
+            <p><a name="1075212">f</a></p>
+          </td>
+          <td cellpadding="4" valign="top" width="383">
+            <p><a name="1075214">operating frequency (in Hertz)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1075216">B</a><font color="#000000"><sub>ac</sub></font></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1075218">AC component of Magnetic flux density (Tesla)</a></p>
+          </td>
+        </tr>
+      </table>
+      <h2><a name="1075136">Design Example</a></h2>
+      <p><a name="1067298">This section covers the steps for designing a DC Inductor with </a>given specifications.</p>
+      <p align="left"><a name="1067301">&nbsp;</a></p>
+      <table summary="" border="0" cellpadding="4" cellspacing="0" bordercolor="#D3D3D3" width="427">
+        <caption>
+        <tr>
+          <td cellpadding="4" valign="top" width="189">
+            <p><a name="1067308">Inductance, </a><font size="2" face="'Courier New'" color="#000000">L</font></p>
+          </td>
+          <td cellpadding="4" valign="top" width="238">
+            <p><a name="1067310">0.0024 henrys</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1067417">DC current, </a><font size="2" face="'Courier New'" color="#000000">I</font><font color="#000000"><sub>dc</sub></font> </p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1067314">2 amp</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1067316">AC current, </a><font size="2" face="'Courier New'" color="#000000">I</font><font color="#000000"><sub>ac</sub></font></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1067318">0.1 amp</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1067320">Current Density, </a><font size="2" face="'Courier New'" color="#000000">J</font></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1067322">300 amp&#45;per&#45;cm</a><font color="#000000"><sup>2</sup></font></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1067324">Operating Frequency, </a><font size="2" face="'Courier New'" color="#000000">f</font></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1067326">100 kHz</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1067389">Core Material</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1067391">P (from Magnetics)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1070620">Core shape</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1070622">EE core</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1067385">Window utilization, k</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1067387">0.5</a></p>
+          </td>
+        </tr>
+      </table>
+      <h4><a name="1067429">Step</a>&nbsp;1: Calculate the peak current, I<font color="#000000"><sub>pk</sub></font></h4>
+      <p><a name="1067438">Using </a><a href="#1064610" title="Designing DC Inductors"><font color="#0000ff"><u>Equation&nbsp;5&#45;2</u></font></a><a href="#1064610" title="Designing DC Inductors"> </a>, </p>
+      <p><a name="1067442"><img src="images/chap05.8.1.17.png" width="128" height="55" alt=""> amp</a></p>
+      <p><a name="1067893"><img src="images/chap05.8.1.18.png" width="115" height="48" alt=""> amp</a></p>
+      <p><a name="1067898"><img src="images/chap05.8.1.19.png" width="94" height="31" alt=""> amp</a></p>
+      <h4><a name="1067904">Step</a>&nbsp;2: Calculate rms current I<font color="#000000"><sub>rms</sub></font></h4>
+      <p><a name="1067284">Using </a><a href="#1066831" title="Designing DC Inductors"><font color="#0000ff"><u>Equation&nbsp;5&#45;3</u></font></a><a href="#1066831" title="Designing DC Inductors"> </a>, </p>
+      <p><a name="1067918"><img src="images/chap05.8.1.20.png" width="169" height="45" alt=""></a></p>
+      <p><a name="1067930"><img src="images/chap05.8.1.21.png" width="156" height="45" alt=""> amp</a></p>
+      <p><a name="1067939"><img src="images/chap05.8.1.22.png" width="117" height="36" alt=""> amp</a></p>
+      <p><a name="1067947"><img src="images/chap05.8.1.23.png" width="123" height="31" alt=""> amp</a></p>
+      <h4><a name="1067957">Step</a>&nbsp;3: Calculate Window Area Product, W<font color="#000000"><sub>a</sub></font>A<font color="#000000"><sub>e</sub></font></h4>
+      <p><a name="1067955">Using </a><a href="#1064574" title="Designing DC Inductors"><font color="#0000ff"><u>Equation&nbsp;5&#45;1</u></font></a><a href="#1064574" title="Designing DC Inductors"> </a>,</p>
+      <p><a name="1067976"><img src="images/chap05.8.1.24.png" width="225" height="64" alt=""></a></p>
+      <p><a name="1067987"><img src="images/chap05.8.1.25.png" width="342" height="57" alt=""> </a></p>
+      <p><a name="1068129"><img src="images/chap05.8.1.26.png" width="138" height="31" alt=""> cm</a><font color="#000000"><sup>4</sup></font></p>
+      <p><a name="1068648">Converting the area product to </a><font size="2" face="'Courier New'" color="#000000">mm</font><font color="#000000"><sup>4</sup></font>, we get,</p>
+      <p><a name="1068662"><img src="images/chap05.8.1.27.png" width="178" height="40" alt=""> mm</a><font color="#000000"><sup>4</sup></font></p>
+      <p><a name="1068684"><img src="images/chap05.8.1.28.png" width="178" height="40" alt=""> mm</a><font color="#000000"><sup>4</sup></font></p>
+      <h4><a name="1068010">Step</a>&nbsp;4: Select core from the Magnetic Parts Editor database</h4>
+      <p><a name="1068008">The properties of the EE&#45; core with the nearest area product </a>are listed below.</p>
+      <p align="left"><a name="1068262">&nbsp;</a></p>
+      <table summary="" border="0" cellpadding="4" cellspacing="0" bordercolor="#D3D3D3" width="432">
+        <caption>
+        <tr>
+          <td cellpadding="4" valign="top" width="259">
+            <p><a name="1068214">Part Number</a></p>
+          </td>
+          <td cellpadding="4" valign="top" width="173">
+            <p><a name="1068216">44016&#45;EC</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1068218">Core Volume</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1068220">10.5k mm</a><font color="#000000"><sup>3</sup></font></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1068222">Magnetic Path Length, </a><font size="2" face="'Courier New'" color="#000000">MPL</font></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1068224">98.4 mm</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1068226">Core Cross&#45;Section Area, </a><font size="2" face="'Courier New'" color="#000000">A</font><font color="#000000"><sub>e</sub></font></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1068228">106 mm</a><font color="#000000"><sup>2</sup></font></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1068230">Core Weight</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1068232">52 grams</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1068239">Area Product, </a><font size="2" face="'Courier New'" color="#000000">W</font><font color="#000000"><sub>a</sub></font><font size="2" face="'Courier New'" color="#000000">A</font><font color="#000000"><sub>e</sub></font></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1068241">20.8k mm</a><font color="#000000"><sup>4</sup></font></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1068615">Surface Area</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1068617">3.99752k mm</a><font color="#000000"><sup>2</sup></font></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1068243">Window Height</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1068245">30 mm</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1068247">Window Width</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1068249">9.54 mm</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1068251">Inductance Factor, </a><font size="2" face="'Courier New'" color="#000000">AL</font></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1068253">2.18k mH&#47;1000 turns</a><font color="#000000"><sup>2</sup></font></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1068255">Core L</a><font color="#000000"><sub>x</sub></font></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1068257">11.9 mm</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1068259">Core L</a><font color="#000000"><sub>y</sub></font></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1068261">9 mm</a></p>
+          </td>
+        </tr>
+      </table>
+      <h4><a name="1070810">Step</a>&nbsp;5: Calculations using bobbin dimensions</h4>
+      <p><a name="1070811">The core selected in the previous step in an EE core. Bobbin </a>dimensions calculated using the default value of bobbin thickness, T, are listed in <a href="#1070858" title="Designing DC Inductors"><font color="#0000ff"><u>Table&nbsp;5&#45;1</u></font></a><a href="#1070858" title="Designing DC Inductors"> </a>.</p>
+      <p align="left"><a name="1070938">&nbsp;</a></p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="615">
+        <caption>
+          <p align="left">Table 5&#45;1&nbsp; <strong><a name="1070858">Bobbin Properties</a></strong></p>
+        </caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="top" width="405">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1070862">Property</a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="top" width="210">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1070864">Value</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1070866">Bobbin Thickness, </a><font size="2" face="'Courier New'" color="#000000">T</font></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1070868">1</a>&nbsp;mm</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1070870">Bobbin L</a><font color="#000000"><sub>x</sub></font></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1070872"><font size="2" face="'Courier New'" color="#000000">Core L</font></a><font size="2" face="'Courier New'" color="#000000"><sub>X</sub></font><font size="2" face="'Courier New'" color="#000000"> + 2T</font></p>
+            <p><a name="1070873"><font size="2" face="'Courier New'" color="#000000"> = 11.9 + 2*1</font></a></p>
+            <p><a name="1070874"><font color="#000000"> = 13.9 mm</font></a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1070876">Bobbin L</a><font color="#000000"><sub>y</sub></font></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1070878"><font size="2" face="'Courier New'" color="#000000">Core L</font></a><font size="2" face="'Courier New'" color="#000000"><sub>y</sub></font><font size="2" face="'Courier New'" color="#000000"> + 2T</font></p>
+            <p><a name="1070879"><font size="2" face="'Courier New'" color="#000000"> = 9 + 2*1</font></a></p>
+            <p><a name="1070880"><font color="#000000"> = 11 mm</font></a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1070882">Window Width (</a><font size="2" face="'Courier New'" color="#000000">W</font><font size="2" face="'Courier New'" color="#000000"><sub>w</sub></font>) available for winding</p>
+            <p><a name="1075261">(this is same as bobbin window width)</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1070884"><font size="2" face="'Courier New'" color="#000000"> W</font></a><font color="#000000"><sub>w</sub></font><font size="2" face="'Courier New'" color="#000000">&#45;T</font></p>
+            <p><a name="1070885"><font color="#000000"> = 9.54&#45;1</font></a></p>
+            <p><a name="1070886"><font color="#000000"> = 8.54 mm</font></a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1070888">Window Height (</a><font size="2" face="'Courier New'" color="#000000">H</font><font size="2" face="'Courier New'" color="#000000"><sub>w</sub></font> or <font size="2" face="'Courier New'" color="#000000">G</font>) available for winding</p>
+            <p><a name="1075258">(this is same as bobbin window height)</a></p>
+          </td>
+          <td cellpadding="4" border="1" bordercolor="#000000" valign="top">
+            <p><a name="1070890"><font size="2" face="'Courier New'" color="#000000"> H</font></a><font color="#000000"><sub>w</sub></font><font size="2" face="'Courier New'" color="#000000">&#45;2T</font></p>
+            <p><a name="1070891"><font color="#000000"> = 30&#45;2*1</font></a></p>
+            <p><a name="1070892"><font color="#000000"> = 28 mm</font></a></p>
+          </td>
+        </tr>
+      </table>
+      <h4><a name="1068263">Step</a>&nbsp;6: Calculate winding turns, N</h4>
+      <p><a name="1068267">Using </a><a href="#1068178" title="Designing DC Inductors"><font color="#0000ff"><u>Equation&nbsp;5&#45;4</u></font></a><a href="#1068178" title="Designing DC Inductors"> </a>,</p>
+      <p><a name="1068158"><img src="images/chap05.8.1.29.png" width="141" height="71" alt=""></a></p>
+      <p><a name="1068201"><img src="images/chap05.8.1.30.png" width="241" height="67" alt=""></a></p>
+      <p><a name="1068942"><img src="images/chap05.8.1.31.png" width="142" height="33" alt=""></a></p>
+      <p><a name="1069791"><img src="images/chap05.8.1.32.png" width="103" height="24" alt=""></a></p>
+      <p><a name="1069859"><img src="images/chap05.8.1.33.png" width="78" height="24" alt=""></a></p>
+      <h4><a name="1068271">Step</a>&nbsp;7: Calculate gap length, L<font color="#000000"><sub>g</sub></font></h4>
+      <p><a name="1068283">Using </a><a href="#1065767" title="Designing DC Inductors"><font color="#0000ff"><u>Equation&nbsp;5&#45;5</u></font></a><a href="#1065767" title="Designing DC Inductors"> </a>,</p>
+      <p><a name="1068287"><img src="images/chap05.8.1.34.png" width="252" height="64" alt=""></a></p>
+      <p><a name="1068145"><img src="images/chap05.8.1.35.png" width="294" height="57" alt=""></a></p>
+      <p><a name="1069016"><img src="images/chap05.8.1.36.png" width="139" height="31" alt=""> cm</a></p>
+      <p><a name="1075559"><img src="images/chap05.8.1.37.png" width="187" height="40" alt=""> m</a></p>
+      <p><a name="1075629"><img src="images/chap05.8.1.38.png" width="158" height="40" alt=""> m</a></p>
+      <h4><a name="1071102">Step</a>&nbsp;8: Calculate fringing flux coefficient, FFC</h4>
+      <p><a name="1071106">Using </a><a href="#1065698" title="Designing DC Inductors"><font color="#0000ff"><u>Equation&nbsp;5&#45;6</u></font></a><a href="#1065698" title="Designing DC Inductors"> </a>, </p>
+      <p><a name="1071110"><img src="images/chap05.8.1.39.png" width="202" height="66" alt=""></a></p>
+      <p><a name="1071128">Substituting the values in </a><font size="2" face="'Courier New'" color="#000000">mm</font>,</p>
+      <p><a name="1069362"><img src="images/chap05.8.1.40.png" width="276" height="56" alt=""></a></p>
+      <p><a name="1070984"><img src="images/chap05.8.1.41.png" width="283" height="24" alt=""></a></p>
+      <p><a name="1071024"><img src="images/chap05.8.1.42.png" width="125" height="24" alt=""></a></p>
+      <h4><a name="1068363">Step</a>&nbsp;9: Calculate modified number of turns, N<font color="#000000"><sub>m</sub></font></h4>
+      <p><a name="1068351"><img src="images/chap05.8.1.43.png" width="186" height="66" alt=""></a></p>
+      <p><a name="1068377"><img src="images/chap05.8.1.44.png" width="209" height="59" alt=""></a></p>
+      <p><a name="1071185"><img src="images/chap05.8.1.45.png" width="189" height="69" alt=""></a></p>
+      <p><a name="1071206">Substituting the value of </a><font face="symbol" color="#000000">μ</font><font color="#000000"><sub>o</sub></font> in the above equation, we get</p>
+      <p><a name="1071616"><img src="images/chap05.8.1.46.png" width="189" height="71" alt=""></a></p>
+      <p><a name="1071673"><img src="images/chap05.8.1.47.png" width="199" height="45" alt=""></a></p>
+      <p><a name="1071711"><img src="images/chap05.8.1.48.png" width="116" height="31" alt=""></a></p>
+      <p><a name="1071754">Rounding off to the nearest integer, we get </a></p>
+      <p><a name="1071779"><img src="images/chap05.8.1.49.png" width="92" height="31" alt=""></a></p>
+      <h4><a name="1078062">Step</a>&nbsp;10: Calculate peak flux density, B<font color="#000000"><sub>peak</sub></font></h4>
+      <p><a name="1078028"><img src="images/chap05.8.1.50.png" width="321" height="95" alt=""></a></p>
+      <p><a name="1078137"><img src="images/chap05.8.1.51.png" width="331" height="91" alt=""> tesla</a></p>
+      <p><a name="1078175"><img src="images/chap05.8.1.52.png" width="328" height="67" alt=""> tesla</a></p>
+      <p><a name="1078179"><img src="images/chap05.8.1.53.png" width="299" height="67" alt=""> tesla</a></p>
+      <p><a name="1078225"><img src="images/chap05.8.1.54.png" width="238" height="67" alt=""> tesla</a></p>
+      <p><a name="1078226"><img src="images/chap05.8.1.55.png" width="156" height="31" alt=""> tesla</a></p>
+      <p><a name="1078382">As per the design requirements </a><font size="2" face="'Courier New'" color="#000000">B</font><font color="#000000"><sub>peak</sub></font> (<font size="2" face="'Courier New'" color="#000000">0.415 tesla</font>) is less than <font size="2" face="'Courier New'" color="#000000">B</font><font color="#000000"><sub>sat</sub></font> (<font size="2" face="'Courier New'" color="#000000">0.5 tesla</font>).</p>
+      <h4><a name="1078383">Step</a>&nbsp;11: Calculate skin depth, d</h4>
+      <p><a name="1068407"><img src="images/chap05.8.1.56.png" width="136" height="55" alt=""> m</a></p>
+      <p><a name="1068418"><img src="images/chap05.8.1.57.png" width="144" height="71" alt=""> m</a></p>
+      <p><a name="1068426"><img src="images/chap05.8.1.58.png" width="156" height="33" alt=""> m</a></p>
+      <p><a name="1068434">Converting d into mm, we get </a></p>
+      <p><a name="1068435"><img src="images/chap05.8.1.59.png" width="98" height="24" alt=""> mm</a></p>
+      <p><a name="1069087">Therefore, maximum possible diameter of the winding wire </a>can be 2d = 0.4186 mm</p>
+      <h4><a name="1069095">Step</a>&nbsp;12: Select wire</h4>
+      <p><a name="1069091">Select the wire gauge that has wire diameter nearest to </a>0.4186 mm is wire gauge number 26. </p>
+      <p><a name="1069105">AWG = #26</a><br>Diameter of bare copper wire = <strong>0.40386</strong> mm<br>Diameter of insulated copper wire = <strong>0.452</strong> mm<br>Copper cross&#45;section area = <font color="#000000"><strong>0.12815228</strong></font> mm<font color="#000000"><sup>2</sup></font></p>
+      <h4><a name="1069065">Step</a>&nbsp;13: Calculate required wire area</h4>
+      <p><a name="1069122">Using </a><a href="chap02a.html#1061787" title="Electrical Parameters"><font color="#0000ff"><u>Equation&nbsp;2&#45;44</u></font></a><a href="chap02a.html#1061787" title="Electrical Parameters"> </a>, </p>
+      <p><a name="1069126"><img src="images/chap05.8.1.60.png" width="177" height="55" alt=""></a></p>
+      <p><a name="1069137"><img src="images/chap05.8.1.61.png" width="196" height="48" alt=""></a></p>
+      <p><a name="1069185"><img src="images/chap05.8.1.62.png" width="244" height="40" alt=""> cm</a><font color="#000000"><sup>2</sup></font></p>
+      <p><a name="1069189"><img src="images/chap05.8.1.63.png" width="195" height="31" alt=""> mm</a><font color="#000000"><sup>2</sup></font></p>
+      <p><a name="1069190">As required area is greater than the cross&#45;section area of the </a>single strand, Litz type of winding should be used.</p>
+      <h4><a name="1069078">Step</a>&nbsp;14: Calculate number of strands</h4>
+      <p><a name="1069063">Using </a><a href="chap02a.html#1062860" title="Electrical Parameters"><font color="#0000ff"><u>Equation&nbsp;2&#45;47</u></font></a><a href="chap02a.html#1062860" title="Electrical Parameters"> </a>, </p>
+      <p><a name="1069196"><img src="images/chap05.8.1.64.png" width="164" height="48" alt=""></a></p>
+      <p><a name="1069231"><img src="images/chap05.8.1.65.png" width="125" height="24" alt=""></a></p>
+      <p><a name="1079283">Rounding to an intriguer value, we get number of strands as </a><strong>6</strong>.</p>
+      <h4><a name="1079284">Step</a>&nbsp;15: Calculate end layer voltage</h4>
+      <p><a name="1079288">Using </a><a href="#1064651" title="Designing DC Inductors"><font color="#0000ff"><u>Equation&nbsp;5&#45;8</u></font></a><a href="#1064651" title="Designing DC Inductors"> </a>, </p>
+      <p><a name="1071227"><img src="images/chap05.8.1.66.png" width="135" height="25" alt=""> volts</a></p>
+      <p><a name="1071215"><img src="images/chap05.8.1.67.png" width="233" height="28" alt=""></a></p>
+      <p><a name="1071261"><img src="images/chap05.8.1.68.png" width="130" height="28" alt=""></a></p>
+      <p><a name="1071269"><img src="images/chap05.8.1.69.png" width="68" height="21" alt=""> volts</a></p>
+      <h4><a name="1071279">Step</a>&nbsp;16: Calculate end insulation</h4>
+      <p><a name="1071292">Using </a><a href="chap03a.html#1067443" title="Winding Layout"><font color="#0000ff"><u>Equation&nbsp;3&#45;5</u></font></a><a href="chap03a.html#1067443" title="Winding Layout"> </a>,</p>
+      <p><a name="1071294"><img src="images/chap05.8.1.70.png" width="310" height="50" alt=""></a></p>
+      <p><a name="1071311">For TEFLON, the breakdown voltage is 5000 V&#47;mm.</a></p>
+      <p><a name="1071320"><img src="images/chap05.8.1.71.png" width="217" height="42" alt=""></a></p>
+      <p><a name="1071328"><img src="images/chap05.8.1.72.png" width="228" height="21" alt=""> mm</a></p>
+      <p><a name="1071323">To achieve the minimum thickness of 0.1968 mm, you will use </a>two TEFLON sheets of 0.1mm thickness in parallel.</p>
+      <p><a name="1071333">Therefore, thickness for end insulation is </a><font color="#000000"><strong>0.2</strong></font><font color="#000000"><strong>&nbsp;</strong></font><font color="#000000"><strong>mm</strong></font>.</p>
+      <h4><a name="1071408">Step</a>&nbsp;17: Calculate window height available for winding</h4>
+      <p><font color="#3300ff"><strong>(5&#45;16) </strong></font><a name="1071445"><br></a><img src="images/chap05.8.1.73.png" width="379" height="31" alt=""></p>
+      <p><a name="1071457"><img src="images/chap05.8.1.74.png" width="259" height="31" alt=""></a></p>
+      <p><a name="1071480"><img src="images/chap05.8.1.75.png" width="144" height="31" alt=""></a></p>
+      <p><a name="1071488"><img src="images/chap05.8.1.76.png" width="114" height="31" alt=""> mm</a></p>
+      <h4><a name="1071424">Step</a>&nbsp;18: Calculate number of turns per layer</h4>
+      <p><a name="1071428">Using </a><a href="chap03a.html#1066124" title="Winding Layout"><font color="#0000ff"><u>Equation&nbsp;3&#45;2</u></font></a><a href="chap03a.html#1066124" title="Winding Layout"> </a>,</p>
+      <p><a name="1071816"><img src="images/chap05.8.1.77.png" width="339" height="42" alt=""></a></p>
+      <p><a name="1071941">Using the value of </a><font size="2" face="'Courier New'" color="#000000">H</font><font color="#000000"><sub>wdg</sub></font>, calculated in the previous step:</p>
+      <p><a name="1071824"><img src="images/chap05.8.1.78.png" width="172" height="42" alt=""></a></p>
+      <p><a name="1071864"><img src="images/chap05.8.1.79.png" width="172" height="42" alt=""></a></p>
+      <p><a name="1071872"><img src="images/chap05.8.1.80.png" width="145" height="42" alt=""></a></p>
+      <p><a name="1071514"><img src="images/chap05.8.1.81.png" width="83" height="42" alt=""></a></p>
+      <p><a name="1071912">If turns per layer is 10, K</a><font color="#000000"><sub>adj</sub></font> is 0.85. Taking K<font color="#000000"><sub>adj</sub></font> into account, turns per layer changes to </p>
+      <p><a name="1071929"><img src="images/chap05.8.1.82.png" width="174" height="42" alt=""></a></p>
+      <p><a name="1071536">Turns&#47;layer<img src="images/chap05.8.1.83.png" width="84" height="21" alt=""></a></p>
+      <p><a name="1071436"><img src="images/chap05.8.1.84.png" width="174" height="24" alt=""></a></p>
+      <h4><a name="1071554">Step</a>&nbsp;19: Calculate number of winding layers</h4>
+      <p><a name="1071552"><img src="images/chap05.8.1.85.png" width="322" height="48" alt=""></a></p>
+      <p><a name="1071565"><img src="images/chap05.8.1.86.png" width="213" height="48" alt=""></a></p>
+      <p><a name="1071946"><img src="images/chap05.8.1.87.png" width="236" height="24" alt=""></a></p>
+      <p><a name="1071954">Rounding off the value, </a></p>
+      <p><a name="1071955"><img src="images/chap05.8.1.88.png" width="202" height="24" alt=""></a></p>
+      <h4><a name="1071967">Step</a>&nbsp;20: Calculate inter layer insulation</h4>
+      <p><a name="1071965">Using </a><a href="#1072604" title="Designing DC Inductors"><font color="#0000ff"><u>Equation&nbsp;5&#45;9</u></font></a><a href="#1072604" title="Designing DC Inductors"> </a>,</p>
+      <p><a name="1072011">layer voltage = V&#47;total number of layers</a></p>
+      <p><a name="1072017"><img src="images/chap05.8.1.89.png" width="244" height="24" alt=""></a></p>
+      <p><a name="1072022">Voltage buildup between two layer is 2 times Voltage per </a>layer.</p>
+      <p><a name="1078943"><img src="images/chap05.8.1.90.png" width="266" height="24" alt=""></a></p>
+      <p><a name="1078970"><img src="images/chap05.8.1.91.png" width="276" height="24" alt=""></a></p>
+      <p><a name="1072006">Using </a><a href="chap03a.html#1067443" title="Winding Layout"><font color="#0000ff"><u>Equation&nbsp;3&#45;5</u></font></a><a href="chap03a.html#1067443" title="Winding Layout"> </a>, </p>
+      <p><a name="1071996"><img src="images/chap05.8.1.92.png" width="408" height="42" alt=""></a></p>
+      <p><a name="1071979"><img src="images/chap05.8.1.93.png" width="274" height="42" alt=""></a></p>
+      <p><a name="1072038"><img src="images/chap05.8.1.94.png" width="224" height="21" alt=""></a></p>
+      <p><a name="1072053">Minimum width of the TEFLON available is </a><font color="#000000"><strong>0.1 mm</strong></font>.</p>
+      <h4><a name="1072067">Step</a>&nbsp;21: Calculate winding buildup</h4>
+      <p><a name="1072065">For an EE core, winding buildup is calculated as,</a></p>
+      <p><a name="1072138"><img src="images/chap05.8.1.95.png" width="459" height="25" alt=""></a></p>
+      <p><a name="1072148"><img src="images/chap05.8.1.96.png" width="259" height="21" alt=""></a></p>
+      <p><a name="1072156"><img src="images/chap05.8.1.97.png" width="152" height="21" alt=""></a></p>
+      <p><a name="1072164"><img src="images/chap05.8.1.98.png" width="114" height="21" alt=""> mm</a></p>
+      <h4><a name="1072090">Step</a>&nbsp;22: Calculate B<font color="#000000"><sub>ac</sub></font></h4>
+      <p><a name="1072102">Using </a><a href="#1074241" title="Designing DC Inductors"><font color="#0000ff"><u>Equation&nbsp;5&#45;13</u></font></a><a href="#1074241" title="Designing DC Inductors"> </a>,</p>
+      <p><a name="1075345"><img src="images/chap05.8.1.99.png" width="322" height="95" alt=""></a></p>
+      <p><a name="1072108"><img src="images/chap05.8.1.100.png" width="341" height="91" alt=""> tesla</a></p>
+      <p><a name="1072119"><img src="images/chap05.8.1.101.png" width="309" height="67" alt=""> tesla</a></p>
+      <p><a name="1075422"><img src="images/chap05.8.1.102.png" width="280" height="67" alt=""> tesla</a></p>
+      <p><a name="1075437"><img src="images/chap05.8.1.103.png" width="200" height="67" alt=""> tesla</a></p>
+      <p><a name="1075445"><img src="images/chap05.8.1.104.png" width="186" height="40" alt=""> tesla</a></p>
+      <p><a name="1075681"><img src="images/chap05.8.1.105.png" width="176" height="40" alt=""> tesla</a></p>
+      <h4><a name="1075731">Step</a>&nbsp;23: Calculate winding length</h4>
+      <p><a name="1075732">Using </a><a href="chap04a.html#1066524" title="Performance Parameters"><font color="#0000ff"><u>Equation&nbsp;4&#45;3</u></font></a><a href="chap04a.html#1066524" title="Performance Parameters"> </a>, calculate the total length of the winding wire.</p>
+      <p><a name="1072188"><img src="images/chap05.8.1.106.png" width="438" height="68" alt=""></a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="48">
+              <div>
+                <nobr><font color="#3300ff"><strong>Note:	</strong></font></nobr>
+              </div>
+            </td>
+            <td><a name="1072206">While calculating the length of the winding wire, you </a>need to remember that it is not necessary that the number of turns in the last layer is same as the number of turns in other layers. </td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1076066">For this design example, the number of turns in the 14</a><font color="#000000"><sup>th</sup></font> layer is calculated as</p>
+      <blockquote><a name="1075781"><img src="images/chap05.8.1.107.png" width="123" height="21" alt=""></a></blockquote>
+      <h4><em><a name="1075766">Mean turn length of first layer</a></em></h4>
+      <p><a name="1076084"><font color="#000000">The mean turn length for the first layer is calculated as:</font></a></p>
+      <p><a name="1076100">2 [Bobbin_L</a><font color="#000000"><sub>x</sub></font> + Bobbin_L<font color="#000000"><sub>y</sub></font> + 2WireDiaInsu]</p>
+      <p><a name="1076253"><img src="images/chap05.8.1.108.png" width="233" height="28" alt=""> mm</a></p>
+      <p><a name="1076264"><img src="images/chap05.8.1.109.png" width="173" height="28" alt=""> mm</a></p>
+      <p><a name="1076274"><img src="images/chap05.8.1.110.png" width="68" height="21" alt=""> mm</a></p>
+      <p><a name="1076342"><font color="#000000">Similarly, mean turn length of the second layer is:</font></a></p>
+      <p><a name="1076343"> 2 [Bobbin_L</a><font color="#000000"><sub>x</sub></font> +Bobbin_L<font color="#000000"><sub>y</sub></font>+2WireDiaInsu+4 (InterlayerInsulation+WireDiaInsu)]</p>
+      <p><a name="1076294"><img src="images/chap05.8.1.111.png" width="233" height="28" alt=""> + <img src="images/chap05.8.1.112.png" width="147" height="28" alt=""> mm</a></p>
+      <p><a name="1076348"><img src="images/chap05.8.1.113.png" width="68" height="21" alt=""> + <img src="images/chap05.8.1.114.png" width="68" height="21" alt=""> mm</a></p>
+      <p><a name="1076361"><img src="images/chap05.8.1.115.png" width="68" height="21" alt=""> mm</a></p>
+      <p><a name="1076295">Similarly, you can calculate the mean turn length of all 14 </a>layers. The formula used is:</p>
+      <p><a name="1076371"><font color="#000000">2 [Bobbin_L</font></a><font color="#000000"><sub>x</sub></font> + Bobbin_L<font color="#000000"><sub>y</sub></font> + 2WireDiaInsu + <font size="2" face="'Courier New'" color="#000000">4*i</font>(WireDiaInsu + InterlayerInsulation)]</p>
+      <p><a name="1076377">where </a><font size="2" face="'Courier New'" color="#000000">i = n&#45;1</font> for the <font size="2" face="'Courier New'" color="#000000">n</font><font color="#000000"><sup>th</sup></font> layer</p>
+      <p><a name="1076236">To calculate the total length of the winding wire, you multiple </a>the mean turn length of a layer by the number of turns in that layer.</p>
+      <p><a name="1076413">Therefore, the total length of the wire is calculated as:</a></p>
+      <p><a name="1076418"><font size="2" face="'Courier New'" color="#000000">8*[51.608 + 56.024 + ........+ </font></a><font size="2" face="'Courier New'" color="#000000">mean_turn_length_of_13</font><font color="#000000"><sup>th</sup></font><font size="2" face="'Courier New'" color="#000000">_layer] + </font><font size="2" face="'Courier New'" color="#000000">3*mean_turn_length_of_14</font><font color="#000000"><sup>th</sup></font><font size="2" face="'Courier New'" color="#000000">_layer</font></p>
+      <p><a name="1076394">Using this calculation, the total length of the wire is calculated </a>as <font color="#000000"><strong>8449.864 mm</strong></font>.</p>
+      <h4><a name="1072208">Step</a>&nbsp;24: Calculate winding resistance</h4>
+      <p><a name="1072088">To calculate the winding resistance, use </a><a href="chap04a.html#1066383" title="Performance Parameters"><font color="#0000ff"><u>Equation&nbsp;4&#45;2</u></font></a><a href="chap04a.html#1066383" title="Performance Parameters"> </a>, </p>
+      <p><a name="1072234"><img src="images/chap05.8.1.116.png" width="71" height="48" alt=""></a></p>
+      <p><a name="1076628">The effective cross&#45;section area of the wire is calculated as </a>the product of cross&#45;section area of one wire and the number of strands in parallel.</p>
+      <p><a name="1076542"><img src="images/chap05.8.1.117.png" width="241" height="67" alt=""></a></p>
+      <p><a name="1076578"><img src="images/chap05.8.1.118.png" width="215" height="67" alt=""></a></p>
+      <p><a name="1076640"><img src="images/chap05.8.1.119.png" width="205" height="33" alt=""></a></p>
+      <p><a name="1076654"><img src="images/chap05.8.1.120.png" width="118" height="24" alt=""></a></p>
+      <h4><a name="1072254">Step</a>&nbsp;25: Calculate copper loss</h4>
+      <p><a name="1076605">Substituting the value of R in </a><a href="#1074964" title="Designing DC Inductors"><font color="#0000ff"><u>Equation&nbsp;5&#45;11</u></font></a><a href="#1074964" title="Designing DC Inductors"> </a>, copper loss is calculated as:</p>
+      <p><a name="1076600"><img src="images/chap05.8.1.121.png" width="134" height="40" alt=""></a></p>
+      <p><a name="1076668"><img src="images/chap05.8.1.122.png" width="194" height="40" alt=""></a></p>
+      <p><a name="1072263"><img src="images/chap05.8.1.123.png" width="126" height="31" alt=""> Watt</a></p>
+      <h4><a name="1072264">Step</a>&nbsp;26: Calculate core loss</h4>
+      <p><a name="1076914">For calculating core loss, the empirical formula derived from </a>the Magnetics data sheets is used.</p>
+      <p align="left"><a name="1077071">&nbsp;</a></p>
+      <table summary="" cellpadding="2" cellspacing="0" width="430">
+        <caption>
+        <tr>
+          <td cellpadding="2" valign="middle" width="42">
+            <p><font color="#3300ff"><strong>(5&#45;17) </strong></font><a name="1077075">&nbsp;</a></p>
+          </td>
+          <td cellpadding="2" valign="top" width="387">
+            <p><a name="1077080"><img src="images/chap05.8.1.124.png" width="346" height="34" alt=""></a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="2" valign="middle">
+            <p><font color="#3300ff"><strong>(5&#45;18) </strong></font><a name="1077082">&nbsp;</a></p>
+          </td>
+          <td cellpadding="2" valign="top">
+            <p><a name="1077087"><img src="images/chap05.8.1.125.png" width="223" height="40" alt=""></a></p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1077111">For P&#45;type material at 100K frequency, the values of a, c, and </a>d are listed in the table given below.</p>
+      <p align="left"><a name="1077134">&nbsp;</a></p>
+      <table summary="" border="0" cellpadding="4" cellspacing="0" bordercolor="#D3D3D3" width="150">
+        <caption>
+        <tr>
+          <td cellpadding="4" valign="top" width="42">
+            <p><a name="1077143">a =</a></p>
+          </td>
+          <td cellpadding="4" valign="top" width="107">
+            <p><a name="1077145">0.0434</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1077147">d =</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1077149">2.62</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1077151">c =</a></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1077153">1.63</a></p>
+          </td>
+        </tr>
+      </table>
+      <table summary="" border="0" cellpadding="4" cellspacing="0" bordercolor="#D3D3D3" width="431">
+        <caption>
+        <tr>
+          <td cellpadding="4" valign="top" width="54">
+            <p><a name="1080310">f</a></p>
+          </td>
+          <td cellpadding="4" valign="top" width="376">
+            <p><a name="1080312">operating frequency, specified in KiloHertz (KHz)</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" valign="top">
+            <p><a name="1080314">B</a><font color="#000000"><sub>ac</sub></font></p>
+          </td>
+          <td cellpadding="4" valign="top">
+            <p><a name="1080316">AC component of Magnetic flux density, specified in </a>Kilogauss</p>
+          </td>
+        </tr>
+      </table>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="13.333333333333332">
+              <div>&nbsp;</div>
+            </td>
+            <td width="133.33333333333331">
+              <div>
+                <nobr>
+                  <img src="images/important.gif" alt="ParagraphBullet" border="0">
+                </nobr>
+              </div>
+            </td>
+            <td>
+              <font size="3"><a name="1080253">To convert from tesla to kilo gauss, multiply by 10. </a><br><font color="#000000"><em>1 tesla = 10 kilogauss</em></font>.</font>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1077184"><img src="images/chap05.8.1.126.png" width="377" height="34" alt=""></a></p>
+      <p><a name="1077223"><img src="images/chap05.8.1.127.png" width="186" height="34" alt=""></a></p>
+      <p><a name="1077243"><img src="images/chap05.8.1.128.png" width="225" height="24" alt=""></a></p>
+      <p><a name="1077266"><img src="images/chap05.8.1.129.png" width="171" height="24" alt=""> mW</a></p>
+      <h4><a name="1076893">Step</a>&nbsp;27: Calculate temperature rise</h4>
+      <p><a name="1076940"><img src="images/chap05.8.1.130.png" width="332" height="56" alt=""></a></p>
+      <p><a name="1077573">Total loss = Copper loss + Core loss</a></p>
+      <p><a name="1077574">Total loss = 0.73584 + 0.0020646 </a></p>
+      <p><a name="1077577">Total loss = 0.7379 Watts</a></p>
+      <p><a name="1077639">CoreSurfaceArea <img src="images/chap05.8.1.131.png" width="110" height="28" alt=""> </a><font size="2" face="'Courier New'" color="#000000">mm</font><font color="#000000"><sup>2</sup></font></p>
+      <p><a name="1077679">Converting this in </a><font size="2" face="'Courier New'" color="#000000">cm</font><font color="#000000"><sup>2</sup></font>, CoreSurfaceArea <img src="images/chap05.8.1.132.png" width="68" height="21" alt=""> <font size="2" face="'Courier New'" color="#000000">cm</font><font color="#000000"><sup>2</sup></font></p>
+      <p><a name="1077644"><img src="images/chap05.8.1.133.png" width="234" height="56" alt=""></a></p>
+      <p><a name="1077761"><img src="images/chap05.8.1.134.png" width="207" height="31" alt=""></a></p>
+      <p><a name="1077792"><img src="images/chap05.8.1.135.png" width="128" height="31" alt=""> <img src="images/chap05.8.1.136.png" width="27" height="24" alt=""></a></p>
+      <h4><a name="1077025">Step</a>&nbsp;28: Calculate percentage window occupied</h4>
+      <p><a name="1077484">The percentage of window occupied is calculated using the </a>equation given below.</p>
+      <p><a name="1077021"><img src="images/chap05.8.1.137.png" width="448" height="48" alt=""></a></p>
+      <p><a name="1077322"><img src="images/chap05.8.1.138.png" width="444" height="55" alt=""></a></p>
+      <p><a name="1077431"><img src="images/chap05.8.1.139.png" width="349" height="48" alt=""></a></p>
+      <p><a name="1077435"><img src="images/chap05.8.1.140.png" width="309" height="24" alt=""> </a><font size="2" face="'Courier New'" color="#000000">mm</font><font color="#000000"><sup>2</sup></font></p>
+      <p><a name="1077439"><img src="images/chap05.8.1.141.png" width="294" height="31" alt=""></a></p>
+      <p><a name="1077363">Substitution the values of </a><font size="2" face="'Courier New'" color="#000000">H</font><font color="#000000"><sub>w</sub></font> and <font size="2" face="'Courier New'" color="#000000">W</font><font color="#000000"><sub>w</sub></font> from <a href="#1070858" title="Designing DC Inductors"><font color="#0000ff"><u>Table&nbsp;5&#45;1</u></font></a><a href="#1070858" title="Designing DC Inductors"> </a>, window are is calculated as:</p>
+      <p><a name="1077367"><img src="images/chap05.8.1.142.png" width="294" height="31" alt=""></a>&nbsp;<font size="2" face="'Courier New'" color="#000000">mm</font><font color="#000000"><sup>2</sup></font></p>
+      <p><a name="1077469"><img src="images/chap05.8.1.143.png" width="269" height="24" alt=""></a>&nbsp;<font size="2" face="'Courier New'" color="#000000">mm</font><font color="#000000"><sup>2</sup></font></p>
+      <p><a name="1077052"><img src="images/chap05.8.1.144.png" width="305" height="48" alt=""></a></p>
+      <p><a name="1077055"><font color="#000000"><strong>WindowOccupied = 29.86889%</strong></font></a></p>
+      <p><a name="1077535">These results are displayed in the Manufacturer Report tab of </a>the Results View.</p>
+      <p align="left"><a name="1075530"><img src="images/dcinductorresult.gif" width="777" height="415" alt=""></a></p>
+    </div>
+    <br>
+    <a href="#pagetop">Return to top of page</a>
+    <hr>
+    <hr align="left">
+    <div style="text-align: left;">
+      <!-- Begin Buttons -->
+      <table width="650" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                    </td>
+<td height="20" width="73">
+<a href="magpeugTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<a href="magpeugIX.html"><img src="../support/nav2_index.gif" border="0"></a>
+</td>
+          <td>
+            <a href="chap04a.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+          </td>
+          <td>
+            <a href="chap06.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+          </td>
+          <td>
+            <a>
+<a href="magpeug.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+            </a>
+          </td>
+          <td height="20" width="61">
+            <img src="../support/nav2_black.gif">
+          </td>
+          <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+          </td>
+          <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+          </td>
+          <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+          </td>
+        </tr>
+      </table>
+      <!-- End Buttons -->
+    </div>
+    <br>
+    <font size="-1" >
+For support, see <a href="http://support.cadence.com" target="_blank">Cadence Online Support</a> service.</font>
+    <br>
+    <br>
+    <font size="-1" >
+      <i>Copyright &#169; 2011, <a href="http://www.cadence.com">Cadence Design Systems, Inc.</a></i>
+    </font>
+    <br>
+    <font size="-1" >
+All rights reserved.</font>
+    <br>
+    <br>
+  </body>
+</html>

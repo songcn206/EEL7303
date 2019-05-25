@@ -1,0 +1,61 @@
+#
+# This is a csfLookupConfig file.
+#
+# See the "Cadence Application Infrastructure User Guide" for
+# details on the format of this file, its semantics, and its use.
+#
+# The '#' character denotes a comment. Removing the leading `#'
+# character from any of the entries below will activate them.
+#
+# SUPPORTED COMMANDS 
+# 
+# ALL
+#      All configuration files should be located via the standard Cadence
+#      Search File (CSF) mechanism* 
+#
+# NONE
+#      Configuration files should not be located via CSF 
+#
+# INCLUDE <filename>
+#      Configuration file <filename> should be located via CSF
+#
+# <filename>
+#      Same as INCLUDE <filename> command
+#
+# EXCLUDE <filename>
+#       Configuration file <filename> should not be located via CSF
+#
+# Commands listed later in the file override any previous commands.
+# For instance, if an ALL command is followed by a NONE command, the ALL
+# command will be discarded and the NONE command will be in effect.
+#
+# * See Chapter "Cadence Setup Search File: setup.loc" of the 
+#   "Cadence Application Infrastructure User Guide" for information 
+#   on the Cadence Search File mechanism.
+#
+#
+# EXAMPLES
+#
+# All files, except '.cdsinit',  will be located via CSF:
+#   ALL
+#   EXCLUDE .cdsenv
+#
+# No files, except '.cdsinit', will be located via CSF:
+#   NONE
+#   INCLUDE .cdsinit
+#
+# No files will be located via CSF, since the INCLUDE command is
+# overridden by the NONE command:
+#   INCLUDE .cdsinit
+#   NONE
+#
+#
+# CURRENT SETTINGS
+
+INCLUDE .cdsinit
+INCLUDE .cdsenv
+INCLUDE .oceanrc
+INCLUDE .simrc
+INCLUDE .cdsplotinit
+INCLUDE cdsSession.save
+INCLUDE display.drf

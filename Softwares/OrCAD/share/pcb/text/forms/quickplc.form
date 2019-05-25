@@ -1,0 +1,365 @@
+# $Header: /vobs/psd_backend_data/data/forms-core/quickplc.form /main/20 27-Jun-11.15:48:13 amiles $
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 50 60
+HEADER "Quickplace"
+
+POPUP <PROPERTYPOP>" ""0".
+POPUP <LAYERPOP>" ""0".
+POPUP <VALUEPOP>" ""0".
+POPUP <ROOM>" ""0".
+POPUP <PARTITION>" ""0".
+MESSAGE NO_EDGE 3 "No edge is selected."
+MESSAGE PLC_ERR 3 "Component(s) could not be placed.  See logfile for errors."
+MESSAGE PLC_SUCCESS 1 "Quickplace completed successfully."
+MESSAGE REFDES_NOLIST 1 "Refdes string must be pattern to match - lists not accepted."
+MESSAGE PARTNUM_NOLIST 1 "Part number string must be pattern to match - lists not accepted."
+MESSAGE NETNAME_NOLIST 1 "Net name string must be pattern to match - lists not accepted."
+MESSAGE PAGENUM_NOLIST 1 "Page num string must be pattern to match - lists not accepted."
+MESSAGE NETGROUP_NOLIST 1 "Net group string must be pattern to match - lists not accepted."
+MESSAGE REFDES_ILLEGAL 1 "Illegal char(s) in refdes entry."
+MESSAGE PARTNUM_ILLEGAL 1 "Illegal char(s) in part number entry."
+MESSAGE NETNAME_ILLEGAL 1 "Illegal char(s) in net name entry."
+MESSAGE PAGENUM_ILLEGAL 1 "Illegal char(s) in page number entry."
+MESSAGE NETGROUPNAME_ILLEGAL 1 "Illegal char(s) in net group entry."
+MESSAGE NO_PROPERTY 1 "No property is selected."
+MESSAGE PICK_POINT 1 "Select an origin for placement."
+MESSAGE ORIGIN_SELECTED 1 "Origin is selected."
+MESSAGE NO_ROOM 1 "Room is not present on the board."
+MESSAGE NO_PARTITION 1 "No partitions exist in the board."
+TILE
+
+GROUP "Edge"
+GLOC 3 40
+GSIZE 23 7
+ENDGROUP
+
+FIELD top_edge
+FLOC  10 42
+CHECKLIST "Top"
+ENDFIELD
+
+FIELD bottom_edge
+FLOC  10 44
+CHECKLIST "Bottom"
+ENDFIELD
+
+FIELD left_edge
+FLOC  4 43
+CHECKLIST "Left"
+ENDFIELD
+
+FIELD right_edge
+FLOC 18 43
+CHECKLIST "Right"
+ENDFIELD
+
+GROUP "Board Layer"
+GLOC  28 40
+GSIZE  22 7
+ENDGROUP
+
+FIELD board_layer
+FLOC 29 43
+ENUMSET 17
+POP "LAYERPOP"
+ENDFIELD
+
+GROUP "Place by REFDES"
+GLOC 3 19
+GSIZE 46 11
+ENDGROUP
+
+TEXT "Type:"
+TLOC 5 21
+ENDTEXT
+
+FIELD type_ic
+FLOC 20 21
+CHECKLIST "IC"
+ENDFIELD
+
+FIELD type_io
+FLOC 28 21
+CHECKLIST "IO"
+ENDFIELD
+
+FIELD type_discrete
+FLOC 36 21
+CHECKLIST "Discrete"
+ENDFIELD
+
+TEXT "Refdes:"
+TLOC 5 23
+ENDTEXT
+
+FIELD refdes_include
+FLOC 20 23
+CHECKLIST "Include" "REFDESGROUP"
+ENDFIELD
+
+FIELD refdes_include_filter
+FLOC 39 23
+STRFILLIN 5 31
+ENDFIELD
+
+FIELD refdes_exclude
+FLOC 20 25
+CHECKLIST "Exclude" "REFDESGROUP"
+ENDFIELD
+
+FIELD refdes_exclude_filter
+FLOC 39 25
+STRFILLIN 5 31
+ENDFIELD
+
+TEXT "Number of pins:"
+TLOC 5 27
+ENDTEXT
+
+TEXT "Min:"
+TLOC 21 27
+ENDTEXT
+
+FIELD min_pin
+FLOC 25 27
+LONGFILLIN 5 6
+MIN 0
+MAX 100000
+ENDFIELD
+
+TEXT "Max:"
+TLOC 34 27
+ENDTEXT
+
+FIELD max_pin
+FLOC 39 27
+LONGFILLIN 5 6
+MIN 0
+MAX 100000
+ENDFIELD
+
+FIELD overlap_checking
+FLOC 1 49
+CHECKLIST "Overlap components by"
+ENDFIELD
+
+FIELD overlap_number
+FLOC 25 49
+LONGFILLIN 5 6
+MIN 0
+MAX 100
+ENDFIELD
+
+TEXT "%"
+TLOC 32 49
+ENDTEXT
+
+FIELD undo_last_place
+FLOC 1 52
+MENUBUTTON "Undo last place" 13 3
+ENDFIELD
+
+TEXT "Symbols placed:"
+TLOC 17 52
+ENDTEXT
+
+TEXT 
+TLOC 30 52
+INFO num_applic_placed 5
+ENDTEXT
+TEXT "of"
+TLOC 34 52
+ENDTEXT
+TEXT 
+TLOC 38 52
+INFO total_applic_sym 5
+ENDTEXT
+
+GROUP "Placement Filter"
+GLOC  1 0 
+GSIZE  50 31
+ENDGROUP
+
+FIELD place_part_num
+FLOC 2 7
+CHECKLIST "Place by part number" "aaa"
+ENDFIELD
+
+FIELD part_num
+FLOC 25 7
+STRFILLIN 12 1024
+ENDFIELD
+
+FIELD part_num_browse
+FLOC 40 7
+MENUBUTTON "..." 6 3
+ENDFIELD
+
+FIELD place_net_name
+FLOC 2  9
+CHECKLIST "Place by net name" "aaa"
+ENDFIELD
+
+FIELD net_name
+FLOC 25 9
+STRFILLIN 12 255
+ENDFIELD
+
+FIELD net_name_browse
+FLOC 40 9
+MENUBUTTON "..." 6 3
+ENDFIELD
+
+FIELD place_netgroup_name
+FLOC 2 11
+CHECKLIST "Place by net group name" "aaa"
+ENDFIELD
+
+FIELD netgroup_name
+FLOC 25 11
+STRFILLIN 12 255
+ENDFIELD
+
+FIELD netgroup_name_browse
+FLOC 40 11
+MENUBUTTON "..." 6 3
+ENDFIELD
+
+GROUP "Placement Position"
+GLOC  1 31
+GSIZE 50 17
+ENDGROUP
+
+FIELD place_by_partition
+FLOC 2 33
+CHECKLIST "Place by partition"
+ENDFIELD
+
+FIELD by_partition
+FLOC 25 33
+ENUMSET 11
+OPTIONS prettyprint dispatchsame
+POP "PARTITION"
+ENDFIELD
+
+FIELD origin_select_mode
+FLOC 2 36
+CHECKLIST "By user pick"  "sac"
+ENDFIELD
+
+FIELD origin
+FLOC  25 36
+MENUBUTTON "Select origin" 12 3
+ENDFIELD
+
+TEXT ""
+TLOC 39 36
+INFO xy 22
+ENDTEXT
+
+FIELD place_by_package_keepout
+FLOC 2 38
+CHECKLIST "Around package keepin"  "sac"
+ENDFIELD
+
+FIELD place_by_property
+FLOC 2 3
+CHECKLIST "Place by property/value"  "aaa"
+ENDFIELD
+
+FIELD by_property
+FLOC 25 3
+ENUMSET 11
+OPTIONS prettyprint dispatchsame
+POP "PROPERTYPOP"
+ENDFIELD
+
+FIELD by_value
+FLOC 39 3
+ENUMSET 9
+OPTIONS prettyprint dispatchsame
+POP "VALUEPOP"
+ENDFIELD
+
+FIELD place_by_room
+FLOC 2 5
+CHECKLIST "Place by room"  "aaa"
+ENDFIELD
+
+FIELD by_room
+FLOC 25 5
+ENUMSET 13
+OPTIONS prettyprint dispatchsame
+POP "ROOM"
+ENDFIELD
+
+FIELD place_page_num
+FLOC 2 13
+CHECKLIST "Place by schematic page number"   "aaa"
+ENDFIELD
+	
+FIELD page_num
+FLOC 40 13
+MENUBUTTON "..." 6 3
+ENDFIELD
+
+FIELD place_all
+FLOC 2 15
+CHECKLIST "Place all components"   "aaa"
+ENDFIELD
+
+FIELD place_by_refdes
+FLOC 2 17
+CHECKLIST "Place by refdes"   "aaa"
+ENDFIELD
+
+FIELD modules
+FLOC 1 55
+CHECKLIST "Place components from modules"
+ENDTEXT
+
+TEXT "Unplaced symbol count:"
+TLOC 1 57
+ENDTEXT
+
+TEXT 
+TLOC 20 57
+INFO numsym 5
+ENDTEXT
+
+FIELD viewlog
+FLOC 41 57
+MENUBUTTON "Viewlog..." 9 3
+ENDFIELD
+
+FIELD done
+FLOC 1 60
+MENUBUTTON "OK" 9 3
+ENDFIELD
+
+FIELD place
+FLOC 11 60
+MENUBUTTON "Place" 9 3
+ENDFIELD
+
+FIELD unplace
+FLOC 21 60
+MENUBUTTON "Unplace" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 31 60
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 42 60
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM
+

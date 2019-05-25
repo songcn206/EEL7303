@@ -1,0 +1,193 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+VARIABLE
+PORT 50 31
+    #ifdef APD || ALLEGRO_MCM || SIP
+HEADER "Physical (Lines/Vias) Rule Set  Conductor DRC Modes"
+    #else
+HEADER "Physical (Lines/Vias) Rule Set    Etch    DRC Modes"
+    #endif
+
+
+MESSAGE VIEW_ONLY 3 "List is for viewing only in this form."
+MESSAGE NOTYPESUBC 2 "No subclasses of this type are available."
+
+TILE NET_DATA_PHYS_TOP
+TPANEL 1
+TEXT "Physical property"
+OPTIONS underline
+TLOC 1 0
+ENDTEXT
+
+TEXT "On"
+OPTIONS underline
+FLOC 25 0
+ENDTEXT
+
+TEXT "Off"
+OPTIONS underline
+FLOC 29 0
+ENDTEXT
+
+FIELD on
+FLOC 25 2
+MENUBUTTON "" 1 2
+ENDFIELD
+FIELD off
+FLOC 29 2
+MENUBUTTON "" 1 2
+ENDFIELD
+
+ENDTILE
+
+TILE NET_DATA_LINE_WIDTH
+TPANEL 1
+
+TEXT "Min line width:"
+TLOC 1 1
+ENDTEXT
+
+FIELD min_line_width_on
+FLOC 25 1
+CHECKLIST "" "1"
+ENDFIELD
+FIELD min_line_width_off
+FLOC 29 1
+CHECKLIST "" "1"
+ENDFIELD
+
+TEXT "Max line width:"
+TLOC 1 3
+ENDTEXT
+
+FIELD max_line_width_on
+FLOC 25 3
+CHECKLIST "" "2"
+ENDFIELD
+FIELD max_line_width_off
+FLOC 29 3
+CHECKLIST "" "2"
+ENDFIELD
+
+TEXT "Min neck width:"
+TLOC 1 5
+ENDTEXT
+
+TEXT "(follows min line width)"
+TLOC 25 5
+ENDTEXT
+
+TEXT "Max neck length:"
+TLOC 1 7
+ENDTEXT
+
+TEXT "(follows min line width)"
+TLOC 25 7
+ENDTEXT
+
+ENDTILE
+
+TILE NET_DATA_HEAVY
+TPANEL 1
+
+    #ifdef APD || ALLEGRO_MCM || SIP
+TEXT "Allow on con. subclass:"
+    #else
+TEXT "Allow on etch subclass:"
+    #endif
+TLOC 1 1
+ENDTEXT
+
+FIELD allow_on_subc_on
+FLOC 25 1
+CHECKLIST "" "3"
+ENDFIELD
+FIELD allow_on_subc_off
+FLOC 29 1
+CHECKLIST "" "3"
+ENDFIELD
+
+TEXT "'T' junctions:"
+TLOC 1 3
+ENDTEXT
+
+FIELD t_junction_on
+FLOC 25 3
+CHECKLIST "" "4"
+ENDFIELD
+FIELD t_junction_off
+FLOC 29 3
+CHECKLIST "" "4"
+ENDFIELD
+
+TEXT "Min BBvia stagger:"
+TLOC 1 6
+ENDTEXT
+
+FIELD min_bbvia_stagger_on
+FLOC 25 6
+CHECKLIST "" "5"
+ENDFIELD
+FIELD min_bbvia_stagger_off
+FLOC 29 6
+CHECKLIST "" "5"
+ENDFIELD
+
+TEXT "Max BBvia stagger:"
+TLOC 1 8
+ENDTEXT
+
+FIELD max_bbvia_stagger_on
+FLOC 25 8
+CHECKLIST "" "6"
+ENDFIELD
+FIELD max_bbvia_stagger_off
+FLOC 29 8
+CHECKLIST "" "6"
+ENDFIELD
+
+ENDTILE
+
+TILE DIR_CON
+TPANEL 1
+
+TEXT "Pad/Pad direct connect:"
+TLOC 1 1
+ENDTEXT
+
+FIELD direct_connect_on
+FLOC 25 1
+CHECKLIST "" "7"
+ENDFIELD
+FIELD direct_connect_off
+FLOC 29 1
+CHECKLIST "" "7"
+ENDFIELD
+
+ENDTILE
+
+TILE StdTile
+TPANEL 2
+FIELD done
+FLOC 1 1
+MENUBUTTON "Done" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 11 1
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD reset
+FLOC 22 1
+MENUBUTTON "Reset" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 40 1
+MENUBUTTON "Help" 9 3
+ENDFIELD
+ 
+ENDTILE
+
+ENDFORM

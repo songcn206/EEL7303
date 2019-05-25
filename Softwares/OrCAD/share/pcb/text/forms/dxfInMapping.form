@@ -1,0 +1,141 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM 
+FIXED
+PORT 100 1
+HEADER "DXF In Edit/View Layers"
+
+POPUP <allClasses>""""
+POPUP <popSubClass>""""
+POPUP <layerFilters>"FORMAT""1","PACKAGE""2","MECHANICAL""3","VIA""4".
+
+POPUP <Analysis>""""
+POPUP <AntiEtch>""""
+POPUP <BrdGeo>""""
+POPUP <CompVal>""""
+POPUP <DevType>""""
+POPUP <DrcErr>""""
+POPUP <DrngFmt>""""
+POPUP <Etch>""""
+POPUP <Mfg>""""
+POPUP <Pin>""""
+POPUP <PkgGeo>""""
+POPUP <PkgKpIn>""""
+POPUP <PkgKpOut>""""
+POPUP <RefDes>""""
+POPUP <RtKpIn>""""
+POPUP <RtKpOut>""""
+POPUP <Toler>""""
+POPUP <UsrPrtNum>""""
+POPUP <Via>""""
+POPUP <ViaKpOut>""""
+POPUP <dummyPop>""""
+
+TILE
+
+FIELD SelectAll
+FLOC 2 2
+CHECKLIST "Select all"
+ENDFIELD
+
+FIELD View
+FLOC 15 2
+MENUBUTTON "View selected layers" 13 3
+ENDFIELD
+
+TEXT "DXF layer filter:"
+TLOC 35 2
+ENDTEXT
+
+FIELD LayerFilter
+FLOC 50 2
+ENUMSET 7
+FSIZE  19 19
+POP "layerFilters"
+STRFILLIN 19 19
+ENDFIELD
+
+GRID MappingGrid
+
+FLOC 2 5
+FSIZE 98 18
+OPTIONS HLINES VLINES
+
+GHEAD TOP 
+HEADSIZE 2
+OPTIONS 3D MULTI
+ENDGHEAD
+
+ENDGRID
+
+GROUP "Map selected items"
+GLOC 2 23
+GSIZE 98 14
+ENDGROUP
+
+FIELD UseSubclassName
+FLOC 4 26
+CHECKLIST "Use DXF layer as subclass name"
+ENDFIELD
+
+TEXT "Class:"
+TLOC 4 29
+TGROUP "Map selected items" 
+ENDTEXT
+
+TEXT "Subclass:"
+TLOC 36 29
+TGROUP "Map selected items"
+ENDTEXT
+
+FIELD ClassEnum
+FLOC 9 29
+ENUMSET 7
+FSIZE  25 6
+FGROUP "Map selected items"
+POP "allClasses"
+ENDFIELD
+
+FIELD SubClassEnum
+FLOC 46 29
+ENUMSET 7
+FSIZE  35 6
+FGROUP "Sub Class"
+POP "popSubClass"
+ENDFIELD
+
+FIELD Map
+FLOC 9 33
+MENUBUTTON "Map" 10 3
+FGROUP "Map selected items"
+ENDFIELD
+
+FIELD UnMap
+FLOC 24 33
+MENUBUTTON "Unmap" 10 3
+FGROUP "Map selected items"
+ENDFIELD
+
+FIELD NewSubclass
+FLOC 46 33
+MENUBUTTON "New subclass" 13 3
+FGROUP "Map selected items"
+ENDFIELD
+
+FIELD Done
+FLOC 2 38
+MENUBUTTON "OK" 10 3
+ENDFIELD
+
+FIELD Cancel
+FLOC 15 38
+MENUBUTTON "Cancel" 10 3
+ENDFIELD
+
+FIELD Help
+FLOC 84 38
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

@@ -1,0 +1,94 @@
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 48 12
+HEADER "Convert Pins"
+
+
+POPUP <NAME_PINS>	"By Row""1",		\
+		  	"By Column""2",		\
+			"By Row & Column""3",	\
+			"Clockwise""4",		\
+			"Counter-Clockwise""5".
+
+POPUP <START_AT> 	"Middle-Top""0",	\
+			"Upper-Right""45",	\
+			"Middle-Right""90",	\
+			"Lower-Right""135",	\
+			"Middle-Bottom""180",	\
+			"Lower-Left""225",	\
+			"Middle-Left""270",	\
+			"Upper-Left""315".
+
+MESSAGE ILLEGAL_PIN_NAME        1  "Name must have at least one alphanumeric"
+MESSAGE ILLEGAL_START_POINT     1  "Enter Up-Rt, Low-Rt, Low-Left or Up-Left"
+MESSAGE ILLEGAL_SKIP_CHARACTERS 1  "Only alphanumeric characters allowed"
+
+
+TILE
+TEXT "Name pins:"
+TLOC 3 3
+ENDTEXT
+
+TEXT "Start with pin at:"
+TLOC 3 6
+ENDTEXT
+
+TEXT "First pin name:"
+TLOC 3 9
+ENDTEXT
+
+TEXT "Skip characters:"
+TLOC 3 12
+ENDTEXT
+
+TEXT "Text block size:"
+TLOC 3 15
+ENDTEXT
+
+FIELD NAME_PINS
+FLOC 24 3
+ENUMSET 18
+POP "NAME_PINS"
+ENDFIELD
+
+FIELD START_AT
+FLOC 24 6
+ENUMSET 18
+POP "START_AT"
+ENDFIELD
+
+FIELD FIRST_PIN_NAME
+FLOC 24 9
+STRFILLIN 16 31
+ENDFIELD
+
+FIELD SKIP_CHARACTERS
+FLOC 24 12
+STRFILLIN 16 31
+ENDFIELD
+
+FIELD TEXT_BLOCK_SIZE
+FLOC 24 15
+INTSLIDEBAR 2 2
+MIN 1
+MAX 64
+ENDFIELD
+
+FIELD done
+FLOC 3 19
+MENUBUTTON "Done" 10 3
+ENDFIELD
+
+FIELD help
+FLOC 18 19
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+FIELD cancel
+FLOC 33 19
+MENUBUTTON "Cancel" 10 3
+ENDFIELD
+
+ENDTILE
+ENDFORM

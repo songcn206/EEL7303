@@ -1,0 +1,894 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>
+      Pin Swapping In Capture-PCB Editor Flow
+    </title>
+    <meta name="Approver" content="Technical Publications" />
+    <meta name="Author" content="Technical Publications" />
+    <meta name="CreateDate" content="2012-10-10" />
+    <meta name="CreateTime" content="1349876210" />
+    <meta name="DataType" content="Manuals" />
+    <meta name="Description" content="UG" />
+    <meta name="DocTitle" content="OrCAD Capture User Guide" />
+    <meta name="DocType" content="User Guide" />
+    <meta name="FileTitle"
+    content="Pin Swapping In Capture-PCB Editor Flow" />
+    <meta name="Keywords" content="" />
+    <meta name="FileType" content="Chapter" />
+    <meta name="Keyword" content="cap_ug" />
+    <meta name="Language" content="English" />
+    <meta name="ModifiedDate" content="2012-10-10" />
+    <meta name="ModifiedTime" content="1349876210" />
+    <meta name="NextFile"
+    content="Back%2BAnnotation%2Bfrom%2BPCB%2BEditor.html" />
+    <meta name="Group" content="" />
+    <meta name="Platform" content="All," />
+    <meta name="PrevFile"
+    content="Cross%2BProbing%2Bfor%2BPCB%2BEditor.html" />
+    <meta name="Product"
+    content="Allegro Design Entry CIS,OrCAD Capture," />
+    <meta name="ProductFamily"
+    content="Silicon-Package-Board Co-Design,Silicon-Package-Board Co-Design," />
+    <meta name="ProductVersion" content="16.6" />
+    <meta name="RightsManagement"
+    content="Copyright 2011-2012 Cadence Design Systems Inc." />
+    <meta name="Title"
+    content="OrCAD Capture User Guide -- Pin Swapping In Capture-PCB Editor Flow" />
+    <meta name="Version" content="16.6" />
+    <meta name="Renderer" content="WIKI" />
+    <meta name="SpaceKey" content="capug166" />
+    <link href="styles/site.css" rel="stylesheet"
+    type="text/css" />
+    <meta content="text/html; charset=UTF-8"
+    http-equiv="Content-Type" />
+  </head>
+  <body style="margin-left: 5%;background-color: #FFFFFF;">
+    <a xmlns:html="http://www.w3.org/1999/xhtml" id="pagetop"
+    name="pagetop"></a> <a
+    xmlns:html="http://www.w3.org/1999/xhtml" id="firstpage"
+    name="firstpage"></a> <!-- Begin Buttons -->
+     
+    <table xmlns:html="http://www.w3.org/1999/xhtml" border="0"
+    cellpadding="0" cellspacing="0" width="650">
+      <tbody>
+        <tr>
+          <td colspan="10" height="36" width="650">
+            <img height="34" src="../support/header_doc.gif"
+            width="650" />
+          </td>
+        </tr>
+        <tr>
+          <td height="20" width="59">
+            <a href="javascript:openLibrary()"><img
+            alt="View Library" border="0" height="20"
+            src="../support/nav2_library.gif" width="59" /></a>
+          </td>
+          <td height="20" width="73">
+            <a href="cap_ugTOC.html"><img alt="Table of Contents"
+            border="0" src="../support/nav2_toc.gif" /></a>
+          </td>
+          <td height="20" width="46">
+            <img alt="Index" border="0"
+            src="../support/nav2_index_b.gif" />
+          </td>
+          <td>
+            <a href="Cross_Probing_for_PCB_Editor.html"><img
+            alt="Previous" border="0"
+            src="../support/nav2_previous.gif" /></a>
+          </td>
+          <td>
+            <a href="Back_Annotation_from_PCB_Editor.html"><img
+            alt="Next" border="0"
+            src="../support/nav_next.gif" /></a>
+          </td>
+          <td height="20">
+            <a href="cap_ug.pdf"><img alt="Open PDF to print book"
+            border="0" height="20" src="../support/nav2_print.gif"
+            width="114" /></a>
+          </td>
+          <td height="20" width="61">
+            <img src="../support/nav2_black.gif" />
+          </td>
+          <td height="20" width="76">
+            <a href="/feedback.htm"><img alt="Email Comments"
+            border="0" height="20"
+            src="../support/nav2_feedback.gif" width="76" /></a>
+          </td>
+          <td height="20" width="43">
+            <a href="../cdsuser/help.html"><img
+            alt="Help Using Documentation" border="0" height="20"
+            src="../support/nav2_help.gif" width="43" /></a>
+          </td>
+          <td height="20" width="37">
+            <a href="/exitsearch.htm"><img
+            alt="Shut Down Cadence Documentation Server" border="0"
+            height="20" src="../support/nav2_exit.gif"
+            width="37" /></a>
+          </td>
+        </tr>
+      </tbody>
+    </table><!-- End Buttons -->
+    <hr xmlns:html="http://www.w3.org/1999/xhtml" />
+    <div id="main-header">
+      <a xmlns="" id="PinSwappingInCapture-PCBEditorFlow"
+      name="PinSwappingInCapture-PCBEditorFlow"></a> 
+      <h1 xmlns="" style=" margin: 4px 0 4px;">
+        <span>Pin Swapping In Capture-PCB Editor Flow</span>
+      </h1>
+    </div>
+    <div class="wiki-content group" id="main-content">
+      <p>
+        PCB Editor allows function/section swapping depending on
+        the logical pin list on the function/section. This plays a
+        key role when you create asymmetrical parts. If you have
+        used invisible pins in a Capture design, these pins are not
+        used by PCB Editor while deciding swappable sections. That
+        is, body sections do not play any role in section swapping.
+        PCB Editor calls each section as a function. A function is
+        made with only logical pin list and any two functions that
+        have same logical pin list are swappable in PCB Editor.
+      </p>
+      <p>
+        In the Capture-PCB Editor flow (only) you can perform pin
+        swapping between parts in a heterogeneous package by using
+        the SWAP_INFO or the SPLIT_INST property. This is useful
+        when you are working with parts that have large pin counts
+        (such as BGA parts). For information about the SWAP_INFO
+        and the SPLIT_INST property, see <a class="external-link"
+        href="http://sj-rdwiki:8081/display/capug166/Physical+Layout+in+PCB+Editor#PhysicalLayoutinPCBEditor-1359690"
+         rel="nofollow">Using the SWAP_INFO property</a> and <a
+        class="external-link"
+        href="http://sj-rdwiki:8081/display/capug166/Physical+Layout+in+PCB+Editor#PhysicalLayoutinPCBEditor-1359724"
+         rel="nofollow">Using the SPLIT_INST property</a>. You can
+        assign the SWAP_INFO or the SPLIT_INST property to a part
+        at the library level (recommended) or at the instance
+        level.
+      </p>
+      <div class="panelMacro">
+        <p>
+          &#160;
+        </p>
+        <div class="table-wrap">
+          <table class="confluenceTable">
+            <colgroup>
+              <col />
+              <col />
+            </colgroup>
+            <tbody>
+              <tr>
+                <td class="confluenceTd">
+                  <img
+                  class="confluence-embedded-image confluence-external-resource"
+                   data-image-src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                   height="16"
+                  src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                   width="16" />
+                </td>
+                <td class="confluenceTd">
+                  <p>
+                    When you assign the SPLIT_INST property to a
+                    part at the library or instance level, all
+                    lower level occurrences of that part (on the
+                    schematic) inherit the property. This is the
+                    only occasion in which a property at a higher
+                    level overrides properties at lower levels.
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          &#160;
+        </p>
+      </div>
+      <p>
+        If you want to do pin swaps in PCB Editor and then back
+        annotate those changes, you must set up the pin properties
+        in Capture first. Pin swap specifications will be produced
+        only if the Swap Id properties are set correctly on
+        pin-swappable parts.
+      </p>
+      <p>
+        To do this, you can open the part in the library or select
+        the part of interest in your design. Then, from the Edit
+        menu, choose the Part option. From the View menu, choose
+        Package, then from the Edit menu, choose Properties.
+      </p>
+      <p>
+        In the Properties spreadsheet set the PinGroup value to 1
+        for each swappable (input) pin of the part. If you have a
+        multi-section part you only have to set the PinGroup value
+        for one section; the part editor adds the same value for
+        all the other sections automatically. For example, on a
+        7400, set the PinGroup to 1 for pins 1 and 2. Leave the
+        other PinGroup values blank and they are filled in
+        automatically when you click the update all button.
+        (PinGroup = 1 for pins 1, 2, 4, 5, 8, 9, 11, and 12.)
+      </p>
+      <p>
+        When you select a pin and edit its properties, the value
+        shows as the Swap Id property. The default value is -1,
+        meaning the pin is not swappable. Therefore you must add
+        the PinGroup property to enable pin swapping for your part
+        if you want to be able to swap pins. Swap Id value of 0 and
+        greater than 0 in the property editor mean that the pin is
+        swappable. If you made a pin swappable, and later decide to
+        remove the swappability of the part, then you just delete
+        the PinGroup property in the property editor. You can see
+        which pins are swappable in the <span
+        style="color: rgb(51,51,51);">PSTCHIP.DAT</span> file by
+        looking for the PIN_GROUP line under the pin name.
+      </p>
+      <h4
+      id="PinSwappingInCapture-PCBEditorFlow-&#160;UsingtheSWAP_INFOproperty">
+        <span class="confluence-anchor-link">&#160;</span>
+        <em>Using the SWAP_INFO property</em>
+      </h4>
+      <p>
+        To enable pin swaps across sections of heterogeneous split
+        parts in PCB Editor, a SWAP_INFO property has been
+        introduced in PCB Editor.
+      </p>
+      <div class="panelMacro">
+        <p>
+          &#160;
+        </p>
+        <div class="table-wrap">
+          <table class="confluenceTable">
+            <colgroup>
+              <col />
+              <col />
+            </colgroup>
+            <tbody>
+              <tr>
+                <td class="confluenceTd">
+                  <img
+                  class="confluence-embedded-image confluence-external-resource"
+                   data-image-src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                   height="16"
+                  src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                   width="16" />
+                </td>
+                <td class="confluenceTd">
+                  <p>
+                    In Capture 9.2.3, the SPLIT property provided a
+                    method for swapping pins between parts of a
+                    heterogeneous package. For all later releases
+                    of the product, it is recommended that the
+                    SWAP_INFO property should be used, as it
+                    provides the same functionality with better
+                    features.
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          &#160;
+        </p>
+      </div>
+      <div class="panelMacro">
+        <p>
+          &#160;
+        </p>
+        <div class="table-wrap">
+          <table class="confluenceTable">
+            <colgroup>
+              <col />
+              <col />
+            </colgroup>
+            <tbody>
+              <tr>
+                <td class="confluenceTd">
+                  <img
+                  class="confluence-embedded-image confluence-external-resource"
+                   data-image-src="http://sj-rdwiki:8081/images/icons/emoticons/forbidden.png"
+                   height="16"
+                  src="http://sj-rdwiki:8081/images/icons/emoticons/forbidden.png"
+                   width="16" />
+                </td>
+                <td class="confluenceTd">
+                  <p>
+                    In existing designs, do not replace the SPLIT
+                    property with the SWAP_INFO property. The SPLIT
+                    property converts parts as flat parts whereas
+                    the SWAP_INFO property leaves the part as a
+                    split part. On an existing design, replacing
+                    the SPLIT property on a component package with
+                    the SWAP_INFO property will change its
+                    definition from a flat part to a split part.
+                    This will cause component rip-offs in the board
+                    file.
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          &#160;
+        </p>
+      </div>
+      <div class="panelMacro">
+        <p>
+          &#160;
+        </p>
+        <div class="table-wrap">
+          <table class="confluenceTable">
+            <colgroup>
+              <col />
+              <col />
+            </colgroup>
+            <tbody>
+              <tr>
+                <td class="confluenceTd">
+                  <img
+                  class="confluence-embedded-image confluence-external-resource"
+                   data-image-src="http://sj-rdwiki:8081/images/icons/emoticons/forbidden.png"
+                   height="16"
+                  src="http://sj-rdwiki:8081/images/icons/emoticons/forbidden.png"
+                   width="16" />
+                </td>
+                <td class="confluenceTd">
+                  <p>
+                    Design created in old Capture releases, might
+                    have the SPLIT property assigned on components
+                    to enable swapping pins between parts of a
+                    heterogeneous package. For such designs, it is
+                    recommended that the SPLIT property must not be
+                    replaced with the SWAP_INFO property. This is
+                    because, the SPLIT property converts parts as
+                    flat parts whereas the SWAP_INFO property
+                    leaves the part as a split part. On an existing
+                    design, replacing the SPLIT property on a
+                    component package with the SWAP_INFO property
+                    will change its definition from a flat part to
+                    a split part. This will cause component
+                    rip-offs in the board file.
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          &#160;
+        </p>
+      </div>
+      <p>
+        The SWAP_INFO property defines a logical group of parts of
+        a package in a heterogeneous (split) part. This allows two
+        pins - having the same PIN_GROUP property - to be swapped
+        within a logical group, regardless of the physical
+        availability of the pin in the given part of the package.
+      </p>
+      <p>
+        The SWAP_INFO property is defined under the
+        [ComponentDefinitionProps] section in the allegro.cfg file.
+        The swap information is written into body section of the
+        primitive of the pstchip.dat file. PCB Editor reads the
+        SWAP_INFO property and accordingly allows pin swaps across
+        sections.
+      </p>
+      <div class="panelMacro">
+        <p>
+          &#160;
+        </p>
+        <div class="table-wrap">
+          <table class="confluenceTable">
+            <colgroup>
+              <col />
+              <col />
+            </colgroup>
+            <tbody>
+              <tr>
+                <td class="confluenceTd">
+                  <img
+                  class="confluence-embedded-image confluence-external-resource"
+                   data-image-src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                   height="16"
+                  src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                   width="16" />
+                </td>
+                <td class="confluenceTd">
+                  <p>
+                    If you have a customized PCB Editor
+                    configuration file (allegro.cfg) for your
+                    Capture PCB Editor netlister, you need to add
+                    the following entry under the
+                    [ComponentDefinitionProps] section in the
+                    Allegro.cfg file:
+                  </p>
+<pre>
+      [ComponentDefinitionProps]
+</pre>
+<pre>
+   SWAP_INFO=YES
+</pre>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          &#160;
+        </p>
+      </div>
+      <p>
+        <br />
+         <strong><em>Example</em></strong><br />
+         The usage of the SWAP_INFO property is described using a
+        split part.
+      </p>
+      <p>
+        <img
+        class="confluence-embedded-image confluence-thumbnail confluence-external-resource"
+         data-image-src="http://sj-rdwiki:8081/download/thumbnails/29854892/swap_info.gif?version=1&amp;modificationDate=1347370477922"
+         src="http://sj-rdwiki:8081/download/thumbnails/29854892/swap_info.gif?version=1&amp;modificationDate=1347370477922"
+         width="300" /><br />
+        <br class="atl-forced-newline" />
+         The above figure shows the example of a heterogeneous
+        (split) part having seven parts-per-package. Let us assume
+        that parts with the reference designators:
+      </p>
+      <ul>
+        <li>
+          U1A and U1B, form one logical section
+        </li>
+        <li>
+          U1C, U1D and U1E, form the second logical section
+        </li>
+        <li>
+          U1F and U1G, form the third logical section
+        </li>
+      </ul>
+      <p>
+        In this scenario, the value of the SWAP_INFO property on
+        all the parts of the package will be defined as:
+      </p>
+      <p>
+        <code>(S1+S2),(S3+S4+S5),(S6+S7)</code>
+      </p>
+      <p>
+        <br />
+         The logical section (S1+S2) indicates that a pin in
+        section S1 is swappable with a pin in section S2, provided
+        they have the same PIN_GROUP value. Therefore, pin 3 of S1
+        can be swapped with pin 14 of S2 if they have the same
+        PIN_GROUP value.
+      </p>
+      <p>
+        In a SWAP_INFO syntax, the logical and physical sections
+        are separated by a <img alt="(plus)"
+        class="emoticon emoticon-plus" data-emoticon-name="plus"
+        src="s/en_GB/3390/fe254e109a6fb9b541d2f5e2946c3766ed81e099.7/_/images/icons/emoticons/add.png" />
+        sign.
+      </p>
+      <p>
+        Note the following when you use the SWAP_INFO property:
+      </p>
+      <p>
+        &#160;
+      </p>
+      <div
+      class="fancybullets-3bb952ec-6d63-42ca-8547-4a237c552e08">
+        <ul>
+          <li>
+            You must assign the SWAP_INFO property to all parts in
+            the heterogeneous package for which you want to perform
+            pin swapping.
+          </li>
+          <li>
+            There must not be any duplicate pins on any of the
+            parts in the heterogeneous package if they are to
+            receive the SWAP_INFO property.
+          </li>
+          <li>
+            Ensure that you name the sections as (S1+S2+
+            S3+&#8230;S<em>n</em>). If you use any other notation
+            for naming the sections, the SWAP_INFO property will
+            not work.
+          </li>
+          <li>
+            Ensure that you use `(` and `)&#39; brackets for
+            defining single sections also. For example, If you have
+            a split part having 6 sections (S1 to S6) and wish to
+            add the SWAP_INFO property such that swapping happens
+            only between sections S5 and S6. In that case you need
+            to add the SWAP_INFO value as (S1), (S2), (S3), (S4),
+            (S5+S6).
+          </li>
+          <li>
+            The SWAP_INFO property does not function for
+            homogeneous parts. No DRC errors will be reported if
+            the SWAP_INFO property is assigned to a homogeneous
+            part.
+          </li>
+          <li>
+            DRC errors will not be reported if there are syntax or
+            semantic errors in the value of the SWAP_INFO property.
+          </li>
+        </ul>
+      </div>
+      <p>
+        &#160;
+      </p>
+      <h4
+      id="PinSwappingInCapture-PCBEditorFlow-&#160;UsingtheSPLIT_INSTproperty">
+        <span class="confluence-anchor-link">&#160;</span>
+        <em>Using the SPLIT_INST property</em>
+      </h4>
+      <p>
+        <span class="confluence-anchor-link">&#160;</span>The
+        SPLIT_INST property provides a method for swapping pins
+        between parts of a heterogeneous package. You can assign it
+        to a part in a library, or to an instance in a design.
+      </p>
+      <div class="panelMacro">
+        <p>
+          &#160;
+        </p>
+        <div class="table-wrap">
+          <table class="confluenceTable">
+            <colgroup>
+              <col />
+              <col />
+            </colgroup>
+            <tbody>
+              <tr>
+                <td class="confluenceTd">
+                  <img
+                  class="confluence-embedded-image confluence-external-resource"
+                   data-image-src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                   height="16"
+                  src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                   width="16" />
+                </td>
+                <td class="confluenceTd">
+                  <p>
+                    When you assign the SPLIT_INST property to a
+                    part at the library or instance level, all
+                    lower level occurrences of that part (on the
+                    schematic) inherit the property.
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          &#160;
+        </p>
+      </div>
+      <p>
+        The SPLIT_INST property has two possible values: TRUE and
+        FALSE (default). Assigning a value of TRUE to the
+        SPLIT_INST property on the parts of a heterogeneous package
+        indicates that the netlister treats the package as a flat
+        part, thus allowing pin swapping between the parts of that
+        package.<br />
+         When you use the SPLIT_INST property, be aware of the
+        following points:
+      </p>
+      <ul>
+        <li>
+          You must assign the SPLIT_INST property to each part in
+          the heterogeneous package for which you want to perform
+          pin swapping.
+        </li>
+        <li>
+          The SPLIT_INST property does not function for homogeneous
+          parts (nor will the Design Rules Check tool detect an
+          error if SPLIT_INST is assigned to a part that is part of
+          a homogeneous package).
+        </li>
+        <li>
+          There must not be any duplicate pins on any of the parts
+          in the heterogeneous package if they are to receive the
+          SPLIT_INST property.
+        </li>
+        <li>
+          Cross-probing will not function on pins of parts that
+          have the SPLIT_INST property assigned to them. You can
+          work around this by cross-probing the connected nets
+          rather than the pins.
+        </li>
+      </ul>
+      <div class="panelMacro">
+        <p>
+          &#160;
+        </p>
+        <div class="table-wrap">
+          <table class="confluenceTable">
+            <colgroup>
+              <col />
+              <col />
+            </colgroup>
+            <tbody>
+              <tr>
+                <td class="confluenceTd">
+                  <img
+                  class="confluence-embedded-image confluence-external-resource"
+                   data-image-src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                   height="16"
+                  src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                   width="16" />
+                </td>
+                <td class="confluenceTd">
+                  <p>
+                    SinceCapture 10.5 release, the SPLIT property
+                    has been renamed to SPLIT_INST.
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          &#160;
+        </p>
+      </div>
+      <p>
+        Some of the other pin properties used in Capture for pin
+        and gate swapping are:
+      </p>
+      <h4
+      id="PinSwappingInCapture-PCBEditorFlow-&#160;NO_SWAP_COMPproperty">
+        <span class="confluence-anchor-link">&#160;</span>
+        <em>NO_SWAP_COMP property</em>
+      </h4>
+      <p>
+        The NO_SWAP_COMP property defined on a component instance
+        ensures that while swapping the component, the symbol
+        associated with the component does not get swapped. This
+        property takes a boolean value. Make sure that you set the
+        value of this property to TRUE.
+      </p>
+      <h4
+      id="PinSwappingInCapture-PCBEditorFlow-&#160;NO_SWAP_GATEproperty">
+        <span class="confluence-anchor-link">&#160;</span>
+        <em>NO_SWAP_GATE property</em>
+      </h4>
+      <p>
+        The NO_SWAP_GATE property defined on a reference designator
+        or a function designator (gate) specifies the functions
+        within the component that cannot be swapped. The function
+        remains fixed in its current slot in the component. This
+        property takes a boolean value. Make sure that you set the
+        value of this property to TRUE. For more information on
+        this property, see the <em>Allegro PCB and Package
+        User&#39;s Guide</em>.
+      </p>
+      <h4
+      id="PinSwappingInCapture-PCBEditorFlow-&#160;NO_SWAP_GATE_EXTproperty">
+        <span class="confluence-anchor-link">&#160;</span>
+        <em>NO_SWAP_GATE_EXT property</em>
+      </h4>
+      <p>
+        The NO_SWAP_GATE_EXT property defined on a function
+        designator ensures that the function is not swapped with a
+        function from another component. However, the function can
+        be swapped among slots within its current component. This
+        property takes a boolean value. Make sure that you set the
+        value of this property to TRUE.
+      </p>
+      <h4
+      id="PinSwappingInCapture-PCBEditorFlow-&#160;NO_SWAP_PINproperty">
+        <span class="confluence-anchor-link">&#160;</span>
+        <em>NO_SWAP_PIN property</em>
+      </h4>
+      <p>
+        The NO_SWAP_PIN property defined on a reference designator,
+        function designator (gate), or a pin ensures that the pins
+        on the component or function are not swapped either
+        interactively or automatically. This property takes a
+        boolean value. Make sure that you set the value of this
+        property to TRUE.
+      </p>
+      <p>
+        When you add this property at the instance level in
+        Capture, you need to add the following entry under the
+        [ComponentInstanceProps] section in the Allegro.cfg file:
+      </p>
+      <p>
+        &#160;
+      </p>
+<pre>
+[ComponentInstanceProps]
+</pre>
+<pre>
+NO_SWAP_PIN=YES
+</pre>
+      <p>
+        &#160;
+      </p>
+      <p>
+        The above entry contains the properties that you add to the
+        components in Capture.
+      </p>
+      <div class="panelMacro">
+        <p>
+          &#160;
+        </p>
+        <div class="table-wrap">
+          <table class="confluenceTable">
+            <colgroup>
+              <col />
+              <col />
+            </colgroup>
+            <tbody>
+              <tr>
+                <td class="confluenceTd">
+                  <img
+                  class="confluence-embedded-image confluence-external-resource"
+                   data-image-src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                   height="16"
+                  src="http://sj-rdwiki:8081/images/icons/emoticons/warning.png"
+                   width="16" />
+                </td>
+                <td class="confluenceTd">
+                  <ul>
+                    <li>
+                      <strong>Part name.</strong> The part name
+                      found between single quotation marks in the
+                      PSTCHIP.DAT file is just the value of the
+                      DEVICE property present. If there is no a
+                      DEVICE property on the part, then the part
+                      name is a made by combining the values of the
+                      Source Package, PCB Footprint and other
+                      properties that may be found in the
+                      [ComponentDefinitionProps] section of the
+                      configuration file. The part name string is a
+                      concatenation of these properties, with each
+                      value separated by an underscore character.
+                      By changing the order of component
+                      definitions properties in Allegro.cfg you can
+                      change the concatenation order.
+                    </li>
+                  </ul>
+                  <ul>
+                    <li>
+                      <strong>Pin level property transfer between
+                      Capture and PCB Editor.</strong> You can also
+                      pass pin level properties between Capture and
+                      PCB Editor using a configuration file. This
+                      ensures seamless transfer of pin level
+                      constraints between Capture and PCB Editor.
+                      In the earlier versions of Capture, there was
+                      no way pin level properties could be
+                      transferred back and forth from Capture and
+                      PCB Editor and had to be manually specified
+                      at both ends. For example, now you can
+                      specify a property say, NO_SHAPE_CONNECT to a
+                      schematic pin. PCB Editor, on finding this
+                      property, will ensure that no connection is
+                      created between the pin (that passes through
+                      a shape with the same net) and a shape.
+                    </li>
+                  </ul>
+                  <ul>
+                    <li>
+                      <strong>Packaging of multi-section
+                      parts.</strong> During netlisting,
+                      multi-section, heterogeneous parts are
+                      treated as single-section parts. For
+                      multi-section parts, all sections must have
+                      the same values for the properties listed
+                      under [ComponentInstanceProps] in <a
+                      class="external-link"
+                      href="http://sj-rdwiki:8081/display/capug166/Physical+Layout+in+PCB+Editor#PhysicalLayoutinPCBEditor-1359667"
+                       rel="nofollow">Pin Swapping In Capture-PCB
+                      Editor Flow</a>. For example, ROOM is a
+                      component instance property, so if you add
+                      {ROOM} to the combined property string when
+                      you annotate, then sections with differing
+                      ROOM properties will not be packaged
+                      together.<br />
+                      <br />
+                       You can separate or combine component
+                      instances in a multi-section parts just by
+                      specifying distinguishing properties in the
+                      combined property string. Check the
+                      configuration file to identify the component
+                      instance properties currently available.
+                    </li>
+                  </ul>
+                  <ul>
+                    <li>
+                      If you are planning to back-annotate your
+                      design from Capture, do not modify the
+                      schematic in Capture while working on the
+                      design in PCB Editor.
+                    </li>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <hr xmlns:html="http://www.w3.org/1999/xhtml" />
+    <hr xmlns:html="http://www.w3.org/1999/xhtml" align="left" />
+    <div xmlns:html="http://www.w3.org/1999/xhtml"
+    style="text-align: left;">
+      <!-- Begin Buttons -->
+      <table border="0" cellpadding="0" cellspacing="0"
+      width="650">
+        <tbody>
+          <tr>
+            <td colspan="10" height="36" width="650">
+              <img height="34" src="../support/header_doc.gif"
+              width="650" />
+            </td>
+          </tr>
+          <tr>
+            <td height="20" width="59">
+              <a href="javascript:openLibrary()"><img
+              alt="View Library" border="0" height="20"
+              src="../support/nav2_library.gif" width="59" /></a>
+            </td>
+            <td height="20" width="73">
+              <a href="cap_ugTOC.html"><img alt="Table of Contents"
+              border="0" src="../support/nav2_toc.gif" /></a>
+            </td>
+            <td height="20" width="46">
+              <img alt="Index" border="0"
+              src="../support/nav2_index_b.gif" />
+            </td>
+            <td>
+              <a href="Cross_Probing_for_PCB_Editor.html"><img
+              alt="Previous" border="0"
+              src="../support/nav2_previous.gif" /></a>
+            </td>
+            <td>
+              <a href="Back_Annotation_from_PCB_Editor.html"><img
+              alt="Next" border="0"
+              src="../support/nav_next.gif" /></a>
+            </td>
+            <td height="20">
+              <a href="cap_ug.pdf"><img
+              alt="Open PDF to print book" border="0" height="20"
+              src="../support/nav2_print.gif" width="114" /></a>
+            </td>
+            <td height="20" width="61">
+              <img src="../support/nav2_black.gif" />
+            </td>
+            <td height="20" width="76">
+              <a href="/feedback.htm"><img alt="Email Comments"
+              border="0" height="20"
+              src="../support/nav2_feedback.gif" width="76" /></a>
+            </td>
+            <td height="20" width="43">
+              <a href="../cdsuser/help.html"><img
+              alt="Help Using Documentation" border="0" height="20"
+              src="../support/nav2_help.gif" width="43" /></a>
+            </td>
+            <td height="20" width="37">
+              <a href="/exitsearch.htm"><img
+              alt="Shut Down Cadence Documentation Server"
+              border="0" height="20" src="../support/nav2_exit.gif"
+              width="37" /></a>
+            </td>
+          </tr>
+        </tbody>
+      </table><!-- End Buttons -->
+    </div><br xmlns:html="http://www.w3.org/1999/xhtml" />
+     <font xmlns:html="http://www.w3.org/1999/xhtml" size="-1">For
+    support, see <a href="http://support.cadence.com"
+    target="_blank">Cadence Online Support</a> service.</font> <br
+    xmlns:html="http://www.w3.org/1999/xhtml" />
+     <br xmlns:html="http://www.w3.org/1999/xhtml" />
+     <font xmlns:html="http://www.w3.org/1999/xhtml"
+    size="-1"><i>Copyright &#169; 2012, <a
+    href="http://www.cadence.com">Cadence Design Systems,
+    Inc.</a></i></font> <br
+    xmlns:html="http://www.w3.org/1999/xhtml" />
+     <font xmlns:html="http://www.w3.org/1999/xhtml" size="-1">All
+    rights reserved.</font> <br
+    xmlns:html="http://www.w3.org/1999/xhtml" />
+     <br xmlns:html="http://www.w3.org/1999/xhtml" />
+  </body>
+</html>

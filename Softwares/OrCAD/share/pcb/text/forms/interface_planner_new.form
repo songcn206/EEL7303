@@ -1,0 +1,110 @@
+#
+# Interface Planner Form for Interface Planner Command (part of Interface Based Design)
+#
+
+FILE_TYPE=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 38 60
+HEADER "Interface Planner"
+
+POPUP <IP_TREE_POP> """".
+
+TILE
+
+################################################################################
+
+# Left hand side of form has tree view
+
+GROUP "Interfaces"
+GLOC 1 0
+GSIZE 37 23
+ENDGROUP
+
+FIELD ip_tree
+FLOC 2 2
+TREEVIEW 35 10
+POP "IP_TREE_POP"
+ENDFIELD
+
+################################################################################
+
+# Right hand side of form has interface information
+
+TEXT "No. of Required Assignments: "
+TLOC 2 24
+ENDTEXT
+
+TEXT ""
+TLOC 23 24
+INFO ip_num_req_assigns 256
+ENDTEXT
+
+TEXT "No. of Soft Assignments: "
+TLOC 2 26
+ENDTEXT
+
+TEXT ""
+TLOC 23 26
+INFO ip_num_partial_assigns 256
+ENDTEXT
+
+TEXT "No. of Hard Assignments: "
+TLOC 2 28
+ENDTEXT
+
+TEXT ""
+TLOC 23 28
+INFO ip_num_full_assigns 256
+ENDTEXT
+
+TEXT "No. of Power/Ground Pins: "
+TLOC 2 30
+ENDTEXT
+
+TEXT ""
+TLOC 23 30
+INFO ip_num_power_pins 256
+ENDTEXT
+
+TEXT "Color: "
+TLOC 2 33
+ENDTEXT
+
+FIELD ip_color
+FLOC 7 33
+COLOR 5 1
+ENDFIELD
+
+################################################################################
+
+# Buttons along the bottom of the form. Not in a Group box.
+
+FIELD ip_apply
+FLOC 1 36
+MENUBUTTON "Done" 10 3
+ENDFIELD
+
+FIELD ip_oops
+FLOC 12 36
+MENUBUTTON "Oops" 10 3
+ENDFIELD
+
+FIELD ip_cancel
+FLOC 23 36
+MENUBUTTON "Cancel" 10 3
+ENDFIELD
+
+FIELD ip_hide
+FLOC 1 39
+MENUBUTTON "Hide" 10 3
+ENDFIELD
+
+FIELD ip_help
+FLOC 23 39
+MENUBUTTON "Help" 10 3
+ENDFIELD
+
+ENDTILE
+
+ENDFORM

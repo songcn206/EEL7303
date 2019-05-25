@@ -1,0 +1,116 @@
+FILE_TYPEt=FORM_DEFN VERSION=2
+FORM
+FIXED
+PORT 80 33
+HEADER "Text Wizard Step 2, File Info."
+
+POPUP <UNITPOPUP>"""".
+
+TILE
+
+TEXT "Please identify the coordinate specifications and column delimiters used in this file. Delimiters are characters used to mark the boundary between two columns of data."
+TLOC 3 1
+FSIZE 77 4
+ENDTEXT
+
+GROUP "Coordinates"
+GLOC 3 4
+GSIZE 15 9
+ENDTEXT
+
+FIELD file_units
+FLOC 5 6
+ENUMSET 8
+POP "UNITPOPUP"
+ENDFIELD
+
+FIELD file_abs_coords
+FLOC 5 8
+CHECKLIST "Absolute" "coordinates"
+ENDFIELD
+
+FIELD file_rel_coords
+FLOC 5 10
+CHECKLIST "Relative" "coordinates"
+ENDFIELD
+
+GROUP "Delimiters"
+GLOC 20 4
+GSIZE 57 9
+ENDGROUP
+
+FIELD delimiter_tab
+FLOC 22 6
+CHECKLIST "Tab"
+ENDFIELD
+
+FIELD delimiter_semicolon
+FLOC 22 8
+CHECKLIST "Semicolon"
+ENDFIELD
+
+FIELD delimiter_comma
+FLOC 22 10
+CHECKLIST "Comma"
+ENDFIELD
+
+FIELD delimiter_space
+FLOC 35 6
+CHECKLIST "Space"
+ENDFIELD
+
+FIELD delimiter_other
+FLOC 35 8
+CHECKLIST "Other:"
+ENDFIELD
+
+FIELD delimiter_char
+FLOC 42 8
+STRFILLIN 1 1
+ENDFIELD
+
+FIELD delimiter_consec
+FLOC 50 6
+CHECKLIST "Ignore consecutive delimiters"
+ENDFIELD
+
+FIELD delimiter_trailing
+FLOC 50 8
+CHECKLIST "Remove trailing delimiters"
+ENDFIELD
+
+TEXT "File name:"
+TLOC 3 13
+INFO file_name 55
+ENDGROUP
+
+GRID grid
+FLOC 3 15
+FSIZE 75 15
+ENDGRID
+
+FIELD back
+FLOC 3 30
+MENUBUTTON "<Back" 9 3
+ENDFIELD
+
+FIELD next
+FLOC 13 30
+MENUBUTTON "Next>" 9 3
+ENDFIELD
+
+FIELD cancel
+FLOC 24 30
+MENUBUTTON "Cancel" 9 3
+ENDFIELD
+
+FIELD help
+FLOC 69 30
+MENUBUTTON "Help" 9 3
+ENDFIELD
+
+
+ENDTILE
+
+ENDFORM
+

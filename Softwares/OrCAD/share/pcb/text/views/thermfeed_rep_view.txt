@@ -1,0 +1,38 @@
+#
+# Property of Cadence Design Systems, Inc. All rights reserved.
+#
+# $Header: 
+#
+# File: thermfeed_rep_view.txt - Extract cmd file to extract the 
+#                              temps
+#
+# Revision history:
+#      (1.3) SRP/DEBC 1/9/91 therm2ged demo
+#      (1.2) RAJ 03/22/89 Fixed comments
+#      (1.1) RAJ 02/20/89 REF_DES_FOR_ASSIGN --> LOGICAL_PATH.
+#			  FUNC_ROOM --> COMP_ROOM.
+#			  corrected name of file in comments.
+#      (1.0) RAJ 12/14/88 Initial Version
+#
+#
+LOGICAL_PIN
+#
+# Extract: func_logical_path, func_des, pin_number_sort, refdes, pin_number,
+#          net_name, comp_room
+#
+# Selection is no pure power/ground pins and no pure NC pins
+# i.e. logical pins where func_des is not null
+# Logical unconnected pins, single node net pins and spares are output
+#
+FUNC_DES != ''
+#
+FUNC_LOGICAL_PATH
+FUNC_DES
+PIN_NUMBER_SORT
+REFDES
+PIN_NUMBER
+NET_NAME
+COMP_J_TEMPERATURE
+#
+# end of genfeed_rep_view
+#

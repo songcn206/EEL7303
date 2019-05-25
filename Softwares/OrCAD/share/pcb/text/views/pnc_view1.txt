@@ -1,0 +1,79 @@
+#
+# Extract view files (1 of 2) for
+# Pacific Numerix's Turbo Package Analyzer
+#
+#
+
+#----------------------------------------------
+# extract stack up data for NF2
+#
+LAYER
+  LAYER_SORT
+  LAYER_SUBCLASS
+  LAYER_USE
+  LAYER_CONDUCTOR
+  LAYER_DIELECTRIC_CONSTANT
+  LAYER_ELECTRICAL_CONDUCTIVITY
+  LAYER_MATERIAL
+  LAYER_SHIELD_LAYER
+  LAYER_THERMAL_CONDUCTIVITY
+  LAYER_THICKNESS
+END
+
+#----------------------------------------------
+# extract pad definition
+# note:
+#	no fields are allowed in this "view"
+PAD_DEF
+END
+
+#----------------------------------------------
+# extract COMPONENT PIN
+#
+COMPONENT_PIN
+  REFDES_SORT
+  PIN_NUMBER_SORT
+  REFDES
+  COMP_PACKAGE
+  PIN_NUMBER
+  PIN_X
+  PIN_Y
+  PAD_STACK_NAME
+END
+
+#----------------------------------------------
+# extract vias and bondfingers
+#   vias -
+#   bondfingers - the BOND_PAD field is non-empty
+#
+COMPOSITE_PAD
+	VIA_X != ''
+    NET_NAME
+    PAD_STACK_NAME
+    VIA_X
+    VIA_Y
+    VIA_ROTATION
+	BOND_PAD
+END
+
+#----------------------------------------------
+# extract substrate geometry for NF2
+#
+GEOMETRY
+  CLASS = SUBSTRATE GEOMETRY
+  SUBCLASS = OUTLINE
+  RECORD_TAG
+  GRAPHIC_DATA_NAME
+  GRAPHIC_DATA_NUMBER
+  GRAPHIC_DATA_1
+  GRAPHIC_DATA_2
+  GRAPHIC_DATA_3
+  GRAPHIC_DATA_4
+  GRAPHIC_DATA_5
+  GRAPHIC_DATA_6
+  GRAPHIC_DATA_7
+  GRAPHIC_DATA_8
+  GRAPHIC_DATA_9
+  GRAPHIC_DATA_10
+END
+

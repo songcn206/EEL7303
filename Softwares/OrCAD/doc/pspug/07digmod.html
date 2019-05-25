@@ -1,0 +1,1406 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN" "http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+<html xmlns="http://www.w3.org/MarkUp/Wilbur/HTML32.dtd">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>PSpice User Guide -- Digital device modeling</title>
+<META NAME="Approver" CONTENT="Technical Publications">
+<META NAME="Author" CONTENT="Technical Publications">
+<META NAME="CreateDate" CONTENT="2012-08-31">
+<META NAME="CreateTime" CONTENT="1346413404">
+<META NAME="DataType" CONTENT="Manuals">
+<META NAME="Description" CONTENT="User guide for PSpice and AMS Simulator.">
+<META NAME="DocTitle" CONTENT="PSpice User Guide">
+<META NAME="DocType" CONTENT="User Guide">
+<META NAME="EdmsRelease" CONTENT="EDMS Windows-P015">
+<META NAME="FileTitle" CONTENT="Digital device modeling">
+<META NAME="FileType" CONTENT="Chapter">
+<META NAME="Keyword" CONTENT="pspug">
+<META NAME="Language" CONTENT="English">
+<META NAME="ModifiedDate" CONTENT="2012-08-31">
+<META NAME="ModifiedTime" CONTENT="1346413404">
+<META NAME="NextFile" CONTENT="P3setup.html">
+<META NAME="PageCount" CONTENT="40">
+<META NAME="Platform" CONTENT="ALL">
+<META NAME="PrevFile" CONTENT="06abm.html">
+<META NAME="Product" CONTENT="Allegro AMS Simulator, PSpice">
+<META NAME="ProductFamily" CONTENT="PCB Design, PCB Design">
+<META NAME="ProductVersion" CONTENT="16.6">
+<META NAME="RightsManagement" CONTENT="Copyright 2012 Cadence Design Systems Inc.">
+<META NAME="Title" CONTENT="PSpice User Guide -- Digital device modeling">
+<META NAME="TopicTags" CONTENT="FALSE">
+<META NAME="Version" CONTENT="16.6">
+  </head>
+  <body style="margin-left: 5%;">
+    <a name="pagetop"></a>
+    <a name="firstpage"></a>
+    <!-- Begin Buttons -->
+    <table width="650" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td height="36" width="650" colspan="10">
+          <img src="../support/header_doc.gif" width="650" height="34">
+        </td>
+      </tr>
+      <tr>
+        <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                </td>
+<td height="20" width="73">
+<a href="pspugTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<a href="pspugIX.html"><img src="../support/nav2_index.gif" border="0"></a>
+</td>
+        <td>
+          <a href="06abm.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+        </td>
+        <td>
+          <a href="P3setup.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+        </td>
+        <td height="20">
+          <a>
+<a href="pspug.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+          </a>
+        </td>
+        <td height="20" width="61">
+          <img src="../support/nav2_black.gif">
+        </td>
+        <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+        </td>
+        <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+        </td>
+        <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+        </td>
+      </tr>
+    </table>
+    <!-- End Buttons -->
+    <p>
+    <hr>
+    <p>
+      <h3>
+        <center>
+          <font >
+            <div>PSpice&#174; User Guide</div>
+            <font >
+              <div>
+            </font>
+          </font>
+        </center>
+      </h3>
+      <br>
+    </p>
+    <div>
+      <h1>7<a name="1055352">&nbsp;</a></h1>
+      <h1><a name="1055359">Digital device modeling</a></h1>
+      <h2><a name="1048364">Chapter overview</a></h2>
+      <p><a name="1048366">This chapter provides information about digital modeling, and </a>includes the following sections:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1048390" title="Digital device modeling" name="1048370"><font color="Blue"><u>Introduction</u></font></a><a href="#1048390" title="Digital device modeling"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1048402" title="Digital device modeling" name="1049644"><font color="Blue"><u>Functional behavior</u></font></a><a href="#1048402" title="Digital device modeling"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1052350" title="Digital device modeling" name="1049648"><font color="Blue"><u>Timing characteristics</u></font></a><a href="#1052350" title="Digital device modeling"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1048977" title="Digital device modeling" name="1049652"><font color="Blue"><u>Input&#47;Output characteristics</u></font></a><a href="#1048977" title="Digital device modeling"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a href="#1049293" title="Digital device modeling" name="1048385"><font color="Blue"><u>Creating a digital model using the PINDLY and LOGICEXP primitives</u></font></a><a href="#1049293" title="Digital device modeling"> </a></td>
+          </tr>
+        </table>
+      </div>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1048387">This entire chapter describes features that are not included in </a>PSpice.</p>
+      <h2><a name="1048390">Introduction</a></h2>
+      <p><a name="1048391">The standard part libraries contain a comprehensive set of digital </a>parts in many different technologies. Each digital part is described electrically by a digital device model in the form of a subcircuit definition stored in a model library. The corresponding subcircuit name is defined by the part's MODEL attribute value. Other attributes--MNTYMXDLY, IO_LEVEL, and the PSPICEDEFAULTNET set--are passed to the subcircuit, thus providing a high&#45;level means for influencing the behavior of the digital device model.</p>
+      <p><a name="1048392">Generally, the digital parts provided in the part libraries are </a>satisfactory for most circuit designs. However, if your design requires digital parts that are not already provided in the PSpice part and model libraries, you need to define digital device models corresponding to the new digital parts.</p>
+      <p><a name="1048393">A complete digital device model has three main characteristics:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048394">Functional behavior: described by the gate&#45;level and behavioral </a>digital primitives comprising the subcircuit.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048395">I&#47;O behavior: described by the I&#47;O model, interface subcircuits, </a>and power supplies related to a logic family.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048396">Timing behavior: described by one or more timing models, </a>pin&#45;to&#45;pin delay primitives, or constraint checker primitives.</td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1048398">These characteristics are described in this chapter with a running </a>example demonstrating the use of gate&#45;level primitives.</p>
+      <h2><a name="1048402">Functional behavior</a></h2>
+      <p><a name="1048403">A digital device model's functional behavior is defined by one or more </a>interconnected digital primitives. Typically, a logic diagram in a data book can be implemented directly using the primitives provided by PSpice. The table below provides a summary of the digital primitives.</p>
+      <p align="left"><a name="1048599">&nbsp;</a>&nbsp;</p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="432">
+        <caption>
+          <p align="left"><font color="#000000"><strong>Table 7&#45;1&nbsp; </strong></font><strong><a name="1049656">Digital primitives summary</a></strong></p>
+        </caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="123">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048406">Type</a></strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" bordercolor="#000000" valign="middle" width="309">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048408">Description</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" bgcolor="#E6E6E6" cellpadding="4" border="2" bordercolor="#000000" valign="middle">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048410">Standard gates</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="2" valign="top">
+            <p><a name="1048414">BUF</a></p>
+            <p><a name="1048415">INV</a></p>
+            <p><a name="1048416">AND</a></p>
+            <p><a name="1048417">NAND</a></p>
+            <p><a name="1048418">OR</a></p>
+            <p><a name="1048419">NOR</a></p>
+            <p><a name="1048420">XOR</a></p>
+            <p><a name="1048421">NXOR</a></p>
+            <p><a name="1048422">BUFA</a></p>
+            <p><a name="1048423">INVA</a></p>
+            <p><a name="1048424">ANDA</a></p>
+            <p><a name="1048425">NANDA</a></p>
+            <p><a name="1048426">ORA</a></p>
+            <p><a name="1048427">NORA</a></p>
+            <p><a name="1048428">XORA</a></p>
+            <p><a name="1048429">NXORA</a></p>
+            <p><a name="1048430">AO</a></p>
+            <p><a name="1048431">OA</a></p>
+            <p><a name="1048432">AOI</a></p>
+            <p><a name="1048433">OAI</a></p>
+          </td>
+          <td cellpadding="4" border="2" valign="top">
+            <p><a name="1048435">buffer</a></p>
+            <p><a name="1048436">inverter</a></p>
+            <p><a name="1048437">AND gate</a></p>
+            <p><a name="1048438">NAND gate</a></p>
+            <p><a name="1048439">OR gate</a></p>
+            <p><a name="1048440">NOR gate</a></p>
+            <p><a name="1048441">exclusive OR gate</a></p>
+            <p><a name="1048442">exclusive NOR gate</a></p>
+            <p><a name="1048443">buffer array</a></p>
+            <p><a name="1048444">inverter array</a></p>
+            <p><a name="1048445">AND gate array</a></p>
+            <p><a name="1048446">NAND gate array</a></p>
+            <p><a name="1048447">OR gate array</a></p>
+            <p><a name="1048448">NOR gate array</a></p>
+            <p><a name="1048449">exclusive OR gate array</a></p>
+            <p><a name="1048450">exclusive NOR gate array</a></p>
+            <p><a name="1048451">AND&#45;OR compound gate</a></p>
+            <p><a name="1048452">OR&#45;AND compound gate</a></p>
+            <p><a name="1048453">AND&#45;NOR compound gate</a></p>
+            <p><a name="1048454">OR&#45;NAND compound gate</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" bgcolor="#E6E6E6" cellpadding="4" border="2" bordercolor="#000000" valign="middle">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048456">Tristate gates</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1048460">BUF3</a></p>
+            <p><a name="1048461">INV3</a></p>
+            <p><a name="1048462">AND3</a></p>
+            <p><a name="1048463">NAND3</a></p>
+            <p><a name="1048464">OR3</a></p>
+            <p><a name="1048465">NOR3</a></p>
+            <p><a name="1048466">XOR3</a></p>
+            <p><a name="1048467">NXOR3</a></p>
+            <p><a name="1048468">BUF3A</a></p>
+            <p><a name="1048469">INV3A</a></p>
+            <p><a name="1048470">AND3A</a></p>
+            <p><a name="1048471">NAND3A</a></p>
+            <p><a name="1048472">OR3A</a></p>
+            <p><a name="1048473">NOR3A</a></p>
+            <p><a name="1048474">XOR3A</a></p>
+            <p><a name="1048475">NXOR3A</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1048477">buffer</a></p>
+            <p><a name="1048478">inverter</a></p>
+            <p><a name="1048479">AND gate</a></p>
+            <p><a name="1048480">NAND gate</a></p>
+            <p><a name="1048481">OR gate</a></p>
+            <p><a name="1048482">NOR gate</a></p>
+            <p><a name="1048483">exclusive OR gate</a></p>
+            <p><a name="1048484">exclusive NOR gate</a></p>
+            <p><a name="1048485">buffer array</a></p>
+            <p><a name="1048486">inverter array</a></p>
+            <p><a name="1048487">AND gate array</a></p>
+            <p><a name="1048488">NAND gate array</a></p>
+            <p><a name="1048489">OR gate array</a></p>
+            <p><a name="1048490">NOR gate array</a></p>
+            <p><a name="1048491">exclusive OR gate array</a></p>
+            <p><a name="1048492">exclusive NOR gate array</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" bgcolor="#E6E6E6" cellpadding="4" border="0" valign="middle">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048494">Bidirectional transfer gates</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1048498">NBTG</a></p>
+            <p><a name="1048499">PBTG</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1048501">N&#45;channel transfer gate</a></p>
+            <p><a name="1048502">P&#45;channel transfer gate</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" bgcolor="#E6E6E6" cellpadding="4" border="0" valign="middle">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048504">Flip&#45;flops and latches</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1048508">JKFF</a></p>
+            <p><a name="1048509">DFF</a></p>
+            <p><a name="1048510">SRFF</a></p>
+            <p><a name="1048511">DLTCH</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1048513">J&#45;K, negative&#45;edge triggered</a></p>
+            <p><a name="1048514">D&#45;type, positive&#45;edge triggered</a></p>
+            <p><a name="1048515">S&#45;R gated latch</a></p>
+            <p><a name="1048516">D gated latch</a></p>
+            <p><a name="1049665">&nbsp;</a></p>
+            <p><a name="1049666">&nbsp;</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" bgcolor="#E6E6E6" cellpadding="4" border="0" valign="middle">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048518">Pullup&#47;pulldown resistors</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1048522">PULLUP</a></p>
+            <p><a name="1048523">PULLDN</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1048525">pullup resistor array</a></p>
+            <p><a name="1048526">pulldown resistor array</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" bgcolor="#E6E6E6" cellpadding="4" border="0" valign="middle">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048528">Delay lines</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="2" valign="top">
+            <p><a name="1048532">DLYLINE</a></p>
+          </td>
+          <td cellpadding="4" border="2" valign="top">
+            <p><a name="1048534">delay line</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" bgcolor="#E6E6E6" cellpadding="4" border="2" bordercolor="#000000" valign="middle">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048537">Programmable logic arrays</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1048541">PLAND</a></p>
+            <p><a name="1048542">PLOR</a></p>
+            <p><a name="1048543">PLXOR</a></p>
+            <p><a name="1048544">PLNAND</a></p>
+            <p><a name="1048545">PLNOR</a></p>
+            <p><a name="1048546">PLNXOR</a></p>
+            <p><a name="1048547">PLANDC</a></p>
+            <p><a name="1048548">PLORC</a></p>
+            <p><a name="1048549">PLXORC</a></p>
+            <p><a name="1048550">PLNANDC</a></p>
+            <p><a name="1048551">PLNORC</a></p>
+            <p><a name="1048552">PLNXORC</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1048554">AND array</a></p>
+            <p><a name="1048555">OR array</a></p>
+            <p><a name="1048556">exclusive OR array</a></p>
+            <p><a name="1048557">NAND array</a></p>
+            <p><a name="1048558">NOR array</a></p>
+            <p><a name="1048559">exclusive NOR array</a></p>
+            <p><a name="1048560">AND array, true and complement</a></p>
+            <p><a name="1048561">OR array, true and complement</a></p>
+            <p><a name="1048562">exclusive OR array, true and complement</a></p>
+            <p><a name="1048563">NAND array, true and complement</a></p>
+            <p><a name="1048564">NOR array, true and complement</a></p>
+            <p><a name="1048565">exclusive NOR array, true and </a>complement</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" bgcolor="#E6E6E6" cellpadding="4" border="0" valign="middle">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048567">Memory</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1048571">ROM</a></p>
+            <p><a name="1048572">RAM</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1048574">read&#45;only memory</a></p>
+            <p><a name="1048575">random access read&#45;write memory</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" cellpadding="4" border="0" valign="top">
+            <p><a name="1048577">Multi&#45;Bit A&#47;D &amp; D&#47;A Converters</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1048581">ADC</a></p>
+            <p><a name="1048582">DAC</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1048584">multi&#45;bit A&#47;D converter</a></p>
+            <p><a name="1048585">multi&#45;bit D&#47;A converter</a></p>
+            <p><a name="1049667">&nbsp;</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" bgcolor="#E6E6E6" cellpadding="4" border="0" valign="middle">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1048587">Behavioral</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="2" valign="top">
+            <p><a name="1048591">LOGICEXP</a></p>
+            <p><a name="1048592">PINDLY</a></p>
+            <p><a name="1048593">CONSTRAINT</a></p>
+          </td>
+          <td cellpadding="4" border="2" valign="top">
+            <p><a name="1048595">logic expression</a></p>
+            <p><a name="1048596">pin&#45;to&#45;pin delay</a></p>
+            <p><a name="1048598">constraint checking</a></p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1048603">The format for digital primitives is similar to that for analog devices. </a>One difference is that most digital primitives require two models instead of one:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048604">The </a><font color="#000000"><em>timing model</em></font>, which specifies propagation delays and timing constraints such as setup and hold times.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048606">The </a><font color="#000000"><em>I&#47;O model</em></font>, which specifies information specific to the device's input&#47;output characteristics.</td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1048607">The reason for having two models is that, while timing information is </a>specific to a device, the input&#47;output characteristics are specific to a whole logic family. Thus, many devices in the same family reference the same I&#47;O model, but each device has its own timing model. </p>
+      <p><a name="1049682">Figure </a><font color="#0000ff"><u>7&#45;1</u></font> presents an overview of a digital device definition in terms of its primitives and underlying model attributes. These models are discussed further on <a href="#1048792" title="Digital device modeling"><font color="Blue"><u>Timing model</u></font></a><a href="#1048792" title="Digital device modeling"></a> and <a href="#1048986" title="Digital device modeling"><font color="Blue"><u>Input&#47;Output model</u></font></a><a href="#1048986" title="Digital device modeling"></a>.</p>
+      <h4><a name="1048621">Digital primitive syntax</a></h4>
+      <p><a name="1049707">The general digital primitive format is shown below. For specific </a>information on each primitive type see the online <font color="#000000"><em>PSpice Reference </em></font><font color="#000000"><em>Guide</em></font>. Note that some digital primitives, such as pullups, do not have Timing models. See <a href="#1048792" title="Digital device modeling"><font color="Blue"><u>Timing model</u></font></a><a href="#1048792" title="Digital device modeling"></a> for more information.</p>
+      <p>
+        <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049711">U&#60;</a><font color="#000000"><em>name</em></font>&#62; &#60;<font color="#000000"><em>primitive</em></font><em> </em><font color="#000000"><em>type</em></font>&#62; [( &#60;<font color="#000000"><em>parameter value</em></font>&#62;* )] <br>+ &#60;<font color="#000000"><em>digital power node</em></font>&#62; &#60;<font color="#000000"><em>digital ground node</em></font>&#62;<br>+ &#60;<font color="#000000"><em>node</em></font>&#62;*<br>+ &#60;<font color="#000000"><em>Timing Model name</em></font>&#62; &#60;<font color="#000000"><em>I&#47;O Model name</em></font>&#62;<br>+ [MNTYMXDLY=&#60;<font color="#000000"><em>delay select value</em></font>&#62;]<br>+ [IO_LEVEL=&#60;<font color="#000000"><em>interface subckt select value</em></font>&#62;]</font>
+      </p>
+      <p><a name="1049714">where</a></p>
+      <p><a name="1049715">&#60;</a><font color="#000000"><em>primitive type</em></font>&#62; [( &#60;<font color="#000000"><em>parameter value</em></font>&#62;* )]</p>
+      <p><a name="1048631">is the type of digital device, such as </a>NAND, JKFF, or INV. It is followed by zero or more parameters specific to the primitive type, such as number of inputs. The number and meaning of the parameters depends on the primitive type.</p>
+      <p><a name="1048687">&#60;</a><font color="#000000"><em>digital power node</em></font>&#62; &#60;<font color="#000000"><em>digital ground node</em></font>&#62;</p>
+      <blockquote><a name="1048688">are the nodes used by the interface subcircuits which connect </a>analog nodes to digital nodes or vice versa.</blockquote>
+      <p><a name="1048689">&#60;</a><font color="#000000"><em>node</em></font>&#62;*</p>
+      <blockquote><a name="1048690">is one or more input and output nodes. The number of nodes </a>depends on the primitive type and its parameters. Analog devices, digital devices, or both may be connected to a node. If a node has both analog and digital connections, then PSpice&nbsp;A&#47;D automatically inserts an interface subcircuit to translate between digital output states and voltages.</blockquote>
+      <p><a name="1048692">&#60;</a><font color="#000000"><em>Timing model name</em></font>&#62; </p>
+      <blockquote><a name="1048693">is the name of a timing model that describes the device's timing </a>characteristics, such as propagation delay and setup and hold times. Each timing parameter has a minimum, typical, and maximum value which may be selected during analysis setup.</blockquote>
+      <blockquote><a name="1048694">This type of Timing model and its parameters are specific to </a>each primitive type and are discussed in the online <font color="#000000"><em>PSpice </em></font><font color="#000000"><em>Reference Guide</em></font>. </blockquote>
+      <p><a name="1048697">&#60;</a><font color="#000000"><em>I&#47;O model name</em></font>&#62;</p>
+      <blockquote><a name="1048698">is the name of an I&#47;O model that describes the device's loading </a>and driving characteristics. I&#47;O models also contain the names of up to four DtoA and AtoD interface subcircuits, which are automatically called by PSpice&nbsp;A&#47;D to handle analog&#47;digital interface nodes. See <a href="#1048986" title="Digital device modeling"><font color="Blue"><u>Input&#47;Output model</u></font></a><a href="#1048986" title="Digital device modeling"></a> for more information.</blockquote>
+      <p align="left"><a name="1050651"><img src="images/07digmod.12.1.1.png" width="525" height="738" alt=""></a></p>
+      <p><a name="1050780">&nbsp;</a></p>
+      <p><a name="1050785">MNTYMXDLY</a></p>
+      <blockquote><a name="1048703">is an optional device parameter that selects either the minimum, </a>typical, or maximum delay values from the device's timing model. If not specified, MNTYMXDLY defaults to 0. Valid values are:</blockquote>
+      <blockquote><a name="1048735">&nbsp;</a></blockquote>
+<ul>      <table summary="" cellpadding="16" cellspacing="0" bgcolor="#FFFFFF" width="346">
+        <caption>
+        <tr>
+          <td cellpadding="16" valign="top" width="29">
+            <p><a name="1048706">0</a></p>
+          </td>
+          <td cellpadding="16" valign="top" width="29">
+            <p><a name="1048708">=</a></p>
+          </td>
+          <td cellpadding="16" valign="top" width="288">
+            <p><a name="1048710">the current value of the circuit&#45;wide</a><br>DIGMNTYMX option (default=2)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="16" valign="top">
+            <p><a name="1048712">1</a></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1048714">=</a></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1048716">minimum</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="16" valign="top">
+            <p><a name="1048718">2</a></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1048720">=</a></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1048722">typical</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="16" valign="top">
+            <p><a name="1048724">3</a></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1048726">=</a></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1048728">maximum</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="16" valign="top">
+            <p><a name="1048730">4</a></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1048732">=</a></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1048734">worst&#45;case timing (min&#45;max)</a></p>
+          </td>
+        </tr>
+      </table></ul>
+      <p><a name="1048737">IO_LEVEL</a></p>
+      <blockquote><a name="1048738">is an optional device parameter that selects one of the four AtoD </a>or DtoA interface subcircuits from the device's I&#47;O model. PSpice calls the selected subcircuit automatically in the event a node connecting to the primitive also connects to an analog device. If not specified, IO_LEVEL defaults to 0. Valid values are:</blockquote>
+      <blockquote><a name="1048771">&nbsp;</a></blockquote>
+<ul>      <table summary="" cellpadding="16" cellspacing="0" bgcolor="#FFFFFF" width="346">
+        <caption>
+        <tr>
+          <td cellpadding="16" valign="top" width="29">
+            <p><a name="1048741">0</a></p>
+          </td>
+          <td cellpadding="16" valign="top" width="29">
+            <p><a name="1048743">=</a></p>
+          </td>
+          <td cellpadding="16" valign="top" width="288">
+            <p><a name="1048745">the current value of the circuit&#45;wide</a><br>DIGIOLVL option (default=1)</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="16" valign="top">
+            <p><a name="1048748">1</a></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1048750">=</a></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1048752">AtoD1&#47;DtoA1</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="16" valign="top">
+            <p><a name="1048754">2</a></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1048756">=</a></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1048758">AtoD2&#47;DtoA2</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="16" valign="top">
+            <p><a name="1048760">3</a></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1048762">=</a></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1048764">AtoD3&#47;DtoA3</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="16" valign="top">
+            <p><a name="1048766">4</a></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1048768">=</a></p>
+          </td>
+          <td cellpadding="16" valign="top">
+            <p><a name="1048770">AtoD4&#47;DtoA4</a></p>
+          </td>
+        </tr>
+      </table></ul>
+      <p><a name="1048774">Following are some simple examples of "U" device </a>declarations:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+      <p>
+        <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048775">U1 NAND(2) $G_DPWR $G_DGND 1 2 10 D0_GATE IO_DFT</a></font>
+      </p>
+      <p>
+        <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048776">U2 JKFF(1) $G_DPWR $G_DGND 3 5 200 3 3 10 2 D_293ASTD </a><br>+ IO_STD</font>
+      </p>
+      <p>
+        <font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1048777">U3 INV $G_DPWR $G_DGND IN OUT D_INV IO_INV MNTYMXDLY=3</a><br>+ IO_LEVEL=2</font>
+      </p>
+      <p><a name="1048778">For example, the 74393 part could be defined as a subcircuit </a>composed of "U" devices as shown below.</p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1050797">.subckt 74393  A CLR QA QB QC QD</a><br>+&nbsp;&nbsp;optional: DPWR=$G_DPWR DGND=$G_DGND<br>+&nbsp;&nbsp;params: MNTYMXDLY=0 IO_LEVEL=0<br>UINV inv DPWR DGND<br>+&nbsp;&nbsp;CLR   CLRBAR D0_GATE IO_STD <br>+&nbsp;&nbsp;IO_LEVEL={IO_LEVEL} <br>U1 jkff(1) DPWR DGND<br>+&nbsp;&nbsp;$D_HI CLRBAR A   $D_HI $D_HI   <br>+&nbsp;&nbsp;QA_BUF $D_NC D_393_1 IO_STD <br>+&nbsp;&nbsp;MNTYMXDLY={MNTYMXDLY}<br>+&nbsp;&nbsp;IO_LEVEL={IO_LEVEL} <br>U2 jkff(1) DPWR DGND<br>+&nbsp;&nbsp;$D_HI CLRBAR QA_BUF   $D_HI $D_HI  <br>+&nbsp;&nbsp;QB_BUF $D_NC D_393_2 IO_STD <br>+&nbsp;&nbsp;MNTYMXDLY={MNTYMXDLY} <br>U3 jkff(1) DPWR DGND<br>+&nbsp;&nbsp;$D_HI CLRBAR QB_BUF   $D_HI $D_HI  <br>+&nbsp;&nbsp;QC_BUF $D_NC D_393_2 IO_STD <br>+&nbsp;&nbsp;MNTYMXDLY={MNTYMXDLY} <br>U4 jkff(1) DPWR DGND<br>+&nbsp;&nbsp;$D_HI CLRBAR QC_BUF   $D_HI $D_HI  <br>+&nbsp;&nbsp;QD_BUF $D_NC D_393_3 IO_STD <br>+&nbsp;&nbsp;MNTYMXDLY={MNTYMXDLY} <br>UBUFF bufa(4) DPWR DGND<br>+&nbsp;&nbsp;QA_BUF QB_BUF QC_BUF QD_BUF   <br>+&nbsp;&nbsp;QA QB QC QD D_393_4 IO_STD <br>+&nbsp;&nbsp;MNTYMXDLY={MNTYMXDLY}<br>+&nbsp;&nbsp;IO_LEVEL={IO_LEVEL} <br>.ends</font></blockquote>
+      <p><a name="1048781">When adding digital parts to the part libraries, you must create </a>corresponding digital device models by connecting U devices in a subcircuit definition similar to the one shown above. You should save these in your own custom model library, which you can then configure for use with a given design.</p>
+      <h2><a name="1052350">Timing characteristics</a></h2>
+      <p><a name="1052352">A digital device model's timing behavior can be defined in one of two </a>ways:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048787">Most primitives have an associated Timing model, in which </a>propagation delays and timing constraints (such as setup&#47;hold times) are specified. This method is used when it is easy to partition delays among individual primitives; typically when the number of primitives is small.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048788">Use the PINDLY and CONSTRAINT primitives, which can </a>directly model pin&#45;to&#45;pin delays and timing constraints for the whole device model. With this method, all other functional primitives operate in zero delay.&nbsp;Refer to the online <font color="#000000"><em>PSpice </em></font><font color="#000000"><em>Reference Guide</em></font> for a detailed discussion on these two primitives.</td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1048789">In addition to explicit propagation delays, other factors, such as </a>output loads, can affect the total propagation delay through a device.</p>
+      <h3><a name="1048792">Timing model</a></h3>
+      <p><a name="1048793">With the exception of the PULLUP, PULLDN, and PINDLY devices, all </a>digital primitives have a Timing model which provides timing parameters to the simulator. The Timing model for each primitive type is unique. That is, the model name and the parameters that can be defined for that model vary with the primitive type. </p>
+      <p><a name="1048795">Within a Timing model, there may be one or more types of </a>parameters:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048796">Propagation delays (TP)</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048797">Setup times (TSU)</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048798">Hold times (TH)</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048799">Pulse widths (TW)</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048800">Switching times (TSW)</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1048801">Each parameter is further divided into three values: minimum (MN), </a>typical (TY), and maximum (MX). For example, the typical low&#45;to&#45;high propagation delay on a gate is specified as the parameter TPLHTY. The minimum data&#45;to&#45;clock setup time on a flip&#45;flop is specified as the parameter TSUDCLKMN.</p>
+      <p><a name="1048802">Several timing models are used by digital device 74393 from the </a>model libraries. One of them, D_393_1, is shown below for an edge&#45;triggered flip&#45;flop.</p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1051474">.model D_393_1 ueff (</a><br>+&nbsp;&nbsp;tppcqhlty=18ns&nbsp;&nbsp;&nbsp;tppcqhlmx=33ns<br>+&nbsp;&nbsp;tpclkqlhty=6ns&nbsp;&nbsp;&nbsp;tpclkqlhmx=14ns<br>+&nbsp;&nbsp;tpclkqhlty=7ns&nbsp;&nbsp;&nbsp;tpclkqhlmx=14ns<br>+&nbsp;&nbsp;twclkhmn=20ns&nbsp;&nbsp;&nbsp;&nbsp;twclklmn=20ns<br>+&nbsp;&nbsp;twpclmn=20ns&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tsudclkmn=25ns<br>+&nbsp;&nbsp;)</font></blockquote>
+      <p><a name="1048804">When creating your own digital device models, you can create Timing </a>models like these for the primitives you are using. PSpice recommends that you save these in your own custom model library, which you can then configure for use with a given design.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+      <p><a name="1048805">One or more parameters may be missing from the Timing model </a>definition. Data books do not always provide all three (minimum, typical, and maximum) timing specifications. The way the simulator handles missing parameters depends on the type of parameter. </p>
+      <p><a name="1048806">For a description of Timing model parameters, see the specific </a>primitive type under U devices in the online <font color="#000000"><em>PSpice Reference </em></font><font color="#000000"><em>Guide</em></font>.</p>
+      <h4><a name="1048809">Treatment of unspecified propagation delays</a>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</h4>
+      <p><a name="1048810">Often, only the typical and maximum delays are specified in data </a>books. If, in this case, the simulator were to assume that the unspecified minimum delay defaults to zero, the logic in certain circuits could break down.</p>
+      <p><a name="1048812">For this reason, the simulator provides two configurable options, </a>DIGMNTYSCALE and DIGTYMXSCALE, which are used to extrapolate unspecified propagation delays in the Timing models.</p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1048814">This discussion applies only to propagation delay parameters </a>(TP). All other timing parameters, such as setup&#47;hold times and pulse widths are handled differently, and are discussed in the following section.</p>
+      <h4><a name="1048815">DIGMNTYSCALE</a></h4>
+      <p><a name="1048817">This option computes the minimum delay when a typical delay is </a>known, using the formula:</p>
+      <blockquote><a name="1048818">TP</a><font color="#000000"><em>xx</em></font>MN = DIGMNTYSCALE ⋅ TP<font color="#000000"><em>xx</em></font>TY</blockquote>
+      <p><a name="1048819">DIGMNTYSCALE</a> defaults to the value 0.4, or 40% of the typical delay. Its value must be between 0.0 and 1.0.</p>
+      <h4><a name="1048820">DIGTYMXSCALE</a></h4>
+      <p><a name="1048822">This option computes the maximum delay from a typical delay, using </a>the formula</p>
+      <blockquote><a name="1048823">TP</a><font color="#000000"><em>xx</em></font>MX = DIGTYMXSCALE ⋅ TP<font color="#000000"><em>xx</em></font>TY</blockquote>
+      <p><a name="1048824">DIGTYMXSCALE</a> defaults to the value 1.6. Its value must be greater than 1.0.</p>
+      <p><a name="1048825">When a typical delay is unspecified, its value is derived from the </a>minimum and&#47;or maximum delays, in one of the following ways. If both the minimum and maximum delays are known, the typical delay is the average of these two values. If only the minimum delay is known, the typical delay is derived using the value of the DIGMNTYSCALE option. Likewise, if only the maximum delay is specified, the typical delay is derived using DIGTYMXSCALE. Obviously, if no values are specified, all three delays will default to zero.</p>
+      <h4><a name="1048827">Treatment of unspecified timing constraints</a></h4>
+      <p><a name="1048828">The remaining timing constraint parameters are handled differently </a>than the propagation delays. Often, data books state pulse widths, setup times, and hold times as a minimum value. These parameters do not lend themselves to the extrapolation method used for propagation delays.</p>
+      <p><a name="1048829">Instead, when one or more timing constraints are omitted, the </a>simulator uses the following steps to fill in the missing values:</p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048830">If the minimum value is omitted, it defaults to zero.</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048831">If the maximum value is omitted, it takes on the typical value if </a>one was specified, otherwise it takes on the minimum value.</td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048832">If the typical value is omitted, it is computed as the average of </a>the minimum and maximum values.</td>
+          </tr>
+        </table>
+      </div>
+      <h3><a name="1048834">Propagation delay calculation</a></h3>
+      <p><a name="1048835">The timing characteristics of digital primitives are determined by both </a>the timing models and the I&#47;O models. Timing models specify propagation delays and timing constraints such as setup and hold times. I&#47;O models specify input and output loading, driving resistances, and switching times.</p>
+      <p><a name="1048836">When a device's output connects to another digital device, the total </a>propagation delay through a device is determined by adding the loading delay (on the output terminal) to the delay specified in the device's timing model. Loading delay is calculated from the total load on the output and the device's driving resistances. The total load on an output is found by summing the output and input loads (OUTLD and INLD in the I&#47;O model) of all devices connected to that output. This total load, combined with the device's driving resistances (DRVL and DRVH in the I&#47;O model), allows the loading delay to be calculated:</p>
+      <blockquote><a name="1048838">Loading delay = R</a><font color="#000000"><sub>DRIVE</sub></font>&#183;C<font color="#000000"><sub>TOTAL</sub></font>&#183;ln(2) </blockquote>
+      <p><a name="1048839">The loading delay is calculated for each output terminal of every </a>device before the simulation begins. The total propagation delay is easily calculated during the simulation by adding the pre&#45;calculated loading delay to the device's timing delay. However, for any individual timing delay specification (e.g., TPLH) having a value of 0, the loading delay <font color="#000000"><em>is not used</em></font>.</p>
+      <p><a name="1048840">When outputs connect to analog devices, the propagation delay is </a>reduced by the switching times specified in the I&#47;O model. See <a href="#1048977" title="Digital device modeling"><font color="Blue"><u>Input&#47;Output characteristics</u></font></a><a href="#1048977" title="Digital device modeling"></a> for more information.</p>
+      <h3><a name="1048845">Inertial and transport delay</a></h3>
+      <p><a name="1048846">The simulator uses two different types of internal delay functions </a>when simulating the digital portion of the circuit: <font color="#000000"><em>inertial delay</em></font> and <font color="#000000"><em>transport delay</em></font>. The application of these concepts is embodied within the implementation of the digital primitives within the simulator. Therefore, they are not user&#45;selectable.</p>
+      <h4><a name="1048849">Inertial delay</a></h4>
+      <p><a name="1048850">The simulation of a device may be described as the application of </a>some <font color="#000000"><em>stimulus</em></font> (S) to a <font color="#000000"><em>function</em></font> (F) and predicting the <font color="#000000"><em>response</em></font> (R).</p>
+      <p align="left"><a name="1048864"><img src="images/07digmod.12.1.2.png" width="200" height="65" alt=""></a></p>
+      <p><a name="1048865">If this device is electrical in nature, application of the stimulus implies </a>that energy will be imparted to the device to cause it to change state. The amount of such energy is a function of the signal's amplitude and duration. If the stimulus is applied to the device for a length of time that is too short, the device will not switch. The minimum duration required for an input change to have an effect on a device's output state is called the <font color="#000000"><em>inertial delay</em></font> of the device. For digital simulation, all delay parameters specified in timing models are considered inertial, with the exception of the delay line primitive, DLYLINE.</p>
+      <p><a name="1048867">To model the noise immunity behavior of digital devices correctly, the </a>TPWRT (pulse width rejection threshold) parameter can be set in the digital device's I&#47;O model. When <font color="#000000"><em>pulse</em></font><font color="#000000"><em>&nbsp;</em></font><font color="#000000"><em>width</em></font> ≥ TPWRT and <font color="#000000"><em>pulse </em></font><font color="#000000"><em>width</em></font> &#60; <font color="#000000"><em>propagation delay</em></font>, then the device generates either a 0&#45;R&#45;0, 1&#45;F&#45;1, or an X pulse.</p>
+      <p><a name="1048868">This example shows normal operation in which a pulse of 20 nsec </a>width is applied to a BUF primitive having propagation delays of 10 nsec. TPWRT is not set.</p>
+      <p align="left"><a name="1048900"><img src="images/07digmod.12.1.3.png" width="388" height="110" alt=""></a></p>
+      <p><a name="1048901">The same device with a short pulse applied produces no output </a>change. </p>
+      <p align="left"><a name="1048915"><img src="images/07digmod.12.1.4.png" width="388" height="116" alt=""></a></p>
+      <p><a name="1048916">However, if TPWRT is assigned a numerical value (1 or 2 for this </a>example), then the device outputs a glitch. </p>
+      <p align="left"><a name="1048950"><img src="images/07digmod.12.1.5.png" width="388" height="106" alt=""></a></p>
+      <h4><a name="1048952">Transport delay</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h4>
+      <p><a name="1048953">The delay line primitive is the only simulator model that can </a>propagate any width pulse applied to its input. Its function is to skew the applied stimulus by some constant time value. For example:</p>
+      <p align="left"><a name="1048973"><img src="images/07digmod.12.1.6.png" width="502" height="103" alt=""></a></p>
+      <p><a name="1048974">See the DLYLINE digital primitive in the online </a><font color="#000000"><em>PSpice Reference </em></font><font color="#000000"><em>Guide.</em></font></p>
+      <h2><a name="1048977">Input&#47;Output characteristics</a></h2>
+      <p><a name="1048978">A digital device model's input&#47;output characteristics are defined by </a>the I&#47;O model that it references. Some characteristics, such as output drive resistance and loading capacitances, apply to digital simulation. Others, such as the interface subcircuits and the power supplies, apply only to mixed analog&#47;digital simulation.</p>
+      <p><a name="1048979">This section describes in detail:</a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048980">the I&#47;O model</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048981">the relationship between drive resistances and output strengths</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048982">charge storage on digital nets</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1048983">the format of the interface subcircuits</a></td>
+          </tr>
+        </table>
+      </div>
+      <h3><a name="1048986">Input&#47;Output model</a></h3>
+      <p><a name="1048987">I&#47;O models are common to entire logic families. For example, in the </a>model libraries, there are only four I&#47;O models for the entire 74LS family: IO_LS, for standard inputs and outputs; IO_LS_OC, for standard inputs and open&#45;collector outputs; IO_LS_ST, for Schmitt trigger inputs and standard outputs; and IO_LS_OC_ST, for Schmitt trigger inputs and open&#45;collector outputs. In contrast, timing models are unique to each device.</p>
+      <p><a name="1048988">I&#47;O models are specified as</a></p>
+      <blockquote><a name="1048989">.MODEL &#60;</a><font color="#000000"><em>I&#47;O model name</em></font>&#62; UIO [<font color="#000000"><em>model parameters</em></font>]*</blockquote>
+      <p><a name="1048993">where valid model parameters are described in Table </a><a href="#1049037" title="Digital device modeling"><font color="#0000ff"><u>7&#45;2</u></font></a>.</p>
+      <h4><em><a name="1048995">INLD</a> and OUTLD</em></h4>
+      <p><a name="1048996">These are used in the calculation of loading capacitance, which </a>factors into the propagation delay discussed under timing models on <a href="#1048792" title="Digital device modeling"><font color="Blue"><u>Timing model</u></font></a><a href="#1048792" title="Digital device modeling"></a>. Note that INLD does not apply to stimulus generators because they have no input nodes.</p>
+      <h4><em><a name="1049001">DRVH</a> and DRVL</em></h4>
+      <p><a name="1049002">These are used to determine the strength of the output. Strengths are </a>discussed on <a href="#1049151" title="Digital device modeling"><font color="Blue"><u>Defining Output Strengths</u></font></a><a href="#1049151" title="Digital device modeling"></a>.</p>
+      <h4><em><a name="1049007">DRVZ, INR, and TSTOREMN</a></em></h4>
+      <p><a name="1049009">These are used to determine which nets should be simulated as </a>charge storage nets. These are discussed in <a href="#1049248" title="Digital device modeling"><font color="Blue"><u>Charge storage nets</u></font></a><a href="#1049248" title="Digital device modeling"></a>.</p>
+      <h4><em><a name="1049014">TPWRT</a></em></h4>
+      <p><a name="1049015">This is used to specify the pulse width above which the noise </a>immunity behavior of a device is to be considered. See <a href="#1048849" title="Digital device modeling"><font color="Blue"><u>Inertial delay</u></font></a><a href="#1048849" title="Digital device modeling"></a> on inertial delay for detail.</p>
+      <p><a name="1049019">The following UIO model parameters are needed only when creating </a>models for use in mixed&#45;signal simulations, and therefore only apply to PSpice simulations.</p>
+      <h4><em><a name="1049020">AtoD1 through AtoD4, and DtoA1 through DtoA4</a></em></h4>
+      <p><a name="1049021">These are used to hold the names of interface subcircuits. Note that </a>AtoD1 through AtoD4 do not apply to stimulus generators because digital stimuli have no input nodes.</p>
+      <h4><em><a name="1049023">DIGPOWER</a></em></h4>
+      <p><a name="1049024">This is used to specify the name of the digital power supply PSpice </a>should call if one of the AtoD or DtoA interface subcircuits is called.</p>
+      <h4><em><a name="1049025">TSWLH</a><font color="#000000"><em>n</em></font> and TSWHL<font color="#000000"><em>n</em></font></em></h4>
+      <p><a name="1049027">These switching times are subtracted from a device's propagation </a>delay on the outputs which connect to interface nodes. This compensates for the time it takes the DtoA device to change its output voltage from its current level to that of the switching threshold. By subtracting the switching time from the propagation delay, the analog signal reaches the switching threshold at the correct time (that is, at the exact time of the digital transition). The values for these model parameters should be obtained by measuring the time it takes the analog output of the DtoA (with a nominal analog load attached) to change to the switching threshold after its digital input changes. If the switching time is larger than the propagation delay for an output, no warning is issued, and a delay of zero is used.</p>
+      <p><a name="1049028">When creating your own digital device models, you can create I&#47;O </a>models like these for the primitives you are using. We recommend that you save these in your own custom model library, which you can then configure for use with a given design.</p>
+      <p><a name="1049029">See the online </a><font color="#000000"><em>PSpice Reference Guide</em></font> for more information on units and defaults for these parameters.</p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1049144">The switching time parameters are not used when the output </a>drives a digital node.</p>
+      <p align="left"><a name="1051035"> </a></p>
+      <table summary="" border="1" cellpadding="5" cellspacing="0" width="432">
+        <caption>
+          <p align="left"><font color="#000000"><strong>Table 7&#45;2&nbsp; </strong></font><strong><a name="1049037">Digital I&#47;O model parameters</a>&nbsp;</strong></p>
+        </caption>
+        <tr>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" valign="middle" width="132">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1049041">UIO model </a>parameter</strong></font>
+            </p>
+          </td>
+          <td bgcolor="#CCCCCC" cellpadding="4" border="2" valign="middle" width="300">
+            <p>
+              <font face="Verdana, Arial, Helvetica, sans-serif" color="#003366"><strong><a name="1049043">Description</a></strong></font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="2" valign="top">
+            <p><a name="1049045">INLD</a></p>
+          </td>
+          <td cellpadding="4" border="2" valign="top">
+            <p><a name="1049047">input load capacitance</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1049049">OUTLD</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1049051">output load capacitance</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1049053">DRVH</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1049055">output high level resistance</a>	</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1049057">DRVL</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1049059">output low level resistance</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1049061">DRVZ</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1049063">output Z&#45;state leakage resistance</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1049065">INR</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1049067">input leakage resistance</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="2" valign="top">
+            <p><a name="1049069">TSTOREMN</a></p>
+          </td>
+          <td cellpadding="4" border="2" valign="top">
+            <p><a name="1049071">minimum storage time for net to be </a>simulated as a charge</p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="2" valign="top">
+            <p><a name="1049073">TPWRT</a></p>
+          </td>
+          <td cellpadding="4" border="2" valign="top">
+            <p><a name="1049075">pulse width rejection threshold</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1049077">AtoD1 (Level 1)</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1049079">name of AtoD interface subcircuit</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1049081">DtoA1 (Level 1)</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1049083">name of DtoA interface subcircuit</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1049085">AtoD2 (Level 2)</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1049087">name of AtoD interface subcircuit</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1049089">DtoA2 (Level 2)</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1049091">name of DtoA interface subcircuit</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1049093">AtoD3 (Level 3)</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1049095">name of AtoD interface subcircuit</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1049097">DtoA3 (Level 3)</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1049099">name of DtoA interface subcircuit</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1049101">AtoD4  (Level 4)</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1049103">name of AtoD interface subcircuit</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1049105">DtoA4 (Level 4)</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1049107">name of DtoA interface subcircuit</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1049109">DIGPOWER</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1049111">name of power supply subcircuit</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1049113">TSWLH1</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1049115">switching time low to high for DtoA1</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1049117">TSWLH2</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1049119">switching time low to high for DtoA2</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1049121">TSWLH3</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1049123">switching time low to high for DtoA3</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1049125">TSWLH4</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1049127">switching time low to high for DtoA4</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1049129">TSWHL1</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1049131">switching time high to low for DtoA1</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1049133">TSWHL2</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1049135">switching time high to low for DtoA2</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1049137">TSWHL3</a></p>
+          </td>
+          <td cellpadding="4" border="0" valign="top">
+            <p><a name="1049139">switching time high to low for DtoA3</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td cellpadding="4" border="2" valign="top">
+            <p><a name="1049141">TSWHL4</a></p>
+          </td>
+          <td cellpadding="4" border="2" valign="top">
+            <p><a name="1049143">switching time high to low for DtoA4</a></p>
+          </td>
+        </tr>
+      </table>
+      <p><a name="1049146">The digital primitives comprising the 74393 part reference the </a>IO_STD I&#47;O model in the model libraries as shown:</p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049147">.model IO_STD uio (</a><br>+&nbsp;&nbsp;drvh=96.4&nbsp;&nbsp;&nbsp;drvl=104<br>+&nbsp;&nbsp;AtoD1=&#34;AtoD_STD&#34;&nbsp;&nbsp;AtoD2=&#34;AtoD_STD_NX&#34;<br>+&nbsp;&nbsp;AtoD3=&#34;AtoD_STD&#34;&nbsp;&nbsp;AtoD4=&#34;AtoD_STD_NX&#34;<br>+&nbsp;&nbsp;DtoA1=&#34;DtoA_STD&#34;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DtoA2=&#34;DtoA_STD&#34;<br>+&nbsp;&nbsp;DtoA3=&#34;DtoA_STD&#34;&nbsp;&nbsp;DtoA4=&#34;DtoA_STD&#34;<br>+&nbsp;&nbsp;tswhl1=1.373ns&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tswlh1=3.382ns<br>+&nbsp;&nbsp;tswhl2=1.346ns&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tswlh2=3.424ns<br>+&nbsp;&nbsp;tswhl3=1.511ns&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tswlh3=3.517ns<br>+&nbsp;&nbsp;tswhl4=1.487ns&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tswlh4=3.564ns<br>+&nbsp;&nbsp;)</font></blockquote>
+      <h3><a name="1049151">Defining Output Strengths</a></h3>
+      <p><a name="1049152">The goal of running simulations is to calculate values for each node </a>in the circuit. For analog nodes, the values are voltages. For digital nodes, these values are <font color="#000000"><em>states</em></font>. The state of a digital node is calculated from the output <font color="#000000"><em>strengths</em></font> of the devices driving the node and the logic level of the node.&nbsp;Node strength calculations are described in <a href="14digsim.html#1056266" title="Digital simulation"><font color="#0000ff"><u>Chapter&nbsp;14, "Digital simulation."</u></font></a></p>
+      <p><a name="1049156">The purpose of strengths is to allow the simulator to find the value of </a>a node when more than one output is driving it. A common example is a bus line which is driven by more than one tristate driver. Under normal circumstances, all drivers except one are driving at the Z (high impedance) strength. Thus, the bus line will take on the value of the one gate that is driving at a higher strength (lower impedance).</p>
+      <p><a name="1049157">Another example is a bus line connected to several open collector </a>output devices and a digital pullup resistor. The pullup resistor outputs a 1 level at a weak (but non&#45;Z) strength. If all of the open&#45;collector devices are outputting at Z strength, then the node will have a 1 level because of the pullup resistor. If any of the open collectors output a 0, at a higher strength than the pullup resistor, then the 0 will overpower the weak 1 from the pullup, and the node will be a 0 level.</p>
+      <h4><a name="1049159">Configuring the strength scale</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h4>
+      <p><a name="1049160">The 64 strengths are determined by two configurable options: </a>DIGDRVZ and DIGDRVF. You can set these options in the Simulation Settings dialog box in PSpice&nbsp;A&#47;D. </p>
+      <p><a name="1049161">DIGDRVZ</a> defines the impedance of the Z strength, and DIGDRVF defines the impedance of the forcing strength. These two values define a logarithmic scale consisting of 64 <font color="#000000"><em>ranges</em></font> of impedance values. By default, DIGDRVZ is 20 kohms and DIGDRVF is 2&nbsp;ohms. The larger the range between DIGDRVZ and DIGDRVF, the larger the range of impedance values in each of the 64 strengths.</p>
+      <h4><a name="1049162">Determining the strength of a device output</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </h4>
+      <p><a name="1049164">The simulator uses the value of the </a>DRVH (high&#45;level driving resistance) or DRVL (low&#45;level driving resistance) parameters from the device's I&#47;O model. If the level of the output is a 1, the simulator obtains the strength by finding the <font color="#000000"><em>bin</em></font> which contains the value of the DRVH parameter. Likewise, if the level is a 0, the simulator uses the value of the DRVL parameter to obtain the strength.</p>
+      <p><a name="1049168">See </a><a href="#1048986" title="Digital device modeling"><font color="Blue"><u>Input&#47;Output model</u></font></a><a href="#1048986" title="Digital device modeling"></a> for more information.</p>
+      <p align="left"><a name="1049236"><img src="images/07digmod.12.1.7.png" width="438" height="330" alt=""></a></p>
+      <p><a name="1049237">Note that if the values of </a>DRVH and DRVL in the I&#47;O model are different, it is possible for the 1 and 0 levels to have different strengths. This is useful for open&#45;collector devices, where the 0 level is at a higher strength than the 1 level (which drives at the Z strength).</p>
+      <p><a name="1049239">Drive impedances which are higher than the value of </a>DIGDRVZ are assigned the Z strength (0). Likewise, drive impedances lower than the value of DIGDRVF are assigned the forcing strength (63).</p>
+      <h4><a name="1049241">Controlling overdrive</a></h4>
+      <p><a name="1049242">During a simulation, the simulator uses only the strength range </a>number (0&#45;63) to compare the driving strength of outputs. The simulator allows you to control how much <font color="#000000"><em>stronger</em></font> an output must be before it overdrives the other outputs driving the same node. This is controlled with the configurable DIGOVRDRV option. By default, DIGOVRDRV is 3, meaning that the strength value assigned to an output must be at least 3 greater than all other drivers before it determines the level of the node.</p>
+      <p><a name="1049244">The accuracy of the </a>DIGOVRDRV strength comparison is limited by the size of the strength range, DIGDRVZ through DIGDRVF. The default drive range of 2 ohms to 20,000 ohms gives strength ranges of 7.5%. The accuracy of the strength comparison is 15%. In other words, depending on the particular values of DRVH and DRVL, it might take as much as a factor of 3.45 to overdrive a signal, or as little as a factor of 2.55. The accuracy of the comparison increases as the ratio between DIGDRVF and DIGDRVZ decreases.</p>
+      <p><a name="1049245">You can set the </a>DRVH, DRVL, DIGDRVF, DIGDRVZ, and DIGOVRDRV options in the Simulation Settings dialog box in PSpice&nbsp;A&#47;D.</p>
+      <h3><a name="1049248">Charge storage nets</a></h3>
+      <p><a name="1049249">The ability to model charge storage on digital nets is useful for </a>engineers who are designing dynamic MOS integrated circuits. In such circuits, it is common for the designer to temporarily store a one or zero on a net by driving the net to the appropriate voltage and then turning off the drive. The charge which is trapped on the net causes the net's voltage to remain unchanged for some time after the net is no longer driven. The technique is not normally used on PCB nets because sub&#45;nanoampere input and output leakage currents would be required, as well as low coupling from adjacent signals.</p>
+      <p><a name="1049250">The simulator models the stored charge nets using a simplified </a><font color="#000000"><em>switch&#45;level </em></font>simulation technique. A normalized (with respect to power supply) charge or discharge current is calculated for each output or transfer gate attached to the net. This current, divided by the net's total capacitance, is integrated and recalculated at intervals which are appropriate for the particular net. The net's digital level is determined by the normalized voltage on the net. Only the digital level (1, 0, R, F, X) on the net is used by device inputs attached to the net.</p>
+      <p><a name="1049251">This technique allows accurate simulation of networks of transfer </a>gates and capacitive loads. The sharing of charge among several nets which are connected by transfer gates is handled properly because the simulation method calculates the charge transferred between the nets, and maintains a floating&#45;point value for the charge on the net (not just a one or zero). Because of the increased computation, it takes the simulator longer to simulate charge storage nets than normal digital nets. However, charge storage nets are simulated much faster than analog nets.</p>
+      <p><a name="1049255">The I&#47;O model parameters INR, DRVZ, and TSTOREMN (see </a><a href="#1049037" title="Digital device modeling"><font color="Blue"><u>Table&nbsp;7&#45;2</u></font></a><a href="#1049037" title="Digital device modeling"> </a>) are used by the simulator to determine which nets should be simulated as charge storage nets. The simulator will simulate charge storage only for a net which has some devices attached to it which can be high impedance (Z), and which has a storage time greater than or equal to the smallest TSTOREMN of all inputs attached to the net. The storage time is calculated as the total capacitance (sum of all INLD and OUTLD values for attached inputs and outputs) multiplied by the total leakage resistance for the net (the parallel combination of all INR and DRVZ values for attached inputs and outputs).</p>
+      <p><font color="#000000"><strong>Note: </strong></font><a name="1049256">The default values provided by the UIO model will </a><font color="#000000"><strong>not</strong></font> allow the use of charge&#45;storage simulation techniques--even with circuits using non&#45;PSpice libraries of digital devices. This is appropriate, since these libraries are usually for PCB&#45;based designs. </p>
+      <h3><a name="1049258">Creating your own interface subcircuits for</a><br>additional technologies</h3>
+      <p><a name="1049260">If you are creating custom digital parts for a technology which is not </a>in the model libraries, you may also need to create AtoD and DtoA subcircuits. The new subcircuits need to be referenced by the I&#47;O models for that technology. The AtoD and DtoA interfaces have specific formats, such as node order and parameters, which are expected by PSpice for mixed&#45;signal simulations.</p>
+      <p><a name="1049261">If you are creating parts in one of the logic families </a><font color="#000000"><em>already</em></font> in the model libraries, you should reference the existing I&#47;O models appropriate to that family. The I&#47;O models, in turn, automatically reference the correct interface subcircuits for that family. These, too, are already contained in the model libraries. </p>
+      <p><a name="1049265">The AtoD interface subcircuit format is shown here: </a></p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049266">.SUBCKT ATOD &#60;</a><font color="#000000"><em>name suffix</em></font>&#62;<br>+ &#60;<font color="#000000"><em>analog input node</em></font>&#62; <br>+ &#60;<font color="#000000"><em>digital output node</em></font>&#62;<br>+ &#60;<font color="#000000"><em>digital power supply node</em></font>&#62; <br>+ &#60;<font color="#000000"><em>digital ground node</em></font>&#62;<br>+ PARAMS: CAPACITANCE=&#60;<font color="#000000"><em>input load value</em></font>&#62;<br>+ {<font color="#000000"><em>O device, loading capacitor, and other</em></font><em> </em><em><br></em><em>+ </em><font color="#000000"><em>declarations</em></font>}<br>.ENDS</font></blockquote>
+      <p><a name="1049267">It has four nodes as described. The AtoD subcircuit has one </a>parameter, CAPACITANCE, which corresponds to the input load. PSpice passes the value of the I&#47;O model parameter INLD to this parameter when the interface subcircuit is called.</p>
+      <p><a name="1049268">The DtoA interface subcircuit format is shown here:</a></p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049269">.SUBCKT DTOA &#60;</a><font color="#000000"><em>name suffix</em></font>&#62;<br>+ &#60;<font color="#000000"><em>digital input node</em></font>&#62; &#60;<font color="#000000"><em>analog output node</em></font>&#62;<br>+ &#60;<font color="#000000"><em>digital power supply node</em></font>&#62; &#60;<font color="#000000"><em>digital </em></font><font color="#000000"><em><br></em></font><em>+ </em><font color="#000000"><em>ground node</em></font>&#62;<br>+ PARAMS:&nbsp;&nbsp;DRVL=&#60;<font color="#000000"><em>0 level driving resistance</em></font>&#62;<br>+ DRVH=&#60;<font color="#000000"><em>1 level driving resistance</em></font>&#62;<br>+ CAPACITANCE=&#60;<font color="#000000"><em>output load value</em></font>&#62;<br>+ {<font color="#000000"><em>N device, loading capacitor, and other</em></font><em> </em><em><br></em><em>+ </em><font color="#000000"><em>declarations</em></font>}<br>.ENDS</font></blockquote>
+      <p><a name="1049270">It also has four nodes. Unlike the AtoD subcircuit, the DtoA subcircuit </a>has three parameters. PSpice will pass the values of the I&#47;O model parameters DRVL, DRVH, and OUTLD to the interface subcircuit's DRVL, DRVH, and CAPACITANCE parameters when it is called.</p>
+      <p><a name="1049271">The library file </a><font size="2" face="'Courier New'" color="#000000">DIG_IO.LIB</font> contains the I&#47;O models and interface subcircuits for all logic families supported in the model libraries. You should refer to this file for examples of the I&#47;O models, interface subcircuits, and the proper use of N and O devices.</p>
+      <p><a name="1049272">Shown below are the I&#47;O model and AtoD interface subcircuit </a>definition used by the primitives describing the 74393 part. </p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1051344">.model IO_STD uio (</a><br>+&nbsp;&nbsp;drvh=96.4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;drvl=104<br>+&nbsp;&nbsp;AtoD1=&#34;AtoD_STD&#34;&nbsp;&nbsp;&nbsp;AtoD2=&#34;AtoD_STD_NX&#34;<br>+&nbsp;&nbsp;AtoD3=&#34;AtoD_STD&#34;&nbsp;&nbsp;&nbsp;AtoD4=&#34;AtoD_STD_NX&#34;<br>+&nbsp;&nbsp;DtoA1=&#34;DtoA_STD&#34;&nbsp;&nbsp;&nbsp;DtoA2=&#34;DtoA_STD&#34;<br>+&nbsp;&nbsp;DtoA3=&#34;DtoA_STD&#34;&nbsp;&nbsp;&nbsp;DtoA4=&#34;DtoA_STD&#34;<br>+&nbsp;&nbsp;tswhl1=1.373&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tswlh1=3.382ns<br>+&nbsp;&nbsp;tswhl2=1.346ns&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tswlh2=3.424ns<br>+&nbsp;&nbsp;tswhl3=1.511ns&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tswlh3=3.517ns<br>+&nbsp;&nbsp;tswhl4=1.487ns&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tswlh4=3.564ns<br>+&nbsp;&nbsp;)</font></blockquote>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049274">.subckt AtoD_STD  A D  DPWR DGND</a><br>+&nbsp;&nbsp;params: CAPACITANCE=0<br>*<br>O0&nbsp;&nbsp;A DGND DO74 DGTLNET=D IO_STD<br>C1&nbsp;&nbsp;A 0 {CAPACITANCE+0.1pF}<br>.ends</font></blockquote>
+      <p><a name="1049275">If an instance of the 74393 part is connected to an analog part via </a>node AD_NODE, PSpice generates an interface block using the I&#47;O model specified by the digital primitive actually at the interface. Suppose that U1 is the primitive connected at AD_NODE (see the 74393 subcircuit definition on <a href="#1050797" title="Digital device modeling">page&nbsp;387</a>), and that the IO_LEVEL is set to 1. PSpice determines that IO_STD is the I&#47;O model used by U1. Notice how IO_STD identifies the interface subcircuit names AtoD_STD and DtoA_STD to be used for level 1 subcircuit selection. If the connection with U1 is an input (such as a clock line), PSpice creates an instance of the subcircuit AtoD_STD: </p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049279">X$AD_NODE_AtoD1 AD_NODE AD_NODE$AtoD $G_DPWR</a><br>+ $G_DGND<br>+ AtoD_STD<br>+ PARAMS: CAPACITANCE=0</font></blockquote>
+      <p><a name="1049280">The AtoD_STD interface subcircuit references the DO74 model in its </a>PSpice O device declaration. This model, stated elsewhere in the model libraries, describes how to translate an analog signal on the analog side of an interface node, to a digital state on the digital side of an interface node.</p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1051386">.model DO74 doutput</a><br>+&nbsp;&nbsp;s0name=&#34;X&#34;&nbsp;&nbsp;s0vlo=0.8&nbsp;&nbsp;s0vhi=2.0<br>+&nbsp;&nbsp;s1name=&#34;0&#34;&nbsp;&nbsp;s1vlo=&#45;1.5&nbsp;s1vhi=0.8<br>+&nbsp;&nbsp;s2name=&#34;R&#34;&nbsp;&nbsp;s2vlo=0.8&nbsp;&nbsp;s2vhi=1.4<br>+&nbsp;&nbsp;s3name=&#34;R&#34;&nbsp;&nbsp;s3vlo=1.3&nbsp;&nbsp;s3vhi=2.0<br>+&nbsp;&nbsp;s4name=&#34;X&#34;&nbsp;&nbsp;s4vlo=0.8&nbsp;&nbsp;s4vhi=2.0<br>+&nbsp;&nbsp;s5name=&#34;1&#34;&nbsp;&nbsp;s5vlo=2.0&nbsp;&nbsp;s5vhi=7.0<br>+&nbsp;&nbsp;s6name=&#34;F&#34;&nbsp;&nbsp;s6vlo=1.3&nbsp;&nbsp;s6vhi=2.0<br>+&nbsp;&nbsp;s7name=&#34;F&#34;&nbsp;&nbsp;s7vlo=0.8&nbsp;&nbsp;s7vhi=1.4<br>+</font></blockquote>
+      <p><a name="1049282">The </a>DOUTPUT model parameters are described under O devices in the online <font color="#000000"><em>PSpice Reference Guide</em></font>.</p>
+      <p><a name="1049283">Supposing the output of the 74393 is connected to an analog part via </a>the digital primitive UBUFF. At IO_LEVEL set to 1, PSpice determines that the DtoA_STD interface subcircuit identified in the IO_STD model, should be used.</p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049284">.subckt DtoA_STD</a>&nbsp;&nbsp;D A&nbsp;&nbsp;DPWR DGND<br>+ params: DRVL=0 DRVH=0 CAPACITANCE=0<br>*<br>N1&nbsp;&nbsp;A DGND DPWR DIN74 DGTLNET=D IO_STD<br>C1&nbsp;&nbsp;A DGND {CAPACITANCE+0.1pF}<br>.ends</font></blockquote>
+      <p><a name="1049285">For this subcircuit, the </a>DRVH and DRVL parameters values specified in the IO_STD model would be passed to it. (The interface subcircuits in the model libraries do not currently use these values.) </p>
+      <p><a name="1049286">The DtoA_STD interface subcircuit references the DIN74 model in its </a>PSpice N device declaration. This model, stated elsewhere in the libraries, describes how to translate a digital state into a voltage and impedance. </p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049287">.model DIN74 dinput (</a><br>+ s0name=&#34;0&#34; s0tsw=3.5ns s0rlo=7.13 <br>+ s0rhi=389 ; 7ohm, 0.09v <br>+ s1name=&#34;1&#34; s1tsw=5.5ns s1rlo=467 <br>+ s1rhi=200 ; 140ohm, 3.5v <br>+ s2name=&#34;X&#34; s2tsw=3.5ns s2rlo=42.9 <br>+ s2rhi=116 ; 31.3ohm, 1.35v <br>+ s3name=&#34;R&#34; s3tsw=3.5ns s3rlo=42.9 <br>+ s3rhi=116 ; 31.3ohm, 1.35v <br>+ s4name=&#34;F&#34; s4tsw=3.5ns s4rlo=42.9 <br>+ s4rhi=116 ; 31.3ohm, 1.35v <br>+ s5name=&#34;Z&#34; s5tsw=3.5ns s5rlo=200K <br>+ s5rhi=200K<br>+)</font></blockquote>
+      <p><a name="1049288">The </a>DINPUT model parameters are described under PSpice N devices in the online <font color="#000000"><em>PSpice Reference Guide</em></font>.</p>
+      <p><a name="1049289">Each state is turned into a pullup and pulldown resistor pair to provide </a>the correct voltage and impedance.  The Z state is accounted for as well as the 0, 1, and X logic levels.</p>
+      <p><a name="1049290">You can create your own interface subcircuits, </a>DINPUT models, DOUTPUT models, and I&#47;O models like these for technologies not currently supported in the model libraries. We recommend that you save these in your own custom model library, which you can then configure for use with a given design.</p>
+      <h2><a name="1049293">Creating a digital model using the PINDLY </a>and LOGICEXP primitives</h2>
+      <p><a name="1049296">Unlike the majority of analog device types, the bulk of digital devices </a>are not primitives that are compiled into the simulator. Instead, most digital models are macro models or subcircuits that are built from a few primitive devices.</p>
+      <p><a name="1049297">These subcircuits reference interface and timing models to handle </a>the D&#45;to&#45;A and A&#45;to&#45;D interfaces and the overall timing parameters of the physical device. For most families of digital components, the interface models are already defined and available in the <font size="2" face="'Courier New'" color="#000000">DIG_IO.LIB</font> library, which is supplied with all digital and mixed&#45;signal packages. If you are unsure of the exact name of the interface model you need to use, use a text editor to look in <font size="2" face="'Courier New'" color="#000000">DIG_IO.LIB</font>.</p>
+      <p><a name="1049299">For instance, if you are trying to model a 74LS component that is not </a>already in a library, open <font size="2" face="'Courier New'" color="#000000">DIG_IO.LIB</font> with your text editor and search for 74LS to get the interface models for the 74LS family. You can also read the information at the beginning of the file which explains many of the terms and uses for the I&#47;O models.</p>
+      <p><a name="1049300">In the past, the timing model has presented the greatest challenge </a>when trying to model a digital component. This was due to the delays of a component being distributed among the various gates. Recently, the ability to model digital components using logic expressions (LOGICEXP) and pin&#45;to&#45;pin delays (PINDLY) has been added to the simulator. Using the LOGICEXP and PINDLY digital primitives, you can describe the logic of the device with zero delay and then enter the timing parameters for the pin&#45;to&#45;pin delays directly from the manufacturer's data sheet. Digital primitives still must reference a standard timing model, but when the PINDLY device is used, the timing models are simply zero&#45;delay models that are supplied in <font size="2" face="'Courier New'" color="#000000">DIG_IO.LIB</font>. The default timing models can be found in the same manner as the standard I&#47;O models. The PINDLY primitive also incorporates constraint checking which allows you to enter device data such as pulse width and setup&#47;hold timing from the data sheet. Then the simulator can verify that these conditions are met during the simulation.</p>
+      <h3><a name="1049302">Digital primitives</a></h3>
+      <p><a name="1049303">Primitives in the simulator are devices or functions which are </a>compiled directly into the code. The primitives serve as fundamental building blocks for more complex macro models.</p>
+      <p><a name="1049304">There are two types of primitives in the simulator: gate level and </a>behavioral. A gate level primitive normally refers to an actual physical device (such as buffers, AND gates, inverters). A behavioral primitive is not an actual physical device, but rather helps to define parameters of a higher level model. Just like gate level primitives, behavioral primitives are intrinsic functions in the simulator and are treated in much the same manner. They are included in the gate count for circuit size and cannot be described by any lower level model.</p>
+      <p><a name="1049305">In our 74160 example (see </a><font color="#000000"><em>The TTL Data Book</em></font> from Texas Instruments for schematic and description), the four J&#45;K flip&#45;flops are the four digital gate level primitives. While flip&#45;flops are physically more complex than gates in terms of modeling, they are defined on the same level as a gate (for example, flip&#45;flops are a basic device in the simulator). Since all four share a common Reset, Clear, and Clock signal, they can be combined into one statement as an array of flip&#45;flops. They could just as easily have been written separately, but the array method is more compact. See the <font color="#000000"><em>Digital Devices</em></font> chapter in the online <font color="#000000"><em>PSpice Reference Guide</em></font> for more information.</p>
+      <h3><a name="1049307">Logic expression (LOGICEXP primitive)</a></h3>
+      <p><a name="1049311">Looking at the listing in </a><a href="#1049372" title="Digital device modeling"><font color="Blue"><u>74160 example</u></font></a><a href="#1049372" title="Digital device modeling"></a> and at the schematic representation of the 74160 subcircuit, you can see that there are three main parts to the subcircuit. Following the usual header information, .SUBCKT keyword, subcircuit name, interface pin list, and parameter list is the LOGICEXP primitive. It contains everything in the component that can be expressed in terms of simple combinational logic. The logic expression device also serves to buffer other input signals that will go to the PINDLY primitive. In this case, LOGICEXP buffers the ENP_I, ENT_I, CLK_I, CLRBAR_I, LOADBAR_I, and four data signals. See the <font color="#000000"><em>Digital Devices</em></font> chapter in the online <font color="#000000"><em>PSpice Reference Guide</em></font> for more information.</p>
+      <p><a name="1049312">For our 74160 example, the logic expression (LOGICEXP) has </a>fourteen inputs and twenty outputs. The inputs are the nine interface input pins in the subcircuit plus five feedback signals that come from the flip&#45;flops (QA, QB, QC, QD, and QDBAR).   The flip&#45;flops are primitive devices themselves and are not part of the logic expression. The outputs are the eight J&#45;K data inputs to the flip&#45;flops, RCO, the four data lines used internal to the logic expression (A, B, C, D), and the seven control lines: CLK, CLKBAR, EN, ENT, ENP, CLRBAR, and LOADBAR.</p>
+      <p><a name="1049313">The schematic representation of the device shows buffers on every </a>input signal of the model, while the logic diagram of the device in the data book shows buffers or inverters on only the CLRBAR_I, CLK_I, and LOADBAR_I signals. We have added buffers to the inputs to minimize the insertion of A&#45;to&#45;D interfaces when the device is driven by analog circuitry. The best example is the CLK signal. With the buffer in place, if the CLK signal is analog, one A&#45;to&#45;D interface device will be inserted into the circuit by the simulator. If the buffer was not present, then an interface device would be inserted at the CLK pin of each of the flip&#45;flops. The buffers have no delay associated with them, but by minimizing the number of A&#45;to&#45;D interfaces, we speed up the mixed&#45;signal simulation by reducing the number of necessary calculations. For situations where the device is only connected to other digital nodes, the buffers have no effect on the simulation.</p>
+      <p><a name="1049314">The D0_GATE, shown in the listing, is a zero&#45;delay primitive gate </a>timing model. For most TTL modeling applications, this only serves as a place holder and is not an active part of the model. Its function has been replaced by the PINDLY primitive. The D0_GATE model can be found in the library file <font size="2" face="'Courier New'" color="#000000">DIG_IO.LIB</font>. For a more detailed description of digital primitives, see the <font color="#000000"><em>Digital Devices</em></font> chapter in the online <font color="#000000"><em>PSpice Reference Guide</em></font>.</p>
+      <p><a name="1049315">IO_STD, shown in the listing, is the standard I&#47;O model. This </a>determines the A&#45;to&#45;D and D&#45;to&#45;A interface characteristics for the subcircuit. The device contains family&#45;specific information, but the models have been created for nearly all of the stock families. The various I&#47;O models can be found in the library file <font size="2" face="'Courier New'" color="#000000">DIG_IO.LIB</font>.</p>
+      <p><a name="1049316">The logic expressions themselves are straightforward. The first nine </a>are buffering the input signals from outside the subcircuit. The rest describe the logic of the actual device up to the flip&#45;flops. By tracing the various paths in the design, you can derive each of the logic equations.</p>
+      <p><a name="1049317">The D0_EFF timing model, shown in the listing, is a zero&#45;delay </a>default model already defined in <font size="2" face="'Courier New'" color="#000000">DIG_IO.LIB</font> for use with flip&#45;flops. All of the delays for the device are defined in the PINDLY section. The I&#47;O model is IO_STD as identified previously. We have not specified a MNTYMXDLY or IO_LEVEL parameter, so the default values are used. For a more detailed description of the general digital primitives MNTYMXDLY and IO_LEVEL, see the <font color="#000000"><em>Digital Devices</em></font> chapter in the online <font color="#000000"><em>PSpice Reference Guide</em></font>.</p>
+      <p><a name="1049318">The primitive MNTYMXDLY specifies whether to use the minimum, </a>typical, maximum, or digital worst&#45;case timing values from the device's timing model (in this case the PINDLY device). For the 74160, MNTYMXDLY is set to 0. This means that it takes on the current value of the DIGMNTYMX parameter. DIGMNTYMX defaults to 2 (typical timing) unless specifically changed using the .OPTIONS command. </p>
+      <p><a name="1049319">The primitive IO_LEVEL selects one of four possible A&#45;to&#45;D and </a>D&#45;to&#45;A interface subcircuits from the device's I&#47;O model. In the header of this subcircuit, IO_LEVEL is set to 0. This means that it takes on the value of the DIGIOLVL parameter. DIGIOLVL defaults to 1 unless specifically changed using the .OPTIONS command.</p>
+      <h3><a name="1049320">Pin&#45;to&#45;pin delay (PINDLY primitive)</a></h3>
+      <p><a name="1049322">The delay and constraint specifications for the model are specified </a>using the PINDLY primitive. The PINDLY primitive is evaluated every time any of its inputs or outputs change. See the <font color="#000000"><em>Digital Devices</em></font> chapter in the online <font color="#000000"><em>PSpice Reference Guide</em></font> for more information.</p>
+      <p><a name="1049323">For the 74160, we have five delay paths, the four flip&#45;flop outputs to </a>subcircuit outputs QA...QD to QA_O...QD_O, and RCO to RCO_O. The five paths are seen in the Delay &amp; Constraint section of the design. For delay paths, the number of inputs must equal the number of outputs. Since the 74160 does not have TRI&#45;STATE outputs, there are no enable signals for this example, but there are ten reference nodes. The first four (CLK, LOADBAR, ENT, and CLRBAR) are used for both the pin&#45;to&#45;pin delay specification and the constraint checking. The last six (ENP, A, B, C, D, and EN) are used only for the constraint checking.</p>
+      <p><a name="1049324">The PINDLY primitive also allows constraint checking of the model. It </a>can verify the setup, hold times, pulse width, and frequency. It also has a general mechanism to allow for user&#45;defined conditions to be reported. The constraint checking only reports timing violations; it does not affect the propagation delay or the logic state of the device. Since the timing parameters are generally specified at the pin level of the actual device, the checking is normally done at the interface pins of the subcircuit after the appropriate buffering has been done.</p>
+      <h3><a name="1049326">BOOLEAN</a></h3>
+      <p><a name="1049327">The keyword BOOLEAN begins the boolean assignments which </a>define temporary variables that can be used later in the PINDLY primitive. The form is:</p>
+      <blockquote><a name="1049328">boolean variable = {boolean expression}</a></blockquote>
+      <p><a name="1049329">The curly braces are required. </a></p>
+      <p><a name="1049330">In the 74160 model, the boolean expressions are actually reference </a>functions. There are three reference functions available: CHANGED, CHANGED_LH, and CHANGED_HL. The format is:</p>
+      <blockquote><a name="1049331">function name (node, delta time)</a></blockquote>
+      <p><a name="1049332">For our example, we define the variable CLOCK as a logical TRUE if </a>there has been a LO&#45;to&#45;HI transition of the CLK signal at simulation time. We define CNTENT as TRUE if there has been any transition of the ENT signal at the simulation time.</p>
+      <p><a name="1049333">Boolean operators take the following boolean values as operands: </a></p>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049334">reference functions</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049335">transition functions</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049336">previously assigned boolean variables</a></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <table border="0" cellspacing="0" cellpadding="3" summary="">
+          <tr valign="baseline">
+            <td width="31.999679999999998">
+              <div>
+                <nobr>
+                  <font color="#000000"><img src="images/b_bullet.gif" alt="ParagraphBullet" border="0"></font>
+                </nobr>
+              </div>
+            </td>
+            <td><a name="1049337">boolean constants TRUE and FALSE</a></td>
+          </tr>
+        </table>
+      </div>
+      <p><a name="1049338">Transition functions have the general form of:</a></p>
+      <blockquote><a name="1049339">TRN_pn</a></blockquote>
+      <p><a name="1049340">For a complete list of reference functions and transition functions, see </a>the <font color="#000000"><em>Digital Devices</em></font> chapter in the online <font color="#000000"><em>PSpice Reference </em></font><font color="#000000"><em>Guide</em></font>.</p>
+      <h3><a name="1049341">PINDLY</a></h3>
+      <p><a name="1049342">PINDLY contains the actual delay and constraint expressions for </a>each of the outputs.</p>
+      <p><a name="1049343">The CASE function defines a more complex, rule&#45;based &#60;</a><font color="#000000"><em>delay </em></font><font color="#000000"><em>expression</em></font>&#62; and works as a rule section mechanism for establishing path delays. Each boolean expression in the CASE function is evaluated in order until one is encountered that produces a TRUE result. Once a TRUE expression is found, the delay expression portion of the rule is associated with the output node being evaluated, and the remainder of the CASE function is ignored. If none of the expressions evaluate to TRUE, then the DEFAULT delay is used. Since it is possible for none of the expressions to yield a TRUE result, you must include a default delay in every CASE function. Also note that the expressions must be separated by a comma.</p>
+      <p><a name="1049344">In the PINDLY section of the PINDLY primitive in the model listing, the </a>four output nodes (QA_O through QD_O) all use the same delay rules. The CASE function is evaluated independently for each of the outputs in turn. The first delay expression is:</p>
+      <blockquote><font size="2" face="&quot;Courier New&quot;" color="#000000"><a name="1049345">CLOCK &amp; LOADBAR==&#39;1 &amp; TRN_LH, DELAY(&#45;1,13NS,20NS)</a></font></blockquote>
+      <p><a name="1049346">This means that if CLOCK is TRUE, and LOADBAR is equal to 1, and </a>QA_O is transitioning from 0 to 1, then the values of &#45;1, 13ns, and 20ns are used for the MINIMUM, TYPICAL, and MAXIMUM propagation delay for the CLK&#45;to&#45;QA data output of the chip. In this case, the manufacturer did not supply a minimum prop delay, so we used the value &#45;1 to tell the simulator to derive a value from what was given. If this statement is TRUE, then the simulator assigns the values and move on to the CASE function for QB_O and eventually RCO_O.</p>
+      <p><a name="1049347">For instances where one or more propagation delay parameters are </a>not supplied by the data sheet, the simulator derives a value from what is known and the values specified for the .OPTION DIGMNTYSCALE and DIGTYMXSCALE.</p>
+      <p><a name="1049348">When the typical value for a delay parameter is known but the </a>minimum is not, the simulator uses the formula:</p>
+      <blockquote><a name="1049349">TPxxMN = DIGMNTYSCALE</a>&nbsp;&nbsp;X&nbsp;&nbsp;TPxxTY</blockquote>
+      <p><a name="1049350">where the value of DIGMNTYSCALE is between 0.1 and 1.0 with the </a>default value being 0.4. If the typical is known and the maximum is not, then the simulator uses the formula:</p>
+      <blockquote><a name="1049351">TPxxMX = DIGTYMXSCALE</a>&nbsp;&nbsp;X&nbsp;&nbsp;TPxxTY</blockquote>
+      <p><a name="1049352">where the value of DIGTYMXSCALE is greater than 1.0 with the </a>default being 1.6. If the typical value is not known, and both the minimum and maximum are, then the typical value used by the simulator will be the average of the minimum and maximum propagation delays. If only one of min or max is known, then the typical delay is calculated using the appropriate formula as listed above. If all three are unknown, then they all default to a value of&nbsp;0.</p>
+      <h3><a name="1049354">Constraint checker (CONSTRAINT primitive)</a></h3>
+      <p><a name="1049355">The CONSTRAINT primitive provides a general constraint checking </a>mechanism to the digital device modeler. It performs setup and hold time checks, pulse width checks, frequency checks, and includes a general mechanism to allow user&#45;defined conditions to be reported. See the <font color="#000000"><em>Digital Devices</em></font> chapter in the online <font color="#000000"><em>PSpice Reference </em></font><font color="#000000"><em>Guide</em></font> for more information.</p>
+      <h3><a name="1049356">Setup_Hold</a></h3>
+      <p><a name="1049357">The expressions in the SETUP_HOLD specification may be listed in </a>any order. </p>
+      <p><a name="1049358">CLOCK defines the node that is to be used as the reference for the </a>setup&#47; hold&#47; release specification. The assertion edge must be LH or HL (for example, a transition from logic state 0 to 1 or from 1 to 0.)</p>
+      <p><a name="1049359">DATA specifies which node(s) is to have its setup&#47;</a> hold time measured.</p>
+      <p><a name="1049360">SETUPTIME defines the minimum time that all DATA nodes must be </a>stable prior to the assertion edge of the clock. The time value must be a nonnegative constant or expression and is measured in seconds. If the device has different setup&#47; hold times depending on whether the data is HI or LOW at the clock change, you can use either or both of the following forms:</p>
+      <blockquote><a name="1049361">SETUPTIME_LO = &#60;time value&#62;</a><br>SETUPTIME_HI = &#60;time value&#62;</blockquote>
+      <p><a name="1049362">If either of the time values is 0, then no check is done for that case.</a></p>
+      <p><a name="1049363">HOLDTIME is used in the same way as SETUPTIME and also has </a>the alternate _LH and _HL formats and 0 value condition.</p>
+      <p><a name="1049364">RELEASETIME causes the simulator to perform a special&#45;purpose </a>setup check. Release time (also referred to as recovery time in some data sheets) refers to the minimum time that a signal can go inactive before the active clock edge. Again, the _LH and _HL forms are available. The difference between RELEASETIME and SETUPTIME checking is that simultaneous CLOCK&#47; DATA transitions are never allowed (this assumes a nonzero hold time). RELEASETIME is usually not used in conjunction with SETUPTIME or HOLDTIME.</p>
+      <h3><a name="1049365">Width</a></h3>
+      <p><a name="1049366">WIDTH does the minimum pulse&#45;width checking. MIN_HI&#47;</a> MIN_LO is the minimum time that the node can remain HI&#47;LOW. The value must be a nonnegative constant, or expression. A value of 0 means that any pulse width is allowed. At least one of MIN_HI or MIN_LO must be used within a WIDTH section.</p>
+      <h3><a name="1049367">Freq</a></h3>
+      <p><a name="1049368">FREQ checks the frequency. MINFREQ&#47;</a> MAXFREQ is the minimum&#47; maximum frequency that is allowed on the node in question. The value must be a nonnegative floating point constant or expression measured in hertz. At least one of MINFREQ or MAXFREQ must be used within a FREQ section.</p>
+      <p><a name="1049369">AFFECTS clauses (not used in this example) can be included in </a>constraints to describe how the simulator should associate the failure of a constraint check with the outputs (paths through the device) of the PINDLY. This information does not affect the logic state of the outputs but provides causality detail used by the error tracking mechanism in PSpice&nbsp;A&#47;D waveform analysis. </p>
+      <h3><a name="1049372">74160 example</a></h3>
+      <p><a name="1049373">In the 74160 example, we are checking that the maximum clock </a>frequency (CLK) is not more than 25 MHz and the pulse width is 25 ns. We are also checking that the CLRBAR signal has a minimum LO pulse width of 20 ns, and that the 4 data inputs (A, B, C, D) have a setup&#47; hold time of 20 ns in reference to the CLK signal. We are also checking that ENP and ENT have a setup&#47; hold time of 20&nbsp;ns with respect to the 0 to 1 transition of the CLK signal, but only when the conditions in the WHEN statement are met. All of the delay and constraint checking values were taken directly from the actual data sheet. This makes the delay modeling both easy and accurate.</p>
+      <p><a name="1049375">All of the above primitives and modeling methods, as well as a few </a>special cases that are not covered here, can be found in the <font color="#000000"><em>Digital </em></font><font color="#000000"><em>Devices</em></font> chapter of the online <font color="#000000"><em>PSpice Reference Guide</em></font>.</p>
+      <p><a name="1049376"><font color="#000000"><br></font></a><font color="#000000">* 74160</font><font color="#000000">&nbsp;</font><font color="#000000">&nbsp;</font><font color="#000000">Synchronous 4&#45;bit Decade Counters with asynchronous clear </font><font color="#000000"><br></font><font color="#000000"><br></font><font color="#000000">* Modeled using LOGICEXP, PINDLY, &amp; CONSTRAINT devices </font><font color="#000000"><br></font><font color="#000000"><br></font><font color="#000000">.SUBCKT 74160 CLK_I ENP_I ENT_I CLRBAR_I LOADBAR_I A_I B_I C_I D_I</font><font color="#000000"><br></font><font color="#000000">+ QA_O QB_O QC_O QD_O RCO_O</font><font color="#000000"><br></font><font color="#000000">+ OPTIONAL: DPWR=$G_DPWR DGND=$G_DGND</font><font color="#000000"><br></font><font color="#000000">+ PARAMS: MNTYMXDLY=0 IO_LEVEL=0</font><font color="#000000"><br></font><font color="#000000">*</font><font color="#000000"><br></font><font color="#000000">U160LOG LOGICEXP(14,20) DPWR DGND</font><font color="#000000"><br></font><font color="#000000">+ CLK_I ENP_I ENT_I CLRBAR_I LOADBAR_I A_I B_I C_I D_I </font><font color="#000000"><br></font><font color="#000000">+     QDBAR QA QB QC QD</font><font color="#000000"><br></font><font color="#000000">+ CLK ENP ENT CLRBAR LOADBAR A B C D </font><font color="#000000"><br></font><font color="#000000">+ CLKBAR RCO JA JB JC JD KA KB KC KD EN</font><font color="#000000"><br></font><font color="#000000">+ D0_GATE IO_STD IO_LEVEL={IO_LEVEL}</font><font color="#000000"><br></font><font color="#000000">+ LOGIC:</font><font color="#000000"><br></font><font color="#000000">+   CLK = { CLK_I }                    </font><font color="#000000">	</font><font color="#000000">	</font><font color="#000000">	</font><font color="#000000">	</font><font color="#000000">;Buffering</font><font color="#000000"><br></font><font color="#000000">+   ENP = { ENP_I }</font><font color="#000000"><br></font><font color="#000000">+   ENT = { ENT_I }</font><font color="#000000"><br></font><font color="#000000">+   CLRBAR = { CLRBAR_I }</font><font color="#000000"><br></font><font color="#000000">+   LOADBAR = { LOADBAR_I }</font><font color="#000000"><br></font><font color="#000000">+   A = { A_I }</font><font color="#000000"><br></font><font color="#000000">+   B = { B_I }</font><font color="#000000"><br></font><font color="#000000">+   C = { C_I }</font><font color="#000000"><br></font><font color="#000000">+   D = { D_I }         </font><font color="#000000"><br></font><font color="#000000">+   CLKBAR = { ~CLK }               </font><font color="#000000">	</font><font color="#000000">	</font><font color="#000000">	</font><font color="#000000">	</font><font color="#000000">;Logic expressions</font><font color="#000000"><br></font><font color="#000000">+   LOAD = { ~LOADBAR }</font><font color="#000000"><br></font><font color="#000000">+   EN = { ENP &amp; ENT }</font><font color="#000000"><br></font><font color="#000000">+   I1A = { LOAD | EN }</font><font color="#000000"><br></font><font color="#000000">+   I2A = { ~(LOAD &amp; A) }</font><font color="#000000"><br></font><font color="#000000">+   JA = { I1A &amp; ~(LOAD &amp; I2A) }</font><font color="#000000"><br></font><font color="#000000">+   KA = { I1A &amp; I2A }</font><font color="#000000"><br></font><font color="#000000">+   I1B = { (QA &amp; EN &amp; QDBAR) | LOAD }</font><font color="#000000"><br></font><font color="#000000">+   I2B = { ~(LOAD &amp; B) }</font><font color="#000000"><br></font><font color="#000000">+   JB = { I1B &amp; ~(LOAD &amp; I2B) }</font><font color="#000000"><br></font><font color="#000000">+   KB = { I1B &amp; I2B }</font><font color="#000000"><br></font><font color="#000000">+   I1C = { (QA &amp; EN &amp; QB) | LOAD }</font><font color="#000000"><br></font><font color="#000000">+   I2C = { ~(LOAD &amp; C) }</font><font color="#000000"><br></font><font color="#000000">+   JC = { I1C &amp; ~(LOAD &amp; I2C) }</font><font color="#000000"><br></font><font color="#000000">+   KC = { I1C &amp; I2C }</font><font color="#000000"><br></font><font color="#000000">+   I1D = { ((QC &amp; QB &amp; QA &amp; EN) | (EN &amp; QA &amp; QD)) | LOAD }</font><font color="#000000"><br></font><font color="#000000">+   I2D = { ~(LOAD &amp; D) }</font><font color="#000000"><br></font><font color="#000000">+   JD = { I1D &amp; ~(LOAD &amp; I2D) }</font><font color="#000000"><br></font><font color="#000000">+   KD = { I1D &amp; I2D }</font><font color="#000000"><br></font><font color="#000000">+   RCO = { QD &amp; QA &amp; ENT }</font><font color="#000000"><br></font><font color="#000000">*</font><font color="#000000"><br></font><font color="#000000">UJKFF JKFF(4) DPWR DGND $D_HI CLRBAR CLKBAR JA JB JC JD KA KB KC KD</font><font color="#000000"><br></font><font color="#000000">+ QA QB QC QD QABAR QBBAR QCBAR QDBAR D0_EFF IO_STD</font><font color="#000000"><br></font><font color="#000000">U160DLY PINDLY (5,0,10) DPWR DGND</font><font color="#000000"><br></font><font color="#000000">+ RCO QA QB QC QD</font><font color="#000000"><br></font><font color="#000000">+ CLK LOADBAR ENT CLRBAR ENP A B C D EN</font><font color="#000000"><br></font><font color="#000000">+ RCO_O QA_O QB_O QC_O QD_O</font><font color="#000000"><br></font><font color="#000000">+ IO_STD MNTYMXDLY={MNTYMXDLY} IO_LEVEL={IO_LEVEL}</font><font color="#000000"><br></font><font color="#000000">+ BOOLEAN:</font><font color="#000000"><br></font><font color="#000000">+   CLOCK = { CHANGED_LH(CLK,0) }</font><font color="#000000"><br></font><font color="#000000">+   CNTENT = { CHANGED(ENT,0) }</font><font color="#000000"><br></font><font color="#000000">+ PINDLY:</font><font color="#000000"><br></font><font color="#000000">+   QA_O QB_O QC_O QD_O = {</font><font color="#000000"><br></font><font color="#000000">+     CASE(</font><font color="#000000"><br></font><font color="#000000">+       CLOCK &amp; LOADBAR==&#39;1 &amp; TRN_LH, DELAY(&#45;1,13NS,20NS),</font><font color="#000000"><br></font><font color="#000000">+       CLOCK &amp; LOADBAR==&#39;1 &amp; TRN_HL, DELAY(&#45;1,15NS,23NS),</font><font color="#000000"><br></font><font color="#000000">+       CLOCK &amp; LOADBAR==&#39;0 &amp; TRN_LH, DELAY(&#45;1,17NS,25NS),</font><font color="#000000"><br></font><font color="#000000">+       CLOCK &amp; LOADBAR==&#39;0 &amp; TRN_HL, DELAY(&#45;1,19NS,29NS),</font><font color="#000000"><br></font><font color="#000000">+       CHANGED_HL(CLRBAR,0), DELAY(&#45;1,26NS,38NS),</font><font color="#000000"><br></font><font color="#000000">+       DELAY(&#45;1,26NS,38NS)</font><font color="#000000"><br></font><font color="#000000">+   </font><font color="#000000">	</font><font color="#000000">)</font><font color="#000000"><br></font><font color="#000000">+     }</font><font color="#000000"><br></font><font color="#000000">+   RCO_O = {</font><font color="#000000"><br></font><font color="#000000">+     CASE(</font><font color="#000000"><br></font><font color="#000000">+       CNTENT, DELAY(&#45;1,11NS,16NS),</font><font color="#000000"><br></font><font color="#000000">+       CLOCK, DELAY(&#45;1,23NS,35NS),</font><font color="#000000"><br></font><font color="#000000">+       DELAY(&#45;1,23NS,35NS)</font><font color="#000000"><br></font><font color="#000000">+       )</font><font color="#000000"><br></font><font color="#000000">+     }</font><font color="#000000"><br></font><font color="#000000">+ FREQ:</font><font color="#000000"><br></font><font color="#000000">+   NODE = CLK</font><font color="#000000"><br></font><font color="#000000">+   MAXFREQ = 25MEG</font><font color="#000000"><br></font><font color="#000000">+ WIDTH:</font><font color="#000000"><br></font><font color="#000000">+   NODE = CLK</font><font color="#000000"><br></font><font color="#000000">+   MIN_LO = 25NS</font><font color="#000000"><br></font><font color="#000000">+   MIN_HI = 25NS</font><font color="#000000"><br></font><font color="#000000">+ WIDTH:</font><font color="#000000"><br></font><font color="#000000">+   NODE = CLRBAR</font><font color="#000000"><br></font><font color="#000000">+   MIN_LO = 20NS</font><font color="#000000"><br></font><font color="#000000">+ SETUP_HOLD:</font><font color="#000000"><br></font><font color="#000000">+   DATA(4) = A B C D</font><font color="#000000"><br></font><font color="#000000">+   CLOCK LH = CLK</font><font color="#000000"><br></font><font color="#000000">+   SETUPTIME = 20NS</font><font color="#000000"><br></font><font color="#000000">+   WHEN = { (LOADBAR!=&#39;1 &#94; CHANGED(LOADBAR,0)) &amp;</font><font color="#000000"><br></font><font color="#000000">+</font><font color="#000000">	</font><font color="#000000">&nbsp;</font><font color="#000000">&nbsp;</font><font color="#000000">CLRBAR!=&#39;0 }</font><font color="#000000"><br></font><font color="#000000">+ SETUP_HOLD:</font><font color="#000000"><br></font><font color="#000000">+   DATA(2) = ENP ENT</font><font color="#000000"><br></font><font color="#000000">+   CLOCK LH = CLK</font><font color="#000000"><br></font><font color="#000000">+   SETUPTIME = 20NS</font><font color="#000000"><br></font><font color="#000000">+   WHEN = { CLRBAR!=&#39;0 &amp; (LOADBAR!=&#39;0 &#94;</font><font color="#000000"><br></font><font color="#000000">+</font><font color="#000000">	</font><font color="#000000"> </font><font color="#000000">&nbsp;</font><font color="#000000">CHANGED(LOADBAR,0)) </font><font color="#000000"><br></font><font color="#000000">+     &amp; CHANGED(EN,20NS) }</font><font color="#000000"><br></font><font color="#000000">+ SETUP_HOLD:</font><font color="#000000"><br></font><font color="#000000">+   DATA(1) = LOADBAR</font><font color="#000000"><br></font><font color="#000000">+   CLOCK LH = CLK</font><font color="#000000"><br></font><font color="#000000">+   SETUPTIME = 25NS</font><font color="#000000"><br></font><font color="#000000">+   WHEN = { CLRBAR!=&#39;0 }</font><font color="#000000"><br></font><font color="#000000">+ SETUP_HOLD:</font><font color="#000000"><br></font><font color="#000000">+   DATA(1) = CLRBAR</font><font color="#000000"><br></font><font color="#000000">+   CLOCK LH = CLK</font><font color="#000000"><br></font><font color="#000000">+   RELEASETIME_LH = 20NS</font><font color="#000000"><br></font><font color="#000000">.ENDS</font></p>
+    </div>
+    <br>
+    <a href="#pagetop">Return to top of page</a>
+    <hr>
+    <hr align="left">
+    <div style="text-align: left;">
+      <!-- Begin Buttons -->
+      <table width="650" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td height="20" width="59">
+<a href="javascript:openLibrary()"><img src="../support/nav2_library.gif" border="0" alt="View Library" height="20" width="59"></a>
+                    </td>
+<td height="20" width="73">
+<a href="pspugTOC.html"><img src="../support/nav2_toc.gif" alt="Table of Contents" border="0"></a>
+</td>
+
+<td height="20" width="46">
+<a href="pspugIX.html"><img src="../support/nav2_index.gif" border="0"></a>
+</td>
+          <td>
+            <a href="06abm.html"><img src="../support/nav2_previous.gif" alt="Previous" border="0"></a>
+          </td>
+          <td>
+            <a href="P3setup.html"><img src="../support/nav_next.gif" alt="Next" border="0"></a>
+          </td>
+          <td>
+            <a>
+<a href="pspug.pdf"><img src="../support/nav2_print.gif" border="0" alt="Open PDF to print book" height="20" width="114"></a>
+            </a>
+          </td>
+          <td height="20" width="61">
+            <img src="../support/nav2_black.gif">
+          </td>
+          <td height="20" width="76">
+<a href="/feedback.htm"><img src="../support/nav2_feedback.gif" border="0" alt="Email Comments" height="20" width="76"></a>
+          </td>
+          <td height="20" width="43">
+<a href="../cdsuser/help.html"><img src="../support/nav2_help.gif" border="0" alt="Help Using Documentation" height="20" width="43"></a>
+          </td>
+          <td height="20" width="37">
+<a href="/exitsearch.htm"><img src="../support/nav2_exit.gif" border="0" alt="Shut Down Cadence Documentation Server" height="20" width="37"></a>
+          </td>
+        </tr>
+      </table>
+      <!-- End Buttons -->
+    </div>
+    <br>
+    <font size="-1" >
+For support, see <a href="http://support.cadence.com" target="_blank">Cadence Online Support</a> service.</font>
+    <br>
+    <br>
+    <font size="-1" >
+      <i>Copyright &#169; 2011, <a href="http://www.cadence.com">Cadence Design Systems, Inc.</a></i>
+    </font>
+    <br>
+    <font size="-1" >
+All rights reserved.</font>
+    <br>
+    <br>
+  </body>
+</html>
