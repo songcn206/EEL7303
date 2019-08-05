@@ -1,6 +1,6 @@
 # EEL7303 - Circuitos Eletrônicos Analógicos
 
-> "A resposta certa, não importa nada: o essencial é que as perguntas estejam certas." - **Mário Quintana**
+> "O insucesso é apenas uma oportunidade para recomeçar com mais inteligência." - **Henry Ford**
 
 ## ***Repositório da Disciplina INE5411 - Organização de Computadores I***
 
